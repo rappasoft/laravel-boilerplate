@@ -1,0 +1,14 @@
+- Uncomment any packages needed in composer.json
+- composer install
+- npm install
+- Set .env values if different
+- php artisan key:generate
+- php artisan migrate
+- Set administrator info in UserTableSeeder.php
+- Uncomment seeders in DatabaseSeeder.php
+- php artisan db:seed
+- Comment seeders in DatabaseSeeder.php
+- Set app.php config
+- Set mail.php config
+- Install gulp (sudo npm install -g gulp)
+- gulp & gulp watch

@@ -1,0 +1,10 @@
+/vendor
+/node_modules
+.env
+/.DS_Store
+/Thumbs.db
+/*.sublime-project
+/*.sublime-workspace
+.idea
+.project
+_ide_helper.php
