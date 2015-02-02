@@ -8,7 +8,7 @@
 - Default Forms Converted to Form Helper Methods
 - Default Master Layout
 - Elixr Compilation and Auto-Prefixation in Header
-- Set up perfectly for use with Laravel 5 Vault Package
+- Set up perfectly for use with Laravel 5 Vault Package (Coming Soon)
 - Helper functions
 - Bootstrap 3
 
