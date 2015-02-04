@@ -9,10 +9,12 @@
 - Form/HTML Facades Included
 - Default Forms Converted to Form Helper Methods
 - Default Master Layout
+- Master layout file has useful sections to extend
 - Elixr Compilation and Auto-Prefixation in Header
 - Set up perfectly for use with [Laravel 5 Vault Package](https://github.com/rappasoft/vault)
 - Helper functions
 - Bootstrap 3
+- HTML5 Boilerplate v5.0
 
 ### Installation:
 
