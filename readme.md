@@ -25,13 +25,10 @@
 - `php artisan key:generate`
 - `php artisan migrate`
 - Set administrator info in UserTableSeeder.php
-- Uncomment seeders in DatabaseSeeder.php
-- `php artisan db:seed`
-- Comment seeders in DatabaseSeeder.php
-- Set app.php config
-- Set mail.php config
+- `php artisan db:seed --class="UserTableSeeder"`
 - Install gulp (sudo npm install -g gulp)
-- run `gulp`
+- run `gulp` or `gulp watch`
+- Configure `app.php` and `mail.php`
 
 ### Example .env file:
 
