@@ -45,6 +45,22 @@
     CACHE_DRIVER=file
     SESSION_DRIVER=file
     
+## Troubleshooting
+
+If for any reason something goes wrong, try each of the following:
+
+Delete the `composer.lock` file
+
+Run the `dumpautoload` command
+
+       $ composer dumpautoload -o
+       
+If the above fails to fix, and the command line is referencing errors in `compiled.php`, do the following:
+       
+Delete the `storage/framework/compiled.php` file
+       
+**If all of the above don't work please [report here](https://github.com/rappasoft/Laravel-5-Boilerplate/issues).**
+    
 ## Official Documentation
 
 Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
