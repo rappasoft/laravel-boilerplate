@@ -39,7 +39,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
         @yield('before-scripts-end')
-        {!! HTML::script('js/all.js') !!}
+        {!! HTML::script(elixir('js/all.js')) !!}
         @yield('after-scripts-end')
 
         @include('includes.partials.ga')

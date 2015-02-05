@@ -18,9 +18,9 @@ elixir(function(mix) {
             'app.css',
             'main.css'
         ], 'public/css/')
-        .version('public/css/all.css')
         .scripts([
             'plugins.js',
             'main.js'
-        ], 'public/js/');
+        ], 'public/js/')
+        .version(['public/css/all.css', 'public/js/all.js']);
 });
