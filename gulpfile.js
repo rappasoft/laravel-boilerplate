@@ -12,15 +12,15 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less('app.less')
+    mix.less('bootstrap/bootstrap.less')
         .sass('main.scss')
         .styles([
-            'app.css',
+            'bootstrap.css',
             'main.css'
         ], 'public/css/all.css', 'public/css')
         .scripts([
             'plugins.js',
             'main.js'
         ], 'public/js/all.js', 'public/js')
-       .version(["public/css/all.css", "public/js/all.js"]);
+       .version(["css/all.css", "js/all.js"]);
 });
