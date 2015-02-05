@@ -14,7 +14,7 @@
 - Elixir Compilation and Auto-Prefixation of JS in footer
 - Set up perfectly for use with [Laravel 5 Vault Package](https://github.com/rappasoft/vault)
 - Helper functions
-- Bootstrap 3
+- Bootstrap 3 (LESS/SASS)
 - HTML5 Boilerplate v5.0
 
 ### Installation:
