@@ -17,10 +17,10 @@ elixir(function(mix) {
         .styles([
             'app.css',
             'main.css'
-        ], 'public/css/')
+        ], 'public/css/all.css', 'public/css')
         .scripts([
             'plugins.js',
             'main.js'
-        ], 'public/js/')
-        .version(['public/css/all.css', 'public/js/all.js']);
+        ], 'public/js/all.js', 'public/js')
+       .version(["public/css/all.css", "public/js/all.js"]);
 });
