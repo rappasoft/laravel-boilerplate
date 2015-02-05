@@ -1,11 +1,11 @@
 {
-	"name": "laravel/laravel",
-	"description": "The Laravel Framework.",
-	"keywords": ["framework", "laravel"],
+	"name": "rappasoft/laravel-5-boilerplate",
+	"description": "The Laravel Framework Boilerplate Project.",
+	"keywords": ["framework", "laravel", "boilerplate"],
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "~5.0",
+		"laravel/framework": "5.0.*",
         "illuminate/html" : "5.*"
 	},
 	"require-dev": {
@@ -45,6 +45,5 @@
 	},
 	"config": {
 		"preferred-install": "dist"
-	},
-	"minimum-stability": "stable"
+	}
 }
