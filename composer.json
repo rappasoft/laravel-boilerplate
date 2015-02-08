@@ -44,7 +44,8 @@
 		]
 	},
     "suggest": {
-        "rappasoft/vault": "A Laravel 5 Roles & Permissions Library"
+        "rappasoft/vault": "A Laravel 5 Roles & Permissions Library",
+        "radic/blade-extensions": "Laravel package providing additional Blade functionality."
     },
 	"config": {
 		"preferred-install": "dist"
