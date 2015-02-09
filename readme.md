@@ -4,6 +4,7 @@
 
 ### Features:
 
+- Default Responsive Layout
 - Default Laravel 5 Authentication
 - Frontend and Backend Controllers
 - Form/HTML Facades Included
