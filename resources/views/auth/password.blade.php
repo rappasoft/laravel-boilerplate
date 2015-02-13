@@ -16,8 +16,6 @@
 						</div>
 					@endif
 
-					@include('includes.partials.errors')
-
 					{!! Form::open(['to' => 'password/email', 'class' => 'form-horizontal', 'role' => 'form']) !!}
 
 						<div class="form-group">

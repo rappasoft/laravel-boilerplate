@@ -17,6 +17,8 @@
 - Helper functions
 - Bootstrap 3 (LESS/SASS)
 - HTML5 Boilerplate v5.0
+- Font Awesome (LESS/SASS)
+- Global Messages/Exception Handling
 
 ### Installation:
 

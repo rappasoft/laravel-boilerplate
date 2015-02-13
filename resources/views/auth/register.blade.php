@@ -10,8 +10,6 @@
 
 				<div class="panel-body">
 
-					@include('includes.partials.errors')
-
 					{!! Form::open(['to' => 'auth/register', 'class' => 'form-horizontal', 'role' => 'form']) !!}
 
 						<div class="form-group">

@@ -9,8 +9,6 @@
 				<div class="panel-heading">Reset Password</div>
 				<div class="panel-body">
 
-					@include('includes.partials.errors')
-
 					{!! Form::open(['to' => 'password/reset', 'class' => 'form-horizontal', 'role' => 'form']) !!}
 
 						<input type="hidden" name="token" value="{{ $token }}">
