@@ -18,6 +18,7 @@
 - [HTML5 Boilerplate v5.0](http://www.html5boilerplate.com)
 - [Font Awesome (LESS/SASS)](http://fortawesome.github.io/Font-Awesome/)
 - Global Messages/Exception Handling
+- Form Macros (State and Country dropdowns, easy to extend)
 
 ### Installation:
 
