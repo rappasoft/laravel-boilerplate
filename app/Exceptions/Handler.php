@@ -36,18 +36,12 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
-		if ($this->isHttpException($e))
-		{
-			return $this->renderHttpException($e);
-		}
-		else if ($e instanceof Exception)
+		if ($e instanceof Exception)
 		{
 			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
 		}
-		else
-		{
-			return parent::render($request, $e);
-		}
+
+		return parent::render($request, $e);
 	}
 
 }

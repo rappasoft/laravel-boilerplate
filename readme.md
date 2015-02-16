@@ -9,15 +9,14 @@
 - Frontend and Backend Controllers
 - Form/HTML Facades Included
 - Default Forms Converted to Form Helper Methods
-- Default Master Layout
-- Master layout file has useful sections to extend
+- Master Layout File with common sections
 - Elixir Compilation and Auto-Prefixation of CSS in header
 - Elixir Compilation and Auto-Prefixation of JS in footer
 - Set up perfectly for use with [Laravel 5 Vault Package](https://github.com/rappasoft/vault)
 - Helper functions
-- Bootstrap 3 (LESS/SASS)
-- HTML5 Boilerplate v5.0
-- Font Awesome (LESS/SASS)
+- [Bootstrap 3 (LESS/SASS)](http://www.getbootstrap.com)
+- [HTML5 Boilerplate v5.0](http://www.html5boilerplate.com)
+- [Font Awesome (LESS/SASS)](http://fortawesome.github.io/Font-Awesome/)
 - Global Messages/Exception Handling
 
 ### Installation:
