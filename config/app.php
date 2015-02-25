@@ -155,6 +155,7 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'App\Providers\MacroServiceProvider',
+		'Barryvdh\Debugbar\ServiceProvider',
 	],
 
 	/*
@@ -206,6 +207,7 @@ return [
 		/* Third Party */
 		'Form'		=> 'Illuminate\Html\FormFacade',
 		'HTML'		=> 'Illuminate\Html\HtmlFacade',
+		'Debugbar'  => 'Barryvdh\Debugbar\Facade',
 	],
 
 ];

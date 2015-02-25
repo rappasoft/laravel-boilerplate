@@ -19,6 +19,7 @@
 - [Font Awesome (LESS/SASS)](http://fortawesome.github.io/Font-Awesome/)
 - Global Messages/Exception Handling
 - Form Macros (State and Country dropdowns, easy to extend)
+- [Laravel Debugbar](https://github.com/barryvdh/laravel-debugbar)
 
 ### Installation:
 
