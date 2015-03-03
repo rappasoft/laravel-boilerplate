@@ -48,6 +48,7 @@
     
     CACHE_DRIVER=file
     SESSION_DRIVER=file
+    QUEUE_DRIVER=sync
     
     MAIL_DRIVER=smtp
     MAIL_HOST=mailtrap.io
