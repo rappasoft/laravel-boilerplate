@@ -75,7 +75,7 @@
     
 ## Socialite
 
-To configure socialite, add your credentials to your .env file, and your redirect urls in the services.php config file. Follow the directions in the doc blocks.
+To configure socialite, add your credentials to your .env file. The redirects must follow the convention ```http://mysite.com/auth/login/SERVICE```. Available services are ```github```, ```facebook```, ```twitter```, and ```google```. Links to each are included in ```login.blade.php```.
 
 If you are getting a ```cURL error 60``` on localhost, follow [these directions](http://stackoverflow.com/questions/28635295/laravel-socialite-testing-on-localhost-ssl-certificate-issue).
     
