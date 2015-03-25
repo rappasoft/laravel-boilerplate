@@ -4,7 +4,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
 
+/**
+ * Class AuthController
+ * @package App\Http\Controllers\Auth
+ */
 class AuthController extends Controller {
 
 	/*
@@ -28,10 +33,8 @@ class AuthController extends Controller {
 	protected $redirectTo = "/dashboard";
 
 	/**
-	 * Create a new authentication controller instance.
-	 *
-	 * @param  \Illuminate\Contracts\Auth\Guard  $auth
-	 * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
+	 * @param Guard $auth
+	 * @param Registrar $registrar
 	 */
 	public function __construct(Guard $auth, Registrar $registrar)
 	{
@@ -41,4 +44,12 @@ class AuthController extends Controller {
 		$this->middleware('guest', ['except' => 'getLogout']);
 	}
 
+	/**
+	 * @param Request $request
+	 * @param $provider
+	 * @return mixed
+	 */
+	public function loginThirdParty(Request $request, $provider) {
+		return $this->registrar->loginThirdParty($request->all(), $provider);
+	}
 }

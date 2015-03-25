@@ -20,6 +20,7 @@
 - Global Messages/Exception Handling
 - Form Macros (State and Country dropdowns, easy to extend)
 - [Laravel Debugbar](https://github.com/barryvdh/laravel-debugbar)
+- [Socialite Integration](https://github.com/laravel/socialite)
 
 ### Installation:
 
@@ -55,6 +56,28 @@
     MAIL_PORT=2525
     MAIL_USERNAME=null
     MAIL_PASSWORD=null
+    
+    GITHUB_CLIENT_ID=
+    GITHUB_CLIENT_SECRET=
+    GITHUB_REDIRECT=
+    
+    FACEBOOK_CLIENT_ID=
+    FACEBOOK_SECRET=
+    FACEBOOK_REDIRECT=
+    
+    TWITTER_CLIENT_ID
+    TWITTER_CLIENT_SECRET
+    TWITTER_REDIRECT=
+    
+    GOOGLE_CLIENT_ID=
+    GOOGLE_CLIENT_SECRET=
+    GOOGLE_REDIRECT=
+    
+## Socialite
+
+To configure socialite, add your credentials to your .env file, and your redirect urls in the services.php config file. Follow the directions in the doc blocks.
+
+If you are getting a ```cURL error 60``` on localhost, follow [these directions](http://stackoverflow.com/questions/28635295/laravel-socialite-testing-on-localhost-ssl-certificate-issue).
     
 ## Troubleshooting
 

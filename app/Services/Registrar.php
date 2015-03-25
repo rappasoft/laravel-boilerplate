@@ -1,9 +1,40 @@
 <?php namespace App\Services;
 
 use App\User;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
+use Laravel\Socialite\Contracts\Factory as Socialite;
+use App\Repositories\User\UserContract;
 
+/**
+ * Class Registrar
+ * @package App\Services
+ */
 class Registrar implements RegistrarContract {
+
+	/**
+	 * @var Socialite
+	 */
+	private $socialite;
+	/**
+	 * @var Guard
+	 */
+	private $auth;
+	/**
+	 * @var UserContract
+	 */
+	private $users;
+
+	/**
+	 * @param Socialite $socialite
+	 * @param Guard $auth
+	 * @param UserContract $users
+	 */
+	public function __construct(Socialite $socialite, Guard $auth, UserContract $users) {
+		$this->socialite = $socialite;
+		$this->users = $users;
+		$this->auth = $auth;
+	}
 
 	/**
 	 * Get a validator for an incoming registration request.
@@ -28,11 +59,34 @@ class Registrar implements RegistrarContract {
 	 */
 	public function create(array $data)
 	{
-		return User::create([
-			'name' => $data['name'],
-			'email' => $data['email'],
-			'password' => $data['password'],
-		]);
+		return $this->users->create($data);
 	}
 
+	/**
+	 * @param $request
+	 * @param $provider
+	 * @return \Illuminate\Http\RedirectResponse|\Symfony\Component\HttpFoundation\RedirectResponse
+	 */
+	public function loginThirdParty($request, $provider) {
+		if (! $request) return $this->getAuthorizationFirst($provider);
+		$user = $this->users->findByUserNameOrCreate($this->getSocialUser($provider), $provider);
+		$this->auth->login($user, true);
+		return redirect($this->auth->redirectPath());
+	}
+
+	/**
+	 * @param $provider
+	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
+	 */
+	private function getAuthorizationFirst($provider) {
+		return $this->socialite->driver($provider)->redirect();
+	}
+
+	/**
+	 * @param $provider
+	 * @return \Laravel\Socialite\Contracts\User
+	 */
+	private function getSocialUser($provider) {
+		return $this->socialite->driver($provider)->user();
+	}
 }
