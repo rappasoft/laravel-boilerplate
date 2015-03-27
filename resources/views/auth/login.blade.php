@@ -47,6 +47,12 @@
 
                     {!! Form::close() !!}
 
+                    <div class="row text-center">
+                        {!! link_to_route('auth.provider', 'Login with Github', 'github') !!}&nbsp;|&nbsp;
+                        {!! link_to_route('auth.provider', 'Login with Facebook', 'facebook') !!}&nbsp;|&nbsp;
+                        {!! link_to_route('auth.provider', 'Login with Twitter', 'twitter') !!}&nbsp;|&nbsp;
+                        {!! link_to_route('auth.provider', 'Login with Google', 'google') !!}
+                    </div>
                 </div><!-- panel body -->
 
             </div><!-- panel -->
