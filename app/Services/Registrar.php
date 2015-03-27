@@ -71,7 +71,7 @@ class Registrar implements RegistrarContract {
 		if (! $request) return $this->getAuthorizationFirst($provider);
 		$user = $this->users->findByUserNameOrCreate($this->getSocialUser($provider), $provider);
 		$this->auth->login($user, true);
-		return redirect($this->auth->redirectPath());
+		return redirect('dashboard');
 	}
 
 	/**

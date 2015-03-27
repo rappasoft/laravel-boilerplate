@@ -30,7 +30,6 @@ class EloquentUserRepository implements UserContract {
 		if(! $user) {
 			$user = User::create([
 				'name' => $data->name,
-				'username' => $data->nickname,
 				'email' => $data->email,
 				'avatar' => $data->avatar,
 				'provider' => $provider,
@@ -51,13 +50,11 @@ class EloquentUserRepository implements UserContract {
 			'avatar' => $data->avatar,
 			'email' => $data->email,
 			'name' => $data->name,
-			'username' => $data->nickname,
 		];
 		$dbData = [
 			'avatar' => $user->avatar,
 			'email' => $user->email,
 			'name' => $user->name,
-			'username' => $user->username,
 		];
 
 		$differences = array_diff($socialData, $dbData);
@@ -65,7 +62,6 @@ class EloquentUserRepository implements UserContract {
 			$user->avatar = $data->avatar;
 			$user->email = $data->email;
 			$user->name = $data->name;
-			$user->username = $data->nickname;
 			$user->save();
 		}
 	}
