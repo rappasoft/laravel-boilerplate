@@ -12,8 +12,7 @@
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
-        "way/generators": "~3.0",
-        "barryvdh/laravel-debugbar": "2.0.*@dev"
+        "way/generators": "~3.0"
 	},
 	"autoload": {
 		"classmap": [
