@@ -27,4 +27,13 @@ $(function(){
         Bind all bootstrap tooltips
      */
     $("[data-toggle=\"tooltip\"]").tooltip();
+    $("[data-toggle=\"popover\"]").popover();
+    //This closes the popover when its clicked away from
+    $('body').on('click', function (e) {
+        $('[data-toggle="popover"]').each(function () {
+            if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                $(this).popover('hide');
+            }
+        });
+    });
 });

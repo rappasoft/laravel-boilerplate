@@ -6,6 +6,10 @@
  */
 interface UserContract {
 
+	/**
+	 * @param $data
+	 * @return mixed
+	 */
 	public function create($data);
 
 	/**
@@ -15,9 +19,10 @@ interface UserContract {
 	public function findByUserNameOrCreate($data, $provider);
 
 	/**
-	 * @param $data
+	 * @param $provider
+	 * @param $providerData
 	 * @param $user
 	 * @return mixed
 	 */
-	public function checkIfUserNeedsUpdating($data, $user);
+	public function checkIfUserNeedsUpdating($provider, $providerData, $user);
 }

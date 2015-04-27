@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
+/**
+ * Class User
+ * @package App
+ */
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
 	use Authenticatable, CanResetPassword, SoftDeletes;
@@ -40,13 +44,20 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $dates = ['deleted_at'];
 
 	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function providers() {
+		return $this->hasMany('App\UserProvider');
+	}
+
+	/**
 	 * Hash the users password
 	 *
 	 * @param $value
 	 */
 	public function setPasswordAttribute($value)
 	{
-		$this->attributes['password'] = \Hash::make($value);
+		if (!is_null($this->attributes['password']))
+			$this->attributes['password'] = \Hash::make($value);
 	}
-
 }
