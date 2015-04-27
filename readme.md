@@ -14,12 +14,14 @@
 - Elixir Compilation and Auto-Prefixation of JS in footer
 - Set up perfectly for use with [Laravel 5 Vault Package](https://github.com/rappasoft/vault)
 - Helper functions
+- Javascript/jQuery Snippets
 - [Bootstrap 3 (LESS/SASS)](http://www.getbootstrap.com)
 - [HTML5 Boilerplate v5.0](http://www.html5boilerplate.com)
 - [Font Awesome (LESS/SASS)](http://fortawesome.github.io/Font-Awesome/)
 - Global Messages/Exception Handling
 - Form Macros (State and Country dropdowns, easy to extend)
 - [Socialite Integration](https://github.com/laravel/socialite)
+- [Laracast Generators](https://github.com/laracasts/Laravel-5-Generators-Extended)
 
 ### Installation:
 
