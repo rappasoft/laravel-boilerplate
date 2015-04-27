@@ -155,7 +155,6 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'App\Providers\MacroServiceProvider',
-		'Barryvdh\Debugbar\ServiceProvider',
 		'Laravel\Socialite\SocialiteServiceProvider',
 	],
 
@@ -208,8 +207,6 @@ return [
 		/* Third Party */
 		'Form'		=> 'Illuminate\Html\FormFacade',
 		'HTML'		=> 'Illuminate\Html\HtmlFacade',
-		'Debugbar'  => 'Barryvdh\Debugbar\Facade',
 		'Socialize' => 'Laravel\Socialite\Facades\Socialite',
 	],
-
 ];

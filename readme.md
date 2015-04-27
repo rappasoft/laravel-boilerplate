@@ -19,7 +19,6 @@
 - [Font Awesome (LESS/SASS)](http://fortawesome.github.io/Font-Awesome/)
 - Global Messages/Exception Handling
 - Form Macros (State and Country dropdowns, easy to extend)
-- [Laravel Debugbar](https://github.com/barryvdh/laravel-debugbar)
 - [Socialite Integration](https://github.com/laravel/socialite)
 
 ### Installation:
@@ -72,7 +71,11 @@
     GOOGLE_CLIENT_ID=
     GOOGLE_CLIENT_SECRET=
     GOOGLE_REDIRECT=
-    
+
+## Laravel Debugbar
+
+Removed in last release, but can still be found [here](https://github.com/barryvdh/laravel-debugbar).
+
 ## Socialite
 
 To configure socialite, add your credentials to your .env file. The redirects must follow the convention ```http://mysite.com/auth/login/SERVICE```. Available services are ```github```, ```facebook```, ```twitter```, and ```google```. Links to each are included in ```login.blade.php```.
