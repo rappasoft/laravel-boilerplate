@@ -1,0 +1,297 @@
+<?php namespace App\Repositories\Permission;
+
+use Exception;
+use App\Permission;
+use Illuminate\Support\Facades\Config;
+use App\Exceptions\EntityNotValidException;
+use App\Repositories\Role\RoleRepositoryContract;
+use App\Services\Validators\Rules\Auth\Permission\Create as CreatePermission;
+
+/**
+ * Class DbPermissionRepository
+ * @package Rappasoft\Repositories\User\Roles\Permissions
+ */
+class EloquentPermissionRepository implements PermissionRepositoryContract {
+
+	/**
+	 * @var RoleRepositoryContract
+	 */
+	protected $roles;
+
+	/**
+	 * @param RoleRepositoryContract $roles
+	 */
+	public function __construct(RoleRepositoryContract $roles) {
+		$this->roles = $roles;
+	}
+
+	/**
+	 * @param $id
+	 * @param bool $withRoles
+	 * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Support\Collection|null|static
+	 * @throws Exception
+	 */
+	public function findOrThrowException($id, $withRoles = false) {
+
+		if ( ! is_null(Permission::find($id))) {
+			if ($withRoles)
+				return Permission::with('roles')->find($id);
+
+			return Permission::find($id);
+		}
+
+		throw new \Exception('That permission does not exist.');
+	}
+
+	/**
+	 * @param $per_page
+	 * @param string $order_by
+	 * @param string $sort
+	 * @return mixed
+	 */
+	public function getPermissionsPaginated($per_page, $order_by = 'id', $sort = 'asc') {
+		return Permission::with('roles')->orderBy($order_by, $sort)->paginate($per_page);
+	}
+
+	/**
+	 * @param string $order_by
+	 * @param string $sort
+	 * @param bool $withRoles
+	 * @return mixed
+	 */
+	public function getAllPermissions($order_by = 'id', $sort = 'asc', $withRoles = true) {
+		if ($withRoles)
+			return Permission::with('roles')->orderBy($order_by, $sort)->get();
+
+		return Permission::orderBy($order_by, $sort)->get();
+	}
+
+	/**
+	 * Get all permissions that are not associated with a user as a permission can not be associated
+	 * with a user and role at the same time
+	 *
+	 * @return array
+	 */
+	public function getPermissionsNotAssociatedWithUser() {
+		$return = [];
+		$permissions = $this->getAllPermissions();
+
+		foreach ($permissions as $perm) {
+			if (count($perm->users) == 0)
+				array_push($return, $perm);
+		}
+
+		return $return;
+	}
+
+	/**
+	 * Get all permissions that are not associated with a role as a permission can not be associated
+	 * with a user and role at the same time
+	 *
+	 * @return array
+	 */
+	public function getPermissionsNotAssociatedWithRole() {
+		$return = [];
+		$permissions = $this->getAllPermissions();
+
+		foreach ($permissions as $perm) {
+			if (count($perm->roles) == 0)
+				array_push($return, $perm);
+		}
+
+		return $return;
+	}
+
+	/**
+	 * @param $input
+	 * @param $roles
+	 * @return bool
+	 * @throws EntityNotValidException
+	 * @throws \Exception
+	 */
+	public function create($input, $roles) {
+		$this->validatePermission($input);
+
+		//Create the permission
+		$permission = new Permission;
+		$permission->name = $input['name'];
+		$permission->display_name = $input['display_name'];
+		$permission->system = isset($input['system']) ? 1 : 0;
+
+		$this->permissionMustContainRole($roles);
+
+		if ($permission->save()) {
+			//For each role, load role, collect perms, add perm to perms, flush perms, read perms
+			if (count($roles['permission_roles']) > 0)
+			{
+				foreach ($roles['permission_roles'] as $role_id)
+				{
+					//Get the role, with permissions
+					$role = $this->roles->findOrThrowException($role_id, true);
+
+					//Get the roles permissions into an array
+					$role_permissions = $role->permissions->lists('id');
+
+					if (count($role_permissions) >= 1)
+					{
+						//Role has permissions, gather them first
+
+						//Add this new permission id to the role
+						array_push($role_permissions, $permission->id);
+
+						//For some reason the lists() casts as a string, convert all to int
+						$role_permissions_temp = array();
+						foreach ($role_permissions as $rp)
+						{
+							array_push($role_permissions_temp, (int) $rp);
+						}
+						$role_permissions = $role_permissions_temp;
+
+						//Sync the permissions to the role
+						$role->permissions()->sync($role_permissions);
+					} else
+					{
+						//Role has no permissions, add the 1
+						$role->permissions()->sync([$permission->id]);
+					}
+				}
+			}
+
+			return true;
+		}
+
+		throw new Exception("There was a problem creating this permission. Please try again.");
+	}
+
+	/**
+	 * @param $id
+	 * @param $input
+	 * @param $roles
+	 * @return bool
+	 * @throws EntityNotValidException
+	 * @throws \Exception
+	 */
+	public function update($id, $input, $roles) {
+		$this->validatePermission($input);
+
+		$permission = $this->findOrThrowException($id);
+		$permission->name = $input['name'];
+		$permission->display_name = $input['display_name'];
+		$permission->system = isset($input['system']) ? 1 : 0;
+
+		//See if this permission is tied directly to a user first
+		if (count($permission->users) > 0)
+			throw new Exception('This permission is currently tied directly to one or more users and can not be assigned to a role.');
+
+		$this->permissionMustContainRole($roles);
+
+		if ($permission->save()) {
+			//Detach permission from every role, then add the permission to the selected roles
+			$currentRoles = $this->roles->getAllRoles();
+			foreach ($currentRoles as $role) {
+				$role->detachPermission($permission);
+			}
+
+			if (count($roles['permission_roles']) > 0)
+			{
+				//For each role, load role, collect perms, add perm to perms, flush perms, read perms
+				foreach ($roles['permission_roles'] as $role_id)
+				{
+					//Get the role, with permissions
+					$role = $this->roles->findOrThrowException($role_id, true);
+
+					//Get the roles permissions into an array
+					$role_permissions = $role->permissions->lists('id');
+
+					if (count($role_permissions) >= 1)
+					{
+						//Role has permissions, gather them first
+
+						//Add this new permission id to the role
+						array_push($role_permissions, $permission->id);
+
+						//For some reason the lists() casts as a string, convert all to int
+						$role_permissions_temp = array();
+						foreach ($role_permissions as $rp)
+						{
+							array_push($role_permissions_temp, (int) $rp);
+						}
+						$role_permissions = $role_permissions_temp;
+
+						//Sync the permissions to the role
+						$role->permissions()->sync($role_permissions);
+					} else
+					{
+						//Role has no permissions, add the 1
+						$role->permissions()->sync([$permission->id]);
+					}
+				}
+			}
+
+			return true;
+		}
+
+		throw new Exception("There was a problem updating this permission. Please try again.");
+	}
+
+	/**
+	 * @param $id
+	 * @return bool
+	 * @throws \Exception
+	 */
+	public function destroy($id) {
+		$permission = $this->findOrThrowException($id);
+
+		if ($permission->system == 1)
+			throw new Exception("You can not delete a system permission.");
+
+		//Remove the permission from all associated roles
+		$currentRoles = $permission->roles;
+		foreach ($currentRoles as $role) {
+			$role->detachPermission($permission);
+		}
+
+		//Remove the permission from all associated users
+		$currentUsers = $permission->users;
+		foreach ($currentUsers as $user) {
+			$user->detachPermission($permission);
+		}
+
+		if ($permission->delete())
+			return true;
+
+		throw new Exception("There was a problem deleting this permission. Please try again.");
+	}
+
+	/**
+	 * @param $input
+	 * @return bool
+	 * @throws EntityNotValidException
+	 */
+	private function validatePermission($input) {
+		$permission = new CreatePermission($input);
+
+		if(! $permission->passes()) {
+			$exception = new EntityNotValidException();
+			$exception->setValidationErrors($permission->errors);
+			throw $exception;
+		}
+
+		return true;
+	}
+
+	/**
+	 * @param $roles
+	 * @throws Exception
+	 */
+	private function permissionMustContainRole($roles)
+	{
+		if (Config::get('vault.permissions.permission_must_contain_role'))
+		{
+			if (count($roles['permission_roles']) == 0)
+			{
+				throw new Exception('You must select at least one role for this permission.');
+			}
+		}
+	}
+}

@@ -18,5 +18,15 @@ class UserTableSeeder extends Seeder {
 		);
 
 		DB::table(Config::get('auth.table'))->insert($user);
+
+		$user = array(
+			'name' => 'Default User',
+			'email' => 'user@user.com',
+			'password' => Hash::make('1234'),
+			'created_at' => Carbon\Carbon::now(),
+			'updated_at' => Carbon\Carbon::now()
+		);
+
+		DB::table(Config::get('auth.table'))->insert($user);
 	}
 }

@@ -27,6 +27,10 @@ class Kernel extends HttpKernel {
 		'auth' => 'App\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
 		'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
+
+		'vault.routeNeedsRole' => 'App\Http\Middleware\RouteNeedsRole',
+		'vault.routeNeedsPermission' => 'App\Http\Middleware\RouteNeedsPermission',
+		'vault.routeNeedsRoleOrPermission' => 'App\Http\Middleware\RouteNeedsRoleOrPermission',
 	];
 
 }

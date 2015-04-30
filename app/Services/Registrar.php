@@ -1,10 +1,11 @@
 <?php namespace App\Services;
 
 use App\User;
+use App\Repositories\User\UserContract;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 use Laravel\Socialite\Contracts\Factory as Socialite;
-use App\Repositories\User\UserContract;
 
 /**
  * Class Registrar
@@ -44,7 +45,7 @@ class Registrar implements RegistrarContract {
 	 */
 	public function validator(array $data)
 	{
-		return \Validator::make($data, [
+		return Validator::make($data, [
 			'name' => 'required|max:255',
 			'email' => 'required|email|max:255|unique:users',
 			'password' => 'required|confirmed|min:6',
