@@ -1,34 +1,52 @@
 <?php namespace App\Repositories\Role;
 
+/**
+ * Interface RoleRepositoryContract
+ * @package App\Repositories\Role
+ */
 interface RoleRepositoryContract {
-	/*
-	 * Find item or throw exception
+
+	/**
+	 * @param $id
+	 * @param bool $withPermissions
+	 * @return mixed
 	 */
 	public function findOrThrowException($id, $withPermissions = false);
 
-	/*
-	 * Get paginated list of resource
-	 * param $per_page
+	/**
+	 * @param $per_page
+	 * @param string $order_by
+	 * @param string $sort
+	 * @return mixed
 	 */
 	public function getRolesPaginated($per_page, $order_by = 'id', $sort = 'asc');
 
-	/*
-	 * Get all of the resource
+	/**
+	 * @param string $order_by
+	 * @param string $sort
+	 * @param bool $withPermissions
+	 * @return mixed
 	 */
 	public function getAllRoles($order_by = 'id', $sort = 'asc', $withPermissions = false);
 
-	/*
-	 * Create the role
+	/**
+	 * @param $input
+	 * @param $permissions
+	 * @return mixed
 	 */
 	public function create($input, $permissions);
 
-	/*
-	 * Update the role
+	/**
+	 * @param $id
+	 * @param $input
+	 * @param $permissions
+	 * @return mixed
 	 */
 	public function update($id, $input, $permissions);
 
-	/*
-	 * Delete the specified user
+	/**
+	 * @param $id
+	 * @return mixed
 	 */
 	public function destroy($id);
 }

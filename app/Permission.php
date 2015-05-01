@@ -1,12 +1,12 @@
 <?php namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class VaultPermission
- * @package Rappasoft\Vault
+ * Class Permission
+ * @package App
  */
 class Permission extends Model {
 	/**
@@ -41,8 +41,8 @@ class Permission extends Model {
 		return $this->belongsToMany(Config::get('auth.model'), Config::get('access.permission_user_table'), 'permission_id', 'user_id');
 	}
 
-	/*
-	 * Get label for whether or not permission is for system
+	/**
+	 * @return string
 	 */
 	public function getSystemLabelAttribute() {
 		switch($this->system) {
@@ -54,29 +54,29 @@ class Permission extends Model {
 		}
 	}
 
-	/*
-	 * Whether or not this permission is a system item
+	/**
+	 * @return bool
 	 */
 	public function isSystem() {
 		return $this->system == 1 ? true : false;
 	}
 
-	/*
-	 * Get the edit permission button
+	/**
+	 * @return string
 	 */
 	public function getEditButtonAttribute() {
-		return '<a href="'.route('access.roles.permissions.edit', $this->id).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Edit"></i></a>';
+		return '<a href="'.route('admin.access.roles.permissions.edit', $this->id).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Edit"></i></a>';
 	}
 
-	/*
-	 * Get the delete permission button
+	/**
+	 * @return string
 	 */
 	public function getDeleteButtonAttribute() {
-		return '<a href="'.route('access.roles.permissions.destroy', $this->id).'" class="btn btn-xs btn-danger" data-method="delete"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>';
+		return '<a href="'.route('admin.access.roles.permissions.destroy', $this->id).'" class="btn btn-xs btn-danger" data-method="delete"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>';
 	}
 
-	/*
-	 * Get permission action buttons
+	/**
+	 * @return string
 	 */
 	public function getActionButtonsAttribute() {
 		$buttons = '';

@@ -1,12 +1,12 @@
 <?php namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class VaultRole
- * @package Rappasoft\Vault
+ * Class Role
+ * @package App
  */
 class Role extends Model {
 	/**
@@ -16,6 +16,9 @@ class Role extends Model {
 	 */
 	protected $table;
 
+	/**
+	 *
+	 */
 	public function __construct()
 	{
 		$this->table = Config::get('access.roles_table');
@@ -41,24 +44,24 @@ class Role extends Model {
 		return $this->belongsToMany(Config::get('access.permission'), Config::get('access.permission_role_table'), 'role_id', 'permission_id');
 	}
 
-	/*
-	 * Get the edit permission button
+	/**
+	 * @return string
 	 */
 	public function getEditButtonAttribute() {
-		return '<a href="'.route('access.roles.edit', $this->id).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Edit"></i></a>';
+		return '<a href="'.route('admin.access.roles.edit', $this->id).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="Edit"></i></a>';
 	}
 
-	/*
-	 * Get the delete permission button
+	/**
+	 * @return string
 	 */
 	public function getDeleteButtonAttribute() {
 		if ($this->id != 1) //Cant delete master admin role
-			return '<a href="'.route('access.roles.destroy', $this->id).'" class="btn btn-xs btn-danger" data-method="delete"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>';
+			return '<a href="'.route('admin.access.roles.destroy', $this->id).'" class="btn btn-xs btn-danger" data-method="delete"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>';
 		return '';
 	}
 
-	/*
-	 * Get the action buttons for the role
+	/**
+	 * @return string
 	 */
 	public function getActionButtonsAttribute() {
 		return $this->getEditButtonAttribute().' '.$this->getDeleteButtonAttribute();
@@ -75,7 +78,6 @@ class Role extends Model {
 		DB::table(Config::get('access.permission_role_table'))->where('role_id', $this->id)->delete();
 	}
 
-
 	/**
 	 * Save the inputted permissions.
 	 *
@@ -85,7 +87,7 @@ class Role extends Model {
 	 */
 	public function savePermissions($inputPermissions)
 	{
-		if (!empty($inputPermissions)) {
+		if (! empty($inputPermissions)) {
 			$this->permissions()->sync($inputPermissions);
 		} else {
 			$this->permissions()->detach();

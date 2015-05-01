@@ -1,5 +1,9 @@
 <?php namespace App\Services\Access\Traits;
 
+/**
+ * Class AccessRoute
+ * @package App\Services\Access\Traits
+ */
 trait AccessRoute {
 
 	/**
@@ -152,5 +156,4 @@ trait AccessRoute {
 
 		return false;
 	}
-
 }

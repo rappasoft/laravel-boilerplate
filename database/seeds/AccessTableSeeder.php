@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Config;
+use Carbon\Carbon as Carbon;
 
 class AccessTableSeeder extends Seeder {
 
@@ -16,8 +19,8 @@ class AccessTableSeeder extends Seeder {
 		$role_model = Config::get('access.role');
 		$admin = new $role_model;
 		$admin->name = 'Administrator';
-		$admin->created_at = \Carbon\Carbon::now();
-		$admin->updated_at = \Carbon\Carbon::now();
+		$admin->created_at = Carbon::now();
+		$admin->updated_at = Carbon::now();
 		$admin->save();
 
 		//Make first user admin, attaches to user with id of 1
@@ -29,8 +32,8 @@ class AccessTableSeeder extends Seeder {
 		$role_model = Config::get('access.role');
 		$user = new $role_model;
 		$user->name = 'User';
-		$user->created_at = \Carbon\Carbon::now();
-		$user->updated_at = \Carbon\Carbon::now();
+		$user->created_at = Carbon::now();
+		$user->updated_at = Carbon::now();
 		$user->save();
 
 		$user_model = Config::get('auth.model');
@@ -45,8 +48,8 @@ class AccessTableSeeder extends Seeder {
 		$viewAdminLink->name = 'view_admin_link';
 		$viewAdminLink->display_name = 'View Administrator Link';
 		$viewAdminLink->system = true;
-		$viewAdminLink->created_at = \Carbon\Carbon::now();
-		$viewAdminLink->updated_at = \Carbon\Carbon::now();
+		$viewAdminLink->created_at = Carbon::now();
+		$viewAdminLink->updated_at = Carbon::now();
 		$viewAdminLink->save();
 
 		//Find the first role (admin) give it all permissions
@@ -64,8 +67,8 @@ class AccessTableSeeder extends Seeder {
 		$userOnlyPermission->name = 'user_only_permission';
 		$userOnlyPermission->display_name = 'Test User Only Permission';
 		$userOnlyPermission->system = false;
-		$userOnlyPermission->created_at = \Carbon\Carbon::now();
-		$userOnlyPermission->updated_at = \Carbon\Carbon::now();
+		$userOnlyPermission->created_at = Carbon::now();
+		$userOnlyPermission->updated_at = Carbon::now();
 		$userOnlyPermission->save();
 
 		$user_model = Config::get('auth.model');

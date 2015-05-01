@@ -1,12 +1,12 @@
-@extends ('vault::layouts.master')
+@extends ('layouts.master')
 
 @section ('title', 'User Management | Deleted Users')
 
 @section ('breadcrumbs')
     <ol class="breadcrumb">
-        <li>{!! link_to_route('access.users.index', 'Home') !!}</li>
-        <li><a href="{{route('access.users.index')}}">User Management</a></li>
-        <li class="active"><a href="{{route('access.users.deleted')}}" class="bread-current">Deleted Users</a></li>
+        <li>{!! link_to_route('admin.access.users.index', 'Home') !!}</li>
+        <li><a href="{{route('admin.access.users.index')}}">User Management</a></li>
+        <li class="active"><a href="{{route('admin.access.users.deleted')}}" class="bread-current">Deleted Users</a></li>
     </ol>
 @stop
 
@@ -18,7 +18,7 @@
 			<div class="pull-left">Deleted Users</div>
 
 			<div class="pull-right" style="margin-bottom:10px">
-				<a href="{{route('access.users.index')}}" class="btn btn-success btn-xs"><i class="fa fa-user"></i> Active Users</a> <a href="{{route('access.users.deactivated')}}" class="btn btn-warning btn-xs"><i class="fa fa-user"></i> Deactivated Users</a>
+				<a href="{{route('admin.access.users.index')}}" class="btn btn-success btn-xs"><i class="fa fa-user"></i> Active Users</a> <a href="{{route('admin.access.users.deactivated')}}" class="btn btn-warning btn-xs"><i class="fa fa-user"></i> Deactivated Users</a>
 			</div>
 
 			<div class="clearfix"></div>
@@ -67,7 +67,7 @@
                                 <td class="visible-lg">{!! $user->created_at->diffForHumans() !!}</td>
                                 <td class="visible-lg">{!! $user->updated_at->diffForHumans() !!}</td>
                                 <td>
-                                    <a href="{{route('access.user.restore', $user->id)}}" class="btn btn-xs btn-success" name="restore_user"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="Restore User"></i></a> <a href="{{route('access.user.delete-permanently', $user->id)}}" class="btn btn-xs btn-danger" name="delete_user_perm"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="Delete Permanently"></i></a>
+                                    <a href="{{route('admin.access.user.restore', $user->id)}}" class="btn btn-xs btn-success" name="restore_user"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="Restore User"></i></a> <a href="{{route(admin.'access.user.delete-permanently', $user->id)}}" class="btn btn-xs btn-danger" name="delete_user_perm"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="Delete Permanently"></i></a>
                                 </td>
                             </tr>
                         @endforeach

@@ -1,5 +1,9 @@
 <?php namespace App\Services\Access\Facades;
 
+/**
+ * Class Access
+ * @package App\Services\Access\Facades
+ */
 class Access extends \Illuminate\Support\Facades\Facade
 {
 	/**

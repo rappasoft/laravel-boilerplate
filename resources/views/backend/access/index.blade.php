@@ -1,11 +1,11 @@
-@extends ('backend.access.layouts.master')
+@extends ('layouts.master')
 
 @section ('title', 'User Management')
 
 @section ('breadcrumbs')
     <ol class="breadcrumb">
-        <li>{!! link_to_route('access.users.index', 'Home') !!}</li>
-        <li class="active"><a href="{{route('access.users.index')}}" class="bread-current">User Management</a></li>
+        <li>{!! link_to_route('admin.access.users.index', 'Home') !!}</li>
+        <li class="active"><a href="{{route('admin.access.users.index')}}" class="bread-current">User Management</a></li>
     </ol>
 @stop
 
@@ -16,7 +16,7 @@
 			<div class="pull-left">Active Users</div>
 
 			<div class="pull-right" style="margin-bottom:10px">
-				<a href="{{route('access.users.create')}}" class="btn btn-success btn-xs"><i class="fa fa-plus"></i> User</a> <a href="{{route('access.users.deactivated')}}" class="btn btn-warning btn-xs"><i class="fa fa-user"></i> Deactivated Users</a> <a href="{{route('access.users.deleted')}}" class="btn btn-danger btn-xs"><i class="fa fa-times"></i> Deleted Users</a>
+				<a href="{{route('admin.access.users.create')}}" class="btn btn-success btn-xs"><i class="fa fa-plus"></i> User</a> <a href="{{route('admin.access.users.deactivated')}}" class="btn btn-warning btn-xs"><i class="fa fa-user"></i> Deactivated Users</a> <a href="{{route('admin.access.users.deleted')}}" class="btn btn-danger btn-xs"><i class="fa fa-times"></i> Deleted Users</a>
 			</div>
 
 			<div class="clearfix"></div>

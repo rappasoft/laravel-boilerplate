@@ -8,8 +8,8 @@ use App\Repositories\Role\RoleRepositoryContract;
 use App\Services\Validators\Rules\Auth\Permission\Create as CreatePermission;
 
 /**
- * Class DbPermissionRepository
- * @package Rappasoft\Repositories\User\Roles\Permissions
+ * Class EloquentPermissionRepository
+ * @package App\Repositories\Permission
  */
 class EloquentPermissionRepository implements PermissionRepositoryContract {
 
@@ -32,7 +32,6 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	 * @throws Exception
 	 */
 	public function findOrThrowException($id, $withRoles = false) {
-
 		if ( ! is_null(Permission::find($id))) {
 			if ($withRoles)
 				return Permission::with('roles')->find($id);
@@ -40,7 +39,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 			return Permission::find($id);
 		}
 
-		throw new \Exception('That permission does not exist.');
+		throw new Exception('That permission does not exist.');
 	}
 
 	/**
@@ -107,7 +106,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	 * @param $roles
 	 * @return bool
 	 * @throws EntityNotValidException
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function create($input, $roles) {
 		$this->validatePermission($input);
@@ -169,7 +168,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	 * @param $roles
 	 * @return bool
 	 * @throws EntityNotValidException
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function update($id, $input, $roles) {
 		$this->validatePermission($input);
@@ -237,7 +236,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	/**
 	 * @param $id
 	 * @return bool
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	public function destroy($id) {
 		$permission = $this->findOrThrowException($id);

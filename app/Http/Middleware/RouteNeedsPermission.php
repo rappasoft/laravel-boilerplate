@@ -1,6 +1,7 @@
 <?php namespace App\Http\Middleware;
 
 use Closure;
+use App\Services\Access\Facades\Access;
 use App\Services\Access\Traits\AccessRoute;
 
 /**
@@ -22,10 +23,9 @@ class RouteNeedsPermission {
 	{
 		$assets = $this->getAssets($request);
 
-		if (! \Access::canMultiple($assets['permissions'], $assets['needsAll']))
+		if (! Access::canMultiple($assets['permissions'], $assets['needsAll']))
 			return $this->getRedirectMethodAndGo($request);
 
 		return $next($request);
 	}
-
 }

@@ -1,53 +1,68 @@
 <?php namespace App\Http\Controllers\Access;
 
 use Exception;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\Controller;
 use App\Repositories\Role\RoleRepositoryContract;
 use App\Repositories\Permission\PermissionRepositoryContract;
-use App\Http\Controllers\Controller;
 
+/**
+ * Class RoleController
+ * @package App\Http\Controllers\Access
+ */
 class RoleController extends Controller {
 
+	/**
+	 * @var RoleRepositoryContract
+	 */
 	protected $roles;
+	/**
+	 * @var PermissionRepositoryContract
+	 */
 	protected $permissions;
 
+	/**
+	 * @param RoleRepositoryContract $roles
+	 * @param PermissionRepositoryContract $permissions
+	 */
 	public function __construct(RoleRepositoryContract $roles, PermissionRepositoryContract $permissions) {
 		$this->roles = $roles;
 		$this->permissions = $permissions;
 	}
 
-	/*
-	 * Show the list of users
+	/**
+	 * @return mixed
 	 */
 	public function index() {
 		return view('backend.access.roles.index')
 			->withRoles($this->roles->getRolesPaginated(50));
 	}
 
-	/*
-	 * Create a user
+	/**
+	 * @return mixed
 	 */
 	public function create() {
 		return view('backend.access.roles.create')
 			->withPermissions($this->permissions->getPermissionsNotAssociatedWithUser());
 	}
 
-	/*
-	 * Save a new user
+	/**
+	 * @return mixed
 	 */
 	public function store() {
 		try {
 			$this->roles->create(Input::except('role_permissions'), Input::only('role_permissions'));
 		} catch (Exception $e) {
-			return Redirect::route('access.roles.create')->withInput()->withFlashDanger($e->getMessage());
+			return Redirect::route('admin.access.roles.create')->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('access.roles.index')->withFlashSuccess('The role was successfully created.');
+		return Redirect::route('admin.access.roles.index')->withFlashSuccess('The role was successfully created.');
 	}
 
-	/*
-	 * Edit the specified user
+	/**
+	 * @param $id
+	 * @return mixed
 	 */
 	public function edit($id) {
 		try
@@ -59,12 +74,13 @@ class RoleController extends Controller {
 				->withRolePermissions($role->permissions->lists('id'))
 				->withPermissions($this->permissions->getPermissionsNotAssociatedWithUser());
 		} catch (Exception $e) {
-			return Redirect::route('access.roles.index')->withInput()->withFlashDanger($e->getMessage());
+			return Redirect::route('admin.access.roles.index')->withInput()->withFlashDanger($e->getMessage());
 		}
 	}
 
-	/*
-	 * Update the specified user
+	/**
+	 * @param $id
+	 * @return mixed
 	 */
 	public function update($id) {
 		try {
@@ -73,11 +89,12 @@ class RoleController extends Controller {
 			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('access.roles.index')->withFlashSuccess('The role was successfully updated.');
+		return Redirect::route('admin.access.roles.index')->withFlashSuccess('The role was successfully updated.');
 	}
 
-	/*
-	 * Delete the specified user
+	/**
+	 * @param $id
+	 * @return mixed
 	 */
 	public function destroy($id) {
 		try {
@@ -86,7 +103,6 @@ class RoleController extends Controller {
 			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('access.roles.index')->withFlashSuccess('The role was successfully deleted.');
+		return Redirect::route('admin.access.roles.index')->withFlashSuccess('The role was successfully deleted.');
 	}
-
 }

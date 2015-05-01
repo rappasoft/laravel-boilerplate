@@ -1,13 +1,23 @@
 <?php namespace App\Services\Validators\Rules\Auth\User;
 
-use App\Services\Validators\Validator as Validator;
 use Illuminate\Support\Facades\Config;
+use App\Services\Validators\Validator as Validator;
 
+/**
+ * Class Create
+ * @package App\Services\Validators\Rules\Auth\User
+ */
 class Create extends Validator {
 
+	/**
+	 * @var
+	 */
 	public static $rules;
 
 	//Default rules in case there aren't any in config file
+	/**
+	 * @var array
+	 */
 	public static $defaultRules = [
 		'name'					=>  'required',
 		'email'					=>	'required|email|unique:users',

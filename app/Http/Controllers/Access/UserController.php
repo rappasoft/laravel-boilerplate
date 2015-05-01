@@ -1,15 +1,15 @@
 <?php namespace App\Http\Controllers\Access;
 
 use Exception;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\Controller;
 use App\Repositories\User\UserContract;
 use App\Repositories\Role\RoleRepositoryContract;
 use App\Repositories\Permission\PermissionRepositoryContract;
 use App\Exceptions\EntityNotValidException;
 use App\Exceptions\Access\UserNeedsRolesException;
-use App\Http\Controllers\Controller;
 
 /**
  * Class UserController
@@ -69,12 +69,12 @@ class UserController extends Controller {
 		} catch(EntityNotValidException $e) {
 			return Redirect::back()->withInput()->withFlashDanger($e->validationErrors());
 		} catch(UserNeedsRolesException $e) {
-			return Redirect::route('access.users.edit', $e->userID())->withInput()->withFlashDanger($e->validationErrors());
+			return Redirect::route('admin.access.users.edit', $e->userID())->withInput()->withFlashDanger($e->validationErrors());
 		} catch(Exception $e) {
 			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('access.users.index')->withFlashSuccess('The user was successfully created.');
+		return Redirect::route('admin.access.users.index')->withFlashSuccess('The user was successfully created.');
 	}
 
 	/**
@@ -104,7 +104,7 @@ class UserController extends Controller {
 			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('access.users.index')->withFlashSuccess('The user was successfully updated.');
+		return Redirect::route('admin.access.users.index')->withFlashSuccess('The user was successfully updated.');
 	}
 
 	/**
@@ -118,7 +118,7 @@ class UserController extends Controller {
 			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('access.users.index')->withFlashSuccess('The user was successfully deleted.');
+		return Redirect::route('admin.access.users.index')->withFlashSuccess('The user was successfully deleted.');
 	}
 
 	/**
@@ -132,7 +132,7 @@ class UserController extends Controller {
 			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('access.users.index')->withFlashSuccess('The user was deleted permanently.');
+		return Redirect::route('admin.access.users.index')->withFlashSuccess('The user was deleted permanently.');
 	}
 
 	/**
@@ -146,7 +146,7 @@ class UserController extends Controller {
 			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('access.users.index')->withFlashSuccess('The user was successfully restored.');
+		return Redirect::route('admin.access.users.index')->withFlashSuccess('The user was successfully restored.');
 	}
 
 	/**
@@ -161,7 +161,7 @@ class UserController extends Controller {
 			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('access.users.index')->withFlashSuccess('The user was successfully updated.');
+		return Redirect::route('admin.access.users.index')->withFlashSuccess('The user was successfully updated.');
 	}
 
 	/**
@@ -202,7 +202,7 @@ class UserController extends Controller {
 			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('access.users.index')->withFlashSuccess("The user's password was successfully updated.");
+		return Redirect::route('admin.access.users.index')->withFlashSuccess("The user's password was successfully updated.");
 	}
 
 }

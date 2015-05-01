@@ -1,4 +1,4 @@
-@extends ('vault::layouts.master')
+@extends ('layouts.master')
 
 @section ('title', 'User Management | Edit User')
 
@@ -8,10 +8,10 @@
 
 @section ('breadcrumbs')
     <ol class="breadcrumb">
-        <li>{!! link_to_route('access.users.index', 'Home') !!}</li>
-        <li><a href="{{route('access.users.index')}}">User Management</a></li>
-        <li><a href="{{route('access.users.edit', $user->id)}}">{!! $user->name !!}</a></li>
-        <li class="active"><a href="{{route('access.users.edit', $user->id)}}" class="bread-current">Edit User</a></li>
+        <li>{!! link_to_route('admin.access.users.index', 'Home') !!}</li>
+        <li><a href="{{route('admin.access.users.index')}}">User Management</a></li>
+        <li><a href="{{route('admin.access.users.edit', $user->id)}}">{!! $user->name !!}</a></li>
+        <li class="active"><a href="{{route('admin.access.users.edit', $user->id)}}" class="bread-current">Edit User</a></li>
     </ol>
 @stop
 
@@ -26,7 +26,7 @@
 
         <div class="widget-content">
 
-            {!! Form::model($user, ['route' => ['access.users.update', $user->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) !!}
+            {!! Form::model($user, ['route' => ['admin.access.users.update', $user->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) !!}
 
             <div class="padd">
                 <div class="form-group">
@@ -118,7 +118,7 @@
 
             <div class="widget-foot">
                 <div class="pull-left">
-                    <a href="{{route('access.users.index')}}" class="btn btn-danger">Cancel</a>
+                    <a href="{{route('admin.access.users.index')}}" class="btn btn-danger">Cancel</a>
                 </div>
 
                 <div class="pull-right">

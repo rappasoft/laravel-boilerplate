@@ -1,20 +1,6 @@
 <?php
 
-/*
- * Laravel 5 Vault Package
- * Author: Anthony Rappa
- * E-mail: rappa819@gmail.com
- * Website: http://www.rappasoft.com
- */
-
 return array(
-
-	/*
-	 * General/misc config options
-	 */
-	'general' => [
-		'company_name' => 'Rappasoft', //Used in footer
-	],
 
 	/*
 	 * Role model used by Vault to create correct relations. Update the role if it is in a different namespace.

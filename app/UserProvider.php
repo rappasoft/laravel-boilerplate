@@ -2,6 +2,10 @@
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class UserProvider
+ * @package App
+ */
 class UserProvider extends Model {
 
 	/**

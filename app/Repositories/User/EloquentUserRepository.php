@@ -1,5 +1,7 @@
 <?php namespace App\Repositories\User;
 
+use Exception;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\UserProvider;
 use App\Services\Validators\Rules\Auth\User\Create as RegisterUser;
@@ -115,7 +117,7 @@ class EloquentUserRepository implements UserContract {
 
 		if (! is_null($user)) return $user;
 
-		throw new \Exception('That user does not exist.');
+		throw new Exception('That user does not exist.');
 	}
 
 	/**
@@ -174,7 +176,7 @@ class EloquentUserRepository implements UserContract {
 			return true;
 		}
 
-		throw new \Exception('There was a problem creating this user. Please try again.');
+		throw new Exception('There was a problem creating this user. Please try again.');
 	}
 
 	/**
@@ -202,7 +204,7 @@ class EloquentUserRepository implements UserContract {
 			return true;
 		}
 
-		throw new \Exception('There was a problem updating this user. Please try again.');
+		throw new Exception('There was a problem updating this user. Please try again.');
 	}
 
 	/**
@@ -229,7 +231,7 @@ class EloquentUserRepository implements UserContract {
 		if ($user->save())
 			return true;
 
-		throw new \Exception('There was a problem changing this users password. Please try again.');
+		throw new Exception('There was a problem changing this users password. Please try again.');
 	}
 
 	/**
@@ -238,14 +240,14 @@ class EloquentUserRepository implements UserContract {
 	 * @throws Exception
 	 */
 	public function destroy($id) {
-		if (\Auth::id() == $id)
-			throw new \Exception("You can not delete yourself.");
+		if (Auth::id() == $id)
+			throw new Exception("You can not delete yourself.");
 
 		$user = $this->findOrThrowException($id);
 		if ($user->delete())
 			return true;
 
-		throw new \Exception("There was a problem deleting this user. Please try again.");
+		throw new Exception("There was a problem deleting this user. Please try again.");
 	}
 
 	/**
@@ -262,8 +264,8 @@ class EloquentUserRepository implements UserContract {
 
 		try {
 			$user->forceDelete();
-		} catch (\Exception $e) {
-			throw new \Exception($e->getMessage());
+		} catch (Exception $e) {
+			throw new Exception($e->getMessage());
 		}
 	}
 
@@ -278,7 +280,7 @@ class EloquentUserRepository implements UserContract {
 		if ($user->restore())
 			return true;
 
-		throw new \Exception("There was a problem restoring this user. Please try again.");
+		throw new Exception("There was a problem restoring this user. Please try again.");
 	}
 
 	/*
@@ -291,8 +293,8 @@ class EloquentUserRepository implements UserContract {
 	 * @throws Exception
 	 */
 	public function mark($id, $status) {
-		if (\Auth::id() == $id && $status == 0)
-			throw new \Exception("You can not deactivate yourself.");
+		if (Auth::id() == $id && $status == 0)
+			throw new Exception("You can not deactivate yourself.");
 
 		$user = $this->findOrThrowException($id);
 		$user->status = $status;
@@ -300,7 +302,7 @@ class EloquentUserRepository implements UserContract {
 		if ($user->save())
 			return true;
 
-		throw new \Exception("There was a problem updating this user. Please try again.");
+		throw new Exception("There was a problem updating this user. Please try again.");
 	}
 
 	/**
@@ -361,7 +363,7 @@ class EloquentUserRepository implements UserContract {
 		{
 			//Check to see if email exists
 			if (User::where('email', '=', $input['email'])->first())
-				throw new \Exception('That email address belongs to a different user.');
+				throw new Exception('That email address belongs to a different user.');
 		}
 	}
 
@@ -399,7 +401,7 @@ class EloquentUserRepository implements UserContract {
 		//User Updated, Update Roles
 		//Validate that there's at least one role chosen
 		if (count($roles['assignees_roles']) == 0)
-			throw new \Exception('You must choose at least one role.');
+			throw new Exception('You must choose at least one role.');
 	}
 
 	/**

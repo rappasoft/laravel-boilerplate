@@ -6,13 +6,15 @@
 
 - Default Responsive Layout
 - Default Laravel 5 Authentication
+- Custom Access Control System (Users/Roles/Permissions)
 - Frontend and Backend Controllers
+- User Dashboard
+- Administration Dashboard with SBAdmin 2 Theme
 - Form/HTML Facades Included
 - Default Forms Converted to Form Helper Methods
 - Master Layout File with common sections
 - Elixir Compilation and Auto-Prefixation of CSS in header
 - Elixir Compilation and Auto-Prefixation of JS in footer
-- Set up perfectly for use with [Laravel 5 Vault Package](https://github.com/rappasoft/vault)
 - Helper functions
 - Javascript/jQuery Snippets
 - [Bootstrap 3 (LESS/SASS)](http://www.getbootstrap.com)
@@ -31,10 +33,10 @@
 - `php artisan key:generate`
 - `php artisan migrate`
 - Set administrator info in UserTableSeeder.php
-- `php artisan db:seed --class="UserTableSeeder"`
-- Install gulp (sudo npm install -g gulp)
+- Uncomment DatabaseSeeder.php and then `php artisan db:seed` (Then re-comment)
+- Install gulp (sudo npm install -g gulp) if needed
 - run `gulp` or `gulp watch`
-- Configure `app.php` and `mail.php`
+- Check in browser
 
 ### Example .env file:
 

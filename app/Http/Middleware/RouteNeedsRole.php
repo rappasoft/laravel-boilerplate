@@ -1,6 +1,7 @@
 <?php namespace App\Http\Middleware;
 
 use Closure;
+use App\Services\Access\Facades\Access;
 use App\Services\Access\Traits\AccessRoute;
 
 /**
@@ -22,10 +23,9 @@ class RouteNeedsRole {
 	{
 		$assets = $this->getAssets($request);
 
-		if (! \Access::hasRoles($assets['roles'], $assets['needsAll']))
+		if (! Access::hasRoles($assets['roles'], $assets['needsAll']))
 			return $this->getRedirectMethodAndGo($request);
 
 		return $next($request);
 	}
-
 }

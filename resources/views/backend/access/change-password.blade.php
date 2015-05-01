@@ -1,4 +1,4 @@
-@extends ('vault::layouts.master')
+@extends ('layouts.master')
 
 @section ('title', 'User Management | Change User Password')
 
@@ -8,11 +8,11 @@
 
 @section ('breadcrumbs')
     <ol class="breadcrumb">
-        <li>{!! link_to_route('access.users.index', 'Home') !!}</li>
-        <li><a href="{{route('access.users.index')}}">User Management</a></li>
-        <li><a href="{{route('access.users.edit', $user->id)}}">{!! $user->name !!}</a></li>
-        <li><a href="{{route('access.users.edit', $user->id)}}">Edit User</a></li>
-        <li class="active"><a href="{{route('access.user.change-password', $user->id)}}" class="bread-current">Change Password</a></li>
+        <li>{!! link_to_route('admin.access.users.index', 'Home') !!}</li>
+        <li><a href="{{route('admin.access.users.index')}}">User Management</a></li>
+        <li><a href="{{route('admin.access.users.edit', $user->id)}}">{!! $user->name !!}</a></li>
+        <li><a href="{{route('admin.access.users.edit', $user->id)}}">Edit User</a></li>
+        <li class="active"><a href="{{route('admin.access.user.change-password', $user->id)}}" class="bread-current">Change Password</a></li>
     </ol>
 @stop
 
@@ -27,7 +27,7 @@
 
         <div class="widget-content">
 
-            {!! Form::open(['route' => ['access.user.change-password', $user->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) !!}
+            {!! Form::open(['route' => ['admin.access.user.change-password', $user->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) !!}
 
             <div class="padd">
 
@@ -49,7 +49,7 @@
 
             <div class="widget-foot">
                 <div class="pull-left">
-                    <a href="{{route('access.users.index')}}" class="btn btn-danger">Cancel</a>
+                    <a href="{{route('admin.access.users.index')}}" class="btn btn-danger">Cancel</a>
                 </div>
 
                 <div class="pull-right">

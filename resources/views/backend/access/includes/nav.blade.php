@@ -7,7 +7,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="{!! route('access.users.index') !!}">Vault</a>
+				<a class="navbar-brand" href="{!! route('access.users.index') !!}">Access</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

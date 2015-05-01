@@ -1,4 +1,4 @@
-@extends ('vault::............layouts.master')
+@extends ('layouts.master')
 
 @section ('title', 'Permission Management | Edit Permission')
 
@@ -8,10 +8,10 @@
 
 @section ('breadcrumbs')
     <ol class="breadcrumb">
-        <li>{!! link_to_route('access.users.index', 'Home') !!}</li>
-        <li><a href="{{route('access.roles.permissions.index')}}">Permission Management</a></li>
-        <li><a href="{{route('access.roles.permissions.edit', $permission->id)}}">{{$permission->display_name}}</a></li>
-        <li class="active"><a href="{{route('access.roles.permissions.edit', $permission->id)}}" class="bread-current">Edit</a></li>
+        <li>{!! link_to_route('admin.access.users.index', 'Home') !!}</li>
+        <li><a href="{{route('admin.access.roles.permissions.index')}}">Permission Management</a></li>
+        <li><a href="{{route('admin.access.roles.permissions.edit', $permission->id)}}">{{$permission->display_name}}</a></li>
+        <li class="active"><a href="{{route('admin.access.roles.permissions.edit', $permission->id)}}" class="bread-current">Edit</a></li>
     </ol>
 @stop
 
@@ -26,7 +26,7 @@
 
         <div class="widget-content">
 
-            {!! Form::model($permission, ['route' => ['access.roles.permissions.update', $permission->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) !!}
+            {!! Form::model($permission, ['route' => ['admin.access.roles.permissions.update', $permission->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) !!}
 
             <div class="padd">
                 <div class="form-group">
@@ -66,7 +66,7 @@
                             {!! $role->name !!}
                             <div class="create-permissions-switch">
                                 <div class="onoffswitch">
-                                    <input type="checkbox" {{$role->id == 1 && Config::get('vault.roles.administrator_forced') ? "disabled='disabled'" : ''}} {{in_array($role->id, $permission_roles) || ($role->id == 1 && Config::get('vault.roles.administrator_forced')) ? 'checked="checked"' : ""}} value="{{$role->id}}" name="permission_roles[]" class="toggleBtn onoffswitch-checkbox" id="role-{{$role->id}}">
+                                    <input type="checkbox" {{$role->id == 1 && Config::get('access.roles.administrator_forced') ? "disabled='disabled'" : ''}} {{in_array($role->id, $permission_roles) || ($role->id == 1 && Config::get('access.roles.administrator_forced')) ? 'checked="checked"' : ""}} value="{{$role->id}}" name="permission_roles[]" class="toggleBtn onoffswitch-checkbox" id="role-{{$role->id}}">
                                     <label for="role-{{$role->id}}" class="onoffswitch-label">
                                         <div class="onoffswitch-inner"></div>
                                         <div class="onoffswitch-switch"></div>
@@ -79,7 +79,7 @@
                             No Roles to set
                         @endif
 
-                        @if (Config::get('vault.roles.administrator_forced'))
+                        @if (Config::get('access.roles.administrator_forced'))
                             {!! Form::hidden('permission_roles[]', 1) !!}
                         @endif
                     </div>
@@ -89,7 +89,7 @@
 
             <div class="widget-foot">
                 <div class="pull-left">
-                    <a href="{{route('access.roles.permissions.index')}}" class="btn btn-danger">Cancel</a>
+                    <a href="{{route('admin.access.roles.permissions.index')}}" class="btn btn-danger">Cancel</a>
                 </div>
 
                 <div class="pull-right">

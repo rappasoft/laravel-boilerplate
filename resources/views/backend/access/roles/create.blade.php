@@ -1,4 +1,4 @@
-@extends ('vault::.........layouts.master')
+@extends ('layouts.master')
 
 @section ('title', 'Role Management | Create Role')
 
@@ -8,9 +8,9 @@
 
 @section ('breadcrumbs')
     <ol class="breadcrumb">
-        <li>{!! link_to_route('access.users.index', 'Home') !!}</li>
-        <li><a href="{{route('access.roles.index')}}">Role Management</a></li>
-        <li class="active"><a href="{{route('access.roles.create')}}" class="bread-current">Create Role</a></li>
+        <li>{!! link_to_route('admin.access.users.index', 'Home') !!}</li>
+        <li><a href="{{route('admin.access.roles.index')}}">Role Management</a></li>
+        <li class="active"><a href="{{route('admin.access.roles.create')}}" class="bread-current">Create Role</a></li>
     </ol>
 @stop
 
@@ -25,7 +25,7 @@
 
         <div class="widget-content">
 
-            {!! Form::open(['route' => 'access.roles.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) !!}
+            {!! Form::open(['route' => 'admin.access.roles.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) !!}
 
             <div class="padd">
                 <div class="form-group">
@@ -62,7 +62,7 @@
 
             <div class="widget-foot">
                 <div class="pull-left">
-                    <a href="{{route('access.roles.index')}}" class="btn btn-danger">Cancel</a>
+                    <a href="{{route('admin.access.roles.index')}}" class="btn btn-danger">Cancel</a>
                 </div>
 
                 <div class="pull-right">

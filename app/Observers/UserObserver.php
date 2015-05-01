@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * Class UserObserver
+ * @package App\Observers
+ */
 class UserObserver {
 
 	/**

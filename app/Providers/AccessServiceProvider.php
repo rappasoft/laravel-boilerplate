@@ -2,12 +2,12 @@
 
 use Illuminate\Support\ServiceProvider;
 use App\Services\Access\Access;
-use App\Blade\Access\AccessBladeExtender;
 use App\Observers\UserObserver;
+use App\Blade\Access\AccessBladeExtender;
 
 /**
- * Class VaultServiceProvider
- * @package Rappasoft\Vault
+ * Class AccessServiceProvider
+ * @package App\Providers
  */
 class AccessServiceProvider extends ServiceProvider
 {
@@ -67,6 +67,11 @@ class AccessServiceProvider extends ServiceProvider
 	 * Register service provider bindings
 	 */
 	public function registerBindings() {
+		$this->app->bind(
+			'App\Repositories\User\UserContract',
+			'App\Repositories\User\EloquentUserRepository'
+		);
+
 		$this->app->bind(
 			'App\Repositories\Role\RoleRepositoryContract',
 			'App\Repositories\Role\EloquentRoleRepository'

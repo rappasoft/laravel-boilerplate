@@ -1,11 +1,11 @@
-@extends ('vault::............layouts.master')
+@extends ('layouts.master')
 
 @section ('title', 'Permission Management')
 
 @section ('breadcrumbs')
     <ol class="breadcrumb">
-        <li>{!! link_to_route('access.users.index', 'Home') !!}</li>
-        <li class="active"><a href="{{route('access.roles.permissions.index')}}" class="bread-current">Permission Management</a></li>
+        <li>{!! link_to_route('admin.access.users.index', 'Home') !!}</li>
+        <li class="active"><a href="{{route('admin.access.roles.permissions.index')}}" class="bread-current">Permission Management</a></li>
     </ol>
 @stop
 
@@ -17,7 +17,7 @@
             <div class="pull-left">All Permissions</div>
 
             <div class="pull-right" style="margin-bottom:10px">
-                <a href="{{route('access.roles.permissions.create')}}" class="btn btn-success btn-xs"><i class="fa fa-plus"></i> Permission</a>
+                <a href="{{route('admin.access.roles.permissions.create')}}" class="btn btn-success btn-xs"><i class="fa fa-plus"></i> Permission</a>
             </div>
 
             <div class="clearfix"></div>

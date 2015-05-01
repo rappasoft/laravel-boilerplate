@@ -4,13 +4,19 @@ use Exception;
 use Illuminate\Support\Facades\Config;
 use App\Role;
 
+/**
+ * Class EloquentRoleRepository
+ * @package App\Repositories\Role
+ */
 class EloquentRoleRepository implements RoleRepositoryContract {
 
 	/**
-	 * Find item or throw exception
+	 * @param $id
+	 * @param bool $withPermissions
+	 * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|\Illuminate\Support\Collection|null|static
+	 * @throws Exception
 	 */
 	public function findOrThrowException($id, $withPermissions = false) {
-
 		if ( ! is_null(Role::find($id))) {
 			if ($withPermissions)
 				return Role::with('permissions')->find($id);
@@ -21,16 +27,21 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 		throw new Exception('That role does not exist.');
 	}
 
-	/*
-	 * Get paginated list of permissions
-	 * param $per_page
+	/**
+	 * @param $per_page
+	 * @param string $order_by
+	 * @param string $sort
+	 * @return mixed
 	 */
 	public function getRolesPaginated($per_page, $order_by = 'id', $sort = 'asc') {
 		return Role::with('permissions')->orderBy($order_by, $sort)->paginate($per_page);
 	}
 
-	/*
-	 * Get all permissions
+	/**
+	 * @param string $order_by
+	 * @param string $sort
+	 * @param bool $withPermissions
+	 * @return mixed
 	 */
 	public function getAllRoles($order_by = 'id', $sort = 'asc', $withPermissions = false) {
 		if ($withPermissions)
@@ -39,8 +50,11 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 		return Role::orderBy($order_by, $sort)->get();
 	}
 
-	/*
-	 * Create the role
+	/**
+	 * @param $input
+	 * @param $permissions
+	 * @return bool
+	 * @throws Exception
 	 */
 	public function create($input, $permissions) {
 		//Validate
@@ -70,8 +84,12 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 		throw new Exception("There was a problem creating this role. Please try again.");
 	}
 
-	/*
-	 * Update the role
+	/**
+	 * @param $id
+	 * @param $input
+	 * @param $permissions
+	 * @return bool
+	 * @throws Exception
 	 */
 	public function update($id, $input, $permissions) {
 		$role = $this->findOrThrowException($id);
@@ -99,8 +117,10 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 		throw new Exception('There was a problem updating this role. Please try again.');
 	}
 
-	/*
-	 * Delete the specified user
+	/**
+	 * @param $id
+	 * @return bool
+	 * @throws Exception
 	 */
 	public function destroy($id) {
 		//Would be stupid to delete the administrator role
@@ -109,7 +129,7 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 
 		$role = $this->findOrThrowException($id, true);
 
-		//Dont delete the role is there are users associated
+		//Don't delete the role is there are users associated
 		if ($role->users()->count() > 0)
 			throw new Exception("You can not delete a role with associated users.");
 

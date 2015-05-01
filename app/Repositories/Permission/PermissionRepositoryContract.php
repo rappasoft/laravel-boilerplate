@@ -1,44 +1,62 @@
 <?php namespace App\Repositories\Permission;
 
+/**
+ * Interface PermissionRepositoryContract
+ * @package App\Repositories\Permission
+ */
 interface PermissionRepositoryContract {
+
 	/**
-	 * Find item or throw exception
+	 * @param $id
+	 * @param bool $withRoles
+	 * @return mixed
 	 */
 	public function findOrThrowException($id, $withRoles = false);
 
-	/*
-	 * Get paginated list of resource
-	 * param $per_page
+	/**
+	 * @param $per_page
+	 * @param string $order_by
+	 * @param string $sort
+	 * @return mixed
 	 */
 	public function getPermissionsPaginated($per_page, $order_by = 'id', $sort = 'asc');
 
-	/*
-	 * Get all of the resource
+	/**
+	 * @param string $order_by
+	 * @param string $sort
+	 * @param bool $withRoles
+	 * @return mixed
 	 */
 	public function getAllPermissions($order_by = 'id', $sort = 'asc', $withRoles = true);
 
-	/*
-	 * Get all permissions not associated with a user
+	/**
+	 * @return mixed
 	 */
 	public function getPermissionsNotAssociatedWithUser();
 
-	/*
-	 * Get all permissions not associated with a role
+	/**
+	 * @return mixed
 	 */
 	public function getPermissionsNotAssociatedWithRole();
 
-	/*
-	 * Create the permission
+	/**
+	 * @param $input
+	 * @param $roles
+	 * @return mixed
 	 */
 	public function create($input, $roles);
 
-	/*
-	 * Update the current permission
+	/**
+	 * @param $id
+	 * @param $input
+	 * @param $roles
+	 * @return mixed
 	 */
 	public function update($id, $input, $roles);
 
-	/*
-	 * Delete the selected permission
+	/**
+	 * @param $id
+	 * @return mixed
 	 */
 	public function destroy($id);
 }

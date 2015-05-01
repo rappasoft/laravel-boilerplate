@@ -30,6 +30,15 @@ class Access
 	}
 
 	/**
+	 * @return mixed
+	 * Get the currently authenticated user's id
+	 */
+	public function id()
+	{
+		return Auth::id();
+	}
+
+	/**
 	 * Checks if the current user has a Role by its name
 	 *
 	 * @param string $role Role name.
