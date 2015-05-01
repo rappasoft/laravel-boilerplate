@@ -3,12 +3,12 @@
 /**
  * Frontend Routes
  */
-require_once (__DIR__."/Routes/Frontend/Frontend.php");
-require_once (__DIR__."/Routes/Frontend/Access.php");
+require_once(__DIR__."/Routes/Frontend/Frontend.php");
+require_once(__DIR__."/Routes/Frontend/Access.php");
 
 /**
  * Administration Access Controllers
- * The outer group just makes sure the user is logged in, and also 'namespaces' the admin section
+ * The outer group just makes sure the user is logged in, and also 'namespaces' the admin section (everything is /admin)
  * The inner groups say which roles can access which sections
  */
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
@@ -20,8 +20,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 		'role' => ['Administrator'],
 		'redirect' => '/',
 		'with' => ['flash_danger', 'You do not have access to do that.']
-	], function()
-	{
-		require_once (__DIR__."/Routes/Administrator/Access.php");
+	], function() {
+		require_once(__DIR__."/Routes/Administrator/Access.php");
 	});
 });
