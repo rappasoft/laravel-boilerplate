@@ -1,19 +1,17 @@
 @extends('backend.layouts.master')
 
+@section('page-header')
+    <h1>
+        Page Header
+        <small>Optional description</small>
+    </h1>
+@endsection
+
+@section('breadcrumbs')
+    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+    <li class="active">Here</li>
+@endsection
+
 @section('content')
-	<div class="row">
-
-		<div class="col-md-10 col-md-offset-1">
-
-			<div class="panel panel-default">
-				<div class="panel-heading">Dashboard</div>
-
-				<div class="panel-body">
-					You are an admin!
-				</div>
-			</div><!-- panel -->
-
-		</div><!-- col-md-10 -->
-
-	</div><!-- row -->
+	WELCOME ADMINISTRATOR!
 @endsection

@@ -11,7 +11,7 @@
         @yield('meta')
 
         @yield('before-styles-end')
-        {!! HTML::style(elixir('css/all.css')) !!}
+        {!! HTML::style(elixir('css/frontend.css')) !!}
         @yield('after-styles-end')
 
         <!-- Fonts -->
@@ -40,7 +40,7 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 
         @yield('before-scripts-end')
-        {!! HTML::script(elixir('js/all.js')) !!}
+        {!! HTML::script(elixir('js/frontend.js')) !!}
         @yield('after-scripts-end')
 
         @include('includes.partials.ga')

@@ -9,10 +9,11 @@
 - Custom Access Control System (Users/Roles/Permissions)
 - Frontend and Backend Controllers
 - User Dashboard
-- Administration Dashboard with SBAdmin 2 Theme
+- Administration Dashboard with [Admin LTE](https://almsaeedstudio.com/) Theme
+- Namespaced Routes
 - Form/HTML Facades Included
 - Default Forms Converted to Form Helper Methods
-- Master Layout File with common sections
+- Master Layout Files with common sections
 - Elixir Compilation and Auto-Prefixation of CSS in header
 - Elixir Compilation and Auto-Prefixation of JS in footer
 - Helper functions

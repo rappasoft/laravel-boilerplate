@@ -22,13 +22,12 @@
 }());
 
 // Place any jQuery/helper plugins in here.
-
 $(function(){
     /*
-        Allows you to add data-method="METHOD to links to automatically inject a form with the method on click
-        Example: <a href="{{route('customers.destroy', $customer->id)}}" data-method="delete" name="delete_item">Delete</a>
-        Injects a form with that's fired on click of the link with a DELETE request.
-        Good because you don't have to dirty your HTML with delete forms everywhere.
+     Allows you to add data-method="METHOD to links to automatically inject a form with the method on click
+     Example: <a href="{{route('customers.destroy', $customer->id)}}" data-method="delete" name="delete_item">Delete</a>
+     Injects a form with that's fired on click of the link with a DELETE request.
+     Good because you don't have to dirty your HTML with delete forms everywhere.
      */
     $('[data-method]').append(function(){
         return "\n"+
@@ -42,14 +41,14 @@ $(function(){
         .attr('onclick','$(this).find("form").submit();');
 
     /*
-        Generic are you sure dialog
+     Generic are you sure dialog
      */
     $('form[name=delete_item]').submit(function(){
         return confirm("Are you sure you want to delete this item?");
     });
 
     /*
-        Bind all bootstrap tooltips
+     Bind all bootstrap tooltips
      */
     $("[data-toggle=\"tooltip\"]").tooltip();
     $("[data-toggle=\"popover\"]").popover();
@@ -62,4 +61,7 @@ $(function(){
         });
     });
 });
-//# sourceMappingURL=all.js.map
+$(function(){
+
+});
+//# sourceMappingURL=frontend.js.map

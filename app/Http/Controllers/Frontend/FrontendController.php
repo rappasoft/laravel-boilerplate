@@ -15,4 +15,12 @@ class FrontendController extends Controller {
 	{
 		return view('frontend.index');
 	}
+
+	/**
+	 * @return \Illuminate\View\View
+	 */
+	public function macros()
+	{
+		return view('frontend.macros');
+	}
 }

@@ -4,6 +4,7 @@
  * Frontend Controllers
  */
 Route::get('/', ['as' => 'home', 'uses' => 'FrontendController@index']);
+Route::get('macros', 'FrontendController@macros');
 
 /**
  * These frontend controllers require the user to be logged in
