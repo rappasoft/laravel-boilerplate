@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('frontend.layouts.master')
 
 @section('content')
 	<div class="row">
@@ -9,7 +9,7 @@
 				<div class="panel-heading">Dashboard</div>
 
 				<div class="panel-body">
-					You are an admin!
+					You are logged in!
 				</div>
 			</div><!-- panel -->
 

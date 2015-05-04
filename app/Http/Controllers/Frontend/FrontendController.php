@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\Frontend;
+
+use App\Http\Controllers\Controller;
 
 /**
  * Class FrontendController

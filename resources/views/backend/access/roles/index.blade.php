@@ -1,4 +1,4 @@
-@extends ('layouts.master')
+@extends ('backend.layouts.master')
 
 @section ('title', 'Role Management')
 

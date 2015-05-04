@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers\Access;
+<?php namespace App\Http\Controllers\Backend\Access;
 
 use Exception;
 use Illuminate\Support\Facades\Input;
