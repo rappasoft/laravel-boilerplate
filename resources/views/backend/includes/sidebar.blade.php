@@ -10,7 +10,7 @@
                   <img src="{!!asset('img/backend/user2-160x160.jpg')!!}" class="img-circle" alt="User Image" />
                 </div>
                 <div class="pull-left info">
-                  <p>Alexander Pierce</p>
+                  <p>Anthony Rappa</p>
                   <!-- Status -->
                   <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
@@ -29,17 +29,10 @@
 
               <!-- Sidebar Menu -->
               <ul class="sidebar-menu">
-                <li class="header">HEADER</li>
+                <li class="header">General</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active"><a href="#"><span>Link</span></a><</li>
-                <li><a href="#"><span>Another Link</span></a></li>
-                <li class="treeview">
-                  <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
-                  <ul class="treeview-menu">
-                    <li><a href="#">Link in level 2</a></li>
-                    <li><a href="#">Link in level 2</a></li>
-                  </ul>
-                </li>
+                <li><a href="{!!route('backend.dashboard')!!}"><span>Dashboard</span></a></li>
+                <li><a href="{!!url('admin/access/users')!!}"><span>User Management</span></a></li>
               </ul><!-- /.sidebar-menu -->
             </section>
             <!-- /.sidebar -->
