@@ -55,12 +55,12 @@ class PermissionController extends Controller {
 		try {
 			$this->permissions->create(Input::except('permission_roles'), Input::only('permission_roles'));
 		} catch (EntityNotValidException $e) {
-			return Redirect::back()->with('input', Input::all())->withFlashDanger($e->validationErrors());
+			return redirect()->back()->with('input', Input::all())->withFlashDanger($e->validationErrors());
 		} catch (Exception $e) {
-			return Redirect::back()->with('input', Input::all())->withFlashDanger($e->getMessage());
+			return redirect()->back()->with('input', Input::all())->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('admin.access.roles.permissions.index')->withFlashSuccess("Permission successfully created.");
+		return redirect()->route('admin.access.roles.permissions.index')->withFlashSuccess("Permission successfully created.");
 	}
 
 	/**
@@ -75,7 +75,7 @@ class PermissionController extends Controller {
 				->withPermissionRoles($permission->roles->lists('id'))
 				->withRoles($this->roles->getAllRoles());
 		} catch (Exception $e) {
-			return Redirect::route('admin.access.roles.permissions.index')->withFlashDanger($e->getMessage());
+			return redirect()->route('admin.access.roles.permissions.index')->withFlashDanger($e->getMessage());
 		}
 	}
 
@@ -87,12 +87,12 @@ class PermissionController extends Controller {
 		try {
 			$this->permissions->update($id, Input::except('permission_roles'), Input::only('permission_roles'));
 		} catch (EntityNotValidException $e) {
-			return Redirect::back()->with('input', Input::all())->withFlashDanger($e->validationErrors());
+			return redirect()->back()->with('input', Input::all())->withFlashDanger($e->validationErrors());
 		} catch (Exception $e) {
-			return Redirect::back()->with('input', Input::all())->withFlashDanger($e->getMessage());
+			return redirect()->back()->with('input', Input::all())->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('admin.access.roles.permissions.index')->withFlashSuccess("Permission successfully updated.");
+		return redirect()->route('admin.access.roles.permissions.index')->withFlashSuccess("Permission successfully updated.");
 	}
 
 	/**
@@ -103,9 +103,9 @@ class PermissionController extends Controller {
 		try {
 			$this->permissions->destroy($id);
 		} catch (Exception $e) {
-			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
+			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('admin.access.roles.permissions.index')->withFlashSuccess("Permission successfully deleted.");
+		return redirect()->route('admin.access.roles.permissions.index')->withFlashSuccess("Permission successfully deleted.");
 	}
 }

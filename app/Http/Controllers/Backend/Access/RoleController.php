@@ -54,10 +54,10 @@ class RoleController extends Controller {
 		try {
 			$this->roles->create(Input::except('role_permissions'), Input::only('role_permissions'));
 		} catch (Exception $e) {
-			return Redirect::route('admin.access.roles.create')->withInput()->withFlashDanger($e->getMessage());
+			return redirect()->route('admin.access.roles.create')->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('admin.access.roles.index')->withFlashSuccess('The role was successfully created.');
+		return redirect()->route('admin.access.roles.index')->withFlashSuccess('The role was successfully created.');
 	}
 
 	/**
@@ -74,7 +74,7 @@ class RoleController extends Controller {
 				->withRolePermissions($role->permissions->lists('id'))
 				->withPermissions($this->permissions->getPermissionsNotAssociatedWithUser());
 		} catch (Exception $e) {
-			return Redirect::route('admin.access.roles.index')->withInput()->withFlashDanger($e->getMessage());
+			return redirect()->route('admin.access.roles.index')->withInput()->withFlashDanger($e->getMessage());
 		}
 	}
 
@@ -86,10 +86,10 @@ class RoleController extends Controller {
 		try {
 			$this->roles->update($id, Input::except('role_permissions'), Input::only('role_permissions'));
 		} catch (Exception $e) {
-			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
+			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('admin.access.roles.index')->withFlashSuccess('The role was successfully updated.');
+		return redirect()->route('admin.access.roles.index')->withFlashSuccess('The role was successfully updated.');
 	}
 
 	/**
@@ -100,9 +100,9 @@ class RoleController extends Controller {
 		try {
 			$this->roles->destroy($id);
 		} catch (Exception $e) {
-			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
+			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('admin.access.roles.index')->withFlashSuccess('The role was successfully deleted.');
+		return redirect()->route('admin.access.roles.index')->withFlashSuccess('The role was successfully deleted.');
 	}
 }

@@ -48,7 +48,7 @@ class UserController extends Controller {
 	 */
 	public function index() {
 		return view('backend.access.index')
-			->withUsers($this->users->getUsersPaginated(Config::get('vault.users.default_per_page'), 1));
+			->withUsers($this->users->getUsersPaginated(Config::get('access.users.default_per_page'), 1));
 	}
 
 	/**
@@ -65,16 +65,14 @@ class UserController extends Controller {
 	 */
 	public function store() {
 		try {
-			$this->users->create(Input::except('assignees_roles', 'permission_user'), Input::only('assignees_roles'), Input::only('permission_user'));
+			$this->users->createWithRoles(Input::except('assignees_roles', 'permission_user'), Input::only('assignees_roles'), Input::only('permission_user'));
 		} catch(EntityNotValidException $e) {
-			return Redirect::back()->withInput()->withFlashDanger($e->validationErrors());
+			return redirect()->back()->withInput()->withFlashDanger($e->validationErrors());
 		} catch(UserNeedsRolesException $e) {
-			return Redirect::route('admin.access.users.edit', $e->userID())->withInput()->withFlashDanger($e->validationErrors());
-		} catch(Exception $e) {
-			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
+			return redirect()->route('admin.access.users.edit', $e->userID())->withInput()->withFlashDanger($e->validationErrors());
 		}
 
-		return Redirect::route('admin.access.users.index')->withFlashSuccess('The user was successfully created.');
+		return redirect()->route('admin.access.users.index')->withFlashSuccess('The user was successfully created.');
 	}
 
 	/**
@@ -99,12 +97,12 @@ class UserController extends Controller {
 		try {
 			$this->users->update($id, Input::except('assignees_roles', 'permission_user'), Input::only('assignees_roles'), Input::only('permission_user'));
 		} catch(EntityNotValidException $e) {
-			return Redirect::back()->withInput()->withFlashDanger($e->validationErrors());
+			return redirect()->back()->withInput()->withFlashDanger($e->validationErrors());
 		} catch(Exception $e) {
-			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
+			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('admin.access.users.index')->withFlashSuccess('The user was successfully updated.');
+		return redirect()->route('admin.access.users.index')->withFlashSuccess('The user was successfully updated.');
 	}
 
 	/**
@@ -115,10 +113,10 @@ class UserController extends Controller {
 		try {
 			$this->users->destroy($id);
 		} catch(Exception $e) {
-			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
+			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('admin.access.users.index')->withFlashSuccess('The user was successfully deleted.');
+		return redirect()->route('admin.access.users.index')->withFlashSuccess('The user was successfully deleted.');
 	}
 
 	/**
@@ -129,10 +127,10 @@ class UserController extends Controller {
 		try {
 			$this->users->delete($id);
 		} catch(Exception $e) {
-			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
+			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('admin.access.users.index')->withFlashSuccess('The user was deleted permanently.');
+		return redirect()->route('admin.access.users.index')->withFlashSuccess('The user was deleted permanently.');
 	}
 
 	/**
@@ -143,10 +141,10 @@ class UserController extends Controller {
 		try {
 			$this->users->restore($id);
 		} catch(Exception $e) {
-			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
+			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('admin.access.users.index')->withFlashSuccess('The user was successfully restored.');
+		return redirect()->route('admin.access.users.index')->withFlashSuccess('The user was successfully restored.');
 	}
 
 	/**
@@ -158,10 +156,10 @@ class UserController extends Controller {
 		try {
 			$this->users->mark($id, $status);
 		} catch(Exception $e) {
-			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
+			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('admin.access.users.index')->withFlashSuccess('The user was successfully updated.');
+		return redirect()->route('admin.access.users.index')->withFlashSuccess('The user was successfully updated.');
 	}
 
 	/**
@@ -197,12 +195,11 @@ class UserController extends Controller {
 		try {
 			$this->users->updatePassword($id, Input::all());
 		} catch(EntityNotValidException $e) {
-			return Redirect::back()->withInput()->withFlashDanger($e->validationErrors());
+			return redirect()->back()->withInput()->withFlashDanger($e->validationErrors());
 		} catch(Exception $e) {
-			return Redirect::back()->withInput()->withFlashDanger($e->getMessage());
+			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		return Redirect::route('admin.access.users.index')->withFlashSuccess("The user's password was successfully updated.");
+		return redirect()->route('admin.access.users.index')->withFlashSuccess("The user's password was successfully updated.");
 	}
-
 }
