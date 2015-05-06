@@ -49,4 +49,9 @@ interface RoleRepositoryContract {
 	 * @return mixed
 	 */
 	public function destroy($id);
+
+	/**
+	 * @return mixed
+	 */
+	public function getDefaultUserRole();
 }

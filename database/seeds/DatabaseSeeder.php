@@ -24,5 +24,4 @@ class DatabaseSeeder extends Seeder {
 
 		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 	}
-
 }

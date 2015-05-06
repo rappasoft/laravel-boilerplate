@@ -44,10 +44,11 @@ return array(
 	 */
 	'users' => [
 		'default_per_page' => 25,
+
 		/*
-		 * "confirmed" is applied by default
+		 * The role the user is assigned to when they sign up from the frontend
 		 */
-		'password_validation' => 'required|alpha_num|min:6',
+		'default_role' => 'User',
 	],
 
 	/*
@@ -74,23 +75,5 @@ return array(
 		 * Works in unison with roles.administrator_forced
 		 */
 		'permission_must_contain_role' => false,
-	],
-
-	/*
-	 * Validation overwrites
-	 */
-	'validation' => [
-		'users' => [
-			'create' => [
-				'name'					=>  'required',
-				'email'					=>	'required|email|unique:users',
-				'password'				=>	'required|alpha_num|min:6|confirmed',
-				'password_confirmation'	=>	'required|alpha_num|min:6',
-			],
-			'update' => [
-				'email'	=>	'required|email',
-				'name'	=>  'required',
-			],
-		],
 	],
 );

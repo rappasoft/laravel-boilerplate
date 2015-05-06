@@ -1,7 +1,5 @@
 <?php namespace App\Services\Access\Traits;
 
-use Illuminate\Support\Facades\Config;
-
 /**
  * Class UserHasRole
  * @package App\Services\Access\Traits
@@ -17,7 +15,7 @@ trait UserHasRole {
 	 */
 	public function roles()
 	{
-		return $this->belongsToMany(Config::get('access.role'), Config::get('access.assigned_roles_table'), 'user_id', 'role_id');
+		return $this->belongsToMany(config('access.role'), config('access.assigned_roles_table'), 'user_id', 'role_id');
 	}
 
 	/**
@@ -28,7 +26,7 @@ trait UserHasRole {
 	 */
 	public function permissions()
 	{
-		return $this->belongsToMany(Config::get('access.permission'), Config::get('access.permission_user_table'), 'user_id', 'permission_id');
+		return $this->belongsToMany(config('access.permission'), config('access.permission_user_table'), 'user_id', 'permission_id');
 	}
 
 	/**

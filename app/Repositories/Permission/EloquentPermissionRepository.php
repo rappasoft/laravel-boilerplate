@@ -2,10 +2,7 @@
 
 use Exception;
 use App\Permission;
-use Illuminate\Support\Facades\Config;
-use App\Exceptions\EntityNotValidException;
 use App\Repositories\Role\RoleRepositoryContract;
-use App\Services\Validators\Rules\Auth\Permission\Create as CreatePermission;
 
 /**
  * Class EloquentPermissionRepository
@@ -105,13 +102,9 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	 * @param $input
 	 * @param $roles
 	 * @return bool
-	 * @throws EntityNotValidException
 	 * @throws Exception
 	 */
 	public function create($input, $roles) {
-		$this->validatePermission($input);
-
-		//Create the permission
 		$permission = new Permission;
 		$permission->name = $input['name'];
 		$permission->display_name = $input['display_name'];
@@ -167,12 +160,9 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	 * @param $input
 	 * @param $roles
 	 * @return bool
-	 * @throws EntityNotValidException
 	 * @throws Exception
 	 */
 	public function update($id, $input, $roles) {
-		$this->validatePermission($input);
-
 		$permission = $this->findOrThrowException($id);
 		$permission->name = $input['name'];
 		$permission->display_name = $input['display_name'];
@@ -263,29 +253,12 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	}
 
 	/**
-	 * @param $input
-	 * @return bool
-	 * @throws EntityNotValidException
-	 */
-	private function validatePermission($input) {
-		$permission = new CreatePermission($input);
-
-		if(! $permission->passes()) {
-			$exception = new EntityNotValidException();
-			$exception->setValidationErrors($permission->errors);
-			throw $exception;
-		}
-
-		return true;
-	}
-
-	/**
 	 * @param $roles
 	 * @throws Exception
 	 */
 	private function permissionMustContainRole($roles)
 	{
-		if (Config::get('vault.permissions.permission_must_contain_role'))
+		if (config('access.permissions.permission_must_contain_role'))
 		{
 			if (count($roles['permission_roles']) == 0)
 			{

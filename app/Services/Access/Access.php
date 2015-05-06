@@ -1,7 +1,5 @@
 <?php namespace App\Services\Access;
 
-use Illuminate\Support\Facades\Auth;
-
 class Access
 {
 	/**
@@ -26,7 +24,7 @@ class Access
 	 */
 	public function user()
 	{
-		return Auth::user();
+		return auth()->user();
 	}
 
 	/**
@@ -35,7 +33,7 @@ class Access
 	 */
 	public function id()
 	{
-		return Auth::id();
+		return auth()->id();
 	}
 
 	/**

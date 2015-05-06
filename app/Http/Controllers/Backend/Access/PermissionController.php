@@ -1,12 +1,10 @@
 <?php namespace App\Http\Controllers\Backend\Access;
 
-use Exception;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Controller;
-use App\Exceptions\EntityNotValidException;
 use App\Repositories\Role\RoleRepositoryContract;
 use App\Repositories\Permission\PermissionRepositoryContract;
+use App\Http\Requests\Backend\Access\Permission\CreatePermissionRequest;
+use App\Http\Requests\Backend\Access\Permission\UpdatePermissionRequest;
 
 /**
  * Class PermissionController
@@ -49,17 +47,11 @@ class PermissionController extends Controller {
 	}
 
 	/**
+	 * @param CreatePermissionRequest $request
 	 * @return mixed
 	 */
-	public function store() {
-		try {
-			$this->permissions->create(Input::except('permission_roles'), Input::only('permission_roles'));
-		} catch (EntityNotValidException $e) {
-			return redirect()->back()->with('input', Input::all())->withFlashDanger($e->validationErrors());
-		} catch (Exception $e) {
-			return redirect()->back()->with('input', Input::all())->withFlashDanger($e->getMessage());
-		}
-
+	public function store(CreatePermissionRequest $request) {
+		$this->permissions->create($request->except('permission_roles'), $request->only('permission_roles'));
 		return redirect()->route('admin.access.roles.permissions.index')->withFlashSuccess("Permission successfully created.");
 	}
 
@@ -68,30 +60,20 @@ class PermissionController extends Controller {
 	 * @return mixed
 	 */
 	public function edit($id) {
-		try {
-			$permission = $this->permissions->findOrThrowException($id, true);
-			return view('backend.access.roles.permissions.edit')
-				->withPermission($permission)
-				->withPermissionRoles($permission->roles->lists('id'))
-				->withRoles($this->roles->getAllRoles());
-		} catch (Exception $e) {
-			return redirect()->route('admin.access.roles.permissions.index')->withFlashDanger($e->getMessage());
-		}
+		$permission = $this->permissions->findOrThrowException($id, true);
+		return view('backend.access.roles.permissions.edit')
+			->withPermission($permission)
+			->withPermissionRoles($permission->roles->lists('id'))
+			->withRoles($this->roles->getAllRoles());
 	}
 
 	/**
 	 * @param $id
+	 * @param UpdatePermissionRequest $request
 	 * @return mixed
 	 */
-	public function update($id) {
-		try {
-			$this->permissions->update($id, Input::except('permission_roles'), Input::only('permission_roles'));
-		} catch (EntityNotValidException $e) {
-			return redirect()->back()->with('input', Input::all())->withFlashDanger($e->validationErrors());
-		} catch (Exception $e) {
-			return redirect()->back()->with('input', Input::all())->withFlashDanger($e->getMessage());
-		}
-
+	public function update($id, UpdatePermissionRequest $request) {
+		$this->permissions->update($id, $request->except('permission_roles'), $request->only('permission_roles'));
 		return redirect()->route('admin.access.roles.permissions.index')->withFlashSuccess("Permission successfully updated.");
 	}
 
@@ -100,12 +82,7 @@ class PermissionController extends Controller {
 	 * @return mixed
 	 */
 	public function destroy($id) {
-		try {
-			$this->permissions->destroy($id);
-		} catch (Exception $e) {
-			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
-		}
-
+		$this->permissions->destroy($id);
 		return redirect()->route('admin.access.roles.permissions.index')->withFlashSuccess("Permission successfully deleted.");
 	}
 }

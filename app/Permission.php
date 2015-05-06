@@ -1,7 +1,6 @@
 <?php namespace App;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -18,7 +17,7 @@ class Permission extends Model {
 
 	public function __construct()
 	{
-		$this->table = Config::get('access.permissions_table');
+		$this->table = config('access.permissions_table');
 	}
 
 	/**
@@ -28,7 +27,7 @@ class Permission extends Model {
 	 */
 	public function roles()
 	{
-		return $this->belongsToMany(Config::get('access.role'), Config::get('access.permission_role_table'), 'permission_id', 'role_id');
+		return $this->belongsToMany(config('access.role'), config('access.permission_role_table'), 'permission_id', 'role_id');
 	}
 
 	/**
@@ -38,7 +37,7 @@ class Permission extends Model {
 	 */
 	public function users()
 	{
-		return $this->belongsToMany(Config::get('auth.model'), Config::get('access.permission_user_table'), 'permission_id', 'user_id');
+		return $this->belongsToMany(config('auth.model'), config('access.permission_user_table'), 'permission_id', 'user_id');
 	}
 
 	/**
@@ -97,6 +96,6 @@ class Permission extends Model {
 	 */
 	public function beforeDelete()
 	{
-		DB::table(Config::get('access.permission_role_table'))->where('permission_id', $this->id)->delete();
+		DB::table(config('access.permission_role_table'))->where('permission_id', $this->id)->delete();
 	}
 }

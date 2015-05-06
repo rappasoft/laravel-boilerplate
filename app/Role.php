@@ -1,7 +1,6 @@
 <?php namespace App;
 
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -21,7 +20,7 @@ class Role extends Model {
 	 */
 	public function __construct()
 	{
-		$this->table = Config::get('access.roles_table');
+		$this->table = config('access.roles_table');
 	}
 
 	/**
@@ -31,7 +30,7 @@ class Role extends Model {
 	 */
 	public function users()
 	{
-		return $this->belongsToMany(Config::get('auth.model'), Config::get('access.assigned_roles_table'), 'role_id', 'user_id');
+		return $this->belongsToMany(config('auth.model'), config('access.assigned_roles_table'), 'role_id', 'user_id');
 	}
 
 	/**
@@ -41,7 +40,7 @@ class Role extends Model {
 	 */
 	public function permissions()
 	{
-		return $this->belongsToMany(Config::get('access.permission'), Config::get('access.permission_role_table'), 'role_id', 'permission_id');
+		return $this->belongsToMany(config('access.permission'), config('access.permission_role_table'), 'role_id', 'permission_id');
 	}
 
 	/**
@@ -74,8 +73,8 @@ class Role extends Model {
 	 */
 	public function beforeDelete()
 	{
-		DB::table(Config::get('access.assigned_roles_table'))->where('role_id', $this->id)->delete();
-		DB::table(Config::get('access.permission_role_table'))->where('role_id', $this->id)->delete();
+		DB::table(config('access.assigned_roles_table'))->where('role_id', $this->id)->delete();
+		DB::table(config('access.permission_role_table'))->where('role_id', $this->id)->delete();
 	}
 
 	/**

@@ -1,13 +1,9 @@
 <?php namespace App\Repositories\User;
 
 use Exception;
-use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\UserProvider;
-use App\Services\Validators\Rules\Auth\User\Create as RegisterUser;
-use App\Services\Validators\Rules\Auth\User\Update as UpdateUser;
-use App\Services\Validators\Rules\Auth\User\ChangePassword as ChangePassword;
-use App\Exceptions\EntityNotValidException;
+use App\Repositories\Role\RoleRepositoryContract;
 use App\Exceptions\Access\UserNeedsRolesException;
 
 /**
@@ -17,16 +13,30 @@ use App\Exceptions\Access\UserNeedsRolesException;
 class EloquentUserRepository implements UserContract {
 
 	/**
+	 * @var RoleRepositoryContract
+	 */
+	protected $role;
+
+	/**
+	 * @param RoleRepositoryContract $role
+	 */
+	public function __construct(RoleRepositoryContract $role) {
+		$this->role = $role;
+	}
+
+	/**
 	 * @param $data
 	 * @param bool $provider
 	 * @return static
 	 */
 	public function create($data, $provider = false) {
-		return User::create([
+		$user = User::create([
 			'name' => $data['name'],
 			'email' => $data['email'],
 			'password' => $provider ? null : $data['password'],
 		]);
+		$user->attachRole($this->role->getDefaultUserRole());
+		return $user;
 	}
 
 	/**
@@ -153,14 +163,10 @@ class EloquentUserRepository implements UserContract {
 	 * @param $roles
 	 * @param $permissions
 	 * @return bool
-	 * @throws EntityNotValidException
 	 * @throws Exception
 	 * @throws UserNeedsRolesException
 	 */
 	public function createWithRoles($input, $roles, $permissions) {
-		//Validate user
-		$this->validateUser("register", $input);
-
 		$user = $this->createUserStub($input);
 
 		if ($user->save()) {
@@ -184,13 +190,11 @@ class EloquentUserRepository implements UserContract {
 	 * @param $input
 	 * @param $roles
 	 * @return bool
-	 * @throws EntityNotValidException
 	 * @throws Exception
 	 */
 	public function update($id, $input, $roles, $permissions) {
 		$user = $this->findOrThrowException($id);
 		$this->checkUserByEmail($input, $user);
-		$this->validateUser("update", $input);
 
 		if ($user->update($input)) {
 			//For whatever reason this just wont work in the above call, so a second is needed for now
@@ -211,20 +215,10 @@ class EloquentUserRepository implements UserContract {
 	 * @param $id
 	 * @param $input
 	 * @return bool
-	 * @throws EntityNotValidException
 	 * @throws Exception
 	 */
 	public function updatePassword($id, $input) {
 		$user = $this->findOrThrowException($id);
-
-		//Validate password
-		$changePassword = new ChangePassword($input);
-		$changePassword->init(); //Initializes the rules into the array from the config file
-		if(! $changePassword->passes()) {
-			$exception = new EntityNotValidException();
-			$exception->setValidationErrors($changePassword->errors);
-			throw $exception;
-		}
 
 		//Passwords are hashed using UserObserver
 		$user->password = $input['password'];
@@ -240,7 +234,7 @@ class EloquentUserRepository implements UserContract {
 	 * @throws Exception
 	 */
 	public function destroy($id) {
-		if (Auth::id() == $id)
+		if (auth()->id() == $id)
 			throw new Exception("You can not delete yourself.");
 
 		$user = $this->findOrThrowException($id);
@@ -293,7 +287,7 @@ class EloquentUserRepository implements UserContract {
 	 * @throws Exception
 	 */
 	public function mark($id, $status) {
-		if (Auth::id() == $id && $status == 0)
+		if (auth()->id() == $id && $status == 0)
 			throw new Exception("You can not deactivate yourself.");
 
 		$user = $this->findOrThrowException($id);
@@ -303,28 +297,6 @@ class EloquentUserRepository implements UserContract {
 			return true;
 
 		throw new Exception("There was a problem updating this user. Please try again.");
-	}
-
-	/**
-	 * @param $type
-	 * @param array $userDetails
-	 * @return bool
-	 * @throws EntityNotValidException
-	 */
-	private function validateUser($type, array $userDetails = array()) {
-		if ($type == "register")
-			$validateUser = new RegisterUser($userDetails);
-		else
-			$validateUser = new UpdateUser($userDetails);
-
-		$validateUser->init(); //Initializes the rules into the array from the config file
-		if(! $validateUser->passes()) {
-			$exception = new EntityNotValidException();
-			$exception->setValidationErrors($validateUser->errors);
-			throw $exception;
-		}
-
-		return true;
 	}
 
 	/**
@@ -415,7 +387,6 @@ class EloquentUserRepository implements UserContract {
 		$user->email = $input['email'];
 		$user->password = $input['password'];
 		$user->status = isset($input['status']) ? 1 : 0;
-
 		return $user;
 	}
 }

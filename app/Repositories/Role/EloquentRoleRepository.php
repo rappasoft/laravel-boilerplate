@@ -1,7 +1,6 @@
 <?php namespace App\Repositories\Role;
 
 use Exception;
-use Illuminate\Support\Facades\Config;
 use App\Role;
 
 /**
@@ -57,15 +56,11 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 	 * @throws Exception
 	 */
 	public function create($input, $permissions) {
-		//Validate
-		if (strlen($input['name']) == 0)
-			throw new Exception('You must specify the role name.');
-
 		if (Role::where('name', '=', $input['name'])->first())
 			throw new Exception('That role already exists. Please choose a different name.');
 
 		//See if the role must contain a permission as per config
-		if (Config::get('vault.roles.role_must_contain_permission') && count($permissions['role_permissions']) == 0)
+		if (config('access.roles.role_must_contain_permission') && count($permissions['role_permissions']) == 0)
 		{
 			throw new Exception('You must select at least one permission for this role.');
 		}
@@ -99,7 +94,7 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 			throw new Exception('You must specify the role name.');
 
 		//See if the role must contain a permission as per config
-		if (Config::get('vault.roles.role_must_contain_permission') && count($permissions['role_permissions']) == 0)
+		if (config('access.roles.role_must_contain_permission') && count($permissions['role_permissions']) == 0)
 		{
 			throw new Exception('You must select at least one permission for this role.');
 		}
@@ -140,5 +135,12 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 			return true;
 
 		throw new Exception("There was a problem deleting this role. Please try again.");
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getDefaultUserRole() {
+		return Role::where('name', config('access.users.default_role'))->first();
 	}
 }
