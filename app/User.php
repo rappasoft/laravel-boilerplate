@@ -61,4 +61,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	{
 		$this->attributes['password'] = Hash::make($value);
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public function canChangeEmail() {
+		return config('access.users.change_email');
+	}
 }

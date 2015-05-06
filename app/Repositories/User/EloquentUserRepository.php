@@ -389,4 +389,29 @@ class EloquentUserRepository implements UserContract {
 		$user->status = isset($input['status']) ? 1 : 0;
 		return $user;
 	}
+
+	/**
+	 * @param $id
+	 * @param $input
+	 * @return mixed
+	 * @throws Exception
+	 */
+	public function updateProfile($id, $input) {
+		$user = $this->findOrThrowException($id);
+		$user->name = $input['name'];
+
+		if ($user->canChangeEmail()) {
+			//Address is not current address
+			if ($user->email != $input['email'])
+			{
+				//Emails have to be unique
+				if (User::where('email', $input['email'])->first())
+					throw new Exception("That e-mail address is already taken.");
+
+				$user->email = $input['email'];
+			}
+		}
+
+		return $user->save();
+	}
 }

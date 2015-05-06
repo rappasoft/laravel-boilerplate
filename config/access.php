@@ -49,6 +49,11 @@ return array(
 		 * The role the user is assigned to when they sign up from the frontend
 		 */
 		'default_role' => 'User',
+
+		/*
+		 * Whether or not the users email can be changed on the edit profile screen
+		 */
+		'change_email' => false,
 	],
 
 	/*

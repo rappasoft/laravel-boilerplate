@@ -61,4 +61,15 @@ class PasswordController extends Controller {
 
 		return view('frontend.auth.reset')->with('token', $token);
 	}
+
+	/**
+	 * @return \Illuminate\View\View
+	 */
+	public function getChangePassword() {
+		return view('frontend.auth.change-password');
+	}
+
+	public function postChangePassword() {
+
+	}
 }
