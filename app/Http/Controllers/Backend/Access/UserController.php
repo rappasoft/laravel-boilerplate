@@ -157,6 +157,14 @@ class UserController extends Controller {
 	}
 
 	/**
+	 * @return mixed
+	 */
+	public function banned() {
+		return view('backend.access.banned')
+			->withUsers($this->users->getUsersPaginated(25, 2));
+	}
+
+	/**
 	 * @param $id
 	 * @return mixed
 	 */

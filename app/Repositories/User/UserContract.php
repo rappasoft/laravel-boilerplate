@@ -4,10 +4,6 @@
  * Interface UserContract
  * @package App\Repositories\User
  */
-/**
- * Interface UserContract
- * @package App\Repositories\User
- */
 interface UserContract {
 
 	/**
@@ -112,4 +108,10 @@ interface UserContract {
 	 * @return mixed
 	 */
 	public function updateProfile($id, $input);
+
+	/**
+	 * @param $input
+	 * @return mixed
+	 */
+	public function changePassword($input);
 }

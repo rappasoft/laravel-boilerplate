@@ -1,6 +1,5 @@
 <?php namespace App;
 
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -59,7 +58,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	public function setPasswordAttribute($value)
 	{
-		$this->attributes['password'] = Hash::make($value);
+		$this->attributes['password'] = bcrypt($value);
 	}
 
 	/**

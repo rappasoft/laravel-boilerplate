@@ -9,7 +9,7 @@ Route::group(['namespace' => 'Auth'], function ()
 	{
 		Route::get('auth/logout', 'AuthController@getLogout');
 		Route::get('auth/password/change', 'PasswordController@getChangePassword');
-		Route::post('auth/password/change', 'PasswordController@postChangePassword');
+		Route::post('auth/password/change', ['as' => 'password.change', 'uses' => 'PasswordController@postChangePassword']);
 	});
 
 	Route::group(['middleware' => 'guest'], function ()

@@ -8,6 +8,7 @@
             <li><a href="{{route('admin.access.users.create')}}">Create User</a></li>
             <li class="divider"></li>
             <li><a href="{{route('admin.access.users.deactivated')}}">Deactivated Users</a></li>
+            <li><a href="{{route('admin.access.users.banned')}}">Banned Users</a></li>
             <li><a href="{{route('admin.access.users.deleted')}}">Deleted Users</a></li>
           </ul>
         </div>

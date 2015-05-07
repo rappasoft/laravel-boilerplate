@@ -1,6 +1,7 @@
 <?php namespace App\Repositories\User;
 
 use Exception;
+use Illuminate\Support\Facades\Hash;
 use App\User;
 use App\UserProvider;
 use App\Repositories\Role\RoleRepositoryContract;
@@ -287,8 +288,8 @@ class EloquentUserRepository implements UserContract {
 	 * @throws Exception
 	 */
 	public function mark($id, $status) {
-		if (auth()->id() == $id && $status == 0)
-			throw new Exception("You can not deactivate yourself.");
+		if (auth()->id() == $id && ($status == 0 || $status == 2))
+			throw new Exception("You can not do that to yourself.");
 
 		$user = $this->findOrThrowException($id);
 		$user->status = $status;
@@ -413,5 +414,17 @@ class EloquentUserRepository implements UserContract {
 		}
 
 		return $user->save();
+	}
+
+	public function changePassword($input) {
+		$user = $this->findOrThrowException(auth()->id());
+
+		if (Hash::check($input['old_password'], $user->password)) {
+			//Passwords are hashed on the model
+			$user->password = $input['password'];
+
+		}
+
+		throw new Exception("That is not your old password.");
 	}
 }
