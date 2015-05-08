@@ -41,6 +41,8 @@ $app->singleton(
 	'App\Exceptions\Handler'
 );
 
+require_once __DIR__ . '/environment.php';
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application
