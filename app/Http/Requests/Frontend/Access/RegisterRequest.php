@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class ChangePasswordRequest extends Request {
+class RegisterRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,8 +22,9 @@ class ChangePasswordRequest extends Request {
 	public function rules()
 	{
 		return [
-			'old_password'			=>  'required',
-			'password'				=>	'required|alpha_num|min:6|confirmed',
+			'name' => 'required|max:255',
+			'email' => 'required|email|max:255|unique:users',
+			'password' => 'required|confirmed|min:6',
 		];
 	}
 }

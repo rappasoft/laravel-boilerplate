@@ -1,8 +1,8 @@
-<?php namespace App\Repositories\Permission;
+<?php namespace App\Repositories\Backend\Permission;
 
-use Exception;
 use App\Permission;
-use App\Repositories\Role\RoleRepositoryContract;
+use App\Exceptions\GeneralException;
+use App\Repositories\Backend\Role\RoleRepositoryContract;
 
 /**
  * Class EloquentPermissionRepository
@@ -26,7 +26,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	 * @param $id
 	 * @param bool $withRoles
 	 * @return \Illuminate\Database\Eloquent\Model|\Illuminate\Support\Collection|null|static
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	public function findOrThrowException($id, $withRoles = false) {
 		if ( ! is_null(Permission::find($id))) {
@@ -36,7 +36,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 			return Permission::find($id);
 		}
 
-		throw new Exception('That permission does not exist.');
+		throw new GeneralException('That permission does not exist.');
 	}
 
 	/**
@@ -102,7 +102,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	 * @param $input
 	 * @param $roles
 	 * @return bool
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	public function create($input, $roles) {
 		$permission = new Permission;
@@ -152,7 +152,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 			return true;
 		}
 
-		throw new Exception("There was a problem creating this permission. Please try again.");
+		throw new GeneralException("There was a problem creating this permission. Please try again.");
 	}
 
 	/**
@@ -160,7 +160,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	 * @param $input
 	 * @param $roles
 	 * @return bool
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	public function update($id, $input, $roles) {
 		$permission = $this->findOrThrowException($id);
@@ -170,7 +170,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 
 		//See if this permission is tied directly to a user first
 		if (count($permission->users) > 0)
-			throw new Exception('This permission is currently tied directly to one or more users and can not be assigned to a role.');
+			throw new GeneralException('This permission is currently tied directly to one or more users and can not be assigned to a role.');
 
 		$this->permissionMustContainRole($roles);
 
@@ -220,19 +220,19 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 			return true;
 		}
 
-		throw new Exception("There was a problem updating this permission. Please try again.");
+		throw new GeneralException("There was a problem updating this permission. Please try again.");
 	}
 
 	/**
 	 * @param $id
 	 * @return bool
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	public function destroy($id) {
 		$permission = $this->findOrThrowException($id);
 
 		if ($permission->system == 1)
-			throw new Exception("You can not delete a system permission.");
+			throw new GeneralException("You can not delete a system permission.");
 
 		//Remove the permission from all associated roles
 		$currentRoles = $permission->roles;
@@ -249,21 +249,17 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 		if ($permission->delete())
 			return true;
 
-		throw new Exception("There was a problem deleting this permission. Please try again.");
+		throw new GeneralException("There was a problem deleting this permission. Please try again.");
 	}
 
 	/**
 	 * @param $roles
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	private function permissionMustContainRole($roles)
 	{
 		if (config('access.permissions.permission_must_contain_role'))
-		{
 			if (count($roles['permission_roles']) == 0)
-			{
-				throw new Exception('You must select at least one role for this permission.');
-			}
-		}
+				throw new GeneralException('You must select at least one role for this permission.');
 	}
 }

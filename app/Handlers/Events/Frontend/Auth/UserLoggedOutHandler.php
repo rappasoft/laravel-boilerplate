@@ -1,11 +1,12 @@
 <?php namespace App\Handlers\Events\Frontend\Auth;
 
 use App\Events\Frontend\Auth\UserLoggedOut;
-
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
 
-class UserLoggedOutHandler {
+class UserLoggedOutHandler implements ShouldBeQueued {
+
+	use InteractsWithQueue;
 
 	/**
 	 * Create the event handler.
@@ -25,7 +26,6 @@ class UserLoggedOutHandler {
 	 */
 	public function handle(UserLoggedOut $event)
 	{
-		//
+		//$event->user
 	}
-
 }

@@ -1,4 +1,4 @@
-<?php namespace App\Exceptions\Access;
+<?php namespace App\Exceptions\Backend\Access\User;
 
 /**
  * Class UserNeedsRolesException

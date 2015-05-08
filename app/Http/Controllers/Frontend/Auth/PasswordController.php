@@ -4,7 +4,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use App\Repositories\User\UserContract;
+use App\Repositories\Frontend\User\UserContract;
 use App\Http\Requests\Frontend\Access\ChangePasswordRequest;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -13,17 +13,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  * @package App\Http\Controllers\Auth
  */
 class PasswordController extends Controller {
-
-	/*
-	|--------------------------------------------------------------------------
-	| Password Reset Controller
-	|--------------------------------------------------------------------------
-	|
-	| This controller is responsible for handling password reset requests
-	| and uses a simple trait to include this behavior. You're free to
-	| explore this trait and override any methods you wish to tweak.
-	|
-	*/
 
 	use ResetsPasswords;
 

@@ -15,6 +15,9 @@ class Permission extends Model {
 	 */
 	protected $table;
 
+	/**
+	 *
+	 */
 	public function __construct()
 	{
 		$this->table = config('access.permissions_table');

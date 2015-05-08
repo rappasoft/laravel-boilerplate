@@ -1,17 +1,18 @@
 <?php namespace App\Services;
 
 use App\User;
-use App\Repositories\User\UserContract;
+use App\Exceptions\GeneralException;
+use App\Repositories\Frontend\User\UserContract;
 use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 use Laravel\Socialite\Contracts\Factory as Socialite;
+use App\Events\Frontend\Auth\UserLoggedIn;
+use App\Events\Frontend\Auth\UserLoggedOut;
 
 /**
  * Class Registrar
  * @package App\Services
  */
-class Registrar implements RegistrarContract {
+class Registrar {
 
 	/**
 	 * @var Socialite
@@ -38,21 +39,6 @@ class Registrar implements RegistrarContract {
 	}
 
 	/**
-	 * Get a validator for an incoming registration request.
-	 *
-	 * @param  array  $data
-	 * @return \Illuminate\Contracts\Validation\Validator
-	 */
-	public function validator(array $data)
-	{
-		return Validator::make($data, [
-			'name' => 'required|max:255',
-			'email' => 'required|email|max:255|unique:users',
-			'password' => 'required|confirmed|min:6',
-		]);
-	}
-
-	/**
 	 * Create a new user instance after a valid registration.
 	 *
 	 * @param  array  $data
@@ -65,14 +51,55 @@ class Registrar implements RegistrarContract {
 
 	/**
 	 * @param $request
+	 * @return \Illuminate\Http\RedirectResponse
+	 * @throws GeneralException
+	 */
+	public function login($request) {
+		if ($this->auth->attempt($request->only('email', 'password'), $request->has('remember')))
+		{
+
+			if ($this->auth->user()->status == 0)
+			{
+				$this->auth->logout();
+				throw new GeneralException("Your account is currently deactivated.");
+			}
+
+			if ($this->auth->user()->status == 2)
+			{
+				$this->auth->logout();
+				throw new GeneralException("Your account is currently banned.");
+			}
+
+			event(new UserLoggedIn($this->auth->user()));
+			return true;
+		}
+
+		throw new GeneralException('These credentials do not match our records.');
+	}
+
+	/**
+	 * Log the user out and fire an event
+	 */
+	public function logout() {
+		event(new UserLoggedOut($this->auth->user()));
+		$this->auth->logout();
+	}
+
+	/**
+	 * Socialite Functions
+	 */
+
+	/**
+	 * @param $request
 	 * @param $provider
-	 * @return \Illuminate\Http\RedirectResponse|\Symfony\Component\HttpFoundation\RedirectResponse
+	 * @return bool|\Symfony\Component\HttpFoundation\RedirectResponse
 	 */
 	public function loginThirdParty($request, $provider) {
 		if (! $request) return $this->getAuthorizationFirst($provider);
 		$user = $this->users->findByUserNameOrCreate($this->getSocialUser($provider), $provider);
 		$this->auth->login($user, true);
-		return redirect('dashboard');
+		event(new UserLoggedIn($user));
+		return true;
 	}
 
 	/**

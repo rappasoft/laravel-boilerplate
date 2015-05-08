@@ -40,9 +40,12 @@ return array(
 	'assigned_roles_table' => 'assigned_roles',
 
 	/*
-	 * Configurations for the user views
+	 * Configurations for the user
 	 */
 	'users' => [
+		/*
+		 * Administration tables
+		 */
 		'default_per_page' => 25,
 
 		/*
@@ -51,9 +54,21 @@ return array(
 		'default_role' => 'User',
 
 		/*
+		 * Whether or not the user has to confirm their email when signing up
+		 */
+		'confirm_email' => true,
+
+		/*
 		 * Whether or not the users email can be changed on the edit profile screen
 		 */
 		'change_email' => false,
+
+		/*
+		 * Defines how many login failed tries may be done within
+		 * the 'throttle_time_period', which is in minutes.
+		*/
+		'throttle_limit' => 5,
+		'throttle_time_period' => 2,
 	],
 
 	/*
@@ -64,6 +79,7 @@ return array(
 		 * Whether a role must contain a permission or can be used standalone
 		 */
 		'role_must_contain_permission' => true,
+
 		/*
 		 * Whether or not the administrator role must possess every permission
 		 * Works in unison with permissions.permission_must_contain_role

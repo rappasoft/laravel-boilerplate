@@ -1,8 +1,7 @@
 <?php namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use App\Services\Access\Access;
-use App\Observers\UserObserver;
+use Illuminate\Support\ServiceProvider;
 use App\Blade\Access\AccessBladeExtender;
 
 /**
@@ -22,7 +21,6 @@ class AccessServiceProvider extends ServiceProvider
 	 * Package boot method
 	 */
 	public function boot() {
-		$this->registerObservers();
 		$this->registerBladeExtender();
 	}
 
@@ -68,39 +66,23 @@ class AccessServiceProvider extends ServiceProvider
 	 */
 	public function registerBindings() {
 		$this->app->bind(
-			'App\Repositories\User\UserContract',
-			'App\Repositories\User\EloquentUserRepository'
+			'App\Repositories\Frontend\User\UserContract',
+			'App\Repositories\Frontend\User\EloquentUserRepository'
 		);
 
 		$this->app->bind(
-			'App\Repositories\Role\RoleRepositoryContract',
-			'App\Repositories\Role\EloquentRoleRepository'
+			'App\Repositories\Backend\User\UserContract',
+			'App\Repositories\Backend\User\EloquentUserRepository'
 		);
 
 		$this->app->bind(
-			'App\Repositories\Permission\PermissionRepositoryContract',
-			'App\Repositories\Permission\EloquentPermissionRepository'
+			'App\Repositories\Backend\Role\RoleRepositoryContract',
+			'App\Repositories\Backend\Role\EloquentRoleRepository'
 		);
-	}
 
-	/**
-	 * Register any model observers
-	 */
-	public function registerObservers() {
-		$user = $this->app['config']['auth.model'];
-		$user = new $user;
-		$user->observe(new UserObserver);
-	}
-
-	/**
-	 * Get the services provided.
-	 *
-	 * @return string[]
-	 */
-	public function provides()
-	{
-		return array(
-			'access',
+		$this->app->bind(
+			'App\Repositories\Backend\Permission\PermissionRepositoryContract',
+			'App\Repositories\Backend\Permission\EloquentPermissionRepository'
 		);
 	}
 

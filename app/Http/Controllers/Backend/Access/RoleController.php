@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers\Backend\Access;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Role\RoleRepositoryContract;
-use App\Repositories\Permission\PermissionRepositoryContract;
+use App\Repositories\Backend\Role\RoleRepositoryContract;
+use App\Repositories\Backend\Permission\PermissionRepositoryContract;
 use App\Http\Requests\Backend\Access\Role\CreateRoleRequest;
 use App\Http\Requests\Backend\Access\Role\UpdateRoleRequest;
 

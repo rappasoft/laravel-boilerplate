@@ -1,7 +1,7 @@
-<?php namespace App\Repositories\Role;
+<?php namespace App\Repositories\Backend\Role;
 
-use Exception;
 use App\Role;
+use App\Exceptions\GeneralException;
 
 /**
  * Class EloquentRoleRepository
@@ -13,7 +13,7 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 	 * @param $id
 	 * @param bool $withPermissions
 	 * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|\Illuminate\Support\Collection|null|static
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	public function findOrThrowException($id, $withPermissions = false) {
 		if ( ! is_null(Role::find($id))) {
@@ -23,7 +23,7 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 			return Role::find($id);
 		}
 
-		throw new Exception('That role does not exist.');
+		throw new GeneralException('That role does not exist.');
 	}
 
 	/**
@@ -53,16 +53,16 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 	 * @param $input
 	 * @param $permissions
 	 * @return bool
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	public function create($input, $permissions) {
 		if (Role::where('name', '=', $input['name'])->first())
-			throw new Exception('That role already exists. Please choose a different name.');
+			throw new GeneralException('That role already exists. Please choose a different name.');
 
 		//See if the role must contain a permission as per config
 		if (config('access.roles.role_must_contain_permission') && count($permissions['role_permissions']) == 0)
 		{
-			throw new Exception('You must select at least one permission for this role.');
+			throw new GeneralException('You must select at least one permission for this role.');
 		}
 
 		$role = new Role;
@@ -76,7 +76,7 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 			return true;
 		}
 
-		throw new Exception("There was a problem creating this role. Please try again.");
+		throw new GeneralException("There was a problem creating this role. Please try again.");
 	}
 
 	/**
@@ -84,19 +84,19 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 	 * @param $input
 	 * @param $permissions
 	 * @return bool
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	public function update($id, $input, $permissions) {
 		$role = $this->findOrThrowException($id);
 
 		//Validate
 		if (strlen($input['name']) == 0)
-			throw new Exception('You must specify the role name.');
+			throw new GeneralException('You must specify the role name.');
 
 		//See if the role must contain a permission as per config
 		if (config('access.roles.role_must_contain_permission') && count($permissions['role_permissions']) == 0)
 		{
-			throw new Exception('You must select at least one permission for this role.');
+			throw new GeneralException('You must select at least one permission for this role.');
 		}
 
 		$role->name = $input['name'];
@@ -109,24 +109,24 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 			return true;
 		}
 
-		throw new Exception('There was a problem updating this role. Please try again.');
+		throw new GeneralException('There was a problem updating this role. Please try again.');
 	}
 
 	/**
 	 * @param $id
 	 * @return bool
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	public function destroy($id) {
 		//Would be stupid to delete the administrator role
 		if ($id == 1) //id is 1 because of the seeder
-			throw new Exception("You can not delete the Administrator role.");
+			throw new GeneralException("You can not delete the Administrator role.");
 
 		$role = $this->findOrThrowException($id, true);
 
 		//Don't delete the role is there are users associated
 		if ($role->users()->count() > 0)
-			throw new Exception("You can not delete a role with associated users.");
+			throw new GeneralException("You can not delete a role with associated users.");
 
 		//Detach all associated roles
 		$role->permissions()->sync([]);
@@ -134,7 +134,7 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 		if ($role->delete())
 			return true;
 
-		throw new Exception("There was a problem deleting this role. Please try again.");
+		throw new GeneralException("There was a problem deleting this role. Please try again.");
 	}
 
 	/**

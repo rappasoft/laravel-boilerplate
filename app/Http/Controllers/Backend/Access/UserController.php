@@ -1,13 +1,12 @@
 <?php namespace App\Http\Controllers\Backend\Access;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\User\UserContract;
-use App\Repositories\Role\RoleRepositoryContract;
-use App\Repositories\Permission\PermissionRepositoryContract;
+use App\Repositories\Backend\User\UserContract;
+use App\Repositories\Backend\Role\RoleRepositoryContract;
+use App\Repositories\Backend\Permission\PermissionRepositoryContract;
 use App\Http\Requests\Backend\Access\User\CreateUserRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
-use App\Exceptions\Access\UserNeedsRolesException;
 
 /**
  * Class UserController
@@ -61,16 +60,11 @@ class UserController extends Controller {
 	 * @return mixed
 	 */
 	public function store(CreateUserRequest $request) {
-		try {
-			$this->users->createWithRoles(
-				$request->except('assignees_roles', 'permission_user'),
-				$request->only('assignees_roles'),
-				$request->only('permission_user')
-			);
-		} catch(UserNeedsRolesException $e) {
-			return redirect()->route('admin.access.users.edit', $e->userID())->withInput()->withFlashDanger($e->validationErrors());
-		}
-
+		$this->users->create(
+			$request->except('assignees_roles', 'permission_user'),
+			$request->only('assignees_roles'),
+			$request->only('permission_user')
+		);
 		return redirect()->route('admin.access.users.index')->withFlashSuccess('The user was successfully created.');
 	}
 
@@ -99,7 +93,6 @@ class UserController extends Controller {
 			$request->only('assignees_roles'),
 			$request->only('permission_user')
 		);
-
 		return redirect()->route('admin.access.users.index')->withFlashSuccess('The user was successfully updated.');
 	}
 
@@ -109,7 +102,7 @@ class UserController extends Controller {
 	 */
 	public function destroy($id) {
 		$this->users->destroy($id);
-		return redirect()->route('admin.access.users.index')->withFlashSuccess('The user was successfully deleted.');
+		return redirect()->back()->withFlashSuccess('The user was successfully deleted.');
 	}
 
 	/**
@@ -118,7 +111,7 @@ class UserController extends Controller {
 	 */
 	public function delete($id) {
 		$this->users->delete($id);
-		return redirect()->route('admin.access.users.index')->withFlashSuccess('The user was deleted permanently.');
+		return redirect()->back()->withFlashSuccess('The user was deleted permanently.');
 	}
 
 	/**
@@ -127,7 +120,7 @@ class UserController extends Controller {
 	 */
 	public function restore($id) {
 		$this->users->restore($id);
-		return redirect()->route('admin.access.users.index')->withFlashSuccess('The user was successfully restored.');
+		return redirect()->back()->withFlashSuccess('The user was successfully restored.');
 	}
 
 	/**
@@ -137,7 +130,7 @@ class UserController extends Controller {
 	 */
 	public function mark($id, $status) {
 		$this->users->mark($id, $status);
-		return redirect()->route('admin.access.users.index')->withFlashSuccess('The user was successfully updated.');
+		return redirect()->back()->withFlashSuccess('The user was successfully updated.');
 	}
 
 	/**

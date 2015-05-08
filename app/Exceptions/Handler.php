@@ -36,11 +36,15 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
-		if ($e instanceof Exception)
+		if ($e instanceof GeneralException)
 		{
 			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
+		require_once(__DIR__."/Frontend/Handler.php");
+		require_once(__DIR__."/Backend/Handler.php");
+
+		//All other \Exception's caught will hit whoops
 		return parent::render($request, $e);
 	}
 }

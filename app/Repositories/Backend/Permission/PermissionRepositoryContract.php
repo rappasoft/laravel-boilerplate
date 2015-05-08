@@ -1,4 +1,4 @@
-<?php namespace App\Repositories\Permission;
+<?php namespace App\Repositories\Backend\Permission;
 
 /**
  * Interface PermissionRepositoryContract

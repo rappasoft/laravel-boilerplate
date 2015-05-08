@@ -1,36 +1,22 @@
 <?php namespace App\Http\Controllers\Frontend\Auth;
 
-use App\Handlers\Events\Auth\UserLoggedIn;
-use Exception;
-use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Contracts\Auth\Registrar;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use App\Services\Registrar;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\Access\LoginRequest;
+use App\Http\Requests\Frontend\Access\RegisterRequest;
 
 /**
  * Class AuthController
- * @package App\Http\Controllers\Auth
+ * @package App\Http\Controllers\Frontend\Auth
  */
 class AuthController extends Controller {
 
-	use AuthenticatesAndRegistersUsers;
-
 	/**
-	 * Override the default redirect of 'home'
-	 *
-	 * @var string
-	 */
-	protected $redirectTo = "/dashboard";
-
-	/**
-	 * @param Guard $auth
 	 * @param Registrar $registrar
 	 */
-	public function __construct(Guard $auth, Registrar $registrar)
+	public function __construct(Registrar $registrar)
 	{
-		$this->auth = $auth;
 		$this->registrar = $registrar;
 	}
 
@@ -39,6 +25,16 @@ class AuthController extends Controller {
 	 */
 	public function getRegister() {
 		return view('frontend.auth.register');
+	}
+
+	/**
+	 * @param RegisterRequest $request
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function postRegister(RegisterRequest $request)
+	{
+		$this->registrar->login($this->registrar->create($request->all()));
+		return redirect()->route('frontend.dashboard');
 	}
 
 	/**
@@ -51,39 +47,11 @@ class AuthController extends Controller {
 	/**
 	 * @param LoginRequest $request
 	 * @return \Illuminate\Http\RedirectResponse
-	 * @throws Exception
 	 */
 	public function postLogin(LoginRequest $request)
 	{
-		if ($this->auth->attempt($request->only('email', 'password'), $request->has('remember')))
-		{
-
-			if (auth()->user()->status == 0)
-			{
-				auth()->logout();
-				return redirect()
-					->back()
-					->withInput()
-					->withFlashDanger("Your account is currently deactivated.");
-			}
-
-			if (auth()->user()->status == 2)
-			{
-				auth()->logout();
-				return redirect()
-					->back()
-					->withInput()
-					->withFlashDanger("Your account is currently banned.");
-			}
-
-			event(new UserLoggedIn(auth()->user()));
-			return redirect()->intended($this->redirectPath());
-		}
-
-		return redirect()
-			->back()
-			->withInput()
-			->withFlashDanger($this->getFailedLoginMessage());
+		$this->registrar->login($request);
+		return redirect()->intended('/dashboard');
 	}
 
 	/**
@@ -92,6 +60,16 @@ class AuthController extends Controller {
 	 * @return mixed
 	 */
 	public function loginThirdParty(Request $request, $provider) {
-		return $this->registrar->loginThirdParty($request->all(), $provider);
+		$this->registrar->loginThirdParty($request->all(), $provider);
+		return redirect()->route('frontend.dashboard');
+	}
+
+	/**
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function getLogout()
+	{
+		$this->registrar->logout();
+		return redirect()->route('home');
 	}
 }

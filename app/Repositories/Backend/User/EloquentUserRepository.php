@@ -1,11 +1,9 @@
-<?php namespace App\Repositories\User;
+<?php namespace App\Repositories\Backend\User;
 
-use Exception;
-use Illuminate\Support\Facades\Hash;
 use App\User;
-use App\UserProvider;
-use App\Repositories\Role\RoleRepositoryContract;
-use App\Exceptions\Access\UserNeedsRolesException;
+use App\Exceptions\GeneralException;
+use App\Repositories\Backend\Role\RoleRepositoryContract;
+use App\Exceptions\Backend\Access\User\UserNeedsRolesException;
 
 /**
  * Class EloquentUserRepository
@@ -26,99 +24,10 @@ class EloquentUserRepository implements UserContract {
 	}
 
 	/**
-	 * @param $data
-	 * @param bool $provider
-	 * @return static
-	 */
-	public function create($data, $provider = false) {
-		$user = User::create([
-			'name' => $data['name'],
-			'email' => $data['email'],
-			'password' => $provider ? null : $data['password'],
-		]);
-		$user->attachRole($this->role->getDefaultUserRole());
-		return $user;
-	}
-
-	/**
-	 * @param $data
-	 * @param $provider
-	 * @return static
-	 */
-	public function findByUserNameOrCreate($data, $provider) {
-		$user = User::where('email', $data->email)->first();
-		$providerData = [
-			'avatar' => $data->avatar,
-			'provider' => $provider,
-			'provider_id' => $data->id,
-		];
-
-		if(! $user) {
-			$user = $this->create([
-				'name' => $data->name,
-				'email' => $data->email,
-			], true);
-		}
-
-		if ($this->hasProvider($user, $provider))
-			$this->checkIfUserNeedsUpdating($provider, $data, $user);
-		else
-		{
-			$user->providers()->save(new UserProvider($providerData));
-		}
-
-		return $user;
-	}
-
-	/**
-	 * @param $user
-	 * @param $provider
-	 * @return bool
-	 */
-	public function hasProvider($user, $provider) {
-		foreach ($user->providers as $p) {
-			if ($p->provider == $provider)
-				return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * @param $provider
-	 * @param $providerData
-	 * @param $user
-	 */
-	public function checkIfUserNeedsUpdating($provider, $providerData, $user) {
-		//Have to first check to see if name and email have to be updated
-		$userData = [
-			'email' => $providerData->email,
-			'name' => $providerData->name,
-		];
-		$dbData = [
-			'email' => $user->email,
-			'name' => $user->name,
-		];
-		$differences = array_diff($userData, $dbData);
-		if (! empty($differences)) {
-			$user->email = $providerData->email;
-			$user->name = $providerData->name;
-			$user->save();
-		}
-
-		//Then have to check to see if avatar for specific provider has changed
-		$p = $user->providers()->where('provider', $provider)->first();
-		if ($p->avatar != $providerData->avatar) {
-			$p->avatar = $providerData->avatar;
-			$p->save();
-		}
-	}
-
-	/**
 	 * @param $id
 	 * @param bool $withRoles
 	 * @return mixed
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	public function findOrThrowException($id, $withRoles = false) {
 		if ($withRoles)
@@ -128,7 +37,7 @@ class EloquentUserRepository implements UserContract {
 
 		if (! is_null($user)) return $user;
 
-		throw new Exception('That user does not exist.');
+		throw new GeneralException('That user does not exist.');
 	}
 
 	/**
@@ -164,10 +73,10 @@ class EloquentUserRepository implements UserContract {
 	 * @param $roles
 	 * @param $permissions
 	 * @return bool
-	 * @throws Exception
+	 * @throws GeneralException
 	 * @throws UserNeedsRolesException
 	 */
-	public function createWithRoles($input, $roles, $permissions) {
+	public function create($input, $roles, $permissions) {
 		$user = $this->createUserStub($input);
 
 		if ($user->save()) {
@@ -183,7 +92,7 @@ class EloquentUserRepository implements UserContract {
 			return true;
 		}
 
-		throw new Exception('There was a problem creating this user. Please try again.');
+		throw new GeneralException('There was a problem creating this user. Please try again.');
 	}
 
 	/**
@@ -191,7 +100,7 @@ class EloquentUserRepository implements UserContract {
 	 * @param $input
 	 * @param $roles
 	 * @return bool
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	public function update($id, $input, $roles, $permissions) {
 		$user = $this->findOrThrowException($id);
@@ -209,14 +118,14 @@ class EloquentUserRepository implements UserContract {
 			return true;
 		}
 
-		throw new Exception('There was a problem updating this user. Please try again.');
+		throw new GeneralException('There was a problem updating this user. Please try again.');
 	}
 
 	/**
 	 * @param $id
 	 * @param $input
 	 * @return bool
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	public function updatePassword($id, $input) {
 		$user = $this->findOrThrowException($id);
@@ -226,29 +135,29 @@ class EloquentUserRepository implements UserContract {
 		if ($user->save())
 			return true;
 
-		throw new Exception('There was a problem changing this users password. Please try again.');
+		throw new GeneralException('There was a problem changing this users password. Please try again.');
 	}
 
 	/**
 	 * @param $id
 	 * @return bool
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	public function destroy($id) {
 		if (auth()->id() == $id)
-			throw new Exception("You can not delete yourself.");
+			throw new GeneralException("You can not delete yourself.");
 
 		$user = $this->findOrThrowException($id);
 		if ($user->delete())
 			return true;
 
-		throw new Exception("There was a problem deleting this user. Please try again.");
+		throw new GeneralException("There was a problem deleting this user. Please try again.");
 	}
 
 	/**
 	 * @param $id
 	 * @return boolean|null
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	public function delete($id) {
 		$user = $this->findOrThrowException($id, true);
@@ -259,15 +168,15 @@ class EloquentUserRepository implements UserContract {
 
 		try {
 			$user->forceDelete();
-		} catch (Exception $e) {
-			throw new Exception($e->getMessage());
+		} catch (\Exception $e) {
+			throw new GeneralException($e->getMessage());
 		}
 	}
 
 	/**
 	 * @param $id
 	 * @return bool
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	public function restore($id) {
 		$user = $this->findOrThrowException($id);
@@ -275,7 +184,7 @@ class EloquentUserRepository implements UserContract {
 		if ($user->restore())
 			return true;
 
-		throw new Exception("There was a problem restoring this user. Please try again.");
+		throw new GeneralException("There was a problem restoring this user. Please try again.");
 	}
 
 	/*
@@ -285,11 +194,11 @@ class EloquentUserRepository implements UserContract {
 	 * @param $id
 	 * @param $status
 	 * @return bool
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	public function mark($id, $status) {
 		if (auth()->id() == $id && ($status == 0 || $status == 2))
-			throw new Exception("You can not do that to yourself.");
+			throw new GeneralException("You can not do that to yourself.");
 
 		$user = $this->findOrThrowException($id);
 		$user->status = $status;
@@ -297,7 +206,7 @@ class EloquentUserRepository implements UserContract {
 		if ($user->save())
 			return true;
 
-		throw new Exception("There was a problem updating this user. Please try again.");
+		throw new GeneralException("There was a problem updating this user. Please try again.");
 	}
 
 	/**
@@ -327,7 +236,7 @@ class EloquentUserRepository implements UserContract {
 	/**
 	 * @param $input
 	 * @param $user
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	private function checkUserByEmail($input, $user)
 	{
@@ -336,7 +245,7 @@ class EloquentUserRepository implements UserContract {
 		{
 			//Check to see if email exists
 			if (User::where('email', '=', $input['email'])->first())
-				throw new Exception('That email address belongs to a different user.');
+				throw new GeneralException('That email address belongs to a different user.');
 		}
 	}
 
@@ -367,14 +276,14 @@ class EloquentUserRepository implements UserContract {
 
 	/**
 	 * @param $roles
-	 * @throws Exception
+	 * @throws GeneralException
 	 */
 	private function checkUserRolesCount($roles)
 	{
 		//User Updated, Update Roles
 		//Validate that there's at least one role chosen
 		if (count($roles['assignees_roles']) == 0)
-			throw new Exception('You must choose at least one role.');
+			throw new GeneralException('You must choose at least one role.');
 	}
 
 	/**
@@ -389,42 +298,5 @@ class EloquentUserRepository implements UserContract {
 		$user->password = $input['password'];
 		$user->status = isset($input['status']) ? 1 : 0;
 		return $user;
-	}
-
-	/**
-	 * @param $id
-	 * @param $input
-	 * @return mixed
-	 * @throws Exception
-	 */
-	public function updateProfile($id, $input) {
-		$user = $this->findOrThrowException($id);
-		$user->name = $input['name'];
-
-		if ($user->canChangeEmail()) {
-			//Address is not current address
-			if ($user->email != $input['email'])
-			{
-				//Emails have to be unique
-				if (User::where('email', $input['email'])->first())
-					throw new Exception("That e-mail address is already taken.");
-
-				$user->email = $input['email'];
-			}
-		}
-
-		return $user->save();
-	}
-
-	public function changePassword($input) {
-		$user = $this->findOrThrowException(auth()->id());
-
-		if (Hash::check($input['old_password'], $user->password)) {
-			//Passwords are hashed on the model
-			$user->password = $input['password'];
-
-		}
-
-		throw new Exception("That is not your old password.");
 	}
 }

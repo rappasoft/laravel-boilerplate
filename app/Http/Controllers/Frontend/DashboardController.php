@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\Controller;
 
+/**
+ * Class DashboardController
+ * @package App\Http\Controllers\Frontend
+ */
 class DashboardController extends Controller {
 
 	/**
-	 * Show the application dashboard to the user.
-	 *
-	 * @return Response
+	 * @return mixed
 	 */
 	public function index()
 	{
