@@ -15,6 +15,9 @@ Route::group(['namespace' => 'Auth'], function ()
 	Route::group(['middleware' => 'guest'], function ()
 	{
 		Route::get('auth/login/{provider}', ['as' => 'auth.provider', 'uses' => 'AuthController@loginThirdParty']);
+		Route::get('account/confirm/{token}', ['as' => 'account.confirm', 'uses' => 'AuthController@confirmAccount']);
+		Route::get('account/confirm/resend/{user_id}', ['as' => 'account.confirm.resend', 'uses' => 'AuthController@resendConfirmationEmail']);
+
 		Route::controller('auth', 'AuthController');
 		Route::controller('password', 'PasswordController');
 	});

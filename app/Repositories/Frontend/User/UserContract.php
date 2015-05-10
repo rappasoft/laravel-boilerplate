@@ -38,4 +38,16 @@ interface UserContract {
 	 * @return mixed
 	 */
 	public function changePassword($input);
+
+	/**
+	 * @param $token
+	 * @return mixed
+	 */
+	public function confirmAccount($token);
+
+	/**
+	 * @param $user
+	 * @return mixed
+	 */
+	public function sendConfirmationEmail($user);
 }

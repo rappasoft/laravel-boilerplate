@@ -29,14 +29,19 @@ trait AccessAttributes {
 				return '<a href="'.route('admin.access.user.mark', [$this->id, 1]).'" class="btn btn-xs btn-success"><i class="fa fa-play" data-toggle="tooltip" data-placement="top" title="Activate User"></i></a> ';
 
 			case 1:
-				return '<a href="'.route('admin.access.user.mark', [$this->id, 0]).'" class="btn btn-xs btn-warning"><i class="fa fa-pause" data-toggle="tooltip" data-placement="top" title="Deactivate User"></i></a> <a href="'.route('admin.access.user.mark', [$this->id, 2]).'" class="btn btn-xs btn-danger"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="Ban User"></i></a>';
+				return '<a href="'.route('admin.access.user.mark', [$this->id, 0]).'" class="btn btn-xs btn-warning"><i class="fa fa-pause" data-toggle="tooltip" data-placement="top" title="Deactivate User"></i></a> <a href="'.route('admin.access.user.mark', [$this->id, 2]).'" class="btn btn-xs btn-danger"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="Ban User"></i></a> ';
 
 			case 2:
-				return '<a href="'.route('admin.access.user.mark', [$this->id, 1]).'" class="btn btn-xs btn-success"><i class="fa fa-play" data-toggle="tooltip" data-placement="top" title="Activate User"></i></a>';
+				return '<a href="'.route('admin.access.user.mark', [$this->id, 1]).'" class="btn btn-xs btn-success"><i class="fa fa-play" data-toggle="tooltip" data-placement="top" title="Activate User"></i></a> ';
 
 			default:
 				return '';
 		}
+	}
+
+	public function getConfirmedButtonAttribute() {
+		if (! $this->confirmed)
+			return '<a href="'.route('admin.account.confirm.resend', $this->id).'" class="btn btn-xs btn-success"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="Resend Confirmation E-mail"></i></a> ';
 	}
 
 	/**
@@ -52,7 +57,8 @@ trait AccessAttributes {
 	public function getActionButtonsAttribute() {
 		return $this->getEditButtonAttribute().' '.
 		$this->getChangePasswordButtonAttribute().' '.
-		$this->getStatusButtonAttribute().' '.
+		$this->getStatusButtonAttribute().
+		$this->getConfirmedButtonAttribute().
 		$this->getDeleteButtonAttribute();
 	}
 }

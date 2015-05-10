@@ -1,10 +1,8 @@
 @if ($errors->any())
     <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{!! $error !!}</li>
-            @endforeach
-        </ul>
+        @foreach ($errors->all() as $error)
+            {!! $error !!}<br/>
+        @endforeach
     </div>
 @elseif (Session::get('flash_success'))
     <div class="alert alert-success">

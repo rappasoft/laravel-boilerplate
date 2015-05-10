@@ -1,6 +1,7 @@
 <?php namespace App\Repositories\Backend\User;
 
 use App\User;
+use App\Services\Registrar;
 use App\Exceptions\GeneralException;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
 use App\Exceptions\Backend\Access\User\UserNeedsRolesException;
@@ -17,10 +18,17 @@ class EloquentUserRepository implements UserContract {
 	protected $role;
 
 	/**
-	 * @param RoleRepositoryContract $role
+	 * @var Registrar
 	 */
-	public function __construct(RoleRepositoryContract $role) {
+	protected $registrar;
+
+	/**
+	 * @param RoleRepositoryContract $role
+	 * @param Registrar $registrar
+	 */
+	public function __construct(RoleRepositoryContract $role, Registrar $registrar) {
 		$this->role = $role;
+		$this->registrar = $registrar;
 	}
 
 	/**
@@ -89,6 +97,10 @@ class EloquentUserRepository implements UserContract {
 			//Attach other permissions
 			$user->attachPermissions($permissions['permission_user']);
 
+			//Send confirmation email if requested
+			if (isset($input['confirmation_email']) && $user->confirmed == 0)
+				$this->registrar->resendConfirmationEmail($user->id);
+
 			return true;
 		}
 
@@ -109,6 +121,7 @@ class EloquentUserRepository implements UserContract {
 		if ($user->update($input)) {
 			//For whatever reason this just wont work in the above call, so a second is needed for now
 			$user->status = isset($input['status']) ? 1 : 0;
+			$user->confirmed = isset($input['confirmed']) ? 1 : 0;
 			$user->save();
 
 			$this->checkUserRolesCount($roles);
@@ -297,6 +310,8 @@ class EloquentUserRepository implements UserContract {
 		$user->email = $input['email'];
 		$user->password = $input['password'];
 		$user->status = isset($input['status']) ? 1 : 0;
+		$user->confirmation_code = md5(uniqid(mt_rand(), true));
+		$user->confirmed = isset($input['confirmed']) ? 1 : 0;
 		return $user;
 	}
 }

@@ -70,6 +70,13 @@ class Registrar {
 				throw new GeneralException("Your account is currently banned.");
 			}
 
+			if ($this->auth->user()->confirmed == 0)
+			{
+				$user_id = $this->auth->user()->id;
+				$this->auth->logout();
+				throw new GeneralException("Your account is not confirmed. Please click the confirmation link in your e-mail, or ".'<a href="'.route('account.confirm.resend', $user_id).'" data-method="post">click here</a>'." to resend the confirmation e-mail.");
+			}
+
 			event(new UserLoggedIn($this->auth->user()));
 			return true;
 		}
@@ -116,5 +123,21 @@ class Registrar {
 	 */
 	private function getSocialUser($provider) {
 		return $this->socialite->driver($provider)->user();
+	}
+
+	/**
+	 * @param $token
+	 * @return mixed
+	 */
+	public function confirmAccount($token) {
+		return $this->users->confirmAccount($token);
+	}
+
+	/**
+	 * @param $user_id
+	 * @return mixed
+	 */
+	public function resendConfirmationEmail($user_id) {
+		return $this->users->sendConfirmationEmail($user_id);
 	}
 }

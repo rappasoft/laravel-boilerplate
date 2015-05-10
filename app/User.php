@@ -67,4 +67,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function canChangeEmail() {
 		return config('access.users.change_email');
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getConfirmedLabelAttribute() {
+		if ($this->confirmed == 1)
+			return "<label class='label label-success'>Yes</label>";
+		return "<label class='label label-danger'>No</label>";
+	}
 }

@@ -54,6 +54,21 @@
         </div><!--form control-->
 
         <div class="form-group">
+            <label class="col-lg-2 control-label">Confirmed</label>
+            <div class="col-lg-1">
+                <div class="sw-green confirmation-switch">
+                    <div class="onoffswitch">
+                        <input type="checkbox" value="1" name="confirmed" class="toggleBtn onoffswitch-checkbox" id="confirm-active" {{$user->confirmed == 1 ? "checked='checked'" : ''}}>
+                        <label for="confirm-active" class="onoffswitch-label">
+                            <div class="onoffswitch-inner"></div>
+                            <div class="onoffswitch-switch"></div>
+                        </label>
+                    </div>
+                </div><!--green checkbox-->
+            </div>
+        </div><!--form control-->
+
+        <div class="form-group">
             <label class="col-lg-2 control-label">Associated Roles</label>
             <div class="col-lg-3">
                 @if (count($roles) > 0)

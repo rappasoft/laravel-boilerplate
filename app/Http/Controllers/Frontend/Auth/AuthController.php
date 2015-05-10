@@ -33,8 +33,13 @@ class AuthController extends Controller {
 	 */
 	public function postRegister(RegisterRequest $request)
 	{
-		$this->registrar->login($this->registrar->create($request->all()));
-		return redirect()->route('frontend.dashboard');
+		if (config('access.users.confirm_email')) {
+			$this->registrar->create($request->all());
+			return redirect()->route('home')->withFlashSuccess("Your account was successfully created. We have sent you an e-mail to confirm your account.");
+		} else {
+			$this->registrar->login($this->registrar->create($request->all()));
+			return redirect()->route('frontend.dashboard');
+		}
 	}
 
 	/**
@@ -71,5 +76,24 @@ class AuthController extends Controller {
 	{
 		$this->registrar->logout();
 		return redirect()->route('home');
+	}
+
+	/**
+	 * @param $token
+	 * @return mixed
+	 * @throws \App\Exceptions\GeneralException
+	 */
+	public function confirmAccount($token) {
+		$this->registrar->confirmAccount($token);
+		return redirect()->route('frontend.dashboard')->withFlashSuccess("Your account has been successfully confirmed!");
+	}
+
+	/**
+	 * @param $user_id
+	 * @return mixed
+	 */
+	public function resendConfirmationEmail($user_id) {
+		$this->registrar->resendConfirmationEmail($user_id);
+		return redirect()->route('home')->withFlashSuccess("A new confirmation e-mail has been sent to the address on file.");
 	}
 }

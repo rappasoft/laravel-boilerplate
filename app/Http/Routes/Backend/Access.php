@@ -8,6 +8,7 @@ Route::group(['prefix' => 'access', 'namespace' => 'Access'], function ()
 	Route::get('users/deactivated', ['as' => 'admin.access.users.deactivated', 'uses' => 'UserController@deactivated']);
 	Route::get('users/banned', ['as' => 'admin.access.users.banned', 'uses' => 'UserController@banned']);
 	Route::get('users/deleted', ['as' => 'admin.access.users.deleted', 'uses' => 'UserController@deleted']);
+	Route::get('account/confirm/resend/{user_id}', ['as' => 'admin.account.confirm.resend', 'uses' => 'UserController@resendConfirmationEmail']);
 
 	/* Specific User */
 	Route::group(['prefix' => 'user/{id}', 'where' => ['id' => '[0-9]+']], function () {

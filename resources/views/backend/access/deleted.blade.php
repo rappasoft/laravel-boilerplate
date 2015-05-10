@@ -24,6 +24,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>E-mail</th>
+            <th>Confirmed</th>
             <th>Roles</th>
             <th>Other Permissions</th>
             <th class="visible-lg">Created</th>
@@ -38,6 +39,7 @@
                         <td>{!! $user->id !!}</td>
                         <td>{!! $user->name !!}</td>
                         <td>{!! link_to("mailto:".$user->email, $user->email) !!}</td>
+                        <td>{!! $user->confirmed_label !!}</td>
                         <td>
                             @if ($user->roles()->count() > 0)
                                 @foreach ($user->roles as $role)

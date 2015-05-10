@@ -36,15 +36,18 @@ class Handler extends ExceptionHandler {
 	 */
 	public function render($request, Exception $e)
 	{
+		//As to preserve the catch all
 		if ($e instanceof GeneralException)
 		{
 			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
 		}
 
-		require_once(__DIR__."/Frontend/Handler.php");
-		require_once(__DIR__."/Backend/Handler.php");
+		if ($e instanceof Backend\Access\User\UserNeedsRolesException)
+		{
+			return redirect()->route('admin.access.users.edit', $e->userID())->withInput()->withFlashDanger($e->validationErrors());
+		}
 
-		//All other \Exception's caught will hit whoops
+		//Catch all
 		return parent::render($request, $e);
 	}
 }

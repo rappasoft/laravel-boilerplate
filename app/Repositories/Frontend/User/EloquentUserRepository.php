@@ -44,8 +44,14 @@ class EloquentUserRepository implements UserContract {
 			'name' => $data['name'],
 			'email' => $data['email'],
 			'password' => $provider ? null : $data['password'],
+			'confirmation_code' => md5(uniqid(mt_rand(), true)),
+			'confirmed' => config('access.users.confirm_email') ? 0 : 1,
 		]);
 		$user->attachRole($this->role->getDefaultUserRole());
+
+		if (config('access.users.confirm_email'))
+			$this->sendConfirmationEmail($user);
+
 		return $user;
 	}
 
@@ -163,5 +169,41 @@ class EloquentUserRepository implements UserContract {
 		}
 
 		throw new GeneralException("That is not your old password.");
+	}
+
+	/**
+	 * @param $token
+	 * @throws GeneralException
+	 */
+	public function confirmAccount($token) {
+		$user = User::where('confirmation_code', $token)->first();
+		if ($user) {
+			if ($user->status == 1)
+				throw new GeneralException("Your account is already confirmed.");
+
+			if ($user->confirmation_code == $token) {
+				$user->confirmed = 1;
+				return $user->save();
+			}
+
+			throw new GeneralException("Your confirmation code does not match.");
+		}
+
+		throw new GeneralException("That confirmation code does not exist.");
+	}
+
+	/**
+	 * @param $user
+	 * @return mixed
+	 */
+	public function sendConfirmationEmail($user) {
+		//$user can be user instance or id
+		if (! $user instanceof User)
+			$user = User::findOrFail($user);
+
+		return \Mail::send('emails.confirm', ['token' => $user->confirmation_code], function($message) use ($user)
+		{
+			$message->to($user->email, $user->name)->subject(app_name().': Confirm your account!');
+		});
 	}
 }

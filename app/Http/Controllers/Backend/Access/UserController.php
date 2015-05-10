@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\Backend\User\UserContract;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
 use App\Repositories\Backend\Permission\PermissionRepositoryContract;
+use App\Services\Registrar;
 use App\Http\Requests\Backend\Access\User\CreateUserRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
@@ -174,5 +175,15 @@ class UserController extends Controller {
 	public function updatePassword($id, UpdateUserPasswordRequest $request) {
 		$this->users->updatePassword($id, $request->all());
 		return redirect()->route('admin.access.users.index')->withFlashSuccess("The user's password was successfully updated.");
+	}
+
+	/**
+	 * @param $user_id
+	 * @param Registrar $registrar
+	 * @return mixed
+	 */
+	public function resendConfirmationEmail($user_id, Registrar $registrar) {
+		$registrar->resendConfirmationEmail($user_id);
+		return redirect()->back()->withFlashSuccess("A new confirmation e-mail has been sent to the address on file.");
 	}
 }
