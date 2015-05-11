@@ -38,6 +38,12 @@
 * Form Macros (State and Country dropdowns, easy to extend)
 * [Socialite Integration](https://github.com/laravel/socialite)
 * [Laracast Generators](https://github.com/laracasts/Laravel-5-Generators-Extended)
+* Standards
+    * Clean Controllers
+    * Repository/Contract Implementations
+    * Request Classes
+    * Events/Handlers
+    * Entire application split between frontend/backend
 
 ### Installation:
 
@@ -89,7 +95,7 @@
     GOOGLE_REDIRECT=
 
 <a name="access-control"/>
-## Access Control System
+## Access Control System (Previously 'Vault')
 * [Configuration] (#configuration)
     * [Config File](#config_file)
     * [Access Routes](#access_routes)
@@ -107,39 +113,39 @@
 
 ```php
 /*
- * Role model used by Vault to create correct relations. Update the role if it is in a different namespace.
+ * Role model used by Access to create correct relations. Update the role if it is in a different namespace.
 */
 access.role
 
 /*
- * Roles table used by Vault to save roles to the database.
+ * Roles table used by Access to save roles to the database.
  */
 access.roles_table
 
 /*
- * Permission model used by Vault to create correct relations.
+ * Permission model used by Access to create correct relations.
  * Update the permission if it is in a different namespace.
  */
 access.permission
 
 /*
- * Permissions table used by Vault to save permissions to the database.
+ * Permissions table used by Access to save permissions to the database.
  */
 access.permissions_table
 
 /*
- * permission_role table used by Vault to save relationship between permissions and roles to the database.
+ * permission_role table used by Access to save relationship between permissions and roles to the database.
  */
 access.permission_role_table
 
 /*
- * permission_user table used by Vault to save relationship between permissions and users to the database.
+ * permission_user table used by Access to save relationship between permissions and users to the database.
  * This table is only for permissions that belong directly to a specific user and not a role
  */
 access.permission_user_table
 
 /*
- * assigned_roles table used by Vault to save assigned roles to the database.
+ * assigned_roles table used by Access to save assigned roles to the database.
  */
 access.assigned_roles_table
 
