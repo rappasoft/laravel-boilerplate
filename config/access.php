@@ -62,13 +62,6 @@ return array(
 		 * Whether or not the users email can be changed on the edit profile screen
 		 */
 		'change_email' => false,
-
-		/*
-		 * Defines how many login failed tries may be done within
-		 * the 'throttle_time_period', which is in minutes.
-		*/
-		'throttle_limit' => 5,
-		'throttle_time_period' => 2,
 	],
 
 	/*
