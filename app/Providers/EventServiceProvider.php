@@ -11,8 +11,14 @@ class EventServiceProvider extends ServiceProvider {
 	 * @var array
 	 */
 	protected $listen = [
-		'event.name' => [
-			'EventListener',
+		/**
+		 * Frontend Events
+		 */
+		'App\Events\Frontend\Auth\UserLoggedIn' => [
+			'App\Handlers\Events\Frontend\Auth\UserLoggedInHandler',
+		],
+		'App\Events\Frontend\Auth\UserLoggedOut' => [
+			'App\Handlers\Events\Frontend\Auth\UserLoggedOutHandler',
 		],
 	];
 
@@ -28,5 +34,4 @@ class EventServiceProvider extends ServiceProvider {
 
 		//
 	}
-
 }

@@ -13,6 +13,20 @@ class UserTableSeeder extends Seeder {
 			'name' => 'Admin Istrator',
 			'email' => 'admin@admin.com',
 			'password' => Hash::make('1234'),
+			'confirmation_code' => md5(uniqid(mt_rand(), true)),
+			'confirmed' => true,
+			'created_at' => Carbon\Carbon::now(),
+			'updated_at' => Carbon\Carbon::now()
+		);
+
+		DB::table(Config::get('auth.table'))->insert($user);
+
+		$user = array(
+			'name' => 'Default User',
+			'email' => 'user@user.com',
+			'password' => Hash::make('1234'),
+			'confirmation_code' => md5(uniqid(mt_rand(), true)),
+			'confirmed' => true,
 			'created_at' => Carbon\Carbon::now(),
 			'updated_at' => Carbon\Carbon::now()
 		);

@@ -149,6 +149,7 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
+		'App\Providers\AccessServiceProvider',
 		'App\Providers\AppServiceProvider',
 		'App\Providers\BusServiceProvider',
 		'App\Providers\ConfigServiceProvider',
