@@ -3,9 +3,10 @@
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
-use Illuminate\Foundation\Auth\ResetsPasswords;
 use App\Repositories\Frontend\User\UserContract;
+use Illuminate\Foundation\Auth\ResetsPasswords;
 use App\Http\Requests\Frontend\Access\ChangePasswordRequest;
+use App\Http\Requests\Frontend\Access\ResetPasswordEmailRequest;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -15,16 +16,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class PasswordController extends Controller {
 
 	use ResetsPasswords;
-	
-	/**
-	 * @var string
-	 */
-	protected $redirectPath = "/dashboard";
-
-	/**
-	 * @var UserContract
-	 */
-	protected $user;
 
 	/**
 	 * @param Guard $auth
@@ -44,6 +35,27 @@ class PasswordController extends Controller {
 	public function getEmail()
 	{
 		return view('frontend.auth.password');
+	}
+
+	/**
+	 * @param ResetPasswordEmailRequest $request
+	 * @return $this|\Illuminate\Http\RedirectResponse
+	 */
+	public function postEmail(ResetPasswordEmailRequest $request)
+	{
+		$response = $this->passwords->sendResetLink($request->only('email'), function($m)
+		{
+			$m->subject("Your Password Reset Link");
+		});
+
+		switch ($response)
+		{
+			case PasswordBroker::RESET_LINK_SENT:
+				return redirect()->back()->withStatus('status', trans($response));
+
+			case PasswordBroker::INVALID_USER:
+				return redirect()->back()->withErrors(['email' => trans($response)]);
+		}
 	}
 
 	/**
