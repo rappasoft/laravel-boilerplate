@@ -15,6 +15,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class PasswordController extends Controller {
 
 	use ResetsPasswords;
+	
+	/**
+	 * @var string
+	 */
+	protected $redirectPath = "/dashboard";
 
 	/**
 	 * @var UserContract
@@ -50,11 +55,8 @@ class PasswordController extends Controller {
 	public function getReset($token = null)
 	{
 		if (is_null($token))
-		{
 			throw new NotFoundHttpException;
-		}
-
-		return view('frontend.auth.reset')->with('token', $token);
+		return view('frontend.auth.reset')->withToken($token);
 	}
 
 	/**

@@ -66,7 +66,7 @@
                     </tr>
                 @endforeach
             @else
-                <td colspan="8">No Deleted Users</td>
+                <td colspan="9">No Deleted Users</td>
             @endif
         </tbody>
     </table>

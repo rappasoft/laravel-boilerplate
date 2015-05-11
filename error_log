@@ -1,0 +1,17 @@
+[10-May-2015 00:52:54] PHP Warning:  Unexpected character in input:  '\' (ASCII=92) state=1 in - on line 574
+[10-May-2015 00:52:54] PHP Parse error:  syntax error, unexpected T_SL in - on line 849
+[10-May-2015 00:53:12 America/Denver] PHP Notice:  Undefined variable: argv in - on line 14
+[10-May-2015 00:53:12 America/Denver] PHP Warning:  in_array() expects parameter 2 to be array, null given in - on line 21
+[10-May-2015 00:53:12 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in - on line 46
+[10-May-2015 00:55:54 America/Denver] PHP Fatal error:  Uncaught exception 'ErrorException' with message 'Undefined index: argv' in phar:///home5/rappaso1/public_html/laravel-boilerplate/testing/composer.phar/vendor/symfony/console/Symfony/Component/Console/Input/ArgvInput.php:57
+Stack trace:
+#0 phar:///home5/rappaso1/public_html/laravel-boilerplate/testing/composer.phar/vendor/symfony/console/Symfony/Component/Console/Input/ArgvInput.php(57): Composer\Util\ErrorHandler::handle(8, 'Undefined index...', 'phar:///home5/r...', 57, Array)
+#1 phar:///home5/rappaso1/public_html/laravel-boilerplate/testing/composer.phar/vendor/symfony/console/Symfony/Component/Console/Application.php(116): Symfony\Component\Console\Input\ArgvInput->__construct()
+#2 phar:///home5/rappaso1/public_html/laravel-boilerplate/testing/composer.phar/src/Composer/Console/Application.php(83): Symfony\Component\Console\Application->run(NULL, Object(Symfony\Component\Console\Output\ConsoleOutput))
+#3 phar:///home5/rappaso1/public_html/laravel-boilerplate/testing/composer.phar/bin/composer(43): Compos in phar:///home5/rappaso1/public_html/laravel-boilerplate/testing/composer.phar/vendor/symfony/console/Symfony/Component/Console/Input/ArgvInput.php on line 57
+[10-May-2015 00:56:15] PHP Fatal error:  Class 'Phar' not found in /home5/rappaso1/public_html/laravel-boilerplate/testing/composer.phar on line 23
+[10-May-2015 01:00:17] PHP Fatal error:  Class 'Phar' not found in /home5/rappaso1/public_html/laravel-boilerplate/testing/composer.phar on line 23
+[10-May-2015 01:04:01] PHP Warning:  Unexpected character in input:  '\' (ASCII=92) state=1 in /home5/rappaso1/public_html/laravel-boilerplate/testing/artisan on line 34
+[10-May-2015 01:04:01] PHP Parse error:  syntax error, unexpected T_STRING in /home5/rappaso1/public_html/laravel-boilerplate/testing/artisan on line 34
+[10-May-2015 01:08:35] PHP Warning:  Unexpected character in input:  '\' (ASCII=92) state=1 in /home5/rappaso1/public_html/laravel-boilerplate/testing/artisan on line 34
+[10-May-2015 01:08:35] PHP Parse error:  syntax error, unexpected T_STRING in /home5/rappaso1/public_html/laravel-boilerplate/testing/artisan on line 34

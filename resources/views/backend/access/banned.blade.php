@@ -64,7 +64,7 @@
                     </tr>
                 @endforeach
             @else
-                <td colspan="8">No Banned Users</td>
+                <td colspan="9">No Banned Users</td>
             @endif
         </tbody>
     </table>
