@@ -11,6 +11,6 @@ if (! function_exists('app_name')) {
 	 * @return mixed
 	 */
 	function app_name() {
-		return \Config::get('app.name');
+		return config('app.name');
 	}
 }

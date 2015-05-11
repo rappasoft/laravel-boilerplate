@@ -6,6 +6,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use App\Services\Access\Traits\UserHasRole;
 
 /**
  * Class User
@@ -13,7 +14,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
  */
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
-	use Authenticatable, CanResetPassword, SoftDeletes;
+	use Authenticatable, CanResetPassword, SoftDeletes, UserHasRole;
 
 	/**
 	 * The database table used by the model.
@@ -57,6 +58,25 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	public function setPasswordAttribute($value)
 	{
-		$this->attributes['password'] = \Hash::make($value);
+		if (\Hash::needsRehash($value))
+			$this->attributes['password'] = bcrypt($value);
+		else
+			$this->attributes['password'] = $value;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function canChangeEmail() {
+		return config('access.users.change_email');
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getConfirmedLabelAttribute() {
+		if ($this->confirmed == 1)
+			return "<label class='label label-success'>Yes</label>";
+		return "<label class='label label-danger'>No</label>";
 	}
 }
