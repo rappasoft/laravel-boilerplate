@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\Access\LoginRequest;
 use App\Http\Requests\Frontend\Access\RegisterRequest;
+use App\Exceptions\GeneralException;
 
 /**
  * Class AuthController
@@ -55,8 +56,13 @@ class AuthController extends Controller {
 	 */
 	public function postLogin(LoginRequest $request)
 	{
-		$this->registrar->login($request);
-		return redirect()->intended('/dashboard');
+		//Don't know why the exception handler is not catching this
+		try {
+			$this->registrar->login($request);
+			return redirect()->intended('/dashboard');
+		} catch (GeneralException $e) {
+			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
+		}
 	}
 
 	/**
@@ -84,8 +90,13 @@ class AuthController extends Controller {
 	 * @throws \App\Exceptions\GeneralException
 	 */
 	public function confirmAccount($token) {
-		$this->registrar->confirmAccount($token);
-		return redirect()->route('frontend.dashboard')->withFlashSuccess("Your account has been successfully confirmed!");
+		//Don't know why the exception handler is not catching this
+		try {
+			$this->registrar->confirmAccount($token);
+			return redirect()->route('frontend.dashboard')->withFlashSuccess("Your account has been successfully confirmed!");
+		} catch (GeneralException $e) {
+			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
+		}
 	}
 
 	/**
@@ -93,7 +104,12 @@ class AuthController extends Controller {
 	 * @return mixed
 	 */
 	public function resendConfirmationEmail($user_id) {
-		$this->registrar->resendConfirmationEmail($user_id);
-		return redirect()->route('home')->withFlashSuccess("A new confirmation e-mail has been sent to the address on file.");
+		//Don't know why the exception handler is not catching this
+		try {
+			$this->registrar->resendConfirmationEmail($user_id);
+			return redirect()->route('home')->withFlashSuccess("A new confirmation e-mail has been sent to the address on file.");
+		} catch (GeneralException $e) {
+			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
+		}
 	}
 }

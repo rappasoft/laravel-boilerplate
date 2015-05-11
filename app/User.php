@@ -58,7 +58,10 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	public function setPasswordAttribute($value)
 	{
-		$this->attributes['password'] = bcrypt($value);
+		if (\Hash::needsRehash($value))
+			$this->attributes['password'] = bcrypt($value);
+		else
+			$this->attributes['password'] = $value;
 	}
 
 	/**

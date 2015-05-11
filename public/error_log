@@ -1,0 +1,1 @@
+[11-May-2015 14:21:21 UTC] PHP Fatal error:  Class 'App\Hash' not found in /home5/rappaso1/public_html/laravel-boilerplate/testing/app/User.php on line 61
