@@ -2,6 +2,14 @@
 
 [![Project Status](http://stillmaintained.com/rappasoft/Laravel-5-Boilerplate.png)](http://stillmaintained.com/rappasoft/Laravel-5-Boilerplate)
 
+### Demo
+
+[Click here for a demo](http://laravel-boilerplate.com/testing/public/)
+```
+Username: admin@admin.com
+Password: 123456
+```
+
 ### Features:
 
 * [Custom Access Control System](#access-control) (Authentication/Users/Roles/Permissions)
