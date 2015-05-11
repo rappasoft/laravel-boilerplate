@@ -116,7 +116,7 @@ Password: 123456
     * [Blade Extensions](#blade_extensions)
 
 <a name="configuration"/>
-## Configuration
+### Configuration
 
 <a name="config_file"/>
 ###Configuration File
@@ -198,7 +198,7 @@ access.permissions.permission_must_contain_role
 ```
 
 <a name="route_middleware"/>
-## Applying the Route Middleware
+### Applying the Route Middleware
 
 Laravel 5 is trying to steer away from the filters.php file and more towards using middleware. Here is an example right from the access routes file of a group of routes that requires the Administrator role:
 
@@ -213,7 +213,7 @@ Route::group([
     Route::group(['prefix' => 'access'], function ()
     	{
     		/*User Management*/
-    		Route::resource('users', '\App\Access\Http\Controllers\UserController', ['except' => ['show']]);
+    		Route::resource('users', 'Backend\Access\UserController');
     	});
 });
 ```
@@ -227,7 +227,7 @@ The following middleware ships with the boilerplate:
 - access.routeNeedsRoleOrPermission
 
 <a name="route_middleware_params"/>
-## Route Parameters
+### Route Parameters
 
 - `middleware` => The middleware name, you can change them in your app/Http/Kernel.php file.
 - `role` => A string of one role or an array of roles by name.
@@ -241,7 +241,7 @@ The following middleware ships with the boilerplate:
 **If no redirect is specified a `response('Unauthorized', 401);` will be thrown.**
 
 <a name="creating_middleware"/>
-## Create Your Own Middleware
+### Create Your Own Middleware
 
 If you would like to create your own middleware, the following methods are available.
 
@@ -295,7 +295,7 @@ If you would like to take advantage of the methods used by Access's route handle
 Which will give you methods in your middleware to grab route assets. You can then add methods to your middleware to grab assets that access doesn't grab by default and take advantage of them.
 
 <a name="blade_extensions"/>
-## Blade Extensions
+### Blade Extensions
 
 Access comes with @blade extensions to help you show and hide data by role or permission without clogging up your code with unwanted if statements:
 
@@ -322,6 +322,8 @@ If you want to show or hide a specific section you can do so in your layout file
     @section('special_content')
 @endpermission
 ```
+
+You can add more extensions by editing app/Blade/Access/AccessBladeExtender.php
 
 ## Socialite
 
