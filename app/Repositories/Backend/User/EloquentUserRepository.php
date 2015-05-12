@@ -143,7 +143,7 @@ class EloquentUserRepository implements UserContract {
 	public function updatePassword($id, $input) {
 		$user = $this->findOrThrowException($id);
 
-		//Passwords are hashed using UserObserver
+		//Passwords are hashed on the model
 		$user->password = $input['password'];
 		if ($user->save())
 			return true;
@@ -200,9 +200,6 @@ class EloquentUserRepository implements UserContract {
 		throw new GeneralException("There was a problem restoring this user. Please try again.");
 	}
 
-	/*
-	 * Mark the user
-	 */
 	/**
 	 * @param $id
 	 * @param $status
@@ -282,9 +279,7 @@ class EloquentUserRepository implements UserContract {
 		//Flush permissions out, then add array of new ones if any
 		$user->detachPermissions($user->permissions);
 		if (count($permissions['permission_user']) > 0)
-		{
 			$user->attachPermissions($permissions['permission_user']);
-		}
 	}
 
 	/**

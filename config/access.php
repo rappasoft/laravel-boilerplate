@@ -3,39 +3,39 @@
 return array(
 
 	/*
-	 * Role model used by Vault to create correct relations. Update the role if it is in a different namespace.
+	 * Role model used by Access to create correct relations. Update the role if it is in a different namespace.
 	*/
 	'role' => 'App\Role',
 
 	/*
-	 * Roles table used by Vault to save roles to the database.
+	 * Roles table used by Access to save roles to the database.
 	 */
 	'roles_table' => 'roles',
 
 	/*
-	 * Permission model used by Vault to create correct relations.
+	 * Permission model used by Access to create correct relations.
 	 * Update the permission if it is in a different namespace.
 	 */
 	'permission' => 'App\Permission',
 
 	/*
-	 * Permissions table used by Vault to save permissions to the database.
+	 * Permissions table used by Access to save permissions to the database.
 	 */
 	'permissions_table' => 'permissions',
 
 	/*
-	 * permission_role table used by Vault to save relationship between permissions and roles to the database.
+	 * permission_role table used by Access to save relationship between permissions and roles to the database.
 	 */
 	'permission_role_table' => 'permission_role',
 
 	/*
-	 * permission_user table used by Vault to save relationship between permissions and users to the database.
+	 * permission_user table used by Access to save relationship between permissions and users to the database.
 	 * This table is only for permissions that belong directly to a specific user and not a role
 	 */
 	'permission_user_table' => 'permission_user',
 
 	/*
-	 * assigned_roles table used by Vault to save assigned roles to the database.
+	 * assigned_roles table used by Access to save assigned roles to the database.
 	 */
 	'assigned_roles_table' => 'assigned_roles',
 

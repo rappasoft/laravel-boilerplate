@@ -1,6 +1,6 @@
 <?php namespace App\Providers;
 
-use App\Http\Macros;
+use App\Services\Macros;
 
 /**
  * Class MacroServiceProvider

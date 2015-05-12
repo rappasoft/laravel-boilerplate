@@ -9,7 +9,6 @@ use Illuminate\View\Compilers\BladeCompiler as Compiler;
  */
 class AccessBladeExtender
 {
-
 	/**
 	 * @param Application $app
 	 */
