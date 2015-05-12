@@ -32,5 +32,4 @@ class Kernel extends HttpKernel {
 		'access.routeNeedsPermission' => 'App\Http\Middleware\RouteNeedsPermission',
 		'access.routeNeedsRoleOrPermission' => 'App\Http\Middleware\RouteNeedsRoleOrPermission',
 	];
-
 }

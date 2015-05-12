@@ -29,7 +29,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	 * @throws GeneralException
 	 */
 	public function findOrThrowException($id, $withRoles = false) {
-		if ( ! is_null(Permission::find($id))) {
+		if (! is_null(Permission::find($id))) {
 			if ($withRoles)
 				return Permission::with('roles')->find($id);
 
@@ -135,7 +135,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 						$role_permissions_temp = array();
 						foreach ($role_permissions as $rp)
 						{
-							array_push($role_permissions_temp, (int) $rp);
+							array_push($role_permissions_temp, (int)$rp);
 						}
 						$role_permissions = $role_permissions_temp;
 
@@ -203,7 +203,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 						$role_permissions_temp = array();
 						foreach ($role_permissions as $rp)
 						{
-							array_push($role_permissions_temp, (int) $rp);
+							array_push($role_permissions_temp, (int)$rp);
 						}
 						$role_permissions = $role_permissions_temp;
 

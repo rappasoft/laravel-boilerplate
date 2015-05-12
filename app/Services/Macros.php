@@ -1,10 +1,12 @@
-<?php namespace App\Http;
+<?php namespace App\Services;
+
+use Illuminate\Html\FormBuilder;
 
 /**
  * Class Macros
  * @package App\Http
  */
-class Macros extends \Illuminate\Html\FormBuilder {
+class Macros extends FormBuilder {
 
 	/**
 	 * @param $name
@@ -330,5 +332,4 @@ class Macros extends \Illuminate\Html\FormBuilder {
 
 		return $this->select($name, $list, $selected, $options);
 	}
-
 }

@@ -22,8 +22,8 @@ class ChangePasswordRequest extends Request {
 	public function rules()
 	{
 		return [
-			'old_password'			=>  'required',
-			'password'				=>	'required|alpha_num|min:6|confirmed',
+			'old_password'	=>  'required',
+			'password'		=>	'required|alpha_num|min:6|confirmed',
 		];
 	}
 }

@@ -16,7 +16,7 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 	 * @throws GeneralException
 	 */
 	public function findOrThrowException($id, $withPermissions = false) {
-		if ( ! is_null(Role::find($id))) {
+		if (! is_null(Role::find($id))) {
 			if ($withPermissions)
 				return Role::with('permissions')->find($id);
 
@@ -61,9 +61,7 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 
 		//See if the role must contain a permission as per config
 		if (config('access.roles.role_must_contain_permission') && count($permissions['role_permissions']) == 0)
-		{
 			throw new GeneralException('You must select at least one permission for this role.');
-		}
 
 		$role = new Role;
 		$role->name = $input['name'];
@@ -95,9 +93,7 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 
 		//See if the role must contain a permission as per config
 		if (config('access.roles.role_must_contain_permission') && count($permissions['role_permissions']) == 0)
-		{
 			throw new GeneralException('You must select at least one permission for this role.');
-		}
 
 		$role->name = $input['name'];
 

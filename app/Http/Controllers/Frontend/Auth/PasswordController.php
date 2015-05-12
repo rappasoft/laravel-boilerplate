@@ -15,7 +15,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class PasswordController extends Controller {
 
 	use ResetsPasswords;
-	
+
+	/**
+	 * @var string
+	 */
 	protected $redirectPath = "/dashboard";
 
 	/**
@@ -23,7 +26,10 @@ class PasswordController extends Controller {
 	 * @param PasswordBroker $passwords
 	 * @param UserContract $user
 	 */
-	public function __construct(Guard $auth, PasswordBroker $passwords, UserContract $user)
+	public function __construct(
+		Guard $auth,
+		PasswordBroker $passwords,
+		UserContract $user)
 	{
 		$this->auth = $auth;
 		$this->passwords = $passwords;
