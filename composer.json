@@ -7,7 +7,10 @@
 	"require": {
 		"laravel/framework": "5.0.*",
         "illuminate/html" : "5.*",
-        "laravel/socialite" : "~2.0"
+        "laravel/socialite" : "~2.0",
+        "twbs/bootstrap": "3.*",
+        "twbs/bootstrap-sass": "3.*",
+        "fortawesome/font-awesome": "4.*"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
@@ -44,9 +47,6 @@
 			"php artisan key:generate"
 		]
 	},
-    "suggest": {
-        "rappasoft/vault": "A Laravel 5 Roles & Permissions Library"
-    },
 	"config": {
 		"preferred-install": "dist"
 	}
