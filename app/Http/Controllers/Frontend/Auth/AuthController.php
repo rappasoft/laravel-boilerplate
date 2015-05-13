@@ -71,8 +71,7 @@ class AuthController extends Controller {
 	 * @return mixed
 	 */
 	public function loginThirdParty(Request $request, $provider) {
-		$this->registrar->loginThirdParty($request->all(), $provider);
-		return redirect()->route('frontend.dashboard');
+		return $this->registrar->loginThirdParty($request->all(), $provider);
 	}
 
 	/**
