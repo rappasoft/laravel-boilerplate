@@ -106,7 +106,7 @@ class Registrar {
 		$user = $this->users->findByUserNameOrCreate($this->getSocialUser($provider), $provider);
 		$this->auth->login($user, true);
 		event(new UserLoggedIn($user));
-		return true;
+		return redirect()->route('frontend.dashboard');
 	}
 
 	/**
@@ -114,6 +114,18 @@ class Registrar {
 	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
 	 */
 	private function getAuthorizationFirst($provider) {
+		if ($provider == "google") {
+			/*
+			 * Only allows google to grab email address
+			 * Default scopes array also has: 'https://www.googleapis.com/auth/plus.login'
+			 * https://medium.com/@njovin/fixing-laravel-socialite-s-google-permissions-2b0ef8c18205
+			 */
+			$scopes = [
+				'https://www.googleapis.com/auth/plus.me',
+				'https://www.googleapis.com/auth/plus.profile.emails.read',
+			];
+			return $this->socialite->driver($provider)->scopes($scopes)->redirect();
+		}
 		return $this->socialite->driver($provider)->redirect();
 	}
 
