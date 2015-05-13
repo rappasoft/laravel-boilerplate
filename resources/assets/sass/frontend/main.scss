@@ -1,5 +1,7 @@
-// Any Bootstrap- or FontAwesome-specific variables added here will overwrite the defaults.
-@import "variable-overrides";
-
 @import '../../../../vendor/twbs/bootstrap-sass/assets/stylesheets/_bootstrap';
 @import '../../../../vendor/fortawesome/font-awesome/scss/font-awesome';
+
+// Any Bootstrap or FontAwesome-specific variables added here will overwrite the defaults.
+@import "variable-overrides";
+
+// Front-end SCSS goes here.
