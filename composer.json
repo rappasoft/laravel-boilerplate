@@ -47,9 +47,6 @@
 			"php artisan key:generate"
 		]
 	},
-    "suggest": {
-        "rappasoft/vault": "A Laravel 5 Roles & Permissions Library"
-    },
 	"config": {
 		"preferred-install": "dist"
 	}
