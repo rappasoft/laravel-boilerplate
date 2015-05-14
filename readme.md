@@ -112,7 +112,6 @@ Password: 1234
 ## Access Control System (Previously 'Vault')
 * [Configuration] (#configuration)
     * [Config File](#config_file)
-    * [Access Routes](#access_routes)
     * [Route Middleware](#route_middleware)
         * [Parameters](#route_middleware_params)
         * [Creating Middleware](#creating_middleware)
