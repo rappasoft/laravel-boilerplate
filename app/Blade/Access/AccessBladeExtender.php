@@ -34,7 +34,7 @@ class AccessBladeExtender
 	public function openRole($value, Application $app, Compiler $blade)
 	{
 		$matcher = '/@role\([\'"]([\w\d]*)[\'"]\)/';
-		return preg_replace($matcher, '<?php if (Access::hasRole(\'$1\')): ?> ', $value);
+		return preg_replace($matcher, '<?php if (access()->hasRole(\'$1\')): ?> ', $value);
 	}
 
 	/**
@@ -58,7 +58,7 @@ class AccessBladeExtender
 	public function openPermission($value, Application $app, Compiler $blade)
 	{
 		$matcher = '/@permission\([\'"]([\w\d]*)[\'"]\)/';
-		return preg_replace($matcher, '<?php if (Access::can(\'$1\')): ?> ', $value);
+		return preg_replace($matcher, '<?php if (access()->can(\'$1\')): ?> ', $value);
 	}
 
 	/**

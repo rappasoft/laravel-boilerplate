@@ -1,7 +1,6 @@
 <?php namespace App\Http\Middleware;
 
 use Closure;
-use App\Services\Access\Facades\Access;
 use App\Services\Access\Traits\AccessRoute;
 
 /**
@@ -24,10 +23,10 @@ class RouteNeedsRoleOrPermission {
 		$assets = $this->getAssets($request);
 
 		if ($assets['needsAll']) {
-			if (! Access::hasRoles($assets['roles'], true) || ! Access::canMultiple($assets['permissions'], true))
+			if (! access()->hasRoles($assets['roles'], true) || ! access()->canMultiple($assets['permissions'], true))
 				return $this->getRedirectMethodAndGo($request);
 		} else {
-			if (! Access::hasRoles($assets['roles'], false) && ! Access::canMultiple($assets['permissions'], false))
+			if (! access()->hasRoles($assets['roles'], false) && ! access()->canMultiple($assets['permissions'], false))
 				return $this->getRedirectMethodAndGo($request);
 		}
 
