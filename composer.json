@@ -8,6 +8,7 @@
 		"laravel/framework": "5.0.*",
         "illuminate/html" : "5.*",
         "laravel/socialite" : "~2.0",
+        "stripe/stripe-php": "1.*",
         "twbs/bootstrap": "3.*",
         "twbs/bootstrap-sass": "3.*",
         "fortawesome/font-awesome": "4.*"
