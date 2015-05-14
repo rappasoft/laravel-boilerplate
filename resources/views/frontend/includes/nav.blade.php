@@ -27,6 +27,7 @@
 							    <li>{!! link_to('dashboard', 'Dashboard') !!}</li>
 							    <li>{!! link_to('auth/password/change', 'Change Password') !!}</li>
 							    @permission('view_admin_link')
+							        {{-- This can also be @role('Administrator') instead --}}
 							        <li>{!! link_to_route('backend.dashboard', 'Administration') !!}</li>
 							    @endpermission
 								<li>{!! link_to('auth/logout', 'Logout') !!}</li>

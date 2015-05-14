@@ -14,3 +14,14 @@ if (! function_exists('app_name')) {
 		return config('app.name');
 	}
 }
+
+if ( ! function_exists('access'))
+{
+	/**
+	 * Access (lol) the Access:: facade as a simple function
+	 */
+	function access()
+	{
+		return app('access');
+	}
+}

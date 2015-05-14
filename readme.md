@@ -249,6 +249,8 @@ The following middleware ships with the boilerplate:
 
 If you would like to create your own middleware, the following methods are available.
 
+**Note: A helper method ```access()``` is also available. E.g. access()->hasRole('Administrator') which resolves the Access facade out of the IoC container. You can modify this function to add more functionality in ```app/helpers.php```.**
+
 ```php
 /**
 	 * Checks if the user has a Role by its name.
