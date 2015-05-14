@@ -46,6 +46,7 @@ Password: 1234
 * Form Macros (State and Country dropdowns, easy to extend)
 * [Socialite Integration](https://github.com/laravel/socialite)
 * [Laracast Generators](https://github.com/laracasts/Laravel-5-Generators-Extended)
+* [Stripe](http://stripe.com) wrapper class for easy implementation
 * Standards
     * Clean Controllers
     * Repository/Contract Implementations
@@ -87,6 +88,9 @@ Password: 1234
     MAIL_PASSWORD=null
     MAIL_FROM=
     MAIL_NAME=
+    
+    STRIPE_KEY=
+    STRIPE_SECRET=
     
     GITHUB_CLIENT_ID=
     GITHUB_CLIENT_SECRET=
