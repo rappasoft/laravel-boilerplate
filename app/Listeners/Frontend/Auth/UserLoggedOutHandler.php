@@ -1,4 +1,4 @@
-<?php namespace App\Handlers\Events\Frontend\Auth;
+<?php namespace App\Listeners\Frontend\Auth;
 
 use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Queue\InteractsWithQueue;

@@ -65,7 +65,7 @@ class RoleController extends Controller {
 		$role = $this->roles->findOrThrowException($id, true);
 		return view('backend.access.roles.edit')
 			->withRole($role)
-			->withRolePermissions($role->permissions->lists('id'))
+			->withRolePermissions($role->permissions->lists('id')->all())
 			->withPermissions($this->permissions->getPermissionsNotAssociatedWithUser());
 	}
 

@@ -80,9 +80,9 @@ class UserController extends Controller {
 		$user = $this->users->findOrThrowException($id, true);
 		return view('backend.access.edit')
 			->withUser($user)
-			->withUserRoles($user->roles->lists('id'))
+			->withUserRoles($user->roles->lists('id')->all())
 			->withRoles($this->roles->getAllRoles('id', 'asc', true))
-			->withUserPermissions($user->permissions->lists('id'))
+			->withUserPermissions($user->permissions->lists('id')->all())
 			->withPermissions($this->permissions->getPermissionsNotAssociatedWithRole());
 	}
 

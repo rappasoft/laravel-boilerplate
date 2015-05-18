@@ -2,7 +2,7 @@
 
 use App\Services\Access\Access;
 use Illuminate\Support\ServiceProvider;
-use App\Blade\Access\AccessBladeExtender;
+use App\Services\Blade\Access\AccessBladeExtender;
 
 /**
  * Class AccessServiceProvider
