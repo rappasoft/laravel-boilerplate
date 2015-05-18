@@ -14,19 +14,17 @@ class RouteNeedsRole {
 	/**
 	 * @param $request
 	 * @param callable $next
-	 * @param null $roles
-	 * @param null $needsAll
+	 * @param null $params
 	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Symfony\Component\HttpFoundation\Response
 	 */
-	public function handle($request, Closure $next, $roles = null, $needsAll = null)
+	public function handle($request, Closure $next, $params = null)
 	{
-		$assets = $this->getAssets($request);
-		$roles = !is_null($roles) ? (strpos($roles, "|") !== false ? explode("|", $roles) : $roles) : $assets['roles'];
-		$needsAll = !is_null($needsAll) ? (bool)$needsAll : $assets['needsAll'];
+		$assets = $this->getAssets($request, $params);
 
-		if (! access()->hasRoles($roles, $needsAll))
-			return $this->getRedirectMethodAndGo($request);
+		dd($assets);
 
+		if (! access()->hasRoles($assets['roles'], $assets['needsAll']))
+			return $this->getRedirectMethodAndGo($request, $params);
 		return $next($request);
 	}
 }

@@ -7,81 +7,61 @@
 trait AccessRoute {
 
 	/**
-	 * Get route group assets
 	 * @param $request
-	 * @return array
+	 * @param $params
+	 * @return mixed
+	 *
+	 * Returns assets array needed by middleware to complete request
+	 * You can append your own if needed
 	 */
-	public function getAssets($request) {
-		$assets = [];
-		$assets['roles'] = $this->getRoles($request);
-		$assets['permissions'] = $this->getPermissions($request);
-		$assets['needsAll'] = $this->getNeedsAll($request);
+	public function getAssets($request, $params) {
+		$assets['roles'] = $this->getRoles($request, $params);
+		$assets['permissions'] = $this->getPermissions($request, $params);
+		$assets['needsAll'] = $this->getNeedsAll($request, $params);
 		return $assets;
 	}
 
 	/**
-	 * Get the roles from the route request array
 	 * @param $request
-	 * @return array
+	 * @param $params
+	 * @return array|bool
 	 */
-	public function getRoles($request) {
-		$roles = [];
-		$route   = $request->route();
-		$actions = $route->getAction();
-
-		//Role isnt needed for this request
-		if (! isset($actions['role'])) return false;
-
-		if (is_array($actions['role']))
-		{
-			return array_merge($roles, $actions['role']);
-		}
-
-		$roles[] = $actions['role'];
-
-		return $roles;
+	private function getRoles($request, $params) {
+		return !is_null($params) ? $this->getParamFromController($params, "role") : $this->getParamFromRoute($request, "role");
 	}
 
 	/**
-	 * Get the permissions from the route request array
 	 * @param $request
-	 * @return array
+	 * @param $params
+	 * @return array|bool
 	 */
-	public function getPermissions($request) {
-		$permissions = [];
-		$route   = $request->route();
-		$actions = $route->getAction();
-
-		//Permission isnt needed for this request
-		if (! isset($actions['permission'])) return false;
-
-		if (is_array($actions['permission']))
-		{
-			return array_merge($permissions, $actions['permission']);
-		}
-
-		$permissions[] = $actions['permission'];
-
-		return $permissions;
+	private function getPermissions($request, $params) {
+		return !is_null($params) ? $this->getParamFromController($params, "permission") : $this->getParamFromRoute($request, "permission");
 	}
 
 	/**
-	 * Get the needsAll flag from the route request array
 	 * @param $request
-	 * @return bool
+	 * @param $params
+	 * @return mixed
 	 */
-	public function getNeedsAll($request) {
-		$route   = $request->route();
-		$actions = $route->getAction();
-		return isset($actions['needsAll']) ? $actions['needsAll'] : false;
+	private function getNeedsAll($request, $params) {
+		return !is_null($params) ?
+			$this->getParamFromController($params, "needsAll") :
+			(bool)$this->getParamFromRoute($request, "needsAll")[0];
 	}
+
+
+
+
+
+
 
 	/**
 	 * Get the normal redirect method, url
 	 * @param $request
 	 * @return bool
 	 */
-	public function getRedirect($request) {
+	private function getRedirect($request) {
 		$route   = $request->route();
 		$actions = $route->getAction();
 		return isset($actions['redirect']) ? $actions['redirect'] : false;
@@ -92,7 +72,7 @@ trait AccessRoute {
 	 * @param $request
 	 * @return bool
 	 */
-	public function getRedirectRoute($request) {
+	private function getRedirectRoute($request) {
 		$route   = $request->route();
 		$actions = $route->getAction();
 		return isset($actions['redirectRoute']) ? $actions['redirectRoute'] : false;
@@ -103,7 +83,7 @@ trait AccessRoute {
 	 * @param $request
 	 * @return bool
 	 */
-	public function getRedirectAction($request) {
+	private function getRedirectAction($request) {
 		$route   = $request->route();
 		$actions = $route->getAction();
 		return isset($actions['redirectAction']) ? $actions['redirectAction'] : false;
@@ -114,22 +94,22 @@ trait AccessRoute {
 	 * @param $request
 	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Symfony\Component\HttpFoundation\Response
 	 */
-	public function getRedirectMethodAndGo($request) {
+	private function getRedirectMethodAndGo($request, $params) {
 		$redirection = false;
 
 		//Check for the type of redirect
-		if ($redirect = $this->getRedirect($request)) {
+		if ($redirect = $this->getRedirect($request, $params)) {
 			$redirection = redirect($redirect);
-		} else if ($route = $this->getRedirectRoute($request)) {
+		} else if ($route = $this->getRedirectRoute($request, $params)) {
 			$redirection = redirect()->route($route);
-		} else if ($action = $this->getRedirectAction($request)) {
+		} else if ($action = $this->getRedirectAction($request, $params)) {
 			$redirection = redirect()->action($action);
 		}
 
 		//Check to see if a flash message is being sent through
 		if ($redirection)
 		{
-			if ($with = $this->getSessionMessage($request))
+			if ($with = $this->getSessionMessage($request, $params))
 				return $redirection->with($with['key'], $with['message']);
 			else
 				return $redirection;
@@ -144,7 +124,7 @@ trait AccessRoute {
 	 * @param $request
 	 * @return array|bool
 	 */
-	public function getSessionMessage($request) {
+	private function getSessionMessage($request, $params) {
 		$route   = $request->route();
 		$actions = $route->getAction();
 
@@ -155,5 +135,73 @@ trait AccessRoute {
 		}
 
 		return false;
+	}
+
+	private function getParamByName($params, $name) {
+		$params = ltrim($params, "{");
+		$params = rtrim($params, "}");
+		$params = explode("::", $params);
+		$pairs = [];
+		foreach ($params as $param) {
+			$param = explode(":", $param);
+			$pairs[$param[0]] = $param[1];
+		}
+
+		dd($pairs);
+
+		foreach ($pairs as $type => $value) {
+			$type = strtolower($type);
+
+			if ($type == $name) {
+				if ($name == "with") {
+					if (strpos($value, "|") !== false) {
+						$with = explode("|", $value);
+						if (count($with) != 1) return false;
+						return ['key' => $with[0], 'message' => $with[1]];
+					} else return false;
+				}
+
+				if (strpos($value, "|") !== false)
+					return explode("|", $value);
+				else
+					return $value;
+			}
+		}
+
+		return false;
+	}
+
+	private function getParamFromRoute($request, $param) {
+		$return = [];
+
+		$route = $request->route();
+		$actions = $route->getAction();
+
+		//Role isn't needed for this request
+		if (! isset($actions[$param])) return false;
+
+		if (is_array($actions[$param]))
+			return array_merge($return, $actions[$param]);
+
+		$return[] = $actions[$param];
+
+		return $return;
+	}
+
+	private function getParamFromController($params, $param) {
+		$return = [];
+		$param = $this->getParamByName($params, $param);
+
+		if ($param == "needsAll") dd($param);
+
+		//Role isn't needed for this request
+		if (! $param) return false;
+
+		if (is_array($param))
+			return array_merge($return, $param);
+
+		$return[] = $param;
+
+		return $return;
 	}
 }
