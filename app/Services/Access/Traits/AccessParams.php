@@ -1,10 +1,10 @@
 <?php namespace App\Services\Access\Traits;
 
 /**
- * Class AccessRoute
+ * Class AccessParams
  * @package App\Services\Access\Traits
  */
-trait AccessRoute {
+trait AccessParams {
 
 	/**
 	 * @param $request
@@ -46,65 +46,67 @@ trait AccessRoute {
 	 */
 	private function getNeedsAll($request, $params) {
 		return !is_null($params) ?
-			$this->getParamFromController($params, "needsAll") :
-			(bool)$this->getParamFromRoute($request, "needsAll")[0];
+			$this->getParamFromController($params, "needsAll")[0] == "true" ? true : false :
+			$this->getParamFromRoute($request, "needsAll")[0];
 	}
 
-
-
-
-
-
-
 	/**
-	 * Get the normal redirect method, url
 	 * @param $request
-	 * @return bool
+	 * @param $params
+	 * @return mixed
 	 */
-	private function getRedirect($request) {
-		$route   = $request->route();
-		$actions = $route->getAction();
-		return isset($actions['redirect']) ? $actions['redirect'] : false;
+	private function getRedirect($request, $params) {
+		return !is_null($params) ?
+			$this->getParamFromController($params, "redirect")[0] :
+			$this->getParamFromRoute($request, "redirect")[0];
 	}
 
 	/**
-	 * Get route to redirect to
 	 * @param $request
-	 * @return bool
+	 * @param $params
+	 * @return mixed
 	 */
-	private function getRedirectRoute($request) {
-		$route   = $request->route();
-		$actions = $route->getAction();
-		return isset($actions['redirectRoute']) ? $actions['redirectRoute'] : false;
+	private function getRedirectRoute($request, $params) {
+		return !is_null($params) ?
+			$this->getParamFromController($params, "redirectRoute")[0] :
+			$this->getParamFromRoute($request, "redirectRoute")[0];
 	}
 
 	/**
-	 * Get action to redirect to
 	 * @param $request
-	 * @return bool
+	 * @param $params
+	 * @return mixed
 	 */
-	private function getRedirectAction($request) {
-		$route   = $request->route();
-		$actions = $route->getAction();
-		return isset($actions['redirectAction']) ? $actions['redirectAction'] : false;
+	private function getRedirectAction($request, $params) {
+		return !is_null($params) ?
+			$this->getParamFromController($params, "redirectAction")[0] :
+			$this->getParamFromRoute($request, "redirectAction")[0];
 	}
 
 	/**
-	 * Figure out what redirect method is wanted and do it
 	 * @param $request
-	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Symfony\Component\HttpFoundation\Response
+	 * @param $params
+	 * @return array|bool
+	 */
+	private function getSessionMessage($request, $params) {
+		return !is_null($params) ? $this->getParamFromController($params, "with") : $this->getParamFromRoute($request, "with");
+	}
+
+	/**
+	 * @param $request
+	 * @param $params
+	 * @return bool|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Symfony\Component\HttpFoundation\Response
 	 */
 	private function getRedirectMethodAndGo($request, $params) {
 		$redirection = false;
 
 		//Check for the type of redirect
-		if ($redirect = $this->getRedirect($request, $params)) {
+		if ($redirect = $this->getRedirect($request, $params))
 			$redirection = redirect($redirect);
-		} else if ($route = $this->getRedirectRoute($request, $params)) {
+		else if ($route = $this->getRedirectRoute($request, $params))
 			$redirection = redirect()->route($route);
-		} else if ($action = $this->getRedirectAction($request, $params)) {
+		else if ($action = $this->getRedirectAction($request, $params))
 			$redirection = redirect()->action($action);
-		}
 
 		//Check to see if a flash message is being sent through
 		if ($redirection)
@@ -120,23 +122,10 @@ trait AccessRoute {
 	}
 
 	/**
-	 * Flash message key and value
-	 * @param $request
+	 * @param $params
+	 * @param $name
 	 * @return array|bool
 	 */
-	private function getSessionMessage($request, $params) {
-		$route   = $request->route();
-		$actions = $route->getAction();
-
-		if (! isset($actions['with'])) return false;
-
-		if (is_array($actions['with'])) {
-			return ['key' => $actions['with'][0], 'message' => $actions['with'][1]];
-		}
-
-		return false;
-	}
-
 	private function getParamByName($params, $name) {
 		$params = ltrim($params, "{");
 		$params = rtrim($params, "}");
@@ -147,16 +136,12 @@ trait AccessRoute {
 			$pairs[$param[0]] = $param[1];
 		}
 
-		dd($pairs);
-
 		foreach ($pairs as $type => $value) {
-			$type = strtolower($type);
-
 			if ($type == $name) {
 				if ($name == "with") {
 					if (strpos($value, "|") !== false) {
 						$with = explode("|", $value);
-						if (count($with) != 1) return false;
+						if (count($with) != 2) return false;
 						return ['key' => $with[0], 'message' => $with[1]];
 					} else return false;
 				}
@@ -171,14 +156,24 @@ trait AccessRoute {
 		return false;
 	}
 
+	/**
+	 * @param $request
+	 * @param $param
+	 * @return array
+	 */
 	private function getParamFromRoute($request, $param) {
 		$return = [];
 
 		$route = $request->route();
 		$actions = $route->getAction();
 
-		//Role isn't needed for this request
+		//Param isn't needed for this request
 		if (! isset($actions[$param])) return false;
+
+		//Flash session message
+		if ($param == "with")
+			if (is_array($actions[$param]) && count($actions[$param]) == 2)
+				return ['key' => $actions[$param][0], 'message' => $actions[$param][1]];
 
 		if (is_array($actions[$param]))
 			return array_merge($return, $actions[$param]);
@@ -188,20 +183,25 @@ trait AccessRoute {
 		return $return;
 	}
 
+	/**
+	 * @param $params
+	 * @param $param
+	 * @return array|bool
+	 */
 	private function getParamFromController($params, $param) {
 		$return = [];
 		$param = $this->getParamByName($params, $param);
 
-		if ($param == "needsAll") dd($param);
-
-		//Role isn't needed for this request
+		//Param isn't needed for this request
 		if (! $param) return false;
+
+		//Already formatted as needed
+		if ($param == "with") return $param;
 
 		if (is_array($param))
 			return array_merge($return, $param);
 
 		$return[] = $param;
-
 		return $return;
 	}
 }

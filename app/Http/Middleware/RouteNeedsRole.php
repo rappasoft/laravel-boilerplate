@@ -1,7 +1,7 @@
 <?php namespace App\Http\Middleware;
 
 use Closure;
-use App\Services\Access\Traits\AccessRoute;
+use App\Services\Access\Traits\AccessParams;
 
 /**
  * Class RouteNeedsRole
@@ -9,7 +9,7 @@ use App\Services\Access\Traits\AccessRoute;
  */
 class RouteNeedsRole {
 
-	use AccessRoute;
+	use AccessParams;
 
 	/**
 	 * @param $request
@@ -20,9 +20,6 @@ class RouteNeedsRole {
 	public function handle($request, Closure $next, $params = null)
 	{
 		$assets = $this->getAssets($request, $params);
-
-		dd($assets);
-
 		if (! access()->hasRoles($assets['roles'], $assets['needsAll']))
 			return $this->getRedirectMethodAndGo($request, $params);
 		return $next($request);

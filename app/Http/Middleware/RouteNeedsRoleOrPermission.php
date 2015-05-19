@@ -1,7 +1,7 @@
 <?php namespace App\Http\Middleware;
 
 use Closure;
-use App\Services\Access\Traits\AccessRoute;
+use App\Services\Access\Traits\AccessParams;
 
 /**
  * Class RouteNeedsRole
@@ -9,25 +9,23 @@ use App\Services\Access\Traits\AccessRoute;
  */
 class RouteNeedsRoleOrPermission {
 
-	use AccessRoute;
+	use AccessParams;
 
 	/**
 	 * @param $request
 	 * @param callable $next
-	 * @param null $roles
-	 * @param null $permissions
-	 * @param null $needsAll
-	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Symfony\Component\HttpFoundation\Response
+	 * @param null $params
+	 * @return bool|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Symfony\Component\HttpFoundation\Response
 	 */
-	public function handle($request, Closure $next, $roles = null, $permissions = null, $needsAll = null)
+	public function handle($request, Closure $next, $params = null)
 	{
-		$assets = $this->getAssets($request);
-		$roles = !is_null($roles) ? (strpos($roles, "|") !== false ? explode("|", $roles) : $roles) : $assets['roles'];
-		$permissions = !is_null($permissions) ? (strpos($permissions, "|") !== false ? explode("|", $permissions) : $permissions) : $assets['permissions'];
-		$needsAll = !is_null($needsAll) ? (bool)$needsAll : $assets['needsAll'];
-
-		if (! access()->hasRoles($roles, $needsAll) || ! access()->canMultiple($permissions, $needsAll))
-				return $this->getRedirectMethodAndGo($request);
+		$assets = $this->getAssets($request, $params);
+		if ($assets['needsAll'])
+			if (! access()->hasRoles($assets['roles'], true) || ! access()->canMultiple($assets['permissions'], true))
+				return $this->getRedirectMethodAndGo($request, $params);
+		else
+			if (! access()->hasRoles($assets['roles'], false) && ! access()->canMultiple($assets['permissions'], false))
+				return $this->getRedirectMethodAndGo($request, $params);
 
 		return $next($request);
 	}

@@ -113,6 +113,7 @@ Password: 1234
 * [Configuration] (#configuration)
     * [Config File](#config_file)
     * [Route Middleware](#route_middleware)
+    * [Controller Middleware](#controller_middleware)
         * [Parameters](#route_middleware_params)
         * [Creating Middleware](#creating_middleware)
         * [AccessRoute trait](#access_route_trait)
@@ -228,6 +229,28 @@ The following middleware ships with the boilerplate:
 - access.routeNeedsRole
 - access.routeNeedsPermission
 - access.routeNeedsRoleOrPermission
+
+<a name="controller_middleware" />
+### Applying the Controller Middleware
+
+The controller middleware supports all of the same parameters as the route middleware, except that it is declared in the constructor of the controller you are trying to protect:
+
+For example, the ```Route::group``` example above would be this:
+
+```php
+public function __construct() {
+	$this->middleware('access.routeNeedsRole:{role:Administrator::redirect:/::with:error|You do not have access to do that.}');
+}
+```
+
+**Notes:** Because the new route middleware parameters in 5.1 don't support arrays, I made my own syntax.
+
+- It uses a single parameter encapulated in brackets `{}`
+- `role` can be single `role:Administrator` or an "array" `role:Administrator|User|Other`
+- Same for the permissions parameter: `permission:user_permission` or `permission:user_permission|other_permission`
+- The session message is in format `with:variable_name|message`
+- The parameters are separated by a double colon `::`. (I did try a comma, the interpreter wasn't allowing it)
+
 
 <a name="route_middleware_params"/>
 ### Route Parameters
