@@ -116,7 +116,7 @@ Password: 1234
     * [Controller Middleware](#controller_middleware)
         * [Parameters](#route_middleware_params)
         * [Creating Middleware](#creating_middleware)
-        * [AccessRoute trait](#access_route_trait)
+        * [AccessParams trait](#access_params_trait)
     * [Blade Extensions](#blade_extensions)
 
 <a name="configuration"/>
@@ -249,7 +249,7 @@ public function __construct() {
 - `role` can be single `role:Administrator` or an "array" `role:Administrator|User|Other`
 - Same for the permissions parameter: `permission:user_permission` or `permission:user_permission|other_permission`
 - The session message is in format `with:variable_name|message`
-- The parameters are separated by a double colon `::`. (I did try a comma, the interpreter wasn't allowing it)
+- The parameters are separated by a double colon `::` (I did try a comma, the interpreter wasn't allowing it)
 
 
 <a name="route_middleware_params"/>
@@ -314,13 +314,15 @@ $user->canMultiple($permissions, $needsAll);
 ```
 
 <a name="access_route_trait"/>
-### AccessRoute trait
+### AccessParams trait
 
-If you would like to take advantage of the methods used by Access's route handler, you can `use` it:
+If you would like to take advantage of the methods used by Access's route/controller handler, you can `use` it:
 
-    `use App\Services\Access\Traits\AccessRoute`
+    `use App\Services\Access\Traits\AccessParams`
 
-Which will give you methods in your middleware to grab route assets. You can then add methods to your middleware to grab assets that access doesn't grab by default and take advantage of them.
+Which will give you methods in your middleware to grab route assets or controller parameters. You can then add methods to your middleware to grab assets that access doesn't grab by default and take advantage of them.
+
+**Note:** If middleware is applied to both the controller and a route group, the controller will take precedence. 
 
 <a name="blade_extensions"/>
 ### Blade Extensions
