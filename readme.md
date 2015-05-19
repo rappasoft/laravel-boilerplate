@@ -230,7 +230,7 @@ The following middleware ships with the boilerplate:
 - access.routeNeedsPermission
 - access.routeNeedsRoleOrPermission
 
-<a name="controller_middleware" />
+<a name="controller_middleware"/>
 ### Applying the Controller Middleware
 
 The controller middleware supports all of the same parameters as the route middleware, except that it is declared in the constructor of the controller you are trying to protect:
@@ -313,7 +313,7 @@ $user->can($permission);
 $user->canMultiple($permissions, $needsAll);
 ```
 
-<a name="access_route_trait"/>
+<a name="access_params_trait"/>
 ### AccessParams trait
 
 If you would like to take advantage of the methods used by Access's route/controller handler, you can `use` it:
