@@ -1,7 +1,7 @@
 <?php namespace App\Repositories\Backend\User;
 
 use App\User;
-use App\Services\Registrar;
+use App\Repositories\Frontend\Auth\AuthenticationContract;
 use App\Exceptions\GeneralException;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
 use App\Exceptions\Backend\Access\User\UserNeedsRolesException;
@@ -18,17 +18,17 @@ class EloquentUserRepository implements UserContract {
 	protected $role;
 
 	/**
-	 * @var Registrar
+	 * @var AuthenticationContract
 	 */
-	protected $registrar;
+	protected $auth;
 
 	/**
 	 * @param RoleRepositoryContract $role
-	 * @param Registrar $registrar
+	 * @param AuthenticationContract $auth
 	 */
-	public function __construct(RoleRepositoryContract $role, Registrar $registrar) {
+	public function __construct(RoleRepositoryContract $role, AuthenticationContract $auth) {
 		$this->role = $role;
-		$this->registrar = $registrar;
+		$this->auth = $auth;
 	}
 
 	/**
@@ -99,7 +99,7 @@ class EloquentUserRepository implements UserContract {
 
 			//Send confirmation email if requested
 			if (isset($input['confirmation_email']) && $user->confirmed == 0)
-				$this->registrar->resendConfirmationEmail($user->id);
+				$this->auth->resendConfirmationEmail($user->id);
 
 			return true;
 		}
