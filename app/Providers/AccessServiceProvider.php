@@ -66,6 +66,11 @@ class AccessServiceProvider extends ServiceProvider
 	 */
 	public function registerBindings() {
 		$this->app->bind(
+			'App\Repositories\Frontend\Auth\AuthenticationContract',
+			'App\Repositories\Frontend\Auth\EloquentAuthenticationRepository'
+		);
+
+		$this->app->bind(
 			'App\Repositories\Frontend\User\UserContract',
 			'App\Repositories\Frontend\User\EloquentUserRepository'
 		);
