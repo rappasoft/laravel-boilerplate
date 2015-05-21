@@ -98,13 +98,7 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 		$role->name = $input['name'];
 
 		if ($role->save()) {
-			//Remove all permissions
-			$role->detachPermissions($role->permissions);
-
-			//Attach permissions, if any
-			if (count($permissions['role_permissions']) > 0)
-				$role->attachPermissions($permissions['role_permissions']);
-
+			$role->savePermissions($permissions['role_permissions']);
 			return true;
 		}
 
