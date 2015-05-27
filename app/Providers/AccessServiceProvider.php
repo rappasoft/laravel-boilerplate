@@ -2,7 +2,7 @@
 
 use App\Services\Access\Access;
 use Illuminate\Support\ServiceProvider;
-use App\Blade\Access\AccessBladeExtender;
+use App\Services\Blade\Access\AccessBladeExtender;
 
 /**
  * Class AccessServiceProvider
@@ -65,6 +65,11 @@ class AccessServiceProvider extends ServiceProvider
 	 * Register service provider bindings
 	 */
 	public function registerBindings() {
+		$this->app->bind(
+			'App\Repositories\Frontend\Auth\AuthenticationContract',
+			'App\Repositories\Frontend\Auth\EloquentAuthenticationRepository'
+		);
+
 		$this->app->bind(
 			'App\Repositories\Frontend\User\UserContract',
 			'App\Repositories\Frontend\User\EloquentUserRepository'

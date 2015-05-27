@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers\Backend\Access;
 
-use App\Services\Registrar;
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\User\UserContract;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
@@ -8,6 +7,7 @@ use App\Repositories\Backend\Permission\PermissionRepositoryContract;
 use App\Http\Requests\Backend\Access\User\CreateUserRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
+use App\Repositories\Frontend\Auth\AuthenticationContract;
 
 /**
  * Class UserController
@@ -80,9 +80,9 @@ class UserController extends Controller {
 		$user = $this->users->findOrThrowException($id, true);
 		return view('backend.access.edit')
 			->withUser($user)
-			->withUserRoles($user->roles->lists('id'))
+			->withUserRoles($user->roles->lists('id')->all())
 			->withRoles($this->roles->getAllRoles('id', 'asc', true))
-			->withUserPermissions($user->permissions->lists('id'))
+			->withUserPermissions($user->permissions->lists('id')->all())
 			->withPermissions($this->permissions->getPermissionsNotAssociatedWithRole());
 	}
 
@@ -182,11 +182,11 @@ class UserController extends Controller {
 
 	/**
 	 * @param $user_id
-	 * @param Registrar $registrar
+	 * @param AuthenticationContract $auth
 	 * @return mixed
 	 */
-	public function resendConfirmationEmail($user_id, Registrar $registrar) {
-		$registrar->resendConfirmationEmail($user_id);
+	public function resendConfirmationEmail($user_id, AuthenticationContract $auth) {
+		$auth->resendConfirmationEmail($user_id);
 		return redirect()->back()->withFlashSuccess("A new confirmation e-mail has been sent to the address on file.");
 	}
 }

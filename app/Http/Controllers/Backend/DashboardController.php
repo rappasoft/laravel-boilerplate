@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
  * @package App\Http\Controllers\Backend
  */
 class DashboardController extends Controller {
-
 	/**
 	 * @return \Illuminate\View\View
 	 */

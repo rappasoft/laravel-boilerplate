@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers\Frontend\Auth;
 
-use App\Services\Registrar;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\Frontend\Auth\AuthenticationContract;
 use App\Http\Requests\Frontend\Access\LoginRequest;
 use App\Http\Requests\Frontend\Access\RegisterRequest;
 use App\Exceptions\GeneralException;
@@ -14,11 +14,11 @@ use App\Exceptions\GeneralException;
 class AuthController extends Controller {
 
 	/**
-	 * @param Registrar $registrar
+	 * @param AuthenticationContract $auth
 	 */
-	public function __construct(Registrar $registrar)
+	public function __construct(AuthenticationContract $auth)
 	{
-		$this->registrar = $registrar;
+		$this->auth = $auth;
 	}
 
 	/**
@@ -35,10 +35,10 @@ class AuthController extends Controller {
 	public function postRegister(RegisterRequest $request)
 	{
 		if (config('access.users.confirm_email')) {
-			$this->registrar->create($request->all());
+			$this->auth->create($request->all());
 			return redirect()->route('home')->withFlashSuccess("Your account was successfully created. We have sent you an e-mail to confirm your account.");
 		} else {
-			$this->registrar->login($this->registrar->create($request->all()));
+			$this->auth->login($this->auth->create($request->all()));
 			return redirect()->route('frontend.dashboard');
 		}
 	}
@@ -58,7 +58,7 @@ class AuthController extends Controller {
 	{
 		//Don't know why the exception handler is not catching this
 		try {
-			$this->registrar->login($request);
+			$this->auth->login($request);
 			return redirect()->intended('/dashboard');
 		} catch (GeneralException $e) {
 			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
@@ -71,7 +71,7 @@ class AuthController extends Controller {
 	 * @return mixed
 	 */
 	public function loginThirdParty(Request $request, $provider) {
-		return $this->registrar->loginThirdParty($request->all(), $provider);
+		return $this->auth->loginThirdParty($request->all(), $provider);
 	}
 
 	/**
@@ -79,7 +79,7 @@ class AuthController extends Controller {
 	 */
 	public function getLogout()
 	{
-		$this->registrar->logout();
+		$this->auth->logout();
 		return redirect()->route('home');
 	}
 
@@ -91,7 +91,7 @@ class AuthController extends Controller {
 	public function confirmAccount($token) {
 		//Don't know why the exception handler is not catching this
 		try {
-			$this->registrar->confirmAccount($token);
+			$this->auth->confirmAccount($token);
 			return redirect()->route('frontend.dashboard')->withFlashSuccess("Your account has been successfully confirmed!");
 		} catch (GeneralException $e) {
 			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
@@ -105,7 +105,7 @@ class AuthController extends Controller {
 	public function resendConfirmationEmail($user_id) {
 		//Don't know why the exception handler is not catching this
 		try {
-			$this->registrar->resendConfirmationEmail($user_id);
+			$this->auth->resendConfirmationEmail($user_id);
 			return redirect()->route('home')->withFlashSuccess("A new confirmation e-mail has been sent to the address on file.");
 		} catch (GeneralException $e) {
 			return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
