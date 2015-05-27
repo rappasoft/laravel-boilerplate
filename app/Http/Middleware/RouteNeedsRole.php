@@ -1,7 +1,7 @@
 <?php namespace App\Http\Middleware;
 
 use Closure;
-use App\Services\Access\Traits\AccessRoute;
+use App\Services\Access\Traits\AccessParams;
 
 /**
  * Class RouteNeedsRole
@@ -9,22 +9,19 @@ use App\Services\Access\Traits\AccessRoute;
  */
 class RouteNeedsRole {
 
-	use AccessRoute;
+	use AccessParams;
 
 	/**
-	 * Handle an incoming request.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \Closure  $next
-	 * @return mixed
+	 * @param $request
+	 * @param callable $next
+	 * @param null $params
+	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Symfony\Component\HttpFoundation\Response
 	 */
-	public function handle($request, Closure $next)
+	public function handle($request, Closure $next, $params = null)
 	{
-		$assets = $this->getAssets($request);
-
+		$assets = $this->getAssets($request, $params);
 		if (! access()->hasRoles($assets['roles'], $assets['needsAll']))
-			return $this->getRedirectMethodAndGo($request);
-
+			return $this->getRedirectMethodAndGo($request, $params);
 		return $next($request);
 	}
 }

@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "5.0.*",
+		"laravel/framework": "5.1.*",
         "illuminate/html" : "5.*",
         "laravel/socialite" : "~2.0",
         "stripe/stripe-php": "1.*",
@@ -14,8 +14,9 @@
         "fortawesome/font-awesome": "4.*"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "~4.0",
-		"phpspec/phpspec": "~2.1",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~4.0",
+        "phpspec/phpspec": "~2.1",
 		"laracasts/generators": "~1.1"
 	},
 	"autoload": {
@@ -50,5 +51,6 @@
 	},
 	"config": {
 		"preferred-install": "dist"
-	}
+	},
+    "minimum-stability" : "dev"
 }

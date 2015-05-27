@@ -1,6 +1,6 @@
-## Laravel 5 Boilerplate
+## Laravel 5.* Boilerplate (Currently 5.1@dev)
 
-[![Project Status](http://stillmaintained.com/rappasoft/Laravel-5-Boilerplate.png)](http://stillmaintained.com/rappasoft/Laravel-5-Boilerplate)
+[![Project Status](http://stillmaintained.com/rappasoft/Laravel-5-Boilerplate.png)](http://stillmaintained.com/rappasoft/Laravel-5-Boilerplate) [![Latest Stable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/stable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate) [![Total Downloads](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/downloads)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate) [![Latest Unstable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/unstable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate)
 
 ### Demo:
 
@@ -113,9 +113,10 @@ Password: 1234
 * [Configuration] (#configuration)
     * [Config File](#config_file)
     * [Route Middleware](#route_middleware)
+    * [Controller Middleware](#controller_middleware)
         * [Parameters](#route_middleware_params)
         * [Creating Middleware](#creating_middleware)
-        * [AccessRoute trait](#access_route_trait)
+        * [AccessParams trait](#access_params_trait)
     * [Blade Extensions](#blade_extensions)
 
 <a name="configuration"/>
@@ -229,6 +230,28 @@ The following middleware ships with the boilerplate:
 - access.routeNeedsPermission
 - access.routeNeedsRoleOrPermission
 
+<a name="controller_middleware"/>
+### Applying the Controller Middleware
+
+The controller middleware supports all of the same parameters as the route middleware, except that it is declared in the constructor of the controller you are trying to protect:
+
+For example, the ```Route::group``` example above would be this:
+
+```php
+public function __construct() {
+	$this->middleware('access.routeNeedsRole:{role:Administrator::redirect:/::with:error|You do not have access to do that.}');
+}
+```
+
+**Notes:** Because the new route middleware parameters in 5.1 don't support arrays, I made my own syntax.
+
+- It uses a single parameter encapulated in brackets `{}`
+- `role` can be single `role:Administrator` or an "array" `role:Administrator|User|Other`
+- Same for the permissions parameter: `permission:user_permission` or `permission:user_permission|other_permission`
+- The session message is in format `with:variable_name|message`
+- The parameters are separated by a double colon `::` (I did try a comma, the interpreter wasn't allowing it)
+
+
 <a name="route_middleware_params"/>
 ### Route Parameters
 
@@ -290,14 +313,16 @@ $user->can($permission);
 $user->canMultiple($permissions, $needsAll);
 ```
 
-<a name="access_route_trait"/>
-### AccessRoute trait
+<a name="access_params_trait"/>
+### AccessParams trait
 
-If you would like to take advantage of the methods used by Access's route handler, you can `use` it:
+If you would like to take advantage of the methods used by Access's route/controller handler, you can `use` it:
 
-    `use App\Services\Access\Traits\AccessRoute`
+    `use App\Services\Access\Traits\AccessParams`
 
-Which will give you methods in your middleware to grab route assets. You can then add methods to your middleware to grab assets that access doesn't grab by default and take advantage of them.
+Which will give you methods in your middleware to grab route assets or controller parameters. You can then add methods to your middleware to grab assets that access doesn't grab by default and take advantage of them.
+
+**Note:** If middleware is applied to both the controller and a route group, the controller will take precedence. 
 
 <a name="blade_extensions"/>
 ### Blade Extensions

@@ -122,7 +122,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 					$role = $this->roles->findOrThrowException($role_id, true);
 
 					//Get the roles permissions into an array
-					$role_permissions = $role->permissions->lists('id');
+					$role_permissions = $role->permissions->lists('id')->all();
 
 					if (count($role_permissions) >= 1)
 					{
@@ -190,7 +190,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 					$role = $this->roles->findOrThrowException($role_id, true);
 
 					//Get the roles permissions into an array
-					$role_permissions = $role->permissions->lists('id');
+					$role_permissions = $role->permissions->lists('id')->all();
 
 					if (count($role_permissions) >= 1)
 					{

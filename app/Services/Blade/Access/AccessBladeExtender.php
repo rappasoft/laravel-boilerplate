@@ -1,4 +1,4 @@
-<?php namespace App\Blade\Access;
+<?php namespace App\Services\Blade\Access;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\View\Compilers\BladeCompiler as Compiler;
@@ -45,7 +45,7 @@ class AccessBladeExtender
 	 */
 	public function closeRole($value, Application $app, Compiler $blade)
 	{
-		$matcher = $blade->createPlainMatcher('endrole');
+		$matcher = '/@endrole/';
 		return preg_replace($matcher, '<?php endif; ?>', $value);
 	}
 
@@ -69,7 +69,7 @@ class AccessBladeExtender
 	 */
 	public function closePermission($value, Application $app, Compiler $blade)
 	{
-		$matcher = $blade->createPlainMatcher('endpermission');
+		$matcher = '/@endpermission/';
 		return preg_replace($matcher, '<?php endif; ?>', $value);
 	}
 }
