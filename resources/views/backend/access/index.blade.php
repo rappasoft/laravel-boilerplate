@@ -65,11 +65,11 @@
     </table>
 
     <div class="pull-left">
-        {{ $users->total() }} user(s) total
+        {!! $users->total() !!} user(s) total
     </div>
 
     <div class="pull-right">
-        {{ $users->render() }}
+        {!! $users->render() !!}
     </div>
 
     <div class="clearfix"></div>
