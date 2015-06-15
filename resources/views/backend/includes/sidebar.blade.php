@@ -10,7 +10,7 @@
                   <img src="{!!asset('img/backend/user2-160x160.jpg')!!}" class="img-circle" alt="User Image" />
                 </div>
                 <div class="pull-left info">
-                  <p>Anthony Rappa</p>
+                  <p>{{ Auth::user()->name }}</p>
                   <!-- Status -->
                   <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
