@@ -10,12 +10,12 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $middleware = [
-		'Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode',
-		'Illuminate\Cookie\Middleware\EncryptCookies',
-		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
-		'Illuminate\Session\Middleware\StartSession',
-		'Illuminate\View\Middleware\ShareErrorsFromSession',
-		'App\Http\Middleware\VerifyCsrfToken',
+		\Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+		\App\Http\Middleware\EncryptCookies::class,
+		\Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
+		\Illuminate\Session\Middleware\StartSession::class,
+		\Illuminate\View\Middleware\ShareErrorsFromSession::class,
+		\App\Http\Middleware\VerifyCsrfToken::class,
 	];
 
 	/**
@@ -24,12 +24,12 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
-		'auth' => 'App\Http\Middleware\Authenticate',
-		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'guest' => 'App\Http\Middleware\RedirectIfAuthenticated',
+		'auth' => \App\Http\Middleware\Authenticate::class,
+		'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+		'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
 
-		'access.routeNeedsRole' => 'App\Http\Middleware\RouteNeedsRole',
-		'access.routeNeedsPermission' => 'App\Http\Middleware\RouteNeedsPermission',
-		'access.routeNeedsRoleOrPermission' => 'App\Http\Middleware\RouteNeedsRoleOrPermission',
+		'access.routeNeedsRole' => \App\Http\Middleware\RouteNeedsRole::class,
+		'access.routeNeedsPermission' => \App\Http\Middleware\RouteNeedsPermission::class,
+		'access.routeNeedsRoleOrPermission' => \App\Http\Middleware\RouteNeedsRoleOrPermission::class,
 	];
 }
