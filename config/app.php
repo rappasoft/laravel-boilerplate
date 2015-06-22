@@ -210,6 +210,6 @@ return [
 		'Form'		=> 'Illuminate\Html\FormFacade',
 		'HTML'		=> 'Illuminate\Html\HtmlFacade',
 		'Socialize' => 'Laravel\Socialite\Facades\Socialite',
-		'Active' => 'HieuLe\Active\Facades\Active',
+		'Active'    => 'HieuLe\Active\Facades\Active',
 	],
 ];

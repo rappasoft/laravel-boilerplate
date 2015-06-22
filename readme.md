@@ -47,6 +47,7 @@ Password: 1234
 * [Socialite Integration](https://github.com/laravel/socialite)
 * [Laracast Generators](https://github.com/laracasts/Laravel-5-Generators-Extended)
 * [Stripe](http://stripe.com) wrapper class for easy implementation
+* [Active Menu](https://github.com/letrunghieu/active)
 * Standards
     * Clean Controllers
     * Repository/Contract Implementations
