@@ -31,8 +31,8 @@
               <ul class="sidebar-menu">
                 <li class="header">General</li>
                 <!-- Optionally, you can add icons to the links -->
-                <li><a href="{!!route('backend.dashboard')!!}"><span>Dashboard</span></a></li>
-                <li><a href="{!!url('admin/access/users')!!}"><span>User Management</span></a></li>
+                <li class="{{ Active::pattern('admin/dashboard') }}"><a href="{!!route('backend.dashboard')!!}"><span>Dashboard</span></a></li>
+                <li class="{{ Active::pattern('admin/access/*') }}"><a href="{!!url('admin/access/users')!!}"><span>User Management</span></a></li>
               </ul><!-- /.sidebar-menu -->
             </section>
             <!-- /.sidebar -->
