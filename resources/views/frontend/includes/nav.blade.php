@@ -26,7 +26,7 @@
 							<ul class="dropdown-menu" role="menu">
 							    <li>{!! link_to('dashboard', 'Dashboard') !!}</li>
 							    <li>{!! link_to('auth/password/change', 'Change Password') !!}</li>
-							    @permission('view_admin_link')
+							    @permission('view_backend')
 							        {{-- This can also be @role('Administrator') instead --}}
 							        <li>{!! link_to_route('backend.dashboard', 'Administration') !!}</li>
 							    @endpermission
