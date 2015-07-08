@@ -6,8 +6,8 @@
  */
 Route::group(['namespace' => 'Frontend'], function ()
 {
-	require_once(__DIR__ . "/Routes/Frontend/Frontend.php");
-	require_once(__DIR__ . "/Routes/Frontend/Access.php");
+	require(__DIR__ . "/Routes/Frontend/Frontend.php");
+	require(__DIR__ . "/Routes/Frontend/Access.php");
 });
 
 /**
@@ -37,7 +37,7 @@ Route::group(['namespace' => 'Backend'], function ()
 		], function ()
 		{
 			Route::get('dashboard', ['as' => 'backend.dashboard', 'uses' => 'DashboardController@index']);
-			require_once(__DIR__ . "/Routes/Backend/Access.php");
+			require(__DIR__ . "/Routes/Backend/Access.php");
 		});
 	});
 });
