@@ -4,6 +4,8 @@ use App\User;
 use App\UserProvider;
 use App\Exceptions\GeneralException;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class EloquentUserRepository
@@ -162,7 +164,7 @@ class EloquentUserRepository implements UserContract {
 	public function changePassword($input) {
 		$user = $this->findOrThrowException(auth()->id());
 
-		if (\Hash::check($input['old_password'], $user->password)) {
+		if (Hash::check($input['old_password'], $user->password)) {
 			//Passwords are hashed on the model
 			$user->password = $input['password'];
 			return $user->save();
@@ -177,6 +179,7 @@ class EloquentUserRepository implements UserContract {
 	 */
 	public function confirmAccount($token) {
 		$user = User::where('confirmation_code', $token)->first();
+
 		if ($user) {
 			if ($user->confirmed == 1)
 				throw new GeneralException("Your account is already confirmed.");
@@ -201,7 +204,7 @@ class EloquentUserRepository implements UserContract {
 		if (! $user instanceof User)
 			$user = User::findOrFail($user);
 
-		return \Mail::send('emails.confirm', ['token' => $user->confirmation_code], function($message) use ($user)
+		return Mail::send('emails.confirm', ['token' => $user->confirmation_code], function($message) use ($user)
 		{
 			$message->to($user->email, $user->name)->subject(app_name().': Confirm your account!');
 		});
