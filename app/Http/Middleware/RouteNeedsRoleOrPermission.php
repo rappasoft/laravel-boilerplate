@@ -20,12 +20,16 @@ class RouteNeedsRoleOrPermission {
 	public function handle($request, Closure $next, $params = null)
 	{
 		$assets = $this->getAssets($request, $params);
-		if ($assets['needsAll'])
-			if (! access()->hasRoles($assets['roles'], true) || ! access()->canMultiple($assets['permissions'], true))
+
+		if ($assets['needsAll']) {
+			if (! access()->hasRoles($assets['roles'], true) || ! access()->canMultiple($assets['permissions'], true)) {
 				return $this->getRedirectMethodAndGo($request, $params);
-		else
-			if (! access()->hasRoles($assets['roles'], false) && ! access()->canMultiple($assets['permissions'], false))
+			}
+		} else {
+			if (! access()->hasRoles($assets['roles'], false) && ! access()->canMultiple($assets['permissions'], false)) {
 				return $this->getRedirectMethodAndGo($request, $params);
+			}
+		}
 
 		return $next($request);
 	}
