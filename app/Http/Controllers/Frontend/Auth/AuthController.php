@@ -41,7 +41,8 @@ class AuthController extends Controller {
 			$this->auth->create($request->all());
 			return redirect()->route('home')->withFlashSuccess("Your account was successfully created. We have sent you an e-mail to confirm your account.");
 		} else {
-			$this->auth->login($this->auth->create($request->all()));
+			//Use native auth login because do not need to check status when registering
+			auth()->login($this->auth->create($request->all()));
 			return redirect()->route('frontend.dashboard');
 		}
 	}
