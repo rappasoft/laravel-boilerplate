@@ -2,14 +2,6 @@
 
 [![Project Status](http://stillmaintained.com/rappasoft/Laravel-5-Boilerplate.png)](http://stillmaintained.com/rappasoft/Laravel-5-Boilerplate) [![Latest Stable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/stable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate) [![Latest Unstable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/unstable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate)
 
-### Demo:
-
-[Click here for a demo](http://l5.rappasoft.com)
-```
-Username: admin@admin.com
-Password: 1234
-```
-
 ### Features:
 
 * [Custom Access Control System](#access-control) (Authentication/Users/Roles/Permissions)
@@ -17,6 +9,7 @@ Password: 1234
     * Third party login (Github/Facebook/Twitter/Google)
     * Account Confirmation By E-mail
     * Resend Confirmation E-mail
+    * Login Throttling
     * Administrator Management
         * User Index
         * Activate/Deactivate Users
