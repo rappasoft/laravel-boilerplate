@@ -5,6 +5,7 @@ elixir(function(mix) {
         // Copy webfont files from /vendor directories to /public directory.
         .copy('vendor/fortawesome/font-awesome/fonts', 'public/fonts')
         .copy('vendor/twbs/bootstrap-sass/assets/fonts/bootstrap', 'public/fonts')
+        .copy('vendor/twbs/bootstrap/dist/js/bootstrap.min.js', 'public/js/vendor')
 
         .sass([ // Process front-end stylesheets
                 'frontend/main.scss'
