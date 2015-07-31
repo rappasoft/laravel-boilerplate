@@ -41,6 +41,7 @@
 * [Laracast Generators](https://github.com/laracasts/Laravel-5-Generators-Extended)
 * [Stripe](http://stripe.com) wrapper class for easy implementation
 * [Active Menu](https://github.com/letrunghieu/active)
+* [PHP to Javascript Transformer](https://github.com/laracasts/PHP-Vars-To-Js-Transformer) - [Notes](#javascript-notes)
 * Standards
     * Clean Controllers
     * Repository/Contract Implementations
@@ -311,6 +312,26 @@ You can add more extensions by editing app/Blade/Access/AccessBladeExtender.php
 To configure socialite, add your credentials to your .env file. The redirects must follow the convention ```http://mysite.com/auth/login/SERVICE```. Available services are ```github```, ```facebook```, ```twitter```, and ```google```. Links to each are included in ```login.blade.php```.
 
 If you are getting a ```cURL error 60``` on localhost, follow [these directions](http://stackoverflow.com/questions/28635295/laravel-socialite-testing-on-localhost-ssl-certificate-issue).
+
+<a name="javascript-notes"/>
+## PHP to Javascript Transformer
+
+The Laracast PHP to Javascript Transformer is included in this project.
+The config file is published as ```config/javascript.php```
+
+By default the javascript variables are binded to frontend.layouts.master view file, so you can bind javascript to any method in any frontend controller.
+
+If you need binding available in both frontend and backend controllers you should make a super master layout, and use the frontend/backend master layouts as children. After that you can specify that layout in the ```javascript.bind_js_vars_to_this_view``` config option.
+
+A ```javascript()``` helper has been added globally so you do not have to include any files in your controllers, you may just do:
+
+```
+javascript()->put([
+	'test' => 'it works!'
+]);
+```
+
+There is an example in ```FrontendController@index``` and is printed out in ```frontend.index```
     
 ## Troubleshooting
 
