@@ -41,7 +41,7 @@
 * [Laracast Generators](https://github.com/laracasts/Laravel-5-Generators-Extended)
 * [Stripe](http://stripe.com) wrapper class for easy implementation
 * [Active Menu](https://github.com/letrunghieu/active)
-* [PHP to Javascript Transformer](https://github.com/laracasts/PHP-Vars-To-Js-Transformer) [Notes](#javascript-notes)
+* [PHP to Javascript Transformer](https://github.com/laracasts/PHP-Vars-To-Js-Transformer) - [Notes](#javascript-notes)
 * Standards
     * Clean Controllers
     * Repository/Contract Implementations
@@ -320,9 +320,10 @@ The Laracast PHP to Javascript Transformer is included in this project.
 The config file is published as ```config/javascript.php```
 
 By default the javascript variables are binded to frontend.layouts.master view file, so you can bind javascript to any method in any frontend controller.
+
 If you need binding available in both frontend and backend controllers you should make a super master layout, and use the frontend/backend master layouts as children. After that you can specify that layout in the ```javascript.bind_js_vars_to_this_view``` config option.
 
-A javascript() helper has been added globally so you do not have to include any files in your controllers, you may just do:
+A ```javascript()``` helper has been added globally so you do not have to include any files in your controllers, you may just do:
 
 ```
 javascript()->put([
