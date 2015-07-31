@@ -159,6 +159,7 @@ return [
 		'App\Providers\MacroServiceProvider',
 		'Laravel\Socialite\SocialiteServiceProvider',
 		'HieuLe\Active\ActiveServiceProvider',
+		'Laracasts\Utilities\JavaScript\JavascriptServiceProvider'
 	],
 
 	/*
