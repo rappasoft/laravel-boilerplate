@@ -28,6 +28,7 @@
 * Form/HTML Facades Included
 * Default Forms Converted to Form Helper Methods
 * Master Layout Files with common sections
+* Laravel Elixir 3.0
 * Elixir Compilation and Auto-Prefixation of CSS in header
 * Elixir Compilation and Auto-Prefixation of JS in footer
 * Helper functions
