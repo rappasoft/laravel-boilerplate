@@ -9,32 +9,32 @@ elixir(function(mix) {
 
         .sass([ // Process front-end stylesheets
                 'frontend/main.scss'
-            ], 'resources/assets/css/frontend')
+            ], 'resources/assets/css/frontend/main.css')
         .styles([  // Combine pre-processed CSS files
                 'frontend/main.css'
-            ], 'public/css/frontend.css', 'resources/assets/css')
+            ], 'public/css/frontend.css')
         .scripts([ // Combine front-end scripts
                 'plugins.js',
                 'frontend/main.js'
-            ], 'public/js/frontend.js', 'resources/assets/js')
+            ], 'public/js/frontend.js')
 
         .sass([ // Process back-end stylesheets
             'backend/main.scss',
             'backend/skin.scss'
-        ], 'resources/assets/css/backend')
+        ], 'resources/assets/css/backend/main.css')
         .styles([ // Combine pre-processed CSS files
                 'bootstrap.css',
                 'font-awesome.css',
                 'backend/main.css',
                 'backend/skin.css'
-            ], 'public/css/backend.css', 'resources/assets/css')
+            ], 'public/css/backend.css')
         .scripts([ // Combine back-end scripts
                 'plugins.js',
                 'backend/main.js'
-            ], 'public/js/backend.js', 'resources/assets/js')
+            ], 'public/js/backend.js')
 
         // Apply version control
-        .version(["css/frontend.css", "js/frontend.js", "css/backend.css", "js/backend.js"]);
+        .version(["public/css/frontend.css", "public/js/frontend.js", "public/css/backend.css", "public/js/backend.js"]);
 });
 
 /**
@@ -49,30 +49,29 @@ elixir(function(mix) {
 
         .less([ // Process front-end stylesheets
             'frontend/main.less'
-        ], 'resources/assets/css/frontend')
+        ], 'resources/assets/css/frontend/main.less')
         .styles([  // Combine pre-processed CSS files
             'frontend/main.css'
-        ], 'public/css/frontend.css', 'resources/assets/css')
+        ], 'public/css/frontend.css')
         .scripts([ // Combine front-end scripts
             'plugins.js',
             'frontend/main.js'
-        ], 'public/js/frontend.js', 'resources/assets/js')
+        ], 'public/js/frontend.js')
 
         .less([ // Process back-end stylesheets
             'backend/AdminLTE.less',
-        ], 'resources/assets/css/backend')
+        ], 'resources/assets/css/backend/AdminLTE.less')
         .styles([ // Combine pre-processed CSS files
             'bootstrap.css',
             'font-awesome.css',
             'backend/main.css',
             'backend/skin.css'
-        ], 'public/css/backend.css', 'resources/assets/css')
+        ], 'public/css/backend.css')
         .scripts([ // Combine back-end scripts
             'plugins.js',
             'backend/main.js'
-        ], 'public/js/backend.js', 'resources/assets/js')
+        ], 'public/js/backend.js')
 
         // Apply version control
-        .version(["css/frontend.css", "js/frontend.js", "css/backend.css", "js/backend.js"]);
-});
-*/
+        .version(["public/css/frontend.css", "public/js/frontend.js", "public/css/backend.css", "public/js/backend.js"]);
+});*/
