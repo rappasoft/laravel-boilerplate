@@ -15,17 +15,17 @@ return [
 	*/
 
 	'mailgun' => [
-		'domain' => '',
-		'secret' => '',
+		'domain' => env('MAILGUN_DOMAIN'),
+		'secret' => env('MAILGUN_SECRET'),
 	],
 
 	'mandrill' => [
-		'secret' => '',
+		'secret' => env('MANDRILL_SECRET'),
 	],
 
 	'ses' => [
-		'key'	 => '',
-		'secret' => '',
+		'key'    => env('SES_KEY'),
+		'secret' => env('SES_SECRET'),
 		'region' => 'us-east-1',
 	],
 
