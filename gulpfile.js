@@ -49,7 +49,7 @@ elixir(function(mix) {
 
         .less([ // Process front-end stylesheets
             'frontend/main.less'
-        ], 'resources/assets/css/frontend/main.less')
+        ], 'resources/assets/css/frontend/main.css')
         .styles([  // Combine pre-processed CSS files
             'frontend/main.css'
         ], 'public/css/frontend.css')
