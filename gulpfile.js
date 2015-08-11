@@ -60,11 +60,11 @@ elixir(function(mix) {
 
         .less([ // Process back-end stylesheets
             'backend/AdminLTE.less',
-        ], 'resources/assets/css/backend/AdminLTE.less')
+        ], 'resources/assets/css/backend/AdminLTE.css')
         .styles([ // Combine pre-processed CSS files
             'bootstrap.css',
             'font-awesome.css',
-            'backend/main.css',
+            'backend/AdminLTE.css',
             'backend/skin.css'
         ], 'public/css/backend.css')
         .scripts([ // Combine back-end scripts
