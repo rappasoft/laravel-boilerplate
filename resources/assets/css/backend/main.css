@@ -3036,61 +3036,51 @@ table.text-center, table.text-center td, table.text-center th {
 
 .bg-teal-gradient {
   background: #39cccc !important;
-  background: -o-linear-gradient(#7adddd, #39cccc) !important;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7adddd', endColorstr='#39cccc', GradientType=0) !important;
   color: #fff; }
 
 .bg-light-blue-gradient {
   background: #3c8dbc !important;
-  background: -o-linear-gradient(#67a8ce, #3c8dbc) !important;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#67a8ce', endColorstr='#3c8dbc', GradientType=0) !important;
   color: #fff; }
 
 .bg-blue-gradient {
   background: #0073b7 !important;
-  background: -o-linear-gradient(#0089db, #0073b7) !important;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0089db', endColorstr='#0073b7', GradientType=0) !important;
   color: #fff; }
 
 .bg-aqua-gradient {
   background: #00c0ef !important;
-  background: -o-linear-gradient(#14d1ff, #00c0ef) !important;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#14d1ff', endColorstr='#00c0ef', GradientType=0) !important;
   color: #fff; }
 
 .bg-yellow-gradient {
   background: #f39c12 !important;
-  background: -o-linear-gradient(#f7bc60, #f39c12) !important;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7bc60', endColorstr='#f39c12', GradientType=0) !important;
   color: #fff; }
 
 .bg-purple-gradient {
   background: #605ca8 !important;
-  background: -o-linear-gradient(#9491c4, #605ca8) !important;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9491c4', endColorstr='#605ca8', GradientType=0) !important;
   color: #fff; }
 
 .bg-green-gradient {
   background: #00a65a !important;
-  background: -o-linear-gradient(#00ca6d, #00a65a) !important;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ca6d', endColorstr='#00a65a', GradientType=0) !important;
   color: #fff; }
 
 .bg-red-gradient {
   background: #dd4b39 !important;
-  background: -o-linear-gradient(#e47365, #dd4b39) !important;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e47365', endColorstr='#dd4b39', GradientType=0) !important;
   color: #fff; }
 
 .bg-black-gradient {
   background: #111 !important;
-  background: -o-linear-gradient(#2b2b2b, #111) !important;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2b2b2b', endColorstr='#111111', GradientType=0) !important;
   color: #fff; }
 
 .bg-maroon-gradient {
   background: #d81b60 !important;
-  background: -o-linear-gradient(#e73f7c, #d81b60) !important;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e73f7c', endColorstr='#d81b60', GradientType=0) !important;
   color: #fff; }
 
