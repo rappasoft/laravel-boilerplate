@@ -25,8 +25,7 @@ elixir(function(mix) {
         .styles([ // Combine pre-processed CSS files
                 'bootstrap.css',
                 'font-awesome.css',
-                'backend/main.css',
-                'backend/skin.css'
+                'backend/main.css'
             ], 'public/css/backend.css')
         .scripts([ // Combine back-end scripts
                 'plugins.js',
@@ -59,13 +58,12 @@ elixir(function(mix) {
         ], 'public/js/frontend.js')
 
         .less([ // Process back-end stylesheets
-            'backend/AdminLTE.less',
-        ], 'resources/assets/css/backend/AdminLTE.less')
+            'backend/AdminLTE.less'
+        ], 'resources/assets/css/backend/main.css')
         .styles([ // Combine pre-processed CSS files
             'bootstrap.css',
             'font-awesome.css',
-            'backend/main.css',
-            'backend/skin.css'
+            'backend/main.css'
         ], 'public/css/backend.css')
         .scripts([ // Combine back-end scripts
             'plugins.js',
