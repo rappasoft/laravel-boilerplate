@@ -14,7 +14,7 @@ class SetupAccessTables extends Migration {
 	public function up()
 	{
 		Schema::table(config('auth.table'), function ($table) {
-			$table->boolean('status')->after('password')->default(true);
+			$table->tinyInteger('status')->after('password')->default(1);
 		});
 
 		Schema::create(config('access.roles_table'), function ($table) {

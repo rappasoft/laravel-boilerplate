@@ -7,13 +7,15 @@ class AccessTableSeeder extends Seeder {
 
 	public function run() {
 
-		DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+		if(env('DB_DRIVER')=='mysql')
+			DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
 		$this->call(UserTableSeeder::class);
 		$this->call(RoleTableSeeder::class);
 		$this->call(UserRoleSeeder::class);
 		$this->call(PermissionTableSeeder::class);
 
-		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+		if(env('DB_DRIVER')=='mysql')
+			DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 	}
 }
