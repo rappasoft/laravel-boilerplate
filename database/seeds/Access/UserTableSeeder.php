@@ -8,11 +8,15 @@ class UserTableSeeder extends Seeder {
 
 	public function run() {
 
-		DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+		if(env('DB_DRIVER') == 'mysql')
+			DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+		if(env('DB_DRIVER') == 'mysql')
+			DB::table(config('auth.table'))->truncate();
+		else //For PostgreSQL or anything else
+			DB::statement("TRUNCATE TABLE ".config('auth.table')." CASCADE");
 
 		//Add the master administrator, user id of 1
-		DB::table(config('auth.table'))->truncate();
-
 		$users = [
 			[
 				'name' => 'Admin Istrator',
@@ -36,6 +40,7 @@ class UserTableSeeder extends Seeder {
 
 		DB::table(config('auth.table'))->insert($users);
 
-		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+		if(env('DB_DRIVER') == 'mysql')
+			DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 	}
 }

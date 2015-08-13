@@ -8,9 +8,13 @@ class RoleTableSeeder extends Seeder {
 
 	public function run() {
 
-		DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+		if(env('DB_DRIVER') == 'mysql')
+			DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
-		DB::table(config('access.roles_table'))->truncate();
+		if(env('DB_DRIVER') == 'mysql')
+			DB::table(config('access.roles_table'))->truncate();
+		else //For PostgreSQL or anything else
+			DB::statement("TRUNCATE TABLE ".config('access.roles_table')." CASCADE");
 
 		//Create admin role, id of 1
 		$role_model = config('access.role');
@@ -28,6 +32,7 @@ class RoleTableSeeder extends Seeder {
 		$user->updated_at = Carbon::now();
 		$user->save();
 
-		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+		if(env('DB_DRIVER') == 'mysql')
+			DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 	}
 }
