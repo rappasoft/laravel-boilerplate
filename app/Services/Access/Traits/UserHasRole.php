@@ -30,18 +30,23 @@ trait UserHasRole {
 	}
 
 	/**
-	 * Checks if the user has a Role by its name.
+	 * Checks if the user has a Role by its name or id.
 	 *
-	 * @param string $name Role name.
+	 * @param string $nameOrId Role name or id.
 	 *
 	 * @return bool
 	 */
-	public function hasRole($name)
+	public function hasRole($nameOrId)
 	{
 		foreach ($this->roles as $role) {
-			if ($role->name == $name) {
+			//First check to see if it's an ID
+			if (is_numeric($nameOrId))
+				if ($role->id == $nameOrId)
+					return true;
+
+			//Otherwise check by name
+			if ($role->name == $nameOrId)
 				return true;
-			}
 		}
 
 		return false;
@@ -80,29 +85,50 @@ trait UserHasRole {
 	}
 
 	/**
-	 * Check if user has a permission by its name.
+	 * Check if user has a permission by its name or id.
 	 *
-	 * @param string $permission Permission string.
+	 * @param string $nameorId Permission name or id.
 	 *
 	 * @return bool
 	 */
-	public function can($permission)
+	public function can($nameorId)
 	{
 		foreach ($this->roles as $role) {
 			// Validate against the Permission table
 			foreach ($role->permissions as $perm) {
-				if ($perm->name == $permission)
+
+				//First check to see if it's an ID
+				if (is_numeric($nameorId))
+					if ($perm->id == $nameorId)
+						return true;
+
+				//Otherwise check by name
+				if ($perm->name == $nameorId)
 					return true;
 			}
 		}
 
 		//Check permissions directly tied to user
 		foreach ($this->permissions as $perm) {
-			if ($perm->name == $permission)
+			//First check to see if it's an ID
+			if (is_numeric($nameorId))
+				if ($perm->id == $nameorId)
+					return true;
+
+			//Otherwise check by name
+			if ($perm->name == $nameorId)
 				return true;
 		}
 
 		return false;
+	}
+
+	/**
+	 * @param $nameOrId
+	 * @return bool
+	 */
+	public function hasPermission($nameOrId) {
+		return $this->can($nameOrId);
 	}
 
 	/**
@@ -135,6 +161,15 @@ trait UserHasRole {
 		}
 
 		return $hasPermissions > 0;
+	}
+
+	/**
+	 * @param $permissions
+	 * @param bool $needsAll
+	 * @return bool
+	 */
+	public function hasPermissions($permissions, $needsAll = false) {
+		return $this->canMultiple($permissions, $needsAll);
 	}
 
 	/**

@@ -37,7 +37,7 @@ class Access
 	}
 
 	/**
-	 * Checks if the current user has a Role by its name
+	 * Checks if the current user has a Role by its name or id
 	 *
 	 * @param string $role Role name.
 	 *
@@ -74,9 +74,9 @@ class Access
 	}
 
 	/**
-	 * Check if the current user has a permission by its name
+	 * Check if the current user has a permission by its name or id
 	 *
-	 * @param string $permission Permission string.
+	 * @param string $permission Permission name or id.
 	 *
 	 * @return bool
 	 */
@@ -90,12 +90,21 @@ class Access
 	}
 
 	/**
+	 * @param $permission
+	 * @return bool
+	 */
+	public function hasPermission($permission)
+	{
+		return $this->can($permission);
+	}
+
+	/**
 	 * Check an array of permissions and whether or not all are required to continue
 	 * @param $permissions
 	 * @param $needsAll
 	 * @return bool
 	 */
-	public function canMultiple($permissions, $needsAll) {
+	public function canMultiple($permissions, $needsAll = false) {
 		if ($user = $this->user()) {
 			//If not an array, make a one item array
 			if (!is_array($permissions))
@@ -107,5 +116,15 @@ class Access
 		}
 
 		return false;
+	}
+
+	/**
+	 * @param $permissions
+	 * @param $needsAll
+	 * @return bool
+	 */
+	public function hasPermissions($permissions, $needsAll = false)
+	{
+		return $this->canMultiple($permissions, $needsAll);
 	}
 }
