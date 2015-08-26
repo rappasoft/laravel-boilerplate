@@ -244,6 +244,7 @@ Access::hasRoles($roles, $needsAll);
 
 /**
 	 * Check if user has a permission by its name.
+	 * This also has a wrapper function called hasPermission which takes the same arguments
 	 * @param string $permission.
 	 * @return bool
 */
@@ -251,6 +252,7 @@ Access::can($permission);
 
 /**
 	 * Check an array of permissions and whether or not all are required to continue
+	 * This also has a wrapper function called hasPermissions which takes the same arguments
 	 * @param array $permissions
 	 * @param boolean $needsAll
 	 * @return bool
@@ -264,6 +266,8 @@ $user->hasRole($role);
 $user->hasRoles($roles, $needsAll);
 $user->can($permission);
 $user->canMultiple($permissions, $needsAll);
+$user->hasPermission($permission); //Wrapper function for can()
+$user->hasPermissions($permissions, $needsAll); //Wrapper function for canMultiple()
 ```
 
 <a name="access_params_trait"/>
