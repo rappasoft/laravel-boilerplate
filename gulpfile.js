@@ -3,8 +3,8 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     mix
         // Copy webfont files from /vendor directories to /public directory.
-        .copy('vendor/fortawesome/font-awesome/fonts', 'public/fonts')
-        .copy('vendor/twbs/bootstrap-sass/assets/fonts/bootstrap', 'public/fonts')
+        .copy('vendor/fortawesome/font-awesome/fonts', 'public/build/fonts/font-awesome')
+        .copy('vendor/twbs/bootstrap-sass/assets/fonts/bootstrap', 'public/build/fonts/bootstrap')
         .copy('vendor/twbs/bootstrap/dist/js/bootstrap.min.js', 'public/js/vendor')
 
         .sass([ // Process front-end stylesheets
@@ -42,8 +42,8 @@ elixir(function(mix) {
 /*elixir(function(mix) {
     mix
         // Copy webfont files from /vendor directories to /public directory.
-        .copy('vendor/fortawesome/font-awesome/fonts', 'public/fonts')
-        .copy('vendor/twbs/bootstrap/fonts', 'public/fonts')
+        .copy('vendor/fortawesome/font-awesome/fonts', 'public/build/fonts/bootstrap')
+        .copy('vendor/twbs/bootstrap/fonts', 'public/build/fonts/bootstrap')
         .copy('vendor/twbs/bootstrap/dist/js/bootstrap.min.js', 'public/js/vendor')
 
         .less([ // Process front-end stylesheets
