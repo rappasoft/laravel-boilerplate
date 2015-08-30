@@ -1,3 +1,6 @@
+@import '../../../../vendor/twbs/bootstrap/less/bootstrap';
+@import '../../../../vendor/fortawesome/font-awesome/less/font-awesome';
+
 /*!
  *   AdminLTE v2.0.5
  *   Author: Almsaeed Studio
@@ -6,14 +9,14 @@
  *           Please visit http://opensource.org/licenses/MIT for more information
 !*/
 
-//google fonts
-@import url(//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
-
 //Bootstrap Variables & Mixins
 //The core bootstrap code have not been modified. These files
 //are included only for refrence.
 @import '../../../../vendor/twbs/bootstrap/less/mixins';
 @import '../../../../vendor/twbs/bootstrap/less/variables';
+
+// Any Bootstrap or FontAwesome-specific variables added here will overwrite the defaults.
+@import 'variable-overrides';
 
 //MISC
 //----
