@@ -23,8 +23,6 @@ elixir(function(mix) {
             'backend/skin.scss'
         ], 'resources/assets/css/backend/main.css')
         .styles([ // Combine pre-processed CSS files
-                'bootstrap.css',
-                'font-awesome.css',
                 'backend/main.css'
             ], 'public/css/backend.css')
         .scripts([ // Combine back-end scripts
@@ -42,7 +40,7 @@ elixir(function(mix) {
 /*elixir(function(mix) {
     mix
         // Copy webfont files from /vendor directories to /public directory.
-        .copy('vendor/fortawesome/font-awesome/fonts', 'public/build/fonts/bootstrap')
+        .copy('vendor/fortawesome/font-awesome/fonts', 'public/build/fonts/font-awesome')
         .copy('vendor/twbs/bootstrap/fonts', 'public/build/fonts/bootstrap')
         .copy('vendor/twbs/bootstrap/dist/js/bootstrap.min.js', 'public/js/vendor')
 
@@ -61,8 +59,6 @@ elixir(function(mix) {
             'backend/AdminLTE.less'
         ], 'resources/assets/css/backend/main.css')
         .styles([ // Combine pre-processed CSS files
-            'bootstrap.css',
-            'font-awesome.css',
             'backend/main.css'
         ], 'public/css/backend.css')
         .scripts([ // Combine back-end scripts
