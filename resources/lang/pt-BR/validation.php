@@ -1,5 +1,7 @@
 <?php
+
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Validation Language Lines
@@ -7,9 +9,10 @@ return [
     |
     | The following language lines contain the default error messages used by
     | the validator class. Some of these rules have multiple versions such
-    | such as the size rules. Feel free to tweak each of these messages.
+    | as the size rules. Feel free to tweak each of these messages here.
     |
     */
+
     "accepted"         => "O campo :attribute deve ser aceito.",
     "active_url"       => "O campo :attribute não contém um URL válido.",
     "after"            => "O campo :attribute deverá conter uma data posterior a :date.",
@@ -38,7 +41,7 @@ return [
     "in"               => "O campo :attribute não contém um valor válido.",
     "integer"          => "O campo :attribute deverá conter um número inteiro.",
     "ip"               => "O campo :attribute deverá conter um IP válido.",
-    'json'             => 'O campo :attribute deverá conter uma string JSON válida.',
+    "json"             => "O campo :attribute deverá conter uma string JSON válida.",
     "max"              => [
         "numeric" => "O campo :attribute não deverá conter um valor superior a :max.",
         "file"    => "O campo :attribute não deverá ter um tamanho superior a :max kilobytes.",
@@ -72,6 +75,7 @@ return [
     "timezone"         => "O campo :attribute deverá ter um fuso horário válido.",
     "unique"           => "O valor indicado para o campo :attribute já se encontra utilizado.",
     "url"              => "O formato do URL indicado para o campo :attribute é inválido.",
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -82,11 +86,13 @@ return [
     | specify a specific custom language line for a given attribute rule.
     |
     */
+
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
     ],
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes
@@ -97,5 +103,18 @@ return [
     | of "email". This simply helps us make messages a little cleaner.
     |
     */
-    'attributes' => [],
+
+    'attributes' => [
+        'name' => 'Nome',
+        'email' => 'Endereço de e-mail',
+        'password' => 'Senha',
+        'password_confirmation' => 'Confirme sua senha',
+        'old_password' => 'Senha antiga',
+        'new_password' => 'Nova senha',
+        'new_password_confirmation' => 'Confirme sua nova senha',
+        'created_at' => 'Criado em',
+        'last_updated' => 'Atualizado em',
+        'actions' => 'Ações',
+    ],
+
 ];

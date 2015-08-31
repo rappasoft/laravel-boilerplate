@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Page Not Found</title>
+    <title>{{ trans('strings.page_not_found') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
 
@@ -53,8 +53,8 @@
     </style>
 </head>
 <body>
-    <h1>Page Not Found</h1>
-    <p>Sorry, but the page you were trying to view does not exist.</p>
+    <h1>{{ trans('strings.page_not_found') }}</h1>
+    <p>{{ trans('strings.sorry_page_you_were_trying') }}</p>
 </body>
 </html>
 <!-- IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx -->

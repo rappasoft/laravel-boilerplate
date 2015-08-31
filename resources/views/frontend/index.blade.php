@@ -6,10 +6,10 @@
 		<div class="col-md-10 col-md-offset-1">
 
 			<div class="panel panel-default">
-				<div class="panel-heading"><i class="fa fa-home"></i> Home</div>
+				<div class="panel-heading"><i class="fa fa-home"></i> {{ trans('navs.home') }}</div>
 
 				<div class="panel-body">
-					Welcome to {{app_name()}}
+					{{ trans('strings.welcome_to', ['place' => app_name()]) }}
 				</div>
 			</div><!-- panel -->
 
@@ -19,10 +19,10 @@
 		    <div class="col-md-10 col-md-offset-1">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> Role Based - Using Blade Extensions</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.based_on.role') . trans('strings.using_blade_extensions') }}</div>
 
                     <div class="panel-body">
-                        Test 1: You can see this because you have the role of 'Administrator'!
+                        {{ trans('strings.test') . ' 1: ' . trans('strings.you_can_see_because', ['role' => trans('roles.administrator')]) }}
                     </div>
                 </div><!-- panel -->
 
@@ -33,10 +33,10 @@
 		    <div class="col-md-10 col-md-offset-1">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> Role Based - Using Access Helper with Role Name</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.based_on.role') . trans('strings.using_access_helper.role_name') }}</div>
 
                     <div class="panel-body">
-                        Test 2: You can see this because you have the role of 'Administrator'!
+                        {{ trans('strings.test') . ' 2: ' . trans('strings.you_can_see_because', ['role' => trans('roles.administrator')]) }}
                     </div>
                 </div><!-- panel -->
 
@@ -47,10 +47,10 @@
             <div class="col-md-10 col-md-offset-1">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> Role Based - Using Access Helper with Role ID</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.based_on.role') . trans('strings.using_access_helper.role_id') }}</div>
 
                     <div class="panel-body">
-                        Test 3: You can see this because you have the role of 'Administrator'!
+                        {{ trans('strings.test') . ' 3: ' . trans('strings.you_can_see_because', ['role' => trans('roles.administrator')]) }}
                     </div>
                 </div><!-- panel -->
 
@@ -61,10 +61,10 @@
             <div class="col-md-10 col-md-offset-1">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> Role Based - Using Access Helper with Array of Role Names or ID's where the user does not have to possess all.</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.based_on.role') . trans('strings.using_access_helper.array_roles_not') }}</div>
 
                     <div class="panel-body">
-                        Test 4: You can see this because you have the role of 'Administrator'!
+                        {{ trans('strings.test') . ' 4: ' . trans('strings.you_can_see_because', ['role' => trans('roles.administrator')]) }}
                     </div>
                 </div><!-- panel -->
 
@@ -76,10 +76,10 @@
             <div class="col-md-10 col-md-offset-1">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> Role Based - Using Access Helper with Array of Role Names or ID's where the user does have to possess all.</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.based_on.role') . trans('strings.using_access_helper.array_roles') }}</div>
 
                     <div class="panel-body">
-                        You can see this because you have the role of 'Administrator'!
+                        {{ trans('strings.you_can_see_because', ['role' => trans('roles.administrator')]) }}
                     </div>
                 </div><!-- panel -->
 
@@ -90,10 +90,10 @@
             <div class="col-md-10 col-md-offset-1">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> Permission Based - Using Access Helper with Permission Name</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.based_on.permission') . trans('strings.using_access_helper.permission_name') }}</div>
 
                     <div class="panel-body">
-                        Test 5: You can see this because you have the permission of 'view_backend'!
+                        {{ trans('strings.test') . ' 5: ' . trans('strings.you_can_see_because_permission', ['permission' => 'view_backend']) }}
                     </div>
                 </div><!-- panel -->
 
@@ -104,10 +104,10 @@
             <div class="col-md-10 col-md-offset-1">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> Permission Based - Using Access Helper with Permission ID</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.based_on.permission') . trans('strings.using_access_helper.permission_id') }}</div>
 
                     <div class="panel-body">
-                        Test 6: You can see this because you have the permission of 'view_backend'!
+                        {{ trans('strings.test') . ' 6: ' . trans('strings.you_can_see_because_permission', ['permission' => 'view_backend']) }}
                     </div>
                 </div><!-- panel -->
 
@@ -118,10 +118,10 @@
             <div class="col-md-10 col-md-offset-1">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> Permission Based - Using Access Helper with Array of Permission Names or ID's where the user does not have to possess all.</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.based_on.permission') . trans('strings.using_access_helper.array_permissions_not') }}</div>
 
                     <div class="panel-body">
-                        Test 7: You can see this because you have the permission of 'view_backend'!
+                        {{ trans('strings.test') . ' 7: ' . trans('strings.you_can_see_because_permission', ['permission' => 'view_backend']) }}
                     </div>
                 </div><!-- panel -->
 
@@ -133,10 +133,10 @@
             <div class="col-md-10 col-md-offset-1">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> Permission Based - Using Access Helper with Array of Permission Names or ID's where the user does have to possess all.</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.based_on.permission') . trans('strings.using_access_helper.array_permissions') }}</div>
 
                     <div class="panel-body">
-                        You can see this because you have the permission of 'view_backend'!
+                        {{ trans('strings.you_can_see_because_permission', ['permission' => 'view_backend']) }}
                     </div>
                 </div><!-- panel -->
 
@@ -146,10 +146,10 @@
         <div class="col-md-10 col-md-offset-1">
 
             <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-home"></i> Javascript Injected from a Controller</div>
+                <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.js_injected_from_controller') }}</div>
 
                 <div class="panel-body">
-                    Test 8: View console, you should see 'it works!' which is coming from FrontendController@index
+                    {{ trans('strings.test') . ' 8: ' . trans('strings.view_console_it_works') }}
                 </div>
             </div><!-- panel -->
 
@@ -158,7 +158,7 @@
         <div class="col-md-10 col-md-offset-1">
 
             <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-home"></i> Bootstrap Glyphicon Test</div>
+                <div class="panel-heading"><i class="fa fa-home"></i> Bootstrap Glyphicon {{ trans('strings.test') }}</div>
 
                 <div class="panel-body">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -173,7 +173,7 @@
         <div class="col-md-10 col-md-offset-1">
 
             <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-home"></i> Font Awesome Test</div>
+                <div class="panel-heading"><i class="fa fa-home"></i> Font Awesome {{ trans('strings.test') }}</div>
 
                 <div class="panel-body">
                     <i class="fa fa-home"></i>
