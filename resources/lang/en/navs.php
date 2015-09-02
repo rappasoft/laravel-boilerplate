@@ -22,5 +22,6 @@ return [
     'logout' => 'Logout',
     'macros' => 'Macros',
     'register' => 'Register',
+    'button' => 'Button',
 
 ];

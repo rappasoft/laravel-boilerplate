@@ -1,18 +1,18 @@
 @extends ('backend.layouts.master')
 
-@section ('title', 'Role Management')
+@section ('title', trans('menus.role_management'))
 
 @section('page-header')
     <h1>
-        User Management
-        <small>Role Management</small>
+        {{ trans('menus.user_management') }}
+        <small>{{ trans('menus.role_management') }}</small>
     </h1>
 @endsection
 
 @section ('breadcrumbs')
-    <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-    <li>{!! link_to_route('admin.access.users.index', 'User Management') !!}</li>
-    <li>{!! link_to_route('admin.access.roles.index', 'Role Management') !!}</li>
+    <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> {{ trans('menus.dashboard') }}</a></li>
+    <li>{!! link_to_route('admin.access.users.index', trans('menus.user_management')) !!}</li>
+    <li class="active">{!! link_to_route('admin.access.roles.index', trans('menus.role_management')) !!}</li>
 @stop
 
 @section('content')
@@ -21,10 +21,10 @@
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr>
-            <th>Role</th>
-            <th>Permissions</th>
-            <th># Users</th>
-            <th>Actions</th>
+            <th>{{ trans('crud.roles.role') }}</th>
+            <th>{{ trans('crud.roles.permissions') }}</th>
+            <th>{{ trans('crud.roles.number_of_users') }}</th>
+            <th>{{ trans('crud.actions') }}</th>
         </tr>
         </thead>
         <tbody>
@@ -48,7 +48,7 @@
     </table>
 
     <div class="pull-left">
-        {{ $roles->total() }} roles(s) total
+        {{ $roles->total() }} {{ trans('crud.roles.total') }}
     </div>
 
     <div class="pull-right">

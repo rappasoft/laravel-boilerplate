@@ -115,6 +115,16 @@ return [
         'created_at' => 'Criado em',
         'last_updated' => 'Atualizado em',
         'actions' => 'Ações',
+        'active' => 'Ativo',
+        'confirmed' => 'Confirmado',
+        'send_confirmation_email' => 'Enviar E-mail de Confirmação',
+        'associated_roles' => 'Papéis Associados',
+        'other_permissions' => 'Outras Permissões',
+        'role_name' => 'Nome do Papel',
+        'associated_permissions' => 'Permissões Associadas',
+        'permission_name' => 'Nome da Permissão',
+        'display_name' => 'Nome de Apresentação',
+        'system_permission' => 'Permissão de sistema?',
     ],
 
 ];

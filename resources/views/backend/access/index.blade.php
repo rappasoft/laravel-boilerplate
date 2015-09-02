@@ -1,17 +1,17 @@
 @extends ('backend.layouts.master')
 
-@section ('title', 'User Management')
+@section ('title', trans('menus.user_management'))
 
 @section('page-header')
     <h1>
-        User Management
-        <small>Active Users</small>
+        {{ trans('menus.user_management') }}
+        <small>{{ trans('menus.active_users') }}</small>
     </h1>
 @endsection
 
 @section ('breadcrumbs')
-    <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-    <li class="active">{!! link_to_route('admin.access.users.index', 'User Management') !!}</li>
+    <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> {{ trans('menus.dashboard') }}</a></li>
+    <li class="active">{!! link_to_route('admin.access.users.index', trans('menus.user_management')) !!}</li>
 @stop
 
 @section('content')
@@ -20,15 +20,15 @@
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>E-mail</th>
-            <th>Confirmed</th>
-            <th>Roles</th>
-            <th>Other Permissions</th>
-            <th class="visible-lg">Created</th>
-            <th class="visible-lg">Last Updated</th>
-            <th>Actions</th>
+            <th>{{ trans('crud.users.id') }}</th>
+            <th>{{ trans('crud.users.name') }}</th>
+            <th>{{ trans('crud.users.email') }}</th>
+            <th>{{ trans('crud.users.confirmed') }}</th>
+            <th>{{ trans('crud.users.roles') }}</th>
+            <th>{{ trans('crud.users.other_permissions') }}</th>
+            <th class="visible-lg">{{ trans('crud.users.created') }}</th>
+            <th class="visible-lg">{{ trans('crud.users.last_updated') }}</th>
+            <th>{{ trans('crud.actions') }}</th>
         </tr>
         </thead>
         <tbody>
@@ -65,7 +65,7 @@
     </table>
 
     <div class="pull-left">
-        {!! $users->total() !!} user(s) total
+        {!! $users->total() !!} {{ trans('crud.users.total') }}
     </div>
 
     <div class="pull-right">

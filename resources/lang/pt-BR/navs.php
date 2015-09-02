@@ -22,5 +22,6 @@ return [
     'logout' => 'Sair',
     'macros' => 'Macros',
     'register' => 'Registre-se',
+    'button' => 'Botão',
 
 ];
