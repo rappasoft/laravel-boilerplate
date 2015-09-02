@@ -62,4 +62,4 @@ return [
     'delete_button' => 'Deletar',
     'edit_button' => 'Editar',
 
-);
+];
