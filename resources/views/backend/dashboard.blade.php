@@ -21,7 +21,7 @@
           </div>
         </div><!-- /.box-header -->
         <div class="box-body">
-            @include(App::getLocale() . '.welcome')
+            @include('backend.lang.' . app()->getLocale() . '.welcome')
         </div><!-- /.box-body -->
     </div><!--box box-success-->
 @endsection
