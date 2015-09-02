@@ -49,6 +49,7 @@
     * Request Classes
     * Events/Handlers
     * Entire application split between frontend/backend
+    * Localization Throughout
 
 ### Installation:
 

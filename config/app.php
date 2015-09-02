@@ -151,7 +151,6 @@ return [
 		 */
 		'App\Providers\AccessServiceProvider',
 		'App\Providers\AppServiceProvider',
-		//'App\Providers\AuthServiceProvider',
 		'App\Providers\BillingServiceProvider',
 		'App\Providers\BusServiceProvider',
 		'App\Providers\ConfigServiceProvider',
