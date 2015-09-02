@@ -6,7 +6,7 @@
 
 			<div class="panel panel-default">
 
-				<div class="panel-heading">Reset Password</div>
+				<div class="panel-heading">{{ trans('labels.reset_password_box_title') }}</div>
 				<div class="panel-body">
 
 					{!! Form::open(['to' => 'password/reset', 'class' => 'form-horizontal', 'role' => 'form']) !!}
@@ -14,21 +14,21 @@
 						<input type="hidden" name="token" value="{{ $token }}">
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">E-mail Address</label>
+							{!! Form::label('email', trans('validation.attributes.email'), ['class' => 'col-md-4 control-label']) !!}
 							<div class="col-md-6">
 								{!! Form::input('email', 'email', old('email'), ['class' => 'form-control']) !!}
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
+							{!! Form::label('password', trans('validation.attributes.password'), ['class' => 'col-md-4 control-label']) !!}
 							<div class="col-md-6">
 								{!! Form::input('password', 'password', null, ['class' => 'form-control']) !!}
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
+							{!! Form::label('password_confirmation', trans('validation.attributes.password_confirmation'), ['class' => 'col-md-4 control-label']) !!}
 							<div class="col-md-6">
 								{!! Form::input('password', 'password_confirmation', null, ['class' => 'form-control']) !!}
 							</div>
@@ -36,7 +36,7 @@
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								{!! Form::submit('Reset Password', ['class' => 'btn btn-primary']) !!}
+								{!! Form::submit(trans('labels.reset_password_button'), ['class' => 'btn btn-primary']) !!}
 							</div>
 						</div>
 

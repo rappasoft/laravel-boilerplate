@@ -70,6 +70,6 @@ class PasswordController extends Controller {
 	 */
 	public function postChangePassword(ChangePasswordRequest $request) {
 		$this->user->changePassword($request->all());
-		return redirect()->route('frontend.dashboard')->withFlashSuccess("Password successfully changed");
+		return redirect()->route('frontend.dashboard')->withFlashSuccess(trans("strings.password_successfully_changed"));
 	}
 }

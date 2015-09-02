@@ -1,6 +1,6 @@
 @extends ('backend.layouts.master')
 
-@section ('title', 'Permission Management | Create Permission')
+@section ('title', trans('menus.permission_management') . ' | ' . trans('menus.create_permission'))
 
 @section ('before-styles-end')
     {!! HTML::style('css/plugin/jquery.onoff.css') !!}
@@ -8,16 +8,16 @@
 
 @section('page-header')
     <h1>
-        User Management
-        <small>Create Permission</small>
+        {{ trans('menus.user_management') }}
+        <small>{{ trans('menus.create_permission') }}</small>
     </h1>
 @endsection
 
 @section ('breadcrumbs')
-    <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-    <li>{!! link_to_route('admin.access.users.index', 'User Management') !!}</li>
-    <li>{!! link_to_route('admin.access.roles.permissions.index', 'Permission Management') !!}</li>
-    <li>{!! link_to_route('admin.access.roles.permissions.create', 'Create Permission') !!}</li>
+    <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> {{ trans('menus.dashboard') }}</a></li>
+    <li>{!! link_to_route('admin.access.users.index', trans('menus.user_management')) !!}</li>
+    <li>{!! link_to_route('admin.access.roles.permissions.index', trans('menus.permission_management')) !!}</li>
+    <li class="active">{!! link_to_route('admin.access.roles.permissions.create', trans('menus.create_permission')) !!}</li>
 @stop
 
 @section('content')
@@ -27,21 +27,21 @@
     {!! Form::open(['route' => 'admin.access.roles.permissions.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) !!}
 
         <div class="form-group">
-            <label class="col-lg-2 control-label">Permission Name</label>
+            {!! Form::label('name', trans('validation.attributes.permission_name'), ['class' => 'col-lg-2 control-label']) !!}
             <div class="col-lg-10">
-                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Permission Name']) !!}
+                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.permission_name')]) !!}
             </div>
         </div><!--form control-->
 
         <div class="form-group">
-            <label class="col-lg-2 control-label">Display Name</label>
+            {!! Form::label('display_name', trans('validation.attributes.display_name'), ['class' => 'col-lg-2 control-label']) !!}
             <div class="col-lg-10">
-                {!! Form::text('display_name', null, ['class' => 'form-control', 'placeholder' => 'Display Name']) !!}
+                {!! Form::text('display_name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.display_name')]) !!}
             </div>
         </div><!--form control-->
 
         <div class="form-group">
-            <label class="col-lg-2 control-label">System Permission?</label>
+            <label class="col-lg-2 control-label">{{ trans('validation.attributes.system_permission') }}</label>
             <div class="col-lg-3">
                 <div class="system-permission-switch">
                     <div class="onoffswitch">
@@ -56,7 +56,7 @@
         </div><!--form control-->
 
         <div class="form-group">
-            <label class="col-lg-2 control-label">Associated Roles</label>
+            <label class="col-lg-2 control-label">{{ trans('validation.attributes.associated_roles') }}</label>
             <div class="col-lg-3">
                 @if (count($roles) > 0)
                     @foreach($roles as $role)
@@ -83,11 +83,11 @@
         </div><!--form control-->
 
         <div class="pull-left">
-            <a href="{{route('admin.access.roles.permissions.index')}}" class="btn btn-danger">Cancel</a>
+            <a href="{{route('admin.access.roles.permissions.index')}}" class="btn btn-danger">{{ trans('strings.cancel_button') }}</a>
         </div>
 
         <div class="pull-right">
-            <input type="submit" class="btn btn-success" value="Save" />
+            <input type="submit" class="btn btn-success" value="{{ trans('strings.save_button') }}" />
         </div>
         <div class="clearfix"></div>
 

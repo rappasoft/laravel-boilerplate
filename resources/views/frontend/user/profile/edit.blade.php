@@ -6,14 +6,14 @@
 		<div class="col-md-10 col-md-offset-1">
 
 			<div class="panel panel-default">
-				<div class="panel-heading">Update Information</div>
+				<div class="panel-heading">{{ trans('labels.update_information_box_title') }}</div>
 
 				<div class="panel-body">
 
                        {!! Form::model($user, ['route' => ['profile.update', $user->id], 'class' => 'form-horizontal', 'method' => 'PATCH']) !!}
 
                               <div class="form-group">
-                                    <label class="col-md-4 control-label">Name</label>
+                                    {!! Form::label('name', trans('validation.attributes.name'), ['class' => 'col-md-4 control-label']) !!}
                                     <div class="col-md-6">
                                         {!! Form::input('text', 'name', null, ['class' => 'form-control']) !!}
                                     </div>
@@ -21,7 +21,7 @@
 
                               @if ($user->canChangeEmail())
                                   <div class="form-group">
-                                      <label class="col-md-4 control-label">E-mail Address</label>
+                                      {!! Form::label('email', trans('validation.attributes.email'), ['class' => 'col-md-4 control-label']) !!}
                                       <div class="col-md-6">
                                           {!! Form::input('email', 'email', null, ['class' => 'form-control']) !!}
                                       </div>
@@ -30,7 +30,7 @@
 
                               <div class="form-group">
                                   <div class="col-md-6 col-md-offset-4">
-                                      {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+                                      {!! Form::submit(trans('labels.save_button'), ['class' => 'btn btn-primary']) !!}
                                   </div>
                               </div>
 

@@ -1,6 +1,6 @@
 @extends ('backend.layouts.master')
 
-@section ('title', 'User Management | Create User')
+@section ('title', trans('menus.user_management') . ' | ' . trans('menus.create_user'))
 
 @section ('before-styles-end')
     {!! HTML::style('css/plugin/jquery.onoff.css') !!}
@@ -8,15 +8,15 @@
 
 @section('page-header')
     <h1>
-        User Management
-        <small>Create User</small>
+        {{ trans('menus.user_management') }}
+        <small>{{ trans('menus.create_user') }}</small>
     </h1>
 @endsection
 
 @section ('breadcrumbs')
-     <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-     <li>{!! link_to_route('admin.access.users.index', 'User Management') !!}</li>
-     <li class="active">{!! link_to_route('admin.access.users.create', 'User Management') !!}</li>
+    <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> {{ trans('menus.dashboard') }}</a></li>
+    <li>{!! link_to_route('admin.access.users.index', trans('menus.user_management')) !!}</li>
+    <li class="active">{!! link_to_route('admin.access.users.create', trans('menus.create_user')) !!}</li>
 @stop
 
 @section('content')
@@ -25,35 +25,35 @@
     {!! Form::open(['route' => 'admin.access.users.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) !!}
 
         <div class="form-group">
-            <label class="col-lg-2 control-label">Name</label>
+            {!! Form::label('name', trans('validation.attributes.name'), ['class' => 'col-lg-2 control-label']) !!}
             <div class="col-lg-10">
-                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Full Name']) !!}
+                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('strings.full_name')]) !!}
             </div>
         </div><!--form control-->
 
         <div class="form-group">
-            <label class="col-lg-2 control-label">E-mail</label>
+            {!! Form::label('email', trans('validation.attributes.email'), ['class' => 'col-lg-2 control-label']) !!}
             <div class="col-lg-10">
-                {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'E-mail Address']) !!}
+                {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.email')]) !!}
             </div>
         </div><!--form control-->
 
         <div class="form-group">
-            <label class="col-lg-2 control-label">Password</label>
+            {!! Form::label('password', trans('validation.attributes.password'), ['class' => 'col-lg-2 control-label']) !!}
             <div class="col-lg-10">
                 {!! Form::password('password', ['class' => 'form-control']) !!}
             </div>
         </div><!--form control-->
 
         <div class="form-group">
-            <label class="col-lg-2 control-label">Confirm Password</label>
+            {!! Form::label('password_confirmation', trans('validation.attributes.password_confirmation'), ['class' => 'col-lg-2 control-label']) !!}
             <div class="col-lg-10">
                 {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
             </div>
         </div><!--form control-->
 
         <div class="form-group">
-            <label class="col-lg-2 control-label">Active</label>
+            <label class="col-lg-2 control-label">{{ trans('validation.attributes.active') }}</label>
             <div class="col-lg-1">
                 <div class="sw-green create-permissions-switch">
                     <div class="onoffswitch">
@@ -68,7 +68,7 @@
         </div><!--form control-->
 
         <div class="form-group">
-            <label class="col-lg-2 control-label">Confirmed</label>
+            <label class="col-lg-2 control-label">{{ trans('validation.attributes.confirmed') }}</label>
             <div class="col-lg-1">
                 <div class="sw-green confirmation-switch">
                     <div class="onoffswitch">
@@ -83,7 +83,9 @@
         </div><!--form control-->
 
         <div class="form-group">
-            <label class="col-lg-2 control-label">Send Confirmation E-mail<br/><small>(If confirmed is off)</small></label>
+            <label class="col-lg-2 control-label">{{ trans('validation.attributes.send_confirmation_email') }}<br/>
+                <small>{{ trans('strings.if_confirmed_is_off') }}</small>
+            </label>
             <div class="col-lg-1">
                 <div class="sw-green confirmation-email-switch">
                     <div class="onoffswitch">
@@ -98,7 +100,7 @@
         </div><!--form control-->
 
         <div class="form-group">
-            <label class="col-lg-2 control-label">Associated Roles</label>
+            <label class="col-lg-2 control-label">{{ trans('validation.attributes.associated_roles') }}</label>
             <div class="col-lg-3">
                 @if (count($roles) > 0)
                     @foreach($roles as $role)
@@ -131,7 +133,7 @@
         </div><!--form control-->
 
         <div class="form-group">
-            <label class="col-lg-2 control-label">Other Permissions</label>
+            <label class="col-lg-2 control-label">{{ trans('validation.attributes.other_permissions') }}</label>
             <div class="col-lg-3">
                 @if (count($permissions))
                     @foreach ($permissions as $perm)
@@ -154,11 +156,11 @@
         </div><!--form control-->
 
         <div class="pull-left">
-            <a href="{{route('admin.access.users.index')}}" class="btn btn-danger">Cancel</a>
+            <a href="{{route('admin.access.users.index')}}" class="btn btn-danger">{{ trans('strings.cancel_button') }}</a>
         </div>
 
         <div class="pull-right">
-            <input type="submit" class="btn btn-success" value="Save" />
+            <input type="submit" class="btn btn-success" value="{{ trans('strings.save_button') }}" />
         </div>
         <div class="clearfix"></div>
 

@@ -8,7 +8,7 @@
             <nav class="navbar navbar-static-top" role="navigation">
               <!-- Sidebar toggle button-->
               <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                <span class="sr-only">Toggle navigation</span>
+                <span class="sr-only">{{ trans('labels.toggle_navigation') }}</span>
               </a>
               <!-- Navbar Right Menu -->
               <div class="navbar-custom-menu">
@@ -18,10 +18,10 @@
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                       <i class="fa fa-envelope-o"></i>
-                      <span class="label label-success">0</span>
+                      <span class="label label-success">4</span>
                     </a>
                     <ul class="dropdown-menu">
-                      <li class="header">You have 4 messages</li>
+                      <li class="header">{{ trans_choice('strings.you_have.messages', 4, ['number' => 4]) }}</li>
                       <li>
                         <!-- inner menu: contains the messages -->
                         <ul class="menu">
@@ -42,7 +42,7 @@
                           </li><!-- end message -->
                         </ul><!-- /.menu -->
                       </li>
-                      <li class="footer"><a href="#">See All Messages</a></li>
+                      <li class="footer"><a href="#">{{ trans('strings.see_all.messages') }}</a></li>
                     </ul>
                   </li><!-- /.messages-menu -->
 
@@ -54,7 +54,7 @@
                       <span class="label label-warning">0</span>
                     </a>
                     <ul class="dropdown-menu">
-                      <li class="header">You have 10 notifications</li>
+                      <li class="header">{{ trans_choice('strings.you_have.notifications', 0) }}</li>
                       <li>
                         <!-- Inner Menu: contains the notifications -->
                         <ul class="menu">
@@ -65,7 +65,7 @@
                           </li><!-- end notification -->
                         </ul>
                       </li>
-                      <li class="footer"><a href="#">View all</a></li>
+                      <li class="footer"><a href="#">{{ trans('strings.see_all.notifications') }}</a></li>
                     </ul>
                   </li>
                   <!-- Tasks Menu -->
@@ -73,10 +73,10 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                       <i class="fa fa-flag-o"></i>
-                      <span class="label label-danger">0</span>
+                      <span class="label label-danger">1</span>
                     </a>
                     <ul class="dropdown-menu">
-                      <li class="header">You have 9 tasks</li>
+                      <li class="header">{{ trans_choice('strings.you_have.tasks', 1) }}</li>
                       <li>
                         <!-- Inner menu: contains the tasks -->
                         <ul class="menu">
@@ -99,7 +99,7 @@
                         </ul>
                       </li>
                       <li class="footer">
-                        <a href="#">View all tasks</a>
+                        <a href="#">{{ trans('strings.see_all.tasks') }}</a>
                       </li>
                     </ul>
                   </li>
@@ -117,8 +117,8 @@
                       <li class="user-header">
                         <img src="{!!asset('img/backend/user2-160x160.jpg')!!}" class="img-circle" alt="User Image" />
                         <p>
-                          {{ access()->user()->name }} - Web Developer
-                          <small>Member since XX/XX/XXXX</small>
+                          {{ access()->user()->name }} - {{ trans('roles.web_developer') }}
+                          <small>{{ trans('strings.member_since') }} XX/XX/XXXX</small>
                         </p>
                       </li>
                       <!-- Menu Body -->
@@ -136,10 +136,10 @@
                       <!-- Menu Footer-->
                       <li class="user-footer">
                         <div class="pull-left">
-                          <a href="#" class="btn btn-default btn-flat">Button</a>
+                          <a href="#" class="btn btn-default btn-flat">{{ trans('navs.button') }}</a>
                         </div>
                         <div class="pull-right">
-                          <a href="{!!url('auth/logout')!!}" class="btn btn-default btn-flat">Sign out</a>
+                          <a href="{!!url('auth/logout')!!}" class="btn btn-default btn-flat">{{ trans('navs.logout') }}</a>
                         </div>
                       </li>
                     </ul>

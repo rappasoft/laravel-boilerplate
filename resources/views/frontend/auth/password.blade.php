@@ -7,7 +7,7 @@
 
 			<div class="panel panel-default">
 
-				<div class="panel-heading">Reset Password</div>
+				<div class="panel-heading">{{ trans('labels.reset_password_box_title') }}</div>
 
 				<div class="panel-body">
 					@if (session('status'))
@@ -19,7 +19,7 @@
 					{!! Form::open(['to' => 'password/email', 'class' => 'form-horizontal', 'role' => 'form']) !!}
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">E-mail Address</label>
+							{!! Form::label('email', trans('validation.attributes.email'), ['class' => 'col-md-4 control-label']) !!}
 							<div class="col-md-6">
 								{!! Form::input('email', 'email', old('email'), ['class' => 'form-control']) !!}
 							</div>
@@ -27,7 +27,7 @@
 
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
-								{!! Form::submit('Send Password Reset Link', ['class' => 'btn btn-primary']) !!}
+								{!! Form::submit(trans('labels.send_password_reset_link_button'), ['class' => 'btn btn-primary']) !!}
 							</div>
 						</div>
 

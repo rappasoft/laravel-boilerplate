@@ -61,7 +61,7 @@ return [
 	|
 	*/
 
-	'locale' => 'en',
+	'locale' => env('APP_LOCALE', 'en'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -74,7 +74,7 @@ return [
 	|
 	*/
 
-	'fallback_locale' => 'en',
+	'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -159,7 +159,8 @@ return [
 		'App\Providers\MacroServiceProvider',
 		'Laravel\Socialite\SocialiteServiceProvider',
 		'HieuLe\Active\ActiveServiceProvider',
-		'Laracasts\Utilities\JavaScript\JavascriptServiceProvider'
+		'Laracasts\Utilities\JavaScript\JavascriptServiceProvider',
+		'Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProviderLaravel5',
 	],
 
 	/*

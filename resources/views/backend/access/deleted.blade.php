@@ -1,18 +1,18 @@
 @extends ('backend.layouts.master')
 
-@section ('title', 'User Management | Deleted Users')
+@section ('title', trans('menus.user_management') . ' | ' . trans('menus.deleted_users'))
 
 @section('page-header')
     <h1>
-        User Management
-        <small>Deleted Users</small>
+        {{ trans('menus.user_management') }}
+        <small>{{ trans('menus.deleted_users') }}</small>
     </h1>
 @endsection
 
 @section ('breadcrumbs')
-    <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-    <li>{!! link_to_route('admin.access.users.index', 'User Management') !!}</li>
-    <li class="active">{!! link_to_route('admin.access.users.deleted', 'Deleted Users') !!}</li>
+    <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> {{ trans('menus.dashboard') }}</a></li>
+    <li>{!! link_to_route('admin.access.users.index', trans('menus.user_management')) !!}</li>
+    <li class="active">{!! link_to_route('admin.access.users.deleted', trans('menus.deleted_users')) !!}</li>
 @stop
 
 @section('content')
@@ -21,15 +21,15 @@
     <table class="table table-striped table-bordered table-hover">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>E-mail</th>
-            <th>Confirmed</th>
-            <th>Roles</th>
-            <th>Other Permissions</th>
-            <th class="visible-lg">Created</th>
-            <th class="visible-lg">Last Updated</th>
-            <th>Actions</th>
+            <th>{{ trans('crud.users.id') }}</th>
+            <th>{{ trans('crud.users.name') }}</th>
+            <th>{{ trans('crud.users.email') }}</th>
+            <th>{{ trans('crud.users.confirmed') }}</th>
+            <th>{{ trans('crud.users.roles') }}</th>
+            <th>{{ trans('crud.users.other_permissions') }}</th>
+            <th class="visible-lg">{{ trans('crud.users.created') }}</th>
+            <th class="visible-lg">{{ trans('crud.users.last_updated') }}</th>
+            <th>{{ trans('crud.actions') }}</th>
         </tr>
         </thead>
         <tbody>
@@ -61,18 +61,18 @@
                         <td class="visible-lg">{!! $user->created_at->diffForHumans() !!}</td>
                         <td class="visible-lg">{!! $user->updated_at->diffForHumans() !!}</td>
                         <td>
-                            <a href="{{route('admin.access.user.restore', $user->id)}}" class="btn btn-xs btn-success" name="restore_user"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="Restore User"></i></a> <a href="{{route('admin.access.user.delete-permanently', $user->id)}}" class="btn btn-xs btn-danger" name="delete_user_perm"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="Delete Permanently"></i></a>
+                            <a href="{{route('admin.access.user.restore', $user->id)}}" class="btn btn-xs btn-success" name="restore_user"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="{{ trans('crud.users.restore_user') }}"></i></a> <a href="{{route('admin.access.user.delete-permanently', $user->id)}}" class="btn btn-xs btn-danger" name="delete_user_perm"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="{{ trans('crud.users.delete_permanently') }}"></i></a>
                         </td>
                     </tr>
                 @endforeach
             @else
-                <td colspan="9">No Deleted Users</td>
+                <td colspan="9">{{ trans('crud.users.no_deleted_users') }}</td>
             @endif
         </tbody>
     </table>
 
     <div class="pull-left">
-        {!! $users->total() !!} user(s) total
+        {!! $users->total() !!} {{ trans('crud.users.total') }}
     </div>
 
     <div class="pull-right">
