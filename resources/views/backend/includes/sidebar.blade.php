@@ -29,9 +29,23 @@
               <!-- Sidebar Menu -->
               <ul class="sidebar-menu">
                 <li class="header">{{ trans('menus.general') }}</li>
+
                 <!-- Optionally, you can add icons to the links -->
                 <li class="{{ Active::pattern('admin/dashboard') }}"><a href="{!!route('backend.dashboard')!!}"><span>{{ trans('menus.dashboard') }}</span></a></li>
+
                 <li class="{{ Active::pattern('admin/access/*') }}"><a href="{!!url('admin/access/users')!!}"><span>{{ trans('menus.user_management') }}</span></a></li>
+
+                <li class="{{ Active::pattern('admin/log-viewer/*') }} treeview">
+                  <a href="#">
+                    <span>{{ trans('menus.log-viewer.main') }}</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu" style="display: none;">
+                    <li><a href="{!! url('admin/log-viewer') !!}">{{ trans('menus.log-viewer.dashboard') }}</a></li>
+                    <li><a href="{!! url('admin/log-viewer/logs') !!}">{{ trans('menus.log-viewer.logs') }}</a></li>
+                  </ul>
+                </li>
+
               </ul><!-- /.sidebar-menu -->
             </section>
             <!-- /.sidebar -->

@@ -39,6 +39,11 @@ return [
             'button' => 'Users',
         ],
     ],
+    'log-viewer' => [
+        'main' => 'Log Viewer',
+        'dashboard' => 'Dashboard',
+        'logs' => 'Logs',
+    ],
     'permission_management' => 'Permission Management',
     'role_management' => 'Role Management',
     'user_management' => 'User Management',

@@ -39,6 +39,12 @@ return [
             'button' => 'Usuários',
         ],
     ],
+    //TODO: translate
+    'log-viewer' => [
+        'main' => 'Log Viewer',
+        'dashboard' => 'Dashboard',
+        'logs' => 'Logs',
+    ],
     'permission_management' => 'Gerenciamento de Permissões',
     'role_management' => 'Gerenciamento de Papéis',
     'user_management' => 'Gerenciamento de Usuários',
