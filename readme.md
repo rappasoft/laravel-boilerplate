@@ -43,6 +43,7 @@
 * [Stripe](http://stripe.com) wrapper class for easy implementation
 * [Active Menu](https://github.com/letrunghieu/active)
 * [PHP to Javascript Transformer](https://github.com/laracasts/PHP-Vars-To-Js-Transformer) - [Notes](#javascript-notes)
+* [ARCANEDEV Log Viewer](https://github.com/ARCANEDEV/LogViewer)
 * Standards
     * Clean Controllers
     * Repository/Contract Implementations
