@@ -104,27 +104,6 @@ return [
     |
     */
 
-    'attributes' => [
-        'name' => 'Name',
-        'email' => 'E-mail Address',
-        'password' => 'Password',
-        'password_confirmation' => 'Confirm Password',
-        'old_password' => 'Old Password',
-        'new_password' => 'New Password',
-        'new_password_confirmation' => 'Confirm New Password',
-        'created_at' => 'Created At',
-        'last_updated' => 'Last Updated',
-        'actions' => 'Actions',
-        'active' => 'Active',
-        'confirmed' => 'Confirmed',
-        'send_confirmation_email' => 'Send Confirmation E-mail',
-        'associated_roles' => 'Associated Roles',
-        'other_permissions' => 'Other Permissions',
-        'role_name' => 'Role Name',
-        'associated_permissions' => 'Associated Permissions',
-        'permission_name' => 'Permission Name',
-        'display_name' => 'Display Name',
-        'system_permission' => 'System Permission?',
-    ],
+    'attributes' => [],
 
 ];

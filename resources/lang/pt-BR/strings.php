@@ -15,7 +15,7 @@ return [
 
     'here' => 'Aqui',
     'all_rights_reserved' => 'Todos os direitos reservados.',
-    'anything_you_want' => 'Qualquer coisa que você quiser',
+    'boilerplate_link' => 'Laravel Boilerplate',
     'backend' => [
         'WELCOME' => 'BEM-VINDO',
         'dashboard_title' => 'Painel de Controle',
