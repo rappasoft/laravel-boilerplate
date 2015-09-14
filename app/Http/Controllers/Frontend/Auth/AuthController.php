@@ -51,26 +51,8 @@ class AuthController extends Controller {
 	 * @return \Illuminate\View\View
 	 */
 	public function getLogin() {
-		$socialite_enable = array();
-		
-		if(getenv('GITHUB_CLIENT_ID') != '')
-			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Github']), 'github');
-
-		if(getenv('FACEBOOK_CLIENT_ID') != '')
-			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Facebook']), 'facebook');
-
-		if(getenv('TWITTER_CLIENT_ID') != '')
-			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Twitter']), 'twitter');
-
-		if(getenv('GOOGLE_CLIENT_ID') != '')
-			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Google']), 'google');
-		
-		$socialite_links='';
-		for ($i = 0; $i < count($socialite_enable); $i++) {
-			$socialite_links.= ($socialite_links!=''?'&nbsp;|&nbsp;':'') . $socialite_enable[$i];
-		}
-						
-		return view('frontend.auth.login')->with('socialite_links', $socialite_links);
+		return view('frontend.auth.login')
+			->withSocialiteLinks($this->getSocialLinks());
 	}
 
 	/**
@@ -190,5 +172,32 @@ class AuthController extends Controller {
 		return in_array(
 			ThrottlesLogins::class, class_uses_recursive(get_class($this))
 		);
+	}
+
+	/**
+	 * Generates social login links based on what is enabled
+	 * @return string
+     */
+	protected function getSocialLinks() {
+		$socialite_enable = [];
+		$socialite_links = '';
+
+		if(getenv('GITHUB_CLIENT_ID') != '')
+			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Github']), 'github');
+
+		if(getenv('FACEBOOK_CLIENT_ID') != '')
+			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Facebook']), 'facebook');
+
+		if(getenv('TWITTER_CLIENT_ID') != '')
+			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Twitter']), 'twitter');
+
+		if(getenv('GOOGLE_CLIENT_ID') != '')
+			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Google']), 'google');
+
+		for ($i = 0; $i < count($socialite_enable); $i++) {
+			$socialite_links .= ($socialite_links != '' ? '&nbsp;|&nbsp;' : '') . $socialite_enable[$i];
+		}
+
+		return $socialite_links;
 	}
 }
