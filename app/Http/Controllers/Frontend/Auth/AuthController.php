@@ -53,16 +53,16 @@ class AuthController extends Controller {
 	public function getLogin() {
 		$socialite_enable = array();
 		
-		if(getenv('GITHUB_CLIENT_ID')!='')    						
+		if(getenv('GITHUB_CLIENT_ID') != '')
 			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Github']), 'github');
 
-		if(getenv('FACEBOOK_CLIENT_ID')!='')    						
+		if(getenv('FACEBOOK_CLIENT_ID') != '')
 			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Facebook']), 'facebook');
 
-		if(getenv('TWITTER_CLIENT_ID')!='')    						
+		if(getenv('TWITTER_CLIENT_ID') != '')
 			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Twitter']), 'twitter');
 
-		if(getenv('GOOGLE_CLIENT_ID')!='')    						
+		if(getenv('GOOGLE_CLIENT_ID') != '')
 			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Google']), 'google');
 		
 		$socialite_links='';

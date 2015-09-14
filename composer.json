@@ -14,7 +14,7 @@
         "fortawesome/font-awesome": "4.*",
         "hieu-le/active": "~2.0",
 	    "laracasts/utilities": "~2.0",
-		"arcanedev/log-viewer": "~3.0"
+		"arcanedev/log-viewer": "~3.4.0"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",
