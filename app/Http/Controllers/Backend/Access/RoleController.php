@@ -54,7 +54,7 @@ class RoleController extends Controller {
 	 */
 	public function store(CreateRoleRequest $request) {
 		$this->roles->create($request->except('role_permissions'), $request->only('role_permissions'));
-		return redirect()->route('admin.access.roles.index')->withFlashSuccess('The role was successfully created.');
+		return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans("alerts.roles.created"));
 	}
 
 	/**
@@ -76,7 +76,7 @@ class RoleController extends Controller {
 	 */
 	public function update($id, UpdateRoleRequest $request) {
 		$this->roles->update($id, $request->except('role_permissions'), $request->only('role_permissions'));
-		return redirect()->route('admin.access.roles.index')->withFlashSuccess('The role was successfully updated.');
+		return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans("alerts.roles.updated"));
 	}
 
 	/**
@@ -85,6 +85,6 @@ class RoleController extends Controller {
 	 */
 	public function destroy($id) {
 		$this->roles->destroy($id);
-		return redirect()->route('admin.access.roles.index')->withFlashSuccess('The role was successfully deleted.');
+		return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans("alerts.roles.deleted"));
 	}
 }

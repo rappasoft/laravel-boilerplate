@@ -69,7 +69,7 @@ class UserController extends Controller {
 			$request->only('assignees_roles'),
 			$request->only('permission_user')
 		);
-		return redirect()->route('admin.access.users.index')->withFlashSuccess('The user was successfully created.');
+		return redirect()->route('admin.access.users.index')->withFlashSuccess(trans("alerts.users.created"));
 	}
 
 	/**
@@ -97,7 +97,7 @@ class UserController extends Controller {
 			$request->only('assignees_roles'),
 			$request->only('permission_user')
 		);
-		return redirect()->route('admin.access.users.index')->withFlashSuccess('The user was successfully updated.');
+		return redirect()->route('admin.access.users.index')->withFlashSuccess(trans("alerts.users.updated"));
 	}
 
 	/**
@@ -106,7 +106,7 @@ class UserController extends Controller {
 	 */
 	public function destroy($id) {
 		$this->users->destroy($id);
-		return redirect()->back()->withFlashSuccess('The user was successfully deleted.');
+		return redirect()->back()->withFlashSuccess(trans("alerts.users.deleted"));
 	}
 
 	/**
@@ -115,7 +115,7 @@ class UserController extends Controller {
 	 */
 	public function delete($id) {
 		$this->users->delete($id);
-		return redirect()->back()->withFlashSuccess('The user was deleted permanently.');
+		return redirect()->back()->withFlashSuccess(trans("alerts.users.deleted_permanently"));
 	}
 
 	/**
@@ -124,7 +124,7 @@ class UserController extends Controller {
 	 */
 	public function restore($id) {
 		$this->users->restore($id);
-		return redirect()->back()->withFlashSuccess('The user was successfully restored.');
+		return redirect()->back()->withFlashSuccess(trans("alerts.users.restored"));
 	}
 
 	/**
@@ -134,7 +134,7 @@ class UserController extends Controller {
 	 */
 	public function mark($id, $status) {
 		$this->users->mark($id, $status);
-		return redirect()->back()->withFlashSuccess('The user was successfully updated.');
+		return redirect()->back()->withFlashSuccess(trans("alerts.users.updated"));
 	}
 
 	/**
@@ -177,7 +177,7 @@ class UserController extends Controller {
 	 */
 	public function updatePassword($id, UpdateUserPasswordRequest $request) {
 		$this->users->updatePassword($id, $request->all());
-		return redirect()->route('admin.access.users.index')->withFlashSuccess("The user's password was successfully updated.");
+		return redirect()->route('admin.access.users.index')->withFlashSuccess(trans("alerts.users.updated_password"));
 	}
 
 	/**
@@ -187,6 +187,6 @@ class UserController extends Controller {
 	 */
 	public function resendConfirmationEmail($user_id, AuthenticationContract $auth) {
 		$auth->resendConfirmationEmail($user_id);
-		return redirect()->back()->withFlashSuccess("A new confirmation e-mail has been sent to the address on file.");
+		return redirect()->back()->withFlashSuccess(trans("alerts.users.confirmation_email"));
 	}
 }
