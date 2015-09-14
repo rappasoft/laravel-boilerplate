@@ -51,7 +51,26 @@ class AuthController extends Controller {
 	 * @return \Illuminate\View\View
 	 */
 	public function getLogin() {
-		return view('frontend.auth.login');
+		$socialite_enable = array();
+		
+		if(getenv('GITHUB_CLIENT_ID')!='')    						
+			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Github']), 'github');
+
+		if(getenv('FACEBOOK_CLIENT_ID')!='')    						
+			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Facebook']), 'facebook');
+
+		if(getenv('FACEBOOK_CLIENT_ID')!='')    						
+			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Twitter']), 'twitter');
+
+		if(getenv('FACEBOOK_CLIENT_ID')!='')    						
+			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Google']), 'google');
+		
+		$socialite_links='';
+		for ($i = 0; $i < count($socialite_enable); $i++) {
+			$socialite_links.= ($socialite_links!=''?'&nbsp;|&nbsp;':'') . $socialite_enable[$i];
+		}
+						
+		return view('frontend.auth.login')->with('socialite_links', $socialite_links);
 	}
 
 	/**
