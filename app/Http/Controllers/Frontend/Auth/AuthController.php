@@ -59,10 +59,10 @@ class AuthController extends Controller {
 		if(getenv('FACEBOOK_CLIENT_ID')!='')    						
 			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Facebook']), 'facebook');
 
-		if(getenv('FACEBOOK_CLIENT_ID')!='')    						
+		if(getenv('TWITTER_CLIENT_ID')!='')    						
 			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Twitter']), 'twitter');
 
-		if(getenv('FACEBOOK_CLIENT_ID')!='')    						
+		if(getenv('GOOGLE_CLIENT_ID')!='')    						
 			$socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Google']), 'google');
 		
 		$socialite_links='';
