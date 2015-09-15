@@ -47,5 +47,12 @@ return [
     'permission_management' => 'Permission Management',
     'role_management' => 'Role Management',
     'user_management' => 'User Management',
-
+    'language-picker' => [
+        'language' => 'Language',
+        'langs' => [
+            'en' => 'English',
+            'it' => 'Italian',
+            'pt-BR' => 'Portuguese (Brazil)',
+        ],
+    ],
 ];

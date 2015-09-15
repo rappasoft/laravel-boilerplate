@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * Switch between the included languages
+ */
+require(__DIR__ . "/Routes/Global/Lang.php");
+
+/**
  * Frontend Routes
  * Namespaces indicate folder structure
  */
