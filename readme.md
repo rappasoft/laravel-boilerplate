@@ -44,6 +44,8 @@
 * [Active Menu](https://github.com/letrunghieu/active)
 * [PHP to Javascript Transformer](https://github.com/laracasts/PHP-Vars-To-Js-Transformer) - [Notes](#javascript-notes)
 * [ARCANEDEV Log Viewer](https://github.com/ARCANEDEV/LogViewer)
+* Localization to English, Italian, and Portuguese (Brazil).
+* Frontend/Backend Language Picker Menu
 * Standards
     * Clean Controllers
     * Repository/Contract Implementations
