@@ -3,6 +3,10 @@
 use Closure;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 
+/**
+ * Class VerifyCsrfToken
+ * @package App\Http\Middleware
+ */
 class VerifyCsrfToken extends BaseVerifier {
 
 	/**
@@ -16,5 +20,4 @@ class VerifyCsrfToken extends BaseVerifier {
 	{
 		return parent::handle($request, $next);
 	}
-
 }

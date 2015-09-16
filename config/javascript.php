@@ -24,5 +24,4 @@ return [
     |
     */
     'js_namespace' => 'window'
-
 ];

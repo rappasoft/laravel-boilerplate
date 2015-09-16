@@ -2,6 +2,10 @@
 
 use App\Http\Requests\Request;
 
+/**
+ * Class RegisterRequest
+ * @package App\Http\Requests\Frontend\Access
+ */
 class RegisterRequest extends Request {
 
 	/**

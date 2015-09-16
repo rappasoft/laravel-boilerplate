@@ -4,6 +4,10 @@ use Closure;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\RedirectResponse;
 
+/**
+ * Class RedirectIfAuthenticated
+ * @package App\Http\Middleware
+ */
 class RedirectIfAuthenticated {
 
 	/**
@@ -40,5 +44,4 @@ class RedirectIfAuthenticated {
 
 		return $next($request);
 	}
-
 }

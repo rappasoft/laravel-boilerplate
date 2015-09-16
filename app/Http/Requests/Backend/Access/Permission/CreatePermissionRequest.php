@@ -2,6 +2,10 @@
 
 use App\Http\Requests\Request;
 
+/**
+ * Class CreatePermissionRequest
+ * @package App\Http\Requests\Backend\Access\Permission
+ */
 class CreatePermissionRequest extends Request {
 
 	/**

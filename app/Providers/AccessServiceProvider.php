@@ -57,7 +57,7 @@ class AccessServiceProvider extends ServiceProvider
 		$this->app->booting(function()
 		{
 			$loader = \Illuminate\Foundation\AliasLoader::getInstance();
-			$loader->alias('Access', 'App\Services\Access\Facades\Access');
+			$loader->alias('Access', \App\Services\Access\Facades\Access::class);
 		});
 	}
 
@@ -66,28 +66,28 @@ class AccessServiceProvider extends ServiceProvider
 	 */
 	public function registerBindings() {
 		$this->app->bind(
-			'App\Repositories\Frontend\Auth\AuthenticationContract',
-			'App\Repositories\Frontend\Auth\EloquentAuthenticationRepository'
+			\App\Repositories\Frontend\Auth\AuthenticationContract::class,
+			\App\Repositories\Frontend\Auth\EloquentAuthenticationRepository::class
 		);
 
 		$this->app->bind(
-			'App\Repositories\Frontend\User\UserContract',
-			'App\Repositories\Frontend\User\EloquentUserRepository'
+			\App\Repositories\Frontend\User\UserContract::class,
+			\App\Repositories\Frontend\User\EloquentUserRepository::class
 		);
 
 		$this->app->bind(
-			'App\Repositories\Backend\User\UserContract',
-			'App\Repositories\Backend\User\EloquentUserRepository'
+			\App\Repositories\Backend\User\UserContract::class,
+			\App\Repositories\Backend\User\EloquentUserRepository::class
 		);
 
 		$this->app->bind(
-			'App\Repositories\Backend\Role\RoleRepositoryContract',
-			'App\Repositories\Backend\Role\EloquentRoleRepository'
+			\App\Repositories\Backend\Role\RoleRepositoryContract::class,
+			\App\Repositories\Backend\Role\EloquentRoleRepository::class
 		);
 
 		$this->app->bind(
-			'App\Repositories\Backend\Permission\PermissionRepositoryContract',
-			'App\Repositories\Backend\Permission\EloquentPermissionRepository'
+			\App\Repositories\Backend\Permission\PermissionRepositoryContract::class,
+			\App\Repositories\Backend\Permission\EloquentPermissionRepository::class
 		);
 	}
 

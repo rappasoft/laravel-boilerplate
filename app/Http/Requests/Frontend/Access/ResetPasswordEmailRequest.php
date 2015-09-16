@@ -2,6 +2,10 @@
 
 use App\Http\Requests\Request;
 
+/**
+ * Class ResetPasswordEmailRequest
+ * @package App\Http\Requests\Frontend\Access
+ */
 class ResetPasswordEmailRequest extends Request {
 
 	/**

@@ -20,8 +20,10 @@ class RouteNeedsPermission {
 	public function handle($request, Closure $next, $params = null)
 	{
 		$assets = $this->getAssets($request, $params);
+
 		if (! access()->canMultiple($assets['permissions'], $assets['needsAll']))
 			return $this->getRedirectMethodAndGo($request, $params);
+
 		return $next($request);
 	}
 }
