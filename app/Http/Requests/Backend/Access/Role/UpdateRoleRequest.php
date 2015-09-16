@@ -2,6 +2,10 @@
 
 use App\Http\Requests\Request;
 
+/**
+ * Class UpdateRoleRequest
+ * @package App\Http\Requests\Backend\Access\Role
+ */
 class UpdateRoleRequest extends Request {
 
 	/**

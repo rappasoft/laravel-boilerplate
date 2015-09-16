@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
-use App\Repositories\Backend\Permission\PermissionRepositoryContract;
 use App\Http\Requests\Backend\Access\Role\CreateRoleRequest;
 use App\Http\Requests\Backend\Access\Role\UpdateRoleRequest;
+use App\Repositories\Backend\Permission\PermissionRepositoryContract;
 
 /**
  * Class RoleController
@@ -16,6 +16,7 @@ class RoleController extends Controller {
 	 * @var RoleRepositoryContract
 	 */
 	protected $roles;
+
 	/**
 	 * @var PermissionRepositoryContract
 	 */
@@ -25,9 +26,7 @@ class RoleController extends Controller {
 	 * @param RoleRepositoryContract $roles
 	 * @param PermissionRepositoryContract $permissions
 	 */
-	public function __construct(
-		RoleRepositoryContract $roles,
-		PermissionRepositoryContract $permissions) {
+	public function __construct(RoleRepositoryContract $roles, PermissionRepositoryContract $permissions) {
 		$this->roles = $roles;
 		$this->permissions = $permissions;
 	}

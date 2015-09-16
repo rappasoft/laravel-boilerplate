@@ -1,12 +1,13 @@
 <?php namespace App;
 
 use Illuminate\Auth\Authenticatable;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Auth\Passwords\CanResetPassword;
+use App\Services\Access\Traits\UserHasRole;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use App\Services\Access\Traits\UserHasRole;
 
 /**
  * Class User
@@ -48,7 +49,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
 	 */
 	public function providers() {
-		return $this->hasMany('App\UserProvider');
+		return $this->hasMany(UserProvider::class);
 	}
 
 	/**
@@ -58,7 +59,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	public function setPasswordAttribute($value)
 	{
-		if (\Hash::needsRehash($value))
+		if (Hash::needsRehash($value))
 			$this->attributes['password'] = bcrypt($value);
 		else
 			$this->attributes['password'] = $value;

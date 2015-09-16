@@ -1,10 +1,14 @@
 <?php namespace App\Listeners\Frontend\Auth;
 
-use App\Events\Frontend\Auth\UserLoggedIn;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldBeQueued;
+use App\Events\Frontend\Auth\UserLoggedIn;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class UserLoggedInHandler implements ShouldBeQueued {
+/**
+ * Class UserLoggedInHandler
+ * @package App\Listeners\Frontend\Auth
+ */
+class UserLoggedInHandler implements ShouldQueue {
 
 	use InteractsWithQueue;
 

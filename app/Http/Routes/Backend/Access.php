@@ -2,7 +2,9 @@
 
 Route::group(['prefix' => 'access', 'namespace' => 'Access'], function ()
 {
-	/* User Management */
+	/**
+	 * User Management
+	 */
 	resource('users', 'UserController', ['except' => ['show']]);
 
 	get('users/deactivated', ['as' => 'admin.access.users.deactivated', 'uses' => 'UserController@deactivated']);
@@ -10,7 +12,9 @@ Route::group(['prefix' => 'access', 'namespace' => 'Access'], function ()
 	get('users/deleted', ['as' => 'admin.access.users.deleted', 'uses' => 'UserController@deleted']);
 	get('account/confirm/resend/{user_id}', ['as' => 'admin.account.confirm.resend', 'uses' => 'UserController@resendConfirmationEmail']);
 
-	/* Specific User */
+	/**
+	 * Specific User
+	 */
 	Route::group(['prefix' => 'user/{id}', 'where' => ['id' => '[0-9]+']], function () {
 		get('delete', ['as' => 'admin.access.user.delete-permanently', 'uses' => 'UserController@delete']);
 		get('restore', ['as' => 'admin.access.user.restore', 'uses' => 'UserController@restore']);
@@ -22,10 +26,14 @@ Route::group(['prefix' => 'access', 'namespace' => 'Access'], function ()
 		post('password/change', ['as' => 'admin.access.user.change-password', 'uses' => 'UserController@updatePassword']);
 	});
 
-	/* Roles Management */
+	/**
+	 * Role Management
+	 */
 	resource('roles', 'RoleController', ['except' => ['show']]);
 
-	/* Permission Management */
+	/**
+	 * Permission Management
+	 */
 	Route::group(['prefix' => 'roles'], function ()
 	{
 		resource('permissions', 'PermissionController', ['except' => ['show']]);

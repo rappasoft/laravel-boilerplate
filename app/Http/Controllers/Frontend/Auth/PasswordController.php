@@ -26,11 +26,7 @@ class PasswordController extends Controller {
 	 * @param PasswordBroker $passwords
 	 * @param UserContract $user
 	 */
-	public function __construct(
-		Guard $auth,
-		PasswordBroker $passwords,
-		UserContract $user)
-	{
+	public function __construct(Guard $auth, PasswordBroker $passwords, UserContract $user) {
 		$this->auth = $auth;
 		$this->passwords = $passwords;
 		$this->user = $user;
@@ -45,11 +41,9 @@ class PasswordController extends Controller {
 	}
 
 	/**
-	 * Display the password reset view for the given token.
-	 *
-	 * @param  string  $token
-	 * @return Response
-	 */
+	 * @param null $token
+	 * @return mixed
+     */
 	public function getReset($token = null)
 	{
 		if (is_null($token))

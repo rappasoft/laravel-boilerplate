@@ -2,6 +2,10 @@
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class ConfigServiceProvider
+ * @package App\Providers
+ */
 class ConfigServiceProvider extends ServiceProvider {
 
 	/**

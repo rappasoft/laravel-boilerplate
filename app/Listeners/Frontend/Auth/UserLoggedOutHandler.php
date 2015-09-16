@@ -1,10 +1,14 @@
 <?php namespace App\Listeners\Frontend\Auth;
 
-use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldBeQueued;
+use App\Events\Frontend\Auth\UserLoggedOut;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class UserLoggedOutHandler implements ShouldBeQueued {
+/**
+ * Class UserLoggedOutHandler
+ * @package App\Listeners\Frontend\Auth
+ */
+class UserLoggedOutHandler implements ShouldQueue {
 
 	use InteractsWithQueue;
 

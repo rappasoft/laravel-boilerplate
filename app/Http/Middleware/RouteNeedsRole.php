@@ -20,8 +20,10 @@ class RouteNeedsRole {
 	public function handle($request, Closure $next, $params = null)
 	{
 		$assets = $this->getAssets($request, $params);
+
 		if (! access()->hasRoles($assets['roles'], $assets['needsAll']))
 			return $this->getRedirectMethodAndGo($request, $params);
+
 		return $next($request);
 	}
 }

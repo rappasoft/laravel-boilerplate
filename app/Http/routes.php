@@ -41,7 +41,7 @@ Route::group(['namespace' => 'Backend'], function ()
 			'with'       => ['flash_danger', 'You do not have access to do that.']
 		], function ()
 		{
-			get('dashboard', ['as' => 'backend.dashboard', 'uses' => 'DashboardController@index']);
+			require(__DIR__ . "/Routes/Backend/Dashboard.php");
 			require(__DIR__ . "/Routes/Backend/Access.php");
 		});
 	});

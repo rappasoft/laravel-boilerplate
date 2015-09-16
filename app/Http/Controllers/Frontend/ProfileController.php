@@ -11,22 +11,20 @@ use App\Http\Requests\Frontend\User\UpdateProfileRequest;
 class ProfileController extends Controller {
 
 	/**
-	 * @param $id
 	 * @return mixed
-	 */
-	public function edit($id) {
+     */
+	public function edit() {
 		return view('frontend.user.profile.edit')
-			->withUser(auth()->user($id));
+			->withUser(auth()->user());
 	}
 
 	/**
-	 * @param $id
 	 * @param UserContract $user
 	 * @param UpdateProfileRequest $request
 	 * @return mixed
 	 */
-	public function update($id, UserContract $user, UpdateProfileRequest $request) {
-		$user->updateProfile($id, $request->all());
+	public function update(UserContract $user, UpdateProfileRequest $request) {
+		$user->updateProfile($request->all());
 		return redirect()->route('frontend.dashboard')->withFlashSuccess(trans("strings.profile_successfully_updated"));
 	}
 }

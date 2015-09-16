@@ -3,9 +3,9 @@
 use App\User;
 use App\UserProvider;
 use App\Exceptions\GeneralException;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
+use App\Repositories\Backend\Role\RoleRepositoryContract;
 
 /**
  * Class EloquentUserRepository
@@ -134,13 +134,12 @@ class EloquentUserRepository implements UserContract {
 	}
 
 	/**
-	 * @param $id
 	 * @param $input
 	 * @return mixed
 	 * @throws GeneralException
 	 */
-	public function updateProfile($id, $input) {
-		$user = $this->findOrThrowException($id);
+	public function updateProfile($input) {
+		$user = access()->user();
 		$user->name = $input['name'];
 
 		if ($user->canChangeEmail()) {
