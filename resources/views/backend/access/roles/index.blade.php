@@ -32,12 +32,16 @@
                 <tr>
                     <td>{!! $role->name !!}</td>
                     <td>
-                        @if (count($role->permissions) > 0)
-                            @foreach ($role->permissions as $permission)
-                                {!! $permission->display_name !!}<br/>
-                            @endforeach
+                        @if ($role->all)
+                            <span class="label label-success">All</span>
                         @else
-                            None
+                            @if (count($role->permissions) > 0)
+                                @foreach ($role->permissions as $permission)
+                                    {!! $permission->display_name !!}<br/>
+                                @endforeach
+                            @else
+                                <span class="label label-danger">None</span>
+                            @endif
                         @endif
                     </td>
                     <td>{!! $role->users()->count() !!}</td>

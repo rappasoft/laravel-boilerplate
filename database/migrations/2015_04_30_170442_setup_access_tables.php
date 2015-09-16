@@ -20,6 +20,7 @@ class SetupAccessTables extends Migration {
 		Schema::create(config('access.roles_table'), function ($table) {
 			$table->increments('id')->unsigned();
 			$table->string('name')->unique();
+			$table->boolean('all')->default(false);
 			$table->timestamps();
 		});
 

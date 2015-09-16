@@ -56,20 +56,29 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 	 * @throws GeneralException
 	 */
 	public function create($input, $permissions) {
-		if (Role::where('name', '=', $input['name'])->first())
+		if (Role::where('name', $input['name'])->first())
 			throw new GeneralException('That role already exists. Please choose a different name.');
 
-		//See if the role must contain a permission as per config
-		if (config('access.roles.role_must_contain_permission') && count($permissions['role_permissions']) == 0)
-			throw new GeneralException('You must select at least one permission for this role.');
+		//See if the role has all access
+		$all = $input['associated-permissions'] == "all" ? true : false;
+
+		//This config is only required if all is false
+		if (! $all)
+			//See if the role must contain a permission as per config
+			if (config('access.roles.role_must_contain_permission') && count($permissions['role_permissions']) == 0)
+				throw new GeneralException('You must select at least one permission for this role.');
 
 		$role = new Role;
 		$role->name = $input['name'];
 
+		//See if this role has all permissions and set the flag on the role
+		$role->all = $all;
+
 		if ($role->save()) {
-			//Attach permissions
-			if (count($permissions['role_permissions']) > 0)
-				$role->attachPermissions($permissions['role_permissions']);
+			if (! $all)
+				//Attach permissions if the role does not have all access
+				if (count($permissions['role_permissions']) > 0)
+					$role->attachPermissions($permissions['role_permissions']);
 
 			return true;
 		}
@@ -87,18 +96,31 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 	public function update($id, $input, $permissions) {
 		$role = $this->findOrThrowException($id);
 
-		//Validate
-		if (strlen($input['name']) == 0)
-			throw new GeneralException('You must specify the role name.');
+		//See if the role has all access, administrator always has all access
+		if ($role->id == 1)
+			$all = true;
+		else
+			$all = $input['associated-permissions'] == "all" ? true : false;
 
-		//See if the role must contain a permission as per config
-		if (config('access.roles.role_must_contain_permission') && count($permissions['role_permissions']) == 0)
-			throw new GeneralException('You must select at least one permission for this role.');
+		//This config is only required if all is false
+		if (! $all)
+			//See if the role must contain a permission as per config
+			if (config('access.roles.role_must_contain_permission') && count($permissions['role_permissions']) == 0)
+				throw new GeneralException('You must select at least one permission for this role.');
 
 		$role->name = $input['name'];
 
+		//See if this role has all permissions and set the flag on the role
+		$role->all = $all;
+
 		if ($role->save()) {
-			$role->savePermissions($permissions['role_permissions']);
+			//If role has all access detach all permissions because theyre not needed
+			if ($all)
+				$role->permissions()->sync([]);
+			else
+				//Attach permissions if the role does not have all access
+				$role->savePermissions($permissions['role_permissions']);
+
 			return true;
 		}
 

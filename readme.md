@@ -146,14 +146,7 @@ access.users.change_email
 access.roles.role_must_contain_permission
 
 /*
- * Whether or not the administrator role must possess every permission
- * Works in unison with permissions.permission_must_contain_role
- */
-access.roles.administrator_forced
-
-/*
  * Whether a permission must contain a role or can be used standalone
- * Works in unison with roles.administrator_forced
  */
 access.permissions.permission_must_contain_role
 ```

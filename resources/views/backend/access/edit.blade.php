@@ -2,10 +2,6 @@
 
 @section ('title', trans('menus.user_management') . ' | ' . trans('menus.edit_user'))
 
-@section ('before-styles-end')
-    {!! HTML::style('css/plugin/jquery.onoff.css') !!}
-@stop
-
 @section('page-header')
     <h1>
         {{ trans('menus.user_management') }}
@@ -41,30 +37,14 @@
         <div class="form-group">
             <label class="col-lg-2 control-label">{{ trans('validation.attributes.active') }}</label>
             <div class="col-lg-1">
-                <div class="sw-green create-permissions-switch">
-                    <div class="onoffswitch">
-                        <input type="checkbox" value="1" name="status" class="toggleBtn onoffswitch-checkbox" id="user-active" {{$user->status == 1 ? "checked='checked'" : ''}}>
-                        <label for="user-active" class="onoffswitch-label">
-                            <div class="onoffswitch-inner"></div>
-                            <div class="onoffswitch-switch"></div>
-                        </label>
-                    </div>
-                </div><!--green checkbox-->
+                <input type="checkbox" value="1" name="status" {{$user->status == 1 ? "checked='checked'" : ''}} />
             </div>
         </div><!--form control-->
 
         <div class="form-group">
             <label class="col-lg-2 control-label">{{ trans('validation.attributes.confirmed') }}</label>
             <div class="col-lg-1">
-                <div class="sw-green confirmation-switch">
-                    <div class="onoffswitch">
-                        <input type="checkbox" value="1" name="confirmed" class="toggleBtn onoffswitch-checkbox" id="confirm-active" {{$user->confirmed == 1 ? "checked='checked'" : ''}}>
-                        <label for="confirm-active" class="onoffswitch-label">
-                            <div class="onoffswitch-inner"></div>
-                            <div class="onoffswitch-switch"></div>
-                        </label>
-                    </div>
-                </div><!--green checkbox-->
+                <input type="checkbox" value="1" name="confirmed" {{$user->confirmed == 1 ? "checked='checked'" : ''}} />
             </div>
         </div><!--form control-->
 
@@ -73,17 +53,7 @@
             <div class="col-lg-3">
                 @if (count($roles) > 0)
                     @foreach($roles as $role)
-                        {!! $role->name !!}
-                        <div class="sw-green create-permissions-switch">
-                            <div class="onoffswitch">
-                                <input type="checkbox" value="{{$role->id}}" name="assignees_roles[]" {{in_array($role->id, $user_roles) ? 'checked="checked"' : ""}} class="toggleBtn onoffswitch-checkbox" id="role-{{$role->id}}">
-                                <label for="role-{{$role->id}}" class="onoffswitch-label">
-                                    <div class="onoffswitch-inner"></div>
-                                    <div class="onoffswitch-switch"></div>
-                                </label>
-                            </div>
-                        </div><!--green checkbox-->
-                        <div class="clearfix"></div>
+                        <input type="checkbox" value="{{$role->id}}" name="assignees_roles[]" {{in_array($role->id, $user_roles) ? 'checked="checked"' : ""}} id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{!! $role->name !!}</label><br/>
 
                         @if (count($role->permissions) > 0)
                             <blockquote class="small">{{--
@@ -106,17 +76,7 @@
             <div class="col-lg-3">
                 @if (count($permissions))
                     @foreach ($permissions as $perm)
-                        {!! $perm->display_name !!}
-                        <div class="other-permissions-switch">
-                            <div class="onoffswitch">
-                                <input type="checkbox" value="{{$perm->id}}" name="permission_user[]" {{in_array($perm->id, $user_permissions) ? 'checked="checked"' : ""}} class="toggleBtn onoffswitch-checkbox" id="permission-{{$perm->id}}">
-                                <label for="permission-{{$perm->id}}" class="onoffswitch-label">
-                                    <div class="onoffswitch-inner"></div>
-                                    <div class="onoffswitch-switch"></div>
-                                </label>
-                            </div>
-                        </div><!--green checkbox-->
-                        <div class="clearfix"></div>
+                        <input type="checkbox" value="{{$perm->id}}" name="permission_user[]" {{in_array($perm->id, $user_permissions) ? 'checked="checked"' : ""}} id="permission-{{$perm->id}}" /> <label for="permission-{{$perm->id}}">{!! $perm->display_name !!}</label><br/>
                     @endforeach
                 @else
                     No other permissions
@@ -124,14 +84,16 @@
             </div><!--col 3-->
         </div><!--form control-->
 
-        <div class="pull-left">
-            <a href="{{route('admin.access.users.index')}}" class="btn btn-danger">{{ trans('strings.cancel_button') }}</a>
-        </div>
+        <div class="well">
+            <div class="pull-left">
+                <a href="{{route('admin.access.users.index')}}" class="btn btn-danger btn-xs">{{ trans('strings.cancel_button') }}</a>
+            </div>
 
-        <div class="pull-right">
-            <input type="submit" class="btn btn-success" value="{{ trans('strings.save_button') }}" />
-        </div>
-        <div class="clearfix"></div>
+            <div class="pull-right">
+                <input type="submit" class="btn btn-success btn-xs" value="{{ trans('strings.save_button') }}" />
+            </div>
+            <div class="clearfix"></div>
+        </div><!--well-->
 
     {!! Form::close() !!}
 @stop

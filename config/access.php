@@ -71,13 +71,7 @@ return array(
 		/*
 		 * Whether a role must contain a permission or can be used standalone
 		 */
-		'role_must_contain_permission' => true,
-
-		/*
-		 * Whether or not the administrator role must possess every permission
-		 * Works in unison with permissions.permission_must_contain_role
-		 */
-		'administrator_forced' => false,
+		'role_must_contain_permission' => false
 	],
 
 	/*
