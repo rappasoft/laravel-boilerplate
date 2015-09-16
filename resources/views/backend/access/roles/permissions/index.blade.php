@@ -1,3 +1,5 @@
+@inject('roles', 'App\Repositories\Backend\Role\RoleRepositoryContract')
+
 @extends ('backend.layouts.master')
 
 @section ('title', trans('menus.permission_management'))
@@ -44,6 +46,7 @@
                     @endif
                 </td>
                 <td>
+                    {!! $roles->findOrThrowException(1)->name !!}<br/>
                     @if (count($permission->roles))
                         @foreach($permission->roles as $role)
                             {!! $role->name !!}<br/>
