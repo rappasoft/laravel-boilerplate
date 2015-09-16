@@ -12,5 +12,6 @@ get('macros', 'FrontendController@macros');
 Route::group(['middleware' => 'auth'], function ()
 {
 	get('dashboard', ['as' => 'frontend.dashboard', 'uses' => 'DashboardController@index']);
-	resource('profile', 'ProfileController', ['only' => ['edit', 'update']]);
+	get('profile/edit', ['as' => 'frontend.profile.edit', 'uses' => 'ProfileController@edit']);
+	patch('profile/update', ['as' => 'frontend.profile.update', 'uses' => 'ProfileController@update']);
 });

@@ -2,6 +2,10 @@
 
 use App\Http\Requests\Request;
 
+/**
+ * Class CreateUserRequest
+ * @package App\Http\Requests\Backend\Access\User
+ */
 class CreateUserRequest extends Request {
 
 	/**

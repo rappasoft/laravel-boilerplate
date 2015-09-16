@@ -5,6 +5,9 @@
  */
 Route::group(['namespace' => 'Auth'], function ()
 {
+	/**
+	 * These routes require the user to be logged in
+	 */
 	Route::group(['middleware' => 'auth'], function ()
 	{
 		get('auth/logout', 'AuthController@getLogout');
@@ -12,6 +15,9 @@ Route::group(['namespace' => 'Auth'], function ()
 		post('auth/password/change', ['as' => 'password.change', 'uses' => 'PasswordController@postChangePassword']);
 	});
 
+	/**
+	 * These reoutes require the user NOT be logged in
+	 */
 	Route::group(['middleware' => 'guest'], function ()
 	{
 		get('auth/login/{provider}', ['as' => 'auth.provider', 'uses' => 'AuthController@loginThirdParty']);

@@ -2,6 +2,10 @@
 
 use App\Http\Requests\Request;
 
+/**
+ * Class LoginRequest
+ * @package App\Http\Requests\Frontend\Access
+ */
 class LoginRequest extends Request {
 
 	/**

@@ -2,6 +2,10 @@
 
 use App\Http\Requests\Request;
 
+/**
+ * Class UpdateProfileRequest
+ * @package App\Http\Requests\Frontend\User
+ */
 class UpdateProfileRequest extends Request {
 
 	/**

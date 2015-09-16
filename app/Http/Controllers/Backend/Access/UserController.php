@@ -3,11 +3,11 @@
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\User\UserContract;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
-use App\Repositories\Backend\Permission\PermissionRepositoryContract;
+use App\Repositories\Frontend\Auth\AuthenticationContract;
 use App\Http\Requests\Backend\Access\User\CreateUserRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
-use App\Repositories\Frontend\Auth\AuthenticationContract;
+use App\Repositories\Backend\Permission\PermissionRepositoryContract;
 
 /**
  * Class UserController
@@ -18,6 +18,7 @@ class UserController extends Controller {
 	 * @var UserContract
 	 */
 	protected $users;
+
 	/**
 	 * @var RoleRepositoryContract
 	 */
@@ -33,10 +34,7 @@ class UserController extends Controller {
 	 * @param RoleRepositoryContract $roles
 	 * @param PermissionRepositoryContract $permissions
 	 */
-	public function __construct(
-		UserContract $users,
-		RoleRepositoryContract $roles,
-		PermissionRepositoryContract $permissions) {
+	public function __construct(UserContract $users, RoleRepositoryContract $roles, PermissionRepositoryContract $permissions) {
 		$this->users = $users;
 		$this->roles = $roles;
 		$this->permissions = $permissions;

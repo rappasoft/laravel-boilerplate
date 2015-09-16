@@ -2,6 +2,10 @@
 
 use App\Http\Requests\Request;
 
+/**
+ * Class UpdateUserPasswordRequest
+ * @package App\Http\Requests\Backend\Access\User
+ */
 class UpdateUserPasswordRequest extends Request {
 
 	/**

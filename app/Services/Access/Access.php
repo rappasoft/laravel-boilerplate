@@ -1,5 +1,9 @@
 <?php namespace App\Services\Access;
 
+/**
+ * Class Access
+ * @package App\Services\Access
+ */
 class Access
 {
 	/**
@@ -45,9 +49,8 @@ class Access
 	 */
 	public function hasRole($role)
 	{
-		if ($user = $this->user()) {
+		if ($user = $this->user())
 			return $user->hasRole($role);
-		}
 
 		return false;
 	}
@@ -62,10 +65,8 @@ class Access
 	{
 		if ($user = $this->user()) {
 			//If not an array, make a one item array
-			if (!is_array($roles))
-			{
+			if (! is_array($roles))
 				$roles = array($roles);
-			}
 
 			return $user->hasRoles($roles, $needsAll);
 		}
@@ -82,9 +83,8 @@ class Access
 	 */
 	public function can($permission)
 	{
-		if ($user = $this->user()) {
+		if ($user = $this->user())
 			return $user->can($permission);
-		}
 
 		return false;
 	}
@@ -108,9 +108,7 @@ class Access
 		if ($user = $this->user()) {
 			//If not an array, make a one item array
 			if (!is_array($permissions))
-			{
 				$permissions = array($permissions);
-			}
 
 			return $user->canMultiple($permissions, $needsAll);
 		}

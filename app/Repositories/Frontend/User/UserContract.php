@@ -27,11 +27,10 @@ interface UserContract {
 	public function checkIfUserNeedsUpdating($provider, $providerData, $user);
 
 	/**
-	 * @param $id
 	 * @param $input
 	 * @return mixed
 	 */
-	public function updateProfile($id, $input);
+	public function updateProfile($input);
 
 	/**
 	 * @param $input

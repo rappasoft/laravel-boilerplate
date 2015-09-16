@@ -2,11 +2,11 @@
 
 use App\User;
 use App\Exceptions\GeneralException;
-use App\Repositories\Frontend\User\UserContract;
 use Illuminate\Contracts\Auth\Guard;
-use Laravel\Socialite\Contracts\Factory as Socialite;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
+use App\Repositories\Frontend\User\UserContract;
+use Laravel\Socialite\Contracts\Factory as Socialite;
 
 /**
  * Class Registrar

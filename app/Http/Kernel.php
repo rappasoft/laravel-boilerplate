@@ -2,6 +2,10 @@
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
+/**
+ * Class Kernel
+ * @package App\Http
+ */
 class Kernel extends HttpKernel {
 
 	/**
@@ -29,6 +33,9 @@ class Kernel extends HttpKernel {
 		'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
 		'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
 
+		/**
+		 * Access Middleware
+		 */
 		'access.routeNeedsRole' => \App\Http\Middleware\RouteNeedsRole::class,
 		'access.routeNeedsPermission' => \App\Http\Middleware\RouteNeedsPermission::class,
 		'access.routeNeedsRoleOrPermission' => \App\Http\Middleware\RouteNeedsRoleOrPermission::class,

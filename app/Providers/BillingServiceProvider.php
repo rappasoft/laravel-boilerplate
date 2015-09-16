@@ -22,8 +22,8 @@ class BillingServiceProvider extends ServiceProvider {
 	public function register()
 	{
 		$this->app->bind(
-			'App\Services\Billing\BillingContract',
-			'App\Services\Billing\StripeGateway'
+			\App\Services\Billing\BillingContract::class,
+			\App\Services\Billing\StripeGateway::class
 		);
 	}
 }
