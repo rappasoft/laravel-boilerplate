@@ -3,7 +3,7 @@
 /**
  * Frontend Controllers
  */
-get('/', ['as' => 'home', 'uses' => 'FrontendController@index']);
+get('/', 'FrontendController@index')->name('home');
 get('macros', 'FrontendController@macros');
 
 /**
@@ -11,7 +11,7 @@ get('macros', 'FrontendController@macros');
  */
 Route::group(['middleware' => 'auth'], function ()
 {
-	get('dashboard', ['as' => 'frontend.dashboard', 'uses' => 'DashboardController@index']);
-	get('profile/edit', ['as' => 'frontend.profile.edit', 'uses' => 'ProfileController@edit']);
-	patch('profile/update', ['as' => 'frontend.profile.update', 'uses' => 'ProfileController@update']);
+	get('dashboard', 'DashboardController@index')->name('frontend.dashboard');
+	get('profile/edit', 'ProfileController@edit')->name('frontend.profile.edit');
+	patch('profile/update', 'ProfileController@update')->name('frontend.profile.update');
 });
