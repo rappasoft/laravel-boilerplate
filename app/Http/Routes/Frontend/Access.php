@@ -3,28 +3,28 @@
 /**
  * Frontend Access Controllers
  */
-Route::group(['namespace' => 'Auth'], function ()
+$router->group(['namespace' => 'Auth'], function () use ($router)
 {
 	/**
 	 * These routes require the user to be logged in
 	 */
-	Route::group(['middleware' => 'auth'], function ()
+	$router->group(['middleware' => 'auth'], function ()
 	{
 		get('auth/logout', 'AuthController@getLogout');
 		get('auth/password/change', 'PasswordController@getChangePassword');
-		post('auth/password/change', ['as' => 'password.change', 'uses' => 'PasswordController@postChangePassword']);
+		post('auth/password/change', 'PasswordController@postChangePassword')->name('password.change');
 	});
 
 	/**
 	 * These reoutes require the user NOT be logged in
 	 */
-	Route::group(['middleware' => 'guest'], function ()
+	$router->group(['middleware' => 'guest'], function () use ($router)
 	{
-		get('auth/login/{provider}', ['as' => 'auth.provider', 'uses' => 'AuthController@loginThirdParty']);
-		get('account/confirm/{token}', ['as' => 'account.confirm', 'uses' => 'AuthController@confirmAccount']);
-		get('account/confirm/resend/{user_id}', ['as' => 'account.confirm.resend', 'uses' => 'AuthController@resendConfirmationEmail']);
+		get('auth/login/{provider}', 'AuthController@loginThirdParty')->name('auth.provider');
+		get('account/confirm/{token}', 'AuthController@confirmAccount')->name('account.confirm');
+		get('account/confirm/resend/{user_id}', 'AuthController@resendConfirmationEmail')->name('account.confirm.resend');
 
-		Route::controller('auth', 'AuthController');
-		Route::controller('password', 'PasswordController');
+		$router->controller('auth', 'AuthController');
+		$router->controller('password', 'PasswordController');
 	});
 });
