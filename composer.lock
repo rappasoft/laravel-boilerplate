@@ -5,19 +5,20 @@
         "This file is @generated automatically"
     ],
     "hash": "3d1edbc98b8b304a84698e0620c0e6e6",
+    "content-hash": "541213e4b6a14f24809d921185d030d3",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
-            "version": "3.4.1",
+            "version": "3.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ARCANEDEV/LogViewer.git",
-                "reference": "ec03655a34e5d1ea2bc24015f5ddbb6505523bfa"
+                "reference": "f35e1ce50e9a05ac86d0209ae14ae0ab5a7421db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/ec03655a34e5d1ea2bc24015f5ddbb6505523bfa",
-                "reference": "ec03655a34e5d1ea2bc24015f5ddbb6505523bfa",
+                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/f35e1ce50e9a05ac86d0209ae14ae0ab5a7421db",
+                "reference": "f35e1ce50e9a05ac86d0209ae14ae0ab5a7421db",
                 "shasum": ""
             },
             "require": {
@@ -65,7 +66,7 @@
                 "log viewer",
                 "logviewer"
             ],
-            "time": "2015-09-11 19:25:21"
+            "time": "2015-09-17 00:38:40"
         },
         {
             "name": "arcanedev/support",
@@ -930,16 +931,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.1.16",
+            "version": "v5.1.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "e34dcc0c57e0f560248aec5128161256ff8bf4e1"
+                "reference": "415b5d824e15ee7cd18b8b23f96ae32b0b51d6a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/e34dcc0c57e0f560248aec5128161256ff8bf4e1",
-                "reference": "e34dcc0c57e0f560248aec5128161256ff8bf4e1",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/415b5d824e15ee7cd18b8b23f96ae32b0b51d6a0",
+                "reference": "415b5d824e15ee7cd18b8b23f96ae32b0b51d6a0",
                 "shasum": ""
             },
             "require": {
@@ -1054,7 +1055,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-09-04 12:46:14"
+            "time": "2015-09-16 16:57:12"
         },
         {
             "name": "laravel/socialite",
