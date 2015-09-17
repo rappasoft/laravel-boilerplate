@@ -44,7 +44,7 @@ class RoleController extends Controller {
 	 */
 	public function create() {
 		return view('backend.access.roles.create')
-			->withPermissions($this->permissions->getPermissionsNotAssociatedWithUser());
+			->withPermissions($this->permissions->getAllPermissions());
 	}
 
 	/**
@@ -65,7 +65,7 @@ class RoleController extends Controller {
 		return view('backend.access.roles.edit')
 			->withRole($role)
 			->withRolePermissions($role->permissions->lists('id')->all())
-			->withPermissions($this->permissions->getPermissionsNotAssociatedWithUser());
+			->withPermissions($this->permissions->getAllPermissions());
 	}
 
 	/**

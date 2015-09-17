@@ -78,14 +78,18 @@
                     @foreach($roles as $role)
                         <input type="checkbox" value="{{$role->id}}" name="assignees_roles[]" id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{!! $role->name !!}</label><br/>
 
-                        @if (count($role->permissions) > 0)
-                            <blockquote class="small">{{--
-                                --}}@foreach ($role->permissions as $perm){{--
-                                    --}}{{$perm->display_name}}<br/>
-                                @endforeach
-                            </blockquote>
+                        @if ($role->all)
+                            All Permissions<br/><br/>
                         @else
-                            No permissions<br/><br/>
+                            @if (count($role->permissions) > 0)
+                                <blockquote class="small">{{--
+                                    --}}@foreach ($role->permissions as $perm){{--
+                                        --}}{{$perm->display_name}}<br/>
+                                    @endforeach
+                                </blockquote>
+                            @else
+                                No permissions<br/><br/>
+                            @endif
                         @endif
                     @endforeach
                 @else

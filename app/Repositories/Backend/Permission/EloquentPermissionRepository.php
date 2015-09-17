@@ -63,42 +63,6 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	}
 
 	/**
-	 * Get all permissions that are not associated with a user as a permission can not be associated
-	 * with a user and role at the same time
-	 *
-	 * @return array
-	 */
-	public function getPermissionsNotAssociatedWithUser() {
-		$return = [];
-		$permissions = $this->getAllPermissions();
-
-		foreach ($permissions as $perm) {
-			if (count($perm->users) == 0)
-				array_push($return, $perm);
-		}
-
-		return $return;
-	}
-
-	/**
-	 * Get all permissions that are not associated with a role as a permission can not be associated
-	 * with a user and role at the same time
-	 *
-	 * @return array
-	 */
-	public function getPermissionsNotAssociatedWithRole() {
-		$return = [];
-		$permissions = $this->getAllPermissions();
-
-		foreach ($permissions as $perm) {
-			if (count($perm->roles) == 0)
-				array_push($return, $perm);
-		}
-
-		return $return;
-	}
-
-	/**
 	 * @param $input
 	 * @param $roles
 	 * @return bool

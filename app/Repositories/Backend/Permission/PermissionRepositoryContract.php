@@ -30,16 +30,6 @@ interface PermissionRepositoryContract {
 	public function getAllPermissions($order_by = 'id', $sort = 'asc', $withRoles = true);
 
 	/**
-	 * @return mixed
-	 */
-	public function getPermissionsNotAssociatedWithUser();
-
-	/**
-	 * @return mixed
-	 */
-	public function getPermissionsNotAssociatedWithRole();
-
-	/**
 	 * @param $input
 	 * @param $roles
 	 * @return mixed

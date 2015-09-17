@@ -53,16 +53,20 @@
             <div class="col-lg-3">
                 @if (count($roles) > 0)
                     @foreach($roles as $role)
-                        <input type="checkbox" value="{{$role->id}}" name="assignees_roles[]" {{in_array($role->id, $user_roles) ? 'checked="checked"' : ""}} id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{!! $role->name !!}</label><br/>
+                        <input type="checkbox" value="{{$role->id}}" name="assignees_roles[]" {{in_array($role->id, $user_roles) ? 'checked="checked"' : ""}} {{$user->id == 1 && $role->id == 1 ? "checked='checked' disabled='disabled'" : ''}} id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{!! $role->name !!}</label><br/>
 
-                        @if (count($role->permissions) > 0)
-                            <blockquote class="small">{{--
-                                --}}@foreach ($role->permissions as $perm){{--
-                                --}}{{$perm->display_name}}<br/>
-                                @endforeach
-                            </blockquote>
+                        @if ($role->all)
+                            All Permissions<br/><br/>
                         @else
-                            No permissions<br/><br/>
+                            @if (count($role->permissions) > 0)
+                                <blockquote class="small">{{--
+                                    --}}@foreach ($role->permissions as $perm){{--
+                                    --}}{{$perm->display_name}}<br/>
+                                    @endforeach
+                                </blockquote>
+                            @else
+                                No permissions<br/><br/>
+                            @endif
                         @endif
                     @endforeach
                 @else

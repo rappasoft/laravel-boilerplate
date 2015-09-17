@@ -54,7 +54,7 @@ class UserController extends Controller {
 	public function create() {
 		return view('backend.access.create')
 			->withRoles($this->roles->getAllRoles('id', 'asc', true))
-			->withPermissions($this->permissions->getPermissionsNotAssociatedWithRole());
+			->withPermissions($this->permissions->getAllPermissions());
 	}
 
 	/**
@@ -81,7 +81,7 @@ class UserController extends Controller {
 			->withUserRoles($user->roles->lists('id')->all())
 			->withRoles($this->roles->getAllRoles('id', 'asc', true))
 			->withUserPermissions($user->permissions->lists('id')->all())
-			->withPermissions($this->permissions->getPermissionsNotAssociatedWithRole());
+			->withPermissions($this->permissions->getAllPermissions());
 	}
 
 	/**
