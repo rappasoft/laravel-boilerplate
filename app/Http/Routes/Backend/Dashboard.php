@@ -1,3 +1,3 @@
 <?php
 
-get('dashboard', ['as' => 'backend.dashboard', 'uses' => 'DashboardController@index']);
+get('dashboard', 'DashboardController@index')->name('backend.dashboard');
