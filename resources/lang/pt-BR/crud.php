@@ -23,9 +23,9 @@ return [
         'total' => 'Total de permissões',
         'users' => 'Usuários',
         'group' => 'Group',
+        'group-sort' => 'Group Sort',
         'groups' => [
             'name' => 'Group Name',
-            'total' => 'groups(s) total',
         ],
     ],
     'roles' => [

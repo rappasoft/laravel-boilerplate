@@ -31,6 +31,11 @@ return [
         'permissions' => [
             'all' => 'All Permissions',
             'button' => 'Permissions',
+
+            'groups' => [
+                'all' => 'All Groups',
+                'button' => 'Groups',
+            ],
         ],
         'roles' => [
             'all' => 'All Roles',

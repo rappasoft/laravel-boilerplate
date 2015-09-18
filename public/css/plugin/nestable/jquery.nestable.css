@@ -71,7 +71,7 @@
 
 @media only screen and (min-width: 700px) {
 
-    .dd { float: left; width: 48%; }
+    .dd { float: left; width: 100%; }
     .dd + .dd { margin-left: 2%; }
 
 }

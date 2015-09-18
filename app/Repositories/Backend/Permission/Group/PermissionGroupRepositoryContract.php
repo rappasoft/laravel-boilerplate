@@ -19,6 +19,12 @@ interface PermissionGroupRepositoryContract {
     public function getGroupsPaginated($limit = 50);
 
     /**
+     * @param bool $withChildren
+     * @return mixed
+     */
+    public function getAllGroups($withChildren = false);
+
+    /**
      * @param $input
      * @return mixed
      */

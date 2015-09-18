@@ -46,7 +46,7 @@ class PermissionController extends Controller {
 	public function index() {
 		return view('backend.access.roles.permissions.index')
 			->withPermissions($this->permissions->getPermissionsPaginated(50))
-			->withGroups($this->groups->getGroupsPaginated(50));
+			->withGroups($this->groups->getAllGroups());
 	}
 
 	/**
@@ -54,6 +54,7 @@ class PermissionController extends Controller {
 	 */
 	public function create() {
 		return view('backend.access.roles.permissions.create')
+			->withGroups($this->groups->getAllGroups(true))
 			->withRoles($this->roles->getAllRoles());
 	}
 
@@ -75,6 +76,7 @@ class PermissionController extends Controller {
 		return view('backend.access.roles.permissions.edit')
 			->withPermission($permission)
 			->withPermissionRoles($permission->roles->lists('id')->all())
+			->withGroups($this->groups->getAllGroups(true))
 			->withRoles($this->roles->getAllRoles());
 	}
 
@@ -85,7 +87,7 @@ class PermissionController extends Controller {
 	 */
 	public function update($id, UpdatePermissionRequest $request) {
 		$this->permissions->update($id, $request->except('permission_roles'), $request->only('permission_roles'));
-		return redirect()->route('admin.access.roles.permissions.index')->withFlashSuccess(trans("alerts.permissions.created"));
+		return redirect()->route('admin.access.roles.permissions.index')->withFlashSuccess(trans("alerts.permissions.updated"));
 	}
 
 	/**

@@ -37,9 +37,22 @@
         </div><!--form control-->
 
         <div class="form-group">
-            <label class="col-lg-2 control-label">{{ trans('validation.attributes.system_permission') }}</label>
-            <div class="col-lg-3">
-                <input type="checkbox" name="system" {{$permission->system == 1 ? 'checked="checked"' : ''}} />
+            {!! Form::label('group', trans('validation.attributes.group'), ['class' => 'col-lg-2 control-label']) !!}
+            <div class="col-lg-10">
+                <select name="group" class="form-control">
+                    <option value="">None</option>
+
+                    @foreach ($groups as $group)
+                        <option value="{!! $group->id !!}" {!! $permission->group_id == $group->id ? "selected='selected'" : '' !!}>{!! $group->name !!}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div><!--form control-->
+
+        <div class="form-group">
+            {!! Form::label('sort', trans('validation.attributes.group-sort'), ['class' => 'col-lg-2 control-label']) !!}
+            <div class="col-lg-10">
+                {!! Form::text('sort', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.group-sort')]) !!}
             </div>
         </div><!--form control-->
 
@@ -58,6 +71,13 @@
                 @if (config('access.roles.administrator_forced'))
                     {!! Form::hidden('permission_roles[]', 1) !!}
                 @endif
+            </div>
+        </div><!--form control-->
+
+        <div class="form-group">
+            <label class="col-lg-2 control-label">{{ trans('validation.attributes.system_permission') }}</label>
+            <div class="col-lg-3">
+                <input type="checkbox" name="system" {{$permission->system == 1 ? 'checked="checked"' : ''}} />
             </div>
         </div><!--form control-->
 

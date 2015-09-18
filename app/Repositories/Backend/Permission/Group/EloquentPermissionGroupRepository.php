@@ -29,6 +29,20 @@ class EloquentPermissionGroupRepository implements PermissionGroupRepositoryCont
     }
 
     /**
+     * @param bool $withChildren
+     * @return mixed
+     */
+    public function getAllGroups($withChildren = false) {
+        if ($withChildren)
+            return PermissionGroup::orderBy('name', 'asc')->get();
+
+        return PermissionGroup::with('children', 'permissions')
+            ->whereNull('parent_id')
+            ->orderBy('sort', 'asc')
+            ->get();
+    }
+
+    /**
      * @param $input
      * @return static
      */
@@ -52,9 +66,18 @@ class EloquentPermissionGroupRepository implements PermissionGroupRepositoryCont
     /**
      * @param $id
      * @return mixed
+     * @throws GeneralException
      */
     public function destroy($id) {
-        return $this->find($id)->delete();
+        $group = $this->find($id);
+
+        if ($group->children->count())
+            throw new GeneralException("You can not delete this group because it has child groups.");
+
+        if ($group->permissions->count())
+            throw new GeneralException("You can not delete this group because it has associated permissions.");
+
+        return $group->delete();
     }
 
     /**

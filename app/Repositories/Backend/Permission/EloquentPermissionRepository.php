@@ -73,6 +73,8 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 		$permission->name = $input['name'];
 		$permission->display_name = $input['display_name'];
 		$permission->system = isset($input['system']) ? 1 : 0;
+		$permission->group_id = isset($input['group']) ? (int)$input['group'] : null;
+		$permission->sort = isset($input['sort']) ? (int)$input['sort'] : 0;
 
 		$this->permissionMustContainRole($roles);
 
@@ -131,6 +133,8 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 		$permission->name = $input['name'];
 		$permission->display_name = $input['display_name'];
 		$permission->system = isset($input['system']) ? 1 : 0;
+		$permission->group_id = isset($input['group']) ? (int)$input['group'] : null;
+		$permission->sort = isset($input['sort']) ? (int)$input['sort'] : 0;
 
 		//See if this permission is tied directly to a user first
 		if (count($permission->users) > 0)

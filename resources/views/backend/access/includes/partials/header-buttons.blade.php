@@ -29,9 +29,10 @@
           </button>
           <ul class="dropdown-menu pull-right" role="menu">
             <li><a href="{{route('admin.access.roles.permission-group.create')}}">{{ trans('menus.create_permission_group') }}</a></li>
+            <li><a href="{{route('admin.access.roles.permissions.create')}}">{{ trans('menus.create_permission') }}</a></li>
             <li class="divider"></li>
             <li><a href="{{route('admin.access.roles.permissions.index')}}">{{ trans('menus.header_buttons.permissions.all') }}</a></li>
-            <li><a href="{{route('admin.access.roles.permissions.create')}}">{{ trans('menus.create_permission') }}</a></li>
+            <li><a href="{{route('admin.access.roles.permissions.index')}}">{{ trans('menus.header_buttons.permissions.groups.all') }}</a></li>
           </ul>
         </div>
     </div>
