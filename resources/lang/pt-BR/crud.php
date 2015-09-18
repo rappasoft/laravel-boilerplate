@@ -22,6 +22,11 @@ return [
         'system' => 'Sistema?',
         'total' => 'Total de permissões',
         'users' => 'Usuários',
+        'group' => 'Group',
+        'groups' => [
+            'name' => 'Group Name',
+            'total' => 'groups(s) total',
+        ],
     ],
     'roles' => [
         'number_of_users' => 'Nº de Usuários',

@@ -125,6 +125,7 @@ return [
         'permission_name' => 'Permission Name',
         'display_name' => 'Display Name',
         'system_permission' => 'System Permission?',
+        'permission_group_name' => 'Group Name',
     ],
 
 ];

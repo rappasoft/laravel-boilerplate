@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace App\Models\Access\Permission;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
@@ -31,6 +31,13 @@ class Permission extends Model {
 	public function roles()
 	{
 		return $this->belongsToMany(config('access.role'), config('access.permission_role_table'), 'permission_id', 'role_id');
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+	public function group() {
+		return $this->belongsTo(PermissionGroup::class, 'group_id');
 	}
 
 	/**

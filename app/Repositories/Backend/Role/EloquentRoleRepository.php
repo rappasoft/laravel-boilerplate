@@ -1,6 +1,6 @@
 <?php namespace App\Repositories\Backend\Role;
 
-use App\Role;
+use App\Models\Access\Role\Role;
 use App\Exceptions\GeneralException;
 
 /**

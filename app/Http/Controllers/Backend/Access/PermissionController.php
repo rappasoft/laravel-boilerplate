@@ -1,8 +1,10 @@
 <?php namespace App\Http\Controllers\Backend\Access;
 
 use App\Http\Controllers\Controller;
+use App\Models\Access\Permission\PermissionGroup;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
 use App\Repositories\Backend\Permission\PermissionRepositoryContract;
+use App\Repositories\Backend\Permission\Group\PermissionGroupRepositoryContract;
 use App\Http\Requests\Backend\Access\Permission\CreatePermissionRequest;
 use App\Http\Requests\Backend\Access\Permission\UpdatePermissionRequest;
 
@@ -23,12 +25,19 @@ class PermissionController extends Controller {
 	protected $permissions;
 
 	/**
+	 * @var PermissionGroupRepositoryContract
+     */
+	protected $groups;
+
+	/**
 	 * @param RoleRepositoryContract $roles
 	 * @param PermissionRepositoryContract $permissions
-	 */
-	public function __construct(RoleRepositoryContract $roles, PermissionRepositoryContract $permissions) {
+	 * @param PermissionGroupRepositoryContract $groups
+     */
+	public function __construct(RoleRepositoryContract $roles, PermissionRepositoryContract $permissions, PermissionGroupRepositoryContract $groups) {
 		$this->roles = $roles;
 		$this->permissions = $permissions;
+		$this->groups = $groups;
 	}
 
 	/**
@@ -36,7 +45,8 @@ class PermissionController extends Controller {
 	 */
 	public function index() {
 		return view('backend.access.roles.permissions.index')
-			->withPermissions($this->permissions->getPermissionsPaginated(50));
+			->withPermissions($this->permissions->getPermissionsPaginated(50))
+			->withGroups($this->groups->getGroupsPaginated(50));
 	}
 
 	/**

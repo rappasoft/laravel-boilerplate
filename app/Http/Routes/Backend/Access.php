@@ -1,29 +1,26 @@
 <?php
 
-Route::group(['prefix' => 'access', 'namespace' => 'Access'], function ()
+$router->group(['prefix' => 'access', 'namespace' => 'Access'], function() use ($router)
 {
 	/**
 	 * User Management
 	 */
 	resource('users', 'UserController', ['except' => ['show']]);
 
-	get('users/deactivated', ['as' => 'admin.access.users.deactivated', 'uses' => 'UserController@deactivated']);
-	get('users/banned', ['as' => 'admin.access.users.banned', 'uses' => 'UserController@banned']);
-	get('users/deleted', ['as' => 'admin.access.users.deleted', 'uses' => 'UserController@deleted']);
-	get('account/confirm/resend/{user_id}', ['as' => 'admin.account.confirm.resend', 'uses' => 'UserController@resendConfirmationEmail']);
+	get('users/deactivated', 'UserController@deactivated')->name('admin.access.users.deactivated');
+	get('users/banned', 'UserController@banned')->name('admin.access.users.banned');
+	get('users/deleted', 'UserController@deleted')->name('admin.access.users.deleted');
+	get('account/confirm/resend/{user_id}', 'UserController@resendConfirmationEmail')->name('admin.account.confirm.resend');
 
 	/**
 	 * Specific User
 	 */
-	Route::group(['prefix' => 'user/{id}', 'where' => ['id' => '[0-9]+']], function () {
-		get('delete', ['as' => 'admin.access.user.delete-permanently', 'uses' => 'UserController@delete']);
-		get('restore', ['as' => 'admin.access.user.restore', 'uses' => 'UserController@restore']);
-		get('mark/{status}', ['as' => 'admin.access.user.mark', 'uses' => 'UserController@mark'])
-			->where([
-				'status' => '[0,1,2]'
-			]);
-		get('password/change', ['as' => 'admin.access.user.change-password', 'uses' => 'UserController@changePassword']);
-		post('password/change', ['as' => 'admin.access.user.change-password', 'uses' => 'UserController@updatePassword']);
+	$router->group(['prefix' => 'user/{id}', 'where' => ['id' => '[0-9]+']], function() {
+		get('delete', 'UserController@delete')->name('admin.access.user.delete-permanently');
+		get('restore', 'UserController@restore')->name('admin.access.user.restore');
+		get('mark/{status}', 'UserController@mark')->name('admin.access.user.mark')->where(['status' => '[0,1,2]']);
+		get('password/change', 'UserController@changePassword')->name('admin.access.user.change-password');
+		post('password/change', 'UserController@updatePassword')->name('admin.access.user.change-password');
 	});
 
 	/**
@@ -34,8 +31,13 @@ Route::group(['prefix' => 'access', 'namespace' => 'Access'], function ()
 	/**
 	 * Permission Management
 	 */
-	Route::group(['prefix' => 'roles'], function ()
+	$router->group(['prefix' => 'roles'], function() use ($router)
 	{
+		resource('permission-group', 'PermissionGroupController', ['except' => ['index', 'show']]);
 		resource('permissions', 'PermissionController', ['except' => ['show']]);
+
+		$router->group(['prefix' => 'groups'], function() {
+			post('update-sort', 'PermissionGroupController@updateSort')->name('admin.access.roles.groups.update-sort');
+		});
 	});
 });

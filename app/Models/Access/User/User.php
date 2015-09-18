@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace App\Models\Access\User;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Support\Facades\Hash;

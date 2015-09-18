@@ -16,7 +16,12 @@ return [
     'permissions' => [
         'created' => 'Permission successfully created.',
         'updated' => 'Permission successfully updated.',
-        'deleted' => 'Permission successfully deleted.'
+        'deleted' => 'Permission successfully deleted.',
+        'groups'  => [
+            'created' => 'Permission group successfully created.',
+            'updated' => 'Permission group successfully updated.',
+            'deleted' => 'Permission group successfully deleted.',
+        ],
     ],
 
     'roles' => [

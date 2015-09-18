@@ -1,6 +1,6 @@
 <?php namespace App\Repositories\Backend\Permission;
 
-use App\Permission;
+use App\Models\Access\Permission\Permission;
 use App\Exceptions\GeneralException;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
 

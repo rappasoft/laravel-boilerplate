@@ -1,4 +1,4 @@
-<?php namespace App;
+<?php namespace App\Models\Access\Role;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;

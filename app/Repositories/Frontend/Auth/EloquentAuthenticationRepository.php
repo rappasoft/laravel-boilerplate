@@ -1,6 +1,6 @@
 <?php namespace App\Repositories\Frontend\Auth;
 
-use App\User;
+use App\Models\Access\User\User;
 use App\Exceptions\GeneralException;
 use Illuminate\Contracts\Auth\Guard;
 use App\Events\Frontend\Auth\UserLoggedIn;
