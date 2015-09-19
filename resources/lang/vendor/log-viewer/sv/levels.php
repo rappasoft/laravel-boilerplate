@@ -3,11 +3,11 @@
 return [
     'all'       => 'Alla',
     'emergency' => 'Akut',
-    'alert'     => 'Larmerande',
+    'alert'     => 'Alarmerande',
     'critical'  => 'Kritisk',
     'error'     => 'Error',
     'warning'   => 'Varning',
-    'notice'    => 'Notering',
+    'notice'    => 'Notis',
     'info'      => 'Info',
     'debug'     => 'Debug',
 ];
