@@ -61,8 +61,14 @@
                         <td class="visible-lg">{!! $user->created_at->diffForHumans() !!}</td>
                         <td class="visible-lg">{!! $user->updated_at->diffForHumans() !!}</td>
                         <td>
-                            <a href="{{route('admin.access.user.restore', $user->id)}}" class="btn btn-xs btn-success" name="restore_user"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="{{ trans('crud.users.restore_user') }}"></i></a> <a href="{{route('admin.access.user.delete-permanently', $user->id)}}" class="btn btn-xs btn-danger" name="delete_user_perm"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="{{ trans('crud.users.delete_permanently') }}"></i></a>
+                            @if (access()->can('undelete-users'))
+                                <a href="{{route('admin.access.user.restore', $user->id)}}" class="btn btn-xs btn-success" name="restore_user"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="{{ trans('crud.users.restore_user') }}"></i></a>
+                            @endif
+
+                            @if (access()->can('permanently-delete-users'))
+                                <a href="{{route('admin.access.user.delete-permanently', $user->id)}}" class="btn btn-xs btn-danger" name="delete_user_perm"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="{{ trans('crud.users.delete_permanently') }}"></i></a>
                         </td>
+                            @endif
                     </tr>
                 @endforeach
             @else
@@ -85,13 +91,17 @@
 @section('after-scripts-end')
 	<script>
 		$(function() {
-			$("a[name='delete_user_perm']").click(function() {
-				return confirm("Are you sure you want to delete this user permanently? Anywhere in the application that references this user's id will most likely error. Proceed at your own risk. This can not be un-done.");
-			});
+            @if (access()->can('permanently-delete-users'))
+                $("a[name='delete_user_perm']").click(function() {
+                    return confirm("Are you sure you want to delete this user permanently? Anywhere in the application that references this user's id will most likely error. Proceed at your own risk. This can not be un-done.");
+                });
+            @endif
 
-			$("a[name='restore_user']").click(function() {
-                return confirm("Restore this user to its original state?");
-            });
+            @if (access()->can('undelete-users'))
+                $("a[name='restore_user']").click(function() {
+                    return confirm("Restore this user to its original state?");
+                });
+            @endif
 		});
 	</script>
 @stop

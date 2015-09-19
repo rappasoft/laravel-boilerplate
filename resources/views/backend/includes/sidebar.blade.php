@@ -34,7 +34,7 @@
                 <li class="{{ Active::pattern('admin/dashboard') }}"><a href="{!!route('backend.dashboard')!!}"><span>{{ trans('menus.dashboard') }}</span></a></li>
 
                 @if (access()->can('view-access-management'))
-                  <li class="{{ Active::pattern('admin/access/*') }}"><a href="{!!url('admin/access/users')!!}"><span>{{ trans('menus.user_management') }}</span></a></li>
+                  <li class="{{ Active::pattern('admin/access/*') }}"><a href="{!!url('admin/access/users')!!}"><span>{{ trans('menus.access_management') }}</span></a></li>
                 @endif
 
                 <li class="{{ Active::pattern('admin/log-viewer/*') }} treeview">

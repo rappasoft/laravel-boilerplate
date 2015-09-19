@@ -46,7 +46,6 @@ return [
             'button' => 'Usuários',
         ],
     ],
-    //TODO: translate
     'log-viewer' => [
         'main' => 'Log Viewer',
         'dashboard' => 'Dashboard',
@@ -55,6 +54,7 @@ return [
     'permission_management' => 'Gerenciamento de Permissões',
     'role_management' => 'Gerenciamento de Papéis',
     'user_management' => 'Gerenciamento de Usuários',
+    'access_management' => 'Access Management',
     'language-picker' => [
         'language' => 'Language',
         'langs' => [

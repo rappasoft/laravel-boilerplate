@@ -1,12 +1,14 @@
 <?php namespace App\Http\Controllers\Backend\Access;
 
 use App\Http\Controllers\Controller;
-use App\Models\Access\Permission\PermissionGroup;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
 use App\Repositories\Backend\Permission\PermissionRepositoryContract;
-use App\Repositories\Backend\Permission\Group\PermissionGroupRepositoryContract;
+use App\Http\Requests\Backend\Access\Permission\EditPermissionRequest;
+use App\Http\Requests\Backend\Access\Permission\StorePermissionRequest;
 use App\Http\Requests\Backend\Access\Permission\CreatePermissionRequest;
 use App\Http\Requests\Backend\Access\Permission\UpdatePermissionRequest;
+use App\Http\Requests\Backend\Access\Permission\DeletePermissionRequest;
+use App\Repositories\Backend\Permission\Group\PermissionGroupRepositoryContract;
 
 /**
  * Class PermissionController
@@ -50,28 +52,30 @@ class PermissionController extends Controller {
 	}
 
 	/**
+	 * @param CreatePermissionRequest $request
 	 * @return mixed
-	 */
-	public function create() {
+     */
+	public function create(CreatePermissionRequest $request) {
 		return view('backend.access.roles.permissions.create')
 			->withGroups($this->groups->getAllGroups(true))
 			->withRoles($this->roles->getAllRoles());
 	}
 
 	/**
-	 * @param CreatePermissionRequest $request
+	 * @param StorePermissionRequest $request
 	 * @return mixed
-	 */
-	public function store(CreatePermissionRequest $request) {
+     */
+	public function store(StorePermissionRequest $request) {
 		$this->permissions->create($request->except('permission_roles'), $request->only('permission_roles'));
 		return redirect()->route('admin.access.roles.permissions.index')->withFlashSuccess(trans("alerts.permissions.created"));
 	}
 
 	/**
 	 * @param $id
+	 * @param EditPermissionRequest $request
 	 * @return mixed
-	 */
-	public function edit($id) {
+     */
+	public function edit($id, EditPermissionRequest $request) {
 		$permission = $this->permissions->findOrThrowException($id, true);
 		return view('backend.access.roles.permissions.edit')
 			->withPermission($permission)
@@ -84,7 +88,7 @@ class PermissionController extends Controller {
 	 * @param $id
 	 * @param UpdatePermissionRequest $request
 	 * @return mixed
-	 */
+     */
 	public function update($id, UpdatePermissionRequest $request) {
 		$this->permissions->update($id, $request->except('permission_roles'), $request->only('permission_roles'));
 		return redirect()->route('admin.access.roles.permissions.index')->withFlashSuccess(trans("alerts.permissions.updated"));
@@ -92,9 +96,10 @@ class PermissionController extends Controller {
 
 	/**
 	 * @param $id
+	 * @param DeletePermissionRequest $request
 	 * @return mixed
-	 */
-	public function destroy($id) {
+     */
+	public function destroy($id, DeletePermissionRequest $request) {
 		$this->permissions->destroy($id);
 		return redirect()->route('admin.access.roles.permissions.index')->withFlashSuccess(trans("alerts.permissions.deleted"));
 	}

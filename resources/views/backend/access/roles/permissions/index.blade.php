@@ -195,20 +195,24 @@
             hierarchy.nestable({maxDepth:2});
 
             hierarchy.on('change', function() {
-                $.ajax({
-                    url : "{!! route('admin.access.roles.groups.update-sort') !!}",
-                    type: "post",
-                    data : {data:hierarchy.nestable('serialize')},
-                    success: function(data) {
-                        if (data.status == "OK")
-                            toastr.success("Hierarchy successfully saved.");
-                        else
-                            toastr.error("An unknown error occurred.");
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        toastr.error("An unknown error occurred: " + errorThrown);
-                    }
-                });
+                @if (access()->can('sort-permission-groups'))
+                    $.ajax({
+                        url : "{!! route('admin.access.roles.groups.update-sort') !!}",
+                        type: "post",
+                        data : {data:hierarchy.nestable('serialize')},
+                        success: function(data) {
+                            if (data.status == "OK")
+                                toastr.success("Hierarchy successfully saved.");
+                            else
+                                toastr.error("An unknown error occurred.");
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            toastr.error("An unknown error occurred: " + errorThrown);
+                        }
+                    });
+                @else
+                    toastr.error("You do not have permission to do that.");
+                @endif
             });
         });
     </script>

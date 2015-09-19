@@ -3,10 +3,10 @@
 use App\Http\Requests\Request;
 
 /**
- * Class UpdatePermissionGroupRequest
+ * Class StorePermissionGroupRequest
  * @package App\Http\Requests\Backend\Access\Permission\Group
  */
-class UpdatePermissionGroupRequest extends Request {
+class StorePermissionGroupRequest extends Request {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -15,7 +15,7 @@ class UpdatePermissionGroupRequest extends Request {
      */
     public function authorize()
     {
-        return access()->can('edit-permission-groups');
+        return access()->can('create-permission-groups');
     }
 
     /**

@@ -54,6 +54,7 @@ return [
     'permission_management' => 'Gestione autorizzazioni',
     'role_management' => 'Gestione ruoli',
     'user_management' => 'Gestione utenti',
+    'access_management' => 'Access Management',
     'language-picker' => [
         'language' => 'Language',
         'langs' => [

@@ -15,7 +15,7 @@ class UpdatePermissionRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return true;
+		return access()->can('edit-permissions');
 	}
 
 	/**

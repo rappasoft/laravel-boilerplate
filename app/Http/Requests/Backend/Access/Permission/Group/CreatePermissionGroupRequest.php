@@ -15,7 +15,7 @@ class CreatePermissionGroupRequest extends Request {
      */
     public function authorize()
     {
-        return true;
+        return access()->can('create-permission-groups');
     }
 
     /**
@@ -26,7 +26,7 @@ class CreatePermissionGroupRequest extends Request {
     public function rules()
     {
         return [
-            'name' => 'required',
+            //
         ];
     }
 }

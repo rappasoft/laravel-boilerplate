@@ -166,6 +166,17 @@ class PermissionTableSeeder extends Seeder {
 		$permanentlyDeleteUser->updated_at = Carbon::now();
 		$permanentlyDeleteUser->save();
 
+		$permission_model = config('access.permission');
+		$resendConfirmationEmail = new $permission_model;
+		$resendConfirmationEmail->name = 'resend-user-confirmation-email';
+		$resendConfirmationEmail->display_name = 'Resend Confirmation E-mail';
+		$resendConfirmationEmail->system = true;
+		$resendConfirmationEmail->group_id = 2;
+		$resendConfirmationEmail->sort = 15;
+		$resendConfirmationEmail->created_at = Carbon::now();
+		$resendConfirmationEmail->updated_at = Carbon::now();
+		$resendConfirmationEmail->save();
+
 		/**
 		 * Role
 		 */
@@ -237,6 +248,17 @@ class PermissionTableSeeder extends Seeder {
 		$deletePermissionGroups->created_at = Carbon::now();
 		$deletePermissionGroups->updated_at = Carbon::now();
 		$deletePermissionGroups->save();
+
+		$permission_model = config('access.permission');
+		$sortPermissionGroups = new $permission_model;
+		$sortPermissionGroups->name = 'sort-permission-groups';
+		$sortPermissionGroups->display_name = 'Sort Permission Groups';
+		$sortPermissionGroups->system = true;
+		$sortPermissionGroups->group_id = 4;
+		$sortPermissionGroups->sort = 4;
+		$sortPermissionGroups->created_at = Carbon::now();
+		$sortPermissionGroups->updated_at = Carbon::now();
+		$sortPermissionGroups->save();
 
 		/**
 		 * Permission

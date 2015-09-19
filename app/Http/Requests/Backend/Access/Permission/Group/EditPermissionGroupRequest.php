@@ -3,10 +3,10 @@
 use App\Http\Requests\Request;
 
 /**
- * Class UpdatePermissionGroupRequest
+ * Class EditPermissionGroupRequest
  * @package App\Http\Requests\Backend\Access\Permission\Group
  */
-class UpdatePermissionGroupRequest extends Request {
+class EditPermissionGroupRequest extends Request {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class UpdatePermissionGroupRequest extends Request {
     public function rules()
     {
         return [
-            'name' => 'required',
+            //
         ];
     }
 }

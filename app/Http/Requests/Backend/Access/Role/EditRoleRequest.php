@@ -1,12 +1,12 @@
-<?php namespace App\Http\Requests\Backend\Access\Permission\Group;
+<?php namespace App\Http\Requests\Backend\Access\Role;
 
 use App\Http\Requests\Request;
 
 /**
- * Class UpdatePermissionGroupRequest
- * @package App\Http\Requests\Backend\Access\Permission\Group
+ * Class EditRoleRequest
+ * @package App\Http\Requests\Backend\Access\Role
  */
-class UpdatePermissionGroupRequest extends Request {
+class EditRoleRequest extends Request {
 
     /**
      * Determine if the user is authorized to make this request.
@@ -15,7 +15,7 @@ class UpdatePermissionGroupRequest extends Request {
      */
     public function authorize()
     {
-        return access()->can('edit-permission-groups');
+        return access()->can('edit-roles');
     }
 
     /**
@@ -26,7 +26,7 @@ class UpdatePermissionGroupRequest extends Request {
     public function rules()
     {
         return [
-            'name' => 'required',
+            //
         ];
     }
 }

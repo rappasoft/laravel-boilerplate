@@ -15,7 +15,7 @@ class UpdateUserRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return access()->can('edit-user');
+		return access()->can('edit-users');
 	}
 
 	/**

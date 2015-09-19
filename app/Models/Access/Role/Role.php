@@ -48,7 +48,9 @@ class Role extends Model {
 	 * @return string
 	 */
 	public function getEditButtonAttribute() {
-		return '<a href="'.route('admin.access.roles.edit', $this->id).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="' . trans('crud.edit_button') . '"></i></a>';
+		if (access()->can('edit-roles'))
+			return '<a href="'.route('admin.access.roles.edit', $this->id).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="' . trans('crud.edit_button') . '"></i></a> ';
+		return '';
 	}
 
 	/**
@@ -56,7 +58,8 @@ class Role extends Model {
 	 */
 	public function getDeleteButtonAttribute() {
 		if ($this->id != 1) //Cant delete master admin role
-			return '<a href="'.route('admin.access.roles.destroy', $this->id).'" class="btn btn-xs btn-danger" data-method="delete"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="' . trans('crud.delete_button') . '"></i></a>';
+			if (access()->can('delete-roles'))
+				return '<a href="'.route('admin.access.roles.destroy', $this->id).'" class="btn btn-xs btn-danger" data-method="delete"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="' . trans('crud.delete_button') . '"></i></a>';
 		return '';
 	}
 
@@ -64,7 +67,8 @@ class Role extends Model {
 	 * @return string
 	 */
 	public function getActionButtonsAttribute() {
-		return $this->getEditButtonAttribute().' '.$this->getDeleteButtonAttribute();
+		return $this->getEditButtonAttribute().
+			$this->getDeleteButtonAttribute();
 	}
 
 	/**

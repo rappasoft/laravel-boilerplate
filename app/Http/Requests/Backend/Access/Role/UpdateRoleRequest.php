@@ -15,7 +15,7 @@ class UpdateRoleRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return true;
+		return access()->can('edit-roles');
 	}
 
 	/**

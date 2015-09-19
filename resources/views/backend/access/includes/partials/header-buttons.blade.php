@@ -6,7 +6,7 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{route('admin.access.users.index')}}">{{ trans('menus.header_buttons.users.all') }}</a></li>
 
-            @if (access()->can('create-user'))
+            @if (access()->can('create-users'))
                 <li><a href="{{route('admin.access.users.create')}}">{{ trans('menus.create_user') }}</a></li>
             @endif
 
@@ -23,7 +23,10 @@
           </button>
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{route('admin.access.roles.index')}}">{{ trans('menus.header_buttons.roles.all') }}</a></li>
-            <li><a href="{{route('admin.access.roles.create')}}">{{ trans('menus.create_role') }}</a></li>
+
+            @if (access()->can('create-roles'))
+                <li><a href="{{route('admin.access.roles.create')}}">{{ trans('menus.create_role') }}</a></li>
+            @endif
           </ul>
         </div>
 
@@ -32,9 +35,18 @@
               {{ trans('menus.header_buttons.permissions.button') }} <span class="caret"></span>
           </button>
           <ul class="dropdown-menu pull-right" role="menu">
-            <li><a href="{{route('admin.access.roles.permission-group.create')}}">{{ trans('menus.create_permission_group') }}</a></li>
-            <li><a href="{{route('admin.access.roles.permissions.create')}}">{{ trans('menus.create_permission') }}</a></li>
-            <li class="divider"></li>
+            @if (access()->can('create-permission-groups'))
+                <li><a href="{{route('admin.access.roles.permission-group.create')}}">{{ trans('menus.create_permission_group') }}</a></li>
+            @endif
+
+            @if (access()->can('create-permissions'))
+                <li><a href="{{route('admin.access.roles.permissions.create')}}">{{ trans('menus.create_permission') }}</a></li>
+            @endif
+
+            @if (access()->can('create-permission-groups') || access()->can('create-permissions'))
+                <li class="divider"></li>
+            @endif
+
             <li><a href="{{route('admin.access.roles.permissions.index')}}">{{ trans('menus.header_buttons.permissions.all') }}</a></li>
             <li><a href="{{route('admin.access.roles.permissions.index')}}">{{ trans('menus.header_buttons.permissions.groups.all') }}</a></li>
           </ul>

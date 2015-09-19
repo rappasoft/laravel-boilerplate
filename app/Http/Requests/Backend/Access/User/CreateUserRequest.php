@@ -15,7 +15,7 @@ class CreateUserRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return access()->can('create-user');
+		return access()->can('create-users');
 	}
 
 	/**

@@ -7,9 +7,15 @@ use App\Repositories\Frontend\Auth\AuthenticationContract;
 use App\Http\Requests\Backend\Access\User\CreateUserRequest;
 use App\Http\Requests\Backend\Access\User\StoreUserRequest;
 use App\Http\Requests\Backend\Access\User\EditUserRequest;
+use App\Http\Requests\Backend\Access\User\MarkUserRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserRequest;
+use App\Http\Requests\Backend\Access\User\DeleteUserRequest;
+use App\Http\Requests\Backend\Access\User\RestoreUserRequest;
+use App\Http\Requests\Backend\Access\User\ChangeUserPasswordRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
 use App\Repositories\Backend\Permission\PermissionRepositoryContract;
+use App\Http\Requests\Backend\Access\User\PermanentlyDeleteUserRequest;
+use App\Http\Requests\Backend\Access\User\ResendConfirmationEmailRequest;
 
 /**
  * Class UserController
@@ -104,27 +110,30 @@ class UserController extends Controller {
 
 	/**
 	 * @param $id
+	 * @param DeleteUserRequest $request
 	 * @return mixed
-	 */
-	public function destroy($id) {
+     */
+	public function destroy($id, DeleteUserRequest $request) {
 		$this->users->destroy($id);
 		return redirect()->back()->withFlashSuccess(trans("alerts.users.deleted"));
 	}
 
 	/**
 	 * @param $id
+	 * @param PermanentlyDeleteUserRequest $request
 	 * @return mixed
-	 */
-	public function delete($id) {
+     */
+	public function delete($id, PermanentlyDeleteUserRequest $request) {
 		$this->users->delete($id);
 		return redirect()->back()->withFlashSuccess(trans("alerts.users.deleted_permanently"));
 	}
 
 	/**
 	 * @param $id
+	 * @param RestoreUserRequest $request
 	 * @return mixed
-	 */
-	public function restore($id) {
+     */
+	public function restore($id, RestoreUserRequest $request) {
 		$this->users->restore($id);
 		return redirect()->back()->withFlashSuccess(trans("alerts.users.restored"));
 	}
@@ -132,9 +141,10 @@ class UserController extends Controller {
 	/**
 	 * @param $id
 	 * @param $status
+	 * @param MarkUserRequest $request
 	 * @return mixed
-	 */
-	public function mark($id, $status) {
+     */
+	public function mark($id, $status, MarkUserRequest $request) {
 		$this->users->mark($id, $status);
 		return redirect()->back()->withFlashSuccess(trans("alerts.users.updated"));
 	}
@@ -165,9 +175,10 @@ class UserController extends Controller {
 
 	/**
 	 * @param $id
+	 * @param ChangeUserPasswordRequest $request
 	 * @return mixed
-	 */
-	public function changePassword($id) {
+     */
+	public function changePassword($id, ChangeUserPasswordRequest $request) {
 		return view('backend.access.change-password')
 			->withUser($this->users->findOrThrowException($id));
 	}
@@ -185,9 +196,10 @@ class UserController extends Controller {
 	/**
 	 * @param $user_id
 	 * @param AuthenticationContract $auth
+	 * @param ResendConfirmationEmailRequest $request
 	 * @return mixed
-	 */
-	public function resendConfirmationEmail($user_id, AuthenticationContract $auth) {
+     */
+	public function resendConfirmationEmail($user_id, AuthenticationContract $auth, ResendConfirmationEmailRequest $request) {
 		$auth->resendConfirmationEmail($user_id);
 		return redirect()->back()->withFlashSuccess(trans("alerts.users.confirmation_email"));
 	}
