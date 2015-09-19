@@ -36,9 +36,11 @@
                             <span class="label label-success">All</span>
                         @else
                             @if (count($role->permissions) > 0)
-                                @foreach ($role->permissions as $permission)
-                                    {!! $permission->display_name !!}<br/>
-                                @endforeach
+                                <div style="font-size:.7em">
+                                    @foreach ($role->permissions as $permission)
+                                        {!! $permission->display_name !!}<br/>
+                                    @endforeach
+                                </div>
                             @else
                                 <span class="label label-danger">None</span>
                             @endif

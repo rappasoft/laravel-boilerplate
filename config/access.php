@@ -24,6 +24,12 @@ return array(
 	'permissions_table' => 'permissions',
 
 	/*
+	 * PermissionGroup model used by Access to create permissions groups.
+	 * Update the group if it is in a different namespace.
+	 */
+	'group' => 'App\Models\Access\Permission\PermissionGroup',
+
+	/*
 	 * Permissions table used by Access to save permissions to the database.
 	 */
 	'permissions_group_table' => 'permission_groups',

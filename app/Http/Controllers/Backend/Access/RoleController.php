@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Backend\Access;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Backend\Permission\Group\PermissionGroupRepositoryContract;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
 use App\Http\Requests\Backend\Access\Role\CreateRoleRequest;
 use App\Http\Requests\Backend\Access\Role\UpdateRoleRequest;
@@ -40,11 +41,13 @@ class RoleController extends Controller {
 	}
 
 	/**
+	 * @param PermissionGroupRepositoryContract $group
 	 * @return mixed
-	 */
-	public function create() {
+     */
+	public function create(PermissionGroupRepositoryContract $group) {
 		return view('backend.access.roles.create')
-			->withPermissions($this->permissions->getAllPermissions());
+			->withGroups($group->getAllGroups())
+			->withPermissions($this->permissions->getUngroupedPermissions());
 	}
 
 	/**
@@ -52,20 +55,22 @@ class RoleController extends Controller {
 	 * @return mixed
 	 */
 	public function store(CreateRoleRequest $request) {
-		$this->roles->create($request->except('role_permissions'), $request->only('role_permissions'));
+		$this->roles->create($request->all());
 		return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans("alerts.roles.created"));
 	}
 
 	/**
 	 * @param $id
+	 * @param PermissionGroupRepositoryContract $group
 	 * @return mixed
-	 */
-	public function edit($id) {
+     */
+	public function edit($id, PermissionGroupRepositoryContract $group) {
 		$role = $this->roles->findOrThrowException($id, true);
 		return view('backend.access.roles.edit')
 			->withRole($role)
 			->withRolePermissions($role->permissions->lists('id')->all())
-			->withPermissions($this->permissions->getAllPermissions());
+			->withGroups($group->getAllGroups())
+			->withPermissions($this->permissions->getUngroupedPermissions());
 	}
 
 	/**
@@ -74,7 +79,7 @@ class RoleController extends Controller {
 	 * @return mixed
 	 */
 	public function update($id, UpdateRoleRequest $request) {
-		$this->roles->update($id, $request->except('role_permissions'), $request->only('role_permissions'));
+		$this->roles->update($id, $request->all());
 		return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans("alerts.roles.updated"));
 	}
 

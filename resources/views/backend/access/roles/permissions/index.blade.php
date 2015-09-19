@@ -12,7 +12,7 @@
 @endsection
 
 @section('after-styles-end')
-    {!! HTML::style('css/plugin/nestable/jquery.nestable.css') !!}
+    {!! HTML::style('css/backend/plugin/nestable/jquery.nestable.css') !!}
 @stop
 
 @section ('breadcrumbs')
@@ -55,9 +55,9 @@
                                                     </li>
                                                 @endforeach
                                             </ol>
-                                    </li>
+                                        </li>
                                     @else
-                                    </li>
+                                        </li>
                                     @endif
                                 @endforeach
                             </ol>
@@ -187,7 +187,7 @@
 @stop
 
 @section('after-scripts-end')
-    {!! HTML::script('js/plugin/nestable/jquery.nestable.js') !!}
+    {!! HTML::script('js/backend/plugin/nestable/jquery.nestable.js') !!}
 
     <script>
         $(function() {

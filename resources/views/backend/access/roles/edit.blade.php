@@ -9,6 +9,10 @@
     </h1>
 @endsection
 
+@section('after-styles-end')
+    {!! HTML::style('css/backend/plugin/jstree/themes/default/style.min.css') !!}
+@stop
+
 @section ('breadcrumbs')
     <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> {{ trans('menus.dashboard') }}</a></li>
     <li>{!! link_to_route('admin.access.users.index', trans('menus.user_management')) !!}</li>
@@ -19,7 +23,7 @@
 @section('content')
     @include('backend.access.includes.partials.header-buttons')
 
-    {!! Form::model($role, ['route' => ['admin.access.roles.update', $role->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) !!}
+    {!! Form::model($role, ['route' => ['admin.access.roles.update', $role->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH', 'id' => 'edit-role']) !!}
 
         <div class="form-group">
             {!! Form::label('name', trans('validation.attributes.role_name'), ['class' => 'col-lg-2 control-label']) !!}
@@ -39,13 +43,59 @@
                 @endif
 
                 <div id="available-permissions" class="hidden">
-                    @if (count($permissions) > 0)
-                        @foreach($permissions as $perm)
-                            <input type="checkbox" value="{{$perm->id}}" name="role_permissions[]" id="perm-{{$perm->id}}" {{in_array($perm->id, $role_permissions) ? 'checked="checked"' : ""}} /> <label for="perm-{{$perm->id}}">{!! $perm->display_name !!}</label><br/>
-                        @endforeach
-                    @else
-                        No permissions to set
-                    @endif
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <p><strong>Grouped Permissions</strong></p>
+
+                            @if ($groups->count())
+                                <div id="permission-tree">
+                                    <ul>
+                                        @foreach ($groups as $group)
+                                            <li>{!! $group->name !!}
+                                                @if ($group->permissions->count())
+                                                    <ul>
+                                                        @foreach ($group->permissions as $permission)
+                                                            <li id="{!! $permission->id !!}">{!! $permission->display_name !!}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+
+                                                @if ($group->children->count())
+                                                    <ul>
+                                                        @foreach ($group->children as $child)
+                                                            <li>{!! $child->name !!}
+                                                                @if ($child->permissions->count())
+                                                                    <ul> style="padding-left:40px;font-size:.8em">
+                                                                        @foreach ($child->permissions as $permission)
+                                                                            <li id="{!! $permission->id !!}">{!! $permission->display_name !!}</li>
+                                                                        @endforeach
+                                                                    </ul>
+                                                                @endif
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @else
+                                <p>There are no permission groups.</p>
+                            @endif
+                        </div><!--col-lg-6-->
+
+                        <div class="col-lg-6">
+                            <p><strong>Ungrouped Permissions</strong></p>
+
+                            @if ($permissions->count())
+                                @foreach ($permissions as $perm)
+                                    <input type="checkbox" name="ungrouped[]" value="{!! $perm->id !!}" id="perm_{!! $perm->id !!}" {{in_array($perm->id, $role_permissions) ? 'checked="checked"' : ""}} /> <label for="perm_{!! $perm->id !!}">{!! $perm->display_name !!}</label><br/>
+                                @endforeach
+                            @else
+                                <p>There are no ungrouped permissions.</p>
+                            @endif
+                        </div><!--col-lg-6-->
+                    </div><!--row-->
                 </div><!--available permissions-->
             </div><!--col-lg-3-->
         </div><!--form control-->
@@ -61,9 +111,19 @@
             <div class="clearfix"></div>
         </div><!--well-->
 
+        {!! Form::hidden('permissions') !!}
     {!! Form::close() !!}
 @stop
 
 @section('after-scripts-end')
+    {!! HTML::script('js/backend/plugin/jstree/jstree.min.js') !!}
     {!! HTML::script('js/backend/access/roles/script.js') !!}
+
+    <script>
+        $(function() {
+            @foreach ($role_permissions as $permission)
+                tree.jstree('check_node', '#{!! $permission !!}');
+            @endforeach
+        });
+    </script>
 @stop

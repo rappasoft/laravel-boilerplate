@@ -45,7 +45,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	 * @param string $sort
 	 * @return mixed
 	 */
-	public function getPermissionsPaginated($per_page, $order_by = 'id', $sort = 'asc') {
+	public function getPermissionsPaginated($per_page, $order_by = 'display_name', $sort = 'asc') {
 		return Permission::with('roles')->orderBy($order_by, $sort)->paginate($per_page);
 	}
 
@@ -55,11 +55,20 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	 * @param bool $withRoles
 	 * @return mixed
 	 */
-	public function getAllPermissions($order_by = 'id', $sort = 'asc', $withRoles = true) {
+	public function getAllPermissions($order_by = 'display_name', $sort = 'asc', $withRoles = true) {
 		if ($withRoles)
 			return Permission::with('roles')->orderBy($order_by, $sort)->get();
 
 		return Permission::orderBy($order_by, $sort)->get();
+	}
+
+	/**
+	 * @return mixed
+     */
+	public function getUngroupedPermissions() {
+		return Permission::whereNull('group_id')
+			->orderBy('display_name', 'asc')
+			->get();
 	}
 
 	/**
@@ -73,7 +82,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 		$permission->name = $input['name'];
 		$permission->display_name = $input['display_name'];
 		$permission->system = isset($input['system']) ? 1 : 0;
-		$permission->group_id = isset($input['group']) ? (int)$input['group'] : null;
+		$permission->group_id = isset($input['group']) && strlen($input['group']) > 0 ? (int)$input['group'] : null;
 		$permission->sort = isset($input['sort']) ? (int)$input['sort'] : 0;
 
 		$this->permissionMustContainRole($roles);
@@ -133,7 +142,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 		$permission->name = $input['name'];
 		$permission->display_name = $input['display_name'];
 		$permission->system = isset($input['system']) ? 1 : 0;
-		$permission->group_id = isset($input['group']) ? (int)$input['group'] : null;
+		$permission->group_id = isset($input['group']) && strlen($input['group']) > 0 ? (int)$input['group'] : null;
 		$permission->sort = isset($input['sort']) ? (int)$input['sort'] : 0;
 
 		//See if this permission is tied directly to a user first

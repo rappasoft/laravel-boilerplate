@@ -40,7 +40,8 @@ class Role extends Model {
 	 */
 	public function permissions()
 	{
-		return $this->belongsToMany(config('access.permission'), config('access.permission_role_table'), 'role_id', 'permission_id');
+		return $this->belongsToMany(config('access.permission'), config('access.permission_role_table'), 'role_id', 'permission_id')
+			->orderBy('display_name', 'asc');
 	}
 
 	/**
