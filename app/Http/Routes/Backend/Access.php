@@ -1,6 +1,10 @@
 <?php
 
-$router->group(['prefix' => 'access', 'namespace' => 'Access'], function() use ($router)
+$router->group([
+	'prefix' => 'access',
+	'namespace' => 'Access',
+	'middleware' => 'access.routeNeedsPermission:view-access-management'
+], function() use ($router)
 {
 	/**
 	 * User Management

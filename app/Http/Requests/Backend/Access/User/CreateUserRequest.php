@@ -15,7 +15,7 @@ class CreateUserRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return true;
+		return access()->can('create-user');
 	}
 
 	/**
@@ -26,10 +26,7 @@ class CreateUserRequest extends Request {
 	public function rules()
 	{
 		return [
-			'name'					=>  'required',
-			'email'					=>	'required|email|unique:users',
-			'password'				=>	'required|alpha_num|min:6|confirmed',
-			'password_confirmation'	=>	'required|alpha_num|min:6',
+			//
 		];
 	}
 }

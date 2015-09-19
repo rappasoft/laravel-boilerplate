@@ -10,7 +10,8 @@ trait AccessAttributes {
 	 * @return string
 	 */
 	public function getEditButtonAttribute() {
-		return '<a href="'.route('admin.access.users.edit', $this->id).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="' . trans('crud.edit_button') . '"></i></a>';
+		if (access()->can('edit-user'))
+			return '<a href="'.route('admin.access.users.edit', $this->id).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="' . trans('crud.edit_button') . '"></i></a> ';
 	}
 
 	/**
@@ -55,7 +56,7 @@ trait AccessAttributes {
 	 * @return string
 	 */
 	public function getActionButtonsAttribute() {
-		return $this->getEditButtonAttribute().' '.
+		return $this->getEditButtonAttribute().
 		$this->getChangePasswordButtonAttribute().' '.
 		$this->getStatusButtonAttribute().
 		$this->getConfirmedButtonAttribute().

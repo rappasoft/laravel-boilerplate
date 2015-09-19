@@ -5,6 +5,8 @@ use App\Repositories\Backend\User\UserContract;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
 use App\Repositories\Frontend\Auth\AuthenticationContract;
 use App\Http\Requests\Backend\Access\User\CreateUserRequest;
+use App\Http\Requests\Backend\Access\User\StoreUserRequest;
+use App\Http\Requests\Backend\Access\User\EditUserRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
 use App\Repositories\Backend\Permission\PermissionRepositoryContract;
@@ -49,19 +51,20 @@ class UserController extends Controller {
 	}
 
 	/**
+	 * @param CreateUserRequest $request
 	 * @return mixed
-	 */
-	public function create() {
+     */
+	public function create(CreateUserRequest $request) {
 		return view('backend.access.create')
 			->withRoles($this->roles->getAllRoles('id', 'asc', true))
 			->withPermissions($this->permissions->getAllPermissions());
 	}
 
 	/**
-	 * @param CreateUserRequest $request
+	 * @param StoreUserRequest $request
 	 * @return mixed
-	 */
-	public function store(CreateUserRequest $request) {
+     */
+	public function store(StoreUserRequest $request) {
 		$this->users->create(
 			$request->except('assignees_roles', 'permission_user'),
 			$request->only('assignees_roles'),
@@ -72,9 +75,10 @@ class UserController extends Controller {
 
 	/**
 	 * @param $id
+	 * @param EditUserRequest $request
 	 * @return mixed
-	 */
-	public function edit($id) {
+     */
+	public function edit($id, EditUserRequest $request) {
 		$user = $this->users->findOrThrowException($id, true);
 		return view('backend.access.edit')
 			->withUser($user)

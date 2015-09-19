@@ -5,7 +5,11 @@
           </button>
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{route('admin.access.users.index')}}">{{ trans('menus.header_buttons.users.all') }}</a></li>
-            <li><a href="{{route('admin.access.users.create')}}">{{ trans('menus.create_user') }}</a></li>
+
+            @if (access()->can('create-user'))
+                <li><a href="{{route('admin.access.users.create')}}">{{ trans('menus.create_user') }}</a></li>
+            @endif
+
             <li class="divider"></li>
             <li><a href="{{route('admin.access.users.deactivated')}}">{{ trans('menus.deactivated_users') }}</a></li>
             <li><a href="{{route('admin.access.users.banned')}}">{{ trans('menus.banned_users') }}</a></li>

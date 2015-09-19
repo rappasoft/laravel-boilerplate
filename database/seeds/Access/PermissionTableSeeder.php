@@ -29,7 +29,7 @@ class PermissionTableSeeder extends Seeder {
 		 */
 		$permission_model = config('access.permission');
 		$viewBackend = new $permission_model;
-		$viewBackend->name = 'view_backend';
+		$viewBackend->name = 'view-backend';
 		$viewBackend->display_name = 'View Backend';
 		$viewBackend->system = true;
 		$viewBackend->group_id = 1;
@@ -37,6 +37,17 @@ class PermissionTableSeeder extends Seeder {
 		$viewBackend->created_at = Carbon::now();
 		$viewBackend->updated_at = Carbon::now();
 		$viewBackend->save();
+
+		$permission_model = config('access.permission');
+		$viewAccessManagement = new $permission_model;
+		$viewAccessManagement->name = 'view-access-management';
+		$viewAccessManagement->display_name = 'View Access Management';
+		$viewAccessManagement->system = true;
+		$viewAccessManagement->group_id = 1;
+		$viewAccessManagement->sort = 2;
+		$viewAccessManagement->created_at = Carbon::now();
+		$viewAccessManagement->updated_at = Carbon::now();
+		$viewAccessManagement->save();
 
 		/**
 		 * Access Permissions
