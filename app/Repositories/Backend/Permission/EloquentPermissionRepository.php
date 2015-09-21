@@ -1,6 +1,6 @@
 <?php namespace App\Repositories\Backend\Permission;
 
-use App\Permission;
+use App\Models\Access\Permission\Permission;
 use App\Exceptions\GeneralException;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
 
@@ -45,7 +45,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	 * @param string $sort
 	 * @return mixed
 	 */
-	public function getPermissionsPaginated($per_page, $order_by = 'id', $sort = 'asc') {
+	public function getPermissionsPaginated($per_page, $order_by = 'display_name', $sort = 'asc') {
 		return Permission::with('roles')->orderBy($order_by, $sort)->paginate($per_page);
 	}
 
@@ -55,7 +55,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	 * @param bool $withRoles
 	 * @return mixed
 	 */
-	public function getAllPermissions($order_by = 'id', $sort = 'asc', $withRoles = true) {
+	public function getAllPermissions($order_by = 'display_name', $sort = 'asc', $withRoles = true) {
 		if ($withRoles)
 			return Permission::with('roles')->orderBy($order_by, $sort)->get();
 
@@ -63,39 +63,12 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	}
 
 	/**
-	 * Get all permissions that are not associated with a user as a permission can not be associated
-	 * with a user and role at the same time
-	 *
-	 * @return array
-	 */
-	public function getPermissionsNotAssociatedWithUser() {
-		$return = [];
-		$permissions = $this->getAllPermissions();
-
-		foreach ($permissions as $perm) {
-			if (count($perm->users) == 0)
-				array_push($return, $perm);
-		}
-
-		return $return;
-	}
-
-	/**
-	 * Get all permissions that are not associated with a role as a permission can not be associated
-	 * with a user and role at the same time
-	 *
-	 * @return array
-	 */
-	public function getPermissionsNotAssociatedWithRole() {
-		$return = [];
-		$permissions = $this->getAllPermissions();
-
-		foreach ($permissions as $perm) {
-			if (count($perm->roles) == 0)
-				array_push($return, $perm);
-		}
-
-		return $return;
+	 * @return mixed
+     */
+	public function getUngroupedPermissions() {
+		return Permission::whereNull('group_id')
+			->orderBy('display_name', 'asc')
+			->get();
 	}
 
 	/**
@@ -109,8 +82,8 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 		$permission->name = $input['name'];
 		$permission->display_name = $input['display_name'];
 		$permission->system = isset($input['system']) ? 1 : 0;
-
-		$this->permissionMustContainRole($roles);
+		$permission->group_id = isset($input['group']) && strlen($input['group']) > 0 ? (int)$input['group'] : null;
+		$permission->sort = isset($input['sort']) ? (int)$input['sort'] : 0;
 
 		if ($permission->save()) {
 			//For each role, load role, collect perms, add perm to perms, flush perms, read perms
@@ -167,12 +140,12 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 		$permission->name = $input['name'];
 		$permission->display_name = $input['display_name'];
 		$permission->system = isset($input['system']) ? 1 : 0;
+		$permission->group_id = isset($input['group']) && strlen($input['group']) > 0 ? (int)$input['group'] : null;
+		$permission->sort = isset($input['sort']) ? (int)$input['sort'] : 0;
 
 		//See if this permission is tied directly to a user first
 		if (count($permission->users) > 0)
 			throw new GeneralException('This permission is currently tied directly to one or more users and can not be assigned to a role.');
-
-		$this->permissionMustContainRole($roles);
 
 		if ($permission->save()) {
 			//Detach permission from every role, then add the permission to the selected roles
@@ -250,16 +223,5 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 			return true;
 
 		throw new GeneralException("There was a problem deleting this permission. Please try again.");
-	}
-
-	/**
-	 * @param $roles
-	 * @throws GeneralException
-	 */
-	private function permissionMustContainRole($roles)
-	{
-		if (config('access.permissions.permission_must_contain_role'))
-			if (count($roles['permission_roles']) == 0)
-				throw new GeneralException('You must select at least one role for this permission.');
 	}
 }

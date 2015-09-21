@@ -1,7 +1,7 @@
 <?php namespace App\Repositories\Frontend\User;
 
-use App\User;
-use App\UserProvider;
+use App\Models\Access\User\User;
+use App\Models\Access\User\UserProvider;
 use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;

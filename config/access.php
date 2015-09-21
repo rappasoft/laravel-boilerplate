@@ -5,7 +5,7 @@ return array(
 	/*
 	 * Role model used by Access to create correct relations. Update the role if it is in a different namespace.
 	*/
-	'role' => 'App\Role',
+	'role' => 'App\Models\Access\Role\Role',
 
 	/*
 	 * Roles table used by Access to save roles to the database.
@@ -16,12 +16,23 @@ return array(
 	 * Permission model used by Access to create correct relations.
 	 * Update the permission if it is in a different namespace.
 	 */
-	'permission' => 'App\Permission',
+	'permission' => 'App\Models\Access\Permission\Permission',
 
 	/*
 	 * Permissions table used by Access to save permissions to the database.
 	 */
 	'permissions_table' => 'permissions',
+
+	/*
+	 * PermissionGroup model used by Access to create permissions groups.
+	 * Update the group if it is in a different namespace.
+	 */
+	'group' => 'App\Models\Access\Permission\PermissionGroup',
+
+	/*
+	 * Permissions table used by Access to save permissions to the database.
+	 */
+	'permissions_group_table' => 'permission_groups',
 
 	/*
 	 * permission_role table used by Access to save relationship between permissions and roles to the database.
@@ -49,7 +60,7 @@ return array(
 		'default_per_page' => 25,
 
 		/*
-		 * The role the user is assigned to when they sign up from the frontend
+		 * The role the user is assigned to when they sign up from the frontend, not namespaced
 		 */
 		'default_role' => 'User',
 
@@ -69,25 +80,8 @@ return array(
 	 */
 	'roles' => [
 		/*
-		 * Whether a role must contain a permission or can be used standalone
+		 * Whether a role must contain a permission or can be used standalone as a label
 		 */
-		'role_must_contain_permission' => true,
-
-		/*
-		 * Whether or not the administrator role must possess every permission
-		 * Works in unison with permissions.permission_must_contain_role
-		 */
-		'administrator_forced' => false,
-	],
-
-	/*
-	 * Configuration for permissions
-	 */
-	'permissions' => [
-		/*
-		 * Whether a permission must contain a role or can be used standalone
-		 * Works in unison with roles.administrator_forced
-		 */
-		'permission_must_contain_role' => false,
+		'role_must_contain_permission' => true
 	],
 );

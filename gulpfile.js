@@ -20,14 +20,17 @@ elixir(function(mix) {
 
         .sass([ // Process back-end stylesheets
             'backend/main.scss',
-            'backend/skin.scss'
+            'backend/skin.scss',
+            'backend/plugin/toastr/toastr.scss'
         ], 'resources/assets/css/backend/main.css')
         .styles([ // Combine pre-processed CSS files
                 'backend/main.css'
             ], 'public/css/backend.css')
         .scripts([ // Combine back-end scripts
                 'plugins.js',
-                'backend/main.js'
+                'backend/main.js',
+                'backend/plugin/toastr/toastr.min.js',
+                'backend/custom.js'
             ], 'public/js/backend.js')
 
         // Apply version control
@@ -56,14 +59,17 @@ elixir(function(mix) {
         ], 'public/js/frontend.js')
 
         .less([ // Process back-end stylesheets
-            'backend/AdminLTE.less'
+            'backend/AdminLTE.less',
+            'backend/plugin/toastr/toastr.less'
         ], 'resources/assets/css/backend/main.css')
         .styles([ // Combine pre-processed CSS files
             'backend/main.css'
         ], 'public/css/backend.css')
         .scripts([ // Combine back-end scripts
             'plugins.js',
-            'backend/main.js'
+            'backend/main.js',
+            'backend/plugin/toastr/toastr.min.js',
+            'backend/custom.js'
         ], 'public/js/backend.js')
 
         // Apply version control

@@ -16,7 +16,12 @@ return [
     'permissions' => [
         'created' => 'Autorizzazione creata con successo.',
         'updated' => 'Autorizzazione aggiornata con successo.',
-        'deleted' => 'Autorizzazione cancellata con successo.'
+        'deleted' => 'Autorizzazione cancellata con successo.',
+        'groups'  => [
+            'created' => 'Permission group successfully created.',
+            'updated' => 'Permission group successfully updated.',
+            'deleted' => 'Permission group successfully deleted.',
+        ],
     ],
 
     'roles' => [

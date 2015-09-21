@@ -31,18 +31,16 @@ interface RoleRepositoryContract {
 
 	/**
 	 * @param $input
-	 * @param $permissions
 	 * @return mixed
 	 */
-	public function create($input, $permissions);
+	public function create($input);
 
 	/**
 	 * @param $id
 	 * @param $input
-	 * @param $permissions
 	 * @return mixed
 	 */
-	public function update($id, $input, $permissions);
+	public function update($id, $input);
 
 	/**
 	 * @param $id

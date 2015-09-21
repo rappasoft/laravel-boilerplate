@@ -38,6 +38,5 @@ class Kernel extends HttpKernel {
 		 */
 		'access.routeNeedsRole' => \App\Http\Middleware\RouteNeedsRole::class,
 		'access.routeNeedsPermission' => \App\Http\Middleware\RouteNeedsPermission::class,
-		'access.routeNeedsRoleOrPermission' => \App\Http\Middleware\RouteNeedsRoleOrPermission::class,
 	];
 }

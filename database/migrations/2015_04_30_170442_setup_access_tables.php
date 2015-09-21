@@ -20,6 +20,8 @@ class SetupAccessTables extends Migration {
 		Schema::create(config('access.roles_table'), function ($table) {
 			$table->increments('id')->unsigned();
 			$table->string('name')->unique();
+			$table->boolean('all')->default(false);
+			$table->smallInteger('sort')->default(0);
 			$table->timestamps();
 		});
 
@@ -37,9 +39,19 @@ class SetupAccessTables extends Migration {
 
 		Schema::create(config('access.permissions_table'), function ($table) {
 			$table->increments('id')->unsigned();
+			$table->integer('group_id')->nullable();
 			$table->string('name')->unique();
 			$table->string('display_name');
 			$table->boolean('system')->default(false);
+			$table->smallInteger('sort')->default(0);
+			$table->timestamps();
+		});
+
+		Schema::create(config('access.permissions_group_table'), function ($table) {
+			$table->increments('id')->unsigned();
+			$table->integer('parent_id')->nullable();
+			$table->string('name');
+			$table->smallInteger('sort')->default(0);
 			$table->timestamps();
 		});
 

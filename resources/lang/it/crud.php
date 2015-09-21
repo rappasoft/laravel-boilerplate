@@ -22,12 +22,18 @@ return [
         'system' => 'Sistema?',
         'total' => 'autorizzazioni totali',
         'users' => 'Utenti',
+        'group' => 'Group',
+        'group-sort' => 'Group Sort',
+        'groups' => [
+            'name' => 'Group Name',
+        ],
     ],
     'roles' => [
         'number_of_users' => '# Utenti',
         'permissions' => 'Autorizzazioni',
         'role' => 'Ruolo',
         'total' => 'ruoli totali',
+        'sort' => 'Sort',
     ],
     'users' => [
         'confirmed' => 'Confermato',

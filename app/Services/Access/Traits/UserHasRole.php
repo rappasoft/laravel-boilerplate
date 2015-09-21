@@ -94,6 +94,10 @@ trait UserHasRole {
 	public function can($nameorId)
 	{
 		foreach ($this->roles as $role) {
+			//See if role has all permissions
+			if ($role->all)
+				return true;
+
 			// Validate against the Permission table
 			foreach ($role->permissions as $perm) {
 

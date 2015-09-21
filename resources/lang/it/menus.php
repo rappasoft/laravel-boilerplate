@@ -16,12 +16,14 @@ return [
     'active_users' => 'Utenti attivi',
     'banned_users' => 'Utenti bannati',
     'create_permission' => 'Crea autorizzazione',
+    'create_permission_group' => 'Create Group',
     'create_role' => 'Crea ruolo',
     'create_user' => 'Crea utente',
     'dashboard' => 'Dashboard',
     'deactivated_users' => 'Utenti disattivati',
     'deleted_users' => 'Utenti cancellati',
     'edit_permission' => 'Modifica autorizzazione',
+    'edit_permission_group' => 'Edit Group',
     'edit_role' => 'Modifica ruolo',
     'edit_user' => 'Modifica utente',
     'general' => 'Generale',
@@ -29,6 +31,11 @@ return [
         'permissions' => [
             'all' => 'Tutte le autorizzazioni',
             'button' => 'Autorizzazioni',
+
+            'groups' => [
+                'all' => 'All Groups',
+                'button' => 'Groups',
+            ],
         ],
         'roles' => [
             'all' => 'Tutti i ruoli',
@@ -47,6 +54,7 @@ return [
     'permission_management' => 'Gestione autorizzazioni',
     'role_management' => 'Gestione ruoli',
     'user_management' => 'Gestione utenti',
+    'access_management' => 'Access Management',
     'language-picker' => [
         'language' => 'Language',
         'langs' => [
