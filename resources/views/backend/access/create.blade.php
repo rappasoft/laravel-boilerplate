@@ -76,21 +76,23 @@
             <div class="col-lg-3">
                 @if (count($roles) > 0)
                     @foreach($roles as $role)
-                        <input type="checkbox" value="{{$role->id}}" name="assignees_roles[]" id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{!! $role->name !!}</label><br/>
+                        <input type="checkbox" value="{{$role->id}}" name="assignees_roles[]" id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{!! $role->name !!}</label> <a href="#" data-role="role_{{$role->id}}" class="show-permissions small">(<span class="show-hide">Show</span> Permissions)</a><br/>
 
-                        @if ($role->all)
-                            All Permissions<br/><br/>
-                        @else
-                            @if (count($role->permissions) > 0)
-                                <blockquote class="small">{{--
-                                    --}}@foreach ($role->permissions as $perm){{--
-                                        --}}{{$perm->display_name}}<br/>
-                                    @endforeach
-                                </blockquote>
+                        <div class="permission-list hidden" data-role="role_{{$role->id}}">
+                            @if ($role->all)
+                                All Permissions<br/><br/>
                             @else
-                                No permissions<br/><br/>
+                                @if (count($role->permissions) > 0)
+                                    <blockquote class="small">{{--
+                                        --}}@foreach ($role->permissions as $perm){{--
+                                            --}}{{$perm->display_name}}<br/>
+                                        @endforeach
+                                    </blockquote>
+                                @else
+                                    No Permissions<br/><br/>
+                                @endif
                             @endif
-                        @endif
+                        </div><!--permission list-->
                     @endforeach
                 @else
                     No Roles to set
@@ -100,13 +102,19 @@
 
         <div class="form-group">
             <label class="col-lg-2 control-label">{{ trans('validation.attributes.other_permissions') }}</label>
-            <div class="col-lg-3">
+            <div class="col-lg-10">
                 @if (count($permissions))
-                    @foreach ($permissions as $perm)
-                        <input type="checkbox" value="{{$perm->id}}" name="permission_user[]" id="permission-{{$perm->id}}"> <label for="permission-{{$perm->id}}" />{!! $perm->display_name !!}</label><br/>
+                    @foreach (array_chunk($permissions->toArray(), 10) as $perm)
+                        <div class="col-lg-3">
+                            <ul style="margin:0;padding:0;list-style:none;">
+                                @foreach ($perm as $p)
+                                    <li><input type="checkbox" value="{{$p['id']}}" name="permission_user[]" id="permission-{{$p['id']}}"> <label for="permission-{{$p['id']}}" />{!! $p['display_name'] !!}</label></li>
+                                @endforeach
+                            </ul>
+                        </div>
                     @endforeach
                 @else
-                    No other permissions
+                    No Other Permissions
                 @endif
             </div><!--col 3-->
         </div><!--form control-->
@@ -123,4 +131,8 @@
         </div><!--well-->
 
     {!! Form::close() !!}
+@stop
+
+@section('after-scripts-end')
+    {!! HTML::script('js/backend/access/permissions/script.js') !!}
 @stop

@@ -25,7 +25,7 @@
         <div class="form-group">
             {!! Form::label('name', trans('validation.attributes.permission_name'), ['class' => 'col-lg-2 control-label']) !!}
             <div class="col-lg-10">
-                <input type="text" name="name" class="form-control" placeholder="{{ trans('validation.attributes.permission_name') }}" {{$permission->system == 1 ? 'readonly="readonly"' : ''}} value="{{$permission->name}}" />
+                <input type="text" name="name" class="form-control" placeholder="{{ trans('validation.attributes.permission_name') }}" {{$permission->system == 1 ? 'readonly' : ''}} value="{{$permission->name}}" />
             </div>
         </div><!--form control-->
 
@@ -43,7 +43,7 @@
                     <option value="">None</option>
 
                     @foreach ($groups as $group)
-                        <option value="{!! $group->id !!}" {!! $permission->group_id == $group->id ? "selected='selected'" : '' !!}>{!! $group->name !!}</option>
+                        <option value="{!! $group->id !!}" {!! $permission->group_id == $group->id ? 'selected' : '' !!}>{!! $group->name !!}</option>
                     @endforeach
                 </select>
             </div>
@@ -61,7 +61,7 @@
             <div class="col-lg-3">
                 @if (count($roles) > 0)
                     @foreach($roles as $role)
-                        <input type="checkbox" {{$role->id == 1 ? "disabled='disabled'" : ''}} {{in_array($role->id, $permission_roles) || ($role->id == 1) ? 'checked="checked"' : ""}} value="{{$role->id}}" name="permission_roles[]" id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{!! $role->name !!}</label><br/>
+                        <input type="checkbox" {{$role->id == 1 ? 'disabled' : ''}} {{in_array($role->id, $permission_roles) || ($role->id == 1) ? 'checked' : ""}} value="{{$role->id}}" name="permission_roles[]" id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{!! $role->name !!}</label><br/>
                         <div class="clearfix"></div>
                     @endforeach
                 @else
@@ -77,7 +77,7 @@
         <div class="form-group">
             <label class="col-lg-2 control-label">{{ trans('validation.attributes.system_permission') }}</label>
             <div class="col-lg-3">
-                <input type="checkbox" name="system" {{$permission->system == 1 ? 'checked="checked"' : ''}} />
+                <input type="checkbox" name="system" {{$permission->system == 1 ? 'checked' : ''}} />
             </div>
         </div><!--form control-->
 

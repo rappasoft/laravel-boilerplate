@@ -89,7 +89,7 @@
 
                             @if ($permissions->count())
                                 @foreach ($permissions as $perm)
-                                    <input type="checkbox" name="ungrouped[]" value="{!! $perm->id !!}" id="perm_{!! $perm->id !!}" {{in_array($perm->id, $role_permissions) ? 'checked="checked"' : ""}} /> <label for="perm_{!! $perm->id !!}">{!! $perm->display_name !!}</label><br/>
+                                    <input type="checkbox" name="ungrouped[]" value="{!! $perm->id !!}" id="perm_{!! $perm->id !!}" {{in_array($perm->id, $role_permissions) ? 'checked' : ""}} /> <label for="perm_{!! $perm->id !!}">{!! $perm->display_name !!}</label><br/>
                                 @endforeach
                             @else
                                 <p>There are no ungrouped permissions.</p>
