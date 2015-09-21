@@ -304,6 +304,11 @@ Delete the `storage/framework/compiled.php` file
 <a name="changelog"/>
 ## Changelog
 
+###1.4.1
+```
+- Updated Italian language pack for 1.4 release.
+```
+
 ###1.4
 ```
 - Created new Access Control Library
