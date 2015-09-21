@@ -26,7 +26,7 @@ class StorePermissionGroupRequest extends Request {
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|unique:permission_groups',
         ];
     }
 }

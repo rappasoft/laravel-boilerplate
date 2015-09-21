@@ -47,7 +47,6 @@ class EloquentPermissionGroupRepository implements PermissionGroupRepositoryCont
      * @return static
      */
     public function store($input) {
-        $this->nameCheck($input['name']);
         $group = new PermissionGroup;
         $group->name = $input['name'];
         return $group->save();
@@ -57,10 +56,17 @@ class EloquentPermissionGroupRepository implements PermissionGroupRepositoryCont
      * @param $id
      * @param $input
      * @return mixed
+     * @throws GeneralException
      */
     public function update($id, $input) {
-        $this->nameCheck($input['name']);
-        return $this->find($id)->update($input);
+        $group = $this->find($id);
+
+        //Name is changing for whatever reason
+        if ($group->name != $input['name'])
+            if (PermissionGroup::where('name', $input['name'])->count())
+                throw new GeneralException("There is already a group with that name");
+
+        return $group->update($input);
     }
 
     /**
@@ -109,14 +115,5 @@ class EloquentPermissionGroupRepository implements PermissionGroupRepositoryCont
         }
 
         return true;
-    }
-
-    /**
-     * @param $name
-     * @throws GeneralException
-     */
-    private function nameCheck($name) {
-        if (PermissionGroup::where('name', $name)->count())
-            throw new GeneralException("There is already a group with that name");
     }
 }
