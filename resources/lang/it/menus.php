@@ -15,26 +15,26 @@ return [
 
     'active_users' => 'Utenti attivi',
     'banned_users' => 'Utenti bannati',
-    'create_permission' => 'Crea autorizzazione',
-    'create_permission_group' => 'Create Group',
+    'create_permission' => 'Crea permesso',
+    'create_permission_group' => 'Crea gruppo di permessi',
     'create_role' => 'Crea ruolo',
     'create_user' => 'Crea utente',
     'dashboard' => 'Dashboard',
     'deactivated_users' => 'Utenti disattivati',
     'deleted_users' => 'Utenti cancellati',
     'edit_permission' => 'Modifica autorizzazione',
-    'edit_permission_group' => 'Edit Group',
+    'edit_permission_group' => 'Modifica gruppo',
     'edit_role' => 'Modifica ruolo',
     'edit_user' => 'Modifica utente',
     'general' => 'Generale',
     'header_buttons' => [
         'permissions' => [
-            'all' => 'Tutte le autorizzazioni',
-            'button' => 'Autorizzazioni',
+            'all' => 'Tutti i permessi',
+            'button' => 'Permessi',
 
             'groups' => [
-                'all' => 'All Groups',
-                'button' => 'Groups',
+                'all' => 'Tutti i gruppi',
+                'button' => 'Gruppi',
             ],
         ],
         'roles' => [
@@ -51,16 +51,16 @@ return [
         'dashboard' => 'Dashboard',
         'logs' => 'Log',
     ],
-    'permission_management' => 'Gestione autorizzazioni',
+    'permission_management' => 'Gestione permessi',
     'role_management' => 'Gestione ruoli',
     'user_management' => 'Gestione utenti',
-    'access_management' => 'Access Management',
+    'access_management' => 'Gestione accessi',
     'language-picker' => [
-        'language' => 'Language',
+        'language' => 'Lingua',
         'langs' => [
-            'en' => 'English',
-            'it' => 'Italian',
-            'pt-BR' => 'Portuguese (Brazil)',
+            'en' => 'Inglese',
+            'it' => 'Italiano',
+            'pt-BR' => 'Portoghese (Brasile)',
         ],
     ],
 ];
