@@ -85,8 +85,6 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 		$permission->group_id = isset($input['group']) && strlen($input['group']) > 0 ? (int)$input['group'] : null;
 		$permission->sort = isset($input['sort']) ? (int)$input['sort'] : 0;
 
-		$this->permissionMustContainRole($roles);
-
 		if ($permission->save()) {
 			//For each role, load role, collect perms, add perm to perms, flush perms, read perms
 			if (count($roles['permission_roles']) > 0)
@@ -148,8 +146,6 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 		//See if this permission is tied directly to a user first
 		if (count($permission->users) > 0)
 			throw new GeneralException('This permission is currently tied directly to one or more users and can not be assigned to a role.');
-
-		$this->permissionMustContainRole($roles);
 
 		if ($permission->save()) {
 			//Detach permission from every role, then add the permission to the selected roles
@@ -227,16 +223,5 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 			return true;
 
 		throw new GeneralException("There was a problem deleting this permission. Please try again.");
-	}
-
-	/**
-	 * @param $roles
-	 * @throws GeneralException
-	 */
-	private function permissionMustContainRole($roles)
-	{
-		if (config('access.permissions.permission_must_contain_role'))
-			if (count($roles['permission_roles']) == 0)
-				throw new GeneralException('You must select at least one role for this permission.');
 	}
 }

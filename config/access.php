@@ -80,19 +80,8 @@ return array(
 	 */
 	'roles' => [
 		/*
-		 * Whether a role must contain a permission or can be used standalone
+		 * Whether a role must contain a permission or can be used standalone as a label
 		 */
 		'role_must_contain_permission' => true
-	],
-
-	/*
-	 * Configuration for permissions
-	 */
-	'permissions' => [
-		/*
-		 * Whether a permission must contain a role or can be used standalone
-		 * Works in unison with roles.administrator_forced
-		 */
-		'permission_must_contain_role' => false,
 	],
 );

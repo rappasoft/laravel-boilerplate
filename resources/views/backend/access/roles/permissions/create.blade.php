@@ -61,14 +61,10 @@
             <div class="col-lg-3">
                 @if (count($roles) > 0)
                     @foreach($roles as $role)
-                        <input type="checkbox" {{$role->id == 1 ? "disabled='disabled' checked='checked'" : ''}} value="{{$role->id}}" name="permission_roles[]" id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{!! $role->name !!}</label><br/>
+                        <input type="checkbox" {{$role->id == 1 ? 'disabled checked' : ''}} value="{{$role->id}}" name="permission_roles[]" id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{!! $role->name !!}</label><br/>
                     @endforeach
                 @else
                     No Roles to set
-                @endif
-
-                @if (config('access.roles.administrator_forced'))
-                    {!! Form::hidden('permission_roles[]', 1) !!}
                 @endif
             </div>
         </div><!--form control-->

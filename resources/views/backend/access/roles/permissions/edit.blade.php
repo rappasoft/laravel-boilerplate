@@ -67,10 +67,6 @@
                 @else
                     No Roles to set
                 @endif
-
-                @if (config('access.roles.administrator_forced'))
-                    {!! Form::hidden('permission_roles[]', 1) !!}
-                @endif
             </div>
         </div><!--form control-->
 
