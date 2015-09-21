@@ -22,12 +22,18 @@ return [
         'system' => 'Sistema?',
         'total' => 'Total de permissões',
         'users' => 'Usuários',
+        'group' => 'Group',
+        'group-sort' => 'Group Sort',
+        'groups' => [
+            'name' => 'Group Name',
+        ],
     ],
     'roles' => [
         'number_of_users' => 'Nº de Usuários',
         'permissions' => 'Permissões',
         'role' => 'Papel',
         'total' => 'Total de papéis',
+        'sort' => 'Sort',
     ],
     'users' => [
         'confirmed' => 'Confirmado',

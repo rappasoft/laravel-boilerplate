@@ -1,4 +1,4 @@
-## Laravel 5.* Boilerplate (Currently 5.1.17)
+## Laravel 5.* Boilerplate (Currently 5.1.17) [Screenshots](http://imgur.com/a/uEKuq)
 
 [![Project Status](http://stillmaintained.com/rappasoft/Laravel-5-Boilerplate.png)](http://stillmaintained.com/rappasoft/Laravel-5-Boilerplate) [![Latest Stable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/stable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate) [![Latest Unstable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/unstable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate)
 
@@ -19,6 +19,7 @@
         * Change Users Password
         * Create/Manage Roles
         * Create/Manage Permissions
+        * Create/Manage Permission Groups
         * Manage Users Roles/Permissions
 * Default Responsive Layout
 * Frontend and Backend Controllers
@@ -53,6 +54,7 @@
     * Events/Handlers
     * Entire application split between frontend/backend
     * Localization Throughout
+* [Changelog](#changelog)
 
 ### Installation:
 
@@ -66,18 +68,12 @@
 - run `gulp` or `gulp watch` (Install gulp (sudo npm install -g gulp) if needed)
 
 <a name="access-control"/>
-## Access Control System (Previously 'Vault')
-* [Configuration] (#configuration)
+## Access Control System
+* Configuration
     * [Config File](#config_file)
     * [Route Middleware](#route_middleware)
-    * [Controller Middleware](#controller_middleware)
-        * [Parameters](#route_middleware_params)
-        * [Creating Middleware](#creating_middleware)
-        * [AccessParams trait](#access_params_trait)
+    * [Create Middleware](#creating_middleware)
     * [Blade Extensions](#blade_extensions)
-
-<a name="configuration"/>
-### Configuration
 
 <a name="config_file"/>
 ###Configuration File
@@ -103,6 +99,16 @@ access.permission
  * Permissions table used by Access to save permissions to the database.
  */
 access.permissions_table
+
+/*
+ * PermissionGroup model used by Access to create permissions groups.
+ */
+access.group
+
+/*
+ * Permissions table used by Access to save permissions to the database.
+ */
+access.permissions_group_table
 
 /*
  * permission_role table used by Access to save relationship between permissions and roles to the database.
@@ -141,35 +147,18 @@ access.users.confirm_email
 access.users.change_email
 
 /*
- * Configuration for roles
+ * Whether a role must contain at least one permission, or can be used standalone as a label
  */
 access.roles.role_must_contain_permission
-
-/*
- * Whether or not the administrator role must possess every permission
- * Works in unison with permissions.permission_must_contain_role
- */
-access.roles.administrator_forced
-
-/*
- * Whether a permission must contain a role or can be used standalone
- * Works in unison with roles.administrator_forced
- */
-access.permissions.permission_must_contain_role
 ```
 
 <a name="route_middleware"/>
 ### Applying the Route Middleware
 
-Laravel 5 is trying to steer away from the filters.php file and more towards using middleware. Here is an example right from the access routes file of a group of routes that requires the Administrator role:
+Included route middleware let you authorize by either a role or permission:
 
 ```php
-Route::group([
-	'middleware' => 'access.routeNeedsRole',
-	'role' => ['Administrator'],
-	'redirect' => '/',
-	'with' => ['error', 'You do not have access to do that.']
-], function()
+Route::group(['middleware' => 'access.routeNeedsPermission:view-backend', function()
 {
     Route::group(['prefix' => 'access'], function ()
     	{
@@ -179,49 +168,10 @@ Route::group([
 });
 ```
 
-The above code checks to see if the currently authenticated user has the role `Administrator`, if not redirects to `/` with a session variable that has a key of `message` and value of `You do not have access to do that.`
-
 The following middleware ships with the boilerplate:
 
 - access.routeNeedsRole
 - access.routeNeedsPermission
-- access.routeNeedsRoleOrPermission
-
-<a name="controller_middleware"/>
-### Applying the Controller Middleware
-
-The controller middleware supports all of the same parameters as the route middleware, except that it is declared in the constructor of the controller you are trying to protect:
-
-For example, the ```Route::group``` example above would be this:
-
-```php
-public function __construct() {
-	$this->middleware('access.routeNeedsRole:{role:Administrator::redirect:/::with:error|You do not have access to do that.}');
-}
-```
-
-**Notes:** Because the new route middleware parameters in 5.1 don't support arrays, I made my own syntax.
-
-- It uses a single parameter encapulated in brackets `{}`
-- `role` can be single `role:Administrator` or an "array" `role:Administrator|User|Other`
-- Same for the permissions parameter: `permission:user_permission` or `permission:user_permission|other_permission`
-- The session message is in format `with:variable_name|message`
-- The parameters are separated by a double colon `::` (I did try a comma, the interpreter wasn't allowing it)
-
-
-<a name="route_middleware_params"/>
-### Route Parameters
-
-- `middleware` => The middleware name, you can change them in your app/Http/Kernel.php file.
-- `role` => A string of one role or an array of roles by name.
-- `permission` => A string of one permission or an array of permissions by name.
-- `needsAll` => A boolean, false by default, that states whether or not all of the specified roles/permissions are required to authenticate.
-- `with` => Sends a session flash on failure. Array with 2 items, first is session key, second is value.
-- `redirect` => Redirect to a url if authentication fails.
-- `redirectRoute` => Redirect to a route if authentication fails.
-- `redirectAction` => Redirect to an action if authentication fails.
-
-**If no redirect is specified a `response('Unauthorized', 401);` will be thrown.**
 
 <a name="creating_middleware"/>
 ### Create Your Own Middleware
@@ -274,19 +224,10 @@ $user->hasPermission($permission); //Wrapper function for can()
 $user->hasPermissions($permissions, $needsAll); //Wrapper function for canMultiple()
 ```
 
-<a name="access_params_trait"/>
-### AccessParams trait
-
-If you would like to take advantage of the methods used by Access's route/controller handler, you can `use` it:
-
-    `use App\Services\Access\Traits\AccessParams`
-
-Which will give you methods in your middleware to grab route assets or controller parameters. You can then add methods to your middleware to grab assets that access doesn't grab by default and take advantage of them.
-
-**Note:** If middleware is applied to both the controller and a route group, the controller will take precedence. 
-
 <a name="blade_extensions"/>
 ### Blade Extensions
+
+**Note: The blade syntax for permissions does not support hyphens, only underscores. Use the access helper to check in those cases: access()->has('this-permission') **
 
 Access comes with @blade extensions to help you show and hide data by role or permission without clogging up your code with unwanted if statements:
 
@@ -314,7 +255,9 @@ If you want to show or hide a specific section you can do so in your layout file
 @endpermission
 ```
 
-You can add more extensions by editing app/Blade/Access/AccessBladeExtender.php
+More will be available in the future.
+
+You can add more extensions by editing app/Services/Blade/Access/AccessBladeExtender.php
 
 ## Socialite
 
@@ -357,15 +300,12 @@ If the above fails to fix, and the command line is referencing errors in `compil
 Delete the `storage/framework/compiled.php` file
        
 **If all of the above don't work please [report here](https://github.com/rappasoft/Laravel-5-Boilerplate/issues).**
-    
-## Official Documentation
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+<a name="changelog"/>
+## Changelog
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-### License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+###1.4
+```
+- Created new Access Control Library
+- Started Changelog
+```

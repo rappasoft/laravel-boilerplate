@@ -24,6 +24,7 @@
             <th>{{ trans('crud.roles.role') }}</th>
             <th>{{ trans('crud.roles.permissions') }}</th>
             <th>{{ trans('crud.roles.number_of_users') }}</th>
+            <th>{{ trans('crud.roles.sort') }}</th>
             <th>{{ trans('crud.actions') }}</th>
         </tr>
         </thead>
@@ -32,15 +33,22 @@
                 <tr>
                     <td>{!! $role->name !!}</td>
                     <td>
-                        @if (count($role->permissions) > 0)
-                            @foreach ($role->permissions as $permission)
-                                {!! $permission->display_name !!}<br/>
-                            @endforeach
+                        @if ($role->all)
+                            <span class="label label-success">All</span>
                         @else
-                            None
+                            @if (count($role->permissions) > 0)
+                                <div style="font-size:.7em">
+                                    @foreach ($role->permissions as $permission)
+                                        {!! $permission->display_name !!}<br/>
+                                    @endforeach
+                                </div>
+                            @else
+                                <span class="label label-danger">None</span>
+                            @endif
                         @endif
                     </td>
                     <td>{!! $role->users()->count() !!}</td>
+                    <td>{!! $role->sort !!}</td>
                     <td>{!! $role->action_buttons !!}</td>
                 </tr>
             @endforeach

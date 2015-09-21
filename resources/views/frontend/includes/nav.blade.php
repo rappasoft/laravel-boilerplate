@@ -35,10 +35,11 @@
 							<ul class="dropdown-menu" role="menu">
 							    <li>{!! link_to('dashboard', trans('navs.dashboard')) !!}</li>
 							    <li>{!! link_to('auth/password/change', trans('navs.change_password')) !!}</li>
-							    @permission('view_backend')
-							        {{-- This can also be @role('Administrator') instead --}}
+
+							    @if (access()->can('view-backend'))
 							        <li>{!! link_to_route('backend.dashboard', trans('navs.administration')) !!}</li>
-							    @endpermission
+							    @endif
+
 								<li>{!! link_to('auth/logout', trans('navs.logout')) !!}</li>
 							</ul>
 						</li>

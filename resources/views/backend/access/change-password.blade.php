@@ -39,14 +39,16 @@
             </div>
         </div><!--form control-->
 
-        <div class="pull-left">
-            <a href="{{route('admin.access.users.index')}}" class="btn btn-danger">Cancel</a>
-        </div>
+        <div class="well">
+            <div class="pull-left">
+                <a href="{{route('admin.access.users.index')}}" class="btn btn-danger btn-xs">Cancel</a>
+            </div>
 
-        <div class="pull-right">
-            <input type="submit" class="btn btn-success" value="Save" />
-        </div>
-        <div class="clearfix"></div>
+            <div class="pull-right">
+                <input type="submit" class="btn btn-success btn-xs" value="Save" />
+            </div>
+            <div class="clearfix"></div>
+        </div><!--well-->
 
     {!! Form::close() !!}
 @stop

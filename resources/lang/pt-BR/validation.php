@@ -121,10 +121,14 @@ return [
         'associated_roles' => 'Papéis Associados',
         'other_permissions' => 'Outras Permissões',
         'role_name' => 'Nome do Papel',
+        'role_sort' => 'Role Sort',
         'associated_permissions' => 'Permissões Associadas',
         'permission_name' => 'Nome da Permissão',
         'display_name' => 'Nome de Apresentação',
         'system_permission' => 'Permissão de sistema?',
+        'permission_group_name' => 'Group Name',
+        'group' => 'Group',
+        'group-sort' => 'Group Sort',
     ],
 
 ];
