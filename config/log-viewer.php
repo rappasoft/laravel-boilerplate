@@ -23,8 +23,7 @@ return [
 
         'attributes' => [
             'prefix'     => 'admin/log-viewer',
-
-            'middleware' => 'access.routeNeedsRoleOrPermission:{role:Administrator,permission:view_backend}',
+            'middleware' => 'access.routeNeedsPermission:view-backend',
         ],
     ],
 
