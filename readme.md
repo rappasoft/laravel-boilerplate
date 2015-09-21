@@ -69,14 +69,11 @@
 
 <a name="access-control"/>
 ## Access Control System
-* [Configuration] (#configuration)
+* Configuration
     * [Config File](#config_file)
     * [Route Middleware](#route_middleware)
     * [Create Middleware](#creating_middleware)
     * [Blade Extensions](#blade_extensions)
-
-<a name="configuration"/>
-### Configuration
 
 <a name="config_file"/>
 ###Configuration File
@@ -150,7 +147,7 @@ access.users.confirm_email
 access.users.change_email
 
 /*
- * Configuration for roles
+ * Whether a role must contain at least one permission, or can be used standalone as a label
  */
 access.roles.role_must_contain_permission
 ```
@@ -307,9 +304,8 @@ Delete the `storage/framework/compiled.php` file
 <a name="changelog"/>
 ## Changelog
 
+###1.4
 ```
-**Version 1.4**
-
 - Created new Access Control Library
 - Started Changelog
 ```
