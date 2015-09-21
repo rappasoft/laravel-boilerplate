@@ -13,7 +13,7 @@ return [
 	|
 	*/
 
-	'password' => "La password dev'essere lunga almeno sei caratteri ed corrispondere alla conferma.",
+	'password' => "La password dev'essere lunga almeno sei caratteri e corrispondere alla conferma.",
 	'reset' => 'La tua password è stata resettata!',
 	'sent' => 'Ti abbiamo mandato via email il link per resettare la password!',
 	'token' => 'Questo token di reset della password non è valido.',

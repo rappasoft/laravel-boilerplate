@@ -14,13 +14,13 @@ return [
     */
 
     'permissions' => [
-        'created' => 'Autorizzazione creata con successo.',
-        'updated' => 'Autorizzazione aggiornata con successo.',
-        'deleted' => 'Autorizzazione cancellata con successo.',
+        'created' => 'Permesso creato con successo.',
+        'updated' => 'Permesso aggiornato con successo.',
+        'deleted' => 'Permesso cancellato con successo.',
         'groups'  => [
-            'created' => 'Permission group successfully created.',
-            'updated' => 'Permission group successfully updated.',
-            'deleted' => 'Permission group successfully deleted.',
+            'created' => 'Gruppo di permessi creato con successo.',
+            'updated' => 'Gruppo di permessi aggiornato con successo.',
+            'deleted' => 'Gruppo di permessi cancellato con successo.',
         ],
     ],
 
