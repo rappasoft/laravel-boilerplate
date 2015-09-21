@@ -33,6 +33,7 @@ return [
         'permissions' => 'Autorizzazioni',
         'role' => 'Ruolo',
         'total' => 'ruoli totali',
+        'sort' => 'Sort',
     ],
     'users' => [
         'confirmed' => 'Confermato',

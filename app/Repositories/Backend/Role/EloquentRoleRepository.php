@@ -32,7 +32,7 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 	 * @param string $sort
 	 * @return mixed
 	 */
-	public function getRolesPaginated($per_page, $order_by = 'id', $sort = 'asc') {
+	public function getRolesPaginated($per_page, $order_by = 'sort', $sort = 'asc') {
 		return Role::with('permissions')->orderBy($order_by, $sort)->paginate($per_page);
 	}
 
@@ -42,7 +42,7 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 	 * @param bool $withPermissions
 	 * @return mixed
 	 */
-	public function getAllRoles($order_by = 'id', $sort = 'asc', $withPermissions = false) {
+	public function getAllRoles($order_by = 'sort', $sort = 'asc', $withPermissions = false) {
 		if ($withPermissions)
 			return Role::with('permissions')->orderBy($order_by, $sort)->get();
 
@@ -69,6 +69,7 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 
 		$role = new Role;
 		$role->name = $input['name'];
+		$role->sort = isset($input['sort']) && strlen($input['sort']) > 0 && is_numeric($input['sort']) ? (int)$input['sort'] : 0;
 
 		//See if this role has all permissions and set the flag on the role
 		$role->all = $all;
@@ -115,6 +116,7 @@ class EloquentRoleRepository implements RoleRepositoryContract {
 				throw new GeneralException('You must select at least one permission for this role.');
 
 		$role->name = $input['name'];
+		$role->sort = isset($input['sort']) && strlen($input['sort']) > 0 && is_numeric($input['sort']) ? (int)$input['sort'] : 0;
 
 		//See if this role has all permissions and set the flag on the role
 		$role->all = $all;

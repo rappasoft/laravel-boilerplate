@@ -62,7 +62,7 @@ class UserController extends Controller {
      */
 	public function create(CreateUserRequest $request) {
 		return view('backend.access.create')
-			->withRoles($this->roles->getAllRoles('id', 'asc', true))
+			->withRoles($this->roles->getAllRoles('sort', 'asc', true))
 			->withPermissions($this->permissions->getAllPermissions());
 	}
 
@@ -89,7 +89,7 @@ class UserController extends Controller {
 		return view('backend.access.edit')
 			->withUser($user)
 			->withUserRoles($user->roles->lists('id')->all())
-			->withRoles($this->roles->getAllRoles('id', 'asc', true))
+			->withRoles($this->roles->getAllRoles('sort', 'asc', true))
 			->withUserPermissions($user->permissions->lists('id')->all())
 			->withPermissions($this->permissions->getAllPermissions());
 	}

@@ -24,6 +24,7 @@
             <th>{{ trans('crud.roles.role') }}</th>
             <th>{{ trans('crud.roles.permissions') }}</th>
             <th>{{ trans('crud.roles.number_of_users') }}</th>
+            <th>{{ trans('crud.roles.sort') }}</th>
             <th>{{ trans('crud.actions') }}</th>
         </tr>
         </thead>
@@ -47,6 +48,7 @@
                         @endif
                     </td>
                     <td>{!! $role->users()->count() !!}</td>
+                    <td>{!! $role->sort !!}</td>
                     <td>{!! $role->action_buttons !!}</td>
                 </tr>
             @endforeach

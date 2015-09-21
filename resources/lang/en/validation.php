@@ -121,6 +121,7 @@ return [
         'associated_roles' => 'Associated Roles',
         'other_permissions' => 'Other Permissions',
         'role_name' => 'Role Name',
+        'role_sort' => 'Role Sort',
         'associated_permissions' => 'Associated Permissions',
         'permission_name' => 'Permission Name',
         'display_name' => 'Display Name',

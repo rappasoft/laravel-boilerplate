@@ -100,6 +100,13 @@
             </div><!--col-lg-3-->
         </div><!--form control-->
 
+        <div class="form-group">
+            {!! Form::label('name', trans('validation.attributes.role_sort'), ['class' => 'col-lg-2 control-label']) !!}
+            <div class="col-lg-10">
+                {!! Form::text('sort', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.role_sort')]) !!}
+            </div>
+        </div><!--form control-->
+
         <div class="well">
             <div class="pull-left">
                 <a href="{!! route('admin.access.roles.index') !!}" class="btn btn-danger btn-xs">{{ trans('strings.cancel_button') }}</a>
