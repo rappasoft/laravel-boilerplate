@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers\Backend\Access;
+<?php namespace App\Http\Controllers\Backend\Access\Permission;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
