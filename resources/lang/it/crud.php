@@ -17,10 +17,10 @@ return [
     'actions' => 'Azioni',
     'permissions' => [
         'name' => 'Nome',
-        'permission' => 'Autorizzazione',
+        'permission' => 'Permesso',
         'roles' => 'Ruoli',
         'system' => 'Sistema?',
-        'total' => 'autorizzazioni totali',
+        'total' => 'permessi totali',
         'users' => 'Utenti',
         'group' => 'Group',
         'group-sort' => 'Group Sort',
@@ -30,7 +30,7 @@ return [
     ],
     'roles' => [
         'number_of_users' => '# Utenti',
-        'permissions' => 'Autorizzazioni',
+        'permissions' => 'Permessi',
         'role' => 'Ruolo',
         'total' => 'ruoli totali',
         'sort' => 'Sort',
@@ -38,7 +38,7 @@ return [
     'users' => [
         'confirmed' => 'Confermato',
         'created' => 'Creato',
-        'delete_permanently' => 'Cancella definitavamente',
+        'delete_permanently' => 'Cancella definitivamente',
         'email' => 'E-mail',
         'id' => 'ID',
         'last_updated' => 'Ultimo aggiornamento',
