@@ -21,7 +21,7 @@
         * Create/Manage Permissions
         * Create/Manage Permission Groups
         * Manage Users Roles/Permissions
-        * Permission Dependencies [Notes](#permission-dependencies)
+        * Permission Dependencies - [Notes](#permission-dependencies)
 * Default Responsive Layout
 * Frontend and Backend Controllers
 * User Dashboard
@@ -322,7 +322,10 @@ Delete the `storage/framework/compiled.php` file
 
 ###1.4.3
 ```
-- Added a section to permissions called Permission Dependencies, where you can specify that the use of one permission can be dependent on the use or one or more permissions. See Permission Dependencies section of read me.
+- Added a section to permissions called Permission Dependencies,
+  where you can specify that the use of one permission can be dependent
+  on the use or one or more permissions. See Permission Dependencies
+  section of read me.
 ```
 
 ###1.4.2
