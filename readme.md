@@ -122,6 +122,12 @@ access.permission_role_table
 access.permission_user_table
 
 /*
+* Table that specifies if one permission is dependent on another.
+* For example in order for a user to have the edit-user permission they also need the view-backend permission.
+*/
+access.permission_dependencies_table
+
+/*
  * assigned_roles table used by Access to save assigned roles to the database.
  */
 access.assigned_roles_table

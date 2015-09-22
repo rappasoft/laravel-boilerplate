@@ -32,7 +32,7 @@ return array(
 	/*
 	 * Permissions table used by Access to save permissions to the database.
 	 */
-	'permissions_group_table' => 'permission_groups',
+	'permission_group_table' => 'permission_groups',
 
 	/*
 	 * permission_role table used by Access to save relationship between permissions and roles to the database.
@@ -44,6 +44,12 @@ return array(
 	 * This table is only for permissions that belong directly to a specific user and not a role
 	 */
 	'permission_user_table' => 'permission_user',
+
+	/*
+	 * Table that specifies if one permission is dependent on another.
+	 * For example in order for a user to have the edit-user permission they also need the view-backend permission.
+	 */
+	'permission_dependencies_table' => 'permission_dependencies',
 
 	/*
 	 * assigned_roles table used by Access to save assigned roles to the database.
