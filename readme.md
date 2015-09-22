@@ -304,6 +304,13 @@ Delete the `storage/framework/compiled.php` file
 <a name="changelog"/>
 ## Changelog
 
+###1.4.3
+```
+- Fixed Swedish backend welcome message.
+- Altered active menu on sidebar to keep menu open when navigating through links in dropdown.
+- by Daniel Blomdahl (@blomdahldaniel)
+```
+
 ###1.4.2
 ```
 - Added Swedish language pack authored by Daniel Blomdahl (@blomdahldaniel)
