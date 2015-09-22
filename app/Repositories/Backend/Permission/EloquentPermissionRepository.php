@@ -1,7 +1,8 @@
 <?php namespace App\Repositories\Backend\Permission;
 
-use App\Models\Access\Permission\Permission;
 use App\Exceptions\GeneralException;
+use App\Models\Access\Permission\Permission;
+use App\Models\Access\Permission\PermissionDependency;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
 
 /**
@@ -120,6 +121,17 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 						$role->permissions()->sync([$permission->id]);
 					}
 				}
+			}
+
+			//Add the dependencies of this permission if any
+			if (count($input['dependencies'])) {
+				foreach ($input['dependencies'] as $dependency_id) {
+					$permission->dependencies()->save(new PermissionDependency([
+						'permission_id' => $permission->id,
+						'dependency_id' => (int)$dependency_id
+					]));
+				}
+
 			}
 
 			return true;

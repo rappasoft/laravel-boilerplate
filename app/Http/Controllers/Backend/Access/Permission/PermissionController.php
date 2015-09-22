@@ -58,7 +58,8 @@ class PermissionController extends Controller {
 	public function create(CreatePermissionRequest $request) {
 		return view('backend.access.roles.permissions.create')
 			->withGroups($this->groups->getAllGroups(true))
-			->withRoles($this->roles->getAllRoles());
+			->withRoles($this->roles->getAllRoles())
+			->withPermissions($this->permissions->getAllPermissions());
 	}
 
 	/**

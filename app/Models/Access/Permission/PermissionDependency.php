@@ -28,4 +28,11 @@ class PermissionDependency extends Model {
     {
         $this->table = config('access.permission_dependencies_table');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function permission() {
+        return $this->hasOne(Permission::class, 'id', 'dependency_id');
+    }
 }

@@ -22,59 +22,102 @@
 
     {!! Form::open(['route' => 'admin.access.roles.permissions.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) !!}
 
-        <div class="form-group">
-            {!! Form::label('name', trans('validation.attributes.permission_name'), ['class' => 'col-lg-2 control-label']) !!}
-            <div class="col-lg-10">
-                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.permission_name')]) !!}
-            </div>
-        </div><!--form control-->
+        <div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
+                <li role="presentation"><a href="#dependencies" aria-controls="dependencies" role="tab" data-toggle="tab">Dependencies</a></li>
+            </ul>
 
-        <div class="form-group">
-            {!! Form::label('display_name', trans('validation.attributes.display_name'), ['class' => 'col-lg-2 control-label']) !!}
-            <div class="col-lg-10">
-                {!! Form::text('display_name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.display_name')]) !!}
-            </div>
-        </div><!--form control-->
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="general" style="padding-top:20px">
 
-        <div class="form-group">
-            {!! Form::label('group', trans('validation.attributes.group'), ['class' => 'col-lg-2 control-label']) !!}
-            <div class="col-lg-10">
-                <select name="group" class="form-control">
-                    <option value="">None</option>
+                    <div class="form-group">
+                        {!! Form::label('name', trans('validation.attributes.permission_name'), ['class' => 'col-lg-2 control-label']) !!}
+                        <div class="col-lg-10">
+                            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.permission_name')]) !!}
+                        </div>
+                    </div><!--form control-->
 
-                    @foreach ($groups as $group)
-                        <option value="{!! $group->id !!}">{!! $group->name !!}</option>
-                    @endforeach
-                </select>
-            </div>
-        </div><!--form control-->
+                    <div class="form-group">
+                        {!! Form::label('display_name', trans('validation.attributes.display_name'), ['class' => 'col-lg-2 control-label']) !!}
+                        <div class="col-lg-10">
+                            {!! Form::text('display_name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.display_name')]) !!}
+                        </div>
+                    </div><!--form control-->
 
-        <div class="form-group">
-            {!! Form::label('sort', trans('validation.attributes.group-sort'), ['class' => 'col-lg-2 control-label']) !!}
-            <div class="col-lg-10">
-                {!! Form::text('sort', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.group-sort')]) !!}
-            </div>
-        </div><!--form control-->
+                    <div class="form-group">
+                        {!! Form::label('group', trans('validation.attributes.group'), ['class' => 'col-lg-2 control-label']) !!}
+                        <div class="col-lg-10">
+                            <select name="group" class="form-control">
+                                <option value="">None</option>
 
-        <div class="form-group">
-            <label class="col-lg-2 control-label">{{ trans('validation.attributes.associated_roles') }}</label>
-            <div class="col-lg-3">
-                @if (count($roles) > 0)
-                    @foreach($roles as $role)
-                        <input type="checkbox" {{$role->id == 1 ? 'disabled checked' : ''}} value="{{$role->id}}" name="permission_roles[]" id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{!! $role->name !!}</label><br/>
-                    @endforeach
-                @else
-                    No Roles to set
-                @endif
-            </div>
-        </div><!--form control-->
+                                @foreach ($groups as $group)
+                                    <option value="{!! $group->id !!}">{!! $group->name !!}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div><!--form control-->
 
-        <div class="form-group">
-            <label class="col-lg-2 control-label">{{ trans('validation.attributes.system_permission') }}</label>
-            <div class="col-lg-3">
-                <input type="checkbox" name="system" />
-            </div>
-        </div><!--form control-->
+                    <div class="form-group">
+                        {!! Form::label('sort', trans('validation.attributes.group-sort'), ['class' => 'col-lg-2 control-label']) !!}
+                        <div class="col-lg-10">
+                            {!! Form::text('sort', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.group-sort')]) !!}
+                        </div>
+                    </div><!--form control-->
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">{{ trans('validation.attributes.associated_roles') }}</label>
+                        <div class="col-lg-3">
+                            @if (count($roles) > 0)
+                                @foreach($roles as $role)
+                                    <input type="checkbox" {{$role->id == 1 ? 'disabled checked' : ''}} value="{{$role->id}}" name="permission_roles[]" id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{!! $role->name !!}</label><br/>
+                                @endforeach
+                            @else
+                                No Roles to set
+                            @endif
+                        </div>
+                    </div><!--form control-->
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">{{ trans('validation.attributes.system_permission') }}</label>
+                        <div class="col-lg-3">
+                            <input type="checkbox" name="system" />
+                        </div>
+                    </div><!--form control-->
+
+                </div><!--general-->
+
+                <div role="tabpanel" class="tab-pane" id="dependencies" style="padding-top:20px">
+                    <div class="alert alert-info">
+                        <i class="fa fa-info-circle"></i> This section is where you specify that this permission depends on the user having one or more other permissions.<br/><br/>
+                        For example: This permission may be <strong>create-user</strong>, but if the user doesn't also have <strong>view-backend</strong> and <strong>view-access-management</strong> permissions they will never be able to get to the <strong>Create User</strong> screen.
+                    </div><!--alert-->
+
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Dependencies</label>
+                        <div class="col-lg-10">
+                            @if (count($permissions))
+                                @foreach (array_chunk($permissions->toArray(), 10) as $perm)
+                                    <div class="col-lg-3">
+                                        <ul style="margin:0;padding:0;list-style:none;">
+                                            @foreach ($perm as $p)
+                                                <li><input type="checkbox" value="{{$p['id']}}" name="dependencies[]" id="permission-{{$p['id']}}"> <label for="permission-{{$p['id']}}" />{!! $p['display_name'] !!}</label></li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endforeach
+                            @else
+                                No permission to choose from.
+                            @endif
+                        </div><!--col 3-->
+                    </div><!--form control-->
+                </div><!--dependencies-->
+
+            </div><!--tab content-->
+
+        </div><!--tabs-->
 
         <div class="well">
             <div class="pull-left">

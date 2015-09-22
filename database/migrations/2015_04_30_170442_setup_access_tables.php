@@ -77,6 +77,7 @@ class SetupAccessTables extends Migration {
 			$table->foreign('dependency_id')
 				->references('id')
 				->on(config('access.permissions_table'));
+			$table->timestamps();
 		});
 
 		Schema::create(config('access.permission_user_table'), function ($table) {
