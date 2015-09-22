@@ -37,14 +37,18 @@
                   <li class="{{ Active::pattern('admin/access/*') }}"><a href="{!!url('admin/access/users')!!}"><span>{{ trans('menus.access_management') }}</span></a></li>
                 @endif
 
-                <li class="{{ Active::pattern('admin/log-viewer/*') }} treeview">
+                 <li class="{{ Active::pattern('admin/log-viewer*') }} treeview">
                   <a href="#">
                     <span>{{ trans('menus.log-viewer.main') }}</span>
                     <i class="fa fa-angle-left pull-right"></i>
                   </a>
-                  <ul class="treeview-menu" style="display: none;">
-                    <li><a href="{!! url('admin/log-viewer') !!}">{{ trans('menus.log-viewer.dashboard') }}</a></li>
-                    <li><a href="{!! url('admin/log-viewer/logs') !!}">{{ trans('menus.log-viewer.logs') }}</a></li>
+                  <ul class="treeview-menu {{ Active::pattern('admin/log-viewer*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/log-viewer*', 'display: block;') }}">
+                    <li class="{{ Active::pattern('admin/log-viewer') }}">
+                      <a href="{!! url('admin/log-viewer') !!}">{{ trans('menus.log-viewer.dashboard') }}</a>
+                    </li>
+                    <li class="{{ Active::pattern('admin/log-viewer/logs') }}">
+                      <a href="{!! url('admin/log-viewer/logs') !!}">{{ trans('menus.log-viewer.logs') }}</a>
+                    </li>
                   </ul>
                 </li>
 
