@@ -45,7 +45,7 @@
 * [Active Menu](https://github.com/letrunghieu/active)
 * [PHP to Javascript Transformer](https://github.com/laracasts/PHP-Vars-To-Js-Transformer) - [Notes](#javascript-notes)
 * [ARCANEDEV Log Viewer](https://github.com/ARCANEDEV/LogViewer)
-* Localization to English, Italian, and Portuguese (Brazil).
+* Localization to English, Italian, Portuguese (Brazil), and Swedish. (So far)
 * Frontend/Backend Language Picker Menu
 * Standards
     * Clean Controllers
@@ -303,6 +303,11 @@ Delete the `storage/framework/compiled.php` file
 
 <a name="changelog"/>
 ## Changelog
+
+###1.4.2
+```
+- Added Swedish language pack authored by Daniel Blomdahl (@blomdahldaniel)
+```
 
 ###1.4.1
 ```
