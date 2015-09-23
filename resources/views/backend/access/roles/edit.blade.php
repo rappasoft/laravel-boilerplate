@@ -44,6 +44,12 @@
 
                 <div id="available-permissions" class="hidden">
                     <div class="row">
+                        <div class="col-lg-12">
+                            <div class="alert alert-info">
+                                <i class="fa fa-info-circle"></i> A permission marked with a <small><strong>(D)</strong></small> means that the permission has dependencies. They will be checked automatically when you select that permission. You can manage each permissions dependencies in the dependency tab of the edit permission screen.
+                            </div><!--alert-->
+                        </div><!--col-lg-12-->
+
                         <div class="col-lg-6">
                             <p><strong>Grouped Permissions</strong></p>
 
