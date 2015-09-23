@@ -4,10 +4,10 @@ use Closure;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Class CheckInstallStatus
+ * Class IsInstalled
  * @package App\Http\Middleware\Installer
  */
-class CheckInstallStatus
+class IsInstalled
 {
     /**
      * Handle an incoming request.
@@ -20,8 +20,8 @@ class CheckInstallStatus
     {
         $tables = DB::select('SHOW TABLES');
 
-        if(empty($tables))
-            return redirect("install");
+        if(! empty($tables))
+            abort(404);
 
         return $next($request);
     }

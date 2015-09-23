@@ -22,7 +22,7 @@
         * Create/Manage Permission Groups
         * Manage Users Roles/Permissions
         * Permission Dependencies - [Notes](#permission-dependencies)
-* Visual Installer (Based loosely off of [RachidLaasri/LaravelInstaller](https://github.com/RachidLaasri/LaravelInstaller))
+* Visual Installer (Based on [RachidLaasri/LaravelInstaller](https://github.com/RachidLaasri/LaravelInstaller))
 * Default Responsive Layout
 * Frontend and Backend Controllers
 * User Dashboard
@@ -62,11 +62,8 @@
 
 - `composer install`
 - `npm install`
-- Create .env file (example included)
-- `php artisan key:generate`
-- `php artisan migrate`
-- Set administrator info in UserTableSeeder.php
-- `php artisan db:seed`
+- Rename .env.example to .env and add credentials
+- Visit ```/install``` to complete installation
 - run `gulp` or `gulp watch` (Install gulp (sudo npm install -g gulp) if needed)
 
 <a name="access-control"/>

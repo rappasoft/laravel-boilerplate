@@ -14,8 +14,6 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $middleware = [
-		\App\Http\Middleware\Installer\CheckInstallStatus::class,
-		\Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
 		\Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
 		\App\Http\Middleware\EncryptCookies::class,
 		\Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
@@ -34,7 +32,8 @@ class Kernel extends HttpKernel {
 		/**
 		 * See if the application is installed
 		 */
-		'app.isInstalled' => \App\Http\Middleware\Installer\IsInstalledMiddleware::class,
+		'app.isInstalled' => \App\Http\Middleware\Installer\IsInstalled::class,
+		'app.runInstaller' => \App\Http\Middleware\Installer\RunInstaller::class,
 
 		/**
 		 * Default laravel route middleware

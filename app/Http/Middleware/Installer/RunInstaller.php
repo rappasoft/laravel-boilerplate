@@ -4,10 +4,10 @@ use Closure;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Class IsInstalledMiddleware
+ * Class RunInstaller
  * @package App\Http\Middleware\Installer
  */
-class IsInstalledMiddleware
+class RunInstaller
 {
     /**
      * Handle an incoming request.
@@ -20,8 +20,8 @@ class IsInstalledMiddleware
     {
         $tables = DB::select('SHOW TABLES');
 
-        if(! empty($tables))
-            abort(404);
+        if(empty($tables))
+            return redirect()->route("Installer::welcome");
 
         return $next($request);
     }
