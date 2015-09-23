@@ -80,4 +80,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 			return "<label class='label label-success'>Yes</label>";
 		return "<label class='label label-danger'>No</label>";
 	}
+
+	/**
+	 * @return mixed
+     */
+	public function getPictureAttribute() {
+		return gravatar()->get($this->email, ['size' => 50]);
+	}
 }
