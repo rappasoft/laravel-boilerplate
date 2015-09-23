@@ -66,9 +66,9 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	 */
 	public function getAllPermissions($order_by = 'display_name', $sort = 'asc', $withRoles = true) {
 		if ($withRoles)
-			return Permission::with('roles')->orderBy($order_by, $sort)->get();
+			return Permission::with('roles', 'dependencies.permission')->orderBy($order_by, $sort)->get();
 
-		return Permission::orderBy($order_by, $sort)->get();
+		return Permission::with('dependencies.permission')->orderBy($order_by, $sort)->get();
 	}
 
 	/**
