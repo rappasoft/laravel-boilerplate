@@ -126,6 +126,7 @@
                     <tr>
                         <th>{{ trans('crud.permissions.permission') }}</th>
                         <th>{{ trans('crud.permissions.name') }}</th>
+                        <th>{{ trans('crud.permissions.dependencies') }}</th>
                         <th>{{ trans('crud.permissions.users') }}</th>
                         <th>{{ trans('crud.permissions.roles') }}</th>
                         <th>{{ trans('crud.permissions.group') }}</th>
@@ -139,6 +140,15 @@
                             <tr>
                                 <td>{!! $permission->name !!}</td>
                                 <td>{!! $permission->display_name !!}</td>
+                                <td>
+                                    @if (count($permission->dependencies))
+                                        @foreach($permission->dependencies as $dependency)
+                                            {!! $dependency->permission->display_name !!}<br/>
+                                        @endforeach
+                                    @else
+                                        <span class="label label-success">None</span>
+                                    @endif
+                                </td>
                                 <td>
                                     @if (count($permission->users))
                                         @foreach($permission->users as $user)

@@ -26,7 +26,7 @@ class PermissionGroup extends Model {
      */
     public function __construct()
     {
-        $this->table = config('access.permissions_group_table');
+        $this->table = config('access.permission_group_table');
     }
 
     /**
