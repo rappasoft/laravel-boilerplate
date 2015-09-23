@@ -51,6 +51,13 @@ class Permission extends Model {
 	}
 
 	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+	public function dependencies() {
+		return $this->hasMany(PermissionDependency::class, 'permission_id', 'id');
+	}
+
+	/**
 	 * @return string
 	 */
 	public function getSystemLabelAttribute() {

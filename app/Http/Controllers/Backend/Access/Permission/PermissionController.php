@@ -58,7 +58,8 @@ class PermissionController extends Controller {
 	public function create(CreatePermissionRequest $request) {
 		return view('backend.access.roles.permissions.create')
 			->withGroups($this->groups->getAllGroups(true))
-			->withRoles($this->roles->getAllRoles());
+			->withRoles($this->roles->getAllRoles())
+			->withPermissions($this->permissions->getAllPermissions());
 	}
 
 	/**
@@ -81,7 +82,9 @@ class PermissionController extends Controller {
 			->withPermission($permission)
 			->withPermissionRoles($permission->roles->lists('id')->all())
 			->withGroups($this->groups->getAllGroups(true))
-			->withRoles($this->roles->getAllRoles());
+			->withRoles($this->roles->getAllRoles())
+			->withPermissions($this->permissions->getAllPermissions())
+			->withPermissionDependencies($permission->dependencies->lists('dependency_id')->all());
 	}
 
 	/**

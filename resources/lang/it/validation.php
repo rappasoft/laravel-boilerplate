@@ -129,5 +129,6 @@ return [
         'permission_group_name' => 'Nome gruppo',
         'group' => 'Gruppo',
         'group-sort' => 'Ordine per gruppo',
+        'dependencies' => 'Dependencies',
     ],
 ];

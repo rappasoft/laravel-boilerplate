@@ -47,7 +47,7 @@ class SetupAccessTables extends Migration {
 			$table->timestamps();
 		});
 
-		Schema::create(config('access.permissions_group_table'), function ($table) {
+		Schema::create(config('access.permission_group_table'), function ($table) {
 			$table->increments('id')->unsigned();
 			$table->integer('parent_id')->nullable();
 			$table->string('name');
@@ -65,6 +65,19 @@ class SetupAccessTables extends Migration {
 			$table->foreign('role_id')
 				->references('id')
 				->on(config('access.roles_table'));
+		});
+
+		Schema::create(config('access.permission_dependencies_table'), function ($table) {
+			$table->increments('id')->unsigned();
+			$table->integer('permission_id')->unsigned();
+			$table->integer('dependency_id')->unsigned();
+			$table->foreign('permission_id')
+				->references('id')
+				->on(config('access.permissions_table'));
+			$table->foreign('dependency_id')
+				->references('id')
+				->on(config('access.permissions_table'));
+			$table->timestamps();
 		});
 
 		Schema::create(config('access.permission_user_table'), function ($table) {
@@ -107,10 +120,17 @@ class SetupAccessTables extends Migration {
 			$table->dropForeign(config('access.permission_user_table').'_user_id_foreign');
 		});
 
+		Schema::table(config('access.permission_dependencies_table'), function (Blueprint $table) {
+			$table->dropForeign('permission_dependencies_permission_id_foreign');
+			$table->dropForeign('permission_dependencies_dependency_id_foreign');
+		});
+
 		Schema::drop(config('access.assigned_roles_table'));
 		Schema::drop(config('access.permission_role_table'));
 		Schema::drop(config('access.permission_user_table'));
+		Schema::drop(config('access.permission_group_table'));
 		Schema::drop(config('access.roles_table'));
 		Schema::drop(config('access.permissions_table'));
+		Schema::drop(config('access.permission_dependencies_table'));
 	}
 }

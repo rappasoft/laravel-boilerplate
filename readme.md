@@ -21,6 +21,7 @@
         * Create/Manage Permissions
         * Create/Manage Permission Groups
         * Manage Users Roles/Permissions
+        * Permission Dependencies - [Notes](#permission-dependencies)
 * Default Responsive Layout
 * Frontend and Backend Controllers
 * User Dashboard
@@ -120,6 +121,12 @@ access.permission_role_table
  * This table is only for permissions that belong directly to a specific user and not a role
  */
 access.permission_user_table
+
+/*
+* Table that specifies if one permission is dependent on another.
+* For example in order for a user to have the edit-user permission they also need the view-backend permission.
+*/
+access.permission_dependencies_table
 
 /*
  * assigned_roles table used by Access to save assigned roles to the database.
@@ -259,6 +266,15 @@ More will be available in the future.
 
 You can add more extensions by editing app/Services/Blade/Access/AccessBladeExtender.php
 
+<a name="permission-dependencies"/>
+## Permission Dependencies
+
+The permission dependencies section allows you to tell the system that one permission is dependent on one or more permissions.
+
+For example: If the user has the create-user permission, than they also need the view-backend and view-access-management permissions. Otherwise they will never be able to get to the create user screen. So create-user is dependent on view-backend and view-access-management.
+
+You can specify which permissions are dependent on others in each permissions dependency section.
+
 ## Socialite
 
 To configure socialite, add your credentials to your .env file. The redirects must follow the convention ```http://mysite.com/auth/login/SERVICE```. Available services are ```github```, ```facebook```, ```twitter```, and ```google```. Links to each are included in ```login.blade.php```.
@@ -303,6 +319,14 @@ Delete the `storage/framework/compiled.php` file
 
 <a name="changelog"/>
 ## Changelog
+
+###1.4.4
+```
+- Added a section to permissions called Permission Dependencies,
+  where you can specify that the use of one permission can be dependent
+  on the use or one or more permissions. See Permission Dependencies
+  section of read me.
+```
 
 ###1.4.3
 ```
