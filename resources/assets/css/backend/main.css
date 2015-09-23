@@ -8745,7 +8745,7 @@ a:hover, a:active, a:focus {
 .form-control::-webkit-input-placeholder {
   color: #bbb; }
 
-.form-control:not(select) {
+.form-control:not(select):not(input[type="checkbox"]) {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none; }
