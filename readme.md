@@ -49,6 +49,7 @@
 * [ARCANEDEV Log Viewer](https://github.com/ARCANEDEV/LogViewer)
 * Localization to English, Italian, Portuguese (Brazil), and Swedish. (So far)
 * Frontend/Backend Language Picker Menu
+* [Gravatar](https://github.com/creativeorange/gravatar)
 * Standards
     * Clean Controllers
     * Repository/Contract Implementations
@@ -317,6 +318,11 @@ Delete the `storage/framework/compiled.php` file
 
 <a name="changelog"/>
 ## Changelog
+
+###1.5.1
+```
+- Implemented Gravatar plugin
+```
 
 ###1.5
 ```
