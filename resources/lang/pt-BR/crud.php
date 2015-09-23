@@ -18,6 +18,7 @@ return [
     'permissions' => [
         'name' => 'Nome',
         'permission' => 'Permissão',
+        'dependencies' => 'Dependencies',
         'roles' => 'Papéis',
         'system' => 'Sistema?',
         'total' => 'Total de permissões',

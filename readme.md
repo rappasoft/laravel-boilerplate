@@ -320,12 +320,19 @@ Delete the `storage/framework/compiled.php` file
 <a name="changelog"/>
 ## Changelog
 
-###1.4.3
+###1.4.4
 ```
 - Added a section to permissions called Permission Dependencies,
   where you can specify that the use of one permission can be dependent
   on the use or one or more permissions. See Permission Dependencies
   section of read me.
+```
+
+###1.4.3
+```
+- Fixed Swedish backend welcome message.
+- Altered active menu on sidebar to keep menu open when navigating through links in dropdown.
+- by Daniel Blomdahl (@blomdahldaniel)
 ```
 
 ###1.4.2

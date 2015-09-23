@@ -90,20 +90,21 @@
                 </div><!--general-->
 
                 <div role="tabpanel" class="tab-pane" id="dependencies" style="padding-top:20px">
+
                     <div class="alert alert-info">
                         <i class="fa fa-info-circle"></i> This section is where you specify that this permission depends on the user having one or more other permissions.<br/><br/>
                         For example: This permission may be <strong>create-user</strong>, but if the user doesn't also have <strong>view-backend</strong> and <strong>view-access-management</strong> permissions they will never be able to get to the <strong>Create User</strong> screen.
                     </div><!--alert-->
 
                     <div class="form-group">
-                        <label class="col-lg-2 control-label">Dependencies</label>
+                        <label class="col-lg-2 control-label">{{ trans('validation.attributes.dependencies') }}</label>
                         <div class="col-lg-10">
                             @if (count($permissions))
                                 @foreach (array_chunk($permissions->toArray(), 10) as $perm)
                                     <div class="col-lg-3">
                                         <ul style="margin:0;padding:0;list-style:none;">
                                             @foreach ($perm as $p)
-                                                <li><input type="checkbox" value="{{$p['id']}}" name="dependencies[]" id="permission-{{$p['id']}}"> <label for="permission-{{$p['id']}}" />{!! $p['display_name'] !!}</label></li>
+                                                <li><input type="checkbox" value="{{$p['id']}}" name="dependencies[]" id="permission-{{$p['id']}}" /> <label for="permission-{{$p['id']}}" />{!! $p['display_name'] !!}</label></li>
                                             @endforeach
                                         </ul>
                                     </div>
@@ -113,6 +114,7 @@
                             @endif
                         </div><!--col 3-->
                     </div><!--form control-->
+
                 </div><!--dependencies-->
 
             </div><!--tab content-->

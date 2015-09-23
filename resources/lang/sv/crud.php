@@ -18,6 +18,7 @@ return [
     'permissions' => [
         'name' => 'Namn',
         'permission' => 'Rättighet',
+        'dependencies' => 'Dependencies',
         'roles' => 'Roller',
         'system' => 'System?',
         'total' => 'rättighet(er) totalt',

@@ -123,5 +123,6 @@ return [
         'permission_name' => 'Rättighetens namn',
         'display_name' => 'Namn som visas',
         'system_permission' => 'System administratör?',
+        'dependencies' => 'Dependencies',
     ],
 ];

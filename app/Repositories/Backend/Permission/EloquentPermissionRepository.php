@@ -4,6 +4,7 @@ use App\Exceptions\GeneralException;
 use App\Models\Access\Permission\Permission;
 use App\Models\Access\Permission\PermissionDependency;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
+use App\Repositories\Backend\Permission\Dependency\PermissionDependencyRepositoryContract;
 
 /**
  * Class EloquentPermissionRepository
@@ -17,10 +18,17 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 	protected $roles;
 
 	/**
+	 * @var PermissionDependencyRepositoryContract
+     */
+	protected $dependencies;
+
+	/**
 	 * @param RoleRepositoryContract $roles
-	 */
-	public function __construct(RoleRepositoryContract $roles) {
+	 * @param PermissionDependencyRepositoryContract $dependencies
+     */
+	public function __construct(RoleRepositoryContract $roles, PermissionDependencyRepositoryContract $dependencies) {
 		$this->roles = $roles;
+		$this->dependencies = $dependencies;
 	}
 
 	/**
@@ -124,15 +132,9 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 			}
 
 			//Add the dependencies of this permission if any
-			if (count($input['dependencies'])) {
-				foreach ($input['dependencies'] as $dependency_id) {
-					$permission->dependencies()->save(new PermissionDependency([
-						'permission_id' => $permission->id,
-						'dependency_id' => (int)$dependency_id
-					]));
-				}
-
-			}
+			if (count($input['dependencies']))
+				foreach ($input['dependencies'] as $dependency_id)
+					$this->dependencies->create($permission->id, $dependency_id);
 
 			return true;
 		}
@@ -201,6 +203,18 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 					}
 				}
 			}
+
+			//Add the dependencies of this permission if any
+			if (count($input['dependencies'])) {
+				//Remove all current dependencies
+				$this->dependencies->clear($permission->id);
+
+				//Add the currently checked dependencies
+				foreach ($input['dependencies'] as $dependency_id)
+					$this->dependencies->create($permission->id, $dependency_id);
+			} else
+				//None checked, remove any if they were there prior
+				$this->dependencies->clear($permission->id);
 
 			return true;
 		}
