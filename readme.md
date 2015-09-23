@@ -319,6 +319,11 @@ Delete the `storage/framework/compiled.php` file
 <a name="changelog"/>
 ## Changelog
 
+###1.5.1
+```
+- Implemented Gravatar plugin
+```
+
 ###1.5
 ```
 - Added a visual installer that will run all of the installation commands through
