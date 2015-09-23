@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * Installer set up
+ */
+require(__DIR__ . "/Routes/Global/Installer.php");
+
+/**
  * Switch between the included languages
  */
 require(__DIR__ . "/Routes/Global/Lang.php");

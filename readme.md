@@ -22,6 +22,7 @@
         * Create/Manage Permission Groups
         * Manage Users Roles/Permissions
         * Permission Dependencies - [Notes](#permission-dependencies)
+* Visual Installer (Based loosely off of [RachidLaasri/LaravelInstaller](https://github.com/RachidLaasri/LaravelInstaller))
 * Default Responsive Layout
 * Frontend and Backend Controllers
 * User Dashboard
@@ -319,6 +320,15 @@ Delete the `storage/framework/compiled.php` file
 
 <a name="changelog"/>
 ## Changelog
+
+###1.5
+```
+- Added a visual installer that will run all of the installation commands through
+  a series of screens. Good for users installing application on servers without
+  composer/SSH access.
+
+  Checks dependencies, folder permissions, creates keys, migrates, seeds, etc.
+```
 
 ###1.4.4
 ```
