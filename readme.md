@@ -49,6 +49,7 @@
 * [ARCANEDEV Log Viewer](https://github.com/ARCANEDEV/LogViewer)
 * Localization to English, Italian, Portuguese (Brazil), and Swedish. (So far)
 * Frontend/Backend Language Picker Menu
+* [Gravatar](https://github.com/creativeorange/gravatar)
 * Standards
     * Clean Controllers
     * Repository/Contract Implementations
