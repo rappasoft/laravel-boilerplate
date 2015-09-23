@@ -165,5 +165,5 @@
 
 @section('after-scripts-end')
     {!! HTML::script('js/backend/access/permissions/script.js') !!}
-    {!! HTML::script('js/backend/access/user/script.js') !!}
+    {!! HTML::script('js/backend/access/users/script.js') !!}
 @stop

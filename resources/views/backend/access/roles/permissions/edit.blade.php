@@ -105,8 +105,33 @@
                                     <div class="col-lg-3">
                                         <ul style="margin:0;padding:0;list-style:none;">
                                             @foreach ($perm as $p)
+                                                <?php
+                                                    //Since we are using array format to nicely display the permissions in rows
+                                                    //we will just manually create an array of dependencies since we do not have
+                                                    //access to the relationship to use the lists() function of eloquent
+                                                    //but the relationships are eager loaded in array format now
+                                                    $dependencies = [];
+                                                    $dependency_list = [];
+                                                    if (count($p['dependencies'])) {
+                                                        foreach ($p['dependencies'] as $dependency) {
+                                                            array_push($dependencies, $dependency['dependency_id']);
+                                                            array_push($dependency_list, $dependency['permission']['display_name']);
+                                                        }
+                                                    }
+                                                    $dependencies = json_encode($dependencies);
+                                                    $dependency_list = implode(", ", $dependency_list);
+                                                ?>
+
                                                 @if ($p['id'] != $permission->id)
-                                                    <li><input type="checkbox" value="{{$p['id']}}" name="dependencies[]" id="permission-{{$p['id']}}" {!! in_array($p['id'], $permission_dependencies) ? 'checked' : '' !!} /> <label for="permission-{{$p['id']}}" />{!! $p['display_name'] !!}</label></li>
+                                                    <li><input type="checkbox" value="{{$p['id']}}" name="dependencies[]" data-dependencies="{!! $dependencies !!}" id="permission-{{$p['id']}}" {!! in_array($p['id'], $permission_dependencies) ? 'checked' : '' !!} /> <label for="permission-{{$p['id']}}" />
+
+                                                        @if ($p['dependencies'])
+                                                            <a style="color:black;text-decoration:none;" data-toggle="tooltip" data-html="true" title="<strong>Dependencies:</strong> {!! $dependency_list !!}">{!! $p['display_name'] !!} <small><strong>(D)</strong></small></a>
+                                                        @else
+                                                            {!! $p['display_name'] !!}
+                                                        @endif
+
+                                                    </label></li>
                                                 @endif
                                             @endforeach
                                         </ul>
@@ -135,4 +160,8 @@
         </div><!--well-->
 
     {!! Form::close() !!}
+@stop
+
+@section('after-scripts-end')
+    {!! HTML::script('js/backend/access/permissions/dependencies/script.js') !!}
 @stop
