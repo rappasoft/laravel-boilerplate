@@ -53,6 +53,7 @@ return [
             'en' => 'Engelska',
             'it' => 'Italienska',
             'pt-BR' => 'Portugisiska (Brasilien)',
+            'ru' => 'Ryska',
             'sv' => 'Svenska',
         ],
     ],

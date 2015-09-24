@@ -23,6 +23,7 @@
 							<li>{!! link_to('lang/en', trans('menus.language-picker.langs.en')) !!}</li>
 							<li>{!! link_to('lang/it', trans('menus.language-picker.langs.it')) !!}</li>
 							<li>{!! link_to('lang/pt-BR', trans('menus.language-picker.langs.pt-BR')) !!}</li>
+                            <li>{!! link_to('lang/ru', trans('menus.language-picker.langs.ru')) !!}</li>
 							<li>{!! link_to('lang/sv', trans('menus.language-picker.langs.sv')) !!}</li>
 						</ul>
 					</li>
