@@ -64,6 +64,7 @@
 - `composer install`
 - `npm install`
 - Rename .env.example to .env and add credentials
+- ```php artisan key:generate```
 - Visit ```/install``` to complete installation
 - run `gulp` or `gulp watch` (Install gulp (sudo npm install -g gulp) if needed)
 
@@ -318,6 +319,11 @@ Delete the `storage/framework/compiled.php` file
 
 <a name="changelog"/>
 ## Changelog
+
+###1.5.3
+```
+- Removed key generator from installer as it should be done beforehand or creates error.
+```
 
 ###1.5.2
 ```

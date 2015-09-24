@@ -16,7 +16,6 @@ class DatabaseHelper {
      */
     public function migrateAndSeed()
     {
-        $this->generateKey();
         return $this->migrate();
     }
 
@@ -52,13 +51,6 @@ class DatabaseHelper {
         }
 
         return $this->successResponse();
-    }
-
-    /**
-     * @return array
-     */
-    private function generateKey() {
-        Artisan::call('key:generate');
     }
 
     /**
