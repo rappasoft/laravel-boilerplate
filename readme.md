@@ -321,6 +321,13 @@ Delete the `storage/framework/compiled.php` file
 <a name="changelog"/>
 ## Changelog
 
+###1.5.5
+```
+- Fixed user being able to login with unconfirmed account by resetting
+  password, by overriding default password reset function to check
+  if user is confirmed.
+```
+
 ###1.5.4
 ```
 - The people spoke. Removed visual installer.
