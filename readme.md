@@ -22,7 +22,6 @@
         * Create/Manage Permission Groups
         * Manage Users Roles/Permissions
         * Permission Dependencies - [Notes](#permission-dependencies)
-* Visual Installer (Based on [RachidLaasri/LaravelInstaller](https://github.com/RachidLaasri/LaravelInstaller))
 * Default Responsive Layout
 * Frontend and Backend Controllers
 * User Dashboard
@@ -63,9 +62,11 @@
 
 - `composer install`
 - `npm install`
-- Rename .env.example to .env and add credentials
-- ```php artisan key:generate```
-- Visit ```/install``` to complete installation
+- Create .env file (example included)
+- `php artisan key:generate`
+- `php artisan migrate`
+- Set administrator info in UserTableSeeder.php
+- `php artisan db:seed`
 - run `gulp` or `gulp watch` (Install gulp (sudo npm install -g gulp) if needed)
 
 <a name="access-control"/>
@@ -319,6 +320,11 @@ Delete the `storage/framework/compiled.php` file
 
 <a name="changelog"/>
 ## Changelog
+
+###1.5.4
+```
+- The people spoke. Removed visual installer.
+```
 
 ###1.5.3
 ```
