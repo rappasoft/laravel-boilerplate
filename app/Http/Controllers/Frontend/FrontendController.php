@@ -9,14 +9,6 @@ use App\Http\Controllers\Controller;
 class FrontendController extends Controller {
 
 	/**
-	 * Check to see if the application is installed
-	 * Redirect to the installer if need be
-     */
-	public function __construct() {
-		$this->middleware('app.runInstaller');
-	}
-
-	/**
 	 * @return \Illuminate\View\View
 	 */
 	public function index()

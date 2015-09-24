@@ -30,12 +30,6 @@ class Kernel extends HttpKernel {
 	 */
 	protected $routeMiddleware = [
 		/**
-		 * See if the application is installed
-		 */
-		'app.isInstalled' => \App\Http\Middleware\Installer\IsInstalled::class,
-		'app.runInstaller' => \App\Http\Middleware\Installer\RunInstaller::class,
-
-		/**
 		 * Default laravel route middleware
 		 */
 		'auth' => \App\Http\Middleware\Authenticate::class,
