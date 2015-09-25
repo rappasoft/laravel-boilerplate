@@ -237,7 +237,7 @@ $user->hasPermissions($permissions, $needsAll); //Wrapper function for canMultip
 
 Access comes with @blade extensions to help you show and hide data by role or permission without clogging up your code with unwanted if statements:
 
-## @role
+### @role
 
 Accepts a single Role Name or ID
 
@@ -251,7 +251,7 @@ Accepts a single Role Name or ID
 @endauth
 ```
 
-## @roles
+### @roles
 
 Accepts an array of Role Names or IDs
 
@@ -265,7 +265,7 @@ Accepts an array of Role Names or IDs
 @endauth
 ```
 
-## @needsroles
+### @needsroles
 
 Accepts an array of roles or role IDs and only returns true if the user has all roles provided.
 
@@ -279,7 +279,7 @@ Accepts an array of roles or role IDs and only returns true if the user has all 
 @endauth
 ```
 
-## @permission
+### @permission
 
 Accepts a single Permission Name or ID
 
@@ -293,7 +293,7 @@ Accepts a single Permission Name or ID
 @endauth
 ```
 
-## @permissions
+### @permissions
 
 Accepts an array of Permission Names or IDs
 
@@ -307,7 +307,7 @@ Accepts an array of Permission Names or IDs
 @endauth
 ```
 
-## @needspermissions
+### @needspermissions
 
 Accepts an array of permissions or permission IDs and only returns true if the user has all permissions provided.
 
