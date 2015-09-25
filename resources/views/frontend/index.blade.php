@@ -16,6 +16,8 @@
 		</div><!-- col-md-10 -->
 
 		@role('Administrator')
+            {{-- You can also send through the Role ID --}}
+
 		    <div class="col-md-10 col-md-offset-1">
 
                 <div class="panel panel-default">
@@ -27,7 +29,7 @@
                 </div><!-- panel -->
 
             </div><!-- col-md-10 -->
-		@endrole
+		@endauth
 
 		@if (access()->hasRole('Administrator'))
 		    <div class="col-md-10 col-md-offset-1">
@@ -86,19 +88,19 @@
             </div><!-- col-md-10 -->
         @endif
 
-        @if (access()->hasPermission('view_backend'))
+        @permission('view-backend')
             <div class="col-md-10 col-md-offset-1">
 
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.based_on.permission') . trans('strings.using_access_helper.permission_name') }}</div>
 
                     <div class="panel-body">
-                        {{ trans('strings.test') . ' 5: ' . trans('strings.you_can_see_because_permission', ['permission' => 'view_backend']) }}
+                        {{ trans('strings.test') . ' 5: ' . trans('strings.you_can_see_because_permission', ['permission' => 'view-backend']) }}
                     </div>
                 </div><!-- panel -->
 
             </div><!-- col-md-10 -->
-        @endif
+        @endauth
 
         @if (access()->hasPermission(1))
             <div class="col-md-10 col-md-offset-1">
