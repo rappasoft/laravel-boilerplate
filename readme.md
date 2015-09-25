@@ -392,6 +392,14 @@ Delete the `storage/framework/compiled.php` file
 <a name="changelog"/>
 ## Changelog
 
+###1.6
+```
+- Converted all access() helpers in views to blade extensions.
+- Cleaned up all access models. Extracted all relationships and attributes to separate trait classes.
+- Move traits from services folder and integrate them into user traits.
+- Made sure permissions remove its foreign key dependencies when being deleted.
+```
+
 ###1.5.6
 ```
 - Blade extension overhaul.
@@ -400,14 +408,6 @@ Delete the `storage/framework/compiled.php` file
   NEW: permission, permissions, needspermissions
   
   See documentation for details.
-```
-
-###1.6
-```
-- Converted all access() helpers in views to blade extensions.
-- Cleaned up all access models. Extracted all relationships and attributes to separate trait classes.
-- Move traits from services folder and integrate them into user traits.
-- Made sure permissions remove its foreign key dependencies when being deleted.
 ```
 
 ###1.5.5
