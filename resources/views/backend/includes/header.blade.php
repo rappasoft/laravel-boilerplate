@@ -41,7 +41,7 @@
                             <a href="#">
                               <div class="pull-left">
                                 <!-- User Image -->
-                                <img src="{!!asset('img/backend/user2-160x160.jpg')!!}" class="img-circle" alt="User Image"/>
+                                <img src="{!! access()->user()->picture !!}" class="img-circle" alt="User Image"/>
                               </div>
                               <!-- Message title and timestamp -->
                               <h4>

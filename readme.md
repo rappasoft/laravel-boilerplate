@@ -392,6 +392,11 @@ Delete the `storage/framework/compiled.php` file
 <a name="changelog"/>
 ## Changelog
 
+###1.6.1
+```
+- Fixed broken image link in backend dropdown to user gravatar for example.
+```
+
 ###1.6
 ```
 - Converted all access() helpers in views to blade extensions.
