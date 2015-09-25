@@ -321,6 +321,8 @@ Accepts an array of permissions or permission IDs and only returns true if the u
 @endauth
 ```
 
+**Note: You can also use @else for an if/else statement.**
+
 If you want to show or hide a specific section you can do so in your layout files the same way:
 
 ```php
@@ -332,6 +334,7 @@ If you want to show or hide a specific section you can do so in your layout file
     @section('special_content')
 @endauth
 ```
+
 
 You can add more extensions by appending to App\Providers\AccessServiceProvider@registerBladeExtensions
 
@@ -397,6 +400,14 @@ Delete the `storage/framework/compiled.php` file
   NEW: permission, permissions, needspermissions
   
   See documentation for details.
+```
+
+###1.6
+```
+- Converted all access() helpers in views to blade extensions.
+- Cleaned up all access models. Extracted all relationships and attributes to separate trait classes.
+- Move traits from services folder and integrate them into user traits.
+- Made sure permissions remove its foreign key dependencies when being deleted.
 ```
 
 ###1.5.5

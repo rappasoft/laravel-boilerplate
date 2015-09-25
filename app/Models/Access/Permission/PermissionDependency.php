@@ -1,12 +1,16 @@
 <?php namespace App\Models\Access\Permission;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Access\Permission\Traits\Relationship\PermissionDependencyRelationship;
 
 /**
  * Class PermissionDependency
- * @package App
+ * @package App\Models\Access\Permission
  */
 class PermissionDependency extends Model {
+
+    use PermissionDependencyRelationship;
+
     /**
      * The database table used by the model.
      *
@@ -27,12 +31,5 @@ class PermissionDependency extends Model {
     public function __construct()
     {
         $this->table = config('access.permission_dependencies_table');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function permission() {
-        return $this->hasOne(Permission::class, 'id', 'dependency_id');
     }
 }

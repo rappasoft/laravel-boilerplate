@@ -205,7 +205,7 @@
             hierarchy.nestable({maxDepth:2});
 
             hierarchy.on('change', function() {
-                @if (access()->can('sort-permission-groups'))
+                @permission('sort-permission-groups')
                     $.ajax({
                         url : "{!! route('admin.access.roles.groups.update-sort') !!}",
                         type: "post",
@@ -222,7 +222,7 @@
                     });
                 @else
                     toastr.error("You do not have permission to do that.");
-                @endif
+                @endauth
             });
         });
     </script>

@@ -6,9 +6,9 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{route('admin.access.users.index')}}">{{ trans('menus.header_buttons.users.all') }}</a></li>
 
-            @if (access()->can('create-users'))
+            @permission('create-users')
                 <li><a href="{{route('admin.access.users.create')}}">{{ trans('menus.create_user') }}</a></li>
-            @endif
+            @endauth
 
             <li class="divider"></li>
             <li><a href="{{route('admin.access.users.deactivated')}}">{{ trans('menus.deactivated_users') }}</a></li>
@@ -24,9 +24,9 @@
           <ul class="dropdown-menu" role="menu">
             <li><a href="{{route('admin.access.roles.index')}}">{{ trans('menus.header_buttons.roles.all') }}</a></li>
 
-            @if (access()->can('create-roles'))
+            @permission('create-roles')
                 <li><a href="{{route('admin.access.roles.create')}}">{{ trans('menus.create_role') }}</a></li>
-            @endif
+            @endauth
           </ul>
         </div>
 
@@ -35,17 +35,18 @@
               {{ trans('menus.header_buttons.permissions.button') }} <span class="caret"></span>
           </button>
           <ul class="dropdown-menu pull-right" role="menu">
-            @if (access()->can('create-permission-groups'))
+
+            @permission('create-permission-groups')
                 <li><a href="{{route('admin.access.roles.permission-group.create')}}">{{ trans('menus.create_permission_group') }}</a></li>
-            @endif
+            @endauth
 
-            @if (access()->can('create-permissions'))
+            @permission('create-permissions')
                 <li><a href="{{route('admin.access.roles.permissions.create')}}">{{ trans('menus.create_permission') }}</a></li>
-            @endif
+            @endauth
 
-            @if (access()->can('create-permission-groups') || access()->can('create-permissions'))
+            @permissions(['create-permission-groups', 'create-permissions'])
                 <li class="divider"></li>
-            @endif
+            @endauth
 
             <li><a href="{{route('admin.access.roles.permissions.index')}}">{{ trans('menus.header_buttons.permissions.all') }}</a></li>
             <li><a href="{{route('admin.access.roles.permissions.index')}}">{{ trans('menus.header_buttons.permissions.groups.all') }}</a></li>

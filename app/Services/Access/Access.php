@@ -90,15 +90,6 @@ class Access
 	}
 
 	/**
-	 * @param $permission
-	 * @return bool
-	 */
-	public function hasPermission($permission)
-	{
-		return $this->can($permission);
-	}
-
-	/**
 	 * Check an array of permissions and whether or not all are required to continue
 	 * @param $permissions
 	 * @param $needsAll
@@ -114,6 +105,15 @@ class Access
 		}
 
 		return false;
+	}
+
+	/**
+	 * @param $permission
+	 * @return bool
+	 */
+	public function hasPermission($permission)
+	{
+		return $this->can($permission);
 	}
 
 	/**
