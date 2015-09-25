@@ -235,37 +235,105 @@ $user->hasPermissions($permissions, $needsAll); //Wrapper function for canMultip
 <a name="blade_extensions"/>
 ### Blade Extensions
 
-**Note: The blade syntax for permissions does not support hyphens, only underscores. Use the access helper to check in those cases: access()->has('this-permission') **
-
 Access comes with @blade extensions to help you show and hide data by role or permission without clogging up your code with unwanted if statements:
+
+### @role
+
+Accepts a single Role Name or ID
 
 ```php
 @role('User')
     This content will only show if the authenticated user has the `User` role.
-@endrole
+@endauth
 
-@permission('can_view_this_content')
-    This content will only show if the authenticated user is somehow associated with the `can_view_this_content` permission.
-@endpermission
+@role(1)
+    This content will only show if the authenticated user has the role with an ID of `1`.
+@endauth
 ```
 
-**Currently each call only supports one role or permission, however they can be nested.**
+### @roles
+
+Accepts an array of Role Names or IDs
+
+```php
+@roles(['Administrator', 'User'])
+    This content will only show if the authenticated user has the `Administrator` role OR the `User` role.
+@endauth
+
+@roles([1, 2])
+    This content will only show if the authenticated user has the role with ID of `1` OR `2`.
+@endauth
+```
+
+### @needsroles
+
+Accepts an array of roles or role IDs and only returns true if the user has all roles provided.
+
+```php
+@needsroles(['Administrator', 'User'])
+    This content will only show if the authenticated user has BOTH the `Administrator` role AND the `User` role.
+@endauth
+
+@needsroles([1, 2])
+    This content will only show if the authenticated user has BOTH roles with ID's of `1` AND `2`.
+@endauth
+```
+
+### @permission
+
+Accepts a single Permission Name or ID
+
+```php
+@permission('view-backend')
+    This content will only show if the authenticated user has the `view-backend` permission.
+@endauth
+
+@permission(1)
+    This content will only show if the authenticated user permission with an ID of `1`.
+@endauth
+```
+
+### @permissions
+
+Accepts an array of Permission Names or IDs
+
+```php
+@permissions(['view-backend', 'view-some-content'])
+    This content will only show if the authenticated user has the `view-backend` permission OR the `view-some-content` permission.
+@endauth
+
+@permissions([1, 2])
+    This content will only show if the authenticated user has the permission with ID of `1` OR `2`.
+@endauth
+```
+
+### @needspermissions
+
+Accepts an array of permissions or permission IDs and only returns true if the user has all permissions provided.
+
+```php
+@needspermissions(['view-backend', 'view-some-content'])
+    This content will only show if the authenticated user has BOTH the `view-backend` permission AND the `view-some-content` permission.
+@endauth
+
+@needspermissions([1, 2])
+    This content will only show if the authenticated user has BOTH permissions with ID's of `1` AND `2`.
+@endauth
+```
 
 If you want to show or hide a specific section you can do so in your layout files the same way:
 
 ```php
 @role('User')
     @section('special_content')
-@endrole
+@endauth
 
 @permission('can_view_this_content')
     @section('special_content')
-@endpermission
+@endauth
 ```
 
-More will be available in the future.
-
-You can add more extensions by editing app/Services/Blade/Access/AccessBladeExtender.php
+You can add more extensions by appending to App\Providers\AccessServiceProvider@registerBladeExtensions
 
 <a name="permission-dependencies"/>
 ## Permission Dependencies
@@ -320,6 +388,16 @@ Delete the `storage/framework/compiled.php` file
 
 <a name="changelog"/>
 ## Changelog
+
+###1.5.6
+```
+- Blade extension overhaul.
+  Removed old blade functions and replaced with native blade directives.
+  NEW: role, roles, needsroles
+  NEW: permission, permissions, needspermissions
+  
+  See documentation for details.
+```
 
 ###1.5.5
 ```
