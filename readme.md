@@ -321,6 +321,8 @@ Accepts an array of permissions or permission IDs and only returns true if the u
 @endauth
 ```
 
+**Note: You can also use @else for an if/else statement.**
+
 If you want to show or hide a specific section you can do so in your layout files the same way:
 
 ```php
@@ -332,6 +334,7 @@ If you want to show or hide a specific section you can do so in your layout file
     @section('special_content')
 @endauth
 ```
+
 
 You can add more extensions by appending to App\Providers\AccessServiceProvider@registerBladeExtensions
 

@@ -245,6 +245,9 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 			$user->detachPermission($permission);
 		}
 
+		//Remove the dependencies
+		$permission->dependencies()->delete();
+
 		if ($permission->delete())
 			return true;
 

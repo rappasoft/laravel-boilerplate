@@ -116,7 +116,7 @@
             </div><!-- col-md-10 -->
         @endif
 
-        @if (access()->hasPermissions(['view_backend', 1]))
+        @if (access()->hasPermissions(['view-backend', 1]))
             <div class="col-md-10 col-md-offset-1">
 
                 <div class="panel panel-default">
@@ -130,8 +130,7 @@
             </div><!-- col-md-10 -->
         @endif
 
-        {{-- The second parameter says the user must have all the roles specified. Administrator does not have the role with an id of 2, so this will not show. --}}
-        @if (access()->hasPermissions(['view_backend', 2], true))
+        @if (access()->hasPermissions(['view-backend', 2], true))
             <div class="col-md-10 col-md-offset-1">
 
                 <div class="panel panel-default">
