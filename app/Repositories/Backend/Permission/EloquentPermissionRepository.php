@@ -132,7 +132,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 			}
 
 			//Add the dependencies of this permission if any
-			if (count($input['dependencies']))
+			if (isset($input['dependencies']) && count($input['dependencies']))
 				foreach ($input['dependencies'] as $dependency_id)
 					$this->dependencies->create($permission->id, $dependency_id);
 
@@ -205,7 +205,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract {
 			}
 
 			//Add the dependencies of this permission if any
-			if (count($input['dependencies'])) {
+			if (isset($input['dependencies']) && count($input['dependencies'])) {
 				//Remove all current dependencies
 				$this->dependencies->clear($permission->id);
 
