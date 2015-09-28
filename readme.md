@@ -392,6 +392,11 @@ Delete the `storage/framework/compiled.php` file
 <a name="changelog"/>
 ## Changelog
 
+###1.6.2
+```
+- Fixed error in Backend\EloquentPermissionRepository.php to check if dependencies are set before counting them.
+```
+
 ###1.6.1
 ```
 - Fixed broken image link in backend dropdown to user gravatar for example.
