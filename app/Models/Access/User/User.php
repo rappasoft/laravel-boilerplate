@@ -1,21 +1,27 @@
 <?php namespace App\Models\Access\User;
 
 use Illuminate\Auth\Authenticatable;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Model;
-use App\Services\Access\Traits\UserHasRole;
+use App\Models\Access\User\Traits\UserAccess;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Auth\Passwords\CanResetPassword;
+use App\Models\Access\User\Traits\Attribute\UserAttribute;
+use App\Models\Access\User\Traits\Relationship\UserRelationship;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 /**
  * Class User
- * @package App
+ * @package App\Models\Access\User
  */
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
-	use Authenticatable, CanResetPassword, SoftDeletes, UserHasRole;
+	use Authenticatable,
+		CanResetPassword,
+		SoftDeletes,
+		UserAccess,
+		UserRelationship,
+		UserAttribute;
 
 	/**
 	 * The database table used by the model.
@@ -46,38 +52,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	protected $dates = ['deleted_at'];
 
 	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
-	 */
-	public function providers() {
-		return $this->hasMany(UserProvider::class);
-	}
-
-	/**
-	 * Hash the users password
-	 *
-	 * @param $value
-	 */
-	public function setPasswordAttribute($value)
-	{
-		if (Hash::needsRehash($value))
-			$this->attributes['password'] = bcrypt($value);
-		else
-			$this->attributes['password'] = $value;
-	}
-
-	/**
 	 * @return mixed
 	 */
 	public function canChangeEmail() {
 		return config('access.users.change_email');
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getConfirmedLabelAttribute() {
-		if ($this->confirmed == 1)
-			return "<label class='label label-success'>Yes</label>";
-		return "<label class='label label-danger'>No</label>";
 	}
 }

@@ -13,9 +13,9 @@ class PermissionGroupTableSeeder extends Seeder {
 
         if(env('DB_DRIVER') == 'mysql')
         {
-            DB::table(config('access.permissions_group_table'))->truncate();
+            DB::table(config('access.permission_group_table'))->truncate();
         } else { //For PostgreSQL or anything else
-            DB::statement("TRUNCATE TABLE ".config('access.permissions_group_table')." CASCADE");
+            DB::statement("TRUNCATE TABLE ".config('access.permission_group_table')." CASCADE");
         }
 
         /**

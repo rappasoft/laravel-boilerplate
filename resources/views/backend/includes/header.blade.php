@@ -20,6 +20,8 @@
                       <li>{!! link_to('lang/en', trans('menus.language-picker.langs.en')) !!}</li>
                       <li>{!! link_to('lang/it', trans('menus.language-picker.langs.it')) !!}</li>
                       <li>{!! link_to('lang/pt-BR', trans('menus.language-picker.langs.pt-BR')) !!}</li>
+                      <li>{!! link_to('lang/ru', trans('menus.language-picker.langs.ru')) !!}</li>    
+                      <li>{!! link_to('lang/sv', trans('menus.language-picker.langs.sv')) !!}</li>
                     </ul>
                   </li>
 
@@ -39,7 +41,7 @@
                             <a href="#">
                               <div class="pull-left">
                                 <!-- User Image -->
-                                <img src="{!!asset('img/backend/user2-160x160.jpg')!!}" class="img-circle" alt="User Image"/>
+                                <img src="{!! access()->user()->picture !!}" class="img-circle" alt="User Image"/>
                               </div>
                               <!-- Message title and timestamp -->
                               <h4>
@@ -118,14 +120,14 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                       <!-- The user image in the navbar-->
-                      <img src="{!!asset('img/backend/user2-160x160.jpg')!!}" class="user-image" alt="User Image"/>
+                      <img src="{!! access()->user()->picture !!}" class="user-image" alt="User Image"/>
                       <!-- hidden-xs hides the username on small devices so only the image appears. -->
                       <span class="hidden-xs">{{ access()->user()->name }}</span>
                     </a>
                     <ul class="dropdown-menu">
                       <!-- The user image in the menu -->
                       <li class="user-header">
-                        <img src="{!!asset('img/backend/user2-160x160.jpg')!!}" class="img-circle" alt="User Image" />
+                        <img src="{!! access()->user()->picture !!}" class="img-circle" alt="User Image" />
                         <p>
                           {{ access()->user()->name }} - {{ trans('roles.web_developer') }}
                           <small>{{ trans('strings.member_since') }} XX/XX/XXXX</small>

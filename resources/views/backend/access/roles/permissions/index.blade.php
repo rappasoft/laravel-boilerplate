@@ -126,6 +126,7 @@
                     <tr>
                         <th>{{ trans('crud.permissions.permission') }}</th>
                         <th>{{ trans('crud.permissions.name') }}</th>
+                        <th>{{ trans('crud.permissions.dependencies') }}</th>
                         <th>{{ trans('crud.permissions.users') }}</th>
                         <th>{{ trans('crud.permissions.roles') }}</th>
                         <th>{{ trans('crud.permissions.group') }}</th>
@@ -139,6 +140,15 @@
                             <tr>
                                 <td>{!! $permission->name !!}</td>
                                 <td>{!! $permission->display_name !!}</td>
+                                <td>
+                                    @if (count($permission->dependencies))
+                                        @foreach($permission->dependencies as $dependency)
+                                            {!! $dependency->permission->display_name !!}<br/>
+                                        @endforeach
+                                    @else
+                                        <span class="label label-success">None</span>
+                                    @endif
+                                </td>
                                 <td>
                                     @if (count($permission->users))
                                         @foreach($permission->users as $user)
@@ -195,7 +205,7 @@
             hierarchy.nestable({maxDepth:2});
 
             hierarchy.on('change', function() {
-                @if (access()->can('sort-permission-groups'))
+                @permission('sort-permission-groups')
                     $.ajax({
                         url : "{!! route('admin.access.roles.groups.update-sort') !!}",
                         type: "post",
@@ -212,7 +222,7 @@
                     });
                 @else
                     toastr.error("You do not have permission to do that.");
-                @endif
+                @endauth
             });
         });
     </script>

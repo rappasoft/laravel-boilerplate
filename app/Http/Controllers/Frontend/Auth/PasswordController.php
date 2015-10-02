@@ -1,7 +1,12 @@
 <?php namespace App\Http\Controllers\Frontend\Auth;
 
+use Illuminate\Http\Request;
+use Illuminate\Mail\Message;
+use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
+use App\Exceptions\GeneralException;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use App\Repositories\Frontend\User\UserContract;
 use Illuminate\Foundation\Auth\ResetsPasswords;
@@ -38,6 +43,38 @@ class PasswordController extends Controller {
 	public function getEmail()
 	{
 		return view('frontend.auth.password');
+	}
+
+	/**
+	 * @param Request $request
+	 * @return $this|\Illuminate\Http\RedirectResponse
+	 * @throws GeneralException
+     */
+	public function postEmail(Request $request)
+	{
+		//Make sure user is confirmed before resetting password.
+		$user = User::where('email', $request->get('email'))->first();
+		if ($user) {
+			if ($user->confirmed == 0) {
+				throw new GeneralException("Your account is not confirmed. Please click the confirmation link in your e-mail, or " . '<a href="' . route('account.confirm.resend', $user->id) . '">click here</a>' . " to resend the confirmation e-mail.");
+			}
+		} else {
+			throw new GeneralException("There is no user with that e-mail address.");
+		}
+
+		$this->validate($request, ['email' => 'required|email']);
+
+		$response = Password::sendResetLink($request->only('email'), function (Message $message) {
+			$message->subject($this->getEmailSubject());
+		});
+
+		switch ($response) {
+			case Password::RESET_LINK_SENT:
+				return redirect()->back()->with('status', trans($response));
+
+			case Password::INVALID_USER:
+				return redirect()->back()->withErrors(['email' => trans($response)]);
+		}
 	}
 
 	/**

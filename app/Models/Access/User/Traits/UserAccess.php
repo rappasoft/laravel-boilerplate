@@ -1,33 +1,10 @@
-<?php namespace App\Services\Access\Traits;
+<?php namespace App\Models\Access\User\Traits;
 
 /**
- * Class UserHasRole
- * @package App\Services\Access\Traits
+ * Class UserAccess
+ * @package App\Models\Access\User\Traits
  */
-trait UserHasRole {
-
-	use AccessAttributes;
-
-	/**
-	 * Many-to-Many relations with Role.
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-	 */
-	public function roles()
-	{
-		return $this->belongsToMany(config('access.role'), config('access.assigned_roles_table'), 'user_id', 'role_id');
-	}
-
-	/**
-	 * Many-to-Many relations with Permission.
-	 * ONLY GETS PERMISSIONS ARE ARE NOT ASSOCIATED WITH A ROLE
-	 *
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-	 */
-	public function permissions()
-	{
-		return $this->belongsToMany(config('access.permission'), config('access.permission_user_table'), 'user_id', 'permission_id');
-	}
+trait UserAccess {
 
 	/**
 	 * Checks if the user has a Role by its name or id.
@@ -56,17 +33,16 @@ trait UserHasRole {
 	 * Checks to see if user has array of roles
 	 * All must return true
 	 * @param $roles
+	 * @param $needsAll
 	 * @return bool
 	 */
 	public function hasRoles($roles, $needsAll) {
 		//User has to possess all of the roles specified
-		if ($needsAll)
-		{
+		if ($needsAll) {
 			$hasRoles = 0;
 			$numRoles = count($roles);
 
-			foreach ($roles as $role)
-			{
+			foreach ($roles as $role) {
 				if ($this->hasRole($role))
 					$hasRoles++;
 			}
@@ -87,11 +63,11 @@ trait UserHasRole {
 	/**
 	 * Check if user has a permission by its name or id.
 	 *
-	 * @param string $nameorId Permission name or id.
+	 * @param string $nameOrId Permission name or id.
 	 *
 	 * @return bool
 	 */
-	public function can($nameorId)
+	public function can($nameOrId)
 	{
 		foreach ($this->roles as $role) {
 			//See if role has all permissions
@@ -102,37 +78,30 @@ trait UserHasRole {
 			foreach ($role->permissions as $perm) {
 
 				//First check to see if it's an ID
-				if (is_numeric($nameorId))
-					if ($perm->id == $nameorId)
+				if (is_numeric($nameOrId))
+					if ($perm->id == $nameOrId)
 						return true;
 
 				//Otherwise check by name
-				if ($perm->name == $nameorId)
+				if ($perm->name == $nameOrId)
 					return true;
 			}
 		}
 
 		//Check permissions directly tied to user
 		foreach ($this->permissions as $perm) {
+
 			//First check to see if it's an ID
-			if (is_numeric($nameorId))
-				if ($perm->id == $nameorId)
+			if (is_numeric($nameOrId))
+				if ($perm->id == $nameOrId)
 					return true;
 
 			//Otherwise check by name
-			if ($perm->name == $nameorId)
+			if ($perm->name == $nameOrId)
 				return true;
 		}
 
 		return false;
-	}
-
-	/**
-	 * @param $nameOrId
-	 * @return bool
-	 */
-	public function hasPermission($nameOrId) {
-		return $this->can($nameOrId);
 	}
 
 	/**
@@ -165,6 +134,14 @@ trait UserHasRole {
 		}
 
 		return $hasPermissions > 0;
+	}
+
+	/**
+	 * @param $nameOrId
+	 * @return bool
+	 */
+	public function hasPermission($nameOrId) {
+		return $this->can($nameOrId);
 	}
 
 	/**
