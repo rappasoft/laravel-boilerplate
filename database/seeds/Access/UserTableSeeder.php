@@ -13,6 +13,8 @@ class UserTableSeeder extends Seeder {
 
 		if(env('DB_DRIVER') == 'mysql')
 			DB::table(config('auth.table'))->truncate();
+		elseif(env('DB_DRIVER') == 'sqlite')
+			DB::statement("DELETE FROM ".config('auth.table'));
 		else //For PostgreSQL or anything else
 			DB::statement("TRUNCATE TABLE ".config('auth.table')." CASCADE");
 
