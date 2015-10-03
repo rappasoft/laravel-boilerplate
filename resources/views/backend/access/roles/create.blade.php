@@ -39,6 +39,12 @@
 
                 <div id="available-permissions" class="hidden">
                     <div class="row">
+                        <div class="col-lg-12">
+                            <div class="alert alert-info">
+                                <i class="fa fa-info-circle"></i> A permission marked with a <small><strong>(D)</strong></small> means that the permission has dependencies. They will be checked automatically when you select that permission. You can manage each permissions dependencies in the dependency tab of the edit permission screen.
+                            </div><!--alert-->
+                        </div><!--col-lg-12-->
+
                         <div class="col-lg-6">
                             <p><strong>Grouped Permissions</strong></p>
 
@@ -50,7 +56,22 @@
                                                 @if ($group->permissions->count())
                                                     <ul>
                                                         @foreach ($group->permissions as $permission)
-                                                            <li id="{!! $permission->id !!}">{!! $permission->display_name !!}</li>
+                                                            <li id="{!! $permission->id !!}" data-dependencies="{!! json_encode($permission->dependencies->lists('dependency_id')->all()) !!}">
+
+                                                                @if ($permission->dependencies->count())
+                                                                    <?php
+                                                                        //Get the dependency list for the tooltip
+                                                                        $dependency_list = [];
+                                                                        foreach ($permission->dependencies as $dependency)
+                                                                            array_push($dependency_list, $dependency->permission->display_name);
+                                                                        $dependency_list = implode(", ", $dependency_list);
+                                                                    ?>
+                                                                    <a data-toggle="tooltip" data-html="true" title="<strong>Dependencies:</strong> {!! $dependency_list !!}">{!! $permission->display_name !!} <small><strong>(D)</strong></small></a>
+                                                                @else
+                                                                    {!! $permission->display_name !!}
+                                                                @endif
+
+                                                            </li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
@@ -62,7 +83,21 @@
                                                                 @if ($child->permissions->count())
                                                                     <ul> style="padding-left:40px;font-size:.8em">
                                                                         @foreach ($child->permissions as $permission)
-                                                                            <li id="{!! $permission->id !!}">{!! $permission->display_name !!}</li>
+                                                                            <li id="{!! $permission->id !!}" data-dependencies="{!! json_encode($permission->dependencies->lists('dependency_id')->all()) !!}">
+                                                                                @if ($permission->dependencies->count())
+                                                                                    <?php
+                                                                                    //Get the dependency list for the tooltip
+                                                                                    $dependency_list = [];
+                                                                                    foreach ($permission->dependencies as $dependency)
+                                                                                        array_push($dependency_list, $dependency->permission->display_name);
+                                                                                    $dependency_list = implode(", ", $dependency_list);
+                                                                                    ?>
+                                                                                    <a data-toggle="tooltip" data-html="true" title="<strong>Dependencies:</strong> {!! $dependency_list !!}">{!! $permission->display_name !!} <small><strong>(D)</strong></small></a>
+                                                                                @else
+                                                                                    {!! $permission->display_name !!}
+                                                                                @endif
+
+                                                                            </li>
                                                                         @endforeach
                                                                     </ul>
                                                                 @endif
@@ -84,7 +119,22 @@
 
                             @if ($permissions->count())
                                 @foreach ($permissions as $perm)
-                                    <input type="checkbox" name="ungrouped[]" value="{!! $perm->id !!}" id="perm_{!! $perm->id !!}" /> <label for="perm_{!! $perm->id !!}">{!! $perm->display_name !!}</label><br/>
+                                    <input type="checkbox" name="ungrouped[]" data-dependencies="{!! json_encode($perm->dependencies->lists('dependency_id')->all()) !!}" value="{!! $perm->id !!}" id="perm_{!! $perm->id !!}" /> <label for="perm_{!! $perm->id !!}">
+
+                                        @if ($perm->dependencies->count())
+                                            <?php
+                                            //Get the dependency list for the tooltip
+                                            $dependency_list = [];
+                                            foreach ($perm->dependencies as $dependency)
+                                                array_push($dependency_list, $dependency->permission->display_name);
+                                            $dependency_list = implode(", ", $dependency_list);
+                                            ?>
+                                            <a style="color:black;text-decoration:none;" data-toggle="tooltip" data-html="true" title="<strong>Dependencies:</strong> {!! $dependency_list !!}">{!! $perm->display_name !!} <small><strong>(D)</strong></small></a>
+                                        @else
+                                            {!! $perm->display_name !!}
+                                        @endif
+
+                                    </label><br/>
                                 @endforeach
                             @else
                                 <p>There are no ungrouped permissions.</p>

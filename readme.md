@@ -21,6 +21,7 @@
         * Create/Manage Permissions
         * Create/Manage Permission Groups
         * Manage Users Roles/Permissions
+        * Permission Dependencies - [Notes](#permission-dependencies)
 * Default Responsive Layout
 * Frontend and Backend Controllers
 * User Dashboard
@@ -45,8 +46,9 @@
 * [Active Menu](https://github.com/letrunghieu/active)
 * [PHP to Javascript Transformer](https://github.com/laracasts/PHP-Vars-To-Js-Transformer) - [Notes](#javascript-notes)
 * [ARCANEDEV Log Viewer](https://github.com/ARCANEDEV/LogViewer)
-* Localization to English, Italian, and Portuguese (Brazil).
+* Localization to English, Italian, Portuguese (Brazil), Russian, and Swedish. (So far)
 * Frontend/Backend Language Picker Menu
+* [Gravatar](https://github.com/creativeorange/gravatar)
 * Standards
     * Clean Controllers
     * Repository/Contract Implementations
@@ -120,6 +122,12 @@ access.permission_role_table
  * This table is only for permissions that belong directly to a specific user and not a role
  */
 access.permission_user_table
+
+/*
+* Table that specifies if one permission is dependent on another.
+* For example in order for a user to have the edit-user permission they also need the view-backend permission.
+*/
+access.permission_dependencies_table
 
 /*
  * assigned_roles table used by Access to save assigned roles to the database.
@@ -227,37 +235,117 @@ $user->hasPermissions($permissions, $needsAll); //Wrapper function for canMultip
 <a name="blade_extensions"/>
 ### Blade Extensions
 
-**Note: The blade syntax for permissions does not support hyphens, only underscores. Use the access helper to check in those cases: access()->has('this-permission') **
-
 Access comes with @blade extensions to help you show and hide data by role or permission without clogging up your code with unwanted if statements:
+
+### @role
+
+Accepts a single Role Name or ID
 
 ```php
 @role('User')
     This content will only show if the authenticated user has the `User` role.
-@endrole
+@endauth
 
-@permission('can_view_this_content')
-    This content will only show if the authenticated user is somehow associated with the `can_view_this_content` permission.
-@endpermission
+@role(1)
+    This content will only show if the authenticated user has the role with an ID of `1`.
+@endauth
 ```
 
-**Currently each call only supports one role or permission, however they can be nested.**
+### @roles
+
+Accepts an array of Role Names or IDs
+
+```php
+@roles(['Administrator', 'User'])
+    This content will only show if the authenticated user has the `Administrator` role OR the `User` role.
+@endauth
+
+@roles([1, 2])
+    This content will only show if the authenticated user has the role with ID of `1` OR `2`.
+@endauth
+```
+
+### @needsroles
+
+Accepts an array of roles or role IDs and only returns true if the user has all roles provided.
+
+```php
+@needsroles(['Administrator', 'User'])
+    This content will only show if the authenticated user has BOTH the `Administrator` role AND the `User` role.
+@endauth
+
+@needsroles([1, 2])
+    This content will only show if the authenticated user has BOTH roles with ID's of `1` AND `2`.
+@endauth
+```
+
+### @permission
+
+Accepts a single Permission Name or ID
+
+```php
+@permission('view-backend')
+    This content will only show if the authenticated user has the `view-backend` permission.
+@endauth
+
+@permission(1)
+    This content will only show if the authenticated user permission with an ID of `1`.
+@endauth
+```
+
+### @permissions
+
+Accepts an array of Permission Names or IDs
+
+```php
+@permissions(['view-backend', 'view-some-content'])
+    This content will only show if the authenticated user has the `view-backend` permission OR the `view-some-content` permission.
+@endauth
+
+@permissions([1, 2])
+    This content will only show if the authenticated user has the permission with ID of `1` OR `2`.
+@endauth
+```
+
+### @needspermissions
+
+Accepts an array of permissions or permission IDs and only returns true if the user has all permissions provided.
+
+```php
+@needspermissions(['view-backend', 'view-some-content'])
+    This content will only show if the authenticated user has BOTH the `view-backend` permission AND the `view-some-content` permission.
+@endauth
+
+@needspermissions([1, 2])
+    This content will only show if the authenticated user has BOTH permissions with ID's of `1` AND `2`.
+@endauth
+```
+
+**Note: You can also use @else for an if/else statement.**
 
 If you want to show or hide a specific section you can do so in your layout files the same way:
 
 ```php
 @role('User')
     @section('special_content')
-@endrole
+@endauth
 
 @permission('can_view_this_content')
     @section('special_content')
-@endpermission
+@endauth
 ```
 
-More will be available in the future.
 
-You can add more extensions by editing app/Services/Blade/Access/AccessBladeExtender.php
+You can add more extensions by appending to App\Providers\AccessServiceProvider@registerBladeExtensions
+
+<a name="permission-dependencies"/>
+## Permission Dependencies
+
+The permission dependencies section allows you to tell the system that one permission is dependent on one or more permissions.
+
+For example: If the user has the create-user permission, than they also need the view-backend and view-access-management permissions. Otherwise they will never be able to get to the create user screen. So create-user is dependent on view-backend and view-access-management.
+
+You can specify which permissions are dependent on others in each permissions dependency section.
 
 ## Socialite
 
@@ -303,6 +391,95 @@ Delete the `storage/framework/compiled.php` file
 
 <a name="changelog"/>
 ## Changelog
+
+###1.6.2
+```
+- Fixed error in Backend\EloquentPermissionRepository.php to check if dependencies are set before counting them.
+```
+
+###1.6.1
+```
+- Fixed broken image link in backend dropdown to user gravatar for example.
+```
+
+###1.6
+```
+- Converted all access() helpers in views to blade extensions.
+- Cleaned up all access models. Extracted all relationships and attributes to separate trait classes.
+- Move traits from services folder and integrate them into user traits.
+- Made sure permissions remove its foreign key dependencies when being deleted.
+```
+
+###1.5.6
+```
+- Blade extension overhaul.
+  Removed old blade functions and replaced with native blade directives.
+  NEW: role, roles, needsroles
+  NEW: permission, permissions, needspermissions
+  
+  See documentation for details.
+```
+
+###1.5.5
+```
+- Fixed user being able to login with unconfirmed account by resetting
+  password, by overriding default password reset function to check
+  if user is confirmed.
+```
+
+###1.5.4
+```
+- The people spoke. Removed visual installer.
+```
+
+###1.5.3
+```
+- Removed key generator from installer as it should be done beforehand or creates error.
+```
+
+###1.5.2
+```
+- Russian translation pack by @Sogl
+```
+
+###1.5.1
+```
+- Implemented Gravatar plugin
+```
+
+###1.5
+```
+- Added a visual installer that will run all of the installation commands through
+  a series of screens. Good for users installing application on servers without
+  composer/SSH access.
+
+  Checks dependencies, folder permissions, creates keys, migrates, seeds, etc.
+```
+
+###1.4.4
+```
+- Added a section to permissions called Permission Dependencies,
+  where you can specify that the use of one permission can be dependent
+  on the use or one or more permissions. See Permission Dependencies
+  section of read me.
+```
+
+###1.4.3
+```
+- Fixed Swedish backend welcome message.
+- Altered active menu on sidebar to keep menu open when navigating through links in dropdown.
+- by Daniel Blomdahl (@blomdahldaniel)
+```
+
+###1.4.2
+```
+- Added Swedish language pack authored by Daniel Blomdahl (@blomdahldaniel)
+```
+
+###1.4.1
+```
+- Updated Italian language pack for 1.4 release.
+```
 
 ###1.4
 ```

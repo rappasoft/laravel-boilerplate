@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class UserProvider
- * @package App
+ * @package App\Models\Access\User
  */
 class UserProvider extends Model {
 

@@ -61,6 +61,8 @@ return [
             'en' => 'English',
             'it' => 'Italian',
             'pt-BR' => 'Portuguese (Brazil)',
+            'ru' => 'Russo',
+            'sv' => 'Sueco',
         ],
     ],
 ];
