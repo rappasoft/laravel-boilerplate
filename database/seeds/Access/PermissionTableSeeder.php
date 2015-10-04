@@ -16,6 +16,10 @@ class PermissionTableSeeder extends Seeder {
 			DB::table(config('access.permissions_table'))->truncate();
 			DB::table(config('access.permission_role_table'))->truncate();
 			DB::table(config('access.permission_user_table'))->truncate();
+		} elseif(env('DB_DRIVER') == 'sqlite') {
+			DB::statement("DELETE FROM ".config('access.permissions_table'));
+			DB::statement("DELETE FROM ".config('access.permission_role_table'));
+			DB::statement("DELETE FROM ".config('access.permission_user_table'));
 		} else { //For PostgreSQL or anything else
 			DB::statement("TRUNCATE TABLE ".config('access.permissions_table')." CASCADE");
 			DB::statement("TRUNCATE TABLE ".config('access.permission_role_table')." CASCADE");
