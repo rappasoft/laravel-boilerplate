@@ -392,6 +392,12 @@ Delete the `storage/framework/compiled.php` file
 <a name="changelog"/>
 ## Changelog
 
+###1.6.3
+```
+- Sqlite hotfix for seeds
+- Updated italian language files
+```
+
 ###1.6.2
 ```
 - Fixed error in Backend\EloquentPermissionRepository.php to check if dependencies are set before counting them.
