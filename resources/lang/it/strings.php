@@ -56,10 +56,10 @@ return [
         'role_name' => "Utilizzo dell'Access Helper con nome Ruolo",
     ],
     'using_blade_extensions' => 'Uso delle estensioni Blade',
-    'view_console_it_works' => 'Visualizza console, dovresti vedere \'it works!\' generato da FrontendController@index',
+    'view_console_it_works' => "Apri la console javascript del browser, dovresti vedere 'it works!' generato da FrontendController@index",
     'welcome_to' => 'Benvenuto su :place',
-    'you_can_see_because' => 'Puoi vedere questo perché il tuo ruolo è \':role\'!',
-    'you_can_see_because_permission' => 'Puoi vedere questo perché il tuo permesso è \':permission\'!',
+    'you_can_see_because' => "Puoi vedere questo perché il tuo ruolo è ':role'!",
+    'you_can_see_because_permission' => "Puoi vedere questo perché il tuo permesso è ':permission'!",
     'you_have' => [
         'messages' => '{0} Non hai messaggi|{1} Hai 1 messaggio|[2,Inf] Hai :number messaggi',
         'notifications' => '{0} Non hai notifiche|{1} Hai 1 notifica|[2,Inf] Hai :number notifiche',
