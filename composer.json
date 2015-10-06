@@ -13,7 +13,7 @@
         "twbs/bootstrap-sass": "3.*",
         "fortawesome/font-awesome": "4.*",
         "hieu-le/active": "~2.0",
-				"doctrine/dbal": "~2.5",
+		"doctrine/dbal": "~2.5",
 	    "laracasts/utilities": "~2.0",
 		"arcanedev/log-viewer": "~3.4.0",
 		"creativeorange/gravatar": "~1.0"
