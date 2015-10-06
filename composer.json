@@ -16,7 +16,8 @@
 		"doctrine/dbal": "~2.5",
 	    "laracasts/utilities": "~2.0",
 		"arcanedev/log-viewer": "~3.4.0",
-		"creativeorange/gravatar": "~1.0"
+		"creativeorange/gravatar": "~1.0",
+        "nesbot/carbon": "~1.14"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",
