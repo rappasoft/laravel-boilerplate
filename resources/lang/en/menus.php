@@ -59,6 +59,7 @@ return [
         'language' => 'Language',
         'langs' => [
             'en' => 'English',
+            'es' => 'Spanish',
             'it' => 'Italian',
             'pt-BR' => 'Portuguese (Brazil)',
             'ru' => 'Russian',
