@@ -392,6 +392,11 @@ Delete the `storage/framework/compiled.php` file
 <a name="changelog"/>
 ## Changelog
 
+###1.6.5
+```
+- Added Spanish to missing language menu
+```
+
 ###1.6.4
 ```
 - Spanish translation by @ltiisidii
