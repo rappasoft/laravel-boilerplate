@@ -59,7 +59,7 @@ return [
         'language' => 'Language',
         'langs' => [
             'en' => 'English',
-            'fr-FR' => 'Français (France)'
+            'fr-FR' => 'Français (France)',
             'it' => 'Italian',
             'pt-BR' => 'Portuguese (Brazil)',
             'ru' => 'Russian',
