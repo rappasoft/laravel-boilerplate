@@ -392,6 +392,11 @@ Delete the `storage/framework/compiled.php` file
 <a name="changelog"/>
 ## Changelog
 
+###1.6.7
+```
+- Merge up to laravel commit: 421c0d0abae9d9fb3cfc7fdcb25fe7e2d86df630
+```
+
 ###1.6.6
 ```
 - Added French translation by @jarod51
