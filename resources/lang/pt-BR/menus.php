@@ -13,56 +13,56 @@ return [
     |
     */
 
-    'active_users' => 'Usuários Ativos',
-    'banned_users' => 'Usuários Banidos',
-    'create_permission' => 'Criar Permissão',
-    'create_permission_group' => 'Create Group',
-    'create_role' => 'Criar Papel',
-    'create_user' => 'Criar Usuário',
-    'dashboard' => 'Painel de Controle',
-    'deactivated_users' => 'Usuários Desativados',
-    'deleted_users' => 'Usuários Deletados',
-    'edit_permission' => 'Editar Permissão',
-    'edit_permission_group' => 'Edit Group',
-    'edit_role' => 'Editar Papel',
-    'edit_user' => 'Editar Usuário',
-    'general' => 'Geral',
-    'header_buttons' => [
-        'permissions' => [
-            'all' => 'Todas as Permissões',
-            'button' => 'Permissões',
+    'active_users'            => 'Usuários Ativos',
+    'banned_users'            => 'Usuários Banidos',
+    'create_permission'       => 'Criar Permissão',
+    'create_permission_group' => 'Criar Grupo',
+    'create_role'             => 'Criar Papel',
+    'create_user'             => 'Criar Usuário',
+    'dashboard'               => 'Painel de Controle',
+    'deactivated_users'       => 'Usuários Desativados',
+    'deleted_users'           => 'Usuários Deletados',
+    'edit_permission'         => 'Editar Permissão',
+    'edit_permission_group'   => 'Editar Grupo',
+    'edit_role'               => 'Editar Papel',
+    'edit_user'               => 'Editar Usuário',
+    'general'                 => 'Geral',
+    'header_buttons'          => [
+        'permissions'         => [
+            'all'             => 'Todas as Permissões',
+            'button'          => 'Permissões',
 
-            'groups' => [
-                'all' => 'All Groups',
-                'button' => 'Groups',
+            'groups'          => [
+                'all'         => 'Todos os Grupos',
+                'button'      => 'Grupos',
             ],
         ],
-        'roles' => [
-            'all' => 'Todos os Papéis',
-            'button' => 'Papéis',
+        'roles'               => [
+            'all'             => 'Todos os Papéis',
+            'button'          => 'Papéis',
         ],
-        'users' => [
-            'all' => 'Todos os Usuários',
-            'button' => 'Usuários',
+        'users'               => [
+            'all'             => 'Todos os Usuários',
+            'button'          => 'Usuários',
         ],
     ],
-    'log-viewer' => [
-        'main' => 'Log Viewer',
-        'dashboard' => 'Dashboard',
-        'logs' => 'Logs',
+    'log-viewer'              => [
+        'main'                => 'Visualizador de Log',
+        'dashboard'           => 'Painel de Controle',
+        'logs'                => 'Logs',
     ],
-    'permission_management' => 'Gerenciamento de Permissões',
-    'role_management' => 'Gerenciamento de Papéis',
-    'user_management' => 'Gerenciamento de Usuários',
-    'access_management' => 'Access Management',
-    'language-picker' => [
-        'language' => 'Language',
-        'langs' => [
-            'en' => 'English',
-            'it' => 'Italian',
-            'pt-BR' => 'Portuguese (Brazil)',
-            'ru' => 'Russo',
-            'sv' => 'Sueco',
+    'permission_management'   => 'Gerenciamento de Permissões',
+    'role_management'         => 'Gerenciamento de Papéis',
+    'user_management'         => 'Gerenciamento de Usuários',
+    'access_management'       => 'Gerenciamento de Acesso',
+    'language-picker'         => [
+        'language'            => 'Idioma',
+        'langs'               => [
+            'en'              => 'Inglês',
+            'it'              => 'Italiano',
+            'pt-BR'           => 'Português (Brasil)',
+            'ru'              => 'Russo',
+            'sv'              => 'Sueco',
         ],
     ],
 ];
