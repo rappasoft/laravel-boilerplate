@@ -2,6 +2,10 @@
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
+/**
+ * Class Kernel
+ * @package App\Http
+ */
 class Kernel extends HttpKernel {
 
 	/**
@@ -16,6 +20,7 @@ class Kernel extends HttpKernel {
 		\Illuminate\Session\Middleware\StartSession::class,
 		\Illuminate\View\Middleware\ShareErrorsFromSession::class,
 		\App\Http\Middleware\VerifyCsrfToken::class,
+		\App\Http\Middleware\LocaleMiddleware::class,
 	];
 
 	/**
@@ -24,12 +29,17 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
+		/**
+		 * Default laravel route middleware
+		 */
 		'auth' => \App\Http\Middleware\Authenticate::class,
 		'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
 		'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
 
+		/**
+		 * Access Middleware
+		 */
 		'access.routeNeedsRole' => \App\Http\Middleware\RouteNeedsRole::class,
 		'access.routeNeedsPermission' => \App\Http\Middleware\RouteNeedsPermission::class,
-		'access.routeNeedsRoleOrPermission' => \App\Http\Middleware\RouteNeedsRoleOrPermission::class,
 	];
 }

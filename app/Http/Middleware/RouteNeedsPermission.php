@@ -1,7 +1,6 @@
 <?php namespace App\Http\Middleware;
 
 use Closure;
-use App\Services\Access\Traits\AccessParams;
 
 /**
  * Class RouteNeedsRole
@@ -9,19 +8,16 @@ use App\Services\Access\Traits\AccessParams;
  */
 class RouteNeedsPermission {
 
-	use AccessParams;
-
 	/**
 	 * @param $request
 	 * @param callable $next
-	 * @param null $params
-	 * @return bool|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Symfony\Component\HttpFoundation\Response
-	 */
-	public function handle($request, Closure $next, $params = null)
+	 * @param $permission
+	 * @return mixed
+     */
+	public function handle($request, Closure $next, $permission)
 	{
-		$assets = $this->getAssets($request, $params);
-		if (! access()->canMultiple($assets['permissions'], $assets['needsAll']))
-			return $this->getRedirectMethodAndGo($request, $params);
+		if (! access()->can($permission))
+			return redirect('/')->withFlashDanger("You do not have access to do that.");
 		return $next($request);
 	}
 }

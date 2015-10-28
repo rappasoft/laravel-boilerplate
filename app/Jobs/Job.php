@@ -2,6 +2,10 @@
 
 use Illuminate\Bus\Queueable;
 
+/**
+ * Class Job
+ * @package App\Jobs
+ */
 abstract class Job
 {
 
@@ -17,5 +21,4 @@ abstract class Job
 	*/
 
 	use Queueable;
-
 }

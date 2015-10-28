@@ -2,6 +2,10 @@
 
 use App\Http\Requests\Request;
 
+/**
+ * Class UpdateRoleRequest
+ * @package App\Http\Requests\Backend\Access\Role
+ */
 class UpdateRoleRequest extends Request {
 
 	/**
@@ -11,7 +15,7 @@ class UpdateRoleRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return true;
+		return access()->can('edit-roles');
 	}
 
 	/**

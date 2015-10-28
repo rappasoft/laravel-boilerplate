@@ -157,9 +157,15 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'App\Providers\MacroServiceProvider',
-		'Laravel\Socialite\SocialiteServiceProvider',
+
+		/*
+		 * Third party service providers
+		 */
+		'Arcanedev\LogViewer\LogViewerServiceProvider',
+		'Creativeorange\Gravatar\GravatarServiceProvider',
 		'HieuLe\Active\ActiveServiceProvider',
-		'Laracasts\Utilities\JavaScript\JavascriptServiceProvider',
+		'Laracasts\Utilities\JavaScript\JavaScriptServiceProvider',
+		'Laravel\Socialite\SocialiteServiceProvider',
 		'Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProviderLaravel5',
 	],
 
@@ -188,7 +194,7 @@ return [
 		'Eloquent'  => 'Illuminate\Database\Eloquent\Model',
 		'Event'     => 'Illuminate\Support\Facades\Event',
 		'File'      => 'Illuminate\Support\Facades\File',
-		'Gate' 		=> Illuminate\Support\Facades\Gate::class,
+		'Gate' 		=> 'Illuminate\Support\Facades\Gate',
 		'Hash'      => 'Illuminate\Support\Facades\Hash',
 		'Input'     => 'Illuminate\Support\Facades\Input',
 		'Inspiring' => 'Illuminate\Foundation\Inspiring',
@@ -210,9 +216,11 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 
 		/* Third Party */
+		'Active'    => 'HieuLe\Active\Facades\Active',
 		'Form'		=> 'Illuminate\Html\FormFacade',
+		'Gravatar'  => 'Creativeorange\Gravatar\Facades\Gravatar',
 		'HTML'		=> 'Illuminate\Html\HtmlFacade',
 		'Socialize' => 'Laravel\Socialite\Facades\Socialite',
-		'Active'    => 'HieuLe\Active\Facades\Active',
+
 	],
 ];

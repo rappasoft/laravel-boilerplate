@@ -2,6 +2,10 @@
 
 use App\Http\Requests\Request;
 
+/**
+ * Class CreatePermissionRequest
+ * @package App\Http\Requests\Backend\Access\Permission
+ */
 class CreatePermissionRequest extends Request {
 
 	/**
@@ -11,7 +15,7 @@ class CreatePermissionRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return true;
+		return access()->can('create-permissions');
 	}
 
 	/**
@@ -22,8 +26,7 @@ class CreatePermissionRequest extends Request {
 	public function rules()
 	{
 		return [
-			'name'			=>  'required',
-			'display_name'	=>	'required',
+			//
 		];
 	}
 }

@@ -1,9 +1,9 @@
 <?php namespace App\Repositories\Backend\User;
 
-use App\User;
-use App\Repositories\Frontend\Auth\AuthenticationContract;
+use App\Models\Access\User\User;
 use App\Exceptions\GeneralException;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
+use App\Repositories\Frontend\Auth\AuthenticationContract;
 use App\Exceptions\Backend\Access\User\UserNeedsRolesException;
 
 /**

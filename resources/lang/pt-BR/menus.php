@@ -16,12 +16,14 @@ return [
     'active_users' => 'Usuários Ativos',
     'banned_users' => 'Usuários Banidos',
     'create_permission' => 'Criar Permissão',
+    'create_permission_group' => 'Create Group',
     'create_role' => 'Criar Papel',
     'create_user' => 'Criar Usuário',
     'dashboard' => 'Painel de Controle',
     'deactivated_users' => 'Usuários Desativados',
     'deleted_users' => 'Usuários Deletados',
     'edit_permission' => 'Editar Permissão',
+    'edit_permission_group' => 'Edit Group',
     'edit_role' => 'Editar Papel',
     'edit_user' => 'Editar Usuário',
     'general' => 'Geral',
@@ -29,6 +31,11 @@ return [
         'permissions' => [
             'all' => 'Todas as Permissões',
             'button' => 'Permissões',
+
+            'groups' => [
+                'all' => 'All Groups',
+                'button' => 'Groups',
+            ],
         ],
         'roles' => [
             'all' => 'Todos os Papéis',
@@ -39,8 +46,23 @@ return [
             'button' => 'Usuários',
         ],
     ],
+    'log-viewer' => [
+        'main' => 'Log Viewer',
+        'dashboard' => 'Dashboard',
+        'logs' => 'Logs',
+    ],
     'permission_management' => 'Gerenciamento de Permissões',
     'role_management' => 'Gerenciamento de Papéis',
     'user_management' => 'Gerenciamento de Usuários',
-
+    'access_management' => 'Access Management',
+    'language-picker' => [
+        'language' => 'Language',
+        'langs' => [
+            'en' => 'English',
+            'it' => 'Italian',
+            'pt-BR' => 'Portuguese (Brazil)',
+            'ru' => 'Russo',
+            'sv' => 'Sueco',
+        ],
+    ],
 ];

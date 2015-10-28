@@ -2,6 +2,10 @@
 
 use App\Http\Requests\Request;
 
+/**
+ * Class UpdateUserPasswordRequest
+ * @package App\Http\Requests\Backend\Access\User
+ */
 class UpdateUserPasswordRequest extends Request {
 
 	/**
@@ -11,7 +15,7 @@ class UpdateUserPasswordRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return true;
+		return access()->can('change-user-password');
 	}
 
 	/**

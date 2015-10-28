@@ -2,6 +2,10 @@
 
 use App\Http\Requests\Request;
 
+/**
+ * Class CreateRoleRequest
+ * @package App\Http\Requests\Backend\Access\Role
+ */
 class CreateRoleRequest extends Request {
 
 	/**
@@ -11,7 +15,7 @@ class CreateRoleRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return true;
+		return access()->can('create-roles');
 	}
 
 	/**
@@ -22,7 +26,7 @@ class CreateRoleRequest extends Request {
 	public function rules()
 	{
 		return [
-			'name' => 'required',
+			//
 		];
 	}
 }

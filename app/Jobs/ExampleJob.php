@@ -39,6 +39,10 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Bus\SelfHandling;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
+/**
+ * Class ExampleJob
+ * @package App\Jobs
+ */
 class ExampleJob extends Job implements SelfHandling, ShouldQueue
 {
     use InteractsWithQueue, SerializesModels;

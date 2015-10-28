@@ -39,7 +39,7 @@
                                 <tr>
                                     <th>{{ trans('validation.attributes.actions') }}</th>
                                     <td>
-                                        <a href="{!!route('profile.edit', $user->id)!!}" class="btn btn-primary btn-xs">{{ trans('labels.edit_information') }}</a>
+                                        <a href="{!!route('frontend.profile.edit')!!}" class="btn btn-primary btn-xs">{{ trans('labels.edit_information') }}</a>
                                         <a href="{!!url('auth/password/change')!!}" class="btn btn-warning btn-xs">{{ trans('navs.change_password') }}</a>
                                     </td>
                                 </tr>

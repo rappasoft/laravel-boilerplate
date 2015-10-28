@@ -23,6 +23,12 @@
 
 // Place any jQuery/helper plugins in here.
 $(function(){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    });
+
     /*
      Allows you to add data-method="METHOD to links to automatically inject a form with the method on click
      Example: <a href="{{route('customers.destroy', $customer->id)}}" data-method="delete" name="delete_item">Delete</a>

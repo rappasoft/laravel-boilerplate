@@ -1,8 +1,8 @@
 <?php
 
-/*
+/**
  * Global helpers file with misc functions
- */
+ **/
 
 if (! function_exists('app_name')) {
 	/**
@@ -34,5 +34,16 @@ if ( ! function_exists('javascript'))
 	function javascript()
 	{
 		return app('JavaScript');
+	}
+}
+
+if ( ! function_exists('gravatar'))
+{
+	/**
+	 * Access the gravatar helper
+	 */
+	function gravatar()
+	{
+		return app('gravatar');
 	}
 }

@@ -2,6 +2,10 @@
 
 use App\Http\Requests\Request;
 
+/**
+ * Class UpdatePermissionRequest
+ * @package App\Http\Requests\Backend\Access\Permission
+ */
 class UpdatePermissionRequest extends Request {
 
 	/**
@@ -11,7 +15,7 @@ class UpdatePermissionRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return true;
+		return access()->can('edit-permissions');
 	}
 
 	/**

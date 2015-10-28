@@ -1,11 +1,11 @@
 <?php namespace App\Repositories\Frontend\User;
 
-use App\User;
-use App\UserProvider;
+use App\Models\Access\User\User;
+use App\Models\Access\User\UserProvider;
 use App\Exceptions\GeneralException;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
+use App\Repositories\Backend\Role\RoleRepositoryContract;
 
 /**
  * Class EloquentUserRepository
@@ -51,8 +51,10 @@ class EloquentUserRepository implements UserContract {
 		]);
 		$user->attachRole($this->role->getDefaultUserRole());
 
-		if (config('access.users.confirm_email'))
-			$this->sendConfirmationEmail($user);
+		if (config('access.users.confirm_email') and $provider === false)
+        		$this->sendConfirmationEmail($user);
+    		else
+        		$user->confirmed = 1;
 
 		return $user;
 	}
@@ -132,13 +134,12 @@ class EloquentUserRepository implements UserContract {
 	}
 
 	/**
-	 * @param $id
 	 * @param $input
 	 * @return mixed
 	 * @throws GeneralException
 	 */
-	public function updateProfile($id, $input) {
-		$user = $this->findOrThrowException($id);
+	public function updateProfile($input) {
+		$user = access()->user();
 		$user->name = $input['name'];
 
 		if ($user->canChangeEmail()) {

@@ -2,6 +2,10 @@
 
 use App\Http\Requests\Request;
 
+/**
+ * Class UpdateUserRequest
+ * @package App\Http\Requests\Backend\Access\User
+ */
 class UpdateUserRequest extends Request {
 
 	/**
@@ -11,7 +15,7 @@ class UpdateUserRequest extends Request {
 	 */
 	public function authorize()
 	{
-		return true;
+		return access()->can('edit-users');
 	}
 
 	/**

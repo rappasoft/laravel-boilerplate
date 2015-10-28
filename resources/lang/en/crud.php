@@ -18,16 +18,23 @@ return [
     'permissions' => [
         'name' => 'Name',
         'permission' => 'Permission',
+        'dependencies' => 'Dependencies',
         'roles' => 'Roles',
         'system' => 'System?',
         'total' => 'permission(s) total',
         'users' => 'Users',
+        'group' => 'Group',
+        'group-sort' => 'Group Sort',
+        'groups' => [
+            'name' => 'Group Name',
+        ],
     ],
     'roles' => [
         'number_of_users' => '# Users',
         'permissions' => 'Permissions',
         'role' => 'Role',
         'total' => 'role(s) total',
+        'sort' => 'Sort',
     ],
     'users' => [
         'confirmed' => 'Confirmed',

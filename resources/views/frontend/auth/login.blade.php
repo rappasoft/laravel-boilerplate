@@ -48,10 +48,7 @@
                     {!! Form::close() !!}
 
                     <div class="row text-center">
-                        {!! link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Github']), 'github') !!}&nbsp;|&nbsp;
-                        {!! link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Facebook']), 'facebook') !!}&nbsp;|&nbsp;
-                        {!! link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Twitter']), 'twitter') !!}&nbsp;|&nbsp;
-                        {!! link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Google']), 'google') !!}
+                        {!! $socialite_links !!}
                     </div>
                 </div><!-- panel body -->
 

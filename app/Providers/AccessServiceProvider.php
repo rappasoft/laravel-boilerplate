@@ -1,8 +1,8 @@
 <?php namespace App\Providers;
 
 use App\Services\Access\Access;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use App\Services\Blade\Access\AccessBladeExtender;
 
 /**
  * Class AccessServiceProvider
@@ -21,7 +21,7 @@ class AccessServiceProvider extends ServiceProvider
 	 * Package boot method
 	 */
 	public function boot() {
-		$this->registerBladeExtender();
+		$this->registerBladeExtensions();
 	}
 
 	/**
@@ -57,7 +57,7 @@ class AccessServiceProvider extends ServiceProvider
 		$this->app->booting(function()
 		{
 			$loader = \Illuminate\Foundation\AliasLoader::getInstance();
-			$loader->alias('Access', 'App\Services\Access\Facades\Access');
+			$loader->alias('Access', \App\Services\Access\Facades\Access::class);
 		});
 	}
 
@@ -66,35 +66,88 @@ class AccessServiceProvider extends ServiceProvider
 	 */
 	public function registerBindings() {
 		$this->app->bind(
-			'App\Repositories\Frontend\Auth\AuthenticationContract',
-			'App\Repositories\Frontend\Auth\EloquentAuthenticationRepository'
+			\App\Repositories\Frontend\Auth\AuthenticationContract::class,
+			\App\Repositories\Frontend\Auth\EloquentAuthenticationRepository::class
 		);
 
 		$this->app->bind(
-			'App\Repositories\Frontend\User\UserContract',
-			'App\Repositories\Frontend\User\EloquentUserRepository'
+			\App\Repositories\Frontend\User\UserContract::class,
+			\App\Repositories\Frontend\User\EloquentUserRepository::class
 		);
 
 		$this->app->bind(
-			'App\Repositories\Backend\User\UserContract',
-			'App\Repositories\Backend\User\EloquentUserRepository'
+			\App\Repositories\Backend\User\UserContract::class,
+			\App\Repositories\Backend\User\EloquentUserRepository::class
 		);
 
 		$this->app->bind(
-			'App\Repositories\Backend\Role\RoleRepositoryContract',
-			'App\Repositories\Backend\Role\EloquentRoleRepository'
+			\App\Repositories\Backend\Role\RoleRepositoryContract::class,
+			\App\Repositories\Backend\Role\EloquentRoleRepository::class
 		);
 
 		$this->app->bind(
-			'App\Repositories\Backend\Permission\PermissionRepositoryContract',
-			'App\Repositories\Backend\Permission\EloquentPermissionRepository'
+			\App\Repositories\Backend\Permission\PermissionRepositoryContract::class,
+			\App\Repositories\Backend\Permission\EloquentPermissionRepository::class
+		);
+
+		$this->app->bind(
+			\App\Repositories\Backend\Permission\Group\PermissionGroupRepositoryContract::class,
+			\App\Repositories\Backend\Permission\Group\EloquentPermissionGroupRepository::class
+		);
+
+		$this->app->bind(
+			\App\Repositories\Backend\Permission\Dependency\PermissionDependencyRepositoryContract::class,
+			\App\Repositories\Backend\Permission\Dependency\EloquentPermissionDependencyRepository::class
 		);
 	}
 
 	/**
 	 * Register the blade extender to use new blade sections
 	 */
-	protected function registerBladeExtender() {
-		AccessBladeExtender::attach($this->app);
+	protected function registerBladeExtensions() {
+		/**
+		 * Role based blade extensions
+		 * Accepts either string of Role Name or Role ID
+		 */
+		Blade::directive('role', function($role) {
+			return "<?php if (access()->hasRole{$role}): ?>";
+		});
+
+		/**
+		 * Accepts array of names or id's
+		 */
+		Blade::directive('roles', function($roles) {
+			return "<?php if (access()->hasRoles{$roles}): ?>";
+		});
+
+		Blade::directive('needsroles', function($roles) {
+			return "<?php if (access()->hasRoles(".$roles.", true)): ?>";
+		});
+
+		/**
+		 * Permission based blade extensions
+		 * Accepts wither string of Permission Name or Permission ID
+		 */
+		Blade::directive('permission', function($permission) {
+			return "<?php if (access()->can{$permission}): ?>";
+		});
+
+		/**
+		 * Accepts array of names or id's
+		 */
+		Blade::directive('permissions', function($permissions) {
+			return "<?php if (access()->canMultiple{$permissions}): ?>";
+		});
+
+		Blade::directive('needspermissions', function($permissions) {
+			return "<?php if (access()->canMultiple(".$permissions.", true)): ?>";
+		});
+
+		/**
+		 * Generic if closer to not interfere with built in blade
+		 */
+		Blade::directive('endauth', function() {
+			return "<?php endif; ?>";
+		});
 	}
 }

@@ -1,4 +1,4 @@
-## Laravel 5.* Boilerplate (Currently 5.1)
+## Laravel 5.* Boilerplate (Currently 5.1.17) [Screenshots](http://imgur.com/a/uEKuq)
 
 [![Project Status](http://stillmaintained.com/rappasoft/Laravel-5-Boilerplate.png)](http://stillmaintained.com/rappasoft/Laravel-5-Boilerplate) [![Latest Stable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/stable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate) [![Latest Unstable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/unstable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate)
 
@@ -19,7 +19,9 @@
         * Change Users Password
         * Create/Manage Roles
         * Create/Manage Permissions
+        * Create/Manage Permission Groups
         * Manage Users Roles/Permissions
+        * Permission Dependencies - [Notes](#permission-dependencies)
 * Default Responsive Layout
 * Frontend and Backend Controllers
 * User Dashboard
@@ -43,6 +45,10 @@
 * [Stripe](http://stripe.com) wrapper class for easy implementation
 * [Active Menu](https://github.com/letrunghieu/active)
 * [PHP to Javascript Transformer](https://github.com/laracasts/PHP-Vars-To-Js-Transformer) - [Notes](#javascript-notes)
+* [ARCANEDEV Log Viewer](https://github.com/ARCANEDEV/LogViewer)
+* Localization to English, Spanish, French, Italian, Portuguese (Brazil), Russian, and Swedish. (So far)
+* Frontend/Backend Language Picker Menu
+* [Gravatar](https://github.com/creativeorange/gravatar)
 * Standards
     * Clean Controllers
     * Repository/Contract Implementations
@@ -50,6 +56,7 @@
     * Events/Handlers
     * Entire application split between frontend/backend
     * Localization Throughout
+* [Changelog](#changelog)
 
 ### Installation:
 
@@ -63,18 +70,12 @@
 - run `gulp` or `gulp watch` (Install gulp (sudo npm install -g gulp) if needed)
 
 <a name="access-control"/>
-## Access Control System (Previously 'Vault')
-* [Configuration] (#configuration)
+## Access Control System
+* Configuration
     * [Config File](#config_file)
     * [Route Middleware](#route_middleware)
-    * [Controller Middleware](#controller_middleware)
-        * [Parameters](#route_middleware_params)
-        * [Creating Middleware](#creating_middleware)
-        * [AccessParams trait](#access_params_trait)
+    * [Create Middleware](#creating_middleware)
     * [Blade Extensions](#blade_extensions)
-
-<a name="configuration"/>
-### Configuration
 
 <a name="config_file"/>
 ###Configuration File
@@ -102,6 +103,16 @@ access.permission
 access.permissions_table
 
 /*
+ * PermissionGroup model used by Access to create permissions groups.
+ */
+access.group
+
+/*
+ * Permissions table used by Access to save permissions to the database.
+ */
+access.permissions_group_table
+
+/*
  * permission_role table used by Access to save relationship between permissions and roles to the database.
  */
 access.permission_role_table
@@ -111,6 +122,12 @@ access.permission_role_table
  * This table is only for permissions that belong directly to a specific user and not a role
  */
 access.permission_user_table
+
+/*
+* Table that specifies if one permission is dependent on another.
+* For example in order for a user to have the edit-user permission they also need the view-backend permission.
+*/
+access.permission_dependencies_table
 
 /*
  * assigned_roles table used by Access to save assigned roles to the database.
@@ -138,35 +155,18 @@ access.users.confirm_email
 access.users.change_email
 
 /*
- * Configuration for roles
+ * Whether a role must contain at least one permission, or can be used standalone as a label
  */
 access.roles.role_must_contain_permission
-
-/*
- * Whether or not the administrator role must possess every permission
- * Works in unison with permissions.permission_must_contain_role
- */
-access.roles.administrator_forced
-
-/*
- * Whether a permission must contain a role or can be used standalone
- * Works in unison with roles.administrator_forced
- */
-access.permissions.permission_must_contain_role
 ```
 
 <a name="route_middleware"/>
 ### Applying the Route Middleware
 
-Laravel 5 is trying to steer away from the filters.php file and more towards using middleware. Here is an example right from the access routes file of a group of routes that requires the Administrator role:
+Included route middleware let you authorize by either a role or permission:
 
 ```php
-Route::group([
-	'middleware' => 'access.routeNeedsRole',
-	'role' => ['Administrator'],
-	'redirect' => '/',
-	'with' => ['error', 'You do not have access to do that.']
-], function()
+Route::group(['middleware' => 'access.routeNeedsPermission:view-backend', function()
 {
     Route::group(['prefix' => 'access'], function ()
     	{
@@ -176,49 +176,10 @@ Route::group([
 });
 ```
 
-The above code checks to see if the currently authenticated user has the role `Administrator`, if not redirects to `/` with a session variable that has a key of `message` and value of `You do not have access to do that.`
-
 The following middleware ships with the boilerplate:
 
 - access.routeNeedsRole
 - access.routeNeedsPermission
-- access.routeNeedsRoleOrPermission
-
-<a name="controller_middleware"/>
-### Applying the Controller Middleware
-
-The controller middleware supports all of the same parameters as the route middleware, except that it is declared in the constructor of the controller you are trying to protect:
-
-For example, the ```Route::group``` example above would be this:
-
-```php
-public function __construct() {
-	$this->middleware('access.routeNeedsRole:{role:Administrator::redirect:/::with:error|You do not have access to do that.}');
-}
-```
-
-**Notes:** Because the new route middleware parameters in 5.1 don't support arrays, I made my own syntax.
-
-- It uses a single parameter encapulated in brackets `{}`
-- `role` can be single `role:Administrator` or an "array" `role:Administrator|User|Other`
-- Same for the permissions parameter: `permission:user_permission` or `permission:user_permission|other_permission`
-- The session message is in format `with:variable_name|message`
-- The parameters are separated by a double colon `::` (I did try a comma, the interpreter wasn't allowing it)
-
-
-<a name="route_middleware_params"/>
-### Route Parameters
-
-- `middleware` => The middleware name, you can change them in your app/Http/Kernel.php file.
-- `role` => A string of one role or an array of roles by name.
-- `permission` => A string of one permission or an array of permissions by name.
-- `needsAll` => A boolean, false by default, that states whether or not all of the specified roles/permissions are required to authenticate.
-- `with` => Sends a session flash on failure. Array with 2 items, first is session key, second is value.
-- `redirect` => Redirect to a url if authentication fails.
-- `redirectRoute` => Redirect to a route if authentication fails.
-- `redirectAction` => Redirect to an action if authentication fails.
-
-**If no redirect is specified a `response('Unauthorized', 401);` will be thrown.**
 
 <a name="creating_middleware"/>
 ### Create Your Own Middleware
@@ -271,47 +232,120 @@ $user->hasPermission($permission); //Wrapper function for can()
 $user->hasPermissions($permissions, $needsAll); //Wrapper function for canMultiple()
 ```
 
-<a name="access_params_trait"/>
-### AccessParams trait
-
-If you would like to take advantage of the methods used by Access's route/controller handler, you can `use` it:
-
-    `use App\Services\Access\Traits\AccessParams`
-
-Which will give you methods in your middleware to grab route assets or controller parameters. You can then add methods to your middleware to grab assets that access doesn't grab by default and take advantage of them.
-
-**Note:** If middleware is applied to both the controller and a route group, the controller will take precedence. 
-
 <a name="blade_extensions"/>
 ### Blade Extensions
 
 Access comes with @blade extensions to help you show and hide data by role or permission without clogging up your code with unwanted if statements:
 
+### @role
+
+Accepts a single Role Name or ID
+
 ```php
 @role('User')
     This content will only show if the authenticated user has the `User` role.
-@endrole
+@endauth
 
-@permission('can_view_this_content')
-    This content will only show if the authenticated user is somehow associated with the `can_view_this_content` permission.
-@endpermission
+@role(1)
+    This content will only show if the authenticated user has the role with an ID of `1`.
+@endauth
 ```
 
-**Currently each call only supports one role or permission, however they can be nested.**
+### @roles
+
+Accepts an array of Role Names or IDs
+
+```php
+@roles(['Administrator', 'User'])
+    This content will only show if the authenticated user has the `Administrator` role OR the `User` role.
+@endauth
+
+@roles([1, 2])
+    This content will only show if the authenticated user has the role with ID of `1` OR `2`.
+@endauth
+```
+
+### @needsroles
+
+Accepts an array of roles or role IDs and only returns true if the user has all roles provided.
+
+```php
+@needsroles(['Administrator', 'User'])
+    This content will only show if the authenticated user has BOTH the `Administrator` role AND the `User` role.
+@endauth
+
+@needsroles([1, 2])
+    This content will only show if the authenticated user has BOTH roles with ID's of `1` AND `2`.
+@endauth
+```
+
+### @permission
+
+Accepts a single Permission Name or ID
+
+```php
+@permission('view-backend')
+    This content will only show if the authenticated user has the `view-backend` permission.
+@endauth
+
+@permission(1)
+    This content will only show if the authenticated user permission with an ID of `1`.
+@endauth
+```
+
+### @permissions
+
+Accepts an array of Permission Names or IDs
+
+```php
+@permissions(['view-backend', 'view-some-content'])
+    This content will only show if the authenticated user has the `view-backend` permission OR the `view-some-content` permission.
+@endauth
+
+@permissions([1, 2])
+    This content will only show if the authenticated user has the permission with ID of `1` OR `2`.
+@endauth
+```
+
+### @needspermissions
+
+Accepts an array of permissions or permission IDs and only returns true if the user has all permissions provided.
+
+```php
+@needspermissions(['view-backend', 'view-some-content'])
+    This content will only show if the authenticated user has BOTH the `view-backend` permission AND the `view-some-content` permission.
+@endauth
+
+@needspermissions([1, 2])
+    This content will only show if the authenticated user has BOTH permissions with ID's of `1` AND `2`.
+@endauth
+```
+
+**Note: You can also use @else for an if/else statement.**
 
 If you want to show or hide a specific section you can do so in your layout files the same way:
 
 ```php
 @role('User')
     @section('special_content')
-@endrole
+@endauth
 
 @permission('can_view_this_content')
     @section('special_content')
-@endpermission
+@endauth
 ```
 
-You can add more extensions by editing app/Blade/Access/AccessBladeExtender.php
+
+You can add more extensions by appending to App\Providers\AccessServiceProvider@registerBladeExtensions
+
+<a name="permission-dependencies"/>
+## Permission Dependencies
+
+The permission dependencies section allows you to tell the system that one permission is dependent on one or more permissions.
+
+For example: If the user has the create-user permission, than they also need the view-backend and view-access-management permissions. Otherwise they will never be able to get to the create user screen. So create-user is dependent on view-backend and view-access-management.
+
+You can specify which permissions are dependent on others in each permissions dependency section.
 
 ## Socialite
 
@@ -354,15 +388,132 @@ If the above fails to fix, and the command line is referencing errors in `compil
 Delete the `storage/framework/compiled.php` file
        
 **If all of the above don't work please [report here](https://github.com/rappasoft/Laravel-5-Boilerplate/issues).**
-    
-## Official Documentation
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+<a name="changelog"/>
+## Changelog
 
-## Contributing
+###1.6.8
+```
+- Fixed typo that causes composer to crash on Linux systems
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+###1.6.7
+```
+- Merge up to laravel commit: 421c0d0abae9d9fb3cfc7fdcb25fe7e2d86df630
+```
 
-### License
+###1.6.6
+```
+- Added French translation by @jarod51
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+###1.6.5
+```
+- Added Spanish to missing language menu
+```
+
+###1.6.4
+```
+- Spanish translation by @ltiisidii
+```
+
+###1.6.3
+```
+- Sqlite hotfix for seeds
+- Updated italian language files
+```
+
+###1.6.2
+```
+- Fixed error in Backend\EloquentPermissionRepository.php to check if dependencies are set before counting them.
+```
+
+###1.6.1
+```
+- Fixed broken image link in backend dropdown to user gravatar for example.
+```
+
+###1.6
+```
+- Converted all access() helpers in views to blade extensions.
+- Cleaned up all access models. Extracted all relationships and attributes to separate trait classes.
+- Move traits from services folder and integrate them into user traits.
+- Made sure permissions remove its foreign key dependencies when being deleted.
+```
+
+###1.5.6
+```
+- Blade extension overhaul.
+  Removed old blade functions and replaced with native blade directives.
+  NEW: role, roles, needsroles
+  NEW: permission, permissions, needspermissions
+  
+  See documentation for details.
+```
+
+###1.5.5
+```
+- Fixed user being able to login with unconfirmed account by resetting
+  password, by overriding default password reset function to check
+  if user is confirmed.
+```
+
+###1.5.4
+```
+- The people spoke. Removed visual installer.
+```
+
+###1.5.3
+```
+- Removed key generator from installer as it should be done beforehand or creates error.
+```
+
+###1.5.2
+```
+- Russian translation pack by @Sogl
+```
+
+###1.5.1
+```
+- Implemented Gravatar plugin
+```
+
+###1.5
+```
+- Added a visual installer that will run all of the installation commands through
+  a series of screens. Good for users installing application on servers without
+  composer/SSH access.
+
+  Checks dependencies, folder permissions, creates keys, migrates, seeds, etc.
+```
+
+###1.4.4
+```
+- Added a section to permissions called Permission Dependencies,
+  where you can specify that the use of one permission can be dependent
+  on the use or one or more permissions. See Permission Dependencies
+  section of read me.
+```
+
+###1.4.3
+```
+- Fixed Swedish backend welcome message.
+- Altered active menu on sidebar to keep menu open when navigating through links in dropdown.
+- by Daniel Blomdahl (@blomdahldaniel)
+```
+
+###1.4.2
+```
+- Added Swedish language pack authored by Daniel Blomdahl (@blomdahldaniel)
+```
+
+###1.4.1
+```
+- Updated Italian language pack for 1.4 release.
+```
+
+###1.4
+```
+- Created new Access Control Library
+- Started Changelog
+```
