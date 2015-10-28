@@ -14,43 +14,43 @@ return [
     |
     */
 
-    'actions' => 'Ações',
-    'permissions' => [
-        'name' => 'Nome',
-        'permission' => 'Permissão',
-        'dependencies' => 'Dependencies',
-        'roles' => 'Papéis',
-        'system' => 'Sistema?',
-        'total' => 'Total de permissões',
-        'users' => 'Usuários',
-        'group' => 'Group',
-        'group-sort' => 'Group Sort',
-        'groups' => [
-            'name' => 'Group Name',
+    'actions'                  => 'Ações',
+    'permissions'              => [
+        'name'                 => 'Nome',
+        'permission'           => 'Permissão',
+        'dependencies'         => 'Dependências',
+        'roles'                => 'Papéis',
+        'system'               => 'Sistema?',
+        'total'                => 'Total de permissões',
+        'users'                => 'Usuários',
+        'group'                => 'Grupo',
+        'group-sort'           => 'Ordenação do grupo',
+        'groups'               => [
+            'name'             => 'Nome do grupo',
         ],
     ],
-    'roles' => [
-        'number_of_users' => 'Nº de Usuários',
-        'permissions' => 'Permissões',
-        'role' => 'Papel',
-        'total' => 'Total de papéis',
-        'sort' => 'Sort',
+    'roles'                    => [
+        'number_of_users'      => 'Nº de Usuários',
+        'permissions'          => 'Permissões',
+        'role'                 => 'Papel',
+        'total'                => 'Total de papéis',
+        'sort'                 => 'Ordenação',
     ],
-    'users' => [
-        'confirmed' => 'Confirmado',
-        'created' => 'Criado em',
-        'delete_permanently' => 'Deletar Permanentemente',
-        'email' => 'E-mail',
-        'id' => 'ID',
-        'last_updated' => 'Atualizado em',
-        'name' => 'Nome',
-        'no_banned_users' => 'Não existem usuários banidos',
+    'users'                    => [
+        'confirmed'            => 'Confirmado',
+        'created'              => 'Criado em',
+        'delete_permanently'   => 'Deletar Permanentemente',
+        'email'                => 'E-mail',
+        'id'                   => 'ID',
+        'last_updated'         => 'Atualizado em',
+        'name'                 => 'Nome',
+        'no_banned_users'      => 'Não existem usuários banidos',
         'no_deactivated_users' => 'Não existem usuários desativados',
-        'no_deleted_users' => 'Não existem usuários deletados',
-        'other_permissions' => 'Outras Permissões',
-        'restore_user' => 'Restaurar Usuário',
-        'roles' => 'Papéis',
-        'total' => 'Total de usuários',
+        'no_deleted_users'     => 'Não existem usuários deletados',
+        'other_permissions'    => 'Outras Permissões',
+        'restore_user'         => 'Restaurar Usuário',
+        'roles'                => 'Papéis',
+        'total'                => 'Total de usuários',
     ],
 
     /*
@@ -62,11 +62,11 @@ return [
     | because they will only be found outside view files.
     |
     */
-    'activate_user_button' => 'Ativar Usuário',
-    'ban_user_button' => 'Banir Usuário',
-    'change_password_button' => 'Alterar Senha',
-    'deactivate_user_button' => 'Desativar Usuário',
-    'delete_button' => 'Deletar',
-    'edit_button' => 'Editar',
+    'activate_user_button'     => 'Ativar Usuário',
+    'ban_user_button'          => 'Banir Usuário',
+    'change_password_button'   => 'Alterar Senha',
+    'deactivate_user_button'   => 'Desativar Usuário',
+    'delete_button'            => 'Deletar',
+    'edit_button'              => 'Editar',
 
 ];
