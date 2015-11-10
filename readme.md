@@ -1,4 +1,4 @@
-## Laravel 5.* Boilerplate (Currently 5.1.17) [Screenshots](http://imgur.com/a/uEKuq)
+## Laravel 5.* Boilerplate (Currently 5.1.23) [Screenshots](http://imgur.com/a/uEKuq)
 
 [![Project Status](http://stillmaintained.com/rappasoft/Laravel-5-Boilerplate.png)](http://stillmaintained.com/rappasoft/Laravel-5-Boilerplate) [![Latest Stable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/stable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate) [![Latest Unstable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/unstable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate)
 
@@ -391,6 +391,13 @@ Delete the `storage/framework/compiled.php` file
 
 <a name="changelog"/>
 ## Changelog
+
+###1.6.9
+```
+- Updated pt-BR strings by @dgallinari 
+- Updated dependencies by @jarod51
+- Language switcher fix for route caching by @timgws
+```
 
 ###1.6.8
 ```

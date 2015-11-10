@@ -1,6 +1,4 @@
-<?php namespace App\Http\Controllers\Global;
-
-use App\Http\Controllers\Controller;
+<?php namespace App\Http\Controllers;
 
 /**
  * Class LanguageController
@@ -14,4 +12,3 @@ class LanguageController extends Controller
         return redirect()->back();
     }
 }
-
