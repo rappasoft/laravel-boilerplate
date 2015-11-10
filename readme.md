@@ -392,6 +392,11 @@ Delete the `storage/framework/compiled.php` file
 <a name="changelog"/>
 ## Changelog
 
+###1.7.0
+```
+- Replaced laravel/html with laravelcollective/html as per request.
+```
+
 ###1.6.9
 ```
 - Updated pt-BR strings by @dgallinari 
