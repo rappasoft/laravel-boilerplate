@@ -1,12 +1,13 @@
 <?php namespace App\Providers;
 
 use App\Services\Macros;
+use Collective\Html\HtmlServiceProvider;
 
 /**
  * Class MacroServiceProvider
  * @package App\Providers
  */
-class MacroServiceProvider extends \Illuminate\Html\HtmlServiceProvider {
+class MacroServiceProvider extends HtmlServiceProvider {
 
 	/**
 	 * Bootstrap the application services.

@@ -6,7 +6,7 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.1.*",
-        "illuminate/html" : "5.*",
+        "laravelcollective/html": "5.1.*",
         "laravel/socialite" : "~2.0",
         "stripe/stripe-php": "~3.4.0",
         "twbs/bootstrap": "3.*",
