@@ -1,6 +1,6 @@
 <?php namespace App\Services;
 
-use Illuminate\Html\FormBuilder;
+use Collective\Html\FormBuilder;
 
 /**
  * Class Macros

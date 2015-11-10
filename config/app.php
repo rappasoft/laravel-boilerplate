@@ -144,7 +144,7 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
-		'Illuminate\Html\HtmlServiceProvider',
+		'Collective\Html\HtmlServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -217,10 +217,9 @@ return [
 
 		/* Third Party */
 		'Active'    => 'HieuLe\Active\Facades\Active',
-		'Form'		=> 'Illuminate\Html\FormFacade',
+		'Form'		=> 'Collective\Html\FormFacade',
 		'Gravatar'  => 'Creativeorange\Gravatar\Facades\Gravatar',
-		'HTML'		=> 'Illuminate\Html\HtmlFacade',
+		'HTML'		=> 'Collective\Html\HtmlFacade',
 		'Socialize' => 'Laravel\Socialite\Facades\Socialite',
-
 	],
 ];
