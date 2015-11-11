@@ -69,6 +69,7 @@ return array(
 		 * The role the user is assigned to when they sign up from the frontend, not namespaced
 		 */
 		'default_role' => 'User',
+		//'default_role' => 2,
 
 		/*
 		 * Whether or not the user has to confirm their email when signing up
