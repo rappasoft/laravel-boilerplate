@@ -392,6 +392,12 @@ Delete the `storage/framework/compiled.php` file
 <a name="changelog"/>
 ## Changelog
 
+###1.7.2
+```
+- Merged up to laravel commit: 8476df5c9eeb1489db64f7aa3456b38ae74d090d
+- New validation line in lang file needs translation (required_unless)
+```
+
 ###1.7.1
 ```
 - Ability to have default role config be either an id or a name.
