@@ -392,6 +392,11 @@ Delete the `storage/framework/compiled.php` file
 <a name="changelog"/>
 ## Changelog
 
+###1.7.1
+```
+- Ability to have default role config be either an id or a name.
+```
+
 ###1.7.0
 ```
 - Replaced laravel/html with laravelcollective/html as per request.
