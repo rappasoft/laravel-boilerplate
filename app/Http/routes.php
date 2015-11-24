@@ -3,7 +3,10 @@
 /**
  * Switch between the included languages
  */
-require(__DIR__ . "/Routes/Global/Lang.php");
+$router->group(['namespace' => 'Language'], function () use ($router)
+{
+	require(__DIR__ . "/Routes/Language/Lang.php");
+});
 
 /**
  * Frontend Routes
