@@ -60,6 +60,7 @@ return [
         'langs'               => [
             'en'              => 'Inglês',
             'it'              => 'Italiano',
+			'pl' 			  => 'Polish',
             'pt-BR'           => 'Português (Brasil)',
             'ru'              => 'Russo',
             'sv'              => 'Sueco',
