@@ -100,10 +100,18 @@ class EloquentAuthenticationRepository implements AuthenticationContract {
 	 * @param $request
 	 * @param $provider
 	 * @return bool|\Symfony\Component\HttpFoundation\RedirectResponse
+	 * @throws GeneralException
 	 */
 	public function loginThirdParty($request, $provider) {
 		if (! $request) return $this->getAuthorizationFirst($provider);
 		$user = $this->users->findByUserNameOrCreate($this->getSocialUser($provider), $provider);
+
+		/**
+		 * The user can not log in with a social account if they have been banned or deactivated.
+		 */
+		if ($user->isBannedOrDeactivated())
+			throw new GeneralException("Your account has been banned or deactivated.");
+
 		$this->auth->login($user, true);
 		event(new UserLoggedIn($user));
 		return redirect()->route('frontend.dashboard');

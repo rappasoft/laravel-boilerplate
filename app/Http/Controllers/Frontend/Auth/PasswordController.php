@@ -52,8 +52,16 @@ class PasswordController extends Controller {
      */
 	public function postEmail(Request $request)
 	{
-		//Make sure user is confirmed before resetting password.
+		/**
+		 * First of all check if the input is a valid email
+		 */
+		$this->validate($request, ['email' => 'required|email']);
+
+		/**
+		 * Make sure user is confirmed before resetting password.
+		 */
 		$user = User::where('email', $request->get('email'))->first();
+
 		if ($user) {
 			if ($user->confirmed == 0) {
 				throw new GeneralException("Your account is not confirmed. Please click the confirmation link in your e-mail, or " . '<a href="' . route('account.confirm.resend', $user->id) . '">click here</a>' . " to resend the confirmation e-mail.");
@@ -61,8 +69,6 @@ class PasswordController extends Controller {
 		} else {
 			throw new GeneralException("There is no user with that e-mail address.");
 		}
-
-		$this->validate($request, ['email' => 'required|email']);
 
 		$response = Password::sendResetLink($request->only('email'), function (Message $message) {
 			$message->subject($this->getEmailSubject());
