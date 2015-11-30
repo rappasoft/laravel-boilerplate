@@ -106,10 +106,11 @@ class EloquentAuthenticationRepository implements AuthenticationContract {
 		if (! $request) return $this->getAuthorizationFirst($provider);
 		$user = $this->users->findByUserNameOrCreate($this->getSocialUser($provider), $provider);
 
-		if( $user->isBannedOrDeactivated() )
-		{
-			throw new GeneralException("Your account has been banned or deactivated by an Admin.");
-		}
+		/**
+		 * The user can not log in with a social account if they have been banned or deactivated.
+		 */
+		if ($user->isBannedOrDeactivated())
+			throw new GeneralException("Your account has been banned or deactivated.");
 
 		$this->auth->login($user, true);
 		event(new UserLoggedIn($user));

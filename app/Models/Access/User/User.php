@@ -63,8 +63,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
 	public function isBannedOrDeactivated()
 	{
-		$blockedStatuses = [ 0, 2 ];
-
+		$blockedStatuses = [0, 2];
 		return in_array($this->status, $blockedStatuses);
 	}
 }
