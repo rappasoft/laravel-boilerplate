@@ -57,4 +57,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	public function canChangeEmail() {
 		return config('access.users.change_email');
 	}
+
+	/**
+	 * @return bool
+     */
+	public function isBannedOrDeactivated()
+	{
+		$blockedStatuses = [0, 2];
+		return in_array($this->status, $blockedStatuses);
+	}
 }
