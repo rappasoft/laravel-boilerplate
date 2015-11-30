@@ -52,6 +52,9 @@ class PasswordController extends Controller {
      */
 	public function postEmail(Request $request)
 	{
+		// First of all check if the input is a valid email
+		$this->validate($request, ['email' => 'required|email']);
+		
 		//Make sure user is confirmed before resetting password.
 		$user = User::where('email', $request->get('email'))->first();
 		if ($user) {
@@ -61,8 +64,6 @@ class PasswordController extends Controller {
 		} else {
 			throw new GeneralException("There is no user with that e-mail address.");
 		}
-
-		$this->validate($request, ['email' => 'required|email']);
 
 		$response = Password::sendResetLink($request->only('email'), function (Message $message) {
 			$message->subject($this->getEmailSubject());
