@@ -24,7 +24,8 @@
         "phpunit/phpunit": "~5.0",
         "phpspec/phpspec": "~2.1",
         "laracasts/generators": "~1.1",
-        "potsky/laravel-localization-helpers" : "~1.1"
+        "potsky/laravel-localization-helpers" : "~1.1",
+		"laralib/l5scaffold": "^1.0"
 	},
 	"autoload": {
 		"classmap": [
