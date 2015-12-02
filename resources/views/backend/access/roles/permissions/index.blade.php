@@ -69,51 +69,53 @@
                             <i class="fa fa-info-circle"></i> If you performed operations in the hierarchy section without refreshing this page, you will need to refresh to reflect the changes here.
                         </div><!--alert info-->
 
-                        <table class="table table-striped table-bordered table-hover">
-                            <thead>
-                            <tr>
-                                <th>{{ trans('crud.permissions.groups.name') }}</th>
-                                <th>{{ trans('crud.actions') }}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach ($groups as $group)
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
                                 <tr>
-                                    <td>
-                                        {!! $group->name !!}
-
-                                        @if ($group->permissions->count())
-                                            <div style="padding-left:40px;font-size:.8em">
-                                                @foreach ($group->permissions as $permission)
-                                                    {!! $permission->display_name !!}<br/>
-                                                @endforeach
-                                            </div>
-                                        @endif
-                                    </td>
-                                    <td>{!! $group->action_buttons !!}</td>
+                                    <th>{{ trans('crud.permissions.groups.name') }}</th>
+                                    <th>{{ trans('crud.actions') }}</th>
                                 </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($groups as $group)
+                                    <tr>
+                                        <td>
+                                            {!! $group->name !!}
 
-                                @if ($group->children->count())
-                                    @foreach ($group->children as $child)
-                                        <tr>
-                                            <td style="padding-left:40px">
-                                                <em>{!! $child->name !!}</em>
+                                            @if ($group->permissions->count())
+                                                <div style="padding-left:40px;font-size:.8em">
+                                                    @foreach ($group->permissions as $permission)
+                                                        {!! $permission->display_name !!}<br/>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                        </td>
+                                        <td>{!! $group->action_buttons !!}</td>
+                                    </tr>
 
-                                                @if ($child->permissions->count())
-                                                    <div style="padding-left:40px;font-size:.8em">
-                                                        @foreach ($child->permissions as $permission)
-                                                            {!! $permission->display_name !!}<br/>
-                                                        @endforeach
-                                                    </div>
-                                                @endif
-                                            </td>
-                                            <td>{!! $child->action_buttons !!}</td>
-                                        </tr>
-                                    @endforeach
-                                @endif
-                            @endforeach
-                            </tbody>
-                        </table>
+                                    @if ($group->children->count())
+                                        @foreach ($group->children as $child)
+                                            <tr>
+                                                <td style="padding-left:40px">
+                                                    <em>{!! $child->name !!}</em>
+
+                                                    @if ($child->permissions->count())
+                                                        <div style="padding-left:40px;font-size:.8em">
+                                                            @foreach ($child->permissions as $permission)
+                                                                {!! $permission->display_name !!}<br/>
+                                                            @endforeach
+                                                        </div>
+                                                    @endif
+                                                </td>
+                                                <td>{!! $child->action_buttons !!}</td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div><!--col-lg-8-->
                 </div><!--row-->
 
@@ -121,65 +123,67 @@
 
             <div role="tabpanel" class="tab-pane" id="permissions" style="padding-top:20px">
 
-                <table class="table table-striped table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th>{{ trans('crud.permissions.permission') }}</th>
-                        <th>{{ trans('crud.permissions.name') }}</th>
-                        <th>{{ trans('crud.permissions.dependencies') }}</th>
-                        <th>{{ trans('crud.permissions.users') }}</th>
-                        <th>{{ trans('crud.permissions.roles') }}</th>
-                        <th>{{ trans('crud.permissions.group') }}</th>
-                        <th>{{ trans('crud.permissions.group-sort') }}</th>
-                        <th>{{ trans('crud.permissions.system') }}</th>
-                        <th>{{ trans('crud.actions') }}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($permissions as $permission)
-                            <tr>
-                                <td>{!! $permission->name !!}</td>
-                                <td>{!! $permission->display_name !!}</td>
-                                <td>
-                                    @if (count($permission->dependencies))
-                                        @foreach($permission->dependencies as $dependency)
-                                            {!! $dependency->permission->display_name !!}<br/>
-                                        @endforeach
-                                    @else
-                                        <span class="label label-success">None</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if (count($permission->users))
-                                        @foreach($permission->users as $user)
-                                            {!! $user->name !!}<br/>
-                                        @endforeach
-                                    @else
-                                        <span class="label label-danger">None</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    {!! $roles->findOrThrowException(1)->name !!}<br/>
-                                    @if (count($permission->roles))
-                                        @foreach($permission->roles as $role)
-                                            {!! $role->name !!}<br/>
-                                        @endforeach
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($permission->group)
-                                        {!! $permission->group->name !!}
-                                    @else
-                                        <span class="label label-danger">None</span>
-                                    @endif
-                                </td>
-                                <td>{!! $permission->sort !!}</td>
-                                <td>{!! $permission->system_label !!}</td>
-                                <td>{!! $permission->action_buttons !!}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>{{ trans('crud.permissions.permission') }}</th>
+                            <th>{{ trans('crud.permissions.name') }}</th>
+                            <th>{{ trans('crud.permissions.dependencies') }}</th>
+                            <th>{{ trans('crud.permissions.users') }}</th>
+                            <th>{{ trans('crud.permissions.roles') }}</th>
+                            <th>{{ trans('crud.permissions.group') }}</th>
+                            <th>{{ trans('crud.permissions.group-sort') }}</th>
+                            <th>{{ trans('crud.permissions.system') }}</th>
+                            <th>{{ trans('crud.actions') }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($permissions as $permission)
+                                <tr>
+                                    <td>{!! $permission->name !!}</td>
+                                    <td>{!! $permission->display_name !!}</td>
+                                    <td>
+                                        @if (count($permission->dependencies))
+                                            @foreach($permission->dependencies as $dependency)
+                                                {!! $dependency->permission->display_name !!}<br/>
+                                            @endforeach
+                                        @else
+                                            <span class="label label-success">None</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if (count($permission->users))
+                                            @foreach($permission->users as $user)
+                                                {!! $user->name !!}<br/>
+                                            @endforeach
+                                        @else
+                                            <span class="label label-danger">None</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        {!! $roles->findOrThrowException(1)->name !!}<br/>
+                                        @if (count($permission->roles))
+                                            @foreach($permission->roles as $role)
+                                                {!! $role->name !!}<br/>
+                                            @endforeach
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($permission->group)
+                                            {!! $permission->group->name !!}
+                                        @else
+                                            <span class="label label-danger">None</span>
+                                        @endif
+                                    </td>
+                                    <td>{!! $permission->sort !!}</td>
+                                    <td>{!! $permission->system_label !!}</td>
+                                    <td>{!! $permission->action_buttons !!}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
 
                 <div class="pull-left">
                     {{ $permissions->total() }} {{ trans('crud.permissions.total') }}
