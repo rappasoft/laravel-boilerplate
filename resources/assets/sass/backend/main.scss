@@ -1,9 +1,8 @@
 // Any Bootstrap or FontAwesome-specific variables added here will overwrite the defaults.
 @import "variable-overrides";
 
-@import '../../../../vendor/twbs/bootstrap-sass/assets/stylesheets/_bootstrap';
-//or @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import '../../../../vendor/fortawesome/font-awesome/scss/font-awesome';
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import '../../../../node_modules/font-awesome/scss/font-awesome';
 
 //Place any custom scss in here
 @import "custom";

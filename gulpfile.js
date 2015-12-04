@@ -4,10 +4,10 @@ elixir(function(mix) {
     mix
         .phpUnit()
 
-        // Copy webfont files from /vendor directories to /public directory.
-        .copy('vendor/fortawesome/font-awesome/fonts', 'public/build/fonts/font-awesome')
-        .copy('vendor/twbs/bootstrap-sass/assets/fonts/bootstrap', 'public/build/fonts/bootstrap')
-        .copy('vendor/twbs/bootstrap/dist/js/bootstrap.min.js', 'public/js/vendor')
+        // Copy needed files from /node directories to /public directory.
+        .copy('node_modules/font-awesome/fonts', 'public/build/fonts/font-awesome')
+        .copy('node_modules/bootstrap-sass/assets/fonts/bootstrap', 'public/build/fonts/bootstrap')
+        .copy('node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js', 'public/js/vendor')
 
         .sass([ // Process front-end stylesheets
                 'frontend/main.scss'
@@ -47,9 +47,9 @@ elixir(function(mix) {
         .phpUnit()
 
         // Copy webfont files from /vendor directories to /public directory.
-        .copy('vendor/fortawesome/font-awesome/fonts', 'public/build/fonts/font-awesome')
-        .copy('vendor/twbs/bootstrap/fonts', 'public/build/fonts/bootstrap')
-        .copy('vendor/twbs/bootstrap/dist/js/bootstrap.min.js', 'public/js/vendor')
+        .copy('node_modules/font-awesome/fonts', 'public/build/fonts/font-awesome')
+        .copy('node_modules/bootstrap-less/fonts', 'public/build/fonts/bootstrap')
+        .copy('node_modules/bootstrap-less/js/bootstrap.min.js', 'public/js/vendor')
 
         .less([ // Process front-end stylesheets
             'frontend/main.less'
