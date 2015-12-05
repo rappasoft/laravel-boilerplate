@@ -186,17 +186,23 @@ class AuthController extends Controller
         $socialite_enable = [];
         $socialite_links = '';
 
-        if (getenv('GITHUB_CLIENT_ID') != '')
-            $socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Github']), 'github');
+        if (getenv('BITBUCKET_CLIENT_ID') != '')
+            $socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Bit Bucket']), 'bitbucket');
 
         if (getenv('FACEBOOK_CLIENT_ID') != '')
             $socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Facebook']), 'facebook');
 
-        if (getenv('TWITTER_CLIENT_ID') != '')
-            $socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Twitter']), 'twitter');
-
         if (getenv('GOOGLE_CLIENT_ID') != '')
             $socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Google']), 'google');
+
+        if (getenv('GITHUB_CLIENT_ID') != '')
+            $socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Github']), 'github');
+
+        if (getenv('LINKEDIN_CLIENT_ID') != '')
+            $socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Linked In']), 'linkedin');
+
+        if (getenv('TWITTER_CLIENT_ID') != '')
+            $socialite_enable[] = link_to_route('auth.provider', trans('labels.login_with', ['social_media' => 'Twitter']), 'twitter');
 
         for ($i = 0; $i < count($socialite_enable); $i++) {
             $socialite_links .= ($socialite_links != '' ? '&nbsp;|&nbsp;' : '') . $socialite_enable[$i];

@@ -35,35 +35,71 @@ return [
 		'secret' => env('STRIPE_SECRET'),
 	],
 
-	/*
+	/**
 	 * Socialite Credentials
 	 * Redirect URL's need to be the same as specified on each network you set up this application on
 	 * as well as conform to the route:
 	 * http://localhost/public/auth/login/SERVICE
-	 * Where service can github, facebook, twitter, or google
+	 * Where service can github, facebook, twitter, google, linkedin, or bitbucket
+	 * Docs: http://laravel.com/docs/5.1/authentication#social-authentication
+	 * Make sure scopes and with are arrays, if their are none, use empty arrays []
 	 */
 
-	'github' => [
-		'client_id' => env('GITHUB_CLIENT_ID'),
-		'client_secret' => env('GITHUB_CLIENT_SECRET'),
-		'redirect' => env('GITHUB_REDIRECT'),
+	'bitbucket' => [
+		'client_id' => env('BITBUCKET_CLIENT_ID'),
+		'client_secret' => env('BITBUCKET_CLIENT_SECRET'),
+		'redirect' => env('BITBUCKET_REDIRECT'),
+		'scopes' => [],
+		'with' => [],
 	],
 
 	'facebook' => [
 		'client_id' => env('FACEBOOK_CLIENT_ID'),
 		'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
 		'redirect' => env('FACEBOOK_REDIRECT'),
+		'scopes' => [],
+		'with' => [],
 	],
 
-	'twitter' => [
-		'client_id' => env('TWITTER_CLIENT_ID'),
-		'client_secret' => env('TWITTER_CLIENT_SECRET'),
-		'redirect' => env('TWITTER_REDIRECT'),
+	'github' => [
+		'client_id' => env('GITHUB_CLIENT_ID'),
+		'client_secret' => env('GITHUB_CLIENT_SECRET'),
+		'redirect' => env('GITHUB_REDIRECT'),
+		'scopes' => [],
+		'with' => [],
 	],
 
 	'google' => [
 		'client_id' => env('GOOGLE_CLIENT_ID'),
 		'client_secret' => env('GOOGLE_CLIENT_SECRET'),
 		'redirect' => env('GOOGLE_REDIRECT'),
+
+		/**
+		 * Only allows google to grab email address
+		 * Default scopes array also has: 'https://www.googleapis.com/auth/plus.login'
+		 * https://medium.com/@njovin/fixing-laravel-socialite-s-google-permissions-2b0ef8c18205
+		 */
+		'scopes' => [
+			'https://www.googleapis.com/auth/plus.me',
+			'https://www.googleapis.com/auth/plus.profile.emails.read',
+		],
+
+		'with' => [],
+	],
+
+	'linkedin' => [
+		'client_id' => env('LINKEDIN_CLIENT_ID'),
+		'client_secret' => env('LINKEDIN_CLIENT_SECRET'),
+		'redirect' => env('LINKEDIN_REDIRECT'),
+		'scopes' => [],
+		'with' => [],
+	],
+
+	'twitter' => [
+		'client_id' => env('TWITTER_CLIENT_ID'),
+		'client_secret' => env('TWITTER_CLIENT_SECRET'),
+		'redirect' => env('TWITTER_REDIRECT'),
+		'scopes' => [],
+		'with' => [],
 	],
 ];

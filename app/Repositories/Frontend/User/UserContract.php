@@ -14,9 +14,10 @@ interface UserContract {
 
 	/**
 	 * @param $data
+	 * @param $provider
 	 * @return mixed
-	 */
-	public function findByUserNameOrCreate($data, $provider);
+     */
+	public function findByUsernameOrCreate($data, $provider);
 
 	/**
 	 * @param $provider

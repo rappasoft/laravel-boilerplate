@@ -42,20 +42,46 @@ class EloquentUserRepository implements UserContract {
 	 * @return static
 	 */
 	public function create($data, $provider = false) {
-		$user = User::create([
-			'name' => $data['name'],
-			'email' => $data['email'],
-			'password' => $provider ? null : $data['password'],
-			'confirmation_code' => md5(uniqid(mt_rand(), true)),
-			'confirmed' => config('access.users.confirm_email') ? 0 : 1,
-		]);
+		/**
+		 * See if creating a user from a social account or the application
+		 */
+		if ($provider) {
+			$user = User::create([
+				'name' => $data['name'],
+				'email' => $data['email'],
+				'password' => null,
+				'confirmation_code' => md5(uniqid(mt_rand(), true)),
+				'confirmed' => 1,
+				'status' => 1,
+			]);
+		} else {
+			$user = User::create([
+				'name' => $data['name'],
+				'email' => $data['email'],
+				'password' => $data['password'],
+				'confirmation_code' => md5(uniqid(mt_rand(), true)),
+				'confirmed' => config('access.users.confirm_email') ? 0 : 1,
+				'status' => 1,
+			]);
+		}
+
+		/**
+		 * Add the default site role to the new user
+		 */
 		$user->attachRole($this->role->getDefaultUserRole());
 
+		/**
+		 * If users have to confirm their email and this is not a social account,
+		 * send the confirmation email
+		 *
+		 * If this is a social account they are confirmed through the social provider by default
+		 */
 		if (config('access.users.confirm_email') and $provider === false)
         		$this->sendConfirmationEmail($user);
-    		else
-        		$user->confirmed = 1;
 
+		/**
+		 * Return the user object
+		 */
 		return $user;
 	}
 
@@ -64,14 +90,17 @@ class EloquentUserRepository implements UserContract {
 	 * @param $provider
 	 * @return static
 	 */
-	public function findByUserNameOrCreate($data, $provider) {
+	public function findByUsernameOrCreate($data, $provider) {
+		/**
+		 * Check to see if there is a user with this email first
+		 */
 		$user = User::where('email', $data->email)->first();
-		$providerData = [
-			'avatar' => $data->avatar,
-			'provider' => $provider,
-			'provider_id' => $data->id,
-		];
 
+		/**
+		 * If the user does not exist create them
+		 * The true flag indicate that it is a social account
+		 * Which triggers the script to use some default values in the create method
+		 */
 		if(! $user) {
 			$user = $this->create([
 				'name' => $data->name,
@@ -79,11 +108,24 @@ class EloquentUserRepository implements UserContract {
 			], true);
 		}
 
+		/**
+		 * See if the user has logged in with this social account before
+		 */
 		if ($this->hasProvider($user, $provider))
+			/**
+			 * Account is not new, see if the account needs updating
+			 */
 			$this->checkIfUserNeedsUpdating($provider, $data, $user);
 		else
 		{
-			$user->providers()->save(new UserProvider($providerData));
+			/**
+			 * Gather the provider data for saving and associate it with the user
+			 */
+			$user->providers()->save(new UserProvider([
+				'avatar' => $data->avatar,
+				'provider' => $provider,
+				'provider_id' => $data->id,
+			]));
 		}
 
 		return $user;
@@ -118,7 +160,9 @@ class EloquentUserRepository implements UserContract {
 			'email' => $user->email,
 			'name' => $user->name,
 		];
+
 		$differences = array_diff($userData, $dbData);
+
 		if (! empty($differences)) {
 			$user->email = $providerData->email;
 			$user->name = $providerData->name;
@@ -127,6 +171,7 @@ class EloquentUserRepository implements UserContract {
 
 		//Then have to check to see if avatar for specific provider has changed
 		$p = $user->providers()->where('provider', $provider)->first();
+
 		if ($p->avatar != $providerData->avatar) {
 			$p->avatar = $providerData->avatar;
 			$p->save();

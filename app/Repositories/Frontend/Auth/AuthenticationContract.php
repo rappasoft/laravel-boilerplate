@@ -53,4 +53,10 @@ interface AuthenticationContract {
 	 * @return mixed
 	 */
 	public function resendConfirmationEmail($user_id);
+
+	/**
+	 * @param $user
+	 * @return mixed
+     */
+	public function isBannedOrDeactivated($user);
 }

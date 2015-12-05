@@ -16,11 +16,12 @@ $router->group(['namespace' => 'Auth'], function () use ($router)
 	});
 
 	/**
-	 * These reoutes require the user NOT be logged in
+	 * These routes require the user NOT be logged in
 	 */
 	$router->group(['middleware' => 'guest'], function () use ($router)
 	{
 		get('auth/login/{provider}', 'AuthController@loginThirdParty')->name('auth.provider');
+
 		get('account/confirm/{token}', 'AuthController@confirmAccount')->name('account.confirm');
 		get('account/confirm/resend/{user_id}', 'AuthController@resendConfirmationEmail')->name('account.confirm.resend');
 
