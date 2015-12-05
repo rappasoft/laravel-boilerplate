@@ -1,10 +1,10 @@
-## Laravel 5.* Boilerplate (Currently 5.1.24) [Screenshots](http://imgur.com/a/uEKuq)
+## Laravel 5.* Boilerplate, Currently 5.1.26 (LTS) [Screenshots](http://imgur.com/a/uEKuq)
 
 [![Project Status](http://stillmaintained.com/rappasoft/Laravel-5-Boilerplate.png)](http://stillmaintained.com/rappasoft/Laravel-5-Boilerplate) [![Latest Stable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/stable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate) [![Latest Unstable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/unstable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate)
 
 ### Introduction
 
-Laravel Boilerplate provides you with a massive head start on any size web application. It comes with a full featured access control system out of the box with an easy to learn API. We have put a lot of work into it and we hope it serves you well and saves you time!
+Laravel Boilerplate provides you with a massive head start on any size web application. It comes with a full featured access control system out of the box with an easy to learn API and is built on a Twitter Bootstrap foundation with a front and backend architecture. We have put a lot of work into it and we hope it serves you well and saves you time!
 
 ### Wiki
 

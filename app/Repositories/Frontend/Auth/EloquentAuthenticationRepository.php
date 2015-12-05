@@ -57,18 +57,7 @@ class EloquentAuthenticationRepository implements AuthenticationContract {
 	public function login($request) {
 		if ($this->auth->attempt($request->only('email', 'password'), $request->has('remember')))
 		{
-
-			if ($this->auth->user()->status == 0)
-			{
-				$this->auth->logout();
-				throw new GeneralException("Your account is currently deactivated.");
-			}
-
-			if ($this->auth->user()->status == 2)
-			{
-				$this->auth->logout();
-				throw new GeneralException("Your account is currently banned.");
-			}
+			$this->isBannedOrDeactivated($this->auth->user());
 
 			if ($this->auth->user()->confirmed == 0)
 			{
@@ -103,38 +92,77 @@ class EloquentAuthenticationRepository implements AuthenticationContract {
 	 * @throws GeneralException
 	 */
 	public function loginThirdParty($request, $provider) {
-		if (! $request) return $this->getAuthorizationFirst($provider);
-		$user = $this->users->findByUserNameOrCreate($this->getSocialUser($provider), $provider);
+		/**
+		 * The first time this is hit, request is empty
+		 * It's redirected to the provider and then back here, where request is populated
+		 * So it then continues creating the user
+		 */
+		if (! $request)
+			return $this->getAuthorizationFirst($provider);
 
 		/**
-		 * The user can not log in with a social account if they have been banned or deactivated.
+		 * Create the user if this is a new social account or find the one that is already there
 		 */
-		if ($user->isBannedOrDeactivated())
-			throw new GeneralException("Your account has been banned or deactivated.");
+		$user = $this->users->findByUsernameOrCreate($this->getSocialUser($provider), $provider);
 
+		/**
+		 * See if the user has been banned or deactivated from the admin area
+		 * They should be by default active the first time they log in with a social account
+		 */
+		$this->isBannedOrDeactivated($user);
+
+		/**
+		 * User has been successfully created or already exists
+		 * Log the user in and redirect to the dashboard
+		 */
 		$this->auth->login($user, true);
+
+		/**
+		 * Throw an event in case you want to do anything when the user logs in
+		 */
 		event(new UserLoggedIn($user));
+
 		return redirect()->route('frontend.dashboard');
 	}
 
 	/**
 	 * @param $provider
-	 * @return \Symfony\Component\HttpFoundation\RedirectResponse
-	 */
+	 * @return mixed
+     */
 	public function getAuthorizationFirst($provider) {
-		if ($provider == "google") {
-			/*
-			 * Only allows google to grab email address
-			 * Default scopes array also has: 'https://www.googleapis.com/auth/plus.login'
-			 * https://medium.com/@njovin/fixing-laravel-socialite-s-google-permissions-2b0ef8c18205
-			 */
-			$scopes = [
-				'https://www.googleapis.com/auth/plus.me',
-				'https://www.googleapis.com/auth/plus.profile.emails.read',
-			];
-			return $this->socialite->driver($provider)->scopes($scopes)->redirect();
+		/**
+		 * Both scopes and with are set
+		 */
+		if (count(config("services.{$provider}.scopes")) && count(config("services.{$provider}.with"))) {
+			return $this->socialite->driver($provider)
+				->scopes(config("services.{$provider}.scopes"))
+				->with(config("services.{$provider}.with"))
+				->redirect();
 		}
-		return $this->socialite->driver($provider)->redirect();
+
+		/**
+		 * Just scopes are set
+		 */
+		if (count(config("services.{$provider}.scopes")) && ! count(config("services.{$provider}.with"))) {
+			return $this->socialite->driver($provider)
+				->scopes(config("services.{$provider}.scopes"))
+				->redirect();
+		}
+
+		/**
+		 * Just with is set
+		 */
+		if (! count(config("services.{$provider}.scopes")) && count(config("services.{$provider}.with"))) {
+			return $this->socialite->driver($provider)
+				->with(config("services.{$provider}.with"))
+				->redirect();
+		}
+
+		/**
+		 * Neither scopes or with are set
+		 */
+		return $this->socialite->driver($provider)
+			->redirect();
 	}
 
 	/**
@@ -142,7 +170,8 @@ class EloquentAuthenticationRepository implements AuthenticationContract {
 	 * @return \Laravel\Socialite\Contracts\User
 	 */
 	public function getSocialUser($provider) {
-		return $this->socialite->driver($provider)->user();
+		return $this->socialite->driver($provider)
+			->user();
 	}
 
 	/**
@@ -159,5 +188,21 @@ class EloquentAuthenticationRepository implements AuthenticationContract {
 	 */
 	public function resendConfirmationEmail($user_id) {
 		return $this->users->sendConfirmationEmail($user_id);
+	}
+
+	/**
+	 * @param $user
+	 * @return bool
+	 * @throws GeneralException
+     */
+	public function isBannedOrDeactivated($user) {
+		if ($user instanceof User) {
+			if ($user->isBanned())
+				throw new GeneralException("Your account has been banned.");
+			if ($user->isDeactivated())
+				throw new GeneralException("Your account has been deactivated.");
+		}
+
+		return true;
 	}
 }
