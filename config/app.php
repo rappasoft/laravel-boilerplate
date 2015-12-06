@@ -161,7 +161,9 @@ return [
 		/*
 		 * Third party service providers
 		 */
+
 		'Arcanedev\LogViewer\LogViewerServiceProvider',
+		'Barryvdh\Debugbar\ServiceProvider',
 		'Creativeorange\Gravatar\GravatarServiceProvider',
 		'HieuLe\Active\ActiveServiceProvider',
 		'Laracasts\Utilities\JavaScript\JavaScriptServiceProvider',
@@ -217,6 +219,7 @@ return [
 
 		/* Third Party */
 		'Active'    => 'HieuLe\Active\Facades\Active',
+		'Debugbar'  => 'Barryvdh\Debugbar\Facade',
 		'Form'		=> 'Collective\Html\FormFacade',
 		'Gravatar'  => 'Creativeorange\Gravatar\Facades\Gravatar',
 		'HTML'		=> 'Collective\Html\HtmlFacade',
