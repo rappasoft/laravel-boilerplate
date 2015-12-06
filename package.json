@@ -7,6 +7,6 @@
     "bootstrap-less": "^3.3.8",
     "bootstrap-sass": "^3.3.6",
     "font-awesome": "^4.5.0",
-    "laravel-elixir": "^3.0.0"
+    "laravel-elixir": "^4.0.0"
   }
 }
