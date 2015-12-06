@@ -91,4 +91,9 @@ return array(
 		 */
 		'role_must_contain_permission' => true
 	],
+
+	/*
+	 * Socialite session variable name
+	 */
+	'socialite_session_name' => 'socialite_provider',
 );

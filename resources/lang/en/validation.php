@@ -107,6 +107,7 @@ return [
 
     'attributes' => [
         'name' => 'Name',
+        'avatar' => 'Avatar',
         'email' => 'E-mail',
         'password' => 'Password',
         'password_confirmation' => 'Password Confirmation',
