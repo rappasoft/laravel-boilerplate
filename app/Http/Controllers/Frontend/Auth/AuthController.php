@@ -127,10 +127,11 @@ class AuthController extends Controller
         //Don't know why the exception handler is not catching this
         try {
             $this->auth->confirmAccount($token);
-            return redirect()->route('frontend.dashboard')->withFlashSuccess("Your account has been successfully confirmed!");
         } catch (GeneralException $e) {
             return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
         }
+
+        return redirect()->to('auth/login')->withFlashSuccess("Your account has been successfully confirmed!");
     }
 
     /**
