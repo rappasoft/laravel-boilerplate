@@ -107,6 +107,13 @@ class AuthController extends Controller
     public function getLogout()
     {
         $this->auth->logout();
+
+        /**
+         * Remove the socialite session variable if exists
+         */
+        if (app('session')->has(config('access.socialite_session_name')))
+            app('session')->forget(config('access.socialite_session_name'));
+
         return redirect()->route('home');
     }
 

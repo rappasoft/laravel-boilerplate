@@ -59,6 +59,13 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	}
 
 	/**
+	 * @return mixed
+     */
+	public function canChangePassword() {
+		return ! app('session')->has(config('access.socialite_session_name'));
+	}
+
+	/**
 	 * @return bool
      */
 	public function isBanned()

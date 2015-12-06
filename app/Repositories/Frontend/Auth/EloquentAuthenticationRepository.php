@@ -122,6 +122,14 @@ class EloquentAuthenticationRepository implements AuthenticationContract {
 		 */
 		event(new UserLoggedIn($user));
 
+		/**
+		 * Set session variable so we know which provider user is logged in as, if ever needed
+		 */
+		session([config('access.socialite_session_name') => $provider]);
+
+		/**
+		 * Redirect back to the user dashboard with them logged in
+		 */
 		return redirect()->route('frontend.dashboard');
 	}
 
