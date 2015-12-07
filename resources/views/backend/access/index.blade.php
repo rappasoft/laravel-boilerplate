@@ -9,11 +9,6 @@
     </h1>
 @endsection
 
-@section ('breadcrumbs')
-    <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> {{ trans('menus.dashboard') }}</a></li>
-    <li class="active">{!! link_to_route('admin.access.users.index', trans('menus.user_management')) !!}</li>
-@stop
-
 @section('content')
     @include('backend.access.includes.partials.header-buttons')
     <div class="table-responsive">

@@ -15,12 +15,6 @@
     {!! HTML::style('css/backend/plugin/nestable/jquery.nestable.css') !!}
 @stop
 
-@section ('breadcrumbs')
-    <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> {{ trans('menus.dashboard') }}</a></li>
-    <li>{!! link_to_route('admin.access.users.index', trans('menus.user_management')) !!}</li>
-    <li class="active">{!! link_to_route('admin.access.roles.permissions.index', trans('menus.permission_management')) !!}</li>
-@stop
-
 @section('content')
     @include('backend.access.includes.partials.header-buttons')
 

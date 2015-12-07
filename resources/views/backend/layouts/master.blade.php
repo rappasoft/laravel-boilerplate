@@ -31,9 +31,9 @@
             <!-- Content Header (Page header) -->
             <section class="content-header">
               @yield('page-header')
-              <ol class="breadcrumb">
-                @yield('breadcrumbs')
-              </ol>
+
+              {{-- Change to Breadcrumbs::render() if you want it to error to remind you to create the breadcrumbs for the given route --}}
+              {!! Breadcrumbs::renderIfExists() !!}
             </section>
 
             <!-- Main content -->

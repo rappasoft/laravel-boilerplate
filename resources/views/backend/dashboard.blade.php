@@ -7,11 +7,6 @@
     </h1>
 @endsection
 
-@section('breadcrumbs')
-    <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> {{ trans('menus.dashboard') }}</a></li>
-    <li class="active">{{ trans('strings.here') }}</li>
-@endsection
-
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">

@@ -7,12 +7,6 @@
     </h1>
 @endsection
 
-@section('breadcrumbs')
-    <li><a href="{!! route('backend.dashboard') !!}"><i class="fa fa-dashboard"></i> {{ trans('menus.dashboard') }}</a></li>
-    <li><a href="{!! url('admin/log-viewer') !!}">{{ trans('menus.log-viewer.main') }}</a></li>
-    <li class="active"><a href="{!! url('admin/log-viewer/logs') !!}">{{ trans('menus.log-viewer.logs') }}</a></li>
-@endsection
-
 @section('after-styles-end')
     <style>
         /* Log level labels & progress bars */
