@@ -10,28 +10,39 @@
 @endsection
 
 @section('content')
-
-    @include('backend.access.includes.partials.header-buttons')
-
     {!! Form::open(['route' => 'admin.access.roles.permission-group.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) !!}
 
-        <div class="form-group">
-            {!! Form::label('name', trans('validation.attributes.permission_group_name'), ['class' => 'col-lg-2 control-label']) !!}
-            <div class="col-lg-10">
-                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.permission_group_name')]) !!}
-            </div>
-        </div><!--form control-->
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">{{ trans('menus.active_users') }}</h3>
 
-        <div class="well">
-            <div class="pull-left">
-                <a href="{!! route('admin.access.roles.permissions.index') !!}" class="btn btn-danger btn-xs">{{ trans('strings.cancel_button') }}</a>
-            </div>
+                <div class="box-tools pull-right">
+                    @include('backend.access.includes.partials.header-buttons')
+                </div>
+            </div><!-- /.box-header -->
 
-            <div class="pull-right">
-                <input type="submit" class="btn btn-success btn-xs" value="{{ trans('strings.save_button') }}" />
-            </div>
-            <div class="clearfix"></div>
-        </div><!--well-->
+            <div class="box-body">
+                <div class="form-group">
+                    {!! Form::label('name', trans('validation.attributes.permission_group_name'), ['class' => 'col-lg-2 control-label']) !!}
+                    <div class="col-lg-10">
+                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.permission_group_name')]) !!}
+                    </div>
+                </div><!--form control-->
+            </div><!-- /.box-body -->
+        </div><!--box-->
+
+        <div class="box box-success">
+            <div class="box-body">
+                <div class="pull-left">
+                    <a href="{!! route('admin.access.roles.permissions.index') !!}" class="btn btn-danger btn-xs">{{ trans('strings.cancel_button') }}</a>
+                </div>
+
+                <div class="pull-right">
+                    <input type="submit" class="btn btn-success btn-xs" value="{{ trans('strings.save_button') }}" />
+                </div>
+                <div class="clearfix"></div>
+            </div><!-- /.box-body -->
+        </div><!--box-->
 
     {!! Form::close() !!}
 @stop
