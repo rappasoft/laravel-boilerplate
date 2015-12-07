@@ -45,7 +45,7 @@
 								@endif
 
 							    @permission('view-backend')
-							        <li>{!! link_to_route('backend.dashboard', trans('navs.administration')) !!}</li>
+							        <li>{!! link_to_route('admin.dashboard', trans('navs.administration')) !!}</li>
 							    @endauth
 
 								<li>{!! link_to('auth/logout', trans('navs.logout')) !!}</li>

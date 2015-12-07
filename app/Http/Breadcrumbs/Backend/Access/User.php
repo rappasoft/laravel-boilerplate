@@ -2,7 +2,7 @@
 
 Breadcrumbs::register('admin.access.users.index', function($breadcrumbs)
 {
-    $breadcrumbs->parent('backend.dashboard');
+    $breadcrumbs->parent('admin.dashboard');
     $breadcrumbs->push(trans('menus.user_management'), route('admin.access.users.index'));
 });
 
