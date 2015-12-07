@@ -31,7 +31,7 @@
                 <li class="header">{{ trans('menus.general') }}</li>
 
                 <!-- Optionally, you can add icons to the links -->
-                <li class="{{ Active::pattern('admin/dashboard') }}"><a href="{!!route('backend.dashboard')!!}"><span>{{ trans('menus.dashboard') }}</span></a></li>
+                <li class="{{ Active::pattern('admin/dashboard') }}"><a href="{!!route('admin.dashboard')!!}"><span>{{ trans('menus.dashboard') }}</span></a></li>
 
                 @permission('view-access-management')
                   <li class="{{ Active::pattern('admin/access/*') }}"><a href="{!!url('admin/access/users')!!}"><span>{{ trans('menus.access_management') }}</span></a></li>

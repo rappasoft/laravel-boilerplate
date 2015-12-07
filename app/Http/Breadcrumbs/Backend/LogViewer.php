@@ -2,7 +2,7 @@
 
 Breadcrumbs::register('log-viewer::dashboard', function($breadcrumbs)
 {
-    $breadcrumbs->parent('backend.dashboard');
+    $breadcrumbs->parent('admin.dashboard');
     $breadcrumbs->push(trans('menus.log-viewer.main'), url('admin/log-viewer'));
 });
 

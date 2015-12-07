@@ -2,7 +2,7 @@
 
 Breadcrumbs::register('admin.access.roles.permissions.index', function($breadcrumbs)
 {
-    $breadcrumbs->parent('backend.dashboard');
+    $breadcrumbs->parent('admin.dashboard');
     $breadcrumbs->push(trans('menus.permission_management'), route('admin.access.roles.permissions.index'));
 });
 
