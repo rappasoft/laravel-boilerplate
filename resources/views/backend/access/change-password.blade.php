@@ -13,13 +13,6 @@
     </h1>
 @endsection
 
-@section ('breadcrumbs')
-    <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-    <li>{!! link_to_route('admin.access.users.index', 'User Management') !!}</li>
-    <li>{!! link_to_route('admin.access.users.edit', "Edit ".$user->name, $user->id) !!}</li>
-    <li class="active">{!! link_to_route('admin.access.user.change-password', 'Change Password', $user->id) !!}</li>
-@stop
-
 @section('content')
     @include('backend.access.includes.partials.header-buttons')
 
