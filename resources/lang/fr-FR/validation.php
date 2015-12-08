@@ -35,7 +35,7 @@ return [
     'digits'               => 'Le champ :attribute doit contenir :digits chiffres.',
     'digits_between'       => 'Le champ :attribute doit avoir entre :min et :max chiffres.',
     'email'                => 'Le champ :attribute doit être une adresse e-mail valide.',
-    'exists'               => 'Le champ :attribute existe déjà.',
+    'exists'               => 'Le champ :attribute n\'existe pas.',
     'filled'               => 'Le champ :attribute est obligatoire.',
     'image'                => 'Le champ :attribute doit être une image.',
     'in'                   => 'Le champ :attribute est invalide.',
