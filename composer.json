@@ -14,7 +14,6 @@
 	    "laracasts/utilities": "~2.1",
 		"arcanedev/log-viewer": "~3.5.0",
 		"creativeorange/gravatar": "~1.0",
-		"barryvdh/laravel-debugbar": "^2.0",
 		"davejamesmiller/laravel-breadcrumbs": "^3.0"
 	},
 	"require-dev": {
@@ -23,6 +22,7 @@
         "phpunit/phpunit": "~5.0",
         "phpspec/phpspec": "~2.1",
         "laracasts/generators": "~1.1",
+        "barryvdh/laravel-debugbar": "^2.0",
         "potsky/laravel-localization-helpers" : "~1.1"
 	},
 	"autoload": {
