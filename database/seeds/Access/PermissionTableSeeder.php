@@ -26,7 +26,10 @@ class PermissionTableSeeder extends Seeder {
 			DB::statement("TRUNCATE TABLE ".config('access.permission_user_table')." CASCADE");
 		}
 
-		//Don't need to assign any permissions to administrator because the all flag is set to true
+		/**
+		 * Don't need to assign any permissions to administrator because the all flag is set to true
+		 * in RoleTableSeeder.php
+		 */
 
 		/**
 		 * Misc Access Permissions
