@@ -1,6 +1,6 @@
 <?php namespace App\Providers;
 
-use App\Services\Macros;
+use App\Services\Macros\Macros;
 use Collective\Html\HtmlServiceProvider;
 
 /**
