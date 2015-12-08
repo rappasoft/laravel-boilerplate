@@ -14,9 +14,15 @@ class CreatePasswordResetsTable extends Migration {
 	{
 		Schema::create('password_resets', function(Blueprint $table)
 		{
-			$table->string('email')->index();
-			$table->string('token')->index();
+			$table->string('email');
+			$table->string('token');
 			$table->timestamp('created_at');
+
+			/**
+			 * Add Foreign/Unique/Index
+			 */
+			$table->index('email');
+			$table->index('token');
 		});
 	}
 
@@ -27,7 +33,14 @@ class CreatePasswordResetsTable extends Migration {
 	 */
 	public function down()
 	{
+		/**
+		 * Remove Foreign/Unique/Index
+		 */
+		Schema::table('password_resets', function (Blueprint $table) {
+			$table->dropIndex('password_resets_email_index');
+			$table->dropIndex('password_resets_token_index');
+		});
+
 		Schema::drop('password_resets');
 	}
-
 }

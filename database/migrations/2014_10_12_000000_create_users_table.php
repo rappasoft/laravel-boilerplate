@@ -14,15 +14,20 @@ class CreateUsersTable extends Migration {
 	{
 		Schema::create('users', function(Blueprint $table)
 		{
-			$table->increments('id');
+			$table->increments('id')->unsigned();
 			$table->string('name');
-			$table->string('email')->unique();
+			$table->string('email');
 			$table->string('password', 60)->nullable();
 			$table->string('confirmation_code');
 			$table->boolean('confirmed')->default(config('access.users.confirm_email') ? false : true);
 			$table->rememberToken();
 			$table->timestamps();
 			$table->softDeletes();
+
+			/**
+			 * Add Foreign/Unique/Index
+			 */
+			$table->unique('email');
 		});
 	}
 
@@ -33,6 +38,13 @@ class CreateUsersTable extends Migration {
 	 */
 	public function down()
 	{
+		/**
+		 * Remove Foreign/Unique/Index
+		 */
+		Schema::table('users', function (Blueprint $table) {
+			$table->dropUnique('users_email_unique');
+		});
+
 		Schema::drop('users');
 	}
 }
