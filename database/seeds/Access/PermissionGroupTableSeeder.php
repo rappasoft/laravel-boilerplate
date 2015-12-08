@@ -23,7 +23,6 @@ class PermissionGroupTableSeeder extends Seeder {
         /**
          * Create the Access groups
          */
-
         $group_model = config('access.group');
         $access = new $group_model;
         $access->name = 'Access';
