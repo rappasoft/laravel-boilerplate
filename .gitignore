@@ -1,5 +1,13 @@
 /vendor
 /node_modules
+/public/css/frontend.css
+/public/css/frontend.css.map
+/public/css/backend.css
+/public/css/backend.css.map
+/public/js/frontend.js
+/public/js/frontend.js.map
+/public/js/backend.js
+/public/js/backend.js.map
 Homestead.yaml
 Homestead.json
 .env
