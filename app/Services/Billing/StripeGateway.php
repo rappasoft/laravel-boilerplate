@@ -3,10 +3,10 @@
 namespace App\Services\Billing;
 
 use Stripe;
+use Stripe_Plan;
 use Stripe_Charge;
 use Stripe_Coupon;
 use Stripe_Customer;
-use Stripe_Plan;
 
 /**
  * Class StripeGateway

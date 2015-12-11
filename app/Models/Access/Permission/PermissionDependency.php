@@ -2,8 +2,8 @@
 
 namespace App\Models\Access\Permission;
 
-use App\Models\Access\Permission\Traits\Relationship\PermissionDependencyRelationship;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Access\Permission\Traits\Relationship\PermissionDependencyRelationship;
 
 /**
  * Class PermissionDependency

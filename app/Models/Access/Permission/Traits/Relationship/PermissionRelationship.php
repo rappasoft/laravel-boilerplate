@@ -2,8 +2,8 @@
 
 namespace App\Models\Access\Permission\Traits\Relationship;
 
-use App\Models\Access\Permission\PermissionDependency;
 use App\Models\Access\Permission\PermissionGroup;
+use App\Models\Access\Permission\PermissionDependency;
 
 /**
  * Class PermissionRelationship

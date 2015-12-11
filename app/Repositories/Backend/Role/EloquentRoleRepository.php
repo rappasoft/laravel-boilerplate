@@ -2,8 +2,8 @@
 
 namespace App\Repositories\Backend\Role;
 
-use App\Exceptions\GeneralException;
 use App\Models\Access\Role\Role;
+use App\Exceptions\GeneralException;
 
 /**
  * Class EloquentRoleRepository

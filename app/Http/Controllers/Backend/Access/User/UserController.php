@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Backend\Access\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Access\User\ChangeUserPasswordRequest;
+use App\Repositories\Backend\User\UserContract;
+use App\Repositories\Backend\Role\RoleRepositoryContract;
+use App\Repositories\Frontend\Auth\AuthenticationContract;
 use App\Http\Requests\Backend\Access\User\CreateUserRequest;
-use App\Http\Requests\Backend\Access\User\DeleteUserRequest;
+use App\Http\Requests\Backend\Access\User\StoreUserRequest;
 use App\Http\Requests\Backend\Access\User\EditUserRequest;
 use App\Http\Requests\Backend\Access\User\MarkUserRequest;
+use App\Http\Requests\Backend\Access\User\UpdateUserRequest;
+use App\Http\Requests\Backend\Access\User\DeleteUserRequest;
+use App\Http\Requests\Backend\Access\User\RestoreUserRequest;
+use App\Http\Requests\Backend\Access\User\ChangeUserPasswordRequest;
+use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
+use App\Repositories\Backend\Permission\PermissionRepositoryContract;
 use App\Http\Requests\Backend\Access\User\PermanentlyDeleteUserRequest;
 use App\Http\Requests\Backend\Access\User\ResendConfirmationEmailRequest;
-use App\Http\Requests\Backend\Access\User\RestoreUserRequest;
-use App\Http\Requests\Backend\Access\User\StoreUserRequest;
-use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
-use App\Http\Requests\Backend\Access\User\UpdateUserRequest;
-use App\Repositories\Backend\Permission\PermissionRepositoryContract;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
-use App\Repositories\Backend\User\UserContract;
-use App\Repositories\Frontend\Auth\AuthenticationContract;
 
 /**
  * Class UserController

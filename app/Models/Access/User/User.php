@@ -2,15 +2,15 @@
 
 namespace App\Models\Access\User;
 
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\Access\User\Traits\UserAccess;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use App\Models\Access\User\Traits\Attribute\UserAttribute;
 use App\Models\Access\User\Traits\Relationship\UserRelationship;
-use App\Models\Access\User\Traits\UserAccess;
-use Illuminate\Auth\Authenticatable;
-use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class User

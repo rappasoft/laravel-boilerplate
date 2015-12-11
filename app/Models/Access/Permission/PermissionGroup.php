@@ -2,9 +2,9 @@
 
 namespace App\Models\Access\Permission;
 
+use Illuminate\Database\Eloquent\Model;
 use App\Models\Access\Permission\Traits\Attribute\PermissionGroupAttribute;
 use App\Models\Access\Permission\Traits\Relationship\PermissionGroupRelationship;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class PermissionGroup

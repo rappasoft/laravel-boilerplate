@@ -2,12 +2,12 @@
 
 namespace App\Repositories\Frontend\Auth;
 
+use App\Models\Access\User\User;
+use App\Exceptions\GeneralException;
+use Illuminate\Contracts\Auth\Guard;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
-use App\Exceptions\GeneralException;
-use App\Models\Access\User\User;
 use App\Repositories\Frontend\User\UserContract;
-use Illuminate\Contracts\Auth\Guard;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 
 /**

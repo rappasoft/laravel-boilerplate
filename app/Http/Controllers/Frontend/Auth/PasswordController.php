@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
-use App\Exceptions\GeneralException;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Frontend\Access\ChangePasswordRequest;
-use App\Models\Access\User\User;
-use App\Repositories\Frontend\User\UserContract;
-use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Contracts\Auth\PasswordBroker;
-use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
+use App\Models\Access\User\User;
+use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Auth\Guard;
+use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Contracts\Auth\PasswordBroker;
+use App\Repositories\Frontend\User\UserContract;
+use Illuminate\Foundation\Auth\ResetsPasswords;
+use App\Http\Requests\Frontend\Access\ChangePasswordRequest;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**

@@ -2,12 +2,12 @@
 
 namespace App\Repositories\Frontend\User;
 
-use App\Exceptions\GeneralException;
 use App\Models\Access\User\User;
-use App\Models\Access\User\UserProvider;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
+use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Access\User\UserProvider;
+use App\Repositories\Backend\Role\RoleRepositoryContract;
 
 /**
  * Class EloquentUserRepository

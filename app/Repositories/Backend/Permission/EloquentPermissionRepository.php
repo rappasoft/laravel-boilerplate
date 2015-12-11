@@ -5,8 +5,8 @@ namespace App\Repositories\Backend\Permission;
 use App\Exceptions\GeneralException;
 use App\Models\Access\Permission\Permission;
 use App\Models\Access\Permission\PermissionDependency;
-use App\Repositories\Backend\Permission\Dependency\PermissionDependencyRepositoryContract;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
+use App\Repositories\Backend\Permission\Dependency\PermissionDependencyRepositoryContract;
 
 /**
  * Class EloquentPermissionRepository
