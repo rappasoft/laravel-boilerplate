@@ -1,4 +1,6 @@
-<?php namespace App\Http\Requests\Backend\Access\Permission\Group;
+<?php
+
+namespace App\Http\Requests\Backend\Access\Permission\Group;
 
 use App\Http\Requests\Request;
 
@@ -6,8 +8,8 @@ use App\Http\Requests\Request;
  * Class CreatePermissionGroupRequest
  * @package App\Http\Requests\Backend\Access\Permission\Group
  */
-class CreatePermissionGroupRequest extends Request {
-
+class CreatePermissionGroupRequest extends Request
+{
     /**
      * Determine if the user is authorized to make this request.
      *

@@ -1,4 +1,6 @@
-<?php namespace App\Models\Access\User;
+<?php
+
+namespace App\Models\Access\User;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -14,70 +16,72 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
  * Class User
  * @package App\Models\Access\User
  */
-class User extends Model implements AuthenticatableContract, CanResetPasswordContract {
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract
+{
+    use Authenticatable,
+    CanResetPassword,
+    SoftDeletes,
+    UserAccess,
+    UserRelationship,
+        UserAttribute;
 
-	use Authenticatable,
-		CanResetPassword,
-		SoftDeletes,
-		UserAccess,
-		UserRelationship,
-		UserAttribute;
-
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
-
-	/**
-	 * The attributes that are not mass assignable.
-	 *
-	 * @var array
-	 */
-	protected $guarded = ['id'];
-
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = ['password', 'remember_token'];
-
-	/**
-	 * For soft deletes
-	 *
-	 * @var array
-	 */
-	protected $dates = ['deleted_at'];
-
-	/**
-	 * @return mixed
-	 */
-	public function canChangeEmail() {
-		return config('access.users.change_email');
-	}
-
-	/**
-	 * @return mixed
+    /**
+     * The database table used by the model.
+     *
+     * @var string
      */
-	public function canChangePassword() {
-		return ! app('session')->has(config('access.socialite_session_name'));
-	}
+    protected $table = 'users';
 
-	/**
-	 * @return bool
+    /**
+     * The attributes that are not mass assignable.
+     *
+     * @var array
      */
-	public function isBanned()
-	{
-		return $this->status == 2;
-	}
+    protected $guarded = ['id'];
 
-	/**
-	 * @return bool
+    /**
+     * The attributes excluded from the model's JSON form.
+     *
+     * @var array
      */
-	public function isDeactivated()
-	{
-		return $this->status == 0;
-	}
+    protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * For soft deletes
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+
+    /**
+     * @return mixed
+     */
+    public function canChangeEmail()
+    {
+        return config('access.users.change_email');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function canChangePassword()
+    {
+        return !app('session')->has(config('access.socialite_session_name'));
+    }
+
+    /**
+     * @return bool
+     */
+    public function isBanned()
+    {
+        return $this->status == 2;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDeactivated()
+    {
+        return $this->status == 0;
+    }
 }

@@ -1,11 +1,13 @@
-<?php namespace App\Models\Access\Role\Traits\Relationship;
+<?php
+
+namespace App\Models\Access\Role\Traits\Relationship;
 
 /**
  * Class RoleRelationship
  * @package App\Models\Access\Role\Traits\Relationship
  */
-trait RoleRelationship {
-
+trait RoleRelationship
+{
     /**
      * @return mixed
      */

@@ -1,4 +1,6 @@
-<?php namespace App\Http\Requests\Backend\Access\User;
+<?php
+
+namespace App\Http\Requests\Backend\Access\User;
 
 use App\Http\Requests\Request;
 
@@ -6,8 +8,8 @@ use App\Http\Requests\Request;
  * Class ResendConfirmationEmailRequest
  * @package App\Http\Requests\Backend\Access\User
  */
-class ResendConfirmationEmailRequest extends Request {
-
+class ResendConfirmationEmailRequest extends Request
+{
     /**
      * Determine if the user is authorized to make this request.
      *

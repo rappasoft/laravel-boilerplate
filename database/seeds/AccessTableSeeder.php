@@ -3,21 +3,24 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class AccessTableSeeder extends Seeder {
+class AccessTableSeeder extends Seeder
+{
+    public function run()
+    {
+        if (env('DB_DRIVER') == 'mysql') {
+            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        }
 
-	public function run() {
+        $this->call(UserTableSeeder::class);
+        $this->call(RoleTableSeeder::class);
+        $this->call(UserRoleSeeder::class);
+        $this->call(PermissionGroupTableSeeder::class);
+        $this->call(PermissionTableSeeder::class);
+        $this->call(PermissionDependencyTableSeeder::class);
 
-		if(env('DB_DRIVER')=='mysql')
-			DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        if (env('DB_DRIVER') == 'mysql') {
+            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        }
 
-		$this->call(UserTableSeeder::class);
-		$this->call(RoleTableSeeder::class);
-		$this->call(UserRoleSeeder::class);
-		$this->call(PermissionGroupTableSeeder::class);
-		$this->call(PermissionTableSeeder::class);
-		$this->call(PermissionDependencyTableSeeder::class);
-
-		if(env('DB_DRIVER')=='mysql')
-			DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-	}
+    }
 }

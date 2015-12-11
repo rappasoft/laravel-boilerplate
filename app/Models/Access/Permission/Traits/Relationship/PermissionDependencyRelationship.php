@@ -1,4 +1,6 @@
-<?php namespace App\Models\Access\Permission\Traits\Relationship;
+<?php
+
+namespace App\Models\Access\Permission\Traits\Relationship;
 
 use App\Models\Access\Permission\Permission;
 
@@ -6,12 +8,13 @@ use App\Models\Access\Permission\Permission;
  * Class PermissionDependencyRelationship
  * @package App\Models\Access\Permission\Traits\Relationship
  */
-trait PermissionDependencyRelationship {
-
+trait PermissionDependencyRelationship
+{
     /**
      * @return mixed
      */
-    public function permission() {
+    public function permission()
+    {
         return $this->hasOne(Permission::class, 'id', 'dependency_id');
     }
 }

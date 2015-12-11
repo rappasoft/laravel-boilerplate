@@ -1,50 +1,52 @@
-<?php namespace App\Repositories\Backend\Permission\Group;
+<?php
+
+namespace App\Repositories\Backend\Permission\Group;
 
 /**
  * Interface PermissionGroupRepositoryContract
  * @package App\Repositories\Backend\Permission\Group
  */
-interface PermissionGroupRepositoryContract {
-
+interface PermissionGroupRepositoryContract
+{
     /**
-     * @param $id
+     * @param  $id
      * @return mixed
      */
     public function find($id);
 
     /**
-     * @param int $limit
+     * @param  int     $limit
      * @return mixed
      */
     public function getGroupsPaginated($limit = 50);
 
     /**
-     * @param bool $withChildren
+     * @param  bool    $withChildren
      * @return mixed
      */
     public function getAllGroups($withChildren = false);
 
     /**
-     * @param $input
+     * @param  $input
      * @return mixed
      */
     public function store($input);
 
     /**
-     * @param $id
-     * @param $input
+     * @param  $id
+     * @param  $input
      * @return mixed
      */
     public function update($id, $input);
 
     /**
-     * @param $id
+     * @param  $id
      * @return mixed
      */
     public function destroy($id);
 
     /**
-     * @param $input
+     * @param  $input
      * @return mixed
      */
     public function updateSort($input);

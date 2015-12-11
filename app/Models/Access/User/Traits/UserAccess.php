@@ -1,277 +1,303 @@
-<?php namespace App\Models\Access\User\Traits;
+<?php
+
+namespace App\Models\Access\User\Traits;
 
 /**
  * Class UserAccess
  * @package App\Models\Access\User\Traits
  */
-trait UserAccess {
+trait UserAccess
+{
+    /**
+     * Checks if the user has a Role by its name or id.
+     *
+     * @param  string $nameOrId Role name or id.
+     * @return bool
+     */
+    public function hasRole($nameOrId)
+    {
+        foreach ($this->roles as $role) {
+            //First check to see if it's an ID
+            if (is_numeric($nameOrId)) {
+                if ($role->id == $nameOrId) {
+                    return true;
+                }
+            }
 
-	/**
-	 * Checks if the user has a Role by its name or id.
-	 *
-	 * @param string $nameOrId Role name or id.
-	 *
-	 * @return bool
-	 */
-	public function hasRole($nameOrId)
-	{
-		foreach ($this->roles as $role) {
-			//First check to see if it's an ID
-			if (is_numeric($nameOrId))
-				if ($role->id == $nameOrId)
-					return true;
+            //Otherwise check by name
+            if ($role->name == $nameOrId) {
+                return true;
+            }
 
-			//Otherwise check by name
-			if ($role->name == $nameOrId)
-				return true;
-		}
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	/**
-	 * Checks to see if user has array of roles
-	 * All must return true
-	 * @param $roles
-	 * @param $needsAll
-	 * @return bool
-	 */
-	public function hasRoles($roles, $needsAll) {
-		//User has to possess all of the roles specified
-		if ($needsAll) {
-			$hasRoles = 0;
-			$numRoles = count($roles);
+    /**
+     * Checks to see if user has array of roles
+     * All must return true
+     * @param  $roles
+     * @param  $needsAll
+     * @return bool
+     */
+    public function hasRoles($roles, $needsAll)
+    {
+        //User has to possess all of the roles specified
+        if ($needsAll) {
+            $hasRoles = 0;
+            $numRoles = count($roles);
 
-			foreach ($roles as $role) {
-				if ($this->hasRole($role))
-					$hasRoles++;
-			}
+            foreach ($roles as $role) {
+                if ($this->hasRole($role)) {
+                    $hasRoles++;
+                }
 
-			return $numRoles == $hasRoles;
-		}
+            }
 
-		//User has to possess one of the roles specified
-		$hasRoles = 0;
-		foreach ($roles as $role) {
-			if ($this->hasRole($role))
-				$hasRoles++;
-		}
+            return $numRoles == $hasRoles;
+        }
 
-		return $hasRoles > 0;
-	}
+        //User has to possess one of the roles specified
+        $hasRoles = 0;
+        foreach ($roles as $role) {
+            if ($this->hasRole($role)) {
+                $hasRoles++;
+            }
 
-	/**
-	 * Check if user has a permission by its name or id.
-	 *
-	 * @param string $nameOrId Permission name or id.
-	 *
-	 * @return bool
-	 */
-	public function can($nameOrId)
-	{
-		foreach ($this->roles as $role) {
-			//See if role has all permissions
-			if ($role->all)
-				return true;
+        }
 
-			// Validate against the Permission table
-			foreach ($role->permissions as $perm) {
+        return $hasRoles > 0;
+    }
 
-				//First check to see if it's an ID
-				if (is_numeric($nameOrId))
-					if ($perm->id == $nameOrId)
-						return true;
+    /**
+     * Check if user has a permission by its name or id.
+     *
+     * @param  string $nameOrId Permission name or id.
+     * @return bool
+     */
+    public function can($nameOrId)
+    {
+        foreach ($this->roles as $role) {
+            //See if role has all permissions
+            if ($role->all) {
+                return true;
+            }
 
-				//Otherwise check by name
-				if ($perm->name == $nameOrId)
-					return true;
-			}
-		}
+            // Validate against the Permission table
+            foreach ($role->permissions as $perm) {
 
-		//Check permissions directly tied to user
-		foreach ($this->permissions as $perm) {
+                //First check to see if it's an ID
+                if (is_numeric($nameOrId)) {
+                    if ($perm->id == $nameOrId) {
+                        return true;
+                    }
+                }
 
-			//First check to see if it's an ID
-			if (is_numeric($nameOrId))
-				if ($perm->id == $nameOrId)
-					return true;
+                //Otherwise check by name
+                if ($perm->name == $nameOrId) {
+                    return true;
+                }
 
-			//Otherwise check by name
-			if ($perm->name == $nameOrId)
-				return true;
-		}
+            }
+        }
 
-		return false;
-	}
+        //Check permissions directly tied to user
+        foreach ($this->permissions as $perm) {
 
-	/**
-	 * Check an array of permissions and whether or not all are required to continue
-	 * @param $permissions
-	 * @param $needsAll
-	 * @return bool
-	 */
-	public function canMultiple($permissions, $needsAll = false) {
-		//User has to possess all of the permissions specified
-		if ($needsAll)
-		{
-			$hasPermissions = 0;
-			$numPermissions = count($permissions);
+            //First check to see if it's an ID
+            if (is_numeric($nameOrId)) {
+                if ($perm->id == $nameOrId) {
+                    return true;
+                }
+            }
 
-			foreach ($permissions as $perm)
-			{
-				if ($this->can($perm))
-					$hasPermissions++;
-			}
+            //Otherwise check by name
+            if ($perm->name == $nameOrId) {
+                return true;
+            }
 
-			return $numPermissions == $hasPermissions;
-		}
+        }
 
-		//User has to possess one of the permissions specified
-		$hasPermissions = 0;
-		foreach ($permissions as $perm) {
-			if ($this->can($perm))
-				$hasPermissions++;
-		}
+        return false;
+    }
 
-		return $hasPermissions > 0;
-	}
+    /**
+     * Check an array of permissions and whether or not all are required to continue
+     * @param  $permissions
+     * @param  $needsAll
+     * @return bool
+     */
+    public function canMultiple($permissions, $needsAll = false)
+    {
+        //User has to possess all of the permissions specified
+        if ($needsAll) {
+            $hasPermissions = 0;
+            $numPermissions = count($permissions);
 
-	/**
-	 * @param $nameOrId
-	 * @return bool
-	 */
-	public function hasPermission($nameOrId) {
-		return $this->can($nameOrId);
-	}
+            foreach ($permissions as $perm) {
+                if ($this->can($perm)) {
+                    $hasPermissions++;
+                }
+            }
 
-	/**
-	 * @param $permissions
-	 * @param bool $needsAll
-	 * @return bool
-	 */
-	public function hasPermissions($permissions, $needsAll = false) {
-		return $this->canMultiple($permissions, $needsAll);
-	}
+            return $numPermissions == $hasPermissions;
+        }
 
-	/**
-	 * Alias to eloquent many-to-many relation's attach() method.
-	 *
-	 * @param mixed $role
-	 *
-	 * @return void
-	 */
-	public function attachRole($role)
-	{
-		if( is_object($role))
-			$role = $role->getKey();
+        //User has to possess one of the permissions specified
+        $hasPermissions = 0;
+        foreach ($permissions as $perm) {
+            if ($this->can($perm)) {
+                $hasPermissions++;
+            }
 
-		if( is_array($role))
-			$role = $role['id'];
+        }
 
-		$this->roles()->attach($role);
-	}
+        return $hasPermissions > 0;
+    }
 
-	/**
-	 * Alias to eloquent many-to-many relation's detach() method.
-	 *
-	 * @param mixed $role
-	 *
-	 * @return void
-	 */
-	public function detachRole($role)
-	{
-		if (is_object($role)) {
-			$role = $role->getKey();
-		}
+    /**
+     * @param  $nameOrId
+     * @return bool
+     */
+    public function hasPermission($nameOrId)
+    {
+        return $this->can($nameOrId);
+    }
 
-		if (is_array($role)) {
-			$role = $role['id'];
-		}
+    /**
+     * @param  $permissions
+     * @param  bool           $needsAll
+     * @return bool
+     */
+    public function hasPermissions($permissions, $needsAll = false)
+    {
+        return $this->canMultiple($permissions, $needsAll);
+    }
 
-		$this->roles()->detach($role);
-	}
+    /**
+     * Alias to eloquent many-to-many relation's attach() method.
+     *
+     * @param  mixed  $role
+     * @return void
+     */
+    public function attachRole($role)
+    {
+        if (is_object($role)) {
+            $role = $role->getKey();
+        }
 
-	/**
-	 * Attach multiple roles to a user
-	 *
-	 * @param mixed $roles
-	 *
-	 * @return void
-	 */
-	public function attachRoles($roles)
-	{
-		foreach ($roles as $role) {
-			$this->attachRole($role);
-		}
-	}
+        if (is_array($role)) {
+            $role = $role['id'];
+        }
 
-	/**
-	 * Detach multiple roles from a user
-	 *
-	 * @param mixed $roles
-	 *
-	 * @return void
-	 */
-	public function detachRoles($roles)
-	{
-		foreach ($roles as $role) {
-			$this->detachRole($role);
-		}
-	}
+        $this->roles()->attach($role);
+    }
 
-	/**
-	 * Attach one permission not associated with a role directly to a user
-	 *
-	 * @param $permission
-	 */
-	public function attachPermission($permission) {
-		if( is_object($permission))
-			$permission = $permission->getKey();
+    /**
+     * Alias to eloquent many-to-many relation's detach() method.
+     *
+     * @param  mixed  $role
+     * @return void
+     */
+    public function detachRole($role)
+    {
+        if (is_object($role)) {
+            $role = $role->getKey();
+        }
 
-		if( is_array($permission))
-			$permission = $permission['id'];
+        if (is_array($role)) {
+            $role = $role['id'];
+        }
 
-		$this->permissions()->attach($permission);
-	}
+        $this->roles()->detach($role);
+    }
 
-	/**
-	 * Attach other permissions not associated with a role directly to a user
-	 *
-	 * @param $permissions
-	 */
-	public function attachPermissions($permissions) {
-		if (count($permissions))
-		{
-			foreach ($permissions as $perm)
-			{
-				$this->attachPermission($perm);
-			}
-		}
-	}
+    /**
+     * Attach multiple roles to a user
+     *
+     * @param  mixed  $roles
+     * @return void
+     */
+    public function attachRoles($roles)
+    {
+        foreach ($roles as $role) {
+            $this->attachRole($role);
+        }
+    }
 
-	/**
-	 * Detach one permission not associated with a role directly to a user
-	 *
-	 * @param $permission
-	 */
-	public function detachPermission($permission) {
-		if( is_object($permission))
-			$permission = $permission->getKey();
+    /**
+     * Detach multiple roles from a user
+     *
+     * @param  mixed  $roles
+     * @return void
+     */
+    public function detachRoles($roles)
+    {
+        foreach ($roles as $role) {
+            $this->detachRole($role);
+        }
+    }
 
-		if( is_array($permission))
-			$permission = $permission['id'];
+    /**
+     * Attach one permission not associated with a role directly to a user
+     *
+     * @param $permission
+     */
+    public function attachPermission($permission)
+    {
+        if (is_object($permission)) {
+            $permission = $permission->getKey();
+        }
 
-		$this->permissions()->detach($permission);
-	}
+        if (is_array($permission)) {
+            $permission = $permission['id'];
+        }
 
-	/**
-	 * Detach other permissions not associated with a role directly to a user
-	 *
-	 * @param $permissions
-	 */
-	public function detachPermissions($permissions) {
-		foreach ($permissions as $perm) {
-			$this->detachPermission($perm);
-		}
-	}
+        $this->permissions()->attach($permission);
+    }
+
+    /**
+     * Attach other permissions not associated with a role directly to a user
+     *
+     * @param $permissions
+     */
+    public function attachPermissions($permissions)
+    {
+        if (count($permissions)) {
+            foreach ($permissions as $perm) {
+                $this->attachPermission($perm);
+            }
+        }
+    }
+
+    /**
+     * Detach one permission not associated with a role directly to a user
+     *
+     * @param $permission
+     */
+    public function detachPermission($permission)
+    {
+        if (is_object($permission)) {
+            $permission = $permission->getKey();
+        }
+
+        if (is_array($permission)) {
+            $permission = $permission['id'];
+        }
+
+        $this->permissions()->detach($permission);
+    }
+
+    /**
+     * Detach other permissions not associated with a role directly to a user
+     *
+     * @param $permissions
+     */
+    public function detachPermissions($permissions)
+    {
+        foreach ($permissions as $perm) {
+            $this->detachPermission($perm);
+        }
+    }
 }
