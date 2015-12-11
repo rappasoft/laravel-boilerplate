@@ -1,4 +1,6 @@
-<?php namespace App\Models\Access\User\Traits\Relationship;
+<?php
+
+namespace App\Models\Access\User\Traits\Relationship;
 
 use App\Models\Access\User\UserProvider;
 
@@ -6,8 +8,8 @@ use App\Models\Access\User\UserProvider;
  * Class UserRelationship
  * @package App\Models\Access\User\Traits\Relationship
  */
-trait UserRelationship {
-
+trait UserRelationship
+{
     /**
      * Many-to-Many relations with Role.
      *
@@ -32,7 +34,8 @@ trait UserRelationship {
     /**
      * @return mixed
      */
-    public function providers() {
+    public function providers()
+    {
         return $this->hasMany(UserProvider::class);
     }
 }

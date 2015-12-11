@@ -1,4 +1,6 @@
-<?php namespace App\Http\Requests\Backend\Access\Permission;
+<?php
+
+namespace App\Http\Requests\Backend\Access\Permission;
 
 use App\Http\Requests\Request;
 
@@ -6,8 +8,8 @@ use App\Http\Requests\Request;
  * Class StorePermissionRequest
  * @package App\Http\Requests\Backend\Access\Permission
  */
-class StorePermissionRequest extends Request {
-
+class StorePermissionRequest extends Request
+{
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -26,8 +28,8 @@ class StorePermissionRequest extends Request {
     public function rules()
     {
         return [
-            'name'			=>  'required',
-            'display_name'	=>	'required',
+            'name'         => 'required',
+            'display_name' => 'required',
         ];
     }
 }

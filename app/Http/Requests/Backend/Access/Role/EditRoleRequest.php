@@ -1,4 +1,6 @@
-<?php namespace App\Http\Requests\Backend\Access\Role;
+<?php
+
+namespace App\Http\Requests\Backend\Access\Role;
 
 use App\Http\Requests\Request;
 
@@ -6,8 +8,8 @@ use App\Http\Requests\Request;
  * Class EditRoleRequest
  * @package App\Http\Requests\Backend\Access\Role
  */
-class EditRoleRequest extends Request {
-
+class EditRoleRequest extends Request
+{
     /**
      * Determine if the user is authorized to make this request.
      *
