@@ -1,14 +1,16 @@
-<?php namespace App\Models\Access\Permission\Traits\Relationship;
+<?php
 
-use App\Models\Access\Permission\PermissionGroup;
+namespace App\Models\Access\Permission\Traits\Relationship;
+
 use App\Models\Access\Permission\PermissionDependency;
+use App\Models\Access\Permission\PermissionGroup;
 
 /**
  * Class PermissionRelationship
  * @package App\Models\Access\Permission\Traits\Relationship
  */
-trait PermissionRelationship {
-
+trait PermissionRelationship
+{
     /**
      * @return mixed
      */
@@ -20,7 +22,8 @@ trait PermissionRelationship {
     /**
      * @return mixed
      */
-    public function group() {
+    public function group()
+    {
         return $this->belongsTo(PermissionGroup::class, 'group_id');
     }
 
@@ -35,7 +38,8 @@ trait PermissionRelationship {
     /**
      * @return mixed
      */
-    public function dependencies() {
+    public function dependencies()
+    {
         return $this->hasMany(PermissionDependency::class, 'permission_id', 'id');
     }
 }

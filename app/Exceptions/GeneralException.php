@@ -1,3 +1,8 @@
-<?php namespace App\Exceptions;
+<?php
 
-class GeneralException extends \Exception {}
+namespace App\Exceptions;
+
+class GeneralException extends \Exception
+{
+    //
+}

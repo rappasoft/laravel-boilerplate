@@ -1,14 +1,16 @@
-<?php namespace App\Models\Access\Permission;
+<?php
 
-use Illuminate\Database\Eloquent\Model;
+namespace App\Models\Access\Permission;
+
 use App\Models\Access\Permission\Traits\Relationship\PermissionDependencyRelationship;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class PermissionDependency
  * @package App\Models\Access\Permission
  */
-class PermissionDependency extends Model {
-
+class PermissionDependency extends Model
+{
     use PermissionDependencyRelationship;
 
     /**
