@@ -1,4 +1,6 @@
-<?php namespace App\Http\Requests\Backend\Access\User;
+<?php
+
+namespace App\Http\Requests\Backend\Access\User;
 
 use App\Http\Requests\Request;
 
@@ -6,27 +8,27 @@ use App\Http\Requests\Request;
  * Class CreateUserRequest
  * @package App\Http\Requests\Backend\Access\User
  */
-class CreateUserRequest extends Request {
+class CreateUserRequest extends Request
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return access()->can('create-users');
+    }
 
-	/**
-	 * Determine if the user is authorized to make this request.
-	 *
-	 * @return bool
-	 */
-	public function authorize()
-	{
-		return access()->can('create-users');
-	}
-
-	/**
-	 * Get the validation rules that apply to the request.
-	 *
-	 * @return array
-	 */
-	public function rules()
-	{
-		return [
-			//
-		];
-	}
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            //
+        ];
+    }
 }

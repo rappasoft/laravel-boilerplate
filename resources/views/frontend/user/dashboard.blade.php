@@ -21,6 +21,10 @@
                         <div role="tabpanel" class="tab-pane active" id="profile">
                             <table class="table table-striped table-hover table-bordered dashboard-table">
                                 <tr>
+                                    <th>{{ trans('validation.attributes.avatar') }}</th>
+                                    <td><img src="{!! $user->picture !!}" class="user-profile-image" /></td>
+                                </tr>
+                                <tr>
                                     <th>{{ trans('validation.attributes.name') }}</th>
                                     <td>{!! $user->name !!}</td>
                                 </tr>
@@ -40,7 +44,9 @@
                                     <th>{{ trans('validation.attributes.actions') }}</th>
                                     <td>
                                         <a href="{!!route('frontend.profile.edit')!!}" class="btn btn-primary btn-xs">{{ trans('labels.edit_information') }}</a>
-                                        <a href="{!!url('auth/password/change')!!}" class="btn btn-warning btn-xs">{{ trans('navs.change_password') }}</a>
+                                        @if (access()->user()->canChangePassword())
+                                            <a href="{!!url('auth/password/change')!!}" class="btn btn-warning btn-xs">{{ trans('navs.change_password') }}</a>
+                                        @endif
                                     </td>
                                 </tr>
                             </table>

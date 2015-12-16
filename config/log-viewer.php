@@ -18,12 +18,16 @@ return [
      |  Route
      | ------------------------------------------------------------------------------------------------
      */
+    /**
+     * Do not change this, log viewer routes for this application are overwritten in
+     * app/Http/Routes/Backend/LogViewer
+     */
     'route'         => [
-        'enabled'    => true,
+        'enabled'    => false,
 
         'attributes' => [
-            'prefix'     => 'admin/log-viewer',
-            'middleware' => 'access.routeNeedsPermission:view-backend',
+            'prefix'     => 'log-viewer',
+            'middleware' => null,
         ],
     ],
 

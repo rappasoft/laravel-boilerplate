@@ -6,24 +6,23 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.1.*",
-        "illuminate/html" : "5.*",
+        "laravelcollective/html": "5.1.*",
         "laravel/socialite" : "~2.0",
-        "stripe/stripe-php": "1.*",
-        "twbs/bootstrap": "3.*",
-        "twbs/bootstrap-sass": "3.*",
-        "fortawesome/font-awesome": "4.*",
+        "stripe/stripe-php": "~3.4.0",
         "hieu-le/active": "~2.0",
 		"doctrine/dbal": "~2.5",
-	    "laracasts/utilities": "~2.0",
-		"arcanedev/log-viewer": "~3.4.0",
-		"creativeorange/gravatar": "~1.0"
+	    "laracasts/utilities": "~2.1",
+		"arcanedev/log-viewer": "~3.5.0",
+		"creativeorange/gravatar": "~1.0",
+		"davejamesmiller/laravel-breadcrumbs": "^3.0"
 	},
 	"require-dev": {
 		"fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~4.0",
+        "phpunit/phpunit": "~5.0",
         "phpspec/phpspec": "~2.1",
         "laracasts/generators": "~1.1",
+        "barryvdh/laravel-debugbar": "^2.0",
         "potsky/laravel-localization-helpers" : "~1.1"
 	},
 	"autoload": {

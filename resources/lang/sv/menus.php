@@ -52,6 +52,7 @@ return [
         'langs' => [
             'en' => 'Engelska',
             'it' => 'Italienska',
+			'pl' => 'Polish',
             'pt-BR' => 'Portugisiska (Brasilien)',
             'ru' => 'Ryska',
             'sv' => 'Svenska',
