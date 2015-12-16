@@ -58,9 +58,10 @@ return [
     'language-picker' => [
         'language' => 'Lingua',
         'langs' => [
+            'fr-FR' => 'Francese',
             'en' => 'Inglese',
             'it' => 'Italiano',
-			'pl' => 'Polish',
+            'pl' => 'Polacco',
             'pt-BR' => 'Portoghese (Brasile)',
             'ru' => 'Russo',
             'es' => 'Spagnolo',
