@@ -1,3 +1,3 @@
 <?php
 
-get('dashboard', 'DashboardController@index')->name('admin.dashboard');
+$router->get('dashboard', 'DashboardController@index')->name('admin.dashboard');
