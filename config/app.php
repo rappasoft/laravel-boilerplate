@@ -3,6 +3,18 @@
 return [
 
 	/*
+    |--------------------------------------------------------------------------
+    | Application Environment
+    |--------------------------------------------------------------------------
+    |
+    | This value determines the "environment" your application is currently
+    | running in. This may determine how you prefer to configure various
+    | services your application utilizes. Set this in your ".env" file.
+    |
+    */
+	'env' => env('APP_ENV', 'production'),
+
+	/*
 	|--------------------------------------------------------------------------
 	| Application Name
 	|--------------------------------------------------------------------------
@@ -122,12 +134,11 @@ return [
 		/*
 		 * Laravel Framework Service Providers...
 		 */
-		Illuminate\Foundation\Providers\ArtisanServiceProvider::class,
 		Illuminate\Auth\AuthServiceProvider::class,
+		Illuminate\Broadcasting\BroadcastServiceProvider::class,
 		Illuminate\Bus\BusServiceProvider::class,
 		Illuminate\Cache\CacheServiceProvider::class,
 		Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
-		Illuminate\Routing\ControllerServiceProvider::class,
 		Illuminate\Cookie\CookieServiceProvider::class,
 		Illuminate\Database\DatabaseServiceProvider::class,
 		Illuminate\Encryption\EncryptionServiceProvider::class,
@@ -144,15 +155,14 @@ return [
 		Illuminate\Translation\TranslationServiceProvider::class,
 		Illuminate\Validation\ValidationServiceProvider::class,
 		Illuminate\View\ViewServiceProvider::class,
-		Collective\Html\HtmlServiceProvider::class,
 
 		/*
 		 * Application Service Providers...
 		 */
 		App\Providers\AccessServiceProvider::class,
 		App\Providers\AppServiceProvider::class,
+		App\Providers\AuthServiceProvider::class,
 		App\Providers\BillingServiceProvider::class,
-		App\Providers\BusServiceProvider::class,
 		App\Providers\ConfigServiceProvider::class,
 		App\Providers\EventServiceProvider::class,
 		App\Providers\RouteServiceProvider::class,
@@ -168,7 +178,6 @@ return [
 		HieuLe\Active\ActiveServiceProvider::class,
 		Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
 		Laravel\Socialite\SocialiteServiceProvider::class,
-		Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProviderLaravel5::class,
 	],
 
 	/*
