@@ -3,6 +3,11 @@
 return array(
 
 	/*
+	 * Users table used to store users
+	 */
+	'users_table' => 'users',
+
+	/*
 	 * Role model used by Access to create correct relations. Update the role if it is in a different namespace.
 	*/
 	'role' => 'App\Models\Access\Role\Role',
