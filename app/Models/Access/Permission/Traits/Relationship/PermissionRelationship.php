@@ -32,7 +32,7 @@ trait PermissionRelationship
      */
     public function users()
     {
-        return $this->belongsToMany(config('auth.model'), config('access.permission_user_table'), 'permission_id', 'user_id');
+        return $this->belongsToMany(config('auth.providers.users.model'), config('access.permission_user_table'), 'permission_id', 'user_id');
     }
 
     /**
