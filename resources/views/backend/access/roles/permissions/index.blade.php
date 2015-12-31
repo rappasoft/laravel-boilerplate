@@ -2,23 +2,20 @@
 
 @extends ('backend.layouts.master')
 
-@section ('title', trans('menus.permission_management'))
+@section ('title', trans('labels.backend.access.permissions.management'))
 
 @section('page-header')
-    <h1>
-        {{ trans('menus.user_management') }}
-        <small>{{ trans('menus.permission_management') }}</small>
-    </h1>
+    <h1>{{ trans('labels.backend.access.permissions.management') }}</h1>
 @endsection
 
 @section('after-styles-end')
-    {!! HTML::style('css/backend/plugin/nestable/jquery.nestable.css') !!}
+    {!! Html::style('css/backend/plugin/nestable/jquery.nestable.css') !!}
 @stop
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('menus.permission_management') }}</h3>
+            <h3 class="box-title">{{ trans('labels.backend.access.permissions.management') }}</h3>
 
             <div class="box-tools pull-right">
                 @include('backend.access.includes.partials.header-buttons')
@@ -29,8 +26,16 @@
             <div>
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#groups" aria-controls="groups" role="tab" data-toggle="tab">Groups</a></li>
-                    <li role="presentation"><a href="#permissions" aria-controls="permissions" role="tab" data-toggle="tab">Permissions</a></li>
+                    <li role="presentation" class="active">
+                        <a href="#groups" aria-controls="groups" role="tab" data-toggle="tab">
+                            {{ trans('labels.backend.access.permissions.tabs.groups') }}
+                        </a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#permissions" aria-controls="permissions" role="tab" data-toggle="tab">
+                            {{ trans('labels.backend.access.permissions.tabs.permissions') }}
+                        </a>
+                    </li>
                 </ul>
 
                 <!-- Tab panes -->
@@ -39,27 +44,28 @@
 
                         <div class="row">
                             <div class="col-lg-6">
+
                                 <div class="alert alert-info">
-                                    <i class="fa fa-info-circle"></i> This section allows you to organize your permissions into groups to stay organized. Regardless of the group, the permissions are still individually assigned to each role.
+                                    <i class="fa fa-info-circle"></i> {{ trans('strings.backend.access.permissions.sort_explanation') }}
                                 </div><!--alert info-->
 
                                 <div class="dd permission-hierarchy">
                                     <ol class="dd-list">
                                         @foreach ($groups as $group)
-                                            <li class="dd-item" data-id="{!! $group->id !!}">
-                                                <div class="dd-handle">{!! $group->name !!} <span class="pull-right">{!! $group->permissions->count() !!} permissions</span></div>
+                                                <li class="dd-item" data-id="{!! $group->id !!}">
+                                                    <div class="dd-handle">{!! $group->name !!} <span class="pull-right">{!! $group->permissions->count() !!} {{ trans('labels.backend.access.permissions.label') }}</span></div>
 
-                                                @if ($group->children->count())
-                                                    <ol class="dd-list">
-                                                        @foreach($group->children as $child)
-                                                            <li class="dd-item" data-id="{!! $child->id !!}">
-                                                                <div class="dd-handle">{!! $child->name !!} <span class="pull-right">{!! $child->permissions->count() !!} permissions</span></div>
-                                                            </li>
-                                                        @endforeach
-                                                    </ol>
-                                            </li>
+                                                    @if ($group->children->count())
+                                                        <ol class="dd-list">
+                                                            @foreach($group->children as $child)
+                                                                <li class="dd-item" data-id="{!! $child->id !!}">
+                                                                    <div class="dd-handle">{!! $child->name !!} <span class="pull-right">{!! $child->permissions->count() !!} {{ trans('labels.backend.access.permissions.label') }}</span></div>
+                                                                </li>
+                                                            @endforeach
+                                                        </ol>
+                                                </li>
                                             @else
-                                            </li>
+                                                </li>
                                             @endif
                                         @endforeach
                                     </ol>
@@ -67,16 +73,17 @@
                             </div><!--col-lg-4-->
 
                             <div class="col-lg-6">
+
                                 <div class="alert alert-info">
-                                    <i class="fa fa-info-circle"></i> If you performed operations in the hierarchy section without refreshing this page, you will need to refresh to reflect the changes here.
+                                    <i class="fa fa-info-circle"></i> {{ trans('strings.backend.access.permissions.edit_explanation') }}
                                 </div><!--alert info-->
 
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered table-hover">
                                         <thead>
                                         <tr>
-                                            <th>{{ trans('crud.permissions.groups.name') }}</th>
-                                            <th>{{ trans('crud.actions') }}</th>
+                                            <th>{{ trans('labels.backend.access.permissions.groups.table.name') }}</th>
+                                            <th>{{ trans('labels.general.actions') }}</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -129,15 +136,15 @@
                             <table class="table table-striped table-bordered table-hover">
                                 <thead>
                                 <tr>
-                                    <th>{{ trans('crud.permissions.permission') }}</th>
-                                    <th>{{ trans('crud.permissions.name') }}</th>
-                                    <th>{{ trans('crud.permissions.dependencies') }}</th>
-                                    <th>{{ trans('crud.permissions.users') }}</th>
-                                    <th>{{ trans('crud.permissions.roles') }}</th>
-                                    <th>{{ trans('crud.permissions.group') }}</th>
-                                    <th>{{ trans('crud.permissions.group-sort') }}</th>
-                                    <th>{{ trans('crud.permissions.system') }}</th>
-                                    <th>{{ trans('crud.actions') }}</th>
+                                    <th>{{ trans('labels.backend.access.permissions.table.permission') }}</th>
+                                    <th>{{ trans('labels.backend.access.permissions.table.name') }}</th>
+                                    <th>{{ trans('labels.backend.access.permissions.table.dependencies') }}</th>
+                                    <th>{{ trans('labels.backend.access.permissions.table.users') }}</th>
+                                    <th>{{ trans('labels.backend.access.permissions.table.roles') }}</th>
+                                    <th>{{ trans('labels.backend.access.permissions.table.group') }}</th>
+                                    <th>{{ trans('labels.backend.access.permissions.table.group-sort') }}</th>
+                                    <th>{{ trans('labels.backend.access.permissions.table.system') }}</th>
+                                    <th>{{ trans('labels.general.actions') }}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -151,7 +158,7 @@
                                                     {!! $dependency->permission->display_name !!}<br/>
                                                 @endforeach
                                             @else
-                                                <span class="label label-success">None</span>
+                                                <span class="label label-success">{{ trans('labels.general.none') }}</span>
                                             @endif
                                         </td>
                                         <td>
@@ -160,7 +167,7 @@
                                                     {!! $user->name !!}<br/>
                                                 @endforeach
                                             @else
-                                                <span class="label label-danger">None</span>
+                                                <span class="label label-danger">{{ trans('labels.general.none') }}</span>
                                             @endif
                                         </td>
                                         <td>
@@ -175,7 +182,7 @@
                                             @if ($permission->group)
                                                 {!! $permission->group->name !!}
                                             @else
-                                                <span class="label label-danger">None</span>
+                                                <span class="label label-danger">{{ trans('labels.general.none') }}</span>
                                             @endif
                                         </td>
                                         <td>{!! $permission->sort !!}</td>
@@ -188,7 +195,7 @@
                         </div>
 
                         <div class="pull-left">
-                            {{ $permissions->total() }} {{ trans('crud.permissions.total') }}
+                            {{ $permissions->total() }} {{ trans('labels.backend.access.permissions.table.total') }}
                         </div>
 
                         <div class="pull-right">
@@ -205,7 +212,7 @@
 @stop
 
 @section('after-scripts-end')
-    {!! HTML::script('js/backend/plugin/nestable/jquery.nestable.js') !!}
+    {!! Html::script('js/backend/plugin/nestable/jquery.nestable.js') !!}
 
     <script>
         $(function() {
@@ -220,16 +227,16 @@
                         data : {data:hierarchy.nestable('serialize')},
                         success: function(data) {
                             if (data.status == "OK")
-                                toastr.success("Hierarchy successfully saved.");
+                                toastr.success("{{ trans('strings.backend.access.permissions.groups.hierarchy_saved') }}");
                             else
-                                toastr.error("An unknown error occurred.");
+                                toastr.error("{{ trans('auth.unknown') }}.");
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
-                            toastr.error("An unknown error occurred: " + errorThrown);
+                            toastr.error("{{ trans('auth.unknown') }}: " + errorThrown);
                         }
                     });
                 @else
-                    toastr.error("You do not have permission to do that.");
+                    toastr.error("{{ trans('auth.general_error') }}");
                 @endauth
             });
         });

@@ -4,52 +4,64 @@ namespace App\Repositories\Frontend\User;
 
 /**
  * Interface UserContract
- * @package App\Repositories\User
+ * @package App\Repositories\Frontend\User
  */
 interface UserContract
 {
     /**
-     * @param  $data
+     * @param $id
      * @return mixed
      */
-    public function create($data);
+    public function find($id);
 
     /**
-     * @param  $data
-     * @param  $provider
+     * @param $email
      * @return mixed
      */
-    public function findByUsernameOrCreate($data, $provider);
+    public function findByEmail($email);
 
     /**
-     * @param  $provider
-     * @param  $providerData
-     * @param  $user
+     * @param $token
      * @return mixed
      */
-    public function checkIfUserNeedsUpdating($provider, $providerData, $user);
+    public function findByToken($token);
 
     /**
-     * @param  $input
+     * @param array $data
+     * @param bool $provider
      * @return mixed
      */
-    public function updateProfile($input);
+    public function create(array $data, $provider = false);
+
+    /**
+     * @param $data
+     * @param $provider
+     * @return mixed
+     */
+    public function findOrCreateSocial($data, $provider);
+
+    /**
+     * @param $token
+     * @return mixed
+     */
+    public function confirmAccount($token);
+
+    /**
+     * @param $user
+     * @return mixed
+     */
+    public function sendConfirmationEmail($user);
+
+    /**
+     * @param $id
+     * @param $input
+     * @return mixed
+     */
+    public function updateProfile($id, $input);
 
     /**
      * @param  $input
      * @return mixed
      */
     public function changePassword($input);
-
-    /**
-     * @param  $token
-     * @return mixed
-     */
-    public function confirmAccount($token);
-
-    /**
-     * @param  $user
-     * @return mixed
-     */
-    public function sendConfirmationEmail($user);
 }

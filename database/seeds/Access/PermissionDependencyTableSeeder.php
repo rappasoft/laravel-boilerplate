@@ -9,18 +9,15 @@ use Illuminate\Support\Facades\DB;
  */
 class PermissionDependencyTableSeeder extends Seeder
 {
-    /**
-     *
-     */
     public function run()
     {
-        if (env('DB_DRIVER') == 'mysql') {
+        if (env('DB_CONNECTION') == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         }
 
-        if (env('DB_DRIVER') == 'mysql') {
+        if (env('DB_CONNECTION') == 'mysql') {
             DB::table(config('access.permission_dependencies_table'))->truncate();
-        } elseif (env('DB_DRIVER') == 'sqlite') {
+        } elseif (env('DB_CONNECTION') == 'sqlite') {
             DB::statement('DELETE FROM ' . config('access.permission_dependencies_table'));
         } else {
             //For PostgreSQL or anything else
@@ -66,7 +63,7 @@ class PermissionDependencyTableSeeder extends Seeder
          * End other dependencies
          */
 
-        if (env('DB_DRIVER') == 'mysql') {
+        if (env('DB_CONNECTION') == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }
     }

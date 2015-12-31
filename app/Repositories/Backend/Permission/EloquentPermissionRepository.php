@@ -4,7 +4,6 @@ namespace App\Repositories\Backend\Permission;
 
 use App\Exceptions\GeneralException;
 use App\Models\Access\Permission\Permission;
-use App\Models\Access\Permission\PermissionDependency;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
 use App\Repositories\Backend\Permission\Dependency\PermissionDependencyRepositoryContract;
 
@@ -28,7 +27,10 @@ class EloquentPermissionRepository implements PermissionRepositoryContract
      * @param RoleRepositoryContract                 $roles
      * @param PermissionDependencyRepositoryContract $dependencies
      */
-    public function __construct(RoleRepositoryContract $roles, PermissionDependencyRepositoryContract $dependencies)
+    public function __construct(
+        RoleRepositoryContract $roles,
+        PermissionDependencyRepositoryContract $dependencies
+    )
     {
         $this->roles        = $roles;
         $this->dependencies = $dependencies;
@@ -42,7 +44,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract
      */
     public function findOrThrowException($id, $withRoles = false)
     {
-        if (!is_null(Permission::find($id))) {
+        if (! is_null(Permission::find($id))) {
             if ($withRoles) {
                 return Permission::with('roles')->find($id);
             }
@@ -50,7 +52,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract
             return Permission::find($id);
         }
 
-        throw new GeneralException('That permission does not exist.');
+        throw new GeneralException(trans('exceptions.backend.access.permissions.not_found'));
     }
 
     /**
@@ -146,7 +148,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract
             return true;
         }
 
-        throw new GeneralException('There was a problem creating this permission. Please try again.');
+        throw new GeneralException(trans('exceptions.backend.access.permissions.create_error'));
     }
 
     /**
@@ -164,11 +166,6 @@ class EloquentPermissionRepository implements PermissionRepositoryContract
         $permission->system       = isset($input['system']) ? 1 : 0;
         $permission->group_id     = isset($input['group']) && strlen($input['group']) > 0 ? (int) $input['group'] : null;
         $permission->sort         = isset($input['sort']) ? (int) $input['sort'] : 0;
-
-        //See if this permission is tied directly to a user first
-        if (count($permission->users) > 0) {
-            throw new GeneralException('This permission is currently tied directly to one or more users and can not be assigned to a role.');
-        }
 
         if ($permission->save()) {
             //Detach permission from every role, then add the permission to the selected roles
@@ -227,7 +224,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract
             return true;
         }
 
-        throw new GeneralException('There was a problem updating this permission. Please try again.');
+        throw new GeneralException(trans('exceptions.backend.access.permissions.update_error'));
     }
 
     /**
@@ -240,7 +237,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract
         $permission = $this->findOrThrowException($id);
 
         if ($permission->system == 1) {
-            throw new GeneralException('You can not delete a system permission.');
+            throw new GeneralException(trans('exceptions.backend.access.permissions.system_delete_error'));
         }
 
         //Remove the permission from all associated roles
@@ -262,6 +259,6 @@ class EloquentPermissionRepository implements PermissionRepositoryContract
             return true;
         }
 
-        throw new GeneralException('There was a problem deleting this permission. Please try again.');
+        throw new GeneralException(trans('exceptions.backend.access.permissions.delete_error'));
     }
 }

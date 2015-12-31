@@ -17,7 +17,7 @@ class SortPermissionGroupRequest extends Request
      */
     public function authorize()
     {
-        return access()->can('sort-permission-groups');
+        return access()->allow('sort-permission-groups');
     }
 
     /**

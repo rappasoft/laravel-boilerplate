@@ -13,7 +13,7 @@ class LocaleMiddleware
     /**
      * @var array
      */
-    protected $languages = ['en', 'es', 'fr-FR', 'it', 'pl', 'pt-BR', 'ru', 'sv'];
+    protected $languages = ['en'];
 
     /**
      * Handle an incoming request.

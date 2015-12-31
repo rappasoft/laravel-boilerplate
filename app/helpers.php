@@ -5,7 +5,7 @@
  *
  */
 
-if (!function_exists('app_name')) {
+if (! function_exists('app_name')) {
     /**
      * Helper to grab the application name
      *
@@ -17,7 +17,7 @@ if (!function_exists('app_name')) {
     }
 }
 
-if (!function_exists('access')) {
+if (! function_exists('access')) {
     /**
      * Access (lol) the Access:: facade as a simple function
      */
@@ -27,7 +27,7 @@ if (!function_exists('access')) {
     }
 }
 
-if (!function_exists('javascript')) {
+if (! function_exists('javascript')) {
     /**
      * Access the javascript helper
      */
@@ -37,7 +37,7 @@ if (!function_exists('javascript')) {
     }
 }
 
-if (!function_exists('gravatar')) {
+if (! function_exists('gravatar')) {
     /**
      * Access the gravatar helper
      */

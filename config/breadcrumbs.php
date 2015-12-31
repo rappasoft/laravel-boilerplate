@@ -2,6 +2,6 @@
 
 return [
 
-	'view' => 'backend.includes._partials.breadcrumbs',
+    'view' => 'backend.includes.partials.breadcrumbs',
 
 ];

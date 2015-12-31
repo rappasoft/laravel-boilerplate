@@ -32,7 +32,10 @@ class RoleController extends Controller
      * @param RoleRepositoryContract       $roles
      * @param PermissionRepositoryContract $permissions
      */
-    public function __construct(RoleRepositoryContract $roles, PermissionRepositoryContract $permissions)
+    public function __construct(
+        RoleRepositoryContract $roles,
+        PermissionRepositoryContract $permissions
+    )
     {
         $this->roles       = $roles;
         $this->permissions = $permissions;
@@ -66,7 +69,7 @@ class RoleController extends Controller
     public function store(StoreRoleRequest $request)
     {
         $this->roles->create($request->all());
-        return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans('alerts.roles.created'));
+        return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans('alerts.backend.roles.created'));
     }
 
     /**
@@ -93,7 +96,7 @@ class RoleController extends Controller
     public function update($id, UpdateRoleRequest $request)
     {
         $this->roles->update($id, $request->all());
-        return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans('alerts.roles.updated'));
+        return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans('alerts.backend.roles.updated'));
     }
 
     /**
@@ -104,6 +107,6 @@ class RoleController extends Controller
     public function destroy($id, DeleteRoleRequest $request)
     {
         $this->roles->destroy($id);
-        return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans('alerts.roles.deleted'));
+        return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans('alerts.backend.roles.deleted'));
     }
 }

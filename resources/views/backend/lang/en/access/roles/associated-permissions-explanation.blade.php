@@ -1,0 +1,1 @@
+A permission marked with a <small><strong>(D)</strong></small> means that the permission has dependencies. They will be checked automatically when you select that permission. You can manage each permissions dependencies in the dependency tab of the edit permission screen.

@@ -13,21 +13,22 @@ class EloquentRoleRepository implements RoleRepositoryContract
 {
     /**
      * @param  $id
-     * @param  bool                                                                                                                      $withPermissions
+     * @param  bool $withPermissions
      * @throws GeneralException
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|\Illuminate\Support\Collection|null|static
      */
     public function findOrThrowException($id, $withPermissions = false)
     {
-        if (!is_null(Role::find($id))) {
+        if (! is_null(Role::find($id))) {
             if ($withPermissions) {
-                return Role::with('permissions')->find($id);
+                return Role::with('permissions')
+                    ->find($id);
             }
 
             return Role::find($id);
         }
 
-        throw new GeneralException('That role does not exist.');
+        throw new GeneralException(trans('exceptions.backend.access.roles.not_found'));
     }
 
     /**
@@ -38,7 +39,9 @@ class EloquentRoleRepository implements RoleRepositoryContract
      */
     public function getRolesPaginated($per_page, $order_by = 'sort', $sort = 'asc')
     {
-        return Role::with('permissions')->orderBy($order_by, $sort)->paginate($per_page);
+        return Role::with('permissions')
+            ->orderBy($order_by, $sort)
+            ->paginate($per_page);
     }
 
     /**
@@ -50,10 +53,13 @@ class EloquentRoleRepository implements RoleRepositoryContract
     public function getAllRoles($order_by = 'sort', $sort = 'asc', $withPermissions = false)
     {
         if ($withPermissions) {
-            return Role::with('permissions')->orderBy($order_by, $sort)->get();
+            return Role::with('permissions')
+                ->orderBy($order_by, $sort)
+                ->get();
         }
 
-        return Role::orderBy($order_by, $sort)->get();
+        return Role::orderBy($order_by, $sort)
+            ->get();
     }
 
     /**
@@ -64,7 +70,7 @@ class EloquentRoleRepository implements RoleRepositoryContract
     public function create($input)
     {
         if (Role::where('name', $input['name'])->first()) {
-            throw new GeneralException('That role already exists. Please choose a different name.');
+            throw new GeneralException(trans('exceptions.backend.access.roles.already_exists'));
         }
 
         //See if the role has all access
@@ -75,7 +81,7 @@ class EloquentRoleRepository implements RoleRepositoryContract
         //See if the role must contain a permission as per config
         {
             if (config('access.roles.role_must_contain_permission') && count($input['permissions']) == 0) {
-                throw new GeneralException('You must select at least one permission for this role.');
+                throw new GeneralException(trans('exceptions.backend.access.roles.needs_permission'));
             }
         }
 
@@ -105,7 +111,7 @@ class EloquentRoleRepository implements RoleRepositoryContract
             return true;
         }
 
-        throw new GeneralException('There was a problem creating this role. Please try again.');
+        throw new GeneralException(trans('exceptions.backend.access.roles.create_error'));
     }
 
     /**
@@ -126,11 +132,10 @@ class EloquentRoleRepository implements RoleRepositoryContract
         }
 
         //This config is only required if all is false
-        if (!$all)
-        //See if the role must contain a permission as per config
-        {
+        if (! $all) {
+            //See if the role must contain a permission as per config
             if (config('access.roles.role_must_contain_permission') && count($input['permissions']) == 0) {
-                throw new GeneralException('You must select at least one permission for this role.');
+                throw new GeneralException(trans('exceptions.backend.access.roles.needs_permission'));
             }
         }
 
@@ -166,7 +171,7 @@ class EloquentRoleRepository implements RoleRepositoryContract
             return true;
         }
 
-        throw new GeneralException('There was a problem updating this role. Please try again.');
+        throw new GeneralException(trans('exceptions.backend.access.roles.update_error'));
     }
 
     /**
@@ -177,16 +182,15 @@ class EloquentRoleRepository implements RoleRepositoryContract
     public function destroy($id)
     {
         //Would be stupid to delete the administrator role
-        if ($id == 1) //id is 1 because of the seeder
-        {
-            throw new GeneralException('You can not delete the Administrator role.');
+        if ($id == 1) { //id is 1 because of the seeder
+            throw new GeneralException(trans('exceptions.backend.access.roles.cant_delete_admin'));
         }
 
         $role = $this->findOrThrowException($id, true);
 
         //Don't delete the role is there are users associated
         if ($role->users()->count() > 0) {
-            throw new GeneralException('You can not delete a role with associated users.');
+            throw new GeneralException(trans('exceptions.backend.access.roles.has_users'));
         }
 
         //Detach all associated roles
@@ -196,7 +200,7 @@ class EloquentRoleRepository implements RoleRepositoryContract
             return true;
         }
 
-        throw new GeneralException('There was a problem deleting this role. Please try again.');
+        throw new GeneralException(trans('exceptions.backend.access.roles.delete_error'));
     }
 
     /**

@@ -2,16 +2,19 @@
 
 namespace App\Exceptions\Backend\Access\User;
 
+use Exception;
+
 /**
  * Class UserNeedsRolesException
  * @package App\Exceptions\Access
  */
-class UserNeedsRolesException extends \Exception
+class UserNeedsRolesException extends Exception
 {
     /**
      * @var
      */
     protected $user_id;
+
     /**
      * @var
      */

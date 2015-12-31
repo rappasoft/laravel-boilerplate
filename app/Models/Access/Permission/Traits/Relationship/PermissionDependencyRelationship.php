@@ -2,8 +2,6 @@
 
 namespace App\Models\Access\Permission\Traits\Relationship;
 
-use App\Models\Access\Permission\Permission;
-
 /**
  * Class PermissionDependencyRelationship
  * @package App\Models\Access\Permission\Traits\Relationship
@@ -15,6 +13,6 @@ trait PermissionDependencyRelationship
      */
     public function permission()
     {
-        return $this->hasOne(Permission::class, 'id', 'dependency_id');
+        return $this->hasOne(config('access.permission'), 'id', 'dependency_id');
     }
 }
