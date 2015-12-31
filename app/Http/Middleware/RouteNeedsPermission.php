@@ -18,8 +18,10 @@ class RouteNeedsPermission
      */
     public function handle($request, Closure $next, $permission)
     {
-        if (!access()->can($permission)) {
-            return redirect('/')->withFlashDanger('You do not have access to do that.');
+        if (! access()->allow($permission)) {
+            return redirect()
+                ->route('frontend.index')
+                ->withFlashDanger(trans('auth.general_error'));
         }
 
         return $next($request);

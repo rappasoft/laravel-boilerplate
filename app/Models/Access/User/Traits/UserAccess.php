@@ -28,7 +28,6 @@ trait UserAccess
             if ($role->name == $nameOrId) {
                 return true;
             }
-
         }
 
         return false;
@@ -36,6 +35,7 @@ trait UserAccess
 
     /**
      * Checks to see if user has array of roles
+     *
      * All must return true
      * @param  $roles
      * @param  $needsAll
@@ -76,7 +76,7 @@ trait UserAccess
      * @param  string $nameOrId Permission name or id.
      * @return bool
      */
-    public function can($nameOrId)
+    public function allow($nameOrId)
     {
         foreach ($this->roles as $role) {
             //See if role has all permissions
@@ -98,7 +98,6 @@ trait UserAccess
                 if ($perm->name == $nameOrId) {
                     return true;
                 }
-
             }
         }
 
@@ -116,7 +115,6 @@ trait UserAccess
             if ($perm->name == $nameOrId) {
                 return true;
             }
-
         }
 
         return false;
@@ -124,11 +122,12 @@ trait UserAccess
 
     /**
      * Check an array of permissions and whether or not all are required to continue
+     *
      * @param  $permissions
      * @param  $needsAll
      * @return bool
      */
-    public function canMultiple($permissions, $needsAll = false)
+    public function allowMultiple($permissions, $needsAll = false)
     {
         //User has to possess all of the permissions specified
         if ($needsAll) {
@@ -150,7 +149,6 @@ trait UserAccess
             if ($this->can($perm)) {
                 $hasPermissions++;
             }
-
         }
 
         return $hasPermissions > 0;
@@ -162,7 +160,7 @@ trait UserAccess
      */
     public function hasPermission($nameOrId)
     {
-        return $this->can($nameOrId);
+        return $this->allow($nameOrId);
     }
 
     /**
@@ -172,7 +170,7 @@ trait UserAccess
      */
     public function hasPermissions($permissions, $needsAll = false)
     {
-        return $this->canMultiple($permissions, $needsAll);
+        return $this->allowMultiple($permissions, $needsAll);
     }
 
     /**

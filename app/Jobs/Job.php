@@ -19,7 +19,7 @@ abstract class Job
     | is shared across all of your jobs. The trait included with the class
     | provides access to the "onQueue" and "delay" queue helper methods.
     |
-     */
+    */
 
     use Queueable;
 }

@@ -2,9 +2,6 @@
 
 namespace App\Models\Access\Permission\Traits\Relationship;
 
-use App\Models\Access\Permission\Permission;
-use App\Models\Access\Permission\PermissionGroup;
-
 /**
  * Class PermissionGroupRelationship
  * @package App\Models\Access\Permission\Traits\Relationship
@@ -16,7 +13,7 @@ trait PermissionGroupRelationship
      */
     public function children()
     {
-        return $this->hasMany(PermissionGroup::class, 'parent_id', 'id')->orderBy('sort', 'asc');
+        return $this->hasMany(config('access.group'), 'parent_id', 'id')->orderBy('sort', 'asc');
     }
 
     /**
@@ -24,6 +21,6 @@ trait PermissionGroupRelationship
      */
     public function permissions()
     {
-        return $this->hasMany(Permission::class, 'group_id')->orderBy('sort', 'asc');
+        return $this->hasMany(config('access.permission'), 'group_id')->orderBy('sort', 'asc');
     }
 }

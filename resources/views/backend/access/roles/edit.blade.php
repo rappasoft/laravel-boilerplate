@@ -1,16 +1,16 @@
 @extends ('backend.layouts.master')
 
-@section ('title', trans('menus.role_management') . ' | ' . trans('menus.edit_role'))
+@section ('title', trans('labels.backend.access.roles.management') . ' | ' . trans('labels.backend.access.roles.edit'))
 
 @section('page-header')
     <h1>
-        {{ trans('menus.user_management') }}
-        <small>{{ trans('menus.edit_role') }}</small>
+        {{ trans('labels.backend.access.roles.management') }}
+        <small>{{ trans('labels.backend.access.roles.edit') }}</small>
     </h1>
 @endsection
 
 @section('after-styles-end')
-    {!! HTML::style('css/backend/plugin/jstree/themes/default/style.min.css') !!}
+    {!! Html::style('css/backend/plugin/jstree/themes/default/style.min.css') !!}
 @stop
 
 @section('content')
@@ -18,7 +18,7 @@
 
         <div class="box box-success">
             <div class="box-header with-border">
-                <h3 class="box-title">{{ trans('menus.edit_role') }}</h3>
+                <h3 class="box-title">{{ trans('labels.backend.access.roles.edit') }}</h3>
 
                 <div class="box-tools pull-right">
                     @include('backend.access.includes.partials.header-buttons')
@@ -27,32 +27,34 @@
 
             <div class="box-body">
                 <div class="form-group">
-                    {!! Form::label('name', trans('validation.attributes.role_name'), ['class' => 'col-lg-2 control-label']) !!}
+                    {!! Form::label('name', trans('validation.attributes.backend.access.roles.name'), ['class' => 'col-lg-2 control-label']) !!}
                     <div class="col-lg-10">
-                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.role_name')]) !!}
+                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.roles.name')]) !!}
                     </div>
                 </div><!--form control-->
 
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">{{ trans('validation.attributes.associated_permissions') }}</label>
+                    <label class="col-lg-2 control-label">{{ trans('validation.attributes.backend.access.roles.associated_permissions') }}</label>
                     <div class="col-lg-10">
                         @if ($role->id != 1)
                             {{-- Administrator has to be set to all --}}
                             {!! Form::select('associated-permissions', array('all' => 'All', 'custom' => 'Custom'), $role->all ? 'all' : 'custom', ['class' => 'form-control']); !!}
                         @else
-                            <span class="label label-success">All</span>
+                            <span class="label label-success">{{ trans('labels.general.all') }}</span>
                         @endif
 
                         <div id="available-permissions" class="hidden">
                             <div class="row">
+
                                 <div class="col-lg-12">
                                     <div class="alert alert-info">
-                                        <i class="fa fa-info-circle"></i> A permission marked with a <small><strong>(D)</strong></small> means that the permission has dependencies. They will be checked automatically when you select that permission. You can manage each permissions dependencies in the dependency tab of the edit permission screen.
+                                        <i class="fa fa-info-circle"></i>
+                                        @include('backend.lang.' . app()->getLocale() . '.access.roles.associated-permissions-explanation')
                                     </div><!--alert-->
                                 </div><!--col-lg-12-->
 
                                 <div class="col-lg-6">
-                                    <p><strong>Grouped Permissions</strong></p>
+                                    <p><strong>{{ trans('labels.backend.access.permissions.grouped_permissions') }}</strong></p>
 
                                     @if ($groups->count())
                                         <div id="permission-tree">
@@ -72,7 +74,7 @@
                                                                                 array_push($dependency_list, $dependency->permission->display_name);
                                                                             $dependency_list = implode(", ", $dependency_list);
                                                                             ?>
-                                                                            <a data-toggle="tooltip" data-html="true" title="<strong>Dependencies:</strong> {!! $dependency_list !!}">{!! $permission->display_name !!} <small><strong>(D)</strong></small></a>
+                                                                            <a data-toggle="tooltip" data-html="true" title="<strong>{{ trans('labels.backend.access.permissions.dependencies') }}:</strong> {!! $dependency_list !!}">{!! $permission->display_name !!} <small><strong>(D)</strong></small></a>
                                                                         @else
                                                                             {!! $permission->display_name !!}
                                                                         @endif
@@ -99,7 +101,7 @@
                                                                                                 array_push($dependency_list, $dependency->permission->display_name);
                                                                                             $dependency_list = implode(", ", $dependency_list);
                                                                                             ?>
-                                                                                            <a data-toggle="tooltip" data-html="true" title="<strong>Dependencies:</strong> {!! $dependency_list !!}">{!! $permission->display_name !!} <small><strong>(D)</strong></small></a>
+                                                                                            <a data-toggle="tooltip" data-html="true" title="<strong>{{ trans('labels.backend.access.permissions.dependencies') }}:</strong> {!! $dependency_list !!}">{!! $permission->display_name !!} <small><strong>(D)</strong></small></a>
                                                                                         @else
                                                                                             {!! $permission->display_name !!}
                                                                                         @endif
@@ -117,12 +119,12 @@
                                             </ul>
                                         </div>
                                     @else
-                                        <p>There are no permission groups.</p>
+                                        <p>{{ trans('labels.backend.access.permissions.no_groups') }}</p>
                                     @endif
                                 </div><!--col-lg-6-->
 
                                 <div class="col-lg-6">
-                                    <p><strong>Ungrouped Permissions</strong></p>
+                                    <p><strong>{{ trans('labels.backend.access.permissions.ungrouped_permissions') }}</strong></p>
 
                                     @if ($permissions->count())
                                         @foreach ($permissions as $perm)
@@ -136,7 +138,7 @@
                                                         array_push($dependency_list, $dependency->permission->display_name);
                                                     $dependency_list = implode(", ", $dependency_list);
                                                     ?>
-                                                    <a style="color:black;text-decoration:none;" data-toggle="tooltip" data-html="true" title="<strong>Dependencies:</strong> {!! $dependency_list !!}">{!! $perm->display_name !!} <small><strong>(D)</strong></small></a>
+                                                    <a style="color:black;text-decoration:none;" data-toggle="tooltip" data-html="true" title="<strong>{{ trans('labels.backend.access.permissions.dependencies') }}:</strong> {!! $dependency_list !!}">{!! $perm->display_name !!} <small><strong>(D)</strong></small></a>
                                                 @else
                                                     {!! $perm->display_name !!}
                                                 @endif
@@ -144,7 +146,7 @@
                                             </label><br/>
                                         @endforeach
                                     @else
-                                        <p>There are no ungrouped permissions.</p>
+                                        <p>{{ trans('labels.backend.access.permissions.no_ungrouped') }}</p>
                                     @endif
                                 </div><!--col-lg-6-->
                             </div><!--row-->
@@ -153,9 +155,9 @@
                 </div><!--form control-->
 
                 <div class="form-group">
-                    {!! Form::label('name', trans('validation.attributes.role_sort'), ['class' => 'col-lg-2 control-label']) !!}
+                    {!! Form::label('name', trans('validation.attributes.backend.access.roles.sort'), ['class' => 'col-lg-2 control-label']) !!}
                     <div class="col-lg-10">
-                        {!! Form::text('sort', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.role_sort')]) !!}
+                        {!! Form::text('sort', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.roles.sort')]) !!}
                     </div>
                 </div><!--form control-->
             </div><!-- /.box-body -->
@@ -164,11 +166,11 @@
         <div class="box box-success">
             <div class="box-body">
                 <div class="pull-left">
-                    <a href="{!! route('admin.access.roles.index') !!}" class="btn btn-danger btn-xs">{{ trans('strings.cancel_button') }}</a>
+                    <a href="{!! route('admin.access.roles.index') !!}" class="btn btn-danger btn-xs">{{ trans('buttons.general.cancel') }}</a>
                 </div>
 
                 <div class="pull-right">
-                    <input type="submit" class="btn btn-success btn-xs" value="{{ trans('strings.save_button') }}" />
+                    <input type="submit" class="btn btn-success btn-xs" value="{{ trans('buttons.general.crud.update') }}" />
                 </div>
                 <div class="clearfix"></div>
             </div><!-- /.box-body -->
@@ -179,8 +181,8 @@
 @stop
 
 @section('after-scripts-end')
-    {!! HTML::script('js/backend/plugin/jstree/jstree.min.js') !!}
-    {!! HTML::script('js/backend/access/roles/script.js') !!}
+    {!! Html::script('js/backend/plugin/jstree/jstree.min.js') !!}
+    {!! Html::script('js/backend/access/roles/script.js') !!}
 
     <script>
         $(function() {

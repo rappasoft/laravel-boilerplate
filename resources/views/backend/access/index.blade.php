@@ -1,18 +1,18 @@
 @extends ('backend.layouts.master')
 
-@section ('title', trans('menus.user_management'))
+@section ('title', trans('labels.backend.access.users.management'))
 
 @section('page-header')
     <h1>
-        {{ trans('menus.user_management') }}
-        <small>{{ trans('menus.active_users') }}</small>
+        {{ trans('labels.backend.access.users.management') }}
+        <small>{{ trans('labels.backend.access.users.active') }}</small>
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('menus.active_users') }}</h3>
+            <h3 class="box-title">{{ trans('labels.backend.access.users.active') }}</h3>
 
             <div class="box-tools pull-right">
                 @include('backend.access.includes.partials.header-buttons')
@@ -24,53 +24,53 @@
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th>{{ trans('crud.users.id') }}</th>
-                        <th>{{ trans('crud.users.name') }}</th>
-                        <th>{{ trans('crud.users.email') }}</th>
-                        <th>{{ trans('crud.users.confirmed') }}</th>
-                        <th>{{ trans('crud.users.roles') }}</th>
-                        <th>{{ trans('crud.users.other_permissions') }}</th>
-                        <th class="visible-lg">{{ trans('crud.users.created') }}</th>
-                        <th class="visible-lg">{{ trans('crud.users.last_updated') }}</th>
-                        <th>{{ trans('crud.actions') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.id') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.name') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.email') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.other_permissions') }}</th>
+                        <th class="visible-lg">{{ trans('labels.backend.access.users.table.created') }}</th>
+                        <th class="visible-lg">{{ trans('labels.backend.access.users.table.last_updated') }}</th>
+                        <th>{{ trans('labels.general.actions') }}</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach ($users as $user)
-                        <tr>
-                            <td>{!! $user->id !!}</td>
-                            <td>{!! $user->name !!}</td>
-                            <td>{!! link_to("mailto:".$user->email, $user->email) !!}</td>
-                            <td>{!! $user->confirmed_label !!}</td>
-                            <td>
-                                @if ($user->roles()->count() > 0)
-                                    @foreach ($user->roles as $role)
-                                        {!! $role->name !!}<br/>
-                                    @endforeach
-                                @else
-                                    None
-                                @endif
-                            </td>
-                            <td>
-                                @if ($user->permissions()->count() > 0)
-                                    @foreach ($user->permissions as $perm)
-                                        {!! $perm->display_name !!}<br/>
-                                    @endforeach
-                                @else
-                                    None
-                                @endif
-                            </td>
-                            <td class="visible-lg">{!! $user->created_at->diffForHumans() !!}</td>
-                            <td class="visible-lg">{!! $user->updated_at->diffForHumans() !!}</td>
-                            <td>{!! $user->action_buttons !!}</td>
-                        </tr>
-                    @endforeach
+                        @foreach ($users as $user)
+                            <tr>
+                                <td>{!! $user->id !!}</td>
+                                <td>{!! $user->name !!}</td>
+                                <td>{!! link_to("mailto:".$user->email, $user->email) !!}</td>
+                                <td>{!! $user->confirmed_label !!}</td>
+                                <td>
+                                    @if ($user->roles()->count() > 0)
+                                        @foreach ($user->roles as $role)
+                                            {!! $role->name !!}<br/>
+                                        @endforeach
+                                    @else
+                                        {{ trans('labels.general.none') }}
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($user->permissions()->count() > 0)
+                                        @foreach ($user->permissions as $perm)
+                                            {!! $perm->display_name !!}<br/>
+                                        @endforeach
+                                    @else
+                                        {{ trans('labels.general.none') }}
+                                    @endif
+                                </td>
+                                <td class="visible-lg">{!! $user->created_at->diffForHumans() !!}</td>
+                                <td class="visible-lg">{!! $user->updated_at->diffForHumans() !!}</td>
+                                <td>{!! $user->action_buttons !!}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
 
             <div class="pull-left">
-                {!! $users->total() !!} {{ trans('crud.users.total') }}
+                {!! $users->total() !!} {{ trans('labels.backend.access.users.table.total') }}
             </div>
 
             <div class="pull-right">

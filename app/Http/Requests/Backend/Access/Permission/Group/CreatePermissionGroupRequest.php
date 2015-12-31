@@ -17,7 +17,7 @@ class CreatePermissionGroupRequest extends Request
      */
     public function authorize()
     {
-        return access()->can('create-permission-groups');
+        return access()->allow('create-permission-groups');
     }
 
     /**

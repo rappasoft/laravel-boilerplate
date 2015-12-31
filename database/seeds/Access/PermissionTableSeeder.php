@@ -4,19 +4,22 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * Class PermissionTableSeeder
+ */
 class PermissionTableSeeder extends Seeder
 {
     public function run()
     {
-        if (env('DB_DRIVER') == 'mysql') {
+        if (env('DB_CONNECTION') == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         }
 
-        if (env('DB_DRIVER') == 'mysql') {
+        if (env('DB_CONNECTION') == 'mysql') {
             DB::table(config('access.permissions_table'))->truncate();
             DB::table(config('access.permission_role_table'))->truncate();
             DB::table(config('access.permission_user_table'))->truncate();
-        } elseif (env('DB_DRIVER') == 'sqlite') {
+        } elseif (env('DB_CONNECTION') == 'sqlite') {
             DB::statement('DELETE FROM ' . config('access.permissions_table'));
             DB::statement('DELETE FROM ' . config('access.permission_role_table'));
             DB::statement('DELETE FROM ' . config('access.permission_user_table'));
@@ -119,17 +122,6 @@ class PermissionTableSeeder extends Seeder
         $deactivateUser->updated_at   = Carbon::now();
         $deactivateUser->save();
 
-        $permission_model       = config('access.permission');
-        $banUsers               = new $permission_model;
-        $banUsers->name         = 'ban-users';
-        $banUsers->display_name = 'Ban Users';
-        $banUsers->system       = true;
-        $banUsers->group_id     = 2;
-        $banUsers->sort         = 10;
-        $banUsers->created_at   = Carbon::now();
-        $banUsers->updated_at   = Carbon::now();
-        $banUsers->save();
-
         $permission_model             = config('access.permission');
         $reactivateUser               = new $permission_model;
         $reactivateUser->name         = 'reactivate-users';
@@ -140,17 +132,6 @@ class PermissionTableSeeder extends Seeder
         $reactivateUser->created_at   = Carbon::now();
         $reactivateUser->updated_at   = Carbon::now();
         $reactivateUser->save();
-
-        $permission_model        = config('access.permission');
-        $unbanUser               = new $permission_model;
-        $unbanUser->name         = 'unban-users';
-        $unbanUser->display_name = 'Un-Ban Users';
-        $unbanUser->system       = true;
-        $unbanUser->group_id     = 2;
-        $unbanUser->sort         = 12;
-        $unbanUser->created_at   = Carbon::now();
-        $unbanUser->updated_at   = Carbon::now();
-        $unbanUser->save();
 
         $permission_model           = config('access.permission');
         $undeleteUser               = new $permission_model;
@@ -304,7 +285,7 @@ class PermissionTableSeeder extends Seeder
         $deletePermissions->updated_at   = Carbon::now();
         $deletePermissions->save();
 
-        if (env('DB_DRIVER') == 'mysql') {
+        if (env('DB_CONNECTION') == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }
     }

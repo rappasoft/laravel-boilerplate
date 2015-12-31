@@ -60,7 +60,7 @@ return [
     'regex'                => 'The :attribute format is invalid.',
     'required'             => 'The :attribute field is required.',
     'required_if'          => 'The :attribute field is required when :other is :value.',
-	'required_unless'      => 'The :attribute field is required unless :other is in :values.',
+    'required_unless'      => 'The :attribute field is required unless :other is in :values.',
     'required_with'        => 'The :attribute field is required when :values is present.',
     'required_with_all'    => 'The :attribute field is required when :values is present.',
     'required_without'     => 'The :attribute field is required when :values is not present.',
@@ -106,32 +106,53 @@ return [
     */
 
     'attributes' => [
-        'name' => 'Name',
-        'avatar' => 'Avatar',
-        'email' => 'E-mail',
-        'password' => 'Password',
-        'password_confirmation' => 'Password Confirmation',
-        'old_password' => 'Old Password',
-        'new_password' => 'New Password',
-        'new_password_confirmation' => 'New Password Confirmation',
-        'created_at' => 'Created At',
-        'last_updated' => 'Last Updated',
-        'actions' => 'Actions',
-        'active' => 'Active',
-        'confirmed' => 'Confirmed',
-        'send_confirmation_email' => 'Send Confirmation E-mail',
-        'associated_roles' => 'Associated Roles',
-        'other_permissions' => 'Other Permissions',
-        'role_name' => 'Role Name',
-        'role_sort' => 'Role Sort',
-        'associated_permissions' => 'Associated Permissions',
-        'permission_name' => 'Permission Name',
-        'display_name' => 'Display Name',
-        'system_permission' => 'System Permission?',
-        'permission_group_name' => 'Group Name',
-        'group' => 'Group',
-        'group-sort' => 'Group Sort',
-        'dependencies' => 'Dependencies',
+
+        'backend' => [
+            'access' => [
+                'permissions' => [
+                    'associated_roles' => 'Associated Roles',
+                    'dependencies' => 'Dependencies',
+                    'display_name' => 'Display Name',
+                    'group' => 'Group',
+                    'group_sort' => 'Group Sort',
+
+                    'groups' => [
+                        'name' => 'Group Name',
+                    ],
+
+                    'name' => 'Name',
+                    'system' => 'System?',
+                ],
+
+                'roles' => [
+                    'associated_permissions' => 'Associated Permissions',
+                    'name' => 'Name',
+                    'sort' => 'Sort',
+                ],
+
+                'users' => [
+                    'active' => 'Active',
+                    'associated_roles' => 'Associated Roles',
+                    'confirmed' => 'Confirmed',
+                    'email' => 'E-mail Address',
+                    'name' => 'Name',
+                    'other_permissions' => 'Other Permissions',
+                    'password' => 'Password',
+                    'password_confirmation' => 'Password Confirmation',
+                    'send_confirmation_email' => 'Send Confirmation E-mail',
+                ],
+            ],
+        ],
+
+        'frontend' => [
+            'email' => 'E-mail Address',
+            'name' => 'Name',
+            'password' => 'Password',
+            'password_confirmation' => 'Password Confirmation',
+            'old_password' => 'Old Password',
+            'new_password' => 'New Password',
+            'new_password_confirmation' => 'New Password Confirmation',
+        ],
     ],
 
 ];

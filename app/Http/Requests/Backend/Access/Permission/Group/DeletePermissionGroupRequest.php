@@ -17,7 +17,7 @@ class DeletePermissionGroupRequest extends Request
      */
     public function authorize()
     {
-        return access()->can('delete-permission-groups');
+        return access()->allow('delete-permission-groups');
     }
 
     /**

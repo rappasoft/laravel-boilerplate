@@ -1,11 +1,11 @@
 @extends ('backend.layouts.master')
 
-@section ('title', trans('menus.user_management') . ' | ' . trans('menus.edit_user'))
+@section ('title', trans('labels.backend.access.users.management') . ' | ' . trans('labels.backend.access.users.edit'))
 
 @section('page-header')
     <h1>
-        {{ trans('menus.user_management') }}
-        <small>{{ trans('menus.edit_user') }}</small>
+        {{ trans('labels.backend.access.users.management') }}
+        <small>{{ trans('labels.backend.access.users.edit') }}</small>
     </h1>
 @endsection
 
@@ -14,7 +14,7 @@
 
         <div class="box box-success">
             <div class="box-header with-border">
-                <h3 class="box-title">{{ trans('menus.edit_user') }}</h3>
+                <h3 class="box-title">{{ trans('labels.backend.access.users.edit') }}</h3>
 
                 <div class="box-tools pull-right">
                     @include('backend.access.includes.partials.header-buttons')
@@ -23,44 +23,44 @@
 
             <div class="box-body">
                 <div class="form-group">
-                    {!! Form::label('name', trans('validation.attributes.name'), ['class' => 'col-lg-2 control-label']) !!}
+                    {!! Form::label('name', trans('validation.attributes.backend.access.users.name'), ['class' => 'col-lg-2 control-label']) !!}
                     <div class="col-lg-10">
-                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('strings.full_name')]) !!}
+                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.users.name')]) !!}
                     </div>
                 </div><!--form control-->
 
                 <div class="form-group">
-                    {!! Form::label('email', trans('validation.attributes.email'), ['class' => 'col-lg-2 control-label']) !!}
+                    {!! Form::label('email', trans('validation.attributes.backend.access.users.email'), ['class' => 'col-lg-2 control-label']) !!}
                     <div class="col-lg-10">
-                        {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.email')]) !!}
+                        {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.users.email')]) !!}
                     </div>
                 </div><!--form control-->
 
                 @if ($user->id != 1)
                     <div class="form-group">
-                        <label class="col-lg-2 control-label">{{ trans('validation.attributes.active') }}</label>
+                        <label class="col-lg-2 control-label">{{ trans('validation.attributes.backend.access.users.active') }}</label>
                         <div class="col-lg-1">
                             <input type="checkbox" value="1" name="status" {{$user->status == 1 ? 'checked' : ''}} />
                         </div>
                     </div><!--form control-->
 
                     <div class="form-group">
-                        <label class="col-lg-2 control-label">{{ trans('validation.attributes.confirmed') }}</label>
+                        <label class="col-lg-2 control-label">{{ trans('validation.attributes.backend.access.users.confirmed') }}</label>
                         <div class="col-lg-1">
                             <input type="checkbox" value="1" name="confirmed" {{$user->confirmed == 1 ? 'checked' : ''}} />
                         </div>
                     </div><!--form control-->
 
                     <div class="form-group">
-                        <label class="col-lg-2 control-label">{{ trans('validation.attributes.associated_roles') }}</label>
+                        <label class="col-lg-2 control-label">{{ trans('validation.attributes.backend.access.users.associated_roles') }}</label>
                         <div class="col-lg-3">
                             @if (count($roles) > 0)
                                 @foreach($roles as $role)
-                                    <input type="checkbox" value="{{$role->id}}" name="assignees_roles[]" {{in_array($role->id, $user_roles) ? 'checked' : ''}} id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{!! $role->name !!}</label> <a href="#" data-role="role_{{$role->id}}" class="show-permissions small">(<span class="show-hide">Show</span> Permissions)</a><br/>
+                                    <input type="checkbox" value="{{$role->id}}" name="assignees_roles[]" {{in_array($role->id, $user_roles) ? 'checked' : ''}} id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{!! $role->name !!}</label> <a href="#" data-role="role_{{$role->id}}" class="show-permissions small">(<span class="show-hide">{{ trans('labels.general.show') }}</span> {{ trans('labels.backend.access.users.permissions') }})</a><br/>
 
                                     <div class="permission-list hidden" data-role="role_{{$role->id}}">
                                         @if ($role->all)
-                                            All Permissions<br/><br/>
+                                            {{ trans('labels.backend.access.users.all_permissions') }}<br/><br/>
                                         @else
                                             @if (count($role->permissions) > 0)
                                                 <blockquote class="small">{{--
@@ -69,22 +69,22 @@
                                                     @endforeach
                                                 </blockquote>
                                             @else
-                                                No permissions<br/><br/>
+                                                {{ trans('labels.backend.access.users.no_permissions') }}<br/><br/>
                                             @endif
                                         @endif
                                     </div><!--permission list-->
                                 @endforeach
                             @else
-                                No Roles to set
+                                {{ trans('labels.backend.access.users.no_roles') }}
                             @endif
                         </div>
                     </div><!--form control-->
 
                     <div class="form-group">
-                        <label class="col-lg-2 control-label">{{ trans('validation.attributes.other_permissions') }}</label>
+                        <label class="col-lg-2 control-label">{{ trans('validation.attributes.backend.access.users.other_permissions') }}</label>
                         <div class="col-lg-10">
                             <div class="alert alert-info">
-                                <i class="fa fa-info-circle"></i> Checking a permission will also check its dependencies, if any.
+                                <i class="fa fa-info-circle"></i> {{ trans('labels.backend.access.users.permission_check') }}
                             </div><!--alert-->
 
                             @if (count($permissions))
@@ -112,7 +112,7 @@
                                                 <li><input type="checkbox" value="{{$p['id']}}" name="permission_user[]" data-dependencies="{!! $dependencies !!}" {{in_array($p['id'], $user_permissions) ? 'checked' : ""}} id="permission-{{$p['id']}}" /> <label for="permission-{{$p['id']}}">
 
                                                         @if ($p['dependencies'])
-                                                            <a style="color:black;text-decoration:none;" data-toggle="tooltip" data-html="true" title="<strong>Dependencies:</strong> {!! $dependency_list !!}">{!! $p['display_name'] !!} <small><strong>(D)</strong></small></a>
+                                                            <a style="color:black;text-decoration:none;" data-toggle="tooltip" data-html="true" title="<strong>{{ trans('labels.backend.access.users.dependencies') }}:</strong> {!! $dependency_list !!}">{!! $p['display_name'] !!} <small><strong>(D)</strong></small></a>
                                                         @else
                                                             {!! $p['display_name'] !!}
                                                         @endif
@@ -123,7 +123,7 @@
                                     </div>
                                 @endforeach
                             @else
-                                No other permissions
+                                {{ trans('labels.backend.access.users.no_other_permissions') }}
                             @endif
                         </div><!--col 3-->
                     </div><!--form control-->
@@ -134,11 +134,11 @@
         <div class="box box-success">
             <div class="box-body">
                 <div class="pull-left">
-                    <a href="{{route('admin.access.users.index')}}" class="btn btn-danger btn-xs">{{ trans('strings.cancel_button') }}</a>
+                    <a href="{{route('admin.access.users.index')}}" class="btn btn-danger btn-xs">{{ trans('buttons.general.cancel') }}</a>
                 </div>
 
                 <div class="pull-right">
-                    <input type="submit" class="btn btn-success btn-xs" value="{{ trans('strings.save_button') }}" />
+                    <input type="submit" class="btn btn-success btn-xs" value="{{ trans('buttons.general.crud.update') }}" />
                 </div>
                 <div class="clearfix"></div>
             </div><!-- /.box-body -->
@@ -154,6 +154,6 @@
 @stop
 
 @section('after-scripts-end')
-    {!! HTML::script('js/backend/access/permissions/script.js') !!}
-    {!! HTML::script('js/backend/access/users/script.js') !!}
+    {!! Html::script('js/backend/access/permissions/script.js') !!}
+    {!! Html::script('js/backend/access/users/script.js') !!}
 @stop

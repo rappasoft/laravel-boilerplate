@@ -3,14 +3,16 @@
 /**
  * Frontend Controllers
  */
-$router->get('/', 'FrontendController@index')->name('home');
-$router->get('macros', 'FrontendController@macros');
+Route::get('/', 'FrontendController@index')->name('frontend.index');
+Route::get('macros', 'FrontendController@macros')->name('frontend.macros');
 
 /**
  * These frontend controllers require the user to be logged in
  */
-$router->group(['middleware' => 'auth'], function () use ($router) {
-    $router->get('dashboard', 'DashboardController@index')->name('frontend.dashboard');
-    $router->get('profile/edit', 'ProfileController@edit')->name('frontend.profile.edit');
-    $router->patch('profile/update', 'ProfileController@update')->name('frontend.profile.update');
+Route::group(['middleware' => 'auth'], function () {
+    Route::group(['namespace' => 'User'], function() {
+        Route::get('dashboard', 'DashboardController@index')->name('frontend.user.dashboard');
+        Route::get('profile/edit', 'ProfileController@edit')->name('frontend.user.profile.edit');
+        Route::patch('profile/update', 'ProfileController@update')->name('frontend.user.profile.update');
+    });
 });

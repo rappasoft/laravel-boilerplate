@@ -70,11 +70,6 @@ class AccessServiceProvider extends ServiceProvider
     public function registerBindings()
     {
         $this->app->bind(
-            \App\Repositories\Frontend\Auth\AuthenticationContract::class,
-            \App\Repositories\Frontend\Auth\EloquentAuthenticationRepository::class
-        );
-
-        $this->app->bind(
             \App\Repositories\Frontend\User\UserContract::class,
             \App\Repositories\Frontend\User\EloquentUserRepository::class
         );
@@ -134,18 +129,18 @@ class AccessServiceProvider extends ServiceProvider
          * Accepts wither string of Permission Name or Permission ID
          */
         Blade::directive('permission', function ($permission) {
-            return "<?php if (access()->can{$permission}): ?>";
+            return "<?php if (access()->allow{$permission}): ?>";
         });
 
         /**
          * Accepts array of names or id's
          */
         Blade::directive('permissions', function ($permissions) {
-            return "<?php if (access()->canMultiple{$permissions}): ?>";
+            return "<?php if (access()->allowMultiple{$permissions}): ?>";
         });
 
         Blade::directive('needspermissions', function ($permissions) {
-            return '<?php if (access()->canMultiple(' . $permissions . ', true)): ?>';
+            return '<?php if (access()->allowMultiple(' . $permissions . ', true)): ?>';
         });
 
         /**

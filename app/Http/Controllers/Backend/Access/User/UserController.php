@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend\Access\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\User\UserContract;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
-use App\Repositories\Frontend\Auth\AuthenticationContract;
 use App\Http\Requests\Backend\Access\User\CreateUserRequest;
 use App\Http\Requests\Backend\Access\User\StoreUserRequest;
 use App\Http\Requests\Backend\Access\User\EditUserRequest;
@@ -17,6 +16,7 @@ use App\Http\Requests\Backend\Access\User\ChangeUserPasswordRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
 use App\Repositories\Backend\Permission\PermissionRepositoryContract;
 use App\Http\Requests\Backend\Access\User\PermanentlyDeleteUserRequest;
+use App\Repositories\Frontend\User\UserContract as FrontendUserContract;
 use App\Http\Requests\Backend\Access\User\ResendConfirmationEmailRequest;
 
 /**
@@ -44,7 +44,11 @@ class UserController extends Controller
      * @param RoleRepositoryContract       $roles
      * @param PermissionRepositoryContract $permissions
      */
-    public function __construct(UserContract $users, RoleRepositoryContract $roles, PermissionRepositoryContract $permissions)
+    public function __construct(
+        UserContract $users,
+        RoleRepositoryContract $roles,
+        PermissionRepositoryContract $permissions
+    )
     {
         $this->users       = $users;
         $this->roles       = $roles;
@@ -82,7 +86,7 @@ class UserController extends Controller
             $request->only('assignees_roles'),
             $request->only('permission_user')
         );
-        return redirect()->route('admin.access.users.index')->withFlashSuccess(trans('alerts.users.created'));
+        return redirect()->route('admin.access.users.index')->withFlashSuccess(trans('alerts.backend.users.created'));
     }
 
     /**
@@ -113,7 +117,7 @@ class UserController extends Controller
             $request->only('assignees_roles'),
             $request->only('permission_user')
         );
-        return redirect()->route('admin.access.users.index')->withFlashSuccess(trans('alerts.users.updated'));
+        return redirect()->route('admin.access.users.index')->withFlashSuccess(trans('alerts.backend.users.updated'));
     }
 
     /**
@@ -124,7 +128,7 @@ class UserController extends Controller
     public function destroy($id, DeleteUserRequest $request)
     {
         $this->users->destroy($id);
-        return redirect()->back()->withFlashSuccess(trans('alerts.users.deleted'));
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.deleted'));
     }
 
     /**
@@ -135,7 +139,7 @@ class UserController extends Controller
     public function delete($id, PermanentlyDeleteUserRequest $request)
     {
         $this->users->delete($id);
-        return redirect()->back()->withFlashSuccess(trans('alerts.users.deleted_permanently'));
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.deleted_permanently'));
     }
 
     /**
@@ -146,7 +150,7 @@ class UserController extends Controller
     public function restore($id, RestoreUserRequest $request)
     {
         $this->users->restore($id);
-        return redirect()->back()->withFlashSuccess(trans('alerts.users.restored'));
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.restored'));
     }
 
     /**
@@ -158,7 +162,7 @@ class UserController extends Controller
     public function mark($id, $status, MarkUserRequest $request)
     {
         $this->users->mark($id, $status);
-        return redirect()->back()->withFlashSuccess(trans('alerts.users.updated'));
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.updated'));
     }
 
     /**
@@ -180,15 +184,6 @@ class UserController extends Controller
     }
 
     /**
-     * @return mixed
-     */
-    public function banned()
-    {
-        return view('backend.access.banned')
-            ->withUsers($this->users->getUsersPaginated(25, 2));
-    }
-
-    /**
      * @param  $id
      * @param  ChangeUserPasswordRequest $request
      * @return mixed
@@ -207,18 +202,18 @@ class UserController extends Controller
     public function updatePassword($id, UpdateUserPasswordRequest $request)
     {
         $this->users->updatePassword($id, $request->all());
-        return redirect()->route('admin.access.users.index')->withFlashSuccess(trans('alerts.users.updated_password'));
+        return redirect()->route('admin.access.users.index')->withFlashSuccess(trans('alerts.backend.users.updated_password'));
     }
 
     /**
      * @param  $user_id
-     * @param  AuthenticationContract         $auth
+     * @param  FrontendUserContract $user
      * @param  ResendConfirmationEmailRequest $request
      * @return mixed
      */
-    public function resendConfirmationEmail($user_id, AuthenticationContract $auth, ResendConfirmationEmailRequest $request)
+    public function resendConfirmationEmail($user_id, FrontendUserContract $user, ResendConfirmationEmailRequest $request)
     {
-        $auth->resendConfirmationEmail($user_id);
-        return redirect()->back()->withFlashSuccess(trans('alerts.users.confirmation_email'));
+        $user->sendConfirmationEmail($user_id);
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.confirmation_email'));
     }
 }
