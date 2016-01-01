@@ -31,11 +31,11 @@ return [
             'permissions' => [
                 'create' => 'Créer Permission',
                 'dependencies' => 'Dépendances',
-                'edit' => 'Editer Permission',
+                'edit' => 'Éditer Permission',
 
                 'groups' => [
-                    'create' => 'Creéer Groupe',
-                    'edit' => 'Editer Group',
+                    'create' => 'Créer Groupe',
+                    'edit' => 'Éditer Groupe',
 
                     'table' => [
                         'name' => 'Nom',
@@ -92,10 +92,10 @@ return [
                 'change_password' => 'Modifier le mot de passe',
                 'change_password_for' => 'Modifier le mot de passe pour :user',
                 'create' => 'Créer Utilisateur',
-                'deactivated' => 'Users désactivés',
+                'deactivated' => 'Utilisateurs désactivés',
                 'deleted' => 'Utilisateurs supprimés',
                 'dependencies' => 'Dépendances',
-                'edit' => 'Editer Utilisateur',
+                'edit' => 'Éditer Utilisateur',
                 'management' => 'Gestion utilisateurs',
                 'no_other_permissions' => "Pas d'autres Permissions",
                 'no_permissions' => 'Pas de Permissions',
@@ -110,8 +110,8 @@ return [
                     'id' => 'ID',
                     'last_updated' => 'Mise à jour le',
                     'name' => 'Nom',
-                    'no_deactivated' => "Pas d'Utilisateurs désactivés",
-                    'no_deleted' => "Pas d'Utilisateurs supprimés",
+                    'no_deactivated' => "Pas d'utilisateurs désactivés",
+                    'no_deleted' => "Pas d'utilisateurs supprimés",
                     'other_permissions' => 'Autres Permissions',
                     'roles' => 'Rôles',
                     'total' => 'utilisateur(s) total',
@@ -132,21 +132,21 @@ return [
         ],
 
         'passwords' => [
-            'forgot_password' => 'Forgot Your Password?',
-            'reset_password_box_title' => 'Reset Password',
-            'reset_password_button' => 'Reset Password',
-            'send_password_reset_link_button' => 'Send Password Reset Link',
+            'forgot_password' => 'Vous avezz oublié votre mot de passe ?',
+            'reset_password_box_title' => 'Réinitialisation du mot de passe',
+            'reset_password_button' => 'Réinitialiser le mot de passe',
+            'send_password_reset_link_button' => 'Envoyer le lien de réinitialisation',
         ],
 
         'macros' => [
             'country' => [
-                'alpha' => 'Country Alpha Codes',
-                'alpha2' => 'Country Alpha 2 Codes',
-                'alpha3' => 'Country Alpha 3 Codes',
-                'numeric' => 'Country Numeric Codes',
+                'alpha' => 'Pays Alpha Codes',
+                'alpha2' => 'Pays Alpha 2 Codes',
+                'alpha3' => 'Pays Alpha 3 Codes',
+                'numeric' => 'Pays Numéros Codes',
             ],
 
-            'macro_examples' => 'Macro Examples',
+            'macro_examples' => 'Examples Macros',
 
             'state' => [
                 'mexico' => 'Mexico State List',
@@ -161,22 +161,22 @@ return [
                 'canada' => 'Canada Province & Territories List',
             ],
 
-            'timezone' => 'Timezone',
+            'timezone' => 'Fuseau horaire',
         ],
 
         'user' => [
             'passwords' => [
-                'change' => 'Change Password',
+                'change' => 'Modifier le mot de passe',
             ],
 
             'profile' => [
                 'avatar' => 'Avatar',
-                'created_at' => 'Created At',
-                'edit_information' => 'Edit Information',
-                'email' => 'E-mail',
-                'last_updated' => 'Last Updated',
-                'name' => 'Name',
-                'update_information' => 'Update Information',
+                'created_at' => 'Créé le ',
+                'edit_information' => 'Éditer les informations',
+                'email' => 'e-mail',
+                'last_updated' => 'Mise à jour le',
+                'name' => 'Nom',
+                'update_information' => 'Mettre à jour les informations',
             ],
         ],
 

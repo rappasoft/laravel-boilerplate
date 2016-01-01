@@ -15,12 +15,12 @@ return [
 
     'backend' => [
         'access' => [
-            'title' => 'Access Management',
+            'title' => 'Gestion des accès',
 
             'permissions' => [
-                'all' => 'All Permissions',
-                'create' => 'Create Permission',
-                'edit' => 'Edit Permission',
+                'all' => 'Toutes les Permissions',
+                'create' => 'Créer Permission',
+                'edit' => 'Éditer Permissions',
                 'groups' => [
                     'all' => 'All Groups',
                     'create' => 'Create Group',
@@ -57,15 +57,16 @@ return [
         ],
 
         'sidebar' => [
-            'dashboard' => 'Dashboard',
-            'general' => 'General',
+            'dashboard' => 'Tableau de bord',
+            'general' => 'Général',
         ],
     ],
 
     'language-picker' => [
-        'language' => 'Language',
+        'language' => 'Langue',
         'langs' => [
             'en' => 'English',
+            'fr-FR' => 'Français (France)',
         ],
     ],
 ];

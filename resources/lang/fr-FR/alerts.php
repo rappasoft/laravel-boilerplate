@@ -1,4 +1,4 @@
-<?php
+Ôªø<?php
 
 return [
 
@@ -15,32 +15,32 @@ return [
 
     'backend' => [
         'permissions' => [
-            'created' => 'Permission crÈÈe avec succËs.',
-            'deleted' => 'Permission successfully supprimÈe avec succËs.',
+            'created' => 'Permission cr√©√©e avec succ√®s.',
+            'deleted' => 'Permission successfully supprim√©e avec succ√®s.',
 
             'groups'  => [
-                'created' => 'Groupe de permissions crÈÈ avec succËs.',
-                'deleted' => 'Groupe de permissions supprimÈ avec succËs.',
-                'updated' => 'Groupe de permissions mis ‡ jour avec succËs.',
+                'created' => 'Groupe de permissions cr√©√© avec succ√®s.',
+                'deleted' => 'Groupe de permissions supprim√© avec succ√®s.',
+                'updated' => 'Groupe de permissions mis √† jour avec succ√®s.',
             ],
 
-            'updated' => 'Permission mise ‡ jour avec succËs.',
+            'updated' => 'Permission mise √† jour avec succ√®s.',
         ],
 
         'roles' => [
-            'created' => 'Le rÙle a ÈtÈ crÈÈ avec succËs.',
-            'deleted' => 'Le rÙle a ÈtÈ supprimÈ avec succËs.',
-            'updated' => 'Le rÙle a ÈtÈ mis ‡ jour avec succËs.',
+            'created' => 'Le r√¥le a √©t√© cr√©√© avec succ√®s.',
+            'deleted' => 'Le r√¥le a √©t√© supprim√© avec succ√®s.',
+            'updated' => 'Le r√¥le a √©t√© mis √† jour avec succ√®s.',
         ],
 
         'users' => [
-            'confirmation_email' => "Un e-mail de confirmation a ÈtÈ adressÈ ‡ l'adresse indiquÈe",
-            'created' => "L'utilisateur a ÈtÈ crÈÈ avec succËs.",
-            'deleted' => "L'utilisateur a ÈtÈ supprimÈ avec succËs.",
-            'deleted_permanently' => "L'utilisateur a ÈtÈ supprimÈ dÈfinitivement.",
-            'restored' => "L'utilisateur a ÈtÈ rÈ-activÈ.",
-            'updated' => "L'utilisateur a ÈtÈ mis ‡ jour avec succËs.",
-            'updated_password' => "Le mot de passe utilisateur a ÈtÈ mis ‡ jour avec succËs.",
+            'confirmation_email' => "Un e-mail de confirmation a √©t√© adress√© √† l'adresse indiqu√©e",
+            'created' => "L'utilisateur a √©t√© cr√©√© avec succ√®s.",
+            'deleted' => "L'utilisateur a √©t√© supprim√© avec succ√®s.",
+            'deleted_permanently' => "L'utilisateur a √©t√© supprim√© d√©finitivement.",
+            'restored' => "L'utilisateur a √©t√© r√©-activ√©.",
+            'updated' => "L'utilisateur a √©t√© mis √† jour avec succ√®s.",
+            'updated_password' => "Le mot de passe utilisateur a √©t√© mis √† jour avec succ√®s.",
         ]
     ],
 ];
