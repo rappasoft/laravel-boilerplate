@@ -1,7 +1,6 @@
 <?php
 
 Route::group(['middleware' => 'web'], function() {
-
     /**
      * Switch between the included languages
      */
