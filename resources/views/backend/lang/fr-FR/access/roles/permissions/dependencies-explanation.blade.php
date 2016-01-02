@@ -1,0 +1,2 @@
+Cette section vous permet de spécifier que la permission est basée sur des dépendances.<br/><br/>
+    Par exemple : Si la permission est  <strong>create-user</strong>, mais que l'utilisateur ne dispose pas des permissions <strong>view-backend</strong> et <strong>view-access-management</strong>, ce dernier ne sera pas en mesure d'accéder à l'écran de <strong>Création d'un utilisaeut</strong>.
