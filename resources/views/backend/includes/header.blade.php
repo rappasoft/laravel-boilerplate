@@ -2,7 +2,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="{!! route('frontend.index') !!}" class="logo"><b>L5</b>Bootstrap</a>
+    <a href="{!! route('frontend.index') !!}" class="logo">{!! app_name() !!}</a>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">

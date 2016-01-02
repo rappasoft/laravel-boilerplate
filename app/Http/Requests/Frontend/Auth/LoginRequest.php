@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Frontend\Access;
+namespace App\Http\Requests\Frontend\Auth;
 
 use App\Http\Requests\Request;
 
 /**
  * Class LoginRequest
- * @package App\Http\Requests\Frontend\Access
+ * @package App\Http\Requests\Frontend\Auth
  */
 class LoginRequest extends Request
 {
