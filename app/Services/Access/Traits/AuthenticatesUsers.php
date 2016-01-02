@@ -7,7 +7,7 @@ use App\Exceptions\GeneralException;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-use App\Http\Requests\Frontend\Access\LoginRequest;
+use App\Http\Requests\Frontend\Auth\LoginRequest;
 
 /**
  * Class AuthenticatesUsers
