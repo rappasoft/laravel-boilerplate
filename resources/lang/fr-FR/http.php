@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 
 return [
 
@@ -13,12 +13,12 @@ return [
 
     '404' => [
         'title' => 'Page introuvable',
-        'description' => "Désolé, la page à laquelle vous tentez d'accder n'existe pas.",
+        'description' => "DÃ©solÃ©, la page Ã  laquelle vous tentez d'accder n'existe pas.",
     ],
 
     '503' => [
-        'title' => 'Bientôt de retour.',
-        'description' => 'Bientôt de retour.',
+        'title' => 'BientÃ´t de retour.',
+        'description' => 'BientÃ´t de retour.',
     ],
 
 ];

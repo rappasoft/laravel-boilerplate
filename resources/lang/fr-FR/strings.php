@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 return [
 
@@ -16,62 +16,62 @@ return [
     'backend' => [
         'access' => [
             'permissions' => [
-                'edit_explanation' => 'If you performed operations in the hierarchy section without refreshing this page, you will need to refresh to reflect the changes here.',
+                'edit_explanation' => "Si vous avez effectué des opérations dans la section hiérarchie sans rafraîchir cette page, vous devrez l'actualiser pour refléter les changements ici.",
 
                 'groups' => [
-                    'hierarchy_saved' => 'Hierarchy successfully saved.',
+                    'hierarchy_saved' => 'La hiérarchie est enregistrée avec succès.',
                 ],
 
-                'sort_explanation' => 'This section allows you to organize your permissions into groups to stay organized. Regardless of the group, the permissions are still individually assigned to each role.',
+                'sort_explanation' => "Cette section vous permet d'organiser vos autorisations en groupes pour rester organisé. Quel que soit le groupe, les autorisations sont toujours assignées individuellement à chaque rôle.",
             ],
 
             'users' => [
-                'delete_user_confirm' => 'Are you sure you want to delete this user permanently? Anywhere in the application that references this user\'s id will most likely error. Proceed at your own risk. This can not be un-done.',
-                'if_confirmed_off' => '(If confirmed is off)',
-                'restore_user_confirm' => 'Restore this user to its original state?',
+                'delete_user_confirm' => "Êtes-vous sûr de vouloir supprimer cet utilisateur de façon permanente ? Toutes  les références à cet utilisateur dans l'application vont poser problèmee et cette opération ne peut être annullée.",
+                'if_confirmed_off' => '(en mode confirmation)',
+                'restore_user_confirm' => 'Restaurer cet utilisateur à son statut original ?',
             ],
         ],
 
         'dashboard' => [
-            'title' => 'Administrative Dashboard',
-            'welcome' => 'Welcome',
+            'title' => 'Tableau de bord administrateur',
+            'welcome' => 'Bienvenue',
         ],
 
         'general' => [
-            'all_rights_reserved' => 'All Rights Reserved.',
+            'all_rights_reserved' => 'Tous droits réservés.',
             'boilerplate_link' => 'Laravel 5 Boilerplate',
-            'member_since' => 'Member since',
-            'search_placeholder' => 'Search...',
+            'member_since' => 'Membre depuis',
+            'search_placeholder' => 'Rechercher...',
 
             'see_all' => [
-                'messages' => 'See all messages',
-                'notifications' => 'View all',
-                'tasks' => 'View all tasks',
+                'messages' => 'Voir tous les messages',
+                'notifications' => 'Voir tous',
+                'tasks' => 'Voir les nouvelles taches',
             ],
 
             'status' => [
-                'online' => 'Online',
+                'online' => 'En ligne',
                 'offline' => 'Offline',
             ],
 
             'you_have' => [
-                'messages' => '{0} You don\'t have messages|{1} You have 1 message|[2,Inf] You have :number messages',
-                'notifications' => '{0} You don\'t have notifications|{1} You have 1 notification|[2,Inf] You have :number notifications',
-                'tasks' => '{0} You don\'t have tasks|{1} You have 1 task|[2,Inf] You have :number tasks',
+                'messages' => "{0} Vous n'avez pas de message|{1} Vous avez 1 message|[2,Inf] Vous avez :number messages",
+                'notifications' => "{0} Vous n'avez pas de notifications|{1} Vous avez 1 notification|[2,Inf] Vous avez :number notifications",
+                'tasks' => "{0} Vous n'avez pas de tache|{1} Vous avez 1 tache|[2,Inf] Vous avez :number taches",
             ],
         ],
     ],
 
     'emails' => [
         'auth' => [
-            'password_reset_subject' => 'Your Password Reset Link',
-            'reset_password' => 'Click here to reset your password',
+            'password_reset_subject' => 'Votre lien de réinitialisation',
+            'reset_password' => 'Cliquez ici pour réinitialiser votre mot de passe',
         ],
     ],
 
     'frontend' => [
         'email' => [
-            'confirm_account' => 'Click here to confirm your account:',
+            'confirm_account' => 'Cliquez ici pour confirmer votre compte :',
         ],
 
         'test' => 'Test',
@@ -82,7 +82,7 @@ return [
                 'role' => 'Role Based - ',
             ],
 
-            'js_injected_from_controller' => 'Javascript Injected from a Controller',
+            'js_injected_from_controller' => 'Javascript Injecté depuis un Controlleur',
 
             'using_blade_extensions' => 'Using Blade Extensions',
 
@@ -103,10 +103,10 @@ return [
         ],
 
         'user' => [
-            'profile_updated' => 'Profile successfully updated.',
-            'password_updated' => 'Password successfully updated.',
+            'profile_updated' => 'Profil modifié avec succès.',
+            'password_updated' => 'Mot de passe modifié avec succès.',
         ],
 
-        'welcome_to' => 'Welcome to :place',
+        'welcome_to' => 'Bienvenue sur :place',
     ],
 ];

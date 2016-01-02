@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 
 return [
 
@@ -18,7 +18,7 @@ return [
             'users' => [
                 'activate' => 'Activer',
                 'change_password' => 'Changer de mot de passe',
-                'deactivate' => 'Désactiver',
+                'deactivate' => 'DÃ©sactiver',
                 'resend_email' => 'Renvoyer le mail de confirmation',
             ],
         ],
@@ -28,10 +28,10 @@ return [
         'cancel' => 'Annuler',
 
         'crud' => [
-            'create' => 'Créer',
+            'create' => 'CrÃ©er',
             'delete' => 'Supprimer',
             'edit' => 'Editer',
-            'update' => 'Mettre à jour',
+            'update' => 'Mettre Ã  jour',
         ],
 
         'save' => 'Sauvegarder',

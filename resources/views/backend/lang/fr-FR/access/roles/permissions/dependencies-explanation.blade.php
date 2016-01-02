@@ -1,2 +1,2 @@
-This section is where you specify that this permission depends on the user having one or more other permissions.<br/><br/>
-    For example: This permission may be <strong>create-user</strong>, but if the user doesn't also have <strong>view-backend</strong> and <strong>view-access-management</strong> permissions they will never be able to get to the <strong>Create User</strong> screen.
+Cette section vous permet de spécifier que la permission est basée sur des dépendances.<br/><br/>
+    Par exemple : Si la permission est  <strong>create-user</strong>, mais que l'utilisateur ne dispose pas des permissions <strong>view-backend</strong> et <strong>view-access-management</strong>, ce dernier ne sera pas en mesure d'accéder à l'écran de <strong>Création d'un utilisaeut</strong>.

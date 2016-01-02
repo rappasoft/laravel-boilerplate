@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 return [
 
@@ -14,24 +14,24 @@ return [
     */
 
     'backend' => [
-        'button' => 'Button',
+        'button' => 'Bouton',
     ],
 
     'general' => [
-        'logout' => 'Logout',
+        'logout' => 'Déconexion',
     ],
 
     'frontend' => [
-        'dashboard' => 'Dashboard',
-        'home' => 'Home',
-        'login' => 'Login',
+        'dashboard' => 'Tableau de bord',
+        'home' => 'Accueil',
+        'login' => 'Connexion',
         'macros' => 'Macros',
-        'register' => 'Register',
+        'register' => "S'enregsitrer",
 
         'user' => [
             'administration' => 'Administration',
-            'change_password' => 'Change Password',
-            'my_information' => 'My Information',
+            'change_password' => 'Changer mon mot de passe',
+            'my_information' => 'Mes Informations',
         ],
     ],
 ];

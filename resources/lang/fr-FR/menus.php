@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 return [
 
@@ -15,50 +15,50 @@ return [
 
     'backend' => [
         'access' => [
-            'title' => 'Gestion des acc�s',
+            'title' => 'Gestion des accès',
 
             'permissions' => [
                 'all' => 'Toutes les Permissions',
-                'create' => 'Cr�er Permission',
-                'edit' => '�diter Permissions',
+                'create' => 'Créer une Permission',
+                'edit' => 'Éditer Permissions',
                 'groups' => [
-                    'all' => 'All Groups',
-                    'create' => 'Create Group',
-                    'edit' => 'Edit Group',
-                    'main' => 'Groups',
+                    'all' => 'Tous les Groupes',
+                    'create' => 'Créer un Groupe',
+                    'edit' => 'Éditer Groupe',
+                    'main' => 'Groupes',
                 ],
                 'main' => 'Permissions',
-                'management' => 'Permission Management',
+                'management' => 'Gestion des Permissions',
             ],
 
             'roles' => [
-                'all' => 'All Roles',
-                'create' => 'Create Role',
-                'edit' => 'Edit Role',
-                'management' => 'Role Management',
-                'main' => 'Roles',
+                'all' => 'Tous les rôles',
+                'create' => 'Créer un rôle',
+                'edit' => 'Éditer rôle',
+                'management' => 'Gestion des rôles',
+                'main' => 'Rôles',
             ],
 
             'users' => [
-                'all' => 'All Users',
-                'change-password' => 'Change Password',
-                'create' => 'Create User',
-                'deactivated' => 'Deactivated Users',
-                'deleted' => 'Deleted Users',
-                'edit' => 'Edit User',
-                'main' => 'Users',
+                'all' => 'Tous les utilisateurs',
+                'change-password' => 'Changer le mot de passe',
+                'create' => 'Créer un utilisateur',
+                'deactivated' => 'Utilisateurs désactivés',
+                'deleted' => 'Utilisateurs supprimés',
+                'edit' => 'Éditer utilisateur',
+                'main' => 'Utilisateurs',
             ],
         ],
 
         'log-viewer' => [
-            'main' => 'Log Viewer',
-            'dashboard' => 'Dashboard',
+            'main' => 'Consulter Logs',
+            'dashboard' => 'Tableau de bord',
             'logs' => 'Logs',
         ],
 
         'sidebar' => [
             'dashboard' => 'Tableau de bord',
-            'general' => 'G�n�ral',
+            'general' => 'Général',
         ],
     ],
 
@@ -66,7 +66,7 @@ return [
         'language' => 'Langue',
         'langs' => [
             'en' => 'English',
-            'fr-FR' => 'Fran�ais (France)',
+            'fr-FR' => 'Français (France)',
         ],
     ],
 ];

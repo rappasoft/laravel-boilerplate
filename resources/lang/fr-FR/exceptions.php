@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 
 return [
 
@@ -16,8 +16,8 @@ return [
     'backend' => [
         'access' => [
             'permissions' => [
-                'create_error' => 'Un problème est survenu lors de la création de la permission. Veuillez réessayer.',
-                'delete_error' => 'Un problème est survenu lors de la suppression de la permission. Veuillez réessayer.',
+                'create_error' => 'Un problÃ¨me est survenu lors de la crÃ©ation de la permission. Veuillez rÃ©essayer.',
+                'delete_error' => 'Un problÃ¨me est survenu lors de la suppression de la permission. Veuillez rÃ©essayer.',
 
                 'groups' => [
                     'associated_permissions' => 'You can not delete this group because it has associated permissions.',
@@ -27,33 +27,33 @@ return [
 
                 'not_found' => "Cette permission n'existe pas.",
                 'system_delete_error' => 'Vous ne pouvez pas supprimer une permission administrateur.',
-                'update_error' => 'Un problème est survenu lors de la mise à jour de la permission. Veuillez réessayer.',
+                'update_error' => 'Un problÃ¨me est survenu lors de la mise Ã  jour de la permission. Veuillez rÃ©essayer.',
             ],
 
             'roles' => [
-                'already_exists' => 'Un rôle portant ce nom existe déjà.',
-                'cant_delete_admin' => 'Le rôle Administrator ne peut être supprimé.',
-                'create_error' => 'Un problème est survenu lors de la création du rôle. Veuillez réessayer.',
-                'delete_error' => 'Un problème est survenu lors de la suppression du rôle. Veuillez réessayer.',
-                'has_users' => 'Ce rôle est associé à des utilisateurs et ne peut être supprimé.',
-                'needs_permission' => 'Vous devez sélectionner au moins une permission pour ce rôle.',
-                'not_found' => "Ce rôle n'existe pas.",
-                'update_error' => 'Un problème est survenu lors de la mise à jour du rôle. Veuillez réessayer.',
+                'already_exists' => 'Un rÃ´le portant ce nom existe dÃ©jÃ .',
+                'cant_delete_admin' => 'Le rÃ´le Administrator ne peut Ãªtre supprimÃ©.',
+                'create_error' => 'Un problÃ¨me est survenu lors de la crÃ©ation du rÃ´le. Veuillez rÃ©essayer.',
+                'delete_error' => 'Un problÃ¨me est survenu lors de la suppression du rÃ´le. Veuillez rÃ©essayer.',
+                'has_users' => 'Ce rÃ´le est associÃ© Ã  des utilisateurs et ne peut Ãªtre supprimÃ©.',
+                'needs_permission' => 'Vous devez sÃ©lectionner au moins une permission pour ce rÃ´le.',
+                'not_found' => "Ce rÃ´le n'existe pas.",
+                'update_error' => 'Un problÃ¨me est survenu lors de la mise Ã  jour du rÃ´le. Veuillez rÃ©essayer.',
             ],
 
             'users' => [
-                'cant_deactivate_self' => 'Vous ne pouvez pas vous désactiver vous même.',
-                'cant_delete_self' => 'Vous ne pouvez pas vous supprimer vous même.',
-                'create_error' => "Un problème est survenu lors de la création de l'utilisateur. Veuillez réessayer.",
-                'delete_error' => "Un problème est survenu lors de la suppression de l'utilisateur. Veuillez réessayer.",
-                'email_error' => 'Cette adresse email appartient à un autre utilisateur.',
-                'mark_error' => "Un problème est survenu lors de la mise à jour de l'utilisateur. Veuillez réessayer.",
+                'cant_deactivate_self' => 'Vous ne pouvez pas vous dÃ©sactiver vous mÃªme.',
+                'cant_delete_self' => 'Vous ne pouvez pas vous supprimer vous mÃªme.',
+                'create_error' => "Un problÃ¨me est survenu lors de la crÃ©ation de l'utilisateur. Veuillez rÃ©essayer.",
+                'delete_error' => "Un problÃ¨me est survenu lors de la suppression de l'utilisateur. Veuillez rÃ©essayer.",
+                'email_error' => 'Cette adresse email appartient Ã  un autre utilisateur.',
+                'mark_error' => "Un problÃ¨me est survenu lors de la mise Ã  jour de l'utilisateur. Veuillez rÃ©essayer.",
                 'not_found' => "Cet utilisateur n'existe pas.",
-                'restore_error' => "Un problème est survenu lors de la restauration de l'utilisateur. Veuillez réessayer.",
-                'role_needed_create' => "Vous devez sélectionner au moins un rôle. L'utilisateur a été créé mais désactivé.",
-                'role_needed' => 'Vous devez sélectionner au moins un rôle.',
-                'update_error' => "Un problème est survenu lors de la mise à jour de l'utilisateur. Veuillez réessayer.",
-                'update_password_error' => "Un problème est survenu lors du changement du mot de passe de l'utilisateur. Veuillez réessayer.",
+                'restore_error' => "Un problÃ¨me est survenu lors de la restauration de l'utilisateur. Veuillez rÃ©essayer.",
+                'role_needed_create' => "Vous devez sÃ©lectionner au moins un rÃ´le. L'utilisateur a Ã©tÃ© crÃ©Ã© mais dÃ©sactivÃ©.",
+                'role_needed' => 'Vous devez sÃ©lectionner au moins un rÃ´le.',
+                'update_error' => "Un problÃ¨me est survenu lors de la mise Ã  jour de l'utilisateur. Veuillez rÃ©essayer.",
+                'update_password_error' => "Un problÃ¨me est survenu lors du changement du mot de passe de l'utilisateur. Veuillez rÃ©essayer.",
             ],
         ],
     ],
@@ -61,18 +61,18 @@ return [
     'frontend' => [
         'auth' => [
             'confirmation' => [
-                'already_confirmed' => 'Votre compte est déjà confirmé.',
+                'already_confirmed' => 'Votre compte est dÃ©jÃ  confirmÃ©.',
                 'confirm' => 'Confirmez votre compte !',
-                'created_confirm' => 'Votre compte a été créé avec succès.  Un email de confirmation vous a été envoyé.',
+                'created_confirm' => 'Votre compte a Ã©tÃ© crÃ©Ã© avec succÃ¨s.  Un email de confirmation vous a Ã©tÃ© envoyÃ©.',
                 'mismatch' => 'Votre code de confirmation est invalide.',
                 'not_found' => "Votre code de confirmation n'existe pas.",
-                'resend' => 'Votre compte n\'est pas confirmé. Veuillez utiliser le lien qui vous a été envoyé par mail, ou <a href="' . route('account.confirm.resend', ':token') . '">cliquez ici </a> pour recevoir un mail de nouveau.',
-                'success' => "Votre compte est dorénavant confirmé !",
-                'resent' => "Un nouveau mail a été adressé à l'adresse enregistrée.",
+                'resend' => 'Votre compte n\'est pas confirmÃ©. Veuillez utiliser le lien qui vous a Ã©tÃ© envoyÃ© par mail, ou <a href="' . route('account.confirm.resend', ':token') . '">cliquez ici </a> pour recevoir un mail de nouveau.',
+                'success' => "Votre compte est dorÃ©navant confirmÃ© !",
+                'resent' => "Un nouveau mail a Ã©tÃ© adressÃ© Ã  l'adresse enregistrÃ©e.",
             ],
 
-            'deactivated' => 'Votre compte a été désactivé.',
-            'email_taken' => 'Cet email est déjà utilisé.',
+            'deactivated' => 'Votre compte a Ã©tÃ© dÃ©sactivÃ©.',
+            'email_taken' => 'Cet email est dÃ©jÃ  utilisÃ©.',
 
             'password' => [
                 'change_mismatch' => "L'ancien mot de passe dst invalide.",

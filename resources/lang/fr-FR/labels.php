@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 
 return [
 
@@ -17,8 +17,8 @@ return [
         'all' => 'Tous',
         'actions' => 'Actions',
         'buttons' => [
-            'save' => 'Sauvegarder',
-            'update' => 'Mettre à jour',
+            'save' => 'Enregistrer',
+            'update' => 'Mettre Ã  jour',
         ],
         'hide' => 'Cacher',
         'none' => 'Aucun',
@@ -29,91 +29,91 @@ return [
     'backend' => [
         'access' => [
             'permissions' => [
-                'create' => 'Créer Permission',
-                'dependencies' => 'Dépendances',
-                'edit' => 'Éditer Permission',
+                'create' => 'CrÃ©er une permission',
+                'dependencies' => 'DÃ©pendances',
+                'edit' => 'Ã‰diter une permission',
 
                 'groups' => [
-                    'create' => 'Créer Groupe',
-                    'edit' => 'Éditer Groupe',
+                    'create' => 'CrÃ©er groupe',
+                    'edit' => 'Ã‰diter groupe',
 
                     'table' => [
                         'name' => 'Nom',
                     ],
                 ],
 
-                'grouped_permissions' => 'Permissions groupées',
+                'grouped_permissions' => 'Permissions groupÃ©es',
                 'label' => 'permissions',
-                'management' => 'Gerstion des Permissions',
+                'management' => 'Gerstion des permissions',
                 'no_groups' => "Il n'y a pas de groupes de permission.",
-                'no_permissions' => 'Pas de permission sélectionnée.',
-                'no_roles' => 'Pas de rôle sélectionné',
-                'no_ungrouped' => "Il n'y a pas de permissions non groupées.",
+                'no_permissions' => 'Pas de permission sÃ©lectionnÃ©e.',
+                'no_roles' => 'Pas de rÃ´le sÃ©lectionnÃ©',
+                'no_ungrouped' => "Il n'y a pas de permissions non groupÃ©es.",
 
                 'table' => [
-                    'dependencies' => 'Dépendances',
+                    'dependencies' => 'DÃ©pendances',
                     'group' => 'Groupe',
-                    'group-sort' => 'Tri Groupe',
+                    'group-sort' => 'Ordre du groupe',
                     'name' => 'Nom',
                     'permission' => 'Permission',
-                    'roles' => 'Rôles',
-                    'system' => 'Système',
+                    'roles' => 'RÃ´les',
+                    'system' => 'SystÃ¨me',
                     'total' => 'permissions(s) total',
                     'users' => 'Utilisateurs',
                 ],
 
                 'tabs' => [
-                    'general' => 'Géneral',
+                    'general' => 'GÃ©neral',
                     'groups' => 'Groupes',
-                    'dependencies' => 'Dépendances',
+                    'dependencies' => 'DÃ©pendances',
                     'permissions' => 'Permissions',
                 ],
 
-                'ungrouped_permissions' => 'Permissions non groupées',
+                'ungrouped_permissions' => 'Permissions non groupÃ©es',
             ],
 
             'roles' => [
-                'create' => 'Créer Rôle',
-                'edit' => 'Editer Rôle',
-                'management' => 'Gestion Rôle',
+                'create' => 'CrÃ©er un rÃ´le',
+                'edit' => 'Editer un rÃ´le',
+                'management' => 'Gestion des rÃ´les',
 
                 'table' => [
                     'number_of_users' => "Nombre d'utilisateurs",
                     'permissions' => 'Permissions',
-                    'role' => 'Rôle',
-                    'sort' => 'Tri',
-                    'total' => 'rôles(s) total',
+                    'role' => 'RÃ´le',
+                    'sort' => 'Ordre',
+                    'total' => 'rÃ´les(s) total',
                 ],
             ],
 
             'users' => [
                 'active' => 'Utilisateurs actifs',
-                'all_permissions' => 'Toutes les Permissions',
+                'all_permissions' => 'Toutes les permissions',
                 'change_password' => 'Modifier le mot de passe',
                 'change_password_for' => 'Modifier le mot de passe pour :user',
-                'create' => 'Créer Utilisateur',
-                'deactivated' => 'Utilisateurs désactivés',
-                'deleted' => 'Utilisateurs supprimés',
-                'dependencies' => 'Dépendances',
-                'edit' => 'Éditer Utilisateur',
-                'management' => 'Gestion utilisateurs',
-                'no_other_permissions' => "Pas d'autres Permissions",
-                'no_permissions' => 'Pas de Permissions',
-                'no_roles' => 'Pas de Rôle à affecter.',
+                'create' => 'CrÃ©er Utilisateur',
+                'deactivated' => 'Utilisateurs dÃ©sactivÃ©s',
+                'deleted' => 'Utilisateurs supprimÃ©s',
+                'dependencies' => 'DÃ©pendances',
+                'edit' => 'Ã‰diter Utilisateur',
+                'management' => 'Gestion des utilisateurs',
+                'no_other_permissions' => "Pas d'autres permissions",
+                'no_permissions' => 'Pas de permissions',
+                'no_roles' => 'Pas de RÃ´le Ã  affecter.',
                 'permissions' => 'Permissions',
-                'permission_check' => "Vérifier une permission vérifie aussi ses dépendances s'il y en a.",
+                'permission_check' => "La sÃ©lection d'une permission sÃ©lectionne aussi ses dÃ©pendances s'il y en a.",
 
                 'table' => [
-                    'confirmed' => 'Confirmé',
-                    'created' => 'Créé',
+                    'confirmed' => 'ConfirmÃ©',
+                    'created' => 'CrÃ©ation',
                     'email' => 'E-mail',
                     'id' => 'ID',
-                    'last_updated' => 'Mise à jour le',
+                    'last_updated' => 'Mise Ã  jour',
                     'name' => 'Nom',
-                    'no_deactivated' => "Pas d'utilisateurs désactivés",
-                    'no_deleted' => "Pas d'utilisateurs supprimés",
-                    'other_permissions' => 'Autres Permissions',
-                    'roles' => 'Rôles',
+                    'no_deactivated' => "Pas d'utilisateurs dÃ©sactivÃ©s",
+                    'no_deleted' => "Pas d'utilisateurs supprimÃ©s",
+                    'other_permissions' => 'Autres permissions',
+                    'roles' => 'RÃ´les',
                     'total' => 'utilisateur(s) total',
                 ],
             ],
@@ -123,19 +123,19 @@ return [
     'frontend' => [
 
         'auth' => [
-            'login_box_title' => 'identifiant',
+            'login_box_title' => 'Connexion',
             'login_button' => 'OK',
-            'login_with' => 'Login with :social_media',
-            'register_box_title' => 'Register',
-            'register_button' => 'Register',
-            'remember_me' => 'Remember Me',
+            'login_with' => "S'enregistrer avec :social_media",
+            'register_box_title' => "S'enregistrer",
+            'register_button' => 'CrÃ©er le compte',
+            'remember_me' => 'Se souvenir de moi',
         ],
 
         'passwords' => [
-            'forgot_password' => 'Vous avezz oublié votre mot de passe ?',
-            'reset_password_box_title' => 'Réinitialisation du mot de passe',
-            'reset_password_button' => 'Réinitialiser le mot de passe',
-            'send_password_reset_link_button' => 'Envoyer le lien de réinitialisation',
+            'forgot_password' => 'Vous avezz oubliÃ© votre mot de passe ?',
+            'reset_password_box_title' => 'RÃ©initialisation du mot de passe',
+            'reset_password_button' => 'RÃ©initialiser le mot de passe',
+            'send_password_reset_link_button' => 'Envoyer le lien de rÃ©initialisation',
         ],
 
         'macros' => [
@@ -143,7 +143,7 @@ return [
                 'alpha' => 'Pays Alpha Codes',
                 'alpha2' => 'Pays Alpha 2 Codes',
                 'alpha3' => 'Pays Alpha 3 Codes',
-                'numeric' => 'Pays Numéros Codes',
+                'numeric' => 'Pays NumÃ©ros Codes',
             ],
 
             'macro_examples' => 'Examples Macros',
@@ -171,12 +171,12 @@ return [
 
             'profile' => [
                 'avatar' => 'Avatar',
-                'created_at' => 'Créé le ',
-                'edit_information' => 'Éditer les informations',
+                'created_at' => 'CrÃ©Ã© le ',
+                'edit_information' => 'Ã‰diter les informations',
                 'email' => 'e-mail',
-                'last_updated' => 'Mise à jour le',
+                'last_updated' => 'Mise Ã  jour le',
                 'name' => 'Nom',
-                'update_information' => 'Mettre à jour les informations',
+                'update_information' => 'Mettre Ã  jour les informations',
             ],
         ],
 
