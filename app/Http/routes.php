@@ -1,14 +1,13 @@
 <?php
 
+/**
+ * Switch between the included languages
+ */
+Route::group(['namespace' => 'Language'], function () {
+    require (__DIR__ . '/Routes/Language/Language.php');
+});
+
 Route::group(['middleware' => 'web'], function() {
-
-    /**
-     * Switch between the included languages
-     */
-    Route::group(['namespace' => 'Language'], function () {
-        require (__DIR__ . '/Routes/Language/Language.php');
-    });
-
     /**
      * Frontend Routes
      * Namespaces indicate folder structure
