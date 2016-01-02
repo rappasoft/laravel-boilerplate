@@ -44,7 +44,7 @@
                                 <div class="col-lg-12">
                                     <div class="alert alert-info">
                                         <i class="fa fa-info-circle"></i>
-                                        @include('backend.lang.' . app()->getLocale() . '.access.roles.associated-permissions-explanation')
+                                        {!! getLanguageBlock('backend.lang.access.roles.associated-permissions-explanation') !!}
                                     </div><!--alert-->
                                 </div><!--col-lg-12-->
 
