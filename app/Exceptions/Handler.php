@@ -56,6 +56,13 @@ class Handler extends ExceptionHandler
             return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
         }
 
+        /**
+         * User needs roles and none were selected
+         */
+        if ($e instanceof Backend\Access\User\UserNeedsRolesException) {
+            return redirect()->route('admin.access.users.edit', $e->userID())->withInput()->withFlashDanger($e->validationErrors());
+        }
+
         return parent::render($request, $e);
     }
 }

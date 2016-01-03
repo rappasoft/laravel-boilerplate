@@ -328,7 +328,7 @@ class EloquentUserRepository implements UserContract
         //User Updated, Update Roles
         //Validate that there's at least one role chosen
         if (count($roles['assignees_roles']) == 0) {
-            throw new GeneralException(trans('exception.backend.access.users.role_needed'));
+            throw new GeneralException(trans('exceptions.backend.access.users.role_needed'));
         }
 
     }
