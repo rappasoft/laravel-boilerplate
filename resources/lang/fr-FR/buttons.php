@@ -19,7 +19,7 @@ return [
                 'activate' => 'Activer',
                 'change_password' => 'Changer de mot de passe',
                 'deactivate' => 'Désactiver',
-                'resend_email' => 'Renvoyer le mail de confirmation',
+                'resend_email' => 'Renvoyer un email de confirmation',
             ],
         ],
     ],

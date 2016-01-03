@@ -20,9 +20,9 @@ return [
                 'delete_error' => 'Un problème est survenu lors de la suppression de la permission. Veuillez réessayer.',
 
                 'groups' => [
-                    'associated_permissions' => 'You can not delete this group because it has associated permissions.',
-                    'has_children' => 'You can not delete this group because it has child groups.',
-                    'name_taken' => 'There is already a group with that name',
+                    'associated_permissions' => 'Vous ne pouvez supprimer ce groupe parce que des permissions lui sont associées.',
+                    'has_children' => 'Vous ne pouvez pas supprimer ce groupe parce qu\il a des groupes enfants.',
+                    'name_taken' => 'Un groupe porte déjà ce nom',
                 ],
 
                 'not_found' => "Cette permission n'existe pas.",
@@ -66,9 +66,9 @@ return [
                 'created_confirm' => 'Votre compte a été créé avec succès.  Un email de confirmation vous a été envoyé.',
                 'mismatch' => 'Votre code de confirmation est invalide.',
                 'not_found' => "Votre code de confirmation n'existe pas.",
-                'resend' => 'Votre compte n\'est pas confirmé. Veuillez utiliser le lien qui vous a été envoyé par mail, ou <a href="' . route('account.confirm.resend', ':token') . '">cliquez ici </a> pour recevoir un mail de nouveau.',
+                'resend' => 'Votre compte n\'est pas confirmé. Veuillez utiliser le lien qui vous a été envoyé par email, ou <a href="' . route('account.confirm.resend', ':token') . '">cliquez ici </a> pour recevoir un email de nouveau.',
                 'success' => "Votre compte est dorénavant confirmé !",
-                'resent' => "Un nouveau mail a été adressé à l'adresse enregistrée.",
+                'resent' => "Un nouvel email a été envoyé à l'adresse enregistrée.",
             ],
 
             'deactivated' => 'Votre compte a été désactivé.',

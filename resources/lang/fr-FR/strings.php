@@ -26,8 +26,8 @@ return [
             ],
 
             'users' => [
-                'delete_user_confirm' => "Êtes-vous sûr de vouloir supprimer cet utilisateur de façon permanente ? Toutes  les références à cet utilisateur dans l'application vont poser problèmee et cette opération ne peut être annullée.",
-                'if_confirmed_off' => '(en mode confirmation)',
+                'delete_user_confirm' => "&eacute; Êtes-vous sûr de vouloir supprimer cet utilisateur de façon permanente ? Toutes  les références à cet utilisateur dans l'application vont poser problèmee et cette opération ne peut être annullée.",
+                'if_confirmed_off' => '(pour le mode sans confirmation)',
                 'restore_user_confirm' => 'Restaurer cet utilisateur à son statut original ?',
             ],
         ],

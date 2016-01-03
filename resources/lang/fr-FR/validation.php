@@ -134,7 +134,7 @@ return [
                     'active' => 'Actif',
                     'associated_roles' => 'Rôles associés',
                     'confirmed' => 'Confirmé',
-                    'email' => 'Adresse mail',
+                    'email' => 'Adresse email',
                     'name' => 'Nom',
                     'other_permissions' => 'Autres permissions',
                     'password' => 'Mot de passe',

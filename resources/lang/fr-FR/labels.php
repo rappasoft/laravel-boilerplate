@@ -1,4 +1,4 @@
-﻿<?php
+﻿?<?php
 
 return [
 
@@ -106,7 +106,7 @@ return [
                 'table' => [
                     'confirmed' => 'Confirmé',
                     'created' => 'Création',
-                    'email' => 'E-mail',
+                    'email' => 'Email',
                     'id' => 'ID',
                     'last_updated' => 'Mise à jour',
                     'name' => 'Nom',
@@ -146,7 +146,7 @@ return [
                 'numeric' => 'Pays Numéros Codes',
             ],
 
-            'macro_examples' => 'Examples Macros',
+            'macro_examples' => 'Exemples  de macros',
 
             'state' => [
                 'mexico' => 'Mexico State List',
@@ -171,10 +171,10 @@ return [
 
             'profile' => [
                 'avatar' => 'Avatar',
-                'created_at' => 'Créé le ',
+                'created_at' => 'Date de création',
                 'edit_information' => 'Éditer les informations',
-                'email' => 'e-mail',
-                'last_updated' => 'Mise à jour le',
+                'email' => 'Email',
+                'last_updated' => 'Date de mise à jour',
                 'name' => 'Nom',
                 'update_information' => 'Mettre à jour les informations',
             ],
