@@ -44,7 +44,7 @@ return [
 
                 'grouped_permissions' => 'Permissions groupées',
                 'label' => 'permissions',
-                'management' => 'Gerstion des permissions',
+                'management' => 'Gestion des permissions',
                 'no_groups' => "Il n'y a pas de groupes de permission.",
                 'no_permissions' => 'Pas de permission sélectionnée.',
                 'no_roles' => 'Pas de rôle sélectionné',
@@ -132,7 +132,7 @@ return [
         ],
 
         'passwords' => [
-            'forgot_password' => 'Vous avezz oublié votre mot de passe ?',
+            'forgot_password' => 'Vous avez oublié votre mot de passe ?',
             'reset_password_box_title' => 'Réinitialisation du mot de passe',
             'reset_password_button' => 'Réinitialiser le mot de passe',
             'send_password_reset_link_button' => 'Envoyer le lien de réinitialisation',

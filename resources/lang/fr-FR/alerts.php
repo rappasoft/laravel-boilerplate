@@ -16,7 +16,7 @@ return [
     'backend' => [
         'permissions' => [
             'created' => 'Permission créée avec succès.',
-            'deleted' => 'Permission successfully supprimée avec succès.',
+            'deleted' => 'Permission supprimée avec succès.',
 
             'groups'  => [
                 'created' => 'Groupe de permissions créé avec succès.',
@@ -28,18 +28,18 @@ return [
         ],
 
         'roles' => [
-            'created' => 'Le rôle a été créé avec succès.',
-            'deleted' => 'Le rôle a été supprimé avec succès.',
-            'updated' => 'Le rôle a été mis à jour avec succès.',
+            'created' => 'Rôle créé avec succès.',
+            'deleted' => 'Rôle supprimé avec succès.',
+            'updated' => 'Rôle mis à jour avec succès.',
         ],
 
         'users' => [
-            'confirmation_email' => "Un e-mail de confirmation a été adressé à l'adresse indiquée",
-            'created' => "L'utilisateur a été créé avec succès.",
-            'deleted' => "L'utilisateur a été supprimé avec succès.",
+            'confirmation_email' => "Un email de confirmation a été adressé à l'adresse indiquée",
+            'created' => "Utilisateur créé avec succès.",
+            'deleted' => "Utilisateur supprimé avec succès.",
             'deleted_permanently' => "L'utilisateur a été supprimé définitivement.",
             'restored' => "L'utilisateur a été ré-activé.",
-            'updated' => "L'utilisateur a été mis à jour avec succès.",
+            'updated' => "Utilisateur mis à jour avec succès.",
             'updated_password' => "Le mot de passe utilisateur a été mis à jour avec succès.",
         ]
     ],

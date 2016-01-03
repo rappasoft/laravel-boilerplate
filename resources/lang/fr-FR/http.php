@@ -13,7 +13,7 @@ return [
 
     '404' => [
         'title' => 'Page introuvable',
-        'description' => "Désolé, la page à laquelle vous tentez d'accder n'existe pas.",
+        'description' => "Désolé, la page à laquelle vous tentez d'accéder n'existe pas.",
     ],
 
     '503' => [

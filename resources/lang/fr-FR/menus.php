@@ -20,11 +20,11 @@ return [
             'permissions' => [
                 'all' => 'Toutes les Permissions',
                 'create' => 'Créer une Permission',
-                'edit' => 'Éditer Permissions',
+                'edit' => 'Éditer une Permissions',
                 'groups' => [
                     'all' => 'Tous les Groupes',
                     'create' => 'Créer un Groupe',
-                    'edit' => 'Éditer Groupe',
+                    'edit' => 'Éditer un Groupe',
                     'main' => 'Groupes',
                 ],
                 'main' => 'Permissions',
@@ -32,20 +32,20 @@ return [
             ],
 
             'roles' => [
-                'all' => 'Tous les rôles',
-                'create' => 'Créer un rôle',
-                'edit' => 'Éditer rôle',
-                'management' => 'Gestion des rôles',
+                'all' => 'Tous les Rôles',
+                'create' => 'Créer un Rôle',
+                'edit' => 'Éditer un Rôle',
+                'management' => 'Gestion des Rôles',
                 'main' => 'Rôles',
             ],
 
             'users' => [
-                'all' => 'Tous les utilisateurs',
+                'all' => 'Tous les Utilisateurs',
                 'change-password' => 'Changer le mot de passe',
-                'create' => 'Créer un utilisateur',
+                'create' => 'Créer un Utilisateur',
                 'deactivated' => 'Utilisateurs désactivés',
                 'deleted' => 'Utilisateurs supprimés',
-                'edit' => 'Éditer utilisateur',
+                'edit' => 'Éditer un Utilisateur',
                 'main' => 'Utilisateurs',
             ],
         ],
