@@ -132,7 +132,7 @@ return [
         ],
 
         'passwords' => [
-            'forgot_password' => 'Vous avezz oublié votre mot de passe ?',
+            'forgot_password' => 'Vous avez oublié votre mot de passe ?',
             'reset_password_box_title' => 'Réinitialisation du mot de passe',
             'reset_password_button' => 'Réinitialiser le mot de passe',
             'send_password_reset_link_button' => 'Envoyer le lien de réinitialisation',
