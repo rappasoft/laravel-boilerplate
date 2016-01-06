@@ -1,0 +1,54 @@
+@import "variable-overrides";
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import '../../../../node_modules/font-awesome/scss/font-awesome';
+
+@import "variables";
+@import "core";
+@import "mixins";
+
+@import "header";
+@import "sidebar";
+@import "sidebar-mini";
+@import "control-sidebar";
+@import "dropdown";
+@import "forms";
+@import "progress-bars";
+@import "small-box";
+@import "boxes";
+@import "info-box";
+@import "timeline";
+@import "buttons";
+
+@import "callout";
+@import "alerts";
+@import "navs";
+@import "products";
+@import "table";
+@import "labels";
+@import "direct-chat";
+@import "users-list";
+@import "carousel";
+@import "modal";
+
+//PAGES
+//------
+@import "mailbox";
+@import "lockscreen";
+@import "login_and_register";
+@import "404_500_errors";
+@import "invoice";
+
+@import "fullcalendar";
+
+//SKINS
+@import "skins/_all-skins";
+
+//OTHER
+@import "custom";
+
+//Miscellaneous
+//-------------
+@import "miscellaneous";
+@import "print";

@@ -13,7 +13,7 @@ trait RoleRelationship
      */
     public function users()
     {
-        return $this->belongsToMany(config('auth.model'), config('access.assigned_roles_table'), 'role_id', 'user_id');
+        return $this->belongsToMany(config('auth.providers.users.model'), config('access.assigned_roles_table'), 'role_id', 'user_id');
     }
 
     /**

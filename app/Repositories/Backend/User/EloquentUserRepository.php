@@ -5,8 +5,8 @@ namespace App\Repositories\Backend\User;
 use App\Models\Access\User\User;
 use App\Exceptions\GeneralException;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
-use App\Repositories\Frontend\Auth\AuthenticationContract;
 use App\Exceptions\Backend\Access\User\UserNeedsRolesException;
+use App\Repositories\Frontend\User\UserContract as FrontendUserContract;
 
 /**
  * Class EloquentUserRepository
@@ -20,18 +20,21 @@ class EloquentUserRepository implements UserContract
     protected $role;
 
     /**
-     * @var AuthenticationContract
+     * @var FrontendUserContract
      */
-    protected $auth;
+    protected $user;
 
     /**
      * @param RoleRepositoryContract $role
-     * @param AuthenticationContract $auth
+     * @param FrontendUserContract $user
      */
-    public function __construct(RoleRepositoryContract $role, AuthenticationContract $auth)
+    public function __construct(
+        RoleRepositoryContract $role,
+        FrontendUserContract $user
+    )
     {
         $this->role = $role;
-        $this->auth = $auth;
+        $this->user = $user;
     }
 
     /**
@@ -52,7 +55,7 @@ class EloquentUserRepository implements UserContract
             return $user;
         }
 
-        throw new GeneralException('That user does not exist.');
+        throw new GeneralException(trans('exception.backend.access.users.not_found'));
     }
 
     /**
@@ -64,7 +67,9 @@ class EloquentUserRepository implements UserContract
      */
     public function getUsersPaginated($per_page, $status = 1, $order_by = 'id', $sort = 'asc')
     {
-        return User::where('status', $status)->orderBy($order_by, $sort)->paginate($per_page);
+        return User::where('status', $status)
+            ->orderBy($order_by, $sort)
+            ->paginate($per_page);
     }
 
     /**
@@ -73,7 +78,8 @@ class EloquentUserRepository implements UserContract
      */
     public function getDeletedUsersPaginated($per_page)
     {
-        return User::onlyTrashed()->paginate($per_page);
+        return User::onlyTrashed()
+            ->paginate($per_page);
     }
 
     /**
@@ -83,7 +89,8 @@ class EloquentUserRepository implements UserContract
      */
     public function getAllUsers($order_by = 'id', $sort = 'asc')
     {
-        return User::orderBy($order_by, $sort)->get();
+        return User::orderBy($order_by, $sort)
+            ->get();
     }
 
     /**
@@ -110,21 +117,22 @@ class EloquentUserRepository implements UserContract
 
             //Send confirmation email if requested
             if (isset($input['confirmation_email']) && $user->confirmed == 0) {
-                $this->auth->resendConfirmationEmail($user->id);
+                $this->user->sendConfirmationEmail($user->id);
             }
 
             return true;
         }
 
-        throw new GeneralException('There was a problem creating this user. Please try again.');
+        throw new GeneralException(trans('exception.backend.access.users.create_error'));
     }
 
     /**
-     * @param  $id
-     * @param  $input
-     * @param  $roles
-     * @throws GeneralException
+     * @param $id
+     * @param $input
+     * @param $roles
+     * @param $permissions
      * @return bool
+     * @throws GeneralException
      */
     public function update($id, $input, $roles, $permissions)
     {
@@ -144,7 +152,7 @@ class EloquentUserRepository implements UserContract
             return true;
         }
 
-        throw new GeneralException('There was a problem updating this user. Please try again.');
+        throw new GeneralException(trans('exception.backend.access.users.update_error'));
     }
 
     /**
@@ -163,7 +171,7 @@ class EloquentUserRepository implements UserContract
             return true;
         }
 
-        throw new GeneralException('There was a problem changing this users password. Please try again.');
+        throw new GeneralException(trans('exception.backend.access.users.update_password_error'));
     }
 
     /**
@@ -174,7 +182,7 @@ class EloquentUserRepository implements UserContract
     public function destroy($id)
     {
         if (auth()->id() == $id) {
-            throw new GeneralException('You can not delete yourself.');
+            throw new GeneralException(trans('exception.backend.access.users.cant_delete_self'));
         }
 
         $user = $this->findOrThrowException($id);
@@ -182,7 +190,7 @@ class EloquentUserRepository implements UserContract
             return true;
         }
 
-        throw new GeneralException('There was a problem deleting this user. Please try again.');
+        throw new GeneralException(trans('exception.backend.access.users.delete_error'));
     }
 
     /**
@@ -218,7 +226,7 @@ class EloquentUserRepository implements UserContract
             return true;
         }
 
-        throw new GeneralException('There was a problem restoring this user. Please try again.');
+        throw new GeneralException(trans('exception.backend.access.users.restore_error'));
     }
 
     /**
@@ -229,8 +237,8 @@ class EloquentUserRepository implements UserContract
      */
     public function mark($id, $status)
     {
-        if (auth()->id() == $id && ($status == 0 || $status == 2)) {
-            throw new GeneralException('You can not do that to yourself.');
+        if (access()->id() == $id && $status == 0) {
+            throw new GeneralException(trans('exception.backend.access.users.cant_deactivate_self'));
         }
 
         $user         = $this->findOrThrowException($id);
@@ -240,11 +248,12 @@ class EloquentUserRepository implements UserContract
             return true;
         }
 
-        throw new GeneralException('There was a problem updating this user. Please try again.');
+        throw new GeneralException(trans('exception.backend.access.users.mark_error'));
     }
 
     /**
      * Check to make sure at lease one role is being applied or deactivate user
+     *
      * @param  $user
      * @param  $roles
      * @throws UserNeedsRolesException
@@ -260,7 +269,7 @@ class EloquentUserRepository implements UserContract
             $user->save();
 
             $exception = new UserNeedsRolesException();
-            $exception->setValidationErrors('You must choose at lease one role. User has been created but deactivated.');
+            $exception->setValidationErrors(trans('exception.backend.access.users.role_needed_create'));
 
             //Grab the user id in the controller
             $exception->setUserID($user->id);
@@ -279,7 +288,7 @@ class EloquentUserRepository implements UserContract
         if ($user->email != $input['email']) {
             //Check to see if email exists
             if (User::where('email', '=', $input['email'])->first()) {
-                throw new GeneralException('That email address belongs to a different user.');
+                throw new GeneralException(trans('exception.backend.access.users.email_error'));
             }
 
         }
@@ -319,7 +328,7 @@ class EloquentUserRepository implements UserContract
         //User Updated, Update Roles
         //Validate that there's at least one role chosen
         if (count($roles['assignees_roles']) == 0) {
-            throw new GeneralException('You must choose at least one role.');
+            throw new GeneralException(trans('exceptions.backend.access.users.role_needed'));
         }
 
     }
@@ -333,7 +342,7 @@ class EloquentUserRepository implements UserContract
         $user                    = new User;
         $user->name              = $input['name'];
         $user->email             = $input['email'];
-        $user->password          = $input['password'];
+        $user->password          = bcrypt($input['password']);
         $user->status            = isset($input['status']) ? 1 : 0;
         $user->confirmation_code = md5(uniqid(mt_rand(), true));
         $user->confirmed         = isset($input['confirmed']) ? 1 : 0;

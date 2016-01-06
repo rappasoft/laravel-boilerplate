@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 return [
 
@@ -13,24 +13,172 @@ return [
     |
     */
 
-    'change_password_box_title' => 'Changer de mot de passe',
-    'change_password_button' => 'Changer le mot de passe',
-    'country' => 'Pays',
-    'edit_information' => 'Éditer les informations',
-    'forgot_password' => 'Mot de passe oublié ?',
-    'login_box_title' => "Nom d'utilsateur",
-    'login_button' => 'Se connecter',
-    'login_with' => 'Se connecter avec :social_media',
-    'macro_examples' => 'Macro Examples',
-    'register_box_title' => "Créer un compte",
-    'register_button' => 'Créer le compte',
-    'remember_me' => 'Se rappeler de moi',
-    'reset_password_box_title' => 'Ré-initiliaser le mot de passe',
-    'reset_password_button' => 'Ré-initiliaser le mot de passe',
-    'save_button' => 'Enregistrer',
-    'send_password_reset_link_button' => 'Envoyer un lien de ré-initialistion de mot de passe',
-    'state' => 'État',
-    'toggle_navigation' => 'Basculer la navigation',
-    'update_information_box_title' => 'Mettre à jour les informations',
+    'general' => [
+        'all' => 'Tous',
+        'actions' => 'Actions',
+        'buttons' => [
+            'save' => 'Enregistrer',
+            'update' => 'Mettre à jour',
+        ],
+        'hide' => 'Cacher',
+        'none' => 'Aucun',
+        'show' => 'Voir',
+        'toggle_navigation' => 'Navigation',
+    ],
 
+    'backend' => [
+        'access' => [
+            'permissions' => [
+                'create' => 'Créer une permission',
+                'dependencies' => 'Dépendances',
+                'edit' => 'Éditer une permission',
+
+                'groups' => [
+                    'create' => 'Créer groupe',
+                    'edit' => 'Éditer groupe',
+
+                    'table' => [
+                        'name' => 'Nom',
+                    ],
+                ],
+
+                'grouped_permissions' => 'Permissions groupées',
+                'label' => 'permissions',
+                'management' => 'Gerstion des permissions',
+                'no_groups' => "Il n'y a pas de groupes de permission.",
+                'no_permissions' => 'Pas de permission sélectionnée.',
+                'no_roles' => 'Pas de rôle sélectionné',
+                'no_ungrouped' => "Il n'y a pas de permissions non groupées.",
+
+                'table' => [
+                    'dependencies' => 'Dépendances',
+                    'group' => 'Groupe',
+                    'group-sort' => 'Ordre du groupe',
+                    'name' => 'Nom',
+                    'permission' => 'Permission',
+                    'roles' => 'Rôles',
+                    'system' => 'Système',
+                    'total' => 'permissions(s) total',
+                    'users' => 'Utilisateurs',
+                ],
+
+                'tabs' => [
+                    'general' => 'Géneral',
+                    'groups' => 'Groupes',
+                    'dependencies' => 'Dépendances',
+                    'permissions' => 'Permissions',
+                ],
+
+                'ungrouped_permissions' => 'Permissions non groupées',
+            ],
+
+            'roles' => [
+                'create' => 'Créer un rôle',
+                'edit' => 'Editer un rôle',
+                'management' => 'Gestion des rôles',
+
+                'table' => [
+                    'number_of_users' => "Nombre d'utilisateurs",
+                    'permissions' => 'Permissions',
+                    'role' => 'Rôle',
+                    'sort' => 'Ordre',
+                    'total' => 'rôles(s) total',
+                ],
+            ],
+
+            'users' => [
+                'active' => 'Utilisateurs actifs',
+                'all_permissions' => 'Toutes les permissions',
+                'change_password' => 'Modifier le mot de passe',
+                'change_password_for' => 'Modifier le mot de passe pour :user',
+                'create' => 'Créer Utilisateur',
+                'deactivated' => 'Utilisateurs désactivés',
+                'deleted' => 'Utilisateurs supprimés',
+                'dependencies' => 'Dépendances',
+                'edit' => 'Éditer Utilisateur',
+                'management' => 'Gestion des utilisateurs',
+                'no_other_permissions' => "Pas d'autres permissions",
+                'no_permissions' => 'Pas de permissions',
+                'no_roles' => 'Pas de Rôle à affecter.',
+                'permissions' => 'Permissions',
+                'permission_check' => "La sélection d'une permission sélectionne aussi ses dépendances s'il y en a.",
+
+                'table' => [
+                    'confirmed' => 'Confirmé',
+                    'created' => 'Création',
+                    'email' => 'E-mail',
+                    'id' => 'ID',
+                    'last_updated' => 'Mise à jour',
+                    'name' => 'Nom',
+                    'no_deactivated' => "Pas d'utilisateurs désactivés",
+                    'no_deleted' => "Pas d'utilisateurs supprimés",
+                    'other_permissions' => 'Autres permissions',
+                    'roles' => 'Rôles',
+                    'total' => 'utilisateur(s) total',
+                ],
+            ],
+        ],
+    ],
+
+    'frontend' => [
+
+        'auth' => [
+            'login_box_title' => 'Connexion',
+            'login_button' => 'OK',
+            'login_with' => "S'enregistrer avec :social_media",
+            'register_box_title' => "S'enregistrer",
+            'register_button' => 'Créer le compte',
+            'remember_me' => 'Se souvenir de moi',
+        ],
+
+        'passwords' => [
+            'forgot_password' => 'Vous avezz oublié votre mot de passe ?',
+            'reset_password_box_title' => 'Réinitialisation du mot de passe',
+            'reset_password_button' => 'Réinitialiser le mot de passe',
+            'send_password_reset_link_button' => 'Envoyer le lien de réinitialisation',
+        ],
+
+        'macros' => [
+            'country' => [
+                'alpha' => 'Pays Alpha Codes',
+                'alpha2' => 'Pays Alpha 2 Codes',
+                'alpha3' => 'Pays Alpha 3 Codes',
+                'numeric' => 'Pays Numéros Codes',
+            ],
+
+            'macro_examples' => 'Examples Macros',
+
+            'state' => [
+                'mexico' => 'Mexico State List',
+                'us' => [
+                    'us' => 'US States',
+                    'outlying' => 'US Outlying Territories',
+                    'armed' => 'US Armed Forces',
+                ],
+            ],
+
+            'territories' => [
+                'canada' => 'Canada Province & Territories List',
+            ],
+
+            'timezone' => 'Fuseau horaire',
+        ],
+
+        'user' => [
+            'passwords' => [
+                'change' => 'Modifier le mot de passe',
+            ],
+
+            'profile' => [
+                'avatar' => 'Avatar',
+                'created_at' => 'Créé le ',
+                'edit_information' => 'Éditer les informations',
+                'email' => 'e-mail',
+                'last_updated' => 'Mise à jour le',
+                'name' => 'Nom',
+                'update_information' => 'Mettre à jour les informations',
+            ],
+        ],
+
+    ],
 ];

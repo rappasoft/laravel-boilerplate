@@ -3,18 +3,19 @@
 namespace App\Repositories\Frontend\User;
 
 use App\Models\Access\User\User;
+use Illuminate\Support\Facades\Mail;
 use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use App\Models\Access\User\UserProvider;
+use App\Models\Access\User\SocialLogin;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
 
 /**
  * Class EloquentUserRepository
- * @package App\Repositories\User
+ * @package App\Repositories\Frontend\User
  */
 class EloquentUserRepository implements UserContract
 {
+
     /**
      * @var RoleRepositoryContract
      */
@@ -29,47 +30,65 @@ class EloquentUserRepository implements UserContract
     }
 
     /**
-     * @param  $id
-     * @throws GeneralException
-     * @return \Illuminate\Support\Collection|null|static
+     * @param $id
+     * @return mixed
      */
-    public function findOrThrowException($id)
+    public function find($id)
     {
-        $user = User::find($id);
-        if (!is_null($user)) {
-            return $user;
-        }
-
-        throw new GeneralException('That user does not exist.');
+        return User::findOrFail($id);
     }
 
     /**
-     * @param  $data
-     * @param  bool     $provider
+     * @param $email
+     * @return bool
+     */
+    public function findByEmail($email) {
+        $user = User::where('email', $email)->first();
+
+        if ($user instanceof User)
+            return $user;
+
+        return false;
+    }
+
+    /**
+     * @param $token
+     * @return mixed
+     * @throws GeneralException
+     */
+    public function findByToken($token) {
+        $user = User::where('confirmation_code', $token)->first();
+
+        if (! $user instanceof User)
+            throw new GeneralException(trans('exceptions.frontend.auth.confirmation.not_found'));
+
+        return $user;
+    }
+
+    /**
+     * @param array $data
+     * @param bool $provider
      * @return static
      */
-    public function create($data, $provider = false)
+    public function create(array $data, $provider = false)
     {
-        /**
-         * See if creating a user from a social account or the application
-         */
         if ($provider) {
             $user = User::create([
-                'name'              => $data['name'],
-                'email'             => $data['email'],
-                'password'          => null,
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => null,
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
-                'confirmed'         => 1,
-                'status'            => 1,
+                'confirmed' => 1,
+                'status' => 1,
             ]);
         } else {
             $user = User::create([
-                'name'              => $data['name'],
-                'email'             => $data['email'],
-                'password'          => $data['password'],
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
-                'confirmed'         => config('access.users.confirm_email') ? 0 : 1,
-                'status'            => 1,
+                'confirmed' => config('access.users.confirm_email') ? 0 : 1,
+                'status' => 1,
             ]);
         }
 
@@ -95,23 +114,23 @@ class EloquentUserRepository implements UserContract
     }
 
     /**
-     * @param  $data
-     * @param  $provider
-     * @return static
+     * @param $data
+     * @param $provider
+     * @return EloquentUserRepository
      */
-    public function findByUsernameOrCreate($data, $provider)
+    public function findOrCreateSocial($data, $provider)
     {
         /**
          * Check to see if there is a user with this email first
          */
-        $user = User::where('email', $data->email)->first();
+        $user = $this->findByEmail($data->email);
 
         /**
          * If the user does not exist create them
          * The true flag indicate that it is a social account
          * Which triggers the script to use some default values in the create method
          */
-        if (!$user) {
+        if (! $user) {
             $user = $this->create([
                 'name'  => $data->name,
                 'email' => $data->email,
@@ -121,93 +140,85 @@ class EloquentUserRepository implements UserContract
         /**
          * See if the user has logged in with this social account before
          */
-        if ($this->hasProvider($user, $provider))
-        /**
-         * Account is not new, see if the account needs updating
-         */
-        {
-            $this->checkIfUserNeedsUpdating($provider, $data, $user);
-        } else {
+        if (! $user->hasProvider($provider)) {
             /**
              * Gather the provider data for saving and associate it with the user
              */
-            $user->providers()->save(new UserProvider([
-                'avatar'      => $data->avatar,
+            $user->providers()->save(new SocialLogin([
                 'provider'    => $provider,
                 'provider_id' => $data->id,
             ]));
         }
 
+        /**
+         * Return the user object
+         */
         return $user;
     }
 
     /**
-     * @param  $user
-     * @param  $provider
+     * @param $token
      * @return bool
-     */
-    public function hasProvider($user, $provider)
-    {
-        foreach ($user->providers as $p) {
-            if ($p->provider == $provider) {
-                return true;
-            }
-
-        }
-
-        return false;
-    }
-
-    /**
-     * @param $provider
-     * @param $providerData
-     * @param $user
-     */
-    public function checkIfUserNeedsUpdating($provider, $providerData, $user)
-    {
-        //Have to first check to see if name and email have to be updated
-        $userData = [
-            'email' => $providerData->email,
-            'name'  => $providerData->name,
-        ];
-        $dbData = [
-            'email' => $user->email,
-            'name'  => $user->name,
-        ];
-
-        $differences = array_diff($userData, $dbData);
-
-        if (!empty($differences)) {
-            $user->email = $providerData->email;
-            $user->name  = $providerData->name;
-            $user->save();
-        }
-
-        //Then have to check to see if avatar for specific provider has changed
-        $p = $user->providers()->where('provider', $provider)->first();
-
-        if ($p->avatar != $providerData->avatar) {
-            $p->avatar = $providerData->avatar;
-            $p->save();
-        }
-    }
-
-    /**
-     * @param  $input
      * @throws GeneralException
+     */
+    public function confirmAccount($token)
+    {
+        $user = $this->findByToken($token);
+
+        if ($user->confirmed == 1) {
+            throw new GeneralException(trans('exceptions.frontend.auth.confirmation.already_confirmed'));
+        }
+
+        if ($user->confirmation_code == $token) {
+            $user->confirmed = 1;
+            return $user->save();
+        }
+
+        throw new GeneralException(trans('exceptions.frontend.auth.confirmation.mismatch'));
+    }
+
+    /**
+     * @param $user
      * @return mixed
      */
-    public function updateProfile($input)
+    public function sendConfirmationEmail($user)
     {
-        $user       = access()->user();
+        //$user can be user instance or id
+        if (! $user instanceof User) {
+            $user = $this->find($user);
+        }
+
+        return Mail::send('frontend.auth.emails.confirm', ['token' => $user->confirmation_code], function ($message) use ($user) {
+            $message->to($user->email, $user->name)->subject(app_name() . ': ' . trans('exceptions.frontend.auth.confirmation.confirm'));
+        });
+    }
+
+    /**
+     * @param $token
+     * @return mixed
+     * @throws GeneralException
+     */
+    public function resendConfirmationEmail($token) {
+        return $this->sendConfirmationEmail($this->findByToken($token));
+    }
+
+    /**
+     * @param $id
+     * @param $input
+     * @return mixed
+     * @throws GeneralException
+     */
+    public function updateProfile($id, $input)
+    {
+        $user = $this->find($id);
         $user->name = $input['name'];
 
         if ($user->canChangeEmail()) {
             //Address is not current address
             if ($user->email != $input['email']) {
                 //Emails have to be unique
-                if (User::where('email', $input['email'])->first()) {
-                    throw new GeneralException('That e-mail address is already taken.');
+                if ($this->findByEmail($input['email'])) {
+                    throw new GeneralException(trans('exceptions.frontend.auth.email_taken'));
                 }
 
                 $user->email = $input['email'];
@@ -218,60 +229,19 @@ class EloquentUserRepository implements UserContract
     }
 
     /**
-     * @param  $input
-     * @throws GeneralException
+     * @param $input
      * @return mixed
+     * @throws GeneralException
      */
     public function changePassword($input)
     {
-        $user = $this->findOrThrowException(auth()->id());
+        $user = $this->find(access()->id());
 
         if (Hash::check($input['old_password'], $user->password)) {
-            //Passwords are hashed on the model
-            $user->password = $input['password'];
+            $user->password = bcrypt($input['password']);
             return $user->save();
         }
 
-        throw new GeneralException('That is not your old password.');
-    }
-
-    /**
-     * @param  $token
-     * @throws GeneralException
-     */
-    public function confirmAccount($token)
-    {
-        $user = User::where('confirmation_code', $token)->first();
-
-        if ($user) {
-            if ($user->confirmed == 1) {
-                throw new GeneralException('Your account is already confirmed.');
-            }
-
-            if ($user->confirmation_code == $token) {
-                $user->confirmed = 1;
-                return $user->save();
-            }
-
-            throw new GeneralException('Your confirmation code does not match.');
-        }
-
-        throw new GeneralException('That confirmation code does not exist.');
-    }
-
-    /**
-     * @param  $user
-     * @return mixed
-     */
-    public function sendConfirmationEmail($user)
-    {
-        //$user can be user instance or id
-        if (!$user instanceof User) {
-            $user = User::findOrFail($user);
-        }
-
-        return Mail::send('emails.confirm', ['token' => $user->confirmation_code], function ($message) use ($user) {
-            $message->to($user->email, $user->name)->subject(app_name() . ': Confirm your account!');
-        });
+        throw new GeneralException(trans('exceptions.frontend.auth.password.change_mismatch'));
     }
 }

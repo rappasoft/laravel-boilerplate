@@ -1,18 +1,18 @@
 @extends ('backend.layouts.master')
 
-@section ('title', trans('menus.user_management') . ' | ' . trans('menus.deactivated_users'))
+@section ('title', trans('labels.backend.access.users.management') . ' | ' . trans('labels.backend.access.users.deactivated'))
 
 @section('page-header')
     <h1>
-        {{ trans('menus.user_management') }}
-        <small>{{ trans('menus.deactivated_users') }}</small>
+        {{ trans('labels.backend.access.users.management') }}
+        <small>{{ trans('labels.backend.access.users.deactivated') }}</small>
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('menus.deactivated_users') }}</h3>
+            <h3 class="box-title">{{ trans('labels.backend.access.users.deactivated') }}</h3>
 
             <div class="box-tools pull-right">
                 @include('backend.access.includes.partials.header-buttons')
@@ -24,15 +24,15 @@
                 <table class="table table-striped table-bordered table-hover">
                     <thead>
                     <tr>
-                        <th>{{ trans('crud.users.id') }}</th>
-                        <th>{{ trans('crud.users.name') }}</th>
-                        <th>{{ trans('crud.users.email') }}</th>
-                        <th>{{ trans('crud.users.confirmed') }}</th>
-                        <th>{{ trans('crud.users.roles') }}</th>
-                        <th>{{ trans('crud.users.other_permissions') }}</th>
-                        <th class="visible-lg">{{ trans('crud.users.created') }}</th>
-                        <th class="visible-lg">{{ trans('crud.users.last_updated') }}</th>
-                        <th>{{ trans('crud.actions') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.id') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.name') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.email') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.other_permissions') }}</th>
+                        <th class="visible-lg">{{ trans('labels.backend.access.users.table.created') }}</th>
+                        <th class="visible-lg">{{ trans('labels.backend.access.users.table.last_updated') }}</th>
+                        <th>{{ trans('labels.general.actions') }}</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -58,7 +58,7 @@
                                             {!! $perm->display_name !!}<br/>
                                         @endforeach
                                     @else
-                                        None
+                                        {{ trans('labels.general.none') }}
                                     @endif
                                 </td>
                                 <td class="visible-lg">{!! $user->created_at->diffForHumans() !!}</td>
@@ -67,14 +67,14 @@
                             </tr>
                         @endforeach
                     @else
-                        <td colspan="9">{{ trans('crud.users.no_deactivated_users') }}</td>
+                        <td colspan="9">{{ trans('labels.backend.access.users.table.no_deactivated') }}</td>
                     @endif
                     </tbody>
                 </table>
             </div>
 
             <div class="pull-left">
-                {!! $users->total() !!} {{ trans('crud.users.total') }}
+                {!! $users->total() !!} {{ trans('labels.backend.access.users.table.total') }}
             </div>
 
             <div class="pull-right">

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 return [
 
@@ -60,6 +60,7 @@ return [
     'regex'                => 'Le format du champ :attribute est invalide.',
     'required'             => 'Le champ :attribute est obligatoire.',
     'required_if'          => 'Le champ :attribute est obligatoire lorsque :other est :value.',
+    'required_unless'      => 'Le champ :attribute est obligatoire sauf si :other est :value.',
     'required_with'        => 'Le champ :attribute est obligatoire lorsque :values a une valeur.',
     'required_with_all'    => 'Le champ :attribute est obligatoire lorsque :values existe.',
     'required_without'     => 'Le champ :attribute est obligatoire lorsque :values n\'a pas de valeur.',
@@ -105,32 +106,53 @@ return [
     */
 
     'attributes' => [
-        'name' => 'Nom',
-        'avatar' => 'Avatar',
-        'email' => 'E-mail',
-        'password' => 'Mot de passe',
-        'password_confirmation' => 'Confirmation du mot de passe',
-        'old_password' => 'Ancien mot de passe',
-        'new_password' => 'Nouveau mot de passe',
-        'new_password_confirmation' => 'Confirmation du nouveau mot de passe',
-        'created_at' => 'Créé le',
-        'last_updated' => 'Mis à jour le',
-        'actions' => 'Actions',
-        'active' => 'Actif',
-        'confirmed' => 'Confirmé',
-        'send_confirmation_email' => 'Envoyer un e-mail de confirmation',
-        'associated_roles' => 'Rôles associés',
-        'other_permissions' => 'Autres permissions',
-        'role_name' => 'Nom du rôle',
-        'role_sort' => 'Trier par rôle',
-        'associated_permissions' => 'Permissions associatées',
-        'permission_name' => 'Nom de la permission',
-        'display_name' => 'Nom affiché',
-        'system_permission' => 'Permission système ?',
-        'permission_group_name' => 'Nom du groupe',
-        'group' => 'Groupe',
-        'group-sort' => 'Trier par groupe',
-        'dependencies' => 'Dépendances',
+
+        'backend' => [
+            'access' => [
+                'permissions' => [
+                    'associated_roles' => 'Roles associés',
+                    'dependencies' => 'Dependances',
+                    'display_name' => 'Nom affiché',
+                    'group' => 'Groupe',
+                    'group_sort' => 'Ordre du groupe',
+
+                    'groups' => [
+                        'name' => 'Nom du groupe',
+                    ],
+
+                    'name' => 'Nom',
+                    'system' => 'Système ?',
+                ],
+
+                'roles' => [
+                    'associated_permissions' => 'Permissions associées',
+                    'name' => 'Nom',
+                    'sort' => 'Ordre',
+                ],
+
+                'users' => [
+                    'active' => 'Actif',
+                    'associated_roles' => 'Rôles associés',
+                    'confirmed' => 'Confirmé',
+                    'email' => 'Adresse mail',
+                    'name' => 'Nom',
+                    'other_permissions' => 'Autres permissions',
+                    'password' => 'Mot de passe',
+                    'password_confirmation' => 'Confirmation',
+                    'send_confirmation_email' => 'Envoyer un email de confirmation',
+                ],
+            ],
+        ],
+
+        'frontend' => [
+            'email' => 'Adresse email',
+            'name' => 'Nom',
+            'password' => 'Mot de passe',
+            'password_confirmation' => 'Confirmation',
+            'old_password' => 'Ancien mot de passe',
+            'new_password' => 'Nouveau mot de passe',
+            'new_password_confirmation' => 'Confirmation du nouveau mot de passe',
+        ],
     ],
 
 ];

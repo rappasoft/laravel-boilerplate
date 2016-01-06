@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 return [
 
@@ -13,58 +13,60 @@ return [
     |
     */
 
-    'active_users' => 'Utilisateur actifs',
-    'banned_users' => 'Utilisateurs bannis',
-    'create_permission' => 'Créer une permission',
-    'create_permission_group' => 'Créer un groupe de permission',
-    'create_role' => 'Créer un rôle',
-    'create_user' => 'Créer un utilisateur',
-    'dashboard' => 'Tableau de bord',
-    'deactivated_users' => 'Utilisateurs désactivés',
-    'deleted_users' => 'Utilisateurs supprimés',
-    'edit_permission' => 'Éditer la permission',
-    'edit_permission_group' => 'Éditer le groupe de permission',
-    'edit_role' => 'Éditer le rôle',
-    'edit_user' => "Éditer l'utilisateur",
-    'general' => 'Général',
-    'header_buttons' => [
-        'permissions' => [
-            'all' => 'Toutes les permissions',
-            'button' => 'Permissions',
+    'backend' => [
+        'access' => [
+            'title' => 'Gestion des accès',
 
-            'groups' => [
-                'all' => 'Tous les groupes de permission',
-                'button' => 'Groupes',
+            'permissions' => [
+                'all' => 'Toutes les Permissions',
+                'create' => 'Créer une Permission',
+                'edit' => 'Éditer Permissions',
+                'groups' => [
+                    'all' => 'Tous les Groupes',
+                    'create' => 'Créer un Groupe',
+                    'edit' => 'Éditer Groupe',
+                    'main' => 'Groupes',
+                ],
+                'main' => 'Permissions',
+                'management' => 'Gestion des Permissions',
+            ],
+
+            'roles' => [
+                'all' => 'Tous les rôles',
+                'create' => 'Créer un rôle',
+                'edit' => 'Éditer rôle',
+                'management' => 'Gestion des rôles',
+                'main' => 'Rôles',
+            ],
+
+            'users' => [
+                'all' => 'Tous les utilisateurs',
+                'change-password' => 'Changer le mot de passe',
+                'create' => 'Créer un utilisateur',
+                'deactivated' => 'Utilisateurs désactivés',
+                'deleted' => 'Utilisateurs supprimés',
+                'edit' => 'Éditer utilisateur',
+                'main' => 'Utilisateurs',
             ],
         ],
-        'roles' => [
-            'all' => 'Tous les rôles',
-            'button' => 'Rôles',
+
+        'log-viewer' => [
+            'main' => 'Consulter Logs',
+            'dashboard' => 'Tableau de bord',
+            'logs' => 'Logs',
         ],
-        'users' => [
-            'all' => 'Tous les utilisateurs',
-            'button' => 'Utilisateurs',
+
+        'sidebar' => [
+            'dashboard' => 'Tableau de bord',
+            'general' => 'Général',
         ],
     ],
-    'log-viewer' => [
-        'main' => 'Logs',
-        'dashboard' => 'Tableau de bord',
-        'logs' => 'Logs',
-    ],
-    'permission_management' => 'Gestion des permissions',
-    'role_management' => 'Gestion des rôles',
-    'user_management' => 'Gestion des utilisateurs',
-    'access_management' => 'Gestion des accès',
+
     'language-picker' => [
-        'language' => 'Language',
+        'language' => 'Langue',
         'langs' => [
             'en' => 'English',
             'fr-FR' => 'Français (France)',
-            'it' => 'Italian',
-			'pl' => 'Polish',
-            'pt-BR' => 'Portuguese (Brazil)',
-            'ru' => 'Russian',
-            'sv' => 'Swedish',
         ],
     ],
 ];

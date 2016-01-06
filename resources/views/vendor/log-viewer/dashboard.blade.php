@@ -98,27 +98,33 @@
     <div class="box box-success">
         <div class="box-body">
             <div class="row">
-                <div class="col-md-3">
-                    <canvas id="stats-doughnut-chart"></canvas>
-                </div><!--col-md-3-->
-                <div class="col-md-9">
-                    <div class="row">
-                        @foreach($percents as $level => $item)
-                            <div class="col-md-4">
-                                <h5>
-                        <span class="level level-{{ $level }}">
-                            {!! log_styler()->icon($level) . ' ' . $item['name'] !!} - {!! $item['percent'] !!} %
-                        </span>
-                                </h5>
-                                <div class="progress">
-                                    <div class="progress-bar level-{{ $level }}" role="progressbar" aria-valuenow="{{ $item['percent'] }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $item['percent'] }}%">
-                                        {{ $item['count'] }}
+                @if (! count($percents))
+                    <div class="col-md-12">
+                        There are no statistics to show.
+                    </div>
+                @else
+                    <div class="col-md-3">
+                        <canvas id="stats-doughnut-chart"></canvas>
+                    </div><!--col-md-3-->
+                    <div class="col-md-9">
+                        <div class="row">
+                            @foreach($percents as $level => $item)
+                                <div class="col-md-4">
+                                    <h5>
+                            <span class="level level-{{ $level }}">
+                                {!! log_styler()->icon($level) . ' ' . $item['name'] !!} - {!! $item['percent'] !!} %
+                            </span>
+                                    </h5>
+                                    <div class="progress">
+                                        <div class="progress-bar level-{{ $level }}" role="progressbar" aria-valuenow="{{ $item['percent'] }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $item['percent'] }}%">
+                                            {{ $item['count'] }}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
-                    </div><!--row-->
-                </div><!--col-md-9-->
+                            @endforeach
+                        </div><!--row-->
+                    </div><!--col-md-9-->
+                @endif
             </div><!--row-->
         </div><!-- /.box-body -->
     </div><!--box box-success-->

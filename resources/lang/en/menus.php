@@ -13,59 +13,60 @@ return [
     |
     */
 
-    'active_users' => 'Active Users',
-    'banned_users' => 'Banned Users',
-    'create_permission' => 'Create Permission',
-    'create_permission_group' => 'Create Group',
-    'create_role' => 'Create Role',
-    'create_user' => 'Create User',
-    'dashboard' => 'Dashboard',
-    'deactivated_users' => 'Deactivated Users',
-    'deleted_users' => 'Deleted Users',
-    'edit_permission' => 'Edit Permission',
-    'edit_permission_group' => 'Edit Group',
-    'edit_role' => 'Edit Role',
-    'edit_user' => 'Edit User',
-    'general' => 'General',
-    'header_buttons' => [
-        'permissions' => [
-            'all' => 'All Permissions',
-            'button' => 'Permissions',
+    'backend' => [
+        'access' => [
+            'title' => 'Access Management',
 
-            'groups' => [
-                'all' => 'All Groups',
-                'button' => 'Groups',
+            'permissions' => [
+                'all' => 'All Permissions',
+                'create' => 'Create Permission',
+                'edit' => 'Edit Permission',
+                'groups' => [
+                    'all' => 'All Groups',
+                    'create' => 'Create Group',
+                    'edit' => 'Edit Group',
+                    'main' => 'Groups',
+                ],
+                'main' => 'Permissions',
+                'management' => 'Permission Management',
+            ],
+
+            'roles' => [
+                'all' => 'All Roles',
+                'create' => 'Create Role',
+                'edit' => 'Edit Role',
+                'management' => 'Role Management',
+                'main' => 'Roles',
+            ],
+
+            'users' => [
+                'all' => 'All Users',
+                'change-password' => 'Change Password',
+                'create' => 'Create User',
+                'deactivated' => 'Deactivated Users',
+                'deleted' => 'Deleted Users',
+                'edit' => 'Edit User',
+                'main' => 'Users',
             ],
         ],
-        'roles' => [
-            'all' => 'All Roles',
-            'button' => 'Roles',
+
+        'log-viewer' => [
+            'main' => 'Log Viewer',
+            'dashboard' => 'Dashboard',
+            'logs' => 'Logs',
         ],
-        'users' => [
-            'all' => 'All Users',
-            'button' => 'Users',
+
+        'sidebar' => [
+            'dashboard' => 'Dashboard',
+            'general' => 'General',
         ],
     ],
-    'log-viewer' => [
-        'main' => 'Log Viewer',
-        'dashboard' => 'Dashboard',
-        'logs' => 'Logs',
-    ],
-    'permission_management' => 'Permission Management',
-    'role_management' => 'Role Management',
-    'user_management' => 'User Management',
-    'access_management' => 'Access Management',
+
     'language-picker' => [
         'language' => 'Language',
         'langs' => [
             'en' => 'English',
-            'es' => 'Spanish',
-			'fr-FR' => 'French',
-            'it' => 'Italian',
-			'pl' => 'Polish',
-            'pt-BR' => 'Portuguese (Brazil)',
-            'ru' => 'Russian',
-            'sv' => 'Swedish',
+            'fr-FR' => 'Français (France)',
         ],
     ],
 ];

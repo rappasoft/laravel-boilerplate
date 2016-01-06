@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 return [
 
@@ -13,62 +13,100 @@ return [
     |
     */
 
-    'here' => 'Ici',
-    'all_rights_reserved' => 'Tous droits réservés.',
-    'boilerplate_link' => 'Laravel Boilerplate',
     'backend' => [
-        'WELCOME' => 'BIENVENUE',
-        'dashboard_title' => 'Tableau de bord',
-    ],
-    'based_on' => [
-        'permission' => 'Basé sur les permissions - ',
-        'role' => 'Basé sur les rôles - ',
-    ],
-    'be_right_back' => 'Be Right Back.',
-    'cancel_button' => 'Annuler',
-    'click_here_to_confirm_account' => 'Cliquez ici pour confirmer votre compte :',
-    'click_here_to_reset' => 'Cliquez ici pour ré-initialiser votre mot de passe :',
-    'edit' => 'Éditer',
-    'full_name' => 'Nom complet',
-    'if_confirmed_is_off' => '(Désactivé si confirmé)',
-    'js_injected_from_controller' => 'Javascript injecté depuis un contrôleur',
-    'member_since' => 'Inscrit depuis',
-    'page_not_found' => 'Page non trouvée',
-    'password_successfully_changed' => 'Mot de passe modifié avec succès',
-    'profile_successfully_updated' => 'Profil mis à jour avec succès.',
-    'save_button' => 'Enregistrer',
-    'search_placeholder' => 'Chercher...',
-    'see_all' => [
-        'messages' => 'Voir tous les messages',
-        'notifications' => 'Voir tout',
-        'tasks' => 'Voir toutes les tâches',
-    ],
-    'sorry_page_you_were_trying' => "Désolé mais la page à laquelle vous souhaitiez accéder n'existe pas.",
-    'test' => 'Test',
-    'using_access_helper' => [
-        'array_permissions' => 'Using Access Helper with Array of Permission Names or ID\'s where the user does have to possess all.',
-        'array_permissions_not' => 'Using Access Helper with Array of Permission Names or ID\'s where the user does not have to possess all.',
-        'array_roles' => 'Using Access Helper with Array of Role Names or ID\'s where the user does have to possess all.',
-        'array_roles_not' => 'Using Access Helper with Array of Role Names or ID\'s where the user does not have to possess all.',
-        'permission_id' => 'Using Access Helper with Permission ID',
-        'permission_name' => 'Using Access Helper with Permission Name',
-        'role_id' => 'Using Access Helper with Role ID',
-        'role_name' => 'Using Access Helper with Role Name',
-    ],
-    'using_blade_extensions' => 'Utilisation des extensions Blade',
-    'view_console_it_works' => 'Vue de la console, vous devriez voir \'it works!\' en provenance de FrontendController@index',
-    'welcome_to' => 'Bienvenue à :place',
-    'you_can_see_because' => 'Vous pouvez voir ceci car vous avez le rôle \':role\'!',
-    'you_can_see_because_permission' => 'Vous pouvez voir ceci car vous avez la permssions \':permission\'!',
-    'you_have' => [
-        'messages' => '{0} Vous n\'avez aucun message|{1} Vous avez 1 message|[2,Inf] Vous avez :number messages',
-        'notifications' => '{0} Vous n\'avez aucune notification|{1} Vous avez 1 notification|[2,Inf] Vous avez :number notifications',
-        'tasks' => '{0} Vous n\'avez aucune tâche|{1} Vous avez 1 tâche|[2,Inf] Vous avez :number tâches',
-    ],
-    'create' => 'Créer',
-    'delete' => 'Supprimer',
-    'permission' => '[0,1]Permission|[2,Inf]Permissions',
-    'role' => '[0,1]Rôle|[2,Inf]Rôles',
-    'user' => '[0,1]Utilisateur|[2,Inf]Utilisateurs',
+        'access' => [
+            'permissions' => [
+                'edit_explanation' => "Si vous avez effectué des opérations dans la section hiérarchie sans rafraîchir cette page, vous devrez l'actualiser pour refléter les changements ici.",
 
+                'groups' => [
+                    'hierarchy_saved' => 'La hiérarchie est enregistrée avec succès.',
+                ],
+
+                'sort_explanation' => "Cette section vous permet d'organiser vos autorisations en groupes pour rester organisé. Quel que soit le groupe, les autorisations sont toujours assignées individuellement à chaque rôle.",
+            ],
+
+            'users' => [
+                'delete_user_confirm' => "Êtes-vous sûr de vouloir supprimer cet utilisateur de façon permanente ? Toutes  les références à cet utilisateur dans l'application vont poser problèmee et cette opération ne peut être annullée.",
+                'if_confirmed_off' => '(en mode confirmation)',
+                'restore_user_confirm' => 'Restaurer cet utilisateur à son statut original ?',
+            ],
+        ],
+
+        'dashboard' => [
+            'title' => 'Tableau de bord administrateur',
+            'welcome' => 'Bienvenue',
+        ],
+
+        'general' => [
+            'all_rights_reserved' => 'Tous droits réservés.',
+            'boilerplate_link' => 'Laravel 5 Boilerplate',
+            'member_since' => 'Membre depuis',
+            'search_placeholder' => 'Rechercher...',
+
+            'see_all' => [
+                'messages' => 'Voir tous les messages',
+                'notifications' => 'Voir tous',
+                'tasks' => 'Voir les nouvelles taches',
+            ],
+
+            'status' => [
+                'online' => 'En ligne',
+                'offline' => 'Offline',
+            ],
+
+            'you_have' => [
+                'messages' => "{0} Vous n'avez pas de message|{1} Vous avez 1 message|[2,Inf] Vous avez :number messages",
+                'notifications' => "{0} Vous n'avez pas de notifications|{1} Vous avez 1 notification|[2,Inf] Vous avez :number notifications",
+                'tasks' => "{0} Vous n'avez pas de tache|{1} Vous avez 1 tache|[2,Inf] Vous avez :number taches",
+            ],
+        ],
+    ],
+
+    'emails' => [
+        'auth' => [
+            'password_reset_subject' => 'Votre lien de réinitialisation',
+            'reset_password' => 'Cliquez ici pour réinitialiser votre mot de passe',
+        ],
+    ],
+
+    'frontend' => [
+        'email' => [
+            'confirm_account' => 'Cliquez ici pour confirmer votre compte :',
+        ],
+
+        'test' => 'Test',
+
+        'tests' => [
+            'based_on' => [
+                'permission' => 'Permission Based - ',
+                'role' => 'Role Based - ',
+            ],
+
+            'js_injected_from_controller' => 'Javascript Injecté depuis un Controlleur',
+
+            'using_blade_extensions' => 'Using Blade Extensions',
+
+            'using_access_helper' => [
+                'array_permissions' => 'Using Access Helper with Array of Permission Names or ID\'s where the user does have to possess all.',
+                'array_permissions_not' => 'Using Access Helper with Array of Permission Names or ID\'s where the user does not have to possess all.',
+                'array_roles' => 'Using Access Helper with Array of Role Names or ID\'s where the user does have to possess all.',
+                'array_roles_not' => 'Using Access Helper with Array of Role Names or ID\'s where the user does not have to possess all.',
+                'permission_id' => 'Using Access Helper with Permission ID',
+                'permission_name' => 'Using Access Helper with Permission Name',
+                'role_id' => 'Using Access Helper with Role ID',
+                'role_name' => 'Using Access Helper with Role Name',
+            ],
+
+            'view_console_it_works' => 'View console, you should see \'it works!\' which is coming from FrontendController@index',
+            'you_can_see_because' => 'You can see this because you have the role of \':role\'!',
+            'you_can_see_because_permission' => 'You can see this because you have the permission of \':permission\'!',
+        ],
+
+        'user' => [
+            'profile_updated' => 'Profil modifié avec succès.',
+            'password_updated' => 'Mot de passe modifié avec succès.',
+        ],
+
+        'welcome_to' => 'Bienvenue sur :place',
+    ],
 ];

@@ -1,6 +1,10 @@
-## Laravel 5.* Boilerplate, Currently 5.1.26 (LTS) [Screenshots](http://imgur.com/a/uEKuq)
+## Laravel 5.* Boilerplate, Currently 5.2.6 [Screenshots](http://imgur.com/a/uEKuq)
 
 [![Latest Stable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/stable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate) [![Latest Unstable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/unstable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate)
+
+### Laravel 5.1
+
+You can download the last stable build of Laravel 5.1 [here](https://github.com/rappasoft/laravel-5-boilerplate/tree/Legacy_5.1)
 
 ### Introduction
 
@@ -21,6 +25,10 @@ Thank you for considering contributing to the Laravel Boilerplate project! Pleas
 ### Security Vulnerabilities
 
 If you discover a security vulnerability within this boilerplate, please send an e-mail to Anthony Rappa at rappa819@gmail.com, or create a pull request if possible. All security vulnerabilities will be promptly addressed. Please reference [this page](https://github.com/rappasoft/laravel-5-boilerplate/wiki/7.-Security-Fixes) to make sure you are up to date.
+
+### Donations
+
+If you would like to help the continued efforts of this project, any size [donations](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=JJWUZ4E9S9SFG&lc=US&item_name=Laravel%205%20Boilerplate&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted) are welcomed and highly appreciated.
 
 ### License
 

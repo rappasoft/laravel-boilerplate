@@ -17,7 +17,7 @@ class UpdatePermissionGroupRequest extends Request
      */
     public function authorize()
     {
-        return access()->can('edit-permission-groups');
+        return access()->allow('edit-permission-groups');
     }
 
     /**

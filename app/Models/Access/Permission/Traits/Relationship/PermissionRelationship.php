@@ -2,9 +2,6 @@
 
 namespace App\Models\Access\Permission\Traits\Relationship;
 
-use App\Models\Access\Permission\PermissionGroup;
-use App\Models\Access\Permission\PermissionDependency;
-
 /**
  * Class PermissionRelationship
  * @package App\Models\Access\Permission\Traits\Relationship
@@ -24,7 +21,7 @@ trait PermissionRelationship
      */
     public function group()
     {
-        return $this->belongsTo(PermissionGroup::class, 'group_id');
+        return $this->belongsTo(config('access.group'), 'group_id');
     }
 
     /**
@@ -32,7 +29,7 @@ trait PermissionRelationship
      */
     public function users()
     {
-        return $this->belongsToMany(config('auth.model'), config('access.permission_user_table'), 'permission_id', 'user_id');
+        return $this->belongsToMany(config('auth.providers.users.model'), config('access.permission_user_table'), 'permission_id', 'user_id');
     }
 
     /**
@@ -40,6 +37,6 @@ trait PermissionRelationship
      */
     public function dependencies()
     {
-        return $this->hasMany(PermissionDependency::class, 'permission_id', 'id');
+        return $this->hasMany(config('access.dependency'), 'permission_id', 'id');
     }
 }

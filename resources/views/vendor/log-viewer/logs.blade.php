@@ -98,7 +98,7 @@
     <div class="box box-success">
         <div class="box-body">
 
-            <h1 class="page-header">{{ trans('menus.log-viewer.logs') }}</h1>
+            <h1 class="page-header">{{ trans('menus.backend.log-viewer.logs') }}</h1>
 
             {!! $rows->render() !!}
 
@@ -121,32 +121,36 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($rows as $date => $row)
-                        <tr>
-                            @foreach($row as $key => $value)
-                                <td class="{{ $key == 'date' ? 'text-left' : 'text-center' }}">
-                                    @if ($key == 'date')
-                                        <span class="label label-primary">{{ $value }}</span>
-                                    @else
-                                        <span class="level level-{{ $value !== 0 ? $key : 'empty' }}">
-                                            {{ $value }}
-                                        </span>
-                                    @endif
+                    @if (count($rows))
+                        @foreach($rows as $date => $row)
+                            <tr>
+                                @foreach($row as $key => $value)
+                                    <td class="{{ $key == 'date' ? 'text-left' : 'text-center' }}">
+                                        @if ($key == 'date')
+                                            <span class="label label-primary">{{ $value }}</span>
+                                        @else
+                                            <span class="level level-{{ $value !== 0 ? $key : 'empty' }}">
+                                                {{ $value }}
+                                            </span>
+                                        @endif
+                                    </td>
+                                @endforeach
+                                <td class="text-right">
+                                    <a href="{{ route('log-viewer::logs.show', [$date]) }}" class="btn btn-xs btn-info">
+                                        <i class="fa fa-search"></i>
+                                    </a>
+                                    <a href="{{ route('log-viewer::logs.download', [$date]) }}" class="btn btn-xs btn-success">
+                                        <i class="fa fa-download"></i>
+                                    </a>
+                                    <a href="#delete-log-modal" class="btn btn-xs btn-danger" data-log-date="{{ $date }}">
+                                        <i class="fa fa-trash-o"></i>
+                                    </a>
                                 </td>
-                            @endforeach
-                            <td class="text-right">
-                                <a href="{{ route('log-viewer::logs.show', [$date]) }}" class="btn btn-xs btn-info">
-                                    <i class="fa fa-search"></i>
-                                </a>
-                                <a href="{{ route('log-viewer::logs.download', [$date]) }}" class="btn btn-xs btn-success">
-                                    <i class="fa fa-download"></i>
-                                </a>
-                                <a href="#delete-log-modal" class="btn btn-xs btn-danger" data-log-date="{{ $date }}">
-                                    <i class="fa fa-trash-o"></i>
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
+                            </tr>
+                        @endforeach
+                    @else
+                        <tr><td colspan="{!! count($headers) !!}">There are no current log files.</td></tr>
+                    @endif
                     </tbody>
                     <tfoot>
                     <tr></tr>

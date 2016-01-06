@@ -13,32 +13,34 @@ return [
     |
     */
 
-    'permissions' => [
-        'created' => 'Permission successfully created.',
-        'updated' => 'Permission successfully updated.',
-        'deleted' => 'Permission successfully deleted.',
-        'groups'  => [
-            'created' => 'Permission group successfully created.',
-            'updated' => 'Permission group successfully updated.',
-            'deleted' => 'Permission group successfully deleted.',
+    'backend' => [
+        'permissions' => [
+            'created' => 'Permission successfully created.',
+            'deleted' => 'Permission successfully deleted.',
+
+            'groups'  => [
+                'created' => 'Permission group successfully created.',
+                'deleted' => 'Permission group successfully deleted.',
+                'updated' => 'Permission group successfully updated.',
+            ],
+
+            'updated' => 'Permission successfully updated.',
         ],
+
+        'roles' => [
+            'created' => 'The role was successfully created.',
+            'deleted' => 'The role was successfully deleted.',
+            'updated' => 'The role was successfully updated.',
+        ],
+
+        'users' => [
+            'confirmation_email' => 'A new confirmation e-mail has been sent to the address on file.',
+            'created' => 'The user was successfully created.',
+            'deleted' => 'The user was successfully deleted.',
+            'deleted_permanently' => 'The user was deleted permanently.',
+            'restored' => 'The user was successfully restored.',
+            'updated' => 'The user was successfully updated.',
+            'updated_password' => "The user's password was successfully updated.",
+        ]
     ],
-
-    'roles' => [
-        'created' => 'The role was successfully created.',
-        'updated' => 'The role was successfully updated.',
-        'deleted' => 'The role was successfully deleted.'
-    ],
-
-    'users' => [
-        'created' => 'The user was successfully created.',
-        'updated' => 'The user was successfully updated.',
-        'deleted' => 'The user was successfully deleted.',
-        'deleted_permanently' => 'The user was deleted permanently.',
-        'restored' => 'The user was successfully restored.',
-        'updated_password' => "The user's password was successfully updated.",
-        'confirmation_email' => 'A new confirmation e-mail has been sent to the address on file.'
-
-    ]
-
 ];

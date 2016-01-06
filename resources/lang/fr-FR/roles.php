@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 return [
 
@@ -13,8 +13,7 @@ return [
     |
     */
 
-    'web_developer' => 'Développeur Web',
     'administrator' => 'Administrateur',
     'user' => 'Utilisateur',
-
+    'web_developer' => 'Développeur web',
 ];

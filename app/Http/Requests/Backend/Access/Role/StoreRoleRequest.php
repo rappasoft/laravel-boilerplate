@@ -17,7 +17,7 @@ class StoreRoleRequest extends Request
      */
     public function authorize()
     {
-        return access()->can('create-roles');
+        return access()->allow('create-roles');
     }
 
     /**

@@ -38,16 +38,18 @@ interface UserContract
     public function getAllUsers($order_by = 'id', $sort = 'asc');
 
     /**
-     * @param  $input
-     * @param  $roles
+     * @param $input
+     * @param $roles
+     * @param $permissions
      * @return mixed
      */
     public function create($input, $roles, $permissions);
 
     /**
-     * @param  $id
-     * @param  $input
-     * @param  $roles
+     * @param $id
+     * @param $input
+     * @param $roles
+     * @param $permissions
      * @return mixed
      */
     public function update($id, $input, $roles, $permissions);

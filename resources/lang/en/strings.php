@@ -13,62 +13,100 @@ return [
     |
     */
 
-    'here' => 'Here',
-    'all_rights_reserved' => 'All rights reserved.',
-    'boilerplate_link' => 'Laravel Boilerplate',
     'backend' => [
-        'WELCOME' => 'WELCOME',
-        'dashboard_title' => 'Administrative Dashboard',
-    ],
-    'based_on' => [
-        'permission' => 'Permission Based - ',
-        'role' => 'Role Based - ',
-    ],
-    'be_right_back' => 'Be Right Back.',
-    'cancel_button' => 'Cancel',
-    'click_here_to_confirm_account' => 'Click here to confirm your account:',
-    'click_here_to_reset' => 'Click here to reset your password:',
-    'edit' => 'Edit',
-    'full_name' => 'Full Name',
-    'if_confirmed_is_off' => '(If confirmed is off)',
-    'js_injected_from_controller' => 'Javascript Injected from a Controller',
-    'member_since' => 'Member since',
-    'page_not_found' => 'Page Not Found',
-    'password_successfully_changed' => 'Password successfully changed',
-    'profile_successfully_updated' => 'Profile successfully updated.',
-    'save_button' => 'Save',
-    'search_placeholder' => 'Search...',
-    'see_all' => [
-        'messages' => 'See all messages',
-        'notifications' => 'View all',
-        'tasks' => 'View all tasks',
-    ],
-    'sorry_page_you_were_trying' => 'Sorry, but the page you were trying to view does not exist.',
-    'test' => 'Test',
-    'using_access_helper' => [
-        'array_permissions' => 'Using Access Helper with Array of Permission Names or ID\'s where the user does have to possess all.',
-        'array_permissions_not' => 'Using Access Helper with Array of Permission Names or ID\'s where the user does not have to possess all.',
-        'array_roles' => 'Using Access Helper with Array of Role Names or ID\'s where the user does have to possess all.',
-        'array_roles_not' => 'Using Access Helper with Array of Role Names or ID\'s where the user does not have to possess all.',
-        'permission_id' => 'Using Access Helper with Permission ID',
-        'permission_name' => 'Using Access Helper with Permission Name',
-        'role_id' => 'Using Access Helper with Role ID',
-        'role_name' => 'Using Access Helper with Role Name',
-    ],
-    'using_blade_extensions' => 'Using Blade Extensions',
-    'view_console_it_works' => 'View console, you should see \'it works!\' which is coming from FrontendController@index',
-    'welcome_to' => 'Welcome To :place',
-    'you_can_see_because' => 'You can see this because you have the role of \':role\'!',
-    'you_can_see_because_permission' => 'You can see this because you have the permission of \':permission\'!',
-    'you_have' => [
-        'messages' => '{0} You don\'t have messages|{1} You have 1 message|[2,Inf] You have :number messages',
-        'notifications' => '{0} You don\'t have notifications|{1} You have 1 notification|[2,Inf] You have :number notifications',
-        'tasks' => '{0} You don\'t have tasks|{1} You have 1 task|[2,Inf] You have :number tasks',
-    ],
-    'create' => 'Create',
-    'delete' => 'Delete',
-    'permission' => '[0,1]Permission|[2,Inf]Permissions',
-    'role' => '[0,1]Role|[2,Inf]Roles',
-    'user' => '[0,1]User|[2,Inf]Users',
+        'access' => [
+            'permissions' => [
+                'edit_explanation' => 'If you performed operations in the hierarchy section without refreshing this page, you will need to refresh to reflect the changes here.',
 
+                'groups' => [
+                    'hierarchy_saved' => 'Hierarchy successfully saved.',
+                ],
+
+                'sort_explanation' => 'This section allows you to organize your permissions into groups to stay organized. Regardless of the group, the permissions are still individually assigned to each role.',
+            ],
+
+            'users' => [
+                'delete_user_confirm' => 'Are you sure you want to delete this user permanently? Anywhere in the application that references this user\'s id will most likely error. Proceed at your own risk. This can not be un-done.',
+                'if_confirmed_off' => '(If confirmed is off)',
+                'restore_user_confirm' => 'Restore this user to its original state?',
+            ],
+        ],
+
+        'dashboard' => [
+            'title' => 'Administrative Dashboard',
+            'welcome' => 'Welcome',
+        ],
+
+        'general' => [
+            'all_rights_reserved' => 'All Rights Reserved.',
+            'boilerplate_link' => 'Laravel 5 Boilerplate',
+            'member_since' => 'Member since',
+            'search_placeholder' => 'Search...',
+
+            'see_all' => [
+                'messages' => 'See all messages',
+                'notifications' => 'View all',
+                'tasks' => 'View all tasks',
+            ],
+
+            'status' => [
+                'online' => 'Online',
+                'offline' => 'Offline',
+            ],
+
+            'you_have' => [
+                'messages' => '{0} You don\'t have messages|{1} You have 1 message|[2,Inf] You have :number messages',
+                'notifications' => '{0} You don\'t have notifications|{1} You have 1 notification|[2,Inf] You have :number notifications',
+                'tasks' => '{0} You don\'t have tasks|{1} You have 1 task|[2,Inf] You have :number tasks',
+            ],
+        ],
+    ],
+
+    'emails' => [
+        'auth' => [
+            'password_reset_subject' => 'Your Password Reset Link',
+            'reset_password' => 'Click here to reset your password',
+        ],
+    ],
+
+    'frontend' => [
+        'email' => [
+            'confirm_account' => 'Click here to confirm your account:',
+        ],
+
+        'test' => 'Test',
+
+        'tests' => [
+            'based_on' => [
+                'permission' => 'Permission Based - ',
+                'role' => 'Role Based - ',
+            ],
+
+            'js_injected_from_controller' => 'Javascript Injected from a Controller',
+
+            'using_blade_extensions' => 'Using Blade Extensions',
+
+            'using_access_helper' => [
+                'array_permissions' => 'Using Access Helper with Array of Permission Names or ID\'s where the user does have to possess all.',
+                'array_permissions_not' => 'Using Access Helper with Array of Permission Names or ID\'s where the user does not have to possess all.',
+                'array_roles' => 'Using Access Helper with Array of Role Names or ID\'s where the user does have to possess all.',
+                'array_roles_not' => 'Using Access Helper with Array of Role Names or ID\'s where the user does not have to possess all.',
+                'permission_id' => 'Using Access Helper with Permission ID',
+                'permission_name' => 'Using Access Helper with Permission Name',
+                'role_id' => 'Using Access Helper with Role ID',
+                'role_name' => 'Using Access Helper with Role Name',
+            ],
+
+            'view_console_it_works' => 'View console, you should see \'it works!\' which is coming from FrontendController@index',
+            'you_can_see_because' => 'You can see this because you have the role of \':role\'!',
+            'you_can_see_because_permission' => 'You can see this because you have the permission of \':permission\'!',
+        ],
+
+        'user' => [
+            'profile_updated' => 'Profile successfully updated.',
+            'password_updated' => 'Password successfully updated.',
+        ],
+
+        'welcome_to' => 'Welcome to :place',
+    ],
 ];

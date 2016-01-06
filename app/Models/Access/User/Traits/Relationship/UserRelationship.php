@@ -2,7 +2,7 @@
 
 namespace App\Models\Access\User\Traits\Relationship;
 
-use App\Models\Access\User\UserProvider;
+use App\Models\Access\User\SocialLogin;
 
 /**
  * Class UserRelationship
@@ -10,6 +10,7 @@ use App\Models\Access\User\UserProvider;
  */
 trait UserRelationship
 {
+
     /**
      * Many-to-Many relations with Role.
      *
@@ -36,6 +37,6 @@ trait UserRelationship
      */
     public function providers()
     {
-        return $this->hasMany(UserProvider::class);
+        return $this->hasMany(SocialLogin::class);
     }
 }
