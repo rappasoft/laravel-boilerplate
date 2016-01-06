@@ -21,7 +21,8 @@ class SetupAccessTables extends Migration
             $table->string('name');
             $table->boolean('all')->default(false);
             $table->smallInteger('sort')->default(0)->unsigned();
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default('0000-00-00 00:00');
 
             /**
              * Add Foreign/Unique/Index
@@ -55,7 +56,8 @@ class SetupAccessTables extends Migration
             $table->string('display_name');
             $table->boolean('system')->default(false);
             $table->smallInteger('sort')->default(0)->unsigned();
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default('0000-00-00 00:00');
 
             /**
              * Add Foreign/Unique/Index
@@ -68,7 +70,8 @@ class SetupAccessTables extends Migration
             $table->integer('parent_id')->nullable();
             $table->string('name');
             $table->smallInteger('sort')->default(0);
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default('0000-00-00 00:00');
         });
 
         Schema::create(config('access.permission_role_table'), function ($table) {
@@ -94,7 +97,8 @@ class SetupAccessTables extends Migration
             $table->increments('id')->unsigned();
             $table->integer('permission_id')->unsigned();
             $table->integer('dependency_id')->unsigned();
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default('0000-00-00 00:00');
 
             /**
              * Add Foreign/Unique/Index

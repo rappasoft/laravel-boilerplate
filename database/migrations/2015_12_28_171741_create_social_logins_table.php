@@ -18,7 +18,8 @@ class CreateSocialLoginsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('provider', 32);
             $table->string('provider_id');
-            $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default('0000-00-00 00:00');
         });
     }
 
