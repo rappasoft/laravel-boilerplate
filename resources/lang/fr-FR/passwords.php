@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 return [
 
@@ -15,8 +15,8 @@ return [
 
     'password' => 'Les mots de passe doivent avoir au moins 6 caractères et la confirmation doit correspondre.',
     'reset' => 'Votre mot de passe a été modifié !',
-    'sent' => 'Vous avez envoyé un mail contenant le lien re réinitialisation !',
+    'sent' => 'Vous avez envoyé un email contenant le lien re réinitialisation !',
     'token' => 'Ce code de réinitialisation est incorrect.',
-    'user' => "Aucun utilisateur n'est enregitré avec cette adresse mail.",
+    'user' => "Aucun utilisateur n'est enregitré avec cette adresse email.",
 
 ];

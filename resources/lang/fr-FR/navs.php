@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 return [
 
@@ -18,7 +18,7 @@ return [
     ],
 
     'general' => [
-        'logout' => 'Déconexion',
+        'logout' => 'Déconnexion',
     ],
 
     'frontend' => [
@@ -26,12 +26,12 @@ return [
         'home' => 'Accueil',
         'login' => 'Connexion',
         'macros' => 'Macros',
-        'register' => "S'enregsitrer",
+        'register' => "S'enregistrer",
 
         'user' => [
             'administration' => 'Administration',
             'change_password' => 'Changer mon mot de passe',
-            'my_information' => 'Mes Informations',
+            'my_information' => 'Mes informations',
         ],
     ],
 ];
