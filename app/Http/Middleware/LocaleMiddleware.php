@@ -11,6 +11,9 @@ use Closure;
 class LocaleMiddleware
 {
     /**
+     * Add your language code to this array.
+     * The code must have the same name as the language folder.
+     * Be sure to add it in an alphabetical order.
      * @var array
      */
     protected $languages = ['en', 'fr-FR', 'it', 'sv'];
