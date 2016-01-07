@@ -39,7 +39,9 @@ return [
 
         'general' => [
             'all_rights_reserved' => 'All Rights Reserved.',
+            'are_you_sure' => 'Are you sure?',
             'boilerplate_link' => 'Laravel 5 Boilerplate',
+            'continue' => 'Continue',
             'member_since' => 'Member since',
             'search_placeholder' => 'Search...',
 

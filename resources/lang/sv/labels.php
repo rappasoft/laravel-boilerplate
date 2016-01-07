@@ -52,21 +52,21 @@ return [
 
                 'table' => [
                     'dependencies' => 'Krävda tillstånd',
-                    'group' => 'Grupp',
+                    'group' => 'Tillståndsgrupp',
                     'group-sort' => 'Ordning',
                     'name' => 'Namn',
                     'permission' => 'Tillstånd',
                     'roles' => 'Roller',
-                    'system' => 'System status',
-                    'total' => 'permissions(s) total',
+                    'system' => 'System-status',
+                    'total' => 'tillstånd totalt',
                     'users' => 'Användare',
                 ],
 
                 'tabs' => [
-                    'general' => 'General',
+                    'general' => 'Allmänt',
                     'groups' => 'Tillståndsgrupper',
-                    'dependencies' => 'Dependencies',
-                    'permissions' => 'Permissions',
+                    'dependencies' => 'Krävda tillstånd',
+                    'permissions' => 'Alla tillstånd',
                 ],
 
                 'ungrouped_permissions' => 'Ungrouped Permissions',
