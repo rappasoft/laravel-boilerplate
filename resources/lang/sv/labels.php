@@ -30,7 +30,7 @@ return [
         'access' => [
             'permissions' => [
                 'create' => 'Skapa tillstånd',
-                'dependencies' => 'Beroende filer',
+                'dependencies' => 'Överliggande tillstånd',
                 'edit' => 'Redigera tillstånd',
 
                 'groups' => [
@@ -65,7 +65,7 @@ return [
                 'tabs' => [
                     'general' => 'Allmänt',
                     'groups' => 'Alla tillståndsgrupper',
-                    'dependencies' => 'Krävda tillstånd',
+                    'dependencies' => 'Överliggande tillstånd',
                     'permissions' => 'Alla tillstånd',
                 ],
 
@@ -94,14 +94,14 @@ return [
                 'create' => 'Skapa användare',
                 'deactivated' => 'Inaktiverade användare',
                 'deleted' => 'Raderade användare',
-                'dependencies' => 'Beroende krav',
+                'dependencies' => 'Överliggande tillstånd',
                 'edit' => 'Redigera användare',
                 'management' => 'Hantera användare',
                 'no_other_permissions' => 'Inga andra tillstånd',
                 'no_permissions' => 'Inga tillstånd',
                 'no_roles' => 'Inga roller att anta.',
                 'permissions' => 'Tillstånd',
-                'permission_check' => 'När tillstånd efterfrågas så kollas också om det finns några underliggande beroende krav.',
+                'permission_check' => 'När tillstånd efterfrågas så kollas också om det finns några överliggande beroende tillstånd.',
 
                 'table' => [
                     'confirmed' => 'Bekräftad',

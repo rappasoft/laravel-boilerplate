@@ -86,7 +86,7 @@ return [
 
             'js_injected_from_controller' => 'Javascript som fått sin data direkt från en controller',
 
-            'using_blade_extensions' => 'Avänder utbyggda Blade-funktioner',
+            'using_blade_extensions' => 'Avänder utbyggda &#64;Blade-funktioner',
 
             'using_access_helper' => [
                 'array_permissions' => 'Använder Access Helper med en array av rättighetens namn eller ID då användaren måste ha alla rättigheter.',

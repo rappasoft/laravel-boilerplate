@@ -18,8 +18,8 @@ return [
             'users' => [
                 'activate' => 'Aktivera',
                 'change_password' => 'Byt lösenord',
-                'deactivate' => 'Avaktivera',
-                'resend_email' => 'Skicka e-postbekräftelse igen.',
+                'deactivate' => 'Inaktivera',
+                'resend_email' => 'Skicka bekräftelsemail igen.',
             ],
         ],
     ],

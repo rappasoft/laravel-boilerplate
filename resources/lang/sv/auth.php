@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'E-postadressen eller telefonnumret som du har angett matchar inget konto.',
+    'failed' => 'Dessa uppgifter stämmer inte överens med vårt register.',
     'general_error' => 'Du har inte tillstånd att göra det där.',
     'socialite' => [
         'unacceptable' => ':provider kan inte att användas vid inloggning.',
