@@ -98,14 +98,42 @@
 	<script>
 		$(function() {
             @permission('permanently-delete-users')
-                $("a[name='delete_user_perm']").click(function() {
-                    return confirm("{{ trans('strings.backend.access.users.delete_user_confirm') }}");
+                $("a[name='delete_user_perm']").click(function(e) {
+                    e.preventDefault();
+
+                    swal({
+                        title: "{{ trans('strings.backend.general.are_you_sure') }}",
+                        text: "{{ trans('strings.backend.access.users.delete_user_confirm') }}",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "{{ trans('strings.backend.general.continue') }}",
+                        closeOnConfirm: false
+                    }, function(isConfirmed){
+                        if (isConfirmed){
+                            window.location = $("a[name='delete_user_perm']").attr('href');
+                        }
+                    });
                 });
             @endauth
 
             @permission('undelete-users')
-                $("a[name='restore_user']").click(function() {
-                    return confirm("{{ trans('strings.backend.access.users.restore_user_confirm') }}");
+                $("a[name='restore_user']").click(function(e) {
+                    e.preventDefault();
+
+                    swal({
+                        title: "{{ trans('strings.backend.general.are_you_sure') }}",
+                        text: "{{ trans('strings.backend.access.users.restore_user_confirm') }}",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "{{ trans('strings.backend.general.continue') }}",
+                        closeOnConfirm: false
+                    }, function(isConfirmed){
+                        if (isConfirmed){
+                            window.location = $("a[name='restore_user']").attr('href');
+                        }
+                    });
                 });
             @endauth
 		});
