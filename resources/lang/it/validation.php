@@ -110,48 +110,48 @@ return [
         'backend' => [
             'access' => [
                 'permissions' => [
-                    'associated_roles' => 'Associated Roles',
-                    'dependencies' => 'Dependencies',
-                    'display_name' => 'Display Name',
-                    'group' => 'Group',
-                    'group_sort' => 'Group Sort',
+                    'associated_roles' => 'Ruoli associati',
+                    'dependencies' => 'Dipendenze',
+                    'display_name' => 'Nome visualizzato',
+                    'group' => 'Gruppo',
+                    'group_sort' => 'Ordina gruppo',
 
                     'groups' => [
-                        'name' => 'Group Name',
+                        'name' => 'Nome gruppo',
                     ],
 
-                    'name' => 'Name',
-                    'system' => 'System?',
+                    'name' => 'Nome',
+                    'system' => 'Sistema?',
                 ],
 
                 'roles' => [
-                    'associated_permissions' => 'Associated Permissions',
-                    'name' => 'Name',
-                    'sort' => 'Sort',
+                    'associated_permissions' => 'Permessi associati',
+                    'name' => 'Nome',
+                    'sort' => 'Ordina',
                 ],
 
                 'users' => [
-                    'active' => 'Active',
-                    'associated_roles' => 'Associated Roles',
-                    'confirmed' => 'Confirmed',
-                    'email' => 'E-mail Address',
-                    'name' => 'Name',
-                    'other_permissions' => 'Other Permissions',
+                    'active' => 'Attivo',
+                    'associated_roles' => 'Ruoli associati',
+                    'confirmed' => 'Confermato',
+                    'email' => 'Indirizzo e-mail',
+                    'name' => 'Nome',
+                    'other_permissions' => 'Altri permessi',
                     'password' => 'Password',
-                    'password_confirmation' => 'Password Confirmation',
-                    'send_confirmation_email' => 'Send Confirmation E-mail',
+                    'password_confirmation' => 'Conferma password',
+                    'send_confirmation_email' => 'Invia e-mail di conferma',
                 ],
             ],
         ],
 
         'frontend' => [
-            'email' => 'E-mail Address',
-            'name' => 'Name',
+            'email' => 'Indirizzo e-mail',
+            'name' => 'Nome',
             'password' => 'Password',
-            'password_confirmation' => 'Password Confirmation',
-            'old_password' => 'Old Password',
-            'new_password' => 'New Password',
-            'new_password_confirmation' => 'New Password Confirmation',
+            'password_confirmation' => 'Conferma password',
+            'old_password' => 'Vecchia password',
+            'new_password' => 'Nuova password',
+            'new_password_confirmation' => 'Conferma nuova password',
         ],
     ],
 
