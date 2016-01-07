@@ -15,55 +15,55 @@ return [
 
     'backend' => [
         'access' => [
-            'title' => 'Access Management',
+            'title' => 'Användare och rättigheter',
 
             'permissions' => [
-                'all' => 'All Permissions',
-                'create' => 'Create Permission',
-                'edit' => 'Edit Permission',
+                'all' => 'Alla tillstånd',
+                'create' => 'Skapa tillstånd',
+                'edit' => 'Redigera tillstånd',
                 'groups' => [
-                    'all' => 'All Groups',
-                    'create' => 'Create Group',
-                    'edit' => 'Edit Group',
-                    'main' => 'Groups',
+                    'all' => 'Alla tillståndsgrupper',
+                    'create' => 'Skapa tillståndsgrupp',
+                    'edit' => 'Redigera tillståndsgrupp',
+                    'main' => 'Tillståndsgrupper',
                 ],
-                'main' => 'Permissions',
-                'management' => 'Permission Management',
+                'main' => 'Tillstånd',
+                'management' => 'Hantera tillstånd',
             ],
 
             'roles' => [
-                'all' => 'All Roles',
-                'create' => 'Create Role',
-                'edit' => 'Edit Role',
-                'management' => 'Role Management',
-                'main' => 'Roles',
+                'all' => 'Alla roller',
+                'create' => 'Skapa roll',
+                'edit' => 'Redigera roll',
+                'management' => 'Hantera roller',
+                'main' => 'Roller',
             ],
 
             'users' => [
-                'all' => 'All Users',
-                'change-password' => 'Change Password',
-                'create' => 'Create User',
-                'deactivated' => 'Deactivated Users',
-                'deleted' => 'Deleted Users',
-                'edit' => 'Edit User',
-                'main' => 'Users',
+                'all' => 'Alla användare',
+                'change-password' => 'Byt lösenord',
+                'create' => 'Skapa användare',
+                'deactivated' => 'Inaktiverade användare',
+                'deleted' => 'Raderade användare',
+                'edit' => 'Redigera användare',
+                'main' => 'Användare',
             ],
         ],
 
         'log-viewer' => [
-            'main' => 'Log Viewer',
-            'dashboard' => 'Dashboard',
-            'logs' => 'Logs',
+            'main' => 'Loggöversikt',
+            'dashboard' => 'Huvudpanelen',
+            'logs' => 'Loggar',
         ],
 
         'sidebar' => [
-            'dashboard' => 'Dashboard',
-            'general' => 'General',
+            'dashboard' => 'Kontrollpanelen',
+            'general' => 'Adminpanelen',
         ],
     ],
 
     'language-picker' => [
-        'language' => 'Language',
+        'language' => 'Språk',
         'langs' => [
             'en' => 'English',
             'fr-FR' => 'Français (France)',
