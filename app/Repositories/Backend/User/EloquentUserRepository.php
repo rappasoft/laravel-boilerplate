@@ -55,7 +55,7 @@ class EloquentUserRepository implements UserContract
             return $user;
         }
 
-        throw new GeneralException(trans('exception.backend.access.users.not_found'));
+        throw new GeneralException(trans('exceptions.backend.access.users.not_found'));
     }
 
     /**
@@ -123,7 +123,7 @@ class EloquentUserRepository implements UserContract
             return true;
         }
 
-        throw new GeneralException(trans('exception.backend.access.users.create_error'));
+        throw new GeneralException(trans('exceptions.backend.access.users.create_error'));
     }
 
     /**
@@ -152,7 +152,7 @@ class EloquentUserRepository implements UserContract
             return true;
         }
 
-        throw new GeneralException(trans('exception.backend.access.users.update_error'));
+        throw new GeneralException(trans('exceptions.backend.access.users.update_error'));
     }
 
     /**
@@ -171,7 +171,7 @@ class EloquentUserRepository implements UserContract
             return true;
         }
 
-        throw new GeneralException(trans('exception.backend.access.users.update_password_error'));
+        throw new GeneralException(trans('exceptions.backend.access.users.update_password_error'));
     }
 
     /**
@@ -182,7 +182,7 @@ class EloquentUserRepository implements UserContract
     public function destroy($id)
     {
         if (auth()->id() == $id) {
-            throw new GeneralException(trans('exception.backend.access.users.cant_delete_self'));
+            throw new GeneralException(trans('exceptions.backend.access.users.cant_delete_self'));
         }
 
         $user = $this->findOrThrowException($id);
@@ -190,7 +190,7 @@ class EloquentUserRepository implements UserContract
             return true;
         }
 
-        throw new GeneralException(trans('exception.backend.access.users.delete_error'));
+        throw new GeneralException(trans('exceptions.backend.access.users.delete_error'));
     }
 
     /**
@@ -226,7 +226,7 @@ class EloquentUserRepository implements UserContract
             return true;
         }
 
-        throw new GeneralException(trans('exception.backend.access.users.restore_error'));
+        throw new GeneralException(trans('exceptions.backend.access.users.restore_error'));
     }
 
     /**
@@ -238,7 +238,7 @@ class EloquentUserRepository implements UserContract
     public function mark($id, $status)
     {
         if (access()->id() == $id && $status == 0) {
-            throw new GeneralException(trans('exception.backend.access.users.cant_deactivate_self'));
+            throw new GeneralException(trans('exceptions.backend.access.users.cant_deactivate_self'));
         }
 
         $user         = $this->findOrThrowException($id);
@@ -248,7 +248,7 @@ class EloquentUserRepository implements UserContract
             return true;
         }
 
-        throw new GeneralException(trans('exception.backend.access.users.mark_error'));
+        throw new GeneralException(trans('exceptions.backend.access.users.mark_error'));
     }
 
     /**
@@ -269,7 +269,7 @@ class EloquentUserRepository implements UserContract
             $user->save();
 
             $exception = new UserNeedsRolesException();
-            $exception->setValidationErrors(trans('exception.backend.access.users.role_needed_create'));
+            $exception->setValidationErrors(trans('exceptions.backend.access.users.role_needed_create'));
 
             //Grab the user id in the controller
             $exception->setUserID($user->id);
@@ -288,7 +288,7 @@ class EloquentUserRepository implements UserContract
         if ($user->email != $input['email']) {
             //Check to see if email exists
             if (User::where('email', '=', $input['email'])->first()) {
-                throw new GeneralException(trans('exception.backend.access.users.email_error'));
+                throw new GeneralException(trans('exceptions.backend.access.users.email_error'));
             }
 
         }
