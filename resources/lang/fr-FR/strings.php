@@ -101,7 +101,7 @@ return [
 
             'view_console_it_works' => 'Sur la console du navigateur, vous devriez voir  \'it works!\', ce qui est produit depuis le FrontendController@index',
             'you_can_see_because' => 'Vous voyez ce message car vous disposez du rôle \':role\'!',
-            'you_can_see_because_permission' => 'vous voyez ce message car vous disposez de la permissions \':permission\'!',
+            'you_can_see_because_permission' => 'Vous voyez ce message car vous disposez de la permissions \':permission\'!',
         ],
 
         'user' => [
