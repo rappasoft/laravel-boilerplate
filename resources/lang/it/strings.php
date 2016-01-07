@@ -44,9 +44,9 @@ return [
             'search_placeholder' => 'Search...',
 
             'see_all' => [
-                'messages' => 'See all messages',
-                'notifications' => 'View all',
-                'tasks' => 'View all tasks',
+                'messages' => 'Visualizza tutti i messaggi',
+                'notifications' => 'Visualizza tutte',
+                'tasks' => 'Visualizza tutti i compiti',
             ],
 
             'status' => [
@@ -103,10 +103,10 @@ return [
         ],
 
         'user' => [
-            'profile_updated' => 'Profile successfully updated.',
-            'password_updated' => 'Password successfully updated.',
+            'profile_updated' => 'Profilo aggiornato con successo.',
+            'password_updated' => 'Password aggiornata con successo.',
         ],
 
-        'welcome_to' => 'Welcome to :place',
+        'welcome_to' => 'Benvenuto su :place',
     ],
 ];

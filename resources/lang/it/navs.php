@@ -14,7 +14,7 @@ return [
     */
 
     'backend' => [
-        'button' => 'Button',
+        'button' => 'Pulsante',
     ],
 
     'general' => [
@@ -25,13 +25,13 @@ return [
         'dashboard' => 'Dashboard',
         'home' => 'Home',
         'login' => 'Login',
-        'macros' => 'Macros',
-        'register' => 'Register',
+        'macros' => 'Macro',
+        'register' => 'Registrazione',
 
         'user' => [
-            'administration' => 'Administration',
-            'change_password' => 'Change Password',
-            'my_information' => 'My Information',
+            'administration' => 'Amministrazione',
+            'change_password' => 'Cambio Password',
+            'my_information' => 'Profilo',
         ],
     ],
 ];

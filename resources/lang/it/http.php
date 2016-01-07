@@ -12,13 +12,13 @@ return [
     */
 
     '404' => [
-        'title' => 'Page Not Found',
-        'description' => 'Sorry, but the page you were trying to view does not exist.',
+        'title' => 'Pagina Non Trovata',
+        'description' => 'Spiacenti, la pagina che stavi cercando di visualizzare non esiste.',
     ],
 
     '503' => [
-        'title' => 'Be right back.',
-        'description' => 'Be right back.',
+        'title' => 'Torniamo subito.',
+        'description' => 'Torniamo subito.',
     ],
 
 ];

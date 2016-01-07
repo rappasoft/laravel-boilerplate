@@ -15,58 +15,59 @@ return [
 
     'backend' => [
         'access' => [
-            'title' => 'Access Management',
+            'title' => 'Gestione accessi',
 
             'permissions' => [
-                'all' => 'All Permissions',
-                'create' => 'Create Permission',
-                'edit' => 'Edit Permission',
+                'all' => 'Tutti i permessi',
+                'create' => 'Crea permesso',
+                'edit' => 'Modifica permesso',
                 'groups' => [
-                    'all' => 'All Groups',
-                    'create' => 'Create Group',
-                    'edit' => 'Edit Group',
-                    'main' => 'Groups',
+                    'all' => 'Tutti i gruppi',
+                    'create' => 'Crea gruppo',
+                    'edit' => 'Modifica gruppo',
+                    'main' => 'Gruppi',
                 ],
-                'main' => 'Permissions',
-                'management' => 'Permission Management',
+                'main' => 'Permessi',
+                'management' => 'Gestione permessi',
             ],
 
             'roles' => [
-                'all' => 'All Roles',
-                'create' => 'Create Role',
-                'edit' => 'Edit Role',
-                'management' => 'Role Management',
-                'main' => 'Roles',
+                'all' => 'Tutti i ruoli',
+                'create' => 'Crea ruolo',
+                'edit' => 'Modifica ruolo',
+                'management' => 'Gestione ruoli',
+                'main' => 'Ruoli',
             ],
 
             'users' => [
-                'all' => 'All Users',
-                'change-password' => 'Change Password',
-                'create' => 'Create User',
-                'deactivated' => 'Deactivated Users',
-                'deleted' => 'Deleted Users',
-                'edit' => 'Edit User',
-                'main' => 'Users',
+                'all' => 'Tutti gli utenti',
+                'change-password' => 'Cambia password',
+                'create' => 'Crea utente',
+                'deactivated' => 'Utenti disattivati',
+                'deleted' => 'Utenti eliminati',
+                'edit' => 'Modifica utente',
+                'main' => 'Utenti',
             ],
         ],
 
         'log-viewer' => [
-            'main' => 'Log Viewer',
+            'main' => 'Log',
             'dashboard' => 'Dashboard',
             'logs' => 'Logs',
         ],
 
         'sidebar' => [
             'dashboard' => 'Dashboard',
-            'general' => 'General',
+            'general' => 'Generale',
         ],
     ],
 
     'language-picker' => [
-        'language' => 'Language',
+        'language' => 'Lingua',
         'langs' => [
             'en' => 'English',
             'fr-FR' => 'Français (France)',
+            'it' => 'Italiano',
         ],
     ],
 ];
