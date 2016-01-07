@@ -64,9 +64,9 @@ return [
 
                 'tabs' => [
                     'general' => 'General',
-                    'groups' => 'Groups',
+                    'groups' => 'All Groups',
                     'dependencies' => 'Dependencies',
-                    'permissions' => 'Permissions',
+                    'permissions' => 'All Permissions',
                 ],
 
                 'ungrouped_permissions' => 'Ungrouped Permissions',
