@@ -1,4 +1,4 @@
-﻿?<?php
+﻿<?php
 
 return [
 
@@ -124,7 +124,7 @@ return [
 
         'auth' => [
             'login_box_title' => 'Connexion',
-            'login_button' => 'OK',
+            'login_button' => "Entrer",
             'login_with' => "S'enregistrer avec :social_media",
             'register_box_title' => "S'enregistrer",
             'register_button' => 'Créer le compte',
@@ -132,7 +132,7 @@ return [
         ],
 
         'passwords' => [
-            'forgot_password' => 'Vous avez oublié votre mot de passe ?',
+            'forgot_password' => 'Vous avez oublié votre mot de passe&nbsp;?',
             'reset_password_box_title' => 'Réinitialisation du mot de passe',
             'reset_password_button' => 'Réinitialiser le mot de passe',
             'send_password_reset_link_button' => 'Envoyer le lien de réinitialisation',
