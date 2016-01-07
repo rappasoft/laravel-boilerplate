@@ -14,24 +14,24 @@ return [
     */
 
     'backend' => [
-        'button' => 'Button',
+        'button' => 'Knapp',
     ],
 
     'general' => [
-        'logout' => 'Logout',
+        'logout' => 'Logga ut',
     ],
 
     'frontend' => [
-        'dashboard' => 'Dashboard',
-        'home' => 'Home',
-        'login' => 'Login',
+        'dashboard' => 'Kontrollpanelen',
+        'home' => 'Start',
+        'login' => 'Logga in',
         'macros' => 'Macros',
-        'register' => 'Register',
+        'register' => 'Registrera',
 
         'user' => [
-            'administration' => 'Administration',
-            'change_password' => 'Change Password',
-            'my_information' => 'My Information',
+            'administration' => 'Adminpanelen',
+            'change_password' => 'Byt lösenord',
+            'my_information' => 'Min profil',
         ],
     ],
 ];
