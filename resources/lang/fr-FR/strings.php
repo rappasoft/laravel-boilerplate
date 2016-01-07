@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 return [
 
@@ -39,7 +39,9 @@ return [
 
         'general' => [
             'all_rights_reserved' => 'Tous droits réservés.',
+            'are_you_sure' => 'Es-tu sûr?',
             'boilerplate_link' => 'Laravel 5 Boilerplate',
+            'continue' => 'Continue',
             'member_since' => 'Membre depuis',
             'search_placeholder' => 'Rechercher...',
 

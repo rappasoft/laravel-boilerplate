@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 return [
 
@@ -19,7 +19,9 @@ return [
                 'activate' => 'Activer',
                 'change_password' => 'Changer de mot de passe',
                 'deactivate' => 'Désactiver',
-                'resend_email' => 'Renvoyer un email de confirmation',
+                'delete_permanently' => 'Supprimé définitivement',
+                'resend_email' => 'Renvoyer le mail de confirmation',
+                'restore_user' => "Ré-activer l'utilisateur",
             ],
         ],
     ],
