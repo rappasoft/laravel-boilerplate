@@ -146,7 +146,7 @@ return [
                 'numeric' => 'Pays Numéros Codes',
             ],
 
-            'macro_examples' => 'Exemples  de macros',
+            'macro_examples' => 'Exemples de macros',
 
             'state' => [
                 'mexico' => 'Mexico State List',
