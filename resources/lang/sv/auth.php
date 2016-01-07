@@ -13,11 +13,11 @@ return [
     |
     */
 
-    'failed' => "Ces informations de connexion ne correspondent pas.",
-    'general_error' => "Vous n'avez pas les droits requis pour cette action.",
+    'failed' => 'Dessa uppgifter stämmer inte överens med vårt register.',
+    'general_error' => 'Du har inte tillstånd att göra det där.',
     'socialite' => [
-        'unacceptable' => 'Le login :provider est de type incorrect.',
+        'unacceptable' => ':provider kan inte att användas vid inloggning.',
     ],
-    'throttle' => 'Vous avez effectué trop de tentatives de connexion. Veuillez ré-essayer dans :seconds secondes.',
-    'unknown' => 'Une erreur inconnue a eu lieu.',
+    'throttle' => 'För många misslyckade försök att logga in i rad. Du kan försöka igen om :seconds sekunder.',
+    'unknown' => 'Hm.. Något gick snett, ett okänt fel.',
 ];

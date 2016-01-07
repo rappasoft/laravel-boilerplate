@@ -1,0 +1,3 @@
+Här kan du ange/hantera vilka tillstånd som skall vara överliggande krav för detta tillstånd.
+<br/><br/>
+Ett exempel: Säg att detta tillstånd är <strong>create-user</strong>. För att användaren ska kunna skapa en användare måste användaren också ha tillståndet <strong>view-backend</strong> samt <strong>view-access-management</strong>. Annars kan inte användaren se adminpanelen eller vyn över <strong>Användare och rättigheter</strong>. Om användaren inte kan se <strong>Användare och rättigheter</strong> kan den inte heller komma åt knappen "Skapa användare". Tillståndet <strong>create-user</strong> är alltså beroende av 2 överliggande tillstånd.
