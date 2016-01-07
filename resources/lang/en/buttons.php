@@ -20,6 +20,8 @@ return [
                 'change_password' => 'Change Password',
                 'deactivate' => 'Deactivate',
                 'resend_email' => 'Resend Confirmation E-mail',
+                'delete_permanently' => 'Delete Permanently',
+                'restore_user' => 'Restore User',
             ],
         ],
     ],
