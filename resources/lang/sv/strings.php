@@ -16,39 +16,39 @@ return [
     'backend' => [
         'access' => [
             'permissions' => [
-                'edit_explanation' => 'If you performed operations in the hierarchy section without refreshing this page, you will need to refresh to reflect the changes here.',
+                'edit_explanation' => 'Om du uppdaterar hierarkin/ordningen så måste du uppdatera sidan för att kunna se de ändringar du gjort.',
 
                 'groups' => [
-                    'hierarchy_saved' => 'Hierarchy successfully saved.',
+                    'hierarchy_saved' => 'Ändringar i hierarkin är sparade.',
                 ],
 
-                'sort_explanation' => 'This section allows you to organize your permissions into groups to stay organized. Regardless of the group, the permissions are still individually assigned to each role.',
+                'sort_explanation' => 'Här kan du hantera hierarkin för dina tillståndsgrupper. Du kan här göra tillståndsgrupper beroende av varandra. Tillstånden är individuellt bundna till rollerna oavsett gruppens placering i hierarkin.',
             ],
 
             'users' => [
-                'delete_user_confirm' => 'Are you sure you want to delete this user permanently? Anywhere in the application that references this user\'s id will most likely error. Proceed at your own risk. This can not be un-done.',
-                'if_confirmed_off' => '(If confirmed is off)',
-                'restore_user_confirm' => 'Restore this user to its original state?',
+                'delete_user_confirm' => 'Är du säker på att du vill radera denna användare permanent? Om användaren har material någonstans i programmet som pekar på sitt ID så kommer det troligtvis generera ett felmeddelande. Denna åtgärd går inte att ångra. Du fortsätter på egen risk.',
+                'if_confirmed_off' => '(Om bekräftan är avstängt)',
+                'restore_user_confirm' => 'Återställ användaren till sitt ursprungliga läge.',
             ],
         ],
 
         'dashboard' => [
-            'title' => 'Administrative Dashboard',
-            'welcome' => 'Welcome',
+            'title' => 'Adminpanelen',
+            'welcome' => 'Välkommen',
         ],
 
         'general' => [
-            'all_rights_reserved' => 'All Rights Reserved.',
-            'are_you_sure' => 'Are you sure?',
+            'all_rights_reserved' => 'Alla rättigheter förbehålls.',
+            'are_you_sure' => 'Är du säker?',
             'boilerplate_link' => 'Laravel 5 Boilerplate',
-            'continue' => 'Continue',
-            'member_since' => 'Member since',
-            'search_placeholder' => 'Search...',
+            'continue' => 'Fortsätt',
+            'member_since' => 'Registrerad',
+            'search_placeholder' => 'Sök...',
 
             'see_all' => [
-                'messages' => 'See all messages',
-                'notifications' => 'View all',
-                'tasks' => 'View all tasks',
+                'messages' => 'Se alla meddelanden',
+                'notifications' => 'Se alla notiser',
+                'tasks' => 'Se alla punkter',
             ],
 
             'status' => [
@@ -57,58 +57,58 @@ return [
             ],
 
             'you_have' => [
-                'messages' => '{0} You don\'t have messages|{1} You have 1 message|[2,Inf] You have :number messages',
-                'notifications' => '{0} You don\'t have notifications|{1} You have 1 notification|[2,Inf] You have :number notifications',
-                'tasks' => '{0} You don\'t have tasks|{1} You have 1 task|[2,Inf] You have :number tasks',
+                'messages' => '{0} Du har inga meddelanden|{1} Du har 1 meddelande|[2,Inf] Du har :number meddelanden',
+                'notifications' => '{0} Du har inga aviseringar|{1} Du har 1 avisering|[2,Inf] Du har :number aviseringar',
+                'tasks' => '{0} Du har inga punkter att göra|{1} Du har 1 punkt att göra|[2,Inf] Du har :number punkter att göra',
             ],
         ],
     ],
 
     'emails' => [
         'auth' => [
-            'password_reset_subject' => 'Your Password Reset Link',
-            'reset_password' => 'Click here to reset your password',
+            'password_reset_subject' => 'Länk för att återställa ditt lösenord',
+            'reset_password' => 'Klicka här för att återställa ditt lösenord:',
         ],
     ],
 
     'frontend' => [
         'email' => [
-            'confirm_account' => 'Click here to confirm your account:',
+            'confirm_account' => 'Klicka här för att bekräfta ditt konto:',
         ],
 
         'test' => 'Test',
 
         'tests' => [
             'based_on' => [
-                'permission' => 'Permission Based - ',
-                'role' => 'Role Based - ',
+                'permission' => 'Tillstånd baserad - ',
+                'role' => 'Roll baserad - ',
             ],
 
-            'js_injected_from_controller' => 'Javascript Injected from a Controller',
+            'js_injected_from_controller' => 'Javascript som fått sin data direkt från en controller',
 
-            'using_blade_extensions' => 'Using Blade Extensions',
+            'using_blade_extensions' => 'Avänder utbyggda Blade-funktioner',
 
             'using_access_helper' => [
-                'array_permissions' => 'Using Access Helper with Array of Permission Names or ID\'s where the user does have to possess all.',
-                'array_permissions_not' => 'Using Access Helper with Array of Permission Names or ID\'s where the user does not have to possess all.',
-                'array_roles' => 'Using Access Helper with Array of Role Names or ID\'s where the user does have to possess all.',
-                'array_roles_not' => 'Using Access Helper with Array of Role Names or ID\'s where the user does not have to possess all.',
-                'permission_id' => 'Using Access Helper with Permission ID',
-                'permission_name' => 'Using Access Helper with Permission Name',
-                'role_id' => 'Using Access Helper with Role ID',
-                'role_name' => 'Using Access Helper with Role Name',
+                'array_permissions' => 'Använder Access Helper med en array av rättighetens namn eller ID då användaren måste ha alla rättigheter.',
+                'array_permissions_not' => 'Använder Access Helper med en array av rättighetens namn eller ID då användaren INTE måste ha alla rättigheter.',
+                'array_roles' => 'Använder Access Helper med en array av rollens namn eller ID då användaren måste ha alla roller.',
+                'array_roles_not' => 'Använder Access Helper med en array av roll-namn eller roll-ID då användaren INTE måste ha alla roller.',
+                'permission_id' => 'Använder Access Helper med rättighetens ID',
+                'permission_name' => 'Använder Access Helper med rättighetens namn',
+                'role_id' => 'Använder Access Helper med rollens ID',
+                'role_name' => 'Använder Access Helper med rollens namn',
             ],
 
-            'view_console_it_works' => 'View console, you should see \'it works!\' which is coming from FrontendController@index',
-            'you_can_see_because' => 'You can see this because you have the role of \':role\'!',
-            'you_can_see_because_permission' => 'You can see this because you have the permission of \':permission\'!',
+            'view_console_it_works' => 'Kolla konsollen, du borde se \'it works!\' som skickas direkt från FrontendController@index',
+            'you_can_see_because' => 'Du kan se detta för att du har rollen \':role\'!',
+            'you_can_see_because_permission' => 'Du kan se detta för att du har rättiheten \':permission\'!',
         ],
 
         'user' => [
-            'profile_updated' => 'Profile successfully updated.',
-            'password_updated' => 'Password successfully updated.',
+            'profile_updated' => 'Din profil är nu uppdaterad.',
+            'password_updated' => 'Ditt lösenord har nu uppdaterats.',
         ],
 
-        'welcome_to' => 'Welcome to :place',
+        'welcome_to' => 'Välkommen till :place',
     ],
 ];
