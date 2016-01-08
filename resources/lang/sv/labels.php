@@ -58,7 +58,7 @@ return [
                     'permission' => 'Tillstånd',
                     'roles' => 'Roller',
                     'system' => 'System-status',
-                    'total' => 'tillstånd totalt',
+                    'total' => 'tillstånd totalt|tillstånd totalt',
                     'users' => 'Användare',
                 ],
 
@@ -82,7 +82,7 @@ return [
                     'permissions' => 'Tillstånd',
                     'role' => 'Roll',
                     'sort' => 'Ordning',
-                    'total' => 'roll(er) totalt',
+                    'total' => 'roll totalt|roller totalt',
                 ],
             ],
 
@@ -114,7 +114,7 @@ return [
                     'no_deleted' => 'Inga raderade användare',
                     'other_permissions' => 'Övriga tillstånd',
                     'roles' => 'Roller',
-                    'total' => 'användare totalt',
+                    'total' => 'användare totalt|användare totalt',
                 ],
             ],
         ],

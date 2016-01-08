@@ -57,7 +57,7 @@
             </div>
 
             <div class="pull-left">
-                {{ $roles->total() }} {{ trans('labels.backend.access.roles.table.total') }}
+                {{ $roles->total() }} {{ trans_choice('labels.backend.access.roles.table.total', $roles->total()) }}
             </div>
 
             <div class="pull-right">
