@@ -6,7 +6,6 @@
  */
 Route::group([
     'prefix'     => 'log-viewer',
-    'middleware' => 'access.routeNeedsPermission:view-backend',
 ], function() {
     Route::get('/', [
         'as'   => 'log-viewer::dashboard',
