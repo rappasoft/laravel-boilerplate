@@ -15,9 +15,9 @@ class LocaleMiddleware
      * @var array
      */
     protected $languages = [
-        'en' => ['en', 'en_US'],
+        'en'    => ['en', 'en_US'],
         'fr-FR' => ['fr', 'fr_FR'],
-        'sv' => ['sv', 'sv_SE'],
+        'sv'    => ['sv', 'sv_SE'],
     ];
 
     /**
