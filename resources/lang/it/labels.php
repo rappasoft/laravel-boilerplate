@@ -58,15 +58,15 @@ return [
                     'permission' => 'Permesso',
                     'roles' => 'Ruoli',
                     'system' => 'Sistema',
-                    'total' => 'Permesso(i) totali', # TODO: pluralization
+                    'total' => 'Permesso|Totale permessi',
                     'users' => 'Utenti',
                 ],
 
                 'tabs' => [
                     'general' => 'Generale',
-                    'groups' => 'Gruppi',
+                    'groups' => 'Tutti i gruppi',
                     'dependencies' => 'Dipendenze',
-                    'permissions' => 'Permessi',
+                    'permissions' => 'Tutti i permessi',
                 ],
 
                 'ungrouped_permissions' => 'Permessi non raggruppati',
@@ -82,7 +82,7 @@ return [
                     'permissions' => 'Permessi',
                     'role' => 'Ruolo',
                     'sort' => 'Ordina',
-                    'total' => 'Ruolo(i) totali', # TODO: pluralization
+                    'total' => 'Ruolo|Totale ruoli',
                 ],
             ],
 
