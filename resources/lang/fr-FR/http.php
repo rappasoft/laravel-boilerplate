@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 return [
 
@@ -13,7 +13,7 @@ return [
 
     '404' => [
         'title' => 'Page introuvable',
-        'description' => "Désolé, la page à laquelle vous tentez d'accder n'existe pas.",
+        'description' => "Désolé, cette page n'existe pas.",
     ],
 
     '503' => [

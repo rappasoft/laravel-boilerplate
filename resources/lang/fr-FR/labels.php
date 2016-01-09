@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 return [
 
@@ -44,7 +44,7 @@ return [
 
                 'grouped_permissions' => 'Permissions groupées',
                 'label' => 'permissions',
-                'management' => 'Gerstion des permissions',
+                'management' => 'Gestion des permissions',
                 'no_groups' => "Il n'y a pas de groupes de permission.",
                 'no_permissions' => 'Pas de permission sélectionnée.',
                 'no_roles' => 'Pas de rôle sélectionné',
@@ -58,7 +58,7 @@ return [
                     'permission' => 'Permission',
                     'roles' => 'Rôles',
                     'system' => 'Système',
-                    'total' => 'permissions(s) total',
+                    'total' => 'permission total|permissions total',
                     'users' => 'Utilisateurs',
                 ],
 
@@ -82,7 +82,7 @@ return [
                     'permissions' => 'Permissions',
                     'role' => 'Rôle',
                     'sort' => 'Ordre',
-                    'total' => 'rôles(s) total',
+                    'total' => 'rôle total|rôles total',
                 ],
             ],
 
@@ -106,7 +106,7 @@ return [
                 'table' => [
                     'confirmed' => 'Confirmé',
                     'created' => 'Création',
-                    'email' => 'E-mail',
+                    'email' => 'Email',
                     'id' => 'ID',
                     'last_updated' => 'Mise à jour',
                     'name' => 'Nom',
@@ -114,7 +114,7 @@ return [
                     'no_deleted' => "Pas d'utilisateurs supprimés",
                     'other_permissions' => 'Autres permissions',
                     'roles' => 'Rôles',
-                    'total' => 'utilisateur(s) total',
+                    'total' => 'utilisateur total|utilisateurs total',
                 ],
             ],
         ],
@@ -124,7 +124,7 @@ return [
 
         'auth' => [
             'login_box_title' => 'Connexion',
-            'login_button' => 'OK',
+            'login_button' => "Entrer",
             'login_with' => "S'enregistrer avec :social_media",
             'register_box_title' => "S'enregistrer",
             'register_button' => 'Créer le compte',
@@ -132,7 +132,7 @@ return [
         ],
 
         'passwords' => [
-            'forgot_password' => 'Vous avezz oublié votre mot de passe ?',
+            'forgot_password' => 'Vous avez oublié votre mot de passe&nbsp;?',
             'reset_password_box_title' => 'Réinitialisation du mot de passe',
             'reset_password_button' => 'Réinitialiser le mot de passe',
             'send_password_reset_link_button' => 'Envoyer le lien de réinitialisation',
@@ -146,7 +146,7 @@ return [
                 'numeric' => 'Pays Numéros Codes',
             ],
 
-            'macro_examples' => 'Examples Macros',
+            'macro_examples' => 'Exemples de macros',
 
             'state' => [
                 'mexico' => 'Mexico State List',
@@ -171,10 +171,10 @@ return [
 
             'profile' => [
                 'avatar' => 'Avatar',
-                'created_at' => 'Créé le ',
+                'created_at' => 'Date de création',
                 'edit_information' => 'Éditer les informations',
-                'email' => 'e-mail',
-                'last_updated' => 'Mise à jour le',
+                'email' => 'Email',
+                'last_updated' => 'Date de mise à jour',
                 'name' => 'Nom',
                 'update_information' => 'Mettre à jour les informations',
             ],

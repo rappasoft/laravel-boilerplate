@@ -65,11 +65,11 @@
                                 <td class="visible-lg">{!! $user->updated_at->diffForHumans() !!}</td>
                                 <td>
                                     @permission('undelete-users')
-                                    <a href="{{route('admin.access.user.restore', $user->id)}}" class="btn btn-xs btn-success" name="restore_user"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="{{ trans('crud.users.restore_user') }}"></i></a>
+                                    <a href="{{route('admin.access.user.restore', $user->id)}}" class="btn btn-xs btn-success" name="restore_user"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="{{ trans('buttons.backend.access.users.restore_user') }}"></i></a>
                                     @endauth
 
                                     @permission('permanently-delete-users')
-                                    <a href="{{route('admin.access.user.delete-permanently', $user->id)}}" class="btn btn-xs btn-danger" name="delete_user_perm"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="{{ trans('crud.users.delete_permanently') }}"></i></a>
+                                    <a href="{{route('admin.access.user.delete-permanently', $user->id)}}" class="btn btn-xs btn-danger" name="delete_user_perm"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="{{ trans('buttons.backend.access.users.delete_permanently') }}"></i></a>
                                     @endauth
                                 </td>
                             </tr>
@@ -82,7 +82,7 @@
             </div>
 
             <div class="pull-left">
-                {!! $users->total() !!} {{ trans('labels.backend.access.users.table.total') }}
+                {!! $users->total() !!} {{ trans_choice('labels.backend.access.users.table.total', $users->total()) }}
             </div>
 
             <div class="pull-right">
@@ -98,14 +98,42 @@
 	<script>
 		$(function() {
             @permission('permanently-delete-users')
-                $("a[name='delete_user_perm']").click(function() {
-                    return confirm("{{ trans('strings.backend.access.users.delete_user_confirm') }}");
+                $("a[name='delete_user_perm']").click(function(e) {
+                    e.preventDefault();
+
+                    swal({
+                        title: "{{ trans('strings.backend.general.are_you_sure') }}",
+                        text: "{{ trans('strings.backend.access.users.delete_user_confirm') }}",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "{{ trans('strings.backend.general.continue') }}",
+                        closeOnConfirm: false
+                    }, function(isConfirmed){
+                        if (isConfirmed){
+                            window.location = $("a[name='delete_user_perm']").attr('href');
+                        }
+                    });
                 });
             @endauth
 
             @permission('undelete-users')
-                $("a[name='restore_user']").click(function() {
-                    return confirm("{{ trans('strings.backend.access.users.restore_user_confirm') }}");
+                $("a[name='restore_user']").click(function(e) {
+                    e.preventDefault();
+
+                    swal({
+                        title: "{{ trans('strings.backend.general.are_you_sure') }}",
+                        text: "{{ trans('strings.backend.access.users.restore_user_confirm') }}",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "{{ trans('strings.backend.general.continue') }}",
+                        closeOnConfirm: false
+                    }, function(isConfirmed){
+                        if (isConfirmed){
+                            window.location = $("a[name='restore_user']").attr('href');
+                        }
+                    });
                 });
             @endauth
 		});

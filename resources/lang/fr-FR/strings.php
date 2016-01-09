@@ -27,7 +27,7 @@ return [
 
             'users' => [
                 'delete_user_confirm' => "Êtes-vous sûr de vouloir supprimer cet utilisateur de façon permanente ? Toutes  les références à cet utilisateur dans l'application vont poser problèmee et cette opération ne peut être annullée.",
-                'if_confirmed_off' => '(en mode confirmation)',
+                'if_confirmed_off' => '(pour le mode sans confirmation)',
                 'restore_user_confirm' => 'Restaurer cet utilisateur à son statut original ?',
             ],
         ],
@@ -39,7 +39,9 @@ return [
 
         'general' => [
             'all_rights_reserved' => 'Tous droits réservés.',
+            'are_you_sure' => 'Es-tu sûr?',
             'boilerplate_link' => 'Laravel 5 Boilerplate',
+            'continue' => 'Continue',
             'member_since' => 'Membre depuis',
             'search_placeholder' => 'Rechercher...',
 
@@ -78,28 +80,28 @@ return [
 
         'tests' => [
             'based_on' => [
-                'permission' => 'Permission Based - ',
-                'role' => 'Role Based - ',
+                'permission' => 'Helper sur la base de la permissions : ',
+                'role' => 'Helper sur la base du rôle : ',
             ],
 
             'js_injected_from_controller' => 'Javascript Injecté depuis un Controlleur',
 
-            'using_blade_extensions' => 'Using Blade Extensions',
+            'using_blade_extensions' => 'Utilisation des extensions Blade',
 
             'using_access_helper' => [
-                'array_permissions' => 'Using Access Helper with Array of Permission Names or ID\'s where the user does have to possess all.',
-                'array_permissions_not' => 'Using Access Helper with Array of Permission Names or ID\'s where the user does not have to possess all.',
-                'array_roles' => 'Using Access Helper with Array of Role Names or ID\'s where the user does have to possess all.',
-                'array_roles_not' => 'Using Access Helper with Array of Role Names or ID\'s where the user does not have to possess all.',
-                'permission_id' => 'Using Access Helper with Permission ID',
-                'permission_name' => 'Using Access Helper with Permission Name',
-                'role_id' => 'Using Access Helper with Role ID',
-                'role_name' => 'Using Access Helper with Role Name',
+                'array_permissions' => "L'utilisateur doit disposer de toutes les permsissions d'un tableau, identifées soit par leur ID, soit par leur nom.",
+                'array_permissions_not' => "L'utilisateur doit disposer d'au moins une des permsissions d'un tableau, identifées soit par leur ID, soit par leur nom.",
+                'array_roles' => "L'utilisateur doit disposer de toutes les rôles d'un tableau, identifés soit par leur ID, soit par leur nom.",
+                'array_roles_not' =>  "L'utilisateur doit disposer d'au moins un des rôles d'un tableau, identifés soit par leur ID, soit par leur nom.",
+                'permission_id' => "L'utilisateur doit disposer d'une permission identifée par son ID",
+                'permission_name' => "L'utilisateur doit disposer d'une permission identifée par son nom",
+                'role_id' => "L'utilisateur doit disposer d'un rôle identifé par son ID",
+                'role_name' => "L'utilisateur doit disposer d'un rôle identifé par son nom",
             ],
 
-            'view_console_it_works' => 'View console, you should see \'it works!\' which is coming from FrontendController@index',
-            'you_can_see_because' => 'You can see this because you have the role of \':role\'!',
-            'you_can_see_because_permission' => 'You can see this because you have the permission of \':permission\'!',
+            'view_console_it_works' => 'Sur la console du navigateur, vous devriez voir  \'it works!\', ce qui est produit depuis le FrontendController@index',
+            'you_can_see_because' => 'Vous voyez ce message car vous disposez du rôle \':role\'!',
+            'you_can_see_because_permission' => 'Vous voyez ce message car vous disposez de la permissions \':permission\'!',
         ],
 
         'user' => [
