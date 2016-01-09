@@ -195,7 +195,7 @@
                         </div>
 
                         <div class="pull-left">
-                            {{ $permissions->total() }} {{ trans('labels.backend.access.permissions.table.total') }}
+                            {{ $permissions->total() }} {{ trans_choice('labels.backend.access.permissions.table.total', $permissions->total()) }}
                         </div>
 
                         <div class="pull-right">

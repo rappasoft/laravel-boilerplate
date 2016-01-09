@@ -58,7 +58,7 @@ return [
                     'permission' => 'Permission',
                     'roles' => 'Rôles',
                     'system' => 'Système',
-                    'total' => 'permissions(s) total',
+                    'total' => 'permission total|permissions total',
                     'users' => 'Utilisateurs',
                 ],
 
@@ -82,7 +82,7 @@ return [
                     'permissions' => 'Permissions',
                     'role' => 'Rôle',
                     'sort' => 'Ordre',
-                    'total' => 'rôles(s) total',
+                    'total' => 'rôle total|rôles total',
                 ],
             ],
 
@@ -114,7 +114,7 @@ return [
                     'no_deleted' => "Pas d'utilisateurs supprimés",
                     'other_permissions' => 'Autres permissions',
                     'roles' => 'Rôles',
-                    'total' => 'utilisateur(s) total',
+                    'total' => 'utilisateur total|utilisateurs total',
                 ],
             ],
         ],
