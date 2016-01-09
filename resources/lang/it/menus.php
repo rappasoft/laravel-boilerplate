@@ -65,9 +65,10 @@ return [
     'language-picker' => [
         'language' => 'Lingua',
         'langs' => [
-            'en' => 'English',
-            'fr-FR' => 'Français (France)',
+            'en' => 'English (Inglese)',
+            'fr-FR' => 'Français (Francese)',
             'it' => 'Italiano',
+            'sv' => 'Svenska (Svedese)'
         ],
     ],
 ];
