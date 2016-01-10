@@ -68,7 +68,7 @@ return [
             'en' => 'English (Inglese)',
             'fr-FR' => 'Français (Francese)',
             'it' => 'Italiano',
-            'sv' => 'Svenska (Svedese)'
+            'sv' => 'Svenska (Svedese)',
         ],
     ],
 ];

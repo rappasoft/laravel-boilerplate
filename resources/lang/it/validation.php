@@ -37,7 +37,7 @@ return [
     'email'                => ':attribute deve essere un indirizzo email valido.',
     'exists'               => 'La selezione per :attribute non è valida.',
     'filled'               => ':attribute è obbligatorio.',
-    'image'                => ':attribute must be an image.',
+    'image'                => ":attribute deve essere un'immagine.",
     'in'                   => 'La selezione per :attribute non è valida.',
     'integer'              => ':attribute deve essere un numero intero.',
     'ip'                   => ':attribute deve essere un indirizzo IP valido.',
