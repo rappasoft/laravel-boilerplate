@@ -1,6 +1,6 @@
 <ul class="dropdown-menu" role="menu">
     {{--
-    * Add the link the new language.
+    * Add the link to the new language.
     * Use the same language code as the folder name.
     * Be sure to add the new link in alphabetical order.
     --}}
