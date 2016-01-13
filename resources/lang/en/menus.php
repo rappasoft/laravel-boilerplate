@@ -66,8 +66,9 @@ return [
         'language' => 'Language',
         'langs' => [
             'en' => 'English',
-            'fr-FR' => 'Français (France)',
-            'sv' => 'Svenska (Swedish)',
+            'fr-FR' => 'French',
+            'it' => 'Italian',
+            'sv' => 'Swedish',
         ],
     ],
 ];
