@@ -72,7 +72,7 @@ return [
          */
         'langs' => [
             'en' => 'English (Inglese)',
-            'fr-FR' => 'Français (Francese)',
+            'fr' => 'Français (Francese)',
             'it' => 'Italiano',
             'sv' => 'Svenska (Svedese)',
         ],
