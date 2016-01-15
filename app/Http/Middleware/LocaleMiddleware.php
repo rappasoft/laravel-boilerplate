@@ -16,7 +16,7 @@ class LocaleMiddleware
      * Be sure to add the new language in an alphabetical order.
      * @var array
      */
-    protected $languages = ['en', 'fr-FR', 'it', 'sv'];
+    protected $languages = ['en', 'fr', 'it', 'sv'];
 
     /**
      * Handle an incoming request.
