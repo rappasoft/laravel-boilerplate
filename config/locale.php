@@ -23,9 +23,9 @@ return [
      * @var array
      */
     'languages' => [
-        'en',
-        'fr',
-        'it',
-        'sv',
+        'en' => ['en', 'en_US'],
+        'fr' => ['fr', 'fr_FR'],
+        'it' => ['it', 'it_IT'],
+        'sv' => ['sv', 'sv_SE'],
     ],
 ];
