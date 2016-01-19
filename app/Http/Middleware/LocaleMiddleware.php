@@ -27,13 +27,19 @@ class LocaleMiddleware
 
             if (session()->has('locale') && in_array(session()->get('locale'), array_keys(config('locale.languages')))) {
 
-                // Set the Laravel locale
+                /**
+                 * Set the Laravel locale
+                 */
                 app()->setLocale(session()->get('locale'));
 
-                // setLocale for php. Enables ->formatLocalized() with localized values for dates
+                /**
+                 * setLocale for php. Enables ->formatLocalized() with localized values for dates
+                 */
                 setLocale(LC_TIME, config('locale.languages')[session()->get('locale')][1]);
 
-                // setLocale to use Carbon source locales. Enables diffForHumans() localized
+                /**
+                 * setLocale to use Carbon source locales. Enables diffForHumans() localized
+                 */
                 Carbon::setLocale(config('locale.languages')[session()->get('locale')][0]);
             }
 

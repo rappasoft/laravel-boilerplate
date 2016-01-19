@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "361e9d07012d71f2515d4da31ba4195d",
-    "content-hash": "9f4e8da170e94fa26902b4bdc58adf46",
+    "hash": "86a9be98bc5223f65c9b24f6232d0a11",
+    "content-hash": "269f70f30185c43bcce5f1864563a424",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
-            "version": "3.5.4",
+            "version": "3.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ARCANEDEV/LogViewer.git",
-                "reference": "69e765bd7ca36303cc065c2119d193ba7ab1ad51"
+                "reference": "3632a5b2a2e23250e3ca0f2dd20edbc144cc8cc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/69e765bd7ca36303cc065c2119d193ba7ab1ad51",
-                "reference": "69e765bd7ca36303cc065c2119d193ba7ab1ad51",
+                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/3632a5b2a2e23250e3ca0f2dd20edbc144cc8cc6",
+                "reference": "3632a5b2a2e23250e3ca0f2dd20edbc144cc8cc6",
                 "shasum": ""
             },
             "require": {
@@ -27,14 +27,13 @@
                 "psr/log": "~1.0"
             },
             "require-dev": {
-                "orchestra/testbench": "~3.1",
                 "phpunit/phpcov": "~2.0",
                 "phpunit/phpunit": "~4.0|~5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.0.x-dev"
+                    "dev-master": "3.7.x-dev"
                 }
             },
             "autoload": {
@@ -54,7 +53,7 @@
                 {
                     "name": "ARCANEDEV",
                     "email": "arcanedev.maroc@gmail.com",
-                    "homepage": "https://github.com/ARCANEDEV",
+                    "homepage": "https://github.com/arcanedev-maroc",
                     "role": "Developer"
                 }
             ],
@@ -69,20 +68,20 @@
                 "log-viewer",
                 "logviewer"
             ],
-            "time": "2015-11-17 18:04:31"
+            "time": "2016-01-17 11:24:07"
         },
         {
             "name": "arcanedev/support",
-            "version": "3.6.10",
+            "version": "3.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ARCANEDEV/Support.git",
-                "reference": "e5f1557b8e570bce7de3d40cde4311559042d15e"
+                "reference": "8e2f81b75701fae396a1a10afeaac55ee615b3e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ARCANEDEV/Support/zipball/e5f1557b8e570bce7de3d40cde4311559042d15e",
-                "reference": "e5f1557b8e570bce7de3d40cde4311559042d15e",
+                "url": "https://api.github.com/repos/ARCANEDEV/Support/zipball/8e2f81b75701fae396a1a10afeaac55ee615b3e5",
+                "reference": "8e2f81b75701fae396a1a10afeaac55ee615b3e5",
                 "shasum": ""
             },
             "require": {
@@ -91,7 +90,6 @@
                 "php": ">=5.5.9"
             },
             "require-dev": {
-                "orchestra/testbench": "~3.0",
                 "phpunit/phpcov": "~2.0",
                 "phpunit/phpunit": "~4.0|~5.0"
             },
@@ -129,7 +127,7 @@
                 "laravel",
                 "support"
             ],
-            "time": "2015-12-19 14:21:36"
+            "time": "2016-01-17 10:45:30"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -883,16 +881,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.6",
+            "version": "v5.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "b774c304ee81fcf5402fa06b261b364ba8f29cf0"
+                "reference": "93dc5b0089eef468157fd7200e575c3861ec59a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/b774c304ee81fcf5402fa06b261b364ba8f29cf0",
-                "reference": "b774c304ee81fcf5402fa06b261b364ba8f29cf0",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/93dc5b0089eef468157fd7200e575c3861ec59a5",
+                "reference": "93dc5b0089eef468157fd7200e575c3861ec59a5",
                 "shasum": ""
             },
             "require": {
@@ -1007,7 +1005,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-12-31 17:41:58"
+            "time": "2016-01-13 20:29:10"
         },
         {
             "name": "laravel/socialite",
@@ -1065,16 +1063,16 @@
         },
         {
             "name": "laravelcollective/html",
-            "version": "v5.2",
+            "version": "v5.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LaravelCollective/html.git",
-                "reference": "5a8f1380a0d5ef21cdef37e775d86566307f8358"
+                "reference": "c88b2d59a56ed2290fc5082a1a6099e357c9fdbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/5a8f1380a0d5ef21cdef37e775d86566307f8358",
-                "reference": "5a8f1380a0d5ef21cdef37e775d86566307f8358",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/c88b2d59a56ed2290fc5082a1a6099e357c9fdbc",
+                "reference": "c88b2d59a56ed2290fc5082a1a6099e357c9fdbc",
                 "shasum": ""
             },
             "require": {
@@ -1115,7 +1113,7 @@
             ],
             "description": "HTML and Form Builders for the Laravel Framework",
             "homepage": "http://laravelcollective.com",
-            "time": "2015-12-23 07:46:46"
+            "time": "2016-01-16 16:54:49"
         },
         {
             "name": "league/flysystem",
@@ -1485,16 +1483,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "d762ee5b099a29044603cd4649851e81aa66cb47"
+                "reference": "dd8998b7c846f6909f4e7a5f67fabebfc412a4f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/d762ee5b099a29044603cd4649851e81aa66cb47",
-                "reference": "d762ee5b099a29044603cd4649851e81aa66cb47",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/dd8998b7c846f6909f4e7a5f67fabebfc412a4f7",
+                "reference": "dd8998b7c846f6909f4e7a5f67fabebfc412a4f7",
                 "shasum": ""
             },
             "require": {
@@ -1529,7 +1527,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2015-12-10 14:48:13"
+            "time": "2016-01-06 13:31:20"
         },
         {
             "name": "psr/http-message",
