@@ -64,9 +64,15 @@ return [
 
     'language-picker' => [
         'language' => 'Lingua',
+        /**
+         * Add the new language to this array.
+         * The key should have the same language code as the folder name.
+         * The string should be: 'Language-name-in-your-own-language (Language-name-in-English)'.
+         * Be sure to add the new language in alphabetical order.
+         */
         'langs' => [
             'en' => 'English (Inglese)',
-            'fr-FR' => 'Français (Francese)',
+            'fr' => 'Français (Francese)',
             'it' => 'Italiano',
             'sv' => 'Svenska (Svedese)',
         ],
