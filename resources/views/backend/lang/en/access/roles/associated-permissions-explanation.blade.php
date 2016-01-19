@@ -1,1 +1,1 @@
-Uma permissão marcado com um <small><strong>(D)</strong></small> significa que a permissão tem dependências. Eles serão verificadas automaticamente quando você selecionar essa permissão. Você pode gerenciar permissões de cada dependências na guia dependência na guia editar permissão.
+A permission marked with a <small><strong>(D)</strong></small> means that the permission has dependencies. They will be checked automatically when you select that permission. You can manage each permissions dependencies in the dependency tab of the edit permission screen.
