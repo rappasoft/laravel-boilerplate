@@ -15,6 +15,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         /**
+         * Application locale defaults for various components
+         *
+         * These will be overridden by LocaleMiddleware if the session local is set
+         */
+
+        /**
          * setLocale for php. Enables ->formatLocalized() with localized values for dates
          */
         setLocale(LC_TIME, config('app.locale_php'));
