@@ -227,16 +227,16 @@
                         data : {data:hierarchy.nestable('serialize')},
                         success: function(data) {
                             if (data.status == "OK")
-                                toastr.success("{{ trans('strings.backend.access.permissions.groups.hierarchy_saved') }}");
+                                toastr.success("{!! trans('strings.backend.access.permissions.groups.hierarchy_saved') !!}");
                             else
-                                toastr.error("{{ trans('auth.unknown') }}.");
+                                toastr.error("{!! trans('auth.unknown') !!}.");
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
-                            toastr.error("{{ trans('auth.unknown') }}: " + errorThrown);
+                            toastr.error("{!! trans('auth.unknown') !!}: " + errorThrown);
                         }
                     });
                 @else
-                    toastr.error("{{ trans('auth.general_error') }}");
+                    toastr.error("{!! trans('auth.general_error') !!}");
                 @endauth
             });
         });
