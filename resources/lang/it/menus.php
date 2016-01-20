@@ -74,6 +74,7 @@ return [
             'en' => 'English (Inglese)',
             'fr' => 'Français (Francese)',
             'it' => 'Italiano',
+            'pt-BR' => 'Brazilian Portuguese',
             'sv' => 'Svenska (Svedese)',
         ],
     ],
