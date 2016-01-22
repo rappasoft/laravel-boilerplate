@@ -72,6 +72,7 @@ return [
          */
         'langs' => [
             'en' => 'English',
+            'es' => 'Espagnol (Spain)',
             'fr' => 'Français (France)',
             'it' => 'Italiano',
             'pt-BR' => 'Brazilian Portuguese',
