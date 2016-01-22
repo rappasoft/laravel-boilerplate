@@ -71,11 +71,12 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'en' => 'Inglés',
-            'es' => 'Español',
-            'fr' => 'Francés',
-            'it' => 'Italiano',
-            'sv' => 'Sueco',
+            'en' => 'Inglés (English)',
+            'es' => 'Español (Spanish)',
+            'fr' => 'Francés (French)',
+            'it' => 'Italiano (Italian)',
+            'pt-BR' => 'Brazilian Portuguese', //TODO: translate
+            'sv' => 'Sueco (Swedish)',
         ],
     ],
 ];
