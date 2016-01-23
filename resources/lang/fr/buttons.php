@@ -19,7 +19,7 @@ return [
                 'activate' => 'Activer',
                 'change_password' => 'Changer de mot de passe',
                 'deactivate' => 'Désactiver',
-                'delete_permanently' => 'Supprimé définitivement',
+                'delete_permanently' => 'Supprimer définitivement',
                 'resend_email' => 'Renvoyer le mail de confirmation',
                 'restore_user' => "Ré-activer l'utilisateur",
             ],
