@@ -76,7 +76,7 @@ return [
             'fr' => 'Français',
             'it' => 'Italien',
             'pt-BR' => 'Portugais (Brésil)',
-            'sv' => 'Svenska (Swedish)',
+            'sv' => 'Suédois',
         ],
     ],
 ];
