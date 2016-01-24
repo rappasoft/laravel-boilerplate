@@ -71,10 +71,11 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
+            'pt-BR' => 'Brasiliansk portugisiska (Brazilian Portuguese)',
             'en' => 'Engelska (English)',
             'fr' => 'Franska (French)',
             'it' => 'Italienska (Italian)',
-            'pt-BR' => 'Brasiliansk portugisiska (Brazilian Portuguese)',
+            'es' => 'Spanska (Spanish)',
             'sv' => 'Svenska (Swedish)',
         ],
     ],
