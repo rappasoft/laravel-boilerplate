@@ -71,10 +71,11 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'en' => 'English', //TODO: translate
+            'de' => 'Tysk (German)',
+            'en' => 'engelska (English)',
             'es' => 'Spanska',
             'fr' => 'Français (France)',
-            'it' => 'Italiano', //TODO: translate
+            'it' => 'italienska (Italiano)',
             'pt-BR' => 'Brazilian Portuguese', //TODO: translate
             'sv' => 'Svenska (Swedish)',
         ],

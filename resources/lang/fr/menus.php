@@ -71,7 +71,8 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'en' => 'English', //TODO: translate
+            'de' => 'Allemand (German)',
+            'en' => 'Anglais (English)',
             'es' => 'Espagnol (Spain)',
             'fr' => 'Français (France)',
             'it' => 'Italiano (Italian)',
