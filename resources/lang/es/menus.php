@@ -71,6 +71,7 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
+            'de' => 'Alemán (German)',
             'en' => 'Inglés (English)',
             'es' => 'Español (Spanish)',
             'fr' => 'Francés (French)',

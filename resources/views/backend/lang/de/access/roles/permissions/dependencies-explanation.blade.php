@@ -1,0 +1,2 @@
+In diesem Abschnitt kannst du einstellen, dass diese Berechtigung abhängig von ein oder mehreren anderen Berechtigungen ist.<br /><br />
+Zum Beispiel: Die Berechtigung ist <strong>create-user</strong>, aber wenn der Benutzer nicht auch die Berechtigungen <strong>view-backend</strong> und <strong>view-access-management</strong> hat, hat dieser nicht die Möglichkeit um auf die <strong>Benutzer erstellen</strong> Seite zu gelangen.

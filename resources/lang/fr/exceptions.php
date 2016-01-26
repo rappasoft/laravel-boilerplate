@@ -20,7 +20,7 @@ return [
                 'delete_error' => 'Un problème est survenu lors de la suppression de la permission. Veuillez réessayer.',
 
                 'groups' => [
-                    'associated_permissions' => 'Vous ne pouvez supprimer ce groupe parce que des permissions lui sont associées.',
+                    'associated_permissions' => 'Vous ne pouvez pas supprimer ce groupe parce que des permissions lui sont associées.',
                     'has_children' => 'Vous ne pouvez pas supprimer ce groupe parce qu\il a des groupes enfants.',
                     'name_taken' => 'Un groupe porte déjà ce nom',
                 ],
