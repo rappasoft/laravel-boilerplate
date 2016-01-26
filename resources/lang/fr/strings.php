@@ -26,7 +26,7 @@ return [
             ],
 
             'users' => [
-                'delete_user_confirm' => "Êtes-vous sûr de vouloir supprimer cet utilisateur de façon permanente ? Toutes  les références à cet utilisateur dans l'application vont poser problèmee et cette opération ne peut être annullée.",
+                'delete_user_confirm' => "Êtes-vous sûr de vouloir supprimer cet utilisateur de façon permanente ? Toutes  les références à cet utilisateur dans l'application peuvent provoquer des erreurs et cette opération ne peut être annullée.",
                 'if_confirmed_off' => '(pour le mode sans confirmation)',
                 'restore_user_confirm' => 'Restaurer cet utilisateur à son statut original ?',
             ],
@@ -39,7 +39,7 @@ return [
 
         'general' => [
             'all_rights_reserved' => 'Tous droits réservés.',
-            'are_you_sure' => 'Es-tu sûr?',
+            'are_you_sure' => 'Etes-vous sûr?',
             'boilerplate_link' => 'Laravel 5 Boilerplate',
             'continue' => 'Continue',
             'member_since' => 'Membre depuis',
