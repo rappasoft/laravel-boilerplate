@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "arcanedev/log-viewer",
-            "version": "3.7.5",
+            "version": "3.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ARCANEDEV/LogViewer.git",
-                "reference": "301134e3658b6f8d5317b35fb3918d95eaf5b3bc"
+                "reference": "3632a5b2a2e23250e3ca0f2dd20edbc144cc8cc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/301134e3658b6f8d5317b35fb3918d95eaf5b3bc",
-                "reference": "301134e3658b6f8d5317b35fb3918d95eaf5b3bc",
+                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/3632a5b2a2e23250e3ca0f2dd20edbc144cc8cc6",
+                "reference": "3632a5b2a2e23250e3ca0f2dd20edbc144cc8cc6",
                 "shasum": ""
             },
             "require": {
@@ -68,20 +68,20 @@
                 "log-viewer",
                 "logviewer"
             ],
-            "time": "2016-01-16 19:47:52"
+            "time": "2016-01-17 11:24:07"
         },
         {
             "name": "arcanedev/support",
-            "version": "3.7.1",
+            "version": "3.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ARCANEDEV/Support.git",
-                "reference": "09e7b153096221223f1083314440cb6bd591543a"
+                "reference": "8e2f81b75701fae396a1a10afeaac55ee615b3e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ARCANEDEV/Support/zipball/09e7b153096221223f1083314440cb6bd591543a",
-                "reference": "09e7b153096221223f1083314440cb6bd591543a",
+                "url": "https://api.github.com/repos/ARCANEDEV/Support/zipball/8e2f81b75701fae396a1a10afeaac55ee615b3e5",
+                "reference": "8e2f81b75701fae396a1a10afeaac55ee615b3e5",
                 "shasum": ""
             },
             "require": {
@@ -127,7 +127,7 @@
                 "laravel",
                 "support"
             ],
-            "time": "2016-01-16 18:24:48"
+            "time": "2016-01-17 10:45:30"
         },
         {
             "name": "classpreloader/classpreloader",
