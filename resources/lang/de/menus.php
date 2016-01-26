@@ -15,38 +15,38 @@ return [
 
     'backend' => [
         'access' => [
-            'title' => 'Access Management',
+            'title' => 'Zugriffsverwaltung',
 
             'permissions' => [
-                'all' => 'All Permissions',
-                'create' => 'Create Permission',
-                'edit' => 'Edit Permission',
+                'all' => 'Alle Berechtigungen',
+                'create' => 'Berechtigung erstellen',
+                'edit' => 'Berechtigung bearbeiten',
                 'groups' => [
-                    'all' => 'All Groups',
-                    'create' => 'Create Group',
-                    'edit' => 'Edit Group',
-                    'main' => 'Groups',
+                    'all' => 'Alle Gruppen',
+                    'create' => 'Gruppe erstellen',
+                    'edit' => 'Gruppe bearbeiten',
+                    'main' => 'Gruppen',
                 ],
-                'main' => 'Permissions',
-                'management' => 'Permission Management',
+                'main' => 'Berechtigungen',
+                'management' => 'Berechtigungen Verwalten',
             ],
 
             'roles' => [
-                'all' => 'All Roles',
-                'create' => 'Create Role',
-                'edit' => 'Edit Role',
-                'management' => 'Role Management',
-                'main' => 'Roles',
+                'all' => 'Alle Rollen',
+                'create' => 'Rolle erstellen',
+                'edit' => 'Rolle bearbeiten',
+                'management' => 'Rollen Verwalten',
+                'main' => 'Rollen',
             ],
 
             'users' => [
-                'all' => 'All Users',
-                'change-password' => 'Change Password',
-                'create' => 'Create User',
-                'deactivated' => 'Deactivated Users',
-                'deleted' => 'Deleted Users',
-                'edit' => 'Edit User',
-                'main' => 'Users',
+                'all' => 'Alle Benutzer',
+                'change-password' => 'Passwort ändern',
+                'create' => 'Benutzer erstellen',
+                'deactivated' => 'Deaktivierte Benutzer',
+                'deleted' => 'Gelöschte Benutzer',
+                'edit' => 'Benutzer bearbeiten',
+                'main' => 'Benutzer',
             ],
         ],
 
@@ -58,12 +58,12 @@ return [
 
         'sidebar' => [
             'dashboard' => 'Dashboard',
-            'general' => 'General',
+            'general' => 'Allgemein',
         ],
     ],
 
     'language-picker' => [
-        'language' => 'Language',
+        'language' => 'Sprache',
         /**
          * Add the new language to this array.
          * The key should have the same language code as the folder name.
