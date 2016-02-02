@@ -34,7 +34,7 @@
                                 <td>{!! $role->name !!}</td>
                                 <td>
                                     @if ($role->all)
-                                        <span class="label label-success">All</span>
+                                        <span class="label label-success">{{ trans('labels.general.all') }}</span>
                                     @else
                                         @if (count($role->permissions) > 0)
                                             <div style="font-size:.7em">
