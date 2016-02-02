@@ -31,8 +31,8 @@ trait UserAttribute
     public function getConfirmedLabelAttribute()
     {
         if ($this->isConfirmed())
-            return "<label class='label label-success'>Yes</label>";
-        return "<label class='label label-danger'>No</label>";
+            return "<label class='label label-success'>".trans('labels.general.yes')."</label>";
+        return "<label class='label label-danger'>".trans('labels.general.no')."</label>";
     }
 
     /**
