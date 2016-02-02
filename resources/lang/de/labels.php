@@ -15,6 +15,8 @@ return [
 
     'general' => [
         'all' => 'Alle',
+        'yes' => 'Ja',
+        'no' => 'Nein',
         'actions' => 'Aktionen',
         'buttons' => [
             'save' => 'Speichern',
