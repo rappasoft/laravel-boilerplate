@@ -71,7 +71,7 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'de' => 'German', //TODO: translate
+            'de' => 'Tyska (German)',
             'pt-BR' => 'Brasiliansk portugisiska (Brazilian Portuguese)',
             'en' => 'Engelska (English)',
             'fr' => 'Franska (French)',
