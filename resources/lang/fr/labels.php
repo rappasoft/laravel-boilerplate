@@ -15,6 +15,8 @@ return [
 
     'general' => [
         'all' => 'Tous',
+        'yes' => 'Oui',
+        'no' => 'Non',
         'actions' => 'Actions',
         'buttons' => [
             'save' => 'Enregistrer',
