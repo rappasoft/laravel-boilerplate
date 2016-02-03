@@ -19,7 +19,7 @@
         <div class="box box-success">
             <div class="box-header with-border">
                 <h3 class="box-title">{{ trans('labels.backend.access.roles.create') }}</h3>
-    
+
                 <div class="box-tools pull-right">
                     @include('backend.access.includes.partials.header-buttons')
                 </div>
@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">{{ trans('validation.attributes.backend.access.roles.associated_permissions') }}</label>
                     <div class="col-lg-10">
-                        {!! Form::select('associated-permissions', array('all' => 'All', 'custom' => 'Custom'), 'all', ['class' => 'form-control']); !!}
+                        {!! Form::select('associated-permissions', array('all' => trans('labels.general.all'), 'custom' => trans('labels.general.custom')), 'all', ['class' => 'form-control']); !!}
 
                         <div id="available-permissions" class="hidden">
                             <div class="row">

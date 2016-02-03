@@ -17,6 +17,7 @@ return [
         'all' => 'All',
         'yes' => 'Yes',
         'no' => 'No',
+        'custom' => 'Custom',
         'actions' => 'Actions',
         'buttons' => [
             'save' => 'Save',
