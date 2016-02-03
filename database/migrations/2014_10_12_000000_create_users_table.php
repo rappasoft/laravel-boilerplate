@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('confirmation_code');
             $table->boolean('confirmed')->default(config('access.users.confirm_email') ? false : true);
             $table->rememberToken();
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default('0000-00-00 00:00');
+            $table->timestamp('created_at');
+            $table->timestamp('updated_at');
             $table->softDeletes();
         });
     }
