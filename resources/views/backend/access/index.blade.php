@@ -12,8 +12,10 @@
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
+            @if ($searchQuery)
+                <i class="fa fa-search"></i>
+            @endif
             <h3 class="box-title">{{ trans('labels.backend.access.users.active') }}</h3>
-
             <div class="box-tools pull-right">
                 @include('backend.access.includes.partials.header-buttons')
             </div>
@@ -74,7 +76,7 @@
             </div>
 
             <div class="pull-right">
-                {!! $users->render() !!}
+                {!! $users->appends(['q' => $searchQuery ])->render() !!}
             </div>
 
             <div class="clearfix"></div>
