@@ -129,7 +129,7 @@
                             <img src="{!! access()->user()->picture !!}" class="img-circle" alt="User Image" />
                             <p>
                                 {!! access()->user()->name !!} - {{ trans('roles.web_developer') }}
-                                <small>{{ trans('strings.backend.general.member_since') }} XX/XX/XXXX</small>
+                                <small>{{ trans('strings.backend.general.member_since') }} {!! access()->user()->created_at->format('d/m/Y')  !!}</small>
                             </p>
                         </li>
                         <!-- Menu Body -->
