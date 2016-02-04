@@ -24,7 +24,7 @@ return [
             'update' => 'Actualizar',
         ],
         'hide' => 'Ocultar',
-        'none' => 'None',
+        'none' => 'Ningúno',
         'show' => 'Mostrar',
         'toggle_navigation' => 'Abrir/Cerrar menú de navegación',
     ],
