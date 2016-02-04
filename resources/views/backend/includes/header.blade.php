@@ -85,7 +85,7 @@
                         <span class="label label-danger">1</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">{{ trans_choice('strings.backend.general.you_have.tasks', 1) }}</li>
+                        <li class="header">{{ trans_choice('strings.backend.general.you_have.tasks', 1, ['number' => 1]) }}</li>
                         <li>
                             <!-- Inner menu: contains the tasks -->
                             <ul class="menu">
