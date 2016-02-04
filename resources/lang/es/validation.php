@@ -112,7 +112,7 @@ return [
                 'permissions' => [
                     'associated_roles' => 'Roles asociados',
                     'dependencies' => 'Dependencias',
-                    'display_name' => 'Nombre al mostrar',
+                    'display_name' => 'Nombre a mostrar',
                     'group' => 'Grupo',
                     'group_sort' => 'Orden del Grupo',
 
@@ -121,7 +121,7 @@ return [
                     ],
 
                     'name' => 'Nombre',
-                    'system' => 'System?',
+                    'system' => 'Sistema?',
                 ],
 
                 'roles' => [
