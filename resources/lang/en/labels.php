@@ -27,6 +27,7 @@ return [
         'none' => 'None',
         'show' => 'Show',
         'toggle_navigation' => 'Toggle Navigation',
+        'reset_filter' => 'Reset filter',
     ],
 
     'backend' => [

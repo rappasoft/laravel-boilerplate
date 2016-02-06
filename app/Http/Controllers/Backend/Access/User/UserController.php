@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Access\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\User\UserContract;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
+use App\Http\Requests\Backend\SearchRequest;
 use App\Http\Requests\Backend\Access\User\CreateUserRequest;
 use App\Http\Requests\Backend\Access\User\StoreUserRequest;
 use App\Http\Requests\Backend\Access\User\EditUserRequest;
@@ -56,12 +57,14 @@ class UserController extends Controller
     }
 
     /**
+     * @param  SearchRequest $request
      * @return mixed
      */
-    public function index()
+    public function index(SearchRequest $request)
     {
         return view('backend.access.index')
-            ->withUsers($this->users->getUsersPaginated(config('access.users.default_per_page'), 1));
+            ->withUsers($this->users->getUsersPaginated(config('access.users.default_per_page'), 1, $request->q))
+            ->with('searchQuery',$request->q);
     }
 
     /**
