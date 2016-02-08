@@ -13,7 +13,9 @@
     <div class="box box-success">
         <div class="box-header with-border">
             <h3 class="box-title">{{ trans('labels.backend.access.users.active') }}</h3>
-
+            @if ($searchQuery)
+                <br><a href="{{ route('admin.access.users.index') }}" class="btn btn-warning btn-xs" aria-hidden="true"><i class="fa fa-search"></i>{{ trans('labels.general.reset_filter') }}</a>
+            @endif
             <div class="box-tools pull-right">
                 @include('backend.access.includes.partials.header-buttons')
             </div>

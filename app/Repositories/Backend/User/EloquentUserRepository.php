@@ -61,13 +61,19 @@ class EloquentUserRepository implements UserContract
     /**
      * @param  $per_page
      * @param  string      $order_by
+     * @param  string      $q
      * @param  string      $sort
      * @param  int         $status
      * @return mixed
      */
-    public function getUsersPaginated($per_page, $status = 1, $order_by = 'id', $sort = 'asc')
+    public function getUsersPaginated($per_page, $status = 1, $searchQuery = "", $order_by = 'id', $sort = 'asc')
     {
         return User::where('status', $status)
+            ->where(function ($query) use ($searchQuery) {
+                $query->where('name', 'like', "%$searchQuery%")
+                      ->orWhere('email', 'like', "%$searchQuery%");
+                return $query;
+            })
             ->orderBy($order_by, $sort)
             ->paginate($per_page);
     }
