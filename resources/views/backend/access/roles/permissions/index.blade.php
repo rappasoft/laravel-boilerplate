@@ -32,7 +32,7 @@
                         </a>
                     </li>
                     <li role="presentation">
-                        <a href="#permissions" aria-controls="permissions" role="tab" data-toggle="tab">
+                        <a href="#permissions" data-url-tab-hash="#all-permissions" aria-controls="permissions" role="tab" data-toggle="tab">
                             {{ trans('labels.backend.access.permissions.tabs.permissions') }}
                         </a>
                     </li>
@@ -215,7 +215,38 @@
     {!! Html::script('js/backend/plugin/nestable/jquery.nestable.js') !!}
 
     <script>
+        // if hash is present, show targetted tab
+        function showTabIfHashIsPresent (hash) {
+            if(window.location.hash && window.location.hash == hash) {
+                console.log('show tab: ' +hash);
+                $('a[data-url-tab-hash='+hash+']').tab('show');
+            }
+        }
+
+        // Needed for when currently on the same page and trying
+        // to go to #all-permissions through dropdown link.
+        $(window).bind('hashchange', function() {
+            showTabIfHashIsPresent('#all-permissions');
+        });
+
+        // update url after changing tab.
+        // This is to get complete consistency and
+        // keep the url updated correctly.
+        $('.nav-tabs a').on('shown.bs.tab', function (e) {
+            if(e.target.hash === '#permissions'){
+                window.location.hash = '#all-permissions';
+            }
+            else{
+                history.pushState("", document.title, window.location.pathname+ window.location.search);
+            }
+        })
+
         $(function() {
+
+            // check if hash is present in url
+            // then show specified tab
+            showTabIfHashIsPresent('#all-permissions');
+
             var hierarchy = $('.permission-hierarchy');
             hierarchy.nestable({maxDepth:2});
 

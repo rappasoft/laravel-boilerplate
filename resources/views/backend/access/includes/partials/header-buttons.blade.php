@@ -47,7 +47,7 @@
                 <li class="divider"></li>
             @endauth
 
-            <li><a href="{{ route('admin.access.roles.permissions.index') }}">{{ trans('menus.backend.access.permissions.all') }}</a></li>
+            <li><a href="{{ route('admin.access.roles.permissions.index') }}#all-permissions">{{ trans('menus.backend.access.permissions.all') }}</a></li>
             <li><a href="{{ route('admin.access.roles.permissions.index') }}">{{ trans('menus.backend.access.permissions.groups.all') }}</a></li>
           </ul>
         </div><!--btn group-->
