@@ -23,13 +23,16 @@ class PermissionDependencyTableSeeder extends Seeder
             //For PostgreSQL or anything else
             DB::statement('TRUNCATE TABLE ' . config('access.permission_dependencies_table') . ' CASCADE');
         }
-
+        
+        $permission1Id = DB::table('permissions')->where('name', 'view-backend')->first()->id;
+        $permission2Id = DB::table('permissions')->where('name', 'view-access-management')->first()->id;
+        
         /**
          * View access management needs view backend
          */
         DB::table(config('access.permission_dependencies_table'))->insert([
-            'permission_id' => DB::table('permissions')->where('name', 'view-access-management')->first()->id,
-            'dependency_id' => DB::table('permissions')->where('name', 'view-backend')->first()->id,
+            'permission_id' => $permission2Id,
+            'dependency_id' => $permission1Id,
             'created_at'    => Carbon::now(),
             'updated_at'    => Carbon::now(),
         ]);
@@ -38,17 +41,18 @@ class PermissionDependencyTableSeeder extends Seeder
          * All of the access permissions need view access management and view backend
          * Starts at id = 3 to skip view-backend, view-access-management
          */
-        for ($i = 3; $i <= 21; $i++) {
+        $remainingPermissionsIds = DB::table('permissions')->where('id', '>', 2)->pluck('id');
+        foreach ($remainingPermissionsIds as $remainingPermissionId) {
             DB::table(config('access.permission_dependencies_table'))->insert([
-                'permission_id' => $i,
-                'dependency_id' => DB::table('permissions')->where('name', 'view-backend')->first()->id,
+                'permission_id' => $remainingPermissionId,
+                'dependency_id' => $permission1Id,
                 'created_at'    => Carbon::now(),
                 'updated_at'    => Carbon::now(),
             ]);
 
             DB::table(config('access.permission_dependencies_table'))->insert([
-                'permission_id' => $i,
-                'dependency_id' => DB::table('permissions')->where('name', 'view-access-management')->first()->id,
+                'permission_id' => $remainingPermissionId,
+                'dependency_id' => $permission2Id,
                 'created_at'    => Carbon::now(),
                 'updated_at'    => Carbon::now(),
             ]);
