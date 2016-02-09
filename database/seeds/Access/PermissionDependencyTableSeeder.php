@@ -42,6 +42,7 @@ class PermissionDependencyTableSeeder extends Seeder
          * Starts at id = 3 to skip view-backend, view-access-management
          */
         $remainingPermissionsIds = DB::table('permissions')->where('id', '>', 2)->pluck('id');
+        
         foreach ($remainingPermissionsIds as $remainingPermissionId) {
             DB::table(config('access.permission_dependencies_table'))->insert([
                 'permission_id' => $remainingPermissionId,
