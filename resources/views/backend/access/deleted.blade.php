@@ -122,12 +122,12 @@
                     e.preventDefault();
 
                     swal({
-                        title: "{{ trans('strings.backend.general.are_you_sure') }}",
-                        text: "{{ trans('strings.backend.access.users.restore_user_confirm') }}",
+                        title: "{!! trans('strings.backend.general.are_you_sure') !!}",
+                        text: "{!! trans('strings.backend.access.users.restore_user_confirm') !!}",
                         type: "warning",
                         showCancelButton: true,
                         confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "{{ trans('strings.backend.general.continue') }}",
+                        confirmButtonText: "{!! trans('strings.backend.general.continue') !!}",
                         closeOnConfirm: false
                     }, function(isConfirmed){
                         if (isConfirmed){
