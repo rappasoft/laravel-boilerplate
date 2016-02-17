@@ -28,10 +28,11 @@ class PermissionDependency extends Model
     protected $guarded = ['id'];
 
     /**
-     *
+     * {@inheritDoc}
      */
-    public function __construct()
+    public function __construct(array $attributes = [])
     {
+        parent::__construct($attributes);
         $this->table = config('access.permission_dependencies_table');
     }
 }
