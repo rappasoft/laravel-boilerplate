@@ -71,6 +71,7 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
+            'da' => 'Danska (Danish)',
             'de' => 'Tyska (German)',
             'pt-BR' => 'Brasiliansk portugisiska (Brazilian Portuguese)',
             'en' => 'Engelska (English)',
