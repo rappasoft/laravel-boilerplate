@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Access\User;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Backend\Permission\Group\PermissionGroupRepositoryContract;
 use App\Repositories\Backend\User\UserContract;
 use App\Repositories\Backend\Role\RoleRepositoryContract;
 use App\Http\Requests\Backend\Access\User\CreateUserRequest;
@@ -47,12 +48,14 @@ class UserController extends Controller
     public function __construct(
         UserContract $users,
         RoleRepositoryContract $roles,
-        PermissionRepositoryContract $permissions
+        PermissionRepositoryContract $permissions,
+        PermissionGroupRepositoryContract $groups
     )
     {
         $this->users       = $users;
         $this->roles       = $roles;
         $this->permissions = $permissions;
+        $this->groups      = $groups;
     }
 
     /**
@@ -102,7 +105,7 @@ class UserController extends Controller
             ->withUserRoles($user->roles->lists('id')->all())
             ->withRoles($this->roles->getAllRoles('sort', 'asc', true))
             ->withUserPermissions($user->permissions->lists('id')->all())
-            ->withPermissions($this->permissions->getAllPermissions());
+            ->withPermissions($this->groups->getAllGroups());
     }
 
     /**
