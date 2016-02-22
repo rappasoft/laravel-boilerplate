@@ -108,6 +108,7 @@
                         showCancelButton: true,
                         confirmButtonColor: "#DD6B55",
                         confirmButtonText: "{!! trans('strings.backend.general.continue') !!}",
+                        cancelButtonText: "{!! trans('buttons.general.cancel') !!}",
                         closeOnConfirm: false
                     }, function(isConfirmed){
                         if (isConfirmed){
@@ -128,6 +129,7 @@
                         showCancelButton: true,
                         confirmButtonColor: "#DD6B55",
                         confirmButtonText: "{!! trans('strings.backend.general.continue') !!}",
+                        cancelButtonText: "{!! trans('buttons.general.cancel') !!}",
                         closeOnConfirm: false
                     }, function(isConfirmed){
                         if (isConfirmed){
