@@ -20,6 +20,8 @@ return [
                 'change_password' => 'Byt lösenord',
                 'deactivate' => 'Inaktivera',
                 'resend_email' => 'Skicka bekräftelsemail igen.',
+                'delete_permanently' => 'Radera permanent',
+                'restore_user' => 'Återställ',
             ],
         ],
     ],
