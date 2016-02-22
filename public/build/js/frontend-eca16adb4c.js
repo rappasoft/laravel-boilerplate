@@ -49,14 +49,19 @@ $(function(){
     $('body').on('submit', 'form[name=delete_item]', function(e){
         e.preventDefault();
         var form = this;
+        var link = $('a[data-method="delete"]');
+        var cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : "Cancel";
+        var confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : "Yes, delete";
+        var title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : "Warning";
+        var text = (link.attr('data-trans-text')) ? link.attr('data-trans-text') : "Are you sure you want to delete this item?";
 
         swal({
-            title: "Warning",
-            text: "Are you sure you want to delete this item?",
+            title: title,
             type: "warning",
             showCancelButton: true,
+            cancelButtonText: cancel,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: confirm,
             closeOnConfirm: true
         }, function(confirmed) {
             if (confirmed)
@@ -85,6 +90,7 @@ $(function(){
         });
     });
 });
+
 $(function(){
 
 });
