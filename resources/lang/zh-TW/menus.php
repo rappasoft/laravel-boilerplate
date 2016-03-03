@@ -15,38 +15,38 @@ return [
 
     'backend' => [
         'access' => [
-            'title' => 'Access Management',
+            'title' => '訪問權管理',
 
             'permissions' => [
-                'all' => 'All Permissions',
-                'create' => 'Create Permission',
-                'edit' => 'Edit Permission',
+                'all' => '所有權限',
+                'create' => '建立權限',
+                'edit' => '編輯權限',
                 'groups' => [
-                    'all' => 'All Groups',
-                    'create' => 'Create Group',
-                    'edit' => 'Edit Group',
-                    'main' => 'Groups',
+                    'all' => '所有群組',
+                    'create' => '建立群組',
+                    'edit' => '編輯群組',
+                    'main' => '群組',
                 ],
-                'main' => 'Permissions',
-                'management' => 'Permission Management',
+                'main' => '權限',
+                'management' => '權限管理',
             ],
 
             'roles' => [
-                'all' => 'All Roles',
-                'create' => 'Create Role',
-                'edit' => 'Edit Role',
-                'management' => 'Role Management',
-                'main' => 'Roles',
+                'all' => '所有角色',
+                'create' => '建立角色',
+                'edit' => '編輯角色',
+                'management' => '角色管理',
+                'main' => '角色',
             ],
 
             'users' => [
-                'all' => 'All Users',
-                'change-password' => 'Change Password',
-                'create' => 'Create User',
-                'deactivated' => 'Deactivated Users',
-                'deleted' => 'Deleted Users',
-                'edit' => 'Edit User',
-                'main' => 'Users',
+                'all' => '所有使用者',
+                'change-password' => '變更密碼',
+                'create' => '建立使用者',
+                'deactivated' => '停用帳號',
+                'deleted' => '刪除使用者',
+                'edit' => '編輯使用者',
+                'main' => '使用者',
             ],
         ],
 
@@ -57,13 +57,13 @@ return [
         ],
 
         'sidebar' => [
-            'dashboard' => 'Dashboard',
-            'general' => 'General',
+            'dashboard' => '儀表板',
+            'general' => '一般',
         ],
     ],
 
     'language-picker' => [
-        'language' => 'Language',
+        'language' => '語言',
         /**
          * Add the new language to this array.
          * The key should have the same language code as the folder name.
@@ -71,10 +71,9 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'zh-TW' => '正體中文',
-            'en' => 'English',
             'da' => 'Danish',
             'de' => 'German',
+            'en' => 'English',
             'es' => 'Spanish',
             'fr' => 'French',
             'it' => 'Italian',
