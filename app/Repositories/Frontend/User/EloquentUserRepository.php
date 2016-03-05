@@ -133,7 +133,7 @@ class EloquentUserRepository implements UserContract
         if (! $user) {
             $user = $this->create([
                 'name'  => $data->name,
-                'email' => $data->email,
+                'email' => $data->email ? : "{$data->id}@{$provider}.com",
             ], true);
         }
 
