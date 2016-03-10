@@ -30,7 +30,7 @@ class Role extends Model
     protected $guarded = ['id'];
 
     /**
-     * {@inheritDoc}
+     * @param array $attributes
      */
     public function __construct(array $attributes = [])
     {
