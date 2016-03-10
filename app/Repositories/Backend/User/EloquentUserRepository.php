@@ -164,12 +164,10 @@ class EloquentUserRepository implements UserContract
     public function updatePassword($id, $input)
     {
         $user = $this->findOrThrowException($id);
-
-        //Passwords are hashed on the model
-        $user->password = $input['password'];
-        if ($user->save()) {
+        $user->password = bcrypt($input['password']);
+        
+        if ($user->save())
             return true;
-        }
 
         throw new GeneralException(trans('exceptions.backend.access.users.update_password_error'));
     }
