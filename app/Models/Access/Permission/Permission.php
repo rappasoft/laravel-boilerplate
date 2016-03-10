@@ -29,10 +29,11 @@ class Permission extends Model
     protected $guarded = ['id'];
 
     /**
-     *
+     * {@inheritDoc}
      */
-    public function __construct()
+    public function __construct(array $attributes = [])
     {
+        parent::__construct($attributes);
         $this->table = config('access.permissions_table');
     }
 }
