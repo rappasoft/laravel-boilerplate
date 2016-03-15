@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,25 +20,46 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
+
+        <!-- AdminLTE Template -->
+        <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+        <!-- Bootstrap CSS -->
+        {{--<link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.css">--}}
+        <!-- iCheck -->
+        <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
+
     </head>
-    <body id="app-layout">
+<body id="app-layout">
 
-        @include('frontend.includes.nav')
+@include('frontend.includes.nav')
 
-        <div class="container">
-            @include('includes.partials.messages')
-            @yield('content')
-        </div><!-- container -->
+<div class="container">
+    @include('includes.partials.messages')
+    @yield('content')
+</div><!-- container -->
 
-        <!-- JavaScripts -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
-        {!! Html::script('js/vendor/bootstrap/bootstrap.min.js') !!}
+<!-- JavaScripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
+<!-- Bootstrap JavaScript -->
+{!! Html::script('js/vendor/bootstrap/bootstrap.min.js') !!}
 
-        @yield('before-scripts-end')
-        {!! Html::script(elixir('js/frontend.js')) !!}
-        @yield('after-scripts-end')
+@yield('before-scripts-end')
+{!! Html::script(elixir('js/frontend.js')) !!}
 
-        @include('includes.partials.ga')
-    </body>
+<!-- iCheck -->
+<script src="plugins/iCheck/icheck.min.js"></script>
+<script>
+    $(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
+        });
+    });
+</script>
+@yield('after-scripts-end')
+
+@include('includes.partials.ga')
+</body>
 </html>

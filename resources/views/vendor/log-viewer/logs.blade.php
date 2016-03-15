@@ -117,7 +117,7 @@
                                 @endif
                             </th>
                         @endforeach
-                        <th class="text-right">Actions</th>
+                        <th class="text-center">{{ trans('menus.backend.log-viewer.actions') }}</th>
                     </tr>
                     </thead>
                     <tbody>

@@ -1,4 +1,9 @@
 <?php
+Route::controller('datatables', 'DatatablesController', [
+    'anyData'  => 'datatables.data',
+    'getIndex' => 'datatables',
+]);
+
 
 Route::group(['middleware' => 'web'], function() {
     /**
@@ -30,8 +35,11 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
      * then limit the backend features by different roles or permissions)
      *
      * Note: Administrator has all permissions so you do not have to specify the administrator role everywhere.
+     *
      */
     require (__DIR__ . '/Routes/Backend/Dashboard.php');
     require (__DIR__ . '/Routes/Backend/Access.php');
     require (__DIR__ . '/Routes/Backend/LogViewer.php');
+
 });
+

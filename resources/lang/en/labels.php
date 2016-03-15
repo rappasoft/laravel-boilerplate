@@ -132,6 +132,7 @@ return [
             'register_box_title' => 'Register',
             'register_button' => 'Register',
             'remember_me' => 'Remember Me',
+            'start' => 'Sign in to start your session',
         ],
 
         'passwords' => [

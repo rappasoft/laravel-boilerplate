@@ -51,14 +51,16 @@ return [
         ],
 
         'log-viewer' => [
-            'main' => 'Log Viewer',
-            'dashboard' => 'Dashboard',
-            'logs' => 'Logs',
+            'main' => '記錄檢視器',
+            'dashboard' => '儀表板',
+            'logs' => '記錄',
+            'actions' => '動作',
         ],
 
         'sidebar' => [
             'dashboard' => '儀表板',
             'general' => '一般',
+            'main_navigation' => '主導覽',
         ],
     ],
 

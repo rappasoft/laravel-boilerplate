@@ -4,6 +4,8 @@ elixir(function(mix) {
  mix
      .phpUnit()
 
+     .browserSync({proxy:'myapp.dev'})
+
     /**
      * Copy needed files from /node directories
      * to /public directory.

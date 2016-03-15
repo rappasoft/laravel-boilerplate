@@ -54,11 +54,13 @@ return [
             'main' => 'Log Viewer',
             'dashboard' => 'Dashboard',
             'logs' => 'Logs',
+            'actions' => 'Actions',
         ],
 
         'sidebar' => [
             'dashboard' => 'Dashboard',
             'general' => 'General',
+            'main_navigation' => 'MAIN NAVIGATION',
         ],
     ],
 
