@@ -188,6 +188,7 @@ return [
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
 
         /*
