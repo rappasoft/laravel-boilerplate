@@ -22,7 +22,8 @@
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*",
-        "barryvdh/laravel-debugbar": "^2.1"
+        "barryvdh/laravel-debugbar": "^2.1",
+        "laracasts/generators": "^1.1"
     },
     "autoload": {
         "classmap": [
