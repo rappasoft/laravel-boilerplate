@@ -28,7 +28,8 @@
             "database"
         ],
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "MarvinLabs\\SetupWizard\\": "packages/marvinlabs/laravel-setup-wizard/src"
         },
         "files": [
             "app/helpers.php"
