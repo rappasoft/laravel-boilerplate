@@ -9,6 +9,7 @@ return [
         'env'          => \MarvinLabs\SetupWizard\Steps\EnvFileStep::class,
         'database'     => \MarvinLabs\SetupWizard\Steps\DatabaseStep::class,
         'access'       => \App\Setup\Steps\AccessStep::class,
+        'admin_user'   => \App\Setup\Steps\AdministratorStep::class,
         'final'        => \MarvinLabs\SetupWizard\Steps\FinalStep::class,
     ],
 

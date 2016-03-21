@@ -3,6 +3,11 @@
 return [
 
     /*
+     * User model used by Access to create correct relations. Update the user if it is in a different namespace.
+    */
+    'user' => App\Models\Access\User\User::class,
+
+    /*
      * Users table used to store users
      */
     'users_table' => 'users',

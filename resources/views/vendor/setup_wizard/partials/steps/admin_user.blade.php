@@ -1,9 +1,30 @@
-<p>{!! trans('setup_wizard::steps.access.view.action_summary') !!}</p>
-
-<ul class="list-group">
-    <li class="list-group-item">{{ trans('setup_wizard::steps.access.view.roles') }} <span class="badge">{{ $count['roles'] }}</span></li>
-    <li class="list-group-item">{{ trans('setup_wizard::steps.access.view.groups') }} <span class="badge">{{ $count['groups'] }}</span></li>
-    <li class="list-group-item">{{ trans('setup_wizard::steps.access.view.permissions') }} <span class="badge">{{ $count['permissions'] }}</span></li>
-</ul>
-
-
+<div class="form-group">
+    <label for="name" class="form-label">{!! trans('setup_wizard::steps.admin_user.view.name') !!}</label>
+    {{ Form::text('name', '', [
+        'class' => 'form-control'
+    ]) }}
+</div>
+<div class="form-group">
+    <label for="email" class="form-label">{!! trans('setup_wizard::steps.admin_user.view.email') !!}</label>
+    {{ Form::email('email', '', [
+        'class' => 'form-control'
+    ]) }}
+</div>
+<div class="form-group">
+    <label for="password" class="form-label">{!! trans('setup_wizard::steps.admin_user.view.password') !!}</label>
+    {{ Form::password('password', [
+        'class' => 'form-control'
+    ]) }}
+</div>
+<div class="form-group">
+    <label for="password_confirmation" class="form-label">{!! trans('setup_wizard::steps.admin_user.view.password_confirmation') !!}</label>
+    {{ Form::password('password_confirmation', [
+        'class' => 'form-control'
+    ]) }}
+</div>
+<div class="form-group">
+    <label for="role" class="form-label">{!! trans('setup_wizard::steps.admin_user.view.role') !!}</label>
+    {{ Form::select('role', $availableRoles, null, [
+        'class' => 'form-control'
+    ]) }}
+</div>
