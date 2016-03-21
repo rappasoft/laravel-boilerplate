@@ -48,7 +48,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL'),
+    'url' => env('APP_URL', '127.0.0.1'),
 
     /*
     |--------------------------------------------------------------------------
@@ -188,11 +188,7 @@ return [
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-
-        /*
-         * Provides a setup wizard
-         */
+        Spatie\Backup\BackupServiceProvider::class,
         MarvinLabs\SetupWizard\ServiceProvider::class,
 
         /*
@@ -255,7 +251,6 @@ return [
         'Gravatar'    => Creativeorange\Gravatar\Facades\Gravatar::class,
         'Html'        => Collective\Html\HtmlFacade::class,
         'Socialite'   => Laravel\Socialite\Facades\Socialite::class,
-
         'SetupWizard' => MarvinLabs\SetupWizard\Facades\SetupWizard::class,
     ],
 
