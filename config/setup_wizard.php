@@ -60,12 +60,14 @@ return [
                 'display_name' => 'View Backend',
                 'system'       => true,
                 'group'        => 'access',
+                'role'         => ['administrator'],
             ],
             'view-access-management'         => [
                 'display_name' => 'View Access Management',
                 'system'       => true,
                 'group'        => 'access',
                 'dependency'   => ['view-backend',],
+                'role'         => ['administrator'],
             ],
 
             /**
@@ -80,54 +82,63 @@ return [
                 'system'       => true,
                 'group'        => 'access.user',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
             'edit-users'                     => [
                 'display_name' => 'Edit Users',
                 'system'       => true,
                 'group'        => 'access.user',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
             'delete-users'                   => [
                 'display_name' => 'Delete Users',
                 'system'       => true,
                 'group'        => 'access.user',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
             'change-user-password'           => [
                 'display_name' => 'Change User Password',
                 'system'       => true,
                 'group'        => 'access.user',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
             'deactivate-users'               => [
                 'display_name' => 'Deactivate Users',
                 'system'       => true,
                 'group'        => 'access.user',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
             'reactivate-users'               => [
                 'display_name' => 'Re-Activate Users',
                 'system'       => true,
                 'group'        => 'access.user',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
             'undelete-users'                 => [
                 'display_name' => 'Restore Users',
                 'system'       => true,
                 'group'        => 'access.user',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
             'permanently-delete-users'       => [
                 'display_name' => 'Permanently Delete Users',
                 'system'       => true,
                 'group'        => 'access.user',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
             'resend-user-confirmation-email' => [
                 'display_name' => 'Resend Confirmation E-mail',
                 'system'       => true,
                 'group'        => 'access.user',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
 
             /**
@@ -138,6 +149,7 @@ return [
                 'system'       => true,
                 'group'        => 'access.role',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
 
             'edit-roles' => [
@@ -145,6 +157,7 @@ return [
                 'system'       => true,
                 'group'        => 'access.role',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
 
             'delete-roles'             => [
@@ -152,6 +165,7 @@ return [
                 'system'       => true,
                 'group'        => 'access.role',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
 
             /**
@@ -162,6 +176,7 @@ return [
                 'system'       => true,
                 'group'        => 'access.permission',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
 
             'edit-permission-groups' => [
@@ -169,6 +184,7 @@ return [
                 'system'       => true,
                 'group'        => 'access.permission',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
 
             'delete-permission-groups' => [
@@ -176,6 +192,7 @@ return [
                 'system'       => true,
                 'group'        => 'access.permission',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
 
             'sort-permission-groups' => [
@@ -183,6 +200,7 @@ return [
                 'system'       => true,
                 'group'        => 'access.permission',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
 
             /**
@@ -193,6 +211,7 @@ return [
                 'system'       => true,
                 'group'        => 'access.permission',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
 
             'edit-permissions' => [
@@ -200,6 +219,7 @@ return [
                 'system'       => true,
                 'group'        => 'access.permission',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
 
             'delete-permissions' => [
@@ -207,6 +227,7 @@ return [
                 'system'       => true,
                 'group'        => 'access.permission',
                 'dependency'   => ['view-backend', 'view-access-management'],
+                'role'         => ['administrator'],
             ],
         ],
     ],

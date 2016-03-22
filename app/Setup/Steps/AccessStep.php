@@ -43,8 +43,10 @@ class AccessStep extends BaseStep
         $config = $this->getConfiguration();
         $createdRoles = $this->createRoles($config['roles']);
         $createdGroups = $this->createGroups($config['groups']);
-        $createdPermissions = $this->createPermissions($config['permissions'], $createdRoles, $createdGroups);
-        $createdPermissions = $this->linkDependentPermissions($config['permissions'], $createdPermissions);
+        $createdPermissions = $this->createPermissions($config['permissions'], $createdGroups);
+
+        $this->linkDependentPermissions($config['permissions'], $createdPermissions);
+        $this->assignRolePermissions($config['permissions'], $createdPermissions, $createdRoles);
 
         return true;
     }
@@ -181,12 +183,11 @@ class AccessStep extends BaseStep
 
     /**
      * @param array      $permissionConfig
-     * @param Collection $roles
      * @param Collection $groups
      *
      * @return Collection
      */
-    protected function createPermissions($permissionConfig, $roles, $groups)
+    protected function createPermissions($permissionConfig, $groups)
     {
         $sortOrder = 0;
         $createdPermissions = new Collection();
@@ -219,6 +220,10 @@ class AccessStep extends BaseStep
         return $createdPermissions;
     }
 
+    /**
+     * @param array      $permissionConfig
+     * @param Collection $permissions
+     */
     protected function linkDependentPermissions($permissionConfig, $permissions)
     {
         $pivotTable = config('access.permission_dependencies_table');
@@ -230,7 +235,7 @@ class AccessStep extends BaseStep
             foreach ($desc['dependency'] as $dep) {
                 $depPerm = $permissions->get($dep, null);
 
-                if ($perm==null || $depPerm==null) continue;
+                if ($perm == null || $depPerm == null) continue;
 
                 DB::table($pivotTable)->insert([
                     'permission_id' => $perm->id,
@@ -238,7 +243,27 @@ class AccessStep extends BaseStep
                 ]);
             }
         }
+    }
 
-        return $permissions;
+    /**
+     * @param array      $permissionConfig
+     * @param Collection $permissions
+     * @param Collection $roles
+     */
+    protected function assignRolePermissions($permissionConfig, $permissions, $roles)
+    {
+        foreach ($permissionConfig as $slug => $desc) {
+            if (empty($desc['role'])) continue;
+
+            $perm = $permissions->get($slug, null);
+            foreach ($desc['role'] as $r) {
+                /** @var Role $role */
+                $role = $roles->get($r, null);
+
+                if ($perm == null || $role == null) continue;
+
+                $role->attachPermission($perm);
+            }
+        }
     }
 }
