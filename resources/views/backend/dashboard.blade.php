@@ -16,7 +16,7 @@
             </div><!-- /.box tools -->
         </div><!-- /.box-header -->
         <div class="box-body">
-            @include('backend.lang.' . app()->getLocale() . '.welcome')
+            {!! getLanguageBlock('backend.lang.welcome') !!}
         </div><!-- /.box-body -->
     </div><!--box box-success-->
 @endsection

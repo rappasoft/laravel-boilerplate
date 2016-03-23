@@ -1,5 +1,6 @@
 /vendor
 /node_modules
+/public/storage
 Homestead.yaml
 Homestead.json
 .env
@@ -13,13 +14,14 @@ Homestead.json
 /public/js/backend.js
 /public/js/backend.js.map
 
-/.DS_Store
-/Thumbs.db
-/*.sublime-project
-/*.sublime-workspace
+.DS_Store
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
 .idea
 .project
 _ide_helper.php
 composer.phar
 error.log
 Todo.rtf
+.vagrant

@@ -13,7 +13,8 @@
         "creativeorange/gravatar": "~1.0",
         "davejamesmiller/laravel-breadcrumbs": "^3.0",
         "hieu-le/active": "~2.0",
-        "arcanedev/log-viewer": "~3.5.0"
+        "arcanedev/log-viewer": "~3.0",
+        "spatie/laravel-backup": "^3.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -21,7 +22,8 @@
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
         "symfony/dom-crawler": "2.8.*|3.0.*",
-        "barryvdh/laravel-debugbar": "^2.1"
+        "barryvdh/laravel-debugbar": "^2.1",
+        "laracasts/generators": "^1.1"
     },
     "autoload": {
         "classmap": [
@@ -49,9 +51,6 @@
         "post-install-cmd": [
             "php artisan clear-compiled",
             "php artisan optimize"
-        ],
-        "pre-update-cmd": [
-            "php artisan clear-compiled"
         ],
         "post-update-cmd": [
             "php artisan optimize"

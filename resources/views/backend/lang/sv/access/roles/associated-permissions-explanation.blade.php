@@ -1,0 +1,1 @@
+Symbolen <small><strong>(D)</strong></small> bredvid ett tillstånd betyder att tillståndet har överliggande tillstånd. Överliggande tillstånd väljs automatiskt när du markerar ett tillstånd. Du kan hantera överliggande tillstånd genom fliken "Överliggande tillstånd" i redigeringsläget för ett tillstånd.

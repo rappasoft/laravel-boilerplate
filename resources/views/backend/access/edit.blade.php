@@ -56,8 +56,15 @@
                         <div class="col-lg-3">
                             @if (count($roles) > 0)
                                 @foreach($roles as $role)
-                                    <input type="checkbox" value="{{$role->id}}" name="assignees_roles[]" {{in_array($role->id, $user_roles) ? 'checked' : ''}} id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{!! $role->name !!}</label> <a href="#" data-role="role_{{$role->id}}" class="show-permissions small">(<span class="show-hide">{{ trans('labels.general.show') }}</span> {{ trans('labels.backend.access.users.permissions') }})</a><br/>
-
+                                    <input type="checkbox" value="{{$role->id}}" name="assignees_roles[]" {{in_array($role->id, $user_roles) ? 'checked' : ''}} id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{!! $role->name !!}</label>
+                                        <a href="#" data-role="role_{{$role->id}}" class="show-permissions small">
+                                            (
+                                                <span class="show-text">{{ trans('labels.general.show') }}</span>
+                                                <span class="hide-text hidden">{{ trans('labels.general.hide') }}</span>
+                                                {{ trans('labels.backend.access.users.permissions') }}
+                                            )
+                                        </a>
+                                    <br/>
                                     <div class="permission-list hidden" data-role="role_{{$role->id}}">
                                         @if ($role->all)
                                             {{ trans('labels.backend.access.users.all_permissions') }}<br/><br/>

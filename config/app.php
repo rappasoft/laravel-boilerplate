@@ -48,7 +48,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL'),
+    'url' => env('APP_URL', '127.0.0.1'),
 
     /*
     |--------------------------------------------------------------------------
@@ -88,6 +88,17 @@ return [
     */
 
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | PHP Locale Code
+    |--------------------------------------------------------------------------
+    |
+    | The PHP locale determines the default locale that will be used
+    | by the Carbon library when setting Carbon's localization.
+    |
+    */
+    'locale_php' => env('APP_LOCALE_PHP', 'en_US'),
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +188,7 @@ return [
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
 
         /*
          * Has to override the Collective\Html\HtmlServiceProvider form singleton

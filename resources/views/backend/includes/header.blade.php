@@ -2,7 +2,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="{!! route('frontend.index') !!}" class="logo"><b>L5</b>Bootstrap</a>
+    <a href="{!! route('frontend.index') !!}" class="logo">{!! app_name() !!}</a>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
@@ -14,10 +14,12 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
 
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ trans('menus.language-picker.language') }} <span class="caret"></span></a>
-                    @include('includes.partials.lang')
-                </li>
+                @if (config('locale.status') && count(config('locale.languages')) > 1)
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ trans('menus.language-picker.language') }} <span class="caret"></span></a>
+                        @include('includes.partials.lang')
+                    </li>
+                @endif
 
                 <!-- Messages: style can be found in dropdown.less-->
                 <li class="dropdown messages-menu">
@@ -83,7 +85,7 @@
                         <span class="label label-danger">1</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">{{ trans_choice('strings.backend.general.you_have.tasks', 1) }}</li>
+                        <li class="header">{{ trans_choice('strings.backend.general.you_have.tasks', 1, ['number' => 1]) }}</li>
                         <li>
                             <!-- Inner menu: contains the tasks -->
                             <ul class="menu">

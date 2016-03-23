@@ -101,7 +101,7 @@
 
                             <div class="alert alert-info">
                                 <i class="fa fa-info-circle"></i>
-                                @include('backend.lang.' . app()->getLocale() . '.access.roles.permissions.dependencies-explanation')
+                                {!! getLanguageBlock('backend.lang.access.roles.permissions.dependencies-explanation') !!}
                             </div><!--alert-->
 
                             <div class="form-group">

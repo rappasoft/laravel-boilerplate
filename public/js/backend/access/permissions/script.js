@@ -1,16 +1,18 @@
 $(function() {
     $(".show-permissions").click(function(e) {
         e.preventDefault();
-        var role = $(this).data('role');
+        var $this = $(this);
+        var role = $this.data('role');
         var permissions = $(".permission-list[data-role='"+role+"']");
-        console.log(permissions);
+        var hideText = $this.find('.hide-text');
+        var showText = $this.find('.show-text');
+        // console.log(permissions); // for debugging
 
-        if (permissions.hasClass('hidden')) {
-            permissions.removeClass('hidden');
-            $(this).find('.show-hide').html("Hide");
-        } else {
-            permissions.addClass('hidden');
-            $(this).find('.show-hide').html("Show");
-        }
+        // show permission list
+        permissions.toggleClass('hidden');
+
+        // toggle the text Show/Hide for the link
+        hideText.toggleClass('hidden');
+        showText.toggleClass('hidden');
     });
 });

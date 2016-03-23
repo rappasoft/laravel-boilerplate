@@ -1,0 +1,1 @@
+Uma permissão marcado com um <small><strong>(D)</strong></small> significa que a permissão tem dependências. Eles serão verificadas automaticamente quando você selecionar essa permissão. Você pode gerenciar permissões de cada dependências na guia dependência na guia editar permissão.
