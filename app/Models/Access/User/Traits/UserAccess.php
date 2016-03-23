@@ -135,7 +135,7 @@ trait UserAccess
             $numPermissions = count($permissions);
 
             foreach ($permissions as $perm) {
-                if ($this->can($perm)) {
+                if ($this->allow($perm)) {
                     $hasPermissions++;
                 }
             }
@@ -146,7 +146,7 @@ trait UserAccess
         //User has to possess one of the permissions specified
         $hasPermissions = 0;
         foreach ($permissions as $perm) {
-            if ($this->can($perm)) {
+            if ($this->allow($perm)) {
                 $hasPermissions++;
             }
         }
