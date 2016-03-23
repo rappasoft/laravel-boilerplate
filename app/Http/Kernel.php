@@ -6,6 +6,7 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 /**
  * Class Kernel
+ *
  * @package App\Http
  */
 class Kernel extends HttpKernel
@@ -37,6 +38,7 @@ class Kernel extends HttpKernel
         ],
 
         'admin' => [
+            'setup_wizard.trigger',
             'web',
             'auth',
             'access.routeNeedsPermission:view-backend',
@@ -45,6 +47,12 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
         ],
+
+        'setup_wizard' => [
+            \Illuminate\Session\Middleware\StartSession::class,
+            \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+            'setup_wizard.initializer',
+        ]
     ];
 
     /**
@@ -55,15 +63,21 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \App\Http\Middleware\Authenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'auth'                        => \App\Http\Middleware\Authenticate::class,
+        'auth.basic'                  => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'guest'                       => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle'                    => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
         /**
          * Access Middleware
          */
-        'access.routeNeedsRole' => \App\Http\Middleware\RouteNeedsRole::class,
+        'access.routeNeedsRole'       => \App\Http\Middleware\RouteNeedsRole::class,
         'access.routeNeedsPermission' => \App\Http\Middleware\RouteNeedsPermission::class,
+
+        /**
+         * Setup wizard Middleware
+         */
+        'setup_wizard.initializer'    => \MarvinLabs\SetupWizard\Middleware\SetupWizardInitializer::class,
+        'setup_wizard.trigger'        => \MarvinLabs\SetupWizard\Middleware\SetupWizardTrigger::class,
     ];
 }
