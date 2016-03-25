@@ -204,12 +204,12 @@ class EloquentUserRepository implements UserRepositoryContract
     }
 
     /**
-     * @param $token
+     * @param $user_id
      * @return mixed
      * @throws GeneralException
      */
-    public function resendConfirmationEmail($token) {
-        return $this->sendConfirmationEmail($this->findByToken($token));
+    public function resendConfirmationEmail($user_id) {
+        return $this->sendConfirmationEmail($this->find($user_id));
     }
 
     /**
