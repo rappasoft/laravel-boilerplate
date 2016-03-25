@@ -12,7 +12,7 @@ Laravel Boilerplate provides you with a massive head start on any size web appli
 
 ### Wiki
 
-Please view the [wiki](https://github.com/rappasoft/laravel-5-boilerplate/wiki) for a list of [features](https://github.com/rappasoft/laravel-5-boilerplate/wiki#features) as well as [installation instructions](https://github.com/rappasoft/laravel-5-boilerplate/wiki/1.-Installation)
+Please view the [wiki](https://github.com/rappasoft/laravel-5-boilerplate/wiki) for a list of [features](https://github.com/rappasoft/laravel-5-boilerplate/wiki#features) as well as [installation instructions](https://github.com/rappasoft/laravel-5-boilerplate/wiki/1.-Installation).
 
 ### Issues
 
@@ -32,4 +32,4 @@ If you would like to help the continued efforts of this project, any size [donat
 
 ### License
 
-The Laravel framework is open-sourced software licensed under the MIT license
+MIT: [http://anthony.mit-license.org](http://anthony.mit-license.org)
