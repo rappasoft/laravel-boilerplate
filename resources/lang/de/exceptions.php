@@ -66,7 +66,7 @@ return [
                 'created_confirm' => 'Dein Account wurde erstellt. Wir haben dir eiene Aktivierungsmail gesendet.',
                 'mismatch' => 'Der Aktivierungscode ist nicht korrekt.',
                 'not_found' => 'Der Aktivierungscode existiert nicht.',
-                'resend' => 'Dein Account ist nicht aktiviert. Bitte klicke auf den Link in der Aktivierungsmail, oder <a href="' . route('account.confirm.resend', ':token') . '">klicke hier</a> um die aktivierungsmail erneut zu senden.',
+                'resend' => 'Dein Account ist nicht aktiviert. Bitte klicke auf den Link in der Aktivierungsmail, oder <a href="' . route('account.confirm.resend', ':user_id') . '">klicke hier</a> um die aktivierungsmail erneut zu senden.',
                 'success' => 'Dein Account wurde aktiviert!',
                 'resent' => 'Eine neue aktivierungsmail wurde an die hinterlegte E-Mailadresse gesendet.',
             ],

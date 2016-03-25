@@ -104,9 +104,9 @@ trait AuthenticatesUsers
          * Check to see if the users account is confirmed and active
          */
         if (! access()->user()->isConfirmed()) {
-            $token = access()->user()->confirmation_code;
+            $id = access()->user()->id;
             auth()->logout();
-            throw new GeneralException(trans('exceptions.frontend.auth.confirmation.resend', ['token' => $token]));
+            throw new GeneralException(trans('exceptions.frontend.auth.confirmation.resend', ['user_id' => $id]));
         } elseif (! access()->user()->isActive()) {
             auth()->logout();
             throw new GeneralException(trans('exceptions.frontend.auth.deactivated'));
