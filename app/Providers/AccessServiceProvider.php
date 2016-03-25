@@ -70,33 +70,33 @@ class AccessServiceProvider extends ServiceProvider
     public function registerBindings()
     {
         $this->app->bind(
-            \App\Repositories\Frontend\User\UserContract::class,
-            \App\Repositories\Frontend\User\EloquentUserRepository::class
+            \App\Repositories\Frontend\Access\User\UserRepositoryContract::class,
+            \App\Repositories\Frontend\Access\User\EloquentUserRepository::class
         );
 
         $this->app->bind(
-            \App\Repositories\Backend\User\UserContract::class,
-            \App\Repositories\Backend\User\EloquentUserRepository::class
+            \App\Repositories\Backend\Access\User\UserRepositoryContract::class,
+            \App\Repositories\Backend\Access\User\EloquentUserRepository::class
         );
 
         $this->app->bind(
-            \App\Repositories\Backend\Role\RoleRepositoryContract::class,
-            \App\Repositories\Backend\Role\EloquentRoleRepository::class
+            \App\Repositories\Backend\Access\Role\RoleRepositoryContract::class,
+            \App\Repositories\Backend\Access\Role\EloquentRoleRepository::class
         );
 
         $this->app->bind(
-            \App\Repositories\Backend\Permission\PermissionRepositoryContract::class,
-            \App\Repositories\Backend\Permission\EloquentPermissionRepository::class
+            \App\Repositories\Backend\Access\Permission\PermissionRepositoryContract::class,
+            \App\Repositories\Backend\Access\Permission\EloquentPermissionRepository::class
         );
 
         $this->app->bind(
-            \App\Repositories\Backend\Permission\Group\PermissionGroupRepositoryContract::class,
-            \App\Repositories\Backend\Permission\Group\EloquentPermissionGroupRepository::class
+            \App\Repositories\Backend\Access\Permission\Group\PermissionGroupRepositoryContract::class,
+            \App\Repositories\Backend\Access\Permission\Group\EloquentPermissionGroupRepository::class
         );
 
         $this->app->bind(
-            \App\Repositories\Backend\Permission\Dependency\PermissionDependencyRepositoryContract::class,
-            \App\Repositories\Backend\Permission\Dependency\EloquentPermissionDependencyRepository::class
+            \App\Repositories\Backend\Access\Permission\Dependency\PermissionDependencyRepositoryContract::class,
+            \App\Repositories\Backend\Access\Permission\Dependency\EloquentPermissionDependencyRepository::class
         );
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Backend\Permission\Group;
+namespace App\Repositories\Backend\Access\Permission\Group;
 
 use App\Exceptions\GeneralException;
 use App\Models\Access\Permission\PermissionGroup;

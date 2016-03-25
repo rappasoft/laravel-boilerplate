@@ -3,7 +3,6 @@
 namespace App\Services\Access\Traits;
 
 use Illuminate\Mail\Message;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use App\Http\Requests\Frontend\Auth\ResetPasswordRequest;
 use App\Http\Requests\Frontend\Auth\SendResetLinkEmailRequest;

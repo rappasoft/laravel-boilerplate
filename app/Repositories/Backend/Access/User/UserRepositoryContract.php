@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repositories\Backend\User;
+namespace App\Repositories\Backend\Access\User;
 
 /**
- * Interface UserContract
+ * Interface UserRepositoryContract
  * @package App\Repositories\User
  */
-interface UserContract
+interface UserRepositoryContract
 {
     /**
      * @param  $id

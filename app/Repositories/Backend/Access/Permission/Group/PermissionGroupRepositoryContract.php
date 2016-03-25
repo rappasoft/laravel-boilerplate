@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Backend\Permission\Group;
+namespace App\Repositories\Backend\Access\Permission\Group;
 
 /**
  * Interface PermissionGroupRepositoryContract

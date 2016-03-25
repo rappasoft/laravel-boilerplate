@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Backend\Access\User;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Backend\User\UserContract;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
-use App\Http\Requests\Backend\Access\User\CreateUserRequest;
-use App\Http\Requests\Backend\Access\User\StoreUserRequest;
 use App\Http\Requests\Backend\Access\User\EditUserRequest;
 use App\Http\Requests\Backend\Access\User\MarkUserRequest;
+use App\Http\Requests\Backend\Access\User\StoreUserRequest;
+use App\Http\Requests\Backend\Access\User\CreateUserRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserRequest;
 use App\Http\Requests\Backend\Access\User\DeleteUserRequest;
 use App\Http\Requests\Backend\Access\User\RestoreUserRequest;
+use App\Repositories\Backend\Access\User\UserRepositoryContract;
+use App\Repositories\Backend\Access\Role\RoleRepositoryContract;
 use App\Http\Requests\Backend\Access\User\ChangeUserPasswordRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
-use App\Repositories\Backend\Permission\PermissionRepositoryContract;
 use App\Http\Requests\Backend\Access\User\PermanentlyDeleteUserRequest;
-use App\Repositories\Frontend\User\UserContract as FrontendUserContract;
 use App\Http\Requests\Backend\Access\User\ResendConfirmationEmailRequest;
+use App\Repositories\Backend\Access\Permission\PermissionRepositoryContract;
+use App\Repositories\Frontend\Access\User\UserRepositoryContract as FrontendUserRepositoryContract;
 
 /**
  * Class UserController
@@ -25,7 +25,7 @@ use App\Http\Requests\Backend\Access\User\ResendConfirmationEmailRequest;
 class UserController extends Controller
 {
     /**
-     * @var UserContract
+     * @var UserRepositoryContract
      */
     protected $users;
 
@@ -40,12 +40,12 @@ class UserController extends Controller
     protected $permissions;
 
     /**
-     * @param UserContract                 $users
+     * @param UserRepositoryContract       $users
      * @param RoleRepositoryContract       $roles
      * @param PermissionRepositoryContract $permissions
      */
     public function __construct(
-        UserContract $users,
+        UserRepositoryContract $users,
         RoleRepositoryContract $roles,
         PermissionRepositoryContract $permissions
     )
@@ -207,11 +207,11 @@ class UserController extends Controller
 
     /**
      * @param  $user_id
-     * @param  FrontendUserContract $user
+     * @param  FrontendUserRepositoryContract $user
      * @param  ResendConfirmationEmailRequest $request
      * @return mixed
      */
-    public function resendConfirmationEmail($user_id, FrontendUserContract $user, ResendConfirmationEmailRequest $request)
+    public function resendConfirmationEmail($user_id, FrontendUserRepositoryContract $user, ResendConfirmationEmailRequest $request)
     {
         $user->sendConfirmationEmail($user_id);
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.confirmation_email'));

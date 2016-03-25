@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Repositories\Frontend\User;
+namespace App\Repositories\Frontend\Access\User;
 
 use App\Models\Access\User\User;
 use Illuminate\Support\Facades\Mail;
 use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Access\User\SocialLogin;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
+use App\Repositories\Backend\Access\Role\RoleRepositoryContract;
 
 /**
  * Class EloquentUserRepository
  * @package App\Repositories\Frontend\User
  */
-class EloquentUserRepository implements UserContract
+class EloquentUserRepository implements UserRepositoryContract
 {
 
     /**
