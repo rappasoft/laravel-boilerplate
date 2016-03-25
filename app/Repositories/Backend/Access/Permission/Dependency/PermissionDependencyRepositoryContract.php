@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Backend\Permission\Dependency;
+namespace App\Repositories\Backend\Access\Permission\Dependency;
 
 /**
  * Interface PermissionDependencyRepositoryContract

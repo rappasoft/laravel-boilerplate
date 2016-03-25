@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Backend\Access\Role;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
+use App\Repositories\Backend\Access\Role\RoleRepositoryContract;
 use App\Http\Requests\Backend\Access\Role\EditRoleRequest;
 use App\Http\Requests\Backend\Access\Role\StoreRoleRequest;
 use App\Http\Requests\Backend\Access\Role\CreateRoleRequest;
 use App\Http\Requests\Backend\Access\Role\DeleteRoleRequest;
 use App\Http\Requests\Backend\Access\Role\UpdateRoleRequest;
-use App\Repositories\Backend\Permission\PermissionRepositoryContract;
-use App\Repositories\Backend\Permission\Group\PermissionGroupRepositoryContract;
+use App\Repositories\Backend\Access\Permission\PermissionRepositoryContract;
+use App\Repositories\Backend\Access\Permission\Group\PermissionGroupRepositoryContract;
 
 /**
  * Class RoleController

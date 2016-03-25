@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Repositories\Backend\User;
+namespace App\Repositories\Backend\Access\User;
 
 use App\Models\Access\User\User;
 use App\Exceptions\GeneralException;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
 use App\Exceptions\Backend\Access\User\UserNeedsRolesException;
-use App\Repositories\Frontend\User\UserContract as FrontendUserContract;
+use App\Repositories\Backend\Access\Role\RoleRepositoryContract;
+use App\Repositories\Frontend\Access\User\UserRepositoryContract as FrontendUserRepositoryContract;
 
 /**
  * Class EloquentUserRepository
  * @package App\Repositories\User
  */
-class EloquentUserRepository implements UserContract
+class EloquentUserRepository implements UserRepositoryContract
 {
     /**
      * @var RoleRepositoryContract
@@ -20,17 +20,17 @@ class EloquentUserRepository implements UserContract
     protected $role;
 
     /**
-     * @var FrontendUserContract
+     * @var FrontendUserRepositoryContract
      */
     protected $user;
 
     /**
      * @param RoleRepositoryContract $role
-     * @param FrontendUserContract $user
+     * @param FrontendUserRepositoryContract $user
      */
     public function __construct(
         RoleRepositoryContract $role,
-        FrontendUserContract $user
+        FrontendUserRepositoryContract $user
     )
     {
         $this->role = $role;

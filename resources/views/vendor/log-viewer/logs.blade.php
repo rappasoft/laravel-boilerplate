@@ -224,12 +224,12 @@
                             location.reload();
                         }
                         else {
-                            alert('AJAX ERROR ! Check the console !')
+                            alert('AJAX ERROR ! Check the console !');
                             console.error(errorThrown);
                         }
                     },
                     error: function(xhr, textStatus, errorThrown) {
-                        alert('AJAX ERROR ! Check the console !')
+                        alert('AJAX ERROR ! Check the console !');
                         console.error(errorThrown);
                         submitBtn.button('reset');
                     }

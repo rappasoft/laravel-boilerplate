@@ -2,7 +2,6 @@
 
 namespace App\Services\Access\Traits;
 
-use Illuminate\Support\Facades\Auth;
 use App\Events\Frontend\Auth\UserRegistered;
 use App\Http\Requests\Frontend\Auth\RegisterRequest;
 

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Backend\Access\Permission;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Backend\Permission\Group\PermissionGroupRepositoryContract;
 use App\Http\Requests\Backend\Access\Permission\Group\SortPermissionGroupRequest;
 use App\Http\Requests\Backend\Access\Permission\Group\EditPermissionGroupRequest;
 use App\Http\Requests\Backend\Access\Permission\Group\StorePermissionGroupRequest;
 use App\Http\Requests\Backend\Access\Permission\Group\CreatePermissionGroupRequest;
 use App\Http\Requests\Backend\Access\Permission\Group\DeletePermissionGroupRequest;
 use App\Http\Requests\Backend\Access\Permission\Group\UpdatePermissionGroupRequest;
+use App\Repositories\Backend\Access\Permission\Group\PermissionGroupRepositoryContract;
 
 /**
  * Class PermissionGroupController

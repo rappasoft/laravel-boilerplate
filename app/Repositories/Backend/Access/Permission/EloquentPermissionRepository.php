@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Repositories\Backend\Permission;
+namespace App\Repositories\Backend\Access\Permission;
 
 use App\Exceptions\GeneralException;
 use App\Models\Access\Permission\Permission;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
-use App\Repositories\Backend\Permission\Dependency\PermissionDependencyRepositoryContract;
+use App\Repositories\Backend\Access\Role\RoleRepositoryContract;
+use App\Repositories\Backend\Access\Permission\Dependency\PermissionDependencyRepositoryContract;
 
 /**
  * Class EloquentPermissionRepository
