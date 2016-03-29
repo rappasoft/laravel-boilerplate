@@ -66,7 +66,7 @@ return [
                 'created_confirm' => 'Su cuenta ha sido creada. Le hemos enviado un e-mail con un enlace de verificación.',
                 'mismatch' => 'El código de verificación no coincide.',
                 'not_found' => 'El código de verificación especificado no existe.',
-                'resend' => 'Su cuenta no ha sido verificada todavía. Por favor, revide su e-mail, o <a href="' . route('account.confirm.resend', ':user_id') . '">pulse aqui</a> para re-enviar el correo de verificación.',
+                'resend' => 'Su cuenta no ha sido verificada todavía. Por favor, revide su e-mail, o <a href="' . route('admin.account.confirm.resend', ':user_id') . '">pulse aqui</a> para re-enviar el correo de verificación.',
                 'success' => 'Su cuenta ha sido verificada satisfactoriamente!',
                 'resent' => 'Un nuevo correo de verificación le ha sido enviado.',
             ],
