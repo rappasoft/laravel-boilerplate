@@ -28,7 +28,11 @@ return [
                  */
                 'exclude' => [
                     base_path('vendor'),
-                    storage_path(),
+                    base_path('node_modules'),
+                    storage_path('debugbar'),
+                    storage_path('framework'),
+                    storage_path('laravel-backup'),
+                    storage_path('logs'),
                 ],
             ],
 
