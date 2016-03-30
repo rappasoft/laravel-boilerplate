@@ -66,7 +66,7 @@ return [
                 'created_confirm' => 'Din konto blev oprettet. Vi har sendt dig en e-mail for at bekræfte din konto.',
                 'mismatch' => 'Din bekræftelseskode matcher ikke.',
                 'not_found' => 'At bekræftelseskode findes ikke.',
-                'resend' => 'Din konto er ikke bekræftet. Klik på linket bekræftelse e-mail eller <a href="' . route('account.confirm.resend', ':user_id') . '">tryk her</a> for at gensende bekræftelses e-mailen.',
+                'resend' => 'Din konto er ikke bekræftet. Klik på linket bekræftelse e-mail eller <a href="' . route('admin.account.confirm.resend', ':user_id') . '">tryk her</a> for at gensende bekræftelses e-mailen.',
                 'success' => 'Din konto er blevet succesfuldt bekræftet!',
                 'resent' => 'En ny bekræftelses e-mail er blevet sendt til adressen vi kender.',
             ],
