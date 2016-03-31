@@ -40,7 +40,18 @@ trait UserAttribute
      */
     public function getPictureAttribute()
     {
-        return gravatar()->get($this->email, ['size' => 50]);
+        return $this->getPicture();
+    }
+
+    /**
+     * @param int $size
+     *
+     * @return mixed
+     */
+    public function getPicture($size = -1)
+    {
+        if ($size<=0 ) $size = config('gravatar.default.size');
+        return gravatar()->get($this->email, ['size' => $size]);
     }
 
     /**
