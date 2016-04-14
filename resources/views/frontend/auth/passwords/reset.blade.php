@@ -8,6 +8,11 @@
 
                 <div class="panel-heading">{{ trans('labels.frontend.passwords.reset_password_box_title') }}</div>
                 <div class="panel-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
                     {!! Form::open(['url' => 'password/reset', 'class' => 'form-horizontal']) !!}
 
