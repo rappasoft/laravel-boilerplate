@@ -66,7 +66,7 @@ return [
                 'created_confirm' => 'Sua conta foi criada com sucesso. Enviamos um e-mail para você confirmar a sua conta.',
                 'mismatch' => 'Seu código de confirmação não corresponde.',
                 'not_found' => 'Esse código de confirmação não existe.',
-                'resend' => 'Sua conta não está confirmada. Por favor, clique no link de confirmação em seu e-mail, ou <a href="' . route('admin.account.confirm.resend', ':user_id') . '">clique aqui</a> para reenviar o e-mail de confirmação.',
+                'resend' => 'Sua conta não está confirmada. Por favor, clique no link de confirmação em seu e-mail, ou <a href="' . route('account.confirm.resend', ':user_id') . '">clique aqui</a> para reenviar o e-mail de confirmação.',
                 'success' => 'Sua conta foi confirmada com sucesso!',
                 'resent' => 'Um novo e-mail de confirmação foi enviado para você.',
             ],
