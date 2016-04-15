@@ -22,12 +22,12 @@ trait ConfirmUsers
     }
 
     /**
-     * @param $token
+     * @param $user_id
      * @return mixed
      */
-    public function resendConfirmationEmail($token)
+    public function resendConfirmationEmail($user_id)
     {
-        $this->user->resendConfirmationEmail($token);
+        $this->user->resendConfirmationEmail($user_id);
         return redirect()->route('auth.login')->withFlashSuccess(trans('exceptions.frontend.auth.confirmation.resent'));
     }
 }
