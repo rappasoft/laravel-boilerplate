@@ -16,17 +16,17 @@ return [
     'backend' => [
         'access' => [
             'permissions' => [
-                'edit_explanation' => 'Si ha realizaado cambios en la herarquia de esta pagina, deberá refrescarla para ver los cambios.',
+                'edit_explanation' => 'Si ha realizado cambios en la jerarquía de esta página, deberá refrescarla para ver los cambios.',
 
                 'groups' => [
-                    'hierarchy_saved' => 'Herarquia guardada satisfactoriamente.',
+                    'hierarchy_saved' => 'Jerarquia guardada satisfactoriamente.',
                 ],
 
-                'sort_explanation' => 'Esta sección permite organizar los Permisos en Grupos. Independientemente de l Grupo, cada permiso debe ser asignado a los Roles de forma individual.',
+                'sort_explanation' => 'Esta sección permite organizar los Permisos en Grupos. Independientemente del Grupo, cada permiso debe ser asignado a los Roles de forma individual.',
             ],
 
             'users' => [
-                'delete_user_confirm' => 'Estas seguro de querer eliminar este Usuario de forma permanente? Esto puede producir un error grave en aquéllas partes de la aplicación que hagan referencia al mismo. Proceda con cautela. Esta operación no puede ser revertida.',
+                'delete_user_confirm' => 'Estás seguro de querer eliminar este Usuario de forma permanente? Esto puede producir un error grave en aquéllas partes de la aplicación que hagan referencia al mismo. Proceda con cautela. Esta operación no puede ser revertida.',
                 'if_confirmed_off' => '(Si la confirmación está desactivada)',
                 'restore_user_confirm' => 'Restaurar este Usuario a su estado original?',
             ],
@@ -40,7 +40,7 @@ return [
         'general' => [
             'all_rights_reserved' => 'Todos los derechos reservados.',
             'are_you_sure' => 'Está seguro?',
-            'boilerplate_link' => 'Laravel 5 Boilerplate',
+            'boilerplate_link' => 'SGC v1.0',
             'continue' => 'Continuar',
             'member_since' => 'Miembro desde',
             'search_placeholder' => 'Buscar...',
@@ -52,8 +52,8 @@ return [
             ],
 
             'status' => [
-                'online' => 'Online',
-                'offline' => 'Offline',
+                'online' => 'Conectado',
+                'offline' => 'Desconectado',
             ],
 
             'you_have' => [
@@ -73,7 +73,7 @@ return [
 
     'frontend' => [
         'email' => [
-            'confirm_account' => 'Pulse aqui para verificar su account:',
+            'confirm_account' => 'Pulse aquí para verificar su cuenta:',
         ],
 
         'test' => 'Prueba',
@@ -86,20 +86,20 @@ return [
 
             'js_injected_from_controller' => 'Javascript inyectado desde Controller',
 
-            'using_blade_extensions' => 'Usando las extenciónes de Blade',
+            'using_blade_extensions' => 'Usando las extensiones de Blade',
 
             'using_access_helper' => [
-                'array_permissions' => 'Uso de Access Helper con lista de nombres de Permisos o ID\'s donde usuario tiene que tenerlos todos.',
-                'array_permissions_not' => 'Uso de Access Helper con lista de nombres de Permisos o ID\'s donde usuario no tiene por que tenerlos todos.',
-                'array_roles' => 'Uso de Access Helper con lista de nombres de Roles o ID\'s donde usuario tiene que tenerlos todos.',
-                'array_roles_not' => 'Uso de Access Helper con lista de nombres de Roles o ID\'s donde usuario no tiene que tenerlos todos.',
+                'array_permissions' => 'Uso de Access Helper con lista de nombres de Permisos o ID\'s donde el usuario tiene que tenerlos todos.',
+                'array_permissions_not' => 'Uso de Access Helper con lista de nombres de Permisos o ID\'s donde el usuario no tiene por que tenerlos todos.',
+                'array_roles' => 'Uso de Access Helper con lista de nombres de Roles o ID\'s donde el usuario tiene que tenerlos todos.',
+                'array_roles_not' => 'Uso de Access Helper con lista de nombres de Roles o ID\'s donde el usuario no tiene que tenerlos todos.',
                 'permission_id' => 'Uso de Access Helper mediante ID de Permiso',
                 'permission_name' => 'Uso de Access Helper mediante nombre de Permiso',
                 'role_id' => 'Uso de Access Helper mediante ID de Rol',
                 'role_name' => 'Uso de Access Helper mediante nombre de Rol',
             ],
 
-            'view_console_it_works' => 'Mire la consola del navegador, deberia ver \'it works!\' que tiene su origen en FrontendController@index',
+            'view_console_it_works' => 'Mire la consola del navegador, deberia ver \'Funciona!!\' que tiene su origen en FrontendController@index',
             'you_can_see_because' => 'Puede ver esto, por que dispone del Rol \':role\'!',
             'you_can_see_because_permission' => 'Puede ver esto, por que dispone del Permiso \':permission\'!',
         ],
