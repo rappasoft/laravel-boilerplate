@@ -40,7 +40,7 @@ return [
         'general' => [
             'all_rights_reserved' => 'Todos los derechos reservados.',
             'are_you_sure' => 'Está seguro?',
-            'boilerplate_link' => 'SGC v1.0',
+            'boilerplate_link' => 'Laravel 5 Boilerplate',
             'continue' => 'Continuar',
             'member_since' => 'Miembro desde',
             'search_placeholder' => 'Buscar...',
