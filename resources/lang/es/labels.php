@@ -126,9 +126,9 @@ return [
     'frontend' => [
 
         'auth' => [
-            'login_box_title' => 'Login',
-            'login_button' => 'Login',
-            'login_with' => 'Login mediante :social_media',
+            'login_box_title' => 'Iniciar Sesión',
+            'login_button' => 'Iniciar Sesión',
+            'login_with' => 'Iniciar Sesión mediante :social_media',
             'register_box_title' => 'Registrarse',
             'register_button' => 'Registrarse',
             'remember_me' => 'Recordarme',
@@ -143,25 +143,25 @@ return [
 
         'macros' => [
             'country' => [
-                'alpha' => 'Country Alpha Codes',
-                'alpha2' => 'Country Alpha 2 Codes',
-                'alpha3' => 'Country Alpha 3 Codes',
-                'numeric' => 'Country Numeric Codes',
+                'alpha' => 'Código Alfa de País',
+                'alpha2' => 'Código Alfa 2 de País',
+                'alpha3' => 'Código Alfa 3 de País',
+                'numeric' => 'Código Numérico de País',
             ],
 
-            'macro_examples' => 'Macro Examples',
+            'macro_examples' => 'Ejemplos de Macro',
 
             'state' => [
-                'mexico' => 'Mexico State List',
+                'mexico' => 'Listado de Estados de México',
                 'us' => [
-                    'us' => 'US States',
-                    'outlying' => 'US Outlying Territories',
-                    'armed' => 'US Armed Forces',
+                    'us' => 'Estados Unidos',
+                    'outlying' => 'Territorios Periféricos de Estados Unidos',
+                    'armed' => 'Fuerzas Armadas de Estados Unidos',
                 ],
             ],
 
             'territories' => [
-                'canada' => 'Canada Province & Territories List',
+                'canada' => 'Listado de Provincias y Territorios de Canada',
             ],
 
             'timezone' => 'Zonas horarias',
