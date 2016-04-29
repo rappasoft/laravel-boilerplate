@@ -100,6 +100,7 @@
             @permission('permanently-delete-users')
                 $("a[name='delete_user_perm']").click(function(e) {
                     e.preventDefault();
+                    var linkURL = $(this).attr("href");
 
                     swal({
                         title: "{!! trans('strings.backend.general.are_you_sure') !!}",
@@ -112,7 +113,7 @@
                         closeOnConfirm: false
                     }, function(isConfirmed){
                         if (isConfirmed){
-                            window.location = $("a[name='delete_user_perm']").attr('href');
+                            window.location.href = linkURL;
                         }
                     });
                 });
@@ -121,6 +122,7 @@
             @permission('undelete-users')
                 $("a[name='restore_user']").click(function(e) {
                     e.preventDefault();
+                    var linkURL = $(this).attr("href");
 
                     swal({
                         title: "{!! trans('strings.backend.general.are_you_sure') !!}",
@@ -133,7 +135,7 @@
                         closeOnConfirm: false
                     }, function(isConfirmed){
                         if (isConfirmed){
-                            window.location = $("a[name='restore_user']").attr('href');
+                            window.location.href = linkURL;
                         }
                     });
                 });
