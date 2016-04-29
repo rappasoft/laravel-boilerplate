@@ -23,7 +23,7 @@ return [
 
     'frontend' => [
         'dashboard' => 'Principal',
-        'home' => 'Home',
+        'home' => 'Portada',
         'login' => 'Iniciar Sessión',
         'macros' => 'Macros',
         'register' => 'Registrarse',
