@@ -57,7 +57,7 @@ class EloquentUserRepository implements UserRepositoryContract
      * @throws GeneralException
      */
     public function findByToken($token) {
-        $user = User::where('confirmation_code', $token)->first();
+        $user = User::whereRaw("BINARY `confirmation_code`= ?", array($token))->first();
 
         if (! $user instanceof User)
             throw new GeneralException(trans('exceptions.frontend.auth.confirmation.not_found'));
