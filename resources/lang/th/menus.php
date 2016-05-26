@@ -32,21 +32,21 @@ return [
             ],
 
             'roles' => [
-                'all' => 'All Roles',
-                'create' => 'Create Role',
-                'edit' => 'Edit Role',
-                'management' => 'Role Management',
+                'all' => 'Role ทั้งหมด',
+                'create' => 'สร้าง Role',
+                'edit' => 'แก้ไข Role',
+                'management' => 'จัดการ Role',
                 'main' => 'Roles',
             ],
 
             'users' => [
-                'all' => 'All Users',
-                'change-password' => 'Change Password',
-                'create' => 'Create User',
-                'deactivated' => 'Deactivated Users',
-                'deleted' => 'Deleted Users',
-                'edit' => 'Edit User',
-                'main' => 'Users',
+                'all' => 'ผู้ใช้งานทั้งหมด',
+                'change-password' => 'เปลี่ยนรหัสผ่าน',
+                'create' => 'สร้างผู้ใช้งาน',
+                'deactivated' => 'ผู้ใช้งานที่ถูก deactivated',
+                'deleted' => 'ผู้ใช้งานที่ถูกลบ',
+                'edit' => 'แก้ไขผู้ใช้งาน',
+                'main' => 'ผู้ใช้งาน',
             ],
         ],
 
@@ -58,12 +58,12 @@ return [
 
         'sidebar' => [
             'dashboard' => 'Dashboard',
-            'general' => 'General',
+            'general' => 'ทั่วไป',
         ],
     ],
 
     'language-picker' => [
-        'language' => 'Language',
+        'language' => 'ภาษา',
         /**
          * Add the new language to this array.
          * The key should have the same language code as the folder name.
@@ -79,7 +79,7 @@ return [
             'it' => 'Italian',
             'pt-BR' => 'Brazilian Portuguese',
             'sv' => 'Swedish',
-			'th' => 'Thai',
+			'th' => 'ไทย',
         ],
     ],
 ];
