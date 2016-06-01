@@ -34,6 +34,7 @@ return [
     'different'            => 'Le champ :attribute et le champ :other doivent être différents.',
     'digits'               => 'Le champ :attribute doit contenir :digits chiffres.',
     'digits_between'       => 'Le champ :attribute doit avoir entre :min et :max chiffres.',
+    'dimensions'           => 'The :attribute has invalid image dimensions.',
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => 'Le champ :attribute doit être une adresse e-mail valide.',
     'exists'               => 'Le champ :attribute n\'existe pas.',

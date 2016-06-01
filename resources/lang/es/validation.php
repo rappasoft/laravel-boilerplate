@@ -34,6 +34,7 @@ return [
     'different'            => 'El campo :attribute y :other deben ser diferentes.',
     'digits'               => 'El número :attribute debe tener :digits dígitos.',
     'digits_between'       => 'El número :attribute debe tener entre :min y :max dígitos.',
+    'dimensions'           => 'The :attribute has invalid image dimensions.',
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => 'El campo :attribute debe contener un e-mail válido.',
     'exists'               => 'El campo :attribute seleccionado es inválido.',

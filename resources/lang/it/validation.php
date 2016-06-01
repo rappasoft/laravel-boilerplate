@@ -34,6 +34,7 @@ return [
     'different'            => ':attribute e :other devono essere diversi.',
     'digits'               => ':attribute deve avere :digits cifre.',
     'digits_between'       => ':attribute deve avere tra :min e :max cifre.',
+    'dimensions'           => 'The :attribute has invalid image dimensions.',
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => ':attribute deve essere un indirizzo email valido.',
     'exists'               => 'La selezione per :attribute non è valida.',
