@@ -141,7 +141,7 @@
                                     </a>
                                     <a href="{{ route('log-viewer::logs.download', [$date]) }}" class="btn btn-xs btn-success">
                                         <i class="fa fa-download"></i>
-                                    </a>
+                                    </a> 
                                     <a href="#delete-log-modal" class="btn btn-xs btn-danger" data-log-date="{{ $date }}">
                                         <i class="fa fa-trash-o"></i>
                                     </a>

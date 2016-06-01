@@ -128,7 +128,7 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>Log entries : </td>
+                                    <td>Log entries :</td>
                                     <td>
                                     <span class="label label-primary">
                                         {{ $entries->total() }}
@@ -162,6 +162,7 @@
                                 <th style="width: 120px;">Level</th>
                                 <th style="width: 65px;">Time</th>
                                 <th>Header</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -185,7 +186,23 @@
                                     <td>
                                         <p>{{ $entry->header }}</p>
                                     </td>
+                                    <td class="text-right">
+                                        @if ($entry->hasStack())
+                                            <a class="btn btn-xs btn-default" role="button" data-toggle="collapse" href="#log-stack-{{ $key }}" aria-expanded="false" aria-controls="log-stack-{{ $key }}">
+                                                <i class="fa fa-toggle-on"></i> Stack
+                                            </a>
+                                        @endif
+                                    </td>
                                 </tr>
+                                @if ($entry->hasStack())
+                                    <tr>
+                                        <td colspan="5" class="stack">
+                                            <div class="stack-content collapse" id="log-stack-{{ $key }}">
+                                                {!! preg_replace("/\n/", '<br>', $entry->stack) !!}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endif
                             @endforeach
                             </tbody>
                             <tfoot>
