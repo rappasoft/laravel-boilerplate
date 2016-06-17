@@ -121,9 +121,14 @@ class EloquentUserRepository implements UserRepositoryContract
     public function findOrCreateSocial($data, $provider)
     {
         /**
+         * User email may not provided.
+         */
+        $user_email = $data->email ? : "{$data->id}@{$provider}.com";
+
+        /**
          * Check to see if there is a user with this email first
          */
-        $user = $this->findByEmail($data->email);
+        $user = $this->findByEmail($user_email);
 
         /**
          * If the user does not exist create them
@@ -133,7 +138,7 @@ class EloquentUserRepository implements UserRepositoryContract
         if (! $user) {
             $user = $this->create([
                 'name'  => $data->name,
-                'email' => $data->email ? : "{$data->id}@{$provider}.com",
+                'email' => $user_email,
             ], true);
         }
 
