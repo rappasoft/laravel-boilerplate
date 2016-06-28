@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ArticleTable extends Migration
+class CreateArticleCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,13 @@ class ArticleTable extends Migration
      */
     public function up()
     {
-        //创建articles表
-        Schema::create('articles', function (Blueprint $table) {
+        //create article_categories table
+        Schema::create('article_categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('uid');
             $table->string('title');
-            $table->string('excerpt');
-            $table->text('content');
+            $table->string('slug');
             $table->tinyInteger('status');
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at');
+            $table->softDeletes();
         });
     }
 
@@ -32,6 +29,6 @@ class ArticleTable extends Migration
      */
     public function down()
     {
-        Schema::drop('articles');
+        Schema::drop('article_categories');
     }
 }

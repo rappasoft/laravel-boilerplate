@@ -27,7 +27,11 @@ return [
     ],
 
     'general' => [
+        'view' => 'View',
+        'edit' => 'Edit',
+        'delete' => 'Delete',
         'cancel' => 'Cancel',
+        'restore' => 'Restore',
 
         'crud' => [
             'create' => 'Create',

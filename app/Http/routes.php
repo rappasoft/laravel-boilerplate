@@ -33,6 +33,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'ad
      * Note: Administrator has all permissions so you do not have to specify the administrator role everywhere.
      */
     require (__DIR__ . '/Routes/Backend/Dashboard.php');
+    require (__DIR__ . '/Routes/Backend/Content.php');
     require (__DIR__ . '/Routes/Backend/Access.php');
     require (__DIR__ . '/Routes/Backend/LogViewer.php');
 });

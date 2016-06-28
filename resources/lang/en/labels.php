@@ -121,6 +121,30 @@ return [
                 ],
             ],
         ],
+        
+        'content' => [
+            'article' => [
+                'management' => 'Articles Management',
+                'all' => 'All Articles',
+                'articles' => 'Articles',
+                'create' => 'Create',
+                'index' => [
+                    'table' =>[
+                        'id' => 'ID',
+                        'user_id' => 'User ID',
+                        'title' => 'Title',
+                        'slug' => 'Slug',
+                        'excerpt' => 'Excerpt',
+                        'content' => 'Content',
+                        'status' => 'Status',
+                        'created_at' => 'Created At',
+                        'updated_at' => 'Updated At',
+                        'deleted_at' => 'Deleted At',
+                        'total' => 'article total|articles total'
+                    ]
+                ]
+            ]
+        ]
     ],
 
     'frontend' => [

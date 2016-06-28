@@ -142,6 +142,18 @@ return [
                     'send_confirmation_email' => 'Send Confirmation E-mail',
                 ],
             ],
+            
+            'content' => [
+                'article' => [
+                    'title' => 'Title',
+                    'slug' => 'Slug',
+                    'excerpt' => 'Excerpt',
+                    'content' => 'Content',
+                    'status' => 'Status',
+                    'created_at' => 'Created At',
+                    'updated_at' => 'Updated At',
+                ]
+            ]
         ],
 
         'frontend' => [

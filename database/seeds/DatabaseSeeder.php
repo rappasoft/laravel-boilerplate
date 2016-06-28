@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
 
         //指定要执行的seeder
         $this->call(AccessTableSeeder::class);
-        $this->call(ArticleTableSeeder::class);
 
         if (env('DB_CONNECTION') == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');

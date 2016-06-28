@@ -34,6 +34,18 @@
             <li class="{{ Active::pattern('admin/dashboard') }}">
                 <a href="{!! route('admin.dashboard') !!}"><span>{{ trans('menus.backend.sidebar.dashboard') }}</span></a>
             </li>
+            
+            <li class="{{ Active::pattern('admin/content*') }} treeview">
+                <a href="#">
+                    <span>{{ trans('menus.backend.article.main') }}</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu {{ Active::pattern('admin/content/article*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/content/article*', 'display: block;') }}">
+                    <li class="{{ Active::pattern('admin/content/article') }}">
+                        <a href="{!! url('admin/content/article') !!}">{{ trans('menus.backend.article.article') }}</a>
+                    </li>
+                </ul>
+            </li>
 
             @permission('view-access-management')
                 <li class="{{ Active::pattern('admin/access/*') }}">

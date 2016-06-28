@@ -60,6 +60,11 @@ return [
             'dashboard' => 'Dashboard',
             'general' => 'General',
         ],
+        
+        'article' => [
+            'main' => 'Articles',
+            'article' => 'Articles',
+        ]
     ],
 
     'language-picker' => [
