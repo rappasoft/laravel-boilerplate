@@ -15,21 +15,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'create_error' => 'Si è verificato un problema durante la creazione del permesso. Si prega di riprovare più tardi.',
-                'delete_error' => "Si è verificato un problema durante l'eliminazione del permesso. Si prega di riprovare più tardi.",
-
-                'groups' => [
-                    'associated_permissions' => 'Non è possibile cancellare questo gruppo perché è associato a dei permessi.',
-                    'has_children' => 'Non è possibile cancellare questo gruppo perché ha dei sottogruppi.',
-                    'name_taken' => "Esiste già un gruppo con questo nome.",
-                ],
-
-                'not_found' => 'Questo permesso non esiste.',
-                'system_delete_error' => 'Non è possibile eliminare un permesso di sistema.',
-                'update_error' => "Si è verificato un problema durante l'aggiornamento del permesso. Si prega di riprovare più tardi.",
-            ],
-
             'roles' => [
                 'already_exists' => 'Questo ruolo esiste già. Si prega di scegliere un nome diverso.',
                 'cant_delete_admin' => 'Non è possibile eliminare il ruolo di Amministratore.',

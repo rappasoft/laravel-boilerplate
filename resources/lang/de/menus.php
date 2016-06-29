@@ -17,20 +17,6 @@ return [
         'access' => [
             'title' => 'Zugriffsverwaltung',
 
-            'permissions' => [
-                'all' => 'Alle Berechtigungen',
-                'create' => 'Berechtigung erstellen',
-                'edit' => 'Berechtigung bearbeiten',
-                'groups' => [
-                    'all' => 'Alle Gruppen',
-                    'create' => 'Gruppe erstellen',
-                    'edit' => 'Gruppe bearbeiten',
-                    'main' => 'Gruppen',
-                ],
-                'main' => 'Berechtigungen',
-                'management' => 'Berechtigungen Verwalten',
-            ],
-
             'roles' => [
                 'all' => 'Alle Rollen',
                 'create' => 'Rolle erstellen',

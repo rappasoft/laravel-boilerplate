@@ -15,21 +15,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'create_error' => 'Hubo un problema al crear el Permiso. Intentelo de nuevo.',
-                'delete_error' => 'Hubo un problema al eliminar el Permiso. Intentelo de nuevo.',
-
-                'groups' => [
-                    'associated_permissions' => 'No puede eliminar un Grupo que tenga Permisos asociados.',
-                    'has_children' => 'No puede eliminar el Grupo que tenga otros Grupos asociados.',
-                    'name_taken' => 'Ya existe un Grupo con el nombre especificado.',
-                ],
-
-                'not_found' => 'El permiso requerido no existe.',
-                'system_delete_error' => 'No se pueden eliminar Permisos que afectan al sistema.',
-                'update_error' => 'Hubo un problema al modificar el Permiso. Intentelo de nuevo.',
-            ],
-
             'roles' => [
                 'already_exists' => 'Este Rol ya existe. Por favor, especifique un nombre de Rol diferente.',
                 'cant_delete_admin' => 'No puede eliminar el Rol de Administrador.',

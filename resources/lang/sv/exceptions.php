@@ -15,21 +15,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'create_error' => 'Det uppstod ett fel då tillståndet skulle skapas. Försök igen.',
-                'delete_error' => 'Det uppstod ett fel då tillståndet skulle raderas. Försök igen.',
-
-                'groups' => [
-                    'associated_permissions' => 'Du kan inte radera denna tillståndsgrupp eftersom den har överliggande tillstånd.',
-                    'has_children' => 'Du kan inte radera denna tillståndsgrupp eftersom den har underliggande tillstånd.',
-                    'name_taken' => 'Det finns redan en tillståndsgrupp skapad med samma namn. Välj ett annat namn.',
-                ],
-
-                'not_found' => 'Det tillståndet du försöker använda finns inte.',
-                'system_delete_error' => 'Du kan inte radera ett tillstånd med system-status.',
-                'update_error' => 'Det uppstod ett fel då tillståndet skulle uppdateras. Försök igen.',
-            ],
-
             'roles' => [
                 'already_exists' => 'Det finns redan en roll med detta namn. Välj ett annat namn.',
                 'cant_delete_admin' => 'Du kan inte radera en administratörsroll.',
@@ -77,8 +62,6 @@ return [
             'password' => [
                 'change_mismatch' => 'Det där var inte ditt gamla lösenord.',
             ],
-
-
         ],
     ],
 ];

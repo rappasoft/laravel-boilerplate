@@ -15,16 +15,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'edit_explanation' => 'Wenn Sie im Hierarchie-Abschnitt änderungen ohne Aktualisierung der Seite durchführen, muss diese Seite aktualisiert werden damit die Änderungen angezeigt werden.',
-
-                'groups' => [
-                    'hierarchy_saved' => 'Hierarchie gespeichert.',
-                ],
-
-                'sort_explanation' => 'Dieser Abschnitt ermöglicht es Ihnen, die Berechtigungen in Gruppen zu organisieren. Unabhängig von der Gruppe, sind die Berechtigungen immer noch individuell jeder Rolle zugewiesen.',
-            ],
-
             'users' => [
                 'delete_user_confirm' => 'Bist du dir sicher, dass du diesen Benutzer permanent löschen möchtest? Überall wo die Benutzer-ID referenziert ist, wird es höchstwahrscheinlich zu Fehlern kommen. Fortfahren auf eigenes Risiko. Dies kann nicht rückgängig gemacht werden.',
                 'if_confirmed_off' => '(Wenn nicht bestätigt)',
