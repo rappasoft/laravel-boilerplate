@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Content\Article\Traits\Attribute\ArticleAttribute;
 use App\Models\Content\Article\Traits\Relationship\ArticleRelationship;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class Article extends Model
 {

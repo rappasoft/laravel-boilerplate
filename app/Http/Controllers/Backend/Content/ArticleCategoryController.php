@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Content\ArticleCategory\ArticleCategory;
 use App\Http\Requests\Backend\Content\ArticleCategory\StoreArticleCategoryRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 /**
  * Class ArticleController
@@ -72,7 +73,9 @@ class ArticleCategoryController extends Controller
     public function update(Request $request, int $id)
     {
         $model = ArticleCategory::withTrashed()->find($id);
-        $model->fill($request->all())->save();
+        if($model->fill($request->all())->save()){
+            Session::flash('flash_success', trans('alerts.backend.content.article-category.updated'));
+        }
         
         return redirect('admin/content/article-category');
     }
@@ -84,7 +87,9 @@ class ArticleCategoryController extends Controller
      */
     public function store(StoreArticleCategoryRequest $request)
     {
-        ArticleCategory::create($request->all());
+        if(ArticleCategory::create($request->all())){
+            Session::flash('flash_success', trans('alerts.backend.content.article-category.created'));
+        }
         
         return redirect('admin/content/article-category');
     }
@@ -96,7 +101,9 @@ class ArticleCategoryController extends Controller
      */
     public function destroy(int $id)
     {
-        ArticleCategory::destroy($id);
+        if(ArticleCategory::destroy($id)){
+            Session::flash('flash_success', trans('alerts.backend.content.article-category.deleted'));
+        }
         
         return redirect()->back();
     }
@@ -108,7 +115,9 @@ class ArticleCategoryController extends Controller
      */
     public function restore(int $id)
     {
-        ArticleCategory::withTrashed()->find($id)->restore();
+        if(ArticleCategory::withTrashed()->find($id)->restore()){
+            Session::flash('flash_success', trans('alerts.backend.content.article-category.restored'));
+        }
         
         return redirect()->back();
     }

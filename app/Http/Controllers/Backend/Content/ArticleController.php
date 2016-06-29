@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Content\Article\Article;
 use App\Http\Requests\Backend\Content\Article\StoreArticleRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 /**
  * Class ArticleController
@@ -72,7 +73,9 @@ class ArticleController extends Controller
     public function update(Request $request, int $id)
     {
         $model = Article::withTrashed()->find($id);
-        $model->fill($request->all())->save();
+        if($model->fill($request->all())->save()){
+            Session::flash('flash_success', trans('alerts.backend.content.article.updated'));
+        }
         
         return redirect('admin/content/article');
     }
@@ -84,7 +87,9 @@ class ArticleController extends Controller
      */
     public function store(StoreArticleRequest $request)
     {
-        Article::create($request->all());
+        if(Article::create($request->all())){
+            Session::flash('flash_success', trans('alerts.backend.content.article.created'));
+        }
         
         return redirect('admin/content/article');
     }
@@ -96,7 +101,9 @@ class ArticleController extends Controller
      */
     public function destroy(int $id)
     {
-        Article::destroy($id);
+        if(Article::destroy($id)){
+            Session::flash('flash_success', trans('alerts.backend.content.article.deleted'));
+        }
         
         return redirect()->back();
     }
@@ -108,7 +115,9 @@ class ArticleController extends Controller
      */
     public function restore(int $id)
     {
-        Article::withTrashed()->find($id)->restore();
+        if(Article::withTrashed()->find($id)->restore()){
+            Session::flash('flash_success', trans('alerts.backend.content.article.restored'));
+        }
         
         return redirect()->back();
     }
