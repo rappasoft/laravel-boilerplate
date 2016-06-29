@@ -10,6 +10,15 @@ trait UserAttribute
 {
 
     /**
+    * @return bool
+    */
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+        return true;
+    }
+
+    /**
      * @return mixed
      */
     public function canChangeEmail()

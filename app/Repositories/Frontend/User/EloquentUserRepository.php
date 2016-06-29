@@ -85,7 +85,7 @@ class EloquentUserRepository implements UserContract
             $user = User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
-                'password' => bcrypt($data['password']),
+                'password' => $data['password'],
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'confirmed' => config('access.users.confirm_email') ? 0 : 1,
                 'status' => 1,
@@ -238,7 +238,7 @@ class EloquentUserRepository implements UserContract
         $user = $this->find(access()->id());
 
         if (Hash::check($input['old_password'], $user->password)) {
-            $user->password = bcrypt($input['password']);
+            $user->password = $input['password'];
             return $user->save();
         }
 
