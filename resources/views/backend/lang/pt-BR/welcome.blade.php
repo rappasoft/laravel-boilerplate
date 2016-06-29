@@ -2,4 +2,5 @@
 <p>Todas as funcionalidades são meramente demonstrativas com exceção do menu <strong>Gerenciamento de Usuários</strong> à esquerda. Este <i>boilerplate</i> vem com uma biblioteca totalmente funcional de controle de acesso para gerenciar usuários/papéis/permissões.</p>
 <p>Tenha em mente que este é um trabalho em andamento e podem existir <i>bugs</i> ou outros problemas pelos quais não passei. Farei o meu melhor para corrigí-los à medida em que os recebo.</p>
 <p>Espero que você aproveite todo o trabalho que coloquei nisto. Por favor, visite a página do <a href="https://github.com/rappasoft/laravel-5-boilerplate" target="_blank">GitHub</a> para maiores informações e reporte quaisquer <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">problemas aqui</a>.</p>
+<p><strong>This project is very demanding to keep up with given the rate at which the master Laravel branch changes, so any help is appreciated.</strong></p>
 <p>- Anthony Rappa</p>

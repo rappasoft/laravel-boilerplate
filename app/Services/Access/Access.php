@@ -34,6 +34,15 @@ class Access
     }
 
     /**
+     * Return if the current session user is a guest or not
+     * @return mixed
+     */
+    public function guest()
+    {
+        return auth()->guest();
+    }
+
+    /**
      * Get the currently authenticated user's id
      * @return mixed
      */

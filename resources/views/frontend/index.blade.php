@@ -7,7 +7,7 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-home"></i> {{ trans('navs.frontend.home') }}
+                    <i class="fa fa-home"></i> {{ trans('navs.general.home') }}
                 </div>
 
                 <div class="panel-body">
@@ -18,19 +18,19 @@
         </div><!-- col-md-10 -->
 
         @role('Administrator')
-        {{-- You can also send through the Role ID --}}
+            {{-- You can also send through the Role ID --}}
 
-        <div class="col-md-10 col-md-offset-1">
+            <div class="col-md-10 col-md-offset-1">
 
-            <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_blade_extensions') }}</div>
+                <div class="panel panel-default">
+                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_blade_extensions') }}</div>
 
-                <div class="panel-body">
-                    {{ trans('strings.frontend.test') . ' 1: ' . trans('strings.frontend.tests.you_can_see_because', ['role' => trans('roles.administrator')]) }}
-                </div>
-            </div><!-- panel -->
+                    <div class="panel-body">
+                        {{ trans('strings.frontend.test') . ' 1: ' . trans('strings.frontend.tests.you_can_see_because', ['role' => trans('roles.administrator')]) }}
+                    </div>
+                </div><!-- panel -->
 
-        </div><!-- col-md-10 -->
+            </div><!-- col-md-10 -->
         @endauth
 
         @if (access()->hasRole('Administrator'))

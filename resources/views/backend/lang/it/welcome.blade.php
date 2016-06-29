@@ -16,6 +16,7 @@
     Per cortesia vai su <a href="https://github.com/rappasoft/laravel-5-boilerplate" target="_blank">GitHub</a>
     per ulteriori informazioni e per segnalare qualsiasi <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">problema</a>.
 </p>
+<p><strong>This project is very demanding to keep up with given the rate at which the master Laravel branch changes, so any help is appreciated.</strong></p>
 <p>
-    Anthony Rappa
+    - Anthony Rappa
 </p>
