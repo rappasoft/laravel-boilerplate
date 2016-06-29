@@ -40,7 +40,6 @@ class PermissionTableSeeder extends Seeder
         $viewBackend->name         = 'view-backend';
         $viewBackend->display_name = 'View Backend';
         $viewBackend->system       = true;
-        $viewBackend->group_id     = 1;
         $viewBackend->sort         = 1;
         $viewBackend->created_at   = Carbon::now();
         $viewBackend->updated_at   = Carbon::now();
@@ -54,8 +53,7 @@ class PermissionTableSeeder extends Seeder
         $manageUsers->name         = 'manage-users';
         $manageUsers->display_name = 'Manage Users';
         $manageUsers->system       = true;
-        $manageUsers->group_id     = 2;
-        $manageUsers->sort         = 5;
+        $manageUsers->sort         = 2;
         $manageUsers->created_at   = Carbon::now();
         $manageUsers->updated_at   = Carbon::now();
         $manageUsers->save();
@@ -65,8 +63,7 @@ class PermissionTableSeeder extends Seeder
         $manageRoles->name         = 'manage-roles';
         $manageRoles->display_name = 'Manage Roles';
         $manageRoles->system       = true;
-        $manageRoles->group_id     = 2;
-        $manageRoles->sort         = 5;
+        $manageRoles->sort         = 3;
         $manageRoles->created_at   = Carbon::now();
         $manageRoles->updated_at   = Carbon::now();
         $manageRoles->save();

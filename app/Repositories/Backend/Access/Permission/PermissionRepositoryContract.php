@@ -15,7 +15,7 @@ interface PermissionRepositoryContract
      * @param  string      $sort
      * @return mixed
      */
-    public function getPermissionsPaginated($per_page, $order_by = 'display_name', $sort = 'asc');
+    public function getPermissionsPaginated($per_page, $order_by = 'sort', $sort = 'asc');
 
     /**
      * @param  string  $order_by
@@ -23,5 +23,5 @@ interface PermissionRepositoryContract
      * @param  bool    $withRoles
      * @return mixed
      */
-    public function getAllPermissions($order_by = 'display_name', $sort = 'asc', $withRoles = true);
+    public function getAllPermissions($order_by = 'sort', $sort = 'asc', $withRoles = true);
 }

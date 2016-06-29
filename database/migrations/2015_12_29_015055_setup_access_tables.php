@@ -51,7 +51,6 @@ class SetupAccessTables extends Migration
 
         Schema::create(config('access.permissions_table'), function ($table) {
             $table->increments('id')->unsigned();
-            $table->integer('group_id')->nullable()->unsigned();
             $table->string('name');
             $table->string('display_name');
             $table->boolean('system')->default(false);

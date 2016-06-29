@@ -26,7 +26,7 @@ class RoleTableSeeder extends Seeder
             DB::statement('TRUNCATE TABLE ' . config('access.roles_table') . ' CASCADE');
         }
 
-        //Create admin role, id of 1
+        //id = 1
         $role_model        = config('access.role');
         $admin             = new $role_model;
         $admin->name       = 'Administrator';
@@ -37,10 +37,20 @@ class RoleTableSeeder extends Seeder
         $admin->save();
 
         //id = 2
+        $role_model        = config('access.role');
+        $admin             = new $role_model;
+        $admin->name       = 'Executive';
+        $admin->all        = false;
+        $admin->sort       = 2;
+        $admin->created_at = Carbon::now();
+        $admin->updated_at = Carbon::now();
+        $admin->save();
+
+        //id = 3
         $role_model       = config('access.role');
         $user             = new $role_model;
         $user->name       = 'User';
-        $user->sort       = 2;
+        $user->sort       = 3;
         $user->created_at = Carbon::now();
         $user->updated_at = Carbon::now();
         $user->save();

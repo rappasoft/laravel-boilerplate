@@ -27,7 +27,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract
      * @param  string      $sort
      * @return mixed
      */
-    public function getPermissionsPaginated($per_page, $order_by = 'display_name', $sort = 'asc')
+    public function getPermissionsPaginated($per_page, $order_by = 'sort', $sort = 'asc')
     {
         return Permission::with('roles')->orderBy($order_by, $sort)->paginate($per_page);
     }
@@ -38,7 +38,7 @@ class EloquentPermissionRepository implements PermissionRepositoryContract
      * @param  bool    $withRoles
      * @return mixed
      */
-    public function getAllPermissions($order_by = 'display_name', $sort = 'asc', $withRoles = true)
+    public function getAllPermissions($order_by = 'sort', $sort = 'asc', $withRoles = true)
     {
         if ($withRoles) {
             return Permission::with('roles')->orderBy($order_by, $sort)->get();
