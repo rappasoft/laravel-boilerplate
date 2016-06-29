@@ -37,12 +37,15 @@
             
             <li class="{{ Active::pattern('admin/content*') }} treeview">
                 <a href="#">
-                    <span>{{ trans('menus.backend.article.main') }}</span>
+                    <span>{{ trans('menus.backend.content.main') }}</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu {{ Active::pattern('admin/content/article*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/content/article*', 'display: block;') }}">
                     <li class="{{ Active::pattern('admin/content/article') }}">
                         <a href="{!! url('admin/content/article') !!}">{{ trans('menus.backend.article.article') }}</a>
+                    </li>
+                    <li class="{{ Active::pattern('admin/content/article-category') }}">
+                        <a href="{!! url('admin/content/article-category') !!}">{{ trans('menus.backend.articleCategory.articleCategory') }}</a>
                     </li>
                 </ul>
             </li>

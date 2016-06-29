@@ -149,9 +149,15 @@ return [
                     'slug' => 'Slug',
                     'excerpt' => 'Excerpt',
                     'content' => 'Content',
+                    'category_id' => 'Category',
                     'status' => 'Status',
                     'created_at' => 'Created At',
                     'updated_at' => 'Updated At',
+                ],
+                'article-category' => [
+                    'title' => 'Title',
+                    'slug' => 'Slug',
+                    'status' => 'Status',
                 ]
             ]
         ],

@@ -2,31 +2,21 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Eloquent\Model;
 
-
-class DatabaseSeeder extends Seeder
+class ContentTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
-        Model::unguard();
-
         if (env('DB_CONNECTION') == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         }
-        
-        $this->call(AccessTableSeeder::class);
-        $this->call(ContentTableSeeder::class);
+
+        $this->call(ArticleCategoryTableSeeder::class);
+        $this->call(ArticleTableSeeder::class);
 
         if (env('DB_CONNECTION') == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }
 
-        Model::reguard();
     }
 }

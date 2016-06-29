@@ -10,7 +10,12 @@ use App\Http\Controllers\Controller;
 class TestController extends Controller
 {
     
-    public function index(){
-        return view('frontend.test')->withArticles(\App\Models\Article::all());
+    /**
+     * 
+     * @return \Illuminate\View\View
+     */
+    public function index()
+    {
+        return view('frontend.test')->withArticles(\App\Models\Content\Article::all());
     }
 }

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Article;
+use App\Models\Content\Article\Article;
+use Illuminate\Http\Request;
 
 /**
  * Class ArticleController
@@ -21,5 +22,15 @@ class ArticleController extends Controller
         ]);
 
         return view('frontend.article.index', ['articles'=> Article::paginate(10)]);
+    }
+
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function view(Request $request, $id)
+    {
+        $model = Article::findOrFail($id);
+        
+        return view('frontend.article.view', ['model' => $model]);
     }
 }

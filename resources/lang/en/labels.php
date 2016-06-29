@@ -17,6 +17,8 @@ return [
         'all' => 'All',
         'yes' => 'Yes',
         'no' => 'No',
+        'published' => 'Published',
+        'draft' => 'Draft',
         'custom' => 'Custom',
         'actions' => 'Actions',
         'buttons' => [
@@ -126,8 +128,12 @@ return [
             'article' => [
                 'management' => 'Articles Management',
                 'all' => 'All Articles',
+                'article' => 'Article',
                 'articles' => 'Articles',
                 'create' => 'Create',
+                'view' => 'View',
+                'edit' => 'Edit',
+                'new' => 'New Article',
                 'index' => [
                     'table' =>[
                         'id' => 'ID',
@@ -136,6 +142,7 @@ return [
                         'slug' => 'Slug',
                         'excerpt' => 'Excerpt',
                         'content' => 'Content',
+                        'category_id' => 'Category',
                         'status' => 'Status',
                         'created_at' => 'Created At',
                         'updated_at' => 'Updated At',
@@ -143,7 +150,28 @@ return [
                         'total' => 'article total|articles total'
                     ]
                 ]
-            ]
+            ],
+            'article-category' => [
+                'management' => 'Article Categories Management',
+                'all' => 'All Article Categoriess',
+                'article-category' => 'Article Category',
+                'article-categories' => 'Article Categories',
+                'create' => 'Create',
+                'view' => 'View',
+                'edit' => 'Edit',
+                'new' => 'New Article Category',
+                'index' => [
+                    'table' =>[
+                        'id' => 'ID',
+                        'user_id' => 'User ID',
+                        'title' => 'Title',
+                        'slug' => 'Slug',
+                        'status' => 'Status',
+                        'deleted_at' => 'Deleted At',
+                        'total' => 'article category total|article categories total'
+                    ]
+                ]
+            ],
         ]
     ],
 

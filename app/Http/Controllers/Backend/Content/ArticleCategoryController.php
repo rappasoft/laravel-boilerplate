@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\Backend\Content;
 
 use App\Http\Controllers\Controller;
-use App\Models\Content\Article\Article;
-use App\Http\Requests\Backend\Content\Article\StoreArticleRequest;
+use App\Models\Content\ArticleCategory\ArticleCategory;
+use App\Http\Requests\Backend\Content\ArticleCategory\StoreArticleCategoryRequest;
 use Illuminate\Http\Request;
 
 /**
  * Class ArticleController
  * @package App\Http\Controllers
  */
-class ArticleController extends Controller
+class ArticleCategoryController extends Controller
 {
     /**
      * @return \Illuminate\View\View
@@ -22,9 +22,9 @@ class ArticleController extends Controller
             'test' => 'it works!',
         ]);
 
-        $models = Article::withTrashed()->paginate(10);
+        $models = ArticleCategory::withTrashed()->paginate(10);
         
-        return view('backend.content.article.index', ['models'=> $models]);
+        return view('backend.content.article-category.index', ['models'=> $models]);
     }
     
     /**
@@ -34,9 +34,9 @@ class ArticleController extends Controller
      */
     public function view(int $id)
     {
-        $model = Article::withTrashed()->find($id);
+        $model = ArticleCategory::withTrashed()->find($id);
         
-        return view('backend.content.article.view', ['model' => $model]);
+        return view('backend.content.article-category.view', ['model' => $model]);
     }
     
     /**
@@ -46,9 +46,9 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        $model = new Article();
+        $model = new ArticleCategory();
         
-        return view('backend.content.article.create', ['model' => $model]);
+        return view('backend.content.article-category.create', ['model' => $model]);
     }
     
     /**
@@ -58,9 +58,9 @@ class ArticleController extends Controller
      */
     public function edit(int $id)
     {
-        $model = Article::withTrashed()->find($id);
+        $model = ArticleCategory::withTrashed()->find($id);
         
-        return view('backend.content.article.edit', ['model' => $model]);
+        return view('backend.content.article-category.edit', ['model' => $model]);
     }
     
     /**
@@ -71,22 +71,22 @@ class ArticleController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $model = Article::withTrashed()->find($id);
+        $model = ArticleCategory::withTrashed()->find($id);
         $model->fill($request->all())->save();
         
-        return redirect('admin/content/article');
+        return redirect('admin/content/article-category');
     }
     
     /**
      * 
-     * @param int $id
+     * @param \Illuminate\Http\Request; $request
      * @return \Illuminate\View\View
      */
-    public function store(StoreArticleRequest $request)
+    public function store(StoreArticleCategoryRequest $request)
     {
-        Article::create($request->all());
+        ArticleCategory::create($request->all());
         
-        return redirect('admin/content/article');
+        return redirect('admin/content/article-category');
     }
     
     /**
@@ -96,7 +96,7 @@ class ArticleController extends Controller
      */
     public function destroy(int $id)
     {
-        Article::destroy($id);
+        ArticleCategory::destroy($id);
         
         return redirect()->back();
     }
@@ -108,7 +108,7 @@ class ArticleController extends Controller
      */
     public function restore(int $id)
     {
-        Article::withTrashed()->find($id)->restore();
+        ArticleCategory::withTrashed()->find($id)->restore();
         
         return redirect()->back();
     }

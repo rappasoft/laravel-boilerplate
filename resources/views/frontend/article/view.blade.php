@@ -3,25 +3,23 @@
 @section('content')
     <div class="row">
         
-        @foreach($articles as $article)
         <div class="col-md-12">
 
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <i class="fa fa-book"></i>
-                    {!! $article->category?$article->category->title_label:'' !!}
-                    <a href="/article/view/{{ $article->id }}"> {{ $article->title }} </a>
+                    {!! $model->category?$model->category->title_label:'' !!}
+                    <a href="/article/view/{{ $model->id }}"> {{ $model->title }} </a>
                 </div>
 
                 <div class="panel-body">
-                    {{$article->excerpt}}
-                    <div class="pull-right">{{ $article->created_at->diffForHumans() }}</div>
+                    <div>{{$model->excerpt}}</div>
+                    <div>{!! $model->content !!}</div>
+                    <div class="pull-right">{{ $model->created_at->diffForHumans() }}</div>
                 </div>
             </div><!-- panel -->
 
         </div><!-- col-md-10 -->
-        @endforeach
-        <nav class="text-center">{!! $articles->render() !!}</nav>
 
     </div><!--row-->
 @endsection

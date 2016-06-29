@@ -6,6 +6,7 @@
 Route::get('/', 'FrontendController@index')->name('frontend.index');
 Route::get('macros', 'FrontendController@macros')->name('frontend.macros');
 Route::get('article','ArticleController@index')->name('frontend.article');
+Route::get('article/view/{id}','ArticleController@view')->name('frontend.article.view');
 
 /**
  * These frontend controllers require the user to be logged in

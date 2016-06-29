@@ -61,10 +61,19 @@ return [
             'general' => 'General',
         ],
         
+        'content' => [
+            'main' => 'Content'
+        ],
+        
         'article' => [
             'main' => 'Articles',
             'article' => 'Articles',
-        ]
+        ],
+        
+        'articleCategory' => [
+            'main' => 'Articles',
+            'articleCategory' => 'Article Categories',
+        ],
     ],
 
     'language-picker' => [

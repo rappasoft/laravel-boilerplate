@@ -15,6 +15,7 @@ class CreateArticleCategoriesTable extends Migration
         //create article_categories table
         Schema::create('article_categories', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
             $table->string('title');
             $table->string('slug');
             $table->tinyInteger('status');

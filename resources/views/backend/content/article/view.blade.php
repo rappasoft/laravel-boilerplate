@@ -5,14 +5,14 @@
 @section('page-header')
     <h1>
         {{ trans('labels.backend.content.article.management') }}
-        <small>{{ trans('labels.backend.content.article.all') }}</small>
+        <small>{{ trans('labels.backend.content.article.article') }}#{{ $model->id }}</small>
     </h1>
 @endsection
 
 @section('content')
         <div class="box box-success">
             <div class="box-header with-border">
-                <h3 class="box-title">{{ trans('labels.backend.content.article.create') }}</h3>
+                <h3 class="box-title">{{ trans('labels.backend.content.article.view') }}</h3>
 
                 <div class="box-tools pull-right">
                 <div class="pull-right" style="margin-bottom:10px">
@@ -36,7 +36,7 @@
                             <td>{{ trans('labels.backend.content.article.index.table.id') }}</td><td>{!! $model->id !!}</td>
                         </tr>
                         <tr>
-                            <td>{{ trans('labels.backend.content.article.index.table.user_id') }}</td><td>{!! $model->user_id !!}</td>
+                            <td>{{ trans('labels.backend.content.article.index.table.user_id') }}</td><td>{!! $model->user->name !!}</td>
                         </tr>
                         <tr>
                             <td>{{ trans('labels.backend.content.article.index.table.title') }}</td><td>{!! $model->title !!}</td>
@@ -51,7 +51,10 @@
                             <td>{{ trans('labels.backend.content.article.index.table.content') }}</td><td>{!! $model->content !!}</td>
                         </tr>
                         <tr>
-                            <td>{{ trans('labels.backend.content.article.index.table.status') }}</td><td>{!! $model->status !!}</td>
+                            <td>{{ trans('labels.backend.content.article.index.table.category_id') }}</td><td>{!! $model->category ? $model->category->title_label : '' !!}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ trans('labels.backend.content.article.index.table.status') }}</td><td>{!! $model->status_label !!}</td>
                         </tr>
                         <tr>
                             <th class="visible-lg">{{ trans('labels.backend.content.article.index.table.created_at') }}</td><td>{!! $model->created_at !!}</td>
