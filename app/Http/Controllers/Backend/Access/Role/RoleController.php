@@ -50,7 +50,7 @@ class RoleController extends Controller
     }
 
     /**
-     * @param  CreateRoleRequest                 $request
+     * @param CreateRoleRequest $request
      * @return mixed
      */
     public function create(CreateRoleRequest $request)

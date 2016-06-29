@@ -17,7 +17,7 @@ class DeleteRoleRequest extends Request
      */
     public function authorize()
     {
-        return access()->allow('delete-roles');
+        return access()->allow('manage-roles');
     }
 
     /**

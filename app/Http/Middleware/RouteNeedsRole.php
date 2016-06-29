@@ -10,10 +10,11 @@ use Closure;
  */
 class RouteNeedsRole
 {
-    /**
-     * @param  $request
-     * @param  callable   $next
-     * @param  $role
+
+	/**
+     * @param $request
+     * @param Closure $next
+     * @param $role
      * @return mixed
      */
     public function handle($request, Closure $next, $role)

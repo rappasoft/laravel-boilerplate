@@ -65,15 +65,6 @@ class SetupAccessTables extends Migration
             $table->unique('name');
         });
 
-        Schema::create(config('access.permission_group_table'), function ($table) {
-            $table->increments('id')->unsigned();
-            $table->integer('parent_id')->nullable();
-            $table->string('name');
-            $table->smallInteger('sort')->default(0);
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at');
-        });
-
         Schema::create(config('access.permission_role_table'), function ($table) {
             $table->increments('id')->unsigned();
             $table->integer('permission_id')->unsigned();
@@ -90,46 +81,6 @@ class SetupAccessTables extends Migration
             $table->foreign('role_id')
                 ->references('id')
                 ->on(config('access.roles_table'))
-                ->onDelete('cascade');
-        });
-
-        Schema::create(config('access.permission_dependencies_table'), function ($table) {
-            $table->increments('id')->unsigned();
-            $table->integer('permission_id')->unsigned();
-            $table->integer('dependency_id')->unsigned();
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at');
-
-            /**
-             * Add Foreign/Unique/Index
-             */
-            $table->foreign('permission_id')
-                ->references('id')
-                ->on(config('access.permissions_table'))
-                ->onDelete('cascade');
-
-            $table->foreign('dependency_id')
-                ->references('id')
-                ->on(config('access.permissions_table'))
-                ->onDelete('cascade');
-        });
-
-        Schema::create(config('access.permission_user_table'), function ($table) {
-            $table->increments('id')->unsigned();
-            $table->integer('permission_id')->unsigned();
-            $table->integer('user_id')->unsigned();
-
-            /**
-             * Add Foreign/Unique/Index
-             */
-            $table->foreign('permission_id')
-                ->references('id')
-                ->on(config('access.permissions_table'))
-                ->onDelete('cascade');
-
-            $table->foreign('user_id')
-                ->references('id')
-                ->on(config('access.users_table'))
                 ->onDelete('cascade');
         });
     }
@@ -166,25 +117,12 @@ class SetupAccessTables extends Migration
             $table->dropForeign(config('access.permission_role_table') . '_role_id_foreign');
         });
 
-        Schema::table(config('access.permission_user_table'), function (Blueprint $table) {
-            $table->dropForeign(config('access.permission_user_table') . '_permission_id_foreign');
-            $table->dropForeign(config('access.permission_user_table') . '_user_id_foreign');
-        });
-
-        Schema::table(config('access.permission_dependencies_table'), function (Blueprint $table) {
-            $table->dropForeign('permission_dependencies_permission_id_foreign');
-            $table->dropForeign('permission_dependencies_dependency_id_foreign');
-        });
-
         /**
          * Drop tables
          */
         Schema::drop(config('access.assigned_roles_table'));
         Schema::drop(config('access.permission_role_table'));
-        Schema::drop(config('access.permission_user_table'));
-        Schema::drop(config('access.permission_group_table'));
         Schema::drop(config('access.roles_table'));
         Schema::drop(config('access.permissions_table'));
-        Schema::drop(config('access.permission_dependencies_table'));
     }
 }

@@ -96,12 +96,11 @@ class EloquentUserRepository implements UserRepositoryContract
     /**
      * @param  $input
      * @param  $roles
-     * @param  $permissions
      * @throws GeneralException
      * @throws UserNeedsRolesException
      * @return bool
      */
-    public function create($input, $roles, $permissions)
+    public function create($input, $roles)
     {
         $user = $this->createUserStub($input);
 
@@ -111,9 +110,6 @@ class EloquentUserRepository implements UserRepositoryContract
 
             //Attach new roles
             $user->attachRoles($roles['assignees_roles']);
-
-            //Attach other permissions
-            $user->attachPermissions($permissions['permission_user']);
 
             //Send confirmation email if requested
             if (isset($input['confirmation_email']) && $user->confirmed == 0) {
@@ -130,11 +126,10 @@ class EloquentUserRepository implements UserRepositoryContract
      * @param $id
      * @param $input
      * @param $roles
-     * @param $permissions
      * @return bool
      * @throws GeneralException
      */
-    public function update($id, $input, $roles, $permissions)
+    public function update($id, $input, $roles)
     {
         $user = $this->findOrThrowException($id);
         $this->checkUserByEmail($input, $user);
@@ -147,7 +142,6 @@ class EloquentUserRepository implements UserRepositoryContract
 
             $this->checkUserRolesCount($roles);
             $this->flushRoles($roles, $user);
-            $this->flushPermissions($permissions, $user);
 
             return true;
         }

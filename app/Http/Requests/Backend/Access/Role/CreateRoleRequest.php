@@ -17,7 +17,7 @@ class CreateRoleRequest extends Request
      */
     public function authorize()
     {
-        return access()->allow('create-roles');
+        return access()->allow('manage-roles');
     }
 
     /**
