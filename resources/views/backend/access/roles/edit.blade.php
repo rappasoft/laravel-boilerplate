@@ -9,10 +9,6 @@
     </h1>
 @endsection
 
-@section('after-styles-end')
-    {!! Html::style('css/backend/plugin/jstree/themes/default/style.min.css') !!}
-@stop
-
 @section('content')
     {!! Form::model($role, ['route' => ['admin.access.roles.update', $role->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH', 'id' => 'edit-role']) !!}
 
@@ -86,14 +82,5 @@
 @stop
 
 @section('after-scripts-end')
-    {!! Html::script('js/backend/plugin/jstree/jstree.min.js') !!}
     {!! Html::script('js/backend/access/roles/script.js') !!}
-
-    <script>
-        $(function() {
-            @foreach ($role_permissions as $permission)
-                tree.jstree('check_node', '#{!! $permission !!}');
-            @endforeach
-        });
-    </script>
 @stop
