@@ -33,35 +33,34 @@
                 <table class="table table-striped table-bordered table-hover">
                     <tbody>
                         <tr>
-                            <td>{{ trans('labels.backend.content.article.index.table.id') }}</td><td>{!! $model->id !!}</td>
+                            <th>{{ trans('labels.backend.content.article.index.table.id') }}</th><td>{!! $model->id !!}</td>
                         </tr>
                         <tr>
-                            <td>{{ trans('labels.backend.content.article.index.table.user_id') }}</td><td>{!! $model->user->name !!}</td>
+                            <th>{{ trans('labels.backend.content.article.index.table.user_id') }}</th><td>{!! $model->user->name !!}</td>
                         </tr>
                         <tr>
-                            <td>{{ trans('labels.backend.content.article.index.table.title') }}</td><td>{!! $model->title !!}</td>
+                            <th>{{ trans('labels.backend.content.article.index.table.title') }}</th><td>{!! $model->title !!}</td>
                         </tr>
                         <tr>
-                            <td>{{ trans('labels.backend.content.article.index.table.slug') }}</td><td>{!! $model->slug !!}</td>
+                            <th>{{ trans('labels.backend.content.article.index.table.slug') }}</th><td>{!! $model->slug !!}</td>
                         </tr>
                         <tr>
-                            <td>{{ trans('labels.backend.content.article.index.table.excerpt') }}</td><td>{!! $model->excerpt !!}</td>
+                            <th>{{ trans('labels.backend.content.article.index.table.excerpt') }}</th><td>{!! $model->excerpt !!}</td>
                         </tr>
                         <tr>
-                            <td>{{ trans('labels.backend.content.article.index.table.content') }}</td><td>{!! $model->content !!}</td>
+                            <th>{{ trans('labels.backend.content.article.index.table.content') }}</th><td>{!! $model->content !!}</td>
                         </tr>
                         <tr>
-                            <td>{{ trans('labels.backend.content.article.index.table.category_id') }}</td><td>{!! $model->category ? $model->category->title_label : '' !!}</td>
+                            <th>{{ trans('labels.backend.content.article.index.table.category_id') }}</th><td>{!! $model->category ? $model->category->title_label : '' !!}</td>
                         </tr>
                         <tr>
-                            <td>{{ trans('labels.backend.content.article.index.table.status') }}</td><td>{!! $model->status_label !!}</td>
+                            <th>{{ trans('labels.backend.content.article.index.table.status') }}</th><td>{!! $model->status_label !!}</td>
                         </tr>
                         <tr>
-                            <th class="visible-lg">{{ trans('labels.backend.content.article.index.table.created_at') }}</td><td>{!! $model->created_at !!}</td>
+                            <th class="visible-lg">{{ trans('labels.backend.content.article.index.table.created_at') }}</th><td>{!! $model->created_at !!}</td>
                         </tr>
                         <tr>
-                            <th class="visible-lg">{{ trans('labels.backend.content.article.index.table.updated_at') }}</td><td>{!! $model->updated_at !!}</td>
-                            <td></td>
+                            <th class="visible-lg">{{ trans('labels.backend.content.article.index.table.updated_at') }}</th><td>{!! $model->updated_at !!}</td>
                         </tr>
                     </tbody>
                 </table>

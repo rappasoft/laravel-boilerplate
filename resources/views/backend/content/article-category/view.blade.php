@@ -33,19 +33,19 @@
                 <table class="table table-striped table-bordered table-hover">
                     <tbody>
                         <tr>
-                            <td>{{ trans('labels.backend.content.article-category.index.table.id') }}</td><td>{!! $model->id !!}</td>
+                            <th>{{ trans('labels.backend.content.article-category.index.table.id') }}</th><td>{!! $model->id !!}</td>
                         </tr>
                         <tr>
-                            <td>{{ trans('labels.backend.content.article-category.index.table.user_id') }}</td><td>{!! $model->user->name !!}</td>
+                            <th>{{ trans('labels.backend.content.article-category.index.table.user_id') }}</th><td>{!! $model->user->name !!}</td>
                         </tr>
                         <tr>
-                            <td>{{ trans('labels.backend.content.article-category.index.table.title') }}</td><td>{!! $model->title !!}</td>
+                            <th>{{ trans('labels.backend.content.article-category.index.table.title') }}</th><td>{!! $model->title !!}</td>
                         </tr>
                         <tr>
-                            <td>{{ trans('labels.backend.content.article-category.index.table.slug') }}</td><td>{!! $model->slug !!}</td>
+                            <th>{{ trans('labels.backend.content.article-category.index.table.slug') }}</th><td>{!! $model->slug !!}</td>
                         </tr>
                         <tr>
-                            <td>{{ trans('labels.backend.content.article-category.index.table.status') }}</td><td>{!! $model->status_label !!}</td>
+                            <th>{{ trans('labels.backend.content.article-category.index.table.status') }}</th><td>{!! $model->status_label !!}</td>
                         </tr>
                     </tbody>
                 </table>
