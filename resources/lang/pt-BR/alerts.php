@@ -14,19 +14,6 @@ return [
     */
 
     'backend' => [
-        'permissions' => [
-            'created' => 'Permissão criada com sucesso.',
-            'deleted' => 'Permissão excluida com sucesso.',
-
-            'groups'  => [
-                'created' => 'Permissão de grupo criada com sucesso.',
-                'updated' => 'Permissão de grupo atualizada com sucesso.',
-                'deleted' => 'Permissão de grupo excluída com sucesso.',
-            ],
-
-            'updated' => 'Permissão atualizada com sucesso.',
-        ],
-
         'roles' => [
             'created' => 'O papel foi criado com sucesso.',
             'updated' => 'O papel foi atualizado com sucesso.',

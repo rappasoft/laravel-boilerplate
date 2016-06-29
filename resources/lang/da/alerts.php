@@ -14,19 +14,6 @@ return [
     */
 
     'backend' => [
-        'permissions' => [
-            'created' => 'Tilladelse oprettet.',
-            'deleted' => 'Tilladelse slettet.',
-
-            'groups'  => [
-                'created' => 'Tilladelse gruppe oprettet.',
-                'deleted' => 'Tilladelse gruppe slettet.',
-                'updated' => 'Tilladelse gruppe opdateret.',
-            ],
-
-            'updated' => 'Tilladelse opdateret.',
-        ],
-
         'roles' => [
             'created' => 'Rollen blev oprettet.',
             'deleted' => 'Rollen blev slettet.',
