@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Backend\Access\Role;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Backend\Access\Role\RoleRepositoryContract;
 use App\Http\Requests\Backend\Access\Role\EditRoleRequest;
 use App\Http\Requests\Backend\Access\Role\StoreRoleRequest;
 use App\Http\Requests\Backend\Access\Role\CreateRoleRequest;
 use App\Http\Requests\Backend\Access\Role\DeleteRoleRequest;
 use App\Http\Requests\Backend\Access\Role\UpdateRoleRequest;
+use App\Repositories\Backend\Access\Role\RoleRepositoryContract;
 use App\Repositories\Backend\Access\Permission\PermissionRepositoryContract;
-use App\Repositories\Backend\Access\Permission\Group\PermissionGroupRepositoryContract;
 
 /**
  * Class RoleController
@@ -51,15 +50,13 @@ class RoleController extends Controller
     }
 
     /**
-     * @param  PermissionGroupRepositoryContract $group
      * @param  CreateRoleRequest                 $request
      * @return mixed
      */
-    public function create(PermissionGroupRepositoryContract $group, CreateRoleRequest $request)
+    public function create(CreateRoleRequest $request)
     {
         return view('backend.access.roles.create')
-            ->withGroups($group->getAllGroups())
-            ->withPermissions($this->permissions->getUngroupedPermissions());
+            ->withPermissions($this->permissions->getAllPermissions());
     }
 
     /**
@@ -74,18 +71,16 @@ class RoleController extends Controller
 
     /**
      * @param  $id
-     * @param  PermissionGroupRepositoryContract $group
      * @param  EditRoleRequest                   $request
      * @return mixed
      */
-    public function edit($id, PermissionGroupRepositoryContract $group, EditRoleRequest $request)
+    public function edit($id, EditRoleRequest $request)
     {
         $role = $this->roles->findOrThrowException($id, true);
         return view('backend.access.roles.edit')
             ->withRole($role)
             ->withRolePermissions($role->permissions->lists('id')->all())
-            ->withGroups($group->getAllGroups())
-            ->withPermissions($this->permissions->getUngroupedPermissions());
+            ->withPermissions($this->permissions->getAllPermissions());
     }
 
     /**

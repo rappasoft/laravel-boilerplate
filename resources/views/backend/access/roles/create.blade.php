@@ -9,10 +9,6 @@
     </h1>
 @endsection
 
-@section('after-styles-end')
-    {!! Html::style('css/backend/plugin/jstree/themes/default/style.min.css') !!}
-@stop
-
 @section('content')
     {!! Form::open(['route' => 'admin.access.roles.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post', 'id' => 'create-role']) !!}
 
@@ -36,111 +32,17 @@
                 <div class="form-group">
                     <label class="col-lg-2 control-label">{{ trans('validation.attributes.backend.access.roles.associated_permissions') }}</label>
                     <div class="col-lg-10">
-                        {!! Form::select('associated-permissions', array('all' => trans('labels.general.all'), 'custom' => trans('labels.general.custom')), 'all', ['class' => 'form-control']); !!}
+                        {!! Form::select('associated-permissions', array('all' => trans('labels.general.all'), 'custom' => trans('labels.general.custom')), 'all', ['class' => 'form-control']) !!}
 
-                        <div id="available-permissions" class="hidden">
+                        <div id="available-permissions" class="hidden mt-20">
                             <div class="row">
-
-                                <div class="col-lg-12">
-                                    <div class="alert alert-info">
-                                        <i class="fa fa-info-circle"></i>
-                                        {!! getLanguageBlock('backend.lang.access.roles.associated-permissions-explanation') !!}
-                                    </div><!--alert-->
-                                </div><!--col-lg-12-->
-
-                                <div class="col-lg-6">
-                                    <p><strong>{{ trans('labels.backend.access.permissions.grouped_permissions') }}</strong></p>
-
-                                    @if ($groups->count())
-                                        <div id="permission-tree">
-                                            <ul>
-                                                @foreach ($groups as $group)
-                                                    <li>{!! $group->name !!}
-                                                        @if ($group->permissions->count())
-                                                            <ul>
-                                                                @foreach ($group->permissions as $permission)
-                                                                    <li id="{!! $permission->id !!}" data-dependencies="{!! json_encode($permission->dependencies->lists('dependency_id')->all()) !!}">
-
-                                                                        @if ($permission->dependencies->count())
-                                                                            <?php
-                                                                            //Get the dependency list for the tooltip
-                                                                            $dependency_list = [];
-                                                                            foreach ($permission->dependencies as $dependency)
-                                                                                array_push($dependency_list, $dependency->permission->display_name);
-                                                                            $dependency_list = implode(", ", $dependency_list);
-                                                                            ?>
-                                                                            <a data-toggle="tooltip" data-html="true" title="<strong>{{ trans('labels.backend.access.permissions.dependencies') }}:</strong> {!! $dependency_list !!}">{!! $permission->display_name !!} <small><strong>(D)</strong></small></a>
-                                                                        @else
-                                                                            {!! $permission->display_name !!}
-                                                                        @endif
-
-                                                                    </li>
-                                                                @endforeach
-                                                            </ul>
-                                                        @endif
-
-                                                        @if ($group->children->count())
-                                                            <ul>
-                                                                @foreach ($group->children as $child)
-                                                                    <li>{!! $child->name !!}
-                                                                        @if ($child->permissions->count())
-                                                                            <ul> style="padding-left:40px;font-size:.8em">
-                                                                                @foreach ($child->permissions as $permission)
-                                                                                    <li id="{!! $permission->id !!}" data-dependencies="{!! json_encode($permission->dependencies->lists('dependency_id')->all()) !!}">
-                                                                                        @if ($permission->dependencies->count())
-                                                                                            <?php
-                                                                                            //Get the dependency list for the tooltip
-                                                                                            $dependency_list = [];
-                                                                                            foreach ($permission->dependencies as $dependency)
-                                                                                                array_push($dependency_list, $dependency->permission->display_name);
-                                                                                            $dependency_list = implode(", ", $dependency_list);
-                                                                                            ?>
-                                                                                            <a data-toggle="tooltip" data-html="true" title="<strong>{{ trans('labels.backend.access.permissions.dependencies') }}:</strong> {!! $dependency_list !!}">{!! $permission->display_name !!} <small><strong>(D)</strong></small></a>
-                                                                                        @else
-                                                                                            {!! $permission->display_name !!}
-                                                                                        @endif
-
-                                                                                    </li>
-                                                                                @endforeach
-                                                                            </ul>
-                                                                        @endif
-                                                                    </li>
-                                                                @endforeach
-                                                            </ul>
-                                                        @endif
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    @else
-                                        <p>{{ trans('labels.backend.access.permissions.no_groups') }}</p>
-                                    @endif
-                                </div><!--col-lg-6-->
-
-                                <div class="col-lg-6">
-                                    <p><strong>{{ trans('labels.backend.access.permissions.ungrouped_permissions') }}</strong></p>
-
+                                <div class="col-xs-12">
                                     @if ($permissions->count())
                                         @foreach ($permissions as $perm)
-                                            <input type="checkbox" name="ungrouped[]" data-dependencies="{!! json_encode($perm->dependencies->lists('dependency_id')->all()) !!}" value="{!! $perm->id !!}" id="perm_{!! $perm->id !!}" /> <label for="perm_{!! $perm->id !!}">
-
-                                                @if ($perm->dependencies->count())
-                                                    <?php
-                                                    //Get the dependency list for the tooltip
-                                                    $dependency_list = [];
-                                                    foreach ($perm->dependencies as $dependency)
-                                                        array_push($dependency_list, $dependency->permission->display_name);
-                                                    $dependency_list = implode(", ", $dependency_list);
-                                                    ?>
-                                                    <a style="color:black;text-decoration:none;" data-toggle="tooltip" data-html="true" title="<strong>{{ trans('labels.backend.access.permissions.dependencies') }}:</strong> {!! $dependency_list !!}">{!! $perm->display_name !!} <small><strong>(D)</strong></small></a>
-                                                @else
-                                                    {!! $perm->display_name !!}
-                                                @endif
-
-                                            </label><br/>
+                                            <input type="checkbox" name="permissions[]" value="{!! $perm->id !!}" id="perm_{!! $perm->id !!}" /> <label for="perm_{!! $perm->id !!}">{{ $perm->display_name }}</label><br/>
                                         @endforeach
                                     @else
-                                        <p>{{ trans('labels.backend.access.permissions.no_ungrouped') }}</p>
+                                        <p>There are no available permissions.</p>
                                     @endif
                                 </div><!--col-lg-6-->
                             </div><!--row-->
@@ -175,6 +77,5 @@
 @stop
 
 @section('after-scripts-end')
-    {!! Html::script('js/backend/plugin/jstree/jstree.min.js') !!}
     {!! Html::script('js/backend/access/roles/script.js') !!}
 @stop

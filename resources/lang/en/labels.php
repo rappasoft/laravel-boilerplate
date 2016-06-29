@@ -31,50 +31,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'create' => 'Create Permission',
-                'dependencies' => 'Dependencies',
-                'edit' => 'Edit Permission',
-
-                'groups' => [
-                    'create' => 'Create Group',
-                    'edit' => 'Edit Group',
-
-                    'table' => [
-                        'name' => 'Name',
-                    ],
-                ],
-
-                'grouped_permissions' => 'Grouped Permissions',
-                'label' => 'permissions',
-                'management' => 'Permission Management',
-                'no_groups' => 'There are no permission groups.',
-                'no_permissions' => 'No permission to choose from.',
-                'no_roles' => 'No Roles to set',
-                'no_ungrouped' => 'There are no ungrouped permissions.',
-
-                'table' => [
-                    'dependencies' => 'Dependencies',
-                    'group' => 'Group',
-                    'group-sort' => 'Group Sort',
-                    'name' => 'Name',
-                    'permission' => 'Permission',
-                    'roles' => 'Roles',
-                    'system' => 'System',
-                    'total' => 'permission total|permissions total',
-                    'users' => 'Users',
-                ],
-
-                'tabs' => [
-                    'general' => 'General',
-                    'groups' => 'All Groups',
-                    'dependencies' => 'Dependencies',
-                    'permissions' => 'All Permissions',
-                ],
-
-                'ungrouped_permissions' => 'Ungrouped Permissions',
-            ],
-
             'roles' => [
                 'create' => 'Create Role',
                 'edit' => 'Edit Role',

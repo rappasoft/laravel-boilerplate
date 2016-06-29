@@ -28,50 +28,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'create' => 'Opret rettighed',
-                'dependencies' => 'Afhængigheder',
-                'edit' => 'Rediger rettighed',
-
-                'groups' => [
-                    'create' => 'Opret gruppe',
-                    'edit' => 'Rediger gruppe',
-
-                    'table' => [
-                        'name' => 'Navn',
-                    ],
-                ],
-
-                'grouped_permissions' => 'Grupperede tilladelser',
-                'label' => 'rettigheder',
-                'management' => 'Vedligeholdelse af rettigheder',
-                'no_groups' => 'Der er ingen rttigheds grupper.',
-                'no_permissions' => 'Ingen rettigheder at vælge.',
-                'no_roles' => 'Der er ingen roller',
-                'no_ungrouped' => 'Der er ingen rettigheder uden gruppe.',
-
-                'table' => [
-                    'dependencies' => 'Afhængigheder',
-                    'group' => 'Grouppe',
-                    'group-sort' => 'Sorter gruppe',
-                    'name' => 'Navn',
-                    'permission' => 'Rettighed',
-                    'roles' => 'Roller',
-                    'system' => 'System',
-                    'total' => 'permission total|permissions total',
-                    'users' => 'Brugere',
-                ],
-
-                'tabs' => [
-                    'general' => 'Generelt',
-                    'groups' => 'Alle Groupper',
-                    'dependencies' => 'Afhængigheder',
-                    'permissions' => 'Alle rettigheder',
-                ],
-
-                'ungrouped_permissions' => 'Rettigheder uden gruppe',
-            ],
-
             'roles' => [
                 'create' => 'Opret rolle',
                 'edit' => 'Opdater rolle',

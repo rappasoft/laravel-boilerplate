@@ -31,50 +31,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'create' => 'Skapa tillstånd',
-                'dependencies' => 'Överliggande tillstånd',
-                'edit' => 'Redigera tillstånd',
-
-                'groups' => [
-                    'create' => 'Skapa tillståndsgrupp',
-                    'edit' => 'Redigera tillståndsgrupp',
-
-                    'table' => [
-                        'name' => 'Namn',
-                    ],
-                ],
-
-                'grouped_permissions' => 'Tillståndsgrupper',
-                'label' => 'tillstånd',
-                'management' => 'Hantera tillstånd',
-                'no_groups' => 'Det finns inga Tillståndsgrupper.',
-                'no_permissions' => 'Det finns inga tillstånd att välja bland.',
-                'no_roles' => 'Det finns inga roller att sätta.',
-                'no_ungrouped' => 'Det finns inga ogrupperade tillstånd.',
-
-                'table' => [
-                    'dependencies' => 'Krävda tillstånd',
-                    'group' => 'Tillståndsgrupp',
-                    'group-sort' => 'Ordning',
-                    'name' => 'Namn',
-                    'permission' => 'Tillstånd',
-                    'roles' => 'Roller',
-                    'system' => 'System-status',
-                    'total' => 'tillstånd totalt|tillstånd totalt',
-                    'users' => 'Användare',
-                ],
-
-                'tabs' => [
-                    'general' => 'Allmänt',
-                    'groups' => 'Alla tillståndsgrupper',
-                    'dependencies' => 'Överliggande tillstånd',
-                    'permissions' => 'Alla tillstånd',
-                ],
-
-                'ungrouped_permissions' => 'Tillstånd utan grupp',
-            ],
-
             'roles' => [
                 'create' => 'Skapa roll',
                 'edit' => 'Redigera roll',

@@ -7,7 +7,7 @@ use App\Exceptions\GeneralException;
 
 /**
  * Class EloquentRoleRepository
- * @package App\Repositories\Role
+ * @package app\Repositories\Role
  */
 class EloquentRoleRepository implements RoleRepositoryContract
 {
@@ -78,7 +78,7 @@ class EloquentRoleRepository implements RoleRepositoryContract
 
         //This config is only required if all is false
         if (!$all)
-        //See if the role must contain a permission as per config
+            //See if the role must contain a permission as per config
         {
             if (config('access.roles.role_must_contain_permission') && count($input['permissions']) == 0) {
                 throw new GeneralException(trans('exceptions.backend.access.roles.needs_permission'));
@@ -94,17 +94,17 @@ class EloquentRoleRepository implements RoleRepositoryContract
 
         if ($role->save()) {
             if (!$all) {
-                $current     = explode(',', $input['permissions']);
                 $permissions = [];
 
-                if (count($current)) {
-                    foreach ($current as $perm) {
+                if (count($input['permissions'])) {
+                    foreach ($input['permissions'] as $perm) {
                         if (is_numeric($perm)) {
                             array_push($permissions, $perm);
                         }
 
                     }
                 }
+
                 $role->attachPermissions($permissions);
             }
 
@@ -154,17 +154,17 @@ class EloquentRoleRepository implements RoleRepositoryContract
                 $role->permissions()->sync([]);
 
                 //Attach permissions if the role does not have all access
-                $current     = explode(',', $input['permissions']);
                 $permissions = [];
 
-                if (count($current)) {
-                    foreach ($current as $perm) {
+                if (count($input['permissions'])) {
+                    foreach ($input['permissions'] as $perm) {
                         if (is_numeric($perm)) {
                             array_push($permissions, $perm);
                         }
 
                     }
                 }
+
                 $role->attachPermissions($permissions);
             }
 
@@ -201,17 +201,5 @@ class EloquentRoleRepository implements RoleRepositoryContract
         }
 
         throw new GeneralException(trans('exceptions.backend.access.roles.delete_error'));
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDefaultUserRole()
-    {
-        if (is_numeric(config('access.users.default_role'))) {
-            return Role::where('id', (int) config('access.users.default_role'))->first();
-        }
-
-        return Role::where('name', config('access.users.default_role'))->first();
     }
 }

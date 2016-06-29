@@ -31,50 +31,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'create' => 'Crear Permiso',
-                'dependencies' => 'Dependencias',
-                'edit' => 'Modificar Permiso',
-
-                'groups' => [
-                    'create' => 'Crear Grupo',
-                    'edit' => 'Modificar Grupo',
-
-                    'table' => [
-                        'name' => 'Nombre',
-                    ],
-                ],
-
-                'grouped_permissions' => 'Permisos agrupados',
-                'label' => 'Permisos',
-                'management' => 'Administración de Permisos',
-                'no_groups' => 'No hay Permisos en el Grupo.',
-                'no_permissions' => 'No hay Permisos disponibles.',
-                'no_roles' => 'No hay Roles disponibles.',
-                'no_ungrouped' => 'Actualmente no hay Permisos desagrupados.',
-
-                'table' => [
-                    'dependencies' => 'Dependencias',
-                    'group' => 'Grupo',
-                    'group-sort' => 'Orden del Grupo',
-                    'name' => 'Nombre',
-                    'permission' => 'Permisos',
-                    'roles' => 'Roles',
-                    'system' => 'Sistema',
-                    'total' => 'Todos los Permisos',
-                    'users' => 'Usuarios',
-                ],
-
-                'tabs' => [
-                    'general' => 'General',
-                    'groups' => 'Todos los Grupos',
-                    'dependencies' => 'Dependencias',
-                    'permissions' => 'Todos los Permisos',
-                ],
-
-                'ungrouped_permissions' => 'Permisos desagrupados',
-            ],
-
             'roles' => [
                 'create' => 'Crear Rol',
                 'edit' => 'Modificar Rol',
