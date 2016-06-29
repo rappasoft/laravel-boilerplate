@@ -1,6 +1,6 @@
 @extends ('backend.layouts.master')
 
-@section ('title', trans('labels.backend.access.users.management'))
+@section ('title', trans('labels.backend.content.article-category.management'))
 
 @section('page-header')
     <h1>
