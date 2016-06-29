@@ -53,14 +53,11 @@ return [
                 'create' => 'Skapa användare',
                 'deactivated' => 'Inaktiverade användare',
                 'deleted' => 'Raderade användare',
-                'dependencies' => 'Överliggande tillstånd',
                 'edit' => 'Redigera användare',
                 'management' => 'Hantera användare',
-                'no_other_permissions' => 'Inga andra tillstånd',
                 'no_permissions' => 'Inga tillstånd',
                 'no_roles' => 'Inga roller att anta.',
                 'permissions' => 'Tillstånd',
-                'permission_check' => 'När tillstånd efterfrågas så kollas också om det finns några överliggande beroende tillstånd.',
 
                 'table' => [
                     'confirmed' => 'Bekräftad',
@@ -71,7 +68,6 @@ return [
                     'name' => 'Namn',
                     'no_deactivated' => 'Inga inaktiverade användare',
                     'no_deleted' => 'Inga raderade användare',
-                    'other_permissions' => 'Övriga tillstånd',
                     'roles' => 'Roller',
                     'total' => 'användare totalt|användare totalt',
                 ],

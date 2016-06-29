@@ -53,14 +53,11 @@ return [
                 'create' => 'Create User',
                 'deactivated' => 'Deactivated Users',
                 'deleted' => 'Deleted Users',
-                'dependencies' => 'Dependencies',
                 'edit' => 'Edit User',
                 'management' => 'User Management',
-                'no_other_permissions' => 'No Other Permissions',
                 'no_permissions' => 'No Permissions',
                 'no_roles' => 'No Roles to set.',
                 'permissions' => 'Permissions',
-                'permission_check' => 'Checking a permission will also check its dependencies, if any.',
 
                 'table' => [
                     'confirmed' => 'Confirmed',
@@ -71,7 +68,6 @@ return [
                     'name' => 'Name',
                     'no_deactivated' => 'No Deactivated Users',
                     'no_deleted' => 'No Deleted Users',
-                    'other_permissions' => 'Other Permissions',
                     'roles' => 'Roles',
                     'total' => 'user total|users total',
                 ],

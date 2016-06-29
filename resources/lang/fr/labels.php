@@ -53,14 +53,11 @@ return [
                 'create' => 'Créer Utilisateur',
                 'deactivated' => 'Utilisateurs désactivés',
                 'deleted' => 'Utilisateurs supprimés',
-                'dependencies' => 'Dépendances',
                 'edit' => 'Éditer Utilisateur',
                 'management' => 'Gestion des utilisateurs',
-                'no_other_permissions' => "Pas d'autres permissions",
                 'no_permissions' => 'Pas de permissions',
                 'no_roles' => 'Pas de Rôle à affecter.',
                 'permissions' => 'Permissions',
-                'permission_check' => "La sélection d'une permission sélectionne aussi ses dépendances s'il y en a.",
 
                 'table' => [
                     'confirmed' => 'Confirmé',
@@ -71,7 +68,6 @@ return [
                     'name' => 'Nom',
                     'no_deactivated' => "Pas d'utilisateurs désactivés",
                     'no_deleted' => "Pas d'utilisateurs supprimés",
-                    'other_permissions' => 'Autres permissions',
                     'roles' => 'Rôles',
                     'total' => 'utilisateur total|utilisateurs total',
                 ],

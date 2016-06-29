@@ -53,14 +53,11 @@ return [
                 'create' => 'Benutzer erstellen',
                 'deactivated' => 'Deaktivierte Benutzer',
                 'deleted' => 'Gelöschte Benutzer',
-                'dependencies' => 'Abhängigkeiten',
                 'edit' => 'Benutzer bearbeiten',
                 'management' => 'Benutzer Verwalten',
-                'no_other_permissions' => 'Keine anderen Berechtigungen',
                 'no_permissions' => 'Keine Berechtigungen',
                 'no_roles' => 'Keine Rollen vorhanden.',
                 'permissions' => 'Berechtigungen',
-                'permission_check' => 'Beim Auswählen einer Berechtigung werden deren Abhängigkeiten auch ausgewählt, sofern vorhanden.',
 
                 'table' => [
                     'confirmed' => 'Bestätigt',
@@ -71,7 +68,6 @@ return [
                     'name' => 'Name',
                     'no_deactivated' => 'Keine deaktivierten Benutzer',
                     'no_deleted' => 'Keine gelöschten Benutzer',
-                    'other_permissions' => 'Andere Berechtigungen',
                     'roles' => 'Rollen',
                     'total' => 'Benutzer|Benutzer',
                 ],

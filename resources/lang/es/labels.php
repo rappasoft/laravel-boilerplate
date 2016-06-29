@@ -53,14 +53,11 @@ return [
                 'create' => 'Crear Usuario',
                 'deactivated' => 'Usuarios desactivados',
                 'deleted' => 'Usuarios eliminados',
-                'dependencies' => 'Dependencias',
                 'edit' => 'Modificar Usuario',
                 'management' => 'Administración de Usuarios',
-                'no_other_permissions' => 'Sin otros Permisos',
                 'no_permissions' => 'Sin Permisos',
                 'no_roles' => 'No hay Roles disponibles.',
                 'permissions' => 'Permisos',
-                'permission_check' => 'Activando un permiso con dependencias, las mismas se activarán también.',
 
                 'table' => [
                     'confirmed' => 'Confirmado',
@@ -71,7 +68,6 @@ return [
                     'name' => 'Nombre',
                     'no_deactivated' => 'Ningún Usuario desactivado disponible',
                     'no_deleted' => 'Ningún Usuario eliminado disponible',
-                    'other_permissions' => 'Otros Permisos',
                     'roles' => 'Roles',
                     'total' => 'Todos los Usuarios',
                 ],

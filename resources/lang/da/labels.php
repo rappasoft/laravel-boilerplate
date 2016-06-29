@@ -50,14 +50,11 @@ return [
                 'create' => 'Opret bruger',
                 'deactivated' => 'Deaktiver bruger',
                 'deleted' => 'Slettede brugere',
-                'dependencies' => 'Afhængigheder',
                 'edit' => 'Rediger bruger',
                 'management' => 'Bruger vedligeholdelse',
-                'no_other_permissions' => 'Ingen andre rettigheder',
                 'no_permissions' => 'Ingen rettigheder',
                 'no_roles' => 'Ingen rolle valgt.',
                 'permissions' => 'Rettigheder',
-                'permission_check' => 'Valg af rettighed vil også vælge dens afhængigheder, hvis der er nogle.',
 
                 'table' => [
                     'confirmed' => 'Bekræftet',
@@ -68,7 +65,6 @@ return [
                     'name' => 'Navn',
                     'no_deactivated' => 'Ingen deaktiverede brugere',
                     'no_deleted' => 'Ingen slettede brugere',
-                    'other_permissions' => 'Andre rettigheder',
                     'roles' => 'Roller',
                     'total' => 'bruger|brugere',
                 ],

@@ -53,14 +53,11 @@ return [
                 'create' => 'Crea utente',
                 'deactivated' => 'Utenti disattivati',
                 'deleted' => 'Utenti eliminati',
-                'dependencies' => 'Dipendenze',
                 'edit' => 'Modifica utente',
                 'management' => 'Gestione utente',
-                'no_other_permissions' => 'Nessun altro permesso',
                 'no_permissions' => 'Nessun permesso',
                 'no_roles' => 'Nessuno ruolo da assegnare.',
                 'permissions' => 'Permessi',
-                'permission_check' => 'Controllare un permesso verificherà anche le sue eventuali dipendenze.',
 
                 'table' => [
                     'confirmed' => 'Confermato',
@@ -71,7 +68,6 @@ return [
                     'name' => 'Nome',
                     'no_deactivated' => 'Nessun utente disattivato',
                     'no_deleted' => 'Nessun utente eliminato',
-                    'other_permissions' => 'Altri permessi',
                     'roles' => 'Ruoli',
                     'total' => 'utente(i) totali', # TODO: pluralization
                 ],
