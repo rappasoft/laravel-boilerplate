@@ -45,13 +45,11 @@ class EloquentUserRepository implements UserRepositoryContract
      */
     public function findOrThrowException($id, $withRoles = false)
     {
-        if ($withRoles) {
-            $user = User::with('roles')->withTrashed()->find($id);
-        } else {
-            $user = User::withTrashed()->find($id);
-        }
+        if ($user = User::withTrashed()->find($id)) {
+            if ($withRoles) {
+                $user->load("roles");
+            }
 
-        if (!is_null($user)) {
             return $user;
         }
 
@@ -178,9 +176,9 @@ class EloquentUserRepository implements UserRepositoryContract
         }
 
         $user = $this->findOrThrowException($id);
-        if ($user->delete()) {
+
+        if ($user->delete())
             return true;
-        }
 
         throw new GeneralException(trans('exceptions.backend.access.users.delete_error'));
     }
@@ -213,9 +211,8 @@ class EloquentUserRepository implements UserRepositoryContract
     {
         $user = $this->findOrThrowException($id);
 
-        if ($user->restore()) {
+        if ($user->restore())
             return true;
-        }
 
         throw new GeneralException(trans('exceptions.backend.access.users.restore_error'));
     }
@@ -235,9 +232,8 @@ class EloquentUserRepository implements UserRepositoryContract
         $user         = $this->findOrThrowException($id);
         $user->status = $status;
 
-        if ($user->save()) {
+        if ($user->save())
             return true;
-        }
 
         throw new GeneralException(trans('exceptions.backend.access.users.mark_error'));
     }
@@ -281,7 +277,6 @@ class EloquentUserRepository implements UserRepositoryContract
             if (User::where('email', '=', $input['email'])->first()) {
                 throw new GeneralException(trans('exceptions.backend.access.users.email_error'));
             }
-
         }
     }
 
@@ -307,7 +302,6 @@ class EloquentUserRepository implements UserRepositoryContract
         if (count($roles['assignees_roles']) == 0) {
             throw new GeneralException(trans('exceptions.backend.access.users.role_needed'));
         }
-
     }
 
     /**

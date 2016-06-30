@@ -16,7 +16,6 @@ use App\Http\Requests\Backend\Access\User\ChangeUserPasswordRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
 use App\Http\Requests\Backend\Access\User\PermanentlyDeleteUserRequest;
 use App\Http\Requests\Backend\Access\User\ResendConfirmationEmailRequest;
-use App\Repositories\Backend\Access\Permission\PermissionRepositoryContract;
 use App\Repositories\Frontend\Access\User\UserRepositoryContract as FrontendUserRepositoryContract;
 
 /**
@@ -35,24 +34,16 @@ class UserController extends Controller
     protected $roles;
 
     /**
-     * @var PermissionRepositoryContract
-     */
-    protected $permissions;
-
-    /**
      * @param UserRepositoryContract       $users
      * @param RoleRepositoryContract       $roles
-     * @param PermissionRepositoryContract $permissions
      */
     public function __construct(
         UserRepositoryContract $users,
-        RoleRepositoryContract $roles,
-        PermissionRepositoryContract $permissions
+        RoleRepositoryContract $roles
     )
     {
         $this->users       = $users;
         $this->roles       = $roles;
-        $this->permissions = $permissions;
     }
 
 	/**
@@ -71,8 +62,7 @@ class UserController extends Controller
     public function create(CreateUserRequest $request)
     {
         return view('backend.access.create')
-            ->withRoles($this->roles->getAllRoles('sort', 'asc', true))
-            ->withPermissions($this->permissions->getAllPermissions());
+            ->withRoles($this->roles->getAllRoles('sort', 'asc', true));
     }
 
 	/**

@@ -11,21 +11,21 @@ use App\Exceptions\GeneralException;
  */
 class EloquentRoleRepository implements RoleRepositoryContract
 {
-    /**
-     * @param  $id
-     * @param  bool $withPermissions
+
+	/**
+     * @param $id
+     * @param bool $withPermissions
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null|static|static[]
      * @throws GeneralException
-     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|\Illuminate\Support\Collection|null|static
      */
     public function findOrThrowException($id, $withPermissions = false)
     {
-        if (! is_null(Role::find($id))) {
+        if ($role = Role::find($id)) {
             if ($withPermissions) {
-                return Role::with('permissions')
-                    ->find($id);
+                $role->load("permissions");
             }
 
-            return Role::find($id);
+            return $role;
         }
 
         throw new GeneralException(trans('exceptions.backend.access.roles.not_found'));
@@ -77,9 +77,8 @@ class EloquentRoleRepository implements RoleRepositoryContract
         $all = $input['associated-permissions'] == 'all' ? true : false;
 
         //This config is only required if all is false
-        if (!$all)
+        if (!$all) {
             //See if the role must contain a permission as per config
-        {
             if (config('access.roles.role_must_contain_permission') && count($input['permissions']) == 0) {
                 throw new GeneralException(trans('exceptions.backend.access.roles.needs_permission'));
             }
@@ -184,7 +183,7 @@ class EloquentRoleRepository implements RoleRepositoryContract
             throw new GeneralException(trans('exceptions.backend.access.roles.cant_delete_admin'));
         }
 
-        $role = $this->findOrThrowException($id, true);
+        $role = $this->findOrThrowException($id);
 
         //Don't delete the role is there are users associated
         if ($role->users()->count() > 0) {

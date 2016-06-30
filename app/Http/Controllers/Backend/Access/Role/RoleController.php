@@ -71,7 +71,7 @@ class RoleController extends Controller
 
     /**
      * @param  $id
-     * @param  EditRoleRequest                   $request
+     * @param  EditRoleRequest $request
      * @return mixed
      */
     public function edit($id, EditRoleRequest $request)

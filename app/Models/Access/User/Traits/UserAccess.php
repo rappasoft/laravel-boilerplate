@@ -101,22 +101,6 @@ trait UserAccess
             }
         }
 
-        //Check permissions directly tied to user
-        foreach ($this->permissions as $perm) {
-
-            //First check to see if it's an ID
-            if (is_numeric($nameOrId)) {
-                if ($perm->id == $nameOrId) {
-                    return true;
-                }
-            }
-
-            //Otherwise check by name
-            if ($perm->name == $nameOrId) {
-                return true;
-            }
-        }
-
         return false;
     }
 
