@@ -35,7 +35,6 @@
                         <th>{{ trans('labels.backend.content.article.index.table.category_id') }}</th>
                         <th>{{ trans('labels.backend.content.article.index.table.status') }}</th>
                         <th class="visible-lg">{{ trans('labels.backend.content.article.index.table.created_at') }}</th>
-                        <th class="visible-lg">{{ trans('labels.backend.content.article.index.table.updated_at') }}</th>
                         <th>{{ trans('labels.general.actions') }}</th>
                     </tr>
                     </thead>
@@ -49,7 +48,6 @@
                                 <td>{!! $model->category ? $model->category->title_label : '' !!}</td>
                                 <td>{!! $model->status_label !!}</td>
                                 <td>{!! $model->created_at !!}</td>
-                                <td>{!! $model->updated_at !!}</td>
                                 <td>
                                     {!! $model->action_buttons !!}
 <!--                                    <a href="{{route('admin.content.article.view',['id' => $model->id])}}" class="btn btn-default btn-xs">{{ trans('buttons.general.view') }}</a>
