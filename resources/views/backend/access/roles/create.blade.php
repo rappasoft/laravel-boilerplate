@@ -71,8 +71,6 @@
                 <div class="clearfix"></div>
             </div><!-- /.box-body -->
         </div><!--box-->
-
-        {!! Form::hidden('permissions') !!}
     {!! Form::close() !!}
 @stop
 

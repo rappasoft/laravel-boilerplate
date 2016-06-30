@@ -196,7 +196,6 @@ class EloquentUserRepository implements UserRepositoryContract
 
         //Detach all roles & permissions
         $user->detachRoles($user->roles);
-        $user->detachPermissions($user->permissions);
 
         try {
             $user->forceDelete();
@@ -295,20 +294,6 @@ class EloquentUserRepository implements UserRepositoryContract
         //Flush roles out, then add array of new ones
         $user->detachRoles($user->roles);
         $user->attachRoles($roles['assignees_roles']);
-    }
-
-    /**
-     * @param $permissions
-     * @param $user
-     */
-    private function flushPermissions($permissions, $user)
-    {
-        //Flush permissions out, then add array of new ones if any
-        $user->detachPermissions($user->permissions);
-        if (count($permissions['permission_user']) > 0) {
-            $user->attachPermissions($permissions['permission_user']);
-        }
-
     }
 
     /**

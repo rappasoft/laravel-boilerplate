@@ -87,7 +87,7 @@ class EloquentRoleRepository implements RoleRepositoryContract
 
         $role       = new Role;
         $role->name = $input['name'];
-        $role->sort = isset($input['sort']) && strlen($input['sort']) > 0 && is_numeric($input['sort']) ? (int) $input['sort'] : 0;
+        $role->sort = isset($input['sort']) && strlen($input['sort']) > 0 && is_numeric($input['sort']) ? (int)$input['sort'] : 0;
 
         //See if this role has all permissions and set the flag on the role
         $role->all = $all;
@@ -96,12 +96,11 @@ class EloquentRoleRepository implements RoleRepositoryContract
             if (!$all) {
                 $permissions = [];
 
-                if (count($input['permissions'])) {
+                if (is_array($input['permissions'])) {
                     foreach ($input['permissions'] as $perm) {
                         if (is_numeric($perm)) {
                             array_push($permissions, $perm);
                         }
-
                     }
                 }
 
@@ -156,12 +155,11 @@ class EloquentRoleRepository implements RoleRepositoryContract
                 //Attach permissions if the role does not have all access
                 $permissions = [];
 
-                if (count($input['permissions'])) {
+                if (is_array($input['permissions'])) {
                     foreach ($input['permissions'] as $perm) {
                         if (is_numeric($perm)) {
                             array_push($permissions, $perm);
                         }
-
                     }
                 }
 
