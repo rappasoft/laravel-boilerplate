@@ -62,8 +62,6 @@ return [
             'password' => [
                 'change_mismatch' => 'That is not your old password.',
             ],
-
-
         ],
     ],
 ];
