@@ -76,6 +76,9 @@ class EloquentRoleRepository implements RoleRepositoryContract
         //See if the role has all access
         $all = $input['associated-permissions'] == 'all' ? true : false;
 
+        if (! isset($input['permissions']))
+            $input['permissions'] = [];
+
         //This config is only required if all is false
         if (!$all) {
             //See if the role must contain a permission as per config
@@ -95,7 +98,7 @@ class EloquentRoleRepository implements RoleRepositoryContract
             if (!$all) {
                 $permissions = [];
 
-                if (is_array($input['permissions'])) {
+                if (is_array($input['permissions']) && count($input['permissions'])) {
                     foreach ($input['permissions'] as $perm) {
                         if (is_numeric($perm)) {
                             array_push($permissions, $perm);
@@ -129,6 +132,9 @@ class EloquentRoleRepository implements RoleRepositoryContract
             $all = $input['associated-permissions'] == 'all' ? true : false;
         }
 
+        if (! isset($input['permissions']))
+            $input['permissions'] = [];
+
         //This config is only required if all is false
         if (! $all) {
             //See if the role must contain a permission as per config
@@ -154,7 +160,7 @@ class EloquentRoleRepository implements RoleRepositoryContract
                 //Attach permissions if the role does not have all access
                 $permissions = [];
 
-                if (is_array($input['permissions'])) {
+                if (is_array($input['permissions']) && count($input['permissions'])) {
                     foreach ($input['permissions'] as $perm) {
                         if (is_numeric($perm)) {
                             array_push($permissions, $perm);
