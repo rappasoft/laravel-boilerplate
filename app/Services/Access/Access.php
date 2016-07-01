@@ -42,6 +42,14 @@ class Access
         return auth()->guest();
     }
 
+	/**
+     * @return mixed
+     */
+    public function logout()
+    {
+        return auth()->logout();
+    }
+
     /**
      * Get the currently authenticated user's id
      * @return mixed
