@@ -39,7 +39,7 @@
                     <ul class="dropdown-menu">
                         <li class="header">{{ trans_choice('strings.backend.general.you_have.notifications', 0) }}</li>
                         <li class="footer">
-                            {{ link_to('#',  trans('strings.backend.general.see_all.notifications')) }}
+                            {{ link_to('#', trans('strings.backend.general.see_all.notifications')) }}
                         </li>
                     </ul>
                 </li><!-- /.notifications-menu -->

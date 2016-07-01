@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    {!! Form::model($user, ['route' => ['admin.access.users.update', $user->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) !!}
+    {{ Form::model($user, ['route' => ['admin.access.users.update', $user->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) }}
 
         <div class="box box-success">
             <div class="box-header with-border">
@@ -18,45 +18,50 @@
 
                 <div class="box-tools pull-right">
                     @include('backend.access.includes.partials.header-buttons')
-                </div>
+                </div><!--box-tools pull-right-->
             </div><!-- /.box-header -->
 
             <div class="box-body">
                 <div class="form-group">
-                    {!! Form::label('name', trans('validation.attributes.backend.access.users.name'), ['class' => 'col-lg-2 control-label']) !!}
+                    {{ Form::label('name', trans('validation.attributes.backend.access.users.name'), ['class' => 'col-lg-2 control-label']) }}
+
                     <div class="col-lg-10">
-                        {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.users.name')]) !!}
-                    </div>
+                        {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.users.name')]) }}
+                    </div><!--col-lg-10-->
                 </div><!--form control-->
 
                 <div class="form-group">
-                    {!! Form::label('email', trans('validation.attributes.backend.access.users.email'), ['class' => 'col-lg-2 control-label']) !!}
+                    {{ Form::label('email', trans('validation.attributes.backend.access.users.email'), ['class' => 'col-lg-2 control-label']) }}
+
                     <div class="col-lg-10">
-                        {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.users.email')]) !!}
-                    </div>
+                        {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.users.email')]) }}
+                    </div><!--col-lg-10-->
                 </div><!--form control-->
 
                 @if ($user->id != 1)
                     <div class="form-group">
-                        <label class="col-lg-2 control-label">{{ trans('validation.attributes.backend.access.users.active') }}</label>
+                        {{ Form::label('status', trans('validation.attributes.backend.access.users.active'), ['class' => 'col-lg-2 control-label']) }}
+
                         <div class="col-lg-1">
-                            <input type="checkbox" value="1" name="status" {{$user->status == 1 ? 'checked' : ''}} />
-                        </div>
+                            {{ Form::checkbox('status', '1', $user->status == 1) }}
+                        </div><!--col-lg-1-->
                     </div><!--form control-->
 
                     <div class="form-group">
-                        <label class="col-lg-2 control-label">{{ trans('validation.attributes.backend.access.users.confirmed') }}</label>
+                        {{ Form::label('confirmed', trans('validation.attributes.backend.access.users.confirmed'), ['class' => 'col-lg-2 control-label']) }}
+
                         <div class="col-lg-1">
-                            <input type="checkbox" value="1" name="confirmed" {{$user->confirmed == 1 ? 'checked' : ''}} />
-                        </div>
+                            {{ Form::checkbox('confirmed', '1', $user->confirmed == 1) }}
+                        </div><!--col-lg-1-->
                     </div><!--form control-->
 
                     <div class="form-group">
-                        <label class="col-lg-2 control-label">{{ trans('validation.attributes.backend.access.users.associated_roles') }}</label>
+                        {{ Form::label('status', trans('validation.attributes.backend.access.users.associated_roles'), ['class' => 'col-lg-2 control-label']) }}
+
                         <div class="col-lg-3">
                             @if (count($roles) > 0)
                                 @foreach($roles as $role)
-                                    <input type="checkbox" value="{{$role->id}}" name="assignees_roles[]" {{in_array($role->id, $user_roles) ? 'checked' : ''}} id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{!! $role->name !!}</label>
+                                    <input type="checkbox" value="{{$role->id}}" name="assignees_roles[]" {{in_array($role->id, $user_roles) ? 'checked' : ''}} id="role-{{$role->id}}" /> <label for="role-{{$role->id}}">{{ $role->name }}</label>
                                         <a href="#" data-role="role_{{$role->id}}" class="show-permissions small">
                                             (
                                                 <span class="show-text">{{ trans('labels.general.show') }}</span>
@@ -84,7 +89,7 @@
                             @else
                                 {{ trans('labels.backend.access.users.no_roles') }}
                             @endif
-                        </div>
+                        </div><!--col-lg-3-->
                     </div><!--form control-->
                 @endif
             </div><!-- /.box-body -->
@@ -93,25 +98,26 @@
         <div class="box box-success">
             <div class="box-body">
                 <div class="pull-left">
-                    <a href="{{route('admin.access.users.index')}}" class="btn btn-danger btn-xs">{{ trans('buttons.general.cancel') }}</a>
-                </div>
+                    {{ link_to_route('admin.access.users.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger btn-xs']) }}
+                </div><!--pull-left-->
 
                 <div class="pull-right">
-                    <input type="submit" class="btn btn-success btn-xs" value="{{ trans('buttons.general.crud.update') }}" />
-                </div>
+                    {{ Form::submit(trans('buttons.general.crud.update'), ['class' => 'btn btn-success btn-xs']) }}
+                </div><!--pull-right-->
+
                 <div class="clearfix"></div>
             </div><!-- /.box-body -->
         </div><!--box-->
 
         @if ($user->id == 1)
-            {!! Form::hidden('status', 1) !!}
-            {!! Form::hidden('confirmed', 1) !!}
-            {!! Form::hidden('assignees_roles[]', 1) !!}
+            {{ Form::hidden('status', 1) }}
+            {{ Form::hidden('confirmed', 1) }}
+            {{ Form::hidden('assignees_roles[]', 1) }}
         @endif
 
-    {!! Form::close() !!}
+    {{ Form::close() }}
 @stop
 
 @section('after-scripts-end')
-    {!! Html::script('js/backend/access/users/script.js') !!}
+    {{ Html::script('js/backend/access/users/script.js') }}
 @stop

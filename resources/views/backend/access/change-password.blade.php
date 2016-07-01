@@ -37,7 +37,6 @@
                         {{ Form::password('password_confirmation', ['class' => 'form-control']) }}
                     </div><!--col-lg-10-->
                 </div><!--form control-->
-
             </div><!-- /.box-body -->
         </div><!--box-->
 

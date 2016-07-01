@@ -63,7 +63,7 @@
                 </div><!--form control-->
 
                 <div class="form-group">
-                    {{ Form::label('status', trans('validation.attributes.backend.access.users.confirmed'), ['class' => 'col-lg-2 control-label']) }}
+                    {{ Form::label('confirmed', trans('validation.attributes.backend.access.users.confirmed'), ['class' => 'col-lg-2 control-label']) }}
 
                     <div class="col-lg-1">
                         {{ Form::checkbox('confirmed', '1', true) }}
@@ -126,7 +126,7 @@
                 </div><!--pull-left-->
 
                 <div class="pull-right">
-                    {{ Form::submit(trans('buttons.general.crud.update'), ['class' => 'btn btn-success btn-xs']) }}
+                    {{ Form::submit(trans('buttons.general.crud.create'), ['class' => 'btn btn-success btn-xs']) }}
                 </div><!--pull-right-->
 
                 <div class="clearfix"></div>
