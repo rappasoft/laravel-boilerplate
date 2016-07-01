@@ -7,25 +7,25 @@ use App\Exceptions\GeneralException;
 
 /**
  * Class EloquentRoleRepository
- * @package App\Repositories\Role
+ * @package app\Repositories\Role
  */
 class EloquentRoleRepository implements RoleRepositoryContract
 {
-    /**
-     * @param  $id
-     * @param  bool $withPermissions
+
+	/**
+     * @param $id
+     * @param bool $withPermissions
+     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null|static|static[]
      * @throws GeneralException
-     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|\Illuminate\Support\Collection|null|static
      */
     public function findOrThrowException($id, $withPermissions = false)
     {
-        if (! is_null(Role::find($id))) {
+        if ($role = Role::find($id)) {
             if ($withPermissions) {
-                return Role::with('permissions')
-                    ->find($id);
+                $role->load("permissions");
             }
 
-            return Role::find($id);
+            return $role;
         }
 
         throw new GeneralException(trans('exceptions.backend.access.roles.not_found'));
@@ -77,9 +77,8 @@ class EloquentRoleRepository implements RoleRepositoryContract
         $all = $input['associated-permissions'] == 'all' ? true : false;
 
         //This config is only required if all is false
-        if (!$all)
-        //See if the role must contain a permission as per config
-        {
+        if (!$all) {
+            //See if the role must contain a permission as per config
             if (config('access.roles.role_must_contain_permission') && count($input['permissions']) == 0) {
                 throw new GeneralException(trans('exceptions.backend.access.roles.needs_permission'));
             }
@@ -87,24 +86,23 @@ class EloquentRoleRepository implements RoleRepositoryContract
 
         $role       = new Role;
         $role->name = $input['name'];
-        $role->sort = isset($input['sort']) && strlen($input['sort']) > 0 && is_numeric($input['sort']) ? (int) $input['sort'] : 0;
+        $role->sort = isset($input['sort']) && strlen($input['sort']) > 0 && is_numeric($input['sort']) ? (int)$input['sort'] : 0;
 
         //See if this role has all permissions and set the flag on the role
         $role->all = $all;
 
         if ($role->save()) {
             if (!$all) {
-                $current     = explode(',', $input['permissions']);
                 $permissions = [];
 
-                if (count($current)) {
-                    foreach ($current as $perm) {
+                if (is_array($input['permissions'])) {
+                    foreach ($input['permissions'] as $perm) {
                         if (is_numeric($perm)) {
                             array_push($permissions, $perm);
                         }
-
                     }
                 }
+
                 $role->attachPermissions($permissions);
             }
 
@@ -154,17 +152,16 @@ class EloquentRoleRepository implements RoleRepositoryContract
                 $role->permissions()->sync([]);
 
                 //Attach permissions if the role does not have all access
-                $current     = explode(',', $input['permissions']);
                 $permissions = [];
 
-                if (count($current)) {
-                    foreach ($current as $perm) {
+                if (is_array($input['permissions'])) {
+                    foreach ($input['permissions'] as $perm) {
                         if (is_numeric($perm)) {
                             array_push($permissions, $perm);
                         }
-
                     }
                 }
+
                 $role->attachPermissions($permissions);
             }
 
@@ -186,7 +183,7 @@ class EloquentRoleRepository implements RoleRepositoryContract
             throw new GeneralException(trans('exceptions.backend.access.roles.cant_delete_admin'));
         }
 
-        $role = $this->findOrThrowException($id, true);
+        $role = $this->findOrThrowException($id);
 
         //Don't delete the role is there are users associated
         if ($role->users()->count() > 0) {
@@ -201,17 +198,5 @@ class EloquentRoleRepository implements RoleRepositoryContract
         }
 
         throw new GeneralException(trans('exceptions.backend.access.roles.delete_error'));
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDefaultUserRole()
-    {
-        if (is_numeric(config('access.users.default_role'))) {
-            return Role::where('id', (int) config('access.users.default_role'))->first();
-        }
-
-        return Role::where('name', config('access.users.default_role'))->first();
     }
 }

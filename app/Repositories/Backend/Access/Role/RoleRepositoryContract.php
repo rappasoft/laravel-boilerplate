@@ -4,7 +4,7 @@ namespace App\Repositories\Backend\Access\Role;
 
 /**
  * Interface RoleRepositoryContract
- * @package App\Repositories\Role
+ * @package app\Repositories\Role
  */
 interface RoleRepositoryContract
 {
@@ -49,9 +49,4 @@ interface RoleRepositoryContract
      * @return mixed
      */
     public function destroy($id);
-
-    /**
-     * @return mixed
-     */
-    public function getDefaultUserRole();
 }

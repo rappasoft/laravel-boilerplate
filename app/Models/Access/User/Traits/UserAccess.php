@@ -101,22 +101,6 @@ trait UserAccess
             }
         }
 
-        //Check permissions directly tied to user
-        foreach ($this->permissions as $perm) {
-
-            //First check to see if it's an ID
-            if (is_numeric($nameOrId)) {
-                if ($perm->id == $nameOrId) {
-                    return true;
-                }
-            }
-
-            //Otherwise check by name
-            if ($perm->name == $nameOrId) {
-                return true;
-            }
-        }
-
         return false;
     }
 
@@ -234,68 +218,6 @@ trait UserAccess
     {
         foreach ($roles as $role) {
             $this->detachRole($role);
-        }
-    }
-
-    /**
-     * Attach one permission not associated with a role directly to a user
-     *
-     * @param $permission
-     */
-    public function attachPermission($permission)
-    {
-        if (is_object($permission)) {
-            $permission = $permission->getKey();
-        }
-
-        if (is_array($permission)) {
-            $permission = $permission['id'];
-        }
-
-        $this->permissions()->attach($permission);
-    }
-
-    /**
-     * Attach other permissions not associated with a role directly to a user
-     *
-     * @param $permissions
-     */
-    public function attachPermissions($permissions)
-    {
-        if (count($permissions)) {
-            foreach ($permissions as $perm) {
-                $this->attachPermission($perm);
-            }
-        }
-    }
-
-    /**
-     * Detach one permission not associated with a role directly to a user
-     *
-     * @param $permission
-     */
-    public function detachPermission($permission)
-    {
-        if (is_object($permission)) {
-            $permission = $permission->getKey();
-        }
-
-        if (is_array($permission)) {
-            $permission = $permission['id'];
-        }
-
-        $this->permissions()->detach($permission);
-    }
-
-    /**
-     * Detach other permissions not associated with a role directly to a user
-     *
-     * @param $permissions
-     */
-    public function detachPermissions($permissions)
-    {
-        foreach ($permissions as $perm) {
-            $this->detachPermission($perm);
         }
     }
 }

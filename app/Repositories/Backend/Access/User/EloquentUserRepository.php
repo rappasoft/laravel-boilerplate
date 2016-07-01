@@ -45,13 +45,11 @@ class EloquentUserRepository implements UserRepositoryContract
      */
     public function findOrThrowException($id, $withRoles = false)
     {
-        if ($withRoles) {
-            $user = User::with('roles')->withTrashed()->find($id);
-        } else {
-            $user = User::withTrashed()->find($id);
-        }
+        if ($user = User::withTrashed()->find($id)) {
+            if ($withRoles) {
+                $user->load("roles");
+            }
 
-        if (!is_null($user)) {
             return $user;
         }
 
@@ -96,12 +94,11 @@ class EloquentUserRepository implements UserRepositoryContract
     /**
      * @param  $input
      * @param  $roles
-     * @param  $permissions
      * @throws GeneralException
      * @throws UserNeedsRolesException
      * @return bool
      */
-    public function create($input, $roles, $permissions)
+    public function create($input, $roles)
     {
         $user = $this->createUserStub($input);
 
@@ -111,9 +108,6 @@ class EloquentUserRepository implements UserRepositoryContract
 
             //Attach new roles
             $user->attachRoles($roles['assignees_roles']);
-
-            //Attach other permissions
-            $user->attachPermissions($permissions['permission_user']);
 
             //Send confirmation email if requested
             if (isset($input['confirmation_email']) && $user->confirmed == 0) {
@@ -130,11 +124,10 @@ class EloquentUserRepository implements UserRepositoryContract
      * @param $id
      * @param $input
      * @param $roles
-     * @param $permissions
      * @return bool
      * @throws GeneralException
      */
-    public function update($id, $input, $roles, $permissions)
+    public function update($id, $input, $roles)
     {
         $user = $this->findOrThrowException($id);
         $this->checkUserByEmail($input, $user);
@@ -147,7 +140,6 @@ class EloquentUserRepository implements UserRepositoryContract
 
             $this->checkUserRolesCount($roles);
             $this->flushRoles($roles, $user);
-            $this->flushPermissions($permissions, $user);
 
             return true;
         }
@@ -184,9 +176,9 @@ class EloquentUserRepository implements UserRepositoryContract
         }
 
         $user = $this->findOrThrowException($id);
-        if ($user->delete()) {
+
+        if ($user->delete())
             return true;
-        }
 
         throw new GeneralException(trans('exceptions.backend.access.users.delete_error'));
     }
@@ -202,7 +194,6 @@ class EloquentUserRepository implements UserRepositoryContract
 
         //Detach all roles & permissions
         $user->detachRoles($user->roles);
-        $user->detachPermissions($user->permissions);
 
         try {
             $user->forceDelete();
@@ -220,9 +211,8 @@ class EloquentUserRepository implements UserRepositoryContract
     {
         $user = $this->findOrThrowException($id);
 
-        if ($user->restore()) {
+        if ($user->restore())
             return true;
-        }
 
         throw new GeneralException(trans('exceptions.backend.access.users.restore_error'));
     }
@@ -242,9 +232,8 @@ class EloquentUserRepository implements UserRepositoryContract
         $user         = $this->findOrThrowException($id);
         $user->status = $status;
 
-        if ($user->save()) {
+        if ($user->save())
             return true;
-        }
 
         throw new GeneralException(trans('exceptions.backend.access.users.mark_error'));
     }
@@ -288,7 +277,6 @@ class EloquentUserRepository implements UserRepositoryContract
             if (User::where('email', '=', $input['email'])->first()) {
                 throw new GeneralException(trans('exceptions.backend.access.users.email_error'));
             }
-
         }
     }
 
@@ -304,20 +292,6 @@ class EloquentUserRepository implements UserRepositoryContract
     }
 
     /**
-     * @param $permissions
-     * @param $user
-     */
-    private function flushPermissions($permissions, $user)
-    {
-        //Flush permissions out, then add array of new ones if any
-        $user->detachPermissions($user->permissions);
-        if (count($permissions['permission_user']) > 0) {
-            $user->attachPermissions($permissions['permission_user']);
-        }
-
-    }
-
-    /**
      * @param  $roles
      * @throws GeneralException
      */
@@ -328,7 +302,6 @@ class EloquentUserRepository implements UserRepositoryContract
         if (count($roles['assignees_roles']) == 0) {
             throw new GeneralException(trans('exceptions.backend.access.users.role_needed'));
         }
-
     }
 
     /**

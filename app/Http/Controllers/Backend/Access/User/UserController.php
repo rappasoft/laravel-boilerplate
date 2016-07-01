@@ -16,7 +16,6 @@ use App\Http\Requests\Backend\Access\User\ChangeUserPasswordRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
 use App\Http\Requests\Backend\Access\User\PermanentlyDeleteUserRequest;
 use App\Http\Requests\Backend\Access\User\ResendConfirmationEmailRequest;
-use App\Repositories\Backend\Access\Permission\PermissionRepositoryContract;
 use App\Repositories\Frontend\Access\User\UserRepositoryContract as FrontendUserRepositoryContract;
 
 /**
@@ -35,27 +34,19 @@ class UserController extends Controller
     protected $roles;
 
     /**
-     * @var PermissionRepositoryContract
-     */
-    protected $permissions;
-
-    /**
      * @param UserRepositoryContract       $users
      * @param RoleRepositoryContract       $roles
-     * @param PermissionRepositoryContract $permissions
      */
     public function __construct(
         UserRepositoryContract $users,
-        RoleRepositoryContract $roles,
-        PermissionRepositoryContract $permissions
+        RoleRepositoryContract $roles
     )
     {
         $this->users       = $users;
         $this->roles       = $roles;
-        $this->permissions = $permissions;
     }
 
-    /**
+	/**
      * @return mixed
      */
     public function index()
@@ -64,34 +55,32 @@ class UserController extends Controller
             ->withUsers($this->users->getUsersPaginated(config('access.users.default_per_page'), 1));
     }
 
-    /**
-     * @param  CreateUserRequest $request
+	/**
+     * @param CreateUserRequest $request
      * @return mixed
      */
     public function create(CreateUserRequest $request)
     {
         return view('backend.access.create')
-            ->withRoles($this->roles->getAllRoles('sort', 'asc', true))
-            ->withPermissions($this->permissions->getAllPermissions());
+            ->withRoles($this->roles->getAllRoles('sort', 'asc', true));
     }
 
-    /**
-     * @param  StoreUserRequest $request
+	/**
+     * @param StoreUserRequest $request
      * @return mixed
      */
     public function store(StoreUserRequest $request)
     {
         $this->users->create(
-            $request->except('assignees_roles', 'permission_user'),
-            $request->only('assignees_roles'),
-            $request->only('permission_user')
+            $request->except('assignees_roles'),
+            $request->only('assignees_roles')
         );
         return redirect()->route('admin.access.users.index')->withFlashSuccess(trans('alerts.backend.users.created'));
     }
 
-    /**
-     * @param  $id
-     * @param  EditUserRequest $request
+	/**
+     * @param $id
+     * @param EditUserRequest $request
      * @return mixed
      */
     public function edit($id, EditUserRequest $request)
@@ -100,29 +89,26 @@ class UserController extends Controller
         return view('backend.access.edit')
             ->withUser($user)
             ->withUserRoles($user->roles->lists('id')->all())
-            ->withRoles($this->roles->getAllRoles('sort', 'asc', true))
-            ->withUserPermissions($user->permissions->lists('id')->all())
-            ->withPermissions($this->permissions->getAllPermissions());
+            ->withRoles($this->roles->getAllRoles('sort', 'asc', true));
     }
 
-    /**
-     * @param  $id
-     * @param  UpdateUserRequest $request
+	/**
+     * @param $id
+     * @param UpdateUserRequest $request
      * @return mixed
      */
     public function update($id, UpdateUserRequest $request)
     {
         $this->users->update($id,
-            $request->except('assignees_roles', 'permission_user'),
-            $request->only('assignees_roles'),
-            $request->only('permission_user')
+            $request->except('assignees_roles'),
+            $request->only('assignees_roles')
         );
         return redirect()->route('admin.access.users.index')->withFlashSuccess(trans('alerts.backend.users.updated'));
     }
 
-    /**
-     * @param  $id
-     * @param  DeleteUserRequest $request
+	/**
+     * @param $id
+     * @param DeleteUserRequest $request
      * @return mixed
      */
     public function destroy($id, DeleteUserRequest $request)
@@ -131,9 +117,9 @@ class UserController extends Controller
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.deleted'));
     }
 
-    /**
-     * @param  $id
-     * @param  PermanentlyDeleteUserRequest $request
+	/**
+     * @param $id
+     * @param PermanentlyDeleteUserRequest $request
      * @return mixed
      */
     public function delete($id, PermanentlyDeleteUserRequest $request)
@@ -142,9 +128,9 @@ class UserController extends Controller
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.deleted_permanently'));
     }
 
-    /**
-     * @param  $id
-     * @param  RestoreUserRequest $request
+	/**
+     * @param $id
+     * @param RestoreUserRequest $request
      * @return mixed
      */
     public function restore($id, RestoreUserRequest $request)
@@ -153,10 +139,10 @@ class UserController extends Controller
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.restored'));
     }
 
-    /**
-     * @param  $id
-     * @param  $status
-     * @param  MarkUserRequest $request
+	/**
+     * @param $id
+     * @param $status
+     * @param MarkUserRequest $request
      * @return mixed
      */
     public function mark($id, $status, MarkUserRequest $request)
@@ -165,27 +151,27 @@ class UserController extends Controller
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.updated'));
     }
 
-    /**
+	/**
      * @return mixed
      */
     public function deactivated()
     {
         return view('backend.access.deactivated')
-            ->withUsers($this->users->getUsersPaginated(25, 0));
+            ->withUsers($this->users->getUsersPaginated(config('access.users.default_per_page'), 0));
     }
 
-    /**
+	/**
      * @return mixed
      */
     public function deleted()
     {
         return view('backend.access.deleted')
-            ->withUsers($this->users->getDeletedUsersPaginated(25));
+            ->withUsers($this->users->getDeletedUsersPaginated(config('access.users.default_per_page')));
     }
 
-    /**
-     * @param  $id
-     * @param  ChangeUserPasswordRequest $request
+	/**
+     * @param $id
+     * @param ChangeUserPasswordRequest $request
      * @return mixed
      */
     public function changePassword($id, ChangeUserPasswordRequest $request)
@@ -194,9 +180,9 @@ class UserController extends Controller
             ->withUser($this->users->findOrThrowException($id));
     }
 
-    /**
-     * @param  $id
-     * @param  UpdateUserPasswordRequest $request
+	/**
+     * @param $id
+     * @param UpdateUserPasswordRequest $request
      * @return mixed
      */
     public function updatePassword($id, UpdateUserPasswordRequest $request)
@@ -205,10 +191,10 @@ class UserController extends Controller
         return redirect()->route('admin.access.users.index')->withFlashSuccess(trans('alerts.backend.users.updated_password'));
     }
 
-    /**
-     * @param  $user_id
-     * @param  FrontendUserRepositoryContract $user
-     * @param  ResendConfirmationEmailRequest $request
+	/**
+     * @param $user_id
+     * @param FrontendUserRepositoryContract $user
+     * @param ResendConfirmationEmailRequest $request
      * @return mixed
      */
     public function resendConfirmationEmail($user_id, FrontendUserRepositoryContract $user, ResendConfirmationEmailRequest $request)

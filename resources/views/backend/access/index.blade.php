@@ -29,7 +29,6 @@
                         <th>{{ trans('labels.backend.access.users.table.email') }}</th>
                         <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
                         <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
-                        <th>{{ trans('labels.backend.access.users.table.other_permissions') }}</th>
                         <th class="visible-lg">{{ trans('labels.backend.access.users.table.created') }}</th>
                         <th class="visible-lg">{{ trans('labels.backend.access.users.table.last_updated') }}</th>
                         <th>{{ trans('labels.general.actions') }}</th>
@@ -46,15 +45,6 @@
                                     @if ($user->roles()->count() > 0)
                                         @foreach ($user->roles as $role)
                                             {!! $role->name !!}<br/>
-                                        @endforeach
-                                    @else
-                                        {{ trans('labels.general.none') }}
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($user->permissions()->count() > 0)
-                                        @foreach ($user->permissions as $perm)
-                                            {!! $perm->display_name !!}<br/>
                                         @endforeach
                                     @else
                                         {{ trans('labels.general.none') }}

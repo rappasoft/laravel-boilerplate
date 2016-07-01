@@ -40,19 +40,17 @@ interface UserRepositoryContract
     /**
      * @param $input
      * @param $roles
-     * @param $permissions
      * @return mixed
      */
-    public function create($input, $roles, $permissions);
+    public function create($input, $roles);
 
     /**
      * @param $id
      * @param $input
      * @param $roles
-     * @param $permissions
      * @return mixed
      */
-    public function update($id, $input, $roles, $permissions);
+    public function update($id, $input, $roles);
 
     /**
      * @param  $id

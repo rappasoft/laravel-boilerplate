@@ -17,20 +17,6 @@ return [
         'access' => [
             'title' => 'Gestione accessi',
 
-            'permissions' => [
-                'all' => 'Tutti i permessi',
-                'create' => 'Crea permesso',
-                'edit' => 'Modifica permesso',
-                'groups' => [
-                    'all' => 'Tutti i gruppi',
-                    'create' => 'Crea gruppo',
-                    'edit' => 'Modifica gruppo',
-                    'main' => 'Gruppi',
-                ],
-                'main' => 'Permessi',
-                'management' => 'Gestione permessi',
-            ],
-
             'roles' => [
                 'all' => 'Tutti i ruoli',
                 'create' => 'Crea ruolo',

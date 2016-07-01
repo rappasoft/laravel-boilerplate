@@ -17,7 +17,7 @@ class CreateUserRequest extends Request
      */
     public function authorize()
     {
-        return access()->allow('create-users');
+        return access()->allow('manage-users');
     }
 
     /**

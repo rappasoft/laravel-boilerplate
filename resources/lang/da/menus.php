@@ -16,21 +16,7 @@ return [
     'backend' => [
         'access' => [
             'title' => 'Vedligehold adgangsrettigheder',
-
-            'permissions' => [
-                'all' => 'Alle rettigheder',
-                'create' => 'Opret rettogheder',
-                'edit' => 'rediger rettigheder',
-                'groups' => [
-                    'all' => 'Alle grupper',
-                    'create' => 'Opret gruppe',
-                    'edit' => 'Rediger gruppe',
-                    'main' => 'Groupper',
-                ],
-                'main' => 'Rettigheder',
-                'management' => 'Vedligehold rettigheder',
-            ],
-
+            
             'roles' => [
                 'all' => 'Alle roller',
                 'create' => 'Opret rolle',

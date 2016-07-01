@@ -15,21 +15,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'create_error' => 'Houve um problema ao criar essa permissão. Por favor, tente novamente.',
-                'delete_error' => 'Houve um problema ao excluir essa permissão . Por favor, tente novamente.',
-
-                'groups' => [
-                    'associated_permissions' => 'Você não pode excluir esse grupo pois existem permissões associadas.',
-                    'has_children' => 'Você não pode excluir esse grupo pois existe um grupo filho.',
-                    'name_taken' => 'Já existe um grupo com esse nome.',
-                ],
-
-                'not_found' => 'Essa permissão não existe.',
-                'system_delete_error' => 'Você não pode excluir um permissão de sistema',
-                'update_error' => 'Houve um problema ao atualizar essa permissão. Por favor, tente novamente.',
-            ],
-
             'roles' => [
                 'already_exists' => 'Esse papel já existe. Por favor, escolha um nome diferente.',
                 'cant_delete_admin' => 'Você não pode excluir o papel de Administrador.',

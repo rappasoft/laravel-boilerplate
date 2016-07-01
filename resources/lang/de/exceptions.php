@@ -15,21 +15,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'create_error' => 'Beim erstellen der Berechtigung ist ein Fehler aufgetreten. Bitte versuche es erneut.',
-                'delete_error' => 'Beim löschen der Berechtigung ist ein Fehler aufgetreten. Bitte versuche es erneut.',
-
-                'groups' => [
-                    'associated_permissions' => 'Diese Gruppe kann nicht gelöscht werden, da sie Berechtigungen zugeordnet hat.',
-                    'has_children' => 'Diese Gruppe kann nicht gelöscht werden, da sie untergeordnete Gruppen vorhanden sind.',
-                    'name_taken' => 'Es gibt schon eine Gruppe mit dem Namen',
-                ],
-
-                'not_found' => 'Diese Berechtigung existiert nicht.',
-                'system_delete_error' => 'Du kannst eine Systemberechtigung nicht löschen.',
-                'update_error' => 'Beim aktualisieren der Berechtigung ist ein Fehler aufgetreten. Bitte versuche es erneut.',
-            ],
-
             'roles' => [
                 'already_exists' => 'Diese Rolle existert schon. Bitte wähle einen anderen namen.',
                 'cant_delete_admin' => 'Du kannst die Administrator Rolle nicht löschen.',

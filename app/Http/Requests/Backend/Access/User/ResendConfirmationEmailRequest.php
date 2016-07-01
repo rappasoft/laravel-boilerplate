@@ -17,7 +17,7 @@ class ResendConfirmationEmailRequest extends Request
      */
     public function authorize()
     {
-        return access()->allow('resend-user-confirmation-email');
+        return access()->allow('manage-users');
     }
 
     /**

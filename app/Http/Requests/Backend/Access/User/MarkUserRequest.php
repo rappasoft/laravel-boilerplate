@@ -17,18 +17,7 @@ class MarkUserRequest extends Request
      */
     public function authorize()
     {
-        //Get the 'mark' id
-        switch ((int) request()->segment(6)) {
-            case 0:
-                return access()->allow('deactivate-users');
-            break;
-
-            case 1:
-                return access()->allow('reactivate-users');
-            break;
-        }
-
-        return false;
+        return access()->allow('manage-users');
     }
 
     /**

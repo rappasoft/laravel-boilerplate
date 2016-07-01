@@ -14,19 +14,6 @@ return [
     */
 
     'backend' => [
-        'permissions' => [
-            'created' => 'Tillståndet har nu skapats.',
-            'deleted' => 'Tillståndet har nu raderats.',
-
-            'groups'  => [
-                'created' => 'Tillståndsgruppen har nu skapats.',
-                'deleted' => 'Tillståndsgruppen har nu raderats.',
-                'updated' => 'Tillståndsgruppen har nu uppdaterats.',
-            ],
-
-            'updated' => 'Tillståndet har uppdaterats.',
-        ],
-
         'roles' => [
             'created' => 'Rollen har nu skapats.',
             'deleted' => 'Rollen har nu raderats.',

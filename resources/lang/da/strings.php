@@ -15,16 +15,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'edit_explanation' => 'Hvis du har udført operationer i hierarkiet uden at opdatere denne side skal du opdatere for at afspejle ændringerne her.',
-
-                'groups' => [
-                    'hierarchy_saved' => 'Hierakiet blev gemt.',
-                ],
-
-                'sort_explanation' => 'Denne sektion tillader dig at organisere dine tilladelser i grupper. Uanset gruppen, er tilladelserne stadig individuelt tildelt hver rolle.',
-            ],
-
             'users' => [
                 'delete_user_confirm' => 'Er du sikker på at du vil slette denne bruger? Alle stedere hvor denne brugers id er benyttet some reference vil sndsynligvis gieve en fejl. Fortsæt på eget ansvar. Denne handling kan ikke fortrydes.',
                 'if_confirmed_off' => '(Hvis bekræftelse er slået fra)',
