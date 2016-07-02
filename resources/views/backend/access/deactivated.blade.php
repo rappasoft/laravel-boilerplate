@@ -27,16 +27,16 @@
             <div class="table-responsive">
                 <table id="users-table" class="table table-condensed table-hover">
                     <thead>
-                    <tr>
-                        <th>{{ trans('labels.backend.access.users.table.id') }}</th>
-                        <th>{{ trans('labels.backend.access.users.table.name') }}</th>
-                        <th>{{ trans('labels.backend.access.users.table.email') }}</th>
-                        <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
-                        <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
-                        <th>{{ trans('labels.backend.access.users.table.created') }}</th>
-                        <th>{{ trans('labels.backend.access.users.table.last_updated') }}</th>
-                        <th>{{ trans('labels.general.actions') }}</th>
-                    </tr>
+                        <tr>
+                            <th>{{ trans('labels.backend.access.users.table.id') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.name') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.email') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.created') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.last_updated') }}</th>
+                            <th>{{ trans('labels.general.actions') }}</th>
+                        </tr>
                     </thead>
                 </table>
             </div><!--table-responsive-->

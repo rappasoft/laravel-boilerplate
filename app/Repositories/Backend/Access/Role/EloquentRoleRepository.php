@@ -31,17 +31,11 @@ class EloquentRoleRepository implements RoleRepositoryContract
         throw new GeneralException(trans('exceptions.backend.access.roles.not_found'));
     }
 
-    /**
-     * @param  $per_page
-     * @param  string      $order_by
-     * @param  string      $sort
-     * @return mixed
+	/**
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
-    public function getRolesPaginated($per_page, $order_by = 'sort', $sort = 'asc')
-    {
-        return Role::with('permissions')
-            ->orderBy($order_by, $sort)
-            ->paginate($per_page);
+    public function getForDataTable() {
+        return Role::all();
     }
 
     /**

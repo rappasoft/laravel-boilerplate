@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Backend\Access\Role;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Access\Role\EditRoleRequest;
+use Yajra\Datatables\Facades\Datatables;
 use App\Http\Requests\Backend\Access\Role\StoreRoleRequest;
-use App\Http\Requests\Backend\Access\Role\CreateRoleRequest;
-use App\Http\Requests\Backend\Access\Role\DeleteRoleRequest;
+use App\Http\Requests\Backend\Access\Role\ManageRoleRequest;
 use App\Http\Requests\Backend\Access\Role\UpdateRoleRequest;
 use App\Repositories\Backend\Access\Role\RoleRepositoryContract;
 use App\Repositories\Backend\Access\Permission\PermissionRepositoryContract;
@@ -40,20 +39,48 @@ class RoleController extends Controller
         $this->permissions = $permissions;
     }
 
-    /**
-     * @return mixed
-     */
-    public function index()
+	/**
+	 * @param ManageRoleRequest $request
+	 * @return mixed
+	 */
+	public function index(ManageRoleRequest $request)
     {
-        return view('backend.access.roles.index')
-            ->withRoles($this->roles->getRolesPaginated(50));
+        return view('backend.access.roles.index');
     }
 
+	/**
+	 * @param ManageRoleRequest $request
+	 * @return mixed
+	 */
+	public function get(ManageRoleRequest $request) {
+		return Datatables::of($this->roles->getForDataTable())
+			->addColumn('permissions', function($role) {
+				$permissions = [];
+
+				if (count($role->permissions) > 0) {
+					foreach ($role->permissions as $permission) {
+						array_push($permissions, $permission->display_name);
+					}
+
+					return implode("<br/>", $permissions);
+				} else {
+					return '<span class="label label-danger">' . trans('labels.general.none') . '</span>';
+				}
+			})
+			->addColumn('users', function($role) {
+				return $role->users()->count();
+			})
+			->addColumn('actions', function($role) {
+				return $role->action_buttons;
+			})
+			->make(true);
+	}
+
     /**
-     * @param CreateRoleRequest $request
+     * @param ManageRoleRequest $request
      * @return mixed
      */
-    public function create(CreateRoleRequest $request)
+    public function create(ManageRoleRequest $request)
     {
         return view('backend.access.roles.create')
             ->withPermissions($this->permissions->getAllPermissions());
@@ -71,10 +98,10 @@ class RoleController extends Controller
 
     /**
      * @param  $id
-     * @param  EditRoleRequest $request
+     * @param  ManageRoleRequest $request
      * @return mixed
      */
-    public function edit($id, EditRoleRequest $request)
+    public function edit($id, ManageRoleRequest $request)
     {
         $role = $this->roles->findOrThrowException($id, true);
         return view('backend.access.roles.edit')
@@ -96,10 +123,10 @@ class RoleController extends Controller
 
     /**
      * @param  $id
-     * @param  DeleteRoleRequest $request
+     * @param  ManageRoleRequest $request
      * @return mixed
      */
-    public function destroy($id, DeleteRoleRequest $request)
+    public function destroy($id, ManageRoleRequest $request)
     {
         $this->roles->destroy($id);
         return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans('alerts.backend.roles.deleted'));

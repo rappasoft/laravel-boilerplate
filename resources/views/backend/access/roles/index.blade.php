@@ -2,6 +2,10 @@
 
 @section ('title', trans('labels.backend.access.roles.management'))
 
+@section('after-styles-end')
+    {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
+@stop
+
 @section('page-header')
     <h1>{{ trans('labels.backend.access.roles.management') }}</h1>
 @endsection
@@ -18,53 +22,40 @@
 
         <div class="box-body">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover">
+                <table id="roles-table" class="table table-condensed table-hover">
                     <thead>
-                    <tr>
-                        <th>{{ trans('labels.backend.access.roles.table.role') }}</th>
-                        <th>{{ trans('labels.backend.access.roles.table.permissions') }}</th>
-                        <th>{{ trans('labels.backend.access.roles.table.number_of_users') }}</th>
-                        <th>{{ trans('labels.backend.access.roles.table.sort') }}</th>
-                        <th>{{ trans('labels.general.actions') }}</th>
-                    </tr>
+                        <tr>
+                            <th>{{ trans('labels.backend.access.roles.table.role') }}</th>
+                            <th>{{ trans('labels.backend.access.roles.table.permissions') }}</th>
+                            <th>{{ trans('labels.backend.access.roles.table.number_of_users') }}</th>
+                            <th>{{ trans('labels.backend.access.roles.table.sort') }}</th>
+                            <th>{{ trans('labels.general.actions') }}</th>
+                        </tr>
                     </thead>
-                    <tbody>
-                        @foreach ($roles as $role)
-                            <tr>
-                                <td>{{ $role->name }}</td>
-                                <td>
-                                    @if ($role->all)
-                                        <span class="label label-success">{{ trans('labels.general.all') }}</span>
-                                    @else
-                                        @if (count($role->permissions) > 0)
-                                            <div style="font-size:.7em">
-                                                @foreach ($role->permissions as $permission)
-                                                    {{ $permission->display_name }}<br/>
-                                                @endforeach
-                                            </div>
-                                        @else
-                                            <span class="label label-danger">{{ trans('labels.general.none') }}</span>
-                                        @endif
-                                    @endif
-                                </td>
-                                <td>{{ $role->users()->count() }}</td>
-                                <td>{{ $role->sort }}</td>
-                                <td>{!! $role->action_buttons !!}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
                 </table>
-            </div>
-
-            <div class="pull-left">
-                {{ $roles->total() }} {{ trans_choice('labels.backend.access.roles.table.total', $roles->total()) }}
-            </div>
-
-            <div class="pull-right">
-                {{ $roles->render() }}
-            </div>
-
-            <div class="clearfix"></div>
+            </div><!--table-responsive-->
         </div><!-- /.box-body -->
     </div><!--box-->
+@stop
+
+@section('after-scripts-end')
+    {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
+    {{ Html::script("js/backend/plugin/datatables/dataTables.bootstrap.min.js") }}
+
+    <script>
+        $(function() {
+            $('#roles-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{{ route("admin.access.roles.get") }}',
+                columns: [
+                    {data: 'name', name: 'name'},
+                    {data: 'permissions', name: 'permissions'},
+                    {data: 'users', name: 'users'},
+                    {data: 'sort', name: 'sort'},
+                    {data: 'actions', name: 'actions'}
+                ]
+            });
+        });
+    </script>
 @stop
