@@ -43,11 +43,6 @@ return [
      */
     'users' => [
         /*
-         * Administration tables
-         */
-        'default_per_page' => 25,
-
-        /*
          * The role the user is assigned to when they sign up from the frontend, not namespaced
          */
         'default_role' => 'User',

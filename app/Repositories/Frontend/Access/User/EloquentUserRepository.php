@@ -187,9 +187,10 @@ class EloquentUserRepository implements UserRepositoryContract
         throw new GeneralException(trans('exceptions.frontend.auth.confirmation.mismatch'));
     }
 
-    /**
+	/**
      * @param $user
-     * @return mixed
+     * @return bool
+     * @throws GeneralException
      */
     public function sendConfirmationEmail($user)
     {
@@ -198,9 +199,15 @@ class EloquentUserRepository implements UserRepositoryContract
             $user = $this->find($user);
         }
 
-        return Mail::send('frontend.auth.emails.confirm', ['token' => $user->confirmation_code], function ($message) use ($user) {
+        Mail::send('frontend.auth.emails.confirm', ['token' => $user->confirmation_code], function ($message) use ($user) {
             $message->to($user->email, $user->name)->subject(app_name() . ': ' . trans('exceptions.frontend.auth.confirmation.confirm'));
         });
+
+        if (count(Mail::failures()) > 0) {
+            throw new GeneralException("There was a problem sending the confirmation e-mail");
+        }
+
+        return true;
     }
 
     /**

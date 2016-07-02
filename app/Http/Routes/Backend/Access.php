@@ -14,6 +14,9 @@ Route::group([
 		Route::group(['namespace' => 'User'], function() {
 			Route::resource('users', 'UserController', ['except' => ['show']]);
 
+			//For DataTables
+			Route::get('users/get', 'UserController@get')->name('admin.access.users.get');
+			
 			Route::get('users/deactivated', 'UserController@deactivated')->name('admin.access.users.deactivated');
 			Route::get('users/deleted', 'UserController@deleted')->name('admin.access.users.deleted');
 			Route::get('account/confirm/resend/{user_id}', 'UserController@resendConfirmationEmail')->name('admin.account.confirm.resend');
@@ -39,6 +42,9 @@ Route::group([
 	], function() {
 		Route::group(['namespace' => 'Role'], function () {
 			Route::resource('roles', 'RoleController', ['except' => ['show']]);
+
+			//For DataTables
+			Route::get('roles/get', 'RoleController@get')->name('admin.access.roles.get');
 		});
 	});
 });

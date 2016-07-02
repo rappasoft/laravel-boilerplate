@@ -56,38 +56,19 @@ class EloquentUserRepository implements UserRepositoryContract
         throw new GeneralException(trans('exceptions.backend.access.users.not_found'));
     }
 
-    /**
-     * @param  $per_page
-     * @param  string      $order_by
-     * @param  string      $sort
-     * @param  int         $status
+	/**
+     * @param int $status
+     * @param bool $trashed
      * @return mixed
      */
-    public function getUsersPaginated($per_page, $status = 1, $order_by = 'id', $sort = 'asc')
-    {
-        return User::where('status', $status)
-            ->orderBy($order_by, $sort)
-            ->paginate($per_page);
-    }
+    public function getForDataTable($status = 1, $trashed = false) {
+        if ($trashed == "true")
+            return User::onlyTrashed()
+                ->select(['id', 'name', 'email', 'status', 'confirmed', 'created_at', 'updated_at'])
+                ->get();
 
-    /**
-     * @param  $per_page
-     * @return \Illuminate\Pagination\Paginator
-     */
-    public function getDeletedUsersPaginated($per_page)
-    {
-        return User::onlyTrashed()
-            ->paginate($per_page);
-    }
-
-    /**
-     * @param  string  $order_by
-     * @param  string  $sort
-     * @return mixed
-     */
-    public function getAllUsers($order_by = 'id', $sort = 'asc')
-    {
-        return User::orderBy($order_by, $sort)
+        return User::select(['id', 'name', 'email', 'status', 'confirmed', 'created_at', 'updated_at'])
+            ->where('status', $status)
             ->get();
     }
 

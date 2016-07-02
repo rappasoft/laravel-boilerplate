@@ -2,6 +2,10 @@
 
 @section ('title', trans('labels.backend.access.users.management'))
 
+@section('after-styles-end')
+    {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
+@stop
+
 @section('page-header')
     <h1>
         {{ trans('labels.backend.access.users.management') }}
@@ -21,7 +25,7 @@
 
         <div class="box-body">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover">
+                <table id="users-table" class="table table-condensed table-hover">
                     <thead>
                         <tr>
                             <th>{{ trans('labels.backend.access.users.table.id') }}</th>
@@ -29,45 +33,42 @@
                             <th>{{ trans('labels.backend.access.users.table.email') }}</th>
                             <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
                             <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
-                            <th class="visible-lg">{{ trans('labels.backend.access.users.table.created') }}</th>
-                            <th class="visible-lg">{{ trans('labels.backend.access.users.table.last_updated') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.created') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.last_updated') }}</th>
                             <th>{{ trans('labels.general.actions') }}</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        @foreach ($users as $user)
-                            <tr>
-                                <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ link_to("mailto:".$user->email, $user->email) }}</td>
-                                <td>{!! $user->confirmed_label !!}</td>
-                                <td>
-                                    @if ($user->roles()->count() > 0)
-                                        @foreach ($user->roles as $role)
-                                            {{ $role->name }}<br/>
-                                        @endforeach
-                                    @else
-                                        {{ trans('labels.general.none') }}
-                                    @endif
-                                </td>
-                                <td class="visible-lg">{{ $user->created_at->diffForHumans() }}</td>
-                                <td class="visible-lg">{{ $user->updated_at->diffForHumans() }}</td>
-                                <td>{!! $user->action_buttons !!}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
                 </table>
             </div><!--table-responsive-->
-
-            <div class="pull-left">
-                {{ $users->total() }} {{ trans_choice('labels.backend.access.users.table.total', $users->total()) }}
-            </div><!--pull-left-->
-
-            <div class="pull-right">
-                {{ $users->render() }}
-            </div><!--pull-right-->
-
-            <div class="clearfix"></div>
         </div><!-- /.box-body -->
     </div><!--box-->
+@stop
+
+@section('after-scripts-end')
+    {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
+    {{ Html::script("js/backend/plugin/datatables/dataTables.bootstrap.min.js") }}
+
+    <script>
+        $(function() {
+            $('#users-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: '{{ route("admin.access.users.get") }}',
+                    type: 'get',
+                    data: {status: 1, trashed: false}
+                },
+                columns: [
+                    {data: 'id', name: 'id'},
+                    {data: 'name', name: 'name'},
+                    {data: 'email', name: 'email'},
+                    {data: 'confirmed', name: 'confirmed'},
+                    {data: 'roles', name: 'roles'},
+                    {data: 'created_at', name: 'created_at'},
+                    {data: 'updated_at', name: 'updated_at'},
+                    {data: 'actions', name: 'actions'}
+                ]
+            });
+        });
+    </script>
 @stop
