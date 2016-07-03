@@ -70,7 +70,7 @@
                 ]
             });
 
-            $("a[name='delete_user_perm']").click(function(e) {
+            $("body").on("click", "a[name='delete_user_perm']", function(e) {
                 e.preventDefault();
                 var linkURL = $(this).attr("href");
 
@@ -90,7 +90,7 @@
                 });
             });
 
-            $("a[name='restore_user']").click(function(e) {
+            $("body").on("click", "a[name='restore_user']", function(e) {
                 e.preventDefault();
                 var linkURL = $(this).attr("href");
 

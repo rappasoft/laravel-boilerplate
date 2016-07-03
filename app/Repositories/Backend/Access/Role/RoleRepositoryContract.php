@@ -18,6 +18,11 @@ interface RoleRepositoryContract
 	/**
      * @return mixed
      */
+    public function getCount();
+
+	/**
+     * @return mixed
+     */
     public function getForDataTable();
 
     /**

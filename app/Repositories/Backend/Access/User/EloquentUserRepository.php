@@ -62,12 +62,16 @@ class EloquentUserRepository implements UserRepositoryContract
      * @return mixed
      */
     public function getForDataTable($status = 1, $trashed = false) {
+		/**
+		 * Note: You must return deleted_at or the User getActionButtonsAttribute won't
+		 * be able to differentiate what buttons to show for each row.
+		 */
         if ($trashed == "true")
             return User::onlyTrashed()
-                ->select(['id', 'name', 'email', 'status', 'confirmed', 'created_at', 'updated_at'])
+                ->select(['id', 'name', 'email', 'status', 'confirmed', 'created_at', 'updated_at', 'deleted_at'])
                 ->get();
 
-        return User::select(['id', 'name', 'email', 'status', 'confirmed', 'created_at', 'updated_at'])
+        return User::select(['id', 'name', 'email', 'status', 'confirmed', 'created_at', 'updated_at', 'deleted_at'])
             ->where('status', $status)
             ->get();
     }
@@ -173,6 +177,10 @@ class EloquentUserRepository implements UserRepositoryContract
     {
         $user = $this->findOrThrowException($id, true);
 
+		//Failsafe
+		if (is_null($user->deleted_at))
+			throw new GeneralException("This user must be deleted first before it can be destroyed permanently.");
+
         //Detach all roles & permissions
         $user->detachRoles($user->roles);
 
@@ -191,6 +199,10 @@ class EloquentUserRepository implements UserRepositoryContract
     public function restore($id)
     {
         $user = $this->findOrThrowException($id);
+
+		//Failsafe
+		if (is_null($user->deleted_at))
+			throw new GeneralException("This user is not deleted so it can not be restored.");
 
         if ($user->restore())
             return true;

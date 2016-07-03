@@ -32,6 +32,13 @@ class EloquentRoleRepository implements RoleRepositoryContract
     }
 
 	/**
+     * @return mixed
+     */
+    public function getCount() {
+        return Role::count();
+    }
+
+	/**
      * @return \Illuminate\Database\Eloquent\Collection|static[]
      */
     public function getForDataTable() {

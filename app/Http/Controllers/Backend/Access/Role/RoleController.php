@@ -57,6 +57,9 @@ class RoleController extends Controller
 			->addColumn('permissions', function($role) {
 				$permissions = [];
 
+				if ($role->all)
+					return '<span class="label label-success">' . trans('labels.general.all') . '</span>';
+
 				if (count($role->permissions) > 0) {
 					foreach ($role->permissions as $permission) {
 						array_push($permissions, $permission->display_name);
@@ -83,7 +86,8 @@ class RoleController extends Controller
     public function create(ManageRoleRequest $request)
     {
         return view('backend.access.roles.create')
-            ->withPermissions($this->permissions->getAllPermissions());
+            ->withPermissions($this->permissions->getAllPermissions())
+			->withRoleCount($this->roles->getCount());
     }
 
     /**
