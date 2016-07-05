@@ -95,7 +95,7 @@ trait UserAttribute
      */
     public function getChangePasswordButtonAttribute()
     {
-        return '<a href="' . route('admin.access.user.change-password', $this->id) . '" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.change_password') . '"></i></a>';
+        return '<a href="' . route('admin.access.user.change-password', $this->id) . '" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.change_password') . '"></i></a> ';
     }
 
     /**
@@ -140,7 +140,7 @@ trait UserAttribute
              data-trans-button-cancel="'.trans('buttons.general.cancel').'"
              data-trans-button-confirm="'.trans('buttons.general.crud.delete').'"
              data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
-             class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.delete') . '"></i></a>';
+             class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.delete') . '"></i></a> ';
     }
 
 	/**
@@ -148,7 +148,7 @@ trait UserAttribute
      */
     public function getRestoreButtonAttribute()
     {
-        return '<a href="' . route('admin.access.user.restore', $this->id) . '" name="restore_user" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.restore_user') . '"></i></a>';
+        return '<a href="' . route('admin.access.user.restore', $this->id) . '" name="restore_user" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.restore_user') . '"></i></a> ';
     }
 
 	/**
@@ -156,7 +156,24 @@ trait UserAttribute
      */
     public function getDeletePermanentlyButtonAttribute()
     {
-        return '<a href="' . route('admin.access.user.delete-permanently', $this->id) . '" name="delete_user_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.delete_permanently') . '"></i></a>';
+        return '<a href="' . route('admin.access.user.delete-permanently', $this->id) . '" name="delete_user_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.delete_permanently') . '"></i></a> ';
+    }
+
+	/**
+     * @return string
+     */
+    public function getLoginAsButtonAttribute()
+    {
+        /**
+         * If the admin is currently NOT spoofing a user
+         */
+        if (! session()->has("temp_user_id")) {
+            return '<a href="' . route('admin.access.user.login-as',
+                $this->id) . '" class="btn btn-xs btn-success"><i class="fa fa-lock" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.login_as',
+                ['user' => $this->name]) . '"></i></a> ';
+        }
+
+        return '';
     }
 
     /**
@@ -165,14 +182,15 @@ trait UserAttribute
     public function getActionButtonsAttribute()
     {
         if ($this->deleted_at) {
-            return $this->getRestoreButtonAttribute() . ' ' .
+            return $this->getRestoreButtonAttribute() .
                 $this->getDeletePermanentlyButtonAttribute();
         }
 
         return $this->getEditButtonAttribute() .
-        $this->getChangePasswordButtonAttribute() . ' ' .
+        $this->getChangePasswordButtonAttribute() .
         $this->getStatusButtonAttribute() .
         $this->getConfirmedButtonAttribute() .
-        $this->getDeleteButtonAttribute();
+        $this->getDeleteButtonAttribute() .
+        $this->getLoginAsButtonAttribute();
     }
 }

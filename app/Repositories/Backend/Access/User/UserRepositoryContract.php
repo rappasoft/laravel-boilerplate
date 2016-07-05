@@ -68,4 +68,15 @@ interface UserRepositoryContract
      * @return mixed
      */
     public function updatePassword($id, $input);
+
+	/**
+     * @param $id
+     * @return mixed
+     */
+    public function loginAs($id);
+
+	/**
+     * @return mixed
+     */
+    public function logoutAs();
 }

@@ -14,11 +14,20 @@ Route::group([
 		Route::group(['namespace' => 'User'], function() {
 			Route::resource('users', 'UserController', ['except' => ['show']]);
 
-			//For DataTables
+			/**
+			 * For DataTables
+			 */
 			Route::get('users/get', 'UserController@get')->name('admin.access.users.get');
-			
+
+			/**
+			 * User Status'
+			 */
 			Route::get('users/deactivated', 'UserController@deactivated')->name('admin.access.users.deactivated');
 			Route::get('users/deleted', 'UserController@deleted')->name('admin.access.users.deleted');
+
+			/**
+			 * Misc
+			 */
 			Route::get('account/confirm/resend/{user_id}', 'UserController@resendConfirmationEmail')->name('admin.account.confirm.resend');
 
 			/**
@@ -30,6 +39,7 @@ Route::group([
 				Route::get('mark/{status}', 'UserController@mark')->name('admin.access.user.mark')->where(['status' => '[0,1]']);
 				Route::get('password/change', 'UserController@changePassword')->name('admin.access.user.change-password');
 				Route::post('password/change', 'UserController@updatePassword')->name('admin.access.user.change-password');
+				Route::get('login-as', 'UserController@loginAs')->name('admin.access.user.login-as');
 			});
 		});
 	});

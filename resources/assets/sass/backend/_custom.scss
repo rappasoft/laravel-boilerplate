@@ -1,3 +1,8 @@
+.logged-in-as {
+  margin:0;
+  border-radius:0;
+}
+
 // Margin/Padding Helpers
 $margin-padding: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50;
 @each $mp in $margin-padding {

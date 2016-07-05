@@ -259,6 +259,56 @@ class EloquentUserRepository implements UserRepositoryContract
         throw new GeneralException(trans('exceptions.backend.access.users.mark_error'));
     }
 
+	/**
+	 * @param $id
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function loginAs($id) {
+		$this->flushTempSession();
+
+		//Add new session variables
+		session(["admin_user_id" => access()->id()]);
+		session(["admin_user_name" => access()->user()->name]);
+		session(["temp_user_id" => $id]);
+
+		//Login user
+		access()->loginUsingId($id);
+
+		//Redirect to frontend
+		return redirect()->route("frontend.index");
+	}
+
+	/**
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function logoutAs() {
+
+		//If for some reason route is getting hit without someone already logged in
+		if (! access()->user()){
+			return redirect()->route("auth.login");
+		}
+
+		//If admin id is set, relogin
+		if (session()->has("admin_user_id") && session()->has("temp_user_id")) {
+			//Save admin id
+			$admin_id = session()->get("admin_user_id");
+
+			$this->flushTempSession();
+
+			//Relogin admin
+			access()->loginUsingId((int)$admin_id);
+
+			//Redirect to dashboard
+			return redirect()->route("admin.dashboard");
+		} else {
+			$this->flushTempSession();
+
+			//Otherwise logout and redirect to login
+			access()->logout();
+			return redirect()->route("auth.login");
+		}
+	}
+
     /**
      * Check to make sure at lease one role is being applied or deactivate user
      *
@@ -340,4 +390,14 @@ class EloquentUserRepository implements UserRepositoryContract
         $user->confirmed         = isset($input['confirmed']) ? 1 : 0;
         return $user;
     }
+
+	/**
+	 * Remove old session variables from admin logging in as user
+	 */
+	private function flushTempSession() {
+		//Remove any old session variables
+		session()->forget("admin_user_id");
+		session()->forget("admin_user_name");
+		session()->forget("temp_user_id");
+	}
 }

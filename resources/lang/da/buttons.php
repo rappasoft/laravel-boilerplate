@@ -20,6 +20,7 @@ return [
                 'change_password' => 'Ændre kodeord',
                 'deactivate' => 'Deaktiver',
                 'delete_permanently' => 'Slet permanent',
+                'login_as' => 'Login As :user',
                 'resend_email' => 'Gensend bekræftelse E-mail',
                 'restore_user' => 'Genskab bruger',
             ],

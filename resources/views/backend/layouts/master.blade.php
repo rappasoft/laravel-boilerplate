@@ -26,6 +26,8 @@
         <![endif]-->
     </head>
     <body class="skin-{{ config('backend.theme') }}">
+    @include('includes.partials.logged-in-as')
+
     <div class="wrapper">
         @include('backend.includes.header')
         @include('backend.includes.sidebar')

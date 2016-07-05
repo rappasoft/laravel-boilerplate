@@ -59,6 +59,14 @@ class Access
         return auth()->id();
     }
 
+	/**
+     * @param $id
+     * @return mixed
+     */
+    public function loginUsingId($id) {
+        return auth()->loginUsingId($id);
+    }
+
     /**
      * Checks if the current user has a Role by its name or id
      *

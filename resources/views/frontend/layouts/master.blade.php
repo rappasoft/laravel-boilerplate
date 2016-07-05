@@ -22,6 +22,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
     </head>
     <body id="app-layout">
+        @include('includes.partials.logged-in-as')
         @include('frontend.includes.nav')
 
         <div class="container">
