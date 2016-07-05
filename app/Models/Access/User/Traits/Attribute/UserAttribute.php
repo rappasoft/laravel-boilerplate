@@ -168,9 +168,11 @@ trait UserAttribute
          * If the admin is currently NOT spoofing a user
          */
         if (! session()->has("admin_user_id") || ! session()->has("temp_user_id")) {
-            return '<a href="' . route('admin.access.user.login-as',
-                $this->id) . '" class="btn btn-xs btn-success"><i class="fa fa-lock" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.login_as',
-                ['user' => $this->name]) . '"></i></a> ';
+            //Won't break, but don't let them "Login As" themselves
+            if ($this->id != access()->id())
+                return '<a href="' . route('admin.access.user.login-as',
+                    $this->id) . '" class="btn btn-xs btn-success"><i class="fa fa-lock" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.login_as',
+                    ['user' => $this->name]) . '"></i></a> ';
         }
 
         return '';

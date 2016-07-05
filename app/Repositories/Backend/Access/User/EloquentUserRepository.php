@@ -262,9 +262,14 @@ class EloquentUserRepository implements UserRepositoryContract
 	/**
 	 * @param $id
 	 * @return \Illuminate\Http\RedirectResponse
+	 * @throws GeneralException
 	 */
 	public function loginAs($id) {
 		$this->flushTempSession();
+
+		//Won't break, but don't let them "Login As" themselves
+		if (access()->id() == $id)
+			throw new GeneralException("Do not try to login as yourself.");
 
 		//Add new session variables
 		session(["admin_user_id" => access()->id()]);
