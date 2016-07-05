@@ -4,6 +4,9 @@ namespace App\Repositories\Backend\Access\Role;
 
 use App\Models\Access\Role\Role;
 use App\Exceptions\GeneralException;
+use App\Events\Backend\Access\Role\RoleCreated;
+use App\Events\Backend\Access\Role\RoleDeleted;
+use App\Events\Backend\Access\Role\RoleUpdated;
 
 /**
  * Class EloquentRoleRepository
@@ -110,6 +113,7 @@ class EloquentRoleRepository implements RoleRepositoryContract
                 $role->attachPermissions($permissions);
             }
 
+			event(new RoleCreated($role));
             return true;
         }
 
@@ -172,6 +176,7 @@ class EloquentRoleRepository implements RoleRepositoryContract
                 $role->attachPermissions($permissions);
             }
 
+			event(new RoleUpdated($role));
             return true;
         }
 
@@ -201,6 +206,7 @@ class EloquentRoleRepository implements RoleRepositoryContract
         $role->permissions()->sync([]);
 
         if ($role->delete()) {
+			event(new RoleDeleted($role));
             return true;
         }
 

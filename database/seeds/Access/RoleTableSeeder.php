@@ -26,34 +26,31 @@ class RoleTableSeeder extends Seeder
             DB::statement('TRUNCATE TABLE ' . config('access.roles_table') . ' CASCADE');
         }
 
-        //id = 1
-        $role_model        = config('access.role');
-        $admin             = new $role_model;
-        $admin->name       = 'Administrator';
-        $admin->all        = true;
-        $admin->sort       = 1;
-        $admin->created_at = Carbon::now();
-        $admin->updated_at = Carbon::now();
-        $admin->save();
+        $roles = [
+            [
+                'name' => 'Administrator',
+                'all' => true,
+                'sort' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Executive',
+                'all' => false,
+                'sort' => 2,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'User',
+                'all' => false,
+                'sort' => 3,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+        ];
 
-        //id = 2
-        $role_model        = config('access.role');
-        $admin             = new $role_model;
-        $admin->name       = 'Executive';
-        $admin->all        = false;
-        $admin->sort       = 2;
-        $admin->created_at = Carbon::now();
-        $admin->updated_at = Carbon::now();
-        $admin->save();
-
-        //id = 3
-        $role_model       = config('access.role');
-        $user             = new $role_model;
-        $user->name       = 'User';
-        $user->sort       = 3;
-        $user->created_at = Carbon::now();
-        $user->updated_at = Carbon::now();
-        $user->save();
+        DB::table(config('access.roles_table'))->insert($roles);
 
         if (env('DB_CONNECTION') == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
