@@ -4,6 +4,14 @@ namespace App\Repositories\Backend\Access\User;
 
 use App\Models\Access\User\User;
 use App\Exceptions\GeneralException;
+use App\Events\Backend\Access\User\UserCreated;
+use App\Events\Backend\Access\User\UserUpdated;
+use App\Events\Backend\Access\User\UserDeleted;
+use App\Events\Backend\Access\User\UserRestored;
+use App\Events\Backend\Access\User\UserDeactivated;
+use App\Events\Backend\Access\User\UserReactivated;
+use App\Events\Backend\Access\User\UserPasswordChanged;
+use App\Events\Backend\Access\User\UserPermanentlyDeleted;
 use App\Exceptions\Backend\Access\User\UserNeedsRolesException;
 use App\Repositories\Backend\Access\Role\RoleRepositoryContract;
 use App\Repositories\Frontend\Access\User\UserRepositoryContract as FrontendUserRepositoryContract;
@@ -99,6 +107,7 @@ class EloquentUserRepository implements UserRepositoryContract
                 $this->user->sendConfirmationEmail($user->id);
             }
 
+			event(new UserCreated($user));
             return true;
         }
 
@@ -126,6 +135,7 @@ class EloquentUserRepository implements UserRepositoryContract
             $this->checkUserRolesCount($roles);
             $this->flushRoles($roles, $user);
 
+			event(new UserUpdated($user));
             return true;
         }
 
@@ -143,8 +153,10 @@ class EloquentUserRepository implements UserRepositoryContract
         $user = $this->findOrThrowException($id);
         $user->password = bcrypt($input['password']);
         
-        if ($user->save())
-            return true;
+        if ($user->save()) {
+			event(new UserPasswordChanged($user));
+			return true;
+		}
 
         throw new GeneralException(trans('exceptions.backend.access.users.update_password_error'));
     }
@@ -162,8 +174,10 @@ class EloquentUserRepository implements UserRepositoryContract
 
         $user = $this->findOrThrowException($id);
 
-        if ($user->delete())
-            return true;
+        if ($user->delete()) {
+			event(new UserDeleted($user));
+			return true;
+		}
 
         throw new GeneralException(trans('exceptions.backend.access.users.delete_error'));
     }
@@ -186,6 +200,7 @@ class EloquentUserRepository implements UserRepositoryContract
 
         try {
             $user->forceDelete();
+			event(new UserPermanentlyDeleted($user));
         } catch (\Exception $e) {
             throw new GeneralException($e->getMessage());
         }
@@ -204,8 +219,10 @@ class EloquentUserRepository implements UserRepositoryContract
 		if (is_null($user->deleted_at))
 			throw new GeneralException("This user is not deleted so it can not be restored.");
 
-        if ($user->restore())
-            return true;
+        if ($user->restore()) {
+			event(new UserRestored($user));
+			return true;
+		}
 
         throw new GeneralException(trans('exceptions.backend.access.users.restore_error'));
     }
@@ -222,8 +239,19 @@ class EloquentUserRepository implements UserRepositoryContract
             throw new GeneralException(trans('exceptions.backend.access.users.cant_deactivate_self'));
         }
 
-        $user         = $this->findOrThrowException($id);
+        $user = $this->findOrThrowException($id);
         $user->status = $status;
+
+		//Log history dependent on status
+		switch($status) {
+			case 0:
+				event(new UserDeactivated($user));
+			break;
+
+			case 1:
+				event(new UserReactivated($user));
+			break;
+		}
 
         if ($user->save())
             return true;
