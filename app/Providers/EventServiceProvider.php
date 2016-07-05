@@ -13,22 +13,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        /**
-         * Frontend Events
-         */
-
-        /**
-         * Authentication Events
-         */
-        \App\Events\Frontend\Auth\UserLoggedIn::class  => [
-            \App\Listeners\Frontend\Auth\UserLoggedInListener::class,
-        ],
-        \App\Events\Frontend\Auth\UserLoggedOut::class => [
-            \App\Listeners\Frontend\Auth\UserLoggedOutListener::class,
-        ],
-        \App\Events\Frontend\Auth\UserRegistered::class => [
-            \App\Listeners\Frontend\Auth\UserRegisteredListener::class,
-        ],
+        //
     ];
 
 	/**
@@ -37,6 +22,15 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $subscribe = [
 		/**
+		 * Frontend Subscribers
+		 */
+
+		/**
+		 * Auth Subscribers
+		 */
+		\App\Listeners\Frontend\Auth\UserEventListener::class,
+
+		/**
 		 * Backend Subscribers
 		 */
 
@@ -44,7 +38,7 @@ class EventServiceProvider extends ServiceProvider
 		 * Access Subscribers
 		 */
         \App\Listeners\Backend\Access\User\UserEventListener::class,
-		\App\Listeners\Backend\Access\Role\RoleEventListener::class
+		\App\Listeners\Backend\Access\Role\RoleEventListener::class,
     ];
 
     /**

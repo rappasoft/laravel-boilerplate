@@ -212,4 +212,14 @@ class EloquentRoleRepository implements RoleRepositoryContract
 
         throw new GeneralException(trans('exceptions.backend.access.roles.delete_error'));
     }
+
+	/**
+	 * @return mixed
+	 */
+	public function getDefaultUserRole() {
+		if (is_numeric(config('access.users.default_role'))) {
+			return Role::where('id', (int) config('access.users.default_role'))->first();
+		}
+		return Role::where('name', config('access.users.default_role'))->first();
+	}
 }
