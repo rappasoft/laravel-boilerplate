@@ -11,14 +11,14 @@ class EloquentHistoryRepository implements HistoryContract {
 
 	/**
 	 * @param $type
+	 * @param $text
 	 * @param null $entity_id
 	 * @param null $icon
 	 * @param null $class
-	 * @param null $text
 	 * @param null $assets
-	 * @return static
+	 * @return bool|static
 	 */
-	public function log($type, $entity_id = null, $icon = null, $class = null, $text, $assets = null)
+	public function log($type, $text, $entity_id = null, $icon = null, $class = null, $assets = null)
 	{
 		//Type can be id or name
 		if (! is_numeric($type))
@@ -27,11 +27,11 @@ class EloquentHistoryRepository implements HistoryContract {
 		if ($type instanceof HistoryType)
 			return History::create([
 				'type_id' => $type->id,
+				'text' => $text,
 				'user_id' => access()->id(),
 				'entity_id' => $entity_id,
 				'icon' => $icon,
 				'class' => $class,
-				'text' => $text,
 				'assets' => is_array($assets) && count($assets) ? json_encode($assets) : null,
 			]);
 
