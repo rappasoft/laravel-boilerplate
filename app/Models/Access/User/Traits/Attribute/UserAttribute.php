@@ -103,19 +103,29 @@ trait UserAttribute
      */
     public function getStatusButtonAttribute()
     {
-        switch ($this->status) {
-            case 0:
-                return '<a href="' . route('admin.access.user.mark', [$this->id, 1]) . '" class="btn btn-xs btn-success"><i class="fa fa-play" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.activate') . '"></i></a> ';
+        if ($this->id != access()->id()) {
+            switch ($this->status) {
+                case 0:
+                    return '<a href="' . route('admin.access.user.mark', [
+                        $this->id,
+                        1
+                    ]) . '" class="btn btn-xs btn-success"><i class="fa fa-play" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.activate') . '"></i></a> ';
                 // No break
 
-            case 1:
-                return '<a href="' . route('admin.access.user.mark', [$this->id, 0]) . '" class="btn btn-xs btn-warning"><i class="fa fa-pause" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.deactivate') . '"></i></a> ';
+                case 1:
+                    return '<a href="' . route('admin.access.user.mark', [
+                        $this->id,
+                        0
+                    ]) . '" class="btn btn-xs btn-warning"><i class="fa fa-pause" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.deactivate') . '"></i></a> ';
                 // No break
 
-            default:
-                return '';
+                default:
+                    return '';
                 // No break
+            }
         }
+
+        return '';
     }
 
     /**
@@ -135,12 +145,16 @@ trait UserAttribute
      */
     public function getDeleteButtonAttribute()
     {
-        return '<a href="' . route('admin.access.users.destroy', $this->id) . '"
-             data-method="delete"
-             data-trans-button-cancel="'.trans('buttons.general.cancel').'"
-             data-trans-button-confirm="'.trans('buttons.general.crud.delete').'"
-             data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
-             class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.delete') . '"></i></a> ';
+        if ($this->id != access()->id()) {
+            return '<a href="' . route('admin.access.users.destroy', $this->id) . '"
+                 data-method="delete"
+                 data-trans-button-cancel="' . trans('buttons.general.cancel') . '"
+                 data-trans-button-confirm="' . trans('buttons.general.crud.delete') . '"
+                 data-trans-title="' . trans('strings.backend.general.are_you_sure') . '"
+                 class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.delete') . '"></i></a> ';
+        }
+
+        return '';
     }
 
 	/**
@@ -169,10 +183,11 @@ trait UserAttribute
          */
         if (! session()->has("admin_user_id") || ! session()->has("temp_user_id")) {
             //Won't break, but don't let them "Login As" themselves
-            if ($this->id != access()->id())
+            if ($this->id != access()->id()) {
                 return '<a href="' . route('admin.access.user.login-as',
                     $this->id) . '" class="btn btn-xs btn-success"><i class="fa fa-lock" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.login_as',
                     ['user' => $this->name]) . '"></i></a> ';
+            }
         }
 
         return '';
@@ -188,11 +203,12 @@ trait UserAttribute
                 $this->getDeletePermanentlyButtonAttribute();
         }
 
-        return $this->getEditButtonAttribute() .
-        $this->getChangePasswordButtonAttribute() .
-        $this->getStatusButtonAttribute() .
-        $this->getConfirmedButtonAttribute() .
-        $this->getDeleteButtonAttribute() .
-        $this->getLoginAsButtonAttribute();
+        return
+            $this->getLoginAsButtonAttribute() .
+            $this->getEditButtonAttribute() .
+            $this->getChangePasswordButtonAttribute() .
+            $this->getStatusButtonAttribute() .
+            $this->getConfirmedButtonAttribute() .
+            $this->getDeleteButtonAttribute();
     }
 }

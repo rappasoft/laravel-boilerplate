@@ -66,7 +66,8 @@
                     {data: 'users', name: 'users'},
                     {data: 'sort', name: 'sort'},
                     {data: 'actions', name: 'actions'}
-                ]
+                ],
+                order: [[3, "asc"]]
             });
         });
     </script>

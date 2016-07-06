@@ -67,7 +67,8 @@
                     {data: 'created_at', name: 'created_at'},
                     {data: 'updated_at', name: 'updated_at'},
                     {data: 'actions', name: 'actions'}
-                ]
+                ],
+                order: [[0, "asc"]]
             });
 
             $("body").on("click", "a[name='delete_user_perm']", function(e) {

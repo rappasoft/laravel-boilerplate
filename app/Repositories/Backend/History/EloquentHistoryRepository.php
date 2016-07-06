@@ -45,7 +45,7 @@ class EloquentHistoryRepository implements HistoryContract {
 		$history = History::with('user')->latest()->get();
 
 		if (! $history->count())
-			return "There is no recent history.";
+			return trans("history.backend.none");
 
 		return $this->buildList($history);
 	}
@@ -66,7 +66,7 @@ class EloquentHistoryRepository implements HistoryContract {
 		}
 
 		if (! $history->count())
-			return "There is no history for this type.";
+			return trans("history.backend.none_for_type");
 
 		return $this->buildList($history);
 	}
@@ -79,7 +79,7 @@ class EloquentHistoryRepository implements HistoryContract {
 		$history = History::with('user', 'type')->where('entity_id', $entity_id)->latest()->get();
 
 		if (! $history->count())
-			return "There is no history for this " . $history->type->name . ".";
+			return trans("history.backend.none_for_entity", ['entity' => $history->type->name]);
 
 		return $this->buildList($history);
 	}
