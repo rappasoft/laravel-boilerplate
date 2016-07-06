@@ -10,14 +10,14 @@ interface HistoryContract {
 
 	/**
 	 * @param $type
+	 * @param $text
 	 * @param null $entity_id
 	 * @param null $icon
 	 * @param null $class
-	 * @param $text
 	 * @param null $assets
 	 * @return mixed
 	 */
-	public function log($type, $entity_id = null, $icon = null, $class = null, $text, $assets = null);
+	public function log($type, $text, $entity_id = null, $icon = null, $class = null,  $assets = null);
 
 	/**
 	 * @return mixed

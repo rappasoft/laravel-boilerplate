@@ -19,10 +19,10 @@ class UserEventListener
 	public function onCreated($event) {
 		history()->log(
 			$this->history_slug,
+			'trans("history.backend.users.created") <strong>'.$event->user->name.'</strong>',
 			$event->user->id,
 			'plus',
-			'bg-green',
-			'trans("history.backend.users.created") <strong>'.$event->user->name.'</strong>'
+			'bg-green'
 		);
 	}
 
@@ -32,10 +32,10 @@ class UserEventListener
 	public function onUpdated($event) {
 		history()->log(
 			$this->history_slug,
+			'trans("history.backend.users.updated") <strong>'.$event->user->name.'</strong>',
 			$event->user->id,
 			'save',
-			'bg-aqua',
-			'trans("history.backend.users.updated") <strong>'.$event->user->name.'</strong>'
+			'bg-aqua'
 		);
 	}
 
@@ -45,10 +45,10 @@ class UserEventListener
 	public function onDeleted($event) {
 		history()->log(
 			$this->history_slug,
+			'trans("history.backend.users.deleted") <strong>'.$event->user->name.'</strong>',
 			$event->user->id,
 			'trash',
-			'bg-maroon',
-			'trans("history.backend.users.deleted") <strong>'.$event->user->name.'</strong>'
+			'bg-maroon'
 		);
 	}
 
@@ -58,10 +58,10 @@ class UserEventListener
 	public function onRestored($event) {
 		history()->log(
 			$this->history_slug,
+			'trans("history.backend.users.restored") <strong>'.$event->user->name.'</strong>',
 			$event->user->id,
 			'refresh',
-			'bg-aqua',
-			'trans("history.backend.users.restored") <strong>'.$event->user->name.'</strong>'
+			'bg-aqua'
 		);
 	}
 
@@ -71,10 +71,10 @@ class UserEventListener
 	public function onPermanentlyDeleted($event) {
 		history()->log(
 			$this->history_slug,
+			'trans("history.backend.users.permanently_deleted") <strong>'.$event->user->name.'</strong>',
 			$event->user->id,
 			'trash',
-			'bg-maroon',
-			'trans("history.backend.users.permanently_deleted") <strong>'.$event->user->name.'</strong>'
+			'bg-maroon'
 		);
 	}
 
@@ -84,10 +84,10 @@ class UserEventListener
 	public function onPasswordChanged($event) {
 		history()->log(
 			$this->history_slug,
+			'trans("history.backend.users.changed_password") <strong>'.$event->user->name.'</strong>',
 			$event->user->id,
 			'lock',
-			'bg-blue',
-			'trans("history.backend.users.changed_password") <strong>'.$event->user->name.'</strong>'
+			'bg-blue'
 		);
 	}
 
@@ -97,10 +97,10 @@ class UserEventListener
 	public function onDeactivated($event) {
 		history()->log(
 			$this->history_slug,
+			'trans("history.backend.users.deactivated") <strong>'.$event->user->name.'</strong>',
 			$event->user->id,
 			'times',
-			'bg-yellow',
-			'trans("history.backend.users.deactivated") <strong>'.$event->user->name.'</strong>'
+			'bg-yellow'
 		);
 	}
 
@@ -110,10 +110,10 @@ class UserEventListener
 	public function onReactivated($event) {
 		history()->log(
 			$this->history_slug,
+			'trans("history.backend.users.reactivated") <strong>'.$event->user->name.'</strong>',
 			$event->user->id,
 			'check',
-			'bg-green',
-			'trans("history.backend.users.reactivated") <strong>'.$event->user->name.'</strong>'
+			'bg-green'
 		);
 	}
 
