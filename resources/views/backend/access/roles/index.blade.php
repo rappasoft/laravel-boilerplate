@@ -67,7 +67,8 @@
                     {data: 'sort', name: 'sort'},
                     {data: 'actions', name: 'actions'}
                 ],
-                order: [[3, "asc"]]
+                order: [[3, "asc"]],
+                searchDelay: 500
             });
         });
     </script>

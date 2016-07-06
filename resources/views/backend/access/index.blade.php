@@ -80,7 +80,8 @@
                     {data: 'updated_at', name: 'updated_at'},
                     {data: 'actions', name: 'actions'}
                 ],
-                order: [[0, "asc"]]
+                order: [[0, "asc"]],
+                searchDelay: 500
             });
         });
     </script>
