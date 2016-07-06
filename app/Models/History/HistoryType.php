@@ -16,9 +16,9 @@ class HistoryType extends Model {
 	protected $table = 'history_types';
 
 	/**
-	 * The attributes that are not mass assignable.
+	 * The attributes that are mass assignable.
 	 *
 	 * @var array
 	 */
-	protected $guarded = ['id'];
+	protected $fillable = ['name'];
 }
