@@ -15,16 +15,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'edit_explanation' => 'If you performed operations in the hierarchy section without refreshing this page, you will need to refresh to reflect the changes here.',
-
-                'groups' => [
-                    'hierarchy_saved' => 'Hierarchy successfully saved.',
-                ],
-
-                'sort_explanation' => 'This section allows you to organize your permissions into groups to stay organized. Regardless of the group, the permissions are still individually assigned to each role.',
-            ],
-
             'users' => [
                 'delete_user_confirm' => 'Are you sure you want to delete this user permanently? Anywhere in the application that references this user\'s id will most likely error. Proceed at your own risk. This can not be un-done.',
                 'if_confirmed_off' => '(If confirmed is off)',

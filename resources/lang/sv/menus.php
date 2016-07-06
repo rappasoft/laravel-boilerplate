@@ -17,20 +17,6 @@ return [
         'access' => [
             'title' => 'Användare och rättigheter',
 
-            'permissions' => [
-                'all' => 'Alla tillstånd',
-                'create' => 'Skapa tillstånd',
-                'edit' => 'Redigera tillstånd',
-                'groups' => [
-                    'all' => 'Alla tillståndsgrupper',
-                    'create' => 'Skapa tillståndsgrupp',
-                    'edit' => 'Redigera tillståndsgrupp',
-                    'main' => 'Tillståndsgrupper',
-                ],
-                'main' => 'Tillstånd',
-                'management' => 'Hantera tillstånd',
-            ],
-
             'roles' => [
                 'all' => 'Alla roller',
                 'create' => 'Skapa roll',

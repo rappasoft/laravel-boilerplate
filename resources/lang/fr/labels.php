@@ -31,50 +31,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'create' => 'Créer une permission',
-                'dependencies' => 'Dépendances',
-                'edit' => 'Éditer une permission',
-
-                'groups' => [
-                    'create' => 'Créer groupe',
-                    'edit' => 'Éditer groupe',
-
-                    'table' => [
-                        'name' => 'Nom',
-                    ],
-                ],
-
-                'grouped_permissions' => 'Permissions groupées',
-                'label' => 'permissions',
-                'management' => 'Gestion des permissions',
-                'no_groups' => "Il n'y a pas de groupes de permission.",
-                'no_permissions' => 'Pas de permission sélectionnée.',
-                'no_roles' => 'Pas de rôle sélectionné',
-                'no_ungrouped' => "Il n'y a pas de permissions non groupées.",
-
-                'table' => [
-                    'dependencies' => 'Dépendances',
-                    'group' => 'Groupe',
-                    'group-sort' => 'Ordre du groupe',
-                    'name' => 'Nom',
-                    'permission' => 'Permission',
-                    'roles' => 'Rôles',
-                    'system' => 'Système',
-                    'total' => 'permission total|permissions total',
-                    'users' => 'Utilisateurs',
-                ],
-
-                'tabs' => [
-                    'general' => 'Géneral',
-                    'groups' => 'Groupes',
-                    'dependencies' => 'Dépendances',
-                    'permissions' => 'Permissions',
-                ],
-
-                'ungrouped_permissions' => 'Permissions non groupées',
-            ],
-
             'roles' => [
                 'create' => 'Créer un rôle',
                 'edit' => 'Editer un rôle',
@@ -97,14 +53,11 @@ return [
                 'create' => 'Créer Utilisateur',
                 'deactivated' => 'Utilisateurs désactivés',
                 'deleted' => 'Utilisateurs supprimés',
-                'dependencies' => 'Dépendances',
                 'edit' => 'Éditer Utilisateur',
                 'management' => 'Gestion des utilisateurs',
-                'no_other_permissions' => "Pas d'autres permissions",
                 'no_permissions' => 'Pas de permissions',
                 'no_roles' => 'Pas de Rôle à affecter.',
                 'permissions' => 'Permissions',
-                'permission_check' => "La sélection d'une permission sélectionne aussi ses dépendances s'il y en a.",
 
                 'table' => [
                     'confirmed' => 'Confirmé',
@@ -115,7 +68,6 @@ return [
                     'name' => 'Nom',
                     'no_deactivated' => "Pas d'utilisateurs désactivés",
                     'no_deleted' => "Pas d'utilisateurs supprimés",
-                    'other_permissions' => 'Autres permissions',
                     'roles' => 'Rôles',
                     'total' => 'utilisateur total|utilisateurs total',
                 ],

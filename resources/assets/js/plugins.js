@@ -43,6 +43,14 @@ $(function(){
     addDeleteForms();
 
     /**
+     * This is for delete buttons that are loaded via AJAX in datatables, they will not work right
+     * without this block of code
+     */
+    $(document).ajaxComplete(function(){
+        addDeleteForms();
+    });
+
+    /**
      * Generic confirm form delete using Sweet Alert
      */
     $('body').on('submit', 'form[name=delete_item]', function(e){

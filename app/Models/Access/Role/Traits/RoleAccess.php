@@ -16,7 +16,7 @@ trait RoleAccess
      */
     public function savePermissions($inputPermissions)
     {
-        if (!empty($inputPermissions)) {
+        if (! empty($inputPermissions)) {
             $this->permissions()->sync($inputPermissions);
         } else {
             $this->permissions()->detach();

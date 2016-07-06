@@ -21,6 +21,7 @@ return [
                 'deactivate' => 'Inaktivera',
                 'resend_email' => 'Skicka bekräftelsemail igen.',
                 'delete_permanently' => 'Radera permanent',
+                'login_as' => 'Login As :user',
                 'restore_user' => 'Återställ',
             ],
         ],

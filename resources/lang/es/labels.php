@@ -31,50 +31,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'create' => 'Crear Permiso',
-                'dependencies' => 'Dependencias',
-                'edit' => 'Modificar Permiso',
-
-                'groups' => [
-                    'create' => 'Crear Grupo',
-                    'edit' => 'Modificar Grupo',
-
-                    'table' => [
-                        'name' => 'Nombre',
-                    ],
-                ],
-
-                'grouped_permissions' => 'Permisos agrupados',
-                'label' => 'Permisos',
-                'management' => 'Administración de Permisos',
-                'no_groups' => 'No hay Permisos en el Grupo.',
-                'no_permissions' => 'No hay Permisos disponibles.',
-                'no_roles' => 'No hay Roles disponibles.',
-                'no_ungrouped' => 'Actualmente no hay Permisos desagrupados.',
-
-                'table' => [
-                    'dependencies' => 'Dependencias',
-                    'group' => 'Grupo',
-                    'group-sort' => 'Orden del Grupo',
-                    'name' => 'Nombre',
-                    'permission' => 'Permisos',
-                    'roles' => 'Roles',
-                    'system' => 'Sistema',
-                    'total' => 'Todos los Permisos',
-                    'users' => 'Usuarios',
-                ],
-
-                'tabs' => [
-                    'general' => 'General',
-                    'groups' => 'Todos los Grupos',
-                    'dependencies' => 'Dependencias',
-                    'permissions' => 'Todos los Permisos',
-                ],
-
-                'ungrouped_permissions' => 'Permisos desagrupados',
-            ],
-
             'roles' => [
                 'create' => 'Crear Rol',
                 'edit' => 'Modificar Rol',
@@ -97,14 +53,11 @@ return [
                 'create' => 'Crear Usuario',
                 'deactivated' => 'Usuarios desactivados',
                 'deleted' => 'Usuarios eliminados',
-                'dependencies' => 'Dependencias',
                 'edit' => 'Modificar Usuario',
                 'management' => 'Administración de Usuarios',
-                'no_other_permissions' => 'Sin otros Permisos',
                 'no_permissions' => 'Sin Permisos',
                 'no_roles' => 'No hay Roles disponibles.',
                 'permissions' => 'Permisos',
-                'permission_check' => 'Activando un permiso con dependencias, las mismas se activarán también.',
 
                 'table' => [
                     'confirmed' => 'Confirmado',
@@ -115,7 +68,6 @@ return [
                     'name' => 'Nombre',
                     'no_deactivated' => 'Ningún Usuario desactivado disponible',
                     'no_deleted' => 'Ningún Usuario eliminado disponible',
-                    'other_permissions' => 'Otros Permisos',
                     'roles' => 'Roles',
                     'total' => 'Todos los Usuarios',
                 ],

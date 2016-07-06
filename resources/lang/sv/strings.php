@@ -15,16 +15,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'edit_explanation' => 'Om du uppdaterar hierarkin/ordningen så måste du uppdatera sidan för att kunna se de ändringar du gjort.',
-
-                'groups' => [
-                    'hierarchy_saved' => 'Ändringar i hierarkin är sparade.',
-                ],
-
-                'sort_explanation' => 'Här kan du hantera hierarkin för dina tillståndsgrupper. Du kan här göra tillståndsgrupper beroende av varandra. Tillstånden är individuellt bundna till rollerna oavsett gruppens placering i hierarkin.',
-            ],
-
             'users' => [
                 'delete_user_confirm' => 'Är du säker på att du vill radera denna användare permanent? Om användaren har material någonstans i programmet som pekar på sitt ID så kommer det troligtvis generera ett felmeddelande. Denna åtgärd går inte att ångra. Du fortsätter på egen risk.',
                 'if_confirmed_off' => '(Om bekräftan är avstängt)',

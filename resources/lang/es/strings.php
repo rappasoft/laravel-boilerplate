@@ -15,16 +15,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'edit_explanation' => 'Si ha realizado cambios en la jerarquía de esta página, deberá refrescarla para ver los cambios.',
-
-                'groups' => [
-                    'hierarchy_saved' => 'Jerarquia guardada satisfactoriamente.',
-                ],
-
-                'sort_explanation' => 'Esta sección permite organizar los Permisos en Grupos. Independientemente del Grupo, cada permiso debe ser asignado a los Roles de forma individual.',
-            ],
-
             'users' => [
                 'delete_user_confirm' => 'Estás seguro de querer eliminar este Usuario de forma permanente? Esto puede producir un error grave en aquéllas partes de la aplicación que hagan referencia al mismo. Proceda con cautela. Esta operación no puede ser revertida.',
                 'if_confirmed_off' => '(Si la confirmación está desactivada)',

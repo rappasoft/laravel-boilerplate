@@ -15,16 +15,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'edit_explanation' => "Si vous avez effectué des opérations dans la section hiérarchie sans rafraîchir cette page, vous devrez l'actualiser pour refléter les changements ici.",
-
-                'groups' => [
-                    'hierarchy_saved' => 'La hiérarchie est enregistrée avec succès.',
-                ],
-
-                'sort_explanation' => "Cette section vous permet d'organiser vos autorisations en groupes pour rester organisé. Quel que soit le groupe, les autorisations sont toujours assignées individuellement à chaque rôle.",
-            ],
-
             'users' => [
                 'delete_user_confirm' => "Êtes-vous sûr de vouloir supprimer cet utilisateur de façon permanente ? Toutes  les références à cet utilisateur dans l'application peuvent provoquer des erreurs et cette opération ne peut être annullée.",
                 'if_confirmed_off' => '(pour le mode sans confirmation)',

@@ -9,7 +9,7 @@
         <title>@yield('title', app_name())</title>
 
         <!-- Meta -->
-        <meta name="description" content="@yield('meta_description', 'Default Description')">
+        <meta name="description" content="@yield('meta_description', 'Laravel 5 Boilerplate')">
         <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
         @yield('meta')
 
@@ -22,7 +22,7 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
     </head>
     <body id="app-layout">
-
+        @include('includes.partials.logged-in-as')
         @include('frontend.includes.nav')
 
         <div class="container">
@@ -30,7 +30,7 @@
             @yield('content')
         </div><!-- container -->
 
-        <!-- JavaScripts -->
+        <!-- Scripts -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
         {!! Html::script('js/vendor/bootstrap/bootstrap.min.js') !!}

@@ -15,21 +15,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'create_error' => 'Der opstod et problem ved oprettelses af denne tilladelse. Prøv igen.',
-                'delete_error' => 'Der opstod et problem ved sletning af denne tilladelse. Prøv igen.',
-
-                'groups' => [
-                    'associated_permissions' => 'Du kan ikke slette denne gruppe, fordi det har tilknyttet tilladelser.',
-                    'has_children' => 'Du kan ikke slette denne gruppe, fordi det har underordnede grupper.',
-                    'name_taken' => 'Der findes allerede en gruppe med dette navn',
-                ],
-
-                'not_found' => 'Den rettighede eksistere ikke.',
-                'system_delete_error' => 'Du kan ikke slette en system rettighed.',
-                'update_error' => 'Der opstod et problem at opdatere denne rettighed. Prøv igen.',
-            ],
-
             'roles' => [
                 'already_exists' => 'Findes allerede den rolle. Vælg et andet navn.',
                 'cant_delete_admin' => 'Du kan ikke slette Administrator rollen.',

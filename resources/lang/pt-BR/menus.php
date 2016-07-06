@@ -17,20 +17,6 @@ return [
         'access' => [
             'title' => 'Gerenciamento de Usuários',
 
-            'permissions' => [
-                'all' => 'Todas as  Permissões',
-                'create' => 'Criar Permissão',
-                'edit' => 'Editar Permissão',
-                'groups' => [
-                    'all' => 'Todos os Grupos',
-                    'create' => 'Criar Grupo',
-                    'edit' => 'Editar Grupo',
-                    'main' => 'Grupos',
-                ],
-                'main' => 'Permissões',
-                'management' => 'Gerenciamento de Permissão',
-            ],
-
             'roles' => [
                 'all' => 'Todos os Papéis',
                 'create' => 'Criar Papel',

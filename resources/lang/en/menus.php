@@ -17,20 +17,6 @@ return [
         'access' => [
             'title' => 'Access Management',
 
-            'permissions' => [
-                'all' => 'All Permissions',
-                'create' => 'Create Permission',
-                'edit' => 'Edit Permission',
-                'groups' => [
-                    'all' => 'All Groups',
-                    'create' => 'Create Group',
-                    'edit' => 'Edit Group',
-                    'main' => 'Groups',
-                ],
-                'main' => 'Permissions',
-                'management' => 'Permission Management',
-            ],
-
             'roles' => [
                 'all' => 'All Roles',
                 'create' => 'Create Role',

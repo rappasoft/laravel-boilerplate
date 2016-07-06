@@ -31,50 +31,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'create' => 'Berechtigung erstellen',
-                'dependencies' => 'Abhägigkeiten',
-                'edit' => 'Berechtigung bearbeiten',
-
-                'groups' => [
-                    'create' => 'Gruppe erstellen',
-                    'edit' => 'Gruppe bearbeiten',
-
-                    'table' => [
-                        'name' => 'Name',
-                    ],
-                ],
-
-                'grouped_permissions' => 'Grupperte Berechtigungen',
-                'label' => 'berechtigungen',
-                'management' => 'Berechtigungen Verwalten',
-                'no_groups' => 'Keine Berechtigungsgruppen vorhanden.',
-                'no_permissions' => 'Keine Berechtigungen vorhanden.',
-                'no_roles' => 'Keine Rollen vorhanden',
-                'no_ungrouped' => 'Keine nicht grupperten Berechtigungen vorhanden.',
-
-                'table' => [
-                    'dependencies' => 'Abhängikeiten',
-                    'group' => 'Gruppe',
-                    'group-sort' => 'Gruppen Sortierung',
-                    'name' => 'Name',
-                    'permission' => 'Berechtigung',
-                    'roles' => 'Rollen',
-                    'system' => 'System',
-                    'total' => 'Berechtigung|Berechtigungen',
-                    'users' => 'Benutzer',
-                ],
-
-                'tabs' => [
-                    'general' => 'Allgemein',
-                    'groups' => 'Alle Gruppen',
-                    'dependencies' => 'Abhängigkeiten',
-                    'permissions' => 'Alle Berechtigungen',
-                ],
-
-                'ungrouped_permissions' => 'Nicht grupperte Berechtigungen',
-            ],
-
             'roles' => [
                 'create' => 'Rolle erstellen',
                 'edit' => 'rolle bearbeiten',
@@ -97,14 +53,11 @@ return [
                 'create' => 'Benutzer erstellen',
                 'deactivated' => 'Deaktivierte Benutzer',
                 'deleted' => 'Gelöschte Benutzer',
-                'dependencies' => 'Abhängigkeiten',
                 'edit' => 'Benutzer bearbeiten',
                 'management' => 'Benutzer Verwalten',
-                'no_other_permissions' => 'Keine anderen Berechtigungen',
                 'no_permissions' => 'Keine Berechtigungen',
                 'no_roles' => 'Keine Rollen vorhanden.',
                 'permissions' => 'Berechtigungen',
-                'permission_check' => 'Beim Auswählen einer Berechtigung werden deren Abhängigkeiten auch ausgewählt, sofern vorhanden.',
 
                 'table' => [
                     'confirmed' => 'Bestätigt',
@@ -115,7 +68,6 @@ return [
                     'name' => 'Name',
                     'no_deactivated' => 'Keine deaktivierten Benutzer',
                     'no_deleted' => 'Keine gelöschten Benutzer',
-                    'other_permissions' => 'Andere Berechtigungen',
                     'roles' => 'Rollen',
                     'total' => 'Benutzer|Benutzer',
                 ],

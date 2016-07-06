@@ -16,22 +16,22 @@
                         </div>
                     @endif
 
-                    {!! Form::open(['url' => 'password/email', 'class' => 'form-horizontal']) !!}
+                    {{ Form::open(['url' => 'password/email', 'class' => 'form-horizontal']) }}
 
-                        <div class="form-group">
-                            {!! Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) !!}
-                            <div class="col-md-6">
-                                {!! Form::input('email', 'email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) !!}
-                            </div><!--col-md-6-->
-                        </div><!--form-group-->
+                    <div class="form-group">
+                        {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}
+                        <div class="col-md-6">
+                            {{ Form::input('email', 'email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
+                        </div><!--col-md-6-->
+                    </div><!--form-group-->
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                {!! Form::submit(trans('labels.frontend.passwords.send_password_reset_link_button'), ['class' => 'btn btn-primary']) !!}
-                            </div><!--col-md-6-->
-                        </div><!--form-group-->
+                    <div class="form-group">
+                        <div class="col-md-6 col-md-offset-4">
+                            {{ Form::submit(trans('labels.frontend.passwords.send_password_reset_link_button'), ['class' => 'btn btn-primary']) }}
+                        </div><!--col-md-6-->
+                    </div><!--form-group-->
 
-                    {!! Form::close() !!}
+                    {{ Form::close() }}
 
                 </div><!-- panel body -->
 

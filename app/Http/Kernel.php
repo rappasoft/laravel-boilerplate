@@ -40,6 +40,7 @@ class Kernel extends HttpKernel
             'web',
             'auth',
             'access.routeNeedsPermission:view-backend',
+            'timeout',
         ],
 
         'api' => [
@@ -60,6 +61,7 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'timeout' => \App\Http\Middleware\SessionTimeout::class,
 
         /**
          * Access Middleware

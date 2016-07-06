@@ -20,6 +20,7 @@ return [
                 'change_password' => 'Alterar senha',
                 'deactivate' => 'Desativar',
                 'delete_permanently' => 'Excluir Permanentemente',
+                'login_as' => 'Login As :user',
                 'resend_email' => 'Reenviar e-mail de confirmação',
                 'restore_user' => 'Restaurar Usuário',
             ],

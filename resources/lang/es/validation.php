@@ -38,6 +38,7 @@ return [
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => 'El campo :attribute debe contener un e-mail válido.',
     'exists'               => 'El campo :attribute seleccionado es inválido.',
+    'file'                 => 'The :attribute must be a file.',
     'filled'               => 'El campo :attribute es obligatorio.',
     'image'                => 'El campo :attribute debe contener una imagen.',
     'in'                   => 'El :attribute seleccionado no es válido.',

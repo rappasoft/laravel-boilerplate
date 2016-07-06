@@ -16,21 +16,7 @@ return [
     'backend' => [
         'access' => [
             'title' => 'Administración de acceso',
-
-            'permissions' => [
-                'all' => 'Todos los Permisos',
-                'create' => 'Nuevo Permiso',
-                'edit' => 'Modificar Permiso',
-                'groups' => [
-                    'all' => 'Todos los Grupos',
-                    'create' => 'Nuevo Grupo',
-                    'edit' => 'Modificar Grupo',
-                    'main' => 'Grupos',
-                ],
-                'main' => 'Permisos',
-                'management' => 'Administración de Permisos',
-            ],
-
+            
             'roles' => [
                 'all' => 'Todos los Roles',
                 'create' => 'Nuevo Rol',

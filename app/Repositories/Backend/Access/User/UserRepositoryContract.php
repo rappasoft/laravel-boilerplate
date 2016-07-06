@@ -15,44 +15,27 @@ interface UserRepositoryContract
      */
     public function findOrThrowException($id, $withRoles = false);
 
-    /**
-     * @param  $per_page
-     * @param  string      $order_by
-     * @param  string      $sort
-     * @param  $status
+	/**
+     * @param int $status
+     * @param bool $trashed
      * @return mixed
      */
-    public function getUsersPaginated($per_page, $status = 1, $order_by = 'id', $sort = 'asc');
-
-    /**
-     * @param  $per_page
-     * @return \Illuminate\Pagination\Paginator
-     */
-    public function getDeletedUsersPaginated($per_page);
-
-    /**
-     * @param  string  $order_by
-     * @param  string  $sort
-     * @return mixed
-     */
-    public function getAllUsers($order_by = 'id', $sort = 'asc');
+    public function getForDataTable($status = 1, $trashed = false);
 
     /**
      * @param $input
      * @param $roles
-     * @param $permissions
      * @return mixed
      */
-    public function create($input, $roles, $permissions);
+    public function create($input, $roles);
 
     /**
      * @param $id
      * @param $input
      * @param $roles
-     * @param $permissions
      * @return mixed
      */
-    public function update($id, $input, $roles, $permissions);
+    public function update($id, $input, $roles);
 
     /**
      * @param  $id
@@ -85,4 +68,15 @@ interface UserRepositoryContract
      * @return mixed
      */
     public function updatePassword($id, $input);
+
+	/**
+     * @param $id
+     * @return mixed
+     */
+    public function loginAs($id);
+
+	/**
+     * @return mixed
+     */
+    public function logoutAs();
 }
