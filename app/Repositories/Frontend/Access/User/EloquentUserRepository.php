@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Frontend\Access\User;
 
+use App\Events\Frontend\Auth\UserConfirmed;
 use App\Models\Access\User\User;
 use Illuminate\Support\Facades\Mail;
 use App\Exceptions\GeneralException;
@@ -164,7 +165,7 @@ class EloquentUserRepository implements UserRepositoryContract
                 'avatar'      => $data->avatar,
             ]);
         }
-        
+
         /**
          * Return the user object
          */
@@ -186,6 +187,8 @@ class EloquentUserRepository implements UserRepositoryContract
 
         if ($user->confirmation_code == $token) {
             $user->confirmed = 1;
+
+			event(new UserConfirmed($user));
             return $user->save();
         }
 

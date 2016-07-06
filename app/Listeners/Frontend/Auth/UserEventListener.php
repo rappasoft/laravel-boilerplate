@@ -31,6 +31,13 @@ class UserEventListener
 	}
 
 	/**
+	 * @param $event
+	 */
+	public function onConfirmed($event) {
+		\Log::info('User Confirmed: ' . $event->user->name);
+	}
+
+	/**
 	 * Register the listeners for the subscriber.
 	 *
 	 * @param  \Illuminate\Events\Dispatcher  $events
@@ -50,6 +57,11 @@ class UserEventListener
 		$events->listen(
 			\App\Events\Frontend\Auth\UserRegistered::class,
 			'App\Listeners\Frontend\Auth\UserEventListener@onRegistered'
+		);
+
+		$events->listen(
+			\App\Events\Frontend\Auth\UserConfirmed::class,
+			'App\Listeners\Frontend\Auth\UserEventListener@onConfirmed'
 		);
 	}
 }
