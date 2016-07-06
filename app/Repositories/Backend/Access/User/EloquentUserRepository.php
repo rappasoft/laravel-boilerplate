@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Backend\Access\User;
 
+use Exception;
 use App\Models\Access\User\User;
 use App\Exceptions\GeneralException;
 use App\Events\Backend\Access\User\UserCreated;
@@ -36,10 +37,7 @@ class EloquentUserRepository implements UserRepositoryContract
      * @param RoleRepositoryContract $role
      * @param FrontendUserRepositoryContract $user
      */
-    public function __construct(
-        RoleRepositoryContract $role,
-        FrontendUserRepositoryContract $user
-    )
+    public function __construct(RoleRepositoryContract $role, FrontendUserRepositoryContract $user)
     {
         $this->role = $role;
         $this->user = $user;
@@ -201,7 +199,7 @@ class EloquentUserRepository implements UserRepositoryContract
         try {
             $user->forceDelete();
 			event(new UserPermanentlyDeleted($user));
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             throw new GeneralException($e->getMessage());
         }
     }

@@ -28,13 +28,10 @@ class UserController extends Controller
     protected $roles;
 
     /**
-     * @param UserRepositoryContract       $users
-     * @param RoleRepositoryContract       $roles
+     * @param UserRepositoryContract $users
+     * @param RoleRepositoryContract $roles
      */
-    public function __construct(
-        UserRepositoryContract $users,
-        RoleRepositoryContract $roles
-    )
+    public function __construct(UserRepositoryContract $users, RoleRepositoryContract $roles)
     {
         $this->users       = $users;
         $this->roles       = $roles;

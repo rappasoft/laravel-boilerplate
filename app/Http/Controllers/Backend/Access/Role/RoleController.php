@@ -30,12 +30,9 @@ class RoleController extends Controller
      * @param RoleRepositoryContract       $roles
      * @param PermissionRepositoryContract $permissions
      */
-    public function __construct(
-        RoleRepositoryContract $roles,
-        PermissionRepositoryContract $permissions
-    )
-    {
-        $this->roles       = $roles;
+    public function __construct(RoleRepositoryContract $roles, PermissionRepositoryContract $permissions)
+	{
+        $this->roles = $roles;
         $this->permissions = $permissions;
     }
 
@@ -44,7 +41,7 @@ class RoleController extends Controller
 	 * @return mixed
 	 */
 	public function index(ManageRoleRequest $request)
-    {
+	{
         return view('backend.access.roles.index');
     }
 
@@ -52,7 +49,8 @@ class RoleController extends Controller
 	 * @param ManageRoleRequest $request
 	 * @return mixed
 	 */
-	public function get(ManageRoleRequest $request) {
+	public function get(ManageRoleRequest $request)
+	{
 		return Datatables::of($this->roles->getForDataTable())
 			->addColumn('permissions', function($role) {
 				$permissions = [];
