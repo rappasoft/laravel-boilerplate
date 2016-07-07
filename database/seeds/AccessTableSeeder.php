@@ -7,7 +7,7 @@ class AccessTableSeeder extends Seeder
 {
     public function run()
     {
-        if (env('DB_CONNECTION') == 'mysql') {
+        if (DB::connection()->getDriverName() == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         }
 
@@ -17,7 +17,7 @@ class AccessTableSeeder extends Seeder
         $this->call(PermissionTableSeeder::class);
         $this->call(PermissionRoleSeeder::class);
 
-        if (env('DB_CONNECTION') == 'mysql') {
+        if (DB::connection()->getDriverName() == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }
 

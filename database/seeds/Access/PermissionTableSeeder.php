@@ -11,14 +11,14 @@ class PermissionTableSeeder extends Seeder
 {
     public function run()
     {
-        if (env('DB_CONNECTION') == 'mysql') {
+        if (DB::connection()->getDriverName() == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         }
 
-        if (env('DB_CONNECTION') == 'mysql') {
+        if (DB::connection()->getDriverName() == 'mysql') {
             DB::table(config('access.permissions_table'))->truncate();
             DB::table(config('access.permission_role_table'))->truncate();
-        } elseif (env('DB_CONNECTION') == 'sqlite') {
+        } elseif (DB::connection()->getDriverName() == 'sqlite') {
             DB::statement('DELETE FROM ' . config('access.permissions_table'));
             DB::statement('DELETE FROM ' . config('access.permission_role_table'));
         } else {
@@ -65,7 +65,7 @@ class PermissionTableSeeder extends Seeder
         $manageRoles->updated_at   = Carbon::now();
         $manageRoles->save();
 
-        if (env('DB_CONNECTION') == 'mysql') {
+        if (DB::connection()->getDriverName() == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }
     }

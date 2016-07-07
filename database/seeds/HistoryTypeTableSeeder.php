@@ -14,7 +14,7 @@ class HistoryTypeTableSeeder extends Seeder {
 	 */
 	public function run() {
 
-		if (env('DB_CONNECTION') == 'mysql') {
+		if (DB::connection()->getDriverName() == 'mysql') {
 			DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 		}
 
@@ -37,7 +37,7 @@ class HistoryTypeTableSeeder extends Seeder {
 
 		DB::table('history_types')->insert($types);
 
-		if (env('DB_CONNECTION') == 'mysql') {
+		if (DB::connection()->getDriverName() == 'mysql') {
 			DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 		}
 	}

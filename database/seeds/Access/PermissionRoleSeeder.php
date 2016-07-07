@@ -11,13 +11,13 @@ class PermissionRoleSeeder extends Seeder
 {
 	public function run()
 	{
-		if (env('DB_CONNECTION') == 'mysql') {
+		if (DB::connection()->getDriverName() == 'mysql') {
 			DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 		}
 
-		if (env('DB_CONNECTION') == 'mysql') {
+		if (DB::connection()->getDriverName() == 'mysql') {
 			DB::table(config('access.permission_role_table'))->truncate();
-		} elseif (env('DB_CONNECTION') == 'sqlite') {
+		} elseif (DB::connection()->getDriverName() == 'sqlite') {
 			DB::statement('DELETE FROM ' . config('access.permission_role_table'));
 		} else {
 			//For PostgreSQL or anything else
@@ -32,7 +32,7 @@ class PermissionRoleSeeder extends Seeder
 		 * 
 		 */
 
-		if (env('DB_CONNECTION') == 'mysql') {
+		if (DB::connection()->getDriverName() == 'mysql') {
 			DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 		}
 	}
