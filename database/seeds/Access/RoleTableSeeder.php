@@ -11,13 +11,13 @@ class RoleTableSeeder extends Seeder
 {
     public function run()
     {
-        if (env('DB_CONNECTION') == 'mysql') {
+        if (DB::connection()->getDriverName() == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         }
 
-        if (env('DB_CONNECTION') == 'mysql') {
+        if (DB::connection()->getDriverName() == 'mysql') {
             DB::table(config('access.roles_table'))->truncate();
-        } elseif (env('DB_CONNECTION') == 'sqlite') {
+        } elseif (DB::connection()->getDriverName() == 'sqlite') {
             DB::statement('DELETE FROM ' . config('access.roles_table'));
             DB::statement('UPDATE sqlite_sequence SET seq = 0 where name = ' ."'". config('access.roles_table')."'");
 
@@ -52,7 +52,7 @@ class RoleTableSeeder extends Seeder
 
         DB::table(config('access.roles_table'))->insert($roles);
 
-        if (env('DB_CONNECTION') == 'mysql') {
+        if (DB::connection()->getDriverName() == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }
     }
