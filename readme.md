@@ -1,5 +1,9 @@
 ## Laravel 5.* Boilerplate, Currently 5.2.39 [Screenshots](http://imgur.com/a/rFv2g)
 
+Overview database relationship on laravelsd.com: Now you have a colorful overview of your relationships between models :). I took the liberty for it. If you make an account on that site, you can fork my overview and expand later on. I put it here because I couldn't put it on the wiki.
+
+http://laravelsd.com/577f724b32169/relationship/122960
+
 [![Latest Stable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/stable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate) [![Latest Unstable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/unstable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate)
 
 ### Laravel 5.1
