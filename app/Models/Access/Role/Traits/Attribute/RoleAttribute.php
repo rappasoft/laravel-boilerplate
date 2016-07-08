@@ -13,7 +13,7 @@ trait RoleAttribute
      */
     public function getEditButtonAttribute()
     {
-        return '<a href="' . route('admin.access.roles.edit', $this->id) . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.edit') . '"></i></a> ';
+        return '<a href="' . route('admin.access.roles.edit', $this) . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.edit') . '"></i></a> ';
     }
 
     /**
@@ -23,7 +23,7 @@ trait RoleAttribute
     {
         //Can't delete master admin role
         if ($this->id != 1) {
-            return '<a href="' . route('admin.access.roles.destroy', $this->id) . '" class="btn btn-xs btn-danger" data-method="delete"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.delete') . '"></i></a>';
+            return '<a href="' . route('admin.access.roles.destroy', $this) . '" class="btn btn-xs btn-danger" data-method="delete"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.delete') . '"></i></a>';
         }
 
         return '';

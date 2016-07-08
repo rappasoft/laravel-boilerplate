@@ -87,7 +87,7 @@ trait UserAttribute
      */
     public function getEditButtonAttribute()
     {
-        return '<a href="' . route('admin.access.users.edit', $this->id) . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.edit') . '"></i></a> ';
+        return '<a href="' . route('admin.access.users.edit', $this) . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.edit') . '"></i></a> ';
     }
 
     /**
@@ -95,7 +95,7 @@ trait UserAttribute
      */
     public function getChangePasswordButtonAttribute()
     {
-        return '<a href="' . route('admin.access.user.change-password', $this->id) . '" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.change_password') . '"></i></a> ';
+        return '<a href="' . route('admin.access.user.change-password', $this) . '" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.change_password') . '"></i></a> ';
     }
 
     /**
@@ -107,14 +107,14 @@ trait UserAttribute
             switch ($this->status) {
                 case 0:
                     return '<a href="' . route('admin.access.user.mark', [
-                        $this->id,
+                        $this,
                         1
                     ]) . '" class="btn btn-xs btn-success"><i class="fa fa-play" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.activate') . '"></i></a> ';
                 // No break
 
                 case 1:
                     return '<a href="' . route('admin.access.user.mark', [
-                        $this->id,
+                        $this,
                         0
                     ]) . '" class="btn btn-xs btn-warning"><i class="fa fa-pause" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.deactivate') . '"></i></a> ';
                 // No break
@@ -134,7 +134,7 @@ trait UserAttribute
     public function getConfirmedButtonAttribute()
     {
         if (! $this->isConfirmed()) {
-            return '<a href="' . route('admin.account.confirm.resend', $this->id) . '" class="btn btn-xs btn-success"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title=' . trans('buttons.backend.access.users.resend_email') . '"></i></a> ';
+            return '<a href="' . route('admin.account.confirm.resend', $this) . '" class="btn btn-xs btn-success"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title=' . trans('buttons.backend.access.users.resend_email') . '"></i></a> ';
         }
 
         return '';
@@ -146,7 +146,7 @@ trait UserAttribute
     public function getDeleteButtonAttribute()
     {
         if ($this->id != access()->id()) {
-            return '<a href="' . route('admin.access.users.destroy', $this->id) . '"
+            return '<a href="' . route('admin.access.users.destroy', $this) . '"
                  data-method="delete"
                  data-trans-button-cancel="' . trans('buttons.general.cancel') . '"
                  data-trans-button-confirm="' . trans('buttons.general.crud.delete') . '"
@@ -162,7 +162,7 @@ trait UserAttribute
      */
     public function getRestoreButtonAttribute()
     {
-        return '<a href="' . route('admin.access.user.restore', $this->id) . '" name="restore_user" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.restore_user') . '"></i></a> ';
+        return '<a href="' . route('admin.access.user.restore', $this) . '" name="restore_user" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.restore_user') . '"></i></a> ';
     }
 
 	/**
@@ -170,7 +170,7 @@ trait UserAttribute
      */
     public function getDeletePermanentlyButtonAttribute()
     {
-        return '<a href="' . route('admin.access.user.delete-permanently', $this->id) . '" name="delete_user_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.delete_permanently') . '"></i></a> ';
+        return '<a href="' . route('admin.access.user.delete-permanently', $this) . '" name="delete_user_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.delete_permanently') . '"></i></a> ';
     }
 
 	/**
@@ -185,7 +185,7 @@ trait UserAttribute
             //Won't break, but don't let them "Login As" themselves
             if ($this->id != access()->id()) {
                 return '<a href="' . route('admin.access.user.login-as',
-                    $this->id) . '" class="btn btn-xs btn-success"><i class="fa fa-lock" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.login_as',
+                    $this) . '" class="btn btn-xs btn-success"><i class="fa fa-lock" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.login_as',
                     ['user' => $this->name]) . '"></i></a> ';
             }
         }

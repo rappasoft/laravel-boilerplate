@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    {{ Form::open(['route' => ['admin.access.user.change-password', $user->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+    {{ Form::open(['route' => ['admin.access.user.change-password', $user], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
 
         <div class="box box-success">
             <div class="box-header with-border">

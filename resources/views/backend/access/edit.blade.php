@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    {{ Form::model($user, ['route' => ['admin.access.users.update', $user->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) }}
+    {{ Form::model($user, ['route' => ['admin.access.users.update', $user], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH']) }}
 
         <div class="box box-success">
             <div class="box-header with-border">

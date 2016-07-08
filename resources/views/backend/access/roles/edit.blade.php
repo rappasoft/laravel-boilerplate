@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    {{ Form::model($role, ['route' => ['admin.access.roles.update', $role->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH', 'id' => 'edit-role']) }}
+    {{ Form::model($role, ['route' => ['admin.access.roles.update', $role], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH', 'id' => 'edit-role']) }}
 
         <div class="box box-success">
             <div class="box-header with-border">

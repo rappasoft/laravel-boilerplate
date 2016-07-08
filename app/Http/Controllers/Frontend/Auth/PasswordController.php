@@ -17,17 +17,13 @@ class PasswordController extends Controller
     use ChangePasswords, ResetsPasswords;
 
     /**
-     * Where to redirect the user after their password has been successfully reset
-     *
-     * @var string
-     */
-    protected $redirectTo = '/dashboard';
-
-    /**
      * @param UserRepositoryContract $user
      */
     public function __construct(UserRepositoryContract $user)
     {
+        //Where to redirect the user after their password has been successfully reset
+        $this->redirectTo = route('frontend.user.dashboard');
+        
         $this->user = $user;
     }
 }

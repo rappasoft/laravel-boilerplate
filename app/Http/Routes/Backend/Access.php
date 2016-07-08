@@ -33,7 +33,7 @@ Route::group([
 			/**
 			 * Specific User
 			 */
-			Route::group(['prefix' => 'user/{id}', 'where' => ['id' => '[0-9]+']], function() {
+			Route::group(['prefix' => 'user/{user}'], function() {
 				Route::get('delete', 'UserController@delete')->name('admin.access.user.delete-permanently');
 				Route::get('restore', 'UserController@restore')->name('admin.access.user.restore');
 				Route::get('mark/{status}', 'UserController@mark')->name('admin.access.user.mark')->where(['status' => '[0,1]']);
