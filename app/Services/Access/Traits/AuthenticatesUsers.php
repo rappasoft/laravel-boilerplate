@@ -74,7 +74,7 @@ trait AuthenticatesUsers
         }
 
         event(new UserLoggedOut(access()->user()));
-        auth()->logout();
+        access()->logout();
         return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
     }
 
@@ -105,10 +105,10 @@ trait AuthenticatesUsers
          */
         if (! access()->user()->isConfirmed()) {
             $id = access()->user()->id;
-            auth()->logout();
+            access()->logout();
             throw new GeneralException(trans('exceptions.frontend.auth.confirmation.resend', ['user_id' => $id]));
         } elseif (! access()->user()->isActive()) {
-            auth()->logout();
+            access()->logout();
             throw new GeneralException(trans('exceptions.frontend.auth.deactivated'));
         }
 

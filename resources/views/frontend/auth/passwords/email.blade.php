@@ -16,7 +16,7 @@
                         </div>
                     @endif
 
-                    {{ Form::open(['url' => 'password/email', 'class' => 'form-horizontal']) }}
+                    {{ Form::open(['route' => 'auth.password.email', 'class' => 'form-horizontal']) }}
 
                     <div class="form-group">
                         {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}

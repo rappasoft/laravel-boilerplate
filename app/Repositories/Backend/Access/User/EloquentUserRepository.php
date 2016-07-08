@@ -166,7 +166,7 @@ class EloquentUserRepository implements UserRepositoryContract
      */
     public function destroy($id)
     {
-        if (auth()->id() == $id) {
+        if (access()->id() == $id) {
             throw new GeneralException(trans('exceptions.backend.access.users.cant_delete_self'));
         }
 

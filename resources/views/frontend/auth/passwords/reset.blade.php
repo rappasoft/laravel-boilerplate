@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    {{ Form::open(['url' => 'password/reset', 'class' => 'form-horizontal']) }}
+                    {{ Form::open(['route' => 'auth.password.reset', 'class' => 'form-horizontal']) }}
 
                     <input type="hidden" name="token" value="{{ $token }}">
 
