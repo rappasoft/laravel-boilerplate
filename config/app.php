@@ -186,6 +186,7 @@ return [
          * Third Party Providers
          */
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
+        Arcanedev\NoCaptcha\NoCaptchaServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
@@ -250,6 +251,7 @@ return [
          */
         'Active'      => HieuLe\Active\Facades\Active::class,
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
+        'Captcha'     => Arcanedev\NoCaptcha\Facades\NoCaptcha::class,
         'Form'        => Collective\Html\FormFacade::class,
         'Gravatar'    => Creativeorange\Gravatar\Facades\Gravatar::class,
         'Html'        => Collective\Html\HtmlFacade::class,

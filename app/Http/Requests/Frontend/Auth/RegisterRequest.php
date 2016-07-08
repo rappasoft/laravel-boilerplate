@@ -31,6 +31,16 @@ class RegisterRequest extends Request
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'g-recaptcha-response' => 'required_if:captcha_status,true|captcha',
+        ];
+    }
+
+	/**
+     * @return array
+     */
+    public function messages() {
+        return [
+            'g-recaptcha-response.required_if' => trans('validation.required', ['attribute' => 'captcha']),
         ];
     }
 }

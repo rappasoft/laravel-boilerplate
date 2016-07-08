@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a9d601f277620d0c8743a7fdac42fc4f",
-    "content-hash": "4d528a5f5b6fbe8dbc6fda8826556dfc",
+    "hash": "12b8a868c263957b7a4b26213b5b0980",
+    "content-hash": "0bcb785b5f6af6149c00323a911f5e4e",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -69,6 +69,67 @@
                 "logviewer"
             ],
             "time": "2016-06-06 01:38:50"
+        },
+        {
+            "name": "arcanedev/no-captcha",
+            "version": "3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ARCANEDEV/noCAPTCHA.git",
+                "reference": "b91c46c4c63e46edb80b3b90762f1e297e7a4e38"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ARCANEDEV/noCAPTCHA/zipball/b91c46c4c63e46edb80b3b90762f1e297e7a4e38",
+                "reference": "b91c46c4c63e46edb80b3b90762f1e297e7a4e38",
+                "shasum": ""
+            },
+            "require": {
+                "arcanedev/support": "~3.0",
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.5.9",
+                "psr/http-message": "~1.0"
+            },
+            "require-dev": {
+                "arcanedev/laravel-html": "~5.0",
+                "phpunit/phpcov": "~2.0|~3.0",
+                "phpunit/phpunit": "~4.0|~5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Arcanedev\\NoCaptcha\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ARCANEDEV",
+                    "email": "arcanedev.maroc@gmail.com",
+                    "homepage": "https://github.com/arcanedev-maroc",
+                    "role": "Developer"
+                }
+            ],
+            "description": "No CAPTCHA (new Google reCAPTCHA) with Laravel support",
+            "homepage": "https://github.com/ARCANEDEV/noCAPTCHA",
+            "keywords": [
+                "arcanedev",
+                "captcha",
+                "google",
+                "laravel",
+                "no-captcha",
+                "recaptcha"
+            ],
+            "time": "2016-05-30 16:38:36"
         },
         {
             "name": "arcanedev/support",
@@ -2005,16 +2066,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "3.8.0",
+            "version": "3.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "ff922a830d3dc73c353d93cb735db62d1239b7e6"
+                "reference": "08b7b8c778d5aeb0179cc49da4f64415bab9f81f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/ff922a830d3dc73c353d93cb735db62d1239b7e6",
-                "reference": "ff922a830d3dc73c353d93cb735db62d1239b7e6",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/08b7b8c778d5aeb0179cc49da4f64415bab9f81f",
+                "reference": "08b7b8c778d5aeb0179cc49da4f64415bab9f81f",
                 "shasum": ""
             },
             "require": {
@@ -2063,7 +2124,7 @@
                 "laravel-backup",
                 "spatie"
             ],
-            "time": "2016-06-15 23:42:49"
+            "time": "2016-07-06 15:30:58"
         },
         {
             "name": "swiftmailer/swiftmailer",
