@@ -87,7 +87,7 @@ trait UserAttribute
      */
     public function getEditButtonAttribute()
     {
-        return '<a href="' . route('admin.access.users.edit', $this) . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.edit') . '"></i></a> ';
+        return '<a href="' . route('admin.access.user.edit', $this) . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.edit') . '"></i></a> ';
     }
 
     /**
@@ -146,7 +146,7 @@ trait UserAttribute
     public function getDeleteButtonAttribute()
     {
         if ($this->id != access()->id()) {
-            return '<a href="' . route('admin.access.users.destroy', $this) . '"
+            return '<a href="' . route('admin.access.user.destroy', $this) . '"
                  data-method="delete"
                  data-trans-button-cancel="' . trans('buttons.general.cancel') . '"
                  data-trans-button-confirm="' . trans('buttons.general.crud.delete') . '"

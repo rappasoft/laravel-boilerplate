@@ -8,6 +8,7 @@ use Illuminate\Session\TokenMismatchException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use App\Exceptions\Backend\Access\User\UserNeedsRolesException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 /**
@@ -55,7 +56,7 @@ class Handler extends ExceptionHandler
          * Usually because user stayed on the same screen too long and their session expired
          */
         if ($e instanceof TokenMismatchException) {
-            return redirect('/login');
+            return redirect()->route('auth.login');
         }
 
         /**
@@ -68,8 +69,8 @@ class Handler extends ExceptionHandler
         /**
          * User needs roles and none were selected
          */
-        if ($e instanceof Backend\Access\User\UserNeedsRolesException) {
-            return redirect()->route('admin.access.users.edit', $e->userID())->withInput()->withFlashDanger($e->validationErrors());
+        if ($e instanceof UserNeedsRolesException) {
+            return redirect()->route('admin.access.user.edit', $e->userID())->withInput()->withFlashDanger($e->validationErrors());
         }
 
         return parent::render($request, $e);

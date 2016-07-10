@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Access\User\User;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -24,9 +25,33 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        //
-
         parent::boot($router);
+
+        /**
+         * Register route model bindings
+         */
+
+        /**
+         * Instead of throwing a generic 404 if the models are not found
+         * Redirect back with error message
+		 * TODO: currently this just redirects back but the session flash does not work.
+		 * Keep commented to throw 404, uncomment to redirect back with no message.
+         */
+        /*$router->model('role', Role::class, function () {
+            throw new GeneralException(trans('exceptions.backend.access.roles.not_found'));
+        });
+
+        $router->model('user', User::class, function () {
+            throw new GeneralException(trans('exceptions.backend.access.users.not_found'));
+        });*/
+
+        /**
+         * This allows us to use the Route Model Binding with SoftDeletes on
+         * On a model by model basis
+         */
+        $router->bind('user', function($value) {
+            return User::withTrashed()->where('id', $value)->first();
+        });
     }
 
     /**

@@ -66,7 +66,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: '{{ route("admin.access.users.get") }}',
+                    url: '{{ route("admin.access.user.get") }}',
                     type: 'get',
                     data: {status: 1, trashed: false}
                 },

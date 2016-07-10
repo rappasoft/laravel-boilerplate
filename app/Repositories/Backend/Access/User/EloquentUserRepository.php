@@ -43,25 +43,6 @@ class EloquentUserRepository implements UserRepositoryContract
         $this->user = $user;
     }
 
-    /**
-     * @param  $id
-     * @param  bool               $withRoles
-     * @throws GeneralException
-     * @return mixed
-     */
-    public function findOrThrowException($id, $withRoles = false)
-    {
-        if ($user = User::withTrashed()->find($id)) {
-            if ($withRoles) {
-                $user->load("roles");
-            }
-
-            return $user;
-        }
-
-        throw new GeneralException(trans('exceptions.backend.access.users.not_found'));
-    }
-
 	/**
      * @param int $status
      * @param bool $trashed
@@ -113,15 +94,14 @@ class EloquentUserRepository implements UserRepositoryContract
     }
 
     /**
-     * @param $id
+     * @param User $user
      * @param $input
      * @param $roles
      * @return bool
      * @throws GeneralException
      */
-    public function update($id, $input, $roles)
+    public function update(User $user, $input, $roles)
     {
-        $user = $this->findOrThrowException($id);
         $this->checkUserByEmail($input, $user);
 
         if ($user->update($input)) {
@@ -141,14 +121,13 @@ class EloquentUserRepository implements UserRepositoryContract
     }
 
     /**
-     * @param  $id
+     * @param  User $user
      * @param  $input
      * @throws GeneralException
      * @return bool
      */
-    public function updatePassword($id, $input)
+    public function updatePassword(User $user, $input)
     {
-        $user = $this->findOrThrowException($id);
         $user->password = bcrypt($input['password']);
         
         if ($user->save()) {
@@ -160,17 +139,15 @@ class EloquentUserRepository implements UserRepositoryContract
     }
 
     /**
-     * @param  $id
+     * @param  User $user
      * @throws GeneralException
      * @return bool
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        if (access()->id() == $id) {
+        if (access()->id() == $user->id) {
             throw new GeneralException(trans('exceptions.backend.access.users.cant_delete_self'));
         }
-
-        $user = $this->findOrThrowException($id);
 
         if ($user->delete()) {
 			event(new UserDeleted($user));
@@ -181,14 +158,12 @@ class EloquentUserRepository implements UserRepositoryContract
     }
 
     /**
-     * @param  $id
+     * @param  User $user
      * @throws GeneralException
      * @return boolean|null
      */
-    public function delete($id)
+    public function delete(User $user)
     {
-        $user = $this->findOrThrowException($id, true);
-
 		//Failsafe
 		if (is_null($user->deleted_at))
 			throw new GeneralException("This user must be deleted first before it can be destroyed permanently.");
@@ -205,14 +180,12 @@ class EloquentUserRepository implements UserRepositoryContract
     }
 
     /**
-     * @param  $id
+     * @param  User $user
      * @throws GeneralException
      * @return bool
      */
-    public function restore($id)
+    public function restore(User $user)
     {
-        $user = $this->findOrThrowException($id);
-
 		//Failsafe
 		if (is_null($user->deleted_at))
 			throw new GeneralException("This user is not deleted so it can not be restored.");
@@ -226,18 +199,17 @@ class EloquentUserRepository implements UserRepositoryContract
     }
 
     /**
-     * @param  $id
+     * @param  User $user
      * @param  $status
      * @throws GeneralException
      * @return bool
      */
-    public function mark($id, $status)
+    public function mark(User $user, $status)
     {
-        if (access()->id() == $id && $status == 0) {
+        if (access()->id() == $user->id && $status == 0) {
             throw new GeneralException(trans('exceptions.backend.access.users.cant_deactivate_self'));
         }
 
-        $user = $this->findOrThrowException($id);
         $user->status = $status;
 
 		//Log history dependent on status
@@ -258,24 +230,24 @@ class EloquentUserRepository implements UserRepositoryContract
     }
 
 	/**
-	 * @param $id
+	 * @param User $user
 	 * @return \Illuminate\Http\RedirectResponse
 	 * @throws GeneralException
 	 */
-	public function loginAs($id) {
+	public function loginAs(User $user) {
 		$this->flushTempSession();
 
 		//Won't break, but don't let them "Login As" themselves
-		if (access()->id() == $id)
+		if (access()->id() == $user->id)
 			throw new GeneralException("Do not try to login as yourself.");
 
 		//Add new session variables
 		session(["admin_user_id" => access()->id()]);
 		session(["admin_user_name" => access()->user()->name]);
-		session(["temp_user_id" => $id]);
+		session(["temp_user_id" => $user->id]);
 
 		//Login user
-		access()->loginUsingId($id);
+		access()->loginUsingId($user->id);
 
 		//Redirect to frontend
 		return redirect()->route("frontend.index");

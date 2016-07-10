@@ -2,18 +2,14 @@
 
 namespace App\Repositories\Backend\Access\User;
 
+use App\Models\Access\User\User;
+
 /**
  * Interface UserRepositoryContract
  * @package App\Repositories\User
  */
 interface UserRepositoryContract
 {
-    /**
-     * @param  $id
-     * @param  bool    $withRoles
-     * @return mixed
-     */
-    public function findOrThrowException($id, $withRoles = false);
 
 	/**
      * @param int $status
@@ -30,50 +26,50 @@ interface UserRepositoryContract
     public function create($input, $roles);
 
     /**
-     * @param $id
+     * @param User $user
      * @param $input
      * @param $roles
      * @return mixed
      */
-    public function update($id, $input, $roles);
+    public function update(User $user, $input, $roles);
 
     /**
-     * @param  $id
+     * @param  User $user
      * @return mixed
      */
-    public function destroy($id);
+    public function destroy(User $user);
 
     /**
-     * @param  $id
+     * @param  User $user
      * @return mixed
      */
-    public function delete($id);
+    public function delete(User $user);
 
     /**
-     * @param  $id
+     * @param  User $user
      * @return mixed
      */
-    public function restore($id);
+    public function restore(User $user);
 
     /**
-     * @param  $id
+     * @param  User $user
      * @param  $status
      * @return mixed
      */
-    public function mark($id, $status);
+    public function mark(User $user, $status);
 
     /**
-     * @param  $id
+     * @param  User $user
      * @param  $input
      * @return mixed
      */
-    public function updatePassword($id, $input);
+    public function updatePassword(User $user, $input);
 
 	/**
-     * @param $id
+     * @param User $user
      * @return mixed
      */
-    public function loginAs($id);
+    public function loginAs(User $user);
 
 	/**
      * @return mixed
