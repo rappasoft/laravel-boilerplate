@@ -14,26 +14,7 @@ use App\Events\Backend\Access\Role\RoleUpdated;
  */
 class EloquentRoleRepository implements RoleRepositoryContract
 {
-
-	/**
-     * @param $id
-     * @param bool $withPermissions
-     * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model|null|static|static[]
-     * @throws GeneralException
-     */
-    public function findOrThrowException($id, $withPermissions = false)
-    {
-        if ($role = Role::find($id)) {
-            if ($withPermissions) {
-                $role->load("permissions");
-            }
-
-            return $role;
-        }
-
-        throw new GeneralException(trans('exceptions.backend.access.roles.not_found'));
-    }
-
+    
 	/**
      * @return mixed
      */
@@ -121,15 +102,13 @@ class EloquentRoleRepository implements RoleRepositoryContract
     }
 
     /**
-     * @param  $id
+     * @param  Role $role
      * @param  $input
      * @throws GeneralException
      * @return bool
      */
-    public function update($id, $input)
+    public function update(Role $role, $input)
     {
-        $role = $this->findOrThrowException($id);
-
         //See if the role has all access, administrator always has all access
         if ($role->id == 1) {
             $all = true;
@@ -184,18 +163,16 @@ class EloquentRoleRepository implements RoleRepositoryContract
     }
 
     /**
-     * @param  $id
+     * @param  Role $role
      * @throws GeneralException
      * @return bool
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
         //Would be stupid to delete the administrator role
-        if ($id == 1) { //id is 1 because of the seeder
+        if ($role->id == 1) { //id is 1 because of the seeder
             throw new GeneralException(trans('exceptions.backend.access.roles.cant_delete_admin'));
         }
-
-        $role = $this->findOrThrowException($id);
 
         //Don't delete the role is there are users associated
         if ($role->users()->count() > 0) {

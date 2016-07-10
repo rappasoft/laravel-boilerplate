@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Access\Role;
 
+use App\Models\Access\Role\Role;
 use App\Http\Controllers\Controller;
 use Yajra\Datatables\Facades\Datatables;
 use App\Http\Requests\Backend\Access\Role\StoreRoleRequest;
@@ -95,17 +96,16 @@ class RoleController extends Controller
     public function store(StoreRoleRequest $request)
     {
         $this->roles->create($request->all());
-        return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans('alerts.backend.roles.created'));
+        return redirect()->route('admin.access.role.index')->withFlashSuccess(trans('alerts.backend.roles.created'));
     }
 
     /**
-     * @param  $id
+     * @param  Role $role
      * @param  ManageRoleRequest $request
      * @return mixed
      */
-    public function edit($id, ManageRoleRequest $request)
+    public function edit(Role $role, ManageRoleRequest $request)
     {
-        $role = $this->roles->findOrThrowException($id, true);
         return view('backend.access.roles.edit')
             ->withRole($role)
             ->withRolePermissions($role->permissions->lists('id')->all())
@@ -113,24 +113,24 @@ class RoleController extends Controller
     }
 
     /**
-     * @param  $id
+     * @param  Role $role
      * @param  UpdateRoleRequest $request
      * @return mixed
      */
-    public function update($id, UpdateRoleRequest $request)
+    public function update(Role $role, UpdateRoleRequest $request)
     {
-        $this->roles->update($id, $request->all());
-        return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans('alerts.backend.roles.updated'));
+        $this->roles->update($role, $request->all());
+        return redirect()->route('admin.access.role.index')->withFlashSuccess(trans('alerts.backend.roles.updated'));
     }
 
     /**
-     * @param  $id
+     * @param  Role $role
      * @param  ManageRoleRequest $request
      * @return mixed
      */
-    public function destroy($id, ManageRoleRequest $request)
+    public function destroy(Role $role, ManageRoleRequest $request)
     {
-        $this->roles->destroy($id);
-        return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans('alerts.backend.roles.deleted'));
+        $this->roles->destroy($role);
+        return redirect()->route('admin.access.role.index')->withFlashSuccess(trans('alerts.backend.roles.deleted'));
     }
 }

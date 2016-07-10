@@ -12,28 +12,28 @@ Route::group([
 		'middleware' => 'access.routeNeedsPermission:manage-users',
 	], function() {
 		Route::group(['namespace' => 'User'], function() {
-			Route::resource('users', 'UserController', ['except' => ['show']]);
+			Route::resource('user', 'UserController', ['except' => ['show']]);
 
 			/**
 			 * For DataTables
 			 */
-			Route::get('users/get', 'UserController@get')->name('admin.access.users.get');
+			Route::get('user/get', 'UserController@get')->name('admin.access.user.get');
 
 			/**
 			 * User Status'
 			 */
-			Route::get('users/deactivated', 'UserController@deactivated')->name('admin.access.users.deactivated');
-			Route::get('users/deleted', 'UserController@deleted')->name('admin.access.users.deleted');
+			Route::get('user/deactivated', 'UserController@deactivated')->name('admin.access.user.deactivated');
+			Route::get('user/deleted', 'UserController@deleted')->name('admin.access.user.deleted');
 
 			/**
 			 * Misc
 			 */
-			Route::get('account/confirm/resend/{user_id}', 'UserController@resendConfirmationEmail')->name('admin.account.confirm.resend');
+			Route::get('account/confirm/resend/{user}', 'UserController@resendConfirmationEmail')->name('admin.account.confirm.resend');
 
 			/**
 			 * Specific User
 			 */
-			Route::group(['prefix' => 'user/{id}', 'where' => ['id' => '[0-9]+']], function() {
+			Route::group(['prefix' => 'user/{user}'], function() {
 				Route::get('delete', 'UserController@delete')->name('admin.access.user.delete-permanently');
 				Route::get('restore', 'UserController@restore')->name('admin.access.user.restore');
 				Route::get('mark/{status}', 'UserController@mark')->name('admin.access.user.mark')->where(['status' => '[0,1]']);
@@ -51,10 +51,10 @@ Route::group([
 		'middleware' => 'access.routeNeedsPermission:manage-roles',
 	], function() {
 		Route::group(['namespace' => 'Role'], function () {
-			Route::resource('roles', 'RoleController', ['except' => ['show']]);
+			Route::resource('role', 'RoleController', ['except' => ['show']]);
 
 			//For DataTables
-			Route::get('roles/get', 'RoleController@get')->name('admin.access.roles.get');
+			Route::get('role/get', 'RoleController@get')->name('admin.access.role.get');
 		});
 	});
 });

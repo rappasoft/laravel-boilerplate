@@ -19,24 +19,16 @@ class AuthController extends Controller
     use AuthenticatesAndRegistersUsers, ConfirmUsers, ThrottlesLogins, UseSocialite;
 
     /**
-     * Where to redirect users after login / registration.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/dashboard';
-
-    /**
-     * Where to redirect users after they logout
-     *
-     * @var string
-     */
-    protected $redirectAfterLogout = '/';
-
-    /**
      * @param UserRepositoryContract $user
      */
     public function __construct(UserRepositoryContract $user)
     {
+        //Where to redirect users after login / registration.
+        $this->redirectTo = route('frontend.user.dashboard');
+        
+        //Where to redirect after logging out
+        $this->redirectAfterLogout = route('frontend.index');
+
         $this->user = $user;
     }
 }

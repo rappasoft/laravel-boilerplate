@@ -50,7 +50,7 @@ trait UseSocialite
          * User authenticated, check to see if they are active.
          */
         if (! access()->user()->isActive()) {
-            auth()->logout();
+            access()->logout();
             throw new GeneralException(trans('exceptions.frontend.auth.deactivated'));
         }
 

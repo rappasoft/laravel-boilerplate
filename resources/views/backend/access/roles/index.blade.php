@@ -59,7 +59,7 @@
             $('#roles-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route("admin.access.roles.get") }}',
+                ajax: '{{ route("admin.access.role.get") }}',
                 columns: [
                     {data: 'name', name: 'name'},
                     {data: 'permissions', name: 'permissions'},

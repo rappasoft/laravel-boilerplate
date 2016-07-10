@@ -5,15 +5,15 @@
         </button>
 
         <ul class="dropdown-menu" role="menu">
-            <li>{{ link_to_route('admin.access.users.index', trans('menus.backend.access.users.all')) }}</li>
+            <li>{{ link_to_route('admin.access.user.index', trans('menus.backend.access.users.all')) }}</li>
 
             @permission('create-users')
-            <li>{{ link_to_route('admin.access.users.create', trans('menus.backend.access.users.create')) }}</li>
+            <li>{{ link_to_route('admin.access.user.create', trans('menus.backend.access.users.create')) }}</li>
             @endauth
 
             <li class="divider"></li>
-            <li>{{ link_to_route('admin.access.users.deactivated', trans('menus.backend.access.users.deactivated')) }}</li>
-            <li>{{ link_to_route('admin.access.users.deleted', trans('menus.backend.access.users.deleted')) }}</li>
+            <li>{{ link_to_route('admin.access.user.deactivated', trans('menus.backend.access.users.deactivated')) }}</li>
+            <li>{{ link_to_route('admin.access.user.deleted', trans('menus.backend.access.users.deleted')) }}</li>
         </ul>
     </div><!--btn group-->
 
@@ -23,10 +23,10 @@
         </button>
 
         <ul class="dropdown-menu" role="menu">
-            <li>{{ link_to_route('admin.access.roles.index', trans('menus.backend.access.roles.all')) }}</li>
+            <li>{{ link_to_route('admin.access.role.index', trans('menus.backend.access.roles.all')) }}</li>
 
             @permission('create-roles')
-            <li>{{ link_to_route('admin.access.roles.create', trans('menus.backend.access.roles.create')) }}</li>
+            <li>{{ link_to_route('admin.access.role.create', trans('menus.backend.access.roles.create')) }}</li>
             @endauth
         </ul>
     </div><!--btn group-->

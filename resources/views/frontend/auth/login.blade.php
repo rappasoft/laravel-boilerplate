@@ -11,7 +11,7 @@
 
                 <div class="panel-body">
 
-                    {{ Form::open(['url' => 'login', 'class' => 'form-horizontal']) }}
+                    {{ Form::open(['route' => 'auth.login', 'class' => 'form-horizontal']) }}
 
                     <div class="form-group">
                         {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}

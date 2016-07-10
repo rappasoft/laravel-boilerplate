@@ -36,7 +36,7 @@
 
             @permission('manage-users')
                 <li class="{{ Active::pattern('admin/access/*') }}">
-                    {{ link_to('admin/access/users', trans('menus.backend.access.title')) }}
+                    {{ link_to_route('admin.access.user.index', trans('menus.backend.access.title')) }}
                 </li>
             @endauth
 

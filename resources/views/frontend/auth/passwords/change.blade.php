@@ -10,7 +10,7 @@
 
                 <div class="panel-body">
 
-                    {{ Form::open(['route' => ['auth.password.update'], 'class' => 'form-horizontal']) }}
+                    {{ Form::open(['route' => ['auth.password.change'], 'class' => 'form-horizontal']) }}
 
                     <div class="form-group">
                         {{ Form::label('old_password', trans('validation.attributes.frontend.old_password'), ['class' => 'col-md-4 control-label']) }}
