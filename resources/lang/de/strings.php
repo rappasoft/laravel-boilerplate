@@ -91,7 +91,7 @@ return [
 
             'view_console_it_works' => 'Schaue in die Konsole, du solltest \'it works!\' sehen, welches vom FrontendController@index kommt',
             'you_can_see_because' => 'Du kannst dies sehen, da du folgende Rolle besitzt \':role\'!',
-            'you_can_see_because_permission' => 'Du annst dies sehen, da du folgende Berechtigung besitzt \':permission\'!',
+            'you_can_see_because_permission' => 'Du kannst dies sehen, da du folgende Berechtigung besitzt \':permission\'!',
         ],
 
         'user' => [
