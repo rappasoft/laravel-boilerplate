@@ -1,9 +1,8 @@
 const gulp = require('gulp');
-const htmlmin = require('gulp-htmlmin');
+//const htmlmin = require('gulp-htmlmin');
 const Elixir = require('laravel-elixir');
 const Task = Elixir.Task;
 const rtlcss = require('gulp-rtlcss');
-const shell = require('gulp-shell');
 const rename = require('gulp-rename');
 
 /*Elixir.extend('compressHtml', function(message) {

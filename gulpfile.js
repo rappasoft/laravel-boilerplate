@@ -63,6 +63,9 @@ elixir(function(mix) {
          'backend/app.css'
      ], 'public/css/backend.css')
 
+     /**
+      * Make RTL (Right To Left) CSS stylesheet for the backend
+      */
      .rtlCSS()
 
      /**
