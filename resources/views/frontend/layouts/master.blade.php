@@ -16,6 +16,9 @@
         <!-- Styles -->
         @yield('before-styles-end')
         {!! Html::style(elixir('css/frontend.css')) !!}
+        @if(App::isLocale('ar'))
+        {!! Html::style(elixir('css/rtl.css')) !!}
+        @endif
         @yield('after-styles-end')
 
         <!-- Fonts -->

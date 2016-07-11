@@ -1,9 +1,9 @@
 var elixir = require('laravel-elixir');
-//require('./elixir-extensions');
+require('./elixir-extensions');
 
 elixir(function(mix) {
  mix
-     .phpUnit()
+     //.phpUnit()
      //.compressHtml()
 
     /**
@@ -63,6 +63,8 @@ elixir(function(mix) {
          'backend/app.css'
      ], 'public/css/backend.css')
 
+     .rtlCSS()
+
      /**
       * Combine backend scripts
       */
@@ -74,8 +76,15 @@ elixir(function(mix) {
          'backend/custom.js'
      ], 'public/js/backend.js')
 
+     /**
+      * Combine pre-processed rtl CSS files
+      */
+     .styles([
+         'rtl/bootstrap-rtl.css'
+     ], 'public/css/rtl.css')
+
     /**
       * Apply version control
       */
-     .version(["public/css/frontend.css", "public/js/frontend.js", "public/css/backend.css", "public/js/backend.js"]);
+     .version(["public/css/frontend.css", "public/js/frontend.js", "public/css/backend.css", "public/css/backend-rtl.css", "public/js/backend.js", "public/css/rtl.css"]);
 });
