@@ -15,7 +15,16 @@
 
         <!-- Styles -->
         @yield('before-styles-end')
-        {{ Html::style(elixir('css/backend.css')) }}
+
+        <!-- Check if the language is set to Arabic, so apply the RTL layouts -->
+        <!-- Otherwise apply the normal LTR layouts -->
+        @if(App::isLocale('ar'))
+            {!! Html::style(elixir('css/backend-rtl.css')) !!}
+            {!! Html::style(elixir('css/rtl.css')) !!}
+        @else
+            {{ Html::style(elixir('css/backend.css')) }}
+        @endif
+
         @yield('after-styles-end')
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

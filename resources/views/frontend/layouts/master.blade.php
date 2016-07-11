@@ -15,7 +15,14 @@
 
         <!-- Styles -->
         @yield('before-styles-end')
+
         {!! Html::style(elixir('css/frontend.css')) !!}
+
+        <!-- Check if the language is set to Arabic, so apply the RTL layouts -->
+        @if(App::isLocale('ar'))
+        {!! Html::style(elixir('css/rtl.css')) !!}
+        @endif
+
         @yield('after-styles-end')
 
         <!-- Fonts -->
