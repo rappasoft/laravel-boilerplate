@@ -7,8 +7,8 @@
         <ul class="dropdown-menu" role="menu">
             <li>{{ link_to_route('admin.access.user.index', trans('menus.backend.access.users.all')) }}</li>
 
-            @permission('create-users')
-            <li>{{ link_to_route('admin.access.user.create', trans('menus.backend.access.users.create')) }}</li>
+            @permission('manage-users')
+                <li>{{ link_to_route('admin.access.user.create', trans('menus.backend.access.users.create')) }}</li>
             @endauth
 
             <li class="divider"></li>
@@ -25,8 +25,8 @@
         <ul class="dropdown-menu" role="menu">
             <li>{{ link_to_route('admin.access.role.index', trans('menus.backend.access.roles.all')) }}</li>
 
-            @permission('create-roles')
-            <li>{{ link_to_route('admin.access.role.create', trans('menus.backend.access.roles.create')) }}</li>
+            @permission('manage-roles')
+                <li>{{ link_to_route('admin.access.role.create', trans('menus.backend.access.roles.create')) }}</li>
             @endauth
         </ul>
     </div><!--btn group-->
