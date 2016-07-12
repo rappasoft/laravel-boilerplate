@@ -57,6 +57,7 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
+            'ar' => 'العربية (Arabic)',
             'da' => 'Danish (Danish)',
             'de' => 'Deutsch (German)',
             'en' => 'Englisch (English)',
