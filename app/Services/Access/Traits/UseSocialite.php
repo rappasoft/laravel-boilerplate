@@ -76,39 +76,21 @@ trait UseSocialite
      */
     public function getAuthorizationFirst($provider)
     {
-        /**
-         * Both scopes and with are set
-         */
-        if (count(config("services.{$provider}.scopes")) && count(config("services.{$provider}.with"))) {
-            return Socialite::driver($provider)
-                ->scopes(config("services.{$provider}.scopes"))
-                ->with(config("services.{$provider}.with"))
-                ->redirect();
-        }
+        $socialite = Socialite::driver($provider);
+        $scopes = count(config("services.{$provider}.scopes")) ? config("services.{$provider}.scopes") : false;
+        $with = count(config("services.{$provider}.with")) ? config("services.{$provider}.with") : false;
+        $fields = count(config("services.{$provider}.fields")) ? config("services.{$provider}.fields") : false;
 
-        /**
-         * Just scopes are set
-         */
-        if (count(config("services.{$provider}.scopes")) && ! count(config("services.{$provider}.with"))) {
-            return Socialite::driver($provider)
-                ->scopes(config("services.{$provider}.scopes"))
-                ->redirect();
-        }
+        if ($scopes)
+            $socialite->scopes($scopes);
 
-        /**
-         * Just with is set
-         */
-        if (! count(config("services.{$provider}.scopes")) && count(config("services.{$provider}.with"))) {
-            return Socialite::driver($provider)
-                ->with(config("services.{$provider}.with"))
-                ->redirect();
-        }
+        if ($with)
+            $socialite->with($with);
 
-        /**
-         * Neither scopes or with are set
-         */
-        return Socialite::driver($provider)
-            ->redirect();
+        if ($fields)
+            $socialite->fields($fields);
+
+        return $socialite->redirect();
     }
 
     /**
