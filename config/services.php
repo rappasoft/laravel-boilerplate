@@ -63,6 +63,7 @@ return [
         'redirect' => env('FACEBOOK_REDIRECT'),
         'scopes' => [],
         'with' => [],
+		'fields' => [],
     ],
 
     'github' => [
@@ -97,6 +98,7 @@ return [
         'redirect' => env('LINKEDIN_REDIRECT'),
         'scopes' => [],
         'with' => [],
+		'fields' => [],
     ],
 
     'twitter' => [
