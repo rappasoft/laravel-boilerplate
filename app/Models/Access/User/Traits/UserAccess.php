@@ -17,6 +17,11 @@ trait UserAccess
     public function hasRole($nameOrId)
     {
         foreach ($this->roles as $role) {
+            //See if role has all permissions
+            if ($role->all) {
+                return true;
+            }
+
             //First check to see if it's an ID
             if (is_numeric($nameOrId)) {
                 if ($role->id == $nameOrId) {
@@ -52,7 +57,6 @@ trait UserAccess
                 if ($this->hasRole($role)) {
                     $hasRoles++;
                 }
-
             }
 
             return $numRoles == $hasRoles;
