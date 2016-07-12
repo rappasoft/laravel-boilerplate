@@ -27,14 +27,16 @@ return [
          * Key is the Laravel locale code
          * Index 0 of sub-array is the Carbon locale code
          * Index 1 of sub-array is the PHP locale code for setlocale()
+         * Index 2 of sub-array is whether or not to use RTL (right-to-left) css for this language
          */
-        'da'    => ['da', 'da_DK'],
-        'de'    => ['de', 'de_DE'],
-        'en'    => ['en', 'en_US'],
-        'es'    => ['es', 'es_ES'],
-        'fr'    => ['fr', 'fr_FR'],
-        'it'    => ['it', 'it_IT'],
-        'pt-BR' => ['pt_BR', 'pt_BR'],
-        'sv'    => ['sv', 'sv_SE'],
+        'ar'    => ['ar', 'ar_AR', true],
+        'da'    => ['da', 'da_DK', false],
+        'de'    => ['de', 'de_DE', false],
+        'en'    => ['en', 'en_US', false],
+        'es'    => ['es', 'es_ES', false],
+        'fr'    => ['fr', 'fr_FR', false],
+        'it'    => ['it', 'it_IT', false],
+        'pt-BR' => ['pt_BR', 'pt_BR', false],
+        'sv'    => ['sv', 'sv_SE', false],
     ],
 ];
