@@ -16,6 +16,7 @@ return [
 		'none' => 'لا يوجد ماضي حديث.',
 		'none_for_type' => 'لا يوجد أي ماضي لهذاالنوع.',
 		'none_for_entity' => "لا يوجد أي ماضي لهذا الـ :entity.",
+		'recent_history' => 'Recent History',
 
 		'roles' => [
 			'created' => 'قام بإنشاء الدور الجديد',

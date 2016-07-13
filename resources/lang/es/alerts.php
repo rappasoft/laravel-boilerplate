@@ -21,7 +21,7 @@ return [
         ],
 
         'users' => [
-            'confirmation_email' => 'Un nuevo mensaje de confirmacion ha sido enviado a tu correo.',
+            'confirmation_email' => 'Un nuevo mensaje de confirmación ha sido enviado a tu correo.',
             'created' => 'Usuario creado satisfactoriamente.',
             'deleted' => 'Usuario eliminado satisfactoriamente.',
             'deleted_permanently' => 'Usuario eliminado de forma permanente.',

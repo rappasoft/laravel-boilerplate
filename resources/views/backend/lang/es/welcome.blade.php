@@ -2,5 +2,5 @@
 <p>Toda la funcionalidad es de prueba, a excepción de <strong>Administración de acceso</strong> a la izquierda. Esta plantilla viene pre-configurada y funcional para total gestión de usuarios/roles/permisos.</p>
 <p>Tenga presente que esta plantilla sigue estando en desarrollo y puene contener errores. Hare lo que este en mis manos para enmendarlos.</p>
 <p>Espero que disfrute y aprecie el trabajo depositado en este proyecto. Por favor, visite <a href="https://github.com/rappasoft/laravel-5-boilerplate" target="_blank">GitHub</a> para mas información o reportar error <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">aquí</a>.</p>
-<p><strong>This project is very demanding to keep up with given the rate at which the master Laravel branch changes, so any help is appreciated.</strong></p>
+<p><strong>Este proyecto es muy demandante para mantenerse al día con la frecuencia en que el master branch de laravel va cambiando, por tanto cualquier ayuda será apreciada.</strong></p>
 <p>- Anthony Rappa</p>
