@@ -34,8 +34,8 @@ return [
             'continue' => 'Continuar',
             'member_since' => 'Miembro desde',
             'search_placeholder' => 'Buscar...',
-            'timeout' => 'You were automatically logged out for security reasons since you had no activity in ',
-            'minutes' => ' minutes',
+            'timeout' => 'Usted ha sido automaticamente desconectado por razones de seguridad ya que no tuvo actividad en ',
+            'minutes' => ' minutos',
 
             'see_all' => [
                 'messages' => 'Ver todos los mensajes',

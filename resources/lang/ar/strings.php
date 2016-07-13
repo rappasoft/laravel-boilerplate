@@ -34,6 +34,8 @@ return [
 			'continue' => 'متابعة',
 			'member_since' => 'عضو منذ',
 			'search_placeholder' => 'بحث...',
+			'timeout' => 'You were automatically logged out for security reasons since you had no activity in ',
+			'minutes' => ' minutes',
 
 			'see_all' => [
 				'messages' => 'رؤية جميع الرسائل',

@@ -34,6 +34,8 @@ return [
             'continue' => 'Fortsøt',
             'member_since' => 'Medlem siden',
             'search_placeholder' => 'Søg...',
+            'timeout' => 'You were automatically logged out for security reasons since you had no activity in ',
+            'minutes' => ' minutes',
 
             'see_all' => [
                 'messages' => 'Se alle beskeder',
