@@ -16,6 +16,7 @@ return [
 		'none' => 'There is no recent history.',
 		'none_for_type' => 'There is no history for this type.',
 		'none_for_entity' => "There is no history for this :entity.",
+		'recent_history' => 'Recent History',
 
 		'roles' => [
 			'created' => 'created role',
