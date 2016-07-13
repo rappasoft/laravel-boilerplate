@@ -33,7 +33,9 @@ return [
             'boilerplate_link' => 'Laravel 5 Boilerplate',
             'continue' => 'Continuar',
             'member_since' => 'Miembro desde',
+            'minutes' => ' minutos',
             'search_placeholder' => 'Buscar...',
+            'timeout' => 'Usted ha sido automaticamente desconectado por razones de seguridad ya que no tuvo actividad en ',
 
             'see_all' => [
                 'messages' => 'Ver todos los mensajes',
@@ -47,8 +49,8 @@ return [
             ],
 
             'you_have' => [
-                'messages' => '{0} No tiene nuevos mensajes|{1} Tiene 1 nuevo mensaje|[2,Inf] Tiene :number nuevos mensajes',
-                'notifications' => '{0} No tiene nuevas notificaciónes|{1} Tiene 1 nueva notificación|[2,Inf] Tiene :number notificaciónes',
+                'messages' => '{0} No tiene nuevos mensajes|{1} Tiene 1 nuevo mensaje|[2,Inf] Tiene :number mensajes nuevos',
+                'notifications' => '{0} No tiene nuevas notificaciones|{1} Tiene 1 nueva notificación|[2,Inf] Tiene :number notificaciones',
                 'tasks' => '{0} No tiene nuevas tareas|{1} Tiene 1 nueva tarea|[2,Inf] Tiene :number nuevas tareas',
             ],
         ],
@@ -57,7 +59,7 @@ return [
     'emails' => [
         'auth' => [
             'password_reset_subject' => 'Su enlace de reinicio de la contraseña',
-            'reset_password' => 'Pulse aqui para reiniciar su contraseña',
+            'reset_password' => 'Pulse aquí para reiniciar su contraseña',
         ],
     ],
 
@@ -74,7 +76,7 @@ return [
                 'role' => 'Basado en el Rol - ',
             ],
 
-            'js_injected_from_controller' => 'Javascript inyectado desde Controller',
+            'js_injected_from_controller' => 'Javascript inyectado desde el Controlador',
 
             'using_blade_extensions' => 'Usando las extensiones de Blade',
 

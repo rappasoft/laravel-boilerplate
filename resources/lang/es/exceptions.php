@@ -31,7 +31,7 @@ return [
                 'cant_delete_self' => 'No puede eliminarse usted mismo.',
                 'create_error' => 'Hubo un problema al crear el Usuario. Intentelo de nuevo.',
                 'delete_error' => 'Hubo un problema al eliminar el Usuario. Intentelo de nuevo.',
-                'email_error' => 'Ya hay un Usuario con la direccion de E-Mail especificada.',
+                'email_error' => 'Ya hay un Usuario con la dirección de E-Mail especificada.',
                 'mark_error' => 'Hubo un problema al modificar el Usuario. Intentelo de nuevo.',
                 'not_found' => 'El Usuario requerido no existe.',
                 'restore_error' => 'Hubo un problema al restaurar el Usuario. Intentelo de nuevo.',
@@ -57,7 +57,7 @@ return [
             ],
 
             'deactivated' => 'Su cuenta ha sido desactivada.',
-            'email_taken' => 'El e-mail especificado ya está registrado.',
+            'email_taken' => 'El correo especificado ya está registrado.',
 
             'password' => [
                 'change_mismatch' => 'La contraseña antigua no coincide.',

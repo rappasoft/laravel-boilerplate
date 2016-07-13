@@ -33,7 +33,9 @@ return [
             'boilerplate_link' => 'Laravel 5 Boilerplate',
             'continue' => 'Continue',
             'member_since' => 'Membre depuis',
+            'minutes' => ' minutes',
             'search_placeholder' => 'Rechercher...',
+            'timeout' => 'You were automatically logged out for security reasons since you had no activity in ',
 
             'see_all' => [
                 'messages' => 'Voir tous les messages',

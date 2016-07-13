@@ -33,7 +33,7 @@ class SessionTimeout {
 	 * Handle an incoming request.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
-	 * @param  \Closure  $next
+	 * @param  \Closure $next
 	 * @return mixed
 	 */
 	public function handle($request, Closure $next)
@@ -49,7 +49,7 @@ class SessionTimeout {
 				$email = $request->user()->email;
 				access()->logout();
 
-				return redirect()->to('/login')->withFlashWarning('You had no activity in ' . $this->timeout / 60 . ' minutes so you were automatically logged out for security.')->withInput(compact('email'))->withCookie($cookie);
+				return redirect()->to('/login')->withFlashWarning(trans('strings.backend.general.timeout') . $this->timeout / 60 . trans('strings.backend.general.minutes'))->withInput(compact('email'))->withCookie($cookie);
 			}
 
 			$isLoggedIn ? $this->session->put('lastActivityTime', time()) : $this->session->forget('lastActivityTime');

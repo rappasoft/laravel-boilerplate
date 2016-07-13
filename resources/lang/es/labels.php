@@ -18,7 +18,7 @@ return [
         'yes' => 'Sí',
         'no' => 'No',
         'custom' => 'Personalizado',
-        'actions' => 'Acciónes',
+        'actions' => 'Acciones',
         'buttons' => [
             'save' => 'Guardar',
             'update' => 'Actualizar',
@@ -62,9 +62,9 @@ return [
                 'table' => [
                     'confirmed' => 'Confirmado',
                     'created' => 'Creado',
-                    'email' => 'E-mail',
+                    'email' => 'Correo',
                     'id' => 'ID',
-                    'last_updated' => 'Ultima modificación',
+                    'last_updated' => 'Última modificación',
                     'name' => 'Nombre',
                     'no_deactivated' => 'Ningún Usuario desactivado disponible',
                     'no_deleted' => 'Ningún Usuario eliminado disponible',
@@ -90,7 +90,7 @@ return [
             'forgot_password' => 'Se ha olvidado la contraseña?',
             'reset_password_box_title' => 'Reiniciar contraseña',
             'reset_password_button' => 'Reiniciar contraseña',
-            'send_password_reset_link_button' => 'Enviar el e-mail de verificación',
+            'send_password_reset_link_button' => 'Enviar el correo de verificación',
         ],
 
         'macros' => [
@@ -128,8 +128,8 @@ return [
                 'avatar' => 'Avatar',
                 'created_at' => 'Creado el',
                 'edit_information' => 'Modificar la información',
-                'email' => 'E-mail',
-                'last_updated' => 'Ultima modificación',
+                'email' => 'Correo',
+                'last_updated' => 'Última modificación',
                 'name' => 'Nombre',
                 'update_information' => 'Actualizar la información',
             ],
