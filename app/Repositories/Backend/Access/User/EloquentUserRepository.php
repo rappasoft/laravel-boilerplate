@@ -43,20 +43,22 @@ class EloquentUserRepository implements UserRepositoryContract
         $this->user = $user;
     }
 
-	/**
+    /**
      * @param int $status
      * @param bool $trashed
      * @return mixed
      */
-    public function getForDataTable($status = 1, $trashed = false) {
-		/**
-		 * Note: You must return deleted_at or the User getActionButtonsAttribute won't
-		 * be able to differentiate what buttons to show for each row.
-		 */
-        if ($trashed == "true")
+    public function getForDataTable($status = 1, $trashed = false)
+    {
+        /**
+         * Note: You must return deleted_at or the User getActionButtonsAttribute won't
+         * be able to differentiate what buttons to show for each row.
+         */
+        if ($trashed == "true") {
             return User::onlyTrashed()
                 ->select(['id', 'name', 'email', 'status', 'confirmed', 'created_at', 'updated_at', 'deleted_at'])
                 ->get();
+        }
 
         return User::select(['id', 'name', 'email', 'status', 'confirmed', 'created_at', 'updated_at', 'deleted_at'])
             ->where('status', $status)
@@ -86,7 +88,7 @@ class EloquentUserRepository implements UserRepositoryContract
                 $this->user->sendConfirmationEmail($user->id);
             }
 
-			event(new UserCreated($user));
+            event(new UserCreated($user));
             return true;
         }
 
@@ -113,7 +115,7 @@ class EloquentUserRepository implements UserRepositoryContract
             $this->checkUserRolesCount($roles);
             $this->flushRoles($roles, $user);
 
-			event(new UserUpdated($user));
+            event(new UserUpdated($user));
             return true;
         }
 
@@ -129,11 +131,11 @@ class EloquentUserRepository implements UserRepositoryContract
     public function updatePassword(User $user, $input)
     {
         $user->password = bcrypt($input['password']);
-        
+
         if ($user->save()) {
-			event(new UserPasswordChanged($user));
-			return true;
-		}
+            event(new UserPasswordChanged($user));
+            return true;
+        }
 
         throw new GeneralException(trans('exceptions.backend.access.users.update_password_error'));
     }
@@ -150,9 +152,9 @@ class EloquentUserRepository implements UserRepositoryContract
         }
 
         if ($user->delete()) {
-			event(new UserDeleted($user));
-			return true;
-		}
+            event(new UserDeleted($user));
+            return true;
+        }
 
         throw new GeneralException(trans('exceptions.backend.access.users.delete_error'));
     }
@@ -164,16 +166,17 @@ class EloquentUserRepository implements UserRepositoryContract
      */
     public function delete(User $user)
     {
-		//Failsafe
-		if (is_null($user->deleted_at))
-			throw new GeneralException("This user must be deleted first before it can be destroyed permanently.");
+        //Failsafe
+        if (is_null($user->deleted_at)) {
+            throw new GeneralException("This user must be deleted first before it can be destroyed permanently.");
+        }
 
         //Detach all roles & permissions
         $user->detachRoles($user->roles);
 
         try {
             $user->forceDelete();
-			event(new UserPermanentlyDeleted($user));
+            event(new UserPermanentlyDeleted($user));
         } catch (Exception $e) {
             throw new GeneralException($e->getMessage());
         }
@@ -186,14 +189,15 @@ class EloquentUserRepository implements UserRepositoryContract
      */
     public function restore(User $user)
     {
-		//Failsafe
-		if (is_null($user->deleted_at))
-			throw new GeneralException("This user is not deleted so it can not be restored.");
+        //Failsafe
+        if (is_null($user->deleted_at)) {
+            throw new GeneralException("This user is not deleted so it can not be restored.");
+        }
 
         if ($user->restore()) {
-			event(new UserRestored($user));
-			return true;
-		}
+            event(new UserRestored($user));
+            return true;
+        }
 
         throw new GeneralException(trans('exceptions.backend.access.users.restore_error'));
     }
@@ -212,77 +216,98 @@ class EloquentUserRepository implements UserRepositoryContract
 
         $user->status = $status;
 
-		//Log history dependent on status
-		switch($status) {
-			case 0:
-				event(new UserDeactivated($user));
-			break;
+        //Log history dependent on status
+        switch ($status) {
+            case 0:
+                event(new UserDeactivated($user));
+            break;
 
-			case 1:
-				event(new UserReactivated($user));
-			break;
-		}
+            case 1:
+                event(new UserReactivated($user));
+            break;
+        }
 
-        if ($user->save())
+        if ($user->save()) {
             return true;
+        }
 
         throw new GeneralException(trans('exceptions.backend.access.users.mark_error'));
     }
 
-	/**
-	 * @param User $user
-	 * @return \Illuminate\Http\RedirectResponse
-	 * @throws GeneralException
-	 */
-	public function loginAs(User $user) {
-		$this->flushTempSession();
+    /**
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws GeneralException
+     */
+    public function loginAs(User $user)
+    {
+        // Overwrite who we're logging in as, if we're already logged in as someone else.
+        if (session()->has('admin_user_id') && session()->has('temp_user_id')) {
+            // Let's not try to login as ourselves.
+            if (auth()->id() == $user->id || session()->get('admin_user_id') == $user->id) {
+                throw new GeneralException('Do not try to login as yourself.');
+            }
 
-		//Won't break, but don't let them "Login As" themselves
-		if (access()->id() == $user->id)
-			throw new GeneralException("Do not try to login as yourself.");
+            // Overwrite temp user ID.
+            session(['temp_user_id' => $user->id]);
 
-		//Add new session variables
-		session(["admin_user_id" => access()->id()]);
-		session(["admin_user_name" => access()->user()->name]);
-		session(["temp_user_id" => $user->id]);
+            // Login.
+            access()->loginUsingId($user->id);
 
-		//Login user
-		access()->loginUsingId($user->id);
+            // Redirect.
+            return redirect()->route("frontend.index");
+        }
 
-		//Redirect to frontend
-		return redirect()->route("frontend.index");
-	}
+        $this->flushTempSession();
 
-	/**
-	 * @return \Illuminate\Http\RedirectResponse
-	 */
-	public function logoutAs() {
+        //Won't break, but don't let them "Login As" themselves
+        if (access()->id() == $user->id) {
+            throw new GeneralException("Do not try to login as yourself.");
+        }
 
-		//If for some reason route is getting hit without someone already logged in
-		if (! access()->user()){
-			return redirect()->route("auth.login");
-		}
+        //Add new session variables
+        session(["admin_user_id" => access()->id()]);
+        session(["admin_user_name" => access()->user()->name]);
+        session(["temp_user_id" => $user->id]);
 
-		//If admin id is set, relogin
-		if (session()->has("admin_user_id") && session()->has("temp_user_id")) {
-			//Save admin id
-			$admin_id = session()->get("admin_user_id");
+        //Login user
+        access()->loginUsingId($user->id);
 
-			$this->flushTempSession();
+        //Redirect to frontend
+        return redirect()->route("frontend.index");
+    }
 
-			//Relogin admin
-			access()->loginUsingId((int)$admin_id);
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logoutAs()
+    {
 
-			//Redirect to dashboard
-			return redirect()->route("admin.dashboard");
-		} else {
-			$this->flushTempSession();
+        //If for some reason route is getting hit without someone already logged in
+        if (! access()->user()) {
+            return redirect()->route("auth.login");
+        }
 
-			//Otherwise logout and redirect to login
-			access()->logout();
-			return redirect()->route("auth.login");
-		}
-	}
+        //If admin id is set, relogin
+        if (session()->has("admin_user_id") && session()->has("temp_user_id")) {
+            //Save admin id
+            $admin_id = session()->get("admin_user_id");
+
+            $this->flushTempSession();
+
+            //Relogin admin
+            access()->loginUsingId((int)$admin_id);
+
+            //Redirect to dashboard
+            return redirect()->route("admin.dashboard");
+        } else {
+            $this->flushTempSession();
+
+            //Otherwise logout and redirect to login
+            access()->logout();
+            return redirect()->route("auth.login");
+        }
+    }
 
     /**
      * Check to make sure at lease one role is being applied or deactivate user
@@ -366,13 +391,14 @@ class EloquentUserRepository implements UserRepositoryContract
         return $user;
     }
 
-	/**
-	 * Remove old session variables from admin logging in as user
-	 */
-	private function flushTempSession() {
-		//Remove any old session variables
-		session()->forget("admin_user_id");
-		session()->forget("admin_user_name");
-		session()->forget("temp_user_id");
-	}
+    /**
+     * Remove old session variables from admin logging in as user
+     */
+    private function flushTempSession()
+    {
+        //Remove any old session variables
+        session()->forget("admin_user_id");
+        session()->forget("admin_user_name");
+        session()->forget("temp_user_id");
+    }
 }
