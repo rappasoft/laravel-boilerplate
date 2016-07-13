@@ -18,7 +18,7 @@ return [
         'yes' => 'Sí',
         'no' => 'No',
         'custom' => 'Personalizado',
-        'actions' => 'Acciónes',
+        'actions' => 'Acciones',
         'buttons' => [
             'save' => 'Guardar',
             'update' => 'Actualizar',
