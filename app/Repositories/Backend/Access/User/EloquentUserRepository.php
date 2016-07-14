@@ -298,8 +298,8 @@ class EloquentUserRepository implements UserRepositoryContract
             //Relogin admin
             access()->loginUsingId((int)$admin_id);
 
-            //Redirect to dashboard
-            return redirect()->route("admin.dashboard");
+            //Redirect to backend user page
+            return redirect()->route("admin.access.user.index");
         } else {
             $this->flushTempSession();
 
