@@ -36,7 +36,14 @@
                             </div>
                         </div><!--col-md-6-->
                     </div><!--form-group-->
-
+                    @if (config('misc.captcha'))
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                {!! Form::captcha() !!}
+                                {{ Form::hidden('captcha_status', 'true') }}
+                            </div><!--col-md-6-->
+                        </div><!--form-group-->
+                    @endif
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             {{ Form::submit(trans('labels.frontend.auth.login_button'), ['class' => 'btn btn-primary', 'style' => 'margin-right:15px']) }}
@@ -59,3 +66,9 @@
     </div><!-- row -->
 
 @endsection
+
+@section('after-scripts-end')
+    @if (config('misc.captcha'))
+        {!! Captcha::script() !!}
+    @endif
+@stop
