@@ -40,7 +40,7 @@
                         </div><!--col-md-6-->
                     </div><!--form-group-->
 
-                    @if (config('misc.captcha'))
+                    @if (config('access.captcha.registration'))
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 {!! Form::captcha() !!}
@@ -67,7 +67,7 @@
 @endsection
 
 @section('after-scripts-end')
-    @if (config('misc.captcha'))
+    @if (config('access.captcha.registration'))
         {!! Captcha::script() !!}
     @endif
 @stop

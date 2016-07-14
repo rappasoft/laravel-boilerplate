@@ -75,4 +75,29 @@ return [
      * Makes it so social logins can not change passwords, etc.
      */
     'socialite_session_name' => 'socialite_provider',
+
+    /*
+     * Application captcha specific settings
+     */
+    'captcha' => [
+		/*
+		 * The name of the session variable that stores the current login attempts for each user
+		 */
+		'session_key' => 'needs_captcha',
+
+        /*
+         * Whether the registration captcha is on or off
+         */
+        'registration' => env('REGISTRATION_CAPTCHA_STATUS', false),
+
+        /*
+         * Whether the login captcha is on or off
+         */
+        'login' => env('LOGIN_CAPTCHA_STATUS', false),
+
+        /*
+         * Number of login tries made before showing login captcha
+         */
+        'login_tries' => env('LOGIN_CAPTCHA_TRIES', 3),
+     ],
 ];
