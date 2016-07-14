@@ -2,11 +2,6 @@
 
 return [
 	/**
-	 * Whether the registration captcha is on or off
-	 */
-	'captcha' => env('CAPTCHA_STATUS', false),
-
-	/**
 	 * In seconds
 	 * Default: 10 mins
 	 */
