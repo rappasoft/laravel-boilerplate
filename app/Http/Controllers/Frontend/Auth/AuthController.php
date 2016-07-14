@@ -23,12 +23,21 @@ class AuthController extends Controller
      */
     public function __construct(UserRepositoryContract $user)
     {
-        //Where to redirect users after login / registration.
-        $this->redirectTo = route('frontend.user.dashboard');
-        
         //Where to redirect after logging out
         $this->redirectAfterLogout = route('frontend.index');
 
         $this->user = $user;
+    }
+
+    /**
+     * Where to redirect users after login / registration.
+     */
+    public function redirectPath()
+    {
+        if (access()->allow('view-backend')) {
+            return route('admin.dashboard');
+        }
+        
+        return route('frontend.user.dashboard');
     }
 }
