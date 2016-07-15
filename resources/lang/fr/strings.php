@@ -36,6 +36,7 @@ return [
             'minutes' => ' minutes',
             'search_placeholder' => 'Rechercher...',
             'timeout' => 'You were automatically logged out for security reasons since you had no activity in ',
+            'works' => 'it works!!',
 
             'see_all' => [
                 'messages' => 'Voir tous les messages',

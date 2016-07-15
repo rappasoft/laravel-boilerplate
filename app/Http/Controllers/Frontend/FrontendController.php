@@ -16,7 +16,7 @@ class FrontendController extends Controller
     public function index()
     {
         javascript()->put([
-            'test' => 'it works!',
+            'test' => trans('strings.backend.general.works'),
         ]);
 
         return view('frontend.index');

@@ -36,6 +36,7 @@ return [
             'minutes' => ' minutos',
             'search_placeholder' => 'Buscar...',
             'timeout' => 'Usted ha sido automaticamente desconectado por razones de seguridad ya que no tuvo actividad en ',
+            'works' => 'Funciona!!',
 
             'see_all' => [
                 'messages' => 'Ver todos los mensajes',
