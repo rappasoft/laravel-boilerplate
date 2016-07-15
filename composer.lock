@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "arcanedev/log-viewer",
-            "version": "3.10.0",
+            "version": "3.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ARCANEDEV/LogViewer.git",
-                "reference": "c7715b18d750c9feb4a4280137963f12ae655794"
+                "reference": "e00027530991254d0fbf60018709bd973a077124"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/c7715b18d750c9feb4a4280137963f12ae655794",
-                "reference": "c7715b18d750c9feb4a4280137963f12ae655794",
+                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/e00027530991254d0fbf60018709bd973a077124",
+                "reference": "e00027530991254d0fbf60018709bd973a077124",
                 "shasum": ""
             },
             "require": {
@@ -68,7 +68,7 @@
                 "log-viewer",
                 "logviewer"
             ],
-            "time": "2016-06-06 01:38:50"
+            "time": "2016-07-12 20:48:37"
         },
         {
             "name": "arcanedev/no-captcha",
@@ -3110,16 +3110,16 @@
         },
         {
             "name": "yajra/laravel-datatables-oracle",
-            "version": "v6.15.0",
+            "version": "v6.15.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yajra/laravel-datatables.git",
-                "reference": "c1bbfc01434f1ebe808f75a339a6ded5557d3664"
+                "reference": "2af423095de1a68514361e7826b187b92b15bb24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/c1bbfc01434f1ebe808f75a339a6ded5557d3664",
-                "reference": "c1bbfc01434f1ebe808f75a339a6ded5557d3664",
+                "url": "https://api.github.com/repos/yajra/laravel-datatables/zipball/2af423095de1a68514361e7826b187b92b15bb24",
+                "reference": "2af423095de1a68514361e7826b187b92b15bb24",
                 "shasum": ""
             },
             "require": {
@@ -3166,7 +3166,7 @@
                 "laravel4",
                 "laravel5"
             ],
-            "time": "2016-07-05 01:37:34"
+            "time": "2016-07-14 03:04:52"
         }
     ],
     "packages-dev": [
