@@ -3,6 +3,7 @@
 namespace App\Repositories\Backend\Access\Role;
 
 use App\Models\Access\Role\Role;
+use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Events\Backend\Access\Role\RoleCreated;
 use App\Events\Backend\Access\Role\RoleDeleted;
@@ -54,51 +55,53 @@ class EloquentRoleRepository implements RoleRepositoryContract
      */
     public function create($input)
     {
-        if (Role::where('name', $input['name'])->first()) {
-            throw new GeneralException(trans('exceptions.backend.access.roles.already_exists'));
-        }
+		if (Role::where('name', $input['name'])->first()) {
+			throw new GeneralException(trans('exceptions.backend.access.roles.already_exists'));
+		}
 
-        //See if the role has all access
-        $all = $input['associated-permissions'] == 'all' ? true : false;
+		//See if the role has all access
+		$all = $input['associated-permissions'] == 'all' ? true : false;
 
-        if (! isset($input['permissions']))
-            $input['permissions'] = [];
+		if (! isset($input['permissions']))
+			$input['permissions'] = [];
 
-        //This config is only required if all is false
-        if (!$all) {
-            //See if the role must contain a permission as per config
-            if (config('access.roles.role_must_contain_permission') && count($input['permissions']) == 0) {
-                throw new GeneralException(trans('exceptions.backend.access.roles.needs_permission'));
-            }
-        }
+		//This config is only required if all is false
+		if (! $all) {
+			//See if the role must contain a permission as per config
+			if (config('access.roles.role_must_contain_permission') && count($input['permissions']) == 0) {
+				throw new GeneralException(trans('exceptions.backend.access.roles.needs_permission'));
+			}
+		}
 
-        $role       = new Role;
-        $role->name = $input['name'];
-        $role->sort = isset($input['sort']) && strlen($input['sort']) > 0 && is_numeric($input['sort']) ? (int)$input['sort'] : 0;
+		DB::transaction(function() use ($input, $all) {
+			$role       = new Role;
+			$role->name = $input['name'];
+			$role->sort = isset($input['sort']) && strlen($input['sort']) > 0 && is_numeric($input['sort']) ? (int)$input['sort'] : 0;
 
-        //See if this role has all permissions and set the flag on the role
-        $role->all = $all;
+			//See if this role has all permissions and set the flag on the role
+			$role->all = $all;
 
-        if ($role->save()) {
-            if (!$all) {
-                $permissions = [];
+			if ($role->save()) {
+				if (!$all) {
+					$permissions = [];
 
-                if (is_array($input['permissions']) && count($input['permissions'])) {
-                    foreach ($input['permissions'] as $perm) {
-                        if (is_numeric($perm)) {
-                            array_push($permissions, $perm);
-                        }
-                    }
-                }
+					if (is_array($input['permissions']) && count($input['permissions'])) {
+						foreach ($input['permissions'] as $perm) {
+							if (is_numeric($perm)) {
+								array_push($permissions, $perm);
+							}
+						}
+					}
 
-                $role->attachPermissions($permissions);
-            }
+					$role->attachPermissions($permissions);
+				}
 
-			event(new RoleCreated($role));
-            return true;
-        }
+				event(new RoleCreated($role));
+				return true;
+			}
 
-        throw new GeneralException(trans('exceptions.backend.access.roles.create_error'));
+			throw new GeneralException(trans('exceptions.backend.access.roles.create_error'));
+		});
     }
 
     /**
@@ -133,33 +136,35 @@ class EloquentRoleRepository implements RoleRepositoryContract
         //See if this role has all permissions and set the flag on the role
         $role->all = $all;
 
-        if ($role->save()) {
-            //If role has all access detach all permissions because they're not needed
-            if ($all) {
-                $role->permissions()->sync([]);
-            } else {
-                //Remove all roles first
-                $role->permissions()->sync([]);
+		DB::transaction(function() use ($role, $input, $all) {
+			if ($role->save()) {
+				//If role has all access detach all permissions because they're not needed
+				if ($all) {
+					$role->permissions()->sync([]);
+				} else {
+					//Remove all roles first
+					$role->permissions()->sync([]);
 
-                //Attach permissions if the role does not have all access
-                $permissions = [];
+					//Attach permissions if the role does not have all access
+					$permissions = [];
 
-                if (is_array($input['permissions']) && count($input['permissions'])) {
-                    foreach ($input['permissions'] as $perm) {
-                        if (is_numeric($perm)) {
-                            array_push($permissions, $perm);
-                        }
-                    }
-                }
+					if (is_array($input['permissions']) && count($input['permissions'])) {
+						foreach ($input['permissions'] as $perm) {
+							if (is_numeric($perm)) {
+								array_push($permissions, $perm);
+							}
+						}
+					}
 
-                $role->attachPermissions($permissions);
-            }
+					$role->attachPermissions($permissions);
+				}
 
-			event(new RoleUpdated($role));
-            return true;
-        }
+				event(new RoleUpdated($role));
+				return true;
+			}
 
-        throw new GeneralException(trans('exceptions.backend.access.roles.update_error'));
+			throw new GeneralException(trans('exceptions.backend.access.roles.update_error'));
+		});
     }
 
     /**
@@ -179,15 +184,17 @@ class EloquentRoleRepository implements RoleRepositoryContract
             throw new GeneralException(trans('exceptions.backend.access.roles.has_users'));
         }
 
-        //Detach all associated roles
-        $role->permissions()->sync([]);
+		DB::transaction(function() use ($role) {
+			//Detach all associated roles
+			$role->permissions()->sync([]);
 
-        if ($role->delete()) {
-			event(new RoleDeleted($role));
-            return true;
-        }
+			if ($role->delete()) {
+				event(new RoleDeleted($role));
+				return true;
+			}
 
-        throw new GeneralException(trans('exceptions.backend.access.roles.delete_error'));
+			throw new GeneralException(trans('exceptions.backend.access.roles.delete_error'));
+		});
     }
 
 	/**
