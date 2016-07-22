@@ -2,8 +2,8 @@
 
 namespace App\Repositories\Backend\Access\User;
 
-use Exception;
 use App\Models\Access\User\User;
+use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Events\Backend\Access\User\UserCreated;
 use App\Events\Backend\Access\User\UserUpdated;
@@ -76,23 +76,25 @@ class EloquentUserRepository implements UserRepositoryContract
     {
         $user = $this->createUserStub($input);
 
-        if ($user->save()) {
-            //User Created, Validate Roles
-            $this->validateRoleAmount($user, $roles['assignees_roles']);
+		DB::transaction(function() use ($user, $roles) {
+			if ($user->save()) {
+				//User Created, Validate Roles
+				$this->validateRoleAmount($user, $roles['assignees_roles']);
 
-            //Attach new roles
-            $user->attachRoles($roles['assignees_roles']);
+				//Attach new roles
+				$user->attachRoles($roles['assignees_roles']);
 
-            //Send confirmation email if requested
-            if (isset($input['confirmation_email']) && $user->confirmed == 0) {
-                $this->user->sendConfirmationEmail($user->id);
-            }
+				//Send confirmation email if requested
+				if (isset($input['confirmation_email']) && $user->confirmed == 0) {
+					$this->user->sendConfirmationEmail($user->id);
+				}
 
-            event(new UserCreated($user));
-            return true;
-        }
+				event(new UserCreated($user));
+				return true;
+			}
 
-        throw new GeneralException(trans('exceptions.backend.access.users.create_error'));
+        	throw new GeneralException(trans('exceptions.backend.access.users.create_error'));
+		});
     }
 
     /**
@@ -106,20 +108,22 @@ class EloquentUserRepository implements UserRepositoryContract
     {
         $this->checkUserByEmail($input, $user);
 
-        if ($user->update($input)) {
-            //For whatever reason this just wont work in the above call, so a second is needed for now
-            $user->status    = isset($input['status']) ? 1 : 0;
-            $user->confirmed = isset($input['confirmed']) ? 1 : 0;
-            $user->save();
+		DB::transaction(function() use ($user, $input, $roles) {
+			if ($user->update($input)) {
+				//For whatever reason this just wont work in the above call, so a second is needed for now
+				$user->status = isset($input['status']) ? 1 : 0;
+				$user->confirmed = isset($input['confirmed']) ? 1 : 0;
+				$user->save();
 
-            $this->checkUserRolesCount($roles);
-            $this->flushRoles($roles, $user);
+				$this->checkUserRolesCount($roles);
+				$this->flushRoles($roles, $user);
 
-            event(new UserUpdated($user));
-            return true;
-        }
+				event(new UserUpdated($user));
+				return true;
+			}
 
-        throw new GeneralException(trans('exceptions.backend.access.users.update_error'));
+        	throw new GeneralException(trans('exceptions.backend.access.users.update_error'));
+		});
     }
 
     /**
@@ -171,15 +175,17 @@ class EloquentUserRepository implements UserRepositoryContract
             throw new GeneralException("This user must be deleted first before it can be destroyed permanently.");
         }
 
-        //Detach all roles & permissions
-        $user->detachRoles($user->roles);
+		DB::transaction(function() use ($user) {
+			//Detach all roles & permissions
+			$user->detachRoles($user->roles);
 
-        try {
-            $user->forceDelete();
-            event(new UserPermanentlyDeleted($user));
-        } catch (Exception $e) {
-            throw new GeneralException($e->getMessage());
-        }
+			if ($user->forceDelete()) {
+				event(new UserPermanentlyDeleted($user));
+				return true;
+			}
+
+			throw new GeneralException(trans('exceptions.backend.access.users.delete_error'));
+		});
     }
 
     /**

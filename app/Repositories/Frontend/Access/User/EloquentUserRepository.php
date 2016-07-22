@@ -3,6 +3,7 @@
 namespace App\Repositories\Frontend\Access\User;
 
 use App\Models\Access\User\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Hash;
@@ -73,45 +74,37 @@ class EloquentUserRepository implements UserRepositoryContract
      */
     public function create(array $data, $provider = false)
     {
-        if ($provider) {
-            $user = User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => null,
-                'confirmation_code' => md5(uniqid(mt_rand(), true)),
-                'confirmed' => 1,
-                'status' => 1,
-            ]);
-        } else {
-            $user = User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => bcrypt($data['password']),
-                'confirmation_code' => md5(uniqid(mt_rand(), true)),
-                'confirmed' => config('access.users.confirm_email') ? 0 : 1,
-                'status' => 1,
-            ]);
-        }
+    	$user = new User;
+		$user->name = $data['name'];
+		$user->email = $data['email'];
+		$user->confirmation_code = md5(uniqid(mt_rand(), true));
+		$user->status = 1;
+		$user->password = $provider ? null : bcrypt($data['password']);
+		$user->confirmed = $provider ? 1 : (config('access.users.confirm_email') ? 0 : 1);
 
-        /**
-         * Add the default site role to the new user
-         */
-        $user->attachRole($this->role->getDefaultUserRole());
+		DB::transaction(function() use ($user) {
+			if ($user->save()) {
+				/**
+				 * Add the default site role to the new user
+				 */
+				$user->attachRole($this->role->getDefaultUserRole());
+			}
+		});
 
-        /**
-         * If users have to confirm their email and this is not a social account,
-         * send the confirmation email
-         *
-         * If this is a social account they are confirmed through the social provider by default
-         */
-        if (config('access.users.confirm_email') && $provider === false) {
-            $this->sendConfirmationEmail($user);
-        }
+		/**
+		 * If users have to confirm their email and this is not a social account,
+		 * send the confirmation email
+		 *
+		 * If this is a social account they are confirmed through the social provider by default
+		 */
+		if (config('access.users.confirm_email') && $provider === false) {
+			$this->sendConfirmationEmail($user);
+		}
 
-        /**
-         * Return the user object
-         */
-        return $user;
+		/**
+		 * Return the user object
+		 */
+		return $user;
     }
 
     /**
