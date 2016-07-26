@@ -315,6 +315,17 @@ class EloquentUserRepository implements UserRepositoryContract
         }
     }
 
+	/**
+	 * Remove old session variables from admin logging in as user
+	 */
+	public function flushTempSession()
+	{
+		//Remove any old session variables
+		session()->forget("admin_user_id");
+		session()->forget("admin_user_name");
+		session()->forget("temp_user_id");
+	}
+
     /**
      * Check to make sure at lease one role is being applied or deactivate user
      *
@@ -395,16 +406,5 @@ class EloquentUserRepository implements UserRepositoryContract
         $user->confirmation_code = md5(uniqid(mt_rand(), true));
         $user->confirmed         = isset($input['confirmed']) ? 1 : 0;
         return $user;
-    }
-
-    /**
-     * Remove old session variables from admin logging in as user
-     */
-    private function flushTempSession()
-    {
-        //Remove any old session variables
-        session()->forget("admin_user_id");
-        session()->forget("admin_user_name");
-        session()->forget("temp_user_id");
     }
 }
