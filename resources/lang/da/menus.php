@@ -16,7 +16,7 @@ return [
     'backend' => [
         'access' => [
             'title' => 'Vedligehold adgangsrettigheder',
-            
+
             'roles' => [
                 'all' => 'Alle roller',
                 'create' => 'Opret rolle',
@@ -66,6 +66,7 @@ return [
             'it' => 'Italiensk',
             'pt-BR' => 'Brasiliansk portugisisk',
             'sv' => 'Svensk',
+            'th' => 'Thai',
         ],
     ],
 ];
