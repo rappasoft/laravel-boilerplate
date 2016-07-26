@@ -66,6 +66,7 @@ return [
             'it' => 'Italiano (Italian)',
             'pt-BR' => 'Português do Brasil (Brazilian Portuguese)',
             'sv' => 'Sueco (Swedish)',
+            'th' => 'Thai',
         ],
     ],
 ];

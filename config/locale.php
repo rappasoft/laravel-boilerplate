@@ -38,5 +38,6 @@ return [
         'it'    => ['it', 'it_IT', false],
         'pt-BR' => ['pt_BR', 'pt_BR', false],
         'sv'    => ['sv', 'sv_SE', false],
+        'th'    => ['th', 'th_TH', false],
     ],
 ];
