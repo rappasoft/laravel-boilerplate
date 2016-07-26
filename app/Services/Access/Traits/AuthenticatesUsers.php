@@ -9,6 +9,7 @@ use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use App\Http\Requests\Frontend\Auth\LoginRequest;
+use App\Repositories\Backend\Access\User\UserRepositoryContract;
 
 /**
  * Class AuthenticatesUsers
@@ -75,6 +76,14 @@ trait AuthenticatesUsers
             app('session')->forget(config('access.socialite_session_name'));
         }
 
+		/**
+		 * Remove any session data from backend
+		 */
+		app()->make(UserRepositoryContract::class)->flushTempSession();
+
+		/**
+		 * Fire event, Log out user, Redirect
+		 */
         event(new UserLoggedOut(access()->user()));
         access()->logout();
         return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');

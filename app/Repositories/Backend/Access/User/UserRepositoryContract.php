@@ -75,4 +75,9 @@ interface UserRepositoryContract
      * @return mixed
      */
     public function logoutAs();
+
+	/**
+	 * @return mixed
+	 */
+	public function flushTempSession();
 }
