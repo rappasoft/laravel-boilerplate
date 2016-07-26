@@ -16,7 +16,7 @@ return [
     'backend' => [
         'access' => [
             'title' => 'Administración de acceso',
-            
+
             'roles' => [
                 'all' => 'Todos los Roles',
                 'create' => 'Nuevo Rol',
@@ -66,6 +66,7 @@ return [
             'it' => 'Italiano (Italian)',
             'pt-BR' => 'Portugués Brasileño',
             'sv' => 'Sueco (Swedish)',
+            'th' => 'Thai',
         ],
     ],
 ];
