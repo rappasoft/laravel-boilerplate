@@ -16,7 +16,7 @@ return [
     'accepted'             => 'Le champ :attribute doit être accepté.',
     'active_url'           => 'Le champ :attribute n\'est pas une URL valide.',
     'after'                => 'Le champ :attribute doit être une date postérieure à :date.',
-    'alpha'                => 'Le champ :attribute ne peut contenit que des lettres.',
+    'alpha'                => 'Le champ :attribute ne peut contenir que des lettres.',
     'alpha_dash'           => 'Le champ :attribute ne peut contenir que des lettres, des chiffres ou bien des tirets.',
     'alpha_num'            => 'Le champ :attribute ne peut contenir que des lettres ou des chiffres.',
     'array'                => 'Le champ :attribute doit être un tableau.',
@@ -36,9 +36,9 @@ return [
     'digits_between'       => 'Le champ :attribute doit avoir entre :min et :max chiffres.',
     'dimensions'           => 'The :attribute has invalid image dimensions.',
     'distinct'             => 'The :attribute field has a duplicate value.',
-    'email'                => 'Le champ :attribute doit être une adresse e-mail valide.',
+    'email'                => 'Le champ :attribute doit être une adresse email valide.',
     'exists'               => 'Le champ :attribute n\'existe pas.',
-    'file'                 => 'The :attribute must be a file.',
+    'file'                 => 'Le champ :attribute doit être un fichier.',
     'filled'               => 'Le champ :attribute est obligatoire.',
     'image'                => 'Le champ :attribute doit être une image.',
     'in'                   => 'Le champ :attribute est invalide.',
@@ -115,8 +115,8 @@ return [
         'backend' => [
             'access' => [
                 'permissions' => [
-                    'associated_roles' => 'Roles associés',
-                    'dependencies' => 'Dependances',
+                    'associated_roles' => 'Rôles associés',
+                    'dependencies' => 'Dépendances',
                     'display_name' => 'Nom affiché',
                     'group' => 'Groupe',
                     'group_sort' => 'Ordre du groupe',

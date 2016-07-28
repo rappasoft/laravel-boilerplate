@@ -56,7 +56,7 @@ return [
                 'edit' => 'Éditer Utilisateur',
                 'management' => 'Gestion des utilisateurs',
                 'no_permissions' => 'Pas de permissions',
-                'no_roles' => 'Pas de Rôle à affecter.',
+                'no_roles' => 'Pas de rôle à affecter.',
                 'permissions' => 'Permissions',
 
                 'table' => [
@@ -87,7 +87,7 @@ return [
         ],
 
         'passwords' => [
-            'forgot_password' => 'Vous avez oublié votre mot de passe&nbsp;?',
+            'forgot_password' => 'Avez-vous oublié votre mot de passe&nbsp;?',
             'reset_password_box_title' => 'Réinitialisation du mot de passe',
             'reset_password_button' => 'Réinitialiser le mot de passe',
             'send_password_reset_link_button' => 'Envoyer le lien de réinitialisation',
