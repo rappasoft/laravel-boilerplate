@@ -14,10 +14,10 @@ return [
     */
 
     'general' => [
-        'all' => 'Tous',
+        'all' => 'Tout',
         'yes' => 'Oui',
         'no' => 'Non',
-        'custom' => 'Custom', // TODO TRANSLATION
+        'custom' => 'Personnalisé',
         'actions' => 'Actions',
         'buttons' => [
             'save' => 'Enregistrer',
@@ -50,13 +50,13 @@ return [
                 'all_permissions' => 'Toutes les permissions',
                 'change_password' => 'Modifier le mot de passe',
                 'change_password_for' => 'Modifier le mot de passe pour :user',
-                'create' => 'Créer Utilisateur',
+                'create' => 'Créer un utilisateur',
                 'deactivated' => 'Utilisateurs désactivés',
                 'deleted' => 'Utilisateurs supprimés',
-                'edit' => 'Éditer Utilisateur',
+                'edit' => 'Éditer un utilisateur',
                 'management' => 'Gestion des utilisateurs',
-                'no_permissions' => 'Pas de permissions',
-                'no_roles' => 'Pas de Rôle à affecter.',
+                'no_permissions' => 'Aucune permission',
+                'no_roles' => 'Aucun rôle à affecter.',
                 'permissions' => 'Permissions',
 
                 'table' => [
@@ -80,14 +80,14 @@ return [
         'auth' => [
             'login_box_title' => 'Connexion',
             'login_button' => "Entrer",
-            'login_with' => "S'enregistrer avec :social_media",
+            'login_with' => "Se connecter avec :social_media",
             'register_box_title' => "S'enregistrer",
             'register_button' => 'Créer le compte',
             'remember_me' => 'Se souvenir de moi',
         ],
 
         'passwords' => [
-            'forgot_password' => 'Vous avez oublié votre mot de passe&nbsp;?',
+            'forgot_password' => 'Avez-vous oublié votre mot de passe&nbsp;?',
             'reset_password_box_title' => 'Réinitialisation du mot de passe',
             'reset_password_button' => 'Réinitialiser le mot de passe',
             'send_password_reset_link_button' => 'Envoyer le lien de réinitialisation',

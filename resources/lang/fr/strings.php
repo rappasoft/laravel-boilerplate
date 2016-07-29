@@ -35,23 +35,23 @@ return [
             'member_since' => 'Membre depuis',
             'minutes' => ' minutes',
             'search_placeholder' => 'Rechercher...',
-            'timeout' => 'You were automatically logged out for security reasons since you had no activity in ',
+            'timeout' => 'Vous avez été automatiquement déconnecté pour cause d\'inactivité pendant ',
 
             'see_all' => [
                 'messages' => 'Voir tous les messages',
-                'notifications' => 'Voir tous',
-                'tasks' => 'Voir les nouvelles taches',
+                'notifications' => 'Voir toutes les notifications',
+                'tasks' => 'Voir les nouvelles tâches',
             ],
 
             'status' => [
                 'online' => 'En ligne',
-                'offline' => 'Offline',
+                'offline' => 'Hors ligne',
             ],
 
             'you_have' => [
                 'messages' => "{0} Vous n'avez pas de message|{1} Vous avez 1 message|[2,Inf] Vous avez :number messages",
-                'notifications' => "{0} Vous n'avez pas de notifications|{1} Vous avez 1 notification|[2,Inf] Vous avez :number notifications",
-                'tasks' => "{0} Vous n'avez pas de tache|{1} Vous avez 1 tache|[2,Inf] Vous avez :number taches",
+                'notifications' => "{0} Vous n'avez pas de notification|{1} Vous avez 1 notification|[2,Inf] Vous avez :number notifications",
+                'tasks' => "{0} Vous n'avez pas de tâche affectée|{1} Vous avez 1 tâche affectée|[2,Inf] Vous avez :number tâches affectées",
             ],
         ],
     ],
@@ -76,24 +76,24 @@ return [
                 'role' => 'Helper sur la base du rôle : ',
             ],
 
-            'js_injected_from_controller' => 'Javascript Injecté depuis un Controlleur',
+            'js_injected_from_controller' => 'Javascript injecté depuis un contrôleur',
 
             'using_blade_extensions' => 'Utilisation des extensions Blade',
 
             'using_access_helper' => [
-                'array_permissions' => "L'utilisateur doit disposer de toutes les permsissions d'un tableau, identifées soit par leur ID, soit par leur nom.",
-                'array_permissions_not' => "L'utilisateur doit disposer d'au moins une des permsissions d'un tableau, identifées soit par leur ID, soit par leur nom.",
-                'array_roles' => "L'utilisateur doit disposer de toutes les rôles d'un tableau, identifés soit par leur ID, soit par leur nom.",
-                'array_roles_not' =>  "L'utilisateur doit disposer d'au moins un des rôles d'un tableau, identifés soit par leur ID, soit par leur nom.",
-                'permission_id' => "L'utilisateur doit disposer d'une permission identifée par son ID",
-                'permission_name' => "L'utilisateur doit disposer d'une permission identifée par son nom",
-                'role_id' => "L'utilisateur doit disposer d'un rôle identifé par son ID",
-                'role_name' => "L'utilisateur doit disposer d'un rôle identifé par son nom",
+                'array_permissions' => "L'utilisateur doit disposer de toutes les permissions d'un tableau, identifiées soit par leur ID, soit par leur nom.",
+                'array_permissions_not' => "L'utilisateur doit disposer d'au moins une des permissions d'un tableau, identifiées soit par leur ID, soit par leur nom.",
+                'array_roles' => "L'utilisateur doit disposer de tous les rôles d'un tableau, identifiés soit par leur ID, soit par leur nom.",
+                'array_roles_not' =>  "L'utilisateur doit disposer d'au moins un des rôles d'un tableau, identifiés soit par leur ID, soit par leur nom.",
+                'permission_id' => "L'utilisateur doit disposer d'une permission identifiée par son ID",
+                'permission_name' => "L'utilisateur doit disposer d'une permission identifiée par son nom",
+                'role_id' => "L'utilisateur doit disposer d'un rôle identifié par son ID",
+                'role_name' => "L'utilisateur doit disposer d'un rôle identifié par son nom",
             ],
 
             'view_console_it_works' => 'Sur la console du navigateur, vous devriez voir  \'it works!\', ce qui est produit depuis le FrontendController@index',
             'you_can_see_because' => 'Vous voyez ce message car vous disposez du rôle \':role\'!',
-            'you_can_see_because_permission' => 'Vous voyez ce message car vous disposez de la permissions \':permission\'!',
+            'you_can_see_because_permission' => 'Vous voyez ce message car vous disposez de la permission \':permission\'!',
         ],
 
         'user' => [
