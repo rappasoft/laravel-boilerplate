@@ -39,8 +39,8 @@ return [
 
             'see_all' => [
                 'messages' => 'Voir tous les messages',
-                'notifications' => 'Voir tous',
-                'tasks' => 'Voir les nouvelles taches',
+                'notifications' => 'Voir toutes les notifications',
+                'tasks' => 'Voir les nouvelles tâches',
             ],
 
             'status' => [
@@ -50,8 +50,8 @@ return [
 
             'you_have' => [
                 'messages' => "{0} Vous n'avez pas de message|{1} Vous avez 1 message|[2,Inf] Vous avez :number messages",
-                'notifications' => "{0} Vous n'avez pas de notifications|{1} Vous avez 1 notification|[2,Inf] Vous avez :number notifications",
-                'tasks' => "{0} Vous n'avez pas de tâche|{1} Vous avez 1 tâche|[2,Inf] Vous avez :number tâches",
+                'notifications' => "{0} Vous n'avez pas de notification|{1} Vous avez 1 notification|[2,Inf] Vous avez :number notifications",
+                'tasks' => "{0} Vous n'avez pas de tâche affectée|{1} Vous avez 1 tâche affectée|[2,Inf] Vous avez :number tâches affectées",
             ],
         ],
     ],
