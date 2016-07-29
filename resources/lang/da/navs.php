@@ -19,14 +19,14 @@ return [
     ],
 
     'frontend' => [
-        'dashboard' => 'Dashboard',
+        'dashboard' => 'Betjeningspanel',
         'login' => 'Log ind',
         'macros' => 'Makroer',
-        'register' => 'Register',
+        'register' => 'Opret',
 
         'user' => [
             'administration' => 'Administration',
-            'change_password' => 'Ændre kodeord',
+            'change_password' => 'Skift adgangskode',
             'my_information' => 'Min information',
         ],
     ],

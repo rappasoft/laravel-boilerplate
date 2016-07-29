@@ -14,10 +14,10 @@ return [
     */
 
     'failed' => 'Disse legitimationsoplysninger passer ikke vores optegnelser.',
-    'general_error' => 'Du har ikke adgang til at gøre det.',
+    'general_error' => 'Du har ikke adgang til at udføre denne handling.',
     'socialite' => [
-        'unacceptable' => ':provider er ikke en acceptabel login type.',
+        'unacceptable' => ':provider kan ikke anvendes som login.',
     ],
-    'throttle' => 'For mange login-forsøg . Prøv igen om : sekunder sekunder.',
-    'unknown' => 'Der opstod en ukendt fejl',
+    'throttle' => 'For mange mislykkede forsøg. Prøv igen om :seconds sekunder.',
+    'unknown' => 'Der opstod en ukendt fejl.',
 ];
