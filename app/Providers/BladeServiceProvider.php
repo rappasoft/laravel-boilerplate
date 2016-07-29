@@ -35,7 +35,7 @@ class BladeServiceProvider extends ServiceProvider
 		 * Courtesy of https://github.com/sineld/bladeset
 		 */
 		Blade::extend(function ($value) {
-			return preg_replace("/@set\(['\"](.*?)['\"]\,(.*)\)/", '<?php $$1 =$2; ?>', $value);
+			return preg_replace("/@set\(['\"](.*?)['\"]\,(.*)\)/", '<?php $$1 = $2; ?>', $value);
 		});
 	}
 }
