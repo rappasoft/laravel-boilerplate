@@ -148,13 +148,13 @@ class UserController extends Controller
     }
 
 	/**
-     * @param User $user
+     * @param User $deletedUser
      * @param ManageUserRequest $request
      * @return mixed
      */
-    public function restore(User $user, ManageUserRequest $request)
+    public function restore(User $deletedUser, ManageUserRequest $request)
     {
-        $this->users->restore($user);
+        $this->users->restore($deletedUser);
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.restored'));
     }
 
