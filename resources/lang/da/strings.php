@@ -16,26 +16,26 @@ return [
     'backend' => [
         'access' => [
             'users' => [
-                'delete_user_confirm' => 'Er du sikker på at du vil slette denne bruger? Alle stedere hvor denne brugers id er benyttet some reference vil sndsynligvis gieve en fejl. Fortsæt på eget ansvar. Denne handling kan ikke fortrydes.',
+                'delete_user_confirm' => 'Er du sikker på at du vil slette denne bruger permanent? Alle steder hvor denne bruger er refereret vil sandsynligvis give en fejl. Fortsæt på eget ansvar. Denne handling kan ikke fortrydes.',
                 'if_confirmed_off' => '(Hvis bekræftelse er slået fra)',
-                'restore_user_confirm' => 'Genskab brugeren the hans oprindelige tilstand?',
+                'restore_user_confirm' => 'Genskab brugeren til dens oprindelige tilstand?',
             ],
         ],
 
         'dashboard' => [
-            'title' => 'Administrativ oversigt',
+            'title' => 'Administrativ betjeningspanel',
             'welcome' => 'Velkommen',
         ],
 
         'general' => [
             'all_rights_reserved' => 'Alle rettigheder forbeholdes.',
-            'are_you_sure' => 'Er su sikker?',
+            'are_you_sure' => 'Er du sikker?',
             'boilerplate_link' => 'Laravel 5 Boilerplate',
-            'continue' => 'Fortsøt',
+            'continue' => 'Fortsæt',
             'member_since' => 'Medlem siden',
-            'minutes' => ' minutes',
+            'minutes' => ' minutter',
             'search_placeholder' => 'Søg...',
-            'timeout' => 'You were automatically logged out for security reasons since you had no activity in ',
+            'timeout' => 'Du er af sikkerhedsmæssige årsager blevet logget ud automatisk, da du ikke har været aktiv i ',
             
             'see_all' => [
                 'messages' => 'Se alle beskeder',
@@ -49,58 +49,58 @@ return [
             ],
 
             'you_have' => [
-                'messages' => '{0} du har ingen beskeder|{1} du hare 1 besked|[2,Inf] du har :number beskeder',
-                'notifications' => '{0} du har ingen meddelser|{1} du har en meddelse|[2,Inf] du har :number meddelelser',
-                'tasks' => '{0} du har ingen opgaver|{1} du har en opgave|[2,Inf] du hare :number opgaver',
+                'messages' => '{0} Du har ingen beskeder|{1} Du hare 1 besked|[2,Inf] Du har :number beskeder',
+                'notifications' => '{0} Du har ingen notifikationer|{1} Du har 1 notifikation|[2,Inf] Du har :number notifikationer',
+                'tasks' => '{0} Du har ingen opgaver|{1} Du har 1 opgave|[2,Inf] Du har :number opgaver',
             ],
         ],
     ],
 
     'emails' => [
         'auth' => [
-            'password_reset_subject' => 'Dit link til at nulstille kodeord',
-            'reset_password' => 'Tryk her for at nulstille dit kodeord',
+            'password_reset_subject' => 'Dit link til at nulstille adgangskoden',
+            'reset_password' => 'Klik her for at nulstille din adgangskode',
         ],
     ],
 
     'frontend' => [
         'email' => [
-            'confirm_account' => 'tryk her for at bekræfte din konto:',
+            'confirm_account' => 'Klik her for at bekræfte din konto:',
         ],
 
         'test' => 'Test',
 
         'tests' => [
             'based_on' => [
-                'permission' => 'Rettigheds baseret - ',
-                'role' => 'Rolle basseret - ',
+                'permission' => 'Rettighedsbaseret - ',
+                'role' => 'Rollebasseret - ',
             ],
 
-            'js_injected_from_controller' => 'Javascript Injected fra en  Controller',
+            'js_injected_from_controller' => 'Javascript indsat fra en Controller',
 
-            'using_blade_extensions' => 'Bruger Blade udvidelese',
+            'using_blade_extensions' => 'Anvender Blade-udvidelser',
 
             'using_access_helper' => [
-                'array_permissions' => 'Bruger \'Acess Helper\' med et Array af rettigheders navn eller Id  hvor brugeren skal have alle.',
-                'array_permissions_not' => 'Bruger \'Access Helper\' med et array af rettigheds navne eller Id hvor brugeren ikke behøver at have alle.',
-                'array_roles' => 'Bruger \'Access Helper\' med et array af rolle navene eller id hvor brugeren skal have alle.',
-                'array_roles_not' => 'Bruger \'Access Helper\' med array af rolle naven eller Id hvor brugeren ikke behøver at have alle.',
-                'permission_id' => 'Bruger \'Access Helper\' med rettigheds id',
-                'permission_name' => 'Bruger \'Access Helper\' med rettigheds navn',
-                'role_id' => 'Bruger \'Access Helper\' med rolle id',
-                'role_name' => 'Bruger \'Access Helper\' med rolle navn',
+                'array_permissions' => 'Anvender \'Acess Helper\' med en liste af rettighedsnavne eller rettighedsid\'er hvor brugeren skal opfylde alle rettigheder.',
+                'array_permissions_not' => 'Anvender \'Access Helper\' med en liste af rettighedsnavne eller id\'er hvor brugeren ikke behøver at opfylde alle rettigheder.',
+                'array_roles' => 'Anvender \'Access Helper\' med en liste af rollenavne eller rolleid\'er hvor brugeren skal opfylde alle rettigheder.',
+                'array_roles_not' => 'Anvender \'Access Helper\' med en liste af rollenavne eller rolleid\'er hvor brugeren ikke behøver at opfylde alle rettigheder.',
+                'permission_id' => 'Anvender \'Access Helper\' med rettighedsid',
+                'permission_name' => 'Anvender \'Access Helper\' med rettighedsnavn',
+                'role_id' => 'Anvender \'Access Helper\' med rolleid',
+                'role_name' => 'Anvender \'Access Helper\' med rollenavn',
             ],
 
-            'view_console_it_works' => 'Vis konsol og du vil se, \'it works!\' som kommer fra FrontendController@index',
-            'you_can_see_because' => 'Du kan se dette fordi du har rolle \':role\'!',
-            'you_can_see_because_permission' => 'Du kan se dette fordi du har fået tildelt rettigheden \':permission\'!',
+            'view_console_it_works' => 'Vis konsol og du burde kunne se \'it works!\', som kommer fra FrontendController@index',
+            'you_can_see_because' => 'Du kan se dette fordi du har rollen \':role\'!',
+            'you_can_see_because_permission' => 'Du kan se dette fordi du har rettigheden \':permission\'!',
         ],
 
         'user' => [
             'profile_updated' => 'Profil opdateret.',
-            'password_updated' => 'Kodeord opdateret.',
+            'password_updated' => 'Adgangskode opdateret.',
         ],
 
-        'welcome_to' => 'Velkommenn til :place',
+        'welcome_to' => 'Velkommen til :place',
     ],
 ];

@@ -15,58 +15,61 @@ return [
 
     'general' => [
         'all' => 'Alle',
+        'yes' => 'Ja',
+        'no' => 'Nej',
+        'custom' => 'Brugerdefineret',
         'actions' => 'Handlinger',
         'buttons' => [
             'save' => 'Gem',
             'update' => 'Opdater',
         ],
-        'hide' => 'Gem',
+        'hide' => 'Skjul',
         'none' => 'Ingen',
         'show' => 'Vis',
-        'toggle_navigation' => 'Toggle Navigation',
+        'toggle_navigation' => 'Navigation',
     ],
 
     'backend' => [
         'access' => [
             'roles' => [
-                'create' => 'Opret rolle',
-                'edit' => 'Opdater rolle',
-                'management' => 'Vedligehold roller',
+                'create' => 'Opret Rolle',
+                'edit' => 'Opdater Rolle',
+                'management' => 'Rolleadministration',
 
                 'table' => [
-                    'number_of_users' => 'Antal brugere',
-                    'permissions' => 'Rettogheder',
+                    'number_of_users' => 'Antal Brugere',
+                    'permissions' => 'Rettigheder',
                     'role' => 'Rolle',
-                    'sort' => 'Sorter',
-                    'total' => 'role|roller',
+                    'sort' => 'Sortér',
+                    'total' => 'rolle i alt|roller i alt',
                 ],
             ],
 
             'users' => [
-                'active' => 'Aktive brugere',
-                'all_permissions' => 'Alle rettigheder',
-                'change_password' => 'Ændre kodeord',
-                'change_password_for' => 'Ændre kodeord :user',
-                'create' => 'Opret bruger',
-                'deactivated' => 'Deaktiver bruger',
-                'deleted' => 'Slettede brugere',
-                'edit' => 'Rediger bruger',
-                'management' => 'Bruger vedligeholdelse',
-                'no_permissions' => 'Ingen rettigheder',
-                'no_roles' => 'Ingen rolle valgt.',
+                'active' => 'Aktive Brugere',
+                'all_permissions' => 'Alle Rettigheder',
+                'change_password' => 'Skift Adgangskode',
+                'change_password_for' => 'Skift Adgangskode for :user',
+                'create' => 'Opret Bruger',
+                'deactivated' => 'Deaktiverde Brugere',
+                'deleted' => 'Slettede Brugere',
+                'edit' => 'Rediger Bruger',
+                'management' => 'Brugeradministration',
+                'no_permissions' => 'Ingen Rettigheder',
+                'no_roles' => 'Ingen Rolle valgt.',
                 'permissions' => 'Rettigheder',
 
                 'table' => [
                     'confirmed' => 'Bekræftet',
                     'created' => 'Oprettet',
-                    'email' => 'E-mail',
+                    'email' => 'Email',
                     'id' => 'Id',
-                    'last_updated' => 'Sidst opdateret',
+                    'last_updated' => 'Sidst Opdateret',
                     'name' => 'Navn',
-                    'no_deactivated' => 'Ingen deaktiverede brugere',
-                    'no_deleted' => 'Ingen slettede brugere',
+                    'no_deactivated' => 'Ingen Deaktiverede Brugere',
+                    'no_deleted' => 'Ingen Slettede Brugere',
                     'roles' => 'Roller',
-                    'total' => 'bruger|brugere',
+                    'total' => 'bruger i alt|brugere i alt',
                 ],
             ],
         ],
@@ -78,39 +81,39 @@ return [
             'login_box_title' => 'Log ind',
             'login_button' => 'Log ind',
             'login_with' => 'Log ind med :social_media',
-            'register_box_title' => 'Register',
-            'register_button' => 'Register',
+            'register_box_title' => 'Opret',
+            'register_button' => 'Opret',
             'remember_me' => 'Husk mig',
         ],
 
         'passwords' => [
-            'forgot_password' => 'Glemt dit kodeord?',
-            'reset_password_box_title' => 'Nulstil kodeord',
-            'reset_password_button' => 'nulstil kodeord',
-            'send_password_reset_link_button' => 'Send link til at nulstille kodeord',
+            'forgot_password' => 'Glemt din adgangskode?',
+            'reset_password_box_title' => 'Nulstil adgangskode',
+            'reset_password_button' => 'Nulstil adgangskode',
+            'send_password_reset_link_button' => 'Send link til at nulstille adgangskoden',
         ],
 
         'macros' => [
             'country' => [
-                'alpha' => 'Landes tegn koder',
-                'alpha2' => 'Landes 2 tegns koder',
-                'alpha3' => 'Landes 3 tegns koder',
-                'numeric' => 'Landes tal kode',
+                'alpha' => 'Landekoder',
+                'alpha2' => 'Landekoder (Alfa-2)',
+                'alpha3' => 'Landekode (Alfa-3)',
+                'numeric' => 'Landekoder (Numerisk)',
             ],
 
-            'macro_examples' => 'Macro Examples',
+            'macro_examples' => 'Eksempler på Makroer',
 
             'state' => [
-                'mexico' => 'Mexico\'s list af stater',
+                'mexico' => 'Mexicos stater',
                 'us' => [
-                    'us' => 'US\'s stater',
+                    'us' => 'Amerikanske stater',
                     'outlying' => 'Amerikanske oversøiske territorier',
                     'armed' => 'Amerikanske væbnede styrker',
                 ],
             ],
 
             'territories' => [
-                'canada' => 'Canada provinsn & territorier liste',
+                'canada' => 'Canada\'s provinser og territorier',
             ],
 
             'timezone' => 'Tidszone',
@@ -118,15 +121,15 @@ return [
 
         'user' => [
             'passwords' => [
-                'change' => 'Ændre kodeord',
+                'change' => 'Skift adgangskode',
             ],
 
             'profile' => [
                 'avatar' => 'Avatar',
                 'created_at' => 'Oprettet den',
                 'edit_information' => 'Rediger information',
-                'email' => 'E-mail',
-                'last_updated' => 'Sidste opdatert',
+                'email' => 'Email',
+                'last_updated' => 'Sidst opdateret',
                 'name' => 'Navn',
                 'update_information' => 'Opdater information',
             ],

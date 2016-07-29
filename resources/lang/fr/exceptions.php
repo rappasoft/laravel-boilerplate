@@ -27,8 +27,8 @@ return [
             ],
 
             'users' => [
-                'cant_deactivate_self' => 'Vous ne pouvez pas vous désactiver vous même.',
-                'cant_delete_self' => 'Vous ne pouvez pas vous supprimer vous même.',
+                'cant_deactivate_self' => 'Vous ne pouvez pas vous désactiver vous-même.',
+                'cant_delete_self' => 'Vous ne pouvez pas vous supprimer vous-même.',
                 'create_error' => "Un problème est survenu lors de la création de l'utilisateur. Veuillez réessayer.",
                 'delete_error' => "Un problème est survenu lors de la suppression de l'utilisateur. Veuillez réessayer.",
                 'email_error' => 'Cette adresse email appartient à un autre utilisateur.',
@@ -60,7 +60,7 @@ return [
             'email_taken' => 'Cet email est déjà utilisé.',
 
             'password' => [
-                'change_mismatch' => "L'ancien mot de passe dst invalide.",
+                'change_mismatch' => "L'ancien mot de passe est invalide.",
             ],
 
 

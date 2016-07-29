@@ -18,26 +18,26 @@ return [
             'title' => 'Gestion des accès',
 
             'roles' => [
-                'all' => 'Tous les Rôles',
-                'create' => 'Créer un Rôle',
-                'edit' => 'Éditer un Rôle',
-                'management' => 'Gestion des Rôles',
+                'all' => 'Tous les rôles',
+                'create' => 'Créer un rôle',
+                'edit' => 'Éditer un rôle',
+                'management' => 'Gestion des rôles',
                 'main' => 'Rôles',
             ],
 
             'users' => [
-                'all' => 'Tous les Utilisateurs',
+                'all' => 'Tous les utilisateurs',
                 'change-password' => 'Changer le mot de passe',
-                'create' => 'Créer un Utilisateur',
+                'create' => 'Créer un utilisateur',
                 'deactivated' => 'Utilisateurs désactivés',
                 'deleted' => 'Utilisateurs supprimés',
-                'edit' => 'Éditer un Utilisateur',
+                'edit' => 'Éditer un utilisateur',
                 'main' => 'Utilisateurs',
             ],
         ],
 
         'log-viewer' => [
-            'main' => 'Consulter Logs',
+            'main' => 'Consulter les logs',
             'dashboard' => 'Tableau de bord',
             'logs' => 'Logs',
         ],

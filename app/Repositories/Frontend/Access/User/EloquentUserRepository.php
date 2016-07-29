@@ -67,6 +67,18 @@ class EloquentUserRepository implements UserRepositoryContract
         return $user;
     }
 
+	/**
+	 * TODO: Move this somewhere more appropriate
+	 * @param $token
+	 * @return mixed
+	 * @throws GeneralException
+	 */
+	public function getEmailForPasswordToken($token) {
+		if ($row = DB::table('password_resets')->where('token', $token)->first())
+			return $row->email;
+		throw new GeneralException(trans('auth.unknown'));
+	}
+
     /**
      * @param array $data
      * @param bool $provider

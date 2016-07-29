@@ -29,5 +29,13 @@ class BladeServiceProvider extends ServiceProvider
 		Blade::directive('langRTL', function () {
 			return "<?php if (session()->has('lang-rtl')): ?>";
 		});
+
+		/**
+		 * Sets a PHP variable in a blade view
+		 * Courtesy of https://github.com/sineld/bladeset
+		 */
+		Blade::extend(function ($value) {
+			return preg_replace("/@set\(['\"](.*?)['\"]\,(.*)\)/", '<?php $$1 = $2; ?>', $value);
+		});
 	}
 }
