@@ -49,8 +49,9 @@ class RouteServiceProvider extends ServiceProvider
          * This allows us to use the Route Model Binding with SoftDeletes on
          * On a model by model basis
          */
-        $router->bind('user', function($value) {
-            return User::withTrashed()->where('id', $value)->first();
+        $router->bind('deletedUser', function($value) {
+            $user = new User;
+            return User::withTrashed()->where($user->getRouteKeyName(), $value)->first();
         });
     }
 
