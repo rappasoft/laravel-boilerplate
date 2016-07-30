@@ -34,7 +34,6 @@ Route::group([
 			 * Specific User
 			 */
 			Route::group(['prefix' => 'user/{user}'], function() {
-				Route::get('delete', 'UserController@delete')->name('admin.access.user.delete-permanently');
 				Route::get('mark/{status}', 'UserController@mark')->name('admin.access.user.mark')->where(['status' => '[0,1]']);
 				Route::get('password/change', 'UserController@changePassword')->name('admin.access.user.change-password');
 				Route::post('password/change', 'UserController@updatePassword')->name('admin.access.user.change-password');
@@ -45,6 +44,7 @@ Route::group([
              * Deleted User
              */
             Route::group(['prefix' => 'user/{deletedUser}'], function() {
+				Route::get('delete', 'UserController@delete')->name('admin.access.user.delete-permanently');
                 Route::get('restore', 'UserController@restore')->name('admin.access.user.restore');
             });
 		});

@@ -137,13 +137,13 @@ class UserController extends Controller
     }
 
 	/**
-     * @param User $user
+     * @param User $deletedUser
      * @param ManageUserRequest $request
      * @return mixed
      */
-    public function delete(User $user, ManageUserRequest $request)
+    public function delete(User $deletedUser, ManageUserRequest $request)
     {
-        $this->users->delete($user);
+        $this->users->delete($deletedUser);
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.deleted_permanently'));
     }
 
