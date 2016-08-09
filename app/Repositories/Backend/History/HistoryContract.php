@@ -20,21 +20,24 @@ interface HistoryContract {
 	public function log($type, $text, $entity_id = null, $icon = null, $class = null,  $assets = null);
 
 	/**
+	 * @param int $limit
 	 * @return mixed
 	 */
-	public function render();
+	public function render($limit = null);
 
 	/**
 	 * @param $type
+	 * @param int $limit
 	 * @return mixed
 	 */
-	public function renderType($type);
+	public function renderType($type, $limit = null);
 
 	/**
 	 * @param $entity_id
+	 * @param int $limit
 	 * @return mixed
 	 */
-	public function renderEntity($entity_id);
+	public function renderEntity($entity_id, $limit = null);
 
 	/**
 	 * @param $text

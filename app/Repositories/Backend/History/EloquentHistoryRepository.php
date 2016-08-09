@@ -39,10 +39,11 @@ class EloquentHistoryRepository implements HistoryContract {
 	}
 
 	/**
+	 * @param int $limit
 	 * @return string
 	 */
-	public function render() {
-		$history = History::with('user')->latest()->get();
+	public function render($limit = null) {
+		$history = History::with('user')->take($limit)->latest()->get();
 
 		if (! $history->count())
 			return trans("history.backend.none");
@@ -52,17 +53,18 @@ class EloquentHistoryRepository implements HistoryContract {
 
 	/**
 	 * @param $type
+	 * @param int $limit
 	 * @return string
 	 */
-	public function renderType($type) {
+	public function renderType($type, $limit = null) {
 		if (is_numeric($type)) {
-			$history = History::with('user')->where('type_id', $type)->latest()->get();
+			$history = History::with('user')->where('type_id', $type)->take($limit)->latest()->get();
 		} else {
 			$type = strtolower($type);
 
 			$history = History::whereHas('type', function ($query) use ($type) {
 				$query->where('name', ucfirst($type));
-			})->latest()->get();
+			})->take($limit)->latest()->get();
 		}
 
 		if (! $history->count())
@@ -73,10 +75,11 @@ class EloquentHistoryRepository implements HistoryContract {
 
 	/**
 	 * @param $entity_id
+	 * @param int $limit
 	 * @return string
 	 */
-	public function renderEntity($entity_id) {
-		$history = History::with('user', 'type')->where('entity_id', $entity_id)->latest()->get();
+	public function renderEntity($entity_id, $limit = null) {
+		$history = History::with('user', 'type')->where('entity_id', $entity_id)->take($limit)->latest()->get();
 
 		if (! $history->count())
 			return trans("history.backend.none_for_entity", ['entity' => $history->type->name]);
