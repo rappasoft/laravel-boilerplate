@@ -21,23 +21,29 @@ interface HistoryContract {
 
 	/**
 	 * @param int $limit
+	 * @param bool $paginate
+	 * @param int $pagination
 	 * @return mixed
 	 */
-	public function render($limit = null);
+	public function render($limit = null, $paginate = false, $pagination = 10);
 
 	/**
 	 * @param $type
 	 * @param int $limit
+	 * @param bool $paginate
+	 * @param int $pagination
 	 * @return mixed
 	 */
-	public function renderType($type, $limit = null);
+	public function renderType($type, $limit = null, $paginate = false, $pagination = 10);
 
 	/**
 	 * @param $entity_id
 	 * @param int $limit
+	 * @param bool $paginate
+	 * @param int $pagination
 	 * @return mixed
 	 */
-	public function renderEntity($entity_id, $limit = null);
+	public function renderEntity($entity_id, $limit = null, $paginate = false, $pagination = 10);
 
 	/**
 	 * @param $text
@@ -50,11 +56,11 @@ interface HistoryContract {
 	 * @param $items
 	 * @return mixed
 	 */
-	public function buildList($items);
+	public function buildList($history);
 
 	/**
 	 * @param History $history
 	 * @return mixed
 	 */
-	public function buildItem(History $history);
+	public function buildItem(History $historyItem);
 }
