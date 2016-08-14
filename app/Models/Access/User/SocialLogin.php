@@ -18,9 +18,9 @@ class SocialLogin extends Model
     protected $table = 'social_logins';
 
     /**
-     * The attributes that are not mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = ['id'];
+    protected $fillable = ['user_id', 'provider', 'provider_id', 'token', 'avatar'];
 }

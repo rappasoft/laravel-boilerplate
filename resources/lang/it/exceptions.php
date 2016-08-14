@@ -15,21 +15,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'create_error' => 'Si è verificato un problema durante la creazione del permesso. Si prega di riprovare più tardi.',
-                'delete_error' => "Si è verificato un problema durante l'eliminazione del permesso. Si prega di riprovare più tardi.",
-
-                'groups' => [
-                    'associated_permissions' => 'Non è possibile cancellare questo gruppo perché è associato a dei permessi.',
-                    'has_children' => 'Non è possibile cancellare questo gruppo perché ha dei sottogruppi.',
-                    'name_taken' => "Esiste già un gruppo con questo nome.",
-                ],
-
-                'not_found' => 'Questo permesso non esiste.',
-                'system_delete_error' => 'Non è possibile eliminare un permesso di sistema.',
-                'update_error' => "Si è verificato un problema durante l'aggiornamento del permesso. Si prega di riprovare più tardi.",
-            ],
-
             'roles' => [
                 'already_exists' => 'Questo ruolo esiste già. Si prega di scegliere un nome diverso.',
                 'cant_delete_admin' => 'Non è possibile eliminare il ruolo di Amministratore.',
@@ -66,7 +51,7 @@ return [
                 'created_confirm' => "Il tuo account è stato creato con successo. Ti abbiamo inviato un'email per confermare il tuo account.",
                 'mismatch' => 'Il tuo codice di conferma non corrisponde',
                 'not_found' => 'Questo codice di conferma non esiste.',
-                'resend' => 'Il tuo account non è confermato. Per cortesia clicca sul link di conferma nell\'email che ti abbiamo mandato, o <a href="' . route('account.confirm.resend', ':token') . '">clicca qui</a> per rimandare l\'email di conferma.',
+                'resend' => 'Il tuo account non è confermato. Per cortesia clicca sul link di conferma nell\'email che ti abbiamo mandato, o <a href="' . route('account.confirm.resend', ':user_id') . '">clicca qui</a> per rimandare l\'email di conferma.',
                 'success' => "Il tuo account è stato confermato con successo!",
                 'resent' => "Una nuova e-mail di conferma è stata inviata all'indirizzo registrato.",
             ],

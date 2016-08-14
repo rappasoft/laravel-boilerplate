@@ -1,10 +1,10 @@
-## Laravel 5.* Boilerplate, Currently 5.2.12 [Screenshots](http://imgur.com/a/uEKuq)
+## Laravel 5.* Boilerplate, Currently 5.2.39 [Screenshots](http://imgur.com/a/rFv2g)
 
 [![Latest Stable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/stable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate) [![Latest Unstable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/unstable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate)
 
 ### Laravel 5.1
 
-You can download the last stable build of Laravel 5.1 [here](https://github.com/rappasoft/laravel-5-boilerplate/tree/Legacy_5.1)
+You can download the last stable build of Laravel 5.1 [here](https://github.com/rappasoft/laravel-5-boilerplate/tree/Legacy_5.1).
 
 ### Introduction
 
@@ -12,7 +12,7 @@ Laravel Boilerplate provides you with a massive head start on any size web appli
 
 ### Wiki
 
-Please view the [wiki](https://github.com/rappasoft/laravel-5-boilerplate/wiki) for a list of [features](https://github.com/rappasoft/laravel-5-boilerplate/wiki#features) as well as [installation instructions](https://github.com/rappasoft/laravel-5-boilerplate/wiki/1.-Installation)
+Please view the [wiki](https://github.com/rappasoft/laravel-5-boilerplate/wiki) for a list of [features](https://github.com/rappasoft/laravel-5-boilerplate/wiki#features) as well as [installation instructions](https://github.com/rappasoft/laravel-5-boilerplate/wiki/1.-Installation).
 
 ### Issues
 
@@ -32,4 +32,4 @@ If you would like to help the continued efforts of this project, any size [donat
 
 ### License
 
-The Laravel framework is open-sourced software licensed under the MIT license
+MIT: [http://anthony.mit-license.org](http://anthony.mit-license.org)

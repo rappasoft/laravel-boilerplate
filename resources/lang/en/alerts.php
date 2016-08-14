@@ -14,19 +14,6 @@ return [
     */
 
     'backend' => [
-        'permissions' => [
-            'created' => 'Permission successfully created.',
-            'deleted' => 'Permission successfully deleted.',
-
-            'groups'  => [
-                'created' => 'Permission group successfully created.',
-                'deleted' => 'Permission group successfully deleted.',
-                'updated' => 'Permission group successfully updated.',
-            ],
-
-            'updated' => 'Permission successfully updated.',
-        ],
-
         'roles' => [
             'created' => 'The role was successfully created.',
             'deleted' => 'The role was successfully deleted.',

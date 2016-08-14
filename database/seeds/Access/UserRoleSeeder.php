@@ -10,13 +10,13 @@ class UserRoleSeeder extends Seeder
 {
     public function run()
     {
-        if (env('DB_CONNECTION') == 'mysql') {
+        if (DB::connection()->getDriverName() == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         }
 
-        if (env('DB_CONNECTION') == 'mysql') {
+        if (DB::connection()->getDriverName() == 'mysql') {
             DB::table(config('access.assigned_roles_table'))->truncate();
-        } elseif (env('DB_CONNECTION') == 'sqlite') {
+        } elseif (DB::connection()->getDriverName() == 'sqlite') {
             DB::statement('DELETE FROM ' . config('access.assigned_roles_table'));
         } else {
             //For PostgreSQL or anything else
@@ -28,12 +28,17 @@ class UserRoleSeeder extends Seeder
         $user_model = new $user_model;
         $user_model::first()->attachRole(1);
 
-        //Attach user role to general user
+        //Attach executive role to executive user
         $user_model = config('auth.providers.users.model');
         $user_model = new $user_model;
         $user_model::find(2)->attachRole(2);
 
-        if (env('DB_CONNECTION') == 'mysql') {
+        //Attach user role to general user
+        $user_model = config('auth.providers.users.model');
+        $user_model = new $user_model;
+        $user_model::find(3)->attachRole(3);
+
+        if (DB::connection()->getDriverName() == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }
     }

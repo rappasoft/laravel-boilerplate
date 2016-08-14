@@ -15,16 +15,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'edit_explanation' => 'Wenn Sie im Hierarchie-Abschnitt änderungen ohne Aktualisierung der Seite durchführen, muss diese Seite aktualisiert werden damit die Änderungen angezeigt werden.',
-
-                'groups' => [
-                    'hierarchy_saved' => 'Hierarchie gespeichert.',
-                ],
-
-                'sort_explanation' => 'Dieser Abschnitt ermöglicht es Ihnen, die Berechtigungen in Gruppen zu organisieren. Unabhängig von der Gruppe, sind die Berechtigungen immer noch individuell jeder Rolle zugewiesen.',
-            ],
-
             'users' => [
                 'delete_user_confirm' => 'Bist du dir sicher, dass du diesen Benutzer permanent löschen möchtest? Überall wo die Benutzer-ID referenziert ist, wird es höchstwahrscheinlich zu Fehlern kommen. Fortfahren auf eigenes Risiko. Dies kann nicht rückgängig gemacht werden.',
                 'if_confirmed_off' => '(Wenn nicht bestätigt)',
@@ -43,7 +33,9 @@ return [
             'boilerplate_link' => 'Laravel 5 Boilerplate',
             'continue' => 'Forsetzen',
             'member_since' => 'Mitglied seit',
+            'minutes' => ' minutes',
             'search_placeholder' => 'Suchen...',
+            'timeout' => 'You were automatically logged out for security reasons since you had no activity in ',
 
             'see_all' => [
                 'messages' => 'Alle Nachrichten anzeigen',
@@ -101,7 +93,7 @@ return [
 
             'view_console_it_works' => 'Schaue in die Konsole, du solltest \'it works!\' sehen, welches vom FrontendController@index kommt',
             'you_can_see_because' => 'Du kannst dies sehen, da du folgende Rolle besitzt \':role\'!',
-            'you_can_see_because_permission' => 'Du annst dies sehen, da du folgende Berechtigung besitzt \':permission\'!',
+            'you_can_see_because_permission' => 'Du kannst dies sehen, da du folgende Berechtigung besitzt \':permission\'!',
         ],
 
         'user' => [

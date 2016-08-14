@@ -20,5 +20,4 @@ return [
         'title' => 'Be right back.',
         'description' => 'Be right back.',
     ],
-
 ];

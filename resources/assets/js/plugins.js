@@ -15,7 +15,7 @@ function addDeleteForms() {
                 "<form action='" + $(this).attr('href') + "' method='POST' name='delete_item' style='display:none'>\n" +
                 "   <input type='hidden' name='_method' value='" + $(this).attr('data-method') + "'>\n" +
                 "   <input type='hidden' name='_token' value='" + $('meta[name="_token"]').attr('content') + "'>\n" +
-                "</form>\n"
+                "</form>\n";
         else
             return "";
     })
@@ -43,19 +43,32 @@ $(function(){
     addDeleteForms();
 
     /**
+     * This is for delete buttons that are loaded via AJAX in datatables, they will not work right
+     * without this block of code
+     */
+    $(document).ajaxComplete(function(){
+        addDeleteForms();
+    });
+
+    /**
      * Generic confirm form delete using Sweet Alert
      */
     $('body').on('submit', 'form[name=delete_item]', function(e){
         e.preventDefault();
         var form = this;
+        var link = $('a[data-method="delete"]');
+        var cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : "Cancel";
+        var confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : "Yes, delete";
+        var title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : "Warning";
+        var text = (link.attr('data-trans-text')) ? link.attr('data-trans-text') : "Are you sure you want to delete this item?";
 
         swal({
-            title: "Warning",
-            text: "Are you sure you want to delete this item?",
+            title: title,
             type: "warning",
             showCancelButton: true,
+            cancelButtonText: cancel,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: confirm,
             closeOnConfirm: true
         }, function(confirmed) {
             if (confirmed)

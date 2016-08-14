@@ -2,22 +2,16 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
+use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
-use App\Repositories\Backend\User\UserContract;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
-use App\Http\Requests\Backend\Access\User\CreateUserRequest;
+use Yajra\Datatables\Facades\Datatables;
 use App\Http\Requests\Backend\Access\User\StoreUserRequest;
-use App\Http\Requests\Backend\Access\User\EditUserRequest;
-use App\Http\Requests\Backend\Access\User\MarkUserRequest;
+use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserRequest;
-use App\Http\Requests\Backend\Access\User\DeleteUserRequest;
-use App\Http\Requests\Backend\Access\User\RestoreUserRequest;
-use App\Http\Requests\Backend\Access\User\ChangeUserPasswordRequest;
+use App\Repositories\Backend\Access\User\UserRepositoryContract;
+use App\Repositories\Backend\Access\Role\RoleRepositoryContract;
 use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
-use App\Repositories\Backend\Permission\PermissionRepositoryContract;
-use App\Http\Requests\Backend\Access\User\PermanentlyDeleteUserRequest;
-use App\Repositories\Frontend\User\UserContract as FrontendUserContract;
-use App\Http\Requests\Backend\Access\User\ResendConfirmationEmailRequest;
+use App\Repositories\Frontend\Access\User\UserRepositoryContract as FrontendUserRepositoryContract;
 
 /**
  * Class UserController
@@ -25,7 +19,7 @@ use App\Http\Requests\Backend\Access\User\ResendConfirmationEmailRequest;
 class UserController extends Controller
 {
     /**
-     * @var UserContract
+     * @var UserRepositoryContract
      */
     protected $users;
 
@@ -35,185 +29,212 @@ class UserController extends Controller
     protected $roles;
 
     /**
-     * @var PermissionRepositoryContract
+     * @param UserRepositoryContract $users
+     * @param RoleRepositoryContract $roles
      */
-    protected $permissions;
-
-    /**
-     * @param UserContract                 $users
-     * @param RoleRepositoryContract       $roles
-     * @param PermissionRepositoryContract $permissions
-     */
-    public function __construct(
-        UserContract $users,
-        RoleRepositoryContract $roles,
-        PermissionRepositoryContract $permissions
-    )
+    public function __construct(UserRepositoryContract $users, RoleRepositoryContract $roles)
     {
-        $this->users       = $users;
-        $this->roles       = $roles;
-        $this->permissions = $permissions;
+        $this->users = $users;
+        $this->roles = $roles;
     }
 
-    /**
-     * @return mixed
+	/**
+     * @param ManageUserRequest $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
+    public function index(ManageUserRequest $request)
     {
-        return view('backend.access.index')
-            ->withUsers($this->users->getUsersPaginated(config('access.users.default_per_page'), 1));
+        return view('backend.access.index');
     }
 
-    /**
-     * @param  CreateUserRequest $request
+	/**
+     * @param ManageUserRequest $request
      * @return mixed
      */
-    public function create(CreateUserRequest $request)
+    public function get(ManageUserRequest $request) {
+        return Datatables::of($this->users->getForDataTable($request->get('status'), $request->get('trashed')))
+            ->editColumn('confirmed', function($user) {
+                return $user->confirmed_label;
+            })
+            ->addColumn('roles', function($user) {
+                $roles = [];
+
+                if ($user->roles()->count() > 0) {
+                    foreach ($user->roles as $role) {
+                        array_push($roles, $role->name);
+                    }
+
+                    return implode("<br/>", $roles);
+                } else {
+                    return trans('labels.general.none');
+                }
+            })
+            ->addColumn('actions', function($user) {
+                return $user->action_buttons;
+            })
+            ->make(true);
+    }
+
+	/**
+     * @param ManageUserRequest $request
+     * @return mixed
+     */
+    public function create(ManageUserRequest $request)
     {
         return view('backend.access.create')
-            ->withRoles($this->roles->getAllRoles('sort', 'asc', true))
-            ->withPermissions($this->permissions->getAllPermissions());
+            ->withRoles($this->roles->getAllRoles('sort', 'asc', true));
     }
 
-    /**
-     * @param  StoreUserRequest $request
+	/**
+     * @param StoreUserRequest $request
      * @return mixed
      */
     public function store(StoreUserRequest $request)
     {
         $this->users->create(
-            $request->except('assignees_roles', 'permission_user'),
-            $request->only('assignees_roles'),
-            $request->only('permission_user')
+            $request->except('assignees_roles'),
+            $request->only('assignees_roles')
         );
-        return redirect()->route('admin.access.users.index')->withFlashSuccess(trans('alerts.backend.users.created'));
+        return redirect()->route('admin.access.user.index')->withFlashSuccess(trans('alerts.backend.users.created'));
     }
 
-    /**
-     * @param  $id
-     * @param  EditUserRequest $request
+	/**
+     * @param User $user
+     * @param ManageUserRequest $request
      * @return mixed
      */
-    public function edit($id, EditUserRequest $request)
+    public function edit(User $user, ManageUserRequest $request)
     {
-        $user = $this->users->findOrThrowException($id, true);
         return view('backend.access.edit')
             ->withUser($user)
             ->withUserRoles($user->roles->lists('id')->all())
-            ->withRoles($this->roles->getAllRoles('sort', 'asc', true))
-            ->withUserPermissions($user->permissions->lists('id')->all())
-            ->withPermissions($this->permissions->getAllPermissions());
+            ->withRoles($this->roles->getAllRoles('sort', 'asc', true));
     }
 
-    /**
-     * @param  $id
-     * @param  UpdateUserRequest $request
+	/**
+     * @param User $user
+     * @param UpdateUserRequest $request
      * @return mixed
      */
-    public function update($id, UpdateUserRequest $request)
+    public function update(User $user, UpdateUserRequest $request)
     {
-        $this->users->update($id,
-            $request->except('assignees_roles', 'permission_user'),
-            $request->only('assignees_roles'),
-            $request->only('permission_user')
+        $this->users->update($user,
+            $request->except('assignees_roles'),
+            $request->only('assignees_roles')
         );
-        return redirect()->route('admin.access.users.index')->withFlashSuccess(trans('alerts.backend.users.updated'));
+        return redirect()->route('admin.access.user.index')->withFlashSuccess(trans('alerts.backend.users.updated'));
     }
 
-    /**
-     * @param  $id
-     * @param  DeleteUserRequest $request
+	/**
+     * @param User $user
+     * @param ManageUserRequest $request
      * @return mixed
      */
-    public function destroy($id, DeleteUserRequest $request)
+    public function destroy(User $user, ManageUserRequest $request)
     {
-        $this->users->destroy($id);
+        $this->users->destroy($user);
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.deleted'));
     }
 
-    /**
-     * @param  $id
-     * @param  PermanentlyDeleteUserRequest $request
+	/**
+     * @param User $deletedUser
+     * @param ManageUserRequest $request
      * @return mixed
      */
-    public function delete($id, PermanentlyDeleteUserRequest $request)
+    public function delete(User $deletedUser, ManageUserRequest $request)
     {
-        $this->users->delete($id);
+        $this->users->delete($deletedUser);
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.deleted_permanently'));
     }
 
-    /**
-     * @param  $id
-     * @param  RestoreUserRequest $request
+	/**
+     * @param User $deletedUser
+     * @param ManageUserRequest $request
      * @return mixed
      */
-    public function restore($id, RestoreUserRequest $request)
+    public function restore(User $deletedUser, ManageUserRequest $request)
     {
-        $this->users->restore($id);
+        $this->users->restore($deletedUser);
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.restored'));
     }
 
-    /**
-     * @param  $id
-     * @param  $status
-     * @param  MarkUserRequest $request
+	/**
+     * @param User $user
+     * @param $status
+     * @param ManageUserRequest $request
      * @return mixed
      */
-    public function mark($id, $status, MarkUserRequest $request)
+    public function mark(User $user, $status, ManageUserRequest $request)
     {
-        $this->users->mark($id, $status);
+        $this->users->mark($user, $status);
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.updated'));
     }
 
-    /**
+	/**
+     * @param ManageUserRequest $request
      * @return mixed
      */
-    public function deactivated()
+    public function deactivated(ManageUserRequest $request)
     {
-        return view('backend.access.deactivated')
-            ->withUsers($this->users->getUsersPaginated(25, 0));
+        return view('backend.access.deactivated');
     }
 
-    /**
+	/**
+     * @param ManageUserRequest $request
      * @return mixed
      */
-    public function deleted()
+    public function deleted(ManageUserRequest $request)
     {
-        return view('backend.access.deleted')
-            ->withUsers($this->users->getDeletedUsersPaginated(25));
+        return view('backend.access.deleted');
     }
 
-    /**
-     * @param  $id
-     * @param  ChangeUserPasswordRequest $request
+	/**
+     * @param User $user
+     * @param ManageUserRequest $request
      * @return mixed
      */
-    public function changePassword($id, ChangeUserPasswordRequest $request)
+    public function changePassword(User $user, ManageUserRequest $request)
     {
         return view('backend.access.change-password')
-            ->withUser($this->users->findOrThrowException($id));
+            ->withUser($user);
     }
 
-    /**
-     * @param  $id
-     * @param  UpdateUserPasswordRequest $request
+	/**
+     * @param User $user
+     * @param UpdateUserPasswordRequest $request
      * @return mixed
      */
-    public function updatePassword($id, UpdateUserPasswordRequest $request)
+    public function updatePassword(User $user, UpdateUserPasswordRequest $request)
     {
-        $this->users->updatePassword($id, $request->all());
-        return redirect()->route('admin.access.users.index')->withFlashSuccess(trans('alerts.backend.users.updated_password'));
+        $this->users->updatePassword($user, $request->all());
+        return redirect()->route('admin.access.user.index')->withFlashSuccess(trans('alerts.backend.users.updated_password'));
     }
 
-    /**
-     * @param  $user_id
-     * @param  FrontendUserContract $user
-     * @param  ResendConfirmationEmailRequest $request
+	/**
+     * @param User $user
+     * @param FrontendUserRepositoryContract $user_repository
+     * @param ManageUserRequest $request
      * @return mixed
      */
-    public function resendConfirmationEmail($user_id, FrontendUserContract $user, ResendConfirmationEmailRequest $request)
+    public function resendConfirmationEmail(User $user, FrontendUserRepositoryContract $user_repository, ManageUserRequest $request)
     {
-        $user->sendConfirmationEmail($user_id);
+		$user_repository->sendConfirmationEmail($user);
         return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.confirmation_email'));
+    }
+
+	/**
+	 * @param User $user
+	 * @param ManageUserRequest $request
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function loginAs(User $user, ManageUserRequest $request) {
+        return $this->users->loginAs($user);
+    }
+
+	/**
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function logoutAs() {
+        return $this->users->logoutAs();
     }
 }

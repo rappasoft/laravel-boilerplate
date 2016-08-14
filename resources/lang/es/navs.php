@@ -13,17 +13,13 @@ return [
     |
     */
 
-    'backend' => [
-        'button' => 'Botón',
-    ],
-
     'general' => [
+        'home' => 'Inicio',
         'logout' => 'Cerrar Sessión',
     ],
 
     'frontend' => [
         'dashboard' => 'Principal',
-        'home' => 'Home',
         'login' => 'Iniciar Sessión',
         'macros' => 'Macros',
         'register' => 'Registrarse',

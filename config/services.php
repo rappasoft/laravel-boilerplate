@@ -24,9 +24,13 @@ return [
     ],
 
     'ses' => [
-        'key'    => env('SES_KEY'),
+        'key' => env('SES_KEY'),
         'secret' => env('SES_SECRET'),
         'region' => 'us-east-1',
+    ],
+
+    'sparkpost' => [
+        'secret' => env('SPARKPOST_SECRET'),
     ],
 
     'stripe' => [
@@ -59,6 +63,7 @@ return [
         'redirect' => env('FACEBOOK_REDIRECT'),
         'scopes' => [],
         'with' => [],
+		'fields' => [],
     ],
 
     'github' => [
@@ -93,6 +98,7 @@ return [
         'redirect' => env('LINKEDIN_REDIRECT'),
         'scopes' => [],
         'with' => [],
+		'fields' => [],
     ],
 
     'twitter' => [

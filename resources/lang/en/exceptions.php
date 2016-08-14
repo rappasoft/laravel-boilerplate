@@ -15,21 +15,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'create_error' => 'There was a problem creating this permission. Please try again.',
-                'delete_error' => 'There was a problem deleting this permission. Please try again.',
-
-                'groups' => [
-                    'associated_permissions' => 'You can not delete this group because it has associated permissions.',
-                    'has_children' => 'You can not delete this group because it has child groups.',
-                    'name_taken' => 'There is already a group with that name',
-                ],
-
-                'not_found' => 'That permission does not exist.',
-                'system_delete_error' => 'You can not delete a system permission.',
-                'update_error' => 'There was a problem updating this permission. Please try again.',
-            ],
-
             'roles' => [
                 'already_exists' => 'That role already exists. Please choose a different name.',
                 'cant_delete_admin' => 'You can not delete the Administrator role.',
@@ -66,7 +51,7 @@ return [
                 'created_confirm' => 'Your account was successfully created. We have sent you an e-mail to confirm your account.',
                 'mismatch' => 'Your confirmation code does not match.',
                 'not_found' => 'That confirmation code does not exist.',
-                'resend' => 'Your account is not confirmed. Please click the confirmation link in your e-mail, or <a href="' . route('account.confirm.resend', ':token') . '">click here</a> to resend the confirmation e-mail.',
+                'resend' => 'Your account is not confirmed. Please click the confirmation link in your e-mail, or <a href="' . route('account.confirm.resend', ':user_id') . '">click here</a> to resend the confirmation e-mail.',
                 'success' => 'Your account has been successfully confirmed!',
                 'resent' => 'A new confirmation e-mail has been sent to the address on file.',
             ],
@@ -77,8 +62,6 @@ return [
             'password' => [
                 'change_mismatch' => 'That is not your old password.',
             ],
-
-
         ],
     ],
 ];

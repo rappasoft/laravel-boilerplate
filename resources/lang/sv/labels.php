@@ -31,50 +31,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'create' => 'Skapa tillstånd',
-                'dependencies' => 'Överliggande tillstånd',
-                'edit' => 'Redigera tillstånd',
-
-                'groups' => [
-                    'create' => 'Skapa tillståndsgrupp',
-                    'edit' => 'Redigera tillståndsgrupp',
-
-                    'table' => [
-                        'name' => 'Namn',
-                    ],
-                ],
-
-                'grouped_permissions' => 'Tillståndsgrupper',
-                'label' => 'tillstånd',
-                'management' => 'Hantera tillstånd',
-                'no_groups' => 'Det finns inga Tillståndsgrupper.',
-                'no_permissions' => 'Det finns inga tillstånd att välja bland.',
-                'no_roles' => 'Det finns inga roller att sätta.',
-                'no_ungrouped' => 'Det finns inga ogrupperade tillstånd.',
-
-                'table' => [
-                    'dependencies' => 'Krävda tillstånd',
-                    'group' => 'Tillståndsgrupp',
-                    'group-sort' => 'Ordning',
-                    'name' => 'Namn',
-                    'permission' => 'Tillstånd',
-                    'roles' => 'Roller',
-                    'system' => 'System-status',
-                    'total' => 'tillstånd totalt|tillstånd totalt',
-                    'users' => 'Användare',
-                ],
-
-                'tabs' => [
-                    'general' => 'Allmänt',
-                    'groups' => 'Alla tillståndsgrupper',
-                    'dependencies' => 'Överliggande tillstånd',
-                    'permissions' => 'Alla tillstånd',
-                ],
-
-                'ungrouped_permissions' => 'Tillstånd utan grupp',
-            ],
-
             'roles' => [
                 'create' => 'Skapa roll',
                 'edit' => 'Redigera roll',
@@ -97,14 +53,11 @@ return [
                 'create' => 'Skapa användare',
                 'deactivated' => 'Inaktiverade användare',
                 'deleted' => 'Raderade användare',
-                'dependencies' => 'Överliggande tillstånd',
                 'edit' => 'Redigera användare',
                 'management' => 'Hantera användare',
-                'no_other_permissions' => 'Inga andra tillstånd',
                 'no_permissions' => 'Inga tillstånd',
                 'no_roles' => 'Inga roller att anta.',
                 'permissions' => 'Tillstånd',
-                'permission_check' => 'När tillstånd efterfrågas så kollas också om det finns några överliggande beroende tillstånd.',
 
                 'table' => [
                     'confirmed' => 'Bekräftad',
@@ -115,7 +68,6 @@ return [
                     'name' => 'Namn',
                     'no_deactivated' => 'Inga inaktiverade användare',
                     'no_deleted' => 'Inga raderade användare',
-                    'other_permissions' => 'Övriga tillstånd',
                     'roles' => 'Roller',
                     'total' => 'användare totalt|användare totalt',
                 ],

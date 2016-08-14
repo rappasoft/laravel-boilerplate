@@ -3,7 +3,6 @@
 namespace App\Services\Access\Traits;
 
 use Illuminate\Mail\Message;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use App\Http\Requests\Frontend\Auth\ResetPasswordRequest;
 use App\Http\Requests\Frontend\Auth\SendResetLinkEmailRequest;
@@ -43,18 +42,19 @@ trait ResetsPasswords
         }
     }
 
-    /**
-     * @param null $token
-     * @return $this
-     */
-    public function showResetForm($token = null)
+	/**
+	 * @param null $token
+	 * @return $this|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function showResetForm($token = null)
     {
         if (is_null($token)) {
             return $this->showLinkRequestForm();
         }
 
         return view('frontend.auth.passwords.reset')
-            ->with('token', $token);
+            ->withToken($token)
+			->withEmail($this->user->getEmailForPasswordToken($token));
     }
 
     /**

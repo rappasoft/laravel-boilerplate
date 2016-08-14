@@ -17,20 +17,6 @@ return [
         'access' => [
             'title' => 'Access Management',
 
-            'permissions' => [
-                'all' => 'All Permissions',
-                'create' => 'Create Permission',
-                'edit' => 'Edit Permission',
-                'groups' => [
-                    'all' => 'All Groups',
-                    'create' => 'Create Group',
-                    'edit' => 'Edit Group',
-                    'main' => 'Groups',
-                ],
-                'main' => 'Permissions',
-                'management' => 'Permission Management',
-            ],
-
             'roles' => [
                 'all' => 'All Roles',
                 'create' => 'Create Role',
@@ -71,6 +57,8 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
+            'ar' => 'Arabic',
+            'da' => 'Danish',
             'de' => 'German',
             'en' => 'English',
             'es' => 'Spanish',
@@ -78,6 +66,7 @@ return [
             'it' => 'Italian',
             'pt-BR' => 'Brazilian Portuguese',
             'sv' => 'Swedish',
+            'th' => 'Thai',
         ],
     ],
 ];

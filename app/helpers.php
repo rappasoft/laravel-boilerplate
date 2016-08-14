@@ -27,6 +27,17 @@ if (! function_exists('access')) {
     }
 }
 
+if ( ! function_exists('history'))
+{
+    /**
+     * Access the history facade anywhere
+     */
+    function history()
+    {
+        return app('history');
+    }
+}
+
 if (! function_exists('javascript')) {
     /**
      * Access the javascript helper

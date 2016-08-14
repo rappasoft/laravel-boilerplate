@@ -12,7 +12,7 @@ return [
     */
 
     '404' => [
-        'title' => 'Página no encontrada.',
+        'title' => 'La Página que intento acceder no ha sido encontrada.',
         'description' => 'Parece ser que la página que buscas no existe.',
     ],
 

@@ -23,17 +23,18 @@ class Role extends Model
     protected $table;
 
     /**
-     * The attributes that are not mass assignable.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $guarded = ['id'];
+    protected $fillable = ['name', 'all', 'sort'];
 
     /**
-     *
+     * @param array $attributes
      */
-    public function __construct()
+    public function __construct(array $attributes = [])
     {
+        parent::__construct($attributes);
         $this->table = config('access.roles_table');
     }
 }

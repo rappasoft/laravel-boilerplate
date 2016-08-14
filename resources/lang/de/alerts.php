@@ -14,19 +14,6 @@ return [
     */
 
     'backend' => [
-        'permissions' => [
-            'created' => 'Berechtigung erstellt.',
-            'deleted' => 'Berechtigung gelöscht.',
-
-            'groups'  => [
-                'created' => 'Berechtigungsgruppe erstellt.',
-                'deleted' => 'Berechtigungsgruppe gelöscht.',
-                'updated' => 'Berechtigungsgruppe aktualisiert.',
-            ],
-
-            'updated' => 'Berechtigung aktualisiert.',
-        ],
-
         'roles' => [
             'created' => 'Rolle erstellt.',
             'deleted' => 'Rolle gelöscht.',

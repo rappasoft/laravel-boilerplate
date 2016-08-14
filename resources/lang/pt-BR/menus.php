@@ -17,20 +17,6 @@ return [
         'access' => [
             'title' => 'Gerenciamento de Usuários',
 
-            'permissions' => [
-                'all' => 'Todas as  Permissões',
-                'create' => 'Criar Permissão',
-                'edit' => 'Editar Permissão',
-                'groups' => [
-                    'all' => 'Todos os Grupos',
-                    'create' => 'Criar Grupo',
-                    'edit' => 'Editar Grupo',
-                    'main' => 'Grupos',
-                ],
-                'main' => 'Permissões',
-                'management' => 'Gerenciamento de Permissão',
-            ],
-
             'roles' => [
                 'all' => 'Todos os Papéis',
                 'create' => 'Criar Papel',
@@ -71,6 +57,8 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
+            'ar' => 'العربية (Arabic)',
+            'da' => 'Dinamarquês (Danish)',
             'de' => 'Alemão (German)',
             'en' => 'Inglês (English)',
             'es' => 'Espanhol (Spanish)',
@@ -78,6 +66,7 @@ return [
             'it' => 'Italiano (Italian)',
             'pt-BR' => 'Português do Brasil (Brazilian Portuguese)',
             'sv' => 'Sueco (Swedish)',
+            'th' => 'Thai',
         ],
     ],
 ];

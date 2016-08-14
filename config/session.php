@@ -109,7 +109,15 @@ return [
     |
     */
 
-    'cookie' => 'laravel_session',
+    /**
+     * We changed the name of this session from laravel_session
+     * The reason being is there are many browser extensions to check to see what
+     * software your website is built with, most check for the Set-Cookie header to be 'laravel_session'
+     * We want to hide these programs from knowing in case people are trying to exploit security holes in your
+     * site based on the frameworks it's built on.
+     */
+
+    'cookie' => 'lvapp_session',
 
     /*
     |--------------------------------------------------------------------------
@@ -135,7 +143,7 @@ return [
     |
     */
 
-    'domain' => null,
+	'domain' => env('SESSION_DOMAIN', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -149,5 +157,18 @@ return [
     */
 
     'secure' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | HTTP Access Only
+    |--------------------------------------------------------------------------
+    |
+    | Setting this value to true will prevent JavaScript from accessing the
+    | value of the cookie and the cookie will only be accessible through
+    | the HTTP protocol. You are free to modify this option if needed.
+    |
+    */
+
+    'http_only' => true,
 
 ];

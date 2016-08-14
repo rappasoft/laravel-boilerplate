@@ -16,12 +16,14 @@ return [
     'env' => env('APP_ENV', 'production'),
 
     /*
-	|--------------------------------------------------------------------------
-	| Application Name
-	|--------------------------------------------------------------------------
-	|
-	| The application name for use within the UI of the application
-	*/
+    |--------------------------------------------------------------------------
+    | Application Name
+    |--------------------------------------------------------------------------
+    |
+    | The application name for use within the UI of the application
+    |
+    */
+
     'name' => 'Laravel 5 Bootstrap',
 
     /*
@@ -48,7 +50,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL'),
+    'url' => env('APP_URL', '127.0.0.1'),
 
     /*
     |--------------------------------------------------------------------------
@@ -130,6 +132,8 @@ return [
 
     'log' => env('APP_LOG', 'daily'),
 
+    'log_level' => env('APP_LOG_LEVEL', 'debug'),
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -174,20 +178,24 @@ return [
         App\Providers\AccessServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+		App\Providers\BladeServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\HistoryServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
         /*
          * Third Party Providers
          */
         Arcanedev\LogViewer\LogViewerServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+        Arcanedev\NoCaptcha\NoCaptchaServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
+		HieuLe\Active\ActiveServiceProvider::class,
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
-        HieuLe\Active\ActiveServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        Spatie\Backup\BackupServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
 
         /*
          * Has to override the Collective\Html\HtmlServiceProvider form singleton
@@ -244,11 +252,10 @@ return [
          */
         'Active'      => HieuLe\Active\Facades\Active::class,
         'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
-        'Debugbar'    => Barryvdh\Debugbar\Facade::class,
+        'Captcha'     => Arcanedev\NoCaptcha\Facades\NoCaptcha::class,
         'Form'        => Collective\Html\FormFacade::class,
         'Gravatar'    => Creativeorange\Gravatar\Facades\Gravatar::class,
         'Html'        => Collective\Html\HtmlFacade::class,
         'Socialite'   => Laravel\Socialite\Facades\Socialite::class,
     ],
-
 ];

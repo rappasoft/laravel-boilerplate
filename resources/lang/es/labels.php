@@ -18,7 +18,7 @@ return [
         'yes' => 'Sí',
         'no' => 'No',
         'custom' => 'Personalizado',
-        'actions' => 'Acciónes',
+        'actions' => 'Acciones',
         'buttons' => [
             'save' => 'Guardar',
             'update' => 'Actualizar',
@@ -31,50 +31,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'create' => 'Crear Permiso',
-                'dependencies' => 'Dependencias',
-                'edit' => 'Modificar Permiso',
-
-                'groups' => [
-                    'create' => 'Crear Grupo',
-                    'edit' => 'Modificar Grupo',
-
-                    'table' => [
-                        'name' => 'Nombre',
-                    ],
-                ],
-
-                'grouped_permissions' => 'Permisos agrupados',
-                'label' => 'Permisos',
-                'management' => 'Administración de Permisos',
-                'no_groups' => 'No hay Permisos en el Grupo.',
-                'no_permissions' => 'No hay Permisos disponibles.',
-                'no_roles' => 'No hay Roles disponibles.',
-                'no_ungrouped' => 'Actualmente no hay Permisos desagrupados.',
-
-                'table' => [
-                    'dependencies' => 'Dependencias',
-                    'group' => 'Grupo',
-                    'group-sort' => 'Orden del Grupo',
-                    'name' => 'Nombre',
-                    'permission' => 'Permisos',
-                    'roles' => 'Roles',
-                    'system' => 'Sistema',
-                    'total' => 'Todos los Permisos',
-                    'users' => 'Usuarios',
-                ],
-
-                'tabs' => [
-                    'general' => 'General',
-                    'groups' => 'Todos los Grupos',
-                    'dependencies' => 'Dependencias',
-                    'permissions' => 'Todos los Permisos',
-                ],
-
-                'ungrouped_permissions' => 'Permisos desagrupados',
-            ],
-
             'roles' => [
                 'create' => 'Crear Rol',
                 'edit' => 'Modificar Rol',
@@ -97,25 +53,21 @@ return [
                 'create' => 'Crear Usuario',
                 'deactivated' => 'Usuarios desactivados',
                 'deleted' => 'Usuarios eliminados',
-                'dependencies' => 'Dependencias',
                 'edit' => 'Modificar Usuario',
                 'management' => 'Administración de Usuarios',
-                'no_other_permissions' => 'Sin otros Permisos',
                 'no_permissions' => 'Sin Permisos',
                 'no_roles' => 'No hay Roles disponibles.',
                 'permissions' => 'Permisos',
-                'permission_check' => 'Activando un permiso con dependencias, las mismas se activarán también.',
 
                 'table' => [
                     'confirmed' => 'Confirmado',
                     'created' => 'Creado',
-                    'email' => 'E-mail',
+                    'email' => 'Correo',
                     'id' => 'ID',
-                    'last_updated' => 'Ultima modificación',
+                    'last_updated' => 'Última modificación',
                     'name' => 'Nombre',
                     'no_deactivated' => 'Ningún Usuario desactivado disponible',
                     'no_deleted' => 'Ningún Usuario eliminado disponible',
-                    'other_permissions' => 'Otros Permisos',
                     'roles' => 'Roles',
                     'total' => 'Todos los Usuarios',
                 ],
@@ -126,9 +78,9 @@ return [
     'frontend' => [
 
         'auth' => [
-            'login_box_title' => 'Login',
-            'login_button' => 'Login',
-            'login_with' => 'Login mediante :social_media',
+            'login_box_title' => 'Iniciar Sesión',
+            'login_button' => 'Iniciar Sesión',
+            'login_with' => 'Iniciar Sesión mediante :social_media',
             'register_box_title' => 'Registrarse',
             'register_button' => 'Registrarse',
             'remember_me' => 'Recordarme',
@@ -138,30 +90,30 @@ return [
             'forgot_password' => 'Se ha olvidado la contraseña?',
             'reset_password_box_title' => 'Reiniciar contraseña',
             'reset_password_button' => 'Reiniciar contraseña',
-            'send_password_reset_link_button' => 'Enviar el e-mail de verificación',
+            'send_password_reset_link_button' => 'Enviar el correo de verificación',
         ],
 
         'macros' => [
             'country' => [
-                'alpha' => 'Country Alpha Codes',
-                'alpha2' => 'Country Alpha 2 Codes',
-                'alpha3' => 'Country Alpha 3 Codes',
-                'numeric' => 'Country Numeric Codes',
+                'alpha' => 'Código Alfa de País',
+                'alpha2' => 'Código Alfa 2 de País',
+                'alpha3' => 'Código Alfa 3 de País',
+                'numeric' => 'Código Numérico de País',
             ],
 
-            'macro_examples' => 'Macro Examples',
+            'macro_examples' => 'Ejemplos de Macro',
 
             'state' => [
-                'mexico' => 'Mexico State List',
+                'mexico' => 'Listado de Estados de México',
                 'us' => [
-                    'us' => 'US States',
-                    'outlying' => 'US Outlying Territories',
-                    'armed' => 'US Armed Forces',
+                    'us' => 'Estados Unidos',
+                    'outlying' => 'Territorios Periféricos de Estados Unidos',
+                    'armed' => 'Fuerzas Armadas de Estados Unidos',
                 ],
             ],
 
             'territories' => [
-                'canada' => 'Canada Province & Territories List',
+                'canada' => 'Listado de Provincias y Territorios de Canada',
             ],
 
             'timezone' => 'Zonas horarias',
@@ -176,8 +128,8 @@ return [
                 'avatar' => 'Avatar',
                 'created_at' => 'Creado el',
                 'edit_information' => 'Modificar la información',
-                'email' => 'E-mail',
-                'last_updated' => 'Ultima modificación',
+                'email' => 'Correo',
+                'last_updated' => 'Última modificación',
                 'name' => 'Nombre',
                 'update_information' => 'Actualizar la información',
             ],

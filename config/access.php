@@ -29,38 +29,9 @@ return [
     'permissions_table' => 'permissions',
 
     /*
-     * PermissionGroup model used by Access to create permissions groups.
-     * Update the group if it is in a different namespace.
-     */
-    'group' => App\Models\Access\Permission\PermissionGroup::class,
-
-    /*
-     * Permissions table used by Access to save permissions to the database.
-     */
-    'permission_group_table' => 'permission_groups',
-
-    /*
      * permission_role table used by Access to save relationship between permissions and roles to the database.
      */
     'permission_role_table' => 'permission_role',
-
-    /*
-     * permission_user table used by Access to save relationship between permissions and users to the database.
-     * This table is only for permissions that belong directly to a specific user and not a role
-     */
-    'permission_user_table' => 'permission_user',
-
-    /*
-     * Table that specifies if one permission is dependent on another.
-     * For example in order for a user to have the edit-user permission they also need the view-backend permission.
-     */
-    'permission_dependencies_table' => 'permission_dependencies',
-
-    /*
-     * PermissionDependency model used by Access to create permissions dependencies.
-     * Update the dependency if it is in a different namespace.
-     */
-    'dependency' => App\Models\Access\Permission\PermissionDependency::class,
 
     /*
      * assigned_roles table used by Access to save assigned roles to the database.
@@ -71,11 +42,6 @@ return [
      * Configurations for the user
      */
     'users' => [
-        /*
-         * Administration tables
-         */
-        'default_per_page' => 25,
-
         /*
          * The role the user is assigned to when they sign up from the frontend, not namespaced
          */
@@ -109,4 +75,29 @@ return [
      * Makes it so social logins can not change passwords, etc.
      */
     'socialite_session_name' => 'socialite_provider',
+
+    /*
+     * Application captcha specific settings
+     */
+    'captcha' => [
+		/*
+		 * The name of the session variable that stores the current login attempts for each user
+		 */
+		'session_key' => 'needs_captcha',
+
+        /*
+         * Whether the registration captcha is on or off
+         */
+        'registration' => env('REGISTRATION_CAPTCHA_STATUS', false),
+
+        /*
+         * Whether the login captcha is on or off
+         */
+        'login' => env('LOGIN_CAPTCHA_STATUS', false),
+
+        /*
+         * Number of login tries made before showing login captcha
+         */
+        'login_tries' => env('LOGIN_CAPTCHA_TRIES', 3),
+     ],
 ];

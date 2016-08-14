@@ -15,16 +15,6 @@ return [
 
     'backend' => [
         'access' => [
-            'permissions' => [
-                'edit_explanation' => 'Se você executou alterações na hierarquia sem atualizar esta página, você precisará atualizar para refletir as mudanças aqui.',
-
-                'groups' => [
-                    'hierarchy_saved' => 'Hierarquia salva com sucesso.',
-                ],
-
-                'sort_explanation' => 'Esta seção permite que você organize suas permissões em grupos para manter-se organizado. Independentemente do grupo, as permissões são ainda atribuídas individualmente a cada função.',
-            ],
-
             'users' => [
                 'delete_user_confirm' => 'Tem certeza de que deseja excluir este usuário permanentemente? Em algum lugar do aplicativo pode fazer referência ao id deste usuário e possivelmente pode ocasionar um erro. Prossiga por sua conta e risco. Isso não pode ser desfeito.',
                 'if_confirmed_off' => '(Se confirmado estiver desligado)',
@@ -43,8 +33,10 @@ return [
             'boilerplate_link' => 'Laravel 5 Boilerplate',
             'continue' => 'Continuar',
             'member_since' => 'Membro desde',
+            'minutes' => ' minutes',
             'search_placeholder' => 'Buscar...',
-
+            'timeout' => 'You were automatically logged out for security reasons since you had no activity in ',
+            
             'see_all' => [
                 'messages' => 'Ver todas as mensagens',
                 'notifications' => 'Ver todas as notificações',

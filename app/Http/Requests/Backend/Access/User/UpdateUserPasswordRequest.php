@@ -17,7 +17,7 @@ class UpdateUserPasswordRequest extends Request
      */
     public function authorize()
     {
-        return access()->allow('change-user-password');
+        return access()->allow('manage-users');
     }
 
     /**
