@@ -60,7 +60,7 @@ class EloquentHistoryRepository implements HistoryContract {
 		} else {
 			$type = strtolower($type);
 
-			$history = History::whereHas('type', function ($query) use ($type) {
+			$history = History::with('user')->whereHas('type', function ($query) use ($type) {
 				$query->where('name', ucfirst($type));
 			})->latest()->get();
 		}
