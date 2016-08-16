@@ -34,4 +34,8 @@ return [
 			'restored' => 'a restauré l\'utilisateur',
 		],
 	],
+	'general' => [
+		'load_item' => 'Chargement d\'autres histoires ... ',
+		'no_more_item' => 'Pas plus d\'histoire.',
+	],
 ];

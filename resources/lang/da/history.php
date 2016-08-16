@@ -34,4 +34,8 @@ return [
 			'restored' => 'genskabte brugeren',
 		],
 	],
+	'general' => [
+		'load_item' => 'Indlæser flere historier ... ',
+		'no_more_item' => 'Ikke mere historie.',
+	],
 ];
