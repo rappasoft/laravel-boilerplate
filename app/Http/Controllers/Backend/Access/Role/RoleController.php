@@ -10,6 +10,7 @@ use App\Http\Requests\Backend\Access\Role\ManageRoleRequest;
 use App\Http\Requests\Backend\Access\Role\UpdateRoleRequest;
 use App\Repositories\Backend\Access\Role\RoleRepositoryContract;
 use App\Repositories\Backend\Access\Permission\PermissionRepositoryContract;
+use App\Repositories\Backend\History\HistoryContract;
 
 /**
  * Class RoleController
@@ -28,13 +29,19 @@ class RoleController extends Controller
     protected $permissions;
 
     /**
+     * @var HistoryContract
+     */
+    protected $history;
+
+    /**
      * @param RoleRepositoryContract       $roles
      * @param PermissionRepositoryContract $permissions
      */
-    public function __construct(RoleRepositoryContract $roles, PermissionRepositoryContract $permissions)
+    public function __construct(RoleRepositoryContract $roles, PermissionRepositoryContract $permissions, HistoryContract $history)
 	{
         $this->roles = $roles;
         $this->permissions = $permissions;
+        $this->history = $history;
     }
 
 	/**
@@ -77,6 +84,41 @@ class RoleController extends Controller
 			})
 			->make(true);
 	}
+
+    /**
+     * @param  ManageUserRequest $request       
+     * @return json                     
+     */
+    public function getHistory(ManageRoleRequest $request)
+    {
+        $skip = $request['skip'];
+        $take = $request['take'];
+        return response()->json(['data' => $this->history->render($skip, $take)]);
+    }
+
+    /**
+     * @param  ManageUserRequest $request       
+     * @return json                     
+     */
+    public function getHistoryType(ManageRoleRequest $request)
+    {
+        $skip = $request['skip'];
+        $take = $request['take'];
+        $type = $request['type'];
+        return response()->json(['data' => $this->history->renderType($type, $skip, $take)]);
+    }
+
+    /**
+     * @param  ManageUserRequest $request       
+     * @return json                     
+     */
+    public function getHistoryEntity(ManageRoleRequest $request)
+    {
+        $skip = $request['skip'];
+        $take = $request['take'];
+        $type = $request['entity_id'];
+        return response()->json(['data' => $this->history->renderType($entity_id, $skip, $take)]);
+    }
 
     /**
      * @param ManageRoleRequest $request

@@ -41,8 +41,15 @@ class EloquentHistoryRepository implements HistoryContract {
 	/**
 	 * @return string
 	 */
-	public function render() {
-		$history = History::with('user')->latest()->get();
+	public function render($skip = null, $take = null) {
+		$history = History::with('user')
+		->when($skip, function($query) use ($skip){			
+			return $query->skip($skip);
+		})
+		->when($take, function($query) use ($take){
+			return $query->take($take);
+		})
+		->latest()->get();
 
 		if (! $history->count())
 			return trans("history.backend.none");
@@ -54,15 +61,29 @@ class EloquentHistoryRepository implements HistoryContract {
 	 * @param $type
 	 * @return string
 	 */
-	public function renderType($type) {
+	public function renderType($type, $skip = null, $take = null) {
 		if (is_numeric($type)) {
-			$history = History::with('user')->where('type_id', $type)->latest()->get();
+			$history = History::with('user')->where('type_id', $type)
+			->when($skip, function($query) use ($skip){
+				return $query->skip($skip);
+			})
+			->when($take, function($query) use ($take){
+				return $query->take($take);
+			})
+			->latest()->get();
 		} else {
 			$type = strtolower($type);
 
 			$history = History::with('user')->whereHas('type', function ($query) use ($type) {
 				$query->where('name', ucfirst($type));
-			})->latest()->get();
+			})
+			->when($skip, function($query) use ($skip){
+				return $query->skip($skip);
+			})
+			->when($take, function($query) use ($take){
+				return $query->take($take);
+			})
+			->latest()->get();
 		}
 
 		if (! $history->count())
@@ -75,8 +96,15 @@ class EloquentHistoryRepository implements HistoryContract {
 	 * @param $entity_id
 	 * @return string
 	 */
-	public function renderEntity($entity_id) {
-		$history = History::with('user', 'type')->where('entity_id', $entity_id)->latest()->get();
+	public function renderEntity($entity_id, $skip = null, $take = null) {
+		$history = History::with('user', 'type')->where('entity_id', $entity_id)
+		->when($skip, function($query) use ($skip){
+			return $query->skip($skip);
+		})
+		->when($take, function($query) use ($take){
+			return $query->take($take);
+		})
+		->latest()->get();
 
 		if (! $history->count())
 			return trans("history.backend.none_for_entity", ['entity' => $history->type->name]);

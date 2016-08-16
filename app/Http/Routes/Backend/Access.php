@@ -47,6 +47,16 @@ Route::group([
 				Route::get('delete', 'UserController@delete')->name('admin.access.user.delete-permanently');
                 Route::get('restore', 'UserController@restore')->name('admin.access.user.restore');
             });
+
+            /**
+             * Ajax call for history 
+             */
+            Route::group(['prefix' => 'user/history'], function() {
+                Route::post('get-history', 'UserController@getHistory')->name('admin.access.user.history.get-history');
+                Route::post('get-history-type', 'UserController@getHistoryType')->name('admin.access.user.history.get-history-type');
+                Route::post('get-history-entity', 'UserController@getHistoryEntity')->name('admin.access.user.history.get-history-entity');
+            });
+            
 		});
 	});
 
@@ -61,6 +71,16 @@ Route::group([
 
 			//For DataTables
 			Route::get('role/get', 'RoleController@get')->name('admin.access.role.get');
+
+			/**
+             * Ajax call for history 
+             */
+            Route::group(['prefix' => 'role/history'], function() {
+                Route::post('get-history', 'RoleController@getHistory')->name('admin.access.role.history.get-history');
+                Route::post('get-history-type', 'RoleController@getHistoryType')->name('admin.access.role.history.get-history-type');
+                Route::post('get-history-entity', 'RoleController@getHistoryEntity')->name('admin.access.role.history.get-history-entity');
+            });
+
 		});
 	});
 });

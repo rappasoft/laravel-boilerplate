@@ -10,6 +10,7 @@ use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserRequest;
 use App\Repositories\Backend\Access\User\UserRepositoryContract;
 use App\Repositories\Backend\Access\Role\RoleRepositoryContract;
+use App\Repositories\Backend\History\HistoryContract;
 use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
 use App\Repositories\Frontend\Access\User\UserRepositoryContract as FrontendUserRepositoryContract;
 
@@ -29,13 +30,19 @@ class UserController extends Controller
     protected $roles;
 
     /**
+     * @var HistoryContract
+     */
+    protected $history;
+
+    /**
      * @param UserRepositoryContract $users
      * @param RoleRepositoryContract $roles
      */
-    public function __construct(UserRepositoryContract $users, RoleRepositoryContract $roles)
+    public function __construct(UserRepositoryContract $users, RoleRepositoryContract $roles, HistoryContract $history)
     {
         $this->users = $users;
         $this->roles = $roles;
+        $this->history = $history;
     }
 
 	/**
@@ -73,6 +80,41 @@ class UserController extends Controller
                 return $user->action_buttons;
             })
             ->make(true);
+    }
+
+    /**
+     * @param  ManageUserRequest $request       
+     * @return json                     
+     */
+    public function getHistory(ManageUserRequest $request)
+    {
+        $skip = $request['skip'];
+        $take = $request['take'];
+        return response()->json(['data' => $this->history->render($skip, $take)]);
+    }
+
+    /**
+     * @param  ManageUserRequest $request       
+     * @return json                     
+     */
+    public function getHistoryType(ManageUserRequest $request)
+    {
+        $skip = $request['skip'];
+        $take = $request['take'];
+        $type = $request['type'];
+        return response()->json(['data' => $this->history->renderType($type, $skip, $take)]);
+    }
+
+    /**
+     * @param  ManageUserRequest $request       
+     * @return json                     
+     */
+    public function getHistoryEntity(ManageUserRequest $request)
+    {
+        $skip = $request['skip'];
+        $take = $request['take'];
+        $type = $request['entity_id'];
+        return response()->json(['data' => $this->history->renderType($entity_id, $skip, $take)]);
     }
 
 	/**

@@ -22,19 +22,19 @@ interface HistoryContract {
 	/**
 	 * @return mixed
 	 */
-	public function render();
+	public function render($skip = null, $take = null);
 
 	/**
 	 * @param $type
 	 * @return mixed
 	 */
-	public function renderType($type);
+	public function renderType($type, $skip = null, $take = null);
 
 	/**
 	 * @param $entity_id
 	 * @return mixed
 	 */
-	public function renderEntity($entity_id);
+	public function renderEntity($entity_id, $skip = null, $take = null);
 
 	/**
 	 * @param $text
