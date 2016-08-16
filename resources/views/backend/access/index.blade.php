@@ -137,21 +137,6 @@
                     flag = false;                   
                 }
             }
-
-            function appendHistory(data, el_id, nomore){
-                var i = 1;
-                var ul = '#' +el_id + ' > ul';
-                if(data.data != "{{ trans('history.backend.none_for_type') }}"){     
-                    $('li', data.data).each(function(index){            
-                        $(this).hide().appendTo(ul).fadeIn(i*200);
-                        i++;
-                    });
-                    historyParams.skip += historyParams.take;
-                } else {           
-                    $(nomore).hide().appendTo(ul).fadeIn(500); 
-                    flag = false;                   
-                }
-            }
         });        
     </script>
 @stop
