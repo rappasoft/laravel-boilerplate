@@ -86,41 +86,6 @@ class RoleController extends Controller
 	}
 
     /**
-     * @param  ManageUserRequest $request       
-     * @return json                     
-     */
-    public function getHistory(ManageRoleRequest $request)
-    {
-        $skip = $request['skip'];
-        $take = $request['take'];
-        return response()->json(['data' => $this->history->render($skip, $take)]);
-    }
-
-    /**
-     * @param  ManageUserRequest $request       
-     * @return json                     
-     */
-    public function getHistoryType(ManageRoleRequest $request)
-    {
-        $skip = $request['skip'];
-        $take = $request['take'];
-        $type = $request['type'];
-        return response()->json(['data' => $this->history->renderType($type, $skip, $take)]);
-    }
-
-    /**
-     * @param  ManageUserRequest $request       
-     * @return json                     
-     */
-    public function getHistoryEntity(ManageRoleRequest $request)
-    {
-        $skip = $request['skip'];
-        $take = $request['take'];
-        $type = $request['entity_id'];
-        return response()->json(['data' => $this->history->renderType($entity_id, $skip, $take)]);
-    }
-
-    /**
      * @param ManageRoleRequest $request
      * @return mixed
      */

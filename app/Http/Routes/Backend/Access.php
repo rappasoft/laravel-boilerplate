@@ -52,9 +52,9 @@ Route::group([
              * Ajax call for history 
              */
             Route::group(['prefix' => 'user/history'], function() {
-                Route::post('get-history', 'UserController@getHistory')->name('admin.access.user.history.get-history');
-                Route::post('get-history-type', 'UserController@getHistoryType')->name('admin.access.user.history.get-history-type');
-                Route::post('get-history-entity', 'UserController@getHistoryEntity')->name('admin.access.user.history.get-history-entity');
+                Route::get('get-history', 'UserController@getHistory')->name('admin.access.user.history.get-history');
+                Route::get('get-history-type', 'UserController@getHistoryType')->name('admin.access.user.history.get-history-type');
+                Route::get('get-history-entity', 'UserController@getHistoryEntity')->name('admin.access.user.history.get-history-entity');
             });
             
 		});
@@ -71,15 +71,6 @@ Route::group([
 
 			//For DataTables
 			Route::get('role/get', 'RoleController@get')->name('admin.access.role.get');
-
-			/**
-             * Ajax call for history 
-             */
-            Route::group(['prefix' => 'role/history'], function() {
-                Route::post('get-history', 'RoleController@getHistory')->name('admin.access.role.history.get-history');
-                Route::post('get-history-type', 'RoleController@getHistoryType')->name('admin.access.role.history.get-history-type');
-                Route::post('get-history-entity', 'RoleController@getHistoryEntity')->name('admin.access.role.history.get-history-entity');
-            });
 
 		});
 	});

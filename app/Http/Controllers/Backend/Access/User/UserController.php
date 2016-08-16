@@ -88,9 +88,8 @@ class UserController extends Controller
      */
     public function getHistory(ManageUserRequest $request)
     {
-        $skip = $request['skip'];
-        $take = $request['take'];
-        return response()->json(['data' => $this->history->render($skip, $take)]);
+        $perpage = $request['perpage'];
+        return $this->history->renderJson($perpage);
     }
 
     /**
@@ -99,10 +98,9 @@ class UserController extends Controller
      */
     public function getHistoryType(ManageUserRequest $request)
     {
-        $skip = $request['skip'];
-        $take = $request['take'];
         $type = $request['type'];
-        return response()->json(['data' => $this->history->renderType($type, $skip, $take)]);
+        $perpage = $request['perpage'];
+        return $this->history->renderTypeJson($type, $perpage);
     }
 
     /**
@@ -111,10 +109,9 @@ class UserController extends Controller
      */
     public function getHistoryEntity(ManageUserRequest $request)
     {
-        $skip = $request['skip'];
-        $take = $request['take'];
-        $type = $request['entity_id'];
-        return response()->json(['data' => $this->history->renderType($entity_id, $skip, $take)]);
+        $entity_id = $request['entity_id'];
+        $perpage = $request['perpage'];
+        return $this->history->renderEntityJson($entity_id, $perpage);
     }
 
 	/**
