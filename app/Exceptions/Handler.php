@@ -3,11 +3,18 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Session\TokenMismatchException;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use App\Exceptions\Backend\Access\User\UserNeedsRolesException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
+/**
+ * Class Handler
+ * @package App\Exceptions
+ */
 class Handler extends ExceptionHandler
 {
     /**
@@ -16,8 +23,10 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
+        AuthorizationException::class,
         HttpException::class,
         ModelNotFoundException::class,
+        ValidationException::class,
     ];
 
     /**
@@ -25,37 +34,45 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception $e
+     * @param  \Exception  $e
      * @return void
      */
     public function report(Exception $e)
     {
-        return parent::report($e);
+        parent::report($e);
     }
 
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request    $request
-     * @param  \Exception                  $e
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Exception  $e
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $e)
     {
-        if ($e instanceof ModelNotFoundException) {
-            $e = new NotFoundHttpException($e->getMessage(), $e);
+        /**
+         * Redirect if token mismatch error
+         * Usually because user stayed on the same screen too long and their session expired
+         */
+        if ($e instanceof TokenMismatchException) {
+            return redirect()->route('auth.login');
         }
 
-        //As to preserve the catch all
+        /**
+         * All instances of GeneralException redirect back with a flash message to show a bootstrap alert-error
+         */
         if ($e instanceof GeneralException) {
             return redirect()->back()->withInput()->withFlashDanger($e->getMessage());
         }
 
-        if ($e instanceof Backend\Access\User\UserNeedsRolesException) {
-            return redirect()->route('admin.access.users.edit', $e->userID())->withInput()->withFlashDanger($e->validationErrors());
+        /**
+         * User needs roles and none were selected
+         */
+        if ($e instanceof UserNeedsRolesException) {
+            return redirect()->route('admin.access.user.edit', $e->userID())->withInput()->withFlashDanger($e->validationErrors());
         }
 
-        //Catch all
         return parent::render($request, $e);
     }
 }

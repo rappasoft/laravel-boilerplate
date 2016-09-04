@@ -13,15 +13,21 @@ return [
     |
     */
 
-    'my_information'  => 'Minhas Informações',
-    'change_password' => 'Alterar Senha',
-    'administration'  => 'Administração',
-    'dashboard'       => 'Painel de Controle',
-    'home'            => 'Início',
-    'login'           => 'Entrar',
-    'logout'          => 'Sair',
-    'macros'          => 'Macros',
-    'register'        => 'Registre-se',
-    'button'          => 'Botão',
+    'general' => [
+        'home' => 'Início',
+        'logout' => 'Sair',
+    ],
 
+    'frontend' => [
+        'dashboard' => 'Painel de Controle',
+        'login' => 'Entrar',
+        'macros' => 'Macros',
+        'register' => 'Registrar',
+
+        'user' => [
+            'administration' => 'Administração',
+            'change_password' => 'Alterar Senha',
+            'my_information' => 'Minhas Informações',
+        ],
+    ],
 ];

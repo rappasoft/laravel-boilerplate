@@ -1,5 +1,6 @@
-            <p>This is the AdminLTE theme by <a href="https://almsaeedstudio.com/" target="_blank">https://almsaeedstudio.com/</a>. This is a stripped down version with only the necessary styles and scripts to get it running. Download the full version to start adding components to your dashboard.</p>
-            <p>All the functionality is for show with the exception of the <strong>User Management</strong> to the left. This boilerplate comes with a fully functional access control library to manage users/roles/permissions.</p>
-            <p>Keep in mind it is a work in progress and their may be bugs or other issues I have not come across. I will do my best to fix them as I receive them.</p>
-            <p>Hope you enjoy all of the work I have put into this. Please visit the <a href="https://github.com/rappasoft/laravel-5-boilerplate" target="_blank">GitHub</a> page for more information and report any <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">issues here</a>.</p>
-            <p>- Anthony Rappa</p>
+<p>Este es tema AdminLTE por <a href="https://almsaeedstudio.com/" target="_blank">https://almsaeedstudio.com/</a>. Esta versión no está completa, descargue la versión completa para añadir mas componentes.</p>
+<p>Toda la funcionalidad es de prueba, a excepción de <strong>Administración de acceso</strong> a la izquierda. Esta plantilla viene pre-configurada y funcional para total gestión de usuarios/roles/permisos.</p>
+<p>Tenga presente que esta plantilla sigue estando en desarrollo y puene contener errores. Hare lo que este en mis manos para enmendarlos.</p>
+<p>Espero que disfrute y aprecie el trabajo depositado en este proyecto. Por favor, visite <a href="https://github.com/rappasoft/laravel-5-boilerplate" target="_blank">GitHub</a> para mas información o reportar error <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">aquí</a>.</p>
+<p><strong>Este proyecto es muy demandante para mantenerse al día con la frecuencia en que el master branch de laravel va cambiando, por tanto cualquier ayuda será apreciada.</strong></p>
+<p>- Anthony Rappa</p>

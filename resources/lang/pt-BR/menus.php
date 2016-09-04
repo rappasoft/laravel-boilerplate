@@ -13,57 +13,60 @@ return [
     |
     */
 
-    'active_users'            => 'Usuários Ativos',
-    'banned_users'            => 'Usuários Banidos',
-    'create_permission'       => 'Criar Permissão',
-    'create_permission_group' => 'Criar Grupo',
-    'create_role'             => 'Criar Papel',
-    'create_user'             => 'Criar Usuário',
-    'dashboard'               => 'Painel de Controle',
-    'deactivated_users'       => 'Usuários Desativados',
-    'deleted_users'           => 'Usuários Deletados',
-    'edit_permission'         => 'Editar Permissão',
-    'edit_permission_group'   => 'Editar Grupo',
-    'edit_role'               => 'Editar Papel',
-    'edit_user'               => 'Editar Usuário',
-    'general'                 => 'Geral',
-    'header_buttons'          => [
-        'permissions'         => [
-            'all'             => 'Todas as Permissões',
-            'button'          => 'Permissões',
+    'backend' => [
+        'access' => [
+            'title' => 'Gerenciamento de Usuários',
 
-            'groups'          => [
-                'all'         => 'Todos os Grupos',
-                'button'      => 'Grupos',
+            'roles' => [
+                'all' => 'Todos os Papéis',
+                'create' => 'Criar Papel',
+                'edit' => 'Editar Papel',
+                'management' => 'Gerenciamento de Papéis',
+                'main' => 'Papéis',
+            ],
+
+            'users' => [
+                'all' => 'Todos os Usuários',
+                'change-password' => 'Alterar Senha',
+                'create' => 'Criar Usuário',
+                'deactivated' => 'Desativar Usuários',
+                'deleted' => 'Excluir Usuários',
+                'edit' => 'Editar Usuário',
+                'main' => 'Usuários',
             ],
         ],
-        'roles'               => [
-            'all'             => 'Todos os Papéis',
-            'button'          => 'Papéis',
+
+        'log-viewer' => [
+            'main' => 'Visualizador de Log',
+            'dashboard' => 'Painel de Controle',
+            'logs' => 'Logs',
         ],
-        'users'               => [
-            'all'             => 'Todos os Usuários',
-            'button'          => 'Usuários',
+
+        'sidebar' => [
+            'dashboard' => 'Painel de Controle',
+            'general' => 'Geral',
         ],
     ],
-    'log-viewer'              => [
-        'main'                => 'Visualizador de Log',
-        'dashboard'           => 'Painel de Controle',
-        'logs'                => 'Logs',
-    ],
-    'permission_management'   => 'Gerenciamento de Permissões',
-    'role_management'         => 'Gerenciamento de Papéis',
-    'user_management'         => 'Gerenciamento de Usuários',
-    'access_management'       => 'Gerenciamento de Acesso',
-    'language-picker'         => [
-        'language'            => 'Idioma',
-        'langs'               => [
-            'en'              => 'Inglês',
-            'it'              => 'Italiano',
-			'pl' 			  => 'Polish',
-            'pt-BR'           => 'Português (Brasil)',
-            'ru'              => 'Russo',
-            'sv'              => 'Sueco',
+
+    'language-picker' => [
+        'language' => 'Idioma',
+        /**
+         * Add the new language to this array.
+         * The key should have the same language code as the folder name.
+         * The string should be: 'Language-name-in-your-own-language (Language-name-in-English)'.
+         * Be sure to add the new language in alphabetical order.
+         */
+        'langs' => [
+            'ar' => 'العربية (Arabic)',
+            'da' => 'Dinamarquês (Danish)',
+            'de' => 'Alemão (German)',
+            'en' => 'Inglês (English)',
+            'es' => 'Espanhol (Spanish)',
+            'fr' => 'Francês (French)',
+            'it' => 'Italiano (Italian)',
+            'pt-BR' => 'Português do Brasil (Brazilian Portuguese)',
+            'sv' => 'Sueco (Swedish)',
+            'th' => 'Thai',
         ],
     ],
 ];

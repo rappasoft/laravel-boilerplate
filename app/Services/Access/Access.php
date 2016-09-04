@@ -34,12 +34,37 @@ class Access
     }
 
     /**
+     * Return if the current session user is a guest or not
+     * @return mixed
+     */
+    public function guest()
+    {
+        return auth()->guest();
+    }
+
+	/**
+     * @return mixed
+     */
+    public function logout()
+    {
+        return auth()->logout();
+    }
+
+    /**
      * Get the currently authenticated user's id
      * @return mixed
      */
     public function id()
     {
         return auth()->id();
+    }
+
+	/**
+     * @param $id
+     * @return mixed
+     */
+    public function loginUsingId($id) {
+        return auth()->loginUsingId($id);
     }
 
     /**
@@ -83,10 +108,10 @@ class Access
      * @param  string $permission Permission name or id.
      * @return bool
      */
-    public function can($permission)
+    public function allow($permission)
     {
         if ($user = $this->user()) {
-            return $user->can($permission);
+            return $user->allow($permission);
         }
 
         return false;
@@ -98,7 +123,7 @@ class Access
      * @param  $needsAll
      * @return bool
      */
-    public function canMultiple($permissions, $needsAll = false)
+    public function allowMultiple($permissions, $needsAll = false)
     {
         if ($user = $this->user()) {
             //If not an array, make a one item array
@@ -106,7 +131,7 @@ class Access
                 $permissions = array($permissions);
             }
 
-            return $user->canMultiple($permissions, $needsAll);
+            return $user->allowMultiple($permissions, $needsAll);
         }
 
         return false;
@@ -118,7 +143,7 @@ class Access
      */
     public function hasPermission($permission)
     {
-        return $this->can($permission);
+        return $this->allow($permission);
     }
 
     /**
@@ -128,6 +153,6 @@ class Access
      */
     public function hasPermissions($permissions, $needsAll = false)
     {
-        return $this->canMultiple($permissions, $needsAll);
+        return $this->allowMultiple($permissions, $needsAll);
     }
 }

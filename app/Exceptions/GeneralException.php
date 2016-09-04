@@ -2,7 +2,10 @@
 
 namespace App\Exceptions;
 
-class GeneralException extends \Exception
-{
-    //
-}
+use Exception;
+
+/**
+ * Class GeneralException
+ * @package App\Exceptions
+ */
+class GeneralException extends Exception {}

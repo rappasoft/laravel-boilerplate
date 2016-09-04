@@ -2,12 +2,12 @@
 
 Breadcrumbs::register('log-viewer::dashboard', function ($breadcrumbs) {
     $breadcrumbs->parent('admin.dashboard');
-    $breadcrumbs->push(trans('menus.log-viewer.main'), url('admin/log-viewer'));
+    $breadcrumbs->push(trans('menus.backend.log-viewer.main'), url('admin/log-viewer'));
 });
 
 Breadcrumbs::register('log-viewer::logs.list', function ($breadcrumbs) {
     $breadcrumbs->parent('log-viewer::dashboard');
-    $breadcrumbs->push(trans('menus.log-viewer.logs'), url('admin/log-viewer/logs'));
+    $breadcrumbs->push(trans('menus.backend.log-viewer.logs'), url('admin/log-viewer/logs'));
 });
 
 Breadcrumbs::register('log-viewer::logs.show', function ($breadcrumbs, $date) {

@@ -2,7 +2,7 @@
 
 namespace App\Models\Access\User\Traits\Relationship;
 
-use App\Models\Access\User\UserProvider;
+use App\Models\Access\User\SocialLogin;
 
 /**
  * Class UserRelationship
@@ -10,6 +10,7 @@ use App\Models\Access\User\UserProvider;
  */
 trait UserRelationship
 {
+
     /**
      * Many-to-Many relations with Role.
      *
@@ -21,21 +22,10 @@ trait UserRelationship
     }
 
     /**
-     * Many-to-Many relations with Permission.
-     * ONLY GETS PERMISSIONS ARE NOT ASSOCIATED WITH A ROLE
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function permissions()
-    {
-        return $this->belongsToMany(config('access.permission'), config('access.permission_user_table'), 'user_id', 'permission_id');
-    }
-
-    /**
      * @return mixed
      */
     public function providers()
     {
-        return $this->hasMany(UserProvider::class);
+        return $this->hasMany(SocialLogin::class);
     }
 }

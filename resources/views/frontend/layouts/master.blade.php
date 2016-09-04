@@ -1,46 +1,49 @@
-<!doctype html>
-<html class="no-js" lang="">
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="_token" content="{{ csrf_token() }}" />
+
         <title>@yield('title', app_name())</title>
-        <meta name="description" content="@yield('meta_description', 'Default Description')">
-        <meta name="author" content="@yield('author', 'Anthony Rappa')">
+
+        <!-- Meta -->
+        <meta name="description" content="@yield('meta_description', 'Laravel 5 Boilerplate')">
+        <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
         @yield('meta')
 
+        <!-- Styles -->
         @yield('before-styles-end')
-        {!! HTML::style(elixir('css/frontend.css')) !!}
+
+        {{ Html::style(elixir('css/frontend.css')) }}
+
+        <!-- Check if the language is set to RTL, so apply the RTL layouts -->
+        @langRTL
+            {!! Html::style(elixir('css/rtl.css')) !!}
+        @endif
+
         @yield('after-styles-end')
 
         <!-- Fonts -->
-        <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
-
-        <!-- Icons-->
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
-
-        {!! HTML::script("js/vendor/modernizr-2.8.3.min.js") !!}
+        {{ Html::style('https://fonts.googleapis.com/css?family=Lato:100,300,400,700') }}
     </head>
-    <body>
-        <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
+    <body id="app-layout">
+        @include('includes.partials.logged-in-as')
         @include('frontend.includes.nav')
 
-        <div class="container-fluid">
+        <div class="container">
             @include('includes.partials.messages')
             @yield('content')
         </div><!-- container -->
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery-1.11.2.min.js')}}"><\/script>')</script>
-        {!! HTML::script('js/vendor/bootstrap.min.js') !!}
+        <!-- Scripts -->
+        {{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js') }}
+        <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery/jquery-2.1.4.min.js')}}"><\/script>')</script>
+        {!! Html::script('js/vendor/bootstrap/bootstrap.min.js') !!}
 
         @yield('before-scripts-end')
-        {!! HTML::script(elixir('js/frontend.js')) !!}
+        {!! Html::script(elixir('js/frontend.js')) !!}
         @yield('after-scripts-end')
 
         @include('includes.partials.ga')

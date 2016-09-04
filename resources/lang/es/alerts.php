@@ -13,32 +13,21 @@ return [
     |
     */
 
-    'Permisos' => [
-        'created' => 'Permiso creado correctamente.',
-        'updated' => 'Permiso actualizado correctamente.',
-        'deleted' => 'Permiso eliminado correctamente.',
-        'groups'  => [
-            'created' => 'Grupo de permisos creado correctamente.',
-            'updated' => 'Grupo de permisos actualizado correctamente.',
-            'deleted' => 'Grupo de permisos eliminado correctamente.',
+    'backend' => [
+        'roles' => [
+            'created' => 'Rol creado satisfactoriamente.',
+            'deleted' => 'Rol eliminado satisfactoriamente.',
+            'updated' => 'Rol actualizado satisfactoriamente.',
         ],
+
+        'users' => [
+            'confirmation_email' => 'Un nuevo mensaje de confirmación ha sido enviado a tu correo.',
+            'created' => 'Usuario creado satisfactoriamente.',
+            'deleted' => 'Usuario eliminado satisfactoriamente.',
+            'deleted_permanently' => 'Usuario eliminado de forma permanente.',
+            'restored' => 'Usuario restaurado satisfactoriamente.',
+            'updated' => 'Usuario actualizado satisfactoriamente.',
+            'updated_password' => "Contraseña actualizada satisfactoriamente.",
+        ]
     ],
-
-    'roles' => [
-        'created' => 'El rol ha sido correctamente creado.',
-        'updated' => 'El rol ha sido correctamente actualizado.',
-        'deleted' => 'El rol ha sido correctamente eliminado.'
-    ],
-
-    'users' => [
-        'created' => 'El usuario ha sido correctamente creado.',
-        'updated' => 'El usuario ha sido correctamente actualizado.',
-        'deleted' => 'El usuario ha sido correctamente eliminado.',
-        'deleted_permanently' => 'El usuario ha sido eliminado permanentemente.',
-        'restored' => 'El usuario fue restaurado correctamente.',
-        'updated_password' => "La password de usuario fue correctamente actualizada.",
-        'confirmation_email' => 'Un nuevo mail de confirmacion fue enviado a su direccion de correo.'
-
-    ]
-
 ];

@@ -10,16 +10,34 @@ use Closure;
  */
 class RouteNeedsRole
 {
-    /**
-     * @param  $request
-     * @param  callable   $next
-     * @param  $role
+
+	/**
+     * @param $request
+     * @param Closure $next
+     * @param $role
+     * @param bool $needsAll
      * @return mixed
      */
-    public function handle($request, Closure $next, $role)
+    public function handle($request, Closure $next, $role, $needsAll = false)
     {
-        if (!access()->hasRole($role)) {
-            return redirect('/')->withFlashDanger('You do not have access to do that.');
+        /**
+         * Roles array
+         */
+        if (strpos($role, ";") !== false) {
+            $roles = explode(";", $role);
+            $access = access()->hasRoles($roles, ($needsAll === "true" ? true : false));
+        } else {
+            /**
+             * Single role
+             */
+            $access = access()->hasRole($role);
+        }
+
+
+        if (! $access) {
+            return redirect()
+                ->route('frontend.index')
+                ->withFlashDanger(trans('auth.general_error'));
         }
 
         return $next($request);

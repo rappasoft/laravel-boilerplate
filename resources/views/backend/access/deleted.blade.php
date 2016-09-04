@@ -1,113 +1,116 @@
 @extends ('backend.layouts.master')
 
-@section ('title', trans('menus.user_management') . ' | ' . trans('menus.deleted_users'))
+@section ('title', trans('labels.backend.access.users.management') . ' | ' . trans('labels.backend.access.users.deleted'))
+
+@section('after-styles-end')
+    {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
+@stop
 
 @section('page-header')
     <h1>
-        {{ trans('menus.user_management') }}
-        <small>{{ trans('menus.deleted_users') }}</small>
+        {{ trans('labels.backend.access.users.management') }}
+        <small>{{ trans('labels.backend.access.users.deleted') }}</small>
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('menus.deleted_users') }}</h3>
+            <h3 class="box-title">{{ trans('labels.backend.access.users.deleted') }}</h3>
 
             <div class="box-tools pull-right">
                 @include('backend.access.includes.partials.header-buttons')
-            </div>
+            </div><!--box-tools pull-right-->
         </div><!-- /.box-header -->
 
         <div class="box-body">
             <div class="table-responsive">
-                <table class="table table-striped table-bordered table-hover">
+                <table id="users-table" class="table table-condensed table-hover">
                     <thead>
-                    <tr>
-                        <th>{{ trans('crud.users.id') }}</th>
-                        <th>{{ trans('crud.users.name') }}</th>
-                        <th>{{ trans('crud.users.email') }}</th>
-                        <th>{{ trans('crud.users.confirmed') }}</th>
-                        <th>{{ trans('crud.users.roles') }}</th>
-                        <th>{{ trans('crud.users.other_permissions') }}</th>
-                        <th class="visible-lg">{{ trans('crud.users.created') }}</th>
-                        <th class="visible-lg">{{ trans('crud.users.last_updated') }}</th>
-                        <th>{{ trans('crud.actions') }}</th>
-                    </tr>
+                        <tr>
+                            <th>{{ trans('labels.backend.access.users.table.id') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.name') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.email') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.created') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.last_updated') }}</th>
+                            <th>{{ trans('labels.general.actions') }}</th>
+                        </tr>
                     </thead>
-                    <tbody>
-                    @if ($users->count())
-                        @foreach ($users as $user)
-                            <tr>
-                                <td>{!! $user->id !!}</td>
-                                <td>{!! $user->name !!}</td>
-                                <td>{!! link_to("mailto:".$user->email, $user->email) !!}</td>
-                                <td>{!! $user->confirmed_label !!}</td>
-                                <td>
-                                    @if ($user->roles()->count() > 0)
-                                        @foreach ($user->roles as $role)
-                                            {!! $role->name !!}<br/>
-                                        @endforeach
-                                    @else
-                                        None
-                                    @endif
-                                </td>
-                                <td>
-                                    @if ($user->permissions()->count() > 0)
-                                        @foreach ($user->permissions as $perm)
-                                            {!! $perm->display_name !!}<br/>
-                                        @endforeach
-                                    @else
-                                        None
-                                    @endif
-                                </td>
-                                <td class="visible-lg">{!! $user->created_at->diffForHumans() !!}</td>
-                                <td class="visible-lg">{!! $user->updated_at->diffForHumans() !!}</td>
-                                <td>
-                                    @permission('undelete-users')
-                                    <a href="{{route('admin.access.user.restore', $user->id)}}" class="btn btn-xs btn-success" name="restore_user"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="{{ trans('crud.users.restore_user') }}"></i></a>
-                                    @endauth
-
-                                    @permission('permanently-delete-users')
-                                    <a href="{{route('admin.access.user.delete-permanently', $user->id)}}" class="btn btn-xs btn-danger" name="delete_user_perm"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="{{ trans('crud.users.delete_permanently') }}"></i></a>
-                                    @endauth
-                                </td>
-                            </tr>
-                        @endforeach
-                    @else
-                        <td colspan="9">{{ trans('crud.users.no_deleted_users') }}</td>
-                    @endif
-                    </tbody>
                 </table>
-            </div>
-
-            <div class="pull-left">
-                {!! $users->total() !!} {{ trans('crud.users.total') }}
-            </div>
-
-            <div class="pull-right">
-                {!! $users->render() !!}
-            </div>
-
-            <div class="clearfix"></div>
+            </div><!--table-responsive-->
         </div><!-- /.box-body -->
     </div><!--box-->
 @stop
 
 @section('after-scripts-end')
+    {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
+    {{ Html::script("js/backend/plugin/datatables/dataTables.bootstrap.min.js") }}
+
 	<script>
 		$(function() {
-            @permission('permanently-delete-users')
-                $("a[name='delete_user_perm']").click(function() {
-                    return confirm("Are you sure you want to delete this user permanently? Anywhere in the application that references this user's id will most likely error. Proceed at your own risk. This can not be un-done.");
-                });
-            @endauth
+            $('#users-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: '{{ route("admin.access.user.get") }}',
+                    type: 'get',
+                    data: {status: false, trashed: true}
+                },
+                columns: [
+                    {data: 'id', name: 'id'},
+                    {data: 'name', name: 'name'},
+                    {data: 'email', name: 'email'},
+                    {data: 'confirmed', name: 'confirmed'},
+                    {data: 'roles', name: 'roles'},
+                    {data: 'created_at', name: 'created_at'},
+                    {data: 'updated_at', name: 'updated_at'},
+                    {data: 'actions', name: 'actions'}
+                ],
+                order: [[0, "asc"]],
+                searchDelay: 500
+            });
 
-            @permission('undelete-users')
-                $("a[name='restore_user']").click(function() {
-                    return confirm("Restore this user to its original state?");
+            $("body").on("click", "a[name='delete_user_perm']", function(e) {
+                e.preventDefault();
+                var linkURL = $(this).attr("href");
+
+                swal({
+                    title: "{{ trans('strings.backend.general.are_you_sure') }}",
+                    text: "{{ trans('strings.backend.access.users.delete_user_confirm') }}",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "{{ trans('strings.backend.general.continue') }}",
+                    cancelButtonText: "{{ trans('buttons.general.cancel') }}",
+                    closeOnConfirm: false
+                }, function(isConfirmed){
+                    if (isConfirmed){
+                        window.location.href = linkURL;
+                    }
                 });
-            @endauth
+            });
+
+            $("body").on("click", "a[name='restore_user']", function(e) {
+                e.preventDefault();
+                var linkURL = $(this).attr("href");
+
+                swal({
+                    title: "{{ trans('strings.backend.general.are_you_sure') }}",
+                    text: "{{ trans('strings.backend.access.users.restore_user_confirm') }}",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "{{ trans('strings.backend.general.continue') }}",
+                    cancelButtonText: "{{ trans('buttons.general.cancel') }}",
+                    closeOnConfirm: false
+                }, function(isConfirmed){
+                    if (isConfirmed){
+                        window.location.href = linkURL;
+                    }
+                });
+            });
 		});
 	</script>
 @stop

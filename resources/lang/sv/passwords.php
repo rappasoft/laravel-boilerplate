@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Password Reminder Language Lines
+    | Password Reset Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are the default lines which match reasons
@@ -13,10 +13,10 @@ return [
     |
     */
 
-    "password" => "Lösenord måste innehålla minst sex tecken och stämma med bekräftelsen av lösenordet.",
-    "reset"    => "Lösenordet har nu blivit återställt!",
-    "sent"     => "Ett mail med återstälning av ditt lösenord har nu skickats.",
-    "token"    => "Koden för lösenordsåterställning är ogiltig.",
-    "user"     => "Det finns ingen nvändare registrerad med den e-postadressen.",
+    'password' => 'Lösenordet måste vara minst sex tecken långt och stämma med bekräftelsen av lösenordet.',
+    'reset' => 'Ditt lösenord har återställts!',
+    'sent' => 'Ett mail med länk för återställning av ditt lösenord har nu skickats!',
+    'token' => 'Denna kod för att återställa lösenord är ogiltig.',
+    'user' => "Det finns ingen registrerad användare med den e-postadressen.",
 
 ];

@@ -2,27 +2,27 @@
 
 namespace App\Models\Access\User\Traits\Attribute;
 
-use Illuminate\Support\Facades\Hash;
-
 /**
  * Class UserAttribute
  * @package App\Models\Access\User\Traits\Attribute
  */
 trait UserAttribute
 {
-    /**
-     * Hash the users password
-     *
-     * @param $value
-     */
-    public function setPasswordAttribute($value)
-    {
-        if (Hash::needsRehash($value)) {
-            $this->attributes['password'] = bcrypt($value);
-        } else {
-            $this->attributes['password'] = $value;
-        }
 
+    /**
+     * @return mixed
+     */
+    public function canChangeEmail()
+    {
+        return config('access.users.change_email');
+    }
+
+    /**
+     * @return bool
+     */
+    public function canChangePassword()
+    {
+        return ! app('session')->has(config('access.socialite_session_name'));
     }
 
     /**
@@ -30,11 +30,9 @@ trait UserAttribute
      */
     public function getConfirmedLabelAttribute()
     {
-        if ($this->confirmed == 1) {
-            return "<label class='label label-success'>Yes</label>";
-        }
-
-        return "<label class='label label-danger'>No</label>";
+        if ($this->isConfirmed())
+            return "<label class='label label-success'>".trans('labels.general.yes')."</label>";
+        return "<label class='label label-danger'>".trans('labels.general.no')."</label>";
     }
 
     /**
@@ -42,20 +40,46 @@ trait UserAttribute
      */
     public function getPictureAttribute()
     {
-        /**
-         * If user is logged in with a social account, use the avatar associated if available
-         * Otherwise fallback to the gravatar associated with the social email
-         */
-        if (session('socialite_provider')) {
-            if ($avatar = $this->providers()->where('provider', session('socialite_provider'))->first()->avatar) {
-                return $avatar;
+        return $this->getPicture();
+    }
+
+    /**
+     * @param bool $size
+     * @return mixed
+     */
+    public function getPicture($size = false)
+    {
+        if (! $size) $size = config('gravatar.default.size');
+        return gravatar()->get($this->email, ['size' => $size]);
+    }
+
+    /**
+     * @param $provider
+     * @return bool
+     */
+    public function hasProvider($provider)
+    {
+        foreach ($this->providers as $p) {
+            if ($p->provider == $provider) {
+                return true;
             }
         }
 
-        /**
-         * Otherwise get the gravatar of the users email account
-         */
-        return gravatar()->get($this->email, ['size' => 50]);
+        return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActive() {
+        return $this->status == 1;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isConfirmed() {
+        return $this->confirmed == 1;
     }
 
     /**
@@ -63,11 +87,7 @@ trait UserAttribute
      */
     public function getEditButtonAttribute()
     {
-        if (access()->can('edit-users')) {
-            return '<a href="' . route('admin.access.users.edit', $this->id) . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="' . trans('crud.edit_button') . '"></i></a> ';
-        }
-
-        return '';
+        return '<a href="' . route('admin.access.user.edit', $this) . '" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.edit') . '"></i></a> ';
     }
 
     /**
@@ -75,8 +95,34 @@ trait UserAttribute
      */
     public function getChangePasswordButtonAttribute()
     {
-        if (access()->can('change-user-password')) {
-            return '<a href="' . route('admin.access.user.change-password', $this->id) . '" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="' . trans('crud.change_password_button') . '"></i></a>';
+        return '<a href="' . route('admin.access.user.change-password', $this) . '" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.change_password') . '"></i></a> ';
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatusButtonAttribute()
+    {
+        if ($this->id != access()->id()) {
+            switch ($this->status) {
+                case 0:
+                    return '<a href="' . route('admin.access.user.mark', [
+                        $this,
+                        1
+                    ]) . '" class="btn btn-xs btn-success"><i class="fa fa-play" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.activate') . '"></i></a> ';
+                // No break
+
+                case 1:
+                    return '<a href="' . route('admin.access.user.mark', [
+                        $this,
+                        0
+                    ]) . '" class="btn btn-xs btn-warning"><i class="fa fa-pause" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.deactivate') . '"></i></a> ';
+                // No break
+
+                default:
+                    return '';
+                // No break
+            }
         }
 
         return '';
@@ -85,51 +131,10 @@ trait UserAttribute
     /**
      * @return string
      */
-    public function getStatusButtonAttribute()
-    {
-        switch ($this->status) {
-            case 0:
-                if (access()->can('reactivate-users')) {
-                    return '<a href="' . route('admin.access.user.mark', [$this->id, 1]) . '" class="btn btn-xs btn-success"><i class="fa fa-play" data-toggle="tooltip" data-placement="top" title="' . trans('crud.activate_user_button') . '"></i></a> ';
-                }
-
-                break;
-
-            case 1:
-                $buttons = '';
-
-                if (access()->can('deactivate-users')) {
-                    $buttons .= '<a href="' . route('admin.access.user.mark', [$this->id, 0]) . '" class="btn btn-xs btn-warning"><i class="fa fa-pause" data-toggle="tooltip" data-placement="top" title="' . trans('crud.deactivate_user_button') . '"></i></a> ';
-                }
-
-                if (access()->can('ban-users')) {
-                    $buttons .= '<a href="' . route('admin.access.user.mark', [$this->id, 2]) . '" class="btn btn-xs btn-danger"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="' . trans('crud.ban_user_button') . '"></i></a> ';
-                }
-
-                return $buttons;
-                break;
-
-            case 2:
-                if (access()->can('reactivate-users')) {
-                    return '<a href="' . route('admin.access.user.mark', [$this->id, 1]) . '" class="btn btn-xs btn-success"><i class="fa fa-play" data-toggle="tooltip" data-placement="top" title="' . trans('crud.activate_user_button') . '"></i></a> ';
-                }
-
-                break;
-
-            default:
-                return '';
-                break;
-        }
-
-        return '';
-    }
-
     public function getConfirmedButtonAttribute()
     {
-        if (!$this->confirmed) {
-            if (access()->can('resend-user-confirmation-email')) {
-                return '<a href="' . route('admin.account.confirm.resend', $this->id) . '" class="btn btn-xs btn-success"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="Resend Confirmation E-mail"></i></a> ';
-            }
+        if (! $this->isConfirmed()) {
+            return '<a href="' . route('admin.account.confirm.resend', $this) . '" class="btn btn-xs btn-success"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title=' . trans('buttons.backend.access.users.resend_email') . '"></i></a> ';
         }
 
         return '';
@@ -140,8 +145,49 @@ trait UserAttribute
      */
     public function getDeleteButtonAttribute()
     {
-        if (access()->can('delete-users')) {
-            return '<a href="' . route('admin.access.users.destroy', $this->id) . '" data-method="delete" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="' . trans('crud.delete_button') . '"></i></a>';
+        if ($this->id != access()->id()) {
+            return '<a href="' . route('admin.access.user.destroy', $this) . '"
+                 data-method="delete"
+                 data-trans-button-cancel="' . trans('buttons.general.cancel') . '"
+                 data-trans-button-confirm="' . trans('buttons.general.crud.delete') . '"
+                 data-trans-title="' . trans('strings.backend.general.are_you_sure') . '"
+                 class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.delete') . '"></i></a> ';
+        }
+
+        return '';
+    }
+
+	/**
+     * @return string
+     */
+    public function getRestoreButtonAttribute()
+    {
+        return '<a href="' . route('admin.access.user.restore', $this) . '" name="restore_user" class="btn btn-xs btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.restore_user') . '"></i></a> ';
+    }
+
+	/**
+     * @return string
+     */
+    public function getDeletePermanentlyButtonAttribute()
+    {
+        return '<a href="' . route('admin.access.user.delete-permanently', $this) . '" name="delete_user_perm" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.delete_permanently') . '"></i></a> ';
+    }
+
+	/**
+     * @return string
+     */
+    public function getLoginAsButtonAttribute()
+    {
+        /**
+         * If the admin is currently NOT spoofing a user
+         */
+        if (! session()->has("admin_user_id") || ! session()->has("temp_user_id")) {
+            //Won't break, but don't let them "Login As" themselves
+            if ($this->id != access()->id()) {
+                return '<a href="' . route('admin.access.user.login-as',
+                    $this) . '" class="btn btn-xs btn-success"><i class="fa fa-lock" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.login_as',
+                    ['user' => $this->name]) . '"></i></a> ';
+            }
         }
 
         return '';
@@ -152,10 +198,17 @@ trait UserAttribute
      */
     public function getActionButtonsAttribute()
     {
-        return $this->getEditButtonAttribute() .
-        $this->getChangePasswordButtonAttribute() . ' ' .
-        $this->getStatusButtonAttribute() .
-        $this->getConfirmedButtonAttribute() .
-        $this->getDeleteButtonAttribute();
+        if ($this->deleted_at) {
+            return $this->getRestoreButtonAttribute() .
+                $this->getDeletePermanentlyButtonAttribute();
+        }
+
+        return
+            $this->getLoginAsButtonAttribute() .
+            $this->getEditButtonAttribute() .
+            $this->getChangePasswordButtonAttribute() .
+            $this->getStatusButtonAttribute() .
+            $this->getConfirmedButtonAttribute() .
+            $this->getDeleteButtonAttribute();
     }
 }

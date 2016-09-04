@@ -17,6 +17,11 @@ trait UserAccess
     public function hasRole($nameOrId)
     {
         foreach ($this->roles as $role) {
+            //See if role has all permissions
+            if ($role->all) {
+                return true;
+            }
+
             //First check to see if it's an ID
             if (is_numeric($nameOrId)) {
                 if ($role->id == $nameOrId) {
@@ -28,7 +33,6 @@ trait UserAccess
             if ($role->name == $nameOrId) {
                 return true;
             }
-
         }
 
         return false;
@@ -36,6 +40,7 @@ trait UserAccess
 
     /**
      * Checks to see if user has array of roles
+     *
      * All must return true
      * @param  $roles
      * @param  $needsAll
@@ -52,7 +57,6 @@ trait UserAccess
                 if ($this->hasRole($role)) {
                     $hasRoles++;
                 }
-
             }
 
             return $numRoles == $hasRoles;
@@ -76,7 +80,7 @@ trait UserAccess
      * @param  string $nameOrId Permission name or id.
      * @return bool
      */
-    public function can($nameOrId)
+    public function allow($nameOrId)
     {
         foreach ($this->roles as $role) {
             //See if role has all permissions
@@ -98,25 +102,7 @@ trait UserAccess
                 if ($perm->name == $nameOrId) {
                     return true;
                 }
-
             }
-        }
-
-        //Check permissions directly tied to user
-        foreach ($this->permissions as $perm) {
-
-            //First check to see if it's an ID
-            if (is_numeric($nameOrId)) {
-                if ($perm->id == $nameOrId) {
-                    return true;
-                }
-            }
-
-            //Otherwise check by name
-            if ($perm->name == $nameOrId) {
-                return true;
-            }
-
         }
 
         return false;
@@ -124,11 +110,12 @@ trait UserAccess
 
     /**
      * Check an array of permissions and whether or not all are required to continue
+     *
      * @param  $permissions
      * @param  $needsAll
      * @return bool
      */
-    public function canMultiple($permissions, $needsAll = false)
+    public function allowMultiple($permissions, $needsAll = false)
     {
         //User has to possess all of the permissions specified
         if ($needsAll) {
@@ -136,7 +123,7 @@ trait UserAccess
             $numPermissions = count($permissions);
 
             foreach ($permissions as $perm) {
-                if ($this->can($perm)) {
+                if ($this->allow($perm)) {
                     $hasPermissions++;
                 }
             }
@@ -147,10 +134,9 @@ trait UserAccess
         //User has to possess one of the permissions specified
         $hasPermissions = 0;
         foreach ($permissions as $perm) {
-            if ($this->can($perm)) {
+            if ($this->allow($perm)) {
                 $hasPermissions++;
             }
-
         }
 
         return $hasPermissions > 0;
@@ -162,7 +148,7 @@ trait UserAccess
      */
     public function hasPermission($nameOrId)
     {
-        return $this->can($nameOrId);
+        return $this->allow($nameOrId);
     }
 
     /**
@@ -172,7 +158,7 @@ trait UserAccess
      */
     public function hasPermissions($permissions, $needsAll = false)
     {
-        return $this->canMultiple($permissions, $needsAll);
+        return $this->allowMultiple($permissions, $needsAll);
     }
 
     /**
@@ -236,68 +222,6 @@ trait UserAccess
     {
         foreach ($roles as $role) {
             $this->detachRole($role);
-        }
-    }
-
-    /**
-     * Attach one permission not associated with a role directly to a user
-     *
-     * @param $permission
-     */
-    public function attachPermission($permission)
-    {
-        if (is_object($permission)) {
-            $permission = $permission->getKey();
-        }
-
-        if (is_array($permission)) {
-            $permission = $permission['id'];
-        }
-
-        $this->permissions()->attach($permission);
-    }
-
-    /**
-     * Attach other permissions not associated with a role directly to a user
-     *
-     * @param $permissions
-     */
-    public function attachPermissions($permissions)
-    {
-        if (count($permissions)) {
-            foreach ($permissions as $perm) {
-                $this->attachPermission($perm);
-            }
-        }
-    }
-
-    /**
-     * Detach one permission not associated with a role directly to a user
-     *
-     * @param $permission
-     */
-    public function detachPermission($permission)
-    {
-        if (is_object($permission)) {
-            $permission = $permission->getKey();
-        }
-
-        if (is_array($permission)) {
-            $permission = $permission['id'];
-        }
-
-        $this->permissions()->detach($permission);
-    }
-
-    /**
-     * Detach other permissions not associated with a role directly to a user
-     *
-     * @param $permissions
-     */
-    public function detachPermissions($permissions)
-    {
-        foreach ($permissions as $perm) {
-            $this->detachPermission($perm);
         }
     }
 }
