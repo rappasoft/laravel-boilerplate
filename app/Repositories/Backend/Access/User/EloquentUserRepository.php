@@ -76,7 +76,7 @@ class EloquentUserRepository implements UserRepositoryContract
     {
         $user = $this->createUserStub($input);
 
-		DB::transaction(function() use ($user, $roles) {
+		DB::transaction(function() use ($user, $input, $roles) {
 			if ($user->save()) {
 				//User Created, Validate Roles
 				$this->validateRoleAmount($user, $roles['assignees_roles']);
