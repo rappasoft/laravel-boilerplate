@@ -10,6 +10,7 @@ use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserRequest;
 use App\Repositories\Backend\Access\User\UserRepositoryContract;
 use App\Repositories\Backend\Access\Role\RoleRepositoryContract;
+use App\Repositories\Backend\History\HistoryContract;
 use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
 use App\Repositories\Frontend\Access\User\UserRepositoryContract as FrontendUserRepositoryContract;
 
@@ -29,13 +30,19 @@ class UserController extends Controller
     protected $roles;
 
     /**
+     * @var HistoryContract
+     */
+    protected $history;
+
+    /**
      * @param UserRepositoryContract $users
      * @param RoleRepositoryContract $roles
      */
-    public function __construct(UserRepositoryContract $users, RoleRepositoryContract $roles)
+    public function __construct(UserRepositoryContract $users, RoleRepositoryContract $roles, HistoryContract $history)
     {
         $this->users = $users;
         $this->roles = $roles;
+        $this->history = $history;
     }
 
 	/**
@@ -73,6 +80,38 @@ class UserController extends Controller
                 return $user->action_buttons;
             })
             ->make(true);
+    }
+
+    /**
+     * @param  ManageUserRequest $request       
+     * @return json                     
+     */
+    public function getHistory(ManageUserRequest $request)
+    {
+        $perpage = $request['perpage'];
+        return $this->history->renderJson($perpage);
+    }
+
+    /**
+     * @param  ManageUserRequest $request       
+     * @return json                     
+     */
+    public function getHistoryType(ManageUserRequest $request)
+    {
+        $type = $request['type'];
+        $perpage = $request['perpage'];
+        return $this->history->renderTypeJson($type, $perpage);
+    }
+
+    /**
+     * @param  ManageUserRequest $request       
+     * @return json                     
+     */
+    public function getHistoryEntity(ManageUserRequest $request)
+    {
+        $entity_id = $request['entity_id'];
+        $perpage = $request['perpage'];
+        return $this->history->renderEntityJson($entity_id, $perpage);
     }
 
 	/**

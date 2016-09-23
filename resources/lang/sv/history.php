@@ -34,4 +34,8 @@ return [
 			'restored' => 'restored user',
 		],
 	],
+	'general' => [
+		'load_item' => 'Loading more histories... ',
+		'no_more_item' => 'No more history.',
+	],
 ];

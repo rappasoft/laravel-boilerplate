@@ -45,13 +45,13 @@
 
     <div class="box box-info">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('history.backend.recent_history') }}</h3>
+            <h3 class="box-title">{{ trans('history.backend.recent_history') }} - Example for limited results</h3>
             <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             </div><!-- /.box tools -->
         </div><!-- /.box-header -->
         <div class="box-body">
-            {!! history()->renderType('User') !!}
+            {!! history()->renderType('User', 5) !!}
         </div><!-- /.box-body -->
     </div><!--box box-success-->
 @stop
@@ -83,6 +83,6 @@
                 order: [[0, "asc"]],
                 searchDelay: 500
             });
-        });
+        });        
     </script>
 @stop
