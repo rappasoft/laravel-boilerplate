@@ -21,12 +21,12 @@ class ProfileController extends Controller
             ->withUser(access()->user());
     }
 
-    /**
-     * @param  UserRepositoryContract         $user
-     * @param  UpdateProfileRequest $request
-     * @return mixed
-     */
-    public function update(UserRepositoryContract $user, UpdateProfileRequest $request)
+	/**
+	 * @param UpdateProfileRequest $request
+	 * @param UserRepositoryContract $user
+	 * @return mixed
+	 */
+	public function update(UpdateProfileRequest $request, UserRepositoryContract $user)
     {
         $user->updateProfile(access()->id(), $request->all());
         return redirect()->route('frontend.user.dashboard')->withFlashSuccess(trans('strings.frontend.user.profile_updated'));

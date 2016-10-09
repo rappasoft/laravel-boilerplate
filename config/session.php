@@ -87,6 +87,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Session Cache Store
+    |--------------------------------------------------------------------------
+    |
+    | When using the "apc" or "memcached" session drivers, you may specify a
+    | cache store that should be used for these sessions. This value must
+    | correspond with one of the application's configured cache stores.
+    |
+    */
+
+    'store' => null,
+
+    /*
+    |--------------------------------------------------------------------------
     | Session Sweeping Lottery
     |--------------------------------------------------------------------------
     |
@@ -109,15 +122,7 @@ return [
     |
     */
 
-    /**
-     * We changed the name of this session from laravel_session
-     * The reason being is there are many browser extensions to check to see what
-     * software your website is built with, most check for the Set-Cookie header to be 'laravel_session'
-     * We want to hide these programs from knowing in case people are trying to exploit security holes in your
-     * site based on the frameworks it's built on.
-     */
-
-    'cookie' => 'lvapp_session',
+    'cookie' => 'laravel_session',
 
     /*
     |--------------------------------------------------------------------------
@@ -143,7 +148,7 @@ return [
     |
     */
 
-	'domain' => env('SESSION_DOMAIN', null),
+    'domain' => env('SESSION_DOMAIN', null),
 
     /*
     |--------------------------------------------------------------------------

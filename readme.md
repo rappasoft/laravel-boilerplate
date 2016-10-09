@@ -1,10 +1,14 @@
-## Laravel 5.* Boilerplate, Currently 5.2.39 [Screenshots](http://imgur.com/a/rFv2g)
+## Laravel 5.* Boilerplate, Currently 5.3 [Screenshots](http://imgur.com/a/rFv2g)
 
 [![Latest Stable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/stable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate) [![Latest Unstable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/unstable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate)
 
 ### Laravel 5.1
 
 You can download the last stable build of Laravel 5.1 [here](https://github.com/rappasoft/laravel-5-boilerplate/tree/Legacy_5.1).
+
+### Laravel 5.2
+
+You can download the last stable build of Laravel 5.2 [here](https://github.com/rappasoft/laravel-5-boilerplate/tree/Legacy_5.2).
 
 ### Introduction
 

@@ -4,12 +4,12 @@ namespace App\Repositories\Frontend\Access\User;
 
 use App\Models\Access\User\User;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Mail;
 use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Access\User\SocialLogin;
 use App\Events\Frontend\Auth\UserConfirmed;
-use App\Repositories\Backend\Access\Role\RoleRepositoryContract;
+use App\Repositories\Backend\Access\Role\RoleRepository;
+use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 
 /**
  * Class EloquentUserRepository
@@ -19,14 +19,14 @@ class EloquentUserRepository implements UserRepositoryContract
 {
 
     /**
-     * @var RoleRepositoryContract
+     * @var RoleRepository
      */
     protected $role;
 
     /**
-     * @param RoleRepositoryContract $role
+     * @param RoleRepository $role
      */
-    public function __construct(RoleRepositoryContract $role)
+    public function __construct(RoleRepository $role)
     {
         $this->role = $role;
     }
@@ -212,24 +212,16 @@ class EloquentUserRepository implements UserRepositoryContract
             $user = $this->find($user);
         }
 
-        Mail::send('frontend.auth.emails.confirm', ['token' => $user->confirmation_code], function ($message) use ($user) {
-            $message->to($user->email, $user->name)->subject(app_name() . ': ' . trans('exceptions.frontend.auth.confirmation.confirm'));
-        });
-
-        if (count(Mail::failures()) > 0) {
-            throw new GeneralException("There was a problem sending the confirmation e-mail");
-        }
-
-        return true;
+		$user->notify(new UserNeedsConfirmation($user->confirmation_code));
     }
 
     /**
-     * @param $user_id
+     * @param $user
      * @return mixed
      * @throws GeneralException
      */
-    public function resendConfirmationEmail($user_id) {
-        return $this->sendConfirmationEmail($this->find($user_id));
+    public function resendConfirmationEmail($user) {
+        return $this->sendConfirmationEmail($user);
     }
 
     /**

@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Services\Macros\Macros;
+use App\Helpers\Macros\Macros;
 use Collective\Html\HtmlServiceProvider;
 
 /**
@@ -11,28 +11,28 @@ use Collective\Html\HtmlServiceProvider;
  */
 class MacroServiceProvider extends HtmlServiceProvider
 {
-    /**
-     * Bootstrap the application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
-    }
+	/**
+	 * Bootstrap the application services.
+	 *
+	 * @return void
+	 */
+	public function boot()
+	{
+		//
+	}
 
-    /**
-     * Register the application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        parent::register();
+	/**
+	 * Register the application services.
+	 *
+	 * @return void
+	 */
+	public function register()
+	{
+		parent::register();
 
-        $this->app->singleton('form', function ($app) {
-            $form = new Macros($app['html'], $app['url'], $app['view'], $app['session.store']->getToken());
-            return $form->setSessionStore($app['session.store']);
-        });
-    }
+		$this->app->singleton('form', function ($app) {
+			$form = new Macros($app['html'], $app['url'], $app['view'], $app['session.store']->getToken());
+			return $form->setSessionStore($app['session.store']);
+		});
+	}
 }

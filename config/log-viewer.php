@@ -2,31 +2,39 @@
 
 return [
     /* ------------------------------------------------------------------------------------------------
+     |  Log files storage path
+     | ------------------------------------------------------------------------------------------------
+     */
+    'storage-path'  => storage_path('logs'),
+
+    /* ------------------------------------------------------------------------------------------------
+     |  Log files pattern
+     | ------------------------------------------------------------------------------------------------
+     */
+    'pattern'       => [
+        'prefix'    => \Arcanedev\LogViewer\Contracts\FilesystemInterface::PATTERN_PREFIX,
+        'date'      => \Arcanedev\LogViewer\Contracts\FilesystemInterface::PATTERN_DATE,
+        'extension' => \Arcanedev\LogViewer\Contracts\FilesystemInterface::PATTERN_EXTENSION,
+    ],
+
+    /* ------------------------------------------------------------------------------------------------
      |  Locale
      | ------------------------------------------------------------------------------------------------
-     | Available: 'auto', 'ar', 'de', 'en', 'fr', 'nl'
+     |  Supported locales :
+     |    'auto', 'ar', 'de', 'en', 'es', 'fa', 'fr', 'hy', 'it', 'nl', 'pl', 'pt-BR', 'ro', 'ru', 'sv', 'th', 'tr', 'zh-TW', 'zh'
      */
-    'locale'         => 'auto',
+    'locale'        => 'auto',
 
     /* ------------------------------------------------------------------------------------------------
-     |  LogViewer's Facade
+     |  Route settings
      | ------------------------------------------------------------------------------------------------
-     */
-    'facade'        => 'LogViewer',
-
-    /* ------------------------------------------------------------------------------------------------
-     |  Route
-     | ------------------------------------------------------------------------------------------------
-     */
-    /**
-     * Do not change this, log viewer routes for this application are overwritten in
-     * app/Http/Routes/Backend/LogViewer
      */
     'route'         => [
         'enabled'    => false,
 
         'attributes' => [
             'prefix'     => 'log-viewer',
+
             'middleware' => null,
         ],
     ],
@@ -37,6 +45,12 @@ return [
      |  This defines how many log entries are displayed per page.
      */
     'per-page'      => 30,
+
+    /* ------------------------------------------------------------------------------------------------
+     |  LogViewer's Facade
+     | ------------------------------------------------------------------------------------------------
+     */
+    'facade'        => 'LogViewer',
 
     /* ------------------------------------------------------------------------------------------------
      |  Download settings
@@ -53,8 +67,8 @@ return [
      | ------------------------------------------------------------------------------------------------
      */
     'menu'  => [
-        'filter-route'  => 'log-viewer::logs.filter',
-        
+        'filter-route'  => 'admin.log-viewer::logs.filter',
+
         'icons-enabled' => true,
     ],
 

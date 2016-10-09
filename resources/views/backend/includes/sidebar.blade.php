@@ -47,10 +47,10 @@
                 </a>
                 <ul class="treeview-menu {{ Active::pattern('admin/log-viewer*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/log-viewer*', 'display: block;') }}">
                     <li class="{{ Active::pattern('admin/log-viewer') }}">
-                        {{ link_to('admin/log-viewer', trans('menus.backend.log-viewer.dashboard')) }}
+                        {{ link_to_route('admin.log-viewer::dashboard', trans('menus.backend.log-viewer.dashboard')) }}
                     </li>
                     <li class="{{ Active::pattern('admin/log-viewer/logs') }}">
-                        {{ link_to('admin/log-viewer/logs', trans('menus.backend.log-viewer.logs')) }}
+                        {{ link_to_route('admin.log-viewer::logs.list', trans('menus.backend.log-viewer.logs')) }}
                     </li>
                 </ul>
             </li>

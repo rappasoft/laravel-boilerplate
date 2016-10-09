@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('backend.layouts.app')
 
 @section('page-header')
     <h1>
