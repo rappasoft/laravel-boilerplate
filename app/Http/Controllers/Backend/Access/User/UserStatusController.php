@@ -52,7 +52,7 @@ class UserStatusController extends Controller
 	public function mark(User $user, $status, ManageUserRequest $request)
 	{
 		$this->users->mark($user, $status);
-		return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.updated'));
+		return redirect()->route($status == 1 ? "admin.access.user.index" : "admin.access.user.deactivated")->withFlashSuccess(trans('alerts.backend.users.updated'));
 	}
 
 	/**
