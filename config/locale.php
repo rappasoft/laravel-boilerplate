@@ -36,6 +36,7 @@ return [
 		'es'    => ['es', 'es_ES', false],
 		'fr'    => ['fr', 'fr_FR', false],
 		'it'    => ['it', 'it_IT', false],
+		'nl'    => ['nl', 'nl_NL', false],
 		'pt-BR' => ['pt_BR', 'pt_BR', false],
 		'sv'    => ['sv', 'sv_SE', false],
 		'th'    => ['th', 'th_TH', false],
