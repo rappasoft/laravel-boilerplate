@@ -16,7 +16,7 @@ use App\Events\Backend\Access\User\UserReactivated;
 use App\Events\Backend\Access\User\UserPasswordChanged;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Events\Backend\Access\User\UserPermanentlyDeleted;
-use App\Repositories\Frontend\Access\User\UserRepositoryContract as FrontendUserRepositoryContract;
+use App\Repositories\Frontend\Access\User\UserRepository as FrontendUserRepository;
 
 /**
  * Class UserRepository
@@ -35,15 +35,15 @@ class UserRepository extends Repository
     protected $role;
 
     /**
-     * @var FrontendUserRepositoryContract
+     * @var FrontendUserRepository
      */
     protected $user;
 
     /**
      * @param RoleRepository $role
-     * @param FrontendUserRepositoryContract $user
+     * @param FrontendUserRepository $user
      */
-    public function __construct(RoleRepository $role, FrontendUserRepositoryContract $user)
+    public function __construct(RoleRepository $role, FrontendUserRepository $user)
     {
         $this->role = $role;
         $this->user = $user;

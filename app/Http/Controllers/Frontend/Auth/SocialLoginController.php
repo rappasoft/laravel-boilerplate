@@ -8,7 +8,7 @@ use App\Exceptions\GeneralException;
 use Laravel\Socialite\Facades\Socialite;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Helpers\Frontend\Auth\Socialite as SocialiteHelper;
-use App\Repositories\Frontend\Access\User\UserRepositoryContract;
+use App\Repositories\Frontend\Access\User\UserRepository;
 
 /**
  * Class SocialLoginController
@@ -17,7 +17,7 @@ use App\Repositories\Frontend\Access\User\UserRepositoryContract;
 class SocialLoginController extends Controller
 {
 	/**
-	 * @var UserRepositoryContract
+	 * @var UserRepository
 	 */
 	protected $user;
 
@@ -28,10 +28,10 @@ class SocialLoginController extends Controller
 
 	/**
 	 * SocialLoginController constructor.
-	 * @param UserRepositoryContract $user
+	 * @param UserRepository $user
 	 * @param SocialiteHelper $helper
 	 */
-	public function __construct(UserRepositoryContract $user, SocialiteHelper $helper) {
+	public function __construct(UserRepository $user, SocialiteHelper $helper) {
 		$this->user = $user;
 		$this->helper = $helper;
 	}

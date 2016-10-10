@@ -198,7 +198,7 @@ trait UserAttribute
      */
     public function getActionButtonsAttribute()
     {
-        if ($this->deleted_at) {
+        if ($this->trashed()) {
             return $this->getRestoreButtonAttribute() .
                 $this->getDeletePermanentlyButtonAttribute();
         }

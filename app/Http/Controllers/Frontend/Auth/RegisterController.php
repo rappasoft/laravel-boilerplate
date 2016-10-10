@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Events\Frontend\Auth\UserRegistered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Requests\Frontend\Auth\RegisterRequest;
-use App\Repositories\Frontend\Access\User\UserRepositoryContract;
+use App\Repositories\Frontend\Access\User\UserRepository;
 
 /**
  * Class RegisterController
@@ -18,9 +18,9 @@ class RegisterController extends Controller
 
 	/**
 	 * RegisterController constructor.
-	 * @param UserRepositoryContract $user
+	 * @param UserRepository $user
 	 */
-	public function __construct(UserRepositoryContract $user)
+	public function __construct(UserRepository $user)
 	{
 		// Where to redirect users after registering
 		$this->redirectTo = route('frontend.index');

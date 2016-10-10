@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
-use App\Repositories\Frontend\Access\User\UserRepositoryContract;
+use App\Repositories\Frontend\Access\User\UserRepository;
 
 /**
  * Class ProfileController
@@ -23,10 +23,10 @@ class ProfileController extends Controller
 
 	/**
 	 * @param UpdateProfileRequest $request
-	 * @param UserRepositoryContract $user
+	 * @param UserRepository $user
 	 * @return mixed
 	 */
-	public function update(UpdateProfileRequest $request, UserRepositoryContract $user)
+	public function update(UpdateProfileRequest $request, UserRepository $user)
     {
         $user->updateProfile(access()->id(), $request->all());
         return redirect()->route('frontend.user.dashboard')->withFlashSuccess(trans('strings.frontend.user.profile_updated'));

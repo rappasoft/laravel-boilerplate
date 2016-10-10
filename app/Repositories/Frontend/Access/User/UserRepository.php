@@ -3,6 +3,7 @@
 namespace App\Repositories\Frontend\Access\User;
 
 use App\Models\Access\User\User;
+use App\Repositories\Repository;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Hash;
@@ -12,11 +13,15 @@ use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 
 /**
- * Class EloquentUserRepository
+ * Class UserRepository
  * @package App\Repositories\Frontend\User
  */
-class EloquentUserRepository implements UserRepositoryContract
+class UserRepository extends Repository
 {
+	/**
+	 * Associated Repository Model
+	 */
+	const MODEL = User::class;
 
     /**
      * @var RoleRepository
@@ -32,25 +37,11 @@ class EloquentUserRepository implements UserRepositoryContract
     }
 
     /**
-     * @param $id
-     * @return mixed
-     */
-    public function find($id)
-    {
-        return User::findOrFail($id);
-    }
-
-    /**
      * @param $email
      * @return bool
      */
     public function findByEmail($email) {
-        $user = User::where('email', $email)->first();
-
-        if ($user instanceof User)
-            return $user;
-
-        return false;
+        return $this->query()->where('email', $email)->first();
     }
 
     /**
@@ -59,12 +50,7 @@ class EloquentUserRepository implements UserRepositoryContract
      * @throws GeneralException
      */
     public function findByToken($token) {
-        $user = User::where('confirmation_code', $token)->first();
-
-        if (! $user instanceof User)
-            throw new GeneralException(trans('exceptions.frontend.auth.confirmation.not_found'));
-
-        return $user;
+        return $this->query()->where('confirmation_code', $token)->first();
     }
 
 	/**
@@ -95,7 +81,7 @@ class EloquentUserRepository implements UserRepositoryContract
 		$user->confirmed = $provider ? 1 : (config('access.users.confirm_email') ? 0 : 1);
 
 		DB::transaction(function() use ($user) {
-			if ($user->save()) {
+			if ($this->save($user)) {
 				/**
 				 * Add the default site role to the new user
 				 */
@@ -119,12 +105,12 @@ class EloquentUserRepository implements UserRepositoryContract
 		return $user;
     }
 
-    /**
-     * @param $data
-     * @param $provider
-     * @return EloquentUserRepository
-     */
-    public function findOrCreateSocial($data, $provider)
+	/**
+	 * @param $data
+	 * @param $provider
+	 * @return UserRepository|bool
+	 */
+	public function findOrCreateSocial($data, $provider)
     {
         /**
          * User email may not provided.
@@ -194,7 +180,7 @@ class EloquentUserRepository implements UserRepositoryContract
             $user->confirmed = 1;
 
 			event(new UserConfirmed($user));
-            return $user->save();
+            return $this->save($user);
         }
 
         throw new GeneralException(trans('exceptions.frontend.auth.confirmation.mismatch'));
@@ -247,7 +233,7 @@ class EloquentUserRepository implements UserRepositoryContract
             }
         }
 
-        return $user->save();
+        return $this->save($user);
     }
 
     /**
@@ -261,7 +247,7 @@ class EloquentUserRepository implements UserRepositoryContract
 
         if (Hash::check($input['old_password'], $user->password)) {
             $user->password = bcrypt($input['password']);
-            return $user->save();
+            return $this->save($user);
         }
 
         throw new GeneralException(trans('exceptions.frontend.auth.password.change_mismatch'));

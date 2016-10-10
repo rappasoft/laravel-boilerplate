@@ -36,7 +36,6 @@ class AccessServiceProvider extends ServiceProvider
 	{
 		$this->registerAccess();
 		$this->registerFacade();
-		$this->registerBindings();
 	}
 
 	/**
@@ -62,17 +61,6 @@ class AccessServiceProvider extends ServiceProvider
 			$loader = \Illuminate\Foundation\AliasLoader::getInstance();
 			$loader->alias('Access', \App\Services\Access\Facades\Access::class);
 		});
-	}
-
-	/**
-	 * Register service provider bindings
-	 */
-	public function registerBindings()
-	{
-		$this->app->bind(
-			\App\Repositories\Frontend\Access\User\UserRepositoryContract::class,
-			\App\Repositories\Frontend\Access\User\EloquentUserRepository::class
-		);
 	}
 
 	/**

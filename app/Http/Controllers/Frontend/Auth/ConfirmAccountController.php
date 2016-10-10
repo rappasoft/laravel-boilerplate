@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Frontend\Access\User\UserRepositoryContract;
+use App\Repositories\Frontend\Access\User\UserRepository;
 
 /**
  * Class ConfirmAccountController
@@ -13,9 +13,9 @@ class ConfirmAccountController extends Controller
 {
 	/**
 	 * ConfirmAccountController constructor.
-	 * @param UserRepositoryContract $user
+	 * @param UserRepository $user
 	 */
-	public function __construct(UserRepositoryContract $user)
+	public function __construct(UserRepository $user)
 	{
 		$this->user = $user;
 	}
