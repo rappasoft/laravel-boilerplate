@@ -49,5 +49,5 @@ return [
 	 *
 	 * Note: you cannot use both layout-boxed and fixed at the same time. Anything else can be mixed together.
 	 */
-	'layout' => '',
+	'layout' => 'sidebar-mini',
 ];
