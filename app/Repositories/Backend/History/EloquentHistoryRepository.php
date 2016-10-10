@@ -24,7 +24,7 @@ class EloquentHistoryRepository implements HistoryContract {
 		if (! is_numeric($type))
 			$type = HistoryType::where('name', $type)->first();
 
-		if ($type instanceof HistoryType)
+		if ($type instanceof HistoryType) {
 			return History::create([
 				'type_id' => $type->id,
 				'text' => $text,
@@ -34,6 +34,7 @@ class EloquentHistoryRepository implements HistoryContract {
 				'class' => $class,
 				'assets' => is_array($assets) && count($assets) ? json_encode($assets) : null,
 			]);
+		}
 
 		return false;
 	}
