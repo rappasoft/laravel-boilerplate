@@ -14,6 +14,7 @@ Route::get('macros', 'FrontendController@macros')->name('macros');
 Route::group(['middleware' => 'auth'], function () {
 	Route::group(['namespace' => 'User', 'as' => 'user.'], function() {
 		Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+        Route::get('profile', 'ProfileController@index')->name('profile.index');
 		Route::get('profile/edit', 'ProfileController@edit')->name('profile.edit');
 		Route::patch('profile/update', 'ProfileController@update')->name('profile.update');
 	});

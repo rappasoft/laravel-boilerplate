@@ -12,6 +12,16 @@ use App\Repositories\Frontend\Access\User\UserRepository;
  */
 class ProfileController extends Controller
 {
+
+    /**
+     * @return mixed
+     */
+    public function index()
+    {
+        return view('frontend.user.profile.index')
+            ->withUser(access()->user());
+    }
+
     /**
      * @return mixed
      */

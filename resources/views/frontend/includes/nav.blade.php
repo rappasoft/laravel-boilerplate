@@ -13,7 +13,7 @@
 
         <div class="collapse navbar-collapse" id="frontend-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li>{{ link_to_route('frontend.index', trans('navs.general.home')) }}</li>
+                <li>{{ link_to_route('frontend.user.dashboard', trans('navs.frontend.dashboard')) }}</li>
                 <li>{{ link_to_route('frontend.macros', trans('navs.frontend.macros')) }}</li>
             </ul>
 
@@ -39,12 +39,11 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li>{{ link_to_route('frontend.user.dashboard', trans('navs.frontend.dashboard')) }}</li>
-
                             @permission('view-backend')
                                 <li>{{ link_to_route('admin.dashboard', trans('navs.frontend.user.administration')) }}</li>
                             @endauth
 
+                            <li>{{ link_to_route('frontend.user.profile.index', 'My Profile/Settings') }}</li>
                             <li>{{ link_to_route('frontend.auth.logout', trans('navs.general.logout')) }}</li>
                         </ul>
                     </li>
