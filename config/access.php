@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Access\Role\Role;
+use App\Models\Access\Permission\Permission;
+
 return [
 
 	/*
@@ -10,7 +13,7 @@ return [
 	/*
 	 * Role model used by Access to create correct relations. Update the role if it is in a different namespace.
 	*/
-	'role' => App\Models\Access\Role\Role::class,
+	'role' => Role::class,
 
 	/*
 	 * Roles table used by Access to save roles to the database.
@@ -21,7 +24,7 @@ return [
 	 * Permission model used by Access to create correct relations.
 	 * Update the permission if it is in a different namespace.
 	 */
-	'permission' => App\Models\Access\Permission\Permission::class,
+	'permission' => Permission::class,
 
 	/*
 	 * Permissions table used by Access to save permissions to the database.
