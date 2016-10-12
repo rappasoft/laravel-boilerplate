@@ -68,7 +68,10 @@
 
                                     <div class="form-group">
                                         <div class="col-md-6 col-md-offset-4">
-                                            {{ Form::submit(trans('labels.general.buttons.save'), ['class' => 'btn btn-primary pull-right']) }}
+                                            <button type="submit" class="btn btn-primary pull-right">
+                                                <i class="fa fa-save"></i>
+                                                {{ trans('labels.general.buttons.save') }}
+                                            </button>
                                         </div>
                                     </div>
                                 {{ Form::close() }}
