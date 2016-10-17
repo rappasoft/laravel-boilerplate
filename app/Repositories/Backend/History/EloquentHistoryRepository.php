@@ -40,49 +40,76 @@ class EloquentHistoryRepository implements HistoryContract {
 	}
 
 	/**
+	 * @param int $limit
 	 * @return string
 	 */
-	public function render() {
-		$history = History::with('user')->latest()->get();
+	public function render($limit = null, $paginate = false, $pagination = 10) {
+		$history = History::with('user')->latest();
 
+		if($paginate && is_numeric($pagination)){
+				$history = $history->paginate($pagination);
+		}else{
+			if($limit && is_numeric($limit)){
+				$history->take($limit);
+			};
+			$history = $history->get();
+		}
+		
 		if (! $history->count())
 			return trans("history.backend.none");
 
-		return $this->buildList($history);
+		return $this->buildList($history, $paginate);
 	}
 
 	/**
 	 * @param $type
+	 * @param int $limit
 	 * @return string
 	 */
-	public function renderType($type) {
+	public function renderType($type, $limit = null, $paginate = false, $pagination = 10) {
 		if (is_numeric($type)) {
-			$history = History::with('user')->where('type_id', $type)->latest()->get();
+			$history = History::with('user')->where('type_id', $type)->latest();
 		} else {
 			$type = strtolower($type);
 
 			$history = History::whereHas('type', function ($query) use ($type) {
 				$query->where('name', ucfirst($type));
-			})->latest()->get();
+			})->latest();
 		}
-
-		if (! $history->count())
-			return trans("history.backend.none_for_type");
-
-		return $this->buildList($history);
+		
+		if($paginate && is_numeric($pagination)){
+			$history = $history->paginate($pagination);
+		}else{
+			if($limit && is_numeric($limit)){
+				$history->take($limit);
+			};
+			$history = $history->get();
+		}
+		
+		return $this->buildList($history, $paginate);
 	}
 
 	/**
 	 * @param $entity_id
+	 * @param int $limit
 	 * @return string
 	 */
-	public function renderEntity($entity_id) {
-		$history = History::with('user', 'type')->where('entity_id', $entity_id)->latest()->get();
-
+	public function renderEntity($entity_id, $limit = null, $paginate = false, $pagination = 10) {
+		$history = History::with('user', 'type')->where('entity_id', $entity_id)->latest();
+		
+		if($paginate && is_numeric($pagination)){
+				$history = $history->paginate($pagination);
+		}else{
+			if($limit && is_numeric($limit)){
+				$history->take($limit);
+			};
+			$history = $history->get();
+		}
+		
 		if (! $history->count())
 			return trans("history.backend.none_for_entity", ['entity' => $history->type->name]);
 
-		return $this->buildList($history);
+		return $this->buildList($history, $paginate);
 	}
 
 	/**
@@ -150,31 +177,17 @@ class EloquentHistoryRepository implements HistoryContract {
 	 * @param $items
 	 * @return string
 	 */
-	public function buildList($items) {
-		$html = '<ul class="timeline">';
-
-		foreach ($items as $h) {
-			$html .= $this->buildItem($h);
-		}
-
-		$html .= '</ul>';
-
-		return $html;
+	public function buildList($history, $paginate = false) {
+		$view = view('includes.partials.history', ['history' => $history, 'paginate' => $paginate]);
+		return $view->render();
 	}
 
 	/**
 	 * @param History $history
 	 * @return string
 	 */
-	public function buildItem(History $history) {
-		return
-			'<li>'.
-              '<i class="fa fa-'.$history->icon.' '.$history->class.'"></i>'.
-
-				'<div class="timeline-item">'.
-                '<span class="time"><i class="fa fa-clock-o"></i> '.$history->created_at->diffForHumans().'</span>'.
-				'<h3 class="timeline-header no-border"><strong>'.$history->user->name.'</strong> '.$this->renderDescription($history->text, $history->assets).'</h3>'.
-              '</div>'.
-            '</li>';
+	public function buildItem(History $historyItem) {
+		$view = view('includes.partials.history-item', ['historyItem' => $historyItem]);
+		return $view->render();
 	}
 }
