@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 abstract class BaseRepository
 {
+
 	/**
 	 * @param Model $model
 	 * @return bool

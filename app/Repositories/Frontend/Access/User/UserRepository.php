@@ -72,8 +72,8 @@ class UserRepository extends Repository
      */
     public function create(array $data, $provider = false)
     {
-    	$type = self::MODEL;
-    	$user = new $type;
+    	$user = self::MODEL;
+    	$user = new $user;
 		$user->name = $data['name'];
 		$user->email = $data['email'];
 		$user->confirmation_code = md5(uniqid(mt_rand(), true));
@@ -82,7 +82,7 @@ class UserRepository extends Repository
 		$user->confirmed = $provider ? 1 : (config('access.users.confirm_email') ? 0 : 1);
 
 		DB::transaction(function() use ($user) {
-			if ($this->save($user)) {
+			if (parent::save($user)) {
 				/**
 				 * Add the default site role to the new user
 				 */
@@ -181,7 +181,7 @@ class UserRepository extends Repository
             $user->confirmed = 1;
 
 			event(new UserConfirmed($user));
-            return $this->save($user);
+            return parent::save($user);
         }
 
         throw new GeneralException(trans('exceptions.frontend.auth.confirmation.mismatch'));
@@ -195,7 +195,7 @@ class UserRepository extends Repository
      */
     public function updateProfile($id, $input)
     {
-        $user = $this->find($id);
+        $user = parent::find($id);
         $user->name = $input['name'];
 
         if ($user->canChangeEmail()) {
@@ -210,7 +210,7 @@ class UserRepository extends Repository
             }
         }
 
-        return $this->save($user);
+        return parent::save($user);
     }
 
     /**
@@ -220,11 +220,11 @@ class UserRepository extends Repository
      */
     public function changePassword($input)
     {
-        $user = $this->find(access()->id());
+        $user = parent::find(access()->id());
 
         if (Hash::check($input['old_password'], $user->password)) {
             $user->password = bcrypt($input['password']);
-            return $this->save($user);
+            return parent::save($user);
         }
 
         throw new GeneralException(trans('exceptions.frontend.auth.password.change_mismatch'));

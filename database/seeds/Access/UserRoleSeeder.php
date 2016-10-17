@@ -8,7 +8,12 @@ use Illuminate\Support\Facades\DB;
  */
 class UserRoleSeeder extends Seeder
 {
-    public function run()
+	/**
+	 * Run the database seed.
+	 *
+	 * @return void
+	 */
+	public function run()
     {
         if (DB::connection()->getDriverName() == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');

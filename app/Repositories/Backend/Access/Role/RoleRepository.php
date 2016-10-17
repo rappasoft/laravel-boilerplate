@@ -68,14 +68,15 @@ class RoleRepository extends Repository
 		}
 
 		DB::transaction(function() use ($input, $all) {
-			$role       = new Role;
+			$role 		= self::MODEL;
+			$role       = new $role;
 			$role->name = $input['name'];
 			$role->sort = isset($input['sort']) && strlen($input['sort']) > 0 && is_numeric($input['sort']) ? (int)$input['sort'] : 0;
 
 			//See if this role has all permissions and set the flag on the role
 			$role->all = $all;
 
-			if ($this->save($role)) {
+			if (parent::save($role)) {
 				if (! $all) {
 					$permissions = [];
 
@@ -131,7 +132,7 @@ class RoleRepository extends Repository
         $role->all = $all;
 
 		DB::transaction(function() use ($role, $input, $all) {
-			if ($this->save($role)) {
+			if (parent::save($role)) {
 				//If role has all access detach all permissions because they're not needed
 				if ($all) {
 					$role->permissions()->sync([]);
@@ -166,7 +167,7 @@ class RoleRepository extends Repository
      * @throws GeneralException
      * @return bool
      */
-    public function destroy(Model $role)
+    public function delete(Model $role)
     {
         //Would be stupid to delete the administrator role
         if ($role->id == 1) { //id is 1 because of the seeder
@@ -182,7 +183,7 @@ class RoleRepository extends Repository
 			//Detach all associated roles
 			$role->permissions()->sync([]);
 
-			if ($this->delete($role)) {
+			if (parent::delete($role)) {
 				event(new RoleDeleted($role));
 				return true;
 			}

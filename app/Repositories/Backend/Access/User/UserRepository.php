@@ -17,7 +17,6 @@ use App\Events\Backend\Access\User\UserPasswordChanged;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Events\Backend\Access\User\UserPermanentlyDeleted;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-use App\Repositories\Frontend\Access\User\UserRepository as FrontendUserRepository;
 
 /**
  * Class UserRepository
@@ -36,18 +35,11 @@ class UserRepository extends Repository
     protected $role;
 
     /**
-     * @var FrontendUserRepository
-     */
-    protected $user;
-
-    /**
      * @param RoleRepository $role
-     * @param FrontendUserRepository $user
      */
-    public function __construct(RoleRepository $role, FrontendUserRepository $user)
+    public function __construct(RoleRepository $role)
     {
         $this->role = $role;
-        $this->user = $user;
     }
 
 	/**
@@ -73,14 +65,16 @@ class UserRepository extends Repository
     }
 
 	/**
-	 * @param $input
-	 * @param $roles
+	 * @param Model $input
 	 */
-	public function create($input, $roles)
+	public function create($input)
     {
-        $user = $this->createUserStub($input);
+		$data = $input['data'];
+		$roles = $input['roles'];
 
-		DB::transaction(function() use ($user, $roles, $input) {
+        $user = $this->createUserStub($data);
+
+		DB::transaction(function() use ($user, $data, $roles) {
 			if (parent::save($user)) {
 
 				//User Created, Validate Roles
@@ -92,7 +86,7 @@ class UserRepository extends Repository
 				$user->attachRoles($roles['assignees_roles']);
 
 				//Send confirmation email if requested
-				if (isset($input['confirmation_email']) && $user->confirmed == 0) {
+				if (isset($data['confirmation_email']) && $user->confirmed == 0) {
 					$user->notify(new UserNeedsConfirmation($user->confirmation_code));
 				}
 
@@ -286,7 +280,8 @@ class UserRepository extends Repository
      */
     protected function createUserStub($input)
     {
-        $user                    = new User;
+    	$user					 = self::MODEL;
+        $user                    = new $user;
         $user->name              = $input['name'];
         $user->email             = $input['email'];
         $user->password          = bcrypt($input['password']);

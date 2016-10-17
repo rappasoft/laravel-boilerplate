@@ -60,10 +60,7 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        $this->users->create(
-            $request->except('assignees_roles'),
-            $request->only('assignees_roles')
-        );
+        $this->users->create(['data' => $request->except('assignees_roles'), 'roles' => $request->only('assignees_roles')]);
         return redirect()->route('admin.access.user.index')->withFlashSuccess(trans('alerts.backend.users.created'));
     }
 
