@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Backend\Access\User;
 
-use App\Helpers\Auth\Auth;
 use App\Models\Access\User\User;
 use App\Repositories\Repository;
 use Illuminate\Support\Facades\DB;
@@ -17,6 +16,7 @@ use App\Events\Backend\Access\User\UserReactivated;
 use App\Events\Backend\Access\User\UserPasswordChanged;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Events\Backend\Access\User\UserPermanentlyDeleted;
+use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 use App\Repositories\Frontend\Access\User\UserRepository as FrontendUserRepository;
 
 /**
@@ -93,7 +93,7 @@ class UserRepository extends Repository
 
 				//Send confirmation email if requested
 				if (isset($input['confirmation_email']) && $user->confirmed == 0) {
-					app()->make(Auth::class)->sendConfirmationEmail($user);
+					$user->notify(new UserNeedsConfirmation($user->confirmation_code));
 				}
 
 				event(new UserCreated($user));

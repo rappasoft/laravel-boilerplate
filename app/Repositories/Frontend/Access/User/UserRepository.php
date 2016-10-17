@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Frontend\Access\User;
 
-use App\Helpers\Auth\Auth;
 use App\Models\Access\User\User;
 use App\Repositories\Repository;
 use Illuminate\Support\Facades\DB;
@@ -98,7 +97,7 @@ class UserRepository extends Repository
 		 * If this is a social account they are confirmed through the social provider by default
 		 */
 		if (config('access.users.confirm_email') && $provider === false) {
-			app()->make(Auth::class)->sendConfirmationEmail($user);
+			$user->notify(new UserNeedsConfirmation($user->confirmation_code));
 		}
 
 		/**
