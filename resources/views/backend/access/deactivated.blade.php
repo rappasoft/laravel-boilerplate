@@ -55,7 +55,7 @@
                 serverSide: true,
                 ajax: {
                     url: '{{ route("admin.access.user.get") }}',
-                    type: 'get',
+                    type: 'post',
                     data: {status: 0, trashed: false}
                 },
                 columns: [

@@ -21,7 +21,7 @@ Route::group([
 			/**
 			 * For DataTables
 			 */
-			Route::get('user/get', 'UserTableController')->name('user.get');
+			Route::post('user/get', 'UserTableController')->name('user.get');
 
 			/**
 			 * User Status'
@@ -67,7 +67,7 @@ Route::group([
 			Route::resource('role', 'RoleController', ['except' => ['show']]);
 
 			//For DataTables
-			Route::get('role/get', 'RoleTableController')->name('role.get');
+			Route::post('role/get', 'RoleTableController')->name('role.get');
 		});
 	});
 });
