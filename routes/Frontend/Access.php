@@ -13,7 +13,7 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 		Route::get('logout', 'LoginController@logout')->name('logout');
 
 		//For when admin is logged in as user from backend
-		Route::get('logout-as', '\App\Http\Controllers\Backend\Access\User\UserAccessController@logoutAs')->name('logout-as');
+		Route::get('logout-as', 'LoginController@logoutAs')->name('logout-as');
 
 		// Change Password Routes
 		Route::get('password/change', 'ChangePasswordController@showChangePasswordForm')->name('password.change');
@@ -37,7 +37,7 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 
 		// Confirm Account Routes
 		Route::get('account/confirm/{token}', 'ConfirmAccountController@confirm')->name('account.confirm');
-		Route::get('account/confirm/resend/{user_id}', 'ConfirmAccountController@resend')->name('account.confirm.resend');
+		Route::get('account/confirm/resend/{user}', 'ConfirmAccountController@sendConfirmationEmail')->name('account.confirm.resend');
 
 		// Password Reset Routes
 		Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.email');

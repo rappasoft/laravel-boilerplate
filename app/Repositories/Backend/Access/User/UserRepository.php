@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Backend\Access\User;
 
+use App\Helpers\Auth\Auth;
 use App\Models\Access\User\User;
 use App\Repositories\Repository;
 use Illuminate\Support\Facades\DB;
@@ -92,7 +93,7 @@ class UserRepository extends Repository
 
 				//Send confirmation email if requested
 				if (isset($input['confirmation_email']) && $user->confirmed == 0) {
-					$this->user->sendConfirmationEmail($user->id);
+					app()->make(Auth::class)->sendConfirmationEmail($user);
 				}
 
 				event(new UserCreated($user));
@@ -238,92 +239,6 @@ class UserRepository extends Repository
 
         throw new GeneralException(trans('exceptions.backend.access.users.mark_error'));
     }
-
-	/**
-	 * @param Model $user
-	 * @return \Illuminate\Http\RedirectResponse
-	 * @throws GeneralException
-	 */
-	public function loginAs(Model $user)
-    {
-        // Overwrite who we're logging in as, if we're already logged in as someone else.
-        if (session()->has('admin_user_id') && session()->has('temp_user_id')) {
-            // Let's not try to login as ourselves.
-            if (auth()->id() == $user->id || session()->get('admin_user_id') == $user->id) {
-                throw new GeneralException('Do not try to login as yourself.');
-            }
-
-            // Overwrite temp user ID.
-            session(['temp_user_id' => $user->id]);
-
-            // Login.
-            access()->loginUsingId($user->id);
-
-            // Redirect.
-            return redirect()->route("frontend.index");
-        }
-
-        $this->flushTempSession();
-
-        //Won't break, but don't let them "Login As" themselves
-        if (access()->id() == $user->id) {
-            throw new GeneralException("Do not try to login as yourself.");
-        }
-
-        //Add new session variables
-        session(["admin_user_id" => access()->id()]);
-        session(["admin_user_name" => access()->user()->name]);
-        session(["temp_user_id" => $user->id]);
-
-        //Login user
-        access()->loginUsingId($user->id);
-
-        //Redirect to frontend
-        return redirect()->route("frontend.index");
-    }
-
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function logoutAs()
-    {
-
-        //If for some reason route is getting hit without someone already logged in
-        if (! access()->user()) {
-            return redirect()->route("auth.login");
-        }
-
-        //If admin id is set, relogin
-        if (session()->has("admin_user_id") && session()->has("temp_user_id")) {
-            //Save admin id
-            $admin_id = session()->get("admin_user_id");
-
-            $this->flushTempSession();
-
-            //Relogin admin
-            access()->loginUsingId((int)$admin_id);
-
-            //Redirect to backend user page
-            return redirect()->route("admin.access.user.index");
-        } else {
-            $this->flushTempSession();
-
-            //Otherwise logout and redirect to login
-            access()->logout();
-            return redirect()->route("auth.login");
-        }
-    }
-
-	/**
-	 * Remove old session variables from admin logging in as user
-	 */
-	public function flushTempSession()
-	{
-		//Remove any old session variables
-		session()->forget("admin_user_id");
-		session()->forget("admin_user_name");
-		session()->forget("temp_user_id");
-	}
 
     /**
      * @param  $input

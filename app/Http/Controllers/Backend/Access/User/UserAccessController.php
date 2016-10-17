@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
+use App\Helpers\Auth\Auth;
 use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
-use App\Repositories\Backend\Access\User\UserRepository;
+use App\Exceptions\GeneralException;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 
 /**
@@ -12,32 +13,47 @@ use App\Http\Requests\Backend\Access\User\ManageUserRequest;
  */
 class UserAccessController extends Controller
 {
-	/**
-	 * @var UserRepository
-	 */
-	protected $users;
-
-	/**
-	 * @param UserRepository $users
-	 */
-	public function __construct(UserRepository $users)
-	{
-		$this->users = $users;
-	}
 
 	/**
 	 * @param User $user
 	 * @param ManageUserRequest $request
 	 * @return \Illuminate\Http\RedirectResponse
+	 * @throws GeneralException
 	 */
 	public function loginAs(User $user, ManageUserRequest $request) {
-		return $this->users->loginAs($user);
-	}
+		// Overwrite who we're logging in as, if we're already logged in as someone else.
+		if (session()->has('admin_user_id') && session()->has('temp_user_id')) {
+			// Let's not try to login as ourselves.
+			if (access()->id() == $user->id || session()->get('admin_user_id') == $user->id) {
+				throw new GeneralException('Do not try to login as yourself.');
+			}
 
-	/**
-	 * @return \Illuminate\Http\RedirectResponse
-	 */
-	public function logoutAs() {
-		return $this->users->logoutAs();
+			// Overwrite temp user ID.
+			session(['temp_user_id' => $user->id]);
+
+			// Login.
+			access()->loginUsingId($user->id);
+
+			// Redirect.
+			return redirect()->route("frontend.index");
+		}
+
+		app()->make(Auth::class)->flushTempSession();
+
+		//Won't break, but don't let them "Login As" themselves
+		if (access()->id() == $user->id) {
+			throw new GeneralException("Do not try to login as yourself.");
+		}
+
+		//Add new session variables
+		session(["admin_user_id" => access()->id()]);
+		session(["admin_user_name" => access()->user()->name]);
+		session(["temp_user_id" => $user->id]);
+
+		//Login user
+		access()->loginUsingId($user->id);
+
+		//Redirect to frontend
+		return redirect()->route("frontend.index");
 	}
 }

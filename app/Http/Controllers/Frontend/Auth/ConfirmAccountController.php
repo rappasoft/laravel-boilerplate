@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
+use App\Helpers\Auth\Auth;
+use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\Frontend\Access\User\UserRepository;
 
@@ -34,9 +36,9 @@ class ConfirmAccountController extends Controller
 	 * @param $user
 	 * @return mixed
 	 */
-	public function resend($user)
+	public function sendConfirmationEmail(User $user)
 	{
-		$this->user->resendConfirmationEmail($user);
+		app()->make(Auth::class)->sendConfirmationEmail($user);
 		return redirect()->route('frontend.auth.login')->withFlashSuccess(trans('exceptions.frontend.auth.confirmation.resent'));
 	}
 }

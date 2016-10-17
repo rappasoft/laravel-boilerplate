@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Frontend\Access\User;
 
+use App\Helpers\Auth\Auth;
 use App\Models\Access\User\User;
 use App\Repositories\Repository;
 use Illuminate\Support\Facades\DB;
@@ -97,7 +98,7 @@ class UserRepository extends Repository
 		 * If this is a social account they are confirmed through the social provider by default
 		 */
 		if (config('access.users.confirm_email') && $provider === false) {
-			$this->sendConfirmationEmail($user);
+			app()->make(Auth::class)->sendConfirmationEmail($user);
 		}
 
 		/**
@@ -185,30 +186,6 @@ class UserRepository extends Repository
         }
 
         throw new GeneralException(trans('exceptions.frontend.auth.confirmation.mismatch'));
-    }
-
-	/**
-     * @param $user
-     * @return bool
-     * @throws GeneralException
-     */
-    public function sendConfirmationEmail($user)
-    {
-        //$user can be user instance or id
-        if (! $user instanceof User) {
-            $user = $this->find($user);
-        }
-
-		$user->notify(new UserNeedsConfirmation($user->confirmation_code));
-    }
-
-    /**
-     * @param $user
-     * @return mixed
-     * @throws GeneralException
-     */
-    public function resendConfirmationEmail($user) {
-        return $this->sendConfirmationEmail($user);
     }
 
     /**
