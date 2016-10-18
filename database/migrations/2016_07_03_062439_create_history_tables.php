@@ -57,7 +57,7 @@ class CreateHistoryTables extends Migration
 			$table->dropForeign('history_user_id_foreign');
 		});
 
-		Schema::drop('history_types');
-		Schema::drop('history');
+		Schema::dropIfExists('history_types');
+		Schema::dropIfExists('history');
 	}
 }

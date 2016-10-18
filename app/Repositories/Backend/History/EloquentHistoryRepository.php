@@ -1,7 +1,7 @@
 <?php namespace App\Repositories\Backend\History;
 
-use App\Repositories\Repository;
 use App\Models\History\History;
+use App\Repositories\Repository;
 use App\Models\History\HistoryType;
 
 /**

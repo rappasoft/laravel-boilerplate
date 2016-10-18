@@ -121,9 +121,9 @@ class SetupAccessTables extends Migration
 		/**
 		 * Drop tables
 		 */
-		Schema::drop(config('access.assigned_roles_table'));
-		Schema::drop(config('access.permission_role_table'));
-		Schema::drop(config('access.roles_table'));
-		Schema::drop(config('access.permissions_table'));
+		Schema::dropIfExists(config('access.assigned_roles_table'));
+		Schema::dropIfExists(config('access.permission_role_table'));
+		Schema::dropIfExists(config('access.roles_table'));
+		Schema::dropIfExists(config('access.permissions_table'));
 	}
 }
