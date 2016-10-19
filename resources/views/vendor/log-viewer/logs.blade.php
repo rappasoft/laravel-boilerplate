@@ -110,14 +110,11 @@
                 deleteLogForm  = $('form#delete-log-form'),
                 submitBtn      = deleteLogForm.find('button[type=submit]');
 
-            $(document).on ("click", "#delete-log-link", function (event) {
+            $(document).on("click", "#delete-log-link", function (event) {
                 event.preventDefault();
                 var date = $(this).data('log-date');
                 deleteLogForm.find('input[name=date]').val(date);
-                deleteLogModal.find('.modal-body p').html(
-                    'Are you sure you want to <span class="label label-danger">DELETE</span> this log file <span class="label label-primary">' + date + '</span> ?'
-                );
-
+                deleteLogModal.find('.modal-body p').html('Are you sure you want to <span class="label label-danger">DELETE</span> this log file <span class="label label-primary">' + date + '</span> ?');
                 deleteLogModal.modal('show');
             });
 

@@ -15,7 +15,10 @@ class ResetPasswordController extends Controller
 {
     use ResetsPasswords;
 
-    private $user;
+	/**
+	 * @var UserRepository
+	 */
+	protected $user;
 
     /**
      * ChangePasswordController constructor.

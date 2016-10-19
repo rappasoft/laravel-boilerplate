@@ -44,7 +44,7 @@ Route::group([
 			'as'   => 'log-viewer::logs.download',
 			'uses' => '\Arcanedev\LogViewer\Http\Controllers\LogViewerController@download',
 		]);
-		
+
 		Route::get('{level}', [
 			'as'   => 'log-viewer::logs.filter',
 			'uses' => '\Arcanedev\LogViewer\Http\Controllers\LogViewerController@showByLevel',
