@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use App\Repositories\Frontend\Access\User\UserRepository;
 
 /**
  * Class ResetPasswordController
@@ -13,6 +14,17 @@ use Illuminate\Foundation\Auth\ResetsPasswords;
 class ResetPasswordController extends Controller
 {
     use ResetsPasswords;
+
+    private $user;
+
+    /**
+     * ChangePasswordController constructor.
+     * @param UserRepository $user
+     */
+    public function __construct(UserRepository $user)
+    {
+    	$this->user = $user;
+    }
 
 	/**
 	 * Where to redirect users after resetting password
@@ -36,6 +48,6 @@ class ResetPasswordController extends Controller
 	{
 		return view('frontend.auth.passwords.reset')
 			->withToken($token)
-			->withEmail($request->email);
+			->withEmail($this->user->getEmailForPasswordToken($token));
 	}
 }

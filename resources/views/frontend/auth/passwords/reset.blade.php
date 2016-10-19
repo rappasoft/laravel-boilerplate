@@ -23,7 +23,8 @@
                         <div class="form-group">
                             {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}
                             <div class="col-md-6">
-                                {{ Form::input('email', 'email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
+                                <p class="form-control-static">{{ $email }}</p>
+                                {{ Form::input('hidden', 'email', $email, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
                             </div><!--col-md-6-->
                         </div><!--form-group-->
 
