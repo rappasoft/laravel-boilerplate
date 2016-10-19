@@ -1,19 +1,13 @@
 <?php namespace App\Repositories\Backend\History;
 
 use App\Models\History\History;
-use App\Repositories\Repository;
 use App\Models\History\HistoryType;
 
 /**
  * Class EloquentHistoryRepository
  * @package App\Repositories\Backend\History
  */
-class EloquentHistoryRepository extends Repository implements HistoryContract {
-
-	/**
-	 * Associated Repository Model
-	 */
-	const MODEL = History::class;
+class EloquentHistoryRepository implements HistoryContract {
 
 	/**
 	 * @param $type
@@ -31,7 +25,7 @@ class EloquentHistoryRepository extends Repository implements HistoryContract {
 			$type = HistoryType::where('name', $type)->first();
 
 		if ($type instanceof HistoryType) {
-			return $this->query()->create([
+			return History::create([
 				'type_id' => $type->id,
 				'text' => $text,
 				'user_id' => access()->id(),
@@ -49,7 +43,7 @@ class EloquentHistoryRepository extends Repository implements HistoryContract {
 	 * @return string
 	 */
 	public function render() {
-		$history = $this->query()->with('user')->latest()->get();
+		$history = History::with('user')->latest()->get();
 
 		if (! $history->count())
 			return trans("history.backend.none");
@@ -63,11 +57,11 @@ class EloquentHistoryRepository extends Repository implements HistoryContract {
 	 */
 	public function renderType($type) {
 		if (is_numeric($type)) {
-			$history = $this->query()->with('user')->where('type_id', $type)->latest()->get();
+			$history = History::with('user')->where('type_id', $type)->latest()->get();
 		} else {
 			$type = strtolower($type);
 
-			$history = $this->query()->whereHas('type', function ($query) use ($type) {
+			$history = History::whereHas('type', function ($query) use ($type) {
 				$query->where('name', ucfirst($type));
 			})->latest()->get();
 		}
@@ -83,7 +77,7 @@ class EloquentHistoryRepository extends Repository implements HistoryContract {
 	 * @return string
 	 */
 	public function renderEntity($entity_id) {
-		$history = $this->query()->with('user', 'type')->where('entity_id', $entity_id)->latest()->get();
+		$history = History::with('user', 'type')->where('entity_id', $entity_id)->latest()->get();
 
 		if (! $history->count())
 			return trans("history.backend.none_for_entity", ['entity' => $history->type->name]);
