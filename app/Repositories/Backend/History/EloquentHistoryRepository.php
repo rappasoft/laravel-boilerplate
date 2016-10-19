@@ -74,10 +74,23 @@ class EloquentHistoryRepository implements HistoryContract {
 
 	/**
 	 * @param $entity_id
-	 * @return string
+	 * @param $type
+	 * @return string|\Symfony\Component\Translation\TranslatorInterface
 	 */
-	public function renderEntity($entity_id) {
-		$history = History::with('user', 'type')->where('entity_id', $entity_id)->latest()->get();
+	public function renderEntity($entity_id, $type) {
+		$history = History::with('user', 'type')->where('entity_id', $entity_id);
+
+		if (is_numeric($type)) {
+			$history = $history->where('type_id', $type);
+		} else {
+			$type = strtolower($type);
+
+			$history = $history->whereHas('type', function ($query) use ($type) {
+				$query->where('name', ucfirst($type));
+			});
+		}
+
+		$history = $history->latest()->get();
 
 		if (! $history->count())
 			return trans("history.backend.none_for_entity", ['entity' => $history->type->name]);
