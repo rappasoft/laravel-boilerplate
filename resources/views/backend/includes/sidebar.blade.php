@@ -39,7 +39,7 @@
             @permission('manage-users')
                 <li class="{{ Active::pattern('admin/access/*') }}">
                     <a href="{{ route('admin.access.user.index') }}">
-                        <i class="fa fa-user"></i>
+                        <i class="fa fa-users"></i>
                         <span>{{ trans('menus.backend.access.title') }}</span>
                     </a>
                 </li>
