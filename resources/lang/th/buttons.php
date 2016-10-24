@@ -27,6 +27,13 @@ return [
         ],
     ],
 
+    'emails' => [
+        'auth' => [
+            'confirm_account' => 'Confirm Account',
+            'reset_password' => 'Reset Password',
+        ],
+    ],
+
     'general' => [
         'cancel' => 'ยกเลิก',
 
