@@ -58,15 +58,15 @@ return [
 
     'emails' => [
         'auth' => [
-            'error' => 'Whoops!',
-            'greeting' => 'Hello!',
-            'regards' => 'Regards,',
-            'trouble_clicking_button' => 'If you’re having trouble clicking the ":action_text" button, copy and paste the URL below into your web browser:',
-            'thank_you_for_using_app' => 'Thank you for using our application!',
+            'error' => 'Ups!',
+            'greeting' => 'Hola!',
+            'regards' => 'Saludos,',
+            'trouble_clicking_button' => 'Si está presentando problemas haciendo clic en el botón ":action_text", copia y pega el enlace en su navegador:',
+            'thank_you_for_using_app' => 'Gracias por utilizar nuestra aplicación!',
 
-            'password_reset_subject' => 'Su enlace de reinicio de la contraseña',
-            'password_cause_of_email' => 'You are receiving this email because we received a password reset request for your account.',
-            'password_if_not_requested' => 'If you did not request a password reset, no further action is required.',
+            'password_reset_subject' => 'Su enlace de reinicio de contraseña',
+            'password_cause_of_email' => 'Usted está recibiendo este correo porque hemos recibido una solicitud de reinicio de contraseña para su cuenta.',
+            'password_if_not_requested' => 'Si usted no hizo la solicitud, ninguna acción es requerida.',
             'reset_password' => 'Pulse aquí para reiniciar su contraseña',
 
             'click_to_confirm' => 'Pulse aquí para verificar su cuenta:',
