@@ -93,17 +93,17 @@
         @endif
 
         @permission('view-backend')
-        <div class="col-xs-12">
+            <div class="col-xs-12">
 
-            <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.permission_name') }}</div>
+                <div class="panel panel-default">
+                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.permission_name') }}</div>
 
-                <div class="panel-body">
-                    {{ trans('strings.frontend.test') . ' 5: ' . trans('strings.frontend.tests.you_can_see_because_permission', ['permission' => 'view-backend']) }}
-                </div>
-            </div><!-- panel -->
+                    <div class="panel-body">
+                        {{ trans('strings.frontend.test') . ' 5: ' . trans('strings.frontend.tests.you_can_see_because_permission', ['permission' => 'view-backend']) }}
+                    </div>
+                </div><!-- panel -->
 
-        </div><!-- col-md-10 -->
+            </div><!-- col-md-10 -->
         @endauth
 
         @if (access()->hasPermission(1))
