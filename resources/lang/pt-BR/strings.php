@@ -36,7 +36,7 @@ return [
             'minutes' => ' minutes',
             'search_placeholder' => 'Buscar...',
             'timeout' => 'You were automatically logged out for security reasons since you had no activity in ',
-            
+
             'see_all' => [
                 'messages' => 'Ver todas as mensagens',
                 'notifications' => 'Ver todas as notificações',
@@ -58,16 +58,22 @@ return [
 
     'emails' => [
         'auth' => [
+            'error' => 'Whoops!',
+            'greeting' => 'Hello!',
+            'regards' => 'Regards,',
+            'trouble_clicking_button' => 'If you’re having trouble clicking the ":action_text" button, copy and paste the URL below into your web browser:',
+            'thank_you_for_using_app' => 'Thank you for using our application!',
+
             'password_reset_subject' => 'Seu link para redefinição de senha',
+            'password_cause_of_email' => 'You are receiving this email because we received a password reset request for your account.',
+            'password_if_not_requested' => 'If you did not request a password reset, no further action is required.',
             'reset_password' => 'Clique aqui para redefinir sua senha',
+
+            'click_to_confirm' => 'Clique aqui para confirmar a sua conta:',
         ],
     ],
 
     'frontend' => [
-        'email' => [
-            'confirm_account' => 'Clique aqui para confirmar a sua conta:',
-        ],
-
         'test' => 'Teste',
 
         'tests' => [
@@ -89,7 +95,7 @@ return [
                 'permission_name'            => 'Usando o "Access Helper" com o Nome da Permissão',
                 'role_id'                    => 'Usando o "Access Helper" com o ID do Papel',
                 'role_name'                  => 'Usando o "Access Helper" com o Nome do Papel',
-                
+
             ],
 
             'view_console_it_works' => 'Veja o console, você deverá ver a mensagem \'it works!\' que está vindo de FrontendController@index',
