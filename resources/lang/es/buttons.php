@@ -29,8 +29,8 @@ return [
 
     'emails' => [
         'auth' => [
-            'confirm_account' => 'Confirm Account',
-            'reset_password' => 'Reset Password',
+            'confirm_account' => 'Confirmar Cuenta',
+            'reset_password' => 'Resetear Contraseña',
         ],
     ],
 
