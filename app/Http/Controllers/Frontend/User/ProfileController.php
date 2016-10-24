@@ -25,7 +25,7 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        return view('frontend.user.profile.edit');
+        return view('frontend.user.account.edit');
     }
 
 	/**
@@ -35,6 +35,6 @@ class ProfileController extends Controller
 	public function update(UpdateProfileRequest $request)
     {
         $this->user->updateProfile(access()->id(), $request->all());
-        return redirect()->route('frontend.user.dashboard')->withFlashSuccess(trans('strings.frontend.user.profile_updated'));
+        return redirect()->route('frontend.user.account')->withFlashSuccess(trans('strings.frontend.user.profile_updated'));
     }
 }

@@ -34,6 +34,6 @@ class ChangePasswordController extends Controller
 	 */
 	public function changePassword(ChangePasswordRequest $request) {
 		$this->user->changePassword($request->all());
-		return redirect()->route('frontend.user.dashboard')->withFlashSuccess(trans('strings.frontend.user.password_updated'));
+		return redirect()->route('frontend.user.account')->withFlashSuccess(trans('strings.frontend.user.password_updated'));
 	}
 }
