@@ -28,6 +28,10 @@
                     </li>
                 @endif
 
+                @if (access()->user())
+                    <li>{{ link_to_route('frontend.user.dashboard', trans('navs.frontend.dashboard')) }}</li>
+                @endif
+
                 @if (access()->guest())
                     <li>{{ link_to_route('frontend.auth.login', trans('navs.frontend.login')) }}</li>
                     <li>{{ link_to_route('frontend.auth.register', trans('navs.frontend.register')) }}</li>
@@ -38,12 +42,11 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            <li>{{ link_to_route('frontend.user.dashboard', trans('navs.frontend.dashboard')) }}</li>
-
                             @permission('view-backend')
                                 <li>{{ link_to_route('admin.dashboard', trans('navs.frontend.user.administration')) }}</li>
                             @endauth
 
+                            <li>{{ link_to_route('frontend.user.account', trans('navs.frontend.user.account')) }}</li>
                             <li>{{ link_to_route('frontend.auth.logout', trans('navs.general.logout')) }}</li>
                         </ul>
                     </li>

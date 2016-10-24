@@ -12,23 +12,29 @@ use App\Repositories\Frontend\Access\User\UserRepository;
  */
 class ProfileController extends Controller
 {
+	/**
+	 * ProfileController constructor.
+	 * @param UserRepository $user
+	 */
+	public function __construct(UserRepository $user) {
+		$this->user = $user;
+	}
+
     /**
      * @return mixed
      */
     public function edit()
     {
-        return view('frontend.user.profile.edit')
-            ->withUser(access()->user());
+        return view('frontend.user.profile.edit');
     }
 
 	/**
 	 * @param UpdateProfileRequest $request
-	 * @param UserRepository $user
 	 * @return mixed
 	 */
-	public function update(UpdateProfileRequest $request, UserRepository $user)
+	public function update(UpdateProfileRequest $request)
     {
-        $user->updateProfile(access()->id(), $request->all());
+        $this->user->updateProfile(access()->id(), $request->all());
         return redirect()->route('frontend.user.dashboard')->withFlashSuccess(trans('strings.frontend.user.profile_updated'));
     }
 }

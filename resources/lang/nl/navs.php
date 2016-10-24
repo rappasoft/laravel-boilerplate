@@ -25,9 +25,11 @@ return [
 		'register' => 'Registreer',
 
 		'user' => [
+			'account' => 'My Account',
 			'administration' => 'Beheer',
 			'change_password' => 'Verander Wachtwoord',
 			'my_information' => 'Mijn Informatie',
+			'profile' => 'Profile',
 		],
 	],
 ];
