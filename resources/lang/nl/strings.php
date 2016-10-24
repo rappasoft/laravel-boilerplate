@@ -55,19 +55,24 @@ return [
 			],
 		],
 	],
+    'emails' => [
+        'auth' => [
+            'error' => 'Whoops!',
+            'greeting' => 'Hello!',
+            'regards' => 'Regards,',
+            'trouble_clicking_button' => 'If you’re having trouble clicking the ":action_text" button, copy and paste the URL below into your web browser:',
+            'thank_you_for_using_app' => 'Thank you for using our application!',
 
-	'emails' => [
-		'auth' => [
-			'password_reset_subject' => 'Uw Wachtwoord Reset Link',
-			'reset_password' => 'Klik hier om uw wachtwoord te resetten',
-		],
-	],
+            'password_reset_subject' => 'Uw Wachtwoord Reset Link',
+            'password_cause_of_email' => 'You are receiving this email because we received a password reset request for your account.',
+            'password_if_not_requested' => 'If you did not request a password reset, no further action is required.',
+            'reset_password' => 'Klik hier om uw wachtwoord te resetten',
 
-	'frontend' => [
-		'email' => [
-			'confirm_account' => 'Klik hier om uw account te bevestigen:',
-		],
+            'click_to_confirm' => 'Klik hier om uw account te bevestigen:',
+        ],
+    ],
 
+    'frontend' => [
 		'test' => 'Test',
 
 		'tests' => [
