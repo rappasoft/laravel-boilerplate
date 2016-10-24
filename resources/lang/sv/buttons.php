@@ -27,6 +27,13 @@ return [
         ],
     ],
 
+    'emails' => [
+        'auth' => [
+            'confirm_account' => 'Bekräfta konto',
+            'reset_password' => 'Återställ lösenord',
+        ],
+    ],
+
     'general' => [
         'cancel' => 'Avbryt',
 
