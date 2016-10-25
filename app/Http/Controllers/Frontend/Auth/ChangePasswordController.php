@@ -22,13 +22,6 @@ class ChangePasswordController extends Controller
 	}
 
 	/**
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-	 */
-	public function showChangePasswordForm() {
-		return view('frontend.auth.passwords.change');
-	}
-
-	/**
 	 * @param ChangePasswordRequest $request
 	 * @return mixed
 	 */

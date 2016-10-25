@@ -19,10 +19,4 @@
         <th>{{ trans('labels.frontend.user.profile.last_updated') }}</th>
         <td>{{ $logged_in_user->updated_at }} ({{ $logged_in_user->updated_at->diffForHumans() }})</td>
     </tr>
-    <tr>
-        <th>{{ trans('labels.general.actions') }}</th>
-        <td>
-            {{ link_to_route('frontend.user.profile.edit', trans('labels.frontend.user.profile.edit_information'), [], ['class' => 'btn btn-primary btn-xs']) }}
-        </td>
-    </tr>
 </table>

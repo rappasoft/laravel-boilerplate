@@ -20,14 +20,6 @@ class ProfileController extends Controller
 		$this->user = $user;
 	}
 
-    /**
-     * @return mixed
-     */
-    public function edit()
-    {
-        return view('frontend.user.account.edit');
-    }
-
 	/**
 	 * @param UpdateProfileRequest $request
 	 * @return mixed

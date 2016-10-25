@@ -16,8 +16,7 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 		Route::get('logout-as', 'LoginController@logoutAs')->name('logout-as');
 
 		// Change Password Routes
-		Route::get('password/change', 'ChangePasswordController@showChangePasswordForm')->name('password.change');
-		Route::post('password/change', 'ChangePasswordController@changePassword')->name('password.change');
+		Route::patch('password/change', 'ChangePasswordController@changePassword')->name('password.change');
 	});
 
 	/**

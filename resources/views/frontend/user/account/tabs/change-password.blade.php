@@ -1,4 +1,4 @@
-{{ Form::open(['route' => ['frontend.auth.password.change'], 'class' => 'form-horizontal']) }}
+{{ Form::open(['route' => ['frontend.auth.password.change'], 'class' => 'form-horizontal', 'method' => 'patch']) }}
 
     <div class="form-group">
         {{ Form::label('old_password', trans('validation.attributes.frontend.old_password'), ['class' => 'col-md-4 control-label']) }}

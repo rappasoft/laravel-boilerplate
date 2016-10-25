@@ -26,7 +26,6 @@ Route::group(['middleware' => 'auth'], function () {
 		/**
 		 * User Profile Specific
 		 */
-		Route::get('profile/edit', 'ProfileController@edit')->name('profile.edit');
 		Route::patch('profile/update', 'ProfileController@update')->name('profile.update');
 	});
 });
