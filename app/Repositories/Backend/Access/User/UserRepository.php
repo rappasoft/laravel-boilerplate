@@ -54,12 +54,16 @@ class UserRepository extends Repository
          * be able to differentiate what buttons to show for each row.
          */
         if ($trashed == "true") {
-            return $this->query()->onlyTrashed()
+            return $this->query()
+				->with('roles')
+				->onlyTrashed()
                 ->select(['id', 'name', 'email', 'status', 'confirmed', 'created_at', 'updated_at', 'deleted_at'])
                 ->get();
         }
 
-        return $this->query()->select(['id', 'name', 'email', 'status', 'confirmed', 'created_at', 'updated_at', 'deleted_at'])
+        return $this->query()
+			->with('roles')
+			->select(['id', 'name', 'email', 'status', 'confirmed', 'created_at', 'updated_at', 'deleted_at'])
             ->where('status', $status)
             ->get();
     }

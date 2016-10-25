@@ -61,7 +61,7 @@ class EloquentHistoryRepository implements HistoryContract {
 		} else {
 			$type = strtolower($type);
 
-			$history = History::whereHas('type', function ($query) use ($type) {
+			$history = History::with('user')->whereHas('type', function ($query) use ($type) {
 				$query->where('name', ucfirst($type));
 			})->latest()->get();
 		}
@@ -81,12 +81,14 @@ class EloquentHistoryRepository implements HistoryContract {
 		$history = History::with('user', 'type')->where('entity_id', $entity_id);
 
 		if (is_numeric($type)) {
-			$history = $history->where('type_id', $type);
+			$history = $history->with('user')
+				->where('type_id', $type);
 		} else {
 			$type = strtolower($type);
 
-			$history = $history->whereHas('type', function ($query) use ($type) {
-				$query->where('name', ucfirst($type));
+			$history = $history->with('user')
+				->whereHas('type', function ($query) use ($type) {
+					$query->where('name', ucfirst($type));
 			});
 		}
 
