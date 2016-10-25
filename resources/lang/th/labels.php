@@ -19,11 +19,13 @@ return [
         'no' => 'ไม่',
         'custom' => 'เลือกเอง',
         'actions' => 'การกระทำ',
+		'active' => 'Active',
         'buttons' => [
             'save' => 'บันทึก',
             'update' => 'แก้ไข',
         ],
         'hide' => 'ซ่อน',
+		'inactive' => 'Inactive',
         'none' => 'ไม่มี',
         'show' => 'แสดง',
         'toggle_navigation' => 'เปิด/ปิด เมนูนำทาง',
@@ -71,6 +73,28 @@ return [
                     'roles' => 'บทบาท',
                     'total' => 'ผู้ใช้ทั้งหมด|ผู้ใช้ทั้งหมด',
                 ],
+
+				'tabs' => [
+					'titles' => [
+						'overview' => 'Overview',
+						'history' => 'History',
+					],
+
+					'content' => [
+						'overview' => [
+							'avatar' => 'Avatar',
+							'confirmed' => 'Confirmed',
+							'created_at' => 'Created At',
+							'deleted_at' => 'Deleted At',
+							'email' => 'E-mail',
+							'last_updated' => 'Last Updated',
+							'name' => 'Name',
+							'status' => 'Status',
+						],
+					],
+				],
+
+				'view' => 'View User',
             ],
         ],
     ],

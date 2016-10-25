@@ -19,11 +19,13 @@ return [
         'no' => 'Não',
         'custom' => 'Custom', // TODO TRANSLATION
         'actions' => 'Ações',
+		'active' => 'Active',
         'buttons' => [
             'save' => 'Salvar',
             'update' => 'Atualizar',
         ],
         'hide' => 'Esconder',
+		'inactive' => 'Inactive',
         'none' => 'Nenhum',
         'show' => 'Mostrar',
         'toggle_navigation' => 'Mostrar / Esconder Navegação',
@@ -71,6 +73,28 @@ return [
                     'roles' => 'Papéis',
                     'total' => 'total de usuário|total de usuários',
                 ],
+
+				'tabs' => [
+					'titles' => [
+						'overview' => 'Overview',
+						'history' => 'History',
+					],
+
+					'content' => [
+						'overview' => [
+							'avatar' => 'Avatar',
+							'confirmed' => 'Confirmed',
+							'created_at' => 'Created At',
+							'deleted_at' => 'Deleted At',
+							'email' => 'E-mail',
+							'last_updated' => 'Last Updated',
+							'name' => 'Name',
+							'status' => 'Status',
+						],
+					],
+				],
+
+				'view' => 'View User',
             ],
         ],
     ],

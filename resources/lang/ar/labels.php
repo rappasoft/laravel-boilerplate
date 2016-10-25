@@ -19,11 +19,13 @@ return [
 		'no' => 'لا',
 		'custom' => 'مخصص',
 		'actions' => 'إجراءات',
+		'active' => 'Active',
 		'buttons' => [
 			'save' => 'حفظ',
 			'update' => 'تحديث',
 		],
 		'hide' => 'إخفاء',
+		'inactive' => 'Inactive',
 		'none' => 'لا شيء',
 		'show' => 'إظاهر',
 		'toggle_navigation' => 'تبديل شريط التنقل',
@@ -71,6 +73,28 @@ return [
 					'roles' => 'الأدوار',
 					'total' => 'مجموع المستخدم|مجموع المستخدمين',
 				],
+
+				'tabs' => [
+					'titles' => [
+						'overview' => 'Overview',
+						'history' => 'History',
+					],
+
+					'content' => [
+						'overview' => [
+							'avatar' => 'Avatar',
+							'confirmed' => 'Confirmed',
+							'created_at' => 'Created At',
+							'deleted_at' => 'Deleted At',
+							'email' => 'E-mail',
+							'last_updated' => 'Last Updated',
+							'name' => 'Name',
+							'status' => 'Status',
+						],
+					],
+				],
+
+				'view' => 'View User',
 			],
 		],
 	],

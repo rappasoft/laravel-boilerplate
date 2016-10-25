@@ -42,6 +42,7 @@ return [
 			'delete' => 'حذف',
 			'edit' => 'تعديل',
 			'update' => 'تحديث',
+			'view' => 'View',
 		],
 
 		'save' => 'حفظ',

@@ -65,6 +65,16 @@ class UserController extends Controller
     }
 
 	/**
+	 * @param User $user
+	 * @param ManageUserRequest $request
+	 * @return mixed
+	 */
+	public function show(User $user, ManageUserRequest $request) {
+		return view('backend.access.show')
+			->withUser($user);
+	}
+
+	/**
      * @param User $user
      * @param ManageUserRequest $request
      * @return mixed

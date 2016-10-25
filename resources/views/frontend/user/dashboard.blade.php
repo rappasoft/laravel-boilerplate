@@ -17,15 +17,15 @@
                             <ul class="media-list">
                                 <li class="media">
                                     <div class="media-left">
-                                        <img class="media-object" src="{{ $user->picture }}" alt="Profile picture">
+                                        <img class="media-object" src="{{ $logged_in_user->picture }}" alt="Profile picture">
                                     </div><!--media-left-->
 
                                     <div class="media-body">
                                         <h4 class="media-heading">
-                                            {{ $user->name }}<br/>
+                                            {{ $logged_in_user->name }}<br/>
                                             <small>
-                                                {{ $user->email }}<br/>
-                                                Joined {{ $user->created_at->format('F jS, Y') }}
+                                                {{ $logged_in_user->email }}<br/>
+                                                Joined {{ $logged_in_user->created_at->format('F jS, Y') }}
                                             </small>
                                         </h4>
 

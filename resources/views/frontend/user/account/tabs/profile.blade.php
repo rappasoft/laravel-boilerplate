@@ -1,23 +1,23 @@
 <table class="table table-striped table-hover">
     <tr>
         <th>{{ trans('labels.frontend.user.profile.avatar') }}</th>
-        <td><img src="{{ $user->picture }}" class="user-profile-image" /></td>
+        <td><img src="{{ $logged_in_user->picture }}" class="user-profile-image" /></td>
     </tr>
     <tr>
         <th>{{ trans('labels.frontend.user.profile.name') }}</th>
-        <td>{{ $user->name }}</td>
+        <td>{{ $logged_in_user->name }}</td>
     </tr>
     <tr>
         <th>{{ trans('labels.frontend.user.profile.email') }}</th>
-        <td>{{ $user->email }}</td>
+        <td>{{ $logged_in_user->email }}</td>
     </tr>
     <tr>
         <th>{{ trans('labels.frontend.user.profile.created_at') }}</th>
-        <td>{{ $user->created_at }} ({{ $user->created_at->diffForHumans() }})</td>
+        <td>{{ $logged_in_user->created_at }} ({{ $logged_in_user->created_at->diffForHumans() }})</td>
     </tr>
     <tr>
         <th>{{ trans('labels.frontend.user.profile.last_updated') }}</th>
-        <td>{{ $user->updated_at }} ({{ $user->updated_at->diffForHumans() }})</td>
+        <td>{{ $logged_in_user->updated_at }} ({{ $logged_in_user->updated_at->diffForHumans() }})</td>
     </tr>
     <tr>
         <th>{{ trans('labels.general.actions') }}</th>

@@ -42,6 +42,7 @@ return [
             'delete' => 'ลบ',
             'edit' => 'แก้ไข',
             'update' => 'อัพเดท',
+			'view' => 'View',
         ],
 
         'save' => 'บันทึก',

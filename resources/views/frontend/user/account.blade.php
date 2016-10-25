@@ -18,7 +18,7 @@
                                 <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{{ trans('navs.frontend.user.profile') }}</a>
                             </li>
 
-                            @if ($user->canChangePassword())
+                            @if ($logged_in_user->canChangePassword())
                                 <li role="presentation">
                                     <a href="#password" aria-controls="password" role="tab" data-toggle="tab">{{ trans('navs.frontend.user.change_password') }}</a>
                                 </li>
@@ -31,7 +31,7 @@
                                 @include('frontend.user.account.tabs.profile')
                             </div><!--tab panel profile-->
 
-                            @if ($user->canChangePassword())
+                            @if ($logged_in_user->canChangePassword())
                                 <div role="tabpanel" class="tab-pane mt-30" id="password">
                                     @include('frontend.user.account.tabs.change-password')
                                 </div><!--tab panel change password-->

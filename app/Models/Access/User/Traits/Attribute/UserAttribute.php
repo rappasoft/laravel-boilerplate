@@ -25,6 +25,16 @@ trait UserAttribute
         return ! app('session')->has(config('access.socialite_session_name'));
     }
 
+	/**
+	 * @return string
+	 */
+	public function getStatusLabelAttribute()
+	{
+		if ($this->isActive())
+			return "<label class='label label-success'>".trans('labels.general.active')."</label>";
+		return "<label class='label label-danger'>".trans('labels.general.inactive')."</label>";
+	}
+
     /**
      * @return string
      */
@@ -81,6 +91,14 @@ trait UserAttribute
     public function isConfirmed() {
         return $this->confirmed == 1;
     }
+
+	/**
+	 * @return string
+	 */
+	public function getShowButtonAttribute()
+	{
+		return '<a href="' . route('admin.access.user.show', $this) . '" class="btn btn-xs btn-info"><i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.view') . '"></i></a> ';
+	}
 
     /**
      * @return string
@@ -205,7 +223,8 @@ trait UserAttribute
 
         return
             $this->getLoginAsButtonAttribute() .
-            $this->getEditButtonAttribute() .
+			$this->getShowButtonAttribute() .
+			$this->getEditButtonAttribute() .
             $this->getChangePasswordButtonAttribute() .
             $this->getStatusButtonAttribute() .
             $this->getConfirmedButtonAttribute() .

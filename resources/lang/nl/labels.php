@@ -19,11 +19,13 @@ return [
 		'no' => 'Nee',
 		'custom' => 'Aangepast',
 		'actions' => 'Acties',
+		'active' => 'Active',
 		'buttons' => [
 			'save' => 'Bewaar',
 			'update' => 'Bijwerken',
 		],
 		'hide' => 'Verberg',
+		'inactive' => 'Inactive',
 		'none' => 'Geen',
 		'show' => 'Toon',
 		'toggle_navigation' => 'Navigatie omschakelen',
@@ -71,6 +73,28 @@ return [
 					'roles' => 'Rollen',
 					'total' => 'gebruiker|gebruikers',
 				],
+
+				'tabs' => [
+					'titles' => [
+						'overview' => 'Overview',
+						'history' => 'History',
+					],
+
+					'content' => [
+						'overview' => [
+							'avatar' => 'Avatar',
+							'confirmed' => 'Confirmed',
+							'created_at' => 'Created At',
+							'deleted_at' => 'Deleted At',
+							'email' => 'E-mail',
+							'last_updated' => 'Last Updated',
+							'name' => 'Name',
+							'status' => 'Status',
+						],
+					],
+				],
+
+				'view' => 'View User',
 			],
 		],
 	],

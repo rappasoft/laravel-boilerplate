@@ -30,13 +30,12 @@ interface HistoryContract {
 	 */
 	public function renderType($type);
 
-
 	/**
-	 * @param $entity_id
 	 * @param $type
+	 * @param $entity_id
 	 * @return mixed
 	 */
-	public function renderEntity($entity_id, $type);
+	public function renderEntity($type, $entity_id);
 
 	/**
 	 * @param $text

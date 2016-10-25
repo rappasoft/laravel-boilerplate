@@ -42,6 +42,7 @@ return [
             'delete' => 'Radera',
             'edit' => 'Redigera',
             'update' => 'Uppdatera',
+			'view' => 'View',
         ],
 
         'save' => 'Spara',

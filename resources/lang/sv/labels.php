@@ -19,11 +19,13 @@ return [
         'no' => 'Nej',
         'custom' => 'Specifika',
         'actions' => 'Hantera',
+		'active' => 'Active',
         'buttons' => [
             'save' => 'Spara',
             'update' => 'Uppdatera',
         ],
         'hide' => 'Dölj',
+		'inactive' => 'Inactive',
         'none' => 'Inga',
         'show' => 'Visa',
         'toggle_navigation' => 'Växla navigering',
@@ -71,6 +73,28 @@ return [
                     'roles' => 'Roller',
                     'total' => 'användare totalt|användare totalt',
                 ],
+
+				'tabs' => [
+					'titles' => [
+						'overview' => 'Overview',
+						'history' => 'History',
+					],
+
+					'content' => [
+						'overview' => [
+							'avatar' => 'Avatar',
+							'confirmed' => 'Confirmed',
+							'created_at' => 'Created At',
+							'deleted_at' => 'Deleted At',
+							'email' => 'E-mail',
+							'last_updated' => 'Last Updated',
+							'name' => 'Name',
+							'status' => 'Status',
+						],
+					],
+				],
+
+				'view' => 'View User',
             ],
         ],
     ],

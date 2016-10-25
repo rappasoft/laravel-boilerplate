@@ -19,11 +19,13 @@ return [
         'no' => 'No',
         'custom' => 'Custom',
         'actions' => 'Actions',
+		'active' => 'Active',
         'buttons' => [
             'save' => 'Save',
             'update' => 'Update',
         ],
         'hide' => 'Hide',
+		'inactive' => 'Inactive',
         'none' => 'None',
         'show' => 'Show',
         'toggle_navigation' => 'Toggle Navigation',
@@ -71,6 +73,28 @@ return [
                     'roles' => 'Roles',
                     'total' => 'user total|users total',
                 ],
+
+				'tabs' => [
+					'titles' => [
+						'overview' => 'Overview',
+						'history' => 'History',
+					],
+
+					'content' => [
+						'overview' => [
+							'avatar' => 'Avatar',
+							'confirmed' => 'Confirmed',
+							'created_at' => 'Created At',
+							'deleted_at' => 'Deleted At',
+							'email' => 'E-mail',
+							'last_updated' => 'Last Updated',
+							'name' => 'Name',
+							'status' => 'Status',
+						],
+					],
+				],
+
+				'view' => 'View User',
             ],
         ],
     ],

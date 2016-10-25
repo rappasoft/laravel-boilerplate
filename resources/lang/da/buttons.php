@@ -42,6 +42,7 @@ return [
             'delete' => 'Slet',
             'edit' => 'Rediger',
             'update' => 'Opdater',
+			'view' => 'View',
         ],
 
         'save' => 'Gem',

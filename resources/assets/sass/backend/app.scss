@@ -8,6 +8,9 @@
 @import "core";
 @import "mixins";
 
+// Helpers
+@import "../helpers";
+
 @import "header";
 @import "sidebar";
 @import "sidebar-mini";

@@ -28,17 +28,17 @@
                     </li>
                 @endif
 
-                @if (access()->user())
+                @if ($logged_in_user)
                     <li>{{ link_to_route('frontend.user.dashboard', trans('navs.frontend.dashboard')) }}</li>
                 @endif
 
-                @if (access()->guest())
+                @if (! $logged_in_user)
                     <li>{{ link_to_route('frontend.auth.login', trans('navs.frontend.login')) }}</li>
                     <li>{{ link_to_route('frontend.auth.register', trans('navs.frontend.register')) }}</li>
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ access()->user()->name }} <span class="caret"></span>
+                            {{ $logged_in_user->name }} <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu" role="menu">

@@ -19,11 +19,13 @@ return [
         'no' => 'Nej',
         'custom' => 'Brugerdefineret',
         'actions' => 'Handlinger',
+		'active' => 'Active',
         'buttons' => [
             'save' => 'Gem',
             'update' => 'Opdater',
         ],
         'hide' => 'Skjul',
+		'inactive' => 'Inactive',
         'none' => 'Ingen',
         'show' => 'Vis',
         'toggle_navigation' => 'Navigation',
@@ -71,6 +73,28 @@ return [
                     'roles' => 'Roller',
                     'total' => 'bruger i alt|brugere i alt',
                 ],
+
+				'tabs' => [
+					'titles' => [
+						'overview' => 'Overview',
+						'history' => 'History',
+					],
+
+					'content' => [
+						'overview' => [
+							'avatar' => 'Avatar',
+							'confirmed' => 'Confirmed',
+							'created_at' => 'Created At',
+							'deleted_at' => 'Deleted At',
+							'email' => 'E-mail',
+							'last_updated' => 'Last Updated',
+							'name' => 'Name',
+							'status' => 'Status',
+						],
+					],
+				],
+
+				'view' => 'View User',
             ],
         ],
     ],

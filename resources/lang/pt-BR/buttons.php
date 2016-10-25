@@ -42,6 +42,7 @@ return [
             'delete' => 'Excluir',
             'edit' => 'Editar',
             'update' => 'Atualizar',
+			'view' => 'View',
         ],
 
         'save' => 'Salvar',
