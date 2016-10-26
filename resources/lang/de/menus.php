@@ -33,6 +33,7 @@ return [
                 'deleted' => 'Gelöschte Benutzer',
                 'edit' => 'Benutzer bearbeiten',
                 'main' => 'Benutzer',
+				'view' => 'View User',
             ],
         ],
 
@@ -64,6 +65,7 @@ return [
             'es' => 'Spanisch (Spanish)',
             'fr' => 'Französisch (French)',
             'it' => 'Italienisch (Italian)',
+			'nl' => 'Dutch',
             'pt-BR' => 'Brasilianisches Portugiesisch (Brazilian Portuguese)',
             'sv' => 'Schwedisch (Swedish)',
             'th' => 'Thai',

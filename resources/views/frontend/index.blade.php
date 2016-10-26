@@ -1,9 +1,11 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts.app')
 
 @section('content')
     <div class="row">
 
-        <div class="col-md-10 col-md-offset-1">
+        <example></example>
+
+        <div class="col-xs-12">
 
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -20,7 +22,7 @@
         @role('Administrator')
             {{-- You can also send through the Role ID --}}
 
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-xs-12">
 
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_blade_extensions') }}</div>
@@ -34,7 +36,7 @@
         @endauth
 
         @if (access()->hasRole('Administrator'))
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-xs-12">
 
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_access_helper.role_name') }}</div>
@@ -48,7 +50,7 @@
         @endif
 
         @if (access()->hasRole(1))
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-xs-12">
 
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_access_helper.role_id') }}</div>
@@ -62,7 +64,7 @@
         @endif
 
         @if (access()->hasRoles(['Administrator', 1]))
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-xs-12">
 
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_access_helper.array_roles_not') }}</div>
@@ -77,7 +79,7 @@
 
         {{-- The second parameter says the user must have all the roles specified. Administrator does not have the role with an id of 2, so this will not show. --}}
         @if (access()->hasRoles(['Administrator', 2], true))
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-xs-12">
 
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_access_helper.array_roles') }}</div>
@@ -91,7 +93,7 @@
         @endif
 
         @permission('view-backend')
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-xs-12">
 
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.permission_name') }}</div>
@@ -105,7 +107,7 @@
         @endauth
 
         @if (access()->hasPermission(1))
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-xs-12">
 
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.permission_id') }}</div>
@@ -119,7 +121,7 @@
         @endif
 
         @if (access()->hasPermissions(['view-backend', 1]))
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-xs-12">
 
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.array_permissions_not') }}</div>
@@ -133,7 +135,7 @@
         @endif
 
         @if (access()->hasPermissions(['view-backend', 2], true))
-            <div class="col-md-10 col-md-offset-1">
+            <div class="col-xs-12">
 
                 <div class="panel panel-default">
                     <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.array_permissions') }}</div>
@@ -146,19 +148,7 @@
             </div><!-- col-md-10 -->
         @endif
 
-        <div class="col-md-10 col-md-offset-1">
-
-            <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.js_injected_from_controller') }}</div>
-
-                <div class="panel-body">
-                    {{ trans('strings.frontend.test') . ' 8: ' . trans('strings.frontend.tests.view_console_it_works') }}
-                </div>
-            </div><!-- panel -->
-
-        </div><!-- col-md-10 -->
-
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-xs-12">
 
             <div class="panel panel-default">
                 <div class="panel-heading"><i class="fa fa-home"></i> Bootstrap Glyphicon {{ trans('strings.frontend.test') }}</div>
@@ -173,7 +163,7 @@
 
         </div><!-- col-md-10 -->
 
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-xs-12">
 
             <div class="panel panel-default">
                 <div class="panel-heading"><i class="fa fa-home"></i> Font Awesome {{ trans('strings.frontend.test') }}</div>
@@ -190,10 +180,3 @@
 
     </div><!--row-->
 @endsection
-
-@section('after-scripts-end')
-    <script>
-        //Being injected from FrontendController
-        console.log(test);
-    </script>
-@stop

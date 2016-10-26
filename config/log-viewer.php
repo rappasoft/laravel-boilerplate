@@ -1,99 +1,116 @@
 <?php
 
+use Arcanedev\LogViewer\Contracts\Utilities\Filesystem;
+
 return [
-    /* ------------------------------------------------------------------------------------------------
-     |  Locale
-     | ------------------------------------------------------------------------------------------------
-     | Available: 'auto', 'ar', 'de', 'en', 'fr', 'nl'
-     */
-    'locale'         => 'auto',
+	/* ------------------------------------------------------------------------------------------------
+	 |  Log files storage path
+	 | ------------------------------------------------------------------------------------------------
+	 */
+	'storage-path'  => storage_path('logs'),
 
-    /* ------------------------------------------------------------------------------------------------
-     |  LogViewer's Facade
-     | ------------------------------------------------------------------------------------------------
-     */
-    'facade'        => 'LogViewer',
+	/* ------------------------------------------------------------------------------------------------
+	 |  Log files pattern
+	 | ------------------------------------------------------------------------------------------------
+	 */
+	'pattern'       => [
+		'prefix'    => Filesystem::PATTERN_PREFIX,    // 'laravel-'
+		'date'      => Filesystem::PATTERN_DATE,      // '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'
+		'extension' => Filesystem::PATTERN_EXTENSION, // '.log'
+	],
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Route
-     | ------------------------------------------------------------------------------------------------
-     */
-    /**
-     * Do not change this, log viewer routes for this application are overwritten in
-     * app/Http/Routes/Backend/LogViewer
-     */
-    'route'         => [
-        'enabled'    => false,
+	/* ------------------------------------------------------------------------------------------------
+	 |  Locale
+	 | ------------------------------------------------------------------------------------------------
+	 |  Supported locales :
+	 |    'auto', 'ar', 'de', 'en', 'es', 'fa', 'fr', 'hu', 'hy', 'it', 'ko', 'nl', 'pl', 'pt-BR', 'ro', 'ru',
+	 |    'sv', 'th', 'tr', 'zh-TW', 'zh'
+	 */
+	'locale'        => 'auto',
 
-        'attributes' => [
-            'prefix'     => 'log-viewer',
-            'middleware' => null,
-        ],
-    ],
+	/* ------------------------------------------------------------------------------------------------
+	 |  Route settings
+	 | ------------------------------------------------------------------------------------------------
+	 */
+	'route'         => [
+		'enabled'    => false,
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Log entries per page
-     | ------------------------------------------------------------------------------------------------
-     |  This defines how many log entries are displayed per page.
-     */
-    'per-page'      => 30,
+		'attributes' => [
+			'prefix'     => 'log-viewer',
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Download settings
-     | ------------------------------------------------------------------------------------------------
-     */
-    'download'      => [
-        'prefix'    => 'laravel-',
+			'middleware' => null,
+		],
+	],
 
-        'extension' => 'log',
-    ],
+	/* ------------------------------------------------------------------------------------------------
+	 |  Log entries per page
+	 | ------------------------------------------------------------------------------------------------
+	 |  This defines how many log entries are displayed per page.
+	 */
+	'per-page'      => 30,
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Menu settings
-     | ------------------------------------------------------------------------------------------------
-     */
-    'menu'  => [
-        'filter-route'  => 'log-viewer::logs.filter',
-        
-        'icons-enabled' => true,
-    ],
+	/* ------------------------------------------------------------------------------------------------
+	 |  LogViewer's Facade
+	 | ------------------------------------------------------------------------------------------------
+	 */
+	'facade'        => 'LogViewer',
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Icons
-     | ------------------------------------------------------------------------------------------------
-     */
-    'icons' =>  [
-        /**
-         * Font awesome >= 4.3
-         * http://fontawesome.io/icons/
-         */
-        'all'       => 'fa fa-fw fa-list',                 // http://fontawesome.io/icon/list/
-        'emergency' => 'fa fa-fw fa-bug',                  // http://fontawesome.io/icon/bug/
-        'alert'     => 'fa fa-fw fa-bullhorn',             // http://fontawesome.io/icon/bullhorn/
-        'critical'  => 'fa fa-fw fa-heartbeat',            // http://fontawesome.io/icon/heartbeat/
-        'error'     => 'fa fa-fw fa-times-circle',         // http://fontawesome.io/icon/times-circle/
-        'warning'   => 'fa fa-fw fa-exclamation-triangle', // http://fontawesome.io/icon/exclamation-triangle/
-        'notice'    => 'fa fa-fw fa-exclamation-circle',   // http://fontawesome.io/icon/exclamation-circle/
-        'info'      => 'fa fa-fw fa-info-circle',          // http://fontawesome.io/icon/info-circle/
-        'debug'     => 'fa fa-fw fa-life-ring',            // http://fontawesome.io/icon/life-ring/
-    ],
+	/* ------------------------------------------------------------------------------------------------
+	 |  Download settings
+	 | ------------------------------------------------------------------------------------------------
+	 */
+	'download'      => [
+		'prefix'    => 'laravel-',
 
-    /* ------------------------------------------------------------------------------------------------
-     |  Colors
-     | ------------------------------------------------------------------------------------------------
-     */
-    'colors' =>  [
-        'levels'    => [
-            'empty'     => '#D1D1D1',
-            'all'       => '#8A8A8A',
-            'emergency' => '#B71C1C',
-            'alert'     => '#D32F2F',
-            'critical'  => '#F44336',
-            'error'     => '#FF5722',
-            'warning'   => '#FF9100',
-            'notice'    => '#4CAF50',
-            'info'      => '#1976D2',
-            'debug'     => '#90CAF9',
-        ],
-    ],
+		'extension' => 'log',
+	],
+
+	/* ------------------------------------------------------------------------------------------------
+	 |  Menu settings
+	 | ------------------------------------------------------------------------------------------------
+	 */
+	'menu'  => [
+		'filter-route'  => 'admin.log-viewer::logs.filter',
+
+		'icons-enabled' => true,
+	],
+
+	/* ------------------------------------------------------------------------------------------------
+	 |  Icons
+	 | ------------------------------------------------------------------------------------------------
+	 */
+	'icons' =>  [
+		/**
+		 * Font awesome >= 4.3
+		 * http://fontawesome.io/icons/
+		 */
+		'all'       => 'fa fa-fw fa-list',                 // http://fontawesome.io/icon/list/
+		'emergency' => 'fa fa-fw fa-bug',                  // http://fontawesome.io/icon/bug/
+		'alert'     => 'fa fa-fw fa-bullhorn',             // http://fontawesome.io/icon/bullhorn/
+		'critical'  => 'fa fa-fw fa-heartbeat',            // http://fontawesome.io/icon/heartbeat/
+		'error'     => 'fa fa-fw fa-times-circle',         // http://fontawesome.io/icon/times-circle/
+		'warning'   => 'fa fa-fw fa-exclamation-triangle', // http://fontawesome.io/icon/exclamation-triangle/
+		'notice'    => 'fa fa-fw fa-exclamation-circle',   // http://fontawesome.io/icon/exclamation-circle/
+		'info'      => 'fa fa-fw fa-info-circle',          // http://fontawesome.io/icon/info-circle/
+		'debug'     => 'fa fa-fw fa-life-ring',            // http://fontawesome.io/icon/life-ring/
+	],
+
+	/* ------------------------------------------------------------------------------------------------
+	 |  Colors
+	 | ------------------------------------------------------------------------------------------------
+	 */
+	'colors' =>  [
+		'levels'    => [
+			'empty'     => '#D1D1D1',
+			'all'       => '#8A8A8A',
+			'emergency' => '#B71C1C',
+			'alert'     => '#D32F2F',
+			'critical'  => '#F44336',
+			'error'     => '#FF5722',
+			'warning'   => '#FF9100',
+			'notice'    => '#4CAF50',
+			'info'      => '#1976D2',
+			'debug'     => '#90CAF9',
+		],
+	],
 ];

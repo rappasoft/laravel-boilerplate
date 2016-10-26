@@ -19,11 +19,13 @@ return [
         'no' => 'Non',
         'custom' => 'Personnalisé',
         'actions' => 'Actions',
+		'active' => 'Active',
         'buttons' => [
             'save' => 'Enregistrer',
             'update' => 'Mettre à jour',
         ],
         'hide' => 'Cacher',
+		'inactive' => 'Inactive',
         'none' => 'Aucun',
         'show' => 'Voir',
         'toggle_navigation' => 'Navigation',
@@ -71,6 +73,28 @@ return [
                     'roles' => 'Rôles',
                     'total' => 'utilisateur total|utilisateurs total',
                 ],
+
+				'tabs' => [
+					'titles' => [
+						'overview' => 'Overview',
+						'history' => 'History',
+					],
+
+					'content' => [
+						'overview' => [
+							'avatar' => 'Avatar',
+							'confirmed' => 'Confirmed',
+							'created_at' => 'Created At',
+							'deleted_at' => 'Deleted At',
+							'email' => 'E-mail',
+							'last_updated' => 'Last Updated',
+							'name' => 'Name',
+							'status' => 'Status',
+						],
+					],
+				],
+
+				'view' => 'View User',
             ],
         ],
     ],

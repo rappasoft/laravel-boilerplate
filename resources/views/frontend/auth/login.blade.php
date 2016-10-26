@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts.app')
 
 @section('content')
 
@@ -11,7 +11,7 @@
 
                 <div class="panel-body">
 
-                    {{ Form::open(['route' => 'auth.login', 'class' => 'form-horizontal']) }}
+                    {{ Form::open(['route' => 'frontend.auth.login', 'class' => 'form-horizontal']) }}
 
                     <div class="form-group">
                         {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}
@@ -27,15 +27,6 @@
                         </div><!--col-md-6-->
                     </div><!--form-group-->
 
-                    @if (isset($captcha) && $captcha)
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                {!! Form::captcha() !!}
-                                {{ Form::hidden('captcha_status', 'true') }}
-                            </div><!--col-md-6-->
-                        </div><!--form-group-->
-                    @endif
-
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             <div class="checkbox">
@@ -50,7 +41,7 @@
                         <div class="col-md-6 col-md-offset-4">
                             {{ Form::submit(trans('labels.frontend.auth.login_button'), ['class' => 'btn btn-primary', 'style' => 'margin-right:15px']) }}
 
-                            {{ link_to('password/reset', trans('labels.frontend.passwords.forgot_password')) }}
+                            {{ link_to_route('frontend.auth.password.reset', trans('labels.frontend.passwords.forgot_password')) }}
                         </div><!--col-md-6-->
                     </div><!--form-group-->
 
@@ -68,9 +59,3 @@
     </div><!-- row -->
 
 @endsection
-
-@section('after-scripts-end')
-    @if (isset($captcha) && $captcha)
-        {!! Captcha::script() !!}
-    @endif
-@stop

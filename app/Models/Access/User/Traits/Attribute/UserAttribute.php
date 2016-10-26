@@ -25,6 +25,16 @@ trait UserAttribute
         return ! app('session')->has(config('access.socialite_session_name'));
     }
 
+	/**
+	 * @return string
+	 */
+	public function getStatusLabelAttribute()
+	{
+		if ($this->isActive())
+			return "<label class='label label-success'>".trans('labels.general.active')."</label>";
+		return "<label class='label label-danger'>".trans('labels.general.inactive')."</label>";
+	}
+
     /**
      * @return string
      */
@@ -82,6 +92,14 @@ trait UserAttribute
         return $this->confirmed == 1;
     }
 
+	/**
+	 * @return string
+	 */
+	public function getShowButtonAttribute()
+	{
+		return '<a href="' . route('admin.access.user.show', $this) . '" class="btn btn-xs btn-info"><i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.general.crud.view') . '"></i></a> ';
+	}
+
     /**
      * @return string
      */
@@ -134,7 +152,7 @@ trait UserAttribute
     public function getConfirmedButtonAttribute()
     {
         if (! $this->isConfirmed()) {
-            return '<a href="' . route('admin.account.confirm.resend', $this) . '" class="btn btn-xs btn-success"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title=' . trans('buttons.backend.access.users.resend_email') . '"></i></a> ';
+            return '<a href="' . route('admin.access.user.account.confirm.resend', $this) . '" class="btn btn-xs btn-success"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title=' . trans('buttons.backend.access.users.resend_email') . '"></i></a> ';
         }
 
         return '';
@@ -198,14 +216,15 @@ trait UserAttribute
      */
     public function getActionButtonsAttribute()
     {
-        if ($this->deleted_at) {
+        if ($this->trashed()) {
             return $this->getRestoreButtonAttribute() .
                 $this->getDeletePermanentlyButtonAttribute();
         }
 
         return
             $this->getLoginAsButtonAttribute() .
-            $this->getEditButtonAttribute() .
+			$this->getShowButtonAttribute() .
+			$this->getEditButtonAttribute() .
             $this->getChangePasswordButtonAttribute() .
             $this->getStatusButtonAttribute() .
             $this->getConfirmedButtonAttribute() .

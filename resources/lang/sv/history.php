@@ -13,25 +13,25 @@ return [
 	*/
 
 	'backend' => [
-		'none' => 'There is no recent history.',
-		'none_for_type' => 'There is no history for this type.',
-		'none_for_entity' => "There is no history for this :entity.",
-		'recent_history' => 'Recent History',
+		'none' => 'Det finns ingen historik för förändringar.',
+		'none_for_type' => 'Det finns ingen historik för denna typ',
+		'none_for_entity' => "Det finns ingen historik för denna :entity.",
+		'recent_history' => 'Senaste förändringarna',
 
 		'roles' => [
-			'created' => 'created role',
-			'deleted' => 'deleted role',
-			'updated' => 'updated role',
+			'created' => 'skapade rollen',
+			'deleted' => 'raderade rollen',
+			'updated' => 'uppdaterade rollen',
 		],
 		'users' => [
-			'changed_password' => 'changed password for user',
-			'created' => 'created user',
-			'deactivated' => 'deactivated user',
-			'deleted' => 'deleted user',
-			'permanently_deleted' => 'permanently deleted user',
-			'updated' => 'updated user',
-			'reactivated' => 'reactivated user',
-			'restored' => 'restored user',
+			'changed_password' => 'ändrade lösenord för användare',
+			'created' => 'skapade användare',
+			'deactivated' => 'avaktiverade användare',
+			'deleted' => 'raderade användare',
+			'permanently_deleted' => 'raderade permanent användare',
+			'updated' => 'uppdaterade användare',
+			'reactivated' => 'återaktiverade användare',
+			'restored' => 'återställde användare',
 		],
 	],
 ];

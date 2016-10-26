@@ -33,6 +33,7 @@ return [
                 'deleted' => 'Excluir Usuários',
                 'edit' => 'Editar Usuário',
                 'main' => 'Usuários',
+				'view' => 'View User',
             ],
         ],
 
@@ -64,6 +65,7 @@ return [
             'es' => 'Espanhol (Spanish)',
             'fr' => 'Francês (French)',
             'it' => 'Italiano (Italian)',
+			'nl' => 'Dutch',
             'pt-BR' => 'Português do Brasil (Brazilian Portuguese)',
             'sv' => 'Sueco (Swedish)',
             'th' => 'Thai',

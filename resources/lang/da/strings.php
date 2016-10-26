@@ -36,7 +36,7 @@ return [
             'minutes' => ' minutter',
             'search_placeholder' => 'Søg...',
             'timeout' => 'Du er af sikkerhedsmæssige årsager blevet logget ud automatisk, da du ikke har været aktiv i ',
-            
+
             'see_all' => [
                 'messages' => 'Se alle beskeder',
                 'notifications' => 'Vis alle',
@@ -55,19 +55,24 @@ return [
             ],
         ],
     ],
-
     'emails' => [
         'auth' => [
+            'error' => 'Whoops!',
+            'greeting' => 'Hello!',
+            'regards' => 'Regards,',
+            'trouble_clicking_button' => 'If you’re having trouble clicking the ":action_text" button, copy and paste the URL below into your web browser:',
+            'thank_you_for_using_app' => 'Thank you for using our application!',
+
             'password_reset_subject' => 'Dit link til at nulstille adgangskoden',
+            'password_cause_of_email' => 'You are receiving this email because we received a password reset request for your account.',
+            'password_if_not_requested' => 'If you did not request a password reset, no further action is required.',
             'reset_password' => 'Klik her for at nulstille din adgangskode',
+
+            'click_to_confirm' => 'Klik her for at bekræfte din konto:',
         ],
     ],
 
     'frontend' => [
-        'email' => [
-            'confirm_account' => 'Klik her for at bekræfte din konto:',
-        ],
-
         'test' => 'Test',
 
         'tests' => [

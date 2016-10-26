@@ -1,11 +1,20 @@
-@import "variable-overrides";
-@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import '../../../../node_modules/font-awesome/scss/font-awesome';
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
-/**
- * Frontend Styles Start Here
- */
-.logged-in-as {
-  margin:0;
-  border-radius:0;
-}
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Font Awesome
+@import "node_modules/font-awesome/scss/font-awesome";
+
+// Helpers
+@import "../helpers";
+
+// Global
+@import "global";
+
+// Pages
+@import "pages/dashboard";

@@ -27,6 +27,13 @@ return [
         ],
     ],
 
+    'emails' => [
+        'auth' => [
+            'confirm_account' => 'Confirm Account',
+            'reset_password' => 'Reset Password',
+        ],
+    ],
+
     'general' => [
         'cancel' => 'Fortryd',
 
@@ -35,6 +42,7 @@ return [
             'delete' => 'Slet',
             'edit' => 'Rediger',
             'update' => 'Opdater',
+			'view' => 'View',
         ],
 
         'save' => 'Gem',

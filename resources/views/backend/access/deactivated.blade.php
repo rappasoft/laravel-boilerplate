@@ -1,4 +1,4 @@
-@extends ('backend.layouts.master')
+@extends ('backend.layouts.app')
 
 @section ('title', trans('labels.backend.access.users.management') . ' | ' . trans('labels.backend.access.users.deactivated'))
 
@@ -55,7 +55,7 @@
                 serverSide: true,
                 ajax: {
                     url: '{{ route("admin.access.user.get") }}',
-                    type: 'get',
+                    type: 'post',
                     data: {status: 0, trashed: false}
                 },
                 columns: [

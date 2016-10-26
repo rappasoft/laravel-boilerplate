@@ -1,4 +1,4 @@
-@extends ('backend.layouts.master')
+@extends ('backend.layouts.app')
 
 @section ('title', trans('labels.backend.access.roles.management'))
 
@@ -59,7 +59,10 @@
             $('#roles-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route("admin.access.role.get") }}',
+                ajax: {
+                    url: '{{ route("admin.access.role.get") }}',
+                    type: 'post'
+                },
                 columns: [
                     {data: 'name', name: 'name'},
                     {data: 'permissions', name: 'permissions'},

@@ -33,6 +33,7 @@ return [
                 'deleted' => 'ผู้ใช้ที่ถูกลบ',
                 'edit' => 'แก้ไขผู้ใช้',
                 'main' => 'ผู้ใช้',
+				'view' => 'View User',
             ],
         ],
 
@@ -64,6 +65,7 @@ return [
             'es' => 'สเปน (Spanish)',
             'fr' => 'ฝรั่งเศส (French)',
             'it' => 'อิตาลี (Italian)',
+			'nl' => 'Dutch',
             'pt-BR' => 'โปรตุเกสแบบบราซิล (Brazilian Portuguese)',
             'sv' => 'สวีเดน (Swedish)',
             'th' => 'ไทย (Thai)',

@@ -1,9 +1,9 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts.app')
 
 @section('content')
     <div class="row">
 
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-xs-12">
 
             <div class="panel panel-default">
                 <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('labels.frontend.macros.macro_examples') }}</div>

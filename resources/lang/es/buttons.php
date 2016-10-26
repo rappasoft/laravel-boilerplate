@@ -27,6 +27,13 @@ return [
         ],
     ],
 
+    'emails' => [
+        'auth' => [
+            'confirm_account' => 'Confirmar Cuenta',
+            'reset_password' => 'Resetear Contraseña',
+        ],
+    ],
+
     'general' => [
         'cancel' => 'Cancelar',
 
@@ -35,6 +42,7 @@ return [
             'delete' => 'Eliminar',
             'edit' => 'Modificar',
             'update' => 'Actualizar',
+			'view' => 'View',
         ],
 
         'save' => 'Guardar',

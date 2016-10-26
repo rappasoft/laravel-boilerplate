@@ -1,13 +1,15 @@
 <?php namespace App\Models\History;
 
-use App\Models\Access\User\User;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\History\Traits\Relationship\HistoryRelationship;
 
 /**
  * Class History
  * package App
  */
 class History extends Model {
+
+	use HistoryRelationship;
 
 	/**
 	 * The database table used by the model.
@@ -22,18 +24,4 @@ class History extends Model {
 	 * @var array
 	 */
 	protected $fillable = ['type_id', 'user_id', 'entity_id', 'icon', 'class', 'text', 'assets'];
-
-	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
-	 */
-	public function user() {
-		return $this->hasOne(User::class, 'id', 'user_id');
-	}
-
-	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
-	 */
-	public function type() {
-		return $this->hasOne(HistoryType::class, 'id', 'type_id');
-	}
 }

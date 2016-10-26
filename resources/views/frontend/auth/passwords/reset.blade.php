@@ -1,23 +1,32 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts.app')
 
 @section('content')
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
 
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
+
             <div class="panel panel-default">
 
                 <div class="panel-heading">{{ trans('labels.frontend.passwords.reset_password_box_title') }}</div>
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
 
-                    {{ Form::open(['route' => 'auth.password.reset', 'class' => 'form-horizontal']) }}
+                <div class="panel-body">
+
+                    {{ Form::open(['route' => 'frontend.auth.password.reset', 'class' => 'form-horizontal']) }}
 
                     <input type="hidden" name="token" value="{{ $token }}">
-                    <input type="hidden" name="email" value="{{ $email }}">
+
+                        <div class="form-group">
+                            {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}
+                            <div class="col-md-6">
+                                <p class="form-control-static">{{ $email }}</p>
+                                {{ Form::input('hidden', 'email', $email, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
+                            </div><!--col-md-6-->
+                        </div><!--form-group-->
 
                     <div class="form-group">
                         {{ Form::label('password', trans('validation.attributes.frontend.password'), ['class' => 'col-md-4 control-label']) }}

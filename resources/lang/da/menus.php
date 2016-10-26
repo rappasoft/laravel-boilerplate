@@ -33,6 +33,7 @@ return [
                 'deleted' => 'Slet Bruger',
                 'edit' => 'Rediger Bruger',
                 'main' => 'Brugere',
+				'view' => 'View User',
             ],
         ],
 
@@ -64,6 +65,7 @@ return [
             'es' => 'Spansk',
             'fr' => 'Fransk',
             'it' => 'Italiensk',
+			'nl' => 'Dutch',
             'pt-BR' => 'Brasiliansk portugisisk',
             'sv' => 'Svensk',
             'th' => 'Thai',

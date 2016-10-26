@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Frontend\Auth;
 
 use App\Http\Requests\Request;
+use Illuminate\Validation\Rule;
 
 /**
  * Class RegisterRequest
@@ -29,7 +30,7 @@ class RegisterRequest extends Request
     {
         return [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
+            'email' => ['required', 'email', 'max:255', Rule::unique('users')],
             'password' => 'required|min:6|confirmed',
             'g-recaptcha-response' => 'required_if:captcha_status,true|captcha',
         ];

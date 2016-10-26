@@ -58,16 +58,22 @@ return [
 
     'emails' => [
         'auth' => [
-            'password_reset_subject' => 'Your Password Reset Link',
+            'error' => 'Whoops!',
+            'greeting' => 'Hello!',
+            'regards' => 'Regards,',
+            'trouble_clicking_button' => 'If you’re having trouble clicking the ":action_text" button, copy and paste the URL below into your web browser:',
+            'thank_you_for_using_app' => 'Thank you for using our application!',
+
+            'password_reset_subject' => 'Reset Password',
+            'password_cause_of_email' => 'You are receiving this email because we received a password reset request for your account.',
+            'password_if_not_requested' => 'If you did not request a password reset, no further action is required.',
             'reset_password' => 'Click here to reset your password',
+
+            'click_to_confirm' => 'Click here to confirm your account:',
         ],
     ],
 
     'frontend' => [
-        'email' => [
-            'confirm_account' => 'Click here to confirm your account:',
-        ],
-
         'test' => 'Test',
 
         'tests' => [

@@ -1,6 +1,7 @@
 <?php
 
 return [
+
 	/**
 	 * In seconds
 	 * Default: 10 mins
