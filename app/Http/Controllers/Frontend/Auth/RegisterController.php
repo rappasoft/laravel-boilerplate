@@ -17,6 +17,11 @@ class RegisterController extends Controller
     use RegistersUsers;
 
 	/**
+	 * @var UserRepository
+	 */
+	protected $user;
+
+	/**
 	 * RegisterController constructor.
 	 * @param UserRepository $user
 	 */

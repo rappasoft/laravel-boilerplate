@@ -25,21 +25,14 @@ class RoleRepository extends Repository
     /**
      * @param  string  $order_by
      * @param  string  $sort
-     * @param  bool    $withPermissions
      * @return mixed
      */
-    public function getAll($order_by = 'sort', $sort = 'asc', $withPermissions = false)
+    public function getAll($order_by = 'sort', $sort = 'asc')
     {
-        if ($withPermissions) {
-            return $this->query()
-				->with('permissions')
-                ->orderBy($order_by, $sort)
-                ->get();
-        }
-
-        return $this->query()
+		return $this->query()
+			->with('permissions')
 			->orderBy($order_by, $sort)
-            ->get();
+			->get();
     }
 
     /**

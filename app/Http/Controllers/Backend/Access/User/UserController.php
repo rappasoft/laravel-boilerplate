@@ -51,7 +51,7 @@ class UserController extends Controller
     public function create(ManageUserRequest $request)
     {
         return view('backend.access.create')
-            ->withRoles($this->roles->getAll('sort', 'asc', true));
+            ->withRoles($this->roles->getAll());
     }
 
 	/**
@@ -84,7 +84,7 @@ class UserController extends Controller
         return view('backend.access.edit')
             ->withUser($user)
             ->withUserRoles($user->roles->pluck('id')->all())
-            ->withRoles($this->roles->getAll('sort', 'asc', true));
+            ->withRoles($this->roles->getAll());
     }
 
 	/**

@@ -14,6 +14,11 @@ use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 class ConfirmAccountController extends Controller
 {
 	/**
+	 * @var UserRepository
+	 */
+	protected $user;
+
+	/**
 	 * ConfirmAccountController constructor.
 	 * @param UserRepository $user
 	 */

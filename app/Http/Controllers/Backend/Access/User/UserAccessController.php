@@ -40,20 +40,20 @@ class UserAccessController extends Controller
 
 		app()->make(Auth::class)->flushTempSession();
 
-		//Won't break, but don't let them "Login As" themselves
+		// Won't break, but don't let them "Login As" themselves
 		if (access()->id() == $user->id) {
 			throw new GeneralException("Do not try to login as yourself.");
 		}
 
-		//Add new session variables
+		// Add new session variables
 		session(["admin_user_id" => access()->id()]);
 		session(["admin_user_name" => access()->user()->name]);
 		session(["temp_user_id" => $user->id]);
 
-		//Login user
+		// Login user
 		access()->loginUsingId($user->id);
 
-		//Redirect to frontend
+		// Redirect to frontend
 		return redirect()->route("frontend.index");
 	}
 }

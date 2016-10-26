@@ -12,6 +12,11 @@ use App\Repositories\Frontend\Access\User\UserRepository;
  */
 class ChangePasswordController extends Controller
 {
+    /**
+     * @var UserRepository
+     */
+    protected $user;
+
 	/**
 	 * ChangePasswordController constructor.
 	 * @param UserRepository $user

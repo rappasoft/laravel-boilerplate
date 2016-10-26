@@ -20,13 +20,11 @@ class UserNeedsPasswordReset extends Notification
      */
     public $token;
 
-    /**
-     * Create a notification instance.
-     *
-     * @param  string  $token
-     * @return void
-     */
-    public function __construct($token)
+	/**
+	 * UserNeedsPasswordReset constructor.
+	 * @param $token
+	 */
+	public function __construct($token)
     {
         $this->token = $token;
     }
@@ -56,9 +54,4 @@ class UserNeedsPasswordReset extends Notification
             ->action(trans('buttons.emails.auth.reset_password'), route('frontend.auth.password.reset_form', $this->token))
             ->line(trans('strings.emails.auth.password_if_not_requested'));
     }
-                        // ->subject(app_name() . ': ' . trans('exceptions.frontend.auth.confirmation.confirm'))
-                        // ->line(trans('strings.emails.auth.click_to_confirm'))
-                        // ->action(trans('buttons.emails.auth.confirm_account'), route('frontend.auth.account.confirm', $this->confirmation_code))
-                        // ->line(trans('strings.emails.auth.thank_you_for_using_app'));
-
 }

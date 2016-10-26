@@ -33,6 +33,7 @@ return [
                 'deleted' => 'Excluir Usuários',
                 'edit' => 'Editar Usuário',
                 'main' => 'Usuários',
+				'view' => 'View User',
             ],
         ],
 

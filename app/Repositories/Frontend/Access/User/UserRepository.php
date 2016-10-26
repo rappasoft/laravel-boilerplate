@@ -54,7 +54,6 @@ class UserRepository extends Repository
     }
 
 	/**
-	 * TODO: Move this somewhere more appropriate
 	 * @param $token
 	 * @return mixed
 	 * @throws GeneralException

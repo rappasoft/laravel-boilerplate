@@ -3,6 +3,7 @@
 namespace App\Models\Access\User\Traits;
 
 use App\Notifications\Frontend\Auth\UserNeedsPasswordReset;
+
 /**
  * Class UserSendPasswordReset
  * @package App\Models\Access\User\Traits

@@ -5,6 +5,10 @@ namespace App\Providers;
 use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class AppServiceProvider
+ * @package App\Providers
+ */
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -40,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
 			session()->forget('lang-rtl');
 		}
 
-		//Force SSL in production
+		// Force SSL in production
 		if ($this->app->environment() == 'production') {
 			//URL::forceSchema('https');
 		}

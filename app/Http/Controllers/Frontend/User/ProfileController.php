@@ -13,6 +13,11 @@ use App\Repositories\Frontend\Access\User\UserRepository;
 class ProfileController extends Controller
 {
 	/**
+	 * @var UserRepository
+	 */
+	protected $user;
+
+	/**
 	 * ProfileController constructor.
 	 * @param UserRepository $user
 	 */

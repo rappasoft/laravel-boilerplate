@@ -1,6 +1,6 @@
 Thank you for wanting to contribute to the project!
 ================================================
-Before you spend time on building something, please share your plans/idéas as an issue. That way we can decide if the idéa suits the project.
+Before you spend time on building something, please share your plans/ideas as an issue. That way we can decide if the idea suits the project.
 
 Please follow this steps when you make a PR:
 
