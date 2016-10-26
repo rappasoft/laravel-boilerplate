@@ -10,6 +10,14 @@ use App\Models\History\HistoryType;
 class EloquentHistoryRepository implements HistoryContract {
 
 	/**
+	 * Pagination type
+	 * paginate: Prev/Next with page numbers
+	 * simplePaginate: Just Prev/Next arrows
+	 * @var string
+	 */
+	private $paginationType = "simplePaginate";
+
+	/**
 	 * @param $type
 	 * @param $text
 	 * @param null $entity_id
@@ -40,64 +48,47 @@ class EloquentHistoryRepository implements HistoryContract {
 	}
 
 	/**
-	 * @return string
+	 * @param null $limit
+	 * @param bool $paginate
+	 * @param int $pagination
+	 * @return string|\Symfony\Component\Translation\TranslatorInterface
 	 */
-	public function render() {
-		$history = History::with('user')->latest()->get();
-
-		if (! $history->count())
-			return trans("history.backend.none");
-
-		return $this->buildList($history);
+	public function render($limit = null, $paginate = true, $pagination = 10) {
+		$history = History::with('user')->latest();
+		$history = $this->buildPagination($history, $limit, $paginate, $pagination);
+		if (! $history->count()) return trans("history.backend.none");
+		return $this->buildList($history, $paginate);
 	}
 
 	/**
 	 * @param $type
-	 * @return string
+	 * @param null $limit
+	 * @param bool $paginate
+	 * @param int $pagination
+	 * @return string|\Symfony\Component\Translation\TranslatorInterface
 	 */
-	public function renderType($type) {
-		if (is_numeric($type)) {
-			$history = History::with('user')->where('type_id', $type)->latest()->get();
-		} else {
-			$type = strtolower($type);
-
-			$history = History::with('user')->whereHas('type', function ($query) use ($type) {
-				$query->where('name', ucfirst($type));
-			})->latest()->get();
-		}
-
-		if (! $history->count())
-			return trans("history.backend.none_for_type");
-
-		return $this->buildList($history);
+	public function renderType($type, $limit = null, $paginate = true, $pagination = 10) {
+		$history = History::with('user');
+		$history = $this->checkType($history, $type);
+		$history = $this->buildPagination($history, $limit, $paginate, $pagination);
+		if (! $history->count()) return trans("history.backend.none_for_type");
+		return $this->buildList($history, $paginate);
 	}
 
 	/**
 	 * @param $type
 	 * @param $entity_id
+	 * @param null $limit
+	 * @param bool $paginate
+	 * @param int $pagination
 	 * @return string|\Symfony\Component\Translation\TranslatorInterface
 	 */
-	public function renderEntity($type, $entity_id) {
+	public function renderEntity($type, $entity_id, $limit = null, $paginate = true, $pagination = 10) {
 		$history = History::with('user', 'type')->where('entity_id', $entity_id);
-
-		if (is_numeric($type)) {
-			$history = $history->with('user')
-				->where('type_id', $type);
-		} else {
-			$type = strtolower($type);
-
-			$history = $history->with('user')
-				->whereHas('type', function ($query) use ($type) {
-					$query->where('name', ucfirst($type));
-			});
-		}
-
-		$history = $history->latest()->get();
-
-		if (! $history->count())
-			return trans("history.backend.none_for_entity", ['entity' => $type]);
-
-		return $this->buildList($history);
+		$history = $this->checkType($history, $type);
+		$history = $this->buildPagination($history, $limit, $paginate, $pagination);
+		if (! $history->count()) return trans("history.backend.none_for_entity", ['entity' => $type]);
+		return $this->buildList($history, $paginate);
 	}
 
 	/**
@@ -162,34 +153,47 @@ class EloquentHistoryRepository implements HistoryContract {
 	}
 
 	/**
-	 * @param $items
+	 * @param $history
+	 * @param bool $paginate
 	 * @return string
 	 */
-	public function buildList($items) {
-		$html = '<ul class="timeline">';
-
-		foreach ($items as $h) {
-			$html .= $this->buildItem($h);
-		}
-
-		$html .= '</ul>';
-
-		return $html;
+	public function buildList($history, $paginate = true) {
+		return view('backend.history.partials.list', ['history' => $history, 'paginate' => $paginate])
+			->render();
 	}
 
 	/**
-	 * @param History $history
-	 * @return string
+	 * @param $query
+	 * @param $limit
+	 * @param $paginate
+	 * @param $pagination
+	 * @return mixed
 	 */
-	public function buildItem(History $history) {
-		return
-			'<li>'.
-              '<i class="fa fa-'.$history->icon.' '.$history->class.'"></i>'.
+	public function buildPagination($query, $limit, $paginate, $pagination) {
+		if ($paginate && is_numeric($pagination)) {
+			return $query->{$this->paginationType}($pagination);
+		} else {
+			if($limit && is_numeric($limit))
+				$query->take($limit);
 
-				'<div class="timeline-item">'.
-                '<span class="time"><i class="fa fa-clock-o"></i> '.$history->created_at->diffForHumans().'</span>'.
-				'<h3 class="timeline-header no-border"><strong>'.$history->user->name.'</strong> '.$this->renderDescription($history->text, $history->assets).'</h3>'.
-              '</div>'.
-            '</li>';
+			return $query->get();
+		}
+	}
+
+	/**
+	 * @param $query
+	 * @param $type
+	 * @return mixed
+	 */
+	private function checkType($query, $type) {
+		if (is_numeric($type)) {
+			return $query->where('type_id', $type)->latest();
+		} else {
+			$type = strtolower($type);
+
+			return $query->whereHas('type', function ($query) use ($type) {
+				$query->where('name', ucfirst($type));
+			})->latest();
+		}
 	}
 }
