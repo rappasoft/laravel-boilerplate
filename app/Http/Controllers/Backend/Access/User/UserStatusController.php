@@ -63,7 +63,7 @@ class UserStatusController extends Controller
 	public function delete(User $deletedUser, ManageUserRequest $request)
 	{
 		$this->users->forceDelete($deletedUser);
-		return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.deleted_permanently'));
+		return redirect()->route('admin.access.user.deleted')->withFlashSuccess(trans('alerts.backend.users.deleted_permanently'));
 	}
 
 	/**
@@ -74,6 +74,6 @@ class UserStatusController extends Controller
 	public function restore(User $deletedUser, ManageUserRequest $request)
 	{
 		$this->users->restore($deletedUser);
-		return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.restored'));
+		return redirect()->route('admin.access.user.index')->withFlashSuccess(trans('alerts.backend.users.restored'));
 	}
 }

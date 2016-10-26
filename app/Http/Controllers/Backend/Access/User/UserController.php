@@ -106,6 +106,6 @@ class UserController extends Controller
     public function destroy(User $user, ManageUserRequest $request)
     {
         $this->users->delete($user);
-        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.deleted'));
+        return redirect()->route('admin.access.user.deleted')->withFlashSuccess(trans('alerts.backend.users.deleted'));
     }
 }
