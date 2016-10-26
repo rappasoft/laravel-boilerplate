@@ -14,7 +14,7 @@ require('./elixir-extensions');
  |
  */
 
-elixir(mix => {
+elixir((mix) => {
     /**
      * Copy needed files from /node directories
      * to /public directory.
