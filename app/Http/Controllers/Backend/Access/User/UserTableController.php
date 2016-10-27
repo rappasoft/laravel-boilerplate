@@ -47,6 +47,7 @@ class UserTableController extends Controller
 					return trans('labels.general.none');
 				}
 			})
+			->withTrashed()
 			->addColumn('actions', function($user) {
 				return $user->action_buttons;
 			})
