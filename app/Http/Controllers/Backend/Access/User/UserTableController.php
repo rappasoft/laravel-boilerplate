@@ -35,21 +35,12 @@ class UserTableController extends Controller
 				return $user->confirmed_label;
 			})
 			->addColumn('roles', function($user) {
-				$roles = [];
-
-				if ($user->roles()->count() > 0) {
-					foreach ($user->roles as $role) {
-						array_push($roles, $role->name);
-					}
-
-					return implode("<br/>", $roles);
-				} else {
-					return trans('labels.general.none');
-				}
+				return $user->roles->pluck('name')->implode('<br>');
 			})
 			->addColumn('actions', function($user) {
 				return $user->action_buttons;
 			})
+            ->withTrashed()
 			->make(true);
 	}
 }
