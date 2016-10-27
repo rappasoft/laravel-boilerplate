@@ -30,7 +30,7 @@ class RoleRepository extends Repository
     public function getAll($order_by = 'sort', $sort = 'asc')
     {
 		return $this->query()
-			->with('permissions')
+			->with('users', 'permissions')
 			->orderBy($order_by, $sort)
 			->get();
     }

@@ -63,8 +63,8 @@ class UserRepository extends Repository
 
         return $this->query()
 			->with('roles')
+			->where('status', $status)
 			->select(['id', 'name', 'email', 'status', 'confirmed', 'created_at', 'updated_at', 'deleted_at'])
-            ->where('status', $status)
             ->get();
     }
 

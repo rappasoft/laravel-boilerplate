@@ -37,7 +37,7 @@ class UserTableController extends Controller
 			->addColumn('roles', function($user) {
 				$roles = [];
 
-				if ($user->roles()->count() > 0) {
+				if ($user->roles->count() > 0) {
 					foreach ($user->roles as $role) {
 						array_push($roles, $role->name);
 					}

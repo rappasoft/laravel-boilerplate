@@ -50,7 +50,7 @@ class RoleTableController extends Controller
 				}
 			})
 			->addColumn('users', function($role) {
-				return $role->users()->count();
+				return $role->users->count();
 			})
 			->addColumn('actions', function($role) {
 				return $role->action_buttons;
