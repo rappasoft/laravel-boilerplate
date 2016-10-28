@@ -37,7 +37,7 @@ class RoleRepository extends Repository
 				config('access.roles_table') . '.all',
 				config('access.roles_table') . '.sort',
 			])
-			->orderBy($order_by, $sort);
+			->orderBy($order_by, $sort)->get();
     }
 
     /**
