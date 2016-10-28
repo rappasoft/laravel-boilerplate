@@ -31,7 +31,7 @@ return [
 				'cant_delete_self' => 'U kunt uzelf niet verwijderen.',
 				'create_error' => 'Er is een probleem opgetreden bij het creëren van de gebruiker. Probeer het nogmaals.',
 				'delete_error' => 'Er is een probleem opgetreden bij het verwijderen van de gebruiker. Probeer het nogmaals.',
-				'email_error' => 'Dit email adres is al in gebruik.',
+				'email_error' => 'Dit email-adres is al in gebruik.',
 				'mark_error' => 'Er is een probleem opgetreden bij het bijwerken van de gebruiker. Probeer het nogmaals.',
 				'not_found' => 'Die gebruiker bestaat niet.',
 				'restore_error' => 'Er is een probleem opgetreden bij het herstellen van de gebruiker. Probeer het nogmaals.',
@@ -46,7 +46,7 @@ return [
 	'frontend' => [
 		'auth' => [
 			'confirmation' => [
-				'already_confirmed' => 'Uw account is al bevestigd',
+				'already_confirmed' => 'Uw account is reeds bevestigd',
 				'confirm' => 'Bevestig uw account!',
 				'created_confirm' => 'Uw account is succesvol aangemaakt. Een bevestigings email is verzonden.',
 				'mismatch' => 'Uw bevestigingscode komt niet overeen.',

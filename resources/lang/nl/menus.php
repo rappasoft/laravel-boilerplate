@@ -33,7 +33,7 @@ return [
 				'deleted' => 'Verwijderde Gebruikers',
 				'edit' => 'Gebruiker aanpassen',
 				'main' => 'Gebruikers',
-				'view' => 'View User',
+				'view' => 'Bekijk Gebruiker',
 			],
 		],
 
@@ -50,7 +50,7 @@ return [
 	],
 
 	'language-picker' => [
-		'language' => 'Language',
+		'language' => 'Taal',
 		/**
 		 * Add the new language to this array.
 		 * The key should have the same language code as the folder name.
@@ -58,17 +58,17 @@ return [
 		 * Be sure to add the new language in alphabetical order.
 		 */
 		'langs' => [
-			'ar' => 'Arabic',
-			'da' => 'Danish',
-			'de' => 'German',
-			'en' => 'English',
-			'es' => 'Spanish',
-			'fr' => 'French',
-			'it' => 'Italian',
-			'nl' => 'Dutch',
-			'pt-BR' => 'Brazilian Portuguese',
-			'sv' => 'Swedish',
-			'th' => 'Thai',
+			'ar' => 'Arabisch (Arabic)',
+			'da' => 'Deens (Danish)',
+			'de' => 'Duits (German)',
+			'en' => 'Engels (English)',
+			'es' => 'Spaans (Spanish)',
+			'fr' => 'Frans (French)',
+			'it' => 'Italiaans (Italian)',
+			'nl' => 'Nederlands (Dutch)',
+			'pt-BR' => 'Braziliaans Portugees (Brazilian Portuguese)',
+			'sv' => 'Zweeds (Swedish)',
+			'th' => 'Thais (Thai)',
 		],
 	],
 ];

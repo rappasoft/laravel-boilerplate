@@ -29,8 +29,8 @@ return [
 
 	'emails' => [
 	    'auth' => [
-	        'confirm_account' => 'Confirm Account',
-	        'reset_password' => 'Reset Password',
+	        'confirm_account' => 'Account Bevestigen',
+	        'reset_password' => 'Reset Wachtwoord',
 	    ],
 	],
 
@@ -42,7 +42,7 @@ return [
 			'delete' => 'Verwijder',
 			'edit' => 'Aanpassen',
 			'update' => 'Bijwerken',
-			'view' => 'View',
+			'view' => 'Bekijk',
 		],
 
 		'save' => 'Opslaan',

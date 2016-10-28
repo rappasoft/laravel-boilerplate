@@ -21,7 +21,7 @@ return [
 		],
 
 		'users' => [
-			'confirmation_email' => 'Een nieuwe bevestigings e-mail is verzonden naar het aangegeven adres gestuurd .',
+			'confirmation_email' => 'Een nieuwe bevestigings e-mail is verzonden naar het aangegeven adres.',
 			'created' => 'De gebruiker is succesvol aangemaakt.',
 			'deleted' => 'De gebruiker is succesvol verwijderd.',
 			'deleted_permanently' => 'De gebruiker is permanent verwijderd.',
