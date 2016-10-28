@@ -54,20 +54,22 @@ class UserRepository extends Repository
          * be able to differentiate what buttons to show for each row.
          */
         $dataTableQuery = $this->query()
-                               ->with('roles')
-                               ->select([
-                                            config('access.users_table') . '.id',
-                                            config('access.users_table') . '.name',
-                                            config('access.users_table') . '.email',
-                                            config('access.users_table') . '.status',
-                                            config('access.users_table') . '.confirmed',
-                                            config('access.users_table') . '.created_at',
-                                            config('access.users_table') . '.updated_at',
-                                            config('access.users_table') . '.deleted_at',
-                                        ]);
+		   ->with('roles')
+		   ->select([
+				config('access.users_table') . '.id',
+				config('access.users_table') . '.name',
+				config('access.users_table') . '.email',
+				config('access.users_table') . '.status',
+				config('access.users_table') . '.confirmed',
+				config('access.users_table') . '.created_at',
+				config('access.users_table') . '.updated_at',
+				config('access.users_table') . '.deleted_at',
+			]);
+
         if ($trashed == "true") {
-            return  $dataTableQuery->onlyTrashed();
-        }
+			return $dataTableQuery->onlyTrashed();
+		}
+
         return $dataTableQuery->where('status', $status);
     }
 
