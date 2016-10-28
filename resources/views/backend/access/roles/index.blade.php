@@ -64,11 +64,11 @@
                     type: 'post'
                 },
                 columns: [
-                    {data: 'name', name: 'name'},
-                    {data: 'permissions', name: 'permissions'},
-                    {data: 'users', name: 'users'},
-                    {data: 'sort', name: 'sort'},
-                    {data: 'actions', name: 'actions'}
+                    {data: 'name', name: '{{config('access.roles_table')}}.name'},
+                    {data: 'permissions', name: '{{config('access.permissions_table')}}.display_name'},
+                    {data: 'users', name: 'users', searchable: false, sortable: false},
+                    {data: 'sort', name: '{{config('access.roles_table')}}.sort'},
+                    {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[3, "asc"]],
                 searchDelay: 500
