@@ -50,6 +50,7 @@ class UserTableController extends Controller
 			->addColumn('actions', function($user) {
 				return $user->action_buttons;
 			})
+			->withTrashed()
 			->make(true);
 	}
 }

@@ -59,14 +59,14 @@
                     data: {status: 0, trashed: false}
                 },
                 columns: [
-                    {data: 'id', name: 'id'},
-                    {data: 'name', name: 'name'},
-                    {data: 'email', name: 'email'},
-                    {data: 'confirmed', name: 'confirmed'},
-                    {data: 'roles', name: 'roles'},
-                    {data: 'created_at', name: 'created_at'},
-                    {data: 'updated_at', name: 'updated_at'},
-                    {data: 'actions', name: 'actions'}
+                    {data: 'id', name: '{{config('access.users_table')}}.id'},
+                    {data: 'name', name: '{{config('access.users_table')}}.name'},
+                    {data: 'email', name: '{{config('access.users_table')}}.email'},
+                    {data: 'confirmed', name: '{{config('access.users_table')}}.confirmed'},
+                    {data: 'roles', name: '{{config('access.roles_table')}}.name'},
+                    {data: 'created_at', name: '{{config('access.users_table')}}.created_at'},
+                    {data: 'updated_at', name: '{{config('access.users_table')}}.updated_at'},
+                    {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],
                 searchDelay: 500
