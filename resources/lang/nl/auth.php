@@ -19,5 +19,5 @@ return [
 		'unacceptable' => ':provider is niet een geaccepteerd login type.',
 	],
 	'throttle' => 'Te veel aanmeld pogingen, probeer het nog eens na :seconds seconden.',
-	'unknown' => 'Een onbekende fout is opgetreden',
+	'unknown' => 'Onbekende fout opgetreden',
 ];

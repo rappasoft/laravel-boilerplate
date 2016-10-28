@@ -16,7 +16,7 @@ return [
 	'backend' => [
 		'access' => [
 			'users' => [
-				'delete_user_confirm' => 'Gebruiker permanent verwijderen? Overal in de applicaties waar een gerefereerd wordt naar dit gebruikers id zal een fout ontstaan. Doorgaan op eigen risico. Dit kan niet ongedaan gemaakt worden.',
+				'delete_user_confirm' => 'Gebruiker permanent verwijderen? Overal in de applicaties waar gerefereerd wordt naar dit gebruikers-ID zal een fout ontstaan. Doorgaan op eigen risico. Dit kan niet ongedaan gemaakt worden.',
 				'if_confirmed_off' => '(Als bevestiging uit staat)',
 				'restore_user_confirm' => 'Herstel deze gebruiker naar de originele staat?',
 			],
@@ -35,7 +35,7 @@ return [
 			'member_since' => 'Lid sinds',
 			'minutes' => ' minuten',
 			'search_placeholder' => 'Zoeken...',
-			'timeout' => 'Automatisch uitgelogd vanwege veiligheids redenen aangezien er geen activiteit was in ',
+			'timeout' => 'Automatisch uitgelogd vanwege veiligheidsredenen aangezien er geen activiteit was in ',
 
 			'see_all' => [
 				'messages' => 'Alle messages bekijken',
@@ -57,15 +57,15 @@ return [
 	],
     'emails' => [
         'auth' => [
-            'error' => 'Whoops!',
-            'greeting' => 'Hello!',
-            'regards' => 'Regards,',
-            'trouble_clicking_button' => 'If you’re having trouble clicking the ":action_text" button, copy and paste the URL below into your web browser:',
-            'thank_you_for_using_app' => 'Thank you for using our application!',
+            'error' => 'Oeps!',
+            'greeting' => 'Hallo!',
+            'regards' => 'Groet,',
+            'trouble_clicking_button' => 'Als u problemen heeft met de ":action_text" button, kopieer en plak dan de onderstaande URL in uw web browser:',
+            'thank_you_for_using_app' => 'Dank u voor het gebruik van onze applicatie!',
 
             'password_reset_subject' => 'Uw Wachtwoord Reset Link',
-            'password_cause_of_email' => 'You are receiving this email because we received a password reset request for your account.',
-            'password_if_not_requested' => 'If you did not request a password reset, no further action is required.',
+            'password_cause_of_email' => 'U ontvangt deze email omdat we een wachtwoord reset verzoek hebben ontvangen voor uw account',
+            'password_if_not_requested' => 'Als u geen wachtwoord reset heeft aangevraagd hoeft geen verdere actie te ondernemen.',
             'reset_password' => 'Klik hier om uw wachtwoord te resetten',
 
             'click_to_confirm' => 'Klik hier om uw account te bevestigen:',

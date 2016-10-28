@@ -35,7 +35,7 @@ return [
 		'access' => [
 			'roles' => [
 				'create' => 'Rol Creëren',
-				'edit' => 'Rol aanpassen',
+				'edit' => 'Rol Aanpassen',
 				'management' => 'Rol Beheer',
 
 				'table' => [
@@ -76,25 +76,25 @@ return [
 
 				'tabs' => [
 					'titles' => [
-						'overview' => 'Overview',
-						'history' => 'History',
+						'overview' => 'Overzicht',
+						'history' => 'Geschiedenis',
 					],
 
 					'content' => [
 						'overview' => [
 							'avatar' => 'Avatar',
-							'confirmed' => 'Confirmed',
-							'created_at' => 'Created At',
-							'deleted_at' => 'Deleted At',
+							'confirmed' => 'Bevesstigd',
+							'created_at' => 'Gecreëerd',
+							'deleted_at' => 'Verwijdert',
 							'email' => 'E-mail',
-							'last_updated' => 'Last Updated',
-							'name' => 'Name',
+							'last_updated' => 'Laatst bijgewerkt',
+							'name' => 'Naam',
 							'status' => 'Status',
 						],
 					],
 				],
 
-				'view' => 'View User',
+				'view' => 'Bekijk gebruiker',
 			],
 		],
 	],
@@ -131,13 +131,13 @@ return [
 				'mexico' => 'Mexico Staten Lijst',
 				'us' => [
 					'us' => 'Verenigde Staten',
-					'outlying' => 'US afgelegen gebieden',
-					'armed' => 'US Armed Forces',
+					'outlying' => 'VS afgelegen gebieden',
+					'armed' => 'VS Krijgsmacht',
 				],
 			],
 
 			'territories' => [
-				'canada' => 'Canada Provinces & Territories List',
+				'canada' => 'Canada Provincies & Territories Lijst',
 			],
 
 			'timezone' => 'Tijdzone',
@@ -154,7 +154,7 @@ return [
 				'edit_information' => 'Informatie aanpassen',
 				'email' => 'E-mail',
 				'last_updated' => 'Voor het laatst aangepast',
-				'name' => 'Name',
+				'name' => 'Naam',
 				'update_information' => 'Informatie bijwerken',
 			],
 		],
