@@ -70,7 +70,8 @@ class UserRepository extends Repository
 			return $dataTableQuery->onlyTrashed();
 		}
 
-		return $dataTableQuery->where('status', $status);
+		// active() is a scope on the UserScope trait
+		return $dataTableQuery->active($status);
     }
 
 	/**
