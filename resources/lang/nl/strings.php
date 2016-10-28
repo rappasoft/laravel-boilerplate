@@ -54,6 +54,13 @@ return [
 				'tasks' => '{0} U heeft geen taken|{1} U heeft 1 taak|[2,Inf] U heeft :number taken',
 			],
 		],
+
+		'search' => [
+			'empty' => 'Please enter a search term.',
+			'incomplete' => 'You must write your own search logic for this system.',
+			'title' => 'Search Results',
+			'results' => 'Search Results for :query',
+		],
 	],
     'emails' => [
         'auth' => [

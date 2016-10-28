@@ -46,6 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'Kontrollpanelen',
             'general' => 'Adminpanelen',
+			'system' => 'System',
         ],
     ],
 

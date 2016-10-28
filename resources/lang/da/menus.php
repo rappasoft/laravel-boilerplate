@@ -46,6 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'Betjeningspanel',
             'general' => 'Generelt',
+			'system' => 'System',
         ],
     ],
 

@@ -15,14 +15,15 @@
         </div><!--user-panel-->
 
         <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
+        {{ Form::open(['route' => 'admin.search.index', 'method' => 'get', 'class' => 'sidebar-form']) }}
             <div class="input-group">
-                  <input type="text" name="q" class="form-control" placeholder="{{ trans('strings.backend.general.search_placeholder') }}" />
+                {{ Form::text('q', Request::get('q'), ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('strings.backend.general.search_placeholder')]) }}
+
                   <span class="input-group-btn">
-                    <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                  </span>
+                    <button type='submit' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                  </span><!--input-group-btn-->
             </div><!--input-group-->
-        </form>
+        {{ Form::close() }}
         <!-- /.search form -->
 
         <!-- Sidebar Menu -->
@@ -44,6 +45,8 @@
                     </a>
                 </li>
             @endauth
+
+            <li class="header">{{ trans('menus.backend.sidebar.system') }}</li>
 
             <li class="{{ Active::pattern('admin/log-viewer*') }} treeview">
                 <a href="#">
