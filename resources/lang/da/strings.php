@@ -54,6 +54,13 @@ return [
                 'tasks' => '{0} Du har ingen opgaver|{1} Du har 1 opgave|[2,Inf] Du har :number opgaver',
             ],
         ],
+
+		'search' => [
+			'empty' => 'Please enter a search term.',
+			'incomplete' => 'You must write your own search logic for this system.',
+			'title' => 'Search Results',
+			'results' => 'Search Results for :query',
+		],
     ],
     'emails' => [
         'auth' => [

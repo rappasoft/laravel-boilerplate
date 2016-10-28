@@ -46,6 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'แผงควบคุม',
             'general' => 'ทั่วไป',
+			'system' => 'System',
         ],
     ],
 

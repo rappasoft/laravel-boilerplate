@@ -54,6 +54,13 @@ return [
                 'tasks' => '{0} Non hai compiti|{1} Hai un compito|[2,Inf] Hai :number compiti',
             ],
         ],
+
+		'search' => [
+			'empty' => 'Please enter a search term.',
+			'incomplete' => 'You must write your own search logic for this system.',
+			'title' => 'Search Results',
+			'results' => 'Search Results for :query',
+		],
     ],
 
     'emails' => [

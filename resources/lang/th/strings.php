@@ -54,6 +54,13 @@ return [
                 'tasks' => '{0} คุณไม่มีภารกิจใดๆ|{1} คุณมี 1 ภารกิจ|[2,Inf] คุณมี :number ภารกิจ',
             ],
         ],
+
+		'search' => [
+			'empty' => 'Please enter a search term.',
+			'incomplete' => 'You must write your own search logic for this system.',
+			'title' => 'Search Results',
+			'results' => 'Search Results for :query',
+		],
     ],
 
     'emails' => [

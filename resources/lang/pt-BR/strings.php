@@ -54,6 +54,13 @@ return [
                 'tasks' => '{0} Você não tem tarefas|{1} Você tem 1 tarefa|[2,Inf] Você tem :number tarefas',
             ],
         ],
+
+		'search' => [
+			'empty' => 'Please enter a search term.',
+			'incomplete' => 'You must write your own search logic for this system.',
+			'title' => 'Search Results',
+			'results' => 'Search Results for :query',
+		],
     ],
 
     'emails' => [
