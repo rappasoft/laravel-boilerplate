@@ -31,13 +31,13 @@ class RoleRepository extends Repository
     {
 		return $this->query()
 			->with('users', 'permissions')
+			->orderBy($order_by, $sort)
 			->select([
 				config('access.roles_table') . '.id',
 				config('access.roles_table') . '.name',
 				config('access.roles_table') . '.all',
 				config('access.roles_table') . '.sort',
-			])
-			->orderBy($order_by, $sort)->get();
+			]);
     }
 
     /**
