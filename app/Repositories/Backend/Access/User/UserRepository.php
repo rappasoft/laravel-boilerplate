@@ -53,19 +53,24 @@ class UserRepository extends Repository
          * Note: You must return deleted_at or the User getActionButtonsAttribute won't
          * be able to differentiate what buttons to show for each row.
          */
-        if ($trashed == "true") {
-            return $this->query()
-				->with('roles')
-				->onlyTrashed()
-                ->select(['id', 'name', 'email', 'status', 'confirmed', 'created_at', 'updated_at', 'deleted_at'])
-                ->get();
-        }
-
-        return $this->query()
+		$dataTableQuery = $this->query()
 			->with('roles')
-			->select(['id', 'name', 'email', 'status', 'confirmed', 'created_at', 'updated_at', 'deleted_at'])
-            ->where('status', $status)
-            ->get();
+			->select([
+				config('access.users_table') . '.id',
+				config('access.users_table') . '.name',
+				config('access.users_table') . '.email',
+				config('access.users_table') . '.status',
+				config('access.users_table') . '.confirmed',
+				config('access.users_table') . '.created_at',
+				config('access.users_table') . '.updated_at',
+				config('access.users_table') . '.deleted_at',
+			]);
+
+		if ($trashed == "true") {
+			return $dataTableQuery->onlyTrashed();
+		}
+
+		return $dataTableQuery->where('status', $status);
     }
 
 	/**

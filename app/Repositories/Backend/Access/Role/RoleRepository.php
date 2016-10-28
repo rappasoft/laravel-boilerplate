@@ -30,9 +30,14 @@ class RoleRepository extends Repository
     public function getAll($order_by = 'sort', $sort = 'asc')
     {
 		return $this->query()
-			->with('permissions')
-			->orderBy($order_by, $sort)
-			->get();
+			->with('users', 'permissions')
+			->select([
+				config('access.roles_table') . '.id',
+				config('access.roles_table') . '.name',
+				config('access.roles_table') . '.all',
+				config('access.roles_table') . '.sort',
+			])
+			->orderBy($order_by, $sort);
     }
 
     /**
