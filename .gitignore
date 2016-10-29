@@ -23,6 +23,7 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 .project
+/nbproject
 _ide_helper.php
 composer.phar
 error.log
