@@ -42,10 +42,10 @@ return [
             'delete' => 'Eliminar',
             'edit' => 'Modificar',
             'update' => 'Actualizar',
-			'view' => 'View',
+			'view' => 'Visualizar',
         ],
 
         'save' => 'Guardar',
-        'view' => 'Ver',
+        'view' => 'Visualizar',
     ],
 ];

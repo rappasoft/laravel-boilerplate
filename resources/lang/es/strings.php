@@ -56,10 +56,10 @@ return [
         ],
 
 		'search' => [
-			'empty' => 'Please enter a search term.',
-			'incomplete' => 'You must write your own search logic for this system.',
-			'title' => 'Search Results',
-			'results' => 'Search Results for :query',
+			'empty' => 'Favor escribir un término de busqueda.',
+			'incomplete' => 'Debes escribir tu propia lógica de busqueda para este sistema.',
+			'title' => 'Resultados de la Busqueda',
+			'results' => 'Resultados de la busqueda para :query',
 		],
     ],
 

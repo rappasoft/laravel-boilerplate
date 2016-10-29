@@ -33,7 +33,7 @@ return [
                 'deleted' => 'Usuarios Eliminados',
                 'edit' => 'Modificar Usuario',
                 'main' => 'Usuario',
-				'view' => 'View User',
+				'view' => 'Ver Usuario',
             ],
         ],
 
@@ -46,7 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'Principal',
             'general' => 'General',
-			'system' => 'System',
+			'system' => 'Sistema',
         ],
     ],
 

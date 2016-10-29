@@ -63,7 +63,6 @@ return [
                 'change_mismatch' => 'La contraseña antigua no coincide.',
             ],
 
-
         ],
     ],
 ];
