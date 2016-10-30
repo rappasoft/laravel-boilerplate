@@ -22,7 +22,9 @@
 
                 @if (config('locale.status') && count(config('locale.languages')) > 1)
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ trans('menus.language-picker.language') }} <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <i class="fa fa-language"></i> {{ trans('menus.language-picker.language') }} <span class="caret"></span>
+                        </a>
                         @include('includes.partials.lang')
                     </li>
                 @endif
@@ -98,10 +100,16 @@
 
                         <li class="user-footer">
                             <div class="pull-left">
-                                {{ link_to_route('frontend.index', trans('navs.general.home'), [], ['class' => 'btn btn-default btn-flat']) }}
+                                <a href="{!! url('frontend.index') !!}" class="btn btn-default btn-flat">
+                                    <i class="fa fa-home"></i>
+                                    {{ trans('navs.general.home') }}
+                                </a>
                             </div>
                             <div class="pull-right">
-                                {{ link_to_route('frontend.auth.logout', trans('navs.general.logout'), [], ['class' => 'btn btn-default btn-flat']) }}
+                                <a href="{!! url('auth.logout') !!}" class="btn btn-danger btn-flat">
+                                    <i class="fa fa-sign-out"></i>
+                                    {{ trans('navs.general.logout') }}
+                                </a>
                             </div>
                         </li>
                     </ul>
