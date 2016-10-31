@@ -5,26 +5,38 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
- * Class RouteTest
+ * Class Test
  */
 class RouteTest extends TestCase
 {
 
-	/**
-	 * Tests that the home page exists
-	 */
 	public function testHomePage()
     {
-        $this->visitRoute('frontend.index')
+        $this->visit('/')
              ->assertResponseOk();
     }
 
-	/**
-	 *Tests that the macros page exists
-	 */
 	public function testMacroPage()
 	{
-		$this->visitRoute('frontend.macros')
+		$this->visit('/macros')
 			->see('Macro Examples');
+	}
+
+	public function testLoginPage()
+	{
+		$this->visit('/login')
+			->see('Login');
+	}
+
+	public function testRegisterPage()
+	{
+		$this->visit('/register')
+			->see('Register');
+	}
+
+	public function testForgotPasswordPage()
+	{
+		$this->visit('password/reset')
+			->see('Reset Password');
 	}
 }

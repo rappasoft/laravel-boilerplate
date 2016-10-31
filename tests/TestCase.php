@@ -25,4 +25,13 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         return $app;
     }
+
+	/**
+	 * Set up tests.
+	 */
+	public function setUp()
+	{
+		parent::setUp();
+		App::setLocale('en');
+	}
 }
