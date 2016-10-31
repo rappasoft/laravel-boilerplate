@@ -14,6 +14,21 @@ class FormTest extends TestCase
 	use DatabaseTransactions;
 
 	/**
+	 * Test that the errors work if nothing is filled in the registration form
+	 */
+	public function testRegistrationRequiredFields() {
+		$this->visit('/register')
+			->type('', 'name')
+			->type('', 'email')
+			->type('', 'password')
+			->press('Register')
+			->seePageIs('/register')
+			->see('The name field is required.')
+			->see('The email field is required.')
+			->see('The password field is required.');
+	}
+
+	/**
 	 * Test the registration form
 	 * Test it works with confirming email on or off, and that the confirm email notification is sent
 	 */
@@ -22,6 +37,7 @@ class FormTest extends TestCase
 
 		// Create any needed resources
 		$faker = Faker\Factory::create();
+		$name = $faker->name;
 		$email = $faker->safeEmail;
 		$password = $faker->password(8);
 
@@ -30,20 +46,18 @@ class FormTest extends TestCase
 			Notification::fake();
 
 			$this->visit('/register')
-				->type($faker->name, 'name')
+				->type($name, 'name')
 				->type($email, 'email')
 				->type($password, 'password')
 				->type($password, 'password_confirmation')
 				->press('Register')
 				->see('Your account was successfully created. We have sent you an e-mail to confirm your account.')
 				->see('Login')
-				->seePageIs('/');
+				->seePageIs('/')
+				->seeInDatabase(config('access.users_table'), ['email' => $email, 'name'  => $name]);
 
-			// Get the last user inserted into the database
-			$user = User::orderBy('created_at', 'desc')->first();
-
-			// Make sure the last user has the same email as specified
-			$this->assertEquals($email, $user->email);
+			// Get the user that was inserted into the database
+			$user = User::where('email', $email)->first();
 
 			// Check that the user was sent the confirmation email
 			Notification::assertSentTo(
@@ -51,16 +65,47 @@ class FormTest extends TestCase
 			);
 		} else {
 			$this->visit('/register')
-				->type($faker->name, 'name')
+				->type($name, 'name')
 				->type($email, 'email')
 				->type($password, 'password')
 				->type($password, 'password_confirmation')
 				->press('Register')
 				->see('Dashboard')
-				->seePageIs('/');
-
-			// Make sure the last user has the same email as specified
-			$this->assertEquals($email, User::orderBy('created_at', 'desc')->first()->email);
+				->seePageIs('/')
+				->seeInDatabase(config('access.users_table'), ['email' => $email, 'name'  => $name]);
 		}
+	}
+
+	/**
+	 * Test that the errors work if nothing is filled in the login form
+	 */
+	public function testLoginRequiredFields() {
+		$this->visit('/login')
+			->type('', 'email')
+			->type('', 'password')
+			->press('Login')
+			->seePageIs('/login')
+			->see('The email field is required.')
+			->see('The password field is required.');
+	}
+
+
+	/**
+	 * Test that the user is logged in and redirected to the dashboard
+	 */
+	public function testLoginForm() {
+		$user = factory(User::class)
+			->states('active', 'confirmed')
+			->create();
+
+		// No roles are attached when using factory
+		$user->attachRole(3); // Give User role
+
+		$this->visit('/login')
+			->type($user->email, 'email')
+			->type($user->password, 'password')
+			->press('Login')
+			->seePageIs('/dashboard')
+			->see($user->email);
 	}
 }

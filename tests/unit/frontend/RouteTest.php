@@ -1,8 +1,6 @@
 <?php
 
 use App\Models\Access\User\User;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
@@ -18,13 +16,27 @@ class RouteTest extends TestCase
 	protected $user;
 
 	/**
+	 * @var
+	 */
+	protected $admin;
+
+	/**
 	 * Set up tests.
 	 */
 	public function setUp() {
 		parent::setUp();
 
 		// Create logged in user to test with
-		$this->user = factory(User::class)->create(['confirmation_code' => md5(uniqid(mt_rand(), true))]);
+		$this->user = factory(User::class)
+			->states('active', 'confirmed')
+			->create();
+		$this->user->attachRole(3); //User
+
+		// Create user with admin privileges
+		$this->admin = factory(User::class)
+			->states('active', 'confirmed')
+			->create();
+		$this->admin->attachRole(1); //Administrator
 	}
 
 	/**
@@ -87,7 +99,7 @@ class RouteTest extends TestCase
 	 */
 	public function testDashboardPageLoggedOut() {
 		$this->visit('/dashboard')
-			->see('Login');
+			->seePageIs('/login');
 	}
 
 	/**
@@ -96,7 +108,7 @@ class RouteTest extends TestCase
 	 */
 	public function testAccountPageLoggedOut() {
 		$this->visit('/account')
-			->see('Login');
+			->seePageIs('/login');
 	}
 
 	/**
@@ -108,6 +120,16 @@ class RouteTest extends TestCase
 			->assertSessionHas('locale', 'es');
 
 		App::setLocale('en');
+	}
+
+	/**
+	 * Test the generic 404 page
+	 */
+	public function test404Page()
+	{
+		$this->get('7g48hwbfw9eufj')
+			->seeStatusCode(404)
+			->see('Page Not Found');
 	}
 
 	/**
@@ -123,7 +145,8 @@ class RouteTest extends TestCase
 		$this->actingAs($this->user)
 			->visit('/')
 			->see('Dashboard')
-			->see($this->user->name);
+			->see($this->user->name)
+			->dontSee('Administration');
 	}
 
 	/**
@@ -134,7 +157,8 @@ class RouteTest extends TestCase
 		$this->actingAs($this->user)
 			->visit('/dashboard')
 			->see($this->user->email)
-			->see('Joined');
+			->see('Joined')
+			->dontSee('Administration');
 	}
 
 	/**
@@ -147,7 +171,20 @@ class RouteTest extends TestCase
 			->see('My Account')
 			->see('Profile')
 			->see('Update Information')
-			->see('Change Password');
+			->see('Change Password')
+			->dontSee('Administration');
+	}
+
+	/**
+	 * Admin logged in
+	 * Test the account page works and displays the users information
+	 */
+	public function testLoggedInAdmin()
+	{
+		$this->actingAs($this->admin)
+			->visit('/')
+			->see('Administration')
+			->see($this->admin->name);
 	}
 
 	/**
