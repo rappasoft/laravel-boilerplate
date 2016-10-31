@@ -32,6 +32,8 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 	public function setUp()
 	{
 		parent::setUp();
+
+		// Run the tests in English
 		App::setLocale('en');
 	}
 }
