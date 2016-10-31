@@ -100,13 +100,13 @@
 
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="{!! url('frontend.index') !!}" class="btn btn-default btn-flat">
+                                <a href="{!! route('frontend.index') !!}" class="btn btn-default btn-flat">
                                     <i class="fa fa-home"></i>
                                     {{ trans('navs.general.home') }}
                                 </a>
                             </div>
                             <div class="pull-right">
-                                <a href="{!! url('auth.logout') !!}" class="btn btn-danger btn-flat">
+                                <a href="{!! route('frontend.auth.logout') !!}" class="btn btn-danger btn-flat">
                                     <i class="fa fa-sign-out"></i>
                                     {{ trans('navs.general.logout') }}
                                 </a>
