@@ -22,6 +22,7 @@ class FormTest extends TestCase
 
 		// Create any needed resources
 		$faker = Faker\Factory::create();
+		$email = $faker->safeEmail;
 		$password = $faker->password(8);
 
 		// Check if confirmation required is on or off
@@ -30,7 +31,7 @@ class FormTest extends TestCase
 
 			$this->visit('/register')
 				->type($faker->name, 'name')
-				->type($faker->safeEmail, 'email')
+				->type($email, 'email')
 				->type($password, 'password')
 				->type($password, 'password_confirmation')
 				->press('Register')
@@ -41,6 +42,9 @@ class FormTest extends TestCase
 			// Get the last user inserted into the database
 			$user = User::orderBy('created_at', 'desc')->first();
 
+			// Make sure the last user has the same email as specified
+			$this->assertEquals($email, $user->email);
+
 			// Check that the user was sent the confirmation email
 			Notification::assertSentTo(
 				[$user], UserNeedsConfirmation::class
@@ -48,12 +52,15 @@ class FormTest extends TestCase
 		} else {
 			$this->visit('/register')
 				->type($faker->name, 'name')
-				->type($faker->safeEmail, 'email')
+				->type($email, 'email')
 				->type($password, 'password')
 				->type($password, 'password_confirmation')
 				->press('Register')
 				->see('Dashboard')
 				->seePageIs('/');
+
+			// Make sure the last user has the same email as specified
+			$this->assertEquals($email, User::orderBy('created_at', 'desc')->first()->email);
 		}
 	}
 }
