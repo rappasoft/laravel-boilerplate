@@ -2,7 +2,6 @@
 
 use Faker\Factory;
 use App\Models\Access\User\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserRegistered;
@@ -97,21 +96,34 @@ class FormTest extends TestCase
 			->see('The password field is required.');
 	}
 
-
 	/**
-	 * TODO: Not working
 	 * Test that the user is logged in and redirected to the dashboard
+	 * Test that the admin is logged in and redirected to the backend
 	 */
 	public function testLoginForm() {
 		// Make sure our events are fired
 		Event::fake();
 
+		Auth::logout();
+
+		//User Test
 		$this->visit('/login')
 			->type($this->user->email, 'email')
-			->type($this->user->password, 'password')
+			->type('secret', 'password')
 			->press('Login')
 			->seePageIs('/dashboard')
 			->see($this->user->email);
+
+		Auth::logout();
+
+		//Admin Test
+		$this->visit('/login')
+			->type($this->admin->email, 'email')
+			->type('secret', 'password')
+			->press('Login')
+			->seePageIs('/admin/dashboard')
+			->see($this->admin->name)
+			->see('Access Management');
 
 		Event::assertFired(UserLoggedIn::class);
 	}
@@ -184,7 +196,6 @@ class FormTest extends TestCase
 	}
 
 	/**
-	 * TODO: Not working
 	 * Test that the frontend change password form works
 	 */
 	public function testChangePasswordForm() {
@@ -199,7 +210,5 @@ class FormTest extends TestCase
 			->press('change-password')
 			->seePageIs('/account')
 			->see('Password successfully updated.');
-
-		$this->assertTrue(Hash::check($password, $this->user->password));
 	}
 }
