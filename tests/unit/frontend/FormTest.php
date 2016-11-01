@@ -2,12 +2,14 @@
 
 use Faker\Factory;
 use App\Models\Access\User\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserRegistered;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use App\Notifications\Frontend\Auth\UserNeedsPasswordReset;
 
 /**
  * Class FormTest
@@ -210,5 +212,82 @@ class FormTest extends TestCase
 			->press('change-password')
 			->seePageIs('/account')
 			->see('Password successfully updated.');
+	}
+
+	/**
+	 * Test that the errors work if nothing is filled in the forgot password form
+	 */
+	public function testForgotPasswordRequiredFields() {
+		$this->visit('/password/reset')
+			->type('', 'email')
+			->press('Send Password Reset Link')
+			->seePageIs('/password/reset')
+			->see('The email field is required.');
+	}
+
+	/**
+	 * Test that the forgot password form sends the user the notification and places the
+	 * row in the password_resets table
+	 */
+	public function testForgotPasswordForm()
+	{
+		Notification::fake();
+
+		$this->visit('password/reset')
+			->type($this->user->email, 'email')
+			->press('Send Password Reset Link')
+			->seePageIs('password/reset')
+			->see('We have e-mailed your password reset link!')
+			->seeInDatabase('password_resets', ['email' => $this->user->email]);
+
+		Notification::assertSentTo(
+			[$this->user], UserNeedsPasswordReset::class
+		);
+	}
+
+	/**
+	 * Test that the errors work if nothing is filled in the reset password form
+	 */
+	public function testResetPasswordRequiredFields() {
+		$token = "1234567890abcdefghijklmnopqrstuvwxyz";
+		$this->createPasswordResetToken($token);
+
+		$this->visit('password/reset/'.$token)
+			->see($this->user->email)
+			->type('', 'password')
+			->type('', 'password_confirmation')
+			->press('Reset Password')
+			->see('The password field is required.');
+	}
+
+	/**
+	 * Test that the password reset form works and logs the user back in
+	 */
+	public function testResetPasswordForm() {
+		$token = "abcdefghijklmnopqrstuvwxyz1234567890";
+		$this->createPasswordResetToken($token);
+
+		$this->visit('password/reset/'.$token)
+			->see($this->user->email)
+			->type('12345678', 'password')
+			->type('12345678', 'password_confirmation')
+			->press('Reset Password')
+			->seePageIs('/')
+			->see($this->user->name);
+	}
+
+	/**
+	 * Adds a password reset row to the database to play with
+	 * @param $token
+	 * @return mixed
+	 */
+	private function createPasswordResetToken($token) {
+		DB::table('password_resets')->insert([
+			'email' => $this->user->email,
+			'token' => $token,
+			'created_at' => \Carbon\Carbon::now(),
+		]);
+
+		return $token;
 	}
 }

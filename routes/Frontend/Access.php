@@ -16,7 +16,7 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 		Route::get('logout-as', 'LoginController@logoutAs')->name('logout-as');
 
 		// Change Password Routes
-		Route::patch('password/change', 'ChangePasswordController@changePassword')->name('password.change');
+		Route::patch('password/change', 'ChangePasswordController@changePassword')->name('password.change'); //
 	});
 
 	/**
@@ -25,7 +25,7 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 	Route::group(['middleware' => 'guest'], function () {
 		// Authentication Routes
 		Route::get('login', 'LoginController@showLoginForm')->name('login'); //
-		Route::post('login', 'LoginController@login')->name('login');
+		Route::post('login', 'LoginController@login')->name('login'); //
 
 		// Socialite Routes
 		Route::get('login/{provider}', 'SocialLoginController@login')->name('social.login');
@@ -40,9 +40,9 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 
 		// Password Reset Routes
 		Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm')->name('password.email'); //
-		Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+		Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail')->name('password.email'); //
 
-		Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset_form');
-		Route::post('password/reset', 'ResetPasswordController@reset')->name('password.reset');
+		Route::get('password/reset/{token}', 'ResetPasswordController@showResetForm')->name('password.reset_form'); //
+		Route::post('password/reset', 'ResetPasswordController@reset')->name('password.reset'); //
 	});
 });
