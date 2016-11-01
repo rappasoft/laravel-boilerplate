@@ -23,7 +23,7 @@
 
     <div class="form-group">
         <div class="col-md-6 col-md-offset-4">
-            {{ Form::submit(trans('labels.general.buttons.update'), ['class' => 'btn btn-primary']) }}
+            {{ Form::submit(trans('labels.general.buttons.update'), ['class' => 'btn btn-primary', 'id' => 'change-password']) }}
         </div>
     </div>
 

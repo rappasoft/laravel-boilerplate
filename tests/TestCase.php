@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Access\User\User;
+use Illuminate\Support\Facades\App;
+
 /**
  * Class TestCase
  */
@@ -11,6 +14,16 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
      * @var string
      */
     protected $baseUrl = 'http://localhost';
+
+	/**
+	 * @var
+	 */
+	protected $user;
+
+	/**
+	 * @var
+	 */
+	protected $admin;
 
     /**
      * Creates the application.
@@ -35,5 +48,21 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 
 		// Run the tests in English
 		App::setLocale('en');
+
+		/**
+		 * Assumes roles were kept from seed
+		 */
+
+		// Create default user to test with
+		$this->user = factory(User::class)
+			->states('active', 'confirmed')
+			->create();
+		$this->user->attachRole(3); //User
+
+		// Create user with admin privileges to test with
+		$this->admin = factory(User::class)
+			->states('active', 'confirmed')
+			->create();
+		$this->admin->attachRole(1); //Administrator
 	}
 }

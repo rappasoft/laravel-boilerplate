@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Access\User\User;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -11,35 +11,6 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class RouteTest extends TestCase
 {
 	use DatabaseTransactions;
-
-	/**
-	 * @var
-	 */
-	protected $user;
-
-	/**
-	 * @var
-	 */
-	protected $admin;
-
-	/**
-	 * Set up tests.
-	 */
-	public function setUp() {
-		parent::setUp();
-
-		// Create logged in user to test with
-		$this->user = factory(User::class)
-			->states('active', 'confirmed')
-			->create();
-		$this->user->attachRole(3); //User
-
-		// Create user with admin privileges
-		$this->admin = factory(User::class)
-			->states('active', 'confirmed')
-			->create();
-		$this->admin->attachRole(1); //Administrator
-	}
 
 	/**
 	 * User Logged Out Frontend
