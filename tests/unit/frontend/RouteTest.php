@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Access\User\User;
+use Illuminate\Support\Facades\Event;
+use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
@@ -192,9 +194,14 @@ class RouteTest extends TestCase
 	 * Test the logout button redirects the user back to home and the login button is again visible
 	 */
 	public function testLogoutRoute() {
+		// Make sure our events are fired
+		Event::fake();
+
 		$this->actingAs($this->user)
 			->visit('/logout')
 			->see('Login')
 			->see('Register');
+
+		Event::assertFired(UserLoggedOut::class);
 	}
 }

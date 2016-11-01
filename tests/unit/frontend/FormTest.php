@@ -2,6 +2,9 @@
 
 use Faker\Factory;
 use App\Models\Access\User\User;
+use Illuminate\Support\Facades\Event;
+use App\Events\Frontend\Auth\UserLoggedIn;
+use App\Events\Frontend\Auth\UserRegistered;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
@@ -31,9 +34,11 @@ class FormTest extends TestCase
 	/**
 	 * Test the registration form
 	 * Test it works with confirming email on or off, and that the confirm email notification is sent
+	 * Note: Captcha is disabled by default in phpunit.xml
 	 */
 	public function testRegistrationForm() {
-		// Note: Captcha is disabled by default in phpunit.xml
+		// Make sure our events are fired
+		Event::fake();
 
 		// Create any needed resources
 		$faker = Faker\Factory::create();
@@ -74,6 +79,8 @@ class FormTest extends TestCase
 				->seePageIs('/')
 				->seeInDatabase(config('access.users_table'), ['email' => $email, 'name'  => $name]);
 		}
+
+		Event::assertFired(UserRegistered::class);
 	}
 
 	/**
@@ -94,6 +101,9 @@ class FormTest extends TestCase
 	 * Test that the user is logged in and redirected to the dashboard
 	 */
 	public function testLoginForm() {
+		// Make sure our events are fired
+		Event::fake();
+
 		$user = factory(User::class)
 			->states('active', 'confirmed')
 			->create();
@@ -107,5 +117,7 @@ class FormTest extends TestCase
 			->press('Login')
 			->seePageIs('/dashboard')
 			->see($user->email);
+
+		Event::assertFired(UserLoggedIn::class);
 	}
 }
