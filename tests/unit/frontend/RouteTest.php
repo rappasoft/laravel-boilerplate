@@ -1,9 +1,13 @@
 <?php
 
+use App\Models\Access\User\User;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedOut;
+use App\Events\Frontend\Auth\UserConfirmed;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 
 /**
  * Class RouteTest
@@ -82,6 +86,43 @@ class RouteTest extends TestCase
 	public function testAccountPageLoggedOut() {
 		$this->visit('/account')
 			->seePageIs('/login');
+	}
+
+	/**
+	 * Create an unconfirmed user and assure the user gets
+	 * confirmed when hitting the confirmation route
+	 */
+	public function testConfirmAccountRoute() {
+		Event::fake();
+
+		// Create default user to test with
+		$unconfirmed = factory(User::class)
+			->states('unconfirmed')
+			->create();
+		$unconfirmed->attachRole(3); //User
+
+		$this->visit('/account/confirm/'.$unconfirmed->confirmation_code)
+			->seePageIs('/login')
+			->see('Your account has been successfully confirmed!')
+			->seeInDatabase(config('access.users_table'), ['email' => $unconfirmed->email, 'confirmed'  => 1]);
+
+		Event::assertFired(UserConfirmed::class);
+	}
+
+	/**
+	 * Assure the user gets resent a confirmation email
+	 * after hitting the resend confirmation route
+	 */
+	public function testResendConfirmAccountRoute() {
+		Notification::fake();
+
+		$this->visit('/account/confirm/resend/'.$this->user->id)
+			->seePageIs('/login')
+			->see('A new confirmation e-mail has been sent to the address on file.');
+
+		Notification::assertSentTo(
+			[$this->user], UserNeedsConfirmation::class
+		);
 	}
 
 	/**
