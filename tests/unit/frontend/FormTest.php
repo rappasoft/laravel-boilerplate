@@ -277,6 +277,54 @@ class FormTest extends TestCase
 	}
 
 	/**
+	 * Test that an unconfirmed user can not login
+	 */
+	public function testUnconfirmedUserCanNotLogIn() {
+		// Create default user to test with
+		$unconfirmed = factory(User::class)
+			->states('unconfirmed')
+			->create();
+		$unconfirmed->attachRole(3); //User
+
+		$this->visit('/login')
+			->type($unconfirmed->email, 'email')
+			->type('secret', 'password')
+			->press('Login')
+			->seePageIs('/login')
+			->see('Your account is not confirmed.');
+	}
+
+	/**
+	 * Test that an inactive user can not login
+	 */
+	public function testInactiveUserCanNotLogIn() {
+		// Create default user to test with
+		$inactive = factory(User::class)
+			->states('confirmed', 'inactive')
+			->create();
+		$inactive->attachRole(3); //User
+
+		$this->visit('/login')
+			->type($inactive->email, 'email')
+			->type('secret', 'password')
+			->press('Login')
+			->seePageIs('/login')
+			->see('Your account has been deactivated.');
+	}
+
+	/**
+	 * Test that a user with invalid credentials get kicked back
+	 */
+	public function testInvalidLoginCredentials() {
+		$this->visit('/login')
+			->type($this->user->email, 'email')
+			->type('9s8gy8s9diguh4iev', 'password')
+			->press('Login')
+			->seePageIs('/login')
+			->see('These credentials do not match our records.');
+	}
+
+	/**
 	 * Adds a password reset row to the database to play with
 	 * @param $token
 	 * @return mixed
