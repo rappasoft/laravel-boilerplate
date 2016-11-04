@@ -13,9 +13,9 @@ use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 use App\Notifications\Frontend\Auth\UserNeedsPasswordReset;
 
 /**
- * Class FormTest
+ * Class FrontendFormTest
  */
-class FormTest extends TestCase
+class FrontendFormTest extends TestCase
 {
 	use DatabaseTransactions;
 

@@ -10,9 +10,9 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 
 /**
- * Class RouteTest
+ * Class FrontendRouteTest
  */
-class RouteTest extends TestCase
+class FrontendRouteTest extends TestCase
 {
 	use DatabaseTransactions;
 
