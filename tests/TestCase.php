@@ -3,6 +3,7 @@
 use App\Models\Access\User\User;
 use App\Models\Access\Role\Role;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
@@ -60,28 +61,19 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 	{
 		parent::setUp();
 
+		// Set up the database
+		Artisan::call('migrate:refresh');
+		Artisan::call('db:seed');
+
 		// Run the tests in English
 		App::setLocale('en');
 
 		/**
-		 * Create two temporary roles
+		 * Create class properties to be used in tests
 		 */
-		$this->adminRole = factory(Role::class)
-			->states('admin')
-			->create(['name' => 'Test Admin']);
-		$this->userRole = factory(Role::class)
-			->create(['name' => 'Test User']);
-
-		// Create default user to test with
-		$this->user = factory(User::class)
-			->states('active', 'confirmed')
-			->create();
-		$this->user->attachRole($this->userRole->id); //User
-
-		// Create user with admin privileges to test with
-		$this->admin = factory(User::class)
-			->states('active', 'confirmed')
-			->create();
-		$this->admin->attachRole($this->adminRole->id); //Administrator
+		$this->admin = User::find(1);
+		$this->user = User::find(3);
+		$this->adminRole = Role::find(1);
+		$this->userRole = Role::find(3);
 	}
 }

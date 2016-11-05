@@ -112,7 +112,7 @@ class FrontendFormTest extends TestCase
 		//User Test
 		$this->visit('/login')
 			->type($this->user->email, 'email')
-			->type('secret', 'password')
+			->type('1234', 'password')
 			->press('Login')
 			->seePageIs('/dashboard')
 			->see($this->user->email);
@@ -122,7 +122,7 @@ class FrontendFormTest extends TestCase
 		//Admin Test
 		$this->visit('/login')
 			->type($this->admin->email, 'email')
-			->type('secret', 'password')
+			->type('1234', 'password')
 			->press('Login')
 			->seePageIs('/admin/dashboard')
 			->see($this->admin->name)
@@ -207,7 +207,7 @@ class FrontendFormTest extends TestCase
 		$this->actingAs($this->user)
 			->visit('/account')
 			->see('My Account')
-			->type('secret', 'old_password')
+			->type('1234', 'old_password')
 			->type($password, 'password')
 			->type($password, 'password_confirmation')
 			->press('change-password')

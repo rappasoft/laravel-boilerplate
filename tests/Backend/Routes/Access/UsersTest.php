@@ -79,11 +79,17 @@ class UsersTest extends TestCase
 	}
 
 	public function testDeactivateUser() {
-
+		$this->actingAs($this->admin)
+			->visit('/admin/access/user/'.$this->user->id.'/mark/0')
+			->seePageIs('/admin/access/user/deactivated')
+			->seeInDatabase('users', ['id' => $this->user->id, 'status' => 0]);
 	}
 
 	public function testReactivateUser() {
-
+		$this->actingAs($this->admin)
+			->visit('/admin/access/user/'.$this->user->id.'/mark/1')
+			->seePageIs('/admin/access/user')
+			->seeInDatabase('users', ['id' => $this->user->id, 'status' => 1]);
 	}
 
 	public function testDeleteUser() {
@@ -94,7 +100,7 @@ class UsersTest extends TestCase
 
 	}
 
-	public function testPermanantlyDeleteUser() {
+	public function testPermanentlyDeleteUser() {
 
 	}
 }
