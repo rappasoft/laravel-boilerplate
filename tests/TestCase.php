@@ -1,19 +1,23 @@
 <?php
 
 use App\Models\Access\User\User;
+use App\Models\Access\Role\Role;
 use Illuminate\Support\Facades\App;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
  * Class TestCase
  */
 abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
+	use DatabaseTransactions;
+
     /**
      * The base URL to use while testing the application.
      *
      * @var string
      */
-    protected $baseUrl = 'http://localhost';
+    protected $baseUrl = 'http://l5boilerplate.dev';
 
 	/**
 	 * @var
@@ -24,6 +28,16 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 	 * @var
 	 */
 	protected $admin;
+
+	/**
+	 * @var
+	 */
+	protected $userRole;
+
+	/**
+	 * @var
+	 */
+	protected $adminRole;
 
     /**
      * Creates the application.
@@ -50,19 +64,24 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 		App::setLocale('en');
 
 		/**
-		 * Assumes roles were kept from seed
+		 * Create two temporary roles
 		 */
+		$this->adminRole = factory(Role::class)
+			->states('admin')
+			->create(['name' => 'Test Admin']);
+		$this->userRole = factory(Role::class)
+			->create(['name' => 'Test User']);
 
 		// Create default user to test with
 		$this->user = factory(User::class)
 			->states('active', 'confirmed')
 			->create();
-		$this->user->attachRole(3); //User
+		$this->user->attachRole($this->userRole->id); //User
 
 		// Create user with admin privileges to test with
 		$this->admin = factory(User::class)
 			->states('active', 'confirmed')
 			->create();
-		$this->admin->attachRole(1); //Administrator
+		$this->admin->attachRole($this->adminRole->id); //Administrator
 	}
 }
