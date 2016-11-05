@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class Users
+ * Class UsersTest
  */
-class Users extends TestCase
+class UsersTest extends TestCase
 {
 	public function testActiveUsers() {
 		$this->actingAs($this->admin)

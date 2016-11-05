@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class Dashboard
+ * Class DashboardTest
  */
-class Dashboard extends TestCase
+class DashboardTest extends TestCase
 {
 	public function testAdminDashboard() {
 		$this->actingAs($this->admin)
