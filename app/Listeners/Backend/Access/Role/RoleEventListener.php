@@ -19,7 +19,7 @@ class RoleEventListener
 	public function onCreated($event) {
 		history()->log(
 			$this->history_slug,
-			'trans("history.backend.roles.created") <strong>'.$event->role->name.'</strong>',
+			'trans("history.backend.roles.created") '.$event->role->name,
 			$event->role->id,
 			'plus',
 			'bg-green'
@@ -32,7 +32,7 @@ class RoleEventListener
 	public function onUpdated($event) {
 		history()->log(
 			$this->history_slug,
-			'trans("history.backend.roles.updated") <strong>'.$event->role->name.'</strong>',
+			'trans("history.backend.roles.updated") '.$event->role->name,
 			$event->role->id,
 			'save',
 			'bg-aqua'
@@ -45,7 +45,7 @@ class RoleEventListener
 	public function onDeleted($event) {
 		history()->log(
 			$this->history_slug,
-			'trans("history.backend.roles.deleted") <strong>'.$event->role->name.'</strong>',
+			'trans("history.backend.roles.deleted") '.$event->role->name,
 			$event->role->id,
 			'trash',
 			'bg-maroon'
