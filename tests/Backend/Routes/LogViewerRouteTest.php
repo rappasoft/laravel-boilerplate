@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class LogViewerTest
+ * Class LogViewerRouteTest
  */
-class LogViewerTest extends TestCase
+class LogViewerRouteTest extends TestCase
 {
 	public function testLogViewerDashboard() {
 		$this->actingAs($this->admin)

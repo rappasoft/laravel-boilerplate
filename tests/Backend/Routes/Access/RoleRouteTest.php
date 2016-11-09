@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class RolesTest
+ * Class RoleRouteTest
  */
-class RolesTest extends TestCase
+class RoleRouteTest extends TestCase
 {
 	public function testRolesIndex() {
 		$this->actingAs($this->admin)

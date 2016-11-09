@@ -3,35 +3,30 @@
 use App\Models\Access\User\User;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
-use App\Events\Frontend\Auth\UserLoggedOut;
 use App\Events\Frontend\Auth\UserConfirmed;
 use Illuminate\Support\Facades\Notification;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 
 /**
- * Class FrontendRouteTest
+ * Class LoggedOutRouteTest
  */
-class FrontendRouteTest extends TestCase
+class LoggedOutRouteTest extends TestCase
 {
-	use DatabaseTransactions;
 
 	/**
 	 * User Logged Out Frontend
 	 */
 
 	/**
-	 * Users logged out
 	 * Test the homepage works
 	 */
 	public function testHomePage()
-    {
-        $this->visit('/')
-             ->assertResponseOk();
-    }
+	{
+		$this->visit('/')
+			->assertResponseOk();
+	}
 
 	/**
-	 * Users logged out
 	 * Test the macro page works
 	 */
 	public function testMacroPage()
@@ -41,7 +36,6 @@ class FrontendRouteTest extends TestCase
 	}
 
 	/**
-	 * Users logged out
 	 * Test the login page works
 	 */
 	public function testLoginPage()
@@ -51,7 +45,6 @@ class FrontendRouteTest extends TestCase
 	}
 
 	/**
-	 * Users logged out
 	 * Test the register page works
 	 */
 	public function testRegisterPage()
@@ -61,7 +54,6 @@ class FrontendRouteTest extends TestCase
 	}
 
 	/**
-	 * Users logged out
 	 * Test the forgot password page works
 	 */
 	public function testForgotPasswordPage()
@@ -71,7 +63,6 @@ class FrontendRouteTest extends TestCase
 	}
 
 	/**
-	 * Users logged out
 	 * Test the dashboard page redirects to login
 	 */
 	public function testDashboardPageLoggedOut() {
@@ -80,7 +71,6 @@ class FrontendRouteTest extends TestCase
 	}
 
 	/**
-	 * Users logged out
 	 * Test the account page redirects to login
 	 */
 	public function testAccountPageLoggedOut() {
@@ -144,76 +134,5 @@ class FrontendRouteTest extends TestCase
 		$this->get('7g48hwbfw9eufj')
 			->seeStatusCode(404)
 			->see('Page Not Found');
-	}
-
-	/**
-	 * User Logged In Frontend
-	 */
-
-	/**
-	 * Users logged in
-	 * Test the homepage works and the dashboard button appears
-	 */
-	public function testHomePageLoggedIn()
-	{
-		$this->actingAs($this->user)
-			->visit('/')
-			->see('Dashboard')
-			->see($this->user->name)
-			->dontSee('Administration');
-	}
-
-	/**
-	 * Users logged in
-	 * Test the dashboard page works and displays the users information
-	 */
-	public function testDashboardPage() {
-		$this->actingAs($this->user)
-			->visit('/dashboard')
-			->see($this->user->email)
-			->see('Joined')
-			->dontSee('Administration');
-	}
-
-	/**
-	 * Users logged in
-	 * Test the account page works and displays the users information
-	 */
-	public function testAccountPage() {
-		$this->actingAs($this->user)
-			->visit('/account')
-			->see('My Account')
-			->see('Profile')
-			->see('Update Information')
-			->see('Change Password')
-			->dontSee('Administration');
-	}
-
-	/**
-	 * Admin logged in
-	 * Test the account page works and displays the users information
-	 */
-	public function testLoggedInAdmin()
-	{
-		$this->actingAs($this->admin)
-			->visit('/')
-			->see('Administration')
-			->see($this->admin->name);
-	}
-
-	/**
-	 * Users logged in
-	 * Test the logout button redirects the user back to home and the login button is again visible
-	 */
-	public function testLogoutRoute() {
-		// Make sure our events are fired
-		Event::fake();
-
-		$this->actingAs($this->user)
-			->visit('/logout')
-			->see('Login')
-			->see('Register');
-
-		Event::assertFired(UserLoggedOut::class);
 	}
 }
