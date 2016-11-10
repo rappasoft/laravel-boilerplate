@@ -23,22 +23,32 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 	/**
 	 * @var
 	 */
-	protected $user;
-
-	/**
-	 * @var
-	 */
 	protected $admin;
 
 	/**
 	 * @var
 	 */
-	protected $userRole;
+	protected $executive;
+
+	/**
+	 * @var
+	 */
+	protected $user;
 
 	/**
 	 * @var
 	 */
 	protected $adminRole;
+
+	/**
+	 * @var
+	 */
+	protected $executiveRole;
+
+	/**
+	 * @var
+	 */
+	protected $userRole;
 
     /**
      * Creates the application.
@@ -72,8 +82,10 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 		 * Create class properties to be used in tests
 		 */
 		$this->admin = User::find(1);
+		$this->executive = User::find(2);
 		$this->user = User::find(3);
 		$this->adminRole = Role::find(1);
+		$this->executiveRole = Role::find(2);
 		$this->userRole = Role::find(3);
 	}
 }

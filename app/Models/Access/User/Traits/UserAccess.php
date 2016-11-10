@@ -46,11 +46,11 @@ trait UserAccess
      * @param  $needsAll
      * @return bool
      */
-    public function hasRoles($roles, $needsAll)
+    public function hasRoles($roles, $needsAll = false)
     {
         //User has to possess all of the roles specified
         if ($needsAll) {
-            $hasRoles = 0;
+			$hasRoles = 0;
             $numRoles = count($roles);
 
             foreach ($roles as $role) {
@@ -63,15 +63,14 @@ trait UserAccess
         }
 
         //User has to possess one of the roles specified
-        $hasRoles = 0;
         foreach ($roles as $role) {
             if ($this->hasRole($role)) {
-                $hasRoles++;
+                return true;
             }
 
         }
 
-        return $hasRoles > 0;
+        return false;
     }
 
     /**
@@ -83,7 +82,7 @@ trait UserAccess
     public function allow($nameOrId)
     {
         foreach ($this->roles as $role) {
-            //See if role has all permissions
+            // See if role has all permissions
             if ($role->all) {
                 return true;
             }
@@ -91,14 +90,14 @@ trait UserAccess
             // Validate against the Permission table
             foreach ($role->permissions as $perm) {
 
-                //First check to see if it's an ID
+                // First check to see if it's an ID
                 if (is_numeric($nameOrId)) {
                     if ($perm->id == $nameOrId) {
                         return true;
                     }
                 }
 
-                //Otherwise check by name
+                // Otherwise check by name
                 if ($perm->name == $nameOrId) {
                     return true;
                 }
@@ -132,14 +131,13 @@ trait UserAccess
         }
 
         //User has to possess one of the permissions specified
-        $hasPermissions = 0;
         foreach ($permissions as $perm) {
             if ($this->allow($perm)) {
-                $hasPermissions++;
+				return true;
             }
         }
 
-        return $hasPermissions > 0;
+        return false;
     }
 
     /**
