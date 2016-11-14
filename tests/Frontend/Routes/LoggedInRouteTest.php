@@ -57,17 +57,6 @@ class LoggedInRouteTest extends TestCase
 	}
 
 	/**
-	 * Make sure the logged in user gets kicked back if they
-	 * try to access the backend which they do not have permission
-	 */
-	public function testUserCanNotAccessBackend() {
-		$this->actingAs($this->user)
-			->visit('/admin/dashboard')
-			->seePageIs('/')
-			->see('You do not have access to do that.');
-	}
-
-	/**
 	 * Test the logout button redirects the user back to home and the login button is again visible
 	 */
 	public function testLogoutRoute() {
