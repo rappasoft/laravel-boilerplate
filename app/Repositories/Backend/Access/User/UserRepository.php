@@ -181,7 +181,7 @@ class UserRepository extends Repository
 	public function forceDelete(Model $user)
     {
         if (is_null($user->deleted_at)) {
-            throw new GeneralException("This user must be deleted first before it can be destroyed permanently.");
+            throw new GeneralException(trans('exceptions.backend.access.users.delete_first'));
         }
 
 		DB::transaction(function() use ($user) {
@@ -202,7 +202,7 @@ class UserRepository extends Repository
 	public function restore(Model $user)
     {
         if (is_null($user->deleted_at)) {
-            throw new GeneralException("This user is not deleted so it can not be restored.");
+            throw new GeneralException(trans('exceptions.backend.access.users.cant_restore'));
         }
 
         if (parent::restore(($user))) {

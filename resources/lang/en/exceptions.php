@@ -29,8 +29,10 @@ return [
             'users' => [
                 'cant_deactivate_self' => 'You can not do that to yourself.',
                 'cant_delete_self' => 'You can not delete yourself.',
+				'cant_restore' => 'This user is not deleted so it can not be restored.',
                 'create_error' => 'There was a problem creating this user. Please try again.',
                 'delete_error' => 'There was a problem deleting this user. Please try again.',
+				'delete_first' => 'This user must be deleted first before it can be destroyed permanently.',
                 'email_error' => 'That email address belongs to a different user.',
                 'mark_error' => 'There was a problem updating this user. Please try again.',
                 'not_found' => 'That user does not exist.',
