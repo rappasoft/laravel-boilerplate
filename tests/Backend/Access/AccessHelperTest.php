@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class AccessTest
+ * Class AccessHelperTest
  */
-class AccessTest extends TestCase {
+class AccessHelperTest extends TestCase {
 
 	public function testAccessUser() {
 		$this->actingAs($this->user);

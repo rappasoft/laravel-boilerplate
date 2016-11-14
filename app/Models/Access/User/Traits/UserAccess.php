@@ -48,6 +48,11 @@ trait UserAccess
      */
     public function hasRoles($roles, $needsAll = false)
     {
+		//If not an array, make a one item array
+		if (! is_array($roles)) {
+			$roles = array($roles);
+		}
+
         //User has to possess all of the roles specified
         if ($needsAll) {
 			$hasRoles = 0;
@@ -116,6 +121,11 @@ trait UserAccess
      */
     public function allowMultiple($permissions, $needsAll = false)
     {
+		//If not an array, make a one item array
+		if (! is_array($permissions)) {
+			$permissions = array($permissions);
+		}
+
         //User has to possess all of the permissions specified
         if ($needsAll) {
             $hasPermissions = 0;
