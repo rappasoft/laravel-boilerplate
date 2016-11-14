@@ -2,6 +2,7 @@
 
 use Faker\Generator;
 use App\Models\Access\User\User;
+use App\Models\Access\Role\Role;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,5 +23,47 @@ $factory->define(User::class, function (Generator $faker) {
         'email' => $faker->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
+		'confirmation_code' => md5(uniqid(mt_rand(), true)),
     ];
+});
+
+$factory->state(User::class, 'active', function () {
+	return [
+		'status' => 1,
+	];
+});
+
+$factory->state(User::class, 'inactive', function () {
+	return [
+		'status' => 0,
+	];
+});
+
+$factory->state(User::class, 'confirmed', function () {
+	return [
+		'confirmed' => 1,
+	];
+});
+
+$factory->state(User::class, 'unconfirmed', function () {
+	return [
+		'confirmed' => 0,
+	];
+});
+
+/**
+ * Roles
+ */
+$factory->define(Role::class, function (Generator $faker) {
+	return [
+		'name' => $faker->name,
+		'all' => 0,
+		'sort' => $faker->numberBetween(1, 100),
+	];
+});
+
+$factory->state(Role::class, 'admin', function () {
+	return [
+		'all' => 1,
+	];
 });
