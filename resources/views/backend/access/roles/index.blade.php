@@ -16,7 +16,7 @@
             <h3 class="box-title">{{ trans('labels.backend.access.roles.management') }}</h3>
 
             <div class="box-tools pull-right">
-                @include('backend.access.includes.partials.header-buttons')
+                @include('backend.access.includes.partials.role-header-buttons')
             </div>
         </div><!-- /.box-header -->
 

@@ -37,12 +37,33 @@
                 </a>
             </li>
 
-            @permission('manage-users')
-                <li class="{{ Active::pattern('admin/access/*') }}">
-                    <a href="{{ route('admin.access.user.index') }}">
+            @permissions(['manage-users', 'manage-roles'])
+                <li class="{{ Active::pattern('admin/access/*') }} treeview">
+                    <a href="#">
                         <i class="fa fa-users"></i>
                         <span>{{ trans('menus.backend.access.title') }}</span>
+                        <i class="fa fa-angle-left pull-right"></i>
                     </a>
+
+                    <ul class="treeview-menu {{ Active::pattern('admin/access/*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/access/*', 'display: block;') }}">
+                        @permission('manage-users')
+                            <li class="{{ Active::pattern('admin/access/user*') }}">
+                                <a href="{{ route('admin.access.user.index') }}">
+                                    <i class="fa fa-circle-o"></i>
+                                    <span>{{ trans('labels.backend.access.users.management') }}</span>
+                                </a>
+                            </li>
+                        @endauth
+
+                        @permission('manage-roles')
+                            <li class="{{ Active::pattern('admin/access/role*') }}">
+                                <a href="{{ route('admin.access.role.index') }}">
+                                    <i class="fa fa-circle-o"></i>
+                                    <span>{{ trans('labels.backend.access.roles.management') }}</span>
+                                </a>
+                            </li>
+                        @endauth
+                    </ul>
                 </li>
             @endauth
 
