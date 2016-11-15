@@ -2,7 +2,7 @@
 
 @section ('title', trans('labels.backend.access.users.management'))
 
-@section('after-styles-end')
+@section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
 @stop
 
@@ -56,7 +56,7 @@
     </div><!--box box-success-->
 @stop
 
-@section('after-scripts-end')
+@section('after-scripts')
     {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
     {{ Html::script("js/backend/plugin/datatables/dataTables.bootstrap.min.js") }}
 

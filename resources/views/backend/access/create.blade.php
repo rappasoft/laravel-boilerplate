@@ -136,6 +136,6 @@
     {{ Form::close() }}
 @stop
 
-@section('after-scripts-end')
+@section('after-scripts')
     {{ Html::script('js/backend/access/users/script.js') }}
 @stop

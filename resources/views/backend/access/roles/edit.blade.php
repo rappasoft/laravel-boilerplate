@@ -84,6 +84,6 @@
     {{ Form::close() }}
 @stop
 
-@section('after-scripts-end')
+@section('after-scripts')
     {{ Html::script('js/backend/access/roles/script.js') }}
 @stop
