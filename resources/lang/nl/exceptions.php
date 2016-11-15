@@ -53,7 +53,7 @@ return [
 				'created_confirm' => 'Uw account is succesvol aangemaakt. Een bevestigings email is verzonden.',
 				'mismatch' => 'Uw bevestigingscode komt niet overeen.',
 				'not_found' => 'De bevestigingscode bestaat niet.',
-				'resend' => 'Uw account kon niet worden bevestigd. Klik op de informatie link in de email die u heeft ontvangen, of <a href="' . route('account.confirm.resend', ':user_id') . '">klik hier</a> om de bevestigingsemail opnieuw te versturen.',
+				'resend' => 'Uw account kon niet worden bevestigd. Klik op de informatie link in de email die u heeft ontvangen, of <a href="' . route('frontend.auth.account.confirm.resend', ':user_id') . '">klik hier</a> om de bevestigingsemail opnieuw te versturen.',
 				'success' => 'Uw account is succesvol bevestigd!',
 				'resent' => 'Een nieuwe bevestigings email is naar het ingegeven adres verstuurd.',
 			],
