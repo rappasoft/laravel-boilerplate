@@ -66,7 +66,7 @@
     </div><!-- row -->
 @endsection
 
-@section('after-scripts-end')
+@section('after-scripts')
     @if (config('access.captcha.registration'))
         {!! Captcha::script() !!}
     @endif

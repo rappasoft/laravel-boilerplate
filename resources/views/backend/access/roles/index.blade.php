@@ -2,7 +2,7 @@
 
 @section ('title', trans('labels.backend.access.roles.management'))
 
-@section('after-styles-end')
+@section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
 @stop
 
@@ -16,7 +16,7 @@
             <h3 class="box-title">{{ trans('labels.backend.access.roles.management') }}</h3>
 
             <div class="box-tools pull-right">
-                @include('backend.access.includes.partials.header-buttons')
+                @include('backend.access.includes.partials.role-header-buttons')
             </div>
         </div><!-- /.box-header -->
 
@@ -50,7 +50,7 @@
     </div><!--box box-success-->
 @stop
 
-@section('after-scripts-end')
+@section('after-scripts')
     {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
     {{ Html::script("js/backend/plugin/datatables/dataTables.bootstrap.min.js") }}
 

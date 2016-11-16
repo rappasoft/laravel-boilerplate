@@ -14,7 +14,7 @@
         @yield('meta')
 
         <!-- Styles -->
-        @yield('before-styles-end')
+        @yield('before-styles')
 
         {{ Html::style(elixir('css/frontend.css')) }}
 
@@ -23,7 +23,7 @@
             {!! Html::style(elixir('css/rtl.css')) !!}
         @endif
 
-        @yield('after-styles-end')
+        @yield('after-styles')
 
         <!-- Scripts -->
         <script>
@@ -44,9 +44,9 @@
         </div><!--#app-->
 
         <!-- Scripts -->
-        @yield('before-scripts-end')
+        @yield('before-scripts')
         {!! Html::script(elixir('js/frontend.js')) !!}
-        @yield('after-scripts-end')
+        @yield('after-scripts')
 
         @include('includes.partials.ga')
     </body>

@@ -29,8 +29,10 @@ return [
             'users' => [
                 'cant_deactivate_self' => 'Du har inte rättighet att utföra denna handling mot ditt eget konto.',
                 'cant_delete_self' => 'Du kan inte radera ditt eget konto.',
+				'cant_restore' => 'This user is not deleted so it can not be restored.',
                 'create_error' => 'Det uppstod ett fel då användaren skulle skapas. Försök igen.',
                 'delete_error' => 'Det uppstod ett fel då användaren skulle raderas. Försök igen.',
+				'delete_first' => 'This user must be deleted first before it can be destroyed permanently.',
                 'email_error' => 'Den e-post du angav finns redan angiven för en annan användare.',
                 'mark_error' => 'Det uppstod ett fel då användaren skulle uppdateras. Försök igen.',
                 'not_found' => 'Det finns inte någon sådan användare.',

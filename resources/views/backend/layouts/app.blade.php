@@ -14,7 +14,7 @@
         @yield('meta')
 
         <!-- Styles -->
-        @yield('before-styles-end')
+        @yield('before-styles')
 
         <!-- Check if the language is set to RTL, so apply the RTL layouts -->
         <!-- Otherwise apply the normal LTR layouts -->
@@ -25,7 +25,7 @@
             {{ Html::style(elixir('css/backend.css')) }}
         @endif
 
-        @yield('after-styles-end')
+        @yield('after-styles')
 
         <!-- Html5 Shim and Respond.js IE8 support of Html5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -69,8 +69,8 @@
         </div><!-- ./wrapper -->
 
         <!-- JavaScripts -->
-        @yield('before-scripts-end')
+        @yield('before-scripts')
         {{ Html::script(elixir('js/backend.js')) }}
-        @yield('after-scripts-end')
+        @yield('after-scripts')
     </body>
 </html>

@@ -29,8 +29,11 @@ class EloquentHistoryRepository implements HistoryContract {
 	public function log($type, $text, $entity_id = null, $icon = null, $class = null, $assets = null)
 	{
 		//Type can be id or name
-		if (! is_numeric($type))
+		if (is_numeric($type)) {
+			$type = HistoryType::findOrFail($type);
+		} else {
 			$type = HistoryType::where('name', $type)->first();
+		}
 
 		if ($type instanceof HistoryType) {
 			return History::create([

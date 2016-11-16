@@ -29,8 +29,10 @@ return [
 			'users' => [
 				'cant_deactivate_self' => 'لا يمكنك فعل هذا بنفسك.',
 				'cant_delete_self' => 'لا يمكنك مسح نفسك.',
+				'cant_restore' => 'This user is not deleted so it can not be restored.',
 				'create_error' => 'حدثت مشكلة أثناء إنشاء المستخدم، برجاء المحاولة مرة أخرى.',
 				'delete_error' => 'حدثت مشكلة أثناء مسح المستخدم، برجاء المحاولة مرى أخرى .',
+				'delete_first' => 'This user must be deleted first before it can be destroyed permanently.',
 				'email_error' => 'هذا البريد الإلكتروني ينتمي إلا مستخدم آخر.',
 				'mark_error' => 'حدثت مشكلة أثناء تحديث هذا المستخدم، برجاء المحاولة مرى أخرى.',
 				'not_found' => 'هذا المستخدم غير موجود.',

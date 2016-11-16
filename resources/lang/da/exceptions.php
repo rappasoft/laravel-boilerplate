@@ -31,6 +31,7 @@ return [
                 'cant_delete_self' => 'Du kan ikke slette dig selv.',
                 'create_error' => 'Der opstod et problem ved oprettelsen af denne bruger. Prøv venligst igen.',
                 'delete_error' => 'Der opstod et problem ved sletning af denne bruger. Prøv venligst igen.',
+				'delete_first' => 'This user must be deleted first before it can be destroyed permanently.',
                 'email_error' => 'Denne e-mailadresse tilhører en anden bruger.',
                 'mark_error' => 'Der opstod et problem ved opdatering af denne bruger. Prøv venligst igen.',
                 'not_found' => 'Denne bruger eksisterer ikke.',

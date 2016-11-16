@@ -29,8 +29,10 @@ return [
             'users' => [
                 'cant_deactivate_self' => 'Você não pode fazer isso com você mesmo.',
                 'cant_delete_self' => 'Você não pode se excluir.',
+				'cant_restore' => 'This user is not deleted so it can not be restored.',
                 'create_error' => 'Houve um problema ao criar esse usuário. Por favor, tente novamente.',
                 'delete_error' => 'Houve um problema ao excluir esse usuário. Por favor, tente novamente.',
+				'delete_first' => 'This user must be deleted first before it can be destroyed permanently.',
                 'email_error' => 'Esse endereço de e-mail pertence a um usuário diferente.',
                 'mark_error' => 'Houve um problema ao atualizar esse usuário. Por favor, tente novamente',
                 'not_found' => 'Esse usuário não existe.',

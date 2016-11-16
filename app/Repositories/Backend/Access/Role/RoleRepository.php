@@ -28,12 +28,12 @@ class RoleRepository extends Repository
 	 * @return mixed
 	 */
 	public function getAll($order_by = 'sort', $sort = 'asc')
-    {
+	{
 		return $this->query()
 			->with('users', 'permissions')
 			->orderBy($order_by, $sort)
 			->get();
-    }
+	}
 
 	/**
 	 * @param string $order_by

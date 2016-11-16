@@ -17,7 +17,7 @@
                 <h3 class="box-title">{{ trans('labels.backend.access.users.create') }}</h3>
 
                 <div class="box-tools pull-right">
-                    @include('backend.access.includes.partials.header-buttons')
+                    @include('backend.access.includes.partials.user-header-buttons')
                 </div><!--box-tools pull-right-->
             </div><!-- /.box-header -->
 
@@ -86,7 +86,7 @@
                     <div class="col-lg-3">
                         @if (count($roles) > 0)
                             @foreach($roles as $role)
-                                <input type="checkbox" value="{{ $role->id }}" name="assignees_roles[]" id="role-{{ $role->id }}" /> <label for="role-{{ $role->id }}">{{ $role->name }}</label>
+                                <input type="checkbox" value="{{ $role->id }}" name="assignees_roles[{{ $role->id }}]" id="role-{{ $role->id }}" /> <label for="role-{{ $role->id }}">{{ $role->name }}</label>
                                 <a href="#" data-role="role_{{ $role->id }}" class="show-permissions small">
                                     (
                                         <span class="show-text">{{ trans('labels.general.show') }}</span>
@@ -136,6 +136,6 @@
     {{ Form::close() }}
 @stop
 
-@section('after-scripts-end')
+@section('after-scripts')
     {{ Html::script('js/backend/access/users/script.js') }}
 @stop

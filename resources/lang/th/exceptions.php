@@ -29,8 +29,10 @@ return [
             'users' => [
                 'cant_deactivate_self' => 'คุณไม่สามารถกระทำกับตนเองได้',
                 'cant_delete_self' => 'คุณไม่สามารถลบตนเองได้',
+				'cant_restore' => 'This user is not deleted so it can not be restored.',
                 'create_error' => 'มีข้อผิดพลาดในการสร้างผู้ใช้นี้ กรุณาลองใหม่อีกครั้ง',
                 'delete_error' => 'มีข้อผิดพลาดในการลบผู้ใช้นี้ กรุณาลองใหม่อีกครั้ง',
+				'delete_first' => 'This user must be deleted first before it can be destroyed permanently.',
                 'email_error' => 'อีเมลนี้เป็นของผู้ใช้คนอื่น',
                 'mark_error' => 'มีข้อผิดพลาดในการแก้ไขผู้ใช้นี้ กรุณาลองใหม่อีกครั้ง',
                 'not_found' => 'ไม่พบผู้ใช้นี้',
