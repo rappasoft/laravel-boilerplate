@@ -20,7 +20,14 @@ class HistoryTypeTableSeeder extends Seeder {
 			DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 		}
 
-		DB::table('history_types')->truncate();
+		if (DB::connection()->getDriverName() == 'mysql') {
+			DB::table('history_types')->truncate();
+		} elseif (DB::connection()->getDriverName() == 'sqlite') {
+			DB::statement('DELETE FROM history_types');
+		} else {
+			//For PostgreSQL or anything else
+			DB::statement('TRUNCATE TABLE history_types CASCADE');
+		}
 
 		$types = [
 			[
