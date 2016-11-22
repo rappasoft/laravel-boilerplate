@@ -1,81 +1,76 @@
-@extends ('backend.layouts.master')
+@extends ('backend.layouts.app')
 
-@section ('title', 'User Management | Deactivated Users')
+@section ('title', trans('labels.backend.access.users.management') . ' | ' . trans('labels.backend.access.users.deactivated'))
+
+@section('after-styles')
+    {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
+@stop
 
 @section('page-header')
     <h1>
-        User Management
-        <small>Deactivated Users</small>
+        {{ trans('labels.backend.access.users.management') }}
+        <small>{{ trans('labels.backend.access.users.deactivated') }}</small>
     </h1>
 @endsection
 
-@section ('breadcrumbs')
-     <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-     <li>{!! link_to_route('admin.access.users.index', 'User Management') !!}</li>
-     <li class="active">{!! link_to_route('admin.access.users.deactivated', 'Deactivated Users') !!}</li>
+@section('content')
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title">{{ trans('labels.backend.access.users.deactivated') }}</h3>
+
+            <div class="box-tools pull-right">
+                @include('backend.access.includes.partials.user-header-buttons')
+            </div><!--box-tools pull-right-->
+        </div><!-- /.box-header -->
+
+        <div class="box-body">
+            <div class="table-responsive">
+                <table id="users-table" class="table table-condensed table-hover">
+                    <thead>
+                        <tr>
+                            <th>{{ trans('labels.backend.access.users.table.id') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.name') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.email') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.created') }}</th>
+                            <th>{{ trans('labels.backend.access.users.table.last_updated') }}</th>
+                            <th>{{ trans('labels.general.actions') }}</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div><!--table-responsive-->
+        </div><!-- /.box-body -->
+    </div><!--box-->
 @stop
 
-@section('content')
-    @include('backend.access.includes.partials.header-buttons')
+@section('after-scripts')
+    {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
+    {{ Html::script("js/backend/plugin/datatables/dataTables.bootstrap.min.js") }}
 
-    <table class="table table-striped table-bordered table-hover">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>E-mail</th>
-            <th>Confirmed</th>
-            <th>Roles</th>
-            <th>Other Permissions</th>
-            <th class="visible-lg">Created</th>
-            <th class="visible-lg">Last Updated</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-            @if ($users->count())
-                @foreach ($users as $user)
-                    <tr>
-                        <td>{!! $user->id !!}</td>
-                        <td>{!! $user->name !!}</td>
-                        <td>{!! link_to("mailto:".$user->email, $user->email) !!}</td>
-                        <td>{!! $user->confirmed_label !!}</td>
-                        <td>
-                            @if ($user->roles()->count() > 0)
-                                @foreach ($user->roles as $role)
-                                    {!! $role->name !!}<br/>
-                                @endforeach
-                            @else
-                                None
-                            @endif
-                        </td>
-                        <td>
-                            @if ($user->permissions()->count() > 0)
-                                @foreach ($user->permissions as $perm)
-                                    {!! $perm->display_name !!}<br/>
-                                @endforeach
-                            @else
-                                None
-                            @endif
-                        </td>
-                        <td class="visible-lg">{!! $user->created_at->diffForHumans() !!}</td>
-                        <td class="visible-lg">{!! $user->updated_at->diffForHumans() !!}</td>
-                        <td>{!! $user->action_buttons !!}</td>
-                    </tr>
-                @endforeach
-            @else
-                <td colspan="9">No Deactivated Users</td>
-            @endif
-        </tbody>
-    </table>
-
-    <div class="pull-left">
-        {!! $users->total() !!} user(s) total
-    </div>
-
-    <div class="pull-right">
-        {!! $users->render() !!}
-    </div>
-
-    <div class="clearfix"></div>
+    <script>
+        $(function() {
+            $('#users-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: '{{ route("admin.access.user.get") }}',
+                    type: 'post',
+                    data: {status: 0, trashed: false}
+                },
+                columns: [
+                    {data: 'id', name: '{{config('access.users_table')}}.id'},
+                    {data: 'name', name: '{{config('access.users_table')}}.name', render: $.fn.dataTable.render.text()},
+                    {data: 'email', name: '{{config('access.users_table')}}.email', render: $.fn.dataTable.render.text()},
+                    {data: 'confirmed', name: '{{config('access.users_table')}}.confirmed'},
+                    {data: 'roles', name: '{{config('access.roles_table')}}.name', sortable: false},
+                    {data: 'created_at', name: '{{config('access.users_table')}}.created_at'},
+                    {data: 'updated_at', name: '{{config('access.users_table')}}.updated_at'},
+                    {data: 'actions', name: 'actions', searchable: false, sortable: false}
+                ],
+                order: [[0, "asc"]],
+                searchDelay: 500
+            });
+        });
+    </script>
 @stop

@@ -1,13 +1,16 @@
-<?php namespace App\Providers;
+<?php
 
-use App\Services\Macros;
+namespace App\Providers;
+
+use App\Helpers\Macros\Macros;
+use Collective\Html\HtmlServiceProvider;
 
 /**
  * Class MacroServiceProvider
  * @package App\Providers
  */
-class MacroServiceProvider extends \Illuminate\Html\HtmlServiceProvider {
-
+class MacroServiceProvider extends HtmlServiceProvider
+{
 	/**
 	 * Bootstrap the application services.
 	 *
@@ -27,9 +30,8 @@ class MacroServiceProvider extends \Illuminate\Html\HtmlServiceProvider {
 	{
 		parent::register();
 
-		$this->app->bindShared('form', function($app)
-		{
-			$form = new Macros($app['html'], $app['url'], $app['session.store']->getToken());
+		$this->app->singleton('form', function ($app) {
+			$form = new Macros($app['html'], $app['url'], $app['view'], $app['session.store']->getToken());
 			return $form->setSessionStore($app['session.store']);
 		});
 	}

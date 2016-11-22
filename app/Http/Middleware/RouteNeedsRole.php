@@ -1,27 +1,45 @@
-<?php namespace App\Http\Middleware;
+<?php
+
+namespace App\Http\Middleware;
 
 use Closure;
-use App\Services\Access\Traits\AccessParams;
 
 /**
  * Class RouteNeedsRole
  * @package App\Http\Middleware
  */
-class RouteNeedsRole {
-
-	use AccessParams;
+class RouteNeedsRole
+{
 
 	/**
-	 * @param $request
-	 * @param callable $next
-	 * @param null $params
-	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Symfony\Component\HttpFoundation\Response
-	 */
-	public function handle($request, Closure $next, $params = null)
-	{
-		$assets = $this->getAssets($request, $params);
-		if (! access()->hasRoles($assets['roles'], $assets['needsAll']))
-			return $this->getRedirectMethodAndGo($request, $params);
-		return $next($request);
-	}
+     * @param $request
+     * @param Closure $next
+     * @param $role
+     * @param bool $needsAll
+     * @return mixed
+     */
+    public function handle($request, Closure $next, $role, $needsAll = false)
+    {
+        /**
+         * Roles array
+         */
+        if (strpos($role, ";") !== false) {
+            $roles = explode(";", $role);
+            $access = access()->hasRoles($roles, ($needsAll === "true" ? true : false));
+        } else {
+            /**
+             * Single role
+             */
+            $access = access()->hasRole($role);
+        }
+
+
+        if (! $access) {
+            return redirect()
+                ->route('frontend.index')
+                ->withFlashDanger(trans('auth.general_error'));
+        }
+
+        return $next($request);
+    }
 }

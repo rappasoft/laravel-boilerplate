@@ -1,3 +1,12 @@
-<?php namespace App\Events;
+<?php
 
-abstract class Event {}
+namespace App\Events;
+
+/**
+ * Class Event
+ * @package App\Events
+ */
+abstract class Event
+{
+	//
+}

@@ -1,27 +1,45 @@
-<?php namespace App\Http\Middleware;
+<?php
+
+namespace App\Http\Middleware;
 
 use Closure;
-use App\Services\Access\Traits\AccessParams;
 
 /**
  * Class RouteNeedsRole
  * @package App\Http\Middleware
  */
-class RouteNeedsPermission {
-
-	use AccessParams;
+class RouteNeedsPermission
+{
 
 	/**
-	 * @param $request
-	 * @param callable $next
-	 * @param null $params
-	 * @return bool|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Symfony\Component\HttpFoundation\Response
-	 */
-	public function handle($request, Closure $next, $params = null)
-	{
-		$assets = $this->getAssets($request, $params);
-		if (! access()->canMultiple($assets['permissions'], $assets['needsAll']))
-			return $this->getRedirectMethodAndGo($request, $params);
-		return $next($request);
-	}
+     * @param $request
+     * @param Closure $next
+     * @param $permission
+     * @param bool $needsAll
+     * @return mixed
+     */
+    public function handle($request, Closure $next, $permission, $needsAll = false)
+    {
+        /**
+         * Permission array
+         */
+        if (strpos($permission, ";") !== false) {
+            $permissions = explode(";", $permission);
+            $access = access()->allowMultiple($permissions, ($needsAll === "true" ? true : false));
+        } else {
+            /**
+             * Single permission
+             */
+            $access = access()->allow($permission);
+        }
+
+
+        if (! $access) {
+            return redirect()
+                ->route('frontend.index')
+                ->withFlashDanger(trans('auth.general_error'));
+        }
+
+        return $next($request);
+    }
 }

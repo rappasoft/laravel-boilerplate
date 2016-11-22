@@ -1,1 +1,0 @@
-Click here to confirm your account: {{ url('account/confirm/'.$token) }}

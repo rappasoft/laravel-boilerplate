@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers\Frontend;
+<?php
+
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 
@@ -6,8 +8,8 @@ use App\Http\Controllers\Controller;
  * Class FrontendController
  * @package App\Http\Controllers
  */
-class FrontendController extends Controller {
-
+class FrontendController extends Controller
+{
 	/**
 	 * @return \Illuminate\View\View
 	 */

@@ -1,11 +1,19 @@
 <?php
 
-return array(
+use App\Models\Access\Role\Role;
+use App\Models\Access\Permission\Permission;
+
+return [
+
+	/*
+	 * Users table used to store users
+	 */
+	'users_table' => 'users',
 
 	/*
 	 * Role model used by Access to create correct relations. Update the role if it is in a different namespace.
 	*/
-	'role' => 'App\Role',
+	'role' => Role::class,
 
 	/*
 	 * Roles table used by Access to save roles to the database.
@@ -16,7 +24,7 @@ return array(
 	 * Permission model used by Access to create correct relations.
 	 * Update the permission if it is in a different namespace.
 	 */
-	'permission' => 'App\Permission',
+	'permission' => Permission::class,
 
 	/*
 	 * Permissions table used by Access to save permissions to the database.
@@ -29,12 +37,6 @@ return array(
 	'permission_role_table' => 'permission_role',
 
 	/*
-	 * permission_user table used by Access to save relationship between permissions and users to the database.
-	 * This table is only for permissions that belong directly to a specific user and not a role
-	 */
-	'permission_user_table' => 'permission_user',
-
-	/*
 	 * assigned_roles table used by Access to save assigned roles to the database.
 	 */
 	'assigned_roles_table' => 'assigned_roles',
@@ -44,14 +46,10 @@ return array(
 	 */
 	'users' => [
 		/*
-		 * Administration tables
-		 */
-		'default_per_page' => 25,
-
-		/*
-		 * The role the user is assigned to when they sign up from the frontend
+		 * The role the user is assigned to when they sign up from the frontend, not namespaced
 		 */
 		'default_role' => 'User',
+		//'default_role' => 2,
 
 		/*
 		 * Whether or not the user has to confirm their email when signing up
@@ -69,25 +67,25 @@ return array(
 	 */
 	'roles' => [
 		/*
-		 * Whether a role must contain a permission or can be used standalone
+		 * Whether a role must contain a permission or can be used standalone as a label
 		 */
-		'role_must_contain_permission' => true,
-
-		/*
-		 * Whether or not the administrator role must possess every permission
-		 * Works in unison with permissions.permission_must_contain_role
-		 */
-		'administrator_forced' => false,
+		'role_must_contain_permission' => true
 	],
 
 	/*
-	 * Configuration for permissions
+	 * Socialite session variable name
+	 * Contains the name of the currently logged in provider in the users session
+	 * Makes it so social logins can not change passwords, etc.
 	 */
-	'permissions' => [
+	'socialite_session_name' => 'socialite_provider',
+
+	/*
+	 * Application captcha specific settings
+	 */
+	'captcha' => [
 		/*
-		 * Whether a permission must contain a role or can be used standalone
-		 * Works in unison with roles.administrator_forced
+		 * Whether the registration captcha is on or off
 		 */
-		'permission_must_contain_role' => false,
+		'registration' => env('REGISTRATION_CAPTCHA_STATUS', false),
 	],
-);
+];

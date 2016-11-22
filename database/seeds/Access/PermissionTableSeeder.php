@@ -1,56 +1,77 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
 
-class PermissionTableSeeder extends Seeder {
+/**
+ * Class PermissionTableSeeder
+ */
+class PermissionTableSeeder extends Seeder
+{
+	/**
+	 * Run the database seed.
+	 *
+	 * @return void
+	 */
+	public function run()
+    {
+        if (DB::connection()->getDriverName() == 'mysql') {
+            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        }
 
-	public function run() {
+        if (DB::connection()->getDriverName() == 'mysql') {
+            DB::table(config('access.permissions_table'))->truncate();
+            DB::table(config('access.permission_role_table'))->truncate();
+        } elseif (DB::connection()->getDriverName() == 'sqlite') {
+            DB::statement('DELETE FROM ' . config('access.permissions_table'));
+            DB::statement('DELETE FROM ' . config('access.permission_role_table'));
+        } else {
+            //For PostgreSQL or anything else
+            DB::statement('TRUNCATE TABLE ' . config('access.permissions_table') . ' CASCADE');
+            DB::statement('TRUNCATE TABLE ' . config('access.permission_role_table') . ' CASCADE');
+        }
 
-		DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        /**
+         * Don't need to assign any permissions to administrator because the all flag is set to true
+         * in RoleTableSeeder.php
+         */
 
-		DB::table(config('access.permissions_table'))->truncate();
-		DB::table(config('access.permission_role_table'))->truncate();
-		DB::table(config('access.permission_user_table'))->truncate();
+        /**
+         * Misc Access Permissions
+         */
+        $permission_model          = config('access.permission');
+        $viewBackend               = new $permission_model;
+        $viewBackend->name         = 'view-backend';
+        $viewBackend->display_name = 'View Backend';
+        $viewBackend->sort         = 1;
+        $viewBackend->created_at   = Carbon::now();
+        $viewBackend->updated_at   = Carbon::now();
+        $viewBackend->save();
 
-		$permission_model = config('access.permission');
-		$viewBackend = new $permission_model;
-		$viewBackend->name = 'view_backend';
-		$viewBackend->display_name = 'View Backend';
-		$viewBackend->system = true;
-		$viewBackend->created_at = Carbon::now();
-		$viewBackend->updated_at = Carbon::now();
-		$viewBackend->save();
+        /**
+         * Access Permissions
+         */
+        $permission_model          = config('access.permission');
+        $manageUsers               = new $permission_model;
+        $manageUsers->name         = 'manage-users';
+        $manageUsers->display_name = 'Manage Users';
+        $manageUsers->sort         = 2;
+        $manageUsers->created_at   = Carbon::now();
+        $manageUsers->updated_at   = Carbon::now();
+        $manageUsers->save();
 
-		//Find the first role (admin) give it all permissions
-		$role_model = config('access.role');
-		$role_model = new $role_model;
-		$admin = $role_model::first();
-		$admin->permissions()->sync(
-			[
-				$viewBackend->id,
-			]
-		);
+        $permission_model          = config('access.permission');
+        $manageRoles               = new $permission_model;
+        $manageRoles->name         = 'manage-roles';
+        $manageRoles->display_name = 'Manage Roles';
+        $manageRoles->sort         = 3;
+        $manageRoles->created_at   = Carbon::now();
+        $manageRoles->updated_at   = Carbon::now();
+        $manageRoles->save();
 
-		$permission_model = config('access.permission');
-		$userOnlyPermission = new $permission_model;
-		$userOnlyPermission->name = 'user_only_permission';
-		$userOnlyPermission->display_name = 'Test User Only Permission';
-		$userOnlyPermission->system = false;
-		$userOnlyPermission->created_at = Carbon::now();
-		$userOnlyPermission->updated_at = Carbon::now();
-		$userOnlyPermission->save();
-
-		$user_model = config('auth.model');
-		$user_model = new $user_model;
-		$user = $user_model::find(2);
-		$user->permissions()->sync(
-			[
-				$userOnlyPermission->id,
-			]
-		);
-
-		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-	}
+        if (DB::connection()->getDriverName() == 'mysql') {
+            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        }
+    }
 }

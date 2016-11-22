@@ -1,59 +1,78 @@
-@extends ('backend.layouts.master')
+@extends ('backend.layouts.app')
 
-@section ('title', 'Role Management')
+@section ('title', trans('labels.backend.access.roles.management'))
 
-@section('page-header')
-    <h1>
-        User Management
-        <small>Role Management</small>
-    </h1>
-@endsection
-
-@section ('breadcrumbs')
-    <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-    <li>{!! link_to_route('admin.access.users.index', 'User Management') !!}</li>
-    <li>{!! link_to_route('admin.access.roles.index', 'Role Management') !!}</li>
+@section('after-styles')
+    {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
 @stop
 
+@section('page-header')
+    <h1>{{ trans('labels.backend.access.roles.management') }}</h1>
+@endsection
+
 @section('content')
-    @include('backend.access.includes.partials.header-buttons')
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title">{{ trans('labels.backend.access.roles.management') }}</h3>
 
-    <table class="table table-striped table-bordered table-hover">
-        <thead>
-        <tr>
-            <th>Role</th>
-            <th>Permissions</th>
-            <th># Users</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-            @foreach ($roles as $role)
-                <tr>
-                    <td>{!! $role->name !!}</td>
-                    <td>
-                        @if (count($role->permissions) > 0)
-                            @foreach ($role->permissions as $permission)
-                                {!! $permission->display_name !!}<br/>
-                            @endforeach
-                        @else
-                            None
-                        @endif
-                    </td>
-                    <td>{!! $role->users()->count() !!}</td>
-                    <td>{!! $role->action_buttons !!}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+            <div class="box-tools pull-right">
+                @include('backend.access.includes.partials.role-header-buttons')
+            </div>
+        </div><!-- /.box-header -->
 
-    <div class="pull-left">
-        {{ $roles->total() }} roles(s) total
-    </div>
+        <div class="box-body">
+            <div class="table-responsive">
+                <table id="roles-table" class="table table-condensed table-hover">
+                    <thead>
+                        <tr>
+                            <th>{{ trans('labels.backend.access.roles.table.role') }}</th>
+                            <th>{{ trans('labels.backend.access.roles.table.permissions') }}</th>
+                            <th>{{ trans('labels.backend.access.roles.table.number_of_users') }}</th>
+                            <th>{{ trans('labels.backend.access.roles.table.sort') }}</th>
+                            <th>{{ trans('labels.general.actions') }}</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div><!--table-responsive-->
+        </div><!-- /.box-body -->
+    </div><!--box-->
 
-    <div class="pull-right">
-        {{ $roles->render() }}
-    </div>
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">{{ trans('history.backend.recent_history') }}</h3>
+            <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div><!-- /.box tools -->
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            {!! history()->renderType('Role') !!}
+        </div><!-- /.box-body -->
+    </div><!--box box-success-->
+@stop
 
-    <div class="clearfix"></div>
+@section('after-scripts')
+    {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
+    {{ Html::script("js/backend/plugin/datatables/dataTables.bootstrap.min.js") }}
+
+    <script>
+        $(function() {
+            $('#roles-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: '{{ route("admin.access.role.get") }}',
+                    type: 'post'
+                },
+                columns: [
+                    {data: 'name', name: '{{config('access.roles_table')}}.name', render: $.fn.dataTable.render.text()},
+                    {data: 'permissions', name: '{{config('access.permissions_table')}}.display_name', sortable: false},
+                    {data: 'users', name: 'users', searchable: false, sortable: false},
+                    {data: 'sort', name: '{{config('access.roles_table')}}.sort', render: $.fn.dataTable.render.text()},
+                    {data: 'actions', name: 'actions', searchable: false, sortable: false}
+                ],
+                order: [[3, "asc"]],
+                searchDelay: 500
+            });
+        });
+    </script>
 @stop

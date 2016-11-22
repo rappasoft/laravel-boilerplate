@@ -1,40 +1,57 @@
-    <nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle Navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="">{{app_name()}}</a>
-			</div>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#frontend-navbar-collapse">
+                <span class="sr-only">{{ trans('labels.general.toggle_navigation') }}</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
 
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li>{!! link_to('/', 'Home') !!}</li>
-					<li>{!! link_to('macros', 'Macros') !!}</li>
-				</ul>
+            {{ link_to_route('frontend.index', app_name(), [], ['class' => 'navbar-brand']) }}
+        </div><!--navbar-header-->
 
-				<ul class="nav navbar-nav navbar-right">
-					@if (Auth::guest())
-						<li>{!! link_to('auth/login', 'Login') !!}</li>
-						<li>{!! link_to('auth/register', 'Register') !!}</li>
-					@else
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-							    <li>{!! link_to('dashboard', 'Dashboard') !!}</li>
-							    <li>{!! link_to('auth/password/change', 'Change Password') !!}</li>
-							    @permission('view_backend')
-							        {{-- This can also be @role('Administrator') instead --}}
-							        <li>{!! link_to_route('backend.dashboard', 'Administration') !!}</li>
-							    @endpermission
-								<li>{!! link_to('auth/logout', 'Logout') !!}</li>
-							</ul>
-						</li>
-					@endif
-				</ul>
-			</div>
-		</div>
-	</nav>
+        <div class="collapse navbar-collapse" id="frontend-navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>{{ link_to_route('frontend.macros', trans('navs.frontend.macros')) }}</li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                @if (config('locale.status') && count(config('locale.languages')) > 1)
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ trans('menus.language-picker.language') }}
+                            <span class="caret"></span>
+                        </a>
+
+                        @include('includes.partials.lang')
+                    </li>
+                @endif
+
+                @if ($logged_in_user)
+                    <li>{{ link_to_route('frontend.user.dashboard', trans('navs.frontend.dashboard')) }}</li>
+                @endif
+
+                @if (! $logged_in_user)
+                    <li>{{ link_to_route('frontend.auth.login', trans('navs.frontend.login')) }}</li>
+                    <li>{{ link_to_route('frontend.auth.register', trans('navs.frontend.register')) }}</li>
+                @else
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            {{ $logged_in_user->name }} <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            @permission('view-backend')
+                                <li>{{ link_to_route('admin.dashboard', trans('navs.frontend.user.administration')) }}</li>
+                            @endauth
+
+                            <li>{{ link_to_route('frontend.user.account', trans('navs.frontend.user.account')) }}</li>
+                            <li>{{ link_to_route('frontend.auth.logout', trans('navs.general.logout')) }}</li>
+                        </ul>
+                    </li>
+                @endif
+            </ul>
+        </div><!--navbar-collapse-->
+    </div><!--container-->
+</nav>

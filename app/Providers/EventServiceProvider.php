@@ -1,37 +1,56 @@
-<?php namespace App\Providers;
+<?php
 
-use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
+namespace App\Providers;
+
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
-class EventServiceProvider extends ServiceProvider {
+/**
+ * Class EventServiceProvider
+ * @package App\Providers
+ */
+class EventServiceProvider extends ServiceProvider
+{
+    /**
+     * The event listener mappings for the application.
+     *
+     * @var array
+     */
+    protected $listen = [];
 
 	/**
-	 * The event handler mappings for the application.
-	 *
+	 * Class event subscribers
 	 * @var array
 	 */
-	protected $listen = [
+	protected $subscribe = [
 		/**
-		 * Frontend Events
+		 * Frontend Subscribers
 		 */
-		'App\Events\Frontend\Auth\UserLoggedIn' => [
-			'App\Listeners\Frontend\Auth\UserLoggedInHandler',
-		],
-		'App\Events\Frontend\Auth\UserLoggedOut' => [
-			'App\Listeners\Frontend\Auth\UserLoggedOutHandler',
-		],
+
+		/**
+		 * Auth Subscribers
+		 */
+		\App\Listeners\Frontend\Auth\UserEventListener::class,
+
+		/**
+		 * Backend Subscribers
+		 */
+
+		/**
+		 * Access Subscribers
+		 */
+		\App\Listeners\Backend\Access\User\UserEventListener::class,
+		\App\Listeners\Backend\Access\Role\RoleEventListener::class,
 	];
 
-	/**
-	 * Register any other events for your application.
-	 *
-	 * @param  \Illuminate\Contracts\Events\Dispatcher  $events
-	 * @return void
-	 */
-	public function boot(DispatcherContract $events)
-	{
-		parent::boot($events);
+    /**
+     * Register any events for your application.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        parent::boot();
 
-		//
-	}
+        //
+    }
 }

@@ -1,33 +1,64 @@
 <?php
 
+use Carbon\Carbon as Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon as Carbon;
 
-class RoleTableSeeder extends Seeder {
+/**
+ * Class RoleTableSeeder
+ */
+class RoleTableSeeder extends Seeder
+{
+	/**
+	 * Run the database seed.
+	 *
+	 * @return void
+	 */
+	public function run()
+    {
+        if (DB::connection()->getDriverName() == 'mysql') {
+            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        }
 
-	public function run() {
+        if (DB::connection()->getDriverName() == 'mysql') {
+            DB::table(config('access.roles_table'))->truncate();
+        } elseif (DB::connection()->getDriverName() == 'sqlite') {
+            DB::statement('DELETE FROM ' . config('access.roles_table'));
+            DB::statement('UPDATE sqlite_sequence SET seq = 0 where name = ' ."'". config('access.roles_table')."'");
 
-		DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        } else {
+            //For PostgreSQL or anything else
+            DB::statement('TRUNCATE TABLE ' . config('access.roles_table') . ' CASCADE');
+        }
 
-		DB::table(config('access.roles_table'))->truncate();
+        $roles = [
+            [
+                'name' => 'Administrator',
+                'all' => true,
+                'sort' => 1,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'Executive',
+                'all' => false,
+                'sort' => 2,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+            [
+                'name' => 'User',
+                'all' => false,
+                'sort' => 3,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ],
+        ];
 
-		//Create admin role, id of 1
-		$role_model = config('access.role');
-		$admin = new $role_model;
-		$admin->name = 'Administrator';
-		$admin->created_at = Carbon::now();
-		$admin->updated_at = Carbon::now();
-		$admin->save();
+        DB::table(config('access.roles_table'))->insert($roles);
 
-		//id = 2
-		$role_model = config('access.role');
-		$user = new $role_model;
-		$user->name = 'User';
-		$user->created_at = Carbon::now();
-		$user->updated_at = Carbon::now();
-		$user->save();
-
-		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-	}
+        if (DB::connection()->getDriverName() == 'mysql') {
+            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        }
+    }
 }

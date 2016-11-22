@@ -1,6 +1,8 @@
 {
-  "css/frontend.css": "css/frontend-62de7a95.css",
-  "js/frontend.js": "js/frontend-7ff337b8.js",
-  "css/backend.css": "css/backend-6c4a9abf.css",
-  "js/backend.js": "js/backend-fede63d3.js"
+  "css/backend-rtl.css": "css/backend-rtl-517653b1d3.css",
+  "css/backend.css": "css/backend-b08924cd81.css",
+  "css/frontend.css": "css/frontend-e357811930.css",
+  "css/rtl.css": "css/rtl-448599bd71.css",
+  "js/backend.js": "js/backend-44d6c365a1.js",
+  "js/frontend.js": "js/frontend-7f61b4fe7d.js"
 }
