@@ -18,7 +18,7 @@ trait UserRelationship
      */
     public function roles()
     {
-        return $this->belongsToMany(config('access.role'), config('access.assigned_roles_table'), 'user_id', 'role_id');
+        return $this->belongsToMany(config('access.role'), config('access.role_user_table'), 'user_id', 'role_id');
     }
 
     /**

@@ -34,7 +34,7 @@ class SetupAccessTables extends Migration
 			$table->unique('name');
 		});
 
-		Schema::create(config('access.assigned_roles_table'), function ($table) {
+		Schema::create(config('access.role_user_table'), function ($table) {
 			$table->increments('id')->unsigned();
 			$table->integer('user_id')->unsigned();
 			$table->integer('role_id')->unsigned();
@@ -104,9 +104,9 @@ class SetupAccessTables extends Migration
 			$table->dropUnique(config('access.roles_table') . '_name_unique');
 		});
 
-		Schema::table(config('access.assigned_roles_table'), function (Blueprint $table) {
-			$table->dropForeign(config('access.assigned_roles_table') . '_user_id_foreign');
-			$table->dropForeign(config('access.assigned_roles_table') . '_role_id_foreign');
+		Schema::table(config('access.role_user_table'), function (Blueprint $table) {
+			$table->dropForeign(config('access.role_user_table') . '_user_id_foreign');
+			$table->dropForeign(config('access.role_user_table') . '_role_id_foreign');
 		});
 
 		Schema::table(config('access.permissions_table'), function (Blueprint $table) {
@@ -121,7 +121,7 @@ class SetupAccessTables extends Migration
 		/**
 		 * Drop tables
 		 */
-		Schema::dropIfExists(config('access.assigned_roles_table'));
+		Schema::dropIfExists(config('access.role_user_table'));
 		Schema::dropIfExists(config('access.permission_role_table'));
 		Schema::dropIfExists(config('access.roles_table'));
 		Schema::dropIfExists(config('access.permissions_table'));

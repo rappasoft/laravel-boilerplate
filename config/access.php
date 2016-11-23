@@ -37,9 +37,9 @@ return [
 	'permission_role_table' => 'permission_role',
 
 	/*
-	 * assigned_roles table used by Access to save assigned roles to the database.
+	 * role_user table used by Access to save assigned roles to the database.
 	 */
-	'assigned_roles_table' => 'assigned_roles',
+	'role_user_table' => 'role_user',
 
 	/*
 	 * Configurations for the user

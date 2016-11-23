@@ -63,8 +63,8 @@ class UserFormTest extends TestCase
 			->seePageIs('/admin/access/user')
 			->see('The user was successfully created.')
 			->seeInDatabase('users', ['name' => $name, 'email' => $email, 'status' => 1, 'confirmed' => 1])
-			->seeInDatabase('assigned_roles', ['user_id' => 4, 'role_id' => 2])
-			->seeInDatabase('assigned_roles', ['user_id' => 4, 'role_id' => 3]);
+			->seeInDatabase('role_user', ['user_id' => 4, 'role_id' => 2])
+			->seeInDatabase('role_user', ['user_id' => 4, 'role_id' => 3]);
 
 		Event::assertFired(UserCreated::class);
 	}
@@ -97,8 +97,8 @@ class UserFormTest extends TestCase
 			->seePageIs('/admin/access/user')
 			->see('The user was successfully created.')
 			->seeInDatabase('users', ['name' => $name, 'email' => $email, 'status' => 1, 'confirmed' => 0])
-			->seeInDatabase('assigned_roles', ['user_id' => 4, 'role_id' => 2])
-			->seeInDatabase('assigned_roles', ['user_id' => 4, 'role_id' => 3]);
+			->seeInDatabase('role_user', ['user_id' => 4, 'role_id' => 2])
+			->seeInDatabase('role_user', ['user_id' => 4, 'role_id' => 3]);
 
 		// Get the user that was inserted into the database
 		$user = User::where('email', $email)->first();
@@ -151,8 +151,8 @@ class UserFormTest extends TestCase
 			->seePageIs('/admin/access/user')
 			->see('The user was successfully updated.')
 			->seeInDatabase('users', ['id' => $this->user->id, 'name' => 'User New', 'email' => 'user2@user.com', 'status' => 0, 'confirmed' => 0])
-			->seeInDatabase('assigned_roles', ['user_id' => $this->user->id, 'role_id' => 2])
-			->notSeeInDatabase('assigned_roles', ['user_id' => $this->user->id, 'role_id' => 3]);
+			->seeInDatabase('role_user', ['user_id' => $this->user->id, 'role_id' => 2])
+			->notSeeInDatabase('role_user', ['user_id' => $this->user->id, 'role_id' => 3]);
 
 		Event::assertFired(UserUpdated::class);
 	}
