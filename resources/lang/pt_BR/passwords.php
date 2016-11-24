@@ -11,6 +11,7 @@ return [
       | that are given by the password broker for a password update attempt
       | has failed, such as for an invalid token or invalid new password.
       |
+      |--------------------------------------------------------------------------
      */
 
     'password' => 'A senha deverá conter pelo menos seis carateres e ser igual à confirmação.',

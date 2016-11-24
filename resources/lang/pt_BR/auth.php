@@ -12,9 +12,10 @@ return [
     | messages that we need to display to the user. You are free to modify
     | these language lines according to your application's requirements.
     |
+    |--------------------------------------------------------------------------
     */
 
-    'failed'   => 'Estas credenciais não correspondem com nossos registros.',
+    'failed' => 'Estas credenciais não correspondem com nossos registros.',
     'general_error' => 'Você não tem acesso para fazer isso.',
     'socialite' => [
         'unacceptable' => ':provider não é um tipo de login aceitável.',

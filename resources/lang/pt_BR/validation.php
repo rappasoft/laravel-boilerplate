@@ -10,6 +10,7 @@ return [
       | the validator class. Some of these rules have multiple versions such
       | as the size rules. Feel free to tweak each of these messages here.
       |
+      |--------------------------------------------------------------------------
      */
 
     'accepted' => 'O campo :attribute deve ser aceito.',
