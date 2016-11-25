@@ -15,8 +15,7 @@ Route::get('lang/{lang}', 'LanguageController@swap');
  * Namespaces indicate folder structure
  */
 Route::group(['namespace' => 'Frontend', 'as' => 'frontend.'], function () {
-	require (__DIR__ . '/Frontend/Frontend.php');
-	require (__DIR__ . '/Frontend/Access.php');
+	includeRouteFiles(__DIR__ . '/Frontend/');
 });
 
 /* ----------------------------------------------------------------------- */
@@ -33,8 +32,5 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'admin.', '
 	 *
 	 * Note: Administrator has all permissions so you do not have to specify the administrator role everywhere.
 	 */
-	require (__DIR__ . '/Backend/Dashboard.php');
-	require (__DIR__ . '/Backend/Search.php');
-	require (__DIR__ . '/Backend/Access.php');
-	require (__DIR__ . '/Backend/LogViewer.php');
+	includeRouteFiles(__DIR__ . '/Backend/');
 });
