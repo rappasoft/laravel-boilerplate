@@ -25,11 +25,11 @@ return [
         'register' => 'Registrar',
 
         'user' => [
-			'account' => 'My Account',
+			'account' => 'Minha Conta',
             'administration' => 'Administração',
             'change_password' => 'Alterar Senha',
             'my_information' => 'Minhas Informações',
-			'profile' => 'Profile',
+			'profile' => 'Perfil',
         ],
     ],
 ];
