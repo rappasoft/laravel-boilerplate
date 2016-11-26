@@ -1,3 +1,4 @@
+    |--------------------------------------------------------------------------
 <?php
 
 return [
@@ -18,6 +19,6 @@ return [
     'socialite' => [
         'unacceptable' => ':provider não é um tipo de login aceitável.',
     ],
-   'throttle' => 'Você realizou muitas tentativas de login. Favor tentar novamente em :seconds segundos.',
+    'throttle' => 'Você realizou muitas tentativas de login. Favor tentar novamente em :seconds segundos.',
     'unknown' => 'Ocorreu um erro desconhecido.',
 ];

@@ -1,17 +1,17 @@
+    |
 <?php
 
 return [
-
     /*
-    |--------------------------------------------------------------------------
-    | Exception Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used in Exceptions thrown throughout the system.
-    | Regardless where it is placed, a button can be listed here so it is easily
-    | found in a intuitive way.
-    |
-    */
+      |--------------------------------------------------------------------------
+      | Exception Language Lines
+      |--------------------------------------------------------------------------
+      |
+      | The following language lines are used in Exceptions thrown throughout the system.
+      | Regardless where it is placed, a button can be listed here so it is easily
+      | found in a intuitive way.
+      |
+     */
 
     'backend' => [
         'access' => [
@@ -25,14 +25,13 @@ return [
                 'not_found' => 'Este papel não existe.',
                 'update_error' => 'Houve um problema ao atualizar esse papel. Por favor, tente novamente.',
             ],
-
             'users' => [
                 'cant_deactivate_self' => 'Você não pode fazer isso com você mesmo.',
                 'cant_delete_self' => 'Você não pode se excluir.',
-				'cant_restore' => 'This user is not deleted so it can not be restored.',
+                'cant_restore' => 'This user is not deleted so it can not be restored.',
                 'create_error' => 'Houve um problema ao criar esse usuário. Por favor, tente novamente.',
                 'delete_error' => 'Houve um problema ao excluir esse usuário. Por favor, tente novamente.',
-				'delete_first' => 'This user must be deleted first before it can be destroyed permanently.',
+                'delete_first' => 'This user must be deleted first before it can be destroyed permanently.',
                 'email_error' => 'Esse endereço de e-mail pertence a um usuário diferente.',
                 'mark_error' => 'Houve um problema ao atualizar esse usuário. Por favor, tente novamente',
                 'not_found' => 'Esse usuário não existe.',
@@ -44,7 +43,6 @@ return [
             ],
         ],
     ],
-
     'frontend' => [
         'auth' => [
             'confirmation' => [
@@ -57,15 +55,11 @@ return [
                 'success' => 'Sua conta foi confirmada com sucesso!',
                 'resent' => 'Um novo e-mail de confirmação foi enviado para você.',
             ],
-
             'deactivated' => 'Sua conta foi desativada.',
             'email_taken' => 'Esse endereço de e-mail já foi utilizado.',
-
             'password' => [
                 'change_mismatch' => 'Essa não é a sua senha antiga.',
             ],
-
-
         ],
     ],
 ];
