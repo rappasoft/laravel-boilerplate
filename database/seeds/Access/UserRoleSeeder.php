@@ -20,12 +20,12 @@ class UserRoleSeeder extends Seeder
         }
 
         if (DB::connection()->getDriverName() == 'mysql') {
-            DB::table(config('access.assigned_roles_table'))->truncate();
+            DB::table(config('access.role_user_table'))->truncate();
         } elseif (DB::connection()->getDriverName() == 'sqlite') {
-            DB::statement('DELETE FROM ' . config('access.assigned_roles_table'));
+            DB::statement('DELETE FROM ' . config('access.role_user_table'));
         } else {
             //For PostgreSQL or anything else
-            DB::statement('TRUNCATE TABLE ' . config('access.assigned_roles_table') . ' CASCADE');
+            DB::statement('TRUNCATE TABLE ' . config('access.role_user_table') . ' CASCADE');
         }
 
         //Attach admin role to admin user

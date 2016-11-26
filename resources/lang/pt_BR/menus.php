@@ -1,22 +1,20 @@
 <?php
 
 return [
-
     /*
-    |--------------------------------------------------------------------------
-    | Menus Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used in menu items throughout the system.
-    | Regardless where it is placed, a menu item can be listed here so it is easily
-    | found in a intuitive way.
-    |
-    */
+      |--------------------------------------------------------------------------
+      | Menus Language Lines
+      |--------------------------------------------------------------------------
+      |
+      | The following language lines are used in menu items throughout the system.
+      | Regardless where it is placed, a menu item can be listed here so it is easily
+      | found in a intuitive way.
+      |
+     */
 
     'backend' => [
         'access' => [
             'title' => 'Gerenciamento de Usuários',
-
             'roles' => [
                 'all' => 'Todos os Papéis',
                 'create' => 'Criar Papel',
@@ -24,7 +22,6 @@ return [
                 'management' => 'Gerenciamento de Papéis',
                 'main' => 'Papéis',
             ],
-
             'users' => [
                 'all' => 'Todos os Usuários',
                 'change-password' => 'Alterar Senha',
@@ -33,23 +30,20 @@ return [
                 'deleted' => 'Excluir Usuários',
                 'edit' => 'Editar Usuário',
                 'main' => 'Usuários',
-				'view' => 'View User',
+                'view' => 'Visualizar Usuário',
             ],
         ],
-
         'log-viewer' => [
             'main' => 'Visualizador de Log',
             'dashboard' => 'Painel de Controle',
             'logs' => 'Logs',
         ],
-
         'sidebar' => [
             'dashboard' => 'Painel de Controle',
             'general' => 'Geral',
-			'system' => 'System',
+            'system' => 'Sistema',
         ],
     ],
-
     'language-picker' => [
         'language' => 'Idioma',
         /**
@@ -66,8 +60,8 @@ return [
             'es' => 'Espanhol (Spanish)',
             'fr' => 'Francês (French)',
             'it' => 'Italiano (Italian)',
-			'nl' => 'Holandês (Dutch)',
-            'pt-BR' => 'Português do Brasil (Brazilian Portuguese)',
+            'nl' => 'Holandês (Dutch)',
+            'pt_BR' => 'Português do Brasil (Brazilian Portuguese)',
             'sv' => 'Sueco (Swedish)',
             'th' => 'Thai',
         ],

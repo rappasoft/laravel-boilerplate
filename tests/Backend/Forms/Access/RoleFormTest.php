@@ -165,7 +165,7 @@ class RoleFormTest extends TestCase
 		Event::fake();
 
 		// Remove users from role first because it will error on that first
-		DB::table('assigned_roles')
+		DB::table('role_user')
 			->where('role_id', 2)
 			->delete();
 
