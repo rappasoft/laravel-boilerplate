@@ -11,6 +11,7 @@ return [
     | during CRUD operations. You are free to modify these language lines
     | according to your application's requirements.
     |
+    |--------------------------------------------------------------------------
     */
 
     'backend' => [

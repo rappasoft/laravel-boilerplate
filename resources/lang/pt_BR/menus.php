@@ -10,6 +10,7 @@ return [
       | Regardless where it is placed, a menu item can be listed here so it is easily
       | found in a intuitive way.
       |
+      |--------------------------------------------------------------------------
      */
 
     'backend' => [
@@ -46,7 +47,7 @@ return [
     ],
     'language-picker' => [
         'language' => 'Idioma',
-        /**
+        /*
          * Add the new language to this array.
          * The key should have the same language code as the folder name.
          * The string should be: 'Language-name-in-your-own-language (Language-name-in-English)'.
