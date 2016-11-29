@@ -46,7 +46,7 @@
                                 <div class="col-xs-12">
                                     @if ($permissions->count())
                                         @foreach ($permissions as $perm)
-                                            <input type="checkbox" name="permissions[{{ $perm->id }}]" value="{{ $perm->id }}" id="perm_{{ $perm->id }}" {{in_array($perm->id, $role_permissions) ? 'checked' : ""}} /> <label for="perm_{{ $perm->id }}">{{ $perm->display_name }}</label><br/>
+                                            <input type="checkbox" name="permissions[{{ $perm->id }}]" value="{{ $perm->id }}" id="perm_{{ $perm->id }}" {{ is_array(old('permissions')) ? (in_array($perm->id, old('permissions')) ? 'checked' : '') : (in_array($perm->id, $role_permissions) ? 'checked' : '') }} /> <label for="perm_{{ $perm->id }}">{{ $perm->display_name }}</label><br/>
                                         @endforeach
                                     @else
                                         <p>There are no available permissions.</p>

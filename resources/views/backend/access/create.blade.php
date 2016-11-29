@@ -86,7 +86,7 @@
                     <div class="col-lg-3">
                         @if (count($roles) > 0)
                             @foreach($roles as $role)
-                                <input type="checkbox" value="{{ $role->id }}" name="assignees_roles[{{ $role->id }}]" id="role-{{ $role->id }}" /> <label for="role-{{ $role->id }}">{{ $role->name }}</label>
+                                <input type="checkbox" value="{{ $role->id }}" name="assignees_roles[{{ $role->id }}]" id="role-{{ $role->id }}" {{ is_array(old('assignees_roles')) && in_array($role->id, old('assignees_roles')) ? 'checked' : '' }} /> <label for="role-{{ $role->id }}">{{ $role->name }}</label>
                                 <a href="#" data-role="role_{{ $role->id }}" class="show-permissions small">
                                     (
                                         <span class="show-text">{{ trans('labels.general.show') }}</span>

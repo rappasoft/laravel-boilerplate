@@ -1,4 +1,3 @@
-    |--------------------------------------------------------------------------
 <?php
 
 return [
@@ -11,6 +10,7 @@ return [
       | Regardless where it is placed, a button can be listed here so it is easily
       | found in a intuitive way.
       |
+      |--------------------------------------------------------------------------
      */
 
     'backend' => [

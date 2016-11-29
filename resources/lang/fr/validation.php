@@ -16,11 +16,13 @@ return [
     'accepted'             => 'Le champ :attribute doit être accepté.',
     'active_url'           => 'Le champ :attribute n\'est pas une URL valide.',
     'after'                => 'Le champ :attribute doit être une date postérieure à :date.',
+	'after_or_equal'       => 'The :attribute must be a date after or equal to :date.',
     'alpha'                => 'Le champ :attribute ne peut contenir que des lettres.',
     'alpha_dash'           => 'Le champ :attribute ne peut contenir que des lettres, des chiffres ou bien des tirets.',
     'alpha_num'            => 'Le champ :attribute ne peut contenir que des lettres ou des chiffres.',
     'array'                => 'Le champ :attribute doit être un tableau.',
     'before'               => 'Le champ :attribute doit être une date antérieure à :date.',
+	'before_or_equal'      => 'The :attribute must be a date before or equal to :date.',
     'between'              => [
         'numeric' => 'La valeur :attribute doit être comprise entre :min et :max.',
         'file'    => 'La taille du fichier :attribute doit être comprise entre :min et :max kilobytes.',
