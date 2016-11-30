@@ -71,8 +71,8 @@ if (! function_exists('getLanguageBlock')) {
 	function getLanguageBlock($view, $data = [])
 	{
 		$components = explode("lang", $view);
-		$current  = $components[0]."lang.".app()->getLocale().".".$components[1];
-		$fallback  = $components[0]."lang.".getFallbackLocale().".".$components[1];
+		$current  = $components[0]."lang".app()->getLocale().".".$components[1];
+		$fallback  = $components[0]."lang".getFallbackLocale().".".$components[1];
 
 		if (view()->exists($current)) {
 			return view($current, $data);
