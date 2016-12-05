@@ -16,7 +16,7 @@
             </div><!-- /.box tools -->
         </div><!-- /.box-header -->
         <div class="box-body">
-            {!! getLanguageBlock('backend.lang.welcome') !!}
+            {!! trans('strings.backend.welcome') !!}
         </div><!-- /.box-body -->
     </div><!--box box-success-->
 

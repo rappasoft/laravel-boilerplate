@@ -59,29 +59,6 @@ if (! function_exists('getFallbackLocale')) {
 	}
 }
 
-if (! function_exists('getLanguageBlock')) {
-
-	/**
-	 * Get the language block with a fallback
-	 *
-	 * @param $view
-	 * @param array $data
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-	 */
-	function getLanguageBlock($view, $data = [])
-	{
-		$components = explode("lang", $view);
-		$current  = $components[0]."lang.".app()->getLocale().".".$components[1];
-		$fallback  = $components[0]."lang.".getFallbackLocale().".".$components[1];
-
-		if (view()->exists($current)) {
-			return view($current, $data);
-		} else {
-			return view($fallback, $data);
-		}
-	}
-}
-
 if (! function_exists('includeRouteFiles')) {
 
 	/**
