@@ -54,20 +54,32 @@ return [
                 'tasks' => '{0} Du har inga punkter att göra|{1} Du har 1 punkt att göra|[2,Inf] Du har :number punkter att göra',
             ],
         ],
-    ],
 
+		'search' => [
+			'empty' => 'Please enter a search term.',
+			'incomplete' => 'You must write your own search logic for this system.',
+			'title' => 'Search Results',
+			'results' => 'Search Results for :query',
+		],
+    ],
     'emails' => [
         'auth' => [
-            'password_reset_subject' => 'Länk för att återställa ditt lösenord',
+            'error' => 'Hoppsan!',
+            'greeting' => 'Hej!',
+            'regards' => 'Hälsningar',
+            'trouble_clicking_button' => 'Fungerar inte knappen ":action_text"? Kopiera då länken nedan och klistra in den i din webbläsare.',
+            'thank_you_for_using_app' => 'Tack för att du använder vår hemsida!',
+
+            'password_reset_subject' => 'Återställ lösenord',
+            'password_cause_of_email' => 'Du får detta meddelande eftersom det begärts en återställning av lösenord för ditt konto.',
+            'password_if_not_requested' => 'Om det inte var du som begärde återställning av lösenord kan du helt bortse från detta mail.',
             'reset_password' => 'Klicka här för att återställa ditt lösenord:',
+
+            'click_to_confirm' => 'Klicka här för att bekräfta ditt konto:',
         ],
     ],
 
     'frontend' => [
-        'email' => [
-            'confirm_account' => 'Klicka här för att bekräfta ditt konto:',
-        ],
-
         'test' => 'Test',
 
         'tests' => [

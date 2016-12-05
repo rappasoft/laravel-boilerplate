@@ -33,6 +33,7 @@ return [
                 'deleted' => 'Raderade användare',
                 'edit' => 'Redigera användare',
                 'main' => 'Användare',
+				'view' => 'View User',
             ],
         ],
 
@@ -45,6 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'Kontrollpanelen',
             'general' => 'Adminpanelen',
+			'system' => 'System',
         ],
     ],
 
@@ -57,16 +59,17 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'ar' => 'العربية (Arabic)',
+            'ar' => 'Arabiska (Arabic)',
             'da' => 'Danska (Danish)',
             'de' => 'Tyska (German)',
-            'pt-BR' => 'Brasiliansk portugisiska (Brazilian Portuguese)',
+            'pt_BR' => 'Brasiliansk portugisiska (Brazilian Portuguese)',
             'en' => 'Engelska (English)',
             'fr' => 'Franska (French)',
             'it' => 'Italienska (Italian)',
+			'nl' => 'Holländska (Dutch)',
             'es' => 'Spanska (Spanish)',
             'sv' => 'Svenska (Swedish)',
-            'th' => 'Thai',
+            'th' => 'Thailändska (Thai)',
         ],
     ],
 ];

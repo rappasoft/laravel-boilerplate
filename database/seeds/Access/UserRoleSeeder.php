@@ -8,19 +8,24 @@ use Illuminate\Support\Facades\DB;
  */
 class UserRoleSeeder extends Seeder
 {
-    public function run()
+	/**
+	 * Run the database seed.
+	 *
+	 * @return void
+	 */
+	public function run()
     {
         if (DB::connection()->getDriverName() == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         }
 
         if (DB::connection()->getDriverName() == 'mysql') {
-            DB::table(config('access.assigned_roles_table'))->truncate();
+            DB::table(config('access.role_user_table'))->truncate();
         } elseif (DB::connection()->getDriverName() == 'sqlite') {
-            DB::statement('DELETE FROM ' . config('access.assigned_roles_table'));
+            DB::statement('DELETE FROM ' . config('access.role_user_table'));
         } else {
             //For PostgreSQL or anything else
-            DB::statement('TRUNCATE TABLE ' . config('access.assigned_roles_table') . ' CASCADE');
+            DB::statement('TRUNCATE TABLE ' . config('access.role_user_table') . ' CASCADE');
         }
 
         //Attach admin role to admin user

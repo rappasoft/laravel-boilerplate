@@ -25,9 +25,11 @@ return [
 		'register' => 'تسجيل',
 
 		'user' => [
+			'account' => 'My Account',
 			'administration' => 'الإدارة',
 			'change_password' => 'تغيير كلمة المرور',
 			'my_information' => 'بياناتي',
+			'profile' => 'Profile',
 		],
 	],
 ];

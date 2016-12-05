@@ -25,9 +25,11 @@ return [
         'register' => 'Opret',
 
         'user' => [
+			'account' => 'My Account',
             'administration' => 'Administration',
             'change_password' => 'Skift adgangskode',
             'my_information' => 'Min information',
+			'profile' => 'Profile',
         ],
     ],
 ];

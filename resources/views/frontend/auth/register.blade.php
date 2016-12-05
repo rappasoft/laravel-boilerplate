@@ -1,4 +1,4 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layouts.app')
 
 @section('content')
     <div class="row">
@@ -10,7 +10,7 @@
 
                 <div class="panel-body">
 
-                    {{ Form::open(['route' => 'auth.register', 'class' => 'form-horizontal']) }}
+                    {{ Form::open(['route' => 'frontend.auth.register', 'class' => 'form-horizontal']) }}
 
                     <div class="form-group">
                         {{ Form::label('name', trans('validation.attributes.frontend.name'), ['class' => 'col-md-4 control-label']) }}
@@ -66,7 +66,7 @@
     </div><!-- row -->
 @endsection
 
-@section('after-scripts-end')
+@section('after-scripts')
     @if (config('access.captcha.registration'))
         {!! Captcha::script() !!}
     @endif

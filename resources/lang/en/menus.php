@@ -33,6 +33,7 @@ return [
                 'deleted' => 'Deleted Users',
                 'edit' => 'Edit User',
                 'main' => 'Users',
+				'view' => 'View User',
             ],
         ],
 
@@ -45,6 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'Dashboard',
             'general' => 'General',
+			'system' => 'System',
         ],
     ],
 
@@ -64,7 +66,8 @@ return [
             'es' => 'Spanish',
             'fr' => 'French',
             'it' => 'Italian',
-            'pt-BR' => 'Brazilian Portuguese',
+			'nl' => 'Dutch',
+            'pt_BR' => 'Brazilian Portuguese',
             'sv' => 'Swedish',
             'th' => 'Thai',
         ],

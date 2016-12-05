@@ -9,23 +9,6 @@ namespace App\Services\Access;
 class Access
 {
     /**
-     * Laravel application
-     *
-     * @var \Illuminate\Foundation\Application
-     */
-    public $app;
-
-    /**
-     * Create a new confide instance.
-     *
-     * @param \Illuminate\Foundation\Application $app
-     */
-    public function __construct($app)
-    {
-        $this->app = $app;
-    }
-
-    /**
      * Get the currently authenticated user or null.
      */
     public function user()
@@ -91,11 +74,6 @@ class Access
     public function hasRoles($roles, $needsAll = false)
     {
         if ($user = $this->user()) {
-            //If not an array, make a one item array
-            if (!is_array($roles)) {
-                $roles = array($roles);
-            }
-
             return $user->hasRoles($roles, $needsAll);
         }
 
@@ -126,11 +104,6 @@ class Access
     public function allowMultiple($permissions, $needsAll = false)
     {
         if ($user = $this->user()) {
-            //If not an array, make a one item array
-            if (!is_array($permissions)) {
-                $permissions = array($permissions);
-            }
-
             return $user->allowMultiple($permissions, $needsAll);
         }
 

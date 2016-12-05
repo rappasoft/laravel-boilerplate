@@ -54,20 +54,33 @@ return [
                 'tasks' => "{0} Vous n'avez pas de tâche affectée|{1} Vous avez 1 tâche affectée|[2,Inf] Vous avez :number tâches affectées",
             ],
         ],
+
+		'search' => [
+			'empty' => 'Please enter a search term.',
+			'incomplete' => 'You must write your own search logic for this system.',
+			'title' => 'Search Results',
+			'results' => 'Search Results for :query',
+		],
     ],
 
     'emails' => [
         'auth' => [
+            'error' => 'Whoops!',
+            'greeting' => 'Hello!',
+            'regards' => 'Regards,',
+            'trouble_clicking_button' => 'If you’re having trouble clicking the ":action_text" button, copy and paste the URL below into your web browser:',
+            'thank_you_for_using_app' => 'Thank you for using our application!',
+
             'password_reset_subject' => 'Votre lien de réinitialisation',
+            'password_cause_of_email' => 'You are receiving this email because we received a password reset request for your account.',
+            'password_if_not_requested' => 'If you did not request a password reset, no further action is required.',
             'reset_password' => 'Cliquez ici pour réinitialiser votre mot de passe',
+
+            'click_to_confirm' => 'Cliquez ici pour confirmer votre compte :',
         ],
     ],
 
     'frontend' => [
-        'email' => [
-            'confirm_account' => 'Cliquez ici pour confirmer votre compte :',
-        ],
-
         'test' => 'Test',
 
         'tests' => [

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
-use App\Repositories\Frontend\Access\User\UserRepositoryContract;
+use App\Repositories\Frontend\Access\User\UserRepository;
 
 /**
  * Class ProfileController
@@ -12,23 +12,26 @@ use App\Repositories\Frontend\Access\User\UserRepositoryContract;
  */
 class ProfileController extends Controller
 {
-    /**
-     * @return mixed
-     */
-    public function edit()
-    {
-        return view('frontend.user.profile.edit')
-            ->withUser(access()->user());
-    }
+	/**
+	 * @var UserRepository
+	 */
+	protected $user;
 
-    /**
-     * @param  UserRepositoryContract         $user
-     * @param  UpdateProfileRequest $request
-     * @return mixed
-     */
-    public function update(UserRepositoryContract $user, UpdateProfileRequest $request)
+	/**
+	 * ProfileController constructor.
+	 * @param UserRepository $user
+	 */
+	public function __construct(UserRepository $user) {
+		$this->user = $user;
+	}
+
+	/**
+	 * @param UpdateProfileRequest $request
+	 * @return mixed
+	 */
+	public function update(UpdateProfileRequest $request)
     {
-        $user->updateProfile(access()->id(), $request->all());
-        return redirect()->route('frontend.user.dashboard')->withFlashSuccess(trans('strings.frontend.user.profile_updated'));
+        $this->user->updateProfile(access()->id(), $request->all());
+        return redirect()->route('frontend.user.account')->withFlashSuccess(trans('strings.frontend.user.profile_updated'));
     }
 }

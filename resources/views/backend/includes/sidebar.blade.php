@@ -15,42 +15,79 @@
         </div><!--user-panel-->
 
         <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
+        {{ Form::open(['route' => 'admin.search.index', 'method' => 'get', 'class' => 'sidebar-form']) }}
             <div class="input-group">
-                  <input type="text" name="q" class="form-control" placeholder="{{ trans('strings.backend.general.search_placeholder') }}" />
+                {{ Form::text('q', Request::get('q'), ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('strings.backend.general.search_placeholder')]) }}
+
                   <span class="input-group-btn">
-                    <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                  </span>
+                    <button type='submit' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+                  </span><!--input-group-btn-->
             </div><!--input-group-->
-        </form>
+        {{ Form::close() }}
         <!-- /.search form -->
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
             <li class="header">{{ trans('menus.backend.sidebar.general') }}</li>
 
-            <!-- Optionally, you can add icons to the links -->
             <li class="{{ Active::pattern('admin/dashboard') }}">
-                {{ link_to_route('admin.dashboard', trans('menus.backend.sidebar.dashboard')) }}
+                <a href="{{ route('admin.dashboard') }}">
+                    <i class="fa fa-dashboard"></i>
+                    <span>{{ trans('menus.backend.sidebar.dashboard') }}</span>
+                </a>
             </li>
 
-            @permission('manage-users')
-                <li class="{{ Active::pattern('admin/access/*') }}">
-                    {{ link_to_route('admin.access.user.index', trans('menus.backend.access.title')) }}
+            @permissions(['manage-users', 'manage-roles'])
+                <li class="{{ Active::pattern('admin/access/*') }} treeview">
+                    <a href="#">
+                        <i class="fa fa-users"></i>
+                        <span>{{ trans('menus.backend.access.title') }}</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+
+                    <ul class="treeview-menu {{ Active::pattern('admin/access/*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/access/*', 'display: block;') }}">
+                        @permission('manage-users')
+                            <li class="{{ Active::pattern('admin/access/user*') }}">
+                                <a href="{{ route('admin.access.user.index') }}">
+                                    <i class="fa fa-circle-o"></i>
+                                    <span>{{ trans('labels.backend.access.users.management') }}</span>
+                                </a>
+                            </li>
+                        @endauth
+
+                        @permission('manage-roles')
+                            <li class="{{ Active::pattern('admin/access/role*') }}">
+                                <a href="{{ route('admin.access.role.index') }}">
+                                    <i class="fa fa-circle-o"></i>
+                                    <span>{{ trans('labels.backend.access.roles.management') }}</span>
+                                </a>
+                            </li>
+                        @endauth
+                    </ul>
                 </li>
             @endauth
 
+            <li class="header">{{ trans('menus.backend.sidebar.system') }}</li>
+
             <li class="{{ Active::pattern('admin/log-viewer*') }} treeview">
                 <a href="#">
+                    <i class="fa fa-list"></i>
                     <span>{{ trans('menus.backend.log-viewer.main') }}</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu {{ Active::pattern('admin/log-viewer*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/log-viewer*', 'display: block;') }}">
                     <li class="{{ Active::pattern('admin/log-viewer') }}">
-                        {{ link_to('admin/log-viewer', trans('menus.backend.log-viewer.dashboard')) }}
+                        <a href="{{ route('admin.log-viewer::dashboard') }}">
+                            <i class="fa fa-circle-o"></i>
+                            <span>{{ trans('menus.backend.log-viewer.dashboard') }}</span>
+                        </a>
                     </li>
+
                     <li class="{{ Active::pattern('admin/log-viewer/logs') }}">
-                        {{ link_to('admin/log-viewer/logs', trans('menus.backend.log-viewer.logs')) }}
+                        <a href="{{ route('admin.log-viewer::logs.list') }}">
+                            <i class="fa fa-circle-o"></i>
+                            <span>{{ trans('menus.backend.log-viewer.logs') }}</span>
+                        </a>
                     </li>
                 </ul>
             </li>

@@ -55,7 +55,10 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => [
+		'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
+		'name' => env('MAIL_FROM_NAME', 'Example'),
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -108,5 +111,16 @@ return [
     */
 
     'sendmail' => '/usr/sbin/sendmail -bs',
+
+	/*
+	 * Implemented: https://github.com/laravel/framework/blob/5.3/CHANGELOG-5.2.md#v5239-2016-06-17
+	 * Backport: https://github.com/laravel/framework/pull/13925
+	 */
+    'stream' => [
+        'ssl' => [
+            'allow_self_signed' => true,
+            'verify_peer'       => false,
+        ],
+    ],
 
 ];

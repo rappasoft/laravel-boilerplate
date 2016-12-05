@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Frontend\User;
 
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 /**
@@ -17,7 +16,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('frontend.user.dashboard')
-            ->withUser(access()->user());
+        return view('frontend.user.dashboard');
     }
 }

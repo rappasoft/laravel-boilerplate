@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Backend\Access\User;
 
 use App\Http\Requests\Request;
+use Illuminate\Validation\Rule;
 
 /**
  * Class StoreUserRequest
@@ -28,10 +29,9 @@ class StoreUserRequest extends Request
     public function rules()
     {
         return [
-            'name'                  => 'required',
-            'email'                 => 'required|email|unique:users',
-            'password'              => 'required|alpha_num|min:6|confirmed',
-            'password_confirmation' => 'required|alpha_num|min:6',
+            'name'     => 'required|max:255',
+            'email'    =>  ['required', 'email', 'max:255', Rule::unique('users')],
+            'password' => 'required|min:6|confirmed',
         ];
     }
 }

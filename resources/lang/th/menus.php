@@ -33,6 +33,7 @@ return [
                 'deleted' => 'ผู้ใช้ที่ถูกลบ',
                 'edit' => 'แก้ไขผู้ใช้',
                 'main' => 'ผู้ใช้',
+				'view' => 'View User',
             ],
         ],
 
@@ -45,6 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'แผงควบคุม',
             'general' => 'ทั่วไป',
+			'system' => 'System',
         ],
     ],
 
@@ -64,7 +66,8 @@ return [
             'es' => 'สเปน (Spanish)',
             'fr' => 'ฝรั่งเศส (French)',
             'it' => 'อิตาลี (Italian)',
-            'pt-BR' => 'โปรตุเกสแบบบราซิล (Brazilian Portuguese)',
+			'nl' => 'ดัตช์ (Dutch)',
+            'pt_BR' => 'โปรตุเกสแบบบราซิล (Brazilian Portuguese)',
             'sv' => 'สวีเดน (Swedish)',
             'th' => 'ไทย (Thai)',
         ],

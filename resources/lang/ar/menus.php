@@ -33,6 +33,7 @@ return [
 				'deleted' => 'المستخدمون المحذفون',
 				'edit' => 'تعديل مستخدم',
 				'main' => 'المستخدمين',
+				'view' => 'View User',
 			],
 		],
 
@@ -45,6 +46,7 @@ return [
 		'sidebar' => [
 			'dashboard' => 'اللوحة الرئيسية',
 			'general' => 'عام',
+			'system' => 'System',
 		],
 	],
 
@@ -64,7 +66,8 @@ return [
 			'es' => 'الأسبانية (Spanish)',
 			'fr' => 'الفرنسية (French)',
 			'it' => 'الإيطالية (Italian)',
-			'pt-BR' => 'البرازيلية البرتغالية (Brazilian Portuguese)',
+            'nl' => 'هولندي (Dutch)',
+			'pt_BR' => 'البرازيلية البرتغالية (Brazilian Portuguese)',
 			'sv' => 'السويسرية (Swedish)',
 			'th' => 'Thai',
 		],

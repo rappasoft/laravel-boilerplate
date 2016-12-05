@@ -1,8 +1,8 @@
-@extends ('backend.layouts.master')
+@extends ('backend.layouts.app')
 
 @section ('title', trans('labels.backend.access.roles.management'))
 
-@section('after-styles-end')
+@section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
 @stop
 
@@ -16,7 +16,7 @@
             <h3 class="box-title">{{ trans('labels.backend.access.roles.management') }}</h3>
 
             <div class="box-tools pull-right">
-                @include('backend.access.includes.partials.header-buttons')
+                @include('backend.access.includes.partials.role-header-buttons')
             </div>
         </div><!-- /.box-header -->
 
@@ -50,7 +50,7 @@
     </div><!--box box-success-->
 @stop
 
-@section('after-scripts-end')
+@section('after-scripts')
     {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
     {{ Html::script("js/backend/plugin/datatables/dataTables.bootstrap.min.js") }}
 
@@ -59,13 +59,16 @@
             $('#roles-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route("admin.access.role.get") }}',
+                ajax: {
+                    url: '{{ route("admin.access.role.get") }}',
+                    type: 'post'
+                },
                 columns: [
-                    {data: 'name', name: 'name'},
-                    {data: 'permissions', name: 'permissions'},
-                    {data: 'users', name: 'users'},
-                    {data: 'sort', name: 'sort'},
-                    {data: 'actions', name: 'actions'}
+                    {data: 'name', name: '{{config('access.roles_table')}}.name', render: $.fn.dataTable.render.text()},
+                    {data: 'permissions', name: '{{config('access.permissions_table')}}.display_name', sortable: false},
+                    {data: 'users', name: 'users', searchable: false, sortable: false},
+                    {data: 'sort', name: '{{config('access.roles_table')}}.sort', render: $.fn.dataTable.render.text()},
+                    {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[3, "asc"]],
                 searchDelay: 500

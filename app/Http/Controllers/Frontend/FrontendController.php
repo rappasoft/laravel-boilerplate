@@ -10,23 +10,19 @@ use App\Http\Controllers\Controller;
  */
 class FrontendController extends Controller
 {
-    /**
-     * @return \Illuminate\View\View
-     */
-    public function index()
-    {
-        javascript()->put([
-            'test' => 'it works!',
-        ]);
+	/**
+	 * @return \Illuminate\View\View
+	 */
+	public function index()
+	{
+		return view('frontend.index');
+	}
 
-        return view('frontend.index');
-    }
-
-    /**
-     * @return \Illuminate\View\View
-     */
-    public function macros()
-    {
-        return view('frontend.macros');
-    }
+	/**
+	 * @return \Illuminate\View\View
+	 */
+	public function macros()
+	{
+		return view('frontend.macros');
+	}
 }

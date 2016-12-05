@@ -27,6 +27,13 @@ return [
         ],
     ],
 
+    'emails' => [
+        'auth' => [
+            'confirm_account' => 'Bekräfta konto',
+            'reset_password' => 'Återställ lösenord',
+        ],
+    ],
+
     'general' => [
         'cancel' => 'Avbryt',
 
@@ -35,6 +42,7 @@ return [
             'delete' => 'Radera',
             'edit' => 'Redigera',
             'update' => 'Uppdatera',
+			'view' => 'View',
         ],
 
         'save' => 'Spara',

@@ -33,18 +33,19 @@ class Kernel extends HttpKernel
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
-            \App\Http\Middleware\LocaleMiddleware::class,
+            \Illuminate\Routing\Middleware\SubstituteBindings::class,
+			\App\Http\Middleware\LocaleMiddleware::class,
         ],
 
-        'admin' => [
-            'web',
-            'auth',
-            'access.routeNeedsPermission:view-backend',
-            'timeout',
-        ],
+		'admin' => [
+			'auth',
+			'access.routeNeedsPermission:view-backend',
+			'timeout',
+		],
 
         'api' => [
             'throttle:60,1',
+            'bindings',
         ],
     ];
 
@@ -56,17 +57,18 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \App\Http\Middleware\Authenticate::class,
+        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'can' => \Illuminate\Foundation\Http\Middleware\Authorize::class,
+        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'timeout' => \App\Http\Middleware\SessionTimeout::class,
+		'timeout' => \App\Http\Middleware\SessionTimeout::class,
 
-        /**
-         * Access Middleware
-         */
-        'access.routeNeedsRole' => \App\Http\Middleware\RouteNeedsRole::class,
-        'access.routeNeedsPermission' => \App\Http\Middleware\RouteNeedsPermission::class,
+		/**
+		 * Access Middleware
+		 */
+		'access.routeNeedsRole' => \App\Http\Middleware\RouteNeedsRole::class,
+		'access.routeNeedsPermission' => \App\Http\Middleware\RouteNeedsPermission::class,
     ];
 }

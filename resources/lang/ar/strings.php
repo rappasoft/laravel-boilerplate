@@ -54,20 +54,33 @@ return [
 				'tasks' => '{0} ليس لديك أي مهمات|{1} لديك مهمة واحدة|{2} لديك مهمتان|[3,10] لديك :number مهمات|[11,inf] لديك :number مهمة',
 			],
 		],
-	],
 
-	'emails' => [
-		'auth' => [
-			'password_reset_subject' => 'رابط إعادة تعيين كلمة المرور',
-			'reset_password' => 'إضغط هنا لإعادة تعيين كلمة مرورك',
+		'search' => [
+			'empty' => 'Please enter a search term.',
+			'incomplete' => 'You must write your own search logic for this system.',
+			'title' => 'Search Results',
+			'results' => 'Search Results for :query',
 		],
 	],
 
-	'frontend' => [
-		'email' => [
-			'confirm_account' => 'إضغط هنا لتفعيل account:',
-		],
+    'emails' => [
+        'auth' => [
+            'error' => 'Whoops!',
+            'greeting' => 'Hello!',
+            'regards' => 'Regards,',
+            'trouble_clicking_button' => 'If you’re having trouble clicking the ":action_text" button, copy and paste the URL below into your web browser:',
+            'thank_you_for_using_app' => 'Thank you for using our application!',
 
+            'password_reset_subject' => 'رابط إعادة تعيين كلمة المرور',
+            'password_cause_of_email' => 'You are receiving this email because we received a password reset request for your account.',
+            'password_if_not_requested' => 'If you did not request a password reset, no further action is required.',
+            'reset_password' => 'إضغط هنا لإعادة تعيين كلمة مرورك',
+
+            'click_to_confirm' => 'إضغط هنا لتفعيل account:',
+        ],
+    ],
+
+    'frontend' => [
 		'test' => 'تجربة',
 
 		'tests' => [

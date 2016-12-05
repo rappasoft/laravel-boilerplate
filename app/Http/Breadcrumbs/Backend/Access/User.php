@@ -20,6 +20,11 @@ Breadcrumbs::register('admin.access.user.create', function ($breadcrumbs) {
     $breadcrumbs->push(trans('menus.backend.access.users.create'), route('admin.access.user.create'));
 });
 
+Breadcrumbs::register('admin.access.user.show', function ($breadcrumbs, $id) {
+	$breadcrumbs->parent('admin.access.user.index');
+	$breadcrumbs->push(trans('menus.backend.access.users.view'), route('admin.access.user.show', $id));
+});
+
 Breadcrumbs::register('admin.access.user.edit', function ($breadcrumbs, $id) {
     $breadcrumbs->parent('admin.access.user.index');
     $breadcrumbs->push(trans('menus.backend.access.users.edit'), route('admin.access.user.edit', $id));

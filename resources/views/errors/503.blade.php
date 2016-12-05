@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>{{ trans('http.503.title') }}</title>
+        <title>Be right back.</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -40,7 +40,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">{{ trans('http.503.title') }}</div>
+                <div class="title">Be right back.</div>
             </div>
         </div>
     </body>

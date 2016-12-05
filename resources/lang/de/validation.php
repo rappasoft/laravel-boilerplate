@@ -16,11 +16,13 @@ return [
     'accepted'             => ':attribute must Akzeptert werden.',
     'active_url'           => ':attribute ist keine gültige URL.',
     'after'                => ':attribute muss ein Datun nach dem :date sein.',
+	'after_or_equal'       => 'The :attribute must be a date after or equal to :date.',
     'alpha'                => ':attribute darf nur buchstaben enthalten.',
     'alpha_dash'           => ':attribute darf nur Buchstaben, Nummern und Bindestriche enthalten.',
     'alpha_num'            => ':attribute darf nur Buchstaben und Nummern enthalten.',
     'array'                => ':attribute muss ein Array sein.',
     'before'               => ':attribute muss ein Datum vor dem :date sein.',
+	'before_or_equal'      => 'The :attribute must be a date before or equal to :date.',
     'between'              => [
         'numeric' => ':attribute muss zwischen :min und :max sein.',
         'file'    => ':attribute muss zwischen :min und :max Kilobytes gross sein.',

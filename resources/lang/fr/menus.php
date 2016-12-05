@@ -33,6 +33,7 @@ return [
                 'deleted' => 'Utilisateurs supprimés',
                 'edit' => 'Éditer un utilisateur',
                 'main' => 'Utilisateurs',
+				'view' => 'View User',
             ],
         ],
 
@@ -45,6 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'Tableau de bord',
             'general' => 'Général',
+			'system' => 'System',
         ],
     ],
 
@@ -64,7 +66,8 @@ return [
             'es' => 'Espagnol  (Spanish)',
             'fr' => 'Français (French)',
             'it' => 'Italien (Italian)',
-            'pt-BR' => 'Portugais (Brazilian Portuguese)',
+			'nl' => 'Hollandais (Dutch)',
+            'pt_BR' => 'Portugais (Brazilian Portuguese)',
             'sv' => 'Suédois (Swedish)',
             'th' => 'Thai',
         ],

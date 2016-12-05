@@ -14,7 +14,7 @@ function addDeleteForms() {
             return "\n" +
                 "<form action='" + $(this).attr('href') + "' method='POST' name='delete_item' style='display:none'>\n" +
                 "   <input type='hidden' name='_method' value='" + $(this).attr('data-method') + "'>\n" +
-                "   <input type='hidden' name='_token' value='" + $('meta[name="_token"]').attr('content') + "'>\n" +
+                "   <input type='hidden' name='_token' value='" + $('meta[name="csrf-token"]').attr('content') + "'>\n" +
                 "</form>\n";
         else
             return "";
@@ -33,7 +33,7 @@ $(function(){
      */
     $.ajaxSetup({
         headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
 
