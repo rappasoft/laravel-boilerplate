@@ -34,7 +34,7 @@ class BladeServiceProvider extends ServiceProvider
 		 * Sets a PHP variable in a blade view
 		 * Courtesy of https://github.com/sineld/bladeset
 		 */
-		Blade::extend(function ($value) {
+		Blade::directive(function ($value) {
 			return preg_replace("/@set\(['\"](.*?)['\"]\,(.*)\)/", '<?php $$1 = $2; ?>', $value);
 		});
 	}
