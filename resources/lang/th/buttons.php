@@ -29,8 +29,8 @@ return [
 
     'emails' => [
         'auth' => [
-            'confirm_account' => 'Confirm Account',
-            'reset_password' => 'Reset Password',
+            'confirm_account' => 'ยืนยันบัญชี',
+            'reset_password' => 'ตั้งรหัสผ่านใหม่',
         ],
     ],
 
@@ -41,11 +41,11 @@ return [
             'create' => 'สร้าง',
             'delete' => 'ลบ',
             'edit' => 'แก้ไข',
-            'update' => 'อัพเดท',
-			'view' => 'View',
+            'update' => 'ปรับปรุง',
+			'view' => 'แสดง',
         ],
 
         'save' => 'บันทึก',
-        'view' => 'ดู',
+        'view' => 'แสดง',
     ],
 ];
