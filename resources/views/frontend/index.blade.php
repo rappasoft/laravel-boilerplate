@@ -14,8 +14,6 @@
 
                 <div class="panel-body">
                     {{ trans('strings.frontend.welcome_to', ['place' => app_name()]) }}
-
-                    @set('hello')
                 </div>
             </div><!-- panel -->
 
