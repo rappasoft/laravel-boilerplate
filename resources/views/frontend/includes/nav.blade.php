@@ -34,7 +34,9 @@
 
                 @if (! $logged_in_user)
                     <li>{{ link_to_route('frontend.auth.login', trans('navs.frontend.login')) }}</li>
-                    <li>{{ link_to_route('frontend.auth.register', trans('navs.frontend.register')) }}</li>
+                    @if (Route::has('frontend.auth.register'))
+                        <li>{{ link_to_route('frontend.auth.register', trans('navs.frontend.register')) }}</li>
+                    @endif
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
