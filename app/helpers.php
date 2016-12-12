@@ -47,18 +47,6 @@ if (! function_exists('gravatar')) {
 	}
 }
 
-if (! function_exists('getFallbackLocale')) {
-	/**
-	 * Get the fallback locale
-	 *
-	 * @return \Illuminate\Foundation\Application|mixed
-	 */
-	function getFallbackLocale()
-	{
-		return config('app.fallback_locale');
-	}
-}
-
 if (! function_exists('includeRouteFiles')) {
 
 	/**
