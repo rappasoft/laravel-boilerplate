@@ -31,7 +31,7 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 		Route::get('login/{provider}', 'SocialLoginController@login')->name('social.login');
 
         // Registration Routes
-        if (\Config::get('access.enable_registration')) {
+        if (config('access.users.registration')) {
             Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
             Route::post('register', 'RegisterController@register')->name('register');
         }

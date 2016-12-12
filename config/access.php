@@ -4,11 +4,6 @@ use App\Models\Access\Role\Role;
 use App\Models\Access\Permission\Permission;
 
 return [
-    /*
-     * Users table used to store users
-     */
-    'enable_registration' => env('ENABLE_REGISTRATION', 'true'),
-
 	/*
 	 * Users table used to store users
 	 */
@@ -49,6 +44,11 @@ return [
 	 * Configurations for the user
 	 */
 	'users' => [
+		/*
+		 * Whether or not public registration is on
+		 */
+		'registration' => env('ENABLE_REGISTRATION', 'true'),
+
 		/*
 		 * The role the user is assigned to when they sign up from the frontend, not namespaced
 		 */
