@@ -13,7 +13,7 @@
 <script>
     export default {
         mounted() {
-            console.log('Component ready.')
+            console.log('Component mounted.')
         }
     }
 </script>

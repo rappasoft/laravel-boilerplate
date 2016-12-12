@@ -56,10 +56,10 @@ return [
         ],
 
 		'search' => [
-			'empty' => 'Please enter a search term.',
-			'incomplete' => 'You must write your own search logic for this system.',
-			'title' => 'Search Results',
-			'results' => 'Search Results for :query',
+			'empty' => 'กรุณาป้อนคำสืบค้น',
+			'incomplete' => 'สำหรับระบบนี้คุณต้องเขียนเงื่อนไขสำหรับการสืบค้นด้วยตัวเอง',
+			'title' => 'ผลการสืบค้น',
+			'results' => 'ผลการสืบค้นสำหรับ :query',
 		],
 
 		'welcome' => '<p>นี่คือธีม AdminLTE โดย <a href="https://almsaeedstudio.com/" target="_blank">https://almsaeedstudio.com/</a> ซึ่งเป็นเวอร์ชั่นตัดทอน เหลือสไตล์ชีทและสคริปต์ที่จำเป็น คุณสามารถดาวน์โหลดเวอร์ชั่นเต็มเพิ่มเติม เพื่อเพิ่มคอมโพเนนท์ให้กับแผงควบคุม</p>
@@ -72,15 +72,15 @@ return [
 
     'emails' => [
         'auth' => [
-            'error' => 'Whoops!',
-            'greeting' => 'Hello!',
-            'regards' => 'Regards,',
-            'trouble_clicking_button' => 'If you’re having trouble clicking the ":action_text" button, copy and paste the URL below into your web browser:',
-            'thank_you_for_using_app' => 'Thank you for using our application!',
+            'error' => 'โอ้วววว!',
+            'greeting' => 'สวัสดีจ้า!',
+            'regards' => 'ด้วยความนับถือ,',
+            'trouble_clicking_button' => 'เมื่อคุณมีปัญหาในการคลิกปุ่ม ":action_text" , โปรดคัดลอก URL ด้านล่างแล้วนำไปวางในเว็บบราวเซอร์ของคุณ:',
+            'thank_you_for_using_app' => 'ขอบคุณมากสำหรับการใช้งานแอพพลิเคชั่นของเรา',
 
             'password_reset_subject' => 'ลิงก์สำหรับรีเซ็ตรหัสผ่านของคุณ',
-            'password_cause_of_email' => 'You are receiving this email because we received a password reset request for your account.',
-            'password_if_not_requested' => 'If you did not request a password reset, no further action is required.',
+            'password_cause_of_email' => 'คุณได้รับอีเมลฉบับนี้เนื่องจากมีการร้องขอการตั้งรหัสผ่านใหม่สำหรับบัญชีผู้ใช้นี้',
+            'password_if_not_requested' => 'ถ้าหากว่าคุณไม่ได้เป็นคนร้องขอการตั้งรหัสผ่านใหม่ ไม่จำเป็นต้องทำสิ่งใดเพิ่มเติม',
             'reset_password' => 'คลิกที่นี่เพื่อรีเซ็ตรหัสผ่านของคุณ',
 
             'click_to_confirm' => 'คลิกที่นี่เพื่อยืนยันตัวตนของคุณ:',

@@ -25,5 +25,6 @@
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
         <env name="REGISTRATION_CAPTCHA_STATUS" value="false"/>
+        <env name="ENABLE_REGISTRATION" value="true"/>
     </php>
 </phpunit>
