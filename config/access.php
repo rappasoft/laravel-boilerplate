@@ -4,6 +4,10 @@ use App\Models\Access\Role\Role;
 use App\Models\Access\Permission\Permission;
 
 return [
+    /*
+     * Users table used to store users
+     */
+    'enable_registration' => env('ENABLE_REGISTRATION', 'true'),
 
 	/*
 	 * Users table used to store users
