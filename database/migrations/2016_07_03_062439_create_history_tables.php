@@ -30,7 +30,7 @@ class CreateHistoryTables extends Migration
 			$table->string('icon')->nullable();
 			$table->string('class')->nullable();
 			$table->string('text');
-			$table->string('assets')->nullable();
+			$table->text('assets')->nullable();
 			$table->timestamps();
 
 			$table->foreign('type_id')
