@@ -19,13 +19,13 @@ return [
         'no' => 'ไม่',
         'custom' => 'เลือกเอง',
         'actions' => 'การกระทำ',
-		'active' => 'Active',
+	'active' => 'ใช้งาน',
         'buttons' => [
             'save' => 'บันทึก',
             'update' => 'แก้ไข',
         ],
         'hide' => 'ซ่อน',
-		'inactive' => 'Inactive',
+	'inactive' => 'ไม่ใช้งาน',
         'none' => 'ไม่มี',
         'show' => 'แสดง',
         'toggle_navigation' => 'เปิด/ปิด เมนูนำทาง',
@@ -76,25 +76,25 @@ return [
 
 				'tabs' => [
 					'titles' => [
-						'overview' => 'Overview',
-						'history' => 'History',
+						'overview' => 'ภาพรวม',
+						'history' => 'ประวัติ',
 					],
 
 					'content' => [
 						'overview' => [
-							'avatar' => 'Avatar',
-							'confirmed' => 'Confirmed',
-							'created_at' => 'Created At',
-							'deleted_at' => 'Deleted At',
-							'email' => 'E-mail',
-							'last_updated' => 'Last Updated',
-							'name' => 'Name',
-							'status' => 'Status',
+							'avatar' => 'รูปตัวแทน',
+							'confirmed' => 'ยืนยันเรียบร้อย',
+							'created_at' => 'สร้างแล้วเมื่อ',
+							'deleted_at' => 'ลบแล้วเมื่อ',
+							'email' => 'อีเมล',
+							'last_updated' => 'ปรับปรุงล่าสุด',
+							'name' => 'ชื่อ',
+							'status' => 'สถานะ',
 						],
 					],
 				],
 
-				'view' => 'View User',
+				'view' => 'แสดงผู้ใช้',
             ],
         ],
     ],
@@ -125,7 +125,7 @@ return [
                 'numeric' => 'รหัสประเทศชนิดตัวเลข',
             ],
 
-            'macro_examples' => 'ตัวอย่าง Macro',
+            'macro_examples' => 'ตัวอย่าง มาโคร',
 
             'state' => [
                 'mexico' => 'รายชื่อรัฐในเม็กซิโก',
@@ -149,13 +149,13 @@ return [
             ],
 
             'profile' => [
-                'avatar' => 'Avatar',
+                'avatar' => 'รูปตัวแทน',
                 'created_at' => 'สร้างเมื่อ',
                 'edit_information' => 'แก้ไขข้อมูล',
                 'email' => 'อีเมล',
-                'last_updated' => 'อัพเดทล่าสุดเมื่อ',
+                'last_updated' => 'ปรับปรุงล่าสุดเมื่อ',
                 'name' => 'ชื่อ',
-                'update_information' => 'อัพเดทข้อมูล',
+                'update_information' => 'ปรับปรุงข้อมูล',
             ],
         ],
 

@@ -34,7 +34,8 @@
 
                 @if (! $logged_in_user)
                     <li>{{ link_to_route('frontend.auth.login', trans('navs.frontend.login')) }}</li>
-                    @if (Route::has('frontend.auth.register'))
+
+                    @if (config('access.users.registration'))
                         <li>{{ link_to_route('frontend.auth.register', trans('navs.frontend.register')) }}</li>
                     @endif
                 @else
