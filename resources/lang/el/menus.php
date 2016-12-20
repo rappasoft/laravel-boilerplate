@@ -33,7 +33,7 @@ return [
                 'deleted' => 'Deleted Users',
                 'edit' => 'Edit User',
                 'main' => 'Users',
-                'view' => 'View User',
+				'view' => 'View User',
             ],
         ],
 
@@ -46,12 +46,12 @@ return [
         'sidebar' => [
             'dashboard' => 'Dashboard',
             'general' => 'General',
-            'system' => 'System',
+			'system' => 'System',
         ],
     ],
 
     'language-picker' => [
-        'language' => 'Language',
+        'language' => 'Γλώσσα',
         /**
          * Add the new language to this array.
          * The key should have the same language code as the folder name.
@@ -59,18 +59,18 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'ar' => 'Arabic',
-            'da' => 'Danish',
-            'de' => 'German',
-            'el' => 'Greek',
-            'en' => 'English',
-            'es' => 'Spanish',
-            'fr' => 'French',
-            'it' => 'Italian',
-            'nl' => 'Dutch',
-            'pt_BR' => 'Brazilian Portuguese',
-            'sv' => 'Swedish',
-            'th' => 'Thai',
+            'ar' => 'Αραβικά (Arabic)',
+            'da' => 'Δανέζικα (Danish)',
+            'de' => 'Γερμανικά (German)',
+            'el' => 'Ελληνικά (Greek)',
+            'en' => 'Αγγλικά (English)',
+            'es' => 'Ισπανικά (Spanish)',
+            'fr' => 'Γαλλικά (French)',
+            'it' => 'Ιταλικά (Italian)',
+			'nl' => 'Ολλανδικά (Dutch)',
+            'pt_BR' => '(Brazilian Portuguese)',
+            'sv' => 'Σουηδικά (Swedish)',
+            'th' => 'Ταιλανδέζικα (Thai)',
         ],
     ],
 ];
