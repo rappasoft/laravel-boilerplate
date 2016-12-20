@@ -26,7 +26,7 @@ return [
 
         'user' => [
 			'account' => 'Ο λογαριασμός μου',
-            'administration' => 'Διαχείρηση',
+            'administration' => 'Διαχείριση',
             'change_password' => 'Αλλαγή κωδικού',
             'my_information' => 'Οι πληροφορίες μου',
 			'profile' => 'Προφίλ',

@@ -36,7 +36,7 @@ return [
             'roles' => [
                 'create' => 'Δημιουργία ρόλου',
                 'edit' => 'Επεξεργασία ρόλου',
-                'management' => 'Διαχείρηση ρόλων',
+                'management' => 'Διαχείριση ρόλων',
 
                 'table' => [
                     'number_of_users' => 'Αριθμός χρηστών',
@@ -56,13 +56,13 @@ return [
                 'deactivated' => 'Ανενεργοί χρήστες',
                 'deleted' => '΄Διεγραμμένοι χρήστες',
                 'edit' => 'Έπεξεργασία χρήστη',
-                'management' => '΄Διαχείρηση χρήστη',
+                'management' => '΄Διαχείριση χρήστη',
                 'no_permissions' => 'Χωρίς άδειες',
                 'no_roles' => 'No Roles to set.',
                 'permissions' => 'Άδειες',
 
                 'table' => [
-                    'confirmed' => 'Confirmed',
+                    'confirmed' => 'Επιβεβαιώθηκε',
                     'created' => 'Δημιουργήθηκε',
                     'email' => 'E-mail',
                     'id' => 'ID',
@@ -94,7 +94,7 @@ return [
 					],
 				],
 
-				'view' => 'View User',
+				'view' => 'Δες το χρήστη',
             ],
         ],
     ],
@@ -102,12 +102,12 @@ return [
     'frontend' => [
 
         'auth' => [
-            'login_box_title' => 'Login',
-            'login_button' => 'Login',
-            'login_with' => 'Login with :social_media',
-            'register_box_title' => 'Register',
-            'register_button' => 'Register',
-            'remember_me' => 'Remember Me',
+            'login_box_title' => 'Σύνδεση',
+            'login_button' => 'Σύνδεση',
+            'login_with' => 'Συνδέσου με :social_media',
+            'register_box_title' => 'Εγγραφή',
+            'register_button' => 'Εγγραφή',
+            'remember_me' => 'Θυμήσου με',
         ],
 
         'passwords' => [
@@ -145,17 +145,17 @@ return [
 
         'user' => [
             'passwords' => [
-                'change' => 'Change Password',
+                'change' => 'Αλλαγή κωδικού',
             ],
 
             'profile' => [
                 'avatar' => 'Avatar',
-                'created_at' => 'Created At',
-                'edit_information' => 'Edit Information',
+                'created_at' => 'Δημιουργήθηκε την',
+                'edit_information' => 'Επεξεργασία πληροφοριών',
                 'email' => 'E-mail',
-                'last_updated' => 'Last Updated',
+                'last_updated' => 'Τελευταία ανανέωση',
                 'name' => 'Name',
-                'update_information' => 'Update Information',
+                'update_information' => 'Ανανέωση πληροφοριών',
             ],
         ],
 

@@ -18,22 +18,22 @@ return [
             'title' => 'Access Management',
 
             'roles' => [
-                'all' => 'All Roles',
-                'create' => 'Create Role',
-                'edit' => 'Edit Role',
-                'management' => 'Role Management',
-                'main' => 'Roles',
+                'all' => 'Όλοι οι ρόλοι',
+                'create' => 'Δημιουργία ρόλου',
+                'edit' => 'Επεξεργασία ρόλου',
+                'management' => 'Διαχείρηση ρόλων',
+                'main' => 'Ρόλοι',
             ],
 
             'users' => [
-                'all' => 'All Users',
-                'change-password' => 'Change Password',
-                'create' => 'Create User',
-                'deactivated' => 'Deactivated Users',
-                'deleted' => 'Deleted Users',
-                'edit' => 'Edit User',
-                'main' => 'Users',
-				'view' => 'View User',
+                'all' => 'Όλοι οι χρήστες',
+                'change-password' => 'Αλλαγή κωδικού',
+                'create' => 'Δημιουργία χρήστη',
+                'deactivated' => 'Ανενεργοί χρήστες',
+                'deleted' => 'Διεγραμμένοι χρήστες',
+                'edit' => 'Επεξεργασία χρήστη',
+                'main' => 'Χρήστες',
+				'view' => 'Δες το χρήστη',
             ],
         ],
 
@@ -45,8 +45,8 @@ return [
 
         'sidebar' => [
             'dashboard' => 'Dashboard',
-            'general' => 'General',
-			'system' => 'System',
+            'general' => 'Γενικά',
+			'system' => 'Σύστημα',
         ],
     ],
 
