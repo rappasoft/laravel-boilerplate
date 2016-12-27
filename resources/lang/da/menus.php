@@ -33,7 +33,7 @@ return [
                 'deleted' => 'Slet Bruger',
                 'edit' => 'Rediger Bruger',
                 'main' => 'Brugere',
-				'view' => 'View User',
+                'view' => 'View User',
             ],
         ],
 
@@ -46,7 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'Betjeningspanel',
             'general' => 'Generelt',
-			'system' => 'System',
+            'system' => 'System',
         ],
     ],
 
@@ -62,11 +62,12 @@ return [
             'ar' => 'Arabisk',
             'da' => 'Dansk',
             'de' => 'Tysk',
+            'el' => '(Greek)',
             'en' => 'Engelsk',
             'es' => 'Spansk',
             'fr' => 'Fransk',
             'it' => 'Italiensk',
-			'nl' => 'Hollandsk',
+            'nl' => 'Hollandsk',
             'pt_BR' => 'Brasiliansk portugisisk',
             'sv' => 'Svensk',
             'th' => 'Thai',
