@@ -32,6 +32,7 @@ return [
 		'ar'    => ['ar', 'ar_AR', true],
 		'da'    => ['da', 'da_DK', false],
 		'de'    => ['de', 'de_DE', false],
+		'el'    => ['el', 'el_GR', false],
 		'en'    => ['en', 'en_US', false],
 		'es'    => ['es', 'es_ES', false],
 		'fr'    => ['fr', 'fr_FR', false],

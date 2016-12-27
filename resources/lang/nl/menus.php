@@ -62,6 +62,7 @@ return [
 			'ar' => 'Arabisch (Arabic)',
 			'da' => 'Deens (Danish)',
 			'de' => 'Duits (German)',
+			'el' => '(Greek)',
 			'en' => 'Engels (English)',
 			'es' => 'Spaans (Spanish)',
 			'fr' => 'Frans (French)',
