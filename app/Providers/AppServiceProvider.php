@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
 		/**
 		 * setLocale to use Carbon source locales. Enables diffForHumans() localized
 		 */
-		Carbon::setLocale(config('app.locale'));
+		Carbon::setLocale(config('app.locale_php'));
 
 		/**
 		 * Set the session variable for whether or not the app is using RTL support
