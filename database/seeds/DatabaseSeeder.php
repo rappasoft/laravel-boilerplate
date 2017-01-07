@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Seeder;
 
 /**
- * Class DatabaseSeeder
+ * Class DatabaseSeeder.
  */
 class DatabaseSeeder extends Seeder
 {

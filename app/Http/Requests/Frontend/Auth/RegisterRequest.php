@@ -6,8 +6,7 @@ use App\Http\Requests\Request;
 use Illuminate\Validation\Rule;
 
 /**
- * Class RegisterRequest
- * @package App\Http\Requests\Frontend\Access
+ * Class RegisterRequest.
  */
 class RegisterRequest extends Request
 {
@@ -29,17 +28,18 @@ class RegisterRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'email' => ['required', 'email', 'max:255', Rule::unique('users')],
-            'password' => 'required|min:6|confirmed',
+            'name'                 => 'required|max:255',
+            'email'                => ['required', 'email', 'max:255', Rule::unique('users')],
+            'password'             => 'required|min:6|confirmed',
             'g-recaptcha-response' => 'required_if:captcha_status,true|captcha',
         ];
     }
 
-	/**
+    /**
      * @return array
      */
-    public function messages() {
+    public function messages()
+    {
         return [
             'g-recaptcha-response.required_if' => trans('validation.required', ['attribute' => 'captcha']),
         ];

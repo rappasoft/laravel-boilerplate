@@ -5,16 +5,16 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Class UserTableSeeder
+ * Class UserTableSeeder.
  */
 class UserTableSeeder extends Seeder
 {
-	/**
-	 * Run the database seed.
-	 *
-	 * @return void
-	 */
-	public function run()
+    /**
+     * Run the database seed.
+     *
+     * @return void
+     */
+    public function run()
     {
         if (DB::connection()->getDriverName() == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
@@ -23,10 +23,10 @@ class UserTableSeeder extends Seeder
         if (DB::connection()->getDriverName() == 'mysql') {
             DB::table(config('access.users_table'))->truncate();
         } elseif (DB::connection()->getDriverName() == 'sqlite') {
-            DB::statement('DELETE FROM ' . config('access.users_table'));
+            DB::statement('DELETE FROM '.config('access.users_table'));
         } else {
             //For PostgreSQL or anything else
-            DB::statement('TRUNCATE TABLE ' . config('access.users_table') . ' CASCADE');
+            DB::statement('TRUNCATE TABLE '.config('access.users_table').' CASCADE');
         }
 
         //Add the master administrator, user id of 1

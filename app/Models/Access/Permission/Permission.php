@@ -2,12 +2,11 @@
 
 namespace App\Models\Access\Permission;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Models\Access\Permission\Traits\Relationship\PermissionRelationship;
+use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Permission
- * @package App\Models\Access\Permission
+ * Class Permission.
  */
 class Permission extends Model
 {

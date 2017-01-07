@@ -18,59 +18,59 @@ return [
             'title' => 'Adgangsadministration',
 
             'roles' => [
-                'all' => 'Alle Roller',
-                'create' => 'Opret Rolle',
-                'edit' => 'Rediger Rolle',
+                'all'        => 'Alle Roller',
+                'create'     => 'Opret Rolle',
+                'edit'       => 'Rediger Rolle',
                 'management' => 'Rolleadministration',
-                'main' => 'Roller',
+                'main'       => 'Roller',
             ],
 
             'users' => [
-                'all' => 'Alle Brugere',
+                'all'             => 'Alle Brugere',
                 'change-password' => 'Skift Adgangskode',
-                'create' => 'Opret Bruger',
-                'deactivated' => 'Deaktiverede Brugere',
-                'deleted' => 'Slet Bruger',
-                'edit' => 'Rediger Bruger',
-                'main' => 'Brugere',
-                'view' => 'View User',
+                'create'          => 'Opret Bruger',
+                'deactivated'     => 'Deaktiverede Brugere',
+                'deleted'         => 'Slet Bruger',
+                'edit'            => 'Rediger Bruger',
+                'main'            => 'Brugere',
+                'view'            => 'View User',
             ],
         ],
 
         'log-viewer' => [
-            'main' => 'Logbog',
+            'main'      => 'Logbog',
             'dashboard' => 'Dashboard',
-            'logs' => 'Logbog',
+            'logs'      => 'Logbog',
         ],
 
         'sidebar' => [
             'dashboard' => 'Betjeningspanel',
-            'general' => 'Generelt',
-            'system' => 'System',
+            'general'   => 'Generelt',
+            'system'    => 'System',
         ],
     ],
 
     'language-picker' => [
         'language' => 'Sprog',
-        /**
+        /*
          * Add the new language to this array.
          * The key should have the same language code as the folder name.
          * The string should be: 'Language-name-in-your-own-language (Language-name-in-English)'.
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'ar' => 'Arabisk',
-            'da' => 'Dansk',
-            'de' => 'Tysk',
-            'el' => '(Greek)',
-            'en' => 'Engelsk',
-            'es' => 'Spansk',
-            'fr' => 'Fransk',
-            'it' => 'Italiensk',
-            'nl' => 'Hollandsk',
+            'ar'    => 'Arabisk',
+            'da'    => 'Dansk',
+            'de'    => 'Tysk',
+            'el'    => '(Greek)',
+            'en'    => 'Engelsk',
+            'es'    => 'Spansk',
+            'fr'    => 'Fransk',
+            'it'    => 'Italiensk',
+            'nl'    => 'Hollandsk',
             'pt_BR' => 'Brasiliansk portugisisk',
-            'sv' => 'Svensk',
-            'th' => 'Thai',
+            'sv'    => 'Svensk',
+            'th'    => 'Thai',
         ],
     ],
 ];

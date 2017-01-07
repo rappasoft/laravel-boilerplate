@@ -30,35 +30,35 @@ return [
 
     'cloud' => 's3',
 
-	/*
-	|--------------------------------------------------------------------------
-	| Filesystem Disks
-	|--------------------------------------------------------------------------
-	|
-	| Here you may configure as many filesystem "disks" as you wish, and you
-	| may even configure multiple disks of the same driver. Defaults have
-	| been setup for each driver as an example of the required options.
-	|
-	| Supported Drivers: "local", "ftp", "s3", "rackspace"
-	|
-	*/
+    /*
+    |--------------------------------------------------------------------------
+    | Filesystem Disks
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure as many filesystem "disks" as you wish, and you
+    | may even configure multiple disks of the same driver. Defaults have
+    | been setup for each driver as an example of the required options.
+    |
+    | Supported Drivers: "local", "ftp", "s3", "rackspace"
+    |
+    */
 
     'disks' => [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root'   => storage_path('app'),
         ],
 
         'public' => [
-            'driver' => 'local',
-            'root' => storage_path('app/public'),
+            'driver'     => 'local',
+            'root'       => storage_path('app/public'),
             'visibility' => 'public',
         ],
 
         's3' => [
             'driver' => 's3',
-            'key' => 'your-key',
+            'key'    => 'your-key',
             'secret' => 'your-secret',
             'region' => 'your-region',
             'bucket' => 'your-bucket',

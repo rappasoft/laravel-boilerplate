@@ -5,8 +5,7 @@ namespace App\Http\Requests\Frontend\User;
 use App\Http\Requests\Request;
 
 /**
- * Class UpdateProfileRequest
- * @package App\Http\Requests\Frontend\User
+ * Class UpdateProfileRequest.
  */
 class UpdateProfileRequest extends Request
 {

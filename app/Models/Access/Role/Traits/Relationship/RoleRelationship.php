@@ -3,8 +3,7 @@
 namespace App\Models\Access\Role\Traits\Relationship;
 
 /**
- * Class RoleRelationship
- * @package App\Models\Access\Role\Traits\Relationship
+ * Class RoleRelationship.
  */
 trait RoleRelationship
 {

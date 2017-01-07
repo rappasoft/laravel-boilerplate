@@ -18,59 +18,59 @@ return [
             'title' => 'Gestion des accès',
 
             'roles' => [
-                'all' => 'Tous les rôles',
-                'create' => 'Créer un rôle',
-                'edit' => 'Éditer un rôle',
+                'all'        => 'Tous les rôles',
+                'create'     => 'Créer un rôle',
+                'edit'       => 'Éditer un rôle',
                 'management' => 'Gestion des rôles',
-                'main' => 'Rôles',
+                'main'       => 'Rôles',
             ],
 
             'users' => [
-                'all' => 'Tous les utilisateurs',
+                'all'             => 'Tous les utilisateurs',
                 'change-password' => 'Changer le mot de passe',
-                'create' => 'Créer un utilisateur',
-                'deactivated' => 'Utilisateurs désactivés',
-                'deleted' => 'Utilisateurs supprimés',
-                'edit' => 'Éditer un utilisateur',
-                'main' => 'Utilisateurs',
-                'view' => 'View User',
+                'create'          => 'Créer un utilisateur',
+                'deactivated'     => 'Utilisateurs désactivés',
+                'deleted'         => 'Utilisateurs supprimés',
+                'edit'            => 'Éditer un utilisateur',
+                'main'            => 'Utilisateurs',
+                'view'            => 'View User',
             ],
         ],
 
         'log-viewer' => [
-            'main' => 'Consulter les logs',
+            'main'      => 'Consulter les logs',
             'dashboard' => 'Tableau de bord',
-            'logs' => 'Logs',
+            'logs'      => 'Logs',
         ],
 
         'sidebar' => [
             'dashboard' => 'Tableau de bord',
-            'general' => 'Général',
-            'system' => 'System',
+            'general'   => 'Général',
+            'system'    => 'System',
         ],
     ],
 
     'language-picker' => [
         'language' => 'Langue',
-        /**
+        /*
          * Add the new language to this array.
          * The key should have the same language code as the folder name.
          * The string should be: 'Language-name-in-your-own-language (Language-name-in-English)'.
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'ar' => 'العربية (Arabic)',
-            'da' => 'Danois (Danish)',
-            'de' => 'Allemand (German)',
-            'el' => '(Greek)',
-            'en' => 'Anglais (English)',
-            'es' => 'Espagnol  (Spanish)',
-            'fr' => 'Français (French)',
-            'it' => 'Italien (Italian)',
-            'nl' => 'Hollandais (Dutch)',
+            'ar'    => 'العربية (Arabic)',
+            'da'    => 'Danois (Danish)',
+            'de'    => 'Allemand (German)',
+            'el'    => '(Greek)',
+            'en'    => 'Anglais (English)',
+            'es'    => 'Espagnol  (Spanish)',
+            'fr'    => 'Français (French)',
+            'it'    => 'Italien (Italian)',
+            'nl'    => 'Hollandais (Dutch)',
             'pt_BR' => 'Portugais (Brazilian Portuguese)',
-            'sv' => 'Suédois (Swedish)',
-            'th' => 'Thai',
+            'sv'    => 'Suédois (Swedish)',
+            'th'    => 'Thai',
         ],
     ],
 ];

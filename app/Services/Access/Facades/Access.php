@@ -5,8 +5,7 @@ namespace App\Services\Access\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * Class Access
- * @package App\Services\Access\Facades
+ * Class Access.
  */
 class Access extends Facade
 {

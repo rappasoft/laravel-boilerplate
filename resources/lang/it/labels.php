@@ -14,87 +14,87 @@ return [
     */
 
     'general' => [
-        'all' => 'Tutti',
-        'yes' => 'Sì',
-        'no' => 'No',
-        'custom' => 'Custom', // TODO TRANSLATION
+        'all'     => 'Tutti',
+        'yes'     => 'Sì',
+        'no'      => 'No',
+        'custom'  => 'Custom', // TODO TRANSLATION
         'actions' => 'Azioni',
-		'active' => 'Active',
+        'active'  => 'Active',
         'buttons' => [
-            'save' => 'Salva',
+            'save'   => 'Salva',
             'update' => 'Aggiorna',
         ],
-        'hide' => 'Nascondi',
-		'inactive' => 'Inactive',
-        'none' => 'Nessuno',
-        'show' => 'Visualizza',
+        'hide'              => 'Nascondi',
+        'inactive'          => 'Inactive',
+        'none'              => 'Nessuno',
+        'show'              => 'Visualizza',
         'toggle_navigation' => 'Menu Navigazione',
     ],
 
     'backend' => [
         'access' => [
             'roles' => [
-                'create' => 'Crea ruolo',
-                'edit' => 'Modifica ruolo',
+                'create'     => 'Crea ruolo',
+                'edit'       => 'Modifica ruolo',
                 'management' => 'Gestione ruolo',
 
                 'table' => [
                     'number_of_users' => 'Numero di utenti',
-                    'permissions' => 'Permessi',
-                    'role' => 'Ruolo',
-                    'sort' => 'Ordina',
-                    'total' => 'Ruolo|Totale ruoli',
+                    'permissions'     => 'Permessi',
+                    'role'            => 'Ruolo',
+                    'sort'            => 'Ordina',
+                    'total'           => 'Ruolo|Totale ruoli',
                 ],
             ],
 
             'users' => [
-                'active' => 'Utenti attivi',
-                'all_permissions' => 'Tutti i permessi',
-                'change_password' => 'Cambia password',
+                'active'              => 'Utenti attivi',
+                'all_permissions'     => 'Tutti i permessi',
+                'change_password'     => 'Cambia password',
                 'change_password_for' => 'Cambia password per :user',
-                'create' => 'Crea utente',
-                'deactivated' => 'Utenti disattivati',
-                'deleted' => 'Utenti eliminati',
-                'edit' => 'Modifica utente',
-                'management' => 'Gestione utente',
-                'no_permissions' => 'Nessun permesso',
-                'no_roles' => 'Nessuno ruolo da assegnare.',
-                'permissions' => 'Permessi',
+                'create'              => 'Crea utente',
+                'deactivated'         => 'Utenti disattivati',
+                'deleted'             => 'Utenti eliminati',
+                'edit'                => 'Modifica utente',
+                'management'          => 'Gestione utente',
+                'no_permissions'      => 'Nessun permesso',
+                'no_roles'            => 'Nessuno ruolo da assegnare.',
+                'permissions'         => 'Permessi',
 
                 'table' => [
-                    'confirmed' => 'Confermato',
-                    'created' => 'Creato',
-                    'email' => 'E-mail',
-                    'id' => 'ID',
-                    'last_updated' => 'Ultimo aggiornamento',
-                    'name' => 'Nome',
+                    'confirmed'      => 'Confermato',
+                    'created'        => 'Creato',
+                    'email'          => 'E-mail',
+                    'id'             => 'ID',
+                    'last_updated'   => 'Ultimo aggiornamento',
+                    'name'           => 'Nome',
                     'no_deactivated' => 'Nessun utente disattivato',
-                    'no_deleted' => 'Nessun utente eliminato',
-                    'roles' => 'Ruoli',
-                    'total' => 'utente(i) totali', # TODO: pluralization
+                    'no_deleted'     => 'Nessun utente eliminato',
+                    'roles'          => 'Ruoli',
+                    'total'          => 'utente(i) totali', // TODO: pluralization
                 ],
 
-				'tabs' => [
-					'titles' => [
-						'overview' => 'Overview',
-						'history' => 'History',
-					],
+                'tabs' => [
+                    'titles' => [
+                        'overview' => 'Overview',
+                        'history'  => 'History',
+                    ],
 
-					'content' => [
-						'overview' => [
-							'avatar' => 'Avatar',
-							'confirmed' => 'Confirmed',
-							'created_at' => 'Created At',
-							'deleted_at' => 'Deleted At',
-							'email' => 'E-mail',
-							'last_updated' => 'Last Updated',
-							'name' => 'Name',
-							'status' => 'Status',
-						],
-					],
-				],
+                    'content' => [
+                        'overview' => [
+                            'avatar'       => 'Avatar',
+                            'confirmed'    => 'Confirmed',
+                            'created_at'   => 'Created At',
+                            'deleted_at'   => 'Deleted At',
+                            'email'        => 'E-mail',
+                            'last_updated' => 'Last Updated',
+                            'name'         => 'Name',
+                            'status'       => 'Status',
+                        ],
+                    ],
+                ],
 
-				'view' => 'View User',
+                'view' => 'View User',
             ],
         ],
     ],
@@ -102,26 +102,26 @@ return [
     'frontend' => [
 
         'auth' => [
-            'login_box_title' => 'Login',
-            'login_button' => 'Login',
-            'login_with' => 'Login tramite :social_media',
+            'login_box_title'    => 'Login',
+            'login_button'       => 'Login',
+            'login_with'         => 'Login tramite :social_media',
             'register_box_title' => 'Registrazione',
-            'register_button' => 'Registrati',
-            'remember_me' => 'Ricordami',
+            'register_button'    => 'Registrati',
+            'remember_me'        => 'Ricordami',
         ],
 
         'passwords' => [
-            'forgot_password' => 'Password dimenticata?',
-            'reset_password_box_title' => 'Reset password',
-            'reset_password_button' => 'Reset password',
+            'forgot_password'                 => 'Password dimenticata?',
+            'reset_password_box_title'        => 'Reset password',
+            'reset_password_button'           => 'Reset password',
             'send_password_reset_link_button' => 'Invia link per il reset della password',
         ],
 
         'macros' => [
             'country' => [
-                'alpha' => 'Codici di Paese alfabetici',
-                'alpha2' => 'Codici di Paese alfabetici 2',
-                'alpha3' => 'Codici di Paese alfabetici 3',
+                'alpha'   => 'Codici di Paese alfabetici',
+                'alpha2'  => 'Codici di Paese alfabetici 2',
+                'alpha3'  => 'Codici di Paese alfabetici 3',
                 'numeric' => 'Codici di Paese numerici',
             ],
 
@@ -129,10 +129,10 @@ return [
 
             'state' => [
                 'mexico' => 'Elenco di stati del Messico',
-                'us' => [
-                    'us' => 'Stati degli USA',
+                'us'     => [
+                    'us'       => 'Stati degli USA',
                     'outlying' => 'Territori remoti degli USA',
-                    'armed' => 'Forze armate USA',
+                    'armed'    => 'Forze armate USA',
                 ],
             ],
 
@@ -149,12 +149,12 @@ return [
             ],
 
             'profile' => [
-                'avatar' => 'Avatar',
-                'created_at' => 'Data di creazione',
-                'edit_information' => 'Modifica informazioni',
-                'email' => 'E-mail',
-                'last_updated' => 'Ultimo aggiornamento',
-                'name' => 'Nome',
+                'avatar'             => 'Avatar',
+                'created_at'         => 'Data di creazione',
+                'edit_information'   => 'Modifica informazioni',
+                'email'              => 'E-mail',
+                'last_updated'       => 'Ultimo aggiornamento',
+                'name'               => 'Nome',
                 'update_information' => 'Aggiorna informazioni',
             ],
         ],

@@ -18,59 +18,59 @@ return [
             'title' => 'Användare och rättigheter',
 
             'roles' => [
-                'all' => 'Alla roller',
-                'create' => 'Skapa roll',
-                'edit' => 'Redigera roll',
+                'all'        => 'Alla roller',
+                'create'     => 'Skapa roll',
+                'edit'       => 'Redigera roll',
                 'management' => 'Hantera roller',
-                'main' => 'Roller',
+                'main'       => 'Roller',
             ],
 
             'users' => [
-                'all' => 'Alla användare',
+                'all'             => 'Alla användare',
                 'change-password' => 'Byt lösenord',
-                'create' => 'Skapa användare',
-                'deactivated' => 'Inaktiverade användare',
-                'deleted' => 'Raderade användare',
-                'edit' => 'Redigera användare',
-                'main' => 'Användare',
-                'view' => 'View User',
+                'create'          => 'Skapa användare',
+                'deactivated'     => 'Inaktiverade användare',
+                'deleted'         => 'Raderade användare',
+                'edit'            => 'Redigera användare',
+                'main'            => 'Användare',
+                'view'            => 'View User',
             ],
         ],
 
         'log-viewer' => [
-            'main' => 'Loggöversikt',
+            'main'      => 'Loggöversikt',
             'dashboard' => 'Huvudpanelen',
-            'logs' => 'Loggar',
+            'logs'      => 'Loggar',
         ],
 
         'sidebar' => [
             'dashboard' => 'Kontrollpanelen',
-            'general' => 'Adminpanelen',
-            'system' => 'System',
+            'general'   => 'Adminpanelen',
+            'system'    => 'System',
         ],
     ],
 
     'language-picker' => [
         'language' => 'Språk',
-        /**
+        /*
          * Add the new language to this array.
          * The key should have the same language code as the folder name.
          * The string should be: 'Language-name-in-your-own-language (Language-name-in-English)'.
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'ar' => 'Arabiska (Arabic)',
-            'da' => 'Danska (Danish)',
-            'de' => 'Tyska (German)',
-            'el' => '(Greek)',
+            'ar'    => 'Arabiska (Arabic)',
+            'da'    => 'Danska (Danish)',
+            'de'    => 'Tyska (German)',
+            'el'    => '(Greek)',
             'pt_BR' => 'Brasiliansk portugisiska (Brazilian Portuguese)',
-            'en' => 'Engelska (English)',
-            'fr' => 'Franska (French)',
-            'it' => 'Italienska (Italian)',
-            'nl' => 'Holländska (Dutch)',
-            'es' => 'Spanska (Spanish)',
-            'sv' => 'Svenska (Swedish)',
-            'th' => 'Thailändska (Thai)',
+            'en'    => 'Engelska (English)',
+            'fr'    => 'Franska (French)',
+            'it'    => 'Italienska (Italian)',
+            'nl'    => 'Holländska (Dutch)',
+            'es'    => 'Spanska (Spanish)',
+            'sv'    => 'Svenska (Swedish)',
+            'th'    => 'Thailändska (Thai)',
         ],
     ],
 ];

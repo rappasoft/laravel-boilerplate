@@ -2,14 +2,13 @@
 
 namespace App\Helpers\Macros;
 
-use Collective\Html\FormBuilder;
 use App\Helpers\Macros\Traits\Dropdowns;
+use Collective\Html\FormBuilder;
 
 /**
- * Class Macros
- * @package App\Http
+ * Class Macros.
  */
 class Macros extends FormBuilder
 {
-	use Dropdowns;
+    use Dropdowns;
 }

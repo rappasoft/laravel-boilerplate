@@ -4,16 +4,16 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 /**
- * Class AccessTableSeeder
+ * Class AccessTableSeeder.
  */
 class AccessTableSeeder extends Seeder
 {
-	/**
-	 * Run the database seeds.
-	 *
-	 * @return void
-	 */
-	public function run()
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
     {
         if (DB::connection()->getDriverName() == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');

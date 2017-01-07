@@ -5,8 +5,7 @@ namespace App\Models\Access\User;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class SocialLogin
- * @package App\Models\Access\User
+ * Class SocialLogin.
  */
 class SocialLogin extends Model
 {

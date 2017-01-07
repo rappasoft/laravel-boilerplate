@@ -14,87 +14,87 @@ return [
     */
 
     'general' => [
-        'all' => 'ทั้งหมด',
-        'yes' => 'ใช่',
-        'no' => 'ไม่',
-        'custom' => 'เลือกเอง',
+        'all'     => 'ทั้งหมด',
+        'yes'     => 'ใช่',
+        'no'      => 'ไม่',
+        'custom'  => 'เลือกเอง',
         'actions' => 'การกระทำ',
-	'active' => 'ใช้งาน',
+    'active'      => 'ใช้งาน',
         'buttons' => [
-            'save' => 'บันทึก',
+            'save'   => 'บันทึก',
             'update' => 'แก้ไข',
         ],
-        'hide' => 'ซ่อน',
-	'inactive' => 'ไม่ใช้งาน',
-        'none' => 'ไม่มี',
-        'show' => 'แสดง',
+        'hide'              => 'ซ่อน',
+    'inactive'              => 'ไม่ใช้งาน',
+        'none'              => 'ไม่มี',
+        'show'              => 'แสดง',
         'toggle_navigation' => 'เปิด/ปิด เมนูนำทาง',
     ],
 
     'backend' => [
         'access' => [
             'roles' => [
-                'create' => 'สร้างบทบาท',
-                'edit' => 'แก้ไขบทบบาท',
+                'create'     => 'สร้างบทบาท',
+                'edit'       => 'แก้ไขบทบบาท',
                 'management' => 'การจัดการบทบาท',
 
                 'table' => [
                     'number_of_users' => 'จำนวนผู้ใช้',
-                    'permissions' => 'สิทธิ์',
-                    'role' => 'บทบาท',
-                    'sort' => 'เรียงตาม',
-                    'total' => 'บทบาททั้งหมด|บทบาททั้งหมด',
+                    'permissions'     => 'สิทธิ์',
+                    'role'            => 'บทบาท',
+                    'sort'            => 'เรียงตาม',
+                    'total'           => 'บทบาททั้งหมด|บทบาททั้งหมด',
                 ],
             ],
 
             'users' => [
-                'active' => 'ผู้ใช้',
-                'all_permissions' => 'สิทธิ์ทั้งหมด',
-                'change_password' => 'เปลี่ยนรหัสผ่าน',
+                'active'              => 'ผู้ใช้',
+                'all_permissions'     => 'สิทธิ์ทั้งหมด',
+                'change_password'     => 'เปลี่ยนรหัสผ่าน',
                 'change_password_for' => 'เปลี่ยนรหัสผ่านสำหรับ :user',
-                'create' => 'สร้างผู้ใช้',
-                'deactivated' => 'ผู้ใช้ที่ถูกพักการใช้งาน',
-                'deleted' => 'ผู้ใช้ที่ถูกลบ',
-                'edit' => 'แก้ไขผู้ใช้',
-                'management' => 'การจัดการผู้ใช้',
-                'no_permissions' => 'ไม่มีสิทธิ์',
-                'no_roles' => 'ไม่มีบทบาทให้เลือก',
-                'permissions' => 'สิทธิ์',
+                'create'              => 'สร้างผู้ใช้',
+                'deactivated'         => 'ผู้ใช้ที่ถูกพักการใช้งาน',
+                'deleted'             => 'ผู้ใช้ที่ถูกลบ',
+                'edit'                => 'แก้ไขผู้ใช้',
+                'management'          => 'การจัดการผู้ใช้',
+                'no_permissions'      => 'ไม่มีสิทธิ์',
+                'no_roles'            => 'ไม่มีบทบาทให้เลือก',
+                'permissions'         => 'สิทธิ์',
 
                 'table' => [
-                    'confirmed' => 'ยืนยันแล้ว',
-                    'created' => 'สร้างเมื่อ',
-                    'email' => 'อีเมล',
-                    'id' => 'ID',
-                    'last_updated' => 'อัพเดทล่าสุดเมื่อ',
-                    'name' => 'ชื่อ',
+                    'confirmed'      => 'ยืนยันแล้ว',
+                    'created'        => 'สร้างเมื่อ',
+                    'email'          => 'อีเมล',
+                    'id'             => 'ID',
+                    'last_updated'   => 'อัพเดทล่าสุดเมื่อ',
+                    'name'           => 'ชื่อ',
                     'no_deactivated' => 'ไม่มีผู้ใช้ที่ถูกพักการใช้งาน',
-                    'no_deleted' => 'ไม่มีผู้ใช้ที่ถูกลบ',
-                    'roles' => 'บทบาท',
-                    'total' => 'ผู้ใช้ทั้งหมด|ผู้ใช้ทั้งหมด',
+                    'no_deleted'     => 'ไม่มีผู้ใช้ที่ถูกลบ',
+                    'roles'          => 'บทบาท',
+                    'total'          => 'ผู้ใช้ทั้งหมด|ผู้ใช้ทั้งหมด',
                 ],
 
-				'tabs' => [
-					'titles' => [
-						'overview' => 'ภาพรวม',
-						'history' => 'ประวัติ',
-					],
+                'tabs' => [
+                    'titles' => [
+                        'overview' => 'ภาพรวม',
+                        'history'  => 'ประวัติ',
+                    ],
 
-					'content' => [
-						'overview' => [
-							'avatar' => 'รูปตัวแทน',
-							'confirmed' => 'ยืนยันเรียบร้อย',
-							'created_at' => 'สร้างแล้วเมื่อ',
-							'deleted_at' => 'ลบแล้วเมื่อ',
-							'email' => 'อีเมล',
-							'last_updated' => 'ปรับปรุงล่าสุด',
-							'name' => 'ชื่อ',
-							'status' => 'สถานะ',
-						],
-					],
-				],
+                    'content' => [
+                        'overview' => [
+                            'avatar'       => 'รูปตัวแทน',
+                            'confirmed'    => 'ยืนยันเรียบร้อย',
+                            'created_at'   => 'สร้างแล้วเมื่อ',
+                            'deleted_at'   => 'ลบแล้วเมื่อ',
+                            'email'        => 'อีเมล',
+                            'last_updated' => 'ปรับปรุงล่าสุด',
+                            'name'         => 'ชื่อ',
+                            'status'       => 'สถานะ',
+                        ],
+                    ],
+                ],
 
-				'view' => 'แสดงผู้ใช้',
+                'view' => 'แสดงผู้ใช้',
             ],
         ],
     ],
@@ -102,26 +102,26 @@ return [
     'frontend' => [
 
         'auth' => [
-            'login_box_title' => 'เข้าสู่ระบบ',
-            'login_button' => 'เข้าสู่ระบบ',
-            'login_with' => 'เข้าสู่ระบบด้วย :social_media',
+            'login_box_title'    => 'เข้าสู่ระบบ',
+            'login_button'       => 'เข้าสู่ระบบ',
+            'login_with'         => 'เข้าสู่ระบบด้วย :social_media',
             'register_box_title' => 'ลงทะเบียน',
-            'register_button' => 'ลงทะเบียน',
-            'remember_me' => 'จดจำฉัน',
+            'register_button'    => 'ลงทะเบียน',
+            'remember_me'        => 'จดจำฉัน',
         ],
 
         'passwords' => [
-            'forgot_password' => 'ลืมรหัสผ่าน?',
-            'reset_password_box_title' => 'รีเซ็ตรหัสผ่าน',
-            'reset_password_button' => 'รีเซ็ตรหัสผ่าน',
+            'forgot_password'                 => 'ลืมรหัสผ่าน?',
+            'reset_password_box_title'        => 'รีเซ็ตรหัสผ่าน',
+            'reset_password_button'           => 'รีเซ็ตรหัสผ่าน',
             'send_password_reset_link_button' => 'ส่งลิงก์สำหรับรีเซ็ตรหัสผ่าน',
         ],
 
         'macros' => [
             'country' => [
-                'alpha' => 'รหัสประเทศชนิดตัวอักษร',
-                'alpha2' => 'รหัสประเทศชนิดสองตัวอักษร',
-                'alpha3' => 'รหัสประเทศชนิดสามตัวอักษร',
+                'alpha'   => 'รหัสประเทศชนิดตัวอักษร',
+                'alpha2'  => 'รหัสประเทศชนิดสองตัวอักษร',
+                'alpha3'  => 'รหัสประเทศชนิดสามตัวอักษร',
                 'numeric' => 'รหัสประเทศชนิดตัวเลข',
             ],
 
@@ -129,10 +129,10 @@ return [
 
             'state' => [
                 'mexico' => 'รายชื่อรัฐในเม็กซิโก',
-                'us' => [
-                    'us' => 'รัฐในสหรัฐอเมริกา',
+                'us'     => [
+                    'us'       => 'รัฐในสหรัฐอเมริกา',
                     'outlying' => 'อาณาเขตรอบนอกของสหรัฐ',
-                    'armed' => 'กองทัพสหรัฐ',
+                    'armed'    => 'กองทัพสหรัฐ',
                 ],
             ],
 
@@ -149,12 +149,12 @@ return [
             ],
 
             'profile' => [
-                'avatar' => 'รูปตัวแทน',
-                'created_at' => 'สร้างเมื่อ',
-                'edit_information' => 'แก้ไขข้อมูล',
-                'email' => 'อีเมล',
-                'last_updated' => 'ปรับปรุงล่าสุดเมื่อ',
-                'name' => 'ชื่อ',
+                'avatar'             => 'รูปตัวแทน',
+                'created_at'         => 'สร้างเมื่อ',
+                'edit_information'   => 'แก้ไขข้อมูล',
+                'email'              => 'อีเมล',
+                'last_updated'       => 'ปรับปรุงล่าสุดเมื่อ',
+                'name'               => 'ชื่อ',
                 'update_information' => 'ปรับปรุงข้อมูล',
             ],
         ],

@@ -6,15 +6,14 @@ use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 
 /**
- * Class UserLoggedIn
- * @package App\Events\Frontend\Auth
+ * Class UserLoggedIn.
  */
 class UserLoggedIn extends Event
 {
     use SerializesModels;
 
     /**
-     * @var $user
+     * @var
      */
     public $user;
 
