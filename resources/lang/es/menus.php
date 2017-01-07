@@ -18,59 +18,59 @@ return [
             'title' => 'Administración de acceso',
 
             'roles' => [
-                'all' => 'Todos los Roles',
-                'create' => 'Nuevo Rol',
-                'edit' => 'Modificar Rol',
+                'all'        => 'Todos los Roles',
+                'create'     => 'Nuevo Rol',
+                'edit'       => 'Modificar Rol',
                 'management' => 'Administración de Roles',
-                'main' => 'Roles',
+                'main'       => 'Roles',
             ],
 
             'users' => [
-                'all' => 'Todos los Usuarios',
+                'all'             => 'Todos los Usuarios',
                 'change-password' => 'Cambiar la contraseña',
-                'create' => 'Nuevo Usuario',
-                'deactivated' => 'Usuarios Desactivados',
-                'deleted' => 'Usuarios Eliminados',
-                'edit' => 'Modificar Usuario',
-                'main' => 'Usuario',
-                'view' => 'Ver Usuario',
+                'create'          => 'Nuevo Usuario',
+                'deactivated'     => 'Usuarios Desactivados',
+                'deleted'         => 'Usuarios Eliminados',
+                'edit'            => 'Modificar Usuario',
+                'main'            => 'Usuario',
+                'view'            => 'Ver Usuario',
             ],
         ],
 
         'log-viewer' => [
-            'main' => 'Gestór de Logs',
+            'main'      => 'Gestór de Logs',
             'dashboard' => 'Principal',
-            'logs' => 'Logs',
+            'logs'      => 'Logs',
         ],
 
         'sidebar' => [
             'dashboard' => 'Principal',
-            'general' => 'General',
-            'system' => 'Sistema',
+            'general'   => 'General',
+            'system'    => 'Sistema',
         ],
     ],
 
     'language-picker' => [
         'language' => 'Idioma',
-        /**
+        /*
          * Add the new language to this array.
          * The key should have the same language code as the folder name.
          * The string should be: 'Language-name-in-your-own-language (Language-name-in-English)'.
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'ar' => 'العربية (Arabic)',
-            'da' => 'Danés (Danish)',
-            'de' => 'Alemán (German)',
-            'el' => '(Greek)',
-            'en' => 'Inglés (English)',
-            'es' => 'Español (Spanish)',
-            'fr' => 'Francés (French)',
-            'it' => 'Italiano (Italian)',
-            'nl' => 'Holandés (Dutch)',
+            'ar'    => 'العربية (Arabic)',
+            'da'    => 'Danés (Danish)',
+            'de'    => 'Alemán (German)',
+            'el'    => '(Greek)',
+            'en'    => 'Inglés (English)',
+            'es'    => 'Español (Spanish)',
+            'fr'    => 'Francés (French)',
+            'it'    => 'Italiano (Italian)',
+            'nl'    => 'Holandés (Dutch)',
             'pt_BR' => 'Portugués Brasileño',
-            'sv' => 'Sueco (Swedish)',
-            'th' => 'Thai',
+            'sv'    => 'Sueco (Swedish)',
+            'th'    => 'Thai',
         ],
     ],
 ];

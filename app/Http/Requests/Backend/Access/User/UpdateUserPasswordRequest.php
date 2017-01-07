@@ -5,8 +5,7 @@ namespace App\Http\Requests\Backend\Access\User;
 use App\Http\Requests\Request;
 
 /**
- * Class UpdateUserPasswordRequest
- * @package App\Http\Requests\Backend\Access\User
+ * Class UpdateUserPasswordRequest.
  */
 class UpdateUserPasswordRequest extends Request
 {

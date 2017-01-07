@@ -5,15 +5,15 @@ namespace App\Models\Access\User\Traits;
 use App\Notifications\Frontend\Auth\UserNeedsPasswordReset;
 
 /**
- * Class UserSendPasswordReset
- * @package App\Models\Access\User\Traits
+ * Class UserSendPasswordReset.
  */
 trait UserSendPasswordReset
 {
     /**
      * Send the password reset notification.
      *
-     * @param  string  $token
+     * @param string $token
+     *
      * @return void
      */
     public function sendPasswordResetNotification($token)

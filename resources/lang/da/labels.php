@@ -14,87 +14,87 @@ return [
     */
 
     'general' => [
-        'all' => 'Alle',
-        'yes' => 'Ja',
-        'no' => 'Nej',
-        'custom' => 'Brugerdefineret',
+        'all'     => 'Alle',
+        'yes'     => 'Ja',
+        'no'      => 'Nej',
+        'custom'  => 'Brugerdefineret',
         'actions' => 'Handlinger',
-		'active' => 'Active',
+        'active'  => 'Active',
         'buttons' => [
-            'save' => 'Gem',
+            'save'   => 'Gem',
             'update' => 'Opdater',
         ],
-        'hide' => 'Skjul',
-		'inactive' => 'Inactive',
-        'none' => 'Ingen',
-        'show' => 'Vis',
+        'hide'              => 'Skjul',
+        'inactive'          => 'Inactive',
+        'none'              => 'Ingen',
+        'show'              => 'Vis',
         'toggle_navigation' => 'Navigation',
     ],
 
     'backend' => [
         'access' => [
             'roles' => [
-                'create' => 'Opret Rolle',
-                'edit' => 'Opdater Rolle',
+                'create'     => 'Opret Rolle',
+                'edit'       => 'Opdater Rolle',
                 'management' => 'Rolleadministration',
 
                 'table' => [
                     'number_of_users' => 'Antal Brugere',
-                    'permissions' => 'Rettigheder',
-                    'role' => 'Rolle',
-                    'sort' => 'Sortér',
-                    'total' => 'rolle i alt|roller i alt',
+                    'permissions'     => 'Rettigheder',
+                    'role'            => 'Rolle',
+                    'sort'            => 'Sortér',
+                    'total'           => 'rolle i alt|roller i alt',
                 ],
             ],
 
             'users' => [
-                'active' => 'Aktive Brugere',
-                'all_permissions' => 'Alle Rettigheder',
-                'change_password' => 'Skift Adgangskode',
+                'active'              => 'Aktive Brugere',
+                'all_permissions'     => 'Alle Rettigheder',
+                'change_password'     => 'Skift Adgangskode',
                 'change_password_for' => 'Skift Adgangskode for :user',
-                'create' => 'Opret Bruger',
-                'deactivated' => 'Deaktiverde Brugere',
-                'deleted' => 'Slettede Brugere',
-                'edit' => 'Rediger Bruger',
-                'management' => 'Brugeradministration',
-                'no_permissions' => 'Ingen Rettigheder',
-                'no_roles' => 'Ingen Rolle valgt.',
-                'permissions' => 'Rettigheder',
+                'create'              => 'Opret Bruger',
+                'deactivated'         => 'Deaktiverde Brugere',
+                'deleted'             => 'Slettede Brugere',
+                'edit'                => 'Rediger Bruger',
+                'management'          => 'Brugeradministration',
+                'no_permissions'      => 'Ingen Rettigheder',
+                'no_roles'            => 'Ingen Rolle valgt.',
+                'permissions'         => 'Rettigheder',
 
                 'table' => [
-                    'confirmed' => 'Bekræftet',
-                    'created' => 'Oprettet',
-                    'email' => 'Email',
-                    'id' => 'Id',
-                    'last_updated' => 'Sidst Opdateret',
-                    'name' => 'Navn',
+                    'confirmed'      => 'Bekræftet',
+                    'created'        => 'Oprettet',
+                    'email'          => 'Email',
+                    'id'             => 'Id',
+                    'last_updated'   => 'Sidst Opdateret',
+                    'name'           => 'Navn',
                     'no_deactivated' => 'Ingen Deaktiverede Brugere',
-                    'no_deleted' => 'Ingen Slettede Brugere',
-                    'roles' => 'Roller',
-                    'total' => 'bruger i alt|brugere i alt',
+                    'no_deleted'     => 'Ingen Slettede Brugere',
+                    'roles'          => 'Roller',
+                    'total'          => 'bruger i alt|brugere i alt',
                 ],
 
-				'tabs' => [
-					'titles' => [
-						'overview' => 'Overview',
-						'history' => 'History',
-					],
+                'tabs' => [
+                    'titles' => [
+                        'overview' => 'Overview',
+                        'history'  => 'History',
+                    ],
 
-					'content' => [
-						'overview' => [
-							'avatar' => 'Avatar',
-							'confirmed' => 'Confirmed',
-							'created_at' => 'Created At',
-							'deleted_at' => 'Deleted At',
-							'email' => 'E-mail',
-							'last_updated' => 'Last Updated',
-							'name' => 'Name',
-							'status' => 'Status',
-						],
-					],
-				],
+                    'content' => [
+                        'overview' => [
+                            'avatar'       => 'Avatar',
+                            'confirmed'    => 'Confirmed',
+                            'created_at'   => 'Created At',
+                            'deleted_at'   => 'Deleted At',
+                            'email'        => 'E-mail',
+                            'last_updated' => 'Last Updated',
+                            'name'         => 'Name',
+                            'status'       => 'Status',
+                        ],
+                    ],
+                ],
 
-				'view' => 'View User',
+                'view' => 'View User',
             ],
         ],
     ],
@@ -102,26 +102,26 @@ return [
     'frontend' => [
 
         'auth' => [
-            'login_box_title' => 'Log ind',
-            'login_button' => 'Log ind',
-            'login_with' => 'Log ind med :social_media',
+            'login_box_title'    => 'Log ind',
+            'login_button'       => 'Log ind',
+            'login_with'         => 'Log ind med :social_media',
             'register_box_title' => 'Opret',
-            'register_button' => 'Opret',
-            'remember_me' => 'Husk mig',
+            'register_button'    => 'Opret',
+            'remember_me'        => 'Husk mig',
         ],
 
         'passwords' => [
-            'forgot_password' => 'Glemt din adgangskode?',
-            'reset_password_box_title' => 'Nulstil adgangskode',
-            'reset_password_button' => 'Nulstil adgangskode',
+            'forgot_password'                 => 'Glemt din adgangskode?',
+            'reset_password_box_title'        => 'Nulstil adgangskode',
+            'reset_password_button'           => 'Nulstil adgangskode',
             'send_password_reset_link_button' => 'Send link til at nulstille adgangskoden',
         ],
 
         'macros' => [
             'country' => [
-                'alpha' => 'Landekoder',
-                'alpha2' => 'Landekoder (Alfa-2)',
-                'alpha3' => 'Landekode (Alfa-3)',
+                'alpha'   => 'Landekoder',
+                'alpha2'  => 'Landekoder (Alfa-2)',
+                'alpha3'  => 'Landekode (Alfa-3)',
                 'numeric' => 'Landekoder (Numerisk)',
             ],
 
@@ -129,10 +129,10 @@ return [
 
             'state' => [
                 'mexico' => 'Mexicos stater',
-                'us' => [
-                    'us' => 'Amerikanske stater',
+                'us'     => [
+                    'us'       => 'Amerikanske stater',
                     'outlying' => 'Amerikanske oversøiske territorier',
-                    'armed' => 'Amerikanske væbnede styrker',
+                    'armed'    => 'Amerikanske væbnede styrker',
                 ],
             ],
 
@@ -149,12 +149,12 @@ return [
             ],
 
             'profile' => [
-                'avatar' => 'Avatar',
-                'created_at' => 'Oprettet den',
-                'edit_information' => 'Rediger information',
-                'email' => 'Email',
-                'last_updated' => 'Sidst opdateret',
-                'name' => 'Navn',
+                'avatar'             => 'Avatar',
+                'created_at'         => 'Oprettet den',
+                'edit_information'   => 'Rediger information',
+                'email'              => 'Email',
+                'last_updated'       => 'Sidst opdateret',
+                'name'               => 'Navn',
                 'update_information' => 'Opdater information',
             ],
         ],

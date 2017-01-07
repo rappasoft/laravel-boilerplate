@@ -5,8 +5,7 @@ namespace App\Http\Middleware;
 use Illuminate\Cookie\Middleware\EncryptCookies as BaseEncrypter;
 
 /**
- * Class EncryptCookies
- * @package App\Http\Middleware
+ * Class EncryptCookies.
  */
 class EncryptCookies extends BaseEncrypter
 {

@@ -5,34 +5,32 @@ namespace App\Http\Middleware;
 use Closure;
 
 /**
- * Class RouteNeedsRole
- * @package App\Http\Middleware
+ * Class RouteNeedsRole.
  */
 class RouteNeedsRole
 {
-
-	/**
+    /**
      * @param $request
      * @param Closure $next
      * @param $role
      * @param bool $needsAll
+     *
      * @return mixed
      */
     public function handle($request, Closure $next, $role, $needsAll = false)
     {
-        /**
+        /*
          * Roles array
          */
-        if (strpos($role, ";") !== false) {
-            $roles = explode(";", $role);
-            $access = access()->hasRoles($roles, ($needsAll === "true" ? true : false));
+        if (strpos($role, ';') !== false) {
+            $roles = explode(';', $role);
+            $access = access()->hasRoles($roles, ($needsAll === 'true' ? true : false));
         } else {
             /**
-             * Single role
+             * Single role.
              */
             $access = access()->hasRole($role);
         }
-
 
         if (! $access) {
             return redirect()

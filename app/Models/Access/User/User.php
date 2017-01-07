@@ -12,25 +12,24 @@ use App\Models\Access\User\Traits\Attribute\UserAttribute;
 use App\Models\Access\User\Traits\Relationship\UserRelationship;
 
 /**
- * Class User
- * @package App\Models\Access\User
+ * Class User.
  */
 class User extends Authenticatable
 {
     use UserScope,
-		UserAccess,
-		Notifiable,
-		SoftDeletes,
-		UserAttribute,
-		UserRelationship,
-		UserSendPasswordReset;
+        UserAccess,
+        Notifiable,
+        SoftDeletes,
+        UserAttribute,
+        UserRelationship,
+        UserSendPasswordReset;
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table;
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table;
 
     /**
      * The attributes that are mass assignable.
@@ -51,12 +50,12 @@ class User extends Authenticatable
      */
     protected $dates = ['deleted_at'];
 
-	/**
-	 * @param array $attributes
-	 */
-	public function __construct(array $attributes = [])
-	{
-		parent::__construct($attributes);
-		$this->table = config('access.users_table');
-	}
+    /**
+     * @param array $attributes
+     */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->table = config('access.users_table');
+    }
 }

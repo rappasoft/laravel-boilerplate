@@ -21,13 +21,13 @@ return [
         ],
 
         'users' => [
-            'confirmation_email' => 'A new confirmation e-mail has been sent to the address on file.',
-            'created' => 'The user was successfully created.',
-            'deleted' => 'The user was successfully deleted.',
+            'confirmation_email'  => 'A new confirmation e-mail has been sent to the address on file.',
+            'created'             => 'The user was successfully created.',
+            'deleted'             => 'The user was successfully deleted.',
             'deleted_permanently' => 'The user was deleted permanently.',
-            'restored' => 'The user was successfully restored.',
-            'updated' => 'The user was successfully updated.',
-            'updated_password' => "The user's password was successfully updated.",
-        ]
+            'restored'            => 'The user was successfully restored.',
+            'updated'             => 'The user was successfully updated.',
+            'updated_password'    => "The user's password was successfully updated.",
+        ],
     ],
 ];

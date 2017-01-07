@@ -6,8 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Access\Permission\Traits\Relationship\PermissionRelationship;
 
 /**
- * Class Permission
- * @package App\Models\Access\Permission
+ * Class Permission.
  */
 class Permission extends Model
 {

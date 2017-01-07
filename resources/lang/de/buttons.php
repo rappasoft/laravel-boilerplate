@@ -16,13 +16,13 @@ return [
     'backend' => [
         'access' => [
             'users' => [
-                'activate' => 'Aktivieren',
-                'change_password' => 'Passwort Ändern',
-                'deactivate' => 'Deaktivieren',
+                'activate'           => 'Aktivieren',
+                'change_password'    => 'Passwort Ändern',
+                'deactivate'         => 'Deaktivieren',
                 'delete_permanently' => 'Permanent löschen',
-                'login_as' => 'Login As :user',
-                'resend_email' => 'Aktivierungsmail erneut senden',
-                'restore_user' => 'Benutzer wiederherstellen',
+                'login_as'           => 'Login As :user',
+                'resend_email'       => 'Aktivierungsmail erneut senden',
+                'restore_user'       => 'Benutzer wiederherstellen',
             ],
         ],
     ],
@@ -30,7 +30,7 @@ return [
     'emails' => [
         'auth' => [
             'confirm_account' => 'Confirm Account',
-            'reset_password' => 'Reset Password',
+            'reset_password'  => 'Reset Password',
         ],
     ],
 
@@ -40,9 +40,9 @@ return [
         'crud' => [
             'create' => 'Erstellen',
             'delete' => 'Löschen',
-            'edit' => 'Bearbeiten',
+            'edit'   => 'Bearbeiten',
             'update' => 'Aktualisieren',
-			'view' => 'View',
+            'view'   => 'View',
         ],
 
         'save' => 'Speichern',

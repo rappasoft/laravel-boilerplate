@@ -16,13 +16,13 @@ return [
     'backend' => [
         'access' => [
             'users' => [
-                'activate' => 'Aktivér',
-                'change_password' => 'Skift adgangskode',
-                'deactivate' => 'Deaktiver',
+                'activate'           => 'Aktivér',
+                'change_password'    => 'Skift adgangskode',
+                'deactivate'         => 'Deaktiver',
                 'delete_permanently' => 'Slet permanent',
-                'login_as' => 'Log ind som :user',
-                'resend_email' => 'Gensend bekræftelsesmail',
-                'restore_user' => 'Genskab bruger',
+                'login_as'           => 'Log ind som :user',
+                'resend_email'       => 'Gensend bekræftelsesmail',
+                'restore_user'       => 'Genskab bruger',
             ],
         ],
     ],
@@ -30,7 +30,7 @@ return [
     'emails' => [
         'auth' => [
             'confirm_account' => 'Confirm Account',
-            'reset_password' => 'Reset Password',
+            'reset_password'  => 'Reset Password',
         ],
     ],
 
@@ -40,9 +40,9 @@ return [
         'crud' => [
             'create' => 'Opret',
             'delete' => 'Slet',
-            'edit' => 'Rediger',
+            'edit'   => 'Rediger',
             'update' => 'Opdater',
-			'view' => 'View',
+            'view'   => 'View',
         ],
 
         'save' => 'Gem',

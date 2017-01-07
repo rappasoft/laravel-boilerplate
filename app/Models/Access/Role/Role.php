@@ -9,15 +9,14 @@ use App\Models\Access\Role\Traits\Attribute\RoleAttribute;
 use App\Models\Access\Role\Traits\Relationship\RoleRelationship;
 
 /**
- * Class Role
- * @package App\Models\Access\Role
+ * Class Role.
  */
 class Role extends Model
 {
     use RoleScope,
-		RoleAccess,
-		RoleAttribute,
-		RoleRelationship;
+        RoleAccess,
+        RoleAttribute,
+        RoleRelationship;
 
     /**
      * The database table used by the model.

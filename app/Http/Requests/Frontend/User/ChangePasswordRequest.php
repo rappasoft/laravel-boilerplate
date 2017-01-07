@@ -5,8 +5,7 @@ namespace App\Http\Requests\Frontend\User;
 use App\Http\Requests\Request;
 
 /**
- * Class ChangePasswordRequest
- * @package App\Http\Requests\Frontend\Access
+ * Class ChangePasswordRequest.
  */
 class ChangePasswordRequest extends Request
 {

@@ -12,10 +12,10 @@ Breadcrumbs::register('admin.log-viewer::logs.list', function ($breadcrumbs) {
 
 Breadcrumbs::register('admin.log-viewer::logs.show', function ($breadcrumbs, $date) {
     $breadcrumbs->parent('admin.log-viewer::logs.list');
-    $breadcrumbs->push($date, url('admin/log-viewer/' . $date));
+    $breadcrumbs->push($date, url('admin/log-viewer/'.$date));
 });
 
 Breadcrumbs::register('admin.log-viewer::logs.filter', function ($breadcrumbs, $date, $filter) {
     $breadcrumbs->parent('admin.log-viewer::logs.show', $date);
-    $breadcrumbs->push(ucfirst($filter), url('admin/log-viewer/' . $date . '/' . $filter));
+    $breadcrumbs->push(ucfirst($filter), url('admin/log-viewer/'.$date.'/'.$filter));
 });

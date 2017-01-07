@@ -14,87 +14,87 @@ return [
     */
 
     'general' => [
-        'all' => 'Όλα',
-        'yes' => 'Ναι',
-        'no' => 'Όχι',
-        'custom' => 'Custom',
+        'all'     => 'Όλα',
+        'yes'     => 'Ναι',
+        'no'      => 'Όχι',
+        'custom'  => 'Custom',
         'actions' => 'Ενέργειες',
-		'active' => 'Ενεργό',
+        'active'  => 'Ενεργό',
         'buttons' => [
-            'save' => 'Αποθήκευση',
+            'save'   => 'Αποθήκευση',
             'update' => 'Ανανέωση',
         ],
-        'hide' => 'Απόκρυψη',
-		'inactive' => 'Ανενεργό',
-        'none' => 'Κανένα',
-        'show' => 'Εμφάνιση',
+        'hide'              => 'Απόκρυψη',
+        'inactive'          => 'Ανενεργό',
+        'none'              => 'Κανένα',
+        'show'              => 'Εμφάνιση',
         'toggle_navigation' => 'Αλλαγή περιήγησης',
     ],
 
     'backend' => [
         'access' => [
             'roles' => [
-                'create' => 'Δημιουργία ρόλου',
-                'edit' => 'Επεξεργασία ρόλου',
+                'create'     => 'Δημιουργία ρόλου',
+                'edit'       => 'Επεξεργασία ρόλου',
                 'management' => 'Διαχείριση ρόλων',
 
                 'table' => [
                     'number_of_users' => 'Αριθμός χρηστών',
-                    'permissions' => 'Άδειες',
-                    'role' => 'Ρόλος',
-                    'sort' => 'Ταξινόμησε',
-                    'total' => 'σύνολο ρόλου|σύνολο ρόλων',
+                    'permissions'     => 'Άδειες',
+                    'role'            => 'Ρόλος',
+                    'sort'            => 'Ταξινόμησε',
+                    'total'           => 'σύνολο ρόλου|σύνολο ρόλων',
                 ],
             ],
 
             'users' => [
-                'active' => 'Ενεργοί χρήστες',
-                'all_permissions' => 'Όλες οι άδειες',
-                'change_password' => 'Αλλαγή κωδικού',
+                'active'              => 'Ενεργοί χρήστες',
+                'all_permissions'     => 'Όλες οι άδειες',
+                'change_password'     => 'Αλλαγή κωδικού',
                 'change_password_for' => 'Αλλαγή κωδικού για τον :user',
-                'create' => 'Δημιουργία χρήστη',
-                'deactivated' => 'Ανενεργοί χρήστες',
-                'deleted' => '΄Διεγραμμένοι χρήστες',
-                'edit' => 'Έπεξεργασία χρήστη',
-                'management' => '΄Διαχείριση χρήστη',
-                'no_permissions' => 'Χωρίς άδειες',
-                'no_roles' => 'No Roles to set.',
-                'permissions' => 'Άδειες',
+                'create'              => 'Δημιουργία χρήστη',
+                'deactivated'         => 'Ανενεργοί χρήστες',
+                'deleted'             => '΄Διεγραμμένοι χρήστες',
+                'edit'                => 'Έπεξεργασία χρήστη',
+                'management'          => '΄Διαχείριση χρήστη',
+                'no_permissions'      => 'Χωρίς άδειες',
+                'no_roles'            => 'No Roles to set.',
+                'permissions'         => 'Άδειες',
 
                 'table' => [
-                    'confirmed' => 'Επιβεβαιώθηκε',
-                    'created' => 'Δημιουργήθηκε',
-                    'email' => 'E-mail',
-                    'id' => 'ID',
-                    'last_updated' => 'Τελευταία ενημέρωση',
-                    'name' => 'Όνομα',
+                    'confirmed'      => 'Επιβεβαιώθηκε',
+                    'created'        => 'Δημιουργήθηκε',
+                    'email'          => 'E-mail',
+                    'id'             => 'ID',
+                    'last_updated'   => 'Τελευταία ενημέρωση',
+                    'name'           => 'Όνομα',
                     'no_deactivated' => 'Δεν υπάρχουν ανενεργοί χρήστες',
-                    'no_deleted' => 'Δεν υπάρχουν διεγραμμένοι χρήστες',
-                    'roles' => '΄Ρόλοι',
-                    'total' => 'user total|users total',
+                    'no_deleted'     => 'Δεν υπάρχουν διεγραμμένοι χρήστες',
+                    'roles'          => '΄Ρόλοι',
+                    'total'          => 'user total|users total',
                 ],
 
-				'tabs' => [
-					'titles' => [
-						'overview' => 'Overview',
-						'history' => 'Ιστορία',
-					],
+                'tabs' => [
+                    'titles' => [
+                        'overview' => 'Overview',
+                        'history'  => 'Ιστορία',
+                    ],
 
-					'content' => [
-						'overview' => [
-							'avatar' => 'Avatar',
-							'confirmed' => 'Επιβεβαιωμένο',
-							'created_at' => 'Δημιουργήθηκε την',
-							'deleted_at' => 'Διαγράφηκε την',
-							'email' => 'E-mail',
-							'last_updated' => 'Τελευταία ενημέρωση',
-							'name' => 'Όνομα',
-							'status' => 'Status',
-						],
-					],
-				],
+                    'content' => [
+                        'overview' => [
+                            'avatar'       => 'Avatar',
+                            'confirmed'    => 'Επιβεβαιωμένο',
+                            'created_at'   => 'Δημιουργήθηκε την',
+                            'deleted_at'   => 'Διαγράφηκε την',
+                            'email'        => 'E-mail',
+                            'last_updated' => 'Τελευταία ενημέρωση',
+                            'name'         => 'Όνομα',
+                            'status'       => 'Status',
+                        ],
+                    ],
+                ],
 
-				'view' => 'Δες το χρήστη',
+                'view' => 'Δες το χρήστη',
             ],
         ],
     ],
@@ -102,26 +102,26 @@ return [
     'frontend' => [
 
         'auth' => [
-            'login_box_title' => 'Σύνδεση',
-            'login_button' => 'Σύνδεση',
-            'login_with' => 'Συνδέσου με :social_media',
+            'login_box_title'    => 'Σύνδεση',
+            'login_button'       => 'Σύνδεση',
+            'login_with'         => 'Συνδέσου με :social_media',
             'register_box_title' => 'Εγγραφή',
-            'register_button' => 'Εγγραφή',
-            'remember_me' => 'Θυμήσου με',
+            'register_button'    => 'Εγγραφή',
+            'remember_me'        => 'Θυμήσου με',
         ],
 
         'passwords' => [
-            'forgot_password' => 'Forgot Your Password?',
-            'reset_password_box_title' => 'Reset Password',
-            'reset_password_button' => 'Reset Password',
+            'forgot_password'                 => 'Forgot Your Password?',
+            'reset_password_box_title'        => 'Reset Password',
+            'reset_password_button'           => 'Reset Password',
             'send_password_reset_link_button' => 'Send Password Reset Link',
         ],
 
         'macros' => [
             'country' => [
-                'alpha' => 'Country Alpha Codes',
-                'alpha2' => 'Country Alpha 2 Codes',
-                'alpha3' => 'Country Alpha 3 Codes',
+                'alpha'   => 'Country Alpha Codes',
+                'alpha2'  => 'Country Alpha 2 Codes',
+                'alpha3'  => 'Country Alpha 3 Codes',
                 'numeric' => 'Country Numeric Codes',
             ],
 
@@ -129,10 +129,10 @@ return [
 
             'state' => [
                 'mexico' => 'Mexico State List',
-                'us' => [
-                    'us' => 'US States',
+                'us'     => [
+                    'us'       => 'US States',
                     'outlying' => 'US Outlying Territories',
-                    'armed' => 'US Armed Forces',
+                    'armed'    => 'US Armed Forces',
                 ],
             ],
 
@@ -149,12 +149,12 @@ return [
             ],
 
             'profile' => [
-                'avatar' => 'Avatar',
-                'created_at' => 'Δημιουργήθηκε την',
-                'edit_information' => 'Επεξεργασία πληροφοριών',
-                'email' => 'E-mail',
-                'last_updated' => 'Τελευταία ανανέωση',
-                'name' => 'Name',
+                'avatar'             => 'Avatar',
+                'created_at'         => 'Δημιουργήθηκε την',
+                'edit_information'   => 'Επεξεργασία πληροφοριών',
+                'email'              => 'E-mail',
+                'last_updated'       => 'Τελευταία ανανέωση',
+                'name'               => 'Name',
                 'update_information' => 'Ανανέωση πληροφοριών',
             ],
         ],

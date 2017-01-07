@@ -8,8 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 /**
- * Class Controller
- * @package App\Http\Controllers
+ * Class Controller.
  */
 class Controller extends BaseController
 {

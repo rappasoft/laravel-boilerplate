@@ -6,8 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Broadcast;
 
 /**
- * Class BroadcastServiceProvider
- * @package App\Providers
+ * Class BroadcastServiceProvider.
  */
 class BroadcastServiceProvider extends ServiceProvider
 {

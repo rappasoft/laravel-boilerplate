@@ -3,10 +3,9 @@
 namespace App\Events;
 
 /**
- * Class Event
- * @package App\Events
+ * Class Event.
  */
 abstract class Event
 {
-	//
+    //
 }
