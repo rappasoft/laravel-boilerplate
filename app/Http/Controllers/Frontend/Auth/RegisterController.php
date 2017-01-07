@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
-use App\Events\Frontend\Auth\UserRegistered;
 use App\Http\Controllers\Controller;
+use App\Events\Frontend\Auth\UserRegistered;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Requests\Frontend\Auth\RegisterRequest;
 use App\Repositories\Frontend\Access\User\UserRepository;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
 /**
  * Class RegisterController.

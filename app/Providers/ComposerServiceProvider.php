@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Http\Composers\GlobalComposer;
 use Illuminate\Support\Facades\View;
+use App\Http\Composers\GlobalComposer;
 use Illuminate\Support\ServiceProvider;
 
 /**

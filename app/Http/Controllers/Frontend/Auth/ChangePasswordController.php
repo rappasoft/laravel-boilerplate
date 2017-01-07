@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Frontend\User\ChangePasswordRequest;
 use App\Repositories\Frontend\Access\User\UserRepository;
+use App\Http\Requests\Frontend\User\ChangePasswordRequest;
 
 /**
  * Class ChangePasswordController.

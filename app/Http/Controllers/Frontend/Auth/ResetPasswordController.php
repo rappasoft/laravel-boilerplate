@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Repositories\Frontend\Access\User\UserRepository;
-use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\ResetsPasswords;
+use App\Repositories\Frontend\Access\User\UserRepository;
 
 /**
  * Class ResetPasswordController.

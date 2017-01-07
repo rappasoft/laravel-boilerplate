@@ -2,8 +2,8 @@
 
 namespace App\Helpers\Macros;
 
-use App\Helpers\Macros\Traits\Dropdowns;
 use Collective\Html\FormBuilder;
+use App\Helpers\Macros\Traits\Dropdowns;
 
 /**
  * Class Macros.

@@ -2,15 +2,15 @@
 
 namespace App\Repositories\Frontend\Access\User;
 
-use App\Events\Frontend\Auth\UserConfirmed;
-use App\Exceptions\GeneralException;
-use App\Models\Access\User\SocialLogin;
 use App\Models\Access\User\User;
-use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Repositories\Repository;
 use Illuminate\Support\Facades\DB;
+use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Access\User\SocialLogin;
+use App\Events\Frontend\Auth\UserConfirmed;
+use App\Repositories\Backend\Access\Role\RoleRepository;
+use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 
 /**
  * Class UserRepository.
@@ -137,7 +137,7 @@ class UserRepository extends Repository
          * The true flag indicate that it is a social account
          * Which triggers the script to use some default values in the create method
          */
-        if (!$user) {
+        if (! $user) {
             $user = $this->create([
                 'name'  => $data->name,
                 'email' => $user_email,
@@ -147,7 +147,7 @@ class UserRepository extends Repository
         /*
          * See if the user has logged in with this social account before
          */
-        if (!$user->hasProvider($provider)) {
+        if (! $user->hasProvider($provider)) {
             /*
              * Gather the provider data for saving and associate it with the user
              */

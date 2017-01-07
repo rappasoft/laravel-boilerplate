@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
-use App\Exceptions\GeneralException;
 use App\Helpers\Auth\Auth;
+use App\Models\Access\User\User;
+use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
-use App\Models\Access\User\User;
 
 /**
  * Class UserAccessController.

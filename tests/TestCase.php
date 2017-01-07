@@ -2,9 +2,9 @@
 
 use App\Models\Access\Role\Role;
 use App\Models\Access\User\User;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
  * Class TestCase.

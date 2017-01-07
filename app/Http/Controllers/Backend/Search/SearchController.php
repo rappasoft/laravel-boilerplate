@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Backend\Search;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 /**
  * Class SearchController.
@@ -17,7 +17,7 @@ class SearchController extends Controller
      */
     public function index(Request $request)
     {
-        if (!$request->has('q')) {
+        if (! $request->has('q')) {
             return redirect()
                 ->route('admin.dashboard')
                 ->withFlashDanger(trans('strings.backend.search.empty'));

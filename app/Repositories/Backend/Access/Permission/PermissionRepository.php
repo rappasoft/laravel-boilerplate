@@ -2,8 +2,8 @@
 
 namespace App\Repositories\Backend\Access\Permission;
 
-use App\Models\Access\Permission\Permission;
 use App\Repositories\Repository;
+use App\Models\Access\Permission\Permission;
 
 /**
  * Class PermissionRepository.

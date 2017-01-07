@@ -32,7 +32,7 @@ class RouteNeedsPermission
             $access = access()->allow($permission);
         }
 
-        if (!$access) {
+        if (! $access) {
             return redirect()
                 ->route('frontend.index')
                 ->withFlashDanger(trans('auth.general_error'));

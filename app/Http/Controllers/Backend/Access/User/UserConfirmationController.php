@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Models\Access\User\User;
+use App\Http\Controllers\Controller;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 
 /**
  * Class UserConfirmationController.

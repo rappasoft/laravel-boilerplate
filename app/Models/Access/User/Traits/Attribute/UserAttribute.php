@@ -20,7 +20,7 @@ trait UserAttribute
      */
     public function canChangePassword()
     {
-        return !app('session')->has(config('access.socialite_session_name'));
+        return ! app('session')->has(config('access.socialite_session_name'));
     }
 
     /**
@@ -62,7 +62,7 @@ trait UserAttribute
      */
     public function getPicture($size = false)
     {
-        if (!$size) {
+        if (! $size) {
             $size = config('gravatar.default.size');
         }
 
@@ -160,7 +160,7 @@ trait UserAttribute
      */
     public function getConfirmedButtonAttribute()
     {
-        if (!$this->isConfirmed()) {
+        if (! $this->isConfirmed()) {
             return '<a href="'.route('admin.access.user.account.confirm.resend', $this).'" class="btn btn-xs btn-success"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title='.trans('buttons.backend.access.users.resend_email').'"></i></a> ';
         }
 
@@ -208,7 +208,7 @@ trait UserAttribute
         /*
          * If the admin is currently NOT spoofing a user
          */
-        if (!session()->has('admin_user_id') || !session()->has('temp_user_id')) {
+        if (! session()->has('admin_user_id') || ! session()->has('temp_user_id')) {
             //Won't break, but don't let them "Login As" themselves
             if ($this->id != access()->id()) {
                 return '<a href="'.route('admin.access.user.login-as',

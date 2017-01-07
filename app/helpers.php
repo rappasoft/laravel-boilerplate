@@ -3,7 +3,7 @@
 /**
  * Global helpers file with misc functions.
  */
-if (!function_exists('app_name')) {
+if (! function_exists('app_name')) {
     /**
      * Helper to grab the application name.
      *
@@ -15,7 +15,7 @@ if (!function_exists('app_name')) {
     }
 }
 
-if (!function_exists('access')) {
+if (! function_exists('access')) {
     /**
      * Access (lol) the Access:: facade as a simple function.
      */
@@ -25,7 +25,7 @@ if (!function_exists('access')) {
     }
 }
 
-if (!function_exists('history')) {
+if (! function_exists('history')) {
     /**
      * Access the history facade anywhere.
      */
@@ -35,7 +35,7 @@ if (!function_exists('history')) {
     }
 }
 
-if (!function_exists('gravatar')) {
+if (! function_exists('gravatar')) {
     /**
      * Access the gravatar helper.
      */
@@ -45,7 +45,7 @@ if (!function_exists('gravatar')) {
     }
 }
 
-if (!function_exists('includeRouteFiles')) {
+if (! function_exists('includeRouteFiles')) {
 
     /**
      * Loops through a folder and requires all PHP files

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Backend\Access\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Access\User\ManageUserRequest;
-use App\Repositories\Backend\Access\User\UserRepository;
 use Yajra\Datatables\Facades\Datatables;
+use App\Repositories\Backend\Access\User\UserRepository;
+use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 
 /**
  * Class UserTableController.

@@ -42,7 +42,7 @@ class SessionTimeout
         if (config('misc.session_timeout_status')) {
             $isLoggedIn = $request->path() != '/logout';
 
-            if (!session('lastActivityTime')) {
+            if (! session('lastActivityTime')) {
                 $this->session->put('lastActivityTime', time());
             } elseif (time() - $this->session->get('lastActivityTime') > $this->timeout) {
                 $this->session->forget('lastActivityTime');

@@ -2,8 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use Carbon\Carbon;
 use Closure;
+use Carbon\Carbon;
 
 /**
  * Class LocaleMiddleware.

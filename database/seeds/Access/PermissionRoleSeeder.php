@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Access\Role\Role;
 use Illuminate\Database\Seeder;
+use App\Models\Access\Role\Role;
 use Illuminate\Support\Facades\DB;
 
 /**
