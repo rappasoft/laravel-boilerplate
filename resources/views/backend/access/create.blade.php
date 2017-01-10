@@ -86,6 +86,9 @@
                     <div class="col-lg-3">
                         @if (count($roles) > 0)
                             @foreach($roles as $role)
+                                @if(!access()->hasRole('Administrator') && $role->id == 1)
+                                    @continue
+                                @endif
                                 <input type="checkbox" value="{{ $role->id }}" name="assignees_roles[{{ $role->id }}]" id="role-{{ $role->id }}" {{ is_array(old('assignees_roles')) && in_array($role->id, old('assignees_roles')) ? 'checked' : '' }} /> <label for="role-{{ $role->id }}">{{ $role->name }}</label>
                                 <a href="#" data-role="role_{{ $role->id }}" class="show-permissions small">
                                     (
@@ -100,9 +103,9 @@
                                         {{ trans('labels.backend.access.users.all_permissions') }}<br/><br/>
                                     @else
                                         @if (count($role->permissions) > 0)
-                                            <blockquote class="small">{{--
-                                        --}}@foreach ($role->permissions as $perm){{--
-                                            --}}{{$perm->display_name}}<br/>
+                                            <blockquote class="small">
+                                                @foreach ($role->permissions as $perm)
+                                                    {{$perm->display_name}}<br/>
                                                 @endforeach
                                             </blockquote>
                                         @else

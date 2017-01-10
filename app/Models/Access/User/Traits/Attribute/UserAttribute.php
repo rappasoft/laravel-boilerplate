@@ -230,6 +230,9 @@ trait UserAttribute
                 $this->getDeletePermanentlyButtonAttribute();
         }
 
+	    if ( $this->hasRole('Administrator') && !access()->hasRole('Administrator') ) {
+		    return $this->getShowButtonAttribute();
+	    }
         return
             $this->getLoginAsButtonAttribute().
             $this->getShowButtonAttribute().

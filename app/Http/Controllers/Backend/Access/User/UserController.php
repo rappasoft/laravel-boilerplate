@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Access\User;
 
+use App\Exceptions\GeneralException;
 use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\Access\Role\RoleRepository;
@@ -60,9 +61,18 @@ class UserController extends Controller
      * @param StoreUserRequest $request
      *
      * @return mixed
+     * @throws GeneralException
      */
     public function store(StoreUserRequest $request)
     {
+
+	    if ( isset($request->only('assignees_roles')['assignees_roles']) &&
+	         in_array(1, $request->only('assignees_roles')['assignees_roles']) &&
+	         !access()->hasRole('Administrator')
+	    ) {
+		    throw new GeneralException( 'You do not have access to do that.' );
+	    }
+
         $this->users->create(['data' => $request->except('assignees_roles'), 'roles' => $request->only('assignees_roles')]);
 
         return redirect()->route('admin.access.user.index')->withFlashSuccess(trans('alerts.backend.users.created'));
@@ -80,14 +90,19 @@ class UserController extends Controller
             ->withUser($user);
     }
 
-    /**
-     * @param User              $user
-     * @param ManageUserRequest $request
-     *
-     * @return mixed
-     */
+	/**
+	 * @param User              $user
+	 * @param ManageUserRequest $request
+	 *
+	 * @return mixed
+	 * @throws GeneralException
+	 */
     public function edit(User $user, ManageUserRequest $request)
     {
+	    if ( $user->hasRole('Administrator') && !access()->hasRole('Administrator') ) {
+		    throw new GeneralException( 'You do not have access to do that.' );
+	    }
+
         return view('backend.access.edit')
             ->withUser($user)
             ->withUserRoles($user->roles->pluck('id')->all())
@@ -99,9 +114,14 @@ class UserController extends Controller
      * @param UpdateUserRequest $request
      *
      * @return mixed
+     * @throws GeneralException
      */
     public function update(User $user, UpdateUserRequest $request)
     {
+
+	    if ( $user->hasRole('Administrator') && !access()->hasRole('Administrator') ) {
+		    throw new GeneralException( 'You do not have access to do that.' );
+	    }
         $this->users->update($user, ['data' => $request->except('assignees_roles'), 'roles' => $request->only('assignees_roles')]);
 
         return redirect()->route('admin.access.user.index')->withFlashSuccess(trans('alerts.backend.users.updated'));
@@ -112,9 +132,13 @@ class UserController extends Controller
      * @param ManageUserRequest $request
      *
      * @return mixed
+     * @throws GeneralException
      */
     public function destroy(User $user, ManageUserRequest $request)
     {
+	    if ( $user->hasRole('Administrator') && !access()->hasRole('Administrator') ) {
+		    throw new GeneralException( 'You do not have access to do that.' );
+	    }
         $this->users->delete($user);
 
         return redirect()->route('admin.access.user.deleted')->withFlashSuccess(trans('alerts.backend.users.deleted'));
