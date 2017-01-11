@@ -31,7 +31,7 @@ return [
             'all_rights_reserved' => 'Tous droits réservés.',
             'are_you_sure'        => 'Etes-vous sûr?',
             'boilerplate_link'    => 'Laravel 5 Boilerplate',
-            'continue'            => 'Continue',
+            'continue'            => 'Continuer',
             'member_since'        => 'Membre depuis',
             'minutes'             => ' minutes',
             'search_placeholder'  => 'Rechercher...',
@@ -56,10 +56,10 @@ return [
         ],
 
         'search' => [
-            'empty'      => 'Please enter a search term.',
-            'incomplete' => 'You must write your own search logic for this system.',
-            'title'      => 'Search Results',
-            'results'    => 'Search Results for :query',
+            'empty'      => 'Veuillez entrer un terme de recherche.',
+            'incomplete' => 'Vous devez mettre en place votre propre logique pour ce système.',
+            'title'      => 'Résultats de recherche',
+            'results'    => 'Résultats de la recherche :query',
         ],
 
         'welcome' => '<p>Le thème AdminLTE est créé par <a href="https://almsaeedstudio.com/" target="_blank">https://almsaeedstudio.com/</a>. Ceci est une version allégée avec seulement les styles et les scripts nécessaires pour le faire fonctionner. Téléchargez la version complète pour commencer à ajouter des composants à votre tableau de bord.</p>
@@ -72,15 +72,15 @@ return [
 
     'emails' => [
         'auth' => [
-            'error'                   => 'Whoops!',
-            'greeting'                => 'Hello!',
-            'regards'                 => 'Regards,',
-            'trouble_clicking_button' => 'If you’re having trouble clicking the ":action_text" button, copy and paste the URL below into your web browser:',
-            'thank_you_for_using_app' => 'Thank you for using our application!',
+            'error'                   => 'Oups!',
+            'greeting'                => 'Bonjour!',
+            'regards'                 => 'Salutations,',
+            'trouble_clicking_button' => "Si vous ne pouvez pas cliquer sur le bouton ':action_text', copiez et collez l'URL ci-dessous dans un navigateur:",
+            'thank_you_for_using_app' => "Merci d'utiliser notre application!",
 
             'password_reset_subject'    => 'Votre lien de réinitialisation',
-            'password_cause_of_email'   => 'You are receiving this email because we received a password reset request for your account.',
-            'password_if_not_requested' => 'If you did not request a password reset, no further action is required.',
+            'password_cause_of_email'   => 'Vous recevez cet email car nous avons reçu une demande de réinitialisation de mot de passe pour ce compte.',
+            'password_if_not_requested' => "Si vous n'avez pas effectué cette demande, aucune autre action n'est requise.",
             'reset_password'            => 'Cliquez ici pour réinitialiser votre mot de passe',
 
             'click_to_confirm' => 'Cliquez ici pour confirmer votre compte :',

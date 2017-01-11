@@ -25,7 +25,7 @@ return [
         'register'  => "S'enregistrer",
 
         'user' => [
-            'account'         => 'My Account',
+            'account'         => 'Mon compte',
             'administration'  => 'Administration',
             'change_password' => 'Changer mon mot de passe',
             'my_information'  => 'Mes informations',

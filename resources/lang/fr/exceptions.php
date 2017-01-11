@@ -29,10 +29,10 @@ return [
             'users' => [
                 'cant_deactivate_self'  => 'Vous ne pouvez pas vous désactiver vous-même.',
                 'cant_delete_self'      => 'Vous ne pouvez pas vous supprimer vous-même.',
-                'cant_restore'          => 'This user is not deleted so it can not be restored.',
+                'cant_restore'          => "Cet utilisateur n'est pas effacé et ne peut être restauré.",
                 'create_error'          => "Un problème est survenu lors de la création de l'utilisateur. Veuillez réessayer.",
                 'delete_error'          => "Un problème est survenu lors de la suppression de l'utilisateur. Veuillez réessayer.",
-                'delete_first'          => 'This user must be deleted first before it can be destroyed permanently.',
+                'delete_first'          => "Cet utilisateur doit d'abord être supprimé avant de pouvoir être supprimé de façon permanente.",
                 'email_error'           => 'Cette adresse email appartient à un autre utilisateur.',
                 'mark_error'            => "Un problème est survenu lors de la mise à jour de l'utilisateur. Veuillez réessayer.",
                 'not_found'             => "Cet utilisateur n'existe pas.",
@@ -53,16 +53,16 @@ return [
                 'created_confirm'   => 'Votre compte a été créé avec succès.  Un email de confirmation vous a été envoyé.',
                 'mismatch'          => 'Votre code de confirmation est invalide.',
                 'not_found'         => "Votre code de confirmation n'existe pas.",
-                'resend'            => 'Votre compte n\'est pas confirmé. Veuillez utiliser le lien qui vous a été envoyé par email, ou <a href="'.route('frontend.auth.account.confirm.resend', ':user_id').'">cliquez ici </a> pour recevoir un email de nouveau.',
-                'success'           => 'Votre compte est dorénavant confirmé !',
+                'resend'            => 'Votre compte n\'est pas confirmé. Veuillez utiliser le lien qui vous a été envoyé par email, ou <a href="'.route('frontend.auth.account.confirm.resend', ':user_id').'">cliquez ici </a> pour recevoir un nouvel email.',
+                'success'           => 'Votre compte est maintenant confirmé !',
                 'resent'            => "Un nouvel email a été envoyé à l'adresse enregistrée.",
             ],
 
             'deactivated' => 'Votre compte a été désactivé.',
-            'email_taken' => 'Cet email est déjà utilisé.',
+            'email_taken' => 'Cet email est déjà utilisé par un compte existant.',
 
             'password' => [
-                'change_mismatch' => "L'ancien mot de passe est invalide.",
+                'change_mismatch' => "L'ancien mot de passe est incorrect.",
             ],
 
         ],

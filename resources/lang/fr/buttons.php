@@ -22,15 +22,15 @@ return [
                 'delete_permanently' => 'Supprimer définitivement',
                 'login_as'           => 'Se connecter avec :user',
                 'resend_email'       => 'Renvoyer le mail de confirmation',
-                'restore_user'       => "Ré-activer l'utilisateur",
+                'restore_user'       => "Réactiver l'utilisateur",
             ],
         ],
     ],
 
     'emails' => [
         'auth' => [
-            'confirm_account' => 'Confirm Account',
-            'reset_password'  => 'Reset Password',
+            'confirm_account' => 'Confirmer le compte',
+            'reset_password'  => 'Réinitialiser le mot de passe',
         ],
     ],
 
@@ -42,7 +42,7 @@ return [
             'delete' => 'Supprimer',
             'edit'   => 'Editer',
             'update' => 'Mettre à jour',
-            'view'   => 'View',
+            'view'   => 'Voir',
         ],
 
         'save' => 'Sauvegarder',
