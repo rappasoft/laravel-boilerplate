@@ -37,7 +37,7 @@ return [
     'digits'               => 'Le champ :attribute doit contenir :digits chiffres.',
     'digits_between'       => 'Le champ :attribute doit avoir entre :min et :max chiffres.',
     'dimensions'           => "Le champ :attribute a des dimensions d'image invalideshas invalid image dimensions.",
-    'distinct'             => "Le champ :attribute doit être une valeure unique.",
+    'distinct'             => "Le champ :attribute doit être une valeur unique.",
     'email'                => 'Le champ :attribute doit être une adresse email valide.',
     'exists'               => 'Le champ :attribute n\'existe pas.',
     'file'                 => 'Le champ :attribute doit être un fichier.',
