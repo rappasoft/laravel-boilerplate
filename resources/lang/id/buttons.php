@@ -45,7 +45,7 @@ return [
             'view'   => 'Lihat',
         ],
 
-        'save' => 'Simpat',
+        'save' => 'Simpan',
         'view' => 'Lihat',
     ],
 ];
