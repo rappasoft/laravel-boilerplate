@@ -27,7 +27,7 @@ return [
             'deleted_permanently' => 'Pengguna telah dihapus secara permanen.',
             'restored'            => 'Pengguna telah berhasil direstorasi.',
             'updated'             => 'Pengguna telah berhasil diperbarui.',
-            'updated_password'    => "Sandi pengguna telah berhasil diperbarui.",
+            'updated_password'    => 'Sandi pengguna telah berhasil diperbarui.',
         ],
     ],
 ];
