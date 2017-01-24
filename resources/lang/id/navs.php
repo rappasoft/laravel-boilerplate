@@ -14,22 +14,22 @@ return [
     */
 
     'general' => [
-        'home'   => 'Accueil',
-        'logout' => 'Déconnexion',
+        'home'   => 'Beranda',
+        'logout' => 'Keluar',
     ],
 
     'frontend' => [
-        'dashboard' => 'Tableau de bord',
-        'login'     => 'Connexion',
-        'macros'    => 'Macros',
-        'register'  => "S'enregistrer",
+        'dashboard' => 'Dasbor',
+        'login'     => 'Masuk',
+        'macros'    => 'Makro',
+        'register'  => 'Daftar',
 
         'user' => [
-            'account'         => 'Mon compte',
-            'administration'  => 'Administration',
-            'change_password' => 'Changer mon mot de passe',
-            'my_information'  => 'Mes informations',
-            'profile'         => 'Profile',
+            'account'         => 'Akunku',
+            'administration'  => 'Administrasi',
+            'change_password' => 'Ubah Sandi',
+            'my_information'  => 'Informasiku',
+            'profile'         => 'Profil',
         ],
     ],
 ];

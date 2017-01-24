@@ -66,6 +66,7 @@ return [
             'en'    => 'Engels (English)',
             'es'    => 'Spaans (Spanish)',
             'fr'    => 'Frans (French)',
+            'id'    => 'Indonesisch (Indonesian)',
             'it'    => 'Italiaans (Italian)',
             'nl'    => 'Nederlands (Dutch)',
             'pt_BR' => 'Braziliaans Portugees (Brazilian Portuguese)',
