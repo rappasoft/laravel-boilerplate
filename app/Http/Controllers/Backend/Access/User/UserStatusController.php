@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Access\User;
 
 use App\Models\Access\User\User;
+use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\Access\User\UserRepository;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
@@ -51,9 +52,13 @@ class UserStatusController extends Controller
      * @param ManageUserRequest $request
      *
      * @return mixed
+     * @throws GeneralException
      */
     public function mark(User $user, $status, ManageUserRequest $request)
     {
+        if ($user->hasRole('Administrator') && ! access()->hasRole('Administrator')) {
+            throw new GeneralException('You do not have access to do that.');
+        }
         $this->users->mark($user, $status);
 
         return redirect()->route($status == 1 ? 'admin.access.user.index' : 'admin.access.user.deactivated')->withFlashSuccess(trans('alerts.backend.users.updated'));

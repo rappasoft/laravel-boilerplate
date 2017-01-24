@@ -23,6 +23,9 @@ class UserAccessController extends Controller
      */
     public function loginAs(User $user, ManageUserRequest $request)
     {
+        if ($user->hasRole('Administrator') && ! access()->hasRole('Administrator')) {
+            throw new GeneralException('You do not have access to do that.');
+        }
         // Overwrite who we're logging in as, if we're already logged in as someone else.
         if (session()->has('admin_user_id') && session()->has('temp_user_id')) {
             // Let's not try to login as ourselves.
