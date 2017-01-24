@@ -66,6 +66,7 @@ return [
             'pt_BR' => 'Brasiliansk portugisiska (Brazilian Portuguese)',
             'en'    => 'Engelska (English)',
             'fr'    => 'Franska (French)',
+            'id'    => 'Indonesiska (Indonesian)',
             'it'    => 'Italienska (Italian)',
             'nl'    => 'Holländska (Dutch)',
             'es'    => 'Spanska (Spanish)',
