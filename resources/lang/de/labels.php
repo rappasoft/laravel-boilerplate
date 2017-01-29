@@ -36,7 +36,7 @@ return [
             'roles' => [
                 'create'     => 'Rolle erstellen',
                 'edit'       => 'rolle bearbeiten',
-                'management' => 'Rollen Vervalten',
+                'management' => 'Rollen verwalten',
 
                 'table' => [
                     'number_of_users' => 'Anzahl Benutzer',
