@@ -2,13 +2,13 @@
 
 namespace Tests\Frontend\Routes;
 
+use Tests\BrowserKitTest;
 use App\Models\Access\User\User;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserConfirmed;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-use Tests\BrowserKitTest;
 
 /**
  * Class LoggedOutRouteTest.

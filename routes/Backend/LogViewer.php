@@ -11,7 +11,7 @@ Route::prefix('log-viewer')->group(function () {
         'uses' => '\Arcanedev\LogViewer\Http\Controllers\LogViewerController@index',
     ]);
 
-	Route::prefix('logs')->group(function () {
+    Route::prefix('logs')->group(function () {
         Route::get('/', [
             'as'   => 'log-viewer::logs.list',
             'uses' => '\Arcanedev\LogViewer\Http\Controllers\LogViewerController@listLogs',
@@ -23,7 +23,7 @@ Route::prefix('log-viewer')->group(function () {
         ]);
     });
 
-	Route::prefix('{date}')->group(function () {
+    Route::prefix('{date}')->group(function () {
         Route::get('/', [
             'as'   => 'log-viewer::logs.show',
             'uses' => '\Arcanedev\LogViewer\Http\Controllers\LogViewerController@show',

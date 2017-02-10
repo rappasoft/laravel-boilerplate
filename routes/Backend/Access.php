@@ -3,13 +3,12 @@
 /**
  * All route names are prefixed with 'admin.access'.
  */
-Route::namespace('Access')->prefix('access')->as('access.')->group(function() {
+Route::namespace('Access')->prefix('access')->as('access.')->group(function () {
 
     /*
      * User Management
      */
-	Route::middleware('access.routeNeedsPermission:manage-users')->group(function() {
-
+    Route::middleware('access.routeNeedsPermission:manage-users')->group(function () {
         Route::namespace('User')->group(function () {
 
             /*
@@ -60,7 +59,7 @@ Route::namespace('Access')->prefix('access')->as('access.')->group(function() {
     /*
      * Role Management
      */
-	Route::middleware('access.routeNeedsPermission:manage-roles')->group(function() {
+    Route::middleware('access.routeNeedsPermission:manage-roles')->group(function () {
         Route::namespace('Role')->group(function () {
             Route::resource('role', 'RoleController', ['except' => ['show']]);
 

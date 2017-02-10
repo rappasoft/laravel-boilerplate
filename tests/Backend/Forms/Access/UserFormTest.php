@@ -2,8 +2,9 @@
 
 namespace Tests\Backend\Forms\Access;
 
-use App\Models\Access\User\User;
 use Faker\Factory;
+use Tests\BrowserKitTest;
+use App\Models\Access\User\User;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use App\Events\Backend\Access\User\UserCreated;
@@ -11,7 +12,6 @@ use App\Events\Backend\Access\User\UserDeleted;
 use App\Events\Backend\Access\User\UserUpdated;
 use App\Events\Backend\Access\User\UserPasswordChanged;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-use Tests\BrowserKitTest;
 
 /**
  * Class UserFormTest.
@@ -184,9 +184,9 @@ class UserFormTest extends BrowserKitTest
 
     public function testUserCanNotDeleteSelf()
     {
-      $this->setupDatabase();
+        $this->setupDatabase();
 
-      $this->actingAs($this->admin)
+        $this->actingAs($this->admin)
             ->visit('/admin/access/user')
             ->delete('/admin/access/user/'.$this->admin->id)
             ->assertRedirectedTo('/admin/access/user')
@@ -196,8 +196,8 @@ class UserFormTest extends BrowserKitTest
 
     public function testChangeUserPasswordRequiredFields()
     {
-      $this->setupDatabase();
-      $this->actingAs($this->admin)
+        $this->setupDatabase();
+        $this->actingAs($this->admin)
             ->visit('/admin/access/user/'.$this->user->id.'/password/change')
             ->see('Change Password for '.$this->user->name)
             ->type('', 'password')

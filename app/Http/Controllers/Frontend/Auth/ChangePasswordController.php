@@ -7,12 +7,11 @@ use App\Repositories\Frontend\Access\User\UserRepository;
 use App\Http\Requests\Frontend\User\ChangePasswordRequest;
 
 /**
-* Class ChangePasswordController.
-*/
+ * Class ChangePasswordController.
+ */
 class ChangePasswordController extends Controller
 {
-
-  /**
+    /**
    * @var UserRepository
    */
   protected $user;
@@ -35,6 +34,7 @@ class ChangePasswordController extends Controller
   public function changePassword(ChangePasswordRequest $request)
   {
       $this->user->changePassword($request->all());
+
       return redirect()->route('frontend.user.account')->withFlashSuccess(trans('strings.frontend.user.password_updated'));
   }
 }

@@ -2,9 +2,9 @@
 
 namespace Tests\Frontend\Routes;
 
+use Tests\BrowserKitTest;
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedOut;
-use Tests\BrowserKitTest;
 
 /**
  * Class LoggedInRouteTest.

@@ -2,21 +2,19 @@
 
 namespace Tests\Backend\Forms\Access;
 
+use Tests\BrowserKitTest;
 use App\Models\Access\Role\Role;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use App\Events\Backend\Access\Role\RoleCreated;
 use App\Events\Backend\Access\Role\RoleDeleted;
 use App\Events\Backend\Access\Role\RoleUpdated;
-use Tests\BrowserKitTest;
 
 /**
  * Class RoleFormTest.
  */
 class RoleFormTest extends BrowserKitTest
 {
-
     public function testCreateRoleRequiredFieldsAll()
     {
         // All Permissions
@@ -61,7 +59,7 @@ class RoleFormTest extends BrowserKitTest
 
     public function testCreateRoleFormSpecificPermissions()
     {
-      $this->setupDatabase();
+        $this->setupDatabase();
       // Make sure our events are fired
         Event::fake();
 
@@ -94,8 +92,8 @@ class RoleFormTest extends BrowserKitTest
 
     public function testRoleRequiresPermission()
     {
-      $this->setupDatabase();
-      if (config('access.roles.role_must_contain_permission')) {
+        $this->setupDatabase();
+        if (config('access.roles.role_must_contain_permission')) {
             $this->actingAs($this->admin)
                 ->visit('/admin/access/role/create')
                 ->type('Test Role', 'name')
@@ -155,8 +153,8 @@ class RoleFormTest extends BrowserKitTest
 
     public function testUpdateRoleRequiresPermission()
     {
-      $this->setupDatabase();
-      $this->actingAs($this->admin)
+        $this->setupDatabase();
+        $this->actingAs($this->admin)
             ->visit('/admin/access/role/3/edit')
             ->press('Update')
             ->seePageIs('/admin/access/role/3/edit')
@@ -214,8 +212,8 @@ class RoleFormTest extends BrowserKitTest
 
     public function testCanNotDeleteRoleWithUsers()
     {
-      $this->setupDatabase();
-      $this->actingAs($this->admin)
+        $this->setupDatabase();
+        $this->actingAs($this->admin)
             ->visit('/admin/access/role')
             ->delete('/admin/access/role/2')
             ->assertRedirectedTo('/admin/access/role')

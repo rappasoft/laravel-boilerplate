@@ -11,8 +11,8 @@ Route::name('macros')->get('macros', 'FrontendController@macros');
  * These frontend controllers require the user to be logged in
  * All route names are prefixed with 'frontend.'
  */
-Route::middleware('auth')->group(function() {
-	Route::namespace('User')->as('user.')->group(function() {
+Route::middleware('auth')->group(function () {
+    Route::namespace('User')->as('user.')->group(function () {
         /*
          * User Dashboard Specific
          */
