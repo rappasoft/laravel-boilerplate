@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="{{ config('app.locale') }}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,10 +19,10 @@
         <!-- Check if the language is set to RTL, so apply the RTL layouts -->
         <!-- Otherwise apply the normal LTR layouts -->
         @langRTL
-            {{ Html::style(elixir('css/backend-rtl.css')) }}
-            {{ Html::style(elixir('css/rtl.css')) }}
+            {{ Html::style(mix('css/backend-rtl.css')) }}
+            {{ Html::style(mix('css/rtl.css')) }}
         @else
-            {{ Html::style(elixir('css/backend.css')) }}
+            {{ Html::style(mix('css/backend.css')) }}
         @endif
 
         @yield('after-styles')
@@ -70,7 +70,7 @@
 
         <!-- JavaScripts -->
         @yield('before-scripts')
-        {{ Html::script(elixir('js/backend.js')) }}
+        {{ Html::script(mix('js/backend.js')) }}
         @yield('after-scripts')
     </body>
 </html>

@@ -1,12 +1,15 @@
 <?php
 
+namespace Tests\Frontend\Routes;
+
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedOut;
+use Tests\BrowserKitTest;
 
 /**
  * Class LoggedInRouteTest.
  */
-class LoggedInRouteTest extends TestCase
+class LoggedInRouteTest extends BrowserKitTest
 {
     /**
      * Test the homepage works and the dashboard button appears.
@@ -70,6 +73,6 @@ class LoggedInRouteTest extends TestCase
             ->see('Login')
             ->see('Register');
 
-        Event::assertFired(UserLoggedOut::class);
+        Event::assertDispatched(UserLoggedOut::class);
     }
 }

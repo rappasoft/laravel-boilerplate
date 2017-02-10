@@ -1,9 +1,13 @@
 <?php
 
+namespace Tests\Backend\Routes\Access;
+
+use Tests\BrowserKitTest;
+
 /**
  * Class RoleRouteTest.
  */
-class RoleRouteTest extends TestCase
+class RoleRouteTest extends BrowserKitTest
 {
     public function testRolesIndex()
     {

@@ -5,17 +5,13 @@
  * You shouldn't have to change anything
  * All route names are prefixed with 'admin.'.
  */
-Route::group([
-    'prefix'     => 'log-viewer',
-], function () {
+Route::prefix('log-viewer')->group(function () {
     Route::get('/', [
         'as'   => 'log-viewer::dashboard',
         'uses' => '\Arcanedev\LogViewer\Http\Controllers\LogViewerController@index',
     ]);
 
-    Route::group([
-        'prefix' => 'logs',
-    ], function () {
+	Route::prefix('logs')->group(function () {
         Route::get('/', [
             'as'   => 'log-viewer::logs.list',
             'uses' => '\Arcanedev\LogViewer\Http\Controllers\LogViewerController@listLogs',
@@ -27,15 +23,12 @@ Route::group([
         ]);
     });
 
-    Route::group([
-        'prefix' => '{date}',
-    ], function () {
+	Route::prefix('{date}')->group(function () {
         Route::get('/', [
             'as'   => 'log-viewer::logs.show',
             'uses' => '\Arcanedev\LogViewer\Http\Controllers\LogViewerController@show',
         ]);
 
-        //TODO: Figure out why the default link isn't working
         Route::get('/all', function ($date) {
             return redirect()->route('admin.log-viewer::logs.show', [$date]);
         });

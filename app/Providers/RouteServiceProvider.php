@@ -2,12 +2,13 @@
 
 namespace App\Providers;
 
-use App\Models\Access\User\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
 /**
- * Class RouteServiceProvider.
+ * Class RouteServiceProvider
+ *
+ * @package App\Providers
  */
 class RouteServiceProvider extends ServiceProvider
 {
@@ -27,19 +28,19 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*
-         * Register route model bindings
-         */
+		/*
+		 * Register route model bindings
+		 */
 
-        /*
-         * This allows us to use the Route Model Binding with SoftDeletes on
-         * On a model by model basis
-         */
-        $this->bind('deletedUser', function ($value) {
-            $user = new User();
+		/*
+		 * This allows us to use the Route Model Binding with SoftDeletes on
+		 * On a model by model basis
+		 */
+		$this->bind('deletedUser', function ($value) {
+			$user = new User();
 
-            return User::withTrashed()->where($user->getRouteKeyName(), $value)->first();
-        });
+			return User::withTrashed()->where($user->getRouteKeyName(), $value)->first();
+		});
 
         parent::boot();
     }
@@ -51,9 +52,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $this->mapWebRoutes();
-
         $this->mapApiRoutes();
+
+        $this->mapWebRoutes();
 
         //
     }
@@ -67,12 +68,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        Route::group([
-            'middleware' => 'web',
-            'namespace'  => $this->namespace,
-        ], function ($router) {
-            require base_path('routes/web.php');
-        });
+        Route::middleware('web')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/web.php'));
     }
 
     /**
@@ -84,12 +82,9 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapApiRoutes()
     {
-        Route::group([
-            'middleware' => 'api',
-            'namespace'  => $this->namespace,
-            'prefix'     => 'api',
-        ], function ($router) {
-            require base_path('routes/api.php');
-        });
+        Route::prefix('api')
+             ->middleware('api')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/api.php'));
     }
 }

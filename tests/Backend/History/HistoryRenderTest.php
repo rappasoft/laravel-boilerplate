@@ -1,11 +1,14 @@
 <?php
 
+namespace Tests\Backend\History;
+
 use App\Repositories\Backend\History\Facades\History;
+use Tests\BrowserKitTest;
 
 /**
  * Class HistoryRenderTest.
  */
-class HistoryRenderTest extends TestCase
+class HistoryRenderTest extends BrowserKitTest
 {
     public function testDashboardDisplaysHistory()
     {

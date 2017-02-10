@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ config('app.locale') }}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,11 +16,11 @@
         <!-- Styles -->
         @yield('before-styles')
 
-        {{ Html::style(elixir('css/frontend.css')) }}
+        {{ Html::style(mix('css/frontend.css')) }}
 
         <!-- Check if the language is set to RTL, so apply the RTL layouts -->
         @langRTL
-            {!! Html::style(elixir('css/rtl.css')) !!}
+            {!! Html::style(mix('css/rtl.css')) !!}
         @endif
 
         @yield('after-styles')
@@ -45,7 +45,7 @@
 
         <!-- Scripts -->
         @yield('before-scripts')
-        {!! Html::script(elixir('js/frontend.js')) !!}
+        {!! Html::script(mix('js/frontend.js')) !!}
         @yield('after-scripts')
 
         @include('includes.partials.ga')

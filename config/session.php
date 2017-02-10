@@ -31,7 +31,7 @@ return [
 
     'lifetime' => 120,
 
-    'expire_on_close' => true,
+    'expire_on_close' => false,
 
     /*
     |--------------------------------------------------------------------------
@@ -161,7 +161,7 @@ return [
     |
     */
 
-    'secure' => false,
+    'secure' => env('SESSION_SECURE_COOKIE', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -175,5 +175,17 @@ return [
     */
 
     'http_only' => true,
+
+	/*
+    |--------------------------------------------------------------------------
+    | Session Timeout
+    |--------------------------------------------------------------------------
+    |
+    | Setting these values will enable a session timeout middleware that
+    | will automatically log the user out after a set number of seconds.
+    |
+    */
+	'timeout_status' => env('SESSION_TIMEOUT_STATUS', true),
+	'timeout'        => env('SESSION_TIMEOUT', 600),
 
 ];

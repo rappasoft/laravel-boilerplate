@@ -1,11 +1,14 @@
 <?php
 
+namespace Tests\Backend\History;
+
 use App\Repositories\Backend\History\Facades\History;
+use Tests\BrowserKitTest;
 
 /**
  * Class HistoryLogTest.
  */
-class HistoryLogTest extends TestCase
+class HistoryLogTest extends BrowserKitTest
 {
     public function testHistoryLogByTypeNameFunction()
     {

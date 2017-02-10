@@ -14,10 +14,10 @@
         <!-- Check if the language is set to RTL, so apply the RTL layouts -->
         <!-- Otherwise apply the normal LTR layouts -->
         @langRTL
-            {{ Html::style(elixir('css/backend-rtl.css')) }}
-            {{ Html::style(elixir('css/rtl.css')) }}
+            {{ Html::style(mix('css/backend-rtl.css')) }}
+            {{ Html::style(mix('css/rtl.css')) }}
         @else
-            {{ Html::style(elixir('css/backend.css')) }}
+            {{ Html::style(mix('css/backend.css')) }}
         @endif
 
         @yield('after-styles-end')
@@ -68,7 +68,7 @@
 
         <!-- JavaScripts -->
         @yield('before-scripts-end')
-        {{ Html::script(elixir('js/backend.js')) }}
+        {{ Html::script(mix('js/backend.js')) }}
         @yield('after-scripts-end')
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment-with-locales.min.js"></script>

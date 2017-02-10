@@ -1,16 +1,19 @@
 <?php
 
+namespace Tests\Backend\Routes\Access;
+
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Event;
 use App\Events\Backend\Access\User\UserRestored;
 use App\Events\Backend\Access\User\UserDeactivated;
 use App\Events\Backend\Access\User\UserReactivated;
 use App\Events\Backend\Access\User\UserPermanentlyDeleted;
+use Tests\BrowserKitTest;
 
 /**
  * Class UserRouteTest.
  */
-class UserRouteTest extends TestCase
+class UserRouteTest extends BrowserKitTest
 {
     public function testActiveUsers()
     {
@@ -119,8 +122,8 @@ class UserRouteTest extends TestCase
             ->see('The user was successfully updated.')
             ->seeInDatabase('users', ['id' => $this->user->id, 'status' => 1]);
 
-        Event::assertFired(UserDeactivated::class);
-        Event::assertFired(UserReactivated::class);
+        Event::assertDispatched(UserDeactivated::class);
+        Event::assertDispatched(UserReactivated::class);
     }
 
     public function testRestoreUser()
@@ -132,13 +135,13 @@ class UserRouteTest extends TestCase
         $this->user->save();
 
         $this->actingAs($this->admin)
-            ->notSeeInDatabase('users', ['id' => $this->user->id, 'deleted_at' => null])
+            ->dontSeeInDatabase('users', ['id' => $this->user->id, 'deleted_at' => null])
             ->visit('/admin/access/user/'.$this->user->id.'/restore')
             ->seePageIs('/admin/access/user')
             ->see('The user was successfully restored.')
             ->seeInDatabase('users', ['id' => $this->user->id, 'deleted_at' => null]);
 
-        Event::assertFired(UserRestored::class);
+        Event::assertDispatched(UserRestored::class);
     }
 
     public function testUserIsDeletedBeforeBeingRestored()
@@ -154,24 +157,27 @@ class UserRouteTest extends TestCase
 
     public function testPermanentlyDeleteUser()
     {
-        // Make sure our events are fired
+      $this->setupDatabase();
+      // Make sure our events are fired
         Event::fake();
 
         $this->actingAs($this->admin)
             ->delete('/admin/access/user/'.$this->user->id)
-            ->notSeeInDatabase('users', ['id' => $this->user->id, 'deleted_at' => null])
+            ->dontSeeInDatabase('users', ['id' => $this->user->id, 'deleted_at' => null])
             ->visit('/admin/access/user/'.$this->user->id.'/delete')
             ->seePageIs('/admin/access/user/deleted')
             ->see('The user was deleted permanently.')
-            ->notSeeInDatabase('users', ['id' => $this->user->id]);
+            ->dontSeeInDatabase('users', ['id' => $this->user->id]);
 
-        Event::assertFired(UserPermanentlyDeleted::class);
+        Event::assertDispatched(UserPermanentlyDeleted::class);
     }
 
     public function testUserIsDeletedBeforeBeingPermanentlyDeleted()
     {
-        $this->actingAs($this->admin)
-            ->seeInDatabase('users', ['id' => $this->user->id, 'deleted_at' => null])
+      $this->setupDatabase();
+      $this->actingAs($this->admin);
+      $this->user = $this->admin;
+      $this->seeInDatabase('users', ['id' => $this->user->id, 'deleted_at' => null])
             ->visit('/admin/access/user')
             ->visit('/admin/access/user/'.$this->user->id.'/delete')
             ->seePageIs('/admin/access/user')

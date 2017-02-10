@@ -1,27 +1,30 @@
 {
-    "name": "rappasoft/laravel-5-boilerplate",
-    "description": "The Laravel Framework Boilerplate Project.",
-    "keywords": ["framework", "laravel", "boilerplate"],
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": [
+        "framework",
+        "laravel",
+        "boilerplate"
+    ],
     "license": "MIT",
     "type": "project",
     "require": {
         "php": ">=5.6.4",
-        "laravel/framework": "5.3.*",
-        "laravelcollective/html": "5.3.*",
-        "laravel/socialite": "^2.0",
-        "creativeorange/gravatar": "~1.0",
-        "davejamesmiller/laravel-breadcrumbs": "^3.0",
-        "hieu-le/active": "~2.0",
         "arcanedev/log-viewer": "~4.0",
         "arcanedev/no-captcha": "~3.0",
+        "creativeorange/gravatar": "~1.0",
+        "davejamesmiller/laravel-breadcrumbs": "^3.0",
+        "hieu-le/active": "~3.0",
+        "laravel/framework": "5.4.*",
+        "laravel/socialite": "^3.0",
+        "laravel/tinker": "~1.0",
+        "laravelcollective/html": "5.4.*",
         "yajra/laravel-datatables-oracle": "~6.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.0",
-        "symfony/css-selector": "3.1.*",
-        "symfony/dom-crawler": "3.1.*",
+        "phpunit/phpunit": "~5.7",
         "barryvdh/laravel-debugbar": "^2.1"
     },
     "autoload": {
@@ -36,9 +39,9 @@
         ]
     },
     "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php"
-        ]
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
     },
     "scripts": {
         "post-root-package-install": [

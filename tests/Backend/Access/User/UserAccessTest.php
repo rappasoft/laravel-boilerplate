@@ -1,9 +1,13 @@
 <?php
 
+namespace Tests\Backend\Access\User;
+
+use Tests\BrowserKitTest;
+
 /**
  * Class UserAccessTest.
  */
-class UserAccessTest extends TestCase
+class UserAccessTest extends BrowserKitTest
 {
     public function testUserCantAccessAdminDashboard()
     {
