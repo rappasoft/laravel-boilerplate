@@ -64,18 +64,18 @@ class UserRepository extends Repository
      *
      * @return mixed
      */
-	public function getEmailForPasswordToken($token)
-	{
-		$rows = DB::table(config('auth.passwords.users.table'))->get();
+    public function getEmailForPasswordToken($token)
+    {
+        $rows = DB::table(config('auth.passwords.users.table'))->get();
 
-		foreach ($rows as $row) {
-			if (password_verify($token, $row->token)) {
-				return $row->email;
-			}
-		}
+        foreach ($rows as $row) {
+            if (password_verify($token, $row->token)) {
+                return $row->email;
+            }
+        }
 
-		throw new GeneralException(trans('auth.unknown'));
-	}
+        throw new GeneralException(trans('auth.unknown'));
+    }
 
     /**
      * @param array $data

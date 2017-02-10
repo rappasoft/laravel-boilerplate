@@ -2,8 +2,8 @@
 
 namespace Tests\Backend\History;
 
-use App\Repositories\Backend\History\Facades\History;
 use Tests\BrowserKitTest;
+use App\Repositories\Backend\History\Facades\History;
 
 /**
  * Class HistoryRenderTypeTest.

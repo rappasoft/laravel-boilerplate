@@ -2,9 +2,9 @@
 
 namespace Tests\Backend\History;
 
+use Tests\BrowserKitTest;
 use App\Models\Access\User\User;
 use App\Repositories\Backend\History\Facades\History;
-use Tests\BrowserKitTest;
 
 /**
  * Class HistoryRenderEntityTest.

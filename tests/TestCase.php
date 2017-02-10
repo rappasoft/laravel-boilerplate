@@ -15,7 +15,7 @@ use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 abstract class TestCase extends BaseTestCase
 {
     use DatabaseTransactions;
-	  use CreatesApplication;
+    use CreatesApplication;
 
     /**
      * The base URL to use while testing the application.
@@ -54,10 +54,10 @@ abstract class TestCase extends BaseTestCase
      */
     protected $userRole;
 
-	/**
-	 * @var bool
-	 */
-	public static $setupDatabase = true;
+    /**
+     * @var bool
+     */
+    public static $setupDatabase = true;
 
     /**
      * Set up tests.
@@ -84,10 +84,10 @@ abstract class TestCase extends BaseTestCase
         $this->userRole = Role::find(3);
     }
 
-	/**
-	 * Set up the database if need be
-	 */
-	public function setupDatabase()
+    /**
+     * Set up the database if need be.
+     */
+    public function setupDatabase()
     {
         // Set up the database
         Artisan::call('migrate:refresh');

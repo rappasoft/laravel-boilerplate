@@ -3,12 +3,12 @@
 namespace Tests\Backend\Routes\Access;
 
 use Carbon\Carbon;
+use Tests\BrowserKitTest;
 use Illuminate\Support\Facades\Event;
 use App\Events\Backend\Access\User\UserRestored;
 use App\Events\Backend\Access\User\UserDeactivated;
 use App\Events\Backend\Access\User\UserReactivated;
 use App\Events\Backend\Access\User\UserPermanentlyDeleted;
-use Tests\BrowserKitTest;
 
 /**
  * Class UserRouteTest.
@@ -157,7 +157,7 @@ class UserRouteTest extends BrowserKitTest
 
     public function testPermanentlyDeleteUser()
     {
-      $this->setupDatabase();
+        $this->setupDatabase();
       // Make sure our events are fired
         Event::fake();
 
@@ -174,10 +174,10 @@ class UserRouteTest extends BrowserKitTest
 
     public function testUserIsDeletedBeforeBeingPermanentlyDeleted()
     {
-      $this->setupDatabase();
-      $this->actingAs($this->admin);
-      $this->user = $this->admin;
-      $this->seeInDatabase('users', ['id' => $this->user->id, 'deleted_at' => null])
+        $this->setupDatabase();
+        $this->actingAs($this->admin);
+        $this->user = $this->admin;
+        $this->seeInDatabase('users', ['id' => $this->user->id, 'deleted_at' => null])
             ->visit('/admin/access/user')
             ->visit('/admin/access/user/'.$this->user->id.'/delete')
             ->seePageIs('/admin/access/user')
