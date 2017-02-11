@@ -19,8 +19,7 @@
         <!-- Check if the language is set to RTL, so apply the RTL layouts -->
         <!-- Otherwise apply the normal LTR layouts -->
         @langRTL
-            {{ Html::style(mix('css/backend-rtl.css')) }}
-            {{ Html::style(mix('css/rtl.css')) }}
+            {{ Html::style(mix('css/backend.rtl.css')) }}
         @else
             {{ Html::style(mix('css/backend.css')) }}
         @endif

@@ -1,6 +1,5 @@
 const { mix } = require('laravel-mix');
-
-//require('./mix-extensions');
+const WebpackRTLPlugin = require('webpack-rtl-plugin');
 
 /*
  |--------------------------------------------------------------------------
@@ -27,4 +26,9 @@ mix.sass('resources/assets/sass/frontend/app.scss', 'public/css/frontend.css')
         'resources/assets/js/plugins.js',
         'resources/assets/js/backend/custom.js'
     ], 'public/js/backend.js')
+    .webpackConfig({
+        plugins: [
+            new WebpackRTLPlugin('/css/[name].rtl.css')
+        ]
+    })
     .version();
