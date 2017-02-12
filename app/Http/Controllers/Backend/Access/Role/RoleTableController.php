@@ -33,6 +33,7 @@ class RoleTableController extends Controller
     public function __invoke(ManageRoleRequest $request)
     {
         return Datatables::of($this->roles->getForDataTable())
+			->escapeColumns(['name', 'sort'])
             ->addColumn('permissions', function ($role) {
                 if ($role->all) {
                     return '<span class="label label-success">'.trans('labels.general.all').'</span>';
