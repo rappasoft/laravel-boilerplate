@@ -33,11 +33,11 @@ class BaseRepository
         return $this->query()->find($id);
     }
 
-	/**
-	 * @return mixed
-	 */
-	protected function query()
-	{
-		return call_user_func(static::MODEL.'::query');
-	}
+    /**
+     * @return mixed
+     */
+    protected function query()
+    {
+        return call_user_func(static::MODEL.'::query');
+    }
 }

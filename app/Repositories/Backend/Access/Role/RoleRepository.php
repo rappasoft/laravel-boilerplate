@@ -3,9 +3,9 @@
 namespace App\Repositories\Backend\Access\Role;
 
 use App\Models\Access\Role\Role;
-use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
+use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Model;
 use App\Events\Backend\Access\Role\RoleCreated;
 use App\Events\Backend\Access\Role\RoleDeleted;
