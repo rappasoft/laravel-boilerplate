@@ -22,9 +22,7 @@ mix.sass('resources/assets/sass/frontend/app.scss', 'public/css/frontend.css')
     .js([
         'resources/assets/js/backend/app.js',
         'resources/assets/js/plugin/sweetalert/sweetalert.min.js',
-        'resources/assets/js/plugin/toastr/toastr.min.js',
-        'resources/assets/js/plugins.js',
-        'resources/assets/js/backend/custom.js'
+        'resources/assets/js/plugins.js'
     ], 'public/js/backend.js')
     .webpackConfig({
         plugins: [
