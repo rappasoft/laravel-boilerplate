@@ -3,7 +3,7 @@
 namespace App\Repositories\Backend\Access\Role;
 
 use App\Models\Access\Role\Role;
-use App\Repositories\Repository;
+use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +14,7 @@ use App\Events\Backend\Access\Role\RoleUpdated;
 /**
  * Class RoleRepository.
  */
-class RoleRepository extends Repository
+class RoleRepository extends BaseRepository
 {
     /**
      * Associated Repository Model.
@@ -91,7 +91,7 @@ class RoleRepository extends Repository
             //See if this role has all permissions and set the flag on the role
             $role->all = $all;
 
-            if (parent::save($role)) {
+            if ($role->save()) {
                 if (! $all) {
                     $permissions = [];
 
@@ -151,7 +151,7 @@ class RoleRepository extends Repository
         $role->all = $all;
 
         DB::transaction(function () use ($role, $input, $all) {
-            if (parent::save($role)) {
+            if ($role->save()) {
                 //If role has all access detach all permissions because they're not needed
                 if ($all) {
                     $role->permissions()->sync([]);
@@ -205,7 +205,7 @@ class RoleRepository extends Repository
             //Detach all associated roles
             $role->permissions()->sync([]);
 
-            if (parent::delete($role)) {
+            if ($role->delete()) {
                 event(new RoleDeleted($role));
 
                 return true;

@@ -3,7 +3,7 @@
 namespace App\Repositories\Frontend\Access\User;
 
 use App\Models\Access\User\User;
-use App\Repositories\Repository;
+use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +15,7 @@ use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 /**
  * Class UserRepository.
  */
-class UserRepository extends Repository
+class UserRepository extends BaseRepository
 {
     /**
      * Associated Repository Model.
@@ -95,7 +95,7 @@ class UserRepository extends Repository
         $user->confirmed = $provider ? 1 : (config('access.users.confirm_email') ? 0 : 1);
 
         DB::transaction(function () use ($user) {
-            if (parent::save($user)) {
+            if ($user->save()) {
                 /*
                  * Add the default site role to the new user
                  */
@@ -198,7 +198,7 @@ class UserRepository extends Repository
 
             event(new UserConfirmed($user));
 
-            return parent::save($user);
+            return $user->save();
         }
 
         throw new GeneralException(trans('exceptions.frontend.auth.confirmation.mismatch'));
@@ -214,7 +214,7 @@ class UserRepository extends Repository
      */
     public function updateProfile($id, $input)
     {
-        $user = parent::find($id);
+        $user = $this->find($id);
         $user->name = $input['name'];
 
         if ($user->canChangeEmail()) {
@@ -229,7 +229,7 @@ class UserRepository extends Repository
             }
         }
 
-        return parent::save($user);
+        return $user->save();
     }
 
     /**
@@ -241,12 +241,12 @@ class UserRepository extends Repository
      */
     public function changePassword($input)
     {
-        $user = parent::find(access()->id());
+        $user = $this->find(access()->id());
 
         if (Hash::check($input['old_password'], $user->password)) {
             $user->password = bcrypt($input['password']);
 
-            return parent::save($user);
+            return $user->save();
         }
 
         throw new GeneralException(trans('exceptions.frontend.auth.password.change_mismatch'));
