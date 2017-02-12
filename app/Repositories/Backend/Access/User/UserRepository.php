@@ -3,9 +3,9 @@
 namespace App\Repositories\Backend\Access\User;
 
 use App\Models\Access\User\User;
-use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
+use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Model;
 use App\Events\Backend\Access\User\UserCreated;
 use App\Events\Backend\Access\User\UserDeleted;

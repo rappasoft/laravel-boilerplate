@@ -3,9 +3,9 @@
 namespace App\Repositories\Frontend\Access\User;
 
 use App\Models\Access\User\User;
-use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
+use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Access\User\SocialLogin;
 use App\Events\Frontend\Auth\UserConfirmed;
