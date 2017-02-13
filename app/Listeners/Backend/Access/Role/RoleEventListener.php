@@ -18,11 +18,11 @@ class RoleEventListener
     public function onCreated($event)
     {
         history()->withType($this->history_slug)
-			->withEntity($event->role->id)
-			->withText('trans("history.backend.roles.created") '.$event->role->name)
-			->withIcon('plus')
-			->withClass('bg-green')
-			->log();
+            ->withEntity($event->role->id)
+            ->withText('trans("history.backend.roles.created") '.$event->role->name)
+            ->withIcon('plus')
+            ->withClass('bg-green')
+            ->log();
     }
 
     /**
@@ -30,12 +30,12 @@ class RoleEventListener
      */
     public function onUpdated($event)
     {
-		history()->withType($this->history_slug)
-			->withEntity($event->role->id)
-			->withText('trans("history.backend.roles.updated") '.$event->role->name)
-			->withIcon('save')
-			->withClass('bg-aqua')
-			->log();
+        history()->withType($this->history_slug)
+            ->withEntity($event->role->id)
+            ->withText('trans("history.backend.roles.updated") '.$event->role->name)
+            ->withIcon('save')
+            ->withClass('bg-aqua')
+            ->log();
     }
 
     /**
@@ -43,12 +43,12 @@ class RoleEventListener
      */
     public function onDeleted($event)
     {
-		history()->withType($this->history_slug)
-			->withEntity($event->role->id)
-			->withText('trans("history.backend.roles.deleted") '.$event->role->name)
-			->withIcon('trash')
-			->withClass('bg-maroon')
-			->log();
+        history()->withType($this->history_slug)
+            ->withEntity($event->role->id)
+            ->withText('trans("history.backend.roles.deleted") '.$event->role->name)
+            ->withIcon('trash')
+            ->withClass('bg-maroon')
+            ->log();
     }
 
     /**
