@@ -221,42 +221,42 @@ class EloquentHistoryRepository implements HistoryContract
 
         if (count($assets)) {
             foreach ($assets as $name => $values) {
-                switch ($name) {
-                    case 'string':
-                        ${'asset_'.$count} = $values;
-                        break;
+				$key = explode('_', $name)[0];
+				$type = explode('_', $name)[1];
 
-                    //Cant have link be multiple array keys, allows for link, link1, link2, etc.
-                    case substr($name, 0, 4) == 'link':
-                        if (is_array($values)) {
-                            switch (count($values)) {
-                                case 1:
-                                    ${'asset_'.$count} = link_to_route($values[0], $values[0]);
-                                    break;
+                switch($type) {
+					case 'link':
+						if (is_array($values)) {
+							switch (count($values)) {
+								case 1:
+									$text = str_replace('{'.$key.'}', link_to_route($values[0], $values[0]), $text);
+								break;
 
-                                case 2:
-                                    ${'asset_'.$count} = link_to_route($values[0], $values[1]);
-                                    break;
+								case 2:
+									$text = str_replace('{'.$key.'}', link_to_route($values[0], $values[1]), $text);
+								break;
 
-                                case 3:
-                                    ${'asset_'.$count} = link_to_route($values[0], $values[1], $values[2]);
-                                    break;
+								case 3:
+									$text = str_replace('{'.$key.'}', link_to_route($values[0], $values[1], $values[2]), $text);
+								break;
 
-                                default:
-                                    break;
-                            }
-                        } else {
-                            //Normal url
-                            ${'asset_'.$count} = link_to($values, $values);
-                        }
-                        break;
+								case 4:
+									$text = str_replace('{'.$key.'}', link_to_route($values[0], $values[1], $values[2], $values[3]), $text);
+								break;
+							}
+						} else {
+							//Normal url
+							$text = str_replace('{'.$key.'}', link_to($values, $values), $text);
+						}
 
-                    default:
-                        break;
-                }
+					break;
 
-                $text = str_replace('$'.$count, ${'asset_'.$count}, $text);
-                $count++;
+					case 'string':
+						$text = str_replace('{'.$key.'}', $values, $text);
+					break;
+				}
+
+				$count++;
             }
         }
 

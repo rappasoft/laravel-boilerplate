@@ -19,11 +19,11 @@ class UserEventListener
     {
 		history()->withType($this->history_slug)
 			->withEntity($event->user->id)
-			->withText('trans("history.backend.users.created") <strong>$1</strong>')
+			->withText('trans("history.backend.users.created") <strong>{user}</strong>')
 			->withIcon('plus')
 			->withClass('bg-green')
 			->withAssets([
-				'link' => ['admin.access.user.show', $event->user->name, $event->user->id],
+				'user_link' => ['admin.access.user.show', $event->user->name, $event->user->id],
 			])
 			->log();
     }
@@ -35,11 +35,11 @@ class UserEventListener
     {
 		history()->withType($this->history_slug)
 			->withEntity($event->user->id)
-			->withText('trans("history.backend.users.updated") '.$event->user->name)
+			->withText('trans("history.backend.users.updated") <strong>{user}</strong>')
 			->withIcon('save')
 			->withClass('bg-aqua')
 			->withAssets([
-				'link' => ['admin.access.user.show', $event->user->name, $event->user->id],
+				'user_link' => ['admin.access.user.show', $event->user->name, $event->user->id],
 			])
 			->log();
     }
@@ -51,11 +51,11 @@ class UserEventListener
     {
 		history()->withType($this->history_slug)
 			->withEntity($event->user->id)
-			->withText('trans("history.backend.users.deleted") '.$event->user->name)
+			->withText('trans("history.backend.users.deleted") <strong>{user}</strong>')
 			->withIcon('trash')
 			->withClass('bg-maroon')
 			->withAssets([
-				'link' => ['admin.access.user.show', $event->user->name, $event->user->id],
+				'user_link' => ['admin.access.user.show', $event->user->name, $event->user->id],
 			])
 			->log();
     }
@@ -67,11 +67,11 @@ class UserEventListener
     {
 		history()->withType($this->history_slug)
 			->withEntity($event->user->id)
-			->withText('trans("history.backend.users.restored") '.$event->user->name)
+			->withText('trans("history.backend.users.restored") <strong>{user}</strong>')
 			->withIcon('refresh')
 			->withClass('bg-aqua')
 			->withAssets([
-				'link' => ['admin.access.user.show', $event->user->name, $event->user->id],
+				'user_link' => ['admin.access.user.show', $event->user->name, $event->user->id],
 			])
 			->log();
     }
@@ -83,7 +83,7 @@ class UserEventListener
     {
 		history()->withType($this->history_slug)
 			->withEntity($event->user->id)
-			->withText('trans("history.backend.users.permanently_deleted") '.$event->user->name)
+			->withText('trans("history.backend.users.permanently_deleted") <strong>{user}</strong>')
 			->withIcon('trash')
 			->withClass('bg-maroon')
 			->log();
@@ -96,11 +96,11 @@ class UserEventListener
     {
 		history()->withType($this->history_slug)
 			->withEntity($event->user->id)
-			->withText('trans("history.backend.users.changed_password") '.$event->user->name)
+			->withText('trans("history.backend.users.changed_password") <strong>{user}</strong>')
 			->withIcon('lock')
 			->withClass('bg-blue')
 			->withAssets([
-				'link' => ['admin.access.user.show', $event->user->name, $event->user->id],
+				'user_link' => ['admin.access.user.show', $event->user->name, $event->user->id],
 			])
 			->log();
     }
@@ -112,11 +112,11 @@ class UserEventListener
     {
 		history()->withType($this->history_slug)
 			->withEntity($event->user->id)
-			->withText('trans("history.backend.users.deactivated") '.$event->user->name)
+			->withText('trans("history.backend.users.deactivated") <strong>{user}</strong>')
 			->withIcon('times')
 			->withClass('bg-yellow')
 			->withAssets([
-				'link' => ['admin.access.user.show', $event->user->name, $event->user->id],
+				'user_link' => ['admin.access.user.show', $event->user->name, $event->user->id],
 			])
 			->log();
     }
@@ -128,11 +128,11 @@ class UserEventListener
     {
 		history()->withType($this->history_slug)
 			->withEntity($event->user->id)
-			->withText('trans("history.backend.users.reactivated") '.$event->user->name)
+			->withText('trans("history.backend.users.reactivated") <strong>{user}</strong>')
 			->withIcon('check')
 			->withClass('bg-green')
 			->withAssets([
-				'link' => ['admin.access.user.show', $event->user->name, $event->user->id],
+				'user_link' => ['admin.access.user.show', $event->user->name, $event->user->id],
 			])
 			->log();
     }
