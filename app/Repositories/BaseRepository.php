@@ -10,7 +10,7 @@ class BaseRepository
     /**
      * @return mixed
      */
-    protected function getAll()
+    public function getAll()
     {
         return $this->query()->get();
     }
@@ -18,7 +18,7 @@ class BaseRepository
     /**
      * @return mixed
      */
-    protected function getCount()
+    public function getCount()
     {
         return $this->query()->count();
     }
@@ -28,7 +28,7 @@ class BaseRepository
      *
      * @return mixed
      */
-    protected function find($id)
+    public function find($id)
     {
         return $this->query()->find($id);
     }
@@ -36,7 +36,7 @@ class BaseRepository
     /**
      * @return mixed
      */
-    protected function query()
+    public function query()
     {
         return call_user_func(static::MODEL.'::query');
     }

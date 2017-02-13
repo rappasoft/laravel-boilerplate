@@ -17,13 +17,15 @@ class UserEventListener
      */
     public function onCreated($event)
     {
-        history()->log(
-            $this->history_slug,
-            'trans("history.backend.users.created") '.$event->user->name,
-            $event->user->id,
-            'plus',
-            'bg-green'
-        );
+		history()->withType($this->history_slug)
+			->withEntity($event->user->id)
+			->withText('trans("history.backend.users.created") <strong>$1</strong>')
+			->withIcon('plus')
+			->withClass('bg-green')
+			->withAssets([
+				'link' => ['admin.access.user.show', $event->user->name, $event->user->id],
+			])
+			->log();
     }
 
     /**
@@ -31,13 +33,15 @@ class UserEventListener
      */
     public function onUpdated($event)
     {
-        history()->log(
-            $this->history_slug,
-            'trans("history.backend.users.updated") '.$event->user->name,
-            $event->user->id,
-            'save',
-            'bg-aqua'
-        );
+		history()->withType($this->history_slug)
+			->withEntity($event->user->id)
+			->withText('trans("history.backend.users.updated") '.$event->user->name)
+			->withIcon('save')
+			->withClass('bg-aqua')
+			->withAssets([
+				'link' => ['admin.access.user.show', $event->user->name, $event->user->id],
+			])
+			->log();
     }
 
     /**
@@ -45,13 +49,15 @@ class UserEventListener
      */
     public function onDeleted($event)
     {
-        history()->log(
-            $this->history_slug,
-            'trans("history.backend.users.deleted") '.$event->user->name,
-            $event->user->id,
-            'trash',
-            'bg-maroon'
-        );
+		history()->withType($this->history_slug)
+			->withEntity($event->user->id)
+			->withText('trans("history.backend.users.deleted") '.$event->user->name)
+			->withIcon('trash')
+			->withClass('bg-maroon')
+			->withAssets([
+				'link' => ['admin.access.user.show', $event->user->name, $event->user->id],
+			])
+			->log();
     }
 
     /**
@@ -59,13 +65,15 @@ class UserEventListener
      */
     public function onRestored($event)
     {
-        history()->log(
-            $this->history_slug,
-            'trans("history.backend.users.restored") '.$event->user->name,
-            $event->user->id,
-            'refresh',
-            'bg-aqua'
-        );
+		history()->withType($this->history_slug)
+			->withEntity($event->user->id)
+			->withText('trans("history.backend.users.restored") '.$event->user->name)
+			->withIcon('refresh')
+			->withClass('bg-aqua')
+			->withAssets([
+				'link' => ['admin.access.user.show', $event->user->name, $event->user->id],
+			])
+			->log();
     }
 
     /**
@@ -73,13 +81,12 @@ class UserEventListener
      */
     public function onPermanentlyDeleted($event)
     {
-        history()->log(
-            $this->history_slug,
-            'trans("history.backend.users.permanently_deleted") '.$event->user->name,
-            $event->user->id,
-            'trash',
-            'bg-maroon'
-        );
+		history()->withType($this->history_slug)
+			->withEntity($event->user->id)
+			->withText('trans("history.backend.users.permanently_deleted") '.$event->user->name)
+			->withIcon('trash')
+			->withClass('bg-maroon')
+			->log();
     }
 
     /**
@@ -87,13 +94,15 @@ class UserEventListener
      */
     public function onPasswordChanged($event)
     {
-        history()->log(
-            $this->history_slug,
-            'trans("history.backend.users.changed_password") '.$event->user->name,
-            $event->user->id,
-            'lock',
-            'bg-blue'
-        );
+		history()->withType($this->history_slug)
+			->withEntity($event->user->id)
+			->withText('trans("history.backend.users.changed_password") '.$event->user->name)
+			->withIcon('lock')
+			->withClass('bg-blue')
+			->withAssets([
+				'link' => ['admin.access.user.show', $event->user->name, $event->user->id],
+			])
+			->log();
     }
 
     /**
@@ -101,13 +110,15 @@ class UserEventListener
      */
     public function onDeactivated($event)
     {
-        history()->log(
-            $this->history_slug,
-            'trans("history.backend.users.deactivated") '.$event->user->name,
-            $event->user->id,
-            'times',
-            'bg-yellow'
-        );
+		history()->withType($this->history_slug)
+			->withEntity($event->user->id)
+			->withText('trans("history.backend.users.deactivated") '.$event->user->name)
+			->withIcon('times')
+			->withClass('bg-yellow')
+			->withAssets([
+				'link' => ['admin.access.user.show', $event->user->name, $event->user->id],
+			])
+			->log();
     }
 
     /**
@@ -115,13 +126,15 @@ class UserEventListener
      */
     public function onReactivated($event)
     {
-        history()->log(
-            $this->history_slug,
-            'trans("history.backend.users.reactivated") '.$event->user->name,
-            $event->user->id,
-            'check',
-            'bg-green'
-        );
+		history()->withType($this->history_slug)
+			->withEntity($event->user->id)
+			->withText('trans("history.backend.users.reactivated") '.$event->user->name)
+			->withIcon('check')
+			->withClass('bg-green')
+			->withAssets([
+				'link' => ['admin.access.user.show', $event->user->name, $event->user->id],
+			])
+			->log();
     }
 
     /**

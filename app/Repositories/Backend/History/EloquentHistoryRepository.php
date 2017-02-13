@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Backend\History;
 
+use App\Exceptions\GeneralException;
 use App\Models\History\History;
 use App\Models\History\HistoryType;
 
@@ -10,6 +11,37 @@ use App\Models\History\HistoryType;
  */
 class EloquentHistoryRepository implements HistoryContract
 {
+
+	/**
+	 * @var
+	 */
+	public $type;
+
+	/**
+	 * @var
+	 */
+	public $text;
+
+	/**
+	 * @var null
+	 */
+	public $entity_id = null;
+
+	/**
+	 * @var null
+	 */
+	public $icon = null;
+
+	/**
+	 * @var null
+	 */
+	public $class = null;
+
+	/**
+	 * @var null
+	 */
+	public $assets = null;
+
     /**
      * Pagination type
      * paginate: Prev/Next with page numbers
@@ -19,38 +51,101 @@ class EloquentHistoryRepository implements HistoryContract
      */
     private $paginationType = 'simplePaginate';
 
-    /**
-     * @param $type
-     * @param $text
-     * @param null $entity_id
-     * @param null $icon
-     * @param null $class
-     * @param null $assets
-     *
-     * @return bool|static
-     */
-    public function log($type, $text, $entity_id = null, $icon = null, $class = null, $assets = null)
+	/**
+	 * @param $type
+	 *
+	 * @return $this
+	 * @throws GeneralException
+	 */
+	public function withType($type) {
+		//Type can be id or name
+		if (is_numeric($type)) {
+			$this->type = HistoryType::findOrFail($type);
+		} else {
+			$this->type = HistoryType::where('name', $type)->first();
+		}
+
+		if ($this->type instanceof HistoryType) {
+			return $this;
+		}
+
+    	throw new GeneralException('An invalid history type was supplied: ' . $type . '.');
+	}
+
+	/**
+	 * @param $text
+	 *
+	 * @return $this
+	 * @throws GeneralException
+	 */
+	public function withText($text) {
+		if (strlen($text)) {
+			$this->text = $text;
+		} else {
+			throw new GeneralException('You must supply text for each history item.');
+		}
+
+		return $this;
+	}
+
+	/**
+	 * @param $entity_id
+	 *
+	 * @return $this
+	 */
+	public function withEntity($entity_id) {
+		$this->entity_id = $entity_id;
+
+		return $this;
+	}
+
+	/**
+	 * @param $icon
+	 *
+	 * @return $this
+	 */
+	public function withIcon($icon) {
+		$this->icon = $icon;
+
+		return $this;
+	}
+
+	/**
+	 * @param $class
+	 *
+	 * @return $this
+	 */
+	public function withClass($class) {
+		$this->class = $class;
+
+		return $this;
+	}
+
+	/**
+	 * @param $assets
+	 *
+	 * @return $this
+	 */
+	public function withAssets($assets) {
+		$this->assets = is_array($assets) && count($assets) ? json_encode($assets) : null;
+
+		return $this;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function log()
     {
-        //Type can be id or name
-        if (is_numeric($type)) {
-            $type = HistoryType::findOrFail($type);
-        } else {
-            $type = HistoryType::where('name', $type)->first();
-        }
-
-        if ($type instanceof HistoryType) {
-            return History::create([
-                'type_id'   => $type->id,
-                'text'      => $text,
-                'user_id'   => access()->id(),
-                'entity_id' => $entity_id,
-                'icon'      => $icon,
-                'class'     => $class,
-                'assets'    => is_array($assets) && count($assets) ? json_encode($assets) : null,
-            ]);
-        }
-
-        return false;
+		return History::create([
+			'type_id'   => $this->type->id,
+			'user_id'   => access()->id(),
+			'entity_id' => $this->entity_id,
+			'icon'      => $this->icon,
+			'class'     => $this->class,
+			'text'      => $this->text,
+			'assets'    => $this->assets,
+		]);
     }
 
     /**

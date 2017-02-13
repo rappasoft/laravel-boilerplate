@@ -3,21 +3,59 @@
 namespace App\Repositories\Backend\History;
 
 /**
- * Interface HistoryContract.
+ * Interface HistoryContract
+ *
+ * @package App\Repositories\Backend\History
  */
 interface HistoryContract
 {
-    /**
-     * @param $type
-     * @param $text
-     * @param null $entity_id
-     * @param null $icon
-     * @param null $class
-     * @param null $assets
-     *
-     * @return mixed
-     */
-    public function log($type, $text, $entity_id = null, $icon = null, $class = null, $assets = null);
+
+	/**
+	 * @param $type
+	 *
+	 * @return mixed
+	 */
+	public function withType($type);
+
+	/**
+	 * @param $text
+	 *
+	 * @return mixed
+	 */
+	public function withText($text);
+
+	/**
+	 * @param $entity_id
+	 *
+	 * @return mixed
+	 */
+	public function withEntity($entity_id);
+
+	/**
+	 * @param $icon
+	 *
+	 * @return mixed
+	 */
+	public function withIcon($icon);
+
+	/**
+	 * @param $class
+	 *
+	 * @return mixed
+	 */
+	public function withClass($class);
+
+	/**
+	 * @param $assets
+	 *
+	 * @return mixed
+	 */
+	public function withAssets($assets);
+
+	/**
+	 * @return mixed
+	 */
+	public function log();
 
     /**
      * @param null $limit
