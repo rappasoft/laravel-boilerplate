@@ -35,10 +35,10 @@ class RoleRepository extends BaseRepository
             ->get();
     }
 
-	/**
-	 * @return mixed
-	 */
-	public function getForDataTable()
+    /**
+     * @return mixed
+     */
+    public function getForDataTable()
     {
         return $this->query()
             ->with('users', 'permissions')
