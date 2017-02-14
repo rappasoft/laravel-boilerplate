@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 /**
  * Class TestCase.
  */
-abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
+abstract class BrowserKitTestCase extends Laravel\BrowserKitTesting\TestCase
 {
     use DatabaseTransactions;
 
@@ -70,6 +70,8 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
     public function setUp()
     {
         parent::setUp();
+
+        $this->baseUrl = config('app.url', 'http://l5boilerplate.dev');
 
         // Set up the database
         Artisan::call('migrate:refresh');

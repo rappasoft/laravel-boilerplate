@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "844c3320ba94510c1f4c3ed4a8ee8b16",
+    "content-hash": "ac431f3777919283283f7f8e9509837a",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -1453,16 +1453,16 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v3.4.4",
+            "version": "v3.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "ca3ca6979090dfefd02fe28f57288d2dc9da6203"
+                "reference": "dbe2f7fab50b12c30ff4953d8be1c8890471eda1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/ca3ca6979090dfefd02fe28f57288d2dc9da6203",
-                "reference": "ca3ca6979090dfefd02fe28f57288d2dc9da6203",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/dbe2f7fab50b12c30ff4953d8be1c8890471eda1",
+                "reference": "dbe2f7fab50b12c30ff4953d8be1c8890471eda1",
                 "shasum": ""
             },
             "require": {
@@ -1515,7 +1515,7 @@
                 "orchestral",
                 "testing"
             ],
-            "time": "2017-02-05T02:35:12+00:00"
+            "time": "2017-02-12T14:36:53+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -1819,16 +1819,16 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.5",
+            "version": "v5.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "cd142238a339459b10da3d8234220963f392540c"
+                "reference": "81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/cd142238a339459b10da3d8234220963f392540c",
-                "reference": "cd142238a339459b10da3d8234220963f392540c",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e",
+                "reference": "81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e",
                 "shasum": ""
             },
             "require": {
@@ -1869,7 +1869,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2016-12-29T10:02:40+00:00"
+            "time": "2017-02-13T07:52:53+00:00"
         },
         {
             "name": "symfony/console",
@@ -2961,6 +2961,53 @@
                 "test"
             ],
             "time": "2015-05-11T14:41:42+00:00"
+        },
+        {
+            "name": "laravel/browser-kit-testing",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/browser-kit-testing.git",
+                "reference": "0adfb725147815bff5516d157577f375a6e66ebd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/browser-kit-testing/zipball/0adfb725147815bff5516d157577f375a6e66ebd",
+                "reference": "0adfb725147815bff5516d157577f375a6e66ebd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9",
+                "symfony/css-selector": "~3.1",
+                "symfony/dom-crawler": "~3.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\BrowserKitTesting\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Provides backwards compatibility for BrowserKit testing in Laravel 5.4.",
+            "keywords": [
+                "laravel",
+                "testing"
+            ],
+            "time": "2017-02-08T22:32:37+00:00"
         },
         {
             "name": "maximebf/debugbar",
