@@ -30,3 +30,5 @@ composer.phar
 error.log
 Todo.rtf
 .vagrant
+public/css
+public/js
