@@ -7,9 +7,6 @@ class DashboardRouteTest extends BrowserKitTestCase
 {
     public function testAdminDashboard()
     {
-        $this->actingAs($this->admin)
-            ->visit('/admin/dashboard')
-            ->see('Access Management')
-            ->see($this->admin->name);
+        $this->actingAs($this->admin)->visit('/admin/dashboard')->see('Access Management')->see($this->admin->name);
     }
 }

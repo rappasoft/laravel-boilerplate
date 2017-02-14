@@ -21,8 +21,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
      */
     public function testHomePage()
     {
-        $this->visit('/')
-            ->assertResponseOk();
+        $this->visit('/')->assertResponseOk();
     }
 
     /**
@@ -30,8 +29,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
      */
     public function testMacroPage()
     {
-        $this->visit('/macros')
-            ->see('Macro Examples');
+        $this->visit('/macros')->see('Macro Examples');
     }
 
     /**
@@ -39,8 +37,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
      */
     public function testLoginPage()
     {
-        $this->visit('/login')
-            ->see('Login');
+        $this->visit('/login')->see('Login');
     }
 
     /**
@@ -48,8 +45,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
      */
     public function testRegisterPage()
     {
-        $this->visit('/register')
-            ->see('Register');
+        $this->visit('/register')->see('Register');
     }
 
     /**
@@ -57,8 +53,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
      */
     public function testForgotPasswordPage()
     {
-        $this->visit('password/reset')
-            ->see('Reset Password');
+        $this->visit('password/reset')->see('Reset Password');
     }
 
     /**
@@ -66,8 +61,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
      */
     public function testDashboardPageLoggedOut()
     {
-        $this->visit('/dashboard')
-            ->seePageIs('/login');
+        $this->visit('/dashboard')->seePageIs('/login');
     }
 
     /**
@@ -75,8 +69,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
      */
     public function testAccountPageLoggedOut()
     {
-        $this->visit('/account')
-            ->seePageIs('/login');
+        $this->visit('/account')->seePageIs('/login');
     }
 
     /**
@@ -88,15 +81,13 @@ class LoggedOutRouteTest extends BrowserKitTestCase
         Event::fake();
 
         // Create default user to test with
-        $unconfirmed = factory(User::class)
-            ->states('unconfirmed')
-            ->create();
+        $unconfirmed = factory(User::class)->states('unconfirmed')->create();
         $unconfirmed->attachRole(3); //User
 
         $this->visit('/account/confirm/'.$unconfirmed->confirmation_code)
-            ->seePageIs('/login')
-            ->see('Your account has been successfully confirmed!')
-            ->seeInDatabase(config('access.users_table'), ['email' => $unconfirmed->email, 'confirmed'  => 1]);
+             ->seePageIs('/login')
+             ->see('Your account has been successfully confirmed!')
+             ->seeInDatabase(config('access.users_table'), ['email' => $unconfirmed->email, 'confirmed' => 1]);
 
         Event::assertDispatched(UserConfirmed::class);
     }
@@ -110,13 +101,11 @@ class LoggedOutRouteTest extends BrowserKitTestCase
         Notification::fake();
 
         $this->visit('/account/confirm/resend/'.$this->user->id)
-            ->seePageIs('/login')
-            ->see('A new confirmation e-mail has been sent to the address on file.');
+             ->seePageIs('/login')
+             ->see('A new confirmation e-mail has been sent to the address on file.');
 
-        Notification::assertSentTo(
-            [$this->user],
-            UserNeedsConfirmation::class
-        );
+        Notification::assertSentTo([$this->user],
+            UserNeedsConfirmation::class);
     }
 
     /**
@@ -124,9 +113,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
      */
     public function testLanguageSwitcher()
     {
-        $this->visit('lang/es')
-            ->see('Registrarse')
-            ->assertSessionHas('locale', 'es');
+        $this->visit('lang/es')->see('Registrarse')->assertSessionHas('locale', 'es');
 
         App::setLocale('en');
     }
@@ -136,8 +123,6 @@ class LoggedOutRouteTest extends BrowserKitTestCase
      */
     public function test404Page()
     {
-        $this->get('7g48hwbfw9eufj')
-            ->seeStatusCode(404)
-            ->see('Page Not Found');
+        $this->get('7g48hwbfw9eufj')->seeStatusCode(404)->see('Page Not Found');
     }
 }

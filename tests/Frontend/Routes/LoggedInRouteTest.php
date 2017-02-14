@@ -13,11 +13,7 @@ class LoggedInRouteTest extends BrowserKitTestCase
      */
     public function testHomePageLoggedIn()
     {
-        $this->actingAs($this->user)
-            ->visit('/')
-            ->see('Dashboard')
-            ->see($this->user->name)
-            ->dontSee('Administration');
+        $this->actingAs($this->user)->visit('/')->see('Dashboard')->see($this->user->name)->dontSee('Administration');
     }
 
     /**
@@ -26,10 +22,10 @@ class LoggedInRouteTest extends BrowserKitTestCase
     public function testDashboardPage()
     {
         $this->actingAs($this->user)
-            ->visit('/dashboard')
-            ->see($this->user->email)
-            ->see('Joined')
-            ->dontSee('Administration');
+             ->visit('/dashboard')
+             ->see($this->user->email)
+             ->see('Joined')
+             ->dontSee('Administration');
     }
 
     /**
@@ -38,12 +34,12 @@ class LoggedInRouteTest extends BrowserKitTestCase
     public function testAccountPage()
     {
         $this->actingAs($this->user)
-            ->visit('/account')
-            ->see('My Account')
-            ->see('Profile')
-            ->see('Update Information')
-            ->see('Change Password')
-            ->dontSee('Administration');
+             ->visit('/account')
+             ->see('My Account')
+             ->see('Profile')
+             ->see('Update Information')
+             ->see('Change Password')
+             ->dontSee('Administration');
     }
 
     /**
@@ -51,10 +47,7 @@ class LoggedInRouteTest extends BrowserKitTestCase
      */
     public function testLoggedInAdmin()
     {
-        $this->actingAs($this->admin)
-            ->visit('/')
-            ->see('Administration')
-            ->see($this->admin->name);
+        $this->actingAs($this->admin)->visit('/')->see('Administration')->see($this->admin->name);
     }
 
     /**
@@ -65,10 +58,7 @@ class LoggedInRouteTest extends BrowserKitTestCase
         // Make sure our events are fired
         Event::fake();
 
-        $this->actingAs($this->user)
-            ->visit('/logout')
-            ->see('Login')
-            ->see('Register');
+        $this->actingAs($this->user)->visit('/logout')->see('Login')->see('Register');
 
         Event::assertDispatched(UserLoggedOut::class);
     }
