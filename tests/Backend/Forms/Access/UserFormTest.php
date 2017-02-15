@@ -66,9 +66,9 @@ class UserFormTest extends BrowserKitTestCase
              ->press('Create')
              ->seePageIs('/admin/access/user')
              ->see('The user was successfully created.')
-             ->seeInDatabase('users', ['name' => $name, 'email' => $email, 'status' => 1, 'confirmed' => 1])
-             ->seeInDatabase('role_user', ['user_id' => 4, 'role_id' => 2])
-             ->seeInDatabase('role_user', ['user_id' => 4, 'role_id' => 3]);
+             ->seeInDatabase(config('access.users_table'), ['name' => $name, 'email' => $email, 'status' => 1, 'confirmed' => 1])
+             ->seeInDatabase(config('access.role_user_table'), ['user_id' => 4, 'role_id' => 2])
+             ->seeInDatabase(config('access.role_user_table'), ['user_id' => 4, 'role_id' => 3]);
 
         Event::assertDispatched(UserCreated::class);
     }
@@ -101,9 +101,9 @@ class UserFormTest extends BrowserKitTestCase
              ->press('Create')
              ->seePageIs('/admin/access/user')
              ->see('The user was successfully created.')
-             ->seeInDatabase('users', ['name' => $name, 'email' => $email, 'status' => 1, 'confirmed' => 0])
-             ->seeInDatabase('role_user', ['user_id' => 4, 'role_id' => 2])
-             ->seeInDatabase('role_user', ['user_id' => 4, 'role_id' => 3]);
+             ->seeInDatabase(config('access.users_table'), ['name' => $name, 'email' => $email, 'status' => 1, 'confirmed' => 0])
+             ->seeInDatabase(config('access.role_user_table'), ['user_id' => 4, 'role_id' => 2])
+             ->seeInDatabase(config('access.role_user_table'), ['user_id' => 4, 'role_id' => 3]);
 
         // Get the user that was inserted into the database
         $user = User::where('email', $email)->first();
@@ -157,7 +157,7 @@ class UserFormTest extends BrowserKitTestCase
              ->press('Update')
              ->seePageIs('/admin/access/user')
              ->see('The user was successfully updated.')
-             ->seeInDatabase('users',
+             ->seeInDatabase(config('access.users_table'),
                  [
                      'id'        => $this->user->id,
                      'name'      => 'User New',
@@ -165,8 +165,8 @@ class UserFormTest extends BrowserKitTestCase
                      'status'    => 0,
                      'confirmed' => 0,
                  ])
-             ->seeInDatabase('role_user', ['user_id' => $this->user->id, 'role_id' => 2])
-             ->notSeeInDatabase('role_user', ['user_id' => $this->user->id, 'role_id' => 3]);
+             ->seeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => 2])
+             ->notSeeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => 3]);
 
         Event::assertDispatched(UserUpdated::class);
     }
@@ -179,7 +179,7 @@ class UserFormTest extends BrowserKitTestCase
         $this->actingAs($this->admin)
              ->delete('/admin/access/user/'.$this->user->id)
              ->assertRedirectedTo('/admin/access/user/deleted')
-             ->notSeeInDatabase('users', ['id' => $this->user->id, 'deleted_at' => null]);
+             ->notSeeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null]);
 
         Event::assertDispatched(UserDeleted::class);
     }
@@ -190,7 +190,7 @@ class UserFormTest extends BrowserKitTestCase
              ->visit('/admin/access/user')
              ->delete('/admin/access/user/'.$this->admin->id)
              ->assertRedirectedTo('/admin/access/user')
-             ->seeInDatabase('users', ['id' => $this->admin->id, 'deleted_at' => null])
+             ->seeInDatabase(config('access.users_table'), ['id' => $this->admin->id, 'deleted_at' => null])
              ->seeInSession(['flash_danger' => 'You can not delete yourself.']);
     }
 
