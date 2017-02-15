@@ -1,5 +1,7 @@
 <?php
 
+use Tests\BrowserKitTestCase;
+
 /**
  * Class RoleRouteTest.
  */

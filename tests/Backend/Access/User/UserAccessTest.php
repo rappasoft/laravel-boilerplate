@@ -1,4 +1,5 @@
 <?php
+use Tests\BrowserKitTestCase;
 
 /**
  * Class UserAccessTest.

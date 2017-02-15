@@ -1,6 +1,5 @@
 <?php
 
-use Faker\Factory;
 use App\Models\Access\User\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -10,6 +9,7 @@ use App\Events\Frontend\Auth\UserRegistered;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 use App\Notifications\Frontend\Auth\UserNeedsPasswordReset;
+use Tests\BrowserKitTestCase;
 
 /**
  * Class LoggedOutFormTest.

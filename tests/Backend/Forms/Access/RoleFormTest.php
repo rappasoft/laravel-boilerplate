@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Event;
 use App\Events\Backend\Access\Role\RoleCreated;
 use App\Events\Backend\Access\Role\RoleDeleted;
 use App\Events\Backend\Access\Role\RoleUpdated;
+use Tests\BrowserKitTestCase;
 
 /**
  * Class RoleFormTest.

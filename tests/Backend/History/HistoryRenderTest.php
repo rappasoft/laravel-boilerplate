@@ -1,6 +1,6 @@
 <?php
 
-use App\Repositories\Backend\History\Facades\History;
+use Tests\BrowserKitTestCase;
 
 /**
  * Class HistoryRenderTest.

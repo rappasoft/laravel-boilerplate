@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedOut;
+use Tests\BrowserKitTestCase;
 
 /**
  * Class LoggedInRouteTest.

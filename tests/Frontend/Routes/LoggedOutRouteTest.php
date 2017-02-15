@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserConfirmed;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use Tests\BrowserKitTestCase;
 
 /**
  * Class LoggedOutRouteTest.
