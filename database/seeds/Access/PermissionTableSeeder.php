@@ -1,6 +1,7 @@
 <?php
 
 use Carbon\Carbon;
+use database\DisablesForeignKeys;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -9,6 +10,8 @@ use Illuminate\Support\Facades\DB;
  */
 class PermissionTableSeeder extends Seeder
 {
+    use DisablesForeignKeys;
+
     /**
      * Run the database seed.
      *
@@ -16,9 +19,7 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
-        if (DB::connection()->getDriverName() == 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        }
+        $this->disableForeignKeys();
 
         if (DB::connection()->getDriverName() == 'mysql') {
             DB::table(config('access.permissions_table'))->truncate();
@@ -70,8 +71,6 @@ class PermissionTableSeeder extends Seeder
         $manageRoles->updated_at = Carbon::now();
         $manageRoles->save();
 
-        if (DB::connection()->getDriverName() == 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        }
+        $this->enableForeignKeys();
     }
 }

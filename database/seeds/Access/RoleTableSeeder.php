@@ -1,6 +1,7 @@
 <?php
 
 use Carbon\Carbon as Carbon;
+use database\DisablesForeignKeys;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -9,6 +10,8 @@ use Illuminate\Support\Facades\DB;
  */
 class RoleTableSeeder extends Seeder
 {
+    use DisablesForeignKeys;
+
     /**
      * Run the database seed.
      *
@@ -16,9 +19,7 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        if (DB::connection()->getDriverName() == 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        }
+        $this->disableForeignKeys();
 
         if (DB::connection()->getDriverName() == 'mysql') {
             DB::table(config('access.roles_table'))->truncate();
@@ -56,8 +57,6 @@ class RoleTableSeeder extends Seeder
 
         DB::table(config('access.roles_table'))->insert($roles);
 
-        if (DB::connection()->getDriverName() == 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        }
+        $this->enableForeignKeys();
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use database\DisablesForeignKeys;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -8,6 +9,8 @@ use Illuminate\Support\Facades\DB;
  */
 class UserRoleSeeder extends Seeder
 {
+    use DisablesForeignKeys;
+
     /**
      * Run the database seed.
      *
@@ -15,9 +18,7 @@ class UserRoleSeeder extends Seeder
      */
     public function run()
     {
-        if (DB::connection()->getDriverName() == 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        }
+        $this->disableForeignKeys();
 
         if (DB::connection()->getDriverName() == 'mysql') {
             DB::table(config('access.role_user_table'))->truncate();
@@ -43,8 +44,6 @@ class UserRoleSeeder extends Seeder
         $user_model = new $user_model();
         $user_model::find(3)->attachRole(3);
 
-        if (DB::connection()->getDriverName() == 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        }
+        $this->enableForeignKeys();
     }
 }

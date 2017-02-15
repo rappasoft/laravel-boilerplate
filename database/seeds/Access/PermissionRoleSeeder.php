@@ -1,5 +1,6 @@
 <?php
 
+use database\DisablesForeignKeys;
 use Illuminate\Database\Seeder;
 use App\Models\Access\Role\Role;
 use Illuminate\Support\Facades\DB;
@@ -9,6 +10,8 @@ use Illuminate\Support\Facades\DB;
  */
 class PermissionRoleSeeder extends Seeder
 {
+    use DisablesForeignKeys;
+
     /**
      * Run the database seed.
      *
@@ -16,9 +19,7 @@ class PermissionRoleSeeder extends Seeder
      */
     public function run()
     {
-        if (DB::connection()->getDriverName() == 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        }
+        $this->disableForeignKeys();
 
         if (DB::connection()->getDriverName() == 'mysql') {
             DB::table(config('access.permission_role_table'))->truncate();
@@ -33,12 +34,6 @@ class PermissionRoleSeeder extends Seeder
          * Assign view backend and manage user permissions to executive role as example
          */
         Role::find(2)->permissions()->sync([1, 2]);
-        /*
-         *
-         */
-
-        if (DB::connection()->getDriverName() == 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        }
+        $this->enableForeignKeys();
     }
 }
