@@ -1,6 +1,7 @@
 <?php
 
 use Tests\BrowserKitTestCase;
+
 /**
  * Class UserRoleTest.
  */

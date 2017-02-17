@@ -1,9 +1,9 @@
 <?php
 
 use Database\TruncateTable;
-use Database\DisablesForeignKeys;
 use Carbon\Carbon as Carbon;
 use Illuminate\Database\Seeder;
+use Database\DisablesForeignKeys;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -11,8 +11,7 @@ use Illuminate\Support\Facades\DB;
  */
 class HistoryTypeTableSeeder extends Seeder
 {
-
-	use DisablesForeignKeys, TruncateTable;
+    use DisablesForeignKeys, TruncateTable;
 
     /**
      * Run the database seed.
@@ -21,8 +20,8 @@ class HistoryTypeTableSeeder extends Seeder
      */
     public function run()
     {
-       $this->disableForeignKeys();
-       $this->truncate('history_types');
+        $this->disableForeignKeys();
+        $this->truncate('history_types');
 
         $types = [
             [
