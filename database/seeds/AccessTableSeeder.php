@@ -1,14 +1,14 @@
 <?php
 
-use Database\DisablesForeignKeys;
 use Illuminate\Database\Seeder;
+use Database\DisablesForeignKeys;
 
 /**
  * Class AccessTableSeeder.
  */
 class AccessTableSeeder extends Seeder
 {
-	use DisablesForeignKeys;
+    use DisablesForeignKeys;
 
     /**
      * Run the database seeds.
@@ -17,7 +17,7 @@ class AccessTableSeeder extends Seeder
      */
     public function run()
     {
-		$this->disableForeignKeys();
+        $this->disableForeignKeys();
 
         $this->call(UserTableSeeder::class);
         $this->call(RoleTableSeeder::class);
@@ -25,6 +25,6 @@ class AccessTableSeeder extends Seeder
         $this->call(PermissionTableSeeder::class);
         $this->call(PermissionRoleSeeder::class);
 
-		$this->enableForeignKeys();
+        $this->enableForeignKeys();
     }
 }

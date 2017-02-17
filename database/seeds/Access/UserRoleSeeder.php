@@ -1,8 +1,8 @@
 <?php
 
 use Database\TruncateTable;
-use Database\DisablesForeignKeys;
 use Illuminate\Database\Seeder;
+use Database\DisablesForeignKeys;
 
 /**
  * Class UserRoleSeeder.
@@ -19,7 +19,7 @@ class UserRoleSeeder extends Seeder
     public function run()
     {
         $this->disableForeignKeys();
-		$this->truncate(config('access.role_user_table'));
+        $this->truncate(config('access.role_user_table'));
 
         //Attach admin role to admin user
         $user_model = config('auth.providers.users.model');

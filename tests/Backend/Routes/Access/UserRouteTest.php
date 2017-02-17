@@ -1,13 +1,13 @@
 <?php
 
 use Carbon\Carbon;
+use Tests\BrowserKitTestCase;
 use Illuminate\Support\Facades\Event;
 use App\Events\Backend\Access\User\UserRestored;
 use App\Events\Backend\Access\User\UserDeactivated;
 use App\Events\Backend\Access\User\UserReactivated;
 use App\Events\Backend\Access\User\UserPermanentlyDeleted;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-use Tests\BrowserKitTestCase;
 
 /**
  * Class UserRouteTest.

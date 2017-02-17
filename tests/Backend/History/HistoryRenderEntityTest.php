@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Access\User\User;
 use Tests\BrowserKitTestCase;
+use App\Models\Access\User\User;
 
 /**
  * Class HistoryRenderEntityTest.

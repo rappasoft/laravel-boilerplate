@@ -1,9 +1,9 @@
 <?php
 
-use Carbon\Carbon as Carbon;
 use Database\TruncateTable;
-use Database\DisablesForeignKeys;
+use Carbon\Carbon as Carbon;
 use Illuminate\Database\Seeder;
+use Database\DisablesForeignKeys;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -21,7 +21,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $this->disableForeignKeys();
-       	$this->truncate(config('access.users_table'));
+        $this->truncate(config('access.users_table'));
 
         //Add the master administrator, user id of 1
         $users = [
