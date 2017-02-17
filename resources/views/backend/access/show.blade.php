@@ -50,4 +50,4 @@
 
         </div><!-- /.box-body -->
     </div><!--box-->
-@stop
+@endsection

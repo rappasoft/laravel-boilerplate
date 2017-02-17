@@ -4,7 +4,7 @@
 
 @section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
-@stop
+@endsection
 
 @section('page-header')
     <h1>{{ trans('labels.backend.access.roles.management') }}</h1>
@@ -48,7 +48,7 @@
             {!! history()->renderType('Role') !!}
         </div><!-- /.box-body -->
     </div><!--box box-success-->
-@stop
+@endsection
 
 @section('after-scripts')
     {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
@@ -75,4 +75,4 @@
             });
         });
     </script>
-@stop
+@endsection

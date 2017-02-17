@@ -4,7 +4,7 @@
 
 @section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
-@stop
+@endsection
 
 @section('page-header')
     <h1>
@@ -42,7 +42,7 @@
             </div><!--table-responsive-->
         </div><!-- /.box-body -->
     </div><!--box-->
-@stop
+@endsection
 
 @section('after-scripts')
     {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
@@ -73,4 +73,4 @@
             });
         });
     </script>
-@stop
+@endsection

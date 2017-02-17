@@ -116,8 +116,8 @@
         @endif
 
     {{ Form::close() }}
-@stop
+@endsection
 
 @section('after-scripts')
     {{ Html::script('js/backend/access/users/script.js') }}
-@stop
+@endsection

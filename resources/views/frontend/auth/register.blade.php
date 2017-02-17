@@ -70,4 +70,4 @@
     @if (config('access.captcha.registration'))
         {!! Captcha::script() !!}
     @endif
-@stop
+@endsection

@@ -101,7 +101,7 @@
             </form>
         </div>
     </div>
-@stop
+@endsection
 
 @section('after-scripts-end')
     <script>
@@ -154,4 +154,4 @@
             });
         });
     </script>
-@stop
+@endsection
