@@ -45,17 +45,17 @@
                                     @elseif ($value == 0)
                                         <span class="level level-empty">{{ $value }}</span>
                                     @else
-                                        <a href="{{ route('admin.log-viewer::logs.filter', [$date, $key]) }}">
+                                        <a href="{{ route('log-viewer::logs.filter', [$date, $key]) }}">
                                             <span class="level level-{{ $key }}">{{ $value }}</span>
                                         </a>
                                     @endif
                                 </td>
                                 @endforeach
                                 <td class="text-right">
-                                    <a href="{{ route('admin.log-viewer::logs.show', [$date]) }}" class="btn btn-xs btn-info">
+                                    <a href="{{ route('log-viewer::logs.show', [$date]) }}" class="btn btn-xs btn-info">
                                         <i class="fa fa-search"></i>
                                     </a>
-                                    <a href="{{ route('admin.log-viewer::logs.download', [$date]) }}" class="btn btn-xs btn-success">
+                                    <a href="{{ route('log-viewer::logs.download', [$date]) }}" class="btn btn-xs btn-success">
                                         <i class="fa fa-download"></i>
                                     </a>
                                     <a href="#" id="delete-log-link" class="btn btn-xs btn-danger" data-log-date="{{ $date }}">
@@ -79,7 +79,7 @@
     {{-- DELETE MODAL --}}
     <div id="delete-log-modal" class="modal fade">
         <div class="modal-dialog">
-            <form id="delete-log-form" action="{{ route('admin.log-viewer::logs.delete') }}" method="POST">
+            <form id="delete-log-form" action="{{ route('log-viewer::logs.delete') }}" method="POST">
                 <input type="hidden" name="_method" value="DELETE">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="date" value="">

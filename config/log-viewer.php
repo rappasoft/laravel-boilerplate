@@ -33,12 +33,12 @@ return [
      | ------------------------------------------------------------------------------------------------
      */
     'route'         => [
-        'enabled'    => false,
+        'enabled'    => true,
 
         'attributes' => [
-            'prefix'     => 'log-viewer',
+            'prefix'     => 'admin/log-viewer',
 
-            'middleware' => null,
+            'middleware' => ['web', 'admin'],
         ],
     ],
 
@@ -70,7 +70,7 @@ return [
      | ------------------------------------------------------------------------------------------------
      */
     'menu'  => [
-        'filter-route'  => 'admin.log-viewer::logs.filter',
+        'filter-route'  => 'log-viewer::logs.filter',
 
         'icons-enabled' => true,
     ],

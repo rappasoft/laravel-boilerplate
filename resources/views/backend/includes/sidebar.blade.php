@@ -77,14 +77,14 @@
                 </a>
                 <ul class="treeview-menu {{ active_class(Active::checkUriPattern('admin/log-viewer*'), 'menu-open') }}" style="display: none; {{ active_class(Active::checkUriPattern('admin/log-viewer*'), 'display: block;') }}">
                     <li class="{{ active_class(Active::checkUriPattern('admin/log-viewer')) }}">
-                        <a href="{{ route('admin.log-viewer::dashboard') }}">
+                        <a href="{{ route('log-viewer::dashboard') }}">
                             <i class="fa fa-circle-o"></i>
                             <span>{{ trans('menus.backend.log-viewer.dashboard') }}</span>
                         </a>
                     </li>
 
                     <li class="{{ active_class(Active::checkUriPattern('admin/log-viewer/logs')) }}">
-                        <a href="{{ route('admin.log-viewer::logs.list') }}">
+                        <a href="{{ route('log-viewer::logs.list') }}">
                             <i class="fa fa-circle-o"></i>
                             <span>{{ trans('menus.backend.log-viewer.logs') }}</span>
                         </a>
