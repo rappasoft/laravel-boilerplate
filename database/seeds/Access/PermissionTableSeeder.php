@@ -3,14 +3,14 @@
 use Carbon\Carbon;
 use Database\TruncateTable;
 use Illuminate\Database\Seeder;
-use Database\DisablesForeignKeys;
+use Database\DisableForeignKeys;
 
 /**
  * Class PermissionTableSeeder.
  */
 class PermissionTableSeeder extends Seeder
 {
-    use DisablesForeignKeys, TruncateTable;
+    use DisableForeignKeys, TruncateTable;
 
     /**
      * Run the database seed.

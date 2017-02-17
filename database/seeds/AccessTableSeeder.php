@@ -1,14 +1,14 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Database\DisablesForeignKeys;
+use Database\DisableForeignKeys;
 
 /**
  * Class AccessTableSeeder.
  */
 class AccessTableSeeder extends Seeder
 {
-    use DisablesForeignKeys;
+    use DisableForeignKeys;
 
     /**
      * Run the database seeds.

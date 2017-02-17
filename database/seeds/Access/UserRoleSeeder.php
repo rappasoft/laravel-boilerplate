@@ -2,14 +2,14 @@
 
 use Database\TruncateTable;
 use Illuminate\Database\Seeder;
-use Database\DisablesForeignKeys;
+use Database\DisableForeignKeys;
 
 /**
  * Class UserRoleSeeder.
  */
 class UserRoleSeeder extends Seeder
 {
-    use DisablesForeignKeys, TruncateTable;
+    use DisableForeignKeys, TruncateTable;
 
     /**
      * Run the database seed.

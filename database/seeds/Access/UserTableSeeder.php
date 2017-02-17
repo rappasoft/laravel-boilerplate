@@ -3,7 +3,7 @@
 use Database\TruncateTable;
 use Carbon\Carbon as Carbon;
 use Illuminate\Database\Seeder;
-use Database\DisablesForeignKeys;
+use Database\DisableForeignKeys;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
  */
 class UserTableSeeder extends Seeder
 {
-    use DisablesForeignKeys, TruncateTable;
+    use DisableForeignKeys, TruncateTable;
 
     /**
      * Run the database seed.

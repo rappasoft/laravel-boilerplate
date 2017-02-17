@@ -3,14 +3,14 @@
 use Database\TruncateTable;
 use Illuminate\Database\Seeder;
 use App\Models\Access\Role\Role;
-use Database\DisablesForeignKeys;
+use Database\DisableForeignKeys;
 
 /**
  * Class PermissionRoleSeeder.
  */
 class PermissionRoleSeeder extends Seeder
 {
-    use DisablesForeignKeys, TruncateTable;
+    use DisableForeignKeys, TruncateTable;
 
     /**
      * Run the database seed.
