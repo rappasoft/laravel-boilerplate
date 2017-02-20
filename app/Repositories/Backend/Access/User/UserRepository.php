@@ -50,7 +50,7 @@ class UserRepository extends BaseRepository
 	public function getByPermission($permissions, $by = 'name') {
     	if (! is_array($permissions)) $permissions = [$permissions];
 
-		return User::whereHas('roles.permissions', function($query) use($permissions, $by) {
+		return $this->query()->whereHas('roles.permissions', function($query) use($permissions, $by) {
 			$query->whereIn('permissions.'.$by, $permissions);
 		})->get();
 	}
@@ -64,7 +64,7 @@ class UserRepository extends BaseRepository
 	public function getByRole($roles, $by = 'name') {
 		if (! is_array($roles)) $roles = [$roles];
 
-		return User::whereHas('roles', function($query) use($roles, $by) {
+		return $this->query()->whereHas('roles', function($query) use($roles, $by) {
 			$query->whereIn('roles.'.$by, $roles);
 		})->get();
 	}
