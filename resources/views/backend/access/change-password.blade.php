@@ -55,4 +55,4 @@
         </div><!--box-->
 
     {{ Form::close() }}
-@stop
+@endsection

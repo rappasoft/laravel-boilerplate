@@ -1,9 +1,11 @@
 <?php
 
+use Tests\BrowserKitTestCase;
+
 /**
  * Class AccessHelperTest.
  */
-class AccessHelperTest extends TestCase
+class AccessHelperTest extends BrowserKitTestCase
 {
     public function testAccessUser()
     {

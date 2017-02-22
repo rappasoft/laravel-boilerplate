@@ -3,11 +3,9 @@
 namespace App\Providers;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
-/**
- * Class AppServiceProvider.
- */
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -45,8 +43,12 @@ class AppServiceProvider extends ServiceProvider
 
         // Force SSL in production
         if ($this->app->environment() == 'production') {
-            //URL::forceSchema('https');
+            //URL::forceScheme('https');
         }
+
+        // Set the default string length for Laravel5.4
+        // https://laravel-news.com/laravel-5-4-key-too-long-error
+        Schema::defaultStringLength(191);
     }
 
     /**
@@ -59,7 +61,7 @@ class AppServiceProvider extends ServiceProvider
         /*
          * Sets third party service providers that are only needed on local/testing environments
          */
-        if ($this->app->environment() == 'local' || $this->app->environment() == 'testing') {
+        if ($this->app->environment() != 'production') {
             /**
              * Loader for registering facades.
              */

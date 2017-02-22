@@ -4,7 +4,7 @@ return [
     /*
      * DataTables search options.
      */
-    'search'          => [
+    'search'         => [
         /*
          * Smart search will enclose search keyword with wildcard string "%keyword%".
          * SQL: column LIKE "%keyword%"
@@ -25,9 +25,14 @@ return [
     ],
 
     /*
+     * DataTables internal index id response column name.
+     */
+    'index_column'   => 'DT_Row_Index',
+
+    /*
      * DataTables fractal configurations.
      */
-    'fractal'         => [
+    'fractal'        => [
         /*
          * Request key name to parse includes on fractal.
          */
@@ -36,51 +41,32 @@ return [
         /*
          * Default fractal serializer.
          */
-        'serializer' => 'League\Fractal\Serializer\DataArraySerializer',
+        'serializer' => League\Fractal\Serializer\DataArraySerializer::class,
     ],
 
     /*
-     * DataTables script view template.
+     * Datatables list of available engines.
+     * This is where you can register your custom datatables engine.
      */
-    'script_template' => 'datatables::script',
-
-    /*
-     * DataTables internal index id response column name.
-     */
-    'index_column'    => 'DT_Row_Index',
-
-    /*
-     * Namespaces used by the generator.
-     */
-    'namespace'       => [
-        /*
-         * Base namespace/directory to create the new file.
-         * This is appended on default Laravel namespace.
-         *
-         * Usage: php artisan datatables:make User
-         * Output: App\DataTables\UserDataTable
-         * With Model: App\User (default model)
-         * Export filename: users_timestamp
-         */
-        'base'  => 'DataTables',
-
-        /*
-         * Base namespace/directory where your model's are located.
-         * This is appended on default Laravel namespace.
-         *
-         * Usage: php artisan datatables:make Post --model
-         * Output: App\DataTables\PostDataTable
-         * With Model: App\Post
-         * Export filename: posts_timestamp
-         */
-        'model' => '',
+    'engines'        => [
+        'eloquent'   => Yajra\Datatables\Engines\EloquentEngine::class,
+        'query'      => Yajra\Datatables\Engines\QueryBuilderEngine::class,
+        'collection' => Yajra\Datatables\Engines\CollectionEngine::class,
     ],
 
     /*
-     * PDF generator to be used when converting the table to pdf.
-     * Available generators: excel, snappy
-     * Snappy package: barryvdh/laravel-snappy
-     * Excel package: maatwebsite/excel
+     * Datatables accepted builder to engine mapping.
      */
-    'pdf_generator'   => 'excel',
+    'builders'       => [
+        Illuminate\Database\Eloquent\Relations\Relation::class => 'eloquent',
+        Illuminate\Database\Eloquent\Builder::class            => 'eloquent',
+        Illuminate\Database\Query\Builder::class               => 'query',
+        Illuminate\Support\Collection::class                   => 'collection',
+    ],
+
+    /*
+     * Nulls last sql pattern for Posgresql & Oracle.
+     * For MySQL, use '-%s %s'
+     */
+    'nulls_last_sql' => '%s %s NULLS LAST',
 ];

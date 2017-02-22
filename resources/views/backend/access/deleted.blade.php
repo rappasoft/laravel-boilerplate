@@ -4,7 +4,7 @@
 
 @section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
-@stop
+@endsection
 
 @section('page-header')
     <h1>
@@ -42,7 +42,7 @@
             </div><!--table-responsive-->
         </div><!-- /.box-body -->
     </div><!--box-->
-@stop
+@endsection
 
 @section('after-scripts')
     {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
@@ -60,8 +60,8 @@
                 },
                 columns: [
                     {data: 'id', name: '{{config('access.users_table')}}.id'},
-                    {data: 'name', name: '{{config('access.users_table')}}.name', render: $.fn.dataTable.render.text()},
-                    {data: 'email', name: '{{config('access.users_table')}}.email', render: $.fn.dataTable.render.text()},
+                    {data: 'name', name: '{{config('access.users_table')}}.name'},
+                    {data: 'email', name: '{{config('access.users_table')}}.email'},
                     {data: 'confirmed', name: '{{config('access.users_table')}}.confirmed'},
                     {data: 'roles', name: '{{config('access.roles_table')}}.name', sortable: false},
                     {data: 'created_at', name: '{{config('access.users_table')}}.created_at'},
@@ -113,4 +113,4 @@
             });
 		});
 	</script>
-@stop
+@endsection

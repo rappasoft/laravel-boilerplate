@@ -2,13 +2,12 @@
 
 namespace App\Events\Backend\Access\User;
 
-use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 
 /**
  * Class UserRestored.
  */
-class UserRestored extends Event
+class UserRestored
 {
     use SerializesModels;
 

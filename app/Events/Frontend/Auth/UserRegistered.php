@@ -2,13 +2,12 @@
 
 namespace App\Events\Frontend\Auth;
 
-use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
 
 /**
  * Class UserRegistered.
  */
-class UserRegistered extends Event
+class UserRegistered
 {
     use SerializesModels;
 

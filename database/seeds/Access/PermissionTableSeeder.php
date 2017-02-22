@@ -1,14 +1,17 @@
 <?php
 
 use Carbon\Carbon;
+use Database\TruncateTable;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Database\DisableForeignKeys;
 
 /**
  * Class PermissionTableSeeder.
  */
 class PermissionTableSeeder extends Seeder
 {
+    use DisableForeignKeys, TruncateTable;
+
     /**
      * Run the database seed.
      *
@@ -16,21 +19,8 @@ class PermissionTableSeeder extends Seeder
      */
     public function run()
     {
-        if (DB::connection()->getDriverName() == 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        }
-
-        if (DB::connection()->getDriverName() == 'mysql') {
-            DB::table(config('access.permissions_table'))->truncate();
-            DB::table(config('access.permission_role_table'))->truncate();
-        } elseif (DB::connection()->getDriverName() == 'sqlite') {
-            DB::statement('DELETE FROM '.config('access.permissions_table'));
-            DB::statement('DELETE FROM '.config('access.permission_role_table'));
-        } else {
-            //For PostgreSQL or anything else
-            DB::statement('TRUNCATE TABLE '.config('access.permissions_table').' CASCADE');
-            DB::statement('TRUNCATE TABLE '.config('access.permission_role_table').' CASCADE');
-        }
+        $this->disableForeignKeys();
+        $this->truncateMultiple([config('access.permissions_table'), config('access.permission_role_table')]);
 
         /**
          * Don't need to assign any permissions to administrator because the all flag is set to true
@@ -70,8 +60,6 @@ class PermissionTableSeeder extends Seeder
         $manageRoles->updated_at = Carbon::now();
         $manageRoles->save();
 
-        if (DB::connection()->getDriverName() == 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        }
+        $this->enableForeignKeys();
     }
 }

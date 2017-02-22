@@ -3,9 +3,9 @@
 namespace App\Repositories\Backend\Access\User;
 
 use App\Models\Access\User\User;
-use App\Repositories\Repository;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
+use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Model;
 use App\Events\Backend\Access\User\UserCreated;
 use App\Events\Backend\Access\User\UserDeleted;
@@ -21,7 +21,7 @@ use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 /**
  * Class UserRepository.
  */
-class UserRepository extends Repository
+class UserRepository extends BaseRepository
 {
     /**
      * Associated Repository Model.
@@ -40,6 +40,34 @@ class UserRepository extends Repository
     {
         $this->role = $role;
     }
+
+	/**
+	 * @param        $permissions
+	 * @param string $by
+	 *
+	 * @return mixed
+	 */
+	public function getByPermission($permissions, $by = 'name') {
+    	if (! is_array($permissions)) $permissions = [$permissions];
+
+		return $this->query()->whereHas('roles.permissions', function($query) use($permissions, $by) {
+			$query->whereIn('permissions.'.$by, $permissions);
+		})->get();
+	}
+
+	/**
+	 * @param        $roles
+	 * @param string $by
+	 *
+	 * @return mixed
+	 */
+	public function getByRole($roles, $by = 'name') {
+		if (! is_array($roles)) $roles = [$roles];
+
+		return $this->query()->whereHas('roles', function($query) use($roles, $by) {
+			$query->whereIn('roles.'.$by, $roles);
+		})->get();
+	}
 
     /**
      * @param int  $status
@@ -85,7 +113,7 @@ class UserRepository extends Repository
         $user = $this->createUserStub($data);
 
         DB::transaction(function () use ($user, $data, $roles) {
-            if (parent::save($user)) {
+            if ($user->save()) {
 
                 //User Created, Validate Roles
                 if (! count($roles['assignees_roles'])) {
@@ -121,11 +149,11 @@ class UserRepository extends Repository
         $this->checkUserByEmail($data, $user);
 
         DB::transaction(function () use ($user, $data, $roles) {
-            if (parent::update($user, $data)) {
+            if ($user->update($data)) {
                 //For whatever reason this just wont work in the above call, so a second is needed for now
                 $user->status = isset($data['status']) ? 1 : 0;
                 $user->confirmed = isset($data['confirmed']) ? 1 : 0;
-                parent::save($user);
+                $user->save();
 
                 $this->checkUserRolesCount($roles);
                 $this->flushRoles($roles, $user);
@@ -151,7 +179,7 @@ class UserRepository extends Repository
     {
         $user->password = bcrypt($input['password']);
 
-        if (parent::save($user)) {
+        if ($user->save()) {
             event(new UserPasswordChanged($user));
 
             return true;
@@ -173,7 +201,7 @@ class UserRepository extends Repository
             throw new GeneralException(trans('exceptions.backend.access.users.cant_delete_self'));
         }
 
-        if (parent::delete($user)) {
+        if ($user->delete()) {
             event(new UserDeleted($user));
 
             return true;
@@ -194,7 +222,7 @@ class UserRepository extends Repository
         }
 
         DB::transaction(function () use ($user) {
-            if (parent::forceDelete($user)) {
+            if ($user->forceDelete()) {
                 event(new UserPermanentlyDeleted($user));
 
                 return true;
@@ -217,7 +245,7 @@ class UserRepository extends Repository
             throw new GeneralException(trans('exceptions.backend.access.users.cant_restore'));
         }
 
-        if (parent::restore(($user))) {
+        if ($user->restore()) {
             event(new UserRestored($user));
 
             return true;
@@ -252,7 +280,7 @@ class UserRepository extends Repository
             break;
         }
 
-        if (parent::save($user)) {
+        if ($user->save()) {
             return true;
         }
 

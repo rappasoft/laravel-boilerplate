@@ -26,7 +26,7 @@ class SessionTimeout
     public function __construct(Store $session)
     {
         $this->session = $session;
-        $this->timeout = config('misc.session_timeout');
+        $this->timeout = config('session.timeout');
     }
 
     /**
@@ -39,7 +39,7 @@ class SessionTimeout
      */
     public function handle($request, Closure $next)
     {
-        if (config('misc.session_timeout_status')) {
+        if (config('session.timeout_status')) {
             $isLoggedIn = $request->path() != '/logout';
 
             if (! session('lastActivityTime')) {

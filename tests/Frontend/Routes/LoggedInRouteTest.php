@@ -1,23 +1,20 @@
 <?php
 
+use Tests\BrowserKitTestCase;
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedOut;
 
 /**
  * Class LoggedInRouteTest.
  */
-class LoggedInRouteTest extends TestCase
+class LoggedInRouteTest extends BrowserKitTestCase
 {
     /**
      * Test the homepage works and the dashboard button appears.
      */
     public function testHomePageLoggedIn()
     {
-        $this->actingAs($this->user)
-            ->visit('/')
-            ->see('Dashboard')
-            ->see($this->user->name)
-            ->dontSee('Administration');
+        $this->actingAs($this->user)->visit('/')->see('Dashboard')->see($this->user->name)->dontSee('Administration');
     }
 
     /**
@@ -26,10 +23,10 @@ class LoggedInRouteTest extends TestCase
     public function testDashboardPage()
     {
         $this->actingAs($this->user)
-            ->visit('/dashboard')
-            ->see($this->user->email)
-            ->see('Joined')
-            ->dontSee('Administration');
+             ->visit('/dashboard')
+             ->see($this->user->email)
+             ->see('Joined')
+             ->dontSee('Administration');
     }
 
     /**
@@ -38,12 +35,12 @@ class LoggedInRouteTest extends TestCase
     public function testAccountPage()
     {
         $this->actingAs($this->user)
-            ->visit('/account')
-            ->see('My Account')
-            ->see('Profile')
-            ->see('Update Information')
-            ->see('Change Password')
-            ->dontSee('Administration');
+             ->visit('/account')
+             ->see('My Account')
+             ->see('Profile')
+             ->see('Update Information')
+             ->see('Change Password')
+             ->dontSee('Administration');
     }
 
     /**
@@ -51,10 +48,7 @@ class LoggedInRouteTest extends TestCase
      */
     public function testLoggedInAdmin()
     {
-        $this->actingAs($this->admin)
-            ->visit('/')
-            ->see('Administration')
-            ->see($this->admin->name);
+        $this->actingAs($this->admin)->visit('/')->see('Administration')->see($this->admin->name);
     }
 
     /**
@@ -65,11 +59,8 @@ class LoggedInRouteTest extends TestCase
         // Make sure our events are fired
         Event::fake();
 
-        $this->actingAs($this->user)
-            ->visit('/logout')
-            ->see('Login')
-            ->see('Register');
+        $this->actingAs($this->user)->visit('/logout')->see('Login')->see('Register');
 
-        Event::assertFired(UserLoggedOut::class);
+        Event::assertDispatched(UserLoggedOut::class);
     }
 }

@@ -1,7 +1,9 @@
 <?php
 
+use Database\TruncateTable;
 use Carbon\Carbon as Carbon;
 use Illuminate\Database\Seeder;
+use Database\DisableForeignKeys;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -9,6 +11,8 @@ use Illuminate\Support\Facades\DB;
  */
 class RoleTableSeeder extends Seeder
 {
+    use DisableForeignKeys, TruncateTable;
+
     /**
      * Run the database seed.
      *
@@ -16,19 +20,8 @@ class RoleTableSeeder extends Seeder
      */
     public function run()
     {
-        if (DB::connection()->getDriverName() == 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        }
-
-        if (DB::connection()->getDriverName() == 'mysql') {
-            DB::table(config('access.roles_table'))->truncate();
-        } elseif (DB::connection()->getDriverName() == 'sqlite') {
-            DB::statement('DELETE FROM '.config('access.roles_table'));
-            DB::statement('UPDATE sqlite_sequence SET seq = 0 where name = '."'".config('access.roles_table')."'");
-        } else {
-            //For PostgreSQL or anything else
-            DB::statement('TRUNCATE TABLE '.config('access.roles_table').' CASCADE');
-        }
+        $this->disableForeignKeys();
+        $this->truncate(config('access.roles_table'));
 
         $roles = [
             [
@@ -56,8 +49,6 @@ class RoleTableSeeder extends Seeder
 
         DB::table(config('access.roles_table'))->insert($roles);
 
-        if (DB::connection()->getDriverName() == 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        }
+        $this->enableForeignKeys();
     }
 }

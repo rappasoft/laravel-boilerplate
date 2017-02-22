@@ -22,7 +22,7 @@ return [
     ],
 
     'ses' => [
-        'key'    => env('SES_KEY'),
+        'key' => env('SES_KEY'),
         'secret' => env('SES_SECRET'),
         'region' => 'us-east-1',
     ],
@@ -32,8 +32,8 @@ return [
     ],
 
     'stripe' => [
-        'model'  => User::class,
-        'key'    => env('STRIPE_KEY'),
+        'model' => User::class,
+        'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
 
@@ -46,7 +46,6 @@ return [
      * Docs: https://github.com/laravel/socialite
      * Make sure 'scopes' and 'with' are arrays, if their are none, use empty arrays []
      */
-
     'bitbucket' => [
         'client_id'     => env('BITBUCKET_CLIENT_ID'),
         'client_secret' => env('BITBUCKET_CLIENT_SECRET'),

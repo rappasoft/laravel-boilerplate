@@ -1,7 +1,9 @@
 <?php
 
+use Database\TruncateTable;
 use Carbon\Carbon as Carbon;
 use Illuminate\Database\Seeder;
+use Database\DisableForeignKeys;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -9,6 +11,8 @@ use Illuminate\Support\Facades\DB;
  */
 class UserTableSeeder extends Seeder
 {
+    use DisableForeignKeys, TruncateTable;
+
     /**
      * Run the database seed.
      *
@@ -16,18 +20,8 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        if (DB::connection()->getDriverName() == 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
-        }
-
-        if (DB::connection()->getDriverName() == 'mysql') {
-            DB::table(config('access.users_table'))->truncate();
-        } elseif (DB::connection()->getDriverName() == 'sqlite') {
-            DB::statement('DELETE FROM '.config('access.users_table'));
-        } else {
-            //For PostgreSQL or anything else
-            DB::statement('TRUNCATE TABLE '.config('access.users_table').' CASCADE');
-        }
+        $this->disableForeignKeys();
+        $this->truncate(config('access.users_table'));
 
         //Add the master administrator, user id of 1
         $users = [
@@ -62,8 +56,6 @@ class UserTableSeeder extends Seeder
 
         DB::table(config('access.users_table'))->insert($users);
 
-        if (DB::connection()->getDriverName() == 'mysql') {
-            DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-        }
+        $this->enableForeignKeys();
     }
 }

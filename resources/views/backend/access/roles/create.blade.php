@@ -77,8 +77,8 @@
         </div><!--box-->
 
     {{ Form::close() }}
-@stop
+@endsection
 
 @section('after-scripts')
     {{ Html::script('js/backend/access/roles/script.js') }}
-@stop
+@endsection

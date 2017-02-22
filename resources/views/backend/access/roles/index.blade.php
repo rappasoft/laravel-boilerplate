@@ -4,7 +4,7 @@
 
 @section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
-@stop
+@endsection
 
 @section('page-header')
     <h1>{{ trans('labels.backend.access.roles.management') }}</h1>
@@ -48,7 +48,7 @@
             {!! history()->renderType('Role') !!}
         </div><!-- /.box-body -->
     </div><!--box box-success-->
-@stop
+@endsection
 
 @section('after-scripts')
     {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
@@ -64,10 +64,10 @@
                     type: 'post'
                 },
                 columns: [
-                    {data: 'name', name: '{{config('access.roles_table')}}.name', render: $.fn.dataTable.render.text()},
+                    {data: 'name', name: '{{config('access.roles_table')}}.name'},
                     {data: 'permissions', name: '{{config('access.permissions_table')}}.display_name', sortable: false},
                     {data: 'users', name: 'users', searchable: false, sortable: false},
-                    {data: 'sort', name: '{{config('access.roles_table')}}.sort', render: $.fn.dataTable.render.text()},
+                    {data: 'sort', name: '{{config('access.roles_table')}}.sort'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[3, "asc"]],
@@ -75,4 +75,4 @@
             });
         });
     </script>
-@stop
+@endsection

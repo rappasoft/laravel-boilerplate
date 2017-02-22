@@ -1,6 +1,3 @@
-// Fonts
-$fa-font-path: "../fonts/font-awesome";
-
 // Body
 $body-bg: #f5f8fa;
 
@@ -19,6 +16,8 @@ $brand-warning: #cbb956;
 $brand-danger: #bf5329;
 
 // Typography
+$fa-font-path: "~font-awesome/fonts/";
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 $font-family-sans-serif: "Raleway", sans-serif;
 $font-size-base: 14px;
 $line-height-base: 1.6;
