@@ -12,20 +12,22 @@ Route::name('macros')->get('macros', 'FrontendController@macros');
  * All route names are prefixed with 'frontend.'
  */
 Route::middleware('auth')->group(function () {
-    Route::namespace('User')->as('user.')->group(function () {
-        /*
-         * User Dashboard Specific
-         */
-        Route::name('dashboard')->get('dashboard', 'DashboardController@index');
+	Route::group(['namespace' => 'User'], function() {
+		Route::as('user.')->group(function () {
+			/*
+			 * User Dashboard Specific
+			 */
+			Route::name('dashboard')->get('dashboard', 'DashboardController@index');
 
-        /*
-         * User Account Specific
-         */
-        Route::name('account')->get('account', 'AccountController@index');
+			/*
+			 * User Account Specific
+			 */
+			Route::name('account')->get('account', 'AccountController@index');
 
-        /*
-         * User Profile Specific
-         */
-        Route::name('profile.update')->patch('profile/update', 'ProfileController@update');
-    });
+			/*
+			 * User Profile Specific
+			 */
+			Route::name('profile.update')->patch('profile/update', 'ProfileController@update');
+		});
+	});
 });
