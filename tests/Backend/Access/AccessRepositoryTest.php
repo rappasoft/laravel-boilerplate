@@ -3,87 +3,95 @@
 use Tests\BrowserKitTestCase;
 
 /**
- * Class AccessRepositoryTest
+ * Class AccessRepositoryTest.
  */
 class AccessRepositoryTest extends BrowserKitTestCase
 {
-	public function testGetUsersByPermissionUsingName() {
-		$results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
-			->getByPermission('view-backend')
-			->toArray();
+    public function testGetUsersByPermissionUsingName()
+    {
+        $results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
+            ->getByPermission('view-backend')
+            ->toArray();
 
-		$this->assertCount(1, $results);
-		$this->assertArraySubset(['name' => $this->executive->name], $results[0]);
-	}
+        $this->assertCount(1, $results);
+        $this->assertArraySubset(['name' => $this->executive->name], $results[0]);
+    }
 
-	public function testGetUsersByPermissionsUsingNames() {
-		$this->userRole->permissions()->sync([2]);
+    public function testGetUsersByPermissionsUsingNames()
+    {
+        $this->userRole->permissions()->sync([2]);
 
-		$results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
-			->getByPermission(['view-backend', 'manage-users'])
-			->toArray();
+        $results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
+            ->getByPermission(['view-backend', 'manage-users'])
+            ->toArray();
 
-		$this->assertCount(2, $results);
-		$this->assertArraySubset(['name' => $this->executive->name], $results[0]);
-		$this->assertArraySubset(['name' => $this->user->name], $results[1]);
-	}
+        $this->assertCount(2, $results);
+        $this->assertArraySubset(['name' => $this->executive->name], $results[0]);
+        $this->assertArraySubset(['name' => $this->user->name], $results[1]);
+    }
 
-	public function testGetUsersByPermissionUsingId() {
-		$results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
-			->getByPermission(1, 'id')
-			->toArray();
+    public function testGetUsersByPermissionUsingId()
+    {
+        $results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
+            ->getByPermission(1, 'id')
+            ->toArray();
 
-		$this->assertCount(1, $results);
-		$this->assertArraySubset(['name' => $this->executive->name], $results[0]);
-	}
+        $this->assertCount(1, $results);
+        $this->assertArraySubset(['name' => $this->executive->name], $results[0]);
+    }
 
-	public function testGetUsersByPermissionsUsingIds() {
-		$this->userRole->permissions()->sync([2]);
+    public function testGetUsersByPermissionsUsingIds()
+    {
+        $this->userRole->permissions()->sync([2]);
 
-		$results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
-			->getByPermission([1, 2], 'id')
-			->toArray();
+        $results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
+            ->getByPermission([1, 2], 'id')
+            ->toArray();
 
-		$this->assertCount(2, $results);
-		$this->assertArraySubset(['name' => $this->executive->name], $results[0]);
-		$this->assertArraySubset(['name' => $this->user->name], $results[1]);
-	}
+        $this->assertCount(2, $results);
+        $this->assertArraySubset(['name' => $this->executive->name], $results[0]);
+        $this->assertArraySubset(['name' => $this->user->name], $results[1]);
+    }
 
-	public function testGetUsersByRoleUsingName() {
-		$results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
-			->getByRole('User')
-			->toArray();
+    public function testGetUsersByRoleUsingName()
+    {
+        $results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
+            ->getByRole('User')
+            ->toArray();
 
-		$this->assertCount(1, $results);
-		$this->assertArraySubset(['name' => $this->user->name], $results[0]);
-	}
+        $this->assertCount(1, $results);
+        $this->assertArraySubset(['name' => $this->user->name], $results[0]);
+    }
 
-	public function testGetUsersByRolesUsingNames() {
-		$results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
-			->getByRole(['User', 'Executive'])
-			->toArray();
+    public function testGetUsersByRolesUsingNames()
+    {
+        $results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
+            ->getByRole(['User', 'Executive'])
+            ->toArray();
 
-		$this->assertCount(2, $results);
-		$this->assertArraySubset(['name' => $this->executive->name], $results[0]);
-		$this->assertArraySubset(['name' => $this->user->name], $results[1]);
-	}
+        $this->assertCount(2, $results);
+        $this->assertArraySubset(['name' => $this->executive->name], $results[0]);
+        $this->assertArraySubset(['name' => $this->user->name], $results[1]);
+    }
 
-	public function testGetUsersByRoleUsingId() {
-		$results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
-			->getByRole(1, 'id')
-			->toArray();
+    public function testGetUsersByRoleUsingId()
+    {
+        $results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
+            ->getByRole(1, 'id')
+            ->toArray();
 
-		$this->assertCount(1, $results);
-		$this->assertArraySubset(['name' => $this->admin->name], $results[0]);
-	}
+        $this->assertCount(1, $results);
+        $this->assertArraySubset(['name' => $this->admin->name], $results[0]);
+    }
 
-	public function testGetUsersByRolesUsingIds() {
-		$results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
-			->getByRole([1, 3], 'id')
-			->toArray();
+    public function testGetUsersByRolesUsingIds()
+    {
+        $results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
+            ->getByRole([1, 3], 'id')
+            ->toArray();
 
-		$this->assertCount(2, $results);
-		$this->assertArraySubset(['name' => $this->admin->name], $results[0]);
-		$this->assertArraySubset(['name' => $this->user->name], $results[1]);
-	}
+        $this->assertCount(2, $results);
+        $this->assertArraySubset(['name' => $this->admin->name], $results[0]);
+        $this->assertArraySubset(['name' => $this->user->name], $results[1]);
+    }
 }

@@ -41,33 +41,39 @@ class UserRepository extends BaseRepository
         $this->role = $role;
     }
 
-	/**
-	 * @param        $permissions
-	 * @param string $by
-	 *
-	 * @return mixed
-	 */
-	public function getByPermission($permissions, $by = 'name') {
-    	if (! is_array($permissions)) $permissions = [$permissions];
+    /**
+     * @param        $permissions
+     * @param string $by
+     *
+     * @return mixed
+     */
+    public function getByPermission($permissions, $by = 'name')
+    {
+        if (! is_array($permissions)) {
+            $permissions = [$permissions];
+        }
 
-		return $this->query()->whereHas('roles.permissions', function($query) use($permissions, $by) {
-			$query->whereIn('permissions.'.$by, $permissions);
-		})->get();
-	}
+        return $this->query()->whereHas('roles.permissions', function ($query) use ($permissions, $by) {
+            $query->whereIn('permissions.'.$by, $permissions);
+        })->get();
+    }
 
-	/**
-	 * @param        $roles
-	 * @param string $by
-	 *
-	 * @return mixed
-	 */
-	public function getByRole($roles, $by = 'name') {
-		if (! is_array($roles)) $roles = [$roles];
+    /**
+     * @param        $roles
+     * @param string $by
+     *
+     * @return mixed
+     */
+    public function getByRole($roles, $by = 'name')
+    {
+        if (! is_array($roles)) {
+            $roles = [$roles];
+        }
 
-		return $this->query()->whereHas('roles', function($query) use($roles, $by) {
-			$query->whereIn('roles.'.$by, $roles);
-		})->get();
-	}
+        return $this->query()->whereHas('roles', function ($query) use ($roles, $by) {
+            $query->whereIn('roles.'.$by, $roles);
+        })->get();
+    }
 
     /**
      * @param int  $status
