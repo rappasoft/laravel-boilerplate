@@ -13,7 +13,7 @@ Route::name('macros')->get('macros', 'FrontendController@macros');
  */
 Route::middleware('auth')->group(function () {
     Route::group(['namespace' => 'User'], function () {
-        Route::as('user.')->group(function () {
+        Route::group(['as' => 'user.'],function () {
             /*
              * User Dashboard Specific
              */

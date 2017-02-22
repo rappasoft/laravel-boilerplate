@@ -15,7 +15,7 @@ Route::get('lang/{lang}', 'LanguageController@swap');
  * Namespaces indicate folder structure
  */
 Route::group(['namespace' => 'Frontend'], function () {
-    Route::as('frontend.')->group(function () {
+    Route::group(['as' => 'frontend.'],function () {
         includeRouteFiles(__DIR__.'/Frontend/');
     });
 });
