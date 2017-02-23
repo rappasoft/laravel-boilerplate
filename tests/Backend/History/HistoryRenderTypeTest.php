@@ -13,7 +13,7 @@ class HistoryRenderTypeTest extends BrowserKitTestCase
 
         history()
             ->withType('User')
-            ->withText('trans("history.backend.users.created") '.$this->user->name)
+            ->withText('__("created user") '.$this->user->name)
             ->withEntity($this->user->id)
             ->withIcon('plus')
             ->withClass('bg-green')
@@ -21,7 +21,7 @@ class HistoryRenderTypeTest extends BrowserKitTestCase
 
         history()
             ->withType('User')
-            ->withText('trans("history.backend.users.updated") '.$this->user->name)
+            ->withText('__("updated user") '.$this->user->name)
             ->withEntity($this->user->id)
             ->withIcon('pencil')
             ->withClass('bg-blue')
@@ -29,7 +29,7 @@ class HistoryRenderTypeTest extends BrowserKitTestCase
 
         history()
             ->withType('User')
-            ->withText('trans("history.backend.users.deleted") '.$this->user->name)
+            ->withText('__("deleted user") '.$this->user->name)
             ->withEntity($this->user->id)
             ->withIcon('trash')
             ->withClass('bg-red')
@@ -37,7 +37,7 @@ class HistoryRenderTypeTest extends BrowserKitTestCase
 
         history()
             ->withType('Role')
-            ->withText('trans("history.backend.roles.created") '.$this->adminRole->name)
+            ->withText('__("created role") '.$this->adminRole->name)
             ->withEntity($this->adminRole->id)
             ->withIcon('plus')
             ->withClass('bg-red')
@@ -45,7 +45,7 @@ class HistoryRenderTypeTest extends BrowserKitTestCase
 
         history()
             ->withType('Role')
-            ->withText('trans("history.backend.roles.updated") '.$this->adminRole->name)
+            ->withText('__("updated role") '.$this->adminRole->name)
             ->withEntity($this->adminRole->id)
             ->withIcon('pencil')
             ->withClass('bg-red')
@@ -53,7 +53,7 @@ class HistoryRenderTypeTest extends BrowserKitTestCase
 
         history()
             ->withType('Role')
-            ->withText('trans("history.backend.roles.deleted") ')
+            ->withText('__("deleted role") ')
             ->withEntity($this->adminRole->id)
             ->withIcon('trash')
             ->withClass('bg-red')
