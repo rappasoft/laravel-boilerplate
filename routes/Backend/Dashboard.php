@@ -3,4 +3,4 @@
 /**
  * All route names are prefixed with 'admin.'.
  */
-Route::name('dashboard')->get('dashboard', 'DashboardController@index');
+Route::get('dashboard', 'DashboardController@index')->name('dashboard');
