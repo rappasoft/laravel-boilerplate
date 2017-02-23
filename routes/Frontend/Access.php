@@ -5,7 +5,7 @@
  * All route names are prefixed with 'frontend.auth'.
  */
 Route::group(['namespace' => 'Auth'], function () {
-    Route::as('auth.')->group(function () {
+    Route::group(['as' => 'auth.'],function () {
 
         /*
          * These routes require the user to be logged in
