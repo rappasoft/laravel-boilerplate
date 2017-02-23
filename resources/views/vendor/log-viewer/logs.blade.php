@@ -12,7 +12,7 @@
     <div class="box box-success">
         <div class="box-body">
 
-            <h1 class="page-header">{{ trans('menus.backend.log-viewer.logs') }}</h1>
+            <h1 class="page-header">{{ __('Logs') }}</h1>
 
             {!! $rows->render() !!}
 

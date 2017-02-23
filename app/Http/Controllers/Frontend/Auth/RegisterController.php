@@ -54,7 +54,7 @@ class RegisterController extends Controller
             $user = $this->user->create($request->all());
             event(new UserRegistered($user));
 
-            return redirect($this->redirectPath())->withFlashSuccess(trans('exceptions.frontend.auth.confirmation.created_confirm'));
+            return redirect($this->redirectPath())->withFlashSuccess(__('Your account was successfully created. We have sent you an e-mail to confirm your account.'));
         } else {
             auth()->login($this->user->create($request->all()));
             event(new UserRegistered(access()->user()));

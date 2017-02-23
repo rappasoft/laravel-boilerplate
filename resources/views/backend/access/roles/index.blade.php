@@ -1,19 +1,19 @@
 @extends ('backend.layouts.app')
 
-@section ('title', trans('labels.backend.access.roles.management'))
+@section ('title', __('Role Management'))
 
 @section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
 @endsection
 
 @section('page-header')
-    <h1>{{ trans('labels.backend.access.roles.management') }}</h1>
+    <h1>{{ __('Role Management') }}</h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.backend.access.roles.management') }}</h3>
+            <h3 class="box-title">{{ __('Role Management') }}</h3>
 
             <div class="box-tools pull-right">
                 @include('backend.access.includes.partials.role-header-buttons')
@@ -25,11 +25,11 @@
                 <table id="roles-table" class="table table-condensed table-hover">
                     <thead>
                         <tr>
-                            <th>{{ trans('labels.backend.access.roles.table.role') }}</th>
-                            <th>{{ trans('labels.backend.access.roles.table.permissions') }}</th>
-                            <th>{{ trans('labels.backend.access.roles.table.number_of_users') }}</th>
-                            <th>{{ trans('labels.backend.access.roles.table.sort') }}</th>
-                            <th>{{ trans('labels.general.actions') }}</th>
+                            <th>{{ __('Role') }}</th>
+                            <th>{{ __('Permissions') }}</th>
+                            <th>{{ __('Number of Users') }}</th>
+                            <th>{{ __('Sort') }}</th>
+                            <th>{{ __('Actions') }}</th>
                         </tr>
                     </thead>
                 </table>
@@ -39,7 +39,7 @@
 
     <div class="box box-info">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('history.backend.recent_history') }}</h3>
+            <h3 class="box-title">{{ __('Recent History') }}</h3>
             <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             </div><!-- /.box tools -->

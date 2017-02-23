@@ -41,7 +41,7 @@ class RegisterRequest extends Request
     public function messages()
     {
         return [
-            'g-recaptcha-response.required_if' => trans('validation.required', ['attribute' => 'captcha']),
+            'g-recaptcha-response.required_if' => __('The :attribute field is required.', ['attribute' => 'captcha']),
         ];
     }
 }

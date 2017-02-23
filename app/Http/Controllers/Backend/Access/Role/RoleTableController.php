@@ -36,12 +36,12 @@ class RoleTableController extends Controller
             ->escapeColumns(['name', 'sort'])
             ->addColumn('permissions', function ($role) {
                 if ($role->all) {
-                    return '<span class="label label-success">'.trans('labels.general.all').'</span>';
+                    return '<span class="label label-success">'.__('All').'</span>';
                 }
 
                 return $role->permissions->count() ?
                     implode('<br/>', $role->permissions->pluck('display_name')->toArray()) :
-                    '<span class="label label-danger">'.trans('labels.general.none').'</span>';
+                    '<span class="label label-danger">'.__('None').'</span>';
             })
             ->addColumn('users', function ($role) {
                 return $role->users->count();

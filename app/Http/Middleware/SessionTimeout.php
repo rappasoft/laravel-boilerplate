@@ -50,7 +50,7 @@ class SessionTimeout
                 $email = $request->user()->email;
                 access()->logout();
 
-                return redirect()->route('frontend.auth.login')->withFlashWarning(trans('strings.backend.general.timeout').$this->timeout / 60 .trans('strings.backend.general.minutes'))->withInput(compact('email'))->withCookie($cookie);
+                return redirect()->route('frontend.auth.login')->withFlashWarning(__('You were automatically logged out for security reasons since you had no activity in ').$this->timeout / 60 .__(' minutes'))->withInput(compact('email'))->withCookie($cookie);
             }
 
             $isLoggedIn ? $this->session->put('lastActivityTime', time()) : $this->session->forget('lastActivityTime');

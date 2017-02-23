@@ -35,7 +35,7 @@ class RouteNeedsRole
         if (! $access) {
             return redirect()
                 ->route('frontend.index')
-                ->withFlashDanger(trans('auth.general_error'));
+                ->withFlashDanger(__('You do not have access to do that.'));
         }
 
         return $next($request);

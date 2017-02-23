@@ -40,7 +40,7 @@ class UserTableController extends Controller
             ->addColumn('roles', function ($user) {
                 return $user->roles->count() ?
                     implode('<br/>', $user->roles->pluck('name')->toArray()) :
-                    trans('labels.general.none');
+                    __('None');
             })
             ->addColumn('actions', function ($user) {
                 return $user->action_buttons;

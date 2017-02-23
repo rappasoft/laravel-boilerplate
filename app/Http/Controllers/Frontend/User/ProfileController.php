@@ -35,6 +35,6 @@ class ProfileController extends Controller
     {
         $this->user->updateProfile(access()->id(), $request->all());
 
-        return redirect()->route('frontend.user.account')->withFlashSuccess(trans('strings.frontend.user.profile_updated'));
+        return redirect()->route('frontend.user.account')->withFlashSuccess(__('Profile successfully updated.'));
     }
 }

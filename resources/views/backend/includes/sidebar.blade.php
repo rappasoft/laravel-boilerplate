@@ -10,14 +10,14 @@
             <div class="pull-left info">
                 <p>{{ access()->user()->name }}</p>
                 <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('strings.backend.general.status.online') }}</a>
+                <a href="#"><i class="fa fa-circle text-success"></i> {{ __('Online') }}</a>
             </div><!--pull-left-->
         </div><!--user-panel-->
 
         <!-- search form (Optional) -->
         {{ Form::open(['route' => 'admin.search.index', 'method' => 'get', 'class' => 'sidebar-form']) }}
         <div class="input-group">
-            {{ Form::text('q', Request::get('q'), ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('strings.backend.general.search_placeholder')]) }}
+            {{ Form::text('q', Request::get('q'), ['class' => 'form-control', 'required' => 'required', 'placeholder' => __('Search...')]) }}
 
             <span class="input-group-btn">
                     <button type='submit' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
@@ -28,22 +28,22 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">{{ trans('menus.backend.sidebar.general') }}</li>
+            <li class="header">{{ __('General') }}</li>
 
             <li class="{{ active_class(Active::checkUriPattern('admin/dashboard')) }}">
                 <a href="{{ route('admin.dashboard') }}">
                     <i class="fa fa-dashboard"></i>
-                    <span>{{ trans('menus.backend.sidebar.dashboard') }}</span>
+                    <span>{{ __('Dashboard') }}</span>
                 </a>
             </li>
 
-            <li class="header">{{ trans('menus.backend.sidebar.system') }}</li>
+            <li class="header">{{ __('System') }}</li>
 
             @permissions(['manage-users', 'manage-roles'])
             <li class="{{ active_class(Active::checkUriPattern('admin/access/*')) }} treeview">
                 <a href="#">
                     <i class="fa fa-users"></i>
-                    <span>{{ trans('menus.backend.access.title') }}</span>
+                    <span>{{ __('Access Management') }}</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
 
@@ -52,7 +52,7 @@
                     <li class="{{ active_class(Active::checkUriPattern('admin/access/user*')) }}">
                         <a href="{{ route('admin.access.user.index') }}">
                             <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('labels.backend.access.users.management') }}</span>
+                            <span>{{ __('User Management') }}</span>
                         </a>
                     </li>
                     @endauth
@@ -61,7 +61,7 @@
                     <li class="{{ active_class(Active::checkUriPattern('admin/access/role*')) }}">
                         <a href="{{ route('admin.access.role.index') }}">
                             <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('labels.backend.access.roles.management') }}</span>
+                            <span>{{ __('Role Management') }}</span>
                         </a>
                     </li>
                     @endauth
@@ -72,21 +72,21 @@
             <li class="{{ active_class(Active::checkUriPattern('admin/log-viewer*')) }} treeview">
                 <a href="#">
                     <i class="fa fa-list"></i>
-                    <span>{{ trans('menus.backend.log-viewer.main') }}</span>
+                    <span>{{ __('Log Viewer') }}</span>
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu {{ active_class(Active::checkUriPattern('admin/log-viewer*'), 'menu-open') }}" style="display: none; {{ active_class(Active::checkUriPattern('admin/log-viewer*'), 'display: block;') }}">
                     <li class="{{ active_class(Active::checkUriPattern('admin/log-viewer')) }}">
                         <a href="{{ route('log-viewer::dashboard') }}">
                             <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('menus.backend.log-viewer.dashboard') }}</span>
+                            <span>{{ __('Dashboard') }}</span>
                         </a>
                     </li>
 
                     <li class="{{ active_class(Active::checkUriPattern('admin/log-viewer/logs')) }}">
                         <a href="{{ route('log-viewer::logs.list') }}">
                             <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('menus.backend.log-viewer.logs') }}</span>
+                            <span>{{ __('Logs') }}</span>
                         </a>
                     </li>
                 </ul>

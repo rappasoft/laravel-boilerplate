@@ -36,7 +36,7 @@ class ConfirmAccountController extends Controller
     {
         $this->user->confirmAccount($token);
 
-        return redirect()->route('frontend.auth.login')->withFlashSuccess(trans('exceptions.frontend.auth.confirmation.success'));
+        return redirect()->route('frontend.auth.login')->withFlashSuccess(__('Your account has been successfully confirmed!'));
     }
 
     /**
@@ -48,6 +48,6 @@ class ConfirmAccountController extends Controller
     {
         $user->notify(new UserNeedsConfirmation($user->confirmation_code));
 
-        return redirect()->route('frontend.auth.login')->withFlashSuccess(trans('exceptions.frontend.auth.confirmation.resent'));
+        return redirect()->route('frontend.auth.login')->withFlashSuccess(__('A new confirmation e-mail has been sent to the address on file.'));
     }
 }

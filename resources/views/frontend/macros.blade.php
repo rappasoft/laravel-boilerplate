@@ -6,49 +6,49 @@
         <div class="col-xs-12">
 
             <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('labels.frontend.macros.macro_examples') }}</div>
+                <div class="panel-heading"><i class="fa fa-home"></i> {{ __('Macro Examples') }}</div>
 
                 <div class="panel-body">
                     <div class="form-group">
-                        <label>{{ trans('labels.frontend.macros.state.us.us') }}</label>
+                        <label>{{ __('US States') }}</label>
                         {{-- Shorthand for this is just selectState, set which version is shorthanded in Macros/Dropdowns --}}
                         {{ Form::selectStateUS('state', 'NY', ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
-                        <label>{{ trans('labels.frontend.macros.state.us.outlying') }}</label>
+                        <label>{{ __('US Outlying Territories') }}</label>
                         {{ Form::selectStateUSOutlyingTerritories('state_outlying', null, ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
-                        <label>{{ trans('labels.frontend.macros.state.us.armed') }}</label>
+                        <label>{{ __('US Armed Forces') }}</label>
                         {{ Form::selectStateUSArmedForces('armed_forces', null, ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
-                        <label>{{ trans('labels.frontend.macros.territories.canada') }}</label>
+                        <label>{{ __('Canada Province & Territories List') }}</label>
                         {{ Form::selectCanadaTerritories('canada_territories', null, ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
-                        <label>{{ trans('labels.frontend.macros.state.mexico') }}</label>
+                        <label>{{ __('Mexico State List') }}</label>
                         {{ Form::selectStateMexico('mexico', null, ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
-                        <label>{{ trans('labels.frontend.macros.country.alpha') }}</label>
+                        <label>{{ __('Country Alpha Codes') }}</label>
                         {{ Form::selectCountryAlpha('country_alpha', 'ISO 3166-2:US', ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
-                        <label>{{ trans('labels.frontend.macros.country.alpha2') }}</label>
+                        <label>{{ __('Country Alpha 2 Codes') }}</label>
                         {{-- Shorthand for this is just selectCountry, set which version is shorthanded in Macros/Dropdowns --}}
                         {{ Form::selectCountryAlpha2('country_alpha2', 'US', ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
-                        <label>{{ trans('labels.frontend.macros.country.alpha3') }}</label>
+                        <label>{{ __('Country Alpha 3 Codes') }}</label>
                         {{ Form::selectCountryAlpha3('country_alpha3', 'USA', ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
-                        <label>{{ trans('labels.frontend.macros.country.numeric') }}</label>
+                        <label>{{ __('Country Numeric Codes') }}</label>
                         {{ Form::selectCountryNumeric('country_numeric', '840', ['class' => 'form-control']) }}
                     </div>
                     <div class="form-group">
-                        <label>{{ trans('labels.frontend.macros.timezone') }}</label>
+                        <label>{{ __('Timezone') }}</label>
                         {{ Form::selectTimezone('timezone', 'America/New_York', ['class' => 'form-control']) }}
                     </div>
                 </div>

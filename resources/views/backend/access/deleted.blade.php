@@ -1,6 +1,6 @@
 @extends ('backend.layouts.app')
 
-@section ('title', trans('labels.backend.access.users.management') . ' | ' . trans('labels.backend.access.users.deleted'))
+@section ('title', __('User Management') . ' | ' . __('Deleted Users'))
 
 @section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
@@ -8,15 +8,15 @@
 
 @section('page-header')
     <h1>
-        {{ trans('labels.backend.access.users.management') }}
-        <small>{{ trans('labels.backend.access.users.deleted') }}</small>
+        {{ __('User Management') }}
+        <small>{{ __('Deleted Users') }}</small>
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.backend.access.users.deleted') }}</h3>
+            <h3 class="box-title">{{ __('Deleted Users') }}</h3>
 
             <div class="box-tools pull-right">
                 @include('backend.access.includes.partials.user-header-buttons')
@@ -28,14 +28,14 @@
                 <table id="users-table" class="table table-condensed table-hover">
                     <thead>
                         <tr>
-                            <th>{{ trans('labels.backend.access.users.table.id') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.name') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.email') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.created') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.last_updated') }}</th>
-                            <th>{{ trans('labels.general.actions') }}</th>
+                            <th>{{ __('ID') }}</th>
+                            <th>{{ __('Name') }}</th>
+                            <th>{{ __('E-mail') }}</th>
+                            <th>{{ __('Confirmed') }}</th>
+                            <th>{{ __('Roles') }}</th>
+                            <th>{{ __('Created') }}</th>
+                            <th>{{ __('Last Updated') }}</th>
+                            <th>{{ __('Actions') }}</th>
                         </tr>
                     </thead>
                 </table>
@@ -77,13 +77,13 @@
                 var linkURL = $(this).attr("href");
 
                 swal({
-                    title: "{{ trans('strings.backend.general.are_you_sure') }}",
-                    text: "{{ trans('strings.backend.access.users.delete_user_confirm') }}",
+                    title: "{{ __('Are you sure?') }}",
+                    text: "{{ __('Are you sure you want to delete this user permanently? Anywhere in the application that references this user\'s id will most likely error. Proceed at your own risk. This can not be un-done.') }}",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "{{ trans('strings.backend.general.continue') }}",
-                    cancelButtonText: "{{ trans('buttons.general.cancel') }}",
+                    confirmButtonText: "{{ __('Continue') }}",
+                    cancelButtonText: "{{ __('Cancel') }}",
                     closeOnConfirm: false
                 }, function(isConfirmed){
                     if (isConfirmed){
@@ -97,13 +97,13 @@
                 var linkURL = $(this).attr("href");
 
                 swal({
-                    title: "{{ trans('strings.backend.general.are_you_sure') }}",
-                    text: "{{ trans('strings.backend.access.users.restore_user_confirm') }}",
+                    title: "{{ __('Are you sure?') }}",
+                    text: "{{ __('Restore this user to its original state?') }}",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "{{ trans('strings.backend.general.continue') }}",
-                    cancelButtonText: "{{ trans('buttons.general.cancel') }}",
+                    confirmButtonText: "{{ __('Continue') }}",
+                    cancelButtonText: "{{ __('Cancel') }}",
                     closeOnConfirm: false
                 }, function(isConfirmed){
                     if (isConfirmed){

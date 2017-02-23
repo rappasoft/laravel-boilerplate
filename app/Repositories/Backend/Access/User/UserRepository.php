@@ -123,7 +123,7 @@ class UserRepository extends BaseRepository
 
                 //User Created, Validate Roles
                 if (! count($roles['assignees_roles'])) {
-                    throw new GeneralException(trans('exceptions.backend.access.users.role_needed_create'));
+                    throw new GeneralException(__('You must choose at lease one role.'));
                 }
 
                 //Attach new roles
@@ -139,7 +139,7 @@ class UserRepository extends BaseRepository
                 return true;
             }
 
-            throw new GeneralException(trans('exceptions.backend.access.users.create_error'));
+            throw new GeneralException(__('There was a problem creating this user. Please try again.'));
         });
     }
 
@@ -169,7 +169,7 @@ class UserRepository extends BaseRepository
                 return true;
             }
 
-            throw new GeneralException(trans('exceptions.backend.access.users.update_error'));
+            throw new GeneralException(__('There was a problem updating this user. Please try again.'));
         });
     }
 
@@ -191,7 +191,7 @@ class UserRepository extends BaseRepository
             return true;
         }
 
-        throw new GeneralException(trans('exceptions.backend.access.users.update_password_error'));
+        throw new GeneralException(__('There was a problem changing this users password. Please try again.'));
     }
 
     /**
@@ -204,7 +204,7 @@ class UserRepository extends BaseRepository
     public function delete(Model $user)
     {
         if (access()->id() == $user->id) {
-            throw new GeneralException(trans('exceptions.backend.access.users.cant_delete_self'));
+            throw new GeneralException(__('You can not delete yourself.'));
         }
 
         if ($user->delete()) {
@@ -213,7 +213,7 @@ class UserRepository extends BaseRepository
             return true;
         }
 
-        throw new GeneralException(trans('exceptions.backend.access.users.delete_error'));
+        throw new GeneralException(__('There was a problem deleting this user. Please try again.'));
     }
 
     /**
@@ -224,7 +224,7 @@ class UserRepository extends BaseRepository
     public function forceDelete(Model $user)
     {
         if (is_null($user->deleted_at)) {
-            throw new GeneralException(trans('exceptions.backend.access.users.delete_first'));
+            throw new GeneralException(__('This user must be deleted first before it can be destroyed permanently.'));
         }
 
         DB::transaction(function () use ($user) {
@@ -234,7 +234,7 @@ class UserRepository extends BaseRepository
                 return true;
             }
 
-            throw new GeneralException(trans('exceptions.backend.access.users.delete_error'));
+            throw new GeneralException(__('There was a problem deleting this user. Please try again.'));
         });
     }
 
@@ -248,7 +248,7 @@ class UserRepository extends BaseRepository
     public function restore(Model $user)
     {
         if (is_null($user->deleted_at)) {
-            throw new GeneralException(trans('exceptions.backend.access.users.cant_restore'));
+            throw new GeneralException(__('This user is not deleted so it can not be restored.'));
         }
 
         if ($user->restore()) {
@@ -257,7 +257,7 @@ class UserRepository extends BaseRepository
             return true;
         }
 
-        throw new GeneralException(trans('exceptions.backend.access.users.restore_error'));
+        throw new GeneralException(__('There was a problem restoring this user. Please try again.'));
     }
 
     /**
@@ -271,7 +271,7 @@ class UserRepository extends BaseRepository
     public function mark(Model $user, $status)
     {
         if (access()->id() == $user->id && $status == 0) {
-            throw new GeneralException(trans('exceptions.backend.access.users.cant_deactivate_self'));
+            throw new GeneralException(__('You can not do that to yourself.'));
         }
 
         $user->status = $status;
@@ -290,7 +290,7 @@ class UserRepository extends BaseRepository
             return true;
         }
 
-        throw new GeneralException(trans('exceptions.backend.access.users.mark_error'));
+        throw new GeneralException(__('There was a problem updating this user. Please try again.'));
     }
 
     /**
@@ -305,7 +305,7 @@ class UserRepository extends BaseRepository
         if ($user->email != $input['email']) {
             //Check to see if email exists
             if ($this->query()->where('email', '=', $input['email'])->first()) {
-                throw new GeneralException(trans('exceptions.backend.access.users.email_error'));
+                throw new GeneralException(__('That email address belongs to a different user.'));
             }
         }
     }
@@ -331,7 +331,7 @@ class UserRepository extends BaseRepository
         //User Updated, Update Roles
         //Validate that there's at least one role chosen
         if (count($roles['assignees_roles']) == 0) {
-            throw new GeneralException(trans('exceptions.backend.access.users.role_needed'));
+            throw new GeneralException(__('You must choose at least one role.'));
         }
     }
 
