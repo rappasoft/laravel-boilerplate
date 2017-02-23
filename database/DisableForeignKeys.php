@@ -25,7 +25,7 @@ trait DisableForeignKeys
             'enable' => 'EXEC sp_msforeachtable @command1="print \'?\'", @command2="ALTER TABLE ? WITH CHECK CHECK CONSTRAINT all";',
             'disable' => 'EXEC sp_msforeachtable "ALTER TABLE ? NOCHECK CONSTRAINT all";',
         ],
-        'postgres' => [
+        'pgsql' => [
             'enable' => 'SET CONSTRAINTS ALL IMMEDIATE;',
             'disable' => 'SET CONSTRAINTS ALL DEFERRED;',
         ],
