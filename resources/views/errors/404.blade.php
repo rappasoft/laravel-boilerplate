@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>{{ trans('http.404.title') }}</title>
+    <title>{{ __('Page Not Found') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style>
@@ -52,8 +52,8 @@
     </style>
 </head>
 <body>
-<h1>{{ trans('http.404.title') }}</h1>
-<p>{{ trans('http.404.description') }}</p>
+<h1>{{ __('Page Not Found') }}</h1>
+<p>{{ __('Sorry, but the page you were trying to view does not exist.') }}</p>
 </body>
 </html>
 <!-- IE needs 512+ bytes: http://blogs.msdn.com/b/ieinternals/archive/2010/08/19/http-error-pages-in-internet-explorer.aspx -->

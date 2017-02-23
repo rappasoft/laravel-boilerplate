@@ -58,10 +58,10 @@ class LoginController extends Controller
          */
         if (! $user->isConfirmed()) {
             access()->logout();
-            throw new GeneralException(trans('exceptions.frontend.auth.confirmation.resend', ['user_id' => $user->id]));
+            throw new GeneralException(__('Your account is not confirmed. Please click the confirmation link in your e-mail, or <a href="'.route('frontend.auth.account.confirm.resend', ':user_id').'">click here</a> to resend the confirmation e-mail.',['user_id' => $user->id]));
         } elseif (! $user->isActive()) {
             access()->logout();
-            throw new GeneralException(trans('exceptions.frontend.auth.deactivated'));
+            throw new GeneralException(__('Your account has been deactivated.'));
         }
 
         event(new UserLoggedIn($user));

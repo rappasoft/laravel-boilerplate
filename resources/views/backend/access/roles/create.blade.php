@@ -1,11 +1,11 @@
 @extends ('backend.layouts.app')
 
-@section ('title', trans('labels.backend.access.roles.management') . ' | ' . trans('labels.backend.access.roles.create'))
+@section ('title', __('Role Management') . ' | ' . __('Create Role'))
 
 @section('page-header')
     <h1>
-        {{ trans('labels.backend.access.roles.management') }}
-        <small>{{ trans('labels.backend.access.roles.create') }}</small>
+        {{ __('Role Management') }}
+        <small>{{ __('Create Role') }}</small>
     </h1>
 @endsection
 
@@ -14,7 +14,7 @@
 
         <div class="box box-success">
             <div class="box-header with-border">
-                <h3 class="box-title">{{ trans('labels.backend.access.roles.create') }}</h3>
+                <h3 class="box-title">{{ __('Create Role') }}</h3>
 
                 <div class="box-tools pull-right">
                     @include('backend.access.includes.partials.role-header-buttons')
@@ -23,18 +23,18 @@
 
             <div class="box-body">
                 <div class="form-group">
-                    {{ Form::label('name', trans('validation.attributes.backend.access.roles.name'), ['class' => 'col-lg-2 control-label']) }}
+                    {{ Form::label('name', __('Name'), ['class' => 'col-lg-2 control-label']) }}
 
                     <div class="col-lg-10">
-                        {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.roles.name')]) }}
+                        {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => __('Name')]) }}
                     </div><!--col-lg-10-->
                 </div><!--form control-->
 
                 <div class="form-group">
-                    {{ Form::label('associated-permissions', trans('validation.attributes.backend.access.roles.associated_permissions'), ['class' => 'col-lg-2 control-label']) }}
+                    {{ Form::label('associated-permissions', __('Associated Permissions'), ['class' => 'col-lg-2 control-label']) }}
 
                     <div class="col-lg-10">
-                        {{ Form::select('associated-permissions', array('all' => trans('labels.general.all'), 'custom' => trans('labels.general.custom')), 'all', ['class' => 'form-control']) }}
+                        {{ Form::select('associated-permissions', array('all' => __('All'), 'custom' => __('Custom')), 'all', ['class' => 'form-control']) }}
 
                         <div id="available-permissions" class="hidden mt-20">
                             <div class="row">
@@ -53,10 +53,10 @@
                 </div><!--form control-->
 
                 <div class="form-group">
-                    {{ Form::label('sort', trans('validation.attributes.backend.access.roles.sort'), ['class' => 'col-lg-2 control-label']) }}
+                    {{ Form::label('sort', __('Sort'), ['class' => 'col-lg-2 control-label']) }}
 
                     <div class="col-lg-10">
-                        {{ Form::text('sort', ($role_count+1), ['class' => 'form-control', 'placeholder' => trans('validation.attributes.backend.access.roles.sort')]) }}
+                        {{ Form::text('sort', ($role_count+1), ['class' => 'form-control', 'placeholder' => __('Sort')]) }}
                     </div><!--col-lg-10-->
                 </div><!--form control-->
             </div><!-- /.box-body -->
@@ -65,11 +65,11 @@
         <div class="box box-success">
             <div class="box-body">
                 <div class="pull-left">
-                    {{ link_to_route('admin.access.role.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger btn-xs']) }}
+                    {{ link_to_route('admin.access.role.index', __('Cancel'), [], ['class' => 'btn btn-danger btn-xs']) }}
                 </div><!--pull-left-->
 
                 <div class="pull-right">
-                    {{ Form::submit(trans('buttons.general.crud.create'), ['class' => 'btn btn-success btn-xs']) }}
+                    {{ Form::submit(__('Create'), ['class' => 'btn btn-success btn-xs']) }}
                 </div><!--pull-right-->
 
                 <div class="clearfix"></div>

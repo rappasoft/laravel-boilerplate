@@ -20,7 +20,7 @@ abstract class Request extends FormRequest
     public function forbiddenResponse()
     {
         if (empty($error)) {
-            $this->error = trans('auth.general_error');
+            $this->error = __('You do not have access to do that.');
         }
 
         return redirect()->back()->withErrors($this->error);

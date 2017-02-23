@@ -2,7 +2,7 @@
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#frontend-navbar-collapse">
-                <span class="sr-only">{{ trans('labels.general.toggle_navigation') }}</span>
+                <span class="sr-only">{{ __('Toggle Navigation') }}</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -13,14 +13,14 @@
 
         <div class="collapse navbar-collapse" id="frontend-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li>{{ link_to_route('frontend.macros', trans('navs.frontend.macros')) }}</li>
+                <li>{{ link_to_route('frontend.macros', __('Macros')) }}</li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 @if (config('locale.status') && count(config('locale.languages')) > 1)
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ trans('menus.language-picker.language') }}
+                            {{ __('Language') }}
                             <span class="caret"></span>
                         </a>
 
@@ -29,14 +29,14 @@
                 @endif
 
                 @if ($logged_in_user)
-                    <li>{{ link_to_route('frontend.user.dashboard', trans('navs.frontend.dashboard')) }}</li>
+                    <li>{{ link_to_route('frontend.user.dashboard', __('Dashboard')) }}</li>
                 @endif
 
                 @if (! $logged_in_user)
-                    <li>{{ link_to_route('frontend.auth.login', trans('navs.frontend.login')) }}</li>
+                    <li>{{ link_to_route('frontend.auth.login', __('Login')) }}</li>
 
                     @if (config('access.users.registration'))
-                        <li>{{ link_to_route('frontend.auth.register', trans('navs.frontend.register')) }}</li>
+                        <li>{{ link_to_route('frontend.auth.register', __('Register')) }}</li>
                     @endif
                 @else
                     <li class="dropdown">
@@ -46,11 +46,11 @@
 
                         <ul class="dropdown-menu" role="menu">
                             @permission('view-backend')
-                                <li>{{ link_to_route('admin.dashboard', trans('navs.frontend.user.administration')) }}</li>
+                                <li>{{ link_to_route('admin.dashboard', __('Administration')) }}</li>
                             @endauth
 
-                            <li>{{ link_to_route('frontend.user.account', trans('navs.frontend.user.account')) }}</li>
-                            <li>{{ link_to_route('frontend.auth.logout', trans('navs.general.logout')) }}</li>
+                            <li>{{ link_to_route('frontend.user.account', __('My Account')) }}</li>
+                            <li>{{ link_to_route('frontend.auth.logout', __('Logout')) }}</li>
                         </ul>
                     </li>
                 @endif

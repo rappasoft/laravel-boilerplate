@@ -60,7 +60,7 @@ class RoleRepository extends BaseRepository
     public function create(array $input)
     {
         if ($this->query()->where('name', $input['name'])->first()) {
-            throw new GeneralException(trans('exceptions.backend.access.roles.already_exists'));
+            throw new GeneralException(__('That role already exists. Please choose a different name.'));
         }
 
         //See if the role has all access
@@ -74,7 +74,7 @@ class RoleRepository extends BaseRepository
         if (! $all) {
             //See if the role must contain a permission as per config
             if (config('access.roles.role_must_contain_permission') && count($input['permissions']) == 0) {
-                throw new GeneralException(trans('exceptions.backend.access.roles.needs_permission'));
+                throw new GeneralException(__('You must select at least one permission for this role.'));
             }
         }
 
@@ -107,7 +107,7 @@ class RoleRepository extends BaseRepository
                 return true;
             }
 
-            throw new GeneralException(trans('exceptions.backend.access.roles.create_error'));
+            throw new GeneralException(__('There was a problem creating this role. Please try again.'));
         });
     }
 
@@ -136,7 +136,7 @@ class RoleRepository extends BaseRepository
         if (! $all) {
             //See if the role must contain a permission as per config
             if (config('access.roles.role_must_contain_permission') && count($input['permissions']) == 0) {
-                throw new GeneralException(trans('exceptions.backend.access.roles.needs_permission'));
+                throw new GeneralException(__('You must select at least one permission for this role.'));
             }
         }
 
@@ -174,7 +174,7 @@ class RoleRepository extends BaseRepository
                 return true;
             }
 
-            throw new GeneralException(trans('exceptions.backend.access.roles.update_error'));
+            throw new GeneralException(__('There was a problem updating this role. Please try again.'));
         });
     }
 
@@ -189,12 +189,12 @@ class RoleRepository extends BaseRepository
     {
         //Would be stupid to delete the administrator role
         if ($role->id == 1) { //id is 1 because of the seeder
-            throw new GeneralException(trans('exceptions.backend.access.roles.cant_delete_admin'));
+            throw new GeneralException(__('You can not delete the Administrator role.'));
         }
 
         //Don't delete the role is there are users associated
         if ($role->users()->count() > 0) {
-            throw new GeneralException(trans('exceptions.backend.access.roles.has_users'));
+            throw new GeneralException(__('You can not delete a role with associated users.'));
         }
 
         DB::transaction(function () use ($role) {
@@ -207,7 +207,7 @@ class RoleRepository extends BaseRepository
                 return true;
             }
 
-            throw new GeneralException(trans('exceptions.backend.access.roles.delete_error'));
+            throw new GeneralException(__('There was a problem deleting this role. Please try again.'));
         });
     }
 

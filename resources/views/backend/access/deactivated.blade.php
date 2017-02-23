@@ -1,6 +1,6 @@
 @extends ('backend.layouts.app')
 
-@section ('title', trans('labels.backend.access.users.management') . ' | ' . trans('labels.backend.access.users.deactivated'))
+@section ('title', __('User Management') . ' | ' . __('Deactivated Users'))
 
 @section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
@@ -8,15 +8,15 @@
 
 @section('page-header')
     <h1>
-        {{ trans('labels.backend.access.users.management') }}
-        <small>{{ trans('labels.backend.access.users.deactivated') }}</small>
+        {{ __('User Management') }}
+        <small>{{ __('Deactivated Users') }}</small>
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.backend.access.users.deactivated') }}</h3>
+            <h3 class="box-title">{{ __('Deactivated Users') }}</h3>
 
             <div class="box-tools pull-right">
                 @include('backend.access.includes.partials.user-header-buttons')
@@ -28,14 +28,14 @@
                 <table id="users-table" class="table table-condensed table-hover">
                     <thead>
                         <tr>
-                            <th>{{ trans('labels.backend.access.users.table.id') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.name') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.email') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.created') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.last_updated') }}</th>
-                            <th>{{ trans('labels.general.actions') }}</th>
+                            <th>{{ __('ID') }}</th>
+                            <th>{{ __('Name') }}</th>
+                            <th>{{ __('E-mail') }}</th>
+                            <th>{{ __('Confirmed') }}</th>
+                            <th>{{ __('Roles') }}</th>
+                            <th>{{ __('Created') }}</th>
+                            <th>{{ __('Last Updated') }}</th>
+                            <th>{{ __('Actions') }}</th>
                         </tr>
                     </thead>
                 </table>

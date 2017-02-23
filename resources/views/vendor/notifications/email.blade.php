@@ -88,9 +88,9 @@ $style = [
                                                 {{ $greeting }}
                                             @else
                                                 @if ($level == 'error')
-                                                {{ trans('strings.emails.auth.error') }}
+                                                {{ __('Whoops!') }}
                                                 @else
-                                                    {{ trans('strings.emails.auth.greeting') }}
+                                                    {{ __('Hello!') }}
                                                 @endif
                                             @endif
                                         </h1>
@@ -140,7 +140,7 @@ $style = [
 
                                         <!-- Salutation -->
                                         <p style="{{ $style['paragraph'] }}">
-                                            {{ trans('strings.emails.auth.regards') }}<br>{{ app_name() }}
+                                            {{ __('Regards,') }}<br>{{ app_name() }}
                                         </p>
 
                                         <!-- Sub Copy -->
@@ -176,7 +176,7 @@ $style = [
                                         <p style="{{ $style['paragraph-sub'] }}">
                                             &copy; {{ date('Y') }}
                                             <a style="{{ $style['anchor'] }}" href="{{ url('/') }}" target="_blank">{{ app_name() }}</a>.
-                                            {{ trans('strings.backend.general.all_rights_reserved') }}
+                                            {{ __('All Rights Reserved.') }}
                                         </p>
                                     </td>
                                 </tr>

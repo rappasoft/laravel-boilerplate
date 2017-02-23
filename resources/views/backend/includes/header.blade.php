@@ -14,7 +14,7 @@
 
     <nav class="navbar navbar-static-top" role="navigation">
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">{{ trans('labels.general.toggle_navigation') }}</span>
+            <span class="sr-only">{{ __('Toggle Navigation') }}</span>
         </a>
 
         <div class="navbar-custom-menu">
@@ -23,7 +23,7 @@
                 @if (config('locale.status') && count(config('locale.languages')) > 1)
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            <i class="fa fa-language"></i> {{ trans('menus.language-picker.language') }} <span class="caret"></span>
+                            <i class="fa fa-language"></i> {{ __('Language') }} <span class="caret"></span>
                         </a>
                         @include('includes.partials.lang')
                     </li>
@@ -38,7 +38,7 @@
                     <ul class="dropdown-menu">
                         <li class="header">{{ trans_choice('strings.backend.general.you_have.messages', 0, ['number' => 0]) }}</li>
                         <li class="footer">
-                            {{ link_to('#', trans('strings.backend.general.see_all.messages')) }}
+                            {{ link_to('#', __('See all messages')) }}
                         </li>
                     </ul>
                 </li><!-- /.messages-menu -->
@@ -52,7 +52,7 @@
                     <ul class="dropdown-menu">
                         <li class="header">{{ trans_choice('strings.backend.general.you_have.notifications', 0) }}</li>
                         <li class="footer">
-                            {{ link_to('#', trans('strings.backend.general.see_all.notifications')) }}
+                            {{ link_to('#', __('View all')) }}
                         </li>
                     </ul>
                 </li><!-- /.notifications-menu -->
@@ -66,7 +66,7 @@
                     <ul class="dropdown-menu">
                         <li class="header">{{ trans_choice('strings.backend.general.you_have.tasks', 0, ['number' => 0]) }}</li>
                         <li class="footer">
-                            {{ link_to('#', trans('strings.backend.general.see_all.tasks')) }}
+                            {{ link_to('#', __('View all tasks')) }}
                         </li>
                     </ul>
                 </li><!-- /.tasks-menu -->
@@ -82,7 +82,7 @@
                             <img src="{{ access()->user()->picture }}" class="img-circle" alt="User Avatar" />
                             <p>
                                 {{-- access()->user()->name }} - {{ implode(", ", access()->user()->roles->lists('name')->toArray()) --}}
-                                <small>{{ trans('strings.backend.general.member_since') }} {{ access()->user()->created_at->format("m/d/Y") }}</small>
+                                <small>{{ __('Member since') }} {{ access()->user()->created_at->format("m/d/Y") }}</small>
                             </p>
                         </li>
 
@@ -102,13 +102,13 @@
                             <div class="pull-left">
                                 <a href="{!! route('frontend.index') !!}" class="btn btn-default btn-flat">
                                     <i class="fa fa-home"></i>
-                                    {{ trans('navs.general.home') }}
+                                    {{ __('Home') }}
                                 </a>
                             </div>
                             <div class="pull-right">
                                 <a href="{!! route('frontend.auth.logout') !!}" class="btn btn-danger btn-flat">
                                     <i class="fa fa-sign-out"></i>
-                                    {{ trans('navs.general.logout') }}
+                                    {{ __('Logout') }}
                                 </a>
                             </div>
                         </li>

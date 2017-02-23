@@ -22,6 +22,6 @@ class UserConfirmationController extends Controller
     {
         $user->notify(new UserNeedsConfirmation($user->confirmation_code));
 
-        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.confirmation_email'));
+        return redirect()->back()->withFlashSuccess(__('A new confirmation e-mail has been sent to the address on file.'));
     }
 }

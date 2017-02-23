@@ -2,10 +2,10 @@
 
 @section('page-header')
     <h1>
-        {{ trans('strings.backend.search.results', ['query' => $search_term]) }}
+        {{ __('Search Results for :query',['query' => $search_term]) }}
     </h1>
 @endsection
 
 @section('content')
-    {{ trans('strings.backend.search.incomplete') }}
+    {{ __('You must write your own search logic for this system.') }}
 @endsection

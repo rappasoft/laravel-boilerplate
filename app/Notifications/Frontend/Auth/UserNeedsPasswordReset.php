@@ -51,9 +51,9 @@ class UserNeedsPasswordReset extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->subject(app_name().': '.trans('strings.emails.auth.password_reset_subject'))
-            ->line(trans('strings.emails.auth.password_cause_of_email'))
-            ->action(trans('buttons.emails.auth.reset_password'), route('frontend.auth.password.reset.form', $this->token))
-            ->line(trans('strings.emails.auth.password_if_not_requested'));
+            ->subject(app_name().': '.__('Reset Password'))
+            ->line(__('You are receiving this email because we received a password reset request for your account.'))
+            ->action(__('Reset Password'), route('frontend.auth.password.reset.form', $this->token))
+            ->line(__('If you did not request a password reset, no further action is required.'));
     }
 }

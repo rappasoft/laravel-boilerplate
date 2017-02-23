@@ -27,7 +27,7 @@ return [
             'deleted_permanently' => 'The user was deleted permanently.',
             'restored'            => 'The user was successfully restored.',
             'updated'             => 'The user was successfully updated.',
-            'updated_password'    => "The user's password was successfully updated.",
+            'updated_password'    => "The user´s password was successfully updated.",
         ],
     ],
 ];

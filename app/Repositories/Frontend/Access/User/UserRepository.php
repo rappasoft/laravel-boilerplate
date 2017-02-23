@@ -74,7 +74,7 @@ class UserRepository extends BaseRepository
             }
         }
 
-        throw new GeneralException(trans('auth.unknown'));
+        throw new GeneralException(__('An unknown error occurred'));
     }
 
     /**
@@ -190,7 +190,7 @@ class UserRepository extends BaseRepository
         $user = $this->findByToken($token);
 
         if ($user->confirmed == 1) {
-            throw new GeneralException(trans('exceptions.frontend.auth.confirmation.already_confirmed'));
+            throw new GeneralException(__('Your account is already confirmed.'));
         }
 
         if ($user->confirmation_code == $token) {
@@ -201,7 +201,7 @@ class UserRepository extends BaseRepository
             return $user->save();
         }
 
-        throw new GeneralException(trans('exceptions.frontend.auth.confirmation.mismatch'));
+        throw new GeneralException(__('Your confirmation code does not match.'));
     }
 
     /**
@@ -222,7 +222,7 @@ class UserRepository extends BaseRepository
             if ($user->email != $input['email']) {
                 //Emails have to be unique
                 if ($this->findByEmail($input['email'])) {
-                    throw new GeneralException(trans('exceptions.frontend.auth.email_taken'));
+                    throw new GeneralException(__('That e-mail address is already taken.'));
                 }
 
                 $user->email = $input['email'];
@@ -249,6 +249,6 @@ class UserRepository extends BaseRepository
             return $user->save();
         }
 
-        throw new GeneralException(trans('exceptions.frontend.auth.password.change_mismatch'));
+        throw new GeneralException(__('That is not your old password.'));
     }
 }

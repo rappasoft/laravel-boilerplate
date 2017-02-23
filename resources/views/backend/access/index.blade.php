@@ -1,6 +1,6 @@
 @extends ('backend.layouts.app')
 
-@section ('title', trans('labels.backend.access.users.management'))
+@section ('title', __('User Management'))
 
 @section('after-styles')
     {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
@@ -8,15 +8,15 @@
 
 @section('page-header')
     <h1>
-        {{ trans('labels.backend.access.users.management') }}
-        <small>{{ trans('labels.backend.access.users.active') }}</small>
+        {{ __('User Management') }}
+        <small>{{ __('Active Users') }}</small>
     </h1>
 @endsection
 
 @section('content')
     <div class="box box-success">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('labels.backend.access.users.active') }}</h3>
+            <h3 class="box-title">{{ __('Active Users') }}</h3>
 
             <div class="box-tools pull-right">
                 @include('backend.access.includes.partials.user-header-buttons')
@@ -28,14 +28,15 @@
                 <table id="users-table" class="table table-condensed table-hover">
                     <thead>
                         <tr>
-                            <th>{{ trans('labels.backend.access.users.table.id') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.name') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.email') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.created') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.last_updated') }}</th>
-                            <th>{{ trans('labels.general.actions') }}</th>
+                            <th>{{ __('ID') }}</th>
+                            <th>{{ __('Name') }}</th>
+                            <th>{{ __('E-mail') }}</th>
+                            <th>{{ __('Confirmed') }}</th>
+                            <th>roles</th>
+                            {{-- <th>{{ __('Roles') }}</th> --}}
+                            <th>{{ __('Created') }}</th>
+                            <th>{{ __('Last Updated') }}</th>
+                            <th>{{ __('Actions') }}</th>
                         </tr>
                     </thead>
                 </table>
@@ -45,7 +46,7 @@
 
     <div class="box box-info">
         <div class="box-header with-border">
-            <h3 class="box-title">{{ trans('history.backend.recent_history') }}</h3>
+            <h3 class="box-title">{{ __('Recent History') }}</h3>
             <div class="box-tools pull-right">
                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             </div><!-- /.box tools -->

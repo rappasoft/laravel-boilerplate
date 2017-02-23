@@ -49,7 +49,7 @@ class SocialLoginController extends Controller
     {
         //If the provider is not an acceptable third party than kick back
         if (! in_array($provider, $this->helper->getAcceptedProviders())) {
-            return redirect()->route('frontend.index')->withFlashDanger(trans('auth.socialite.unacceptable', ['provider' => $provider]));
+            return redirect()->route('frontend.index')->withFlashDanger(__(':provider is not an acceptable login type.',['provider' => $provider]));
         }
 
         /*
@@ -77,7 +77,7 @@ class SocialLoginController extends Controller
          */
         if (! access()->user()->isActive()) {
             access()->logout();
-            throw new GeneralException(trans('exceptions.frontend.auth.deactivated'));
+            throw new GeneralException(__('Your account has been deactivated.'));
         }
 
         /*

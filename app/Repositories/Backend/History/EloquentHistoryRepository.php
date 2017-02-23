@@ -165,7 +165,7 @@ class EloquentHistoryRepository implements HistoryContract
         $history = History::with('user')->latest();
         $history = $this->buildPagination($history, $limit, $paginate, $pagination);
         if (! $history->count()) {
-            return trans('history.backend.none');
+            return __('There is no recent history.');
         }
 
         return $this->buildList($history, $paginate);
@@ -185,7 +185,7 @@ class EloquentHistoryRepository implements HistoryContract
         $history = $this->checkType($history, $type);
         $history = $this->buildPagination($history, $limit, $paginate, $pagination);
         if (! $history->count()) {
-            return trans('history.backend.none_for_type');
+            return __('There is no history for this type.');
         }
 
         return $this->buildList($history, $paginate);
@@ -206,7 +206,7 @@ class EloquentHistoryRepository implements HistoryContract
         $history = $this->checkType($history, $type);
         $history = $this->buildPagination($history, $limit, $paginate, $pagination);
         if (! $history->count()) {
-            return trans('history.backend.none_for_entity', ['entity' => $type]);
+            return __('There is no history for this :entity.',['entity' => $type]);
         }
 
         return $this->buildList($history, $paginate);

@@ -13,22 +13,22 @@
 
             <div class="panel panel-default">
 
-                <div class="panel-heading">{{ trans('labels.frontend.passwords.reset_password_box_title') }}</div>
+                <div class="panel-heading">{{ __('Reset Password') }}</div>
 
                 <div class="panel-body">
 
                     {{ Form::open(['route' => 'frontend.auth.password.email', 'class' => 'form-horizontal']) }}
 
                     <div class="form-group">
-                        {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}
+                        {{ Form::label('email', __('E-mail Address'), ['class' => 'col-md-4 control-label']) }}
                         <div class="col-md-6">
-                            {{ Form::input('email', 'email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
+                            {{ Form::input('email', 'email', null, ['class' => 'form-control', 'placeholder' => __('E-mail Address')]) }}
                         </div><!--col-md-6-->
                     </div><!--form-group-->
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
-                            {{ Form::submit(trans('labels.frontend.passwords.send_password_reset_link_button'), ['class' => 'btn btn-primary']) }}
+                            {{ Form::submit(__('Send Password Reset Link'), ['class' => 'btn btn-primary']) }}
                         </div><!--col-md-6-->
                     </div><!--form-group-->
 

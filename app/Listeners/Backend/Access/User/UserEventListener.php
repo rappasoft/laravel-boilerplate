@@ -19,7 +19,7 @@ class UserEventListener
     {
         history()->withType($this->history_slug)
             ->withEntity($event->user->id)
-            ->withText('trans("history.backend.users.created") <strong>{user}</strong>')
+            ->withText('__("created user") <strong>{user}</strong>')
             ->withIcon('plus')
             ->withClass('bg-green')
             ->withAssets([
@@ -35,7 +35,7 @@ class UserEventListener
     {
         history()->withType($this->history_slug)
             ->withEntity($event->user->id)
-            ->withText('trans("history.backend.users.updated") <strong>{user}</strong>')
+            ->withText('__("updated user") <strong>{user}</strong>')
             ->withIcon('save')
             ->withClass('bg-aqua')
             ->withAssets([
@@ -51,7 +51,7 @@ class UserEventListener
     {
         history()->withType($this->history_slug)
             ->withEntity($event->user->id)
-            ->withText('trans("history.backend.users.deleted") <strong>{user}</strong>')
+            ->withText('__("deleted user") <strong>{user}</strong>')
             ->withIcon('trash')
             ->withClass('bg-maroon')
             ->withAssets([
@@ -67,7 +67,7 @@ class UserEventListener
     {
         history()->withType($this->history_slug)
             ->withEntity($event->user->id)
-            ->withText('trans("history.backend.users.restored") <strong>{user}</strong>')
+            ->withText('__("restored user") <strong>{user}</strong>')
             ->withIcon('refresh')
             ->withClass('bg-aqua')
             ->withAssets([
@@ -83,7 +83,7 @@ class UserEventListener
     {
         history()->withType($this->history_slug)
             ->withEntity($event->user->id)
-            ->withText('trans("history.backend.users.permanently_deleted") <strong>{user}</strong>')
+            ->withText('__("permanently deleted user") <strong>{user}</strong>')
             ->withIcon('trash')
             ->withClass('bg-maroon')
             ->log();
@@ -96,7 +96,7 @@ class UserEventListener
     {
         history()->withType($this->history_slug)
             ->withEntity($event->user->id)
-            ->withText('trans("history.backend.users.changed_password") <strong>{user}</strong>')
+            ->withText('__("changed password for user") <strong>{user}</strong>')
             ->withIcon('lock')
             ->withClass('bg-blue')
             ->withAssets([
@@ -112,7 +112,7 @@ class UserEventListener
     {
         history()->withType($this->history_slug)
             ->withEntity($event->user->id)
-            ->withText('trans("history.backend.users.deactivated") <strong>{user}</strong>')
+            ->withText('__("deactivated user") <strong>{user}</strong>')
             ->withIcon('times')
             ->withClass('bg-yellow')
             ->withAssets([
@@ -128,7 +128,7 @@ class UserEventListener
     {
         history()->withType($this->history_slug)
             ->withEntity($event->user->id)
-            ->withText('trans("history.backend.users.reactivated") <strong>{user}</strong>')
+            ->withText('__("reactivated user") <strong>{user}</strong>')
             ->withIcon('check')
             ->withClass('bg-green')
             ->withAssets([

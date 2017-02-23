@@ -65,7 +65,7 @@ class UserController extends Controller
     {
         $this->users->create(['data' => $request->except('assignees_roles'), 'roles' => $request->only('assignees_roles')]);
 
-        return redirect()->route('admin.access.user.index')->withFlashSuccess(trans('alerts.backend.users.created'));
+        return redirect()->route('admin.access.user.index')->withFlashSuccess(__('The user was successfully created.'));
     }
 
     /**
@@ -104,7 +104,7 @@ class UserController extends Controller
     {
         $this->users->update($user, ['data' => $request->except('assignees_roles'), 'roles' => $request->only('assignees_roles')]);
 
-        return redirect()->route('admin.access.user.index')->withFlashSuccess(trans('alerts.backend.users.updated'));
+        return redirect()->route('admin.access.user.index')->withFlashSuccess(__('The user was successfully updated.'));
     }
 
     /**
@@ -117,6 +117,6 @@ class UserController extends Controller
     {
         $this->users->delete($user);
 
-        return redirect()->route('admin.access.user.deleted')->withFlashSuccess(trans('alerts.backend.users.deleted'));
+        return redirect()->route('admin.access.user.deleted')->withFlashSuccess(__('The user was successfully deleted.'));
     }
 }
