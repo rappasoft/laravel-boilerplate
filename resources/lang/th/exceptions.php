@@ -65,7 +65,7 @@ return [
                 'change_mismatch' => 'รหัสผ่านเดิมไม่ถูกต้อง',
             ],
 
-			'registration_disabled' => 'Registration is currently closed.',
+            'registration_disabled' => 'Registration is currently closed.',
         ],
     ],
 ];

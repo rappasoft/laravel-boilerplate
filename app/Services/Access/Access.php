@@ -45,13 +45,14 @@ class Access
         return auth()->id();
     }
 
-	/**
-	 * @param Authenticatable $user
-	 * @param bool            $remember
-	 */
-	public function login(Authenticatable $user, $remember = false) {
-    	return auth()->login($user, $remember);
-	}
+    /**
+     * @param Authenticatable $user
+     * @param bool            $remember
+     */
+    public function login(Authenticatable $user, $remember = false)
+    {
+        return auth()->login($user, $remember);
+    }
 
     /**
      * @param $id

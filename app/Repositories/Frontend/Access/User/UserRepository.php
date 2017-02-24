@@ -119,14 +119,14 @@ class UserRepository extends BaseRepository
         return $user;
     }
 
-	/**
-	 * @param $data
-	 * @param $provider
-	 *
-	 * @return UserRepository|bool
-	 * @throws GeneralException
-	 */
-	public function findOrCreateSocial($data, $provider)
+    /**
+     * @param $data
+     * @param $provider
+     *
+     * @return UserRepository|bool
+     * @throws GeneralException
+     */
+    public function findOrCreateSocial($data, $provider)
     {
         // User email may not provided.
         $user_email = $data->email ?: "{$data->id}@{$provider}.com";
@@ -140,10 +140,10 @@ class UserRepository extends BaseRepository
          * Which triggers the script to use some default values in the create method
          */
         if (! $user) {
-			// Registration is not enabled
-			if (! config('access.users.registration')) {
-				throw new GeneralException(trans('exceptions.frontend.auth.registration_disabled'));
-			}
+            // Registration is not enabled
+            if (! config('access.users.registration')) {
+                throw new GeneralException(trans('exceptions.frontend.auth.registration_disabled'));
+            }
 
             $user = $this->create([
                 'name'  => $data->name,
@@ -220,18 +220,18 @@ class UserRepository extends BaseRepository
                 }
 
                 // Force the user to re-verify his email address
-				$user->confirmation_code = md5(uniqid(mt_rand(), true));
-				$user->confirmed = 0;
-				$user->email = $input['email'];
-				$updated = $user->save();
+                $user->confirmation_code = md5(uniqid(mt_rand(), true));
+                $user->confirmed = 0;
+                $user->email = $input['email'];
+                $updated = $user->save();
 
-				// Send the new confirmation e-mail
-				$user->notify(new UserNeedsConfirmation($user->confirmation_code));
+                // Send the new confirmation e-mail
+                $user->notify(new UserNeedsConfirmation($user->confirmation_code));
 
-				return [
-					'success' => $updated,
-					'email_changed' => true,
-				];
+                return [
+                    'success' => $updated,
+                    'email_changed' => true,
+                ];
             }
         }
 
