@@ -47,8 +47,8 @@ class SocialLoginController extends Controller
      */
     public function login(Request $request, $provider)
     {
-    	// There's a high probability something will go wrong
-		$user = null;
+        // There's a high probability something will go wrong
+        $user = null;
 
         // If the provider is not an acceptable third party than kick back
         if (! in_array($provider, $this->helper->getAcceptedProviders())) {
@@ -65,20 +65,20 @@ class SocialLoginController extends Controller
         }
 
         // Create the user if this is a new social account or find the one that is already there.
-		try {
-			$user = $this->user->findOrCreateSocial($this->getSocialUser($provider), $provider);
-		} catch (GeneralException $e) {
-			return redirect()->route('frontend.index')->withFlashDanger($e->getMessage());
-		}
+        try {
+            $user = $this->user->findOrCreateSocial($this->getSocialUser($provider), $provider);
+        } catch (GeneralException $e) {
+            return redirect()->route('frontend.index')->withFlashDanger($e->getMessage());
+        }
 
-		if (is_null($user) || ! isset($user)) {
-			return redirect()->route('frontend.index')->withFlashDanger(trans('exceptions.frontend.auth.unknown'));
-		}
+        if (is_null($user) || ! isset($user)) {
+            return redirect()->route('frontend.index')->withFlashDanger(trans('exceptions.frontend.auth.unknown'));
+        }
 
-		// Check to see if they are active.
-		if (! $user->isActive()) {
-			throw new GeneralException(trans('exceptions.frontend.auth.deactivated'));
-		}
+        // Check to see if they are active.
+        if (! $user->isActive()) {
+            throw new GeneralException(trans('exceptions.frontend.auth.deactivated'));
+        }
 
         // User has been successfully created or already exists
         access()->login($user, true);
