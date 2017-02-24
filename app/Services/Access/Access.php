@@ -2,6 +2,8 @@
 
 namespace App\Services\Access;
 
+use Illuminate\Contracts\Auth\Authenticatable;
+
 /**
  * Class Access.
  */
@@ -42,6 +44,14 @@ class Access
     {
         return auth()->id();
     }
+
+	/**
+	 * @param Authenticatable $user
+	 * @param bool            $remember
+	 */
+	public function login(Authenticatable $user, $remember = false) {
+    	return auth()->login($user, $remember);
+	}
 
     /**
      * @param $id

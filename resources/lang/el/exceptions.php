@@ -64,6 +64,8 @@ return [
             'password' => [
                 'change_mismatch' => 'Αυτός δεν είναι ο παλιός σου κωδικός.',
             ],
+
+			'registration_disabled' => 'Registration is currently closed.',
         ],
     ],
 ];

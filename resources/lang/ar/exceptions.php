@@ -64,6 +64,8 @@ return [
             'password' => [
                 'change_mismatch' => 'هذه ليست كلمة مرورك القديمة.',
             ],
+
+			'registration_disabled' => 'Registration is currently closed.',
         ],
     ],
 ];

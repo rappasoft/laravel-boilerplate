@@ -64,6 +64,8 @@ return [
             'password' => [
                 'change_mismatch' => 'Dat is niet uw oude wachtwoord',
             ],
+
+			'registration_disabled' => 'Registration is currently closed.',
         ],
     ],
 ];

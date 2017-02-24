@@ -64,6 +64,8 @@ return [
             'password' => [
                 'change_mismatch' => 'Itu bukan sandi lama Anda.',
             ],
+
+			'registration_disabled' => 'Registration is currently closed.',
         ],
     ],
 ];
