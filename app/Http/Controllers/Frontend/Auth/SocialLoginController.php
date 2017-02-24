@@ -64,16 +64,16 @@ class SocialLoginController extends Controller
         /**
          * Create the user if this is a new social account or find the one that is already there.
          */
-        $user = null ;
+        $user = null;
         try {
             $user = $this->user->findOrCreateSocial($this->getSocialUser($provider), $provider);
         } catch (GeneralException $e) {
             return redirect()->route('frontend.index')->withFlashDanger($e->getMessage());
         }
 
-        if (!isset($user)) {
+        if (! isset($user)) {
             return redirect()->route('frontend.index')->withFlashDanger(trans('exceptions.frontend.auth.unknown'));
-        } else if (! $user->isActive()) {
+        } elseif (! $user->isActive()) {
             return redirect()->route('frontend.index')->withFlashDanger(trans('exceptions.frontend.auth.deactivated'));
         }
 
