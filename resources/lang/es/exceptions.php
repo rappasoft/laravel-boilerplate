@@ -65,6 +65,7 @@ return [
                 'change_mismatch' => 'La contraseña antigua no coincide.',
             ],
 
+            'registration_disabled' => 'Registration is currently closed.',
         ],
     ],
 ];

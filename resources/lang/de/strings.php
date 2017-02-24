@@ -117,6 +117,8 @@ return [
         ],
 
         'user' => [
+            'change_email_notice' => 'If you change your e-mail you will be logged out until you confirm your new e-mail address.',
+            'email_changed_notice' => 'You must confirm your new e-mail address before you can log in again.',
             'profile_updated'  => 'Profil aktualisiert.',
             'password_updated' => 'Passwort aktualisiert.',
         ],

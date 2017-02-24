@@ -11,6 +11,10 @@
         <div class="form-group">
             {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}
             <div class="col-md-6">
+                <div class="alert alert-info">
+                    <i class="fa fa-info-circle"></i> {{  trans('strings.frontend.user.change_email_notice') }}
+                </div>
+
                 {{ Form::input('email', 'email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
             </div>
         </div>

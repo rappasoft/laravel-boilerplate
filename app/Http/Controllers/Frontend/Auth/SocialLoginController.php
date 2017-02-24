@@ -47,7 +47,10 @@ class SocialLoginController extends Controller
      */
     public function login(Request $request, $provider)
     {
-        //If the provider is not an acceptable third party than kick back
+        // There's a high probability something will go wrong
+        $user = null;
+
+        // If the provider is not an acceptable third party than kick back
         if (! in_array($provider, $this->helper->getAcceptedProviders())) {
             return redirect()->route('frontend.index')->withFlashDanger(trans('auth.socialite.unacceptable', ['provider' => $provider]));
         }
@@ -61,38 +64,32 @@ class SocialLoginController extends Controller
             return $this->getAuthorizationFirst($provider);
         }
 
-        /**
-         * Create the user if this is a new social account or find the one that is already there.
-         */
-        $user = $this->user->findOrCreateSocial($this->getSocialUser($provider), $provider);
+        // Create the user if this is a new social account or find the one that is already there.
+        try {
+            $user = $this->user->findOrCreateSocial($this->getSocialUser($provider), $provider);
+        } catch (GeneralException $e) {
+            return redirect()->route('frontend.index')->withFlashDanger($e->getMessage());
+        }
 
-        /*
-         * User has been successfully created or already exists
-         * Log the user in
-         */
-        auth()->login($user, true);
+        if (is_null($user) || ! isset($user)) {
+            return redirect()->route('frontend.index')->withFlashDanger(trans('exceptions.frontend.auth.unknown'));
+        }
 
-        /*
-         * User authenticated, check to see if they are active.
-         */
-        if (! access()->user()->isActive()) {
-            access()->logout();
+        // Check to see if they are active.
+        if (! $user->isActive()) {
             throw new GeneralException(trans('exceptions.frontend.auth.deactivated'));
         }
 
-        /*
-         * Throw an event in case you want to do anything when the user logs in
-         */
+        // User has been successfully created or already exists
+        access()->login($user, true);
+
+        // Throw an event in case you want to do anything when the user logs in
         event(new UserLoggedIn($user));
 
-        /*
-         * Set session variable so we know which provider user is logged in as, if ever needed
-         */
+        // Set session variable so we know which provider user is logged in as, if ever needed
         session([config('access.socialite_session_name') => $provider]);
 
-        /*
-         * Return to the intended url or default to the class property
-         */
+        // Return to the intended url or default to the class property
         return redirect()->intended(route('frontend.index'));
     }
 
