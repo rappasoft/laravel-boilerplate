@@ -58,6 +58,7 @@ return [
                 'resent'            => 'A new confirmation e-mail has been sent to the address on file.',
             ],
 
+            'registration_not_enabled' => 'This site does not allow self-registration',
             'deactivated' => 'Your account has been deactivated.',
             'email_taken' => 'That e-mail address is already taken.',
 
