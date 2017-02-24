@@ -124,6 +124,7 @@ class UserRepository extends BaseRepository
      * @param $provider
      *
      * @return UserRepository|bool
+     * @throws GeneralException
      */
     public function findOrCreateSocial($data, $provider)
     {
@@ -143,6 +144,9 @@ class UserRepository extends BaseRepository
          * Which triggers the script to use some default values in the create method
          */
         if (! $user) {
+            if (! config('access.users.enable_registration')) {
+                throw new GeneralException(trans('exceptions.frontend.auth.registration_not_enabled'));
+            }
             $user = $this->create([
                 'name'  => $data->name,
                 'email' => $user_email,
