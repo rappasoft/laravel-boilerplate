@@ -88,4 +88,13 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
         $this->executiveRole = Role::find(2);
         $this->userRole = Role::find(3);
     }
+    
+    public function tearDown()
+    {
+        $this->beforeApplicationDestroyed(function () {
+            \DB::disconnect();
+        });
+    
+        parent::tearDown();
+    }
 }
