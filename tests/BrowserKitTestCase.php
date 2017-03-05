@@ -2,9 +2,9 @@
 
 namespace Tests;
 
-use Illuminate\Support\Facades\DB;
 use App\Models\Access\Role\Role;
 use App\Models\Access\User\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -81,13 +81,13 @@ abstract class BrowserKitTestCase extends BaseTestCase
         $this->executiveRole = Role::find(2);
         $this->userRole = Role::find(3);
     }
-    
+
     public function tearDown()
     {
         $this->beforeApplicationDestroyed(function () {
             DB::disconnect();
         });
-    
+
         parent::tearDown();
     }
 }
