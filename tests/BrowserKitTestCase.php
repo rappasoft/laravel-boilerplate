@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\Access\Role\Role;
 use App\Models\Access\User\User;
 use Illuminate\Support\Facades\App;
@@ -84,7 +85,7 @@ abstract class BrowserKitTestCase extends BaseTestCase
     public function tearDown()
     {
         $this->beforeApplicationDestroyed(function () {
-            \DB::disconnect();
+            DB::disconnect();
         });
     
         parent::tearDown();
