@@ -70,6 +70,7 @@ return [
             'it'    => 'Italienska (Italian)',
             'nl'    => 'Holländska (Dutch)',
             'es'    => 'Spanska (Spanish)',
+            'ru'    => 'Ryska (Russian)',
             'sv'    => 'Svenska (Swedish)',
             'th'    => 'Thailändska (Thai)',
         ],

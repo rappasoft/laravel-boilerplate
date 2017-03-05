@@ -40,6 +40,7 @@ return [
         'it'    => ['it', 'it_IT', false],
         'nl'    => ['nl', 'nl_NL', false],
         'pt_BR' => ['pt_BR', 'pt_BR', false],
+        'ru'    => ['ru', 'ru-RU', false],
         'sv'    => ['sv', 'sv_SE', false],
         'th'    => ['th', 'th_TH', false],
     ],
