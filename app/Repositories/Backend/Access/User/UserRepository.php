@@ -143,34 +143,56 @@ class UserRepository extends BaseRepository
         });
     }
 
-    /**
-     * @param Model $user
-     * @param array $input
-     */
-    public function update(Model $user, array $input)
+	/**
+	 * @param Model $user
+	 * @param array $input
+	 *
+	 * @return bool
+	 * @throws GeneralException
+	 */
+	public function update(Model $user, array $input)
     {
-        $data = $input['data'];
-        $roles = $input['roles'];
+    	// User updating themselves, no editing roles
+		if ($user->id == access()->id()) {
+			$data = [
+				'name' => $input['data']['name'],
+				'email' => $input['data']['email'],
+			];
 
-        $this->checkUserByEmail($data, $user);
+			$this->checkUserByEmail($data, $user);
 
-        DB::transaction(function () use ($user, $data, $roles) {
-            if ($user->update($data)) {
-                //For whatever reason this just wont work in the above call, so a second is needed for now
-                $user->status = isset($data['status']) ? 1 : 0;
-                $user->confirmed = isset($data['confirmed']) ? 1 : 0;
-                $user->save();
+			if ($user->update($data)) {
+				event(new UserUpdated($user));
+				return true;
+			}
 
-                $this->checkUserRolesCount($roles);
-                $this->flushRoles($roles, $user);
+			throw new GeneralException(trans('exceptions.backend.access.users.update_error'));
+		} else {
+			$data = $input['data'];
+			$roles = $input['roles'];
 
-                event(new UserUpdated($user));
+			$this->checkUserByEmail($data, $user);
 
-                return true;
-            }
+			DB::transaction(function () use ($user, $data, $roles) {
+				if ($user->update($data)) {
+					//For whatever reason this just wont work in the above call, so a second is needed for now
+					$user->status = isset($data['status']) ? 1 : 0;
+					$user->confirmed = isset($data['confirmed']) ? 1 : 0;
+					$user->save();
 
-            throw new GeneralException(trans('exceptions.backend.access.users.update_error'));
-        });
+					$this->checkUserRolesCount($roles);
+					$this->flushRoles($roles, $user);
+
+					event(new UserUpdated($user));
+
+					return true;
+				}
+
+				throw new GeneralException(trans('exceptions.backend.access.users.update_error'));
+			});
+		}
+
+		return false;
     }
 
     /**
