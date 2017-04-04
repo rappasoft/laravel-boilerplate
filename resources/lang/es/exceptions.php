@@ -29,6 +29,7 @@ return [
             'users' => [
                 'cant_deactivate_self'  => 'No puede desactivarse a sí mismo.',
                 'cant_delete_self'      => 'No puede eliminarse usted mismo.',
+				'cant_delete_own_session' => 'You can not delete your own session.',
                 'cant_restore'          => 'This user is not deleted so it can not be restored.',
                 'create_error'          => 'Hubo un problema al crear el Usuario. Intentelo de nuevo.',
                 'delete_error'          => 'Hubo un problema al eliminar el Usuario. Intentelo de nuevo.',
@@ -39,6 +40,7 @@ return [
                 'restore_error'         => 'Hubo un problema al restaurar el Usuario. Intentelo de nuevo.',
                 'role_needed_create'    => 'Los Usuarios deben tener al menos un Rol.',
                 'role_needed'           => 'Debes elegir al menos un Rol.',
+				'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
                 'update_error'          => 'Hubo un problema al modificar el Usuario. Intentelo de nuevo.',
                 'update_password_error' => 'Hubo un problema al cambiar la contraseña. Intentelo de nuevo.',
             ],

@@ -18,6 +18,7 @@ return [
             'users' => [
                 'activate'           => 'Ενεργοποίησε',
                 'change_password'    => 'Άλλαξε κωδικό',
+				'clear_session'         => 'Clear Session',
                 'deactivate'         => 'Απενεργοποίησε',
                 'delete_permanently' => 'Διέγραψε μόνιμα',
                 'login_as'           => 'Συνδέσου σαν :user',
@@ -36,6 +37,7 @@ return [
 
     'general' => [
         'cancel' => 'Άκυρο',
+		'continue' => 'Continue',
 
         'crud' => [
             'create' => 'Δημιουργία',

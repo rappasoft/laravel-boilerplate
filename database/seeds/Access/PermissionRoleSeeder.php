@@ -23,7 +23,7 @@ class PermissionRoleSeeder extends Seeder
         $this->truncate(config('access.permission_role_table'));
 
         /*
-         * Assign view backend and manage user permissions to executive role as example
+         * Assign view backend to executive role as example
          */
         Role::find(2)->permissions()->sync([1]);
 

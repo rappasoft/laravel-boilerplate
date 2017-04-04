@@ -38,7 +38,7 @@
                     </div><!--col-lg-10-->
                 </div><!--form control-->
 
-                @if ($user->id != 1 && $user->id != access()->id())
+                @if ($user->id != 1)
                     <div class="form-group">
                         {{ Form::label('status', trans('validation.attributes.backend.access.users.active'), ['class' => 'col-lg-2 control-label']) }}
 

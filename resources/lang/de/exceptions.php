@@ -29,6 +29,7 @@ return [
             'users' => [
                 'cant_deactivate_self'  => 'Du kannst das nicht mit dir selber machen.',
                 'cant_delete_self'      => 'Du kannst dich nciht selber löschen.',
+				'cant_delete_own_session' => 'You can not delete your own session.',
                 'cant_restore'          => 'This user is not deleted so it can not be restored.',
                 'create_error'          => 'Beim erstellen des Benutzers ist ein Fehler aufgetreten. Bitte versuche es erneut.',
                 'delete_error'          => 'Beim löschen des Benutzers ist ein Fehler aufgetreten. Bitte versuche es erneut.',
@@ -39,6 +40,7 @@ return [
                 'restore_error'         => 'Beim Wiederherstelen des Benutzers ist ein Fehler aufgetreten. Bitte versuche es erneut.',
                 'role_needed_create'    => 'Du musst mind. eine Rolle auswählen.',
                 'role_needed'           => 'Du musst mind. eine Rolle auswählen.',
+				'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
                 'update_error'          => 'Beim aktualisieren des Benutzers ist ein Fehler aufgetrten. Bitte versuche es erneut.',
                 'update_password_error' => 'Das Passwort den Benutzers konnte nicht geändert werden. Bitte versuche es erneut.',
             ],

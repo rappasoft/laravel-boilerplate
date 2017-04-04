@@ -29,6 +29,7 @@ return [
             'users' => [
                 'cant_deactivate_self'  => 'Для себя вы не можете это сделать.',
                 'cant_delete_self'      => 'Вы не можете себя удалить.',
+				'cant_delete_own_session' => 'You can not delete your own session.',
                 'cant_restore'          => 'Этот пользователь не удален, поэтому он не может быть восстановлен.',
                 'create_error'          => 'Невозможно создать пользователя. Пожалуйста, попробуйте позже.',
                 'delete_error'          => 'Невозможно удалить пользователя. Пожалуйста, попробуйте позже.',
@@ -39,6 +40,7 @@ return [
                 'restore_error'         => 'Невозможно восстановить пользователя. Пожалуйста, попробуйте позже.',
                 'role_needed_create'    => 'Вы должны выбрать по крайней мере одну роль.',
                 'role_needed'           => 'Вы должны выбрать как минимум одну роль.',
+				'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
                 'update_error'          => 'Невозможно обновить пользователя. Пожалуйста, попробуйте позже.',
                 'update_password_error' => 'Невозможно изменить пароль пользователя. Пожалуйста, попробуйте позже.',
             ],

@@ -13,7 +13,7 @@ Route::group([
      * User Management
      */
     Route::group([
-        'middleware' => 'access.routeNeedsPermission:manage-users',
+        'middleware' => 'access.routeNeedsRole:1',
     ], function () {
         Route::group(['namespace' => 'User'], function () {
             /*
@@ -48,6 +48,9 @@ Route::group([
 
                 // Access
                 Route::get('login-as', 'UserAccessController@loginAs')->name('user.login-as');
+
+                // Session
+				Route::get('clear-session', 'UserSessionController@clearSession')->name('user.clear-session');
             });
 
             /*
@@ -58,19 +61,15 @@ Route::group([
                 Route::get('restore', 'UserStatusController@restore')->name('user.restore');
             });
         });
-    });
 
-    /*
-     * Role Management
-     */
-    Route::group([
-        'middleware' => 'access.routeNeedsPermission:manage-roles',
-    ], function () {
-        Route::group(['namespace' => 'Role'], function () {
-            Route::resource('role', 'RoleController', ['except' => ['show']]);
+		/*
+		* Role Management
+		*/
+		Route::group(['namespace' => 'Role'], function () {
+			Route::resource('role', 'RoleController', ['except' => ['show']]);
 
-            //For DataTables
-            Route::post('role/get', 'RoleTableController')->name('role.get');
-        });
+			//For DataTables
+			Route::post('role/get', 'RoleTableController')->name('role.get');
+		});
     });
 });

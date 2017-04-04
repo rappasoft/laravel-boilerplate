@@ -16,7 +16,7 @@ class ManageRoleRequest extends Request
      */
     public function authorize()
     {
-        return access()->allow('manage-roles');
+		return access()->hasRole(1);
     }
 
     /**

@@ -18,6 +18,7 @@ return [
             'users' => [
                 'activate'           => 'Activar',
                 'change_password'    => 'Cambiar contraseña',
+				'clear_session'         => 'Clear Session',
                 'deactivate'         => 'Desactivar',
                 'delete_permanently' => 'Eliminar de forma permanente',
                 'login_as'           => 'Iniciar sesión como :user',
@@ -36,6 +37,7 @@ return [
 
     'general' => [
         'cancel' => 'Cancelar',
+		'continue' => 'Continue',
 
         'crud' => [
             'create' => 'Crear',

@@ -77,6 +77,30 @@ $(function(){
     });
 
     /**
+     * Generic 'are you sure' confirm box
+     */
+    $('body').on('click', 'a[name=confirm_item]', function(e){
+        e.preventDefault();
+        var link = $(this);
+        var title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : "Are you sure you want to do this?";
+        var cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : "Cancel";
+        var confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : "Continue";
+
+        swal({
+            title: title,
+            type: "info",
+            showCancelButton: true,
+            cancelButtonText: cancel,
+            confirmButtonColor: "#3C8DBC",
+            confirmButtonText: confirm,
+            closeOnConfirm: true
+        }, function(confirmed) {
+            if (confirmed)
+                window.location = link.attr('href');
+        });
+    });
+
+    /**
      * Bind all bootstrap tooltips
      */
     $("[data-toggle=\"tooltip\"]").tooltip();

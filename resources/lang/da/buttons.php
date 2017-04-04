@@ -18,6 +18,7 @@ return [
             'users' => [
                 'activate'           => 'Aktivér',
                 'change_password'    => 'Skift adgangskode',
+				'clear_session'         => 'Clear Session',
                 'deactivate'         => 'Deaktiver',
                 'delete_permanently' => 'Slet permanent',
                 'login_as'           => 'Log ind som :user',
@@ -36,6 +37,7 @@ return [
 
     'general' => [
         'cancel' => 'Fortryd',
+		'continue' => 'Continue',
 
         'crud' => [
             'create' => 'Opret',

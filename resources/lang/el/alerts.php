@@ -26,6 +26,7 @@ return [
             'deleted'             => 'Ο χρήστης διαγράφηκε επιτυχώς.',
             'deleted_permanently' => 'Ο χρήστης διαγράφηκε μόνιμα.',
             'restored'            => 'Ο χρήστης επαναφέρθηκε επιτυχώς.',
+			'session_cleared'      => "The user's session was successfully cleared.",
             'updated'             => 'Ο χρήστης ανανεώθηκε επιτυχώς.',
             'updated_password'    => 'Ο κωδικός χρήστη ανανεώθηκε επιτυχώς.',
         ],

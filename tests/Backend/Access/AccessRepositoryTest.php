@@ -19,10 +19,10 @@ class AccessRepositoryTest extends BrowserKitTestCase
 
     public function testGetUsersByPermissionsUsingNames()
     {
-        $this->userRole->permissions()->sync([2]);
+        $this->userRole->permissions()->sync([1]);
 
         $results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
-            ->getByPermission(['view-backend', 'manage-users'])
+            ->getByPermission(['view-backend'])
             ->toArray();
 
         $this->assertCount(2, $results);
@@ -42,10 +42,10 @@ class AccessRepositoryTest extends BrowserKitTestCase
 
     public function testGetUsersByPermissionsUsingIds()
     {
-        $this->userRole->permissions()->sync([2]);
+        $this->userRole->permissions()->sync([1]);
 
         $results = app()->make(\App\Repositories\Backend\Access\User\UserRepository::class)
-            ->getByPermission([1, 2], 'id')
+            ->getByPermission([1], 'id')
             ->toArray();
 
         $this->assertCount(2, $results);

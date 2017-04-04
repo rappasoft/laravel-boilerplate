@@ -39,27 +39,6 @@ class PermissionTableSeeder extends Seeder
         $viewBackend->updated_at = Carbon::now();
         $viewBackend->save();
 
-        /**
-         * Access Permissions.
-         */
-        $permission_model = config('access.permission');
-        $manageUsers = new $permission_model();
-        $manageUsers->name = 'manage-users';
-        $manageUsers->display_name = 'Manage Users';
-        $manageUsers->sort = 2;
-        $manageUsers->created_at = Carbon::now();
-        $manageUsers->updated_at = Carbon::now();
-        $manageUsers->save();
-
-        $permission_model = config('access.permission');
-        $manageRoles = new $permission_model();
-        $manageRoles->name = 'manage-roles';
-        $manageRoles->display_name = 'Manage Roles';
-        $manageRoles->sort = 3;
-        $manageRoles->created_at = Carbon::now();
-        $manageRoles->updated_at = Carbon::now();
-        $manageRoles->save();
-
         $this->enableForeignKeys();
     }
 }
