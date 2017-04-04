@@ -26,7 +26,7 @@ return [
             'deleted'             => 'Pengguna telah berhasil dihapus.',
             'deleted_permanently' => 'Pengguna telah dihapus secara permanen.',
             'restored'            => 'Pengguna telah berhasil direstorasi.',
-			'session_cleared'      => "The user's session was successfully cleared.",
+            'session_cleared'      => "The user's session was successfully cleared.",
             'updated'             => 'Pengguna telah berhasil diperbarui.',
             'updated_password'    => 'Sandi pengguna telah berhasil diperbarui.',
         ],

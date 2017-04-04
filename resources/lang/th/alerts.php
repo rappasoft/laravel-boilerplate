@@ -26,7 +26,7 @@ return [
             'deleted'             => 'ผู้ใช้ถูกลบสำเร็จแล้ว',
             'deleted_permanently' => 'ผู้ใช้ถูกลบไปอย่างถาวร',
             'restored'            => 'ผู้ใช้ถูกกู้คืนสำเร็จแล้ว',
-			'session_cleared'      => "The user's session was successfully cleared.",
+            'session_cleared'      => "The user's session was successfully cleared.",
             'updated'             => 'ผู้ใช้ถูกแก้ไขสำเร็จแล้ว',
             'updated_password'    => 'รหัสผ่านของผู้ใช้ถูกแก้ไขสำเร็จแล้ว',
         ],

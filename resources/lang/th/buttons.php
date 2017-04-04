@@ -18,7 +18,7 @@ return [
             'users' => [
                 'activate'           => 'เปิดใช้งาน',
                 'change_password'    => 'เปลี่ยนรหัสผ่าน',
-				'clear_session'         => 'Clear Session',
+                'clear_session'         => 'Clear Session',
                 'deactivate'         => 'พักการใช้งาน',
                 'delete_permanently' => 'ลบอย่างถาวร',
                 'login_as'           => 'เข้าสู่ระบบเสมือนเป็น :user',
@@ -37,7 +37,7 @@ return [
 
     'general' => [
         'cancel' => 'ยกเลิก',
-		'continue' => 'Continue',
+        'continue' => 'Continue',
 
         'crud' => [
             'create' => 'สร้าง',

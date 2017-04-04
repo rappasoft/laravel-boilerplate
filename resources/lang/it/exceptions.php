@@ -29,7 +29,7 @@ return [
             'users' => [
                 'cant_deactivate_self'  => 'Non puoi eseguire questa operazione su te stesso.',
                 'cant_delete_self'      => 'Non puoi cancellare te stesso.',
-				'cant_delete_own_session' => 'You can not delete your own session.',
+                'cant_delete_own_session' => 'You can not delete your own session.',
                 'cant_restore'          => 'This user is not deleted so it can not be restored.',
                 'create_error'          => "C'è stato un problema durante la creazione dell'utente. Si prega di riprovare.",
                 'delete_error'          => "C'è stato un problema durante l'eliminazione dell'utente. Si prega di riprovare.",
@@ -40,7 +40,7 @@ return [
                 'restore_error'         => "C'è stato un problema durante il ripristino dell'utente. Si prega di riprovare.",
                 'role_needed_create'    => 'Devi scegliere almeno un ruolo.',
                 'role_needed'           => 'Devi scegliere almeno un ruolo',
-				'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
+                'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
                 'update_error'          => "C'è stato un problema durante l'aggiornamento dell'utente. Si prega di riprovare",
                 'update_password_error' => "C'è stato un problema durante il cambio di password per l'utente. Si prega di riprovare.",
             ],
