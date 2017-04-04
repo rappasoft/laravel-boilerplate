@@ -10,16 +10,15 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Session extends Model
 {
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'sessions';
 
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'sessions';
-
-	/**
-	 * @var array
-	 */
-	protected $guarded = ['*'];
+    /**
+     * @var array
+     */
+    protected $guarded = ['*'];
 }

@@ -12,17 +12,17 @@ use App\Repositories\Backend\Access\User\UserSessionRepository;
  */
 class UserSessionController extends Controller
 {
+    /**
+     * @param User                  $user
+     * @param ManageUserRequest     $request
+     * @param UserSessionRepository $userSessionRepository
+     *
+     * @return mixed
+     */
+    public function clearSession(User $user, ManageUserRequest $request, UserSessionRepository $userSessionRepository)
+    {
+        $userSessionRepository->clearSession($user);
 
-	/**
-	 * @param User                  $user
-	 * @param ManageUserRequest     $request
-	 * @param UserSessionRepository $userSessionRepository
-	 *
-	 * @return mixed
-	 */
-	public function clearSession(User $user, ManageUserRequest $request, UserSessionRepository $userSessionRepository)
-	{
-		$userSessionRepository->clearSession($user);
-		return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.session_cleared'));
-	}
+        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.session_cleared'));
+    }
 }

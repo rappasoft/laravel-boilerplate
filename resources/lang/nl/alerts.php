@@ -26,7 +26,7 @@ return [
             'deleted'             => 'De gebruiker is succesvol verwijderd.',
             'deleted_permanently' => 'De gebruiker is permanent verwijderd.',
             'restored'            => 'De gebruiker is met succes hersteld.',
-			'session_cleared'      => "The user's session was successfully cleared.",
+            'session_cleared'      => "The user's session was successfully cleared.",
             'updated'             => 'De gebruiker is succesvol bijgewerkt.',
             'updated_password'    => 'Het wachtwoord van de gebruiker is succesvol bijgewerkt',
         ],

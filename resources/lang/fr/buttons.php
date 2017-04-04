@@ -18,7 +18,7 @@ return [
             'users' => [
                 'activate'           => 'Activer',
                 'change_password'    => 'Changer de mot de passe',
-				'clear_session'         => 'Clear Session',
+                'clear_session'         => 'Clear Session',
                 'deactivate'         => 'Désactiver',
                 'delete_permanently' => 'Supprimer définitivement',
                 'login_as'           => 'Se connecter avec :user',
@@ -37,9 +37,9 @@ return [
 
     'general' => [
         'cancel' => 'Annuler',
-		'continue' => 'Continue',
+        'continue' => 'Continue',
 
-		'crud' => [
+        'crud' => [
             'create' => 'Créer',
             'delete' => 'Supprimer',
             'edit'   => 'Editer',

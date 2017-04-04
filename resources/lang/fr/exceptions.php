@@ -29,7 +29,7 @@ return [
             'users' => [
                 'cant_deactivate_self'  => 'Vous ne pouvez pas vous désactiver vous-même.',
                 'cant_delete_self'      => 'Vous ne pouvez pas vous supprimer vous-même.',
-				'cant_delete_own_session' => 'You can not delete your own session.',
+                'cant_delete_own_session' => 'You can not delete your own session.',
                 'cant_restore'          => "Cet utilisateur n'est pas effacé et ne peut être restauré.",
                 'create_error'          => "Un problème est survenu lors de la création de l'utilisateur. Veuillez réessayer.",
                 'delete_error'          => "Un problème est survenu lors de la suppression de l'utilisateur. Veuillez réessayer.",
@@ -40,7 +40,7 @@ return [
                 'restore_error'         => "Un problème est survenu lors de la restauration de l'utilisateur. Veuillez réessayer.",
                 'role_needed_create'    => 'Vous devez sélectionner au moins un rôle.',
                 'role_needed'           => 'Vous devez sélectionner au moins un rôle.',
-				'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
+                'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
                 'update_error'          => "Un problème est survenu lors de la mise à jour de l'utilisateur. Veuillez réessayer.",
                 'update_password_error' => "Un problème est survenu lors du changement du mot de passe de l'utilisateur. Veuillez réessayer.",
             ],

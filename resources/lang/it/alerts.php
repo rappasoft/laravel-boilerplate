@@ -26,7 +26,7 @@ return [
             'deleted'             => "L'utente è stato eliminato con successo.",
             'deleted_permanently' => "L'utente è stato eliminato definitivamente.",
             'restored'            => "L'utente è stato ripristinato con successo.",
-			'session_cleared'      => "The user's session was successfully cleared.",
+            'session_cleared'      => "The user's session was successfully cleared.",
             'updated'             => "L'utente è stato aggiornato con successo.",
             'updated_password'    => "La password dell'utente è stata aggiornata con successo.",
         ],

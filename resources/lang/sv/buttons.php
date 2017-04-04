@@ -18,7 +18,7 @@ return [
             'users' => [
                 'activate'           => 'Aktivera',
                 'change_password'    => 'Byt lösenord',
-				'clear_session'         => 'Clear Session',
+                'clear_session'         => 'Clear Session',
                 'deactivate'         => 'Inaktivera',
                 'resend_email'       => 'Skicka bekräftelsemail igen.',
                 'delete_permanently' => 'Radera permanent',
@@ -37,7 +37,7 @@ return [
 
     'general' => [
         'cancel' => 'Avbryt',
-		'continue' => 'Continue',
+        'continue' => 'Continue',
 
         'crud' => [
             'create' => 'Skapa',

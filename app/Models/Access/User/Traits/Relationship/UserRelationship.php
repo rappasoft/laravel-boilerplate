@@ -2,8 +2,8 @@
 
 namespace App\Models\Access\User\Traits\Relationship;
 
-use App\Models\Access\User\SocialLogin;
 use App\Models\System\Session;
+use App\Models\Access\User\SocialLogin;
 
 /**
  * Class UserRelationship.
@@ -28,10 +28,11 @@ trait UserRelationship
         return $this->hasMany(SocialLogin::class);
     }
 
-	/**
-	 * @return mixed
-	 */
-	public function sessions() {
-    	return $this->hasMany(Session::class);
-	}
+    /**
+     * @return mixed
+     */
+    public function sessions()
+    {
+        return $this->hasMany(Session::class);
+    }
 }

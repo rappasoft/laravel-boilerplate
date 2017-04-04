@@ -18,7 +18,7 @@ return [
             'users' => [
                 'activate'           => 'Activeren',
                 'change_password'    => 'Verander Wachtwoord',
-				'clear_session'         => 'Clear Session',
+                'clear_session'         => 'Clear Session',
                 'deactivate'         => 'Deactiveren',
                 'delete_permanently' => 'Permanent verwijderen',
                 'login_as'           => 'Aanmelden als :user',
@@ -37,7 +37,7 @@ return [
 
     'general' => [
         'cancel' => 'Annuleer',
-		'continue' => 'Continue',
+        'continue' => 'Continue',
 
         'crud' => [
             'create' => 'Creëer',
