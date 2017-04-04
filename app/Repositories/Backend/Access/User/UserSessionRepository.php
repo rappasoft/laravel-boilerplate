@@ -24,6 +24,7 @@ class UserSessionRepository
         if (config('session.driver') != 'database') {
             throw new GeneralException(trans('exceptions.backend.access.users.session_wrong_driver'));
         }
+
         return $user->sessions()->delete();
     }
 }
