@@ -223,6 +223,22 @@ trait UserAttribute
     /**
      * @return string
      */
+    public function getClearSessionButtonAttribute()
+    {
+        if ($this->id != access()->id() && config('session.driver') == 'database') {
+            return '<a href="'.route('admin.access.user.clear-session', $this).'"
+			 	 data-trans-button-cancel="'.trans('buttons.general.cancel').'"
+                 data-trans-button-confirm="'.trans('buttons.general.continue').'"
+                 data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
+                 class="btn btn-xs btn-warning" name="confirm_item"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.clear_session').'"></i></a> ';
+        }
+
+        return '';
+    }
+
+    /**
+     * @return string
+     */
     public function getActionButtonsAttribute()
     {
         if ($this->trashed()) {
@@ -231,6 +247,7 @@ trait UserAttribute
         }
 
         return
+            $this->getClearSessionButtonAttribute().
             $this->getLoginAsButtonAttribute().
             $this->getShowButtonAttribute().
             $this->getEditButtonAttribute().

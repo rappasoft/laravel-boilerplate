@@ -18,6 +18,7 @@ return [
             'users' => [
                 'activate'           => 'Aktifkan',
                 'change_password'    => 'Ubah Sandi',
+                'clear_session'         => 'Clear Session',
                 'deactivate'         => 'Lumpuhkan',
                 'delete_permanently' => 'Hapus Permanen',
                 'login_as'           => 'Login sebagai :user',
@@ -36,6 +37,7 @@ return [
 
     'general' => [
         'cancel' => 'Batal',
+        'continue' => 'Continue',
 
         'crud' => [
             'create' => 'Buat',

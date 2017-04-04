@@ -26,6 +26,7 @@ return [
             'deleted'             => 'Användaren har nu raderats.',
             'deleted_permanently' => 'Användaren har nu raderats permanent.',
             'restored'            => 'Användaren har nu återställts.',
+            'session_cleared'      => "The user's session was successfully cleared.",
             'updated'             => 'Användaren har nu uppdaterats.',
             'updated_password'    => 'Användarens lösenord har nu uppdaterats.',
         ],

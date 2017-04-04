@@ -29,6 +29,8 @@ return [
             'users' => [
                 'cant_deactivate_self'  => 'You can not do that to yourself.',
                 'cant_delete_self'      => 'You can not delete yourself.',
+                'cant_delete_own_session' => 'You can not delete your own session.',
+                'cant_delete_own_session' => 'You can not delete your own session.',
                 'cant_restore'          => 'This user is not deleted so it can not be restored.',
                 'create_error'          => 'There was a problem creating this user. Please try again.',
                 'delete_error'          => 'There was a problem deleting this user. Please try again.',
@@ -39,6 +41,8 @@ return [
                 'restore_error'         => 'There was a problem restoring this user. Please try again.',
                 'role_needed_create'    => 'You must choose at lease one role.',
                 'role_needed'           => 'You must choose at least one role.',
+                'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
+                'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
                 'update_error'          => 'There was a problem updating this user. Please try again.',
                 'update_password_error' => 'There was a problem changing this users password. Please try again.',
             ],

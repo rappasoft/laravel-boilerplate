@@ -8,24 +8,17 @@ class RolePermissionTest extends BrowserKitTestCase
     public function testSavePermissionsToRole()
     {
         $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
-        $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => $this->userRole->id]);
-        $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 3, 'role_id' => $this->userRole->id]);
-        $this->userRole->permissions()->sync([1, 2]);
+        $this->userRole->permissions()->sync([1]);
         $this->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
-        $this->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => $this->userRole->id]);
-        $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 3, 'role_id' => $this->userRole->id]);
     }
 
     public function testEmptyPermissionsFromRole()
     {
         $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
-        $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => $this->userRole->id]);
-        $this->userRole->permissions()->sync([1, 2]);
+        $this->userRole->permissions()->sync([1]);
         $this->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
-        $this->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => $this->userRole->id]);
         $this->userRole->permissions()->sync([]);
         $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
-        $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => $this->userRole->id]);
     }
 
     public function testAttachPermissionToRoleById()
@@ -63,42 +56,32 @@ class RolePermissionTest extends BrowserKitTestCase
     public function testAttachPermissionsToRoleById()
     {
         $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
-        $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => $this->userRole->id]);
-        $this->userRole->attachPermissions([1, 2]);
+        $this->userRole->attachPermissions([1]);
         $this->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
-        $this->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => $this->userRole->id]);
     }
 
     public function testAttachPermissionsToRoleByObject()
     {
         $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
-        $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => $this->userRole->id]);
-        $this->userRole->attachPermissions([Permission::findOrFail(1), Permission::findOrFail(2)]);
+        $this->userRole->attachPermissions([Permission::findOrFail(1)]);
         $this->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
-        $this->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => $this->userRole->id]);
     }
 
     public function testDetachPermissionsFromRoleById()
     {
         $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
-        $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => $this->userRole->id]);
-        $this->userRole->attachPermissions([1, 2]);
+        $this->userRole->attachPermissions([1]);
         $this->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
-        $this->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => $this->userRole->id]);
-        $this->userRole->detachPermissions([1, 2]);
+        $this->userRole->detachPermissions([1]);
         $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
-        $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => $this->userRole->id]);
     }
 
     public function testDetachPermissionsFromRoleByObject()
     {
         $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
-        $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => $this->userRole->id]);
-        $this->userRole->attachPermissions([Permission::findOrFail(1), Permission::findOrFail(2)]);
+        $this->userRole->attachPermissions([Permission::findOrFail(1)]);
         $this->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
-        $this->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => $this->userRole->id]);
-        $this->userRole->detachPermissions([Permission::findOrFail(1), Permission::findOrFail(2)]);
+        $this->userRole->detachPermissions([Permission::findOrFail(1)]);
         $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
-        $this->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => $this->userRole->id]);
     }
 }
