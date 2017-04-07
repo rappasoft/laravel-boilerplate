@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel 5 Boilerplate',
+    'name' => env('APP_NAME', 'Laravel 5 Boilerplate'),
 
     /*
     |--------------------------------------------------------------------------
