@@ -18,3 +18,4 @@ composer.phar
 error.log
 Todo.rtf
 .vagrant
+/.vagrant
