@@ -28,6 +28,6 @@ return [
             'restored' => '用户已成功还原。',
             'updated' => '用户已成功更新。',
             'updated_password' => '用户密码已成功更新。',
-        ]
+        ],
     ],
 ];

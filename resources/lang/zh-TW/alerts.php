@@ -28,6 +28,6 @@ return [
             'restored' => '用戶已成功還原。 ',
             'updated' => '用戶已成功更新。 ',
             'updated_pa​​ssword' => '用戶密碼已成功更新。',
-        ]
+        ],
     ],
 ];
