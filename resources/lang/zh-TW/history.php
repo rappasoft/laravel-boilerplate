@@ -15,7 +15,7 @@ return [
     'backend' => [
         'none' => '沒有最近的歷史。 ',
         'none_for_type' => '沒有此類型的歷史。 ',
-        'none_for_entity' => "這個沒有歷史 :entity。",
+        'none_for_entity' => '這個沒有歷史 :entity。',
         'recent_history' => '最近的歷史',
 
         'roles' => [

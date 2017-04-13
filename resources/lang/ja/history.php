@@ -15,7 +15,7 @@ return [
     'backend' => [
         'none' => '最近の歴史はありません。',
         'none_for_type' => 'このタイプの履歴はありません。',
-        'none_for_entity' => "この :entity 履歴はありません。",
+        'none_for_entity' => 'この :entity 履歴はありません。',
         'recent_history' => '最近の履歴',
 
         'roles' => [
