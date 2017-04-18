@@ -112,7 +112,7 @@
         @if ($user->id == 1)
             {{ Form::hidden('status', 1) }}
             {{ Form::hidden('confirmed', 1) }}
-            {{ Form::hidden('assignees_roles[]', 1) }}
+            {{ Form::hidden('assignees_roles[0]', 1) }}
         @endif
 
     {{ Form::close() }}
