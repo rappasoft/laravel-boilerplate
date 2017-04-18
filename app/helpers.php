@@ -55,20 +55,23 @@ if (! function_exists('includeRouteFiles')) {
      */
     function includeRouteFiles($folder)
     {
-        $directory = $folder;
-        $handle = opendir($directory);
-        $directory_list = [$directory];
-
-        while (false !== ($filename = readdir($handle))) {
-            if ($filename != '.' && $filename != '..' && is_dir($directory.$filename)) {
-                array_push($directory_list, $directory.$filename.'/');
+        try
+        {
+           $rdi = new recursiveDirectoryIterator($folder);
+           $it = new recursiveIteratorIterator( $rdi );
+            
+            while($it->valid())
+            {
+                if(!$it->isDot() && $it->isFile() && $it->isReadable() && $it->current()->getExtension() === 'php' ){
+                        require_once $it->key();
+                }
+                        
+                /*** move to the next element ***/
+                $it->next();    
             }
-        }
-
-        foreach ($directory_list as $directory) {
-            foreach (glob($directory.'*.php') as $filename) {
-                require $filename;
-            }
+        } catch(Exception $e) {
+                /*** echo the error message ***/
+                echo $e->getMessage();
         }
     }
 }
