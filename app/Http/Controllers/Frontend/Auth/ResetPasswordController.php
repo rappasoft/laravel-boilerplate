@@ -50,8 +50,28 @@ class ResetPasswordController extends Controller
      */
     public function showResetForm($token = null)
     {
+        $route = 'frontend.auth.password.reset';
+        if (!$token)
+            return redirect()->route($route);
+
+        $email = null;
+        try {
+            $email = $this->user->getEmailForPasswordToken($token);
+        } catch (\Exception $e) {
+        }
+
+        if (!$email)
+            return redirect()->route($route)->withFlashWarning('There was a problem resetting your password. Please resend the password reset email.'); // (invalid token)
+
+        $user = $this->user->findByEmail($email);
+
+        $exists = app()->make('auth.password.broker')->tokenExists($user, $token);
+        if (!$exists)
+            return redirect()->route($route)->withFlashWarning('There was a problem resetting your password. Please resend the password reset email.'); // (most likely token expired)
+
         return view('frontend.auth.passwords.reset')
             ->withToken($token)
             ->withEmail($this->user->getEmailForPasswordToken($token));
+
     }
 }
