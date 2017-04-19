@@ -60,6 +60,8 @@ return [
          */
         'langs' => [
             'ar'    => 'Arabic',
+			'zh'    => 'Chinese Simplified',
+			'zh-TW' => 'Chinese Traditional',
             'da'    => 'Danish',
             'de'    => 'German',
             'el'    => 'Greek',
@@ -74,8 +76,6 @@ return [
             'ru'    => 'Russian',
             'sv'    => 'Swedish',
             'th'    => 'Thai',
-            'zh'    => 'Chinese simplified',
-            'zh-TW' => 'Chinese traditional',
         ],
     ],
 ];

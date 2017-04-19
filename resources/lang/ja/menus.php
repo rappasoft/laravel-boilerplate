@@ -60,6 +60,8 @@ return [
          */
         'langs' => [
             'ar'    => 'アラビア語（Arabic）',
+			'zh'    => '中国語（Chinese Simplified）',
+			'zh-TW' => '中国語（Chinese Traditional）',
             'da'    => 'デンマーク語（Danish）',
             'de'    => 'ドイツ人（German）',
             'el'    => 'ギリシャ語（Greek）',
@@ -74,8 +76,6 @@ return [
             'ru'    => 'ロシア語（Russian）',
             'sv'    => 'スウェーデン語（Swedish）',
             'th'    => 'タイ語（Thai）',
-            'zh'    => '中国語（簡体）',
-            'zh-TW' => '中国語（繁体）',
         ],
     ],
 ];
