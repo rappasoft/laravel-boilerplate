@@ -211,7 +211,7 @@ class UserRepository extends BaseRepository
         }
 
         if ($user->id == 1) {
-          throw new GeneralException(trans('exceptions.backend.access.users.cant_delete_userid_1'));
+          throw new GeneralException(trans('exceptions.backend.access.users.cant_delete_admin'));
         }
 
         if ($user->delete()) {
