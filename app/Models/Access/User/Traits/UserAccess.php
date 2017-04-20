@@ -2,6 +2,9 @@
 
 namespace App\Models\Access\User\Traits;
 
+use App\Models\Access\Role\Role;
+use App\Models\Access\Permission\Permission;
+
 /**
  * Class UserAccess.
  */
@@ -26,6 +29,14 @@ trait UserAccess
             if (is_numeric($nameOrId)) {
                 if ($role->id == $nameOrId) {
                     return true;
+                } else {
+                    return false;
+                }
+            }
+
+            if (config('app.debug')) {
+                if (Role::where('name', $nameOrId)->count() == 0) {
+                    \Log::warning('This role does not exist in database: '.$nameOrId);
                 }
             }
 
@@ -101,6 +112,14 @@ trait UserAccess
                 if (is_numeric($nameOrId)) {
                     if ($perm->id == $nameOrId) {
                         return true;
+                    } else {
+                        return false;
+                    }
+                }
+
+                if (config('app.debug')) {
+                    if (Permission::where('name', $nameOrId)->count() == 0) {
+                        \Log::warning('This permission does not exist in database: '.$nameOrId);
                     }
                 }
 
