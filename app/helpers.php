@@ -63,7 +63,7 @@ if (! function_exists('includeRouteFiles')) {
             while($it->valid())
             {
                 if(!$it->isDot() && $it->isFile() && $it->isReadable() && $it->current()->getExtension() === 'php' ){
-                        require_once $it->key();
+                        require $it->key();
                 }
                         
                 /*** move to the next element ***/
