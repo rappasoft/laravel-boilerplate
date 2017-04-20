@@ -28,6 +28,7 @@ return [
 
             'users' => [
                 'cant_deactivate_self'  => 'Du kan ikke udføre denne handling på dig selv.',
+				'cant_delete_admin'  => 'You can not delete the super administrator.',
                 'cant_delete_self'      => 'Du kan ikke slette dig selv.',
                 'cant_delete_own_session' => 'You can not delete your own session.',
                 'create_error'          => 'Der opstod et problem ved oprettelsen af denne bruger. Prøv venligst igen.',

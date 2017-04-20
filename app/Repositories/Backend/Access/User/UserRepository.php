@@ -210,6 +210,10 @@ class UserRepository extends BaseRepository
             throw new GeneralException(trans('exceptions.backend.access.users.cant_delete_self'));
         }
 
+        if ($user->id == 1) {
+          throw new GeneralException(trans('exceptions.backend.access.users.cant_delete_admin'));
+        }
+
         if ($user->delete()) {
             event(new UserDeleted($user));
 
