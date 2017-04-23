@@ -55,8 +55,8 @@ return [
          */
         'langs' => [
             'ar'    => 'العربية (Arabic)',
-			'zh'    => '(Chinese Simplified)',
-			'zh-TW' => '(Chinese Traditional)',
+            'zh'    => '(Chinese Simplified)',
+            'zh-TW' => '(Chinese Traditional)',
             'da'    => 'Dinamarquês (Danish)',
             'de'    => 'Alemão (German)',
             'el'    => '(Greek)',
