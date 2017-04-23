@@ -154,6 +154,18 @@ class EloquentHistoryRepository implements HistoryContract
     }
 
     /**
+     * @return mixed
+     */
+    public function updateUserLinkAssets()
+    {
+        return History::where('type_id', $this->type->id)
+            ->where('user_id', access()->id())
+            ->where('entity_id', $this->entity_id)
+            ->where('assets', 'LIKE', '%user_link%')
+            ->update(['assets' => $this->assets]);
+    }
+
+    /**
      * @param null $limit
      * @param bool $paginate
      * @param int  $pagination
