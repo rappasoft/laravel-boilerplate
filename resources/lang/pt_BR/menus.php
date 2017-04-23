@@ -55,6 +55,8 @@ return [
          */
         'langs' => [
             'ar'    => 'العربية (Arabic)',
+            'zh'    => '(Chinese Simplified)',
+            'zh-TW' => '(Chinese Traditional)',
             'da'    => 'Dinamarquês (Danish)',
             'de'    => 'Alemão (German)',
             'el'    => '(Greek)',
@@ -63,11 +65,12 @@ return [
             'fr'    => 'Francês (French)',
             'id'    => 'indonésio (Indonesian)',
             'it'    => 'Italiano (Italian)',
+            'ja'    => '(Japanese)',
             'nl'    => 'Holandês (Dutch)',
             'pt_BR' => 'Português do Brasil (Brazilian Portuguese)',
             'ru'    => 'Russo (Russian)',
             'sv'    => 'Sueco (Swedish)',
-            'th'    => 'Thai',
+            'th'    => '(Thai)',
         ],
     ],
 ];

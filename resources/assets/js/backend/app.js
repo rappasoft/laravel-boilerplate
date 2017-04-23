@@ -6,6 +6,13 @@
 
 require('../bootstrap');
 
+// Uncomment to use Vue in backend
+// window.Vue = require('vue');
+
+/**
+ * Admin LTE Scripts
+ */
+
 /* globals AdminLTEOptions: false */
 /* globals FastClick: false */
 

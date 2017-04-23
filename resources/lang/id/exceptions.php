@@ -28,6 +28,7 @@ return [
 
             'users' => [
                 'cant_deactivate_self'  => 'Anda tidak dapat melakukan itu kepada diri sendiri.',
+                'cant_delete_admin'  => 'You can not delete the super administrator.',
                 'cant_delete_self'      => 'Anda tidak dapat menghapus diri sendiri.',
                 'cant_delete_own_session' => 'You can not delete your own session.',
                 'cant_restore'          => 'Pengguna ini tidak dihapus sehingga tidak dapat dikembalikan.',

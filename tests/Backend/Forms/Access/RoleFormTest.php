@@ -26,14 +26,16 @@ class RoleFormTest extends BrowserKitTestCase
 
     public function testCreateRoleRequiredFieldsSpecificPermissions()
     {
-        // Custom Permissions
-        $this->actingAs($this->admin)
-             ->visit('/admin/access/role/create')
-             ->type('Test Role', 'name')
-             ->select('custom', 'associated-permissions')
-             ->press('Create')
-             ->seePageIs('/admin/access/role/create')
-             ->see('You must select at least one permission for this role.');
+        if (config('access.roles.role_must_contain_permission')) {
+            // Custom Permissions
+            $this->actingAs($this->admin)
+                ->visit('/admin/access/role/create')
+                ->type('Test Role', 'name')
+                ->select('custom', 'associated-permissions')
+                ->press('Create')
+                ->seePageIs('/admin/access/role/create')
+                ->see('You must select at least one permission for this role.');
+        }
     }
 
     public function testCreateRoleFormAll()
@@ -143,11 +145,13 @@ class RoleFormTest extends BrowserKitTestCase
 
     public function testUpdateRoleRequiresPermission()
     {
-        $this->actingAs($this->admin)
-             ->visit('/admin/access/role/3/edit')
-             ->press('Update')
-             ->seePageIs('/admin/access/role/3/edit')
-             ->see('You must select at least one permission for this role.');
+        if (config('access.roles.role_must_contain_permission')) {
+            $this->actingAs($this->admin)
+                ->visit('/admin/access/role/3/edit')
+                ->press('Update')
+                ->seePageIs('/admin/access/role/3/edit')
+                ->see('You must select at least one permission for this role.');
+        }
     }
 
     public function testDeleteRoleForm()

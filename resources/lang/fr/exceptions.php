@@ -28,6 +28,7 @@ return [
 
             'users' => [
                 'cant_deactivate_self'  => 'Vous ne pouvez pas vous désactiver vous-même.',
+                'cant_delete_admin'  => 'You can not delete the super administrator.',
                 'cant_delete_self'      => 'Vous ne pouvez pas vous supprimer vous-même.',
                 'cant_delete_own_session' => 'You can not delete your own session.',
                 'cant_restore'          => "Cet utilisateur n'est pas effacé et ne peut être restauré.",
