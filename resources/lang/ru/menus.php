@@ -49,8 +49,8 @@ return [
     'language-picker'   => [
         'langs'     => [
             'ar'    => 'Арабский (Arabic)',
-			'zh'    => '(Chinese Simplified)',
-			'zh-TW' => '(Chinese Traditional)',
+            'zh'    => '(Chinese Simplified)',
+            'zh-TW' => '(Chinese Traditional)',
             'da'    => 'Датский (Danish)',
             'de'    => 'Немецкий (German)',
             'el'    => 'Греческий (Greek)',

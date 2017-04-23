@@ -87,14 +87,14 @@ class UserEventListener
             ->withIcon('trash')
             ->withClass('bg-maroon')
             ->withAssets([
-                'user_string' => $event->user->name
+                'user_string' => $event->user->name,
             ])
             ->log();
 
         history()->withType($this->history_slug)
             ->withEntity($event->user->id)
             ->withAssets([
-                'user_string' => $event->user->name
+                'user_string' => $event->user->name,
             ])
             ->updateUserLinkAssets();
     }
