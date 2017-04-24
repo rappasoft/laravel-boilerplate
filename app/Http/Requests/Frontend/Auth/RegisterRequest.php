@@ -28,8 +28,8 @@ class RegisterRequest extends Request
     public function rules()
     {
         return [
-            'name'                 => 'required|string|max:255',
-            'email'                => ['required', 'string', 'email', 'max:255', Rule::unique('users')],
+            'name'                 => 'required|string|max:191',
+            'email'                => ['required', 'string', 'email', 'max:191', Rule::unique('users')],
             'password'             => 'required|string|min:6|confirmed',
             'g-recaptcha-response' => 'required_if:captcha_status,true|captcha',
         ];
