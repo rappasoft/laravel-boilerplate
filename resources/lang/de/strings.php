@@ -31,11 +31,11 @@ return [
             'all_rights_reserved' => 'Alle Rechte vorbehalten.',
             'are_you_sure'        => 'Bist du dir sicher?',
             'boilerplate_link'    => 'Laravel 5 Boilerplate',
-            'continue'            => 'Forsetzen',
+            'continue'            => 'Fortsetzen',
             'member_since'        => 'Mitglied seit',
-            'minutes'             => ' minutes',
+            'minutes'             => ' Minuten',
             'search_placeholder'  => 'Suchen...',
-            'timeout'             => 'You were automatically logged out for security reasons since you had no activity in ',
+            'timeout'             => 'Du wurdest aus Sicherheitsgründen automatisch abgemeldet weil du inaktiv warst seit ',
 
             'see_all' => [
                 'messages'      => 'Alle Nachrichten anzeigen',
@@ -56,15 +56,15 @@ return [
         ],
 
         'search' => [
-            'empty'      => 'Please enter a search term.',
-            'incomplete' => 'You must write your own search logic for this system.',
-            'title'      => 'Search Results',
-            'results'    => 'Search Results for :query',
+            'empty'      => 'Bitte gib einen Suchbegriff ein.',
+            'incomplete' => 'Du musst deinen eigene Such-Algorythmus für dieses System schreiben.',
+            'title'      => 'Suchergebnisse',
+            'results'    => 'Suchergebnisse für :query',
         ],
 
-        'welcome' => '<p>Dies ist das AdminLTE theme von <a href="https://almsaeedstudio.com/" target="_blank">https://almsaeedstudio.com/</a>. Dies ist eine abgestufte version mit nur den nötigsten Styles und Scripten, damit es läuft. Downloade die Vollversion, um Komponenten zum Dashboard hinzufügen zu können.</p>
-<p>Alle Funktionen für sind statisch mit Ausnahme der <strong>Benutzer Verwaltung</strong> auf der linken Seite. Dieser Boilerplate kommt mit einer voll funktionsfähigen Zugangskontroll-Bibliothek, um Benutzer/Rollen und Berechtigungen zu verwalten.</p>
-<p>Denken Sie daran, es ist \'work in progress\' und möglicherweise gibt es Fehler oder andere Probleme die ich noch nicht gesehen habe. Ich werde mein Bestes tun, um sie zu beheben, wie sie gemeldet werden.</p>
+        'welcome' => '<p>Dies ist das AdminLTE theme von <a href="https://almsaeedstudio.com/" target="_blank">https://almsaeedstudio.com/</a>. Dies ist eine abgestufte Version mit nur den nötigsten Styles und Scripten, damit es läuft. Lade die Vollversion herunter, um Komponenten zum Dashboard hinzufügen zu können.</p>
+<p>Alle Funktionen sind statisch mit Ausnahme der <strong>Benutzer Verwaltung</strong> auf der linken Seite. Dieser Boilerplate kommt mit einer voll funktionsfähigen Zugangskontroll-Bibliothek, um Benutzer/Rollen und Berechtigungen zu verwalten.</p>
+<p>Denken Sie daran, es ist \'work in progress\' und möglicherweise gibt es Fehler oder andere Probleme die ich noch nicht gesehen habe. Ich werde mein Bestes tun, um sie zu beheben, sowie sie gemeldet werden.</p>
 <p>Hoffentlich genießen Sie die Arbeit, die ich hier reingesteckt habe. Bitte besuche die <a href="https://github.com/rappasoft/laravel-5-boilerplate" target="_blank">GitHub</a> Seite für weitere Informationen und meldet alle <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">Fehler hier</a>.</p>
 <p><strong>This project is very demanding to keep up with given the rate at which the master Laravel branch changes, so any help is appreciated.</strong></p>
 <p>- Anthony Rappa</p>',
@@ -107,7 +107,7 @@ return [
                 'array_roles_not'       => 'Verwenden von Access Helper mit Array von Rolen-Namen oder ID\'s bei der der Benutzer nicht alle besitzen muss.',
                 'permission_id'         => 'Verwenden von Access Helper mit Berechtigungs-ID',
                 'permission_name'       => 'Verwenden von Access Helper mit Berechtigungs-Name',
-                'role_id'               => 'Vverwenden von Access Helper mit Rollen-ID',
+                'role_id'               => 'Verwenden von Access Helper mit Rollen-ID',
                 'role_name'             => 'Verwenden von Access Helper mit Rollen-Name',
             ],
 
