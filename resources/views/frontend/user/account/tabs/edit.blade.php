@@ -3,7 +3,7 @@
     <div class="form-group">
         {{ Form::label('name', trans('validation.attributes.frontend.name'), ['class' => 'col-md-4 control-label']) }}
         <div class="col-md-6">
-            {{ Form::input('text', 'name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.name')]) }}
+            {{ Form::input('text', 'name', null, ['class' => 'form-control', 'maxlength'=> '191', 'placeholder' => trans('validation.attributes.frontend.name')]) }}
         </div>
     </div>
 
@@ -15,7 +15,7 @@
                     <i class="fa fa-info-circle"></i> {{  trans('strings.frontend.user.change_email_notice') }}
                 </div>
 
-                {{ Form::input('email', 'email', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
+                {{ Form::input('email', 'email', null, ['class' => 'form-control', 'maxlength'=> '191', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
             </div>
         </div>
     @endif
