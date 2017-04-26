@@ -33,7 +33,7 @@ class ChangePasswordController extends Controller
    */
   public function changePassword(ChangePasswordRequest $request)
   {
-      $this->user->changePassword($request->all());
+      $this->user->changePassword($request->only('old_password', 'password'));
 
       return redirect()->route('frontend.user.account')->withFlashSuccess(trans('strings.frontend.user.password_updated'));
   }
