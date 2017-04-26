@@ -3,7 +3,36 @@
 @section ('title', trans('labels.backend.access.users.management'))
 
 @section('after-styles')
-    {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
+    {{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}
+
+    {{--for many more Datatables options see https://datatables.net/download/--}}
+    {{--example: add excel export button--}}
+    {{--{{ Html::style("https://cdn.datatables.net/v/bs/jszip-3.1.3/dt-1.10.15/b-1.3.1/b-html5-1.3.1/datatables.min.css") }}--}}
+    {{--<style>--}}
+        {{--.dataTables_length {--}}
+            {{--float: left;--}}
+        {{--}--}}
+
+        {{--.dt-buttons.btn-group {--}}
+            {{--float: left;--}}
+            {{--margin: 5px 0 0 25px;--}}
+        {{--}--}}
+
+        {{--.btn-excel {--}}
+            {{--background-color: #ac70dd;--}}
+            {{--border-color: #ac70dd;--}}
+            {{--color: #fff;--}}
+        {{--}--}}
+
+        {{--.btn-excel:hover,--}}
+        {{--.btn-excel:focus,--}}
+        {{--.btn-excel:active,--}}
+        {{--.btn-excel.active {--}}
+            {{--background-color: #a05bd8;--}}
+            {{--border-color: #9447d3;--}}
+            {{--color: #fff;--}}
+        {{--}--}}
+    {{--</style>--}}
 @endsection
 
 @section('page-header')
@@ -27,16 +56,16 @@
             <div class="table-responsive">
                 <table id="users-table" class="table table-condensed table-hover">
                     <thead>
-                        <tr>
-                            <th>{{ trans('labels.backend.access.users.table.id') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.name') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.email') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.created') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.last_updated') }}</th>
-                            <th>{{ trans('labels.general.actions') }}</th>
-                        </tr>
+                    <tr>
+                        <th>{{ trans('labels.backend.access.users.table.id') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.name') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.email') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.created') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.last_updated') }}</th>
+                        <th>{{ trans('labels.general.actions') }}</th>
+                    </tr>
                     </thead>
                 </table>
             </div><!--table-responsive-->
@@ -57,12 +86,18 @@
 @endsection
 
 @section('after-scripts')
-    {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
-    {{ Html::script("js/backend/plugin/datatables/dataTables.bootstrap.min.js") }}
+    {{ Html::script("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}
 
+    {{-- for excel export --}}
+    {{-- {{ Html::script("https://cdn.datatables.net/v/bs/jszip-3.1.3/dt-1.10.15/b-1.3.1/b-html5-1.3.1/datatables.min.js") }}--}}
     <script>
-        $(function() {
+        $(function () {
             $('#users-table').DataTable({
+                // for excel export
+                // dom: 'lBfrtip',
+                // buttons: [
+                //      {extend: 'excel', text: 'Export to Excel'}
+                //  ],
                 processing: true,
                 serverSide: true,
                 ajax: {
@@ -83,6 +118,8 @@
                 order: [[0, "asc"]],
                 searchDelay: 500
             });
+            // for excel export
+            // $('.buttons-html5').removeClass('btn-default').addClass('btn-xs btn-excel');
         });
     </script>
 @endsection
