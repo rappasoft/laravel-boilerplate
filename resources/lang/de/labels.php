@@ -17,15 +17,15 @@ return [
         'all'     => 'Alle',
         'yes'     => 'Ja',
         'no'      => 'Nein',
-        'custom'  => 'Custom', // TODO TRANSLATION
+        'custom'  => 'Erweitert', // TODO TRANSLATION
         'actions' => 'Aktionen',
-        'active'  => 'Active',
+        'active'  => 'Aktiv',
         'buttons' => [
             'save'   => 'Speichern',
             'update' => 'Aktualisieren',
         ],
         'hide'              => 'Verstecken',
-        'inactive'          => 'Inactive',
+        'inactive'          => 'Inaktiv',
         'none'              => 'Keine',
         'show'              => 'Anzeigen',
         'toggle_navigation' => 'Navigation umschalten',
@@ -35,7 +35,7 @@ return [
         'access' => [
             'roles' => [
                 'create'     => 'Rolle erstellen',
-                'edit'       => 'rolle bearbeiten',
+                'edit'       => 'Rolle bearbeiten',
                 'management' => 'Rollen verwalten',
 
                 'table' => [
@@ -50,13 +50,13 @@ return [
             'users' => [
                 'active'              => 'Aktive Benutzer',
                 'all_permissions'     => 'Alle Berechtigungen',
-                'change_password'     => 'Passwort ändern',
-                'change_password_for' => 'Passwort für :user ändern',
+                'change_password'     => 'Kennwort ändern',
+                'change_password_for' => 'Kennwort für :user ändern',
                 'create'              => 'Benutzer erstellen',
                 'deactivated'         => 'Deaktivierte Benutzer',
                 'deleted'             => 'Gelöschte Benutzer',
                 'edit'                => 'Benutzer bearbeiten',
-                'management'          => 'Benutzer Verwalten',
+                'management'          => 'Benutzer verwalten',
                 'no_permissions'      => 'Keine Berechtigungen',
                 'no_roles'            => 'Keine Rollen vorhanden.',
                 'permissions'         => 'Berechtigungen',
@@ -76,25 +76,25 @@ return [
 
                 'tabs' => [
                     'titles' => [
-                        'overview' => 'Overview',
-                        'history'  => 'History',
+                        'overview' => 'Übersicht',
+                        'history'  => 'Verlauf',
                     ],
 
                     'content' => [
                         'overview' => [
                             'avatar'       => 'Avatar',
-                            'confirmed'    => 'Confirmed',
-                            'created_at'   => 'Created At',
-                            'deleted_at'   => 'Deleted At',
+                            'confirmed'    => 'Bestätigt',
+                            'created_at'   => 'Erstellt am',
+                            'deleted_at'   => 'Gelöscht am',
                             'email'        => 'E-mail',
-                            'last_updated' => 'Last Updated',
+                            'last_updated' => 'Zuletzt aktualisiert',
                             'name'         => 'Name',
                             'status'       => 'Status',
                         ],
                     ],
                 ],
 
-                'view' => 'View User',
+                'view' => 'Benutzer anzeigen',
             ],
         ],
     ],
@@ -102,19 +102,19 @@ return [
     'frontend' => [
 
         'auth' => [
-            'login_box_title'    => 'Login',
-            'login_button'       => 'Login',
-            'login_with'         => 'Login mit :social_media',
+            'login_box_title'    => 'Anmeldung',
+            'login_button'       => 'Anmelden',
+            'login_with'         => 'Anmelden mit :social_media',
             'register_box_title' => 'Registrieren',
             'register_button'    => 'Registrieren',
             'remember_me'        => 'An mich errinnern',
         ],
 
         'passwords' => [
-            'forgot_password'                 => 'Passwort vergessen?',
-            'reset_password_box_title'        => 'Passwort zurücksetzen',
-            'reset_password_button'           => 'Passwort zurücksetzen',
-            'send_password_reset_link_button' => 'Link zum zurücksetzen des Passworts senden',
+            'forgot_password'                 => 'Kennwort vergessen?',
+            'reset_password_box_title'        => 'Kennwort zurücksetzen',
+            'reset_password_button'           => 'Kennwort zurücksetzen',
+            'send_password_reset_link_button' => 'Link zum zurücksetzen des Kennworts senden',
         ],
 
         'macros' => [
@@ -137,7 +137,7 @@ return [
             ],
 
             'territories' => [
-                'canada' => 'Kanada Provinz & Territorien Liste',
+                'canada' => 'Kanada Provinzen & Territorien Liste',
             ],
 
             'timezone' => 'Zeitzone',
@@ -145,7 +145,7 @@ return [
 
         'user' => [
             'passwords' => [
-                'change' => 'Passwort ändern',
+                'change' => 'Kennwort ändern',
             ],
 
             'profile' => [

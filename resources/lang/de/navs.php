@@ -15,19 +15,19 @@ return [
 
     'general' => [
         'home'   => 'Startseite',
-        'logout' => 'Logout',
+        'logout' => 'Abmelden',
     ],
 
     'frontend' => [
         'dashboard' => 'Dashboard',
-        'login'     => 'Login',
+        'login'     => 'Anmelden',
         'macros'    => 'Makros',
         'register'  => 'Registrieren',
 
         'user' => [
-            'account'         => 'My Account',
+            'account'         => 'Mein Konto',
             'administration'  => 'Administration',
-            'change_password' => 'Passwort ändern',
+            'change_password' => 'Kennwort ändern',
             'my_information'  => 'Meine Informationen',
             'profile'         => 'Profile',
         ],

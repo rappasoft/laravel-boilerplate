@@ -13,25 +13,25 @@ return [
     */
 
     'backend' => [
-        'none'            => 'There is no recent history.',
-        'none_for_type'   => 'There is no history for this type.',
-        'none_for_entity' => 'There is no history for this :entity.',
-        'recent_history'  => 'Recent History',
+        'none'            => 'Es gibt keinen neuesten Verlauf.',
+        'none_for_type'   => 'Es gibt keinen Verlauf für diesen Typ.',
+        'none_for_entity' => 'Es gibt keinen Verlauf für :entity.',
+        'recent_history'  => 'Neuester Verlauf',
 
         'roles' => [
-            'created' => 'created role',
-            'deleted' => 'deleted role',
-            'updated' => 'updated role',
+            'created' => 'Rolle erstellt',
+            'deleted' => 'Rolle gelöscht',
+            'updated' => 'Rolle aktualisiert',
         ],
         'users' => [
-            'changed_password'    => 'changed password for user',
-            'created'             => 'created user',
-            'deactivated'         => 'deactivated user',
-            'deleted'             => 'deleted user',
-            'permanently_deleted' => 'permanently deleted user',
-            'updated'             => 'updated user',
-            'reactivated'         => 'reactivated user',
-            'restored'            => 'restored user',
+            'changed_password'    => 'Kennwort für Benutzer geändert',
+            'created'             => 'Benutzer erstellt',
+            'deactivated'         => 'Benutzer deaktiviert',
+            'deleted'             => 'Benutzer gelöscht',
+            'permanently_deleted' => 'Benutzer endgültig gelöscht',
+            'updated'             => 'Benutzer aktualisiert',
+            'reactivated'         => 'Benutzer wieder aktiviert',
+            'restored'            => 'Benutzer wiederhergestellt',
         ],
     ],
 ];
