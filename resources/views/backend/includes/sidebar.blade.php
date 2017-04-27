@@ -15,7 +15,7 @@
         </div><!--user-panel-->
 
         <!-- search form (Optional) -->
-        {{ Form::open(['route' => 'admin.search.index', 'method' => 'get', 'class' => 'sidebar-form']) }}
+        {{ Form::open(['route' => 'admin.search.index', 'method' => 'get', 'class' => 'sidebar-form', 'novalidate' => 'novalidate']) }}
         <div class="input-group">
             {{ Form::text('q', Request::get('q'), ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('strings.backend.general.search_placeholder')]) }}
 
