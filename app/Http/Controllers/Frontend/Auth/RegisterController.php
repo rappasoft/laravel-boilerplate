@@ -56,7 +56,7 @@ class RegisterController extends Controller
 
             return redirect($this->redirectPath())->withFlashSuccess(trans('exceptions.frontend.auth.confirmation.created_confirm'));
         } else {
-            access()->login($this->user->create($request->all()));
+            access()->login($this->user->create($request->only('name', 'email', 'password')));
             event(new UserRegistered(access()->user()));
 
             return redirect($this->redirectPath());
