@@ -4,35 +4,6 @@
 
 @section('after-styles')
     {{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}
-
-    {{--for many more Datatables options see https://datatables.net/download/--}}
-    {{--example: add excel export button--}}
-    {{--{{ Html::style("https://cdn.datatables.net/v/bs/jszip-3.1.3/dt-1.10.15/b-1.3.1/b-html5-1.3.1/datatables.min.css") }}--}}
-    {{--<style>--}}
-        {{--.dataTables_length {--}}
-            {{--float: left;--}}
-        {{--}--}}
-
-        {{--.dt-buttons.btn-group {--}}
-            {{--float: left;--}}
-            {{--margin: 5px 0 0 25px;--}}
-        {{--}--}}
-
-        {{--.btn-excel {--}}
-            {{--background-color: #ac70dd;--}}
-            {{--border-color: #ac70dd;--}}
-            {{--color: #fff;--}}
-        {{--}--}}
-
-        {{--.btn-excel:hover,--}}
-        {{--.btn-excel:focus,--}}
-        {{--.btn-excel:active,--}}
-        {{--.btn-excel.active {--}}
-            {{--background-color: #a05bd8;--}}
-            {{--border-color: #9447d3;--}}
-            {{--color: #fff;--}}
-        {{--}--}}
-    {{--</style>--}}
 @endsection
 
 @section('page-header')
@@ -88,16 +59,9 @@
 @section('after-scripts')
     {{ Html::script("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}
 
-    {{-- for excel export --}}
-    {{-- {{ Html::script("https://cdn.datatables.net/v/bs/jszip-3.1.3/dt-1.10.15/b-1.3.1/b-html5-1.3.1/datatables.min.js") }}--}}
     <script>
         $(function () {
             $('#users-table').DataTable({
-                // for excel export
-                // dom: 'lBfrtip',
-                // buttons: [
-                //      {extend: 'excel', text: 'Export to Excel'}
-                //  ],
                 processing: true,
                 serverSide: true,
                 ajax: {
@@ -118,8 +82,6 @@
                 order: [[0, "asc"]],
                 searchDelay: 500
             });
-            // for excel export
-            // $('.buttons-html5').removeClass('btn-default').addClass('btn-xs btn-excel');
         });
     </script>
 @endsection
