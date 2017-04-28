@@ -86,7 +86,7 @@ class UserRepository extends BaseRepository
     public function create(array $data, $provider = false)
     {
         $user = self::MODEL;
-        $user = new $user();
+        $user = new $user;
         $user->name = $data['name'];
         $user->email = $data['email'];
         $user->confirmation_code = md5(uniqid(mt_rand(), true));

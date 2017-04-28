@@ -56,7 +56,7 @@
                     </div><!--form control-->
 
                     <div class="form-group">
-                        {{ Form::label('status', trans('validation.attributes.backend.access.users.associated_roles'), ['class' => 'col-lg-2 control-label']) }}
+                        {{ Form::label('associated_roles', trans('validation.attributes.backend.access.users.associated_roles'), ['class' => 'col-lg-2 control-label']) }}
 
                         <div class="col-lg-3">
                             @if (count($roles) > 0)

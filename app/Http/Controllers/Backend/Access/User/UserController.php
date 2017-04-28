@@ -63,7 +63,7 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        $this->users->create(['data' => $request->except('assignees_roles'), 'roles' => $request->only('assignees_roles')]);
+        $this->users->create(['data' => $request->only('name', 'email', 'password', 'status', 'confirmed', 'confirmation_email'), 'roles' => $request->only('assignees_roles')]);
 
         return redirect()->route('admin.access.user.index')->withFlashSuccess(trans('alerts.backend.users.created'));
     }
@@ -102,7 +102,7 @@ class UserController extends Controller
      */
     public function update(User $user, UpdateUserRequest $request)
     {
-        $this->users->update($user, ['data' => $request->except('assignees_roles'), 'roles' => $request->only('assignees_roles')]);
+        $this->users->update($user, ['data' => $request->only('name', 'email', 'status', 'confirmed'), 'roles' => $request->only('assignees_roles')]);
 
         return redirect()->route('admin.access.user.index')->withFlashSuccess(trans('alerts.backend.users.updated'));
     }

@@ -46,7 +46,7 @@ class UserPasswordController extends Controller
      */
     public function update(User $user, UpdateUserPasswordRequest $request)
     {
-        $this->users->updatePassword($user, $request->all());
+        $this->users->updatePassword($user, $request->only('password'));
 
         return redirect()->route('admin.access.user.index')->withFlashSuccess(trans('alerts.backend.users.updated_password'));
     }

@@ -3,7 +3,7 @@
 @section ('title', trans('labels.backend.access.users.management'))
 
 @section('after-styles')
-    {{ Html::style("css/backend/plugin/datatables/dataTables.bootstrap.min.css") }}
+    {{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}
 @endsection
 
 @section('page-header')
@@ -27,16 +27,16 @@
             <div class="table-responsive">
                 <table id="users-table" class="table table-condensed table-hover">
                     <thead>
-                        <tr>
-                            <th>{{ trans('labels.backend.access.users.table.id') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.name') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.email') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.created') }}</th>
-                            <th>{{ trans('labels.backend.access.users.table.last_updated') }}</th>
-                            <th>{{ trans('labels.general.actions') }}</th>
-                        </tr>
+                    <tr>
+                        <th>{{ trans('labels.backend.access.users.table.id') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.name') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.email') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.created') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.last_updated') }}</th>
+                        <th>{{ trans('labels.general.actions') }}</th>
+                    </tr>
                     </thead>
                 </table>
             </div><!--table-responsive-->
@@ -57,11 +57,10 @@
 @endsection
 
 @section('after-scripts')
-    {{ Html::script("js/backend/plugin/datatables/jquery.dataTables.min.js") }}
-    {{ Html::script("js/backend/plugin/datatables/dataTables.bootstrap.min.js") }}
+    {{ Html::script("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}
 
     <script>
-        $(function() {
+        $(function () {
             $('#users-table').DataTable({
                 processing: true,
                 serverSide: true,

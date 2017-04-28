@@ -64,7 +64,7 @@ class RoleController extends Controller
      */
     public function store(StoreRoleRequest $request)
     {
-        $this->roles->create($request->all());
+        $this->roles->create($request->only('name', 'associated-permissions', 'permissions', 'sort'));
 
         return redirect()->route('admin.access.role.index')->withFlashSuccess(trans('alerts.backend.roles.created'));
     }
@@ -91,7 +91,7 @@ class RoleController extends Controller
      */
     public function update(Role $role, UpdateRoleRequest $request)
     {
-        $this->roles->update($role, $request->all());
+        $this->roles->update($role, $request->only('name', 'associated-permissions', 'permissions', 'sort'));
 
         return redirect()->route('admin.access.role.index')->withFlashSuccess(trans('alerts.backend.roles.updated'));
     }
