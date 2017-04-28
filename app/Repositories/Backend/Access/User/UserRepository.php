@@ -158,8 +158,8 @@ class UserRepository extends BaseRepository
 
         $user->name = $data['name'];
         $user->email = $data['email'];
-		$user->status = isset($data['status']) ? 1 : 0;
-		$user->confirmed = isset($data['confirmed']) ? 1 : 0;
+        $user->status = isset($data['status']) ? 1 : 0;
+        $user->confirmed = isset($data['confirmed']) ? 1 : 0;
 
         DB::transaction(function () use ($user, $data, $roles) {
             if ($user->save()) {
