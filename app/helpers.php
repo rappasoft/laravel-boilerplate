@@ -98,7 +98,7 @@ if (! function_exists('getRtlCss')) {
 
 if (! function_exists('redirectToHome')) {
     /**
-     * Redirect to the "home" page depending on login and permission status
+     * Redirect to the "home" page depending on authentication/authorization status
      *
      * @param $flashMsg
      * @param $$arrData
@@ -108,7 +108,7 @@ if (! function_exists('redirectToHome')) {
     {
         if (access()->allow('view-backend')) {
             return redirect()->route('admin.dashboard')->withFlashDanger($flashMsg, $arrData);
-        } else if (Auth::check()) {
+        } elseif (Auth::check()) {
             return redirect()->route('frontend.user.dashboard')->withFlashDanger($flashMsg, $arrData);
         }
 
@@ -118,7 +118,7 @@ if (! function_exists('redirectToHome')) {
 
 if (! function_exists('homeRoute')) {
     /**
-     * Return the route to the "home" page depending on login and permission status
+     * Return the route to the "home" page depending on authentication/authorization status.
      *
      * @return string
      */
@@ -126,7 +126,7 @@ if (! function_exists('homeRoute')) {
     {
         if (access()->allow('view-backend')) {
             return route('admin.dashboard');
-        } else if (Auth::check()) {
+        } elseif (Auth::check()) {
             return route('frontend.user.dashboard');
         }
 
