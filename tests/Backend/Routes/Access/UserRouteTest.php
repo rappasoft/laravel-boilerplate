@@ -76,7 +76,7 @@ class UserRouteTest extends BrowserKitTestCase
     {
         $this->actingAs($this->admin)
              ->visit('/admin/access/user/'.$this->user->id.'/login-as')
-             ->seePageIs('/')
+             ->seePageIs('/dashboard')
              ->see('You are currently logged in as '.$this->user->name.'.')
              ->see($this->admin->name)
              ->assertTrue(access()->id() == $this->user->id);
@@ -93,7 +93,7 @@ class UserRouteTest extends BrowserKitTestCase
     {
         $this->actingAs($this->admin)
              ->visit('/admin/access/user/'.$this->user->id.'/login-as')
-             ->seePageIs('/')
+             ->seePageIs('/dashboard')
              ->see('You are currently logged in as '.$this->user->name.'.')
              ->click('Re-Login as '.$this->admin->name)
              ->seePageIs('/admin/access/user')

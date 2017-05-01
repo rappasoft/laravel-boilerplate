@@ -93,3 +93,21 @@ if (! function_exists('getRtlCss')) {
         return implode('/', $path).'/'.$filename.'.rtl.css';
     }
 }
+
+if (! function_exists('homeRoute')) {
+    /**
+     * Return the route to the "home" page depending on authentication/authorization status.
+     *
+     * @return string
+     */
+    function homeRoute()
+    {
+        if (access()->allow('view-backend')) {
+            return 'admin.dashboard';
+        } elseif (Auth::check()) {
+            return 'frontend.user.dashboard';
+        }
+
+        return 'frontend.index';
+    }
+}
