@@ -14,6 +14,26 @@ php:
   - 7.0
   - 7.1
 
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.0.12 # for coverrage
+      env: DB_DATABASE=myapp_test DB_USERNAME=root DB_PASSWORD='' PHP_SAPI=phpdbg
+      sudo: required
+      dist: trusty
+  exclude:
+    - php: 5.6
+      env: DB_DATABASE=myapp_test DB_USERNAME=root DB_PASSWORD='' PHP_SAPI=phpdbg
+    - php: 7.0
+      env: DB_DATABASE=myapp_test DB_USERNAME=root DB_PASSWORD='' PHP_SAPI=phpdbg
+    - php: 7.1
+      env: DB_DATABASE=myapp_test DB_USERNAME=root DB_PASSWORD='' PHP_SAPI=phpdbg
+  allow_failures:
+    - env: DB=sqlite
+    - php: 7.1
+    - php: 7.0.12 # dist: trusty A dummy to run trusty, the test is not actually executed
+      env: DB_DATABASE=myapp_test DB_USERNAME=root DB_PASSWORD=''
+
 services:
   - mysql
 
@@ -21,9 +41,12 @@ before_install:
   - mysql -e 'CREATE DATABASE myapp_test;'
 
 env:
-  - DB=mysql DB_DATABASE=myapp_test DB_USERNAME=root DB_PASSWORD=''
+  - DB_DATABASE=myapp_test DB_USERNAME=root DB_PASSWORD=''
 
 before_script:
+  - CODENAME=$(lsb_release -c -s)
+  - if [[ $PHP_SAPI != 'phpdbg' ]] || [[ $CODENAME = 'trusty' ]]; then phpenv config-rm xdebug.ini ; fi
+  - if [[ $PHP_SAPI = 'phpdbg' ]]; then echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini ; fi
   - composer self-update || true
   - composer install --dev --no-interaction -o --no-scripts
   - composer run-script post-root-package-install
@@ -31,5 +54,16 @@ before_script:
   - composer run-script post-install-cmd
 
 
-script:
-  - ./vendor/bin/phpunit
+script: # PHP7 + precise のテストは実行されない
+  - if [[ $PHP_SAPI = 'phpdbg' ]] && [[ $CODENAME = 'trusty' ]]; then phpdbg -qrr ./vendor/bin/phpunit --coverage-clover=coverage.clover ; fi
+  - if [[ $PHP_SAPI != 'phpdbg' ]]; then ./vendor/bin/phpunit ; fi
+
+after_script:
+  - if [[ $PHP_SAPI = 'phpdbg' ]]; then wget https://scrutinizer-ci.com/ocular.phar ; fi
+  - if [[ $PHP_SAPI = 'phpdbg' ]]; then php ocular.phar code-coverage:upload --format=php-clover coverage.clover ; fi
+
+after_success:
+  - if [[ $PHP_SAPI = 'phpdbg' ]]; then php vendor/bin/coveralls -v -x coverage.clover ; fi
+
+# after_failure:
+#   - 'cat app/log/site_`date +"%Y-%m-%d"`.log'
