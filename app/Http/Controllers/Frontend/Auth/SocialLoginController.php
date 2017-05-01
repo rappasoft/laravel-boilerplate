@@ -69,7 +69,6 @@ class SocialLoginController extends Controller
             $user = $this->user->findOrCreateSocial($this->getSocialUser($provider), $provider);
         } catch (GeneralException $e) {
             return redirectToHome($e->getMessage());
-
         }
 
         if (is_null($user) || ! isset($user)) {
