@@ -98,11 +98,10 @@ if (! function_exists('getRtlCss')) {
 
 if (! function_exists('redirectToHome')) {
     /**
-     * Redirect to the "home" page depending on authentication/authorization status
+     * Redirect to the "home" page depending on authentication/authorization status.
      *
      * @param $flashMsg
      * @param $$arrData
-     *
      */
     function redirectToHome($flashMsg = null, $arrData = null)
     {
