@@ -29,10 +29,9 @@ matrix:
     - php: 7.1
       env: DB_DATABASE=myapp_test DB_USERNAME=root DB_PASSWORD='' PHP_SAPI=phpdbg
   allow_failures:
-    - env: DB=sqlite
-    - php: 7.1
+    - env: DB_DATABASE=sqlite
     - php: 7.0.12 # dist: trusty A dummy to run trusty, the test is not actually executed
-      env: DB_DATABASE=myapp_test DB_USERNAME=root DB_PASSWORD=''
+      env: DB_DATABASE=myapp_test DB_USERNAME=root DB_PASSWORD='' PHP_SAPI=phpdbg
 
 services:
   - mysql
@@ -42,6 +41,7 @@ before_install:
 
 env:
   - DB_DATABASE=myapp_test DB_USERNAME=root DB_PASSWORD=''
+  - DB_DATABASE=myapp_test DB_USERNAME=root DB_PASSWORD='' PHP_SAPI=phpdbg
 
 before_script:
   - CODENAME=$(lsb_release -c -s)
