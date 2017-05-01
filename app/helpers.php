@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 
-/**
+/*
  * Global helpers file with misc functions.
  */
 if (! function_exists('app_name')) {
