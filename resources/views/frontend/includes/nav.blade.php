@@ -29,14 +29,14 @@
                 @endif
 
                 @if ($logged_in_user)
-                    <li>{{ link_to_route('frontend.user.dashboard', trans('navs.frontend.dashboard')) }}</li>
+                    <li>{{ link_to_route('frontend.user.dashboard', trans('navs.frontend.dashboard'), [], ['class' => active_class(Active::checkRoute('frontend.user.dashboard')) ]) }}</li>
                 @endif
 
                 @if (! $logged_in_user)
-                    <li>{{ link_to_route('frontend.auth.login', trans('navs.frontend.login')) }}</li>
+                    <li>{{ link_to_route('frontend.auth.login', trans('navs.frontend.login'), [], ['class' => active_class(Active::checkRoute('frontend.auth.login')) ]) }}</li>
 
                     @if (config('access.users.registration'))
-                        <li>{{ link_to_route('frontend.auth.register', trans('navs.frontend.register')) }}</li>
+                        <li>{{ link_to_route('frontend.auth.register', trans('navs.frontend.register'), [], ['class' => active_class(Active::checkRoute('frontend.auth.register')) ]) }}</li>
                     @endif
                 @else
                     <li class="dropdown">
@@ -48,8 +48,7 @@
                             @permission('view-backend')
                                 <li>{{ link_to_route('admin.dashboard', trans('navs.frontend.user.administration')) }}</li>
                             @endauth
-
-                            <li>{{ link_to_route('frontend.user.account', trans('navs.frontend.user.account')) }}</li>
+                            <li>{{ link_to_route('frontend.user.account', trans('navs.frontend.user.account'), [], ['class' => active_class(Active::checkRoute('frontend.user.account')) ]) }}</li>
                             <li>{{ link_to_route('frontend.auth.logout', trans('navs.general.logout')) }}</li>
                         </ul>
                     </li>
