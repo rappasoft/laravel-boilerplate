@@ -16,50 +16,50 @@ return [
     'backend' => [
         'access' => [
             'users' => [
-                'delete_user_confirm' => '您确定要永久删除此用户吗？引用此用户ID的应用程序中的任何地方都很可能是错误。继续自行承担风险。这不能被撤消。',
-                'if_confirmed_off' => '(确认关闭)',
+                'delete_user_confirm'  => '您确定要永久删除此用户吗？引用此用户ID的应用程序中的任何地方都很可能是错误。继续自行承担风险。这不能被撤消。',
+                'if_confirmed_off'     => '(已确认则无效)',
                 'restore_user_confirm' => '将此用户恢复到其原始状态？',
             ],
         ],
 
         'dashboard' => [
-            'title' => '管理仪表板',
+            'title'   => '管理仪表板',
             'welcome' => '欢迎',
         ],
 
         'general' => [
             'all_rights_reserved' => '保留所有权利。',
-            'are_you_sure' => '你确定吗？',
-            'boilerplate_link' => 'Laravel 5 Boilerplate',
-            'continue' => '继续',
-            'member_since' => '会员自',
-            'minutes' => ' 分钟',
-            'search_placeholder' => '搜索...',
-            'timeout' => '您因为没有活动而被自动注销为了安全原因',
+            'are_you_sure'        => '你确定这样做吗？',
+            'boilerplate_link'    => 'Laravel 5 Boilerplate',
+            'continue'            => '继续',
+            'member_since'        => '会员自',
+            'minutes'             => ' 分钟',
+            'search_placeholder'  => '搜索...',
+            'timeout'             => '出于安全原因已自动注销，因为你没有操作超过 ',
 
             'see_all' => [
-                'messages' => '查看所有邮件',
-                'notifications' => '查看全部',
-                'tasks' => '查看所有任务',
+                'messages'      => '查看所有消息',
+                'notifications' => '查看所有提醒',
+                'tasks'         => '查看所有任务',
             ],
 
             'status' => [
-                'online' => '在线',
+                'online'  => '在线',
                 'offline' => '离线',
             ],
 
             'you_have' => [
-                'messages' => '{0} 您没有消息|{1} 您有1个消息|[2,Inf] 您有 :number 个消息',
-                'notifications' => '{0} 您没有通知|{1} 您有1个通知|[2,Inf] 您有 :number 个通知',
-                'tasks' => '{0} 你没有任务|{1} 你有1个任务|[2,Inf] 你有 :number 个任务',
+                'messages'      => '{0} 你没有消息|{1} 你有 1 条消息|[2,Inf] 你有 :number 条消息',
+                'notifications' => '{0} 你没有提醒|{1} 你有 1 条提醒|[2,Inf] 你有 :number 条提醒',
+                'tasks'         => '{0} 你没有任务|{1} 你有 1 个任务|[2,Inf] 你有 :number 个任务',
             ],
         ],
 
         'search' => [
-            'empty' => '请输入搜索字词。',
+            'empty'      => '请输入搜索关键词。',
             'incomplete' => '您必须为此系统编写您自己的搜索逻辑。',
-            'title' => '搜索结果',
-            'results' => '搜索结果 :query',
+            'title'      => '搜索结果',
+            'results'    => '搜索 :query 的结果',
         ],
 
         'welcome' => '<p>This is the AdminLTE theme by <a href="https://almsaeedstudio.com/" target="_blank">https://almsaeedstudio.com/</a>. This is a stripped down version with only the necessary styles and scripts to get it running. Download the full version to start adding components to your dashboard.</p>
@@ -72,33 +72,33 @@ return [
 
     'emails' => [
         'auth' => [
-            'error' => 'Whoops!',
-            'greeting' => '你好!',
-            'regards' => '问候,',
+            'error'                   => '哎呀！',
+            'greeting'                => '你好！',
+            'regards'                 => '问候,',
             'trouble_clicking_button' => '如果您在点击 ":action_text" 按钮时遇到问题, 请将以下网址复制并粘贴到您的网络浏览器中:',
             'thank_you_for_using_app' => '谢谢您使用我们的应用程序！',
 
-            'password_reset_subject' => '重置密码',
-            'password_cause_of_email' => '您收到此电子邮件是因为我们收到了您帐户的密码重设要求',
+            'password_reset_subject'    => '重置密码',
+            'password_cause_of_email'   => '您收到此电子邮件是因为我们收到了您帐户的密码重设请求',
             'password_if_not_requested' => '如果您没有请求重置密码，则无需进一步操作',
-            'reset_password' => '点击这里重置密码',
+            'reset_password'            => '点击这里重置密码',
 
             'click_to_confirm' => '点击此处确认您的帐户:',
         ],
     ],
 
     'frontend' => [
-        'test' => 'Test',
+        'test' => '测试',
 
         'tests' => [
             'based_on' => [
-                'permission' => 'Permission Based - ',
-                'role' => 'Role Based - ',
+                'permission' => '基于权限 - ',
+                'role'       => '基于角色 - ',
             ],
 
-            'js_injected_from_controller' => 'Javascript Injected from a Controller',
+            'js_injected_from_controller' => '从控制器注入的Javascript',
 
-            'using_blade_extensions' => 'Using Blade Extensions',
+            'using_blade_extensions' => '使用Blade扩展',
 
             'using_access_helper' => [
                 'array_permissions'     => 'Using Access Helper with Array of Permission Names or ID\'s where the user does have to possess all.',
@@ -123,6 +123,6 @@ return [
             'password_updated' => 'Password successfully updated.',
         ],
 
-        'welcome_to' => 'Welcome to :place',
+        'welcome_to' => '欢迎来到 :place',
     ],
 ];
