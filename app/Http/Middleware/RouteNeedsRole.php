@@ -33,9 +33,7 @@ class RouteNeedsRole
         }
 
         if (! $access) {
-            return redirect()
-                ->route('frontend.index')
-                ->withFlashDanger(trans('auth.general_error'));
+            return redirectToHome(trans('auth.general_error'));
         }
 
         return $next($request);
