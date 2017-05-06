@@ -38,7 +38,7 @@ class UserRepository extends BaseRepository
     /**
      * @param $email
      *
-     * @return bool
+     * @return mixed
      */
     public function findByEmail($email)
     {
@@ -55,6 +55,26 @@ class UserRepository extends BaseRepository
     public function findByToken($token)
     {
         return $this->query()->where('confirmation_code', $token)->first();
+    }
+
+    /**
+     * @param $token
+     *
+     * @return mixed
+     */
+    public function findByPasswordResetToken($token)
+    {
+        $rows = DB::table(config('auth.passwords.users.table'))->get();
+
+        $user = null;
+        foreach ($rows as $row) {
+            if (password_verify($token, $row->token)) {
+                $user = $this->findByEmail($row->email);
+                break;
+            }
+        }
+
+        return $user;
     }
 
     /**
