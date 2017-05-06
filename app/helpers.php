@@ -1,6 +1,8 @@
 <?php
 
-/**
+use Illuminate\Support\Facades\Auth;
+
+/*
  * Global helpers file with misc functions.
  */
 if (! function_exists('app_name')) {
@@ -91,5 +93,42 @@ if (! function_exists('getRtlCss')) {
         $filename = rtrim($filename, '.css');
 
         return implode('/', $path).'/'.$filename.'.rtl.css';
+    }
+}
+
+if (! function_exists('redirectToHome')) {
+    /**
+     * Redirect to the "home" page depending on authentication/authorization status.
+     *
+     * @param $flashMsg
+     * @param $$arrData
+     */
+    function redirectToHome($flashMsg = null, $arrData = null)
+    {
+        if (access()->allow('view-backend')) {
+            return redirect()->route('admin.dashboard')->withFlashDanger($flashMsg, $arrData);
+        } elseif (Auth::check()) {
+            return redirect()->route('frontend.user.dashboard')->withFlashDanger($flashMsg, $arrData);
+        }
+
+        return redirect()->route('frontend.index')->withFlashDanger($flashMsg, $arrData);
+    }
+}
+
+if (! function_exists('homeRoute')) {
+    /**
+     * Return the route to the "home" page depending on authentication/authorization status.
+     *
+     * @return string
+     */
+    function homeRoute()
+    {
+        if (access()->allow('view-backend')) {
+            return route('admin.dashboard');
+        } elseif (Auth::check()) {
+            return route('frontend.user.dashboard');
+        }
+
+        return route('frontend.index');
     }
 }
