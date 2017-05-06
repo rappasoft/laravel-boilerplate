@@ -13,25 +13,25 @@ return [
     */
 
     'backend' => [
-        'none' => '没有最近的历史。',
-        'none_for_type' => '没有此类型的历史。',
-        'none_for_entity' => '这个没有历史 :entity。',
-        'recent_history' => '最近的历史',
+        'none'            => '没有最近的历史。',
+        'none_for_type'   => '没有此类型的历史。',
+        'none_for_entity' => '没有 :entity 的历史。',
+        'recent_history'  => '最近的历史',
 
         'roles' => [
-            'created' => '创建角色',
-            'deleted' => '已删除的角色',
-            'updated' => '更新的角色',
+            'created' => '创建了角色',
+            'deleted' => '删除了角色',
+            'updated' => '更新了角色',
         ],
         'users' => [
-            'changed_password' => '为用户更改密码',
-            'created' => '创建用户',
-            'deactivated' => '停用用户',
-            'deleted' => '已删除的用户',
-            'permanently_deleted' => '永久删除的用户',
-            'updated' => '更新用户',
-            'reactivated' => '重新激活的用户',
-            'restored' => '还原用户',
+            'changed_password'    => '更改了用户密码',
+            'created'             => '创建了用户',
+            'deactivated'         => '停用了用户',
+            'deleted'             => '删除了用户',
+            'permanently_deleted' => '永久删除了用户',
+            'updated'             => '更新了用户',
+            'reactivated'         => '重新激活了用户',
+            'restored'            => '还原了用户',
         ],
     ],
 ];

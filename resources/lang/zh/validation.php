@@ -119,35 +119,35 @@ return [
         'backend' => [
             'access' => [
                 'permissions' => [
-                    'associated_roles' => '相关角色',
-                    'dependencies' => '依赖关系',
-                    'display_name' => '显示名称',
-                    'group' => '群组',
-                    'group_sort' => '组排序',
+                    'associated_roles' => '关联的角色',
+                    'dependencies'     => '依赖关系',
+                    'display_name'     => '显示名称',
+                    'group'            => '群组',
+                    'group_sort'       => '组排序',
 
                     'groups' => [
                         'name' => '组名称',
                     ],
 
-                    'name' => '名称',
+                    'name'   => '名称',
                     'system' => '系统?',
                 ],
 
                 'roles' => [
-                    'associated_permissions' => '相关权限',
-                    'name' => '名称',
-                    'sort' => '排序',
+                    'associated_permissions' => '关联的权限',
+                    'name'                   => '名称',
+                    'sort'                   => '排序',
                 ],
 
                 'users' => [
-                    'active' => '活动',
-                    'associated_roles' => '相关角色',
-                    'confirmed' => '确认',
-                    'email' => '电子邮件地址',
-                    'name' => '名称',
-                    'other_permissions' => '其他权限',
-                    'password' => '密码',
-                    'password_confirmation' => '密码确认',
+                    'active'                  => '激活',
+                    'associated_roles'        => '关联的角色',
+                    'confirmed'               => '已确认',
+                    'email'                   => '电子邮件地址',
+                    'name'                    => '名称',
+                    'other_permissions'       => '其他权限',
+                    'password'                => '密码',
+                    'password_confirmation'   => '确认密码',
                     'send_confirmation_email' => '发送确认电子邮件',
                 ],
             ],
@@ -157,10 +157,10 @@ return [
             'email'                     => '电子邮件',
             'name'                      => '用户名',
             'password'                  => '密码',
-            'password_confirmation'     => '密码(确认)',
+            'password_confirmation'     => '确认密码',
             'old_password'              => '旧密码',
             'new_password'              => '新密码',
-            'new_password_confirmation' => '新密码(确认)',
+            'new_password_confirmation' => '确认新密码',
         ],
     ],
 
