@@ -1,0 +1,35 @@
+# for travis-ci
+# see also. https://travis-ci.org
+git:
+  submodules: false
+
+language: php
+
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
+php:
+  - 5.6
+  - 7.0
+  - 7.1
+
+services:
+  - mysql
+
+before_install:
+  - mysql -e 'CREATE DATABASE myapp_test;'
+
+env:
+  - DB=mysql DB_DATABASE=myapp_test DB_USERNAME=root DB_PASSWORD=''
+
+before_script:
+  - composer self-update || true
+  - composer install --dev --no-interaction -o --no-scripts
+  - composer run-script post-root-package-install
+  - composer run-script post-create-project-cmd
+  - composer run-script post-install-cmd
+
+
+script:
+  - ./vendor/bin/phpunit
