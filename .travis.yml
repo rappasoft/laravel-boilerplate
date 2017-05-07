@@ -1,5 +1,3 @@
-# for travis-ci
-# see also. https://travis-ci.org
 git:
   submodules: false
 
@@ -17,7 +15,7 @@ php:
 matrix:
   fast_finish: true
   include:
-    - php: 7.0.12 # for coverrage
+    - php: 7.0.12 # for coverage
       env: DB_CONNECTION=mysql DB_DATABASE=boilerplate_test DB_USERNAME=root DB_PASSWORD='' DB_PORT=3306 EXEC_COVERAGE=true
       sudo: required
       dist: trusty
