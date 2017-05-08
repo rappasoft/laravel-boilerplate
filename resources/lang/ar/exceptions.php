@@ -66,6 +66,7 @@ return [
 
             'password' => [
                 'change_mismatch' => 'هذه ليست كلمة مرورك القديمة.',
+				'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
             ],
 
             'registration_disabled' => 'Registration is currently closed.',

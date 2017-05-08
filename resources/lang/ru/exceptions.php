@@ -66,6 +66,7 @@ return [
 
             'password' => [
                 'change_mismatch' => 'Неверный старый пароль.',
+				'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
             ],
 
             'registration_disabled' => 'Регистрация в настоящее время закрыта, приходите позже',
