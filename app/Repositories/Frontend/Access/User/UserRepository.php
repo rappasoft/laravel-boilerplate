@@ -52,7 +52,7 @@ class UserRepository extends BaseRepository
      *
      * @return mixed
      */
-    public function findByToken($token)
+    public function findByConfirmationToken($token)
     {
         return $this->query()->where('confirmation_code', $token)->first();
     }
@@ -64,17 +64,12 @@ class UserRepository extends BaseRepository
      */
     public function findByPasswordResetToken($token)
     {
-        $rows = DB::table(config('auth.passwords.users.table'))->get();
-
-        $user = null;
-        foreach ($rows as $row) {
-            if (password_verify($token, $row->token)) {
-                $user = $this->findByEmail($row->email);
-                break;
-            }
+        foreach (DB::table(config('auth.passwords.users.table'))->get() as $row) {
+            if (password_verify($token, $row->token))
+                return $this->findByEmail($row->email);
         }
 
-        return $user;
+        return false;
     }
 
     /**
@@ -201,7 +196,7 @@ class UserRepository extends BaseRepository
      */
     public function confirmAccount($token)
     {
-        $user = $this->findByToken($token);
+        $user = $this->findByConfirmationToken($token);
 
         if ($user->confirmed == 1) {
             throw new GeneralException(trans('exceptions.frontend.auth.confirmation.already_confirmed'));
