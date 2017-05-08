@@ -30,16 +30,6 @@ class ResetPasswordController extends Controller
     }
 
     /**
-     * Where to redirect users after resetting password.
-     *
-     * @return string
-     */
-    public function redirectPath()
-    {
-        return route(homeRoute());
-    }
-
-    /**
      * Display the password reset view for the given token.
      *
      * If no token is present, display the link request form.
@@ -55,12 +45,23 @@ class ResetPasswordController extends Controller
         $user = $this->user->findByPasswordResetToken($token);
 
         if ($user && app()->make('auth.password.broker')->tokenExists($user, $token)) {
-			return view('frontend.auth.passwords.reset')
-				->withToken($token)
-				->withEmail($user->email);
+            return view('frontend.auth.passwords.reset')
+                ->withToken($token)
+                ->withEmail($user->email);
         }
 
         return redirect()->route('frontend.auth.password.email')
-			->withFlashDanger(trans('exceptions.frontend.auth.password.reset_problem'));
+            ->withFlashDanger(trans('exceptions.frontend.auth.password.reset_problem'));
+    }
+
+    /**
+     * Get the response for a successful password reset.
+     *
+     * @param  string  $response
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    protected function sendResetResponse($response)
+    {
+        return redirect()->route(homeRoute())->withFlashSuccess(trans($response));
     }
 }
