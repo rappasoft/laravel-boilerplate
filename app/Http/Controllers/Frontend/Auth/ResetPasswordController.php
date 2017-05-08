@@ -61,6 +61,6 @@ class ResetPasswordController extends Controller
         }
 
         return redirect()->route('frontend.auth.password.email')
-			->withFlashDanger('There was a problem resetting your password. Please resend the password reset email.');
+			->withFlashDanger(trans('exceptions.frontend.auth.password.reset_problem'));
     }
 }
