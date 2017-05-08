@@ -189,7 +189,7 @@ class LoggedOutFormTest extends BrowserKitTestCase
              ->type('12345678', 'password')
              ->type('12345678', 'password_confirmation')
              ->press('Reset Password')
-             ->seePageIs('/')
+             ->seePageIs('/dashboard')
              ->see($this->user->name);
     }
 
