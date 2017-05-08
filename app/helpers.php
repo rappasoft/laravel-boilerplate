@@ -95,6 +95,7 @@ if (! function_exists('getRtlCss')) {
 }
 
 if (! function_exists('homeRoute')) {
+
     /**
      * Return the route to the "home" page depending on authentication/authorization status.
      *
@@ -104,7 +105,7 @@ if (! function_exists('homeRoute')) {
     {
         if (access()->allow('view-backend')) {
             return 'admin.dashboard';
-        } elseif (Auth::check()) {
+        } elseif (auth()->check()) {
             return 'frontend.user.dashboard';
         }
 
