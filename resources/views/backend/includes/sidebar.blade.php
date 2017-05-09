@@ -8,7 +8,7 @@
                 <img src="{{ access()->user()->picture }}" class="img-circle" alt="User Image" />
             </div><!--pull-left-->
             <div class="pull-left info">
-                <p>{{ access()->user()->name }}</p>
+                <p>{{ access()->user()->full_name }}</p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('strings.backend.general.status.online') }}</a>
             </div><!--pull-left-->

@@ -213,7 +213,7 @@ trait UserAttribute
             if ($this->id != access()->id()) {
                 return '<a href="'.route('admin.access.user.login-as',
                     $this).'" class="btn btn-xs btn-success"><i class="fa fa-lock" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.login_as',
-                    ['user' => $this->name]).'"></i></a> ';
+                    ['user' => $this->full_name]).'"></i></a> ';
             }
         }
 
@@ -255,5 +255,23 @@ trait UserAttribute
             $this->getStatusButtonAttribute().
             $this->getConfirmedButtonAttribute().
             $this->getDeleteButtonAttribute();
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullNameAttribute()
+    {
+        return $this->last_name
+             ? $this->first_name.' '.$this->last_name
+             : $this->first_name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        return $this->full_name;
     }
 }

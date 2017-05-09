@@ -22,12 +22,14 @@ class LoggedOutFormTest extends BrowserKitTestCase
     public function testRegistrationRequiredFields()
     {
         $this->visit('/register')
-             ->type('', 'name')
+             ->type('', 'first_name')
+             ->type('', 'last_name')
              ->type('', 'email')
              ->type('', 'password')
              ->press('Register')
              ->seePageIs('/register')
-             ->see('The name field is required.')
+             ->see('The first name field is required.')
+             ->see('The last name field is required.')
              ->see('The email field is required.')
              ->see('The password field is required.');
     }
@@ -44,7 +46,8 @@ class LoggedOutFormTest extends BrowserKitTestCase
 
         // Create any needed resources
         $faker = Faker\Factory::create();
-        $name = $faker->name;
+        $firstName = $faker->firstName;
+        $lastName = $faker->lastName;
         $email = $faker->safeEmail;
         $password = $faker->password(8);
 
@@ -53,7 +56,8 @@ class LoggedOutFormTest extends BrowserKitTestCase
             Notification::fake();
 
             $this->visit('/register')
-                 ->type($name, 'name')
+                 ->type($firstName, 'first_name')
+                 ->type($lastName, 'last_name')
                  ->type($email, 'email')
                  ->type($password, 'password')
                  ->type($password, 'password_confirmation')
@@ -61,7 +65,12 @@ class LoggedOutFormTest extends BrowserKitTestCase
                  ->see('Your account was successfully created. We have sent you an e-mail to confirm your account.')
                  ->see('Login')
                  ->seePageIs('/')
-                 ->seeInDatabase(config('access.users_table'), ['email' => $email, 'name' => $name]);
+                 ->seeInDatabase(config('access.users_table'),
+                     [
+                         'email' => $email,
+                         'first_name' => $firstName,
+                         'last_name' => $lastName,
+                     ]);
 
             // Get the user that was inserted into the database
             $user = User::where('email', $email)->first();
@@ -71,14 +80,20 @@ class LoggedOutFormTest extends BrowserKitTestCase
                 UserNeedsConfirmation::class);
         } else {
             $this->visit('/register')
-                 ->type($name, 'name')
+                 ->type($firstName, 'first_name')
+                 ->type($lastName, 'last_name')
                  ->type($email, 'email')
                  ->type($password, 'password')
                  ->type($password, 'password_confirmation')
                  ->press('Register')
                  ->see('Dashboard')
                  ->seePageIs('/')
-                 ->seeInDatabase(config('access.users_table'), ['email' => $email, 'name' => $name]);
+                 ->seeInDatabase(config('access.users_table'),
+                     [
+                         'email' => $email,
+                         'first_name' => $firstName,
+                         'last_name' => $lastName,
+                     ]);
         }
 
         Event::assertDispatched(UserRegistered::class);

@@ -49,7 +49,7 @@ class UserAccessController extends Controller
 
         // Add new session variables
         session(['admin_user_id' => access()->id()]);
-        session(['admin_user_name' => access()->user()->name]);
+        session(['admin_user_name' => access()->user()->full_name]);
         session(['temp_user_id' => $user->id]);
 
         // Login user
