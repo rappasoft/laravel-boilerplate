@@ -40,7 +40,9 @@ class ResetPasswordController extends Controller
      */
     public function showResetForm($token = null)
     {
-        if (! $token) return redirect()->route('frontend.auth.password.email');
+        if (! $token) {
+            return redirect()->route('frontend.auth.password.email');
+        }
 
         $user = $this->user->findByPasswordResetToken($token);
 

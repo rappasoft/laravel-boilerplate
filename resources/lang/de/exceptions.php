@@ -66,7 +66,7 @@ return [
 
             'password' => [
                 'change_mismatch' => 'Das ist nicht dein altes Kennwort.',
-				'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
+                'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
             ],
 
             'registration_disabled' => 'Registrierung ist momentan nicht möglich.',

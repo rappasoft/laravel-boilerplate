@@ -63,7 +63,7 @@ return [
 
             'password' => [
                 'change_mismatch' => '這不是你的舊密碼。 ',
-				'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
+                'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
             ],
 
             'registration_disabled' => '注册目前已关闭。',
