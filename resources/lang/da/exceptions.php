@@ -65,7 +65,7 @@ return [
 
             'password' => [
                 'change_mismatch' => 'Dette er ikke din gamle adgangskode.',
-				'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
+                'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
             ],
 
             'registration_disabled' => 'Registration is currently closed.',

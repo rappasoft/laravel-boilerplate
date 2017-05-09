@@ -66,7 +66,7 @@ return [
 
             'password' => [
                 'change_mismatch' => 'รหัสผ่านเดิมไม่ถูกต้อง',
-				'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
+                'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
             ],
 
             'registration_disabled' => 'Registration is currently closed.',
