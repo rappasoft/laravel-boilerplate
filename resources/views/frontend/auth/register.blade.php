@@ -25,8 +25,8 @@
                         {{ Form::label('last_name', trans('validation.attributes.frontend.last_name'),
                         ['class' => 'col-md-4 control-label']) }}
                         <div class="col-md-6">
-                            {{ Form::input('last_name', 'last_name', null,
-                            ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.last_name')]) }}
+                            {{ Form::text('last_name', null,
+                            ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.last_name')]) }}
                         </div><!--col-md-6-->
                     </div><!--form-group-->
 

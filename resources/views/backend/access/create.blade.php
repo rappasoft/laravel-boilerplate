@@ -35,11 +35,9 @@
                      ['class' => 'col-lg-2 control-label']) }}
 
                     <div class="col-lg-10">
-                        {{ Form::text('last_name', null, ['class' => 'form-control','placeholder' => trans('validation.attributes.backend.access.users.last_name')]) }}
+                        {{ Form::text('last_name', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => trans('validation.attributes.backend.access.users.last_name')]) }}
                     </div><!--col-lg-10-->
                 </div><!--form control-->
-
-
 
                 <div class="form-group">
                     {{ Form::label('email', trans('validation.attributes.backend.access.users.email'), ['class' => 'col-lg-2 control-label']) }}
