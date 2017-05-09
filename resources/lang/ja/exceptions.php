@@ -63,6 +63,7 @@ return [
 
             'password' => [
                 'change_mismatch' => '古いパスワードではありません。',
+                'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
             ],
 
             'registration_disabled' => '新規登録は停止中です。',

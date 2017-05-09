@@ -28,7 +28,7 @@ class RegisterController extends Controller
     public function __construct(UserRepository $user)
     {
         // Where to redirect users after registering
-        $this->redirectTo = route('frontend.index');
+        $this->redirectTo = route(homeRoute());
 
         $this->user = $user;
     }
@@ -51,12 +51,12 @@ class RegisterController extends Controller
     public function register(RegisterRequest $request)
     {
         if (config('access.users.confirm_email')) {
-            $user = $this->user->create($request->only('name', 'email', 'password'));
+            $user = $this->user->create($request->only('first_name', 'last_name', 'email', 'password'));
             event(new UserRegistered($user));
 
             return redirect($this->redirectPath())->withFlashSuccess(trans('exceptions.frontend.auth.confirmation.created_confirm'));
         } else {
-            access()->login($this->user->create($request->only('name', 'email', 'password')));
+            access()->login($this->user->create($request->only('first_name', 'last_name', 'email', 'password')));
             event(new UserRegistered(access()->user()));
 
             return redirect($this->redirectPath());

@@ -74,14 +74,14 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="{{ access()->user()->picture }}" class="user-image" alt="User Avatar"/>
-                        <span class="hidden-xs">{{ access()->user()->name }}</span>
+                        <span class="hidden-xs">{{ access()->user()->full_name }}</span>
                     </a>
 
                     <ul class="dropdown-menu">
                         <li class="user-header">
                             <img src="{{ access()->user()->picture }}" class="img-circle" alt="User Avatar" />
                             <p>
-                                {{-- access()->user()->name }} - {{ implode(", ", access()->user()->roles->lists('name')->toArray()) --}}
+                                {{-- access()->user()->full_name }} - {{ implode(", ", access()->user()->roles->lists('name')->toArray()) --}}
                                 <small>{{ trans('strings.backend.general.member_since') }} {{ access()->user()->created_at->format("m/d/Y") }}</small>
                             </p>
                         </li>

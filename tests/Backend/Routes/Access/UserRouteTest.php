@@ -41,7 +41,8 @@ class UserRouteTest extends BrowserKitTestCase
              ->see('View User')
              ->see('Overview')
              ->see('History')
-             ->see($this->user->name)
+             ->see($this->user->first_name)
+             ->see($this->user->last_name)
              ->see($this->user->email);
     }
 
@@ -50,7 +51,8 @@ class UserRouteTest extends BrowserKitTestCase
         $this->actingAs($this->admin)
              ->visit('/admin/access/user/'.$this->user->id.'/edit')
              ->see('Edit User')
-             ->see($this->user->name)
+             ->see($this->user->first_name)
+             ->see($this->user->last_name)
              ->see($this->user->email);
     }
 
@@ -58,7 +60,7 @@ class UserRouteTest extends BrowserKitTestCase
     {
         $this->actingAs($this->admin)
              ->visit('/admin/access/user/'.$this->user->id.'/password/change')
-             ->see('Change Password for '.$this->user->name);
+             ->see('Change Password for '.$this->user->full_name);
     }
 
     public function testResendUserConfirmationEmail()
@@ -76,9 +78,9 @@ class UserRouteTest extends BrowserKitTestCase
     {
         $this->actingAs($this->admin)
              ->visit('/admin/access/user/'.$this->user->id.'/login-as')
-             ->seePageIs('/')
-             ->see('You are currently logged in as '.$this->user->name.'.')
-             ->see($this->admin->name)
+             ->seePageIs('/dashboard')
+             ->see('You are currently logged in as '.$this->user->full_name.'.')
+             ->see($this->admin->full_name)
              ->assertTrue(access()->id() == $this->user->id);
     }
 
@@ -93,9 +95,9 @@ class UserRouteTest extends BrowserKitTestCase
     {
         $this->actingAs($this->admin)
              ->visit('/admin/access/user/'.$this->user->id.'/login-as')
-             ->seePageIs('/')
-             ->see('You are currently logged in as '.$this->user->name.'.')
-             ->click('Re-Login as '.$this->admin->name)
+             ->seePageIs('/dashboard')
+             ->see('You are currently logged in as '.$this->user->full_name.'.')
+             ->click('Re-Login as '.$this->admin->full_name)
              ->seePageIs('/admin/access/user')
              ->assertTrue(access()->id() == $this->admin->id);
     }
