@@ -56,10 +56,6 @@ script:
   - if [[ $EXEC_COVERAGE = 'true' ]]; then phpdbg -qrr ./vendor/bin/phpunit --coverage-clover=coverage.clover ; fi
   - if [[ $EXEC_COVERAGE != 'true' ]]; then ./vendor/bin/phpunit ; fi
 
-after_script:
-  - if [[ $EXEC_COVERAGE = 'true' ]]; then wget https://scrutinizer-ci.com/ocular.phar ; fi
-  - if [[ $EXEC_COVERAGE = 'true' ]]; then php ocular.phar code-coverage:upload --format=php-clover coverage.clover ; fi
-
 after_success:
   - if [[ $EXEC_COVERAGE = 'true' ]]; then php vendor/bin/coveralls -v -x coverage.clover ; fi
 

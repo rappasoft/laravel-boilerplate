@@ -72,7 +72,7 @@
                 },
                 columns: [
                     {data: 'id', name: '{{config('access.users_table')}}.id'},
-                    {data: 'name', name: '{{config('access.users_table')}}.first_name'},
+                    {data: 'first_name', name: '{{config('access.users_table')}}.first_name'},
                     {data: 'last_name', name: '{{config('access.users_table')}}.last_name'},
                     {data: 'email', name: '{{config('access.users_table')}}.email'},
                     {data: 'confirmed', name: '{{config('access.users_table')}}.confirmed'},

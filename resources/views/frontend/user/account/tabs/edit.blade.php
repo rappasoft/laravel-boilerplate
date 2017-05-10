@@ -12,7 +12,7 @@
         {{ Form::label('last_name', trans('validation.attributes.frontend.last_name'),
         ['class' => 'col-md-4 control-label']) }}
         <div class="col-md-6">
-            {{ Form::input('text', 'last_name', null, ['class' => 'form-control', 'placeholder' => trans('validation.attributes.frontend.last_name')]) }}
+            {{ Form::text('last_name', null, ['class' => 'form-control', 'required' => 'required', 'maxlength' => '191', 'placeholder' => trans('validation.attributes.frontend.last_name')]) }}
         </div>
     </div>
 
