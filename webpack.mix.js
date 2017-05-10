@@ -28,5 +28,8 @@ mix.sass('resources/assets/sass/frontend/app.scss', 'public/css/frontend.css')
         plugins: [
             new WebpackRTLPlugin('/css/[name].rtl.css')
         ]
-    })
-    .version();
+    });
+
+if(mix.config.inProduction){
+    mix.version();
+}
