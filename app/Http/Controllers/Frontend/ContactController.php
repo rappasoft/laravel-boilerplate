@@ -59,5 +59,4 @@ class ContactController extends Controller
     {
         return $this->notifyEmail;
     }
-
 }
