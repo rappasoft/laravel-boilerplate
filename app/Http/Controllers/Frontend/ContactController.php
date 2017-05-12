@@ -33,7 +33,7 @@ class ContactController extends Controller
      */
     public function contact(ContactRequest $request)
     {
-        $request->subject = 'Message From '.app_name();;
+        $request->subject = 'Message From '.app_name();
         $request->from_email = $request->email;
         $request->from_name = $request->name;
         $request->reply_email = $request->email;
@@ -46,7 +46,7 @@ class ContactController extends Controller
             $request->from_email = env('MAIL_FROM_ADDRESS');
             $request->from_name = env('MAIL_FROM_NAME');
             $request->reply_email = env('MAIL_FROM_ADDRESS');
-            $request->reply_name =  env('MAIL_FROM_NAME');
+            $request->reply_name = env('MAIL_FROM_NAME');
             $this->notifyEmail = $request->email;
             $this->notify(new ContactUs($request));
         }
