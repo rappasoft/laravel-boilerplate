@@ -166,6 +166,10 @@ return [
             'old_password'              => 'Old Password',
             'new_password'              => 'New Password',
             'new_password_confirmation' => 'New Password Confirmation',
+            'your_name'                 => 'Your Name',
+            'your_email'                => 'Your Email Address',
+            'your_message'              => 'Your Message',
+            'send_copy'                 => 'Send a copy to my email address',
         ],
     ],
 

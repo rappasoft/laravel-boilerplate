@@ -147,6 +147,11 @@ return [
             'timezone' => 'Timezone',
         ],
 
+        'contact' => [
+            'contact_button' => 'Submit',
+            'contact_box_title' => 'Contact Us',
+        ],
+
         'user' => [
             'passwords' => [
                 'change' => 'Change Password',

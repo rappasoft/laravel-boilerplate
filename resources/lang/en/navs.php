@@ -23,6 +23,7 @@ return [
         'login'     => 'Login',
         'macros'    => 'Macros',
         'register'  => 'Register',
+        'contact'   => 'Contact Us',
 
         'user' => [
             'account'         => 'My Account',
