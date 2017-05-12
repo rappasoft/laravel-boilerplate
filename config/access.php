@@ -91,5 +91,10 @@ return [
          * Whether the registration captcha is on or off
          */
         'registration' => env('REGISTRATION_CAPTCHA_STATUS', false),
+
+        /*
+         * Whether the contact captcha is on or off
+         */
+        'contact' => env('CONTACT_CAPTCHA_STATUS', false),
     ],
 ];
