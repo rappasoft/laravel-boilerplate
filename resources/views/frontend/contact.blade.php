@@ -21,7 +21,7 @@
                     <div class="form-group">
                         {{ Form::label('name', trans('validation.attributes.frontend.your_name'), ['class' => 'col-md-4 control-label']) }}
                         <div class="col-md-6">
-                            {{ Form::text('name', old('name'),
+                            {{ Form::text('name', null,
                             ['class' => 'form-control', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.frontend.your_name')]) }}
                         </div><!--col-md-6-->
                     </div><!--form-group-->
@@ -29,14 +29,14 @@
                     <div class="form-group">
                         {{ Form::label('email', trans('validation.attributes.frontend.your_email'), ['class' => 'col-md-4 control-label']) }}
                         <div class="col-md-6">
-                            {{ Form::email('email', old('email'), ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.your_email')]) }}
+                            {{ Form::email('email', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.your_email')]) }}
                         </div><!--col-md-6-->
                     </div><!--form-group-->
 
                     <div class="form-group">
                         {{ Form::label('message', trans('validation.attributes.frontend.your_message'), ['class' => 'col-md-4 control-label']) }}
                         <div class="col-md-6">
-                            {{ Form::textarea('message', old('message'), ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.your_message')]) }}
+                            {{ Form::textarea('message', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.your_message')]) }}
                         </div><!--col-md-6-->
                     </div><!--form-group-->
 
