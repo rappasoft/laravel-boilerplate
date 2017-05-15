@@ -27,7 +27,9 @@ return [
             ],
             'users' => [
                 'cant_deactivate_self'  => 'Você não pode fazer isso com você mesmo.',
+                'cant_delete_admin'  => 'You can not delete the super administrator.',
                 'cant_delete_self'      => 'Você não pode se excluir.',
+                'cant_delete_own_session' => 'You can not delete your own session.',
                 'cant_restore'          => 'This user is not deleted so it can not be restored.',
                 'create_error'          => 'Houve um problema ao criar esse usuário. Por favor, tente novamente.',
                 'delete_error'          => 'Houve um problema ao excluir esse usuário. Por favor, tente novamente.',
@@ -38,6 +40,7 @@ return [
                 'restore_error'         => 'Houve um problema ao restaurar esse usuário. Por favor, tente novamente.',
                 'role_needed_create'    => 'Você deve escolher pelo menos uma função.',
                 'role_needed'           => 'Você deve escolher pelo menos uma função.',
+                'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
                 'update_error'          => 'Houve um problema ao atualizar esse usuário. Por favor, tente novamente.',
                 'update_password_error' => 'Houve um problema ao alterar a senha do usuário. Por favor, tente novamente.',
             ],
@@ -59,6 +62,7 @@ return [
             'email_taken' => 'Esse endereço de e-mail já foi utilizado.',
             'password'    => [
                 'change_mismatch' => 'Essa não é a sua senha antiga.',
+                'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
             ],
 
             'registration_disabled' => 'Registration is currently closed.',

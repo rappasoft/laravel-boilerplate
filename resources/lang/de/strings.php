@@ -24,18 +24,18 @@ return [
 
         'dashboard' => [
             'title'   => 'Administratives Dashboard',
-            'welcome' => 'Wilkommen',
+            'welcome' => 'Willkommen',
         ],
 
         'general' => [
             'all_rights_reserved' => 'Alle Rechte vorbehalten.',
             'are_you_sure'        => 'Bist du dir sicher?',
             'boilerplate_link'    => 'Laravel 5 Boilerplate',
-            'continue'            => 'Forsetzen',
+            'continue'            => 'Fortsetzen',
             'member_since'        => 'Mitglied seit',
-            'minutes'             => ' minutes',
+            'minutes'             => ' Minuten',
             'search_placeholder'  => 'Suchen...',
-            'timeout'             => 'You were automatically logged out for security reasons since you had no activity in ',
+            'timeout'             => 'Du wurdest aus Sicherheitsgründen automatisch abgemeldet weil du inaktiv warst seit ',
 
             'see_all' => [
                 'messages'      => 'Alle Nachrichten anzeigen',
@@ -44,8 +44,8 @@ return [
             ],
 
             'status' => [
-                'online'  => 'Online',
-                'offline' => 'Offline',
+                'online'  => 'Angemeldet',
+                'offline' => 'Abgemeldet',
             ],
 
             'you_have' => [
@@ -56,34 +56,34 @@ return [
         ],
 
         'search' => [
-            'empty'      => 'Please enter a search term.',
-            'incomplete' => 'You must write your own search logic for this system.',
-            'title'      => 'Search Results',
-            'results'    => 'Search Results for :query',
+            'empty'      => 'Bitte gib einen Suchbegriff ein.',
+            'incomplete' => 'Du musst deinen eigenen Such-Algorithmus für dieses System schreiben.',
+            'title'      => 'Suchergebnisse',
+            'results'    => 'Suchergebnisse für :query',
         ],
 
-        'welcome' => '<p>Dies ist das AdminLTE theme von <a href="https://almsaeedstudio.com/" target="_blank">https://almsaeedstudio.com/</a>. Dies ist eine abgestufte version mit nur den nötigsten Styles und Scripten, damit es läuft. Downloade die Vollversion, um Komponenten zum Dashboard hinzufügen zu können.</p>
-<p>Alle Funktionen für sind statisch mit Ausnahme der <strong>Benutzer Verwaltung</strong> auf der linken Seite. Dieser Boilerplate kommt mit einer voll funktionsfähigen Zugangskontroll-Bibliothek, um Benutzer/Rollen und Berechtigungen zu verwalten.</p>
-<p>Denken Sie daran, es ist \'work in progress\' und möglicherweise gibt es Fehler oder andere Probleme die ich noch nicht gesehen habe. Ich werde mein Bestes tun, um sie zu beheben, wie sie gemeldet werden.</p>
-<p>Hoffentlich genießen Sie die Arbeit, die ich hier reingesteckt habe. Bitte besuche die <a href="https://github.com/rappasoft/laravel-5-boilerplate" target="_blank">GitHub</a> Seite für weitere Informationen und meldet alle <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">Fehler hier</a>.</p>
-<p><strong>This project is very demanding to keep up with given the rate at which the master Laravel branch changes, so any help is appreciated.</strong></p>
+        'welcome' => '<p>Dies ist das AdminLTE theme von <a href="https://almsaeedstudio.com/" target="_blank">https://almsaeedstudio.com/</a>. Dies ist eine abgestufte Version mit nur den nötigsten Styles und Scripten, damit es läuft. Lade die Vollversion herunter, um Komponenten zum Dashboard hinzufügen zu können.</p>
+<p>Alle Funktionen sind statisch mit Ausnahme der <strong>Benutzer Verwaltung</strong> auf der linken Seite. Dieser Boilerplate kommt mit einer voll funktionsfähigen Zugangskontroll-Bibliothek, um Benutzer/Rollen und Berechtigungen zu verwalten.</p>
+<p>Denken Sie daran, es ist \'work in progress\' und möglicherweise gibt es Fehler oder andere Probleme die ich noch nicht gesehen habe. Ich werde mein Bestes tun, um sie zu beheben, sowie sie gemeldet werden.</p>
+<p>Ich hoffe, du geniesst die Arbeit, die ich hier reingesteckt habe. Bitte besuche die <a href="https://github.com/rappasoft/laravel-5-boilerplate" target="_blank">GitHub</a> Seite für weitere Informationen und meldet alle <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">Fehler hier</a>.</p>
+<p><strong>Es bedeutet für dieses Projekt sehr viel Aufwand, mit dem sich schnell ändernden Hauptzweig von Laravel mitzuhalten, deshalb ist jede Hilfe Willkommen.</strong></p>
 <p>- Anthony Rappa</p>',
     ],
 
     'emails' => [
         'auth' => [
-            'error'                   => 'Whoops!',
-            'greeting'                => 'Hello!',
-            'regards'                 => 'Regards,',
-            'trouble_clicking_button' => 'If you’re having trouble clicking the ":action_text" button, copy and paste the URL below into your web browser:',
-            'thank_you_for_using_app' => 'Thank you for using our application!',
+            'error'                   => 'Hoppla!',
+            'greeting'                => 'Hallo!',
+            'regards'                 => 'Viele Grüße,',
+            'trouble_clicking_button' => 'Wenn du Probleme hast den ":action_text"-Knopf zu drücken, kopiere die URL unten in deinen Web Browser:',
+            'thank_you_for_using_app' => 'Danke, dass du diese Anwendung benutzst!',
 
-            'password_reset_subject'    => 'Dein Link zum zurücksetzen des Passworts',
-            'password_cause_of_email'   => 'You are receiving this email because we received a password reset request for your account.',
-            'password_if_not_requested' => 'If you did not request a password reset, no further action is required.',
-            'reset_password'            => 'klick hier um dein Passwort zurückzusetzen',
+            'password_reset_subject'    => 'Dein Link zum Zurücksetzen des Kennworts',
+            'password_cause_of_email'   => 'Du erhältst diese Email weil wir eine Anforderung erhalten haben, das Kennwort für dieses Konto zurückzusetzen.',
+            'password_if_not_requested' => 'Wenn du keine Zurücksetzung deines Kennworts angefordert hast, ist keine weitere Aktion erforderlich.',
+            'reset_password'            => 'Klick hier, um dein Passwort zurückzusetzen',
 
-            'click_to_confirm' => 'Klick hier um deinen Account zu aktivieren:',
+            'click_to_confirm' => 'Klick hier, um dein Konto zu aktivieren:',
         ],
     ],
 
@@ -96,7 +96,7 @@ return [
                 'role'       => 'Anhand von Rollen - ',
             ],
 
-            'js_injected_from_controller' => 'Javascript von einem Controller Eingefügt',
+            'js_injected_from_controller' => 'Javascript von einem Controller eingefügt',
 
             'using_blade_extensions' => 'Verwenden von Blade-Erweiterungen',
 
@@ -107,7 +107,7 @@ return [
                 'array_roles_not'       => 'Verwenden von Access Helper mit Array von Rolen-Namen oder ID\'s bei der der Benutzer nicht alle besitzen muss.',
                 'permission_id'         => 'Verwenden von Access Helper mit Berechtigungs-ID',
                 'permission_name'       => 'Verwenden von Access Helper mit Berechtigungs-Name',
-                'role_id'               => 'Vverwenden von Access Helper mit Rollen-ID',
+                'role_id'               => 'Verwenden von Access Helper mit Rollen-ID',
                 'role_name'             => 'Verwenden von Access Helper mit Rollen-Name',
             ],
 
@@ -117,8 +117,8 @@ return [
         ],
 
         'user' => [
-            'change_email_notice' => 'If you change your e-mail you will be logged out until you confirm your new e-mail address.',
-            'email_changed_notice' => 'You must confirm your new e-mail address before you can log in again.',
+            'change_email_notice' => 'Wenn du deine Email-Adresse änderst, wirst du abgemeldet, bis du deine neue Email-Adresse bestätigt hast.',
+            'email_changed_notice' => 'Du musst deine neue Email-Adresse bestätigen, bevor du dich wieder anmelden kannst.',
             'profile_updated'  => 'Profil aktualisiert.',
             'password_updated' => 'Passwort aktualisiert.',
         ],

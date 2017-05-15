@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -14,8 +14,7 @@
         <!-- Check if the language is set to RTL, so apply the RTL layouts -->
         <!-- Otherwise apply the normal LTR layouts -->
         @langRTL
-            {{ Html::style(mix('css/backend-rtl.css')) }}
-            {{ Html::style(mix('css/rtl.css')) }}
+            {{ Html::style(getRtlCss(mix('css/backend.css'))) }}
         @else
             {{ Html::style(mix('css/backend.css')) }}
         @endif

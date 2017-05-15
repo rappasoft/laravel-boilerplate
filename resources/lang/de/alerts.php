@@ -26,8 +26,9 @@ return [
             'deleted'             => 'Benutzer gelöscht.',
             'deleted_permanently' => 'Benutzer permanent gelöscht.',
             'restored'            => 'Benutzer wiederhergestellt.',
+            'session_cleared'      => "The user's session was successfully cleared.",
             'updated'             => 'Benutzer aktualisiert.',
-            'updated_password'    => 'Passwort des Benutzers aktualisiert.',
+            'updated_password'    => 'Kennwort des Benutzers aktualisiert.',
         ],
     ],
 ];

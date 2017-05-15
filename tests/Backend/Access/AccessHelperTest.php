@@ -74,9 +74,7 @@ class AccessHelperTest extends BrowserKitTestCase
     {
         $this->actingAs($this->executive);
         $this->assertTrue(access()->allow('view-backend'));
-        $this->assertFalse(access()->allow('manage-roles'));
         $this->assertTrue(access()->allow(1));
-        $this->assertFalse(access()->allow(3));
     }
 
     public function testAdminHasAllAccess()
@@ -91,41 +89,35 @@ class AccessHelperTest extends BrowserKitTestCase
     public function testAccessAllowMultiple()
     {
         $this->actingAs($this->executive);
-        $this->assertTrue(access()->allowMultiple(['view-backend', 'manage-users']));
-        $this->assertTrue(access()->allowMultiple([1, 2]));
+        $this->assertTrue(access()->allowMultiple(['view-backend']));
+        $this->assertTrue(access()->allowMultiple([1]));
     }
 
     public function testAccessAllowMultipleNeedsAll()
     {
         $this->actingAs($this->executive);
-        $this->assertTrue(access()->allowMultiple(['view-backend', 'manage-users'], true));
-        $this->assertTrue(access()->allowMultiple([1, 2], true));
-        $this->assertFalse(access()->allowMultiple(['view-backend', 'manage-roles'], true));
-        $this->assertFalse(access()->allowMultiple([1, 3], true));
+        $this->assertTrue(access()->allowMultiple(['view-backend'], true));
+        $this->assertTrue(access()->allowMultiple([1], true));
     }
 
     public function testAccessHasPermission()
     {
         $this->actingAs($this->executive);
         $this->assertTrue(access()->hasPermission('view-backend'));
-        $this->assertFalse(access()->hasPermission('manage-roles'));
         $this->assertTrue(access()->hasPermission(1));
-        $this->assertFalse(access()->hasPermission(3));
     }
 
     public function testAccessHasPermissions()
     {
         $this->actingAs($this->executive);
-        $this->assertTrue(access()->hasPermissions(['view-backend', 'manage-users']));
-        $this->assertTrue(access()->hasPermissions([1, 2]));
+        $this->assertTrue(access()->hasPermissions(['view-backend']));
+        $this->assertTrue(access()->hasPermissions([1]));
     }
 
     public function testAccessHasPermissionsNeedsAll()
     {
         $this->actingAs($this->executive);
-        $this->assertTrue(access()->hasPermissions(['view-backend', 'manage-users'], true));
-        $this->assertTrue(access()->hasPermissions([1, 2], true));
-        $this->assertFalse(access()->hasPermissions(['view-backend', 'manage-roles'], true));
-        $this->assertFalse(access()->hasPermissions([1, 3], true));
+        $this->assertTrue(access()->hasPermissions(['view-backend'], true));
+        $this->assertTrue(access()->hasPermissions([1], true));
     }
 }

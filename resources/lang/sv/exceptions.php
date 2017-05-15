@@ -28,7 +28,9 @@ return [
 
             'users' => [
                 'cant_deactivate_self'  => 'Du har inte rättighet att utföra denna handling mot ditt eget konto.',
+                'cant_delete_admin'  => 'You can not delete the super administrator.',
                 'cant_delete_self'      => 'Du kan inte radera ditt eget konto.',
+                'cant_delete_own_session' => 'You can not delete your own session.',
                 'cant_restore'          => 'This user is not deleted so it can not be restored.',
                 'create_error'          => 'Det uppstod ett fel då användaren skulle skapas. Försök igen.',
                 'delete_error'          => 'Det uppstod ett fel då användaren skulle raderas. Försök igen.',
@@ -39,6 +41,7 @@ return [
                 'restore_error'         => 'Det uppstod ett fel då användaren skulle återställas. Försök igen.',
                 'role_needed_create'    => 'Du måste välja minst en roll.',
                 'role_needed'           => 'Du måste välja minst en roll.',
+                'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
                 'update_error'          => 'Det uppstod ett fel då användaren skulle uppdateras. Försök igen.',
                 'update_password_error' => 'Det uppstod ett fel då användarens lösenord skulle ändras. Försök igen.',
             ],
@@ -63,6 +66,7 @@ return [
 
             'password' => [
                 'change_mismatch' => 'Det där var inte ditt gamla lösenord.',
+                'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
             ],
 
             'registration_disabled' => 'Registration is currently closed.',

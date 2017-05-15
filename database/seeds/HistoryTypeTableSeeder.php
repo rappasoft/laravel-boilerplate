@@ -21,7 +21,7 @@ class HistoryTypeTableSeeder extends Seeder
     public function run()
     {
         $this->disableForeignKeys();
-        $this->truncate('history_types');
+        $this->truncateMultiple(['history_types', 'history']);
 
         $types = [
             [

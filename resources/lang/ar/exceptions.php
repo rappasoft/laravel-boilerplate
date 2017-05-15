@@ -28,7 +28,9 @@ return [
 
             'users' => [
                 'cant_deactivate_self'  => 'لا يمكنك فعل هذا بنفسك.',
+                'cant_delete_admin'  => 'You can not delete the super administrator.',
                 'cant_delete_self'      => 'لا يمكنك مسح نفسك.',
+                'cant_delete_own_session' => 'You can not delete your own session.',
                 'cant_restore'          => 'This user is not deleted so it can not be restored.',
                 'create_error'          => 'حدثت مشكلة أثناء إنشاء المستخدم، برجاء المحاولة مرة أخرى.',
                 'delete_error'          => 'حدثت مشكلة أثناء مسح المستخدم، برجاء المحاولة مرى أخرى .',
@@ -39,6 +41,7 @@ return [
                 'restore_error'         => 'حدثت مشكلة أثناء إستعادة المستخدم، برجاء المحاولة مرة أخرى',
                 'role_needed_create'    => 'يجب عليك اختيار دور واحد.',
                 'role_needed'           => 'يجب عليك إختيار دور واحد على الأقل.',
+                'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
                 'update_error'          => 'حدثت مشكلة أثناء تحديث المستخدم، برجاء المحاولة مرة أخرى.',
                 'update_password_error' => 'حدثت مشكلة أثناء تغيير كلمة مرور المستخدم، برجاء المحاولة مرة أخرى.',
             ],
@@ -63,6 +66,7 @@ return [
 
             'password' => [
                 'change_mismatch' => 'هذه ليست كلمة مرورك القديمة.',
+                'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
             ],
 
             'registration_disabled' => 'Registration is currently closed.',

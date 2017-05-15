@@ -28,7 +28,9 @@ return [
 
             'users' => [
                 'cant_deactivate_self'  => 'Anda tidak dapat melakukan itu kepada diri sendiri.',
+                'cant_delete_admin'  => 'You can not delete the super administrator.',
                 'cant_delete_self'      => 'Anda tidak dapat menghapus diri sendiri.',
+                'cant_delete_own_session' => 'You can not delete your own session.',
                 'cant_restore'          => 'Pengguna ini tidak dihapus sehingga tidak dapat dikembalikan.',
                 'create_error'          => 'Ada masalah saat membuat pengguna ini. Silakan coba lagi.',
                 'delete_error'          => 'Ada masalah saat menghapus pengguna ini. Silakan coba lagi.',
@@ -39,6 +41,7 @@ return [
                 'restore_error'         => 'Ada masalah memulihkan pengguna ini. Silakan coba lagi.',
                 'role_needed_create'    => 'Anda harus memilih setidaknya satu peran.',
                 'role_needed'           => 'Anda harus memilih setidaknya satu peran.',
+                'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
                 'update_error'          => 'Ada masalah saat memperbarui pengguna ini. Silakan coba lagi.',
                 'update_password_error' => 'Ada masalah mengubah sandi pengguna ini. Silakan coba lagi.',
             ],
@@ -63,6 +66,7 @@ return [
 
             'password' => [
                 'change_mismatch' => 'Itu bukan sandi lama Anda.',
+                'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
             ],
 
             'registration_disabled' => 'Registration is currently closed.',

@@ -172,7 +172,7 @@ trait UserAttribute
      */
     public function getDeleteButtonAttribute()
     {
-        if ($this->id != access()->id()) {
+        if ($this->id != access()->id() && $this->id != 1) {
             return '<a href="'.route('admin.access.user.destroy', $this).'"
                  data-method="delete"
                  data-trans-button-cancel="'.trans('buttons.general.cancel').'"
@@ -213,8 +213,24 @@ trait UserAttribute
             if ($this->id != access()->id()) {
                 return '<a href="'.route('admin.access.user.login-as',
                     $this).'" class="btn btn-xs btn-success"><i class="fa fa-lock" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.login_as',
-                    ['user' => $this->name]).'"></i></a> ';
+                    ['user' => $this->full_name]).'"></i></a> ';
             }
+        }
+
+        return '';
+    }
+
+    /**
+     * @return string
+     */
+    public function getClearSessionButtonAttribute()
+    {
+        if ($this->id != access()->id() && config('session.driver') == 'database') {
+            return '<a href="'.route('admin.access.user.clear-session', $this).'"
+			 	 data-trans-button-cancel="'.trans('buttons.general.cancel').'"
+                 data-trans-button-confirm="'.trans('buttons.general.continue').'"
+                 data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
+                 class="btn btn-xs btn-warning" name="confirm_item"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.clear_session').'"></i></a> ';
         }
 
         return '';
@@ -231,6 +247,7 @@ trait UserAttribute
         }
 
         return
+            $this->getClearSessionButtonAttribute().
             $this->getLoginAsButtonAttribute().
             $this->getShowButtonAttribute().
             $this->getEditButtonAttribute().
@@ -238,5 +255,23 @@ trait UserAttribute
             $this->getStatusButtonAttribute().
             $this->getConfirmedButtonAttribute().
             $this->getDeleteButtonAttribute();
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullNameAttribute()
+    {
+        return $this->last_name
+             ? $this->first_name.' '.$this->last_name
+             : $this->first_name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        return $this->full_name;
     }
 }

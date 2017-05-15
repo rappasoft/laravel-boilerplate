@@ -28,7 +28,9 @@ return [
 
             'users' => [
                 'cant_deactivate_self'  => 'U kunt uzelf niet deactiveren',
+                'cant_delete_admin'  => 'You can not delete the super administrator.',
                 'cant_delete_self'      => 'U kunt uzelf niet verwijderen.',
+                'cant_delete_own_session' => 'You can not delete your own session.',
                 'cant_restore'          => 'This user is not deleted so it can not be restored.',
                 'create_error'          => 'Er is een probleem opgetreden bij het creëren van de gebruiker. Probeer het nogmaals.',
                 'delete_error'          => 'Er is een probleem opgetreden bij het verwijderen van de gebruiker. Probeer het nogmaals.',
@@ -39,6 +41,7 @@ return [
                 'restore_error'         => 'Er is een probleem opgetreden bij het herstellen van de gebruiker. Probeer het nogmaals.',
                 'role_needed_create'    => 'U moet ten minste één rol kiezen. De gebruiker is aangemaakt maar gedeactiveerd.',
                 'role_needed'           => 'U moet ten minste één rol kiezen.',
+                'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
                 'update_error'          => 'Er is een probleem opgetreden bij het bijwerken van de gebruiker. Probeer het nogmaals.',
                 'update_password_error' => 'Er is een probleem opgetreden bij het aanpassen van het wachtwoord van de gebruiker. Probeer het nogmaals.',
             ],
@@ -63,6 +66,7 @@ return [
 
             'password' => [
                 'change_mismatch' => 'Dat is niet uw oude wachtwoord',
+                'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
             ],
 
             'registration_disabled' => 'Registration is currently closed.',

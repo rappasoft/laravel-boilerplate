@@ -18,6 +18,7 @@ return [
             'users' => [
                 'activate'           => 'تفعيل',
                 'change_password'    => 'تغيير كلمة المرور',
+                'clear_session'         => 'Clear Session',
                 'deactivate'         => 'تعطيل',
                 'delete_permanently' => 'حذف نهائي',
                 'login_as'           => 'تسجيل الدخول كـ :user',
@@ -36,6 +37,7 @@ return [
 
     'general' => [
         'cancel' => 'إلغاء',
+        'continue' => 'Continue',
 
         'crud' => [
             'create' => 'إنشاء',

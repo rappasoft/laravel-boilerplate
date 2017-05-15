@@ -114,9 +114,13 @@ class LoggedOutRouteTest extends BrowserKitTestCase
      */
     public function testLanguageSwitcher()
     {
-        $this->visit('lang/es')->see('Registrarse')->assertSessionHas('locale', 'es');
+        if (config('locale.status')) {
+            $this->visit('lang/es')
+                ->see('Registrarse')
+                ->assertSessionHas('locale', 'es');
 
-        App::setLocale('en');
+            App::setLocale('en');
+        }
     }
 
     /**

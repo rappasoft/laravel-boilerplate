@@ -55,20 +55,19 @@ if (! function_exists('includeRouteFiles')) {
      */
     function includeRouteFiles($folder)
     {
-        $directory = $folder;
-        $handle = opendir($directory);
-        $directory_list = [$directory];
+        try {
+            $rdi = new recursiveDirectoryIterator($folder);
+            $it = new recursiveIteratorIterator($rdi);
 
-        while (false !== ($filename = readdir($handle))) {
-            if ($filename != '.' && $filename != '..' && is_dir($directory.$filename)) {
-                array_push($directory_list, $directory.$filename.'/');
-            }
-        }
+            while ($it->valid()) {
+                if (! $it->isDot() && $it->isFile() && $it->isReadable() && $it->current()->getExtension() === 'php') {
+                    require $it->key();
+                }
 
-        foreach ($directory_list as $directory) {
-            foreach (glob($directory.'*.php') as $filename) {
-                require $filename;
+                $it->next();
             }
+        } catch (Exception $e) {
+            echo $e->getMessage();
         }
     }
 }
@@ -92,5 +91,24 @@ if (! function_exists('getRtlCss')) {
         $filename = rtrim($filename, '.css');
 
         return implode('/', $path).'/'.$filename.'.rtl.css';
+    }
+}
+
+if (! function_exists('homeRoute')) {
+
+    /**
+     * Return the route to the "home" page depending on authentication/authorization status.
+     *
+     * @return string
+     */
+    function homeRoute()
+    {
+        if (access()->allow('view-backend')) {
+            return 'admin.dashboard';
+        } elseif (auth()->check()) {
+            return 'frontend.user.dashboard';
+        }
+
+        return 'frontend.index';
     }
 }

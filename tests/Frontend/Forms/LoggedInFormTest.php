@@ -15,19 +15,23 @@ class LoggedInFormTest extends BrowserKitTestCase
         if (config('access.users.change_email')) {
             $this->actingAs($this->user)
                  ->visit('/account')
-                 ->type('', 'name')
+                 ->type('', 'first_name')
+                 ->type('', 'last_name')
                  ->type('', 'email')
                  ->press('update-profile')
                  ->seePageIs('/account')
-                 ->see('The name field is required.')
+                 ->see('The first name field is required.')
+                 ->see('The last name field is required.')
                  ->see('The email field is required.');
         } else {
             $this->actingAs($this->user)
                  ->visit('/account')
-                 ->type('', 'name')
+                 ->type('', 'first_name')
+                 ->type('', 'last_name')
                  ->press('update-profile')
                  ->seePageIs('/account')
-                 ->see('The name field is required.');
+                 ->see('The first name field is required.')
+                 ->see('The last name field is required.');
         }
     }
 
@@ -43,22 +47,32 @@ class LoggedInFormTest extends BrowserKitTestCase
             $this->actingAs($this->user)
                  ->visit('/account')
                  ->see('My Account')
-                 ->type($this->user->name.'_'.$rand, 'name')
+                 ->type($this->user->first_name.'_'.$rand, 'first_name')
+                 ->type($this->user->last_name.'_'.$rand, 'last_name')
                  ->type('2_'.$this->user->email, 'email')
                  ->press('update-profile')
                  ->seePageIs('/account')
                  ->see('Profile successfully updated.')
                  ->seeInDatabase(config('access.users_table'),
-                     ['email' => '2_'.$this->user->email, 'name' => $this->user->name.'_'.$rand]);
+                     [
+                         'email' => '2_'.$this->user->email,
+                         'first_name' => $this->user->first_name.'_'.$rand,
+                         'last_name' => $this->user->last_name.'_'.$rand,
+                     ]);
         } else {
             $this->actingAs($this->user)
                  ->visit('/account')
                  ->see('My Account')
-                 ->type($this->user->name.'_'.$rand, 'name')
+                 ->type($this->user->first_name.'_'.$rand, 'first_name')
+                 ->type($this->user->last_name.'_'.$rand, 'last_name')
                  ->press('update-profile')
                  ->seePageIs('/account')
                  ->see('Profile successfully updated.')
-                 ->seeInDatabase(config('access.users_table'), ['name' => $this->user->name.'_'.$rand]);
+                 ->seeInDatabase(config('access.users_table'),
+                     [
+                         'first_name' => $this->user->first_name.'_'.$rand,
+                         'last_name' => $this->user->last_name.'_'.$rand,
+                     ]);
         }
     }
 

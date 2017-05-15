@@ -28,7 +28,9 @@ return [
 
             'users' => [
                 'cant_deactivate_self'  => 'Du kan ikke udføre denne handling på dig selv.',
+                'cant_delete_admin'  => 'You can not delete the super administrator.',
                 'cant_delete_self'      => 'Du kan ikke slette dig selv.',
+                'cant_delete_own_session' => 'You can not delete your own session.',
                 'create_error'          => 'Der opstod et problem ved oprettelsen af denne bruger. Prøv venligst igen.',
                 'delete_error'          => 'Der opstod et problem ved sletning af denne bruger. Prøv venligst igen.',
                 'delete_first'          => 'This user must be deleted first before it can be destroyed permanently.',
@@ -38,6 +40,7 @@ return [
                 'restore_error'         => 'Der opstod et problem ved genskabelse af denne bruger. Prøv venligst igen.',
                 'role_needed_create'    => 'Du skal vælge mindst én rolle.',
                 'role_needed'           => 'Du skal vælge mindst én rolle.',
+                'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
                 'update_error'          => 'Der opstod et problem ved opdatering af denne bruger. Prøv venligst igen.',
                 'update_password_error' => 'Der opstod et problem ved ændring af brugerens adgangskode. Prøv venligst igen.',
             ],
@@ -62,6 +65,7 @@ return [
 
             'password' => [
                 'change_mismatch' => 'Dette er ikke din gamle adgangskode.',
+                'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
             ],
 
             'registration_disabled' => 'Registration is currently closed.',

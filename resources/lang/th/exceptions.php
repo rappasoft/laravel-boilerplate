@@ -28,8 +28,10 @@ return [
 
             'users' => [
                 'cant_deactivate_self'  => 'คุณไม่สามารถกระทำกับตนเองได้',
+                'cant_delete_admin'  => 'You can not delete the super administrator.',
                 'cant_delete_self'      => 'คุณไม่สามารถลบตนเองได้',
-        'cant_restore'                  => 'ผู้ใช้นี้ไม่สามารถทำการลบได้ เนื่องจากไม่สามารถจะกู้คืนผู้ใช้นี้ได้',
+                'cant_delete_own_session' => 'You can not delete your own session.',
+                'cant_restore'                  => 'ผู้ใช้นี้ไม่สามารถทำการลบได้ เนื่องจากไม่สามารถจะกู้คืนผู้ใช้นี้ได้',
                 'create_error'          => 'มีข้อผิดพลาดในการสร้างผู้ใช้นี้ กรุณาลองใหม่อีกครั้ง',
                 'delete_error'          => 'มีข้อผิดพลาดในการลบผู้ใช้นี้ กรุณาลองใหม่อีกครั้ง',
         'delete_first'                  => 'ผู้ใช้นี้ต้องทำการลบออกไปก่อน ก่อนที่จะทำการทำลบทื้งอย่างถาวร',
@@ -39,6 +41,7 @@ return [
                 'restore_error'         => 'มีข้อผิดพลาดในการกู้คืนผู้ใช้นี้ กรุณาลองใหม่อีกครั้ง',
                 'role_needed_create'    => 'คุณต้องเลือกอย่างน้อยหนึ่งบทบาท',
                 'role_needed'           => 'คุณต้องเลือกอย่างน้อยหนึ่งบทบาท',
+                'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
                 'update_error'          => 'มีข้อผิดพลาดในการแก้ไขผู้ใช้นี้ กรุณาลองใหม่อีกครั้ง',
                 'update_password_error' => 'มีข้อผิดพลาดในการเปลี่ยนรหัสผ่านของผู้ใช้นี้ กรุณาลองใหม่อีกครั้ง',
             ],
@@ -63,6 +66,7 @@ return [
 
             'password' => [
                 'change_mismatch' => 'รหัสผ่านเดิมไม่ถูกต้อง',
+                'reset_problem' => 'There was a problem resetting your password. Please resend the password reset email.',
             ],
 
             'registration_disabled' => 'Registration is currently closed.',

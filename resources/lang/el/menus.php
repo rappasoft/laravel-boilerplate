@@ -60,6 +60,8 @@ return [
          */
         'langs' => [
             'ar'    => 'Αραβικά (Arabic)',
+            'zh'    => '(Chinese Simplified)',
+            'zh-TW' => '(Chinese Traditional)',
             'da'    => 'Δανέζικα (Danish)',
             'de'    => 'Γερμανικά (German)',
             'el'    => 'Ελληνικά (Greek)',
@@ -68,6 +70,7 @@ return [
             'fr'    => 'Γαλλικά (French)',
             'id'    => 'Ινδονησίας (Indonesian)',
             'it'    => 'Ιταλικά (Italian)',
+            'ja'    => '(Japanese)',
             'nl'    => 'Ολλανδικά (Dutch)',
             'pt_BR' => '(Brazilian Portuguese)',
             'ru'    => 'Ρωσικός (Russian)',

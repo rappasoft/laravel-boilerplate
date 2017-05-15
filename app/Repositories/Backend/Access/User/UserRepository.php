@@ -91,7 +91,8 @@ class UserRepository extends BaseRepository
             ->with('roles')
             ->select([
                 config('access.users_table').'.id',
-                config('access.users_table').'.name',
+                config('access.users_table').'.first_name',
+                config('access.users_table').'.last_name',
                 config('access.users_table').'.email',
                 config('access.users_table').'.status',
                 config('access.users_table').'.confirmed',
@@ -109,7 +110,7 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     * @param Model $input
+     * @param array $input
      */
     public function create($input)
     {
@@ -120,7 +121,6 @@ class UserRepository extends BaseRepository
 
         DB::transaction(function () use ($user, $data, $roles) {
             if ($user->save()) {
-
                 //User Created, Validate Roles
                 if (! count($roles['assignees_roles'])) {
                     throw new GeneralException(trans('exceptions.backend.access.users.role_needed_create'));
@@ -146,6 +146,9 @@ class UserRepository extends BaseRepository
     /**
      * @param Model $user
      * @param array $input
+     *
+     * @return bool
+     * @throws GeneralException
      */
     public function update(Model $user, array $input)
     {
@@ -154,13 +157,14 @@ class UserRepository extends BaseRepository
 
         $this->checkUserByEmail($data, $user);
 
-        DB::transaction(function () use ($user, $data, $roles) {
-            if ($user->update($data)) {
-                //For whatever reason this just wont work in the above call, so a second is needed for now
-                $user->status = isset($data['status']) ? 1 : 0;
-                $user->confirmed = isset($data['confirmed']) ? 1 : 0;
-                $user->save();
+        $user->first_name = $data['first_name'];
+        $user->last_name = $data['last_name'];
+        $user->email = $data['email'];
+        $user->status = isset($data['status']) ? 1 : 0;
+        $user->confirmed = isset($data['confirmed']) ? 1 : 0;
 
+        DB::transaction(function () use ($user, $data, $roles) {
+            if ($user->save()) {
                 $this->checkUserRolesCount($roles);
                 $this->flushRoles($roles, $user);
 
@@ -205,6 +209,10 @@ class UserRepository extends BaseRepository
     {
         if (access()->id() == $user->id) {
             throw new GeneralException(trans('exceptions.backend.access.users.cant_delete_self'));
+        }
+
+        if ($user->id == 1) {
+            throw new GeneralException(trans('exceptions.backend.access.users.cant_delete_admin'));
         }
 
         if ($user->delete()) {
@@ -343,8 +351,9 @@ class UserRepository extends BaseRepository
     protected function createUserStub($input)
     {
         $user = self::MODEL;
-        $user = new $user();
-        $user->name = $input['name'];
+        $user = new $user;
+        $user->first_name = $input['first_name'];
+        $user->last_name = $input['last_name'];
         $user->email = $input['email'];
         $user->password = bcrypt($input['password']);
         $user->status = isset($input['status']) ? 1 : 0;

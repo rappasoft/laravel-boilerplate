@@ -8,7 +8,7 @@
                 <img src="{{ access()->user()->picture }}" class="img-circle" alt="User Image" />
             </div><!--pull-left-->
             <div class="pull-left info">
-                <p>{{ access()->user()->name }}</p>
+                <p>{{ access()->user()->full_name }}</p>
                 <!-- Status -->
                 <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('strings.backend.general.status.online') }}</a>
             </div><!--pull-left-->
@@ -39,7 +39,7 @@
 
             <li class="header">{{ trans('menus.backend.sidebar.system') }}</li>
 
-            @permissions(['manage-users', 'manage-roles'])
+            @role(1)
             <li class="{{ active_class(Active::checkUriPattern('admin/access/*')) }} treeview">
                 <a href="#">
                     <i class="fa fa-users"></i>
@@ -48,23 +48,19 @@
                 </a>
 
                 <ul class="treeview-menu {{ active_class(Active::checkUriPattern('admin/access/*'), 'menu-open') }}" style="display: none; {{ active_class(Active::checkUriPattern('admin/access/*'), 'display: block;') }}">
-                    @permission('manage-users')
                     <li class="{{ active_class(Active::checkUriPattern('admin/access/user*')) }}">
                         <a href="{{ route('admin.access.user.index') }}">
                             <i class="fa fa-circle-o"></i>
                             <span>{{ trans('labels.backend.access.users.management') }}</span>
                         </a>
                     </li>
-                    @endauth
 
-                    @permission('manage-roles')
                     <li class="{{ active_class(Active::checkUriPattern('admin/access/role*')) }}">
                         <a href="{{ route('admin.access.role.index') }}">
                             <i class="fa fa-circle-o"></i>
                             <span>{{ trans('labels.backend.access.roles.management') }}</span>
                         </a>
                     </li>
-                    @endauth
                 </ul>
             </li>
             @endauth

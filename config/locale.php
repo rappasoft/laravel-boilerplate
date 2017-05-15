@@ -30,6 +30,8 @@ return [
          * Index 2 of sub-array is whether or not to use RTL (right-to-left) css for this language
          */
         'ar'    => ['ar', 'ar_AR', true],
+        'zh'    => ['zh', 'zh-CN', false],
+        'zh-TW' => ['zh-TW', 'zh-TW', false],
         'da'    => ['da', 'da_DK', false],
         'de'    => ['de', 'de_DE', false],
         'el'    => ['el', 'el_GR', false],
@@ -38,6 +40,7 @@ return [
         'fr'    => ['fr', 'fr_FR', false],
         'id'    => ['id', 'id_ID', false],
         'it'    => ['it', 'it_IT', false],
+        'ja'    => ['ja', 'ja-JP', false],
         'nl'    => ['nl', 'nl_NL', false],
         'pt_BR' => ['pt_BR', 'pt_BR', false],
         'ru'    => ['ru', 'ru-RU', false],

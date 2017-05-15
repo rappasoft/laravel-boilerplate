@@ -26,14 +26,16 @@ class RoleFormTest extends BrowserKitTestCase
 
     public function testCreateRoleRequiredFieldsSpecificPermissions()
     {
-        // Custom Permissions
-        $this->actingAs($this->admin)
-             ->visit('/admin/access/role/create')
-             ->type('Test Role', 'name')
-             ->select('custom', 'associated-permissions')
-             ->press('Create')
-             ->seePageIs('/admin/access/role/create')
-             ->see('You must select at least one permission for this role.');
+        if (config('access.roles.role_must_contain_permission')) {
+            // Custom Permissions
+            $this->actingAs($this->admin)
+                ->visit('/admin/access/role/create')
+                ->type('Test Role', 'name')
+                ->select('custom', 'associated-permissions')
+                ->press('Create')
+                ->seePageIs('/admin/access/role/create')
+                ->see('You must select at least one permission for this role.');
+        }
     }
 
     public function testCreateRoleFormAll()
@@ -64,14 +66,12 @@ class RoleFormTest extends BrowserKitTestCase
              ->visit('/admin/access/role/create')
              ->type('Test Role', 'name')
              ->select('custom', 'associated-permissions')
-             ->check('permissions[2]')
-             ->check('permissions[3]')
+             ->check('permissions[1]')
              ->press('Create')
              ->seePageIs('/admin/access/role')
              ->see('The role was successfully created.')
              ->seeInDatabase(config('access.roles_table'), ['name' => 'Test Role', 'all' => 0])
-             ->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => 4])
-             ->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 3, 'role_id' => 4]);
+             ->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => 4]);
 
         Event::assertDispatched(RoleCreated::class);
     }
@@ -132,27 +132,26 @@ class RoleFormTest extends BrowserKitTestCase
         Event::fake();
 
         $this->actingAs($this->admin)
-             ->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => 3])
-             ->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 3, 'role_id' => 3])
+             ->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => 3])
              ->visit('/admin/access/role/3/edit')
-             ->check('permissions[2]')
-             ->check('permissions[3]')
+             ->check('permissions[1]')
              ->press('Update')
              ->seePageIs('/admin/access/role')
              ->see('The role was successfully updated.')
-             ->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => 3])
-             ->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 3, 'role_id' => 3]);
+             ->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => 3]);
 
         Event::assertDispatched(RoleUpdated::class);
     }
 
     public function testUpdateRoleRequiresPermission()
     {
-        $this->actingAs($this->admin)
-             ->visit('/admin/access/role/3/edit')
-             ->press('Update')
-             ->seePageIs('/admin/access/role/3/edit')
-             ->see('You must select at least one permission for this role.');
+        if (config('access.roles.role_must_contain_permission')) {
+            $this->actingAs($this->admin)
+                ->visit('/admin/access/role/3/edit')
+                ->press('Update')
+                ->seePageIs('/admin/access/role/3/edit')
+                ->see('You must select at least one permission for this role.');
+        }
     }
 
     public function testDeleteRoleForm()
@@ -186,7 +185,6 @@ class RoleFormTest extends BrowserKitTestCase
              ->assertRedirectedTo('/admin/access/role')
              ->notSeeInDatabase(config('access.roles_table'), ['id' => 2])
              ->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => 2])
-             ->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 2, 'role_id' => 2])
              ->seeInSession(['flash_success' => 'The role was successfully deleted.']);
 
         Event::assertDispatched(RoleDeleted::class);
