@@ -162,9 +162,23 @@ class UserRepository extends BaseRepository
                 throw new GeneralException(trans('exceptions.frontend.auth.registration_disabled'));
             }
 
+//Get first and last name from providers (They put this information in different locations)
+            //Google
+            if($provider == "google"){
+                $first_name = $data->user['name']['familyName'];
+                $last_name = $data->user['name']['givenName'];
+            //Facebook only returns name. We could split it?
+            }elseif ($provider == "facebook") {
+                $first_name = $data->user['name'];
+                $last_name = " ";
+            //TODO Others, we will most likely need to add the other providers here. In the meantime we can assume they only provide name.
+            }else {
+                $first_name = $data->user['name'];
+                $last_name = " ";
+            }
             $user = $this->create([
-                'first_name'  => $data->first_name,
-                'last_name'  => $data->last_name,
+                'first_name'  => $first_name,
+                'last_name'  => $last_name,
                 'email' => $user_email,
             ], true);
         }
