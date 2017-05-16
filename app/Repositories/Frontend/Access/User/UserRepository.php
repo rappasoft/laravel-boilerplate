@@ -137,6 +137,38 @@ class UserRepository extends BaseRepository
     }
 
     /**
+    * @param $fullName
+    *
+    * @return array
+    */
+    protected function getFirstLastNames($fullName)
+    {
+        $parts = array_values(array_filter(explode(" ", $fullName)));
+
+        $size = count($parts);
+
+        $result = [];
+
+        if(empty($parts)){
+            $result['first_name']   = NULL;
+            $result['last_name']    = NULL;
+        }
+
+        if(!empty($parts) && $size == 1){
+            $result['first_name']   = $parts[0];
+            $result['last_name']    = NULL;
+        }
+
+        if(!empty($parts) && $size >= 2){
+            $result['first_name']   = $parts[0];
+            $result['last_name']    = $parts[1];
+        }
+
+        return $result;
+    }
+	
+    
+    /**
      * @param $data
      * @param $provider
      *
@@ -161,10 +193,13 @@ class UserRepository extends BaseRepository
             if (! config('access.users.registration')) {
                 throw new GeneralException(trans('exceptions.frontend.auth.registration_disabled'));
             }
-
+            
+            // Get users first name and last name.
+			$userFirstLastName = $this->getFirstLastNames($data->getName());
+            
             $user = $this->create([
-                'first_name'  => $data->first_name,
-                'last_name'  => $data->last_name,
+                'first_name'  => $userFirstLastName['first_name'],
+                'last_name'  => $userFirstLastName['last_name'],
                 'email' => $user_email,
             ], true);
         }
