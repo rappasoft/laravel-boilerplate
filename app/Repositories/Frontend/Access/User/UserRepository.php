@@ -135,37 +135,6 @@ class UserRepository extends BaseRepository
          */
         return $user;
     }
-
-    /**
-    * @param $fullName
-    *
-    * @return array
-    */
-    protected function getFirstLastNames($fullName)
-    {
-        $parts = array_values(array_filter(explode(' ', $fullName)));
-
-        $size = count($parts);
-
-        $result = [];
-
-        if (empty($parts)) {
-            $result['first_name'] = null;
-            $result['last_name'] = null;
-        }
-
-        if (! empty($parts) && $size == 1) {
-            $result['first_name'] = $parts[0];
-            $result['last_name'] = null;
-        }
-
-        if (! empty($parts) && $size >= 2) {
-            $result['first_name'] = $parts[0];
-            $result['last_name'] = $parts[1];
-        }
-
-        return $result;
-    }
 	
     /**
      * @param $data
@@ -193,12 +162,12 @@ class UserRepository extends BaseRepository
                 throw new GeneralException(trans('exceptions.frontend.auth.registration_disabled'));
             }
             
-            // Get users first name and last name.
-            $userFirstLastName = $this->getFirstLastNames($data->getName());
+            // Get users first name and last name from their full name
+            $nameParts = $this->getNameParts($data->getName());
             
             $user = $this->create([
-                'first_name'  => $userFirstLastName['first_name'],
-                'last_name'  => $userFirstLastName['last_name'],
+                'first_name'  => $nameParts['first_name'],
+                'last_name'  => $nameParts['last_name'],
                 'email' => $user_email,
             ], true);
         }
@@ -310,4 +279,35 @@ class UserRepository extends BaseRepository
 
         throw new GeneralException(trans('exceptions.frontend.auth.password.change_mismatch'));
     }
+
+	/**
+	 * @param $fullName
+	 *
+	 * @return array
+	 */
+	protected function getNameParts($fullName)
+	{
+		$parts = array_values(array_filter(explode(' ', $fullName)));
+
+		$size = count($parts);
+
+		$result = [];
+
+		if (empty($parts)) {
+			$result['first_name'] = null;
+			$result['last_name'] = null;
+		}
+
+		if (! empty($parts) && $size == 1) {
+			$result['first_name'] = $parts[0];
+			$result['last_name'] = null;
+		}
+
+		if (! empty($parts) && $size >= 2) {
+			$result['first_name'] = $parts[0];
+			$result['last_name'] = $parts[1];
+		}
+
+		return $result;
+	}
 }
