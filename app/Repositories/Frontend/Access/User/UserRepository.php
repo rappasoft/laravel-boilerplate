@@ -195,7 +195,7 @@ class UserRepository extends BaseRepository
             }
             
             // Get users first name and last name.
-			$userFirstLastName = $this->getFirstLastNames($data->getName());
+	    $userFirstLastName = $this->getFirstLastNames($data->getName());
             
             $user = $this->create([
                 'first_name'  => $userFirstLastName['first_name'],
