@@ -135,7 +135,7 @@ class UserRepository extends BaseRepository
          */
         return $user;
     }
-	
+
     /**
      * @param $data
      * @param $provider
@@ -161,10 +161,10 @@ class UserRepository extends BaseRepository
             if (! config('access.users.registration')) {
                 throw new GeneralException(trans('exceptions.frontend.auth.registration_disabled'));
             }
-            
+
             // Get users first name and last name from their full name
             $nameParts = $this->getNameParts($data->getName());
-            
+
             $user = $this->create([
                 'first_name'  => $nameParts['first_name'],
                 'last_name'  => $nameParts['last_name'],
@@ -280,34 +280,34 @@ class UserRepository extends BaseRepository
         throw new GeneralException(trans('exceptions.frontend.auth.password.change_mismatch'));
     }
 
-	/**
-	 * @param $fullName
-	 *
-	 * @return array
-	 */
-	protected function getNameParts($fullName)
-	{
-		$parts = array_values(array_filter(explode(' ', $fullName)));
+    /**
+     * @param $fullName
+     *
+     * @return array
+     */
+    protected function getNameParts($fullName)
+    {
+        $parts = array_values(array_filter(explode(' ', $fullName)));
 
-		$size = count($parts);
+        $size = count($parts);
 
-		$result = [];
+        $result = [];
 
-		if (empty($parts)) {
-			$result['first_name'] = null;
-			$result['last_name'] = null;
-		}
+        if (empty($parts)) {
+            $result['first_name'] = null;
+            $result['last_name'] = null;
+        }
 
-		if (! empty($parts) && $size == 1) {
-			$result['first_name'] = $parts[0];
-			$result['last_name'] = null;
-		}
+        if (! empty($parts) && $size == 1) {
+            $result['first_name'] = $parts[0];
+            $result['last_name'] = null;
+        }
 
-		if (! empty($parts) && $size >= 2) {
-			$result['first_name'] = $parts[0];
-			$result['last_name'] = $parts[1];
-		}
+        if (! empty($parts) && $size >= 2) {
+            $result['first_name'] = $parts[0];
+            $result['last_name'] = $parts[1];
+        }
 
-		return $result;
-	}
+        return $result;
+    }
 }
