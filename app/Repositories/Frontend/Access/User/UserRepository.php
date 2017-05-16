@@ -143,31 +143,30 @@ class UserRepository extends BaseRepository
     */
     protected function getFirstLastNames($fullName)
     {
-        $parts = array_values(array_filter(explode(" ", $fullName)));
+        $parts = array_values(array_filter(explode(' ', $fullName)));
 
         $size = count($parts);
 
         $result = [];
 
-        if(empty($parts)){
-            $result['first_name']   = NULL;
-            $result['last_name']    = NULL;
+        if (empty($parts)) {
+            $result['first_name'] = null;
+            $result['last_name'] = null;
         }
 
-        if(!empty($parts) && $size == 1){
-            $result['first_name']   = $parts[0];
-            $result['last_name']    = NULL;
+        if (! empty($parts) && $size == 1) {
+            $result['first_name'] = $parts[0];
+            $result['last_name'] = null;
         }
 
-        if(!empty($parts) && $size >= 2){
-            $result['first_name']   = $parts[0];
-            $result['last_name']    = $parts[1];
+        if (! empty($parts) && $size >= 2) {
+            $result['first_name'] = $parts[0];
+            $result['last_name'] = $parts[1];
         }
 
         return $result;
     }
 	
-    
     /**
      * @param $data
      * @param $provider
@@ -195,7 +194,7 @@ class UserRepository extends BaseRepository
             }
             
             // Get users first name and last name.
-	    $userFirstLastName = $this->getFirstLastNames($data->getName());
+            $userFirstLastName = $this->getFirstLastNames($data->getName());
             
             $user = $this->create([
                 'first_name'  => $userFirstLastName['first_name'],
