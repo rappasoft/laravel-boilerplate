@@ -254,22 +254,4 @@ class LoggedOutFormTest extends BrowserKitTestCase
              ->seePageIs('/login')
              ->see('These credentials do not match our records.');
     }
-
-    /**
-     * Adds a password reset row to the database to play with.
-     *
-     * @param $token
-     *
-     * @return mixed
-     */
-    private function createPasswordResetToken($token)
-    {
-        DB::table('password_resets')->insert([
-            'email'      => $this->user->email,
-            'token'      => $token,
-            'created_at' => \Carbon\Carbon::now(),
-        ]);
-
-        return $token;
-    }
 }
