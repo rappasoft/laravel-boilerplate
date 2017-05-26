@@ -50,7 +50,7 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        if (config('access.users.confirm_email')) {
+        if (config('access.users.confirm_email')|| config('access.users.auto_send_confirmation')) {
             $user = $this->user->create($request->all());
             event(new UserRegistered($user));
 			$msg = (config('access.users.auto_send_confirmation')) ? trans('exceptions.frontend.auth.confirmation.created_confirm'): trans('exceptions.frontend.auth.confirmation.created_pending') ;
