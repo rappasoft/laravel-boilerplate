@@ -47,8 +47,8 @@ return [
     'in_array'             => 'Das :attribute-Feld existiert nicht in :other.',
     'integer'              => ':attribute muss eine Ganzzahl sein.',
     'ip'                   => ':attribute muss eine gültige IP-Adresse sein.',
-	'ipv4'                 => 'The :attribute must be a valid IPv4 address.',
-	'ipv6'                 => 'The :attribute must be a valid IPv6 address.',
+    'ipv4'                 => 'The :attribute must be a valid IPv4 address.',
+    'ipv6'                 => 'The :attribute must be a valid IPv6 address.',
     'json'                 => ':attribute muss eine gültige JSON-Zeichenkette sein.',
     'max'                  => [
         'numeric' => ':attribute darf nicht grösser sein als :max.',

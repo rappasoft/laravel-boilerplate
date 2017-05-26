@@ -2,7 +2,6 @@
 
 use Tests\BrowserKitTestCase;
 use App\Models\Access\User\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedIn;
