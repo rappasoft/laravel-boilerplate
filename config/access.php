@@ -68,7 +68,7 @@ return [
          * Used to disable emails being sent out to confirm their account.
          * Allows admins to manually confirm accounts.
          */
-        'auto_send_confirmation' => env("AUTO_SEND_CONFIRMATION", true),
+        'auto_send_confirmation' => env('AUTO_SEND_CONFIRMATION', true),
     ],
 
     /*

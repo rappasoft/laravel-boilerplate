@@ -58,7 +58,7 @@ class LoginController extends Controller
          */
         if (! $user->isConfirmed()) {
             access()->logout();
-             $msg = (config('access.users.auto_send_confirmation')) ? trans("exceptions.frontend.auth.confirmation.pending") : trans('exceptions.frontend.auth.confirmation.resend', ['user_id' => $user->id]);
+         	$msg = (config('access.users.auto_send_confirmation')) ? trans("exceptions.frontend.auth.confirmation.pending") : trans('exceptions.frontend.auth.confirmation.resend', ['user_id' => $user->id]);
             throw new GeneralException($msg);
         } elseif (! $user->isActive()) {
             access()->logout();
