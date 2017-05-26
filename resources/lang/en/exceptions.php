@@ -54,6 +54,7 @@ return [
                 'created_pending'   => 'Your account was successfully created and pending approval. An email will be sent when your account is approved.',
                 'mismatch'          => 'Your confirmation code does not match.',
                 'not_found'         => 'That confirmation code does not exist.',
+                'pending'            => 'Your account is currently pending approval.',
                 'resend'            => 'Your account is not confirmed. Please click the confirmation link in your e-mail, or <a href="'.route('frontend.auth.account.confirm.resend', ':user_id').'">click here</a> to resend the confirmation e-mail.',
                 'success'           => 'Your account has been successfully confirmed!',
                 'resent'            => 'A new confirmation e-mail has been sent to the address on file.',
