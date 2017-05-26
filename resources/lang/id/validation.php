@@ -46,6 +46,8 @@ return [
     'in_array'             => ':attribute tidak terdapat dalam :other.',
     'integer'              => ':attribute harus merupakan bilangan bulat.',
     'ip'                   => ':attribute harus berupa alamat IP yang benar.',
+    'ipv4'                 => 'The :attribute must be a valid IPv4 address.',
+    'ipv6'                 => 'The :attribute must be a valid IPv6 address.',
     'json'                 => ':attribute harus berupa JSON string yang benar.',
     'max'                  => [
         'numeric' => ':attribute seharusnya tidak lebih dari :max.',

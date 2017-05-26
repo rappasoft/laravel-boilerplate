@@ -2,7 +2,6 @@
 
 use Tests\BrowserKitTestCase;
 use App\Models\Access\User\User;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedIn;
@@ -253,23 +252,5 @@ class LoggedOutFormTest extends BrowserKitTestCase
              ->press('Login')
              ->seePageIs('/login')
              ->see('These credentials do not match our records.');
-    }
-
-    /**
-     * Adds a password reset row to the database to play with.
-     *
-     * @param $token
-     *
-     * @return mixed
-     */
-    private function createPasswordResetToken($token)
-    {
-        DB::table('password_resets')->insert([
-            'email'      => $this->user->email,
-            'token'      => $token,
-            'created_at' => \Carbon\Carbon::now(),
-        ]);
-
-        return $token;
     }
 }
