@@ -47,6 +47,8 @@ return [
     'in_array'             => ':attribute findes ikke i :other.',
     'integer'              => ':attribute skal være et heltal.',
     'ip'                   => ':attribute skal være en gyldig IP-adresse.',
+	'ipv4'                 => 'The :attribute must be a valid IPv4 address.',
+	'ipv6'                 => 'The :attribute must be a valid IPv6 address.',
     'json'                 => ':attribute skal være gyldig JSON format.',
     'max'                  => [
         'numeric' => ':attribute må ikke være større end :max.',
