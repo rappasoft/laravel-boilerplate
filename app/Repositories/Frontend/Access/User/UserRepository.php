@@ -104,7 +104,7 @@ class UserRepository extends Repository
          *
          * If this is a social account they are confirmed through the social provider by default
          */
-        if (config('access.users.confirm_email') && $provider === false) {
+        if (config('access.users.confirm_email') && $provider === false && config('access.users.auto_send_confirmation')) {
             $user->notify(new UserNeedsConfirmation($user->confirmation_code));
         }
 
