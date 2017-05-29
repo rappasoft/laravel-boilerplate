@@ -26,9 +26,9 @@ return [
             'deleted'             => 'Kullanıcı başarıyla silindi.',
             'deleted_permanently' => 'Kullanıcı kalıcı olarak silindi.',
             'restored'            => 'Kullanıcı başarıyla geri yüklendi.',
-            'session_cleared'      => "Kullanıcının oturumu başarıyla temizlendi.",
+            'session_cleared'      => 'Kullanıcının oturumu başarıyla temizlendi.',
             'updated'             => 'Kullanıcı başarıyla güncellendi.',
-            'updated_password'    => "Kullanıcının şifresi başarıyla güncellendi.",
+            'updated_password'    => 'Kullanıcının şifresi başarıyla güncellendi.',
         ],
     ],
 ];
