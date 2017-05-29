@@ -65,6 +65,7 @@ return [
             'ru'    => 'Русский (Russian)',
             'sv'    => 'Шведский (Swedish)',
             'th'    => 'Тайский (Thai)',
+            'tr'    => '(Turkish)',
         ],
         'language'  => 'Язык',
     ],
