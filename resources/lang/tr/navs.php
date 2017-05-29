@@ -27,7 +27,7 @@ return [
         'user' => [
             'account'         => 'Hesabım',
             'administration'  => 'Yönetim',
-            'change_password' => 'Parılayı Değiştir',
+            'change_password' => 'Parolayı Değiştir',
             'my_information'  => 'Bilgilerim',
             'profile'         => 'Profil',
         ],
