@@ -30,9 +30,9 @@ return [
         'general' => [
             'all_rights_reserved' => 'Tüm Hakları Saklıdır.',
             'are_you_sure'        => 'Bunu yapmak istediğinize emin misiniz?',
-            'boilerplate_link'    => 'MaviRota Rezervasyon',
+            'boilerplate_link'    => 'Laravel Boilerplate',
             'continue'            => 'Devam et',
-            'member_since'        => 'Zamandan beri üye',
+            'member_since'        => 'Üyelik zamanı',
             'minutes'             => ' dakika',
             'search_placeholder'  => 'Ara...',
             'timeout'             => 'Etkinliğiniz olmadığı için güvenlik nedeniyle oturumunuz belirtilen sürede kapandı ',
