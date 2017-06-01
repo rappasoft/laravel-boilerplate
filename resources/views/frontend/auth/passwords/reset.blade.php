@@ -16,7 +16,7 @@
 
                 <div class="panel-body">
 
-                    {{ Form::open(['route' => 'frontend.auth.password.reset', 'class' => 'form-horizontal']) }}
+                    {{ Form::open(['route' => 'frontend.auth.password.reset', 'class' => 'form-horizontal', 'novalidate' => 'novalidate']) }}
 
                     <input type="hidden" name="token" value="{{ $token }}">
 

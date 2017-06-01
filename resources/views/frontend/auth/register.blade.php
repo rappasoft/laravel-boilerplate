@@ -10,7 +10,7 @@
 
                 <div class="panel-body">
 
-                    {{ Form::open(['route' => 'frontend.auth.register.post', 'class' => 'form-horizontal']) }}
+                    {{ Form::open(['route' => 'frontend.auth.register.post', 'class' => 'form-horizontal', 'novalidate' => 'novalidate']) }}
 
                     <div class="form-group">
                         {{ Form::label('first_name', trans('validation.attributes.frontend.first_name'),
