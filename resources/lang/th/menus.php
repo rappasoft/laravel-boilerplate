@@ -76,6 +76,7 @@ return [
             'ru'    => 'รัสเซีย (Russian)',
             'sv'    => 'สวีเดน (Swedish)',
             'th'    => 'ไทย (Thai)',
+            'tr'    => '(Turkish)',
         ],
     ],
 ];
