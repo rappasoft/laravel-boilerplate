@@ -31,4 +31,9 @@ return [
             'updated_password'    => "The user's password was successfully updated.",
         ],
     ],
+    'frontend' => [
+        'contact' => [
+            'thank_you'  => 'Thank you for contacting us. We will get back to you shortly.',
+        ],
+    ],
 ];
