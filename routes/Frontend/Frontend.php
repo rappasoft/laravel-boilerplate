@@ -6,6 +6,8 @@
  */
 Route::get('/', 'FrontendController@index')->name('index');
 Route::get('macros', 'FrontendController@macros')->name('macros');
+Route::get('contact', 'ContactController@showContactForm')->name('contact');
+Route::post('contact', 'ContactController@contact')->name('contact.post');
 
 /*
  * These frontend controllers require the user to be logged in
