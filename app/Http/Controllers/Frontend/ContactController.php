@@ -38,15 +38,15 @@ class ContactController extends Controller
         $request->from_name = $request->name;
         $request->reply_email = $request->email;
         $request->reply_name = $request->name;
-        $this->notifyEmail = env('MAIL_FROM_ADDRESS');
+        $this->notifyEmail = config('mail.from.address');
         $this->notify(new ContactUs($request));
 
         if ($request->sendcopy) {
             $request->subject = 'Copy of message sent to '.app_name();
-            $request->from_email = env('MAIL_FROM_ADDRESS');
-            $request->from_name = env('MAIL_FROM_NAME');
-            $request->reply_email = env('MAIL_FROM_ADDRESS');
-            $request->reply_name = env('MAIL_FROM_NAME');
+            $request->from_email = config('mail.from.address');
+            $request->from_name = config('mail.from.name');
+            $request->reply_email = config('mail.from.address');
+            $request->reply_name = config('mail.from.name');
             $this->notifyEmail = $request->email;
             $this->notify(new ContactUs($request));
         }
