@@ -17,27 +17,27 @@ class Socialite
         $socialite_enable = [];
         $socialite_links = '';
 
-        if (strlen(getenv('BITBUCKET_CLIENT_ID'))) {
+        if (config('services.bitbucket.client_id')) {
             $socialite_enable[] = link_to_route('frontend.auth.social.login', trans('labels.frontend.auth.login_with', ['social_media' => 'Bit Bucket']), 'bitbucket');
         }
 
-        if (strlen(getenv('FACEBOOK_CLIENT_ID'))) {
+        if (config('services.facebook.client_id')) {
             $socialite_enable[] = link_to_route('frontend.auth.social.login', trans('labels.frontend.auth.login_with', ['social_media' => 'Facebook']), 'facebook');
         }
 
-        if (strlen(getenv('GOOGLE_CLIENT_ID'))) {
+        if (config('services.google.client_id')) {
             $socialite_enable[] = link_to_route('frontend.auth.social.login', trans('labels.frontend.auth.login_with', ['social_media' => 'Google']), 'google');
         }
 
-        if (strlen(getenv('GITHUB_CLIENT_ID'))) {
+        if (config('services.github.client_id')) {
             $socialite_enable[] = link_to_route('frontend.auth.social.login', trans('labels.frontend.auth.login_with', ['social_media' => 'Github']), 'github');
         }
 
-        if (strlen(getenv('LINKEDIN_CLIENT_ID'))) {
+        if (config('services.linkedin.client_id')) {
             $socialite_enable[] = link_to_route('frontend.auth.social.login', trans('labels.frontend.auth.login_with', ['social_media' => 'Linked In']), 'linkedin');
         }
 
-        if (strlen(getenv('TWITTER_CLIENT_ID'))) {
+        if (config('services.twitter.client_id')) {
             $socialite_enable[] = link_to_route('frontend.auth.social.login', trans('labels.frontend.auth.login_with', ['social_media' => 'Twitter']), 'twitter');
         }
 
