@@ -1,0 +1,10 @@
+{
+  "template": "php-apache",
+  "ports": [8000],
+  "name": "Laravel 5 Boilerplate",
+  "description": "A Laravel 5 Boilerplate Project",
+  "scripts": {
+    "post-create": "sudo apt-get update && sudo apt-get install -y php-mbstring && npm install -g gulp && composer install && npm install && mysql -u root -e 'create database homestead' && cp .env.example .env && sed -i 's|DB_USERNAME=homestead|DB_USERNAME=nitrous|g' .env && sed -i 's|DB_PASSWORD=secret|DB_PASSWORD=|g' .env && php artisan key:generate && php artisan migrate && php artisan db:seed && gulp",
+    "Start Laravel 5 Boilerplate": "cd ~/code/laravel-5-boilerplate && php artisan serve --host 0.0.0.0"
+  }
+}
