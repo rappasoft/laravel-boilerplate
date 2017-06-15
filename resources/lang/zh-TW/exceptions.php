@@ -27,9 +27,11 @@ return [
             ],
 
             'users' => [
+				'already_confirmed'    => 'This user is already confirmed.',
                 'cant_deactivate_self' => '你不能停用自己。 ',
                 'cant_delete_self' => '你不能刪除自己。 ',
                 'cant_restore' => '此用戶未刪除，因此無法恢復。 ',
+				'cant_confirm' => 'There was a problem confirming the user account.',
                 'create_error' => '創建此用戶時出現問題。請再試一次。 ',
                 'delete_error' => '刪除此用戶時出現問題。請再試一次。 ',
                 'delete_first' => '此用戶必須先刪除，才能永久銷毀。 ',
@@ -51,8 +53,10 @@ return [
                 'already_confirmed' => '您的帳戶已確認。 ',
                 'confirm' => '確認您的帳戶！ ',
                 'created_confirm' => '您的帳戶已成功創建。我們已向您發送電子郵件以確認您的帳戶。 ',
+				'created_pending'   => 'Your account was successfully created and is pending approval. An e-mail will be sent when your account is approved.',
                 'mismatch' => '您的確認碼不匹配。 ',
                 'not_found' => '該確認碼不存在。 ',
+				'pending'            => 'Your account is currently pending approval.',
                 'resend' => '您的帳戶未確認。請點擊您的電子郵件中的確認鏈接，或<a href="'.route('frontend.auth.account.confirm.resend', ':user_id').'">點擊此處</a> 重新發送確認電子郵件。 ',
                 'success' => '您的帳戶已成功確認！ ',
                 'resent' => '新的確認電子郵件已發送到文件上的地址。 ',

@@ -44,7 +44,7 @@ trait UserAttribute
             return "<label class='label label-success'>".trans('labels.general.yes').'</label>';
         }
 
-        return "<label class='label label-danger'>".trans('labels.general.no').'</label>';
+		return '<a href="'.route('admin.access.user.confirm', $this).'" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.confirm').'" name="confirm_item"><label class="label label-danger" style="cursor:pointer">'.trans('labels.general.no').'</label></a>';
     }
 
     /**
@@ -160,7 +160,7 @@ trait UserAttribute
      */
     public function getConfirmedButtonAttribute()
     {
-        if (! $this->isConfirmed()) {
+        if (! $this->isConfirmed() && !config('access.users.requires_approval')) {
             return '<a href="'.route('admin.access.user.account.confirm.resend', $this).'" class="btn btn-xs btn-success"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title='.trans('buttons.backend.access.users.resend_email').'"></i></a> ';
         }
 

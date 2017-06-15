@@ -122,11 +122,12 @@ class UserRepository extends BaseRepository
 
         /*
          * If users have to confirm their email and this is not a social account,
+         * and the account does not require admin approval
          * send the confirmation email
          *
          * If this is a social account they are confirmed through the social provider by default
          */
-        if (config('access.users.confirm_email') && $provider === false) {
+        if ((config('access.users.confirm_email') && $provider === false) && !config('access.users.requires_approval')) {
             $user->notify(new UserNeedsConfirmation($user->confirmation_code));
         }
 

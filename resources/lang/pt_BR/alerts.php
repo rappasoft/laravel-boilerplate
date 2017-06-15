@@ -22,7 +22,9 @@ return [
         ],
 
         'users' => [
+			'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
             'confirmation_email'  => 'Uma nova confirmação de e-mail será enviada.',
+			'confirmed'			  => 'The user was successfully confirmed.',
             'created'             => 'O usuário foi criado com sucesso.',
             'deleted'             => 'O usuário foi excluído com sucesso.',
             'deleted_permanently' => 'O usuário foi excluídodo permanentemente.',

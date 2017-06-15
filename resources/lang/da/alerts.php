@@ -21,7 +21,9 @@ return [
         ],
 
         'users' => [
+			'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
             'confirmation_email'  => 'En ny bekræftelsesmail er blevet sendt til adressen for brugeren.',
+			'confirmed'			  => 'The user was successfully confirmed.',
             'created'             => 'Brugeren blev oprettet.',
             'deleted'             => 'Brugeren blev slettet.',
             'deleted_permanently' => 'Brugeren blev slettet permanent.',

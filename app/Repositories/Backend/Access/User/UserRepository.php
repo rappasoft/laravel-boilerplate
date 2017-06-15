@@ -2,7 +2,9 @@
 
 namespace App\Repositories\Backend\Access\User;
 
+use App\Events\Frontend\Auth\UserConfirmed;
 use App\Models\Access\User\User;
+use App\Notifications\Backend\Access\UserAccountActive;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
@@ -109,6 +111,13 @@ class UserRepository extends BaseRepository
         return $dataTableQuery->active($status);
     }
 
+	/**
+	 * @return mixed
+	 */
+	public function getUnconfirmedCount() {
+    	return $this->query()->where('confirmed', 0)->count();
+	}
+
     /**
      * @param array $input
      */
@@ -161,7 +170,6 @@ class UserRepository extends BaseRepository
         $user->last_name = $data['last_name'];
         $user->email = $data['email'];
         $user->status = isset($data['status']) ? 1 : 0;
-        $user->confirmed = isset($data['confirmed']) ? 1 : 0;
 
         DB::transaction(function () use ($user, $data, $roles) {
             if ($user->save()) {
@@ -300,6 +308,34 @@ class UserRepository extends BaseRepository
 
         throw new GeneralException(trans('exceptions.backend.access.users.mark_error'));
     }
+
+	/**
+	 * @param Model $user
+	 *
+	 * @return bool
+	 * @throws GeneralException
+	 */
+	public function confirm(Model $user) {
+    	if ($user->confirmed == 1) {
+    		throw new GeneralException(trans('exceptions.backend.access.users.already_confirmed'));
+		}
+
+		$user->confirmed = 1;
+    	$confirmed = $user->save();
+
+    	if ($confirmed) {
+			event(new UserConfirmed($user));
+
+			// Let user know their account was approved
+			if (config('access.users.requires_approval')) {
+				$user->notify(new UserAccountActive());
+			}
+
+			return true;
+		}
+
+		throw new GeneralException(trans('exceptions.backend.access.users.cant_confirm'));
+	}
 
     /**
      * @param  $input

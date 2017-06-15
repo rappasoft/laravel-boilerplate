@@ -72,6 +72,7 @@ return [
 
     'emails' => [
         'auth' => [
+			'account_confirmed' => 'Your account has been confirmed.',
             'error'                   => '哎呀！',
             'greeting'                => '你好！',
             'regards'                 => '问候,',

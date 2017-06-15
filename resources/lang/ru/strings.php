@@ -70,6 +70,7 @@ TEXT
     ],
     'emails'   => [
         'auth' => [
+			'account_confirmed' => 'Your account has been confirmed.',
             'click_to_confirm'          => 'Щелкните здесь, чтобы подтвердить вашу учетную запись:',
             'error'                     => 'Упс!',
             'greeting'                  => 'Здравствуйте!',

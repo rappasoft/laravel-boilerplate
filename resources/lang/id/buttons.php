@@ -19,6 +19,7 @@ return [
                 'activate'           => 'Aktifkan',
                 'change_password'    => 'Ubah Sandi',
                 'clear_session'         => 'Clear Session',
+				'confirm'			 => 'Confirm',
                 'deactivate'         => 'Lumpuhkan',
                 'delete_permanently' => 'Hapus Permanen',
                 'login_as'           => 'Login sebagai :user',

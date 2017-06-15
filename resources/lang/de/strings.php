@@ -72,6 +72,7 @@ return [
 
     'emails' => [
         'auth' => [
+			'account_confirmed' => 'Your account has been confirmed.',
             'error'                   => 'Hoppla!',
             'greeting'                => 'Hallo!',
             'regards'                 => 'Viele Grüße,',

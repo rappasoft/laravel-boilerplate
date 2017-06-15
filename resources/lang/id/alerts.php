@@ -21,7 +21,9 @@ return [
         ],
 
         'users' => [
+			'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
             'confirmation_email'  => 'Sebuah e-mail konfirmasi baru telah dikirim ke alamat bersangkutan.',
+			'confirmed'			  => 'The user was successfully confirmed.',
             'created'             => 'Pengguna telah berhasil dibuat.',
             'deleted'             => 'Pengguna telah berhasil dihapus.',
             'deleted_permanently' => 'Pengguna telah dihapus secara permanen.',

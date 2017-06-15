@@ -19,6 +19,7 @@ return [
                 'activate'           => 'Aktivieren',
                 'change_password'    => 'Kennwort Ändern',
                 'clear_session'         => 'Clear Session',
+				'confirm'			 => 'Confirm',
                 'deactivate'         => 'Deaktivieren',
                 'delete_permanently' => 'Permanent löschen',
                 'login_as'           => 'Anmelden als :user',

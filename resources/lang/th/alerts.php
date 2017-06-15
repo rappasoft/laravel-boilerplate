@@ -21,7 +21,9 @@ return [
         ],
 
         'users' => [
+			'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
             'confirmation_email'  => 'อีเมลยืนยันตัวตนได้ถูกส่งไปยังปลายทางแล้ว',
+			'confirmed'			  => 'The user was successfully confirmed.',
             'created'             => 'ผู้ใช้ถูกสร้างสำเร็จแล้ว',
             'deleted'             => 'ผู้ใช้ถูกลบสำเร็จแล้ว',
             'deleted_permanently' => 'ผู้ใช้ถูกลบไปอย่างถาวร',

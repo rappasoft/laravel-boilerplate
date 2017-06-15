@@ -19,6 +19,7 @@ return [
                 'activate'           => 'Ενεργοποίησε',
                 'change_password'    => 'Άλλαξε κωδικό',
                 'clear_session'         => 'Clear Session',
+				'confirm'			 => 'Confirm',
                 'deactivate'         => 'Απενεργοποίησε',
                 'delete_permanently' => 'Διέγραψε μόνιμα',
                 'login_as'           => 'Συνδέσου σαν :user',

@@ -27,6 +27,7 @@ return [
             ],
 
             'users' => [
+				'already_confirmed'    => 'This user is already confirmed.',
                 'cant_deactivate_self'  => 'Du kan ikke udføre denne handling på dig selv.',
                 'cant_delete_admin'  => 'You can not delete the super administrator.',
                 'cant_delete_self'      => 'Du kan ikke slette dig selv.',
@@ -53,8 +54,10 @@ return [
                 'already_confirmed' => 'Din konto er allerede bekræftet.',
                 'confirm'           => 'Bekræft din konto!',
                 'created_confirm'   => 'Din konto blev oprettet. Vi har sendt dig en email for at bekræfte din konto.',
+				'created_pending'   => 'Your account was successfully created and is pending approval. An e-mail will be sent when your account is approved.',
                 'mismatch'          => 'Din bekræftelseskode matcher ikke.',
                 'not_found'         => 'Denne bekræftelseskode findes ikke.',
+				'pending'            => 'Your account is currently pending approval.',
                 'resend'            => 'Din konto er ikke bekræftet. Klik på linket i bekræftelsesmailen eller <a href="'.route('frontend.auth.account.confirm.resend', ':user_id').'">klik her</a> for at gensende bekræftelsesmailen.',
                 'success'           => 'Din konto er blevet bekræftet!',
                 'resent'            => 'En ny bekræftelsesmail er blevet sendt til den kendte e-mailadresse.',

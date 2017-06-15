@@ -21,7 +21,9 @@ return [
         ],
 
         'users' => [
+			'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
             'confirmation_email'  => "Un email de confirmation a été adressé à l'adresse indiquée",
+			'confirmed'			  => 'The user was successfully confirmed.',
             'created'             => 'Utilisateur créé avec succès.',
             'deleted'             => 'Utilisateur supprimé avec succès.',
             'deleted_permanently' => "L'utilisateur a été supprimé définitivement.",

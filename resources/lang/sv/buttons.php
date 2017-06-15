@@ -19,6 +19,7 @@ return [
                 'activate'           => 'Aktivera',
                 'change_password'    => 'Byt lösenord',
                 'clear_session'         => 'Clear Session',
+				'confirm'			 => 'Confirm',
                 'deactivate'         => 'Inaktivera',
                 'resend_email'       => 'Skicka bekräftelsemail igen.',
                 'delete_permanently' => 'Radera permanent',

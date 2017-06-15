@@ -21,7 +21,9 @@ return [
         ],
 
         'users' => [
+			'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
             'confirmation_email'  => 'A new confirmation e-mail has been sent to the address on file.',
+			'confirmed'			  => 'The user was successfully confirmed.',
             'created'             => 'Ο χρήστης δημιουργήθηκε επιτυχώς.',
             'deleted'             => 'Ο χρήστης διαγράφηκε επιτυχώς.',
             'deleted_permanently' => 'Ο χρήστης διαγράφηκε μόνιμα.',

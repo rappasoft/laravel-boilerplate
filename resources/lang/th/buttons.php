@@ -19,6 +19,7 @@ return [
                 'activate'           => 'เปิดใช้งาน',
                 'change_password'    => 'เปลี่ยนรหัสผ่าน',
                 'clear_session'         => 'Clear Session',
+				'confirm'			 => 'Confirm',
                 'deactivate'         => 'พักการใช้งาน',
                 'delete_permanently' => 'ลบอย่างถาวร',
                 'login_as'           => 'เข้าสู่ระบบเสมือนเป็น :user',

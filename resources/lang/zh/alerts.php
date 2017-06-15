@@ -21,7 +21,9 @@ return [
         ],
 
         'users' => [
+			'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
             'confirmation_email'  => '新的确认电子邮件已发送到文件上的地址。',
+			'confirmed'			  => 'The user was successfully confirmed.',
             'created'             => '用户已成功创建。',
             'deleted'             => '用户已成功删除。',
             'deleted_permanently' => '用户被永久删除。',

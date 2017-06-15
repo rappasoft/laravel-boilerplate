@@ -19,6 +19,7 @@ return [
                 'activate'           => 'Etkinleştir',
                 'change_password'    => 'Parolayı Değiştir',
                 'clear_session'         => 'Oturumu Temizle',
+				'confirm'			 => 'Confirm',
                 'deactivate'         => 'Devre dışı bırak',
                 'delete_permanently' => 'Kalıcı Olarak Sil',
                 'login_as'           => 'Kullanıcı :user olarak oturum aç',

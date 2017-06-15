@@ -21,7 +21,9 @@ return [
             'updated'   => 'Роль обновлена.',
         ],
         'users' => [
+			'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
             'confirmation_email'    => 'Новые параметры для подтверждения отправлены на Ваш E-mail.',
+			'confirmed'			  => 'The user was successfully confirmed.',
             'created'               => 'Новый пользователь создан.',
             'deleted'               => 'Пользователь удален.',
             'deleted_permanently'   => 'Пользователь удален навсегда.',

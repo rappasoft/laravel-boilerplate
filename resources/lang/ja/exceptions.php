@@ -27,9 +27,11 @@ return [
             ],
 
             'users' => [
+				'already_confirmed'    => 'This user is already confirmed.',
                 'cant_deactivate_self' => 'あなたは自分を非アクティブに変更できないです。',
                 'cant_delete_self' => 'あなた自身を削除できません。',
                 'cant_restore' => 'このユーザーは削除されてないため、復元できません。',
+				'cant_confirm' => 'There was a problem confirming the user account.',
                 'create_error' => 'このユーザーを作成する際に問題がありました。もう一度お試しください。',
                 'delete_error' => 'このユーザーの削除中に問題が発生しました。もう一度お試しください。',
                 'delete_first' => 'このユーザーは、永久に削除される前に削除する必要があります。',
@@ -51,8 +53,10 @@ return [
                 'already_confirmed' => 'あなたのアカウントは既に確認済みです。',
                 'confirm' => 'あなたのアカウントを確認してください！',
                 'created_confirm' => 'あなたのアカウントは正常に作成されました。 あなたのアカウントを確認するための電子メールをお送りしました。',
+				'created_pending'   => 'Your account was successfully created and is pending approval. An e-mail will be sent when your account is approved.',
                 'mismatch' => 'あなたの確認コードが一致しません。',
                 'not_found' => 'その確認コードは存在しません。',
+				'pending'            => 'Your account is currently pending approval.',
                 'resend' => 'あなたのアカウントは確認されていません。 あなたの電子メールの確認リンクをクリックするか、 <a href="'.route('frontend.auth.account.confirm.resend', ':user_id').'">ここをクリック</a>して再送信してください。',
                 'success' => 'あなたのアカウントは正常に確認されました！',
                 'resent' => '新しい確認メールがファイルのアドレスに送信されました。',

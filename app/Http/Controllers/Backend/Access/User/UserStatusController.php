@@ -59,6 +59,18 @@ class UserStatusController extends Controller
         return redirect()->route($status == 1 ? 'admin.access.user.index' : 'admin.access.user.deactivated')->withFlashSuccess(trans('alerts.backend.users.updated'));
     }
 
+	/**
+	 * @param User              $user
+	 * @param ManageUserRequest $request
+	 *
+	 * @return mixed
+	 */
+	public function confirm(User $user, ManageUserRequest $request) {
+		$this->users->confirm($user);
+
+		return redirect()->route('admin.access.user.index')->withFlashSuccess(trans('alerts.backend.users.confirmed'));
+	}
+
     /**
      * @param User              $deletedUser
      * @param ManageUserRequest $request

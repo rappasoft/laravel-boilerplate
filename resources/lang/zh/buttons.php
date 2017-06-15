@@ -19,6 +19,7 @@ return [
                 'activate'           => '激活',
                 'change_password'    => '更改密码',
                 'clear_session'      => '清除会话',
+				'confirm'			 => 'Confirm',
                 'deactivate'         => '停用',
                 'delete_permanently' => '永久删除',
                 'login_as'           => '登录为 :user',

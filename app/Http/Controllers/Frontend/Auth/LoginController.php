@@ -54,7 +54,12 @@ class LoginController extends Controller
          */
         if (! $user->isConfirmed()) {
             access()->logout();
-            throw new GeneralException(trans('exceptions.frontend.auth.confirmation.resend', ['user_id' => $user->id]));
+
+			throw new GeneralException(
+				config('access.users.requires_approval') ?
+				trans("exceptions.frontend.auth.confirmation.pending") :
+				trans('exceptions.frontend.auth.confirmation.resend', ['user_id' => $user->id])
+			);
         } elseif (! $user->isActive()) {
             access()->logout();
             throw new GeneralException(trans('exceptions.frontend.auth.deactivated'));

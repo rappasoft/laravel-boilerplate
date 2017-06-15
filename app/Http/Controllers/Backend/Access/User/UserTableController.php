@@ -45,6 +45,9 @@ class UserTableController extends Controller
             ->addColumn('actions', function ($user) {
                 return $user->action_buttons;
             })
+			->setRowClass(function ($user) {
+				return !$user->isConfirmed() && config('access.users.requires_approval') ? 'danger' : '';
+			})
             ->withTrashed()
             ->make(true);
     }

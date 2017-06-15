@@ -19,6 +19,7 @@ return [
                 'activate'           => 'Aktivér',
                 'change_password'    => 'Skift adgangskode',
                 'clear_session'         => 'Clear Session',
+				'confirm'			 => 'Confirm',
                 'deactivate'         => 'Deaktiver',
                 'delete_permanently' => 'Slet permanent',
                 'login_as'           => 'Log ind som :user',
