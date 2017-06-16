@@ -155,7 +155,8 @@ return [
 
         'frontend' => [
             'email'                     => 'Adresse email',
-            'name'                      => 'Nom',
+            'last_name'                 => 'Nom',
+            'first_name'                => 'Prénom',
             'password'                  => 'Mot de passe',
             'password_confirmation'     => 'Confirmation',
             'old_password'              => 'Ancien mot de passe',
