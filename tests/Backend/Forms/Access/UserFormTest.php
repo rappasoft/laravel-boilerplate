@@ -177,7 +177,6 @@ class UserFormTest extends BrowserKitTestCase
              ->type('New', 'last_name')
              ->type('user2@user.com', 'email')
              ->uncheck('status')
-             ->uncheck('confirmed')
              ->check('assignees_roles[2]')
              ->uncheck('assignees_roles[3]')
              ->press('Update')
@@ -190,7 +189,6 @@ class UserFormTest extends BrowserKitTestCase
                      'last_name'      => 'New',
                      'email'     => 'user2@user.com',
                      'status'    => 0,
-                     'confirmed' => 0,
                  ])
              ->seeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => 2])
              ->notSeeInDatabase(config('access.role_user_table'), ['user_id' => $this->user->id, 'role_id' => 3]);
