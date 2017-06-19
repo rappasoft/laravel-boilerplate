@@ -2,10 +2,7 @@
 
 namespace App\Repositories\Backend\Access\User;
 
-use App\Events\Backend\Access\User\UserConfirmed;
-use App\Events\Backend\Access\User\UserUnconfirmed;
 use App\Models\Access\User\User;
-use App\Notifications\Backend\Access\UserAccountActive;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
@@ -14,9 +11,12 @@ use App\Events\Backend\Access\User\UserCreated;
 use App\Events\Backend\Access\User\UserDeleted;
 use App\Events\Backend\Access\User\UserUpdated;
 use App\Events\Backend\Access\User\UserRestored;
+use App\Events\Backend\Access\User\UserConfirmed;
 use App\Events\Backend\Access\User\UserDeactivated;
 use App\Events\Backend\Access\User\UserReactivated;
+use App\Events\Backend\Access\User\UserUnconfirmed;
 use App\Events\Backend\Access\User\UserPasswordChanged;
+use App\Notifications\Backend\Access\UserAccountActive;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Events\Backend\Access\User\UserPermanentlyDeleted;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
@@ -112,12 +112,13 @@ class UserRepository extends BaseRepository
         return $dataTableQuery->active($status);
     }
 
-	/**
-	 * @return mixed
-	 */
-	public function getUnconfirmedCount() {
-    	return $this->query()->where('confirmed', 0)->count();
-	}
+    /**
+     * @return mixed
+     */
+    public function getUnconfirmedCount()
+    {
+        return $this->query()->where('confirmed', 0)->count();
+    }
 
     /**
      * @param array $input
@@ -310,65 +311,68 @@ class UserRepository extends BaseRepository
         throw new GeneralException(trans('exceptions.backend.access.users.mark_error'));
     }
 
-	/**
-	 * @param Model $user
-	 *
-	 * @return bool
-	 * @throws GeneralException
-	 */
-	public function confirm(Model $user) {
-    	if ($user->confirmed == 1) {
-    		throw new GeneralException(trans('exceptions.backend.access.users.already_confirmed'));
-		}
+    /**
+     * @param Model $user
+     *
+     * @return bool
+     * @throws GeneralException
+     */
+    public function confirm(Model $user)
+    {
+        if ($user->confirmed == 1) {
+            throw new GeneralException(trans('exceptions.backend.access.users.already_confirmed'));
+        }
 
-		$user->confirmed = 1;
-    	$confirmed = $user->save();
+        $user->confirmed = 1;
+        $confirmed = $user->save();
 
-    	if ($confirmed) {
-			event(new UserConfirmed($user));
+        if ($confirmed) {
+            event(new UserConfirmed($user));
 
-			// Let user know their account was approved
-			if (config('access.users.requires_approval')) {
-				$user->notify(new UserAccountActive());
-			}
+            // Let user know their account was approved
+            if (config('access.users.requires_approval')) {
+                $user->notify(new UserAccountActive());
+            }
 
-			return true;
-		}
+            return true;
+        }
 
-		throw new GeneralException(trans('exceptions.backend.access.users.cant_confirm'));
-	}
+        throw new GeneralException(trans('exceptions.backend.access.users.cant_confirm'));
+    }
 
-	/**
-	 * @param Model $user
-	 *
-	 * @return bool
-	 * @throws GeneralException
-	 */
-	public function unconfirm(Model $user) {
-		if ($user->confirmed == 0) {
-			throw new GeneralException(trans('exceptions.backend.access.users.not_confirmed'));
-		}
+    /**
+     * @param Model $user
+     *
+     * @return bool
+     * @throws GeneralException
+     */
+    public function unconfirm(Model $user)
+    {
+        if ($user->confirmed == 0) {
+            throw new GeneralException(trans('exceptions.backend.access.users.not_confirmed'));
+        }
 
-		if ($user->id == 1) {
-			// Cant un-confirm admin
-			throw new GeneralException(trans('exceptions.backend.access.users.cant_unconfirm_admin'));
-		}
+        if ($user->id == 1) {
+            // Cant un-confirm admin
+            throw new GeneralException(trans('exceptions.backend.access.users.cant_unconfirm_admin'));
+        }
 
-		if ($user->id == access()->id()) {
-			// Cant un-confirm self
-			throw new GeneralException(trans('exceptions.backend.access.users.cant_unconfirm_self'));
-		}
+        if ($user->id == access()->id()) {
+            // Cant un-confirm self
+            throw new GeneralException(trans('exceptions.backend.access.users.cant_unconfirm_self'));
+        }
 
-		$user->confirmed = 0;
-		$unconfirmed = $user->save();
+        $user->confirmed = 0;
+        $unconfirmed = $user->save();
 
-		if ($unconfirmed) {
-			event(new UserUnconfirmed($user));
-			return true;
-		}
+        if ($unconfirmed) {
+            event(new UserUnconfirmed($user));
 
-		throw new GeneralException(trans('exceptions.backend.access.users.cant_unconfirm')); // TODO
-	}
+            return true;
+        }
+
+        throw new GeneralException(trans('exceptions.backend.access.users.cant_unconfirm')); // TODO
+    }
 
     /**
      * @param  $input

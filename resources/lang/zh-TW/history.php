@@ -30,7 +30,7 @@ return [
             'deleted' => '已刪除的用戶',
             'permanently_deleted' => '永久刪除的用戶',
             'updated' => '更新用戶',
-			'unconfirmed' => 'un-confirmed user',
+            'unconfirmed' => 'un-confirmed user',
             'reactivated' => '重新激活的用戶',
             'restored' => '還原用戶',
         ],
