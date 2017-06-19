@@ -25,11 +25,13 @@ return [
         ],
         'users' => [
             'changed_password'    => 'skiftede adgangskoden for brugeren',
+			'confirmed' => 'confirmed user',
             'created'             => 'oprettede brugeren',
             'deactivated'         => 'deaktiverede brugeren',
             'deleted'             => 'slettede brugeren',
             'permanently_deleted' => 'slettede permanent brugeren',
             'updated'             => 'opdaterede brugeren',
+			'unconfirmed' => 'un-confirmed user',
             'reactivated'         => 'genatkiverede brugeren',
             'restored'            => 'genskabte brugeren',
         ],

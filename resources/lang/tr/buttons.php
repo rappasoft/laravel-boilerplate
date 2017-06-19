@@ -25,6 +25,7 @@ return [
                 'login_as'           => 'Kullanıcı :user olarak oturum aç',
                 'resend_email'       => 'Onay E-postasını Yeniden Gönder',
                 'restore_user'       => 'Kullanıcıyı Kurtar',
+				'unconfirm'			 => 'Un-confirm',
             ],
         ],
     ],

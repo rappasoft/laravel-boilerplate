@@ -29,6 +29,7 @@ return [
             'deleted_permanently' => 'Kullanıcı kalıcı olarak silindi.',
             'restored'            => 'Kullanıcı başarıyla geri yüklendi.',
             'session_cleared'      => 'Kullanıcının oturumu başarıyla temizlendi.',
+			'unconfirmed' => 'The user was successfully un-confirmed',
             'updated'             => 'Kullanıcı başarıyla güncellendi.',
             'updated_password'    => 'Kullanıcının şifresi başarıyla güncellendi.',
         ],

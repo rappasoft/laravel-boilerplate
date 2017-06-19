@@ -29,6 +29,7 @@ return [
             'deleted_permanently'   => 'Пользователь удален навсегда.',
             'restored'              => 'Пользователь восстановлен.',
             'session_cleared'      => "The user's session was successfully cleared.",
+			'unconfirmed' => 'The user was successfully un-confirmed',
             'updated'               => 'Параметры пользователя обновлены.',
             'updated_password'      => 'Пароль пользователя обновлен.',
         ],

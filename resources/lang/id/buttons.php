@@ -25,6 +25,7 @@ return [
                 'login_as'           => 'Login sebagai :user',
                 'resend_email'       => 'Kirim Ulang Email Konfirmasi',
                 'restore_user'       => 'Restorasi Pengguna',
+				'unconfirm'			 => 'Un-confirm',
             ],
         ],
     ],

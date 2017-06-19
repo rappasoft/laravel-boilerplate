@@ -25,6 +25,7 @@ return [
                 'delete_permanently' => 'Radera permanent',
                 'login_as'           => 'Login As :user',
                 'restore_user'       => 'Återställ',
+				'unconfirm'			 => 'Un-confirm',
             ],
         ],
     ],

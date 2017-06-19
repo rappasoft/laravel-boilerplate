@@ -25,11 +25,13 @@ return [
         ],
         'users' => [
             'changed_password'    => 'قام بتغيير كلمة مرور المستخدم',
+			'confirmed' => 'confirmed user',
             'created'             => 'قام بإنشاء المستخدم',
             'deactivated'         => 'قام بتعطيل المستخدم',
             'deleted'             => 'قام بحذف المستخدم',
             'permanently_deleted' => 'قام بالحذف النهائي للمستخدم',
             'updated'             => 'قام بتحديث المستخدم',
+			'unconfirmed' => 'un-confirmed user',
             'reactivated'         => 'قام بإعادة تفعيل المستخدم',
             'restored'            => 'قام بإستعادة المستخدم',
         ],

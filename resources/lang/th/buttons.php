@@ -25,6 +25,7 @@ return [
                 'login_as'           => 'เข้าสู่ระบบเสมือนเป็น :user',
                 'resend_email'       => 'ส่งอีเมลยืนยันตัวตนอีกครั้ง',
                 'restore_user'       => 'กู้คืนผู้ใช้',
+				'unconfirm'			 => 'Un-confirm',
             ],
         ],
     ],

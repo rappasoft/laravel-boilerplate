@@ -29,6 +29,7 @@ return [
             'deleted_permanently' => 'Brugeren blev slettet permanent.',
             'restored'            => 'Brugeren blev genskabt.',
             'session_cleared'      => "The user's session was successfully cleared.",
+			'unconfirmed' => 'The user was successfully un-confirmed',
             'updated'             => 'Brugeren blev opdateret.',
             'updated_password'    => 'Brugerens adgangskode blev opdateret.',
         ],

@@ -25,11 +25,13 @@ return [
         ],
         'users' => [
             'changed_password'    => '更改了用户密码',
+			'confirmed' => 'confirmed user',
             'created'             => '创建了用户',
             'deactivated'         => '停用了用户',
             'deleted'             => '删除了用户',
             'permanently_deleted' => '永久删除了用户',
             'updated'             => '更新了用户',
+			'unconfirmed' => 'un-confirmed user',
             'reactivated'         => '重新激活了用户',
             'restored'            => '还原了用户',
         ],

@@ -25,6 +25,7 @@ return [
                 'login_as'           => 'Se connecter avec :user',
                 'resend_email'       => 'Renvoyer le mail de confirmation',
                 'restore_user'       => "Réactiver l'utilisateur",
+				'unconfirm'			 => 'Un-confirm',
             ],
         ],
     ],

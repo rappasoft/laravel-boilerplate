@@ -37,6 +37,7 @@ return [
                 'delete_first'          => 'This user must be deleted first before it can be destroyed permanently.',
                 'email_error'           => 'Denne e-mailadresse tilhører en anden bruger.',
                 'mark_error'            => 'Der opstod et problem ved opdatering af denne bruger. Prøv venligst igen.',
+				'not_confirmed'			=> 'This user is not confirmed.',
                 'not_found'             => 'Denne bruger eksisterer ikke.',
                 'restore_error'         => 'Der opstod et problem ved genskabelse af denne bruger. Prøv venligst igen.',
                 'role_needed_create'    => 'Du skal vælge mindst én rolle.',

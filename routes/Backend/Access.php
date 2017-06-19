@@ -41,7 +41,10 @@ Route::group([
 
                 // Status
                 Route::get('mark/{status}', 'UserStatusController@mark')->name('user.mark')->where(['status' => '[0,1]']);
-				Route::get('confirm', 'UserStatusController@confirm')->name('user.confirm');
+
+                // Confirmation
+				Route::get('confirm', 'UserConfirmationController@confirm')->name('user.confirm');
+				Route::get('unconfirm', 'UserConfirmationController@unconfirm')->name('user.unconfirm');
 
                 // Password
                 Route::get('password/change', 'UserPasswordController@edit')->name('user.change-password');

@@ -25,6 +25,7 @@ return [
                 'login_as'           => 'Log ind som :user',
                 'resend_email'       => 'Gensend bekræftelsesmail',
                 'restore_user'       => 'Genskab bruger',
+				'unconfirm'			 => 'Un-confirm',
             ],
         ],
     ],

@@ -26,6 +26,7 @@ return [
         ],
         'users'             => [
             'changed_password'      => 'изменил пароль пользователя',
+			'confirmed' => 'confirmed user',
             'created'               => 'создал учётную запись',
             'deactivated'           => 'заблокировал учётную запись',
             'deleted'               => 'удалил учётную запись',
@@ -33,6 +34,7 @@ return [
             'reactivated'           => 'разблокировал учётную запись',
             'restored'              => 'восстановил учётную запись',
             'updated'               => 'обновил учётную запись',
+			'unconfirmed' => 'un-confirmed user',
         ],
     ],
 ];

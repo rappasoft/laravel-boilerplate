@@ -25,11 +25,13 @@ return [
         ],
         'users' => [
             'changed_password'    => 'sandi dirubah untuk pengguna',
+			'confirmed' => 'confirmed user',
             'created'             => 'pengguna dibuat',
             'deactivated'         => 'pengguna dinonaktifkan',
             'deleted'             => 'pengguna dihapus',
             'permanently_deleted' => 'pengguna dihapus permanen',
             'updated'             => 'pengguna diperbarui',
+			'unconfirmed' => 'un-confirmed user',
             'reactivated'         => 'pengguna diaktifkan ulang',
             'restored'            => 'pengguna direstorasi',
         ],

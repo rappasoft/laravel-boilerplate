@@ -25,6 +25,7 @@ return [
                 'login_as'           => 'Aanmelden als :user',
                 'resend_email'       => 'Bevestigings email nogmaals zenden',
                 'restore_user'       => 'Gebruiker herstellen',
+				'unconfirm'			 => 'Un-confirm',
             ],
         ],
     ],

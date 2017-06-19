@@ -2,7 +2,8 @@
 
 namespace App\Repositories\Backend\Access\User;
 
-use App\Events\Frontend\Auth\UserConfirmed;
+use App\Events\Backend\Access\User\UserConfirmed;
+use App\Events\Backend\Access\User\UserUnconfirmed;
 use App\Models\Access\User\User;
 use App\Notifications\Backend\Access\UserAccountActive;
 use Illuminate\Support\Facades\DB;
@@ -335,6 +336,38 @@ class UserRepository extends BaseRepository
 		}
 
 		throw new GeneralException(trans('exceptions.backend.access.users.cant_confirm'));
+	}
+
+	/**
+	 * @param Model $user
+	 *
+	 * @return bool
+	 * @throws GeneralException
+	 */
+	public function unconfirm(Model $user) {
+		if ($user->confirmed == 0) {
+			throw new GeneralException(trans('exceptions.backend.access.users.not_confirmed'));
+		}
+
+		if ($user->id == 1) {
+			// Cant un-confirm admin
+			throw new GeneralException(trans('exceptions.backend.access.users.cant_unconfirm_admin'));
+		}
+
+		if ($user->id == access()->id()) {
+			// Cant un-confirm self
+			throw new GeneralException(trans('exceptions.backend.access.users.cant_unconfirm_self'));
+		}
+
+		$user->confirmed = 0;
+		$unconfirmed = $user->save();
+
+		if ($unconfirmed) {
+			event(new UserUnconfirmed($user));
+			return true;
+		}
+
+		throw new GeneralException(trans('exceptions.backend.access.users.cant_unconfirm')); // TODO
 	}
 
     /**

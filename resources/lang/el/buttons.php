@@ -25,6 +25,7 @@ return [
                 'login_as'           => 'Συνδέσου σαν :user',
                 'resend_email'       => 'Ξαναστείλε email επιβεβαίωσης',
                 'restore_user'       => 'Επαναφορά χρήστη',
+				'unconfirm'			 => 'Un-confirm',
             ],
         ],
     ],

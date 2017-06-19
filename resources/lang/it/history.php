@@ -25,11 +25,13 @@ return [
         ],
         'users' => [
             'changed_password'    => 'changed password for user',
+			'confirmed' => 'confirmed user',
             'created'             => 'created user',
             'deactivated'         => 'deactivated user',
             'deleted'             => 'deleted user',
             'permanently_deleted' => 'permanently deleted user',
             'updated'             => 'updated user',
+			'unconfirmed' => 'un-confirmed user',
             'reactivated'         => 'reactivated user',
             'restored'            => 'restored user',
         ],

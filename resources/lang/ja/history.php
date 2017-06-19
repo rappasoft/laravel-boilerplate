@@ -25,11 +25,13 @@ return [
         ],
         'users' => [
             'changed_password' => 'ユーザのパスワード変更しました。',
+			'confirmed' => 'confirmed user',
             'created' => 'ユーザ作成しました。',
             'deactivated' => 'ユーザを非アクティブにしました。',
             'deleted' => '削除しました。',
             'permanently_deleted' => 'ユーザを永久に削除しました。',
             'updated' => 'ユーザを更新しました。',
+			'unconfirmed' => 'un-confirmed user',
             'reactivated' => 'ユーザをアクテイブしました。',
             'restored' => 'ユーザを復元しました。',
         ],

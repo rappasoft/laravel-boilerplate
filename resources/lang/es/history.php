@@ -25,11 +25,13 @@ return [
         ],
         'users' => [
             'changed_password'    => 'Se cambio la contraseña del usuario',
+			'confirmed' => 'confirmed user',
             'created'             => 'Usuario creado',
             'deactivated'         => 'Usuario desactivado',
             'deleted'             => 'Usuario eliminado',
             'permanently_deleted' => 'Usuario eliminado permanentemente',
             'updated'             => 'usuario actualizado',
+			'unconfirmed' => 'un-confirmed user',
             'reactivated'         => 'Usuario reactivado',
             'restored'            => 'Usuario restaurado',
         ],
