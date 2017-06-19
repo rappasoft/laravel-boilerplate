@@ -41,15 +41,15 @@ trait UserAttribute
     public function getConfirmedLabelAttribute()
     {
         if ($this->isConfirmed()) {
-			if ($this->id != 1 && $this->id != access()->id()) {
-				return '<a href="' . route('admin.access.user.unconfirm',
-						$this) . '" data-toggle="tooltip" data-placement="top" title="' . trans('buttons.backend.access.users.unconfirm') . '" name="confirm_item"><label class="label label-success" style="cursor:pointer">' . trans('labels.general.yes') . '</label></a>';
-			} else {
-				return '<label class="label label-success">' . trans('labels.general.yes') . '</label>';
-			}
+            if ($this->id != 1 && $this->id != access()->id()) {
+                return '<a href="'.route('admin.access.user.unconfirm',
+                        $this).'" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.unconfirm').'" name="confirm_item"><label class="label label-success" style="cursor:pointer">'.trans('labels.general.yes').'</label></a>';
+            } else {
+                return '<label class="label label-success">'.trans('labels.general.yes').'</label>';
+            }
         }
 
-		return '<a href="'.route('admin.access.user.confirm', $this).'" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.confirm').'" name="confirm_item"><label class="label label-danger" style="cursor:pointer">'.trans('labels.general.no').'</label></a>';
+        return '<a href="'.route('admin.access.user.confirm', $this).'" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.confirm').'" name="confirm_item"><label class="label label-danger" style="cursor:pointer">'.trans('labels.general.no').'</label></a>';
     }
 
     /**
@@ -106,12 +106,13 @@ trait UserAttribute
         return $this->confirmed == 1;
     }
 
-	/**
-	 * @return bool
-	 */
-	public function isPending() {
-    	return config('access.users.requires_approval') && $this->confirmed == 0;
-	}
+    /**
+     * @return bool
+     */
+    public function isPending()
+    {
+        return config('access.users.requires_approval') && $this->confirmed == 0;
+    }
 
     /**
      * @return string
@@ -172,7 +173,7 @@ trait UserAttribute
      */
     public function getConfirmedButtonAttribute()
     {
-        if (! $this->isConfirmed() && !config('access.users.requires_approval')) {
+        if (! $this->isConfirmed() && ! config('access.users.requires_approval')) {
             return '<a href="'.route('admin.access.user.account.confirm.resend', $this).'" class="btn btn-xs btn-success"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title='.trans('buttons.backend.access.users.resend_email').'"></i></a> ';
         }
 

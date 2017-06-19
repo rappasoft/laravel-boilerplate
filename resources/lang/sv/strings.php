@@ -74,7 +74,7 @@ Denna boilerplate kommer med fullt funktionerande <em>Access Control Library</em
     ],
     'emails' => [
         'auth' => [
-			'account_confirmed' => 'Your account has been confirmed.',
+            'account_confirmed' => 'Your account has been confirmed.',
             'error'                   => 'Hoppsan!',
             'greeting'                => 'Hej!',
             'regards'                 => 'Hälsningar',

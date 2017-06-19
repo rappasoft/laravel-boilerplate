@@ -67,7 +67,7 @@ return [
 
     'emails' => [
         'auth' => [
-			'account_confirmed' => 'Your account has been confirmed.',
+            'account_confirmed' => 'Your account has been confirmed.',
             'error'                   => 'HATA!',
             'greeting'                => 'Merhaba!',
             'regards'                 => 'Saygılarımızla,',

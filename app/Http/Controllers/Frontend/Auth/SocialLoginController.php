@@ -82,8 +82,8 @@ class SocialLoginController extends Controller
 
         // Account approval is on
         if ($user->isPending()) {
-        	throw new GeneralException(trans("exceptions.frontend.auth.confirmation.pending"));
-		}
+            throw new GeneralException(trans('exceptions.frontend.auth.confirmation.pending'));
+        }
 
         // User has been successfully created or already exists
         access()->login($user, true);

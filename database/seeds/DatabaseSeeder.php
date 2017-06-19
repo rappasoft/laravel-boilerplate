@@ -9,8 +9,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class DatabaseSeeder extends Seeder
 {
-
-	use TruncateTable;
+    use TruncateTable;
 
     /**
      * Run the database seeds.

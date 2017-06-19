@@ -43,8 +43,8 @@ class LoggedOutFormTest extends BrowserKitTestCase
         // Make sure our events are fired
         Event::fake();
 
-		config(['access.users.confirm_email' => false]);
-		config(['access.users.requires_approval' => false]);
+        config(['access.users.confirm_email' => false]);
+        config(['access.users.requires_approval' => false]);
 
         // Create any needed resources
         $faker = Faker\Factory::create();
@@ -53,112 +53,114 @@ class LoggedOutFormTest extends BrowserKitTestCase
         $email = $faker->safeEmail;
         $password = $faker->password(8);
 
-		$this->visit('/register')
-			 ->type($firstName, 'first_name')
-			 ->type($lastName, 'last_name')
-			 ->type($email, 'email')
-			 ->type($password, 'password')
-			 ->type($password, 'password_confirmation')
-			 ->press('Register')
-			 ->see('Dashboard')
-			 ->seePageIs('/')
-			 ->seeInDatabase(config('access.users_table'),
-				 [
-					 'email' => $email,
-					 'first_name' => $firstName,
-					 'last_name' => $lastName,
-					 'confirmed' => 1,
-				 ]);
+        $this->visit('/register')
+             ->type($firstName, 'first_name')
+             ->type($lastName, 'last_name')
+             ->type($email, 'email')
+             ->type($password, 'password')
+             ->type($password, 'password_confirmation')
+             ->press('Register')
+             ->see('Dashboard')
+             ->seePageIs('/')
+             ->seeInDatabase(config('access.users_table'),
+                 [
+                     'email' => $email,
+                     'first_name' => $firstName,
+                     'last_name' => $lastName,
+                     'confirmed' => 1,
+                 ]);
 
         Event::assertDispatched(UserRegistered::class);
     }
 
-	/**
-	 * Test the required fields error messages when trying to register
-	 * without filling out the fields.
-	 */
-	public function testRegistrationFormConfirmationRequired() {
-		Event::fake();
-		Notification::fake();
+    /**
+     * Test the required fields error messages when trying to register
+     * without filling out the fields.
+     */
+    public function testRegistrationFormConfirmationRequired()
+    {
+        Event::fake();
+        Notification::fake();
 
-		config(['access.users.confirm_email' => true]);
-		config(['access.users.requires_approval' => false]);
+        config(['access.users.confirm_email' => true]);
+        config(['access.users.requires_approval' => false]);
 
-		// Create any needed resources
-		$faker = Faker\Factory::create();
-		$firstName = $faker->firstName;
-		$lastName = $faker->lastName;
-		$email = $faker->safeEmail;
-		$password = $faker->password(8);
+        // Create any needed resources
+        $faker = Faker\Factory::create();
+        $firstName = $faker->firstName;
+        $lastName = $faker->lastName;
+        $email = $faker->safeEmail;
+        $password = $faker->password(8);
 
-		$this->visit('/register')
-			->type($firstName, 'first_name')
-			->type($lastName, 'last_name')
-			->type($email, 'email')
-			->type($password, 'password')
-			->type($password, 'password_confirmation')
-			->press('Register')
-			->see('Your account was successfully created. We have sent you an e-mail to confirm your account.')
-			->see('Login')
-			->seePageIs('/')
-			->seeInDatabase(config('access.users_table'),
-				[
-					'email' => $email,
-					'first_name' => $firstName,
-					'last_name' => $lastName,
-					'confirmed' => 0,
-				]);
+        $this->visit('/register')
+            ->type($firstName, 'first_name')
+            ->type($lastName, 'last_name')
+            ->type($email, 'email')
+            ->type($password, 'password')
+            ->type($password, 'password_confirmation')
+            ->press('Register')
+            ->see('Your account was successfully created. We have sent you an e-mail to confirm your account.')
+            ->see('Login')
+            ->seePageIs('/')
+            ->seeInDatabase(config('access.users_table'),
+                [
+                    'email' => $email,
+                    'first_name' => $firstName,
+                    'last_name' => $lastName,
+                    'confirmed' => 0,
+                ]);
 
-		// Get the user that was inserted into the database
-		$user = User::where('email', $email)->first();
+        // Get the user that was inserted into the database
+        $user = User::where('email', $email)->first();
 
-		Notification::assertSentTo([$user], UserNeedsConfirmation::class);
-		Event::assertDispatched(UserRegistered::class);
-	}
+        Notification::assertSentTo([$user], UserNeedsConfirmation::class);
+        Event::assertDispatched(UserRegistered::class);
+    }
 
-	/**
-	 * Test the registration form when account are set to be pending an approval
-	 * ensure they are registered but not confirmed
-	 */
-	public function testRegistrationFormPendingApproval() {
-		Event::fake();
-		Notification::fake();
+    /**
+     * Test the registration form when account are set to be pending an approval
+     * ensure they are registered but not confirmed.
+     */
+    public function testRegistrationFormPendingApproval()
+    {
+        Event::fake();
+        Notification::fake();
 
-		// Set registration to pending approval
-		config(['access.users.confirm_email' => false]);
-		config(['access.users.requires_approval' => true]);
+        // Set registration to pending approval
+        config(['access.users.confirm_email' => false]);
+        config(['access.users.requires_approval' => true]);
 
-		// Create any needed resources
-		$faker = Faker\Factory::create();
-		$firstName = $faker->firstName;
-		$lastName = $faker->lastName;
-		$email = $faker->safeEmail;
-		$password = $faker->password(8);
+        // Create any needed resources
+        $faker = Faker\Factory::create();
+        $firstName = $faker->firstName;
+        $lastName = $faker->lastName;
+        $email = $faker->safeEmail;
+        $password = $faker->password(8);
 
-		$this->visit('/register')
-			->type($firstName, 'first_name')
-			->type($lastName, 'last_name')
-			->type($email, 'email')
-			->type($password, 'password')
-			->type($password, 'password_confirmation')
-			->press('Register')
-			->see('Your account was successfully created and is pending approval. An e-mail will be sent when your account is approved.')
-			->see('Login')
-			->seePageIs('/')
-			->seeInDatabase(config('access.users_table'),
-				[
-					'email' => $email,
-					'first_name' => $firstName,
-					'last_name' => $lastName,
-					'confirmed' => 0,
-				]);
+        $this->visit('/register')
+            ->type($firstName, 'first_name')
+            ->type($lastName, 'last_name')
+            ->type($email, 'email')
+            ->type($password, 'password')
+            ->type($password, 'password_confirmation')
+            ->press('Register')
+            ->see('Your account was successfully created and is pending approval. An e-mail will be sent when your account is approved.')
+            ->see('Login')
+            ->seePageIs('/')
+            ->seeInDatabase(config('access.users_table'),
+                [
+                    'email' => $email,
+                    'first_name' => $firstName,
+                    'last_name' => $lastName,
+                    'confirmed' => 0,
+                ]);
 
-		// Get the user that was inserted into the database
-		$user = User::where('email', $email)->first();
+        // Get the user that was inserted into the database
+        $user = User::where('email', $email)->first();
 
-		Notification::assertNotSentTo([$user], UserNeedsConfirmation::class);
-		Event::assertDispatched(UserRegistered::class);
-	}
+        Notification::assertNotSentTo([$user], UserNeedsConfirmation::class);
+        Event::assertDispatched(UserRegistered::class);
+    }
 
     /**
      * Test that the errors work if nothing is filled in the login form.
@@ -274,7 +276,7 @@ class LoggedOutFormTest extends BrowserKitTestCase
      */
     public function testUnconfirmedUserCanNotLogIn()
     {
-		config(['access.users.requires_approval' => false]);
+        config(['access.users.requires_approval' => false]);
 
         // Create default user to test with
         $unconfirmed = factory(User::class)->states('unconfirmed')->create();
@@ -288,23 +290,24 @@ class LoggedOutFormTest extends BrowserKitTestCase
              ->see('Your account is not confirmed.');
     }
 
-	/**
-	 * Test that an account this is currently pending approval can not log in.
-	 */
-	public function testUnconfirmedUserCanNotLogInPendingApproval() {
-		config(['access.users.requires_approval' => true]);
+    /**
+     * Test that an account this is currently pending approval can not log in.
+     */
+    public function testUnconfirmedUserCanNotLogInPendingApproval()
+    {
+        config(['access.users.requires_approval' => true]);
 
-		// Create default user to test with
-		$unconfirmed = factory(User::class)->states('unconfirmed')->create();
-		$unconfirmed->attachRole(3); //User
+        // Create default user to test with
+        $unconfirmed = factory(User::class)->states('unconfirmed')->create();
+        $unconfirmed->attachRole(3); //User
 
-		$this->visit('/login')
-			->type($unconfirmed->email, 'email')
-			->type('secret', 'password')
-			->press('Login')
-			->seePageIs('/login')
-			->see('Your account is currently pending approval.');
-	}
+        $this->visit('/login')
+            ->type($unconfirmed->email, 'email')
+            ->type('secret', 'password')
+            ->press('Login')
+            ->seePageIs('/login')
+            ->see('Your account is currently pending approval.');
+    }
 
     /**
      * Test that an inactive user can not login.

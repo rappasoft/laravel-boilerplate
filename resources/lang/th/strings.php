@@ -72,7 +72,7 @@ return [
 
     'emails' => [
         'auth' => [
-			'account_confirmed' => 'Your account has been confirmed.',
+            'account_confirmed' => 'Your account has been confirmed.',
             'error'                   => 'โอ้วววว!',
             'greeting'                => 'สวัสดีจ้า!',
             'regards'                 => 'ด้วยความนับถือ,',

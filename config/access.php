@@ -65,11 +65,11 @@ return [
          */
         'change_email' => false,
 
-		/*
-		 * Whether or not new users need to be approved by an administrator before logging in
-		 * If this is set to true, then confirm_email is not in effect
-		 */
-		'requires_approval' => env('REQUIRES_APPROVAL', false),
+        /*
+         * Whether or not new users need to be approved by an administrator before logging in
+         * If this is set to true, then confirm_email is not in effect
+         */
+        'requires_approval' => env('REQUIRES_APPROVAL', false),
     ],
 
     /*

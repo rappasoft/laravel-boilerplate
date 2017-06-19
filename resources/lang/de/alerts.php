@@ -21,15 +21,15 @@ return [
         ],
 
         'users' => [
-			'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
+            'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
             'confirmation_email'  => 'Eine Aktivierungsmail wurde an die angegebene E-Mailadresse gesendet.',
-			'confirmed'			  => 'The user was successfully confirmed.',
+            'confirmed'              => 'The user was successfully confirmed.',
             'created'             => 'Benutzer erstellt.',
             'deleted'             => 'Benutzer gelöscht.',
             'deleted_permanently' => 'Benutzer permanent gelöscht.',
             'restored'            => 'Benutzer wiederhergestellt.',
             'session_cleared'      => "The user's session was successfully cleared.",
-			'unconfirmed' => 'The user was successfully un-confirmed',
+            'unconfirmed' => 'The user was successfully un-confirmed',
             'updated'             => 'Benutzer aktualisiert.',
             'updated_password'    => 'Kennwort des Benutzers aktualisiert.',
         ],

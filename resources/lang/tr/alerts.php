@@ -21,15 +21,15 @@ return [
         ],
 
         'users' => [
-			'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
+            'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
             'confirmation_email'  => 'Kayıtlı e-posta adresine yeni bir onay e-postası gönderildi.',
-			'confirmed'			  => 'The user was successfully confirmed.',
+            'confirmed'              => 'The user was successfully confirmed.',
             'created'             => 'Kullanıcı başarıyla oluşturuldu.',
             'deleted'             => 'Kullanıcı başarıyla silindi.',
             'deleted_permanently' => 'Kullanıcı kalıcı olarak silindi.',
             'restored'            => 'Kullanıcı başarıyla geri yüklendi.',
             'session_cleared'      => 'Kullanıcının oturumu başarıyla temizlendi.',
-			'unconfirmed' => 'The user was successfully un-confirmed',
+            'unconfirmed' => 'The user was successfully un-confirmed',
             'updated'             => 'Kullanıcı başarıyla güncellendi.',
             'updated_password'    => 'Kullanıcının şifresi başarıyla güncellendi.',
         ],
