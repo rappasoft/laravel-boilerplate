@@ -141,7 +141,7 @@ class UserRepository extends BaseRepository
                 $user->attachRoles($roles['assignees_roles']);
 
                 //Send confirmation email if requested and account approval is off
-                if (isset($data['confirmation_email']) && $user->confirmed == 0 && !config('access.users.requires_approval')) {
+                if (isset($data['confirmation_email']) && $user->confirmed == 0 && ! config('access.users.requires_approval')) {
                     $user->notify(new UserNeedsConfirmation($user->confirmation_code));
                 }
 
