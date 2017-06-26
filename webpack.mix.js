@@ -1,5 +1,5 @@
-const { mix } = require('laravel-mix');
-const WebpackRTLPlugin = require('webpack-rtl-plugin');
+let mix = require('laravel-mix');
+let WebpackRTLPlugin = require('webpack-rtl-plugin');
 
 /*
  |--------------------------------------------------------------------------
@@ -30,6 +30,6 @@ mix.sass('resources/assets/sass/frontend/app.scss', 'public/css/frontend.css')
         ]
     });
 
-if(mix.config.inProduction){
+if(mix.inProduction){
     mix.version();
 }
