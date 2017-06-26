@@ -71,7 +71,7 @@ return [
                     'no_deactivated' => 'ไม่มีผู้ใช้ที่ถูกพักการใช้งาน',
                     'no_deleted'     => 'ไม่มีผู้ใช้ที่ถูกลบ',
                     'roles'          => 'บทบาท',
-					'social' => 'Social',
+                    'social' => 'Social',
                     'total'          => 'ผู้ใช้ทั้งหมด|ผู้ใช้ทั้งหมด',
                 ],
 

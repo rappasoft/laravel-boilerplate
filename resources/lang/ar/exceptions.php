@@ -47,7 +47,7 @@ return [
                 'role_needed_create'    => 'يجب عليك اختيار دور واحد.',
                 'role_needed'           => 'يجب عليك إختيار دور واحد على الأقل.',
                 'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
-				'social_delete_error' => 'There was a problem removing the social account from the user.',
+                'social_delete_error' => 'There was a problem removing the social account from the user.',
                 'update_error'          => 'حدثت مشكلة أثناء تحديث المستخدم، برجاء المحاولة مرة أخرى.',
                 'update_password_error' => 'حدثت مشكلة أثناء تغيير كلمة مرور المستخدم، برجاء المحاولة مرة أخرى.',
             ],

@@ -29,7 +29,7 @@ return [
             'deleted_permanently' => 'The user was deleted permanently.',
             'restored'            => 'The user was successfully restored.',
             'session_cleared'      => "The user's session was successfully cleared.",
-			'social_deleted' => 'Social Account Successfully Removed',
+            'social_deleted' => 'Social Account Successfully Removed',
             'unconfirmed' => 'The user was successfully un-confirmed',
             'updated'             => 'The user was successfully updated.',
             'updated_password'    => "The user's password was successfully updated.",

@@ -26,7 +26,7 @@ return [
                 'login_as'           => 'Login As :user',
                 'restore_user'       => 'Återställ',
                 'unconfirm'             => 'Un-confirm',
-				'unlink' => 'Unlink',
+                'unlink' => 'Unlink',
             ],
         ],
     ],

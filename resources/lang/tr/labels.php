@@ -73,7 +73,7 @@ return [
                     'no_deactivated' => 'Devre Dışı Bırakılan Kullanıcı Yok',
                     'no_deleted'     => 'Silinmiş Kullanıcı Yok',
                     'roles'          => 'Roller',
-					'social' => 'Social',
+                    'social' => 'Social',
                     'total'          => 'toplam kullanıcı|toplam kullanıcılar',
                 ],
 

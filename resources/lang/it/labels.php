@@ -71,7 +71,7 @@ return [
                     'no_deactivated' => 'Nessun utente disattivato',
                     'no_deleted'     => 'Nessun utente eliminato',
                     'roles'          => 'Ruoli',
-					'social' => 'Social',
+                    'social' => 'Social',
                     'total'          => 'utente(i) totali', // TODO: pluralization
                 ],
 

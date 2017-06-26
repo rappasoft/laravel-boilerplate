@@ -47,7 +47,7 @@ return [
                 'role_needed_create'    => 'Los Usuarios deben tener al menos un Rol.',
                 'role_needed'           => 'Debes elegir al menos un Rol.',
                 'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
-				'social_delete_error' => 'There was a problem removing the social account from the user.',
+                'social_delete_error' => 'There was a problem removing the social account from the user.',
                 'update_error'          => 'Hubo un problema al modificar el Usuario. Intentelo de nuevo.',
                 'update_password_error' => 'Hubo un problema al cambiar la contraseña. Intentelo de nuevo.',
             ],

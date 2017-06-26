@@ -24,7 +24,7 @@ return [
                 'resend_email' => '重新發送確認電子郵件',
                 'restore_user' => '還原用戶',
                 'unconfirm'             => 'Un-confirm',
-				'unlink' => 'Unlink',
+                'unlink' => 'Unlink',
             ],
         ],
     ],
