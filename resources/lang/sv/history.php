@@ -29,7 +29,7 @@ return [
             'created'             => 'skapade användare',
             'deactivated'         => 'avaktiverade användare',
             'deleted'             => 'raderade användare',
-			'deleted_social'      => 'deleted social account',
+            'deleted_social'      => 'deleted social account',
             'permanently_deleted' => 'raderade permanent användare',
             'updated'             => 'uppdaterade användare',
             'unconfirmed' => 'un-confirmed user',

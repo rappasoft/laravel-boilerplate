@@ -29,7 +29,7 @@ return [
             'created'             => 'pengguna dibuat',
             'deactivated'         => 'pengguna dinonaktifkan',
             'deleted'             => 'pengguna dihapus',
-			'deleted_social'      => 'deleted social account',
+            'deleted_social'      => 'deleted social account',
             'permanently_deleted' => 'pengguna dihapus permanen',
             'updated'             => 'pengguna diperbarui',
             'unconfirmed' => 'un-confirmed user',
