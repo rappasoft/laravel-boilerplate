@@ -29,6 +29,7 @@ return [
             'created'             => 'gebruiker aangemaakt',
             'deactivated'         => 'gebruiker gedeactiveerd',
             'deleted'             => 'gebruiker verwijdert',
+			'deleted_social'      => 'deleted social account',
             'permanently_deleted' => 'gebruiker permanent verwijdert',
             'updated'             => 'gebruiker aangepast',
             'unconfirmed' => 'un-confirmed user',

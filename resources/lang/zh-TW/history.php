@@ -28,6 +28,7 @@ return [
             'created' => '創建用戶',
             'deactivated' => '停用用戶',
             'deleted' => '已刪除的用戶',
+			'deleted_social'      => 'deleted social account',
             'permanently_deleted' => '永久刪除的用戶',
             'updated' => '更新用戶',
             'unconfirmed' => 'un-confirmed user',

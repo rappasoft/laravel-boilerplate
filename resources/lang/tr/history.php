@@ -29,6 +29,7 @@ return [
             'created'             => 'kullanıcı oluşturuldu',
             'deactivated'         => 'kullanıcı devre dışı bırakıldı',
             'deleted'             => 'kullanıcı silindi',
+			'deleted_social'      => 'deleted social account',
             'permanently_deleted' => 'kullanıcı kalıcı olarak silindi',
             'updated'             => 'kullanıcı güncellendi',
             'unconfirmed' => 'un-confirmed user',

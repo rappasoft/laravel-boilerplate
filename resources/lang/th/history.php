@@ -29,6 +29,7 @@ return [
             'created'             => 'ได้สร้างผู้ใช้',
             'deactivated'         => 'ได้พักการใช้งานของผู้ใช้',
             'deleted'             => 'ได้ลบผู้ใช้',
+			'deleted_social'      => 'deleted social account',
             'permanently_deleted' => 'ได้ลบผู้ใช้อย่างถาวร',
             'updated'             => 'ได้แก้ไขผู้ใช้',
             'unconfirmed' => 'un-confirmed user',
