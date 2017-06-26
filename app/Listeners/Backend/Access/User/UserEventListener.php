@@ -179,21 +179,21 @@ class UserEventListener
             ->log();
     }
 
-	/**
-	 * @param $event
-	 */
-	public function onSocialDeleted($event)
-	{
-		history()->withType($this->history_slug)
-			->withEntity($event->user->id)
-			->withText('trans("history.backend.users.deleted_social") <strong>'.$event->social->provider.'</strong> for <strong>{user}</strong>')
-			->withIcon('times')
-			->withClass('bg-red')
-			->withAssets([
-				'user_link' => ['admin.access.user.show', $event->user->full_name, $event->user->id],
-			])
-			->log();
-	}
+    /**
+     * @param $event
+     */
+    public function onSocialDeleted($event)
+    {
+        history()->withType($this->history_slug)
+            ->withEntity($event->user->id)
+            ->withText('trans("history.backend.users.deleted_social") <strong>'.$event->social->provider.'</strong> for <strong>{user}</strong>')
+            ->withIcon('times')
+            ->withClass('bg-red')
+            ->withAssets([
+                'user_link' => ['admin.access.user.show', $event->user->full_name, $event->user->id],
+            ])
+            ->log();
+    }
 
     /**
      * Register the listeners for the subscriber.
@@ -252,9 +252,9 @@ class UserEventListener
             'App\Listeners\Backend\Access\User\UserEventListener@onUnconfirmed'
         );
 
-		$events->listen(
-			\App\Events\Backend\Access\User\UserSocialDeleted::class,
-			'App\Listeners\Backend\Access\User\UserEventListener@onSocialDeleted'
-		);
+        $events->listen(
+            \App\Events\Backend\Access\User\UserSocialDeleted::class,
+            'App\Listeners\Backend\Access\User\UserEventListener@onSocialDeleted'
+        );
     }
 }

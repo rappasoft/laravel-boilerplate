@@ -29,7 +29,7 @@ return [
             'created'             => '创建了用户',
             'deactivated'         => '停用了用户',
             'deleted'             => '删除了用户',
-			'deleted_social'      => 'deleted social account',
+            'deleted_social'      => 'deleted social account',
             'permanently_deleted' => '永久删除了用户',
             'updated'             => '更新了用户',
             'unconfirmed' => 'un-confirmed user',

@@ -29,7 +29,7 @@ return [
             'created' => 'ユーザ作成しました。',
             'deactivated' => 'ユーザを非アクティブにしました。',
             'deleted' => '削除しました。',
-			'deleted_social'      => 'deleted social account',
+            'deleted_social'      => 'deleted social account',
             'permanently_deleted' => 'ユーザを永久に削除しました。',
             'updated' => 'ユーザを更新しました。',
             'unconfirmed' => 'un-confirmed user',

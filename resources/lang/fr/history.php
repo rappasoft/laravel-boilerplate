@@ -29,7 +29,7 @@ return [
             'created'             => 'a créé l\'utilisateur',
             'deactivated'         => 'a désactivé l\'utilisateur',
             'deleted'             => 'a effacé l\'utilisateur',
-			'deleted_social'      => 'deleted social account',
+            'deleted_social'      => 'deleted social account',
             'permanently_deleted' => 'a définitivement effacé l\'utilisateur',
             'updated'             => 'a mis à jour l\'utilisateur',
             'unconfirmed' => 'un-confirmed user',

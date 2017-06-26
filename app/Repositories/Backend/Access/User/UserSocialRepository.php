@@ -2,10 +2,10 @@
 
 namespace App\Repositories\Backend\Access\User;
 
-use App\Events\Backend\Access\User\UserSocialDeleted;
 use App\Models\Access\User\User;
 use App\Exceptions\GeneralException;
 use App\Models\Access\User\SocialLogin;
+use App\Events\Backend\Access\User\UserSocialDeleted;
 
 /**
  * Class UserSocialRepository.
@@ -22,7 +22,7 @@ class UserSocialRepository
     public function delete(User $user, SocialLogin $social)
     {
         if ($user->providers()->whereId($social->id)->delete()) {
-        	event(new UserSocialDeleted($user, $social));
+            event(new UserSocialDeleted($user, $social));
 
             return true;
         }
