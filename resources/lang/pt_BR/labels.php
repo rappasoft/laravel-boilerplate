@@ -67,7 +67,7 @@ return [
                     'no_deactivated' => 'Nenhum usuário desativado.',
                     'no_deleted'     => 'Nenhum usuário excluído',
                     'roles'          => 'Papéis',
-					'social' => 'Social',
+                    'social' => 'Social',
                     'total'          => 'total de usuário|total de usuários',
                 ],
                 'tabs' => [

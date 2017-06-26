@@ -26,7 +26,7 @@ return [
                 'resend_email'       => 'Kirim Ulang Email Konfirmasi',
                 'restore_user'       => 'Restorasi Pengguna',
                 'unconfirm'             => 'Un-confirm',
-				'unlink' => 'Unlink',
+                'unlink' => 'Unlink',
             ],
         ],
     ],

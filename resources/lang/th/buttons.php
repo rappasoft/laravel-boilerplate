@@ -26,7 +26,7 @@ return [
                 'resend_email'       => 'ส่งอีเมลยืนยันตัวตนอีกครั้ง',
                 'restore_user'       => 'กู้คืนผู้ใช้',
                 'unconfirm'             => 'Un-confirm',
-				'unlink' => 'Unlink',
+                'unlink' => 'Unlink',
             ],
         ],
     ],

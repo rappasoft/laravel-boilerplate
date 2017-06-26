@@ -26,7 +26,7 @@ return [
                 'resend_email'       => 'Onay E-postasını Yeniden Gönder',
                 'restore_user'       => 'Kullanıcıyı Kurtar',
                 'unconfirm'             => 'Un-confirm',
-				'unlink' => 'Unlink',
+                'unlink' => 'Unlink',
             ],
         ],
     ],

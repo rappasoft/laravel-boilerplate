@@ -26,7 +26,7 @@ return [
                 'resend_email'       => 'Gensend bekræftelsesmail',
                 'restore_user'       => 'Genskab bruger',
                 'unconfirm'             => 'Un-confirm',
-				'unlink' => 'Unlink',
+                'unlink' => 'Unlink',
             ],
         ],
     ],

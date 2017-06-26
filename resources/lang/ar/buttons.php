@@ -26,7 +26,7 @@ return [
                 'resend_email'       => 'إعادة إرسالة بريد التفعيل',
                 'restore_user'       => 'إستعادة المستخدم',
                 'unconfirm'             => 'Un-confirm',
-				'unlink' => 'Unlink',
+                'unlink' => 'Unlink',
             ],
         ],
     ],

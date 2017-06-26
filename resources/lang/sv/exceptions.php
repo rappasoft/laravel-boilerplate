@@ -47,7 +47,7 @@ return [
                 'role_needed_create'    => 'Du måste välja minst en roll.',
                 'role_needed'           => 'Du måste välja minst en roll.',
                 'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
-				'social_delete_error' => 'There was a problem removing the social account from the user.',
+                'social_delete_error' => 'There was a problem removing the social account from the user.',
                 'update_error'          => 'Det uppstod ett fel då användaren skulle uppdateras. Försök igen.',
                 'update_password_error' => 'Det uppstod ett fel då användarens lösenord skulle ändras. Försök igen.',
             ],

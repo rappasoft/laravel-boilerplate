@@ -47,7 +47,7 @@ return [
                 'role_needed_create'    => 'Devi scegliere almeno un ruolo.',
                 'role_needed'           => 'Devi scegliere almeno un ruolo',
                 'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
-				'social_delete_error' => 'There was a problem removing the social account from the user.',
+                'social_delete_error' => 'There was a problem removing the social account from the user.',
                 'update_error'          => "C'è stato un problema durante l'aggiornamento dell'utente. Si prega di riprovare",
                 'update_password_error' => "C'è stato un problema durante il cambio di password per l'utente. Si prega di riprovare.",
             ],

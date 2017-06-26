@@ -29,7 +29,7 @@ return [
             'deleted_permanently' => '用户被永久删除。',
             'restored'            => '用户已成功还原。',
             'session_cleared'     => '用户会话已成功清除。',
-			'social_deleted' => 'Social Account Successfully Removed',
+            'social_deleted' => 'Social Account Successfully Removed',
             'unconfirmed' => 'The user was successfully un-confirmed',
             'updated'             => '用户已成功更新。',
             'updated_password'    => '用户密码已成功更新。',
