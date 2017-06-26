@@ -147,6 +147,8 @@ return [
             'name'                      => 'Nome',
             'password'                  => 'Senha',
             'password_confirmation'     => 'Confirme sua senha',
+			'phone' => 'Phone',
+			'message' => 'Message',
             'old_password'              => 'Senha antiga',
             'new_password'              => 'Nova Senha',
             'new_password_confirmation' => 'Confirme sua nova senha',

@@ -157,6 +157,8 @@ return [
             'name'                      => 'Namn',
             'password'                  => 'Lösenord',
             'password_confirmation'     => 'Bekräfta lösenord',
+			'phone' => 'Phone',
+			'message' => 'Message',
             'old_password'              => 'Gammalt lösenord',
             'new_password'              => 'Nytt lösenord',
             'new_password_confirmation' => 'Bekräfta nytt lösenord',

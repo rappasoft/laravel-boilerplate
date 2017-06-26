@@ -36,4 +36,10 @@ return [
             'updated_password'    => 'A senha do usuário foi atualizada com sucesso.',
         ],
     ],
+
+	'frontend' => [
+		'contact' => [
+			'sent' => 'Your information was successfully sent. We will respond back to the e-mail provided as soon as we can.',
+		],
+	],
 ];

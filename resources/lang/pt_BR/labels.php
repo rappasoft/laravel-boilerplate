@@ -101,12 +101,19 @@ return [
             'register_button'    => 'Registrar',
             'remember_me'        => 'Lembrar-me',
         ],
+
+		'contact' => [
+			'box_title' => 'Contact Us',
+			'button' => 'Send Information',
+		],
+
         'passwords' => [
             'forgot_password'                 => 'Esqueceu Sua Senha?',
             'reset_password_box_title'        => 'Resetar Senha',
             'reset_password_button'           => 'Resetar Senha',
             'send_password_reset_link_button' => 'Enviar link para redefinição de senha',
         ],
+
         'macros' => [
             'country' => [
                 'alpha'   => 'Códigos de País Alpha',
@@ -128,6 +135,7 @@ return [
             ],
             'timezone' => 'Fuso horário',
         ],
+
         'user' => [
             'passwords' => [
                 'change' => 'Alterar Senha',

@@ -35,4 +35,10 @@ return [
             'updated_password'    => 'Het wachtwoord van de gebruiker is succesvol bijgewerkt',
         ],
     ],
+
+	'frontend' => [
+		'contact' => [
+			'sent' => 'Your information was successfully sent. We will respond back to the e-mail provided as soon as we can.',
+		],
+	],
 ];

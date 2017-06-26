@@ -111,6 +111,11 @@ return [
             'remember_me'        => 'Husk mig',
         ],
 
+		'contact' => [
+			'box_title' => 'Contact Us',
+			'button' => 'Send Information',
+		],
+
         'passwords' => [
             'forgot_password'                 => 'Glemt din adgangskode?',
             'reset_password_box_title'        => 'Nulstil adgangskode',

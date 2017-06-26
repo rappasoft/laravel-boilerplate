@@ -111,6 +111,11 @@ return [
             'remember_me'        => 'Ricordami',
         ],
 
+		'contact' => [
+			'box_title' => 'Contact Us',
+			'button' => 'Send Information',
+		],
+
         'passwords' => [
             'forgot_password'                 => 'Password dimenticata?',
             'reset_password_box_title'        => 'Reset password',

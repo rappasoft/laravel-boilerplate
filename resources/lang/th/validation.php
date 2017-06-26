@@ -158,6 +158,8 @@ return [
             'name'                      => 'ชื่อ',
             'password'                  => 'รหัสผ่าน',
             'password_confirmation'     => 'ยืนยันรหัสผ่าน',
+			'phone' => 'Phone',
+			'message' => 'Message',
             'old_password'              => 'รหัสผ่านเดิม',
             'new_password'              => 'รหัสผ่านใหม่',
             'new_password_confirmation' => 'ยืนยันรหัสผ่านใหม่',

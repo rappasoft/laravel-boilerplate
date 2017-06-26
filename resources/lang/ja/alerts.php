@@ -32,4 +32,10 @@ return [
             'updated_password' => 'ユーザーのパスワードが正常に更新されました。',
         ],
     ],
+
+	'frontend' => [
+		'contact' => [
+			'sent' => 'Your information was successfully sent. We will respond back to the e-mail provided as soon as we can.',
+		],
+	],
 ];

@@ -35,4 +35,10 @@ return [
             'updated_password'    => '用户密码已成功更新。',
         ],
     ],
+
+	'frontend' => [
+		'contact' => [
+			'sent' => 'Your information was successfully sent. We will respond back to the e-mail provided as soon as we can.',
+		],
+	],
 ];

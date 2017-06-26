@@ -85,6 +85,12 @@ return [
             'register_button'       => 'Зарегистрироваться',
             'remember_me'           => 'Запомнить меня',
         ],
+
+		'contact' => [
+			'box_title' => 'Contact Us',
+			'button' => 'Send Information',
+		],
+
         'macros'    => [
             'country'           => [
                 'alpha'     => 'Альфа коды стран',
@@ -106,12 +112,14 @@ return [
             ],
             'timezone'          => 'Часовые пояса',
         ],
+
         'passwords' => [
             'forgot_password'                   => 'Забыли Пароль?',
             'reset_password_box_title'          => 'Сброс Пароля',
             'reset_password_button'             => 'Смена пароля',
             'send_password_reset_link_button'   => 'Отправить ссылку для смены пароля',
         ],
+
         'user'      => [
             'passwords' => [
                 'change'    => 'Изменить пароль',

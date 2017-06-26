@@ -35,4 +35,10 @@ return [
             'updated_password'    => 'รหัสผ่านของผู้ใช้ถูกแก้ไขสำเร็จแล้ว',
         ],
     ],
+
+	'frontend' => [
+		'contact' => [
+			'sent' => 'Your information was successfully sent. We will respond back to the e-mail provided as soon as we can.',
+		],
+	],
 ];

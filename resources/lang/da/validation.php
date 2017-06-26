@@ -158,6 +158,8 @@ return [
             'name'                      => 'Navn',
             'password'                  => 'Adgangskode',
             'password_confirmation'     => 'Bekræft adgangskode',
+			'phone' => 'Phone',
+			'message' => 'Message',
             'old_password'              => 'Gammel adgangskode',
             'new_password'              => 'Ny adgangskode',
             'new_password_confirmation' => 'Bekræft ny adgangskode',

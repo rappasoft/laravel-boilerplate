@@ -111,6 +111,11 @@ return [
             'remember_me'        => 'จดจำฉัน',
         ],
 
+		'contact' => [
+			'box_title' => 'Contact Us',
+			'button' => 'Send Information',
+		],
+
         'passwords' => [
             'forgot_password'                 => 'ลืมรหัสผ่าน?',
             'reset_password_box_title'        => 'รีเซ็ตรหัสผ่าน',

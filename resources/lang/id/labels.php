@@ -111,6 +111,11 @@ return [
             'remember_me'        => 'Ingat Saya',
         ],
 
+		'contact' => [
+			'box_title' => 'Contact Us',
+			'button' => 'Send Information',
+		],
+
         'passwords' => [
             'forgot_password'                 => 'Lupa Sandi Anda?',
             'reset_password_box_title'        => 'Reset Sandi',

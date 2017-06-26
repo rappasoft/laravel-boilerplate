@@ -115,6 +115,11 @@ return [
             'remember_me'        => 'Beni Hatırla',
         ],
 
+		'contact' => [
+			'box_title' => 'Contact Us',
+			'button' => 'Send Information',
+		],
+
         'passwords' => [
             'forgot_password'                 => 'Parolanızı mı Unuttunuz?',
             'reset_password_box_title'        => 'Parola Sıfırla',

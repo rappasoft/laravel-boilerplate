@@ -111,6 +111,11 @@ return [
             'remember_me'        => 'Onthoud Mij',
         ],
 
+		'contact' => [
+			'box_title' => 'Contact Us',
+			'button' => 'Send Information',
+		],
+
         'passwords' => [
             'forgot_password'                 => 'Wachtwoord Vergeten?',
             'reset_password_box_title'        => 'Wachtwoord Resetten',

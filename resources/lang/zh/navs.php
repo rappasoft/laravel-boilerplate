@@ -19,6 +19,7 @@ return [
     ],
 
     'frontend' => [
+		'contact' => 'Contact',
         'dashboard' => '指示板',
         'login'     => '登录',
         'macros'    => '宏',

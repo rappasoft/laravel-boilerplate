@@ -160,6 +160,8 @@ return [
             'name'                      => 'Name',
             'password'                  => 'Password',
             'password_confirmation'     => 'Password Confirmation',
+			'phone' => 'Phone',
+			'message' => 'Message',
             'old_password'              => 'Old Password',
             'new_password'              => 'New Password',
             'new_password_confirmation' => 'New Password Confirmation',

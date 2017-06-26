@@ -111,6 +111,11 @@ return [
             'remember_me'        => 'Θυμήσου με',
         ],
 
+		'contact' => [
+			'box_title' => 'Contact Us',
+			'button' => 'Send Information',
+		],
+
         'passwords' => [
             'forgot_password'                 => 'Forgot Your Password?',
             'reset_password_box_title'        => 'Reset Password',

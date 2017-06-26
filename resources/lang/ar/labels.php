@@ -111,6 +111,11 @@ return [
             'remember_me'        => 'تذكرني',
         ],
 
+		'contact' => [
+			'box_title' => 'Contact Us',
+			'button' => 'Send Information',
+		],
+
         'passwords' => [
             'forgot_password'                 => 'نسيت كلمة مرورك؟',
             'reset_password_box_title'        => 'إعادة تعيين كلمة المرور',

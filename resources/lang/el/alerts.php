@@ -35,4 +35,10 @@ return [
             'updated_password'    => 'Ο κωδικός χρήστη ανανεώθηκε επιτυχώς.',
         ],
     ],
+
+	'frontend' => [
+		'contact' => [
+			'sent' => 'Your information was successfully sent. We will respond back to the e-mail provided as soon as we can.',
+		],
+	],
 ];

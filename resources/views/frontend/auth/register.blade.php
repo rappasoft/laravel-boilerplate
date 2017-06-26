@@ -1,5 +1,7 @@
 @extends('frontend.layouts.app')
 
+@section('title', app_name() . ' | Register')
+
 @section('content')
     <div class="row">
 

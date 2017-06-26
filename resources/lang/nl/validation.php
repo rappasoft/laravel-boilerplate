@@ -158,6 +158,8 @@ return [
             'name'                      => 'Naam',
             'password'                  => 'Wachwoord',
             'password_confirmation'     => 'Wachtwoord Bevestiging',
+			'phone' => 'Phone',
+			'message' => 'Message',
             'old_password'              => 'Oud Wachtwoord',
             'new_password'              => 'Nieuw Wachtwoord',
             'new_password_confirmation' => 'Nieuw Wachtwoord Bevestigen',
