@@ -111,10 +111,10 @@ return [
             'remember_me'        => 'Recordarme',
         ],
 
-		'contact' => [
-			'box_title' => 'Contact Us',
-			'button' => 'Send Information',
-		],
+        'contact' => [
+            'box_title' => 'Contact Us',
+            'button' => 'Send Information',
+        ],
 
         'passwords' => [
             'forgot_password'                 => 'Se ha olvidado la contraseña?',
