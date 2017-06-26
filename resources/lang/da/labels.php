@@ -111,10 +111,10 @@ return [
             'remember_me'        => 'Husk mig',
         ],
 
-		'contact' => [
-			'box_title' => 'Contact Us',
-			'button' => 'Send Information',
-		],
+        'contact' => [
+            'box_title' => 'Contact Us',
+            'button' => 'Send Information',
+        ],
 
         'passwords' => [
             'forgot_password'                 => 'Glemt din adgangskode?',

@@ -19,7 +19,7 @@ return [
     ],
 
     'frontend' => [
-		'contact' => 'Contact',
+        'contact' => 'Contact',
         'dashboard' => 'Dasbor',
         'login'     => 'Masuk',
         'macros'    => 'Makro',
