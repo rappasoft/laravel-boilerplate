@@ -26,6 +26,7 @@ return [
                 'resend_email'       => 'Aktivierungsmail erneut senden',
                 'restore_user'       => 'Benutzer wiederherstellen',
                 'unconfirm'             => 'Un-confirm',
+				'unlink' => 'Unlink',
             ],
         ],
     ],

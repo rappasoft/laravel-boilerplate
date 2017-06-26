@@ -71,6 +71,7 @@ return [
                     'no_deactivated' => 'Δεν υπάρχουν ανενεργοί χρήστες',
                     'no_deleted'     => 'Δεν υπάρχουν διεγραμμένοι χρήστες',
                     'roles'          => '΄Ρόλοι',
+					'social' => 'Social',
                     'total'          => 'user total|users total',
                 ],
 

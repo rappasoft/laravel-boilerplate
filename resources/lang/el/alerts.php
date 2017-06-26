@@ -29,6 +29,7 @@ return [
             'deleted_permanently' => 'Ο χρήστης διαγράφηκε μόνιμα.',
             'restored'            => 'Ο χρήστης επαναφέρθηκε επιτυχώς.',
             'session_cleared'      => "The user's session was successfully cleared.",
+			'social_deleted' => 'Social Account Successfully Removed',
             'unconfirmed' => 'The user was successfully un-confirmed',
             'updated'             => 'Ο χρήστης ανανεώθηκε επιτυχώς.',
             'updated_password'    => 'Ο κωδικός χρήστη ανανεώθηκε επιτυχώς.',

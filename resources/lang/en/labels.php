@@ -73,6 +73,7 @@ return [
                     'no_deactivated' => 'No Deactivated Users',
                     'no_deleted'     => 'No Deleted Users',
                     'roles'          => 'Roles',
+					'social' => 'Social',
                     'total'          => 'user total|users total',
                 ],
 

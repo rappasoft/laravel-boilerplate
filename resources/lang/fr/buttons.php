@@ -26,6 +26,7 @@ return [
                 'resend_email'       => 'Renvoyer le mail de confirmation',
                 'restore_user'       => "Réactiver l'utilisateur",
                 'unconfirm'             => 'Un-confirm',
+				'unlink' => 'Unlink',
             ],
         ],
     ],

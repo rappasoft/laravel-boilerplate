@@ -71,6 +71,7 @@ return [
                     'no_deactivated' => '沒有停用的用戶',
                     'no_deleted' => '未刪除用戶',
                     'roles' => '角色',
+					'social' => 'Social',
                     'total' => '用戶總計|用戶總計',
                 ],
 

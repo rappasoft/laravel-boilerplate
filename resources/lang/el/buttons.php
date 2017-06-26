@@ -26,6 +26,7 @@ return [
                 'resend_email'       => 'Ξαναστείλε email επιβεβαίωσης',
                 'restore_user'       => 'Επαναφορά χρήστη',
                 'unconfirm'             => 'Un-confirm',
+				'unlink' => 'Unlink',
             ],
         ],
     ],

@@ -47,6 +47,7 @@ return [
                 'role_needed_create'    => 'Вы должны выбрать по крайней мере одну роль.',
                 'role_needed'           => 'Вы должны выбрать как минимум одну роль.',
                 'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
+				'social_delete_error' => 'There was a problem removing the social account from the user.',
                 'update_error'          => 'Невозможно обновить пользователя. Пожалуйста, попробуйте позже.',
                 'update_password_error' => 'Невозможно изменить пароль пользователя. Пожалуйста, попробуйте позже.',
             ],

@@ -47,6 +47,7 @@ return [
                 'role_needed_create'    => 'Anda harus memilih setidaknya satu peran.',
                 'role_needed'           => 'Anda harus memilih setidaknya satu peran.',
                 'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
+				'social_delete_error' => 'There was a problem removing the social account from the user.',
                 'update_error'          => 'Ada masalah saat memperbarui pengguna ini. Silakan coba lagi.',
                 'update_password_error' => 'Ada masalah mengubah sandi pengguna ini. Silakan coba lagi.',
             ],

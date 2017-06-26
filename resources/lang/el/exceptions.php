@@ -47,6 +47,7 @@ return [
                 'role_needed_create'    => 'You must choose at lease one role.',
                 'role_needed'           => 'You must choose at least one role.',
                 'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
+				'social_delete_error' => 'There was a problem removing the social account from the user.',
                 'update_error'          => 'There was a problem updating this user. Please try again.',
                 'update_password_error' => 'There was a problem changing this users password. Please try again.',
             ],

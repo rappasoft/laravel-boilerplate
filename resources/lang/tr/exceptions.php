@@ -47,6 +47,7 @@ return [
                 'role_needed_create'    => 'En az bir rol seçmelisiniz.',
                 'role_needed'           => 'En az bir rol seçmelisiniz.',
                 'session_wrong_driver'  => 'Bu özelliği kullanabilmeniz için oturumların veritabanında saklanması gerekir.',
+				'social_delete_error' => 'There was a problem removing the social account from the user.',
                 'update_error'          => 'Bu kullanıcı güncellenirken bir hata oluştu. Lütfen tekrar deneyin.',
                 'update_password_error' => 'Bu kullanıcının şifresini değiştirirken bir sorun oluştu. Lütfen tekrar deneyin.',
             ],

@@ -21,7 +21,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $this->disableForeignKeys();
-        $this->truncate(config('access.users_table'));
+        $this->truncateMultiple([config('access.users_table'), 'social_logins']);
 
         //Add the master administrator, user id of 1
         $users = [

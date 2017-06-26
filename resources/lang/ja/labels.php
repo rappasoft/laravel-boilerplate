@@ -71,6 +71,7 @@ return [
                     'no_deactivated' => '非アクティブユーザが存在しない',
                     'no_deleted' => '削除されたユーザが存在しない',
                     'roles' => 'ロール',
+					'social' => 'Social',
                     'total' => 'ユーザ合計|ユーザ合計',
                 ],
 

@@ -71,6 +71,7 @@ return [
                     'no_deactivated' => 'Tidak Ada Pengguna Dinonaktifkan',
                     'no_deleted'     => 'Tidak Ada Pengguna Dihapus',
                     'roles'          => 'Peran',
+					'social' => 'Social',
                     'total'          => 'total pengguna|total pengguna',
                 ],
 

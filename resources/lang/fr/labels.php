@@ -71,6 +71,7 @@ return [
                     'no_deactivated' => "Pas d'utilisateurs désactivés",
                     'no_deleted'     => "Pas d'utilisateurs supprimés",
                     'roles'          => 'Rôles',
+					'social' => 'Social',
                     'total'          => 'utilisateur total|utilisateurs total',
                 ],
 

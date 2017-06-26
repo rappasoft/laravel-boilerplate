@@ -26,6 +26,7 @@ return [
                 'resend_email'       => 'Bevestigings email nogmaals zenden',
                 'restore_user'       => 'Gebruiker herstellen',
                 'unconfirm'             => 'Un-confirm',
+				'unlink' => 'Unlink',
             ],
         ],
     ],

@@ -47,6 +47,7 @@ return [
                 'role_needed_create'    => '你必须选择至少一个角色。',
                 'role_needed'           => '你必须选择至少一个角色。',
                 'session_wrong_driver'  => '你必须将会话驱动设置为database才能使用该功能。',
+				'social_delete_error' => 'There was a problem removing the social account from the user.',
                 'update_error'          => '更新此用户时出现问题。请再试一次。',
                 'update_password_error' => '更改此用户密码时出现问题。请再试一次。',
             ],

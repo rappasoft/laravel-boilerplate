@@ -46,6 +46,7 @@ return [
                 'role_needed_create'    => 'Você deve escolher pelo menos uma função.',
                 'role_needed'           => 'Você deve escolher pelo menos uma função.',
                 'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
+				'social_delete_error' => 'There was a problem removing the social account from the user.',
                 'update_error'          => 'Houve um problema ao atualizar esse usuário. Por favor, tente novamente.',
                 'update_password_error' => 'Houve um problema ao alterar a senha do usuário. Por favor, tente novamente.',
             ],

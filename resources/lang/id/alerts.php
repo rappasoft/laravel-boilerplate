@@ -29,6 +29,7 @@ return [
             'deleted_permanently' => 'Pengguna telah dihapus secara permanen.',
             'restored'            => 'Pengguna telah berhasil direstorasi.',
             'session_cleared'      => "The user's session was successfully cleared.",
+			'social_deleted' => 'Social Account Successfully Removed',
             'unconfirmed' => 'The user was successfully un-confirmed',
             'updated'             => 'Pengguna telah berhasil diperbarui.',
             'updated_password'    => 'Sandi pengguna telah berhasil diperbarui.',

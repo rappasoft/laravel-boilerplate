@@ -71,6 +71,7 @@ return [
                     'no_deactivated' => 'Inga inaktiverade användare',
                     'no_deleted'     => 'Inga raderade användare',
                     'roles'          => 'Roller',
+					'social' => 'Social',
                     'total'          => 'användare totalt|användare totalt',
                 ],
 

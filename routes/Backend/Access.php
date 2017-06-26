@@ -42,6 +42,9 @@ Route::group([
                 // Status
                 Route::get('mark/{status}', 'UserStatusController@mark')->name('user.mark')->where(['status' => '[0,1]']);
 
+                // Social
+				Route::delete('social/{social}/unlink', 'UserSocialController@unlink')->name('user.social.unlink');
+
                 // Confirmation
                 Route::get('confirm', 'UserConfirmationController@confirm')->name('user.confirm');
                 Route::get('unconfirm', 'UserConfirmationController@unconfirm')->name('user.unconfirm');
