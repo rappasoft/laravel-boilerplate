@@ -29,7 +29,7 @@ return [
             'created'             => 'قام بإنشاء المستخدم',
             'deactivated'         => 'قام بتعطيل المستخدم',
             'deleted'             => 'قام بحذف المستخدم',
-			'deleted_social'      => 'deleted social account',
+            'deleted_social'      => 'deleted social account',
             'permanently_deleted' => 'قام بالحذف النهائي للمستخدم',
             'updated'             => 'قام بتحديث المستخدم',
             'unconfirmed' => 'un-confirmed user',
