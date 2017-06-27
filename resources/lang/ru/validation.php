@@ -154,8 +154,8 @@ return [
             'old_password'              => 'Старый пароль',
             'password'                  => 'Пароль',
             'password_confirmation'     => 'Подтверждение пароля',
-			'phone' => 'Phone',
-			'message' => 'Message',
+            'phone' => 'Phone',
+            'message' => 'Message',
         ],
     ],
 ];

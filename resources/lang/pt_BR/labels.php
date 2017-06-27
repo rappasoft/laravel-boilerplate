@@ -102,10 +102,10 @@ return [
             'remember_me'        => 'Lembrar-me',
         ],
 
-		'contact' => [
-			'box_title' => 'Contact Us',
-			'button' => 'Send Information',
-		],
+        'contact' => [
+            'box_title' => 'Contact Us',
+            'button' => 'Send Information',
+        ],
 
         'passwords' => [
             'forgot_password'                 => 'Esqueceu Sua Senha?',
