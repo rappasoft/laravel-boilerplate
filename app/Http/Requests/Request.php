@@ -24,6 +24,6 @@ abstract class Request extends FormRequest
             $this->error = trans('auth.general_error');
         }
 
-        return redirect()->back()->withErrors($this->error);
+        return redirect()->back()->withInput()->withErrors($this->error);
     }
 }
