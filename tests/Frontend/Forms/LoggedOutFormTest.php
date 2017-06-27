@@ -9,6 +9,8 @@ use App\Events\Frontend\Auth\UserRegistered;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 use App\Notifications\Frontend\Auth\UserNeedsPasswordReset;
+use App\Mail\Frontend\Contact\SendContact;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Class LoggedOutFormTest.
@@ -338,4 +340,34 @@ class LoggedOutFormTest extends BrowserKitTestCase
              ->seePageIs('/login')
              ->see('These credentials do not match our records.');
     }
+
+	/**
+	 * Test the contact forms required fields
+	 */
+    public function testContactFormRequiredFields() {
+		$this->visit('/contact')
+			->press(trans('labels.frontend.contact.button'))
+			->seePageIs('/contact')
+			->see('The name field is required.')
+			->see('The email field is required.')
+			->see('The message field is required.');
+	}
+
+	/**
+	 * Test the contact form sends the mail
+	 */
+	public function testContactForm() {
+		Mail::fake();
+
+		$this->visit('/contact')
+			->type('Admin Istrator', 'name')
+			->type('admin@admin.com', 'email')
+			->type('1112223333', 'phone')
+			->type('Hello There', 'message')
+			->press(trans('labels.frontend.contact.button'))
+			->seePageIs('/contact')
+			->see(trans('alerts.frontend.contact.sent'));
+
+		Mail::assertSent(SendContact::class);
+	}
 }
