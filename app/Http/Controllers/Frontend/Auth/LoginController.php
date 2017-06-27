@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Helpers\Auth\Auth;
+use App\Repositories\Backend\Access\User\UserSessionRepository;
 use Illuminate\Http\Request;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
@@ -68,6 +69,11 @@ class LoginController extends Controller
         }
 
         event(new UserLoggedIn($user));
+
+        // If only allowed one session at a time
+        if (config('access.users.single_login')) {
+        	app()->make(UserSessionRepository::class)->clearSessionExceptCurrent($user);
+		}
 
         return redirect()->intended($this->redirectPath());
     }
