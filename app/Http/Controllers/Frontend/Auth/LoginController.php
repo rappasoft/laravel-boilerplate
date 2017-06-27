@@ -10,7 +10,7 @@ use App\Helpers\Frontend\Auth\Socialite;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Repositories\Backend\Access\User\UserSessionRepository;
+use App\Repositories\Frontend\Access\User\UserSessionRepository;
 
 /**
  * Class LoginController.

@@ -28,21 +28,4 @@ class UserSessionRepository
 
         return $user->sessions()->delete();
     }
-
-    /**
-     * @param User $user
-     *
-     * @return mixed
-     */
-    public function clearSessionExceptCurrent(User $user)
-    {
-        if (config('session.driver') == 'database') {
-            return $user->sessions()
-                ->whereNot('id', session()->getId())
-                ->delete();
-        }
-
-        // If session driver not database, do nothing
-        return false;
-    }
 }
