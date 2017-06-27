@@ -87,10 +87,10 @@ return [
             'click_to_confirm' => '点击此处确认您的帐户:',
         ],
 
-		'contact' => [
-			'email_body_title' => 'You have a new contact form request: Below are the details:',
-			'subject' => 'A new :app_name contact form submission!',
-		],
+        'contact' => [
+            'email_body_title' => 'You have a new contact form request: Below are the details:',
+            'subject' => 'A new :app_name contact form submission!',
+        ],
     ],
 
     'frontend' => [
