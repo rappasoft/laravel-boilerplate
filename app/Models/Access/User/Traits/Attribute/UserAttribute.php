@@ -273,7 +273,7 @@ trait UserAttribute
     public function getActionButtonsAttribute()
     {
         if ($this->trashed()) {
-            return $this->restore_button. $this->delete_permanently_button;
+            return $this->restore_button.$this->delete_permanently_button;
         }
 
         return
