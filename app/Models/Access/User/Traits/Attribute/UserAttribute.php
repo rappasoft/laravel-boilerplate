@@ -273,18 +273,17 @@ trait UserAttribute
     public function getActionButtonsAttribute()
     {
         if ($this->trashed()) {
-            return $this->getRestoreButtonAttribute().
-                $this->getDeletePermanentlyButtonAttribute();
+            return $this->restore_button. $this->delete_permanently_button;
         }
 
         return
-            $this->getClearSessionButtonAttribute().
-            $this->getLoginAsButtonAttribute().
-            $this->getShowButtonAttribute().
-            $this->getEditButtonAttribute().
-            $this->getChangePasswordButtonAttribute().
-            $this->getStatusButtonAttribute().
-            $this->getConfirmedButtonAttribute().
-            $this->getDeleteButtonAttribute();
+            $this->clear_session_button.
+            $this->login_as_button.
+            $this->show_button.
+            $this->edit_button.
+            $this->change_password_button.
+            $this->status_button.
+            $this->confirmed_button.
+            $this->delete_button;
     }
 }
