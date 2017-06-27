@@ -71,6 +71,7 @@ return [
                     'no_deactivated' => 'لا يوجد أي مستخدمين معطلين',
                     'no_deleted'     => 'لا يوحد أي مستخدمين محذوفين',
                     'roles'          => 'الأدوار',
+                    'social' => 'Social',
                     'total'          => 'مجموع المستخدم|مجموع المستخدمين',
                 ],
 
@@ -108,6 +109,11 @@ return [
             'register_box_title' => 'تسجيل',
             'register_button'    => 'تسجيل',
             'remember_me'        => 'تذكرني',
+        ],
+
+        'contact' => [
+            'box_title' => 'Contact Us',
+            'button' => 'Send Information',
         ],
 
         'passwords' => [

@@ -71,6 +71,7 @@ return [
                     'no_deactivated' => '没有停用的用户',
                     'no_deleted'     => '没有删除的用户',
                     'roles'          => '角色',
+                    'social' => 'Social',
                     'total'          => '用户总计',
                 ],
 
@@ -108,6 +109,11 @@ return [
             'register_box_title' => '注册',
             'register_button'    => '注册',
             'remember_me'        => '记住我',
+        ],
+
+        'contact' => [
+            'box_title' => 'Contact Us',
+            'button' => 'Send Information',
         ],
 
         'passwords' => [

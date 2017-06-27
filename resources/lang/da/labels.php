@@ -71,6 +71,7 @@ return [
                     'no_deactivated' => 'Ingen Deaktiverede Brugere',
                     'no_deleted'     => 'Ingen Slettede Brugere',
                     'roles'          => 'Roller',
+                    'social' => 'Social',
                     'total'          => 'bruger i alt|brugere i alt',
                 ],
 
@@ -108,6 +109,11 @@ return [
             'register_box_title' => 'Opret',
             'register_button'    => 'Opret',
             'remember_me'        => 'Husk mig',
+        ],
+
+        'contact' => [
+            'box_title' => 'Contact Us',
+            'button' => 'Send Information',
         ],
 
         'passwords' => [

@@ -72,6 +72,7 @@ return [
 
     'emails' => [
         'auth' => [
+            'account_confirmed' => 'Your account has been confirmed.',
             'error'                   => 'Ups!',
             'greeting'                => 'Hola!',
             'regards'                 => 'Saludos,',
@@ -84,6 +85,11 @@ return [
             'reset_password'            => 'Pulse aquí para reiniciar su contraseña',
 
             'click_to_confirm' => 'Pulse aquí para verificar su cuenta:',
+        ],
+
+        'contact' => [
+            'email_body_title' => 'You have a new contact form request: Below are the details:',
+            'subject' => 'A new :app_name contact form submission!',
         ],
     ],
 

@@ -47,7 +47,7 @@ return [
         /*
          * Whether or not public registration is on
          */
-        'registration' => env('ENABLE_REGISTRATION', 'true'),
+        'registration' => env('ENABLE_REGISTRATION', true),
 
         /*
          * The role the user is assigned to when they sign up from the frontend, not namespaced
@@ -64,6 +64,20 @@ return [
          * Whether or not the users email can be changed on the edit profile screen
          */
         'change_email' => false,
+
+        /*
+         * Whether or not new users need to be approved by an administrator before logging in
+         * If this is set to true, then confirm_email is not in effect
+         */
+        'requires_approval' => env('REQUIRES_APPROVAL', false),
+
+        /*
+         * Session Database Driver Only
+         * When active, a user can only have one session active at a time
+         * That is all other sessions for that user will be deleted when they log in
+         * (They can only be logged into one place at a time, all others will be logged out)
+         */
+        'single_login' => true,
     ],
 
     /*

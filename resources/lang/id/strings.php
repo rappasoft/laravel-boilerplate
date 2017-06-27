@@ -72,6 +72,7 @@ return [
 
     'emails' => [
         'auth' => [
+            'account_confirmed' => 'Your account has been confirmed.',
             'error'                   => 'Aduh!',
             'greeting'                => 'Halo!',
             'regards'                 => 'Salam,',
@@ -84,6 +85,11 @@ return [
             'reset_password'            => 'Klik di sini untuk reset sandi Anda',
 
             'click_to_confirm' => 'Klik di sini untuk mengkonfirmasi akun Anda:',
+        ],
+
+        'contact' => [
+            'email_body_title' => 'You have a new contact form request: Below are the details:',
+            'subject' => 'A new :app_name contact form submission!',
         ],
     ],
 

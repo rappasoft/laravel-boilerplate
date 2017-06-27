@@ -67,6 +67,7 @@ return [
                     'no_deactivated' => 'Nenhum usuário desativado.',
                     'no_deleted'     => 'Nenhum usuário excluído',
                     'roles'          => 'Papéis',
+                    'social' => 'Social',
                     'total'          => 'total de usuário|total de usuários',
                 ],
                 'tabs' => [
@@ -100,12 +101,19 @@ return [
             'register_button'    => 'Registrar',
             'remember_me'        => 'Lembrar-me',
         ],
+
+        'contact' => [
+            'box_title' => 'Contact Us',
+            'button' => 'Send Information',
+        ],
+
         'passwords' => [
             'forgot_password'                 => 'Esqueceu Sua Senha?',
             'reset_password_box_title'        => 'Resetar Senha',
             'reset_password_button'           => 'Resetar Senha',
             'send_password_reset_link_button' => 'Enviar link para redefinição de senha',
         ],
+
         'macros' => [
             'country' => [
                 'alpha'   => 'Códigos de País Alpha',
@@ -127,6 +135,7 @@ return [
             ],
             'timezone' => 'Fuso horário',
         ],
+
         'user' => [
             'passwords' => [
                 'change' => 'Alterar Senha',

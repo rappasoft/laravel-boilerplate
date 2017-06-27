@@ -74,6 +74,7 @@ Denna boilerplate kommer med fullt funktionerande <em>Access Control Library</em
     ],
     'emails' => [
         'auth' => [
+            'account_confirmed' => 'Your account has been confirmed.',
             'error'                   => 'Hoppsan!',
             'greeting'                => 'Hej!',
             'regards'                 => 'Hälsningar',
@@ -86,6 +87,11 @@ Denna boilerplate kommer med fullt funktionerande <em>Access Control Library</em
             'reset_password'            => 'Klicka här för att återställa ditt lösenord:',
 
             'click_to_confirm' => 'Klicka här för att bekräfta ditt konto:',
+        ],
+
+        'contact' => [
+            'email_body_title' => 'You have a new contact form request: Below are the details:',
+            'subject' => 'A new :app_name contact form submission!',
         ],
     ],
 

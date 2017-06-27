@@ -109,7 +109,24 @@ class UserRepository extends BaseRepository
         $user->confirmation_code = md5(uniqid(mt_rand(), true));
         $user->status = 1;
         $user->password = $provider ? null : bcrypt($data['password']);
-        $user->confirmed = $provider ? 1 : (config('access.users.confirm_email') ? 0 : 1);
+        $confirm = false; // Whether or not they get an e-mail to confirm their account
+
+        // If users require approval, confirmed is false regardless of account type
+        if (config('access.users.requires_approval')) {
+            $user->confirmed = 0; // No confirm e-mail sent, that defeats the purpose of manual approval
+        } elseif (config('access.users.confirm_email')) { // If user must confirm email
+            // If user is from social, already confirmed
+            if ($provider) {
+                $user->confirmed = 1; // E-mails are validated through the social platform
+            } else {
+                // Otherwise needs confirmation
+                $user->confirmed = 0;
+                $confirm = true;
+            }
+        } else {
+            // Otherwise both are off and confirmed is default
+            $user->confirmed = 1;
+        }
 
         DB::transaction(function () use ($user) {
             if ($user->save()) {
@@ -122,11 +139,13 @@ class UserRepository extends BaseRepository
 
         /*
          * If users have to confirm their email and this is not a social account,
+         * and the account does not require admin approval
          * send the confirmation email
          *
          * If this is a social account they are confirmed through the social provider by default
          */
-        if (config('access.users.confirm_email') && $provider === false) {
+        if ($confirm) {
+            // Pretty much only if account approval is off, confirm email is on, and this isn't a social account.
             $user->notify(new UserNeedsConfirmation($user->confirmation_code));
         }
 

@@ -70,6 +70,7 @@ TEXT
     ],
     'emails'   => [
         'auth' => [
+            'account_confirmed' => 'Your account has been confirmed.',
             'click_to_confirm'          => 'Щелкните здесь, чтобы подтвердить вашу учетную запись:',
             'error'                     => 'Упс!',
             'greeting'                  => 'Здравствуйте!',
@@ -80,6 +81,11 @@ TEXT
             'reset_password'            => 'Щелкните для сброса пароля',
             'thank_you_for_using_app'   => 'Спасибо за использование нашего приложения!',
             'trouble_clicking_button'   => 'Если у вас возникли проблемы с нажатием ":action_text" кнопки, скопируйте и вставьте URL ниже в адресную строку браузера:',
+        ],
+
+        'contact' => [
+            'email_body_title' => 'You have a new contact form request: Below are the details:',
+            'subject' => 'A new :app_name contact form submission!',
         ],
     ],
     'frontend' => [

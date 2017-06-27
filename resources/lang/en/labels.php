@@ -73,6 +73,7 @@ return [
                     'no_deactivated' => 'No Deactivated Users',
                     'no_deleted'     => 'No Deleted Users',
                     'roles'          => 'Roles',
+                    'social' => 'Social',
                     'total'          => 'user total|users total',
                 ],
 
@@ -112,6 +113,11 @@ return [
             'register_box_title' => 'Register',
             'register_button'    => 'Register',
             'remember_me'        => 'Remember Me',
+        ],
+
+        'contact' => [
+            'box_title' => 'Contact Us',
+            'button' => 'Send Information',
         ],
 
         'passwords' => [

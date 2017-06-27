@@ -160,6 +160,8 @@ return [
             'name'                      => '用户名',
             'password'                  => '密码',
             'password_confirmation'     => '确认密码',
+            'phone' => 'Phone',
+            'message' => 'Message',
             'old_password'              => '旧密码',
             'new_password'              => '新密码',
             'new_password_confirmation' => '确认新密码',

@@ -71,6 +71,7 @@ return [
                     'no_deactivated' => 'Tidak Ada Pengguna Dinonaktifkan',
                     'no_deleted'     => 'Tidak Ada Pengguna Dihapus',
                     'roles'          => 'Peran',
+                    'social' => 'Social',
                     'total'          => 'total pengguna|total pengguna',
                 ],
 
@@ -108,6 +109,11 @@ return [
             'register_box_title' => 'Daftar',
             'register_button'    => 'Daftar',
             'remember_me'        => 'Ingat Saya',
+        ],
+
+        'contact' => [
+            'box_title' => 'Contact Us',
+            'button' => 'Send Information',
         ],
 
         'passwords' => [

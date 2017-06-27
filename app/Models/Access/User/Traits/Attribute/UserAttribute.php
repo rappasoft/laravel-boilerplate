@@ -41,10 +41,15 @@ trait UserAttribute
     public function getConfirmedLabelAttribute()
     {
         if ($this->isConfirmed()) {
-            return "<label class='label label-success'>".trans('labels.general.yes').'</label>';
+            if ($this->id != 1 && $this->id != access()->id()) {
+                return '<a href="'.route('admin.access.user.unconfirm',
+                        $this).'" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.unconfirm').'" name="confirm_item"><label class="label label-success" style="cursor:pointer">'.trans('labels.general.yes').'</label></a>';
+            } else {
+                return '<label class="label label-success">'.trans('labels.general.yes').'</label>';
+            }
         }
 
-        return "<label class='label label-danger'>".trans('labels.general.no').'</label>';
+        return '<a href="'.route('admin.access.user.confirm', $this).'" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.confirm').'" name="confirm_item"><label class="label label-danger" style="cursor:pointer">'.trans('labels.general.no').'</label></a>';
     }
 
     /**
@@ -99,6 +104,32 @@ trait UserAttribute
     public function isConfirmed()
     {
         return $this->confirmed == 1;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPending()
+    {
+        return config('access.users.requires_approval') && $this->confirmed == 0;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFullNameAttribute()
+    {
+        return $this->last_name
+            ? $this->first_name.' '.$this->last_name
+            : $this->first_name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameAttribute()
+    {
+        return $this->full_name;
     }
 
     /**
@@ -160,7 +191,7 @@ trait UserAttribute
      */
     public function getConfirmedButtonAttribute()
     {
-        if (! $this->isConfirmed()) {
+        if (! $this->isConfirmed() && ! config('access.users.requires_approval')) {
             return '<a href="'.route('admin.access.user.account.confirm.resend', $this).'" class="btn btn-xs btn-success"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title='.trans('buttons.backend.access.users.resend_email').'"></i></a> ';
         }
 
@@ -242,36 +273,17 @@ trait UserAttribute
     public function getActionButtonsAttribute()
     {
         if ($this->trashed()) {
-            return $this->getRestoreButtonAttribute().
-                $this->getDeletePermanentlyButtonAttribute();
+            return $this->restore_button.$this->delete_permanently_button;
         }
 
         return
-            $this->getClearSessionButtonAttribute().
-            $this->getLoginAsButtonAttribute().
-            $this->getShowButtonAttribute().
-            $this->getEditButtonAttribute().
-            $this->getChangePasswordButtonAttribute().
-            $this->getStatusButtonAttribute().
-            $this->getConfirmedButtonAttribute().
-            $this->getDeleteButtonAttribute();
-    }
-
-    /**
-     * @return string
-     */
-    public function getFullNameAttribute()
-    {
-        return $this->last_name
-             ? $this->first_name.' '.$this->last_name
-             : $this->first_name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNameAttribute()
-    {
-        return $this->full_name;
+            $this->clear_session_button.
+            $this->login_as_button.
+            $this->show_button.
+            $this->edit_button.
+            $this->change_password_button.
+            $this->status_button.
+            $this->confirmed_button.
+            $this->delete_button;
     }
 }

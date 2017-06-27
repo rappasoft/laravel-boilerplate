@@ -65,6 +65,7 @@ return [
     ],
     'emails' => [
         'auth' => [
+            'account_confirmed' => 'Your account has been confirmed.',
             'error'                     => 'Oops!',
             'greeting'                  => 'Olá!',
             'regards'                   => 'Nossos cumprimentos,',
@@ -75,6 +76,11 @@ return [
             'password_if_not_requested' => 'Se você não solicitou uma redefinição de senha, nenhuma outra ação é necessária.',
             'reset_password'            => 'Clique aqui para redefinir sua senha',
             'click_to_confirm'          => 'Clique aqui para confirmar a sua conta:',
+        ],
+
+        'contact' => [
+            'email_body_title' => 'You have a new contact form request: Below are the details:',
+            'subject' => 'A new :app_name contact form submission!',
         ],
     ],
     'frontend' => [

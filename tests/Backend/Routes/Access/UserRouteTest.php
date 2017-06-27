@@ -3,6 +3,7 @@
 use Carbon\Carbon;
 use Tests\BrowserKitTestCase;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Notification;
 use App\Events\Backend\Access\User\UserRestored;
 use App\Events\Backend\Access\User\UserDeactivated;
 use App\Events\Backend\Access\User\UserReactivated;
@@ -65,6 +66,9 @@ class UserRouteTest extends BrowserKitTestCase
 
     public function testResendUserConfirmationEmail()
     {
+        config(['access.users.confirm_email' => true]);
+        config(['access.users.requires_approval' => false]);
+
         Notification::fake();
         $this->actingAs($this->admin)
              ->visit('/admin/access/user')

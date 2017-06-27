@@ -158,6 +158,8 @@ return [
             'name'                      => 'الإسم',
             'password'                  => 'كلمة المرور',
             'password_confirmation'     => 'تأكيد كلمة المرور',
+            'phone' => 'Phone',
+            'message' => 'Message',
             'old_password'              => 'كلمة المرور القديمة',
             'new_password'              => 'كلمة المرور الجديدة',
             'new_password_confirmation' => 'تأكيد كلمة المرور الجديدة',

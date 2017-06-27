@@ -71,6 +71,7 @@ return [
                     'no_deactivated' => 'Geen gedeactiveerde Gebruikers',
                     'no_deleted'     => 'Geen Verwijderde Gebruikers',
                     'roles'          => 'Rollen',
+                    'social' => 'Social',
                     'total'          => 'gebruiker|gebruikers',
                 ],
 
@@ -108,6 +109,11 @@ return [
             'register_box_title' => 'Registreer',
             'register_button'    => 'Registreer',
             'remember_me'        => 'Onthoud Mij',
+        ],
+
+        'contact' => [
+            'box_title' => 'Contact Us',
+            'button' => 'Send Information',
         ],
 
         'passwords' => [

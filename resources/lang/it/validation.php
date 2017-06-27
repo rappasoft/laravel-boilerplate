@@ -158,6 +158,8 @@ return [
             'name'                      => 'Nome',
             'password'                  => 'Password',
             'password_confirmation'     => 'Conferma password',
+            'phone' => 'Phone',
+            'message' => 'Message',
             'old_password'              => 'Vecchia password',
             'new_password'              => 'Nuova password',
             'new_password_confirmation' => 'Conferma nuova password',

@@ -33,6 +33,11 @@ class LoggedOutRouteTest extends BrowserKitTestCase
         $this->visit('/macros')->see('Macro Examples');
     }
 
+    public function testContactPage()
+    {
+        $this->visit('/contact')->see('Contact Us');
+    }
+
     /**
      * Test the login page works.
      */

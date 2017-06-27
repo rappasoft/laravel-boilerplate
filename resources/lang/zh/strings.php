@@ -72,6 +72,7 @@ return [
 
     'emails' => [
         'auth' => [
+            'account_confirmed' => 'Your account has been confirmed.',
             'error'                   => '哎呀！',
             'greeting'                => '你好！',
             'regards'                 => '问候,',
@@ -84,6 +85,11 @@ return [
             'reset_password'            => '点击这里重置密码',
 
             'click_to_confirm' => '点击此处确认您的帐户:',
+        ],
+
+        'contact' => [
+            'email_body_title' => 'You have a new contact form request: Below are the details:',
+            'subject' => 'A new :app_name contact form submission!',
         ],
     ],
 

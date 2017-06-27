@@ -73,6 +73,7 @@ return [
                     'no_deactivated' => 'Devre Dışı Bırakılan Kullanıcı Yok',
                     'no_deleted'     => 'Silinmiş Kullanıcı Yok',
                     'roles'          => 'Roller',
+                    'social' => 'Social',
                     'total'          => 'toplam kullanıcı|toplam kullanıcılar',
                 ],
 
@@ -112,6 +113,11 @@ return [
             'register_box_title' => 'Kayıt',
             'register_button'    => 'Kayıt',
             'remember_me'        => 'Beni Hatırla',
+        ],
+
+        'contact' => [
+            'box_title' => 'Contact Us',
+            'button' => 'Send Information',
         ],
 
         'passwords' => [

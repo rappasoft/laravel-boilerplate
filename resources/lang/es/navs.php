@@ -19,6 +19,7 @@ return [
     ],
 
     'frontend' => [
+        'contact' => 'Contact',
         'dashboard' => 'Principal',
         'login'     => 'Iniciar Sessión',
         'macros'    => 'Macros',

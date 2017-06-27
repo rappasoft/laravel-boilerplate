@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Exceptions\GeneralException;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -15,14 +16,14 @@ abstract class Request extends FormRequest
     protected $error = '';
 
     /**
-     * @return $this
+     * @throws GeneralException
      */
-    public function forbiddenResponse()
+    protected function failedAuthorization()
     {
-        if (empty($error)) {
+        if (empty($this->error)) {
             $this->error = trans('auth.general_error');
         }
 
-        return redirect()->back()->withErrors($this->error);
+        return redirect()->back()->withInput()->withErrors($this->error);
     }
 }

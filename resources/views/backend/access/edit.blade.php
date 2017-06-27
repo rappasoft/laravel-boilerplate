@@ -57,14 +57,6 @@
                     </div><!--form control-->
 
                     <div class="form-group">
-                        {{ Form::label('confirmed', trans('validation.attributes.backend.access.users.confirmed'), ['class' => 'col-lg-2 control-label']) }}
-
-                        <div class="col-lg-1">
-                            {{ Form::checkbox('confirmed', '1', $user->confirmed == 1) }}
-                        </div><!--col-lg-1-->
-                    </div><!--form control-->
-
-                    <div class="form-group">
                         {{ Form::label('associated_roles', trans('validation.attributes.backend.access.users.associated_roles'), ['class' => 'col-lg-2 control-label']) }}
 
                         <div class="col-lg-3">
@@ -120,7 +112,6 @@
 
         @if ($user->id == 1)
             {{ Form::hidden('status', 1) }}
-            {{ Form::hidden('confirmed', 1) }}
             {{ Form::hidden('assignees_roles[0]', 1) }}
         @endif
 

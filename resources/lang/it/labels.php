@@ -71,6 +71,7 @@ return [
                     'no_deactivated' => 'Nessun utente disattivato',
                     'no_deleted'     => 'Nessun utente eliminato',
                     'roles'          => 'Ruoli',
+                    'social' => 'Social',
                     'total'          => 'utente(i) totali', // TODO: pluralization
                 ],
 
@@ -108,6 +109,11 @@ return [
             'register_box_title' => 'Registrazione',
             'register_button'    => 'Registrati',
             'remember_me'        => 'Ricordami',
+        ],
+
+        'contact' => [
+            'box_title' => 'Contact Us',
+            'button' => 'Send Information',
         ],
 
         'passwords' => [

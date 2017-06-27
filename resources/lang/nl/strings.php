@@ -71,6 +71,7 @@ return [
     ],
     'emails' => [
         'auth' => [
+            'account_confirmed' => 'Your account has been confirmed.',
             'error'                   => 'Oeps!',
             'greeting'                => 'Hallo!',
             'regards'                 => 'Groet,',
@@ -83,6 +84,11 @@ return [
             'reset_password'            => 'Klik hier om uw wachtwoord te resetten',
 
             'click_to_confirm' => 'Klik hier om uw account te bevestigen:',
+        ],
+
+        'contact' => [
+            'email_body_title' => 'You have a new contact form request: Below are the details:',
+            'subject' => 'A new :app_name contact form submission!',
         ],
     ],
 

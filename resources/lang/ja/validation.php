@@ -160,6 +160,8 @@ return [
             'name'                      => 'ユーザ名',
             'password'                  => 'パスワード',
             'password_confirmation'     => 'パスワード（確認）',
+            'phone' => 'Phone',
+            'message' => 'Message',
             'old_password'              => '旧パスワード',
             'new_password'              => '新パスワード',
             'new_password_confirmation' => '新パスワード（確認）',

@@ -71,6 +71,7 @@ return [
                     'no_deactivated' => 'Inga inaktiverade användare',
                     'no_deleted'     => 'Inga raderade användare',
                     'roles'          => 'Roller',
+                    'social' => 'Social',
                     'total'          => 'användare totalt|användare totalt',
                 ],
 
@@ -108,6 +109,11 @@ return [
             'register_box_title' => 'Registrera',
             'register_button'    => 'Registrera',
             'remember_me'        => 'Kom ihåg mig',
+        ],
+
+        'contact' => [
+            'box_title' => 'Contact Us',
+            'button' => 'Send Information',
         ],
 
         'passwords' => [

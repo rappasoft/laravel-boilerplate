@@ -71,6 +71,7 @@ return [
                     'no_deactivated' => 'Δεν υπάρχουν ανενεργοί χρήστες',
                     'no_deleted'     => 'Δεν υπάρχουν διεγραμμένοι χρήστες',
                     'roles'          => '΄Ρόλοι',
+                    'social' => 'Social',
                     'total'          => 'user total|users total',
                 ],
 
@@ -108,6 +109,11 @@ return [
             'register_box_title' => 'Εγγραφή',
             'register_button'    => 'Εγγραφή',
             'remember_me'        => 'Θυμήσου με',
+        ],
+
+        'contact' => [
+            'box_title' => 'Contact Us',
+            'button' => 'Send Information',
         ],
 
         'passwords' => [

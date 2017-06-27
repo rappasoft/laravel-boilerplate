@@ -71,6 +71,7 @@ return [
                     'no_deactivated' => '沒有停用的用戶',
                     'no_deleted' => '未刪除用戶',
                     'roles' => '角色',
+                    'social' => 'Social',
                     'total' => '用戶總計|用戶總計',
                 ],
 
@@ -108,6 +109,11 @@ return [
             'register_box_title' => '註冊',
             'register_button' => '註冊',
             'remember_me' => '記住我',
+        ],
+
+        'contact' => [
+            'box_title' => 'Contact Us',
+            'button' => 'Send Information',
         ],
 
         'passwords' => [

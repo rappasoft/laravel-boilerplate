@@ -67,10 +67,12 @@ return [
                     'email'          => 'Email',
                     'id'             => 'ID',
                     'last_updated'   => 'Mise à jour',
-                    'name'           => 'Nom',
+                    'first_name'     => 'Prénom',
+                    'last_name'      => 'Nom',
                     'no_deactivated' => "Pas d'utilisateurs désactivés",
                     'no_deleted'     => "Pas d'utilisateurs supprimés",
                     'roles'          => 'Rôles',
+                    'social' => 'Social',
                     'total'          => 'utilisateur total|utilisateurs total',
                 ],
 
@@ -108,6 +110,11 @@ return [
             'register_box_title' => "S'enregistrer",
             'register_button'    => 'Créer le compte',
             'remember_me'        => 'Se souvenir de moi',
+        ],
+
+        'contact' => [
+            'box_title' => 'Contact Us',
+            'button' => 'Send Information',
         ],
 
         'passwords' => [

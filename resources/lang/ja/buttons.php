@@ -23,6 +23,8 @@ return [
                 'login_as' => 'Login As :user',
                 'resend_email' => '再確認メール',
                 'restore_user' => 'ユーザーの復元',
+                'unconfirm'             => 'Un-confirm',
+                'unlink' => 'Unlink',
             ],
         ],
     ],

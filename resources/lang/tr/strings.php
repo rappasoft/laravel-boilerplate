@@ -67,6 +67,7 @@ return [
 
     'emails' => [
         'auth' => [
+            'account_confirmed' => 'Your account has been confirmed.',
             'error'                   => 'HATA!',
             'greeting'                => 'Merhaba!',
             'regards'                 => 'Saygılarımızla,',
@@ -79,6 +80,11 @@ return [
             'reset_password'            => 'Şifrenizi sıfırlamak için buraya tıklayın',
 
             'click_to_confirm' => 'Hesabınızı onaylamak için burayı tıklayın:',
+        ],
+
+        'contact' => [
+            'email_body_title' => 'You have a new contact form request: Below are the details:',
+            'subject' => 'A new :app_name contact form submission!',
         ],
     ],
 

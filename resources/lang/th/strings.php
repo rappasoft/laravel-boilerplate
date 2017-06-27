@@ -72,6 +72,7 @@ return [
 
     'emails' => [
         'auth' => [
+            'account_confirmed' => 'Your account has been confirmed.',
             'error'                   => 'โอ้วววว!',
             'greeting'                => 'สวัสดีจ้า!',
             'regards'                 => 'ด้วยความนับถือ,',
@@ -84,6 +85,11 @@ return [
             'reset_password'            => 'คลิกที่นี่เพื่อรีเซ็ตรหัสผ่านของคุณ',
 
             'click_to_confirm' => 'คลิกที่นี่เพื่อยืนยันตัวตนของคุณ:',
+        ],
+
+        'contact' => [
+            'email_body_title' => 'You have a new contact form request: Below are the details:',
+            'subject' => 'A new :app_name contact form submission!',
         ],
     ],
 

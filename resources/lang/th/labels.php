@@ -71,6 +71,7 @@ return [
                     'no_deactivated' => 'ไม่มีผู้ใช้ที่ถูกพักการใช้งาน',
                     'no_deleted'     => 'ไม่มีผู้ใช้ที่ถูกลบ',
                     'roles'          => 'บทบาท',
+                    'social' => 'Social',
                     'total'          => 'ผู้ใช้ทั้งหมด|ผู้ใช้ทั้งหมด',
                 ],
 
@@ -108,6 +109,11 @@ return [
             'register_box_title' => 'ลงทะเบียน',
             'register_button'    => 'ลงทะเบียน',
             'remember_me'        => 'จดจำฉัน',
+        ],
+
+        'contact' => [
+            'box_title' => 'Contact Us',
+            'button' => 'Send Information',
         ],
 
         'passwords' => [

@@ -155,9 +155,13 @@ return [
 
         'frontend' => [
             'email'                     => 'Adresse email',
-            'name'                      => 'Nom',
+            'last_name'                 => 'Nom',
+            'first_name'                => 'Prénom',
+            'name'                        => 'Full Name',
             'password'                  => 'Mot de passe',
             'password_confirmation'     => 'Confirmation',
+            'phone' => 'Phone',
+            'message' => 'Message',
             'old_password'              => 'Ancien mot de passe',
             'new_password'              => 'Nouveau mot de passe',
             'new_password_confirmation' => 'Confirmation du nouveau mot de passe',

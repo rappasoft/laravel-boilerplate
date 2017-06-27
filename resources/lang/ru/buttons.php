@@ -24,6 +24,8 @@ return [
                 'login_as'              => 'Войти как :user',
                 'resend_email'          => 'Повторно отправить подтверждение на E-mail',
                 'restore_user'          => 'Восстановить учетную запись',
+                'unconfirm'             => 'Un-confirm',
+                'unlink' => 'Unlink',
             ],
         ],
     ],
