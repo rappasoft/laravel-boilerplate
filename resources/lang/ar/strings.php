@@ -89,10 +89,10 @@ return [
             'click_to_confirm' => 'إضغط هنا لتفعيل account:',
         ],
 
-		'contact' => [
-			'email_body_title' => 'You have a new contact form request: Below are the details:',
-			'subject' => 'A new :app_name contact form submission!',
-		],
+        'contact' => [
+            'email_body_title' => 'You have a new contact form request: Below are the details:',
+            'subject' => 'A new :app_name contact form submission!',
+        ],
     ],
 
     'frontend' => [

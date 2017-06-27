@@ -87,10 +87,10 @@ return [
             'click_to_confirm' => 'คลิกที่นี่เพื่อยืนยันตัวตนของคุณ:',
         ],
 
-		'contact' => [
-			'email_body_title' => 'You have a new contact form request: Below are the details:',
-			'subject' => 'A new :app_name contact form submission!',
-		],
+        'contact' => [
+            'email_body_title' => 'You have a new contact form request: Below are the details:',
+            'subject' => 'A new :app_name contact form submission!',
+        ],
     ],
 
     'frontend' => [

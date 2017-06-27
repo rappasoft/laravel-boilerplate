@@ -83,10 +83,10 @@ TEXT
             'trouble_clicking_button'   => 'Если у вас возникли проблемы с нажатием ":action_text" кнопки, скопируйте и вставьте URL ниже в адресную строку браузера:',
         ],
 
-		'contact' => [
-			'email_body_title' => 'You have a new contact form request: Below are the details:',
-			'subject' => 'A new :app_name contact form submission!',
-		],
+        'contact' => [
+            'email_body_title' => 'You have a new contact form request: Below are the details:',
+            'subject' => 'A new :app_name contact form submission!',
+        ],
     ],
     'frontend' => [
         'test'       => 'Тест',

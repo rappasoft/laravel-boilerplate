@@ -89,10 +89,10 @@ Denna boilerplate kommer med fullt funktionerande <em>Access Control Library</em
             'click_to_confirm' => 'Klicka här för att bekräfta ditt konto:',
         ],
 
-		'contact' => [
-			'email_body_title' => 'You have a new contact form request: Below are the details:',
-			'subject' => 'A new :app_name contact form submission!',
-		],
+        'contact' => [
+            'email_body_title' => 'You have a new contact form request: Below are the details:',
+            'subject' => 'A new :app_name contact form submission!',
+        ],
     ],
 
     'frontend' => [
