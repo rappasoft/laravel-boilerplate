@@ -39,6 +39,6 @@ class SendContact extends Mailable
     public function build()
     {
         return $this->view('frontend.mail.contact')
-			->subject('A new '.app_name().' contact form submission!');
+			->subject(trans('strings.emails.contact.subject', ['app_name' => app_name()]));
     }
 }

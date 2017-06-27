@@ -86,6 +86,11 @@ return [
 
             'click_to_confirm' => 'あなたのアカウントを確認するにはここをクリックしてください:',
         ],
+
+		'contact' => [
+			'email_body_title' => 'You have a new contact form request: Below are the details:',
+			'subject' => 'A new :app_name contact form submission!',
+		],
     ],
 
     'frontend' => [

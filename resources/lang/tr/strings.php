@@ -81,6 +81,11 @@ return [
 
             'click_to_confirm' => 'Hesabınızı onaylamak için burayı tıklayın:',
         ],
+
+		'contact' => [
+			'email_body_title' => 'You have a new contact form request: Below are the details:',
+			'subject' => 'A new :app_name contact form submission!',
+		],
     ],
 
     'frontend' => [

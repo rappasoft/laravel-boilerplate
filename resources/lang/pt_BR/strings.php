@@ -77,6 +77,11 @@ return [
             'reset_password'            => 'Clique aqui para redefinir sua senha',
             'click_to_confirm'          => 'Clique aqui para confirmar a sua conta:',
         ],
+
+		'contact' => [
+			'email_body_title' => 'You have a new contact form request: Below are the details:',
+			'subject' => 'A new :app_name contact form submission!',
+		],
     ],
     'frontend' => [
         'test'  => 'Teste',

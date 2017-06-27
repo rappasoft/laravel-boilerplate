@@ -1,4 +1,4 @@
-<p>You have a new contact form request: Below are the details:</p>
+<p>{{ trans('strings.emails.contact.email_body_title') }}</p>
 
 <p><strong>{{ trans('validation.attributes.frontend.name') }}:</strong> {{ $request->name }}</p>
 <p><strong>{{ trans('validation.attributes.frontend.email') }}:</strong> {{ $request->email }}</p>
