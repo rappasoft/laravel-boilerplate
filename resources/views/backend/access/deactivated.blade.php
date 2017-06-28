@@ -62,11 +62,11 @@
                     }
                 },
                 columns: [
-                    {data: 'last_name', name: '{{config('access.users_table')}}.last_name'},
-                    {data: 'first_name', name: '{{config('access.users_table')}}.first_name'},
-                    {data: 'email', name: '{{config('access.users_table')}}.email'},
-                    {data: 'confirmed', name: '{{config('access.users_table')}}.confirmed'},
-                    {data: 'roles', name: '{{config('access.roles_table')}}.name', sortable: false},
+                    {data: 'last_name', name: '{!!config('access.users_table')!!}.last_name'},
+                    {data: 'first_name', name: '{!!config('access.users_table')!!}.first_name'},
+                    {data: 'email', name: '{!!config('access.users_table')!!}.email'},
+                    {data: 'confirmed', name: '{!!config('access.users_table')!!}.confirmed'},
+                    {data: 'roles', name: '{!!config('access.roles_table')!!}.name', sortable: false},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[0, "asc"]],
