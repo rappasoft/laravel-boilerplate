@@ -6,8 +6,8 @@ use App\Helpers\Auth\Auth;
 use App\Models\Access\User\User;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Events\Frontend\Auth\UserLoggedIn;
+use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 
 /**
  * Class UserAccessController.
