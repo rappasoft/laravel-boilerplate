@@ -6,7 +6,7 @@
         <div class="col-xs-12">
 
             <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('navs.frontend.dashboard') }}</div>
+                <div class="panel-heading">{!! trans('navs.frontend.dashboard') !!}</div>
 
                 <div class="panel-body">
 
@@ -17,7 +17,7 @@
                             <ul class="media-list">
                                 <li class="media">
                                     <div class="media-left">
-                                        <img class="media-object profile-picture" src="{{ $logged_in_user->picture }}" alt="Profile picture">
+                                        <img class="media-object profile-picture" src="{!! $logged_in_user->picture !!}" alt="Profile picture">
                                     </div><!--media-left-->
 
                                     <div class="media-body">
@@ -25,14 +25,14 @@
                                             {{ $logged_in_user->name }}<br/>
                                             <small>
                                                 {{ $logged_in_user->email }}<br/>
-                                                Joined {{ $logged_in_user->created_at->format('F jS, Y') }}
+                                                Joined {!! $logged_in_user->created_at->format('F jS, Y') !!}
                                             </small>
                                         </h4>
 
-                                        {{ link_to_route('frontend.user.account', trans('navs.frontend.user.account'), [], ['class' => 'btn btn-info btn-xs']) }}
+                                        {!! link_to_route('frontend.user.account', trans('navs.frontend.user.account'), [], ['class' => 'btn btn-info btn-xs']) !!}
 
                                         @permission('view-backend')
-                                            {{ link_to_route('admin.dashboard', trans('navs.frontend.user.administration'), [], ['class' => 'btn btn-danger btn-xs']) }}
+                                            {!! link_to_route('admin.dashboard', trans('navs.frontend.user.administration'), [], ['class' => 'btn btn-danger btn-xs']) !!}
                                         @endauth
                                     </div><!--media-body-->
                                 </li><!--media-->

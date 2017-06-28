@@ -9,11 +9,11 @@
 
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <i class="fa fa-home"></i> {{ trans('navs.general.home') }}
+                    <i class="fa fa-home"></i> {!! trans('navs.general.home') !!}
                 </div>
 
                 <div class="panel-body">
-                    {{ trans('strings.frontend.welcome_to', ['place' => app_name()]) }}
+                    {!! trans('strings.frontend.welcome_to', ['place' => app_name()]) !!}
                 </div>
             </div><!-- panel -->
 
@@ -25,10 +25,10 @@
             <div class="col-xs-12">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_blade_extensions') }}</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {!! trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_blade_extensions') !!}</div>
 
                     <div class="panel-body">
-                        {{ trans('strings.frontend.test') . ' 1: ' . trans('strings.frontend.tests.you_can_see_because', ['role' => trans('roles.administrator')]) }}
+                        {!! trans('strings.frontend.test') . ' 1: ' . trans('strings.frontend.tests.you_can_see_because', ['role' => trans('roles.administrator')]) !!}
                     </div>
                 </div><!-- panel -->
 
@@ -39,10 +39,10 @@
             <div class="col-xs-12">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_access_helper.role_name') }}</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {!! trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_access_helper.role_name') !!}</div>
 
                     <div class="panel-body">
-                        {{ trans('strings.frontend.test') . ' 2: ' . trans('strings.frontend.tests.you_can_see_because', ['role' => trans('roles.administrator')]) }}
+                        {!! trans('strings.frontend.test') . ' 2: ' . trans('strings.frontend.tests.you_can_see_because', ['role' => trans('roles.administrator')]) !!}
                     </div>
                 </div><!-- panel -->
 
@@ -53,10 +53,10 @@
             <div class="col-xs-12">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_access_helper.role_id') }}</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {!! trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_access_helper.role_id') !!}</div>
 
                     <div class="panel-body">
-                        {{ trans('strings.frontend.test') . ' 3: ' . trans('strings.frontend.tests.you_can_see_because', ['role' => trans('roles.administrator')]) }}
+                        {!! trans('strings.frontend.test') . ' 3: ' . trans('strings.frontend.tests.you_can_see_because', ['role' => trans('roles.administrator')]) !!}
                     </div>
                 </div><!-- panel -->
 
@@ -67,10 +67,10 @@
             <div class="col-xs-12">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_access_helper.array_roles_not') }}</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {!! trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_access_helper.array_roles_not') !!}</div>
 
                     <div class="panel-body">
-                        {{ trans('strings.frontend.test') . ' 4: ' . trans('strings.frontend.tests.you_can_see_because', ['role' => trans('roles.administrator')]) }}
+                        {!! trans('strings.frontend.test') . ' 4: ' . trans('strings.frontend.tests.you_can_see_because', ['role' => trans('roles.administrator')]) !!}
                     </div>
                 </div><!-- panel -->
 
@@ -82,10 +82,10 @@
             <div class="col-xs-12">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_access_helper.array_roles') }}</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {!! trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_access_helper.array_roles') !!}</div>
 
                     <div class="panel-body">
-                        {{ trans('strings.frontend.tests.you_can_see_because', ['role' => trans('roles.administrator')]) }}
+                        {!! trans('strings.frontend.tests.you_can_see_because', ['role' => trans('roles.administrator')]) !!}
                     </div>
                 </div><!-- panel -->
 
@@ -96,10 +96,10 @@
             <div class="col-xs-12">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.permission_name') }}</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {!! trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.permission_name') !!}</div>
 
                     <div class="panel-body">
-                        {{ trans('strings.frontend.test') . ' 5: ' . trans('strings.frontend.tests.you_can_see_because_permission', ['permission' => 'view-backend']) }}
+                        {!! trans('strings.frontend.test') . ' 5: ' . trans('strings.frontend.tests.you_can_see_because_permission', ['permission' => 'view-backend']) !!}
                     </div>
                 </div><!-- panel -->
 
@@ -110,10 +110,10 @@
             <div class="col-xs-12">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.permission_id') }}</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {!! trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.permission_id') !!}</div>
 
                     <div class="panel-body">
-                        {{ trans('strings.frontend.test') . ' 6: ' . trans('strings.frontend.tests.you_can_see_because_permission', ['permission' => 'view_backend']) }}
+                        {!! trans('strings.frontend.test') . ' 6: ' . trans('strings.frontend.tests.you_can_see_because_permission', ['permission' => 'view_backend']) !!}
                     </div>
                 </div><!-- panel -->
 
@@ -124,10 +124,10 @@
             <div class="col-xs-12">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.array_permissions_not') }}</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {!! trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.array_permissions_not') !!}</div>
 
                     <div class="panel-body">
-                        {{ trans('strings.frontend.test') . ' 7: ' . trans('strings.frontend.tests.you_can_see_because_permission', ['permission' => 'view_backend']) }}
+                        {!! trans('strings.frontend.test') . ' 7: ' . trans('strings.frontend.tests.you_can_see_because_permission', ['permission' => 'view_backend']) !!}
                     </div>
                 </div><!-- panel -->
 
@@ -138,10 +138,10 @@
             <div class="col-xs-12">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.array_permissions') }}</div>
+                    <div class="panel-heading"><i class="fa fa-home"></i> {!! trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.array_permissions') !!}</div>
 
                     <div class="panel-body">
-                        {{ trans('strings.frontend.tests.you_can_see_because_permission', ['permission' => 'view_backend']) }}
+                        {!! trans('strings.frontend.tests.you_can_see_because_permission', ['permission' => 'view_backend']) !!}
                     </div>
                 </div><!-- panel -->
 
@@ -151,7 +151,7 @@
         <div class="col-xs-12">
 
             <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-home"></i> Bootstrap Glyphicon {{ trans('strings.frontend.test') }}</div>
+                <div class="panel-heading"><i class="fa fa-home"></i> Bootstrap Glyphicon {!! trans('strings.frontend.test') !!}</div>
 
                 <div class="panel-body">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
@@ -166,7 +166,7 @@
         <div class="col-xs-12">
 
             <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-home"></i> Font Awesome {{ trans('strings.frontend.test') }}</div>
+                <div class="panel-heading"><i class="fa fa-home"></i> Font Awesome {!! trans('strings.frontend.test') !!}</div>
 
                 <div class="panel-body">
                     <i class="fa fa-home"></i>

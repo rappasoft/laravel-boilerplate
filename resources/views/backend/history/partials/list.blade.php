@@ -4,7 +4,7 @@
 
 @if ($paginate)
     <div class="pull-right">
-        {{ $history->links() }}
+        {!! $history->links() !!}
     </div><!--pull-right-->
 
     <div class="clearfix"></div>

@@ -1,10 +1,10 @@
 <!doctype html>
-<html class="no-js" lang="{{ app()->getLocale() }}">
+<html class="no-js" lang="{!! app()->getLocale() !!}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+        <meta name="csrf-token" content="{!! csrf_token() !!}">
 
         <title>@yield('title', app_name())</title>
 
@@ -19,9 +19,9 @@
         <!-- Check if the language is set to RTL, so apply the RTL layouts -->
         <!-- Otherwise apply the normal LTR layouts -->
         @langRTL
-            {{ Html::style(getRtlCss(mix('css/backend.css'))) }}
+            {!! Html::style(getRtlCss(mix('css/backend.css'))) !!}
         @else
-            {{ Html::style(mix('css/backend.css')) }}
+            {!! Html::style(mix('css/backend.css')) !!}
         @endif
 
         @yield('after-styles')
@@ -29,8 +29,8 @@
         <!-- Html5 Shim and Respond.js IE8 support of Html5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
-        {{ Html::script('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js') }}
-        {{ Html::script('https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js') }}
+        {!! Html::script('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js') !!}
+        {!! Html::script('https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js') !!}
         <![endif]-->
 
         <!-- Scripts -->
@@ -40,7 +40,7 @@
             ]); ?>
         </script>
     </head>
-    <body class="skin-{{ config('backend.theme') }} {{ config('backend.layout') }}">
+    <body class="skin-{!! config('backend.theme') !!} {!! config('backend.layout') !!}">
         @include('includes.partials.logged-in-as')
 
         <div class="wrapper">
@@ -59,6 +59,7 @@
 
                 <!-- Main content -->
                 <section class="content">
+                    <div class="loader" style="display: none;"><div class="cp-spinner cp-skeleton"></div></div>
                     @include('includes.partials.messages')
                     @yield('content')
                 </section><!-- /.content -->
@@ -69,7 +70,7 @@
 
         <!-- JavaScripts -->
         @yield('before-scripts')
-        {{ Html::script(mix('js/backend.js')) }}
+        {!! Html::script(mix('js/backend.js')) !!}
         @yield('after-scripts')
     </body>
 </html>

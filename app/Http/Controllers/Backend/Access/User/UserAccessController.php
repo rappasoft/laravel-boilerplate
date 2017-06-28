@@ -7,6 +7,7 @@ use App\Models\Access\User\User;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
+use App\Events\Frontend\Auth\UserLoggedIn;
 
 /**
  * Class UserAccessController.
@@ -35,6 +36,7 @@ class UserAccessController extends Controller
 
             // Login.
             access()->loginUsingId($user->id);
+            event(new UserLoggedIn($user));
 
             // Redirect.
             return redirect()->route(homeRoute());
@@ -54,6 +56,7 @@ class UserAccessController extends Controller
 
         // Login user
         access()->loginUsingId($user->id);
+        event(new UserLoggedIn($user));
 
         // Redirect to frontend
         return redirect()->route(homeRoute());

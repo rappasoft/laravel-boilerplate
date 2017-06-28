@@ -137,6 +137,7 @@ class LoginController extends Controller
 
             //Re-login admin
             access()->loginUsingId((int) $admin_id);
+            event(new UserLoggedIn(access()->user()));
 
             //Redirect to backend user page
             return redirect()->route('admin.access.user.index');
@@ -144,6 +145,7 @@ class LoginController extends Controller
             app()->make(Auth::class)->flushTempSession();
 
             //Otherwise logout and redirect to login
+            event(new UserLoggedOut(access()->user()));
             access()->logout();
 
             return redirect()->route('frontend.auth.login');
