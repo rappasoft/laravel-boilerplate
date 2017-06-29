@@ -59,7 +59,6 @@ class SetupAccessTables extends Migration
             $table->increments('id')->unsigned();
             $table->string('name');
             $table->string('display_name');
-            $table->smallInteger('sort')->default(0)->unsigned();
             $table->timestamps();
 
             /*
