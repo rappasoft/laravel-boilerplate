@@ -76,7 +76,7 @@
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
                 order: [[3, "asc"]],
-                searchDelay: 500
+                lengthMenu: [[-1], ['All']]
             });
         });
     </script>
