@@ -34,7 +34,8 @@ class Access
      */
     public function logout()
     {
-		event(new UserLoggedOut($this->user()));
+        event(new UserLoggedOut($this->user()));
+
         return auth()->logout();
     }
 
@@ -55,8 +56,9 @@ class Access
     public function login(Authenticatable $user, $remember = false)
     {
         $logged_in = auth()->login($user, $remember);
-		event(new UserLoggedIn($this->user()));
-		return $logged_in;
+        event(new UserLoggedIn($this->user()));
+
+        return $logged_in;
     }
 
     /**
@@ -67,8 +69,9 @@ class Access
     public function loginUsingId($id)
     {
         $logged_in = auth()->loginUsingId($id);
-		event(new UserLoggedIn($this->user()));
-		return $logged_in;
+        event(new UserLoggedIn($this->user()));
+
+        return $logged_in;
     }
 
     /**
