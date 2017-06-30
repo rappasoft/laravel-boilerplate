@@ -2,6 +2,8 @@
 
 namespace App\Services\Access;
 
+use App\Events\Frontend\Auth\UserLoggedIn;
+use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Contracts\Auth\Authenticatable;
 
 /**
@@ -32,6 +34,7 @@ class Access
      */
     public function logout()
     {
+		event(new UserLoggedOut($this->user()));
         return auth()->logout();
     }
 
@@ -51,7 +54,9 @@ class Access
      */
     public function login(Authenticatable $user, $remember = false)
     {
-        return auth()->login($user, $remember);
+        $logged_in = auth()->login($user, $remember);
+		event(new UserLoggedIn($this->user()));
+		return $logged_in;
     }
 
     /**
@@ -61,7 +66,9 @@ class Access
      */
     public function loginUsingId($id)
     {
-        return auth()->loginUsingId($id);
+        $logged_in = auth()->loginUsingId($id);
+		event(new UserLoggedIn($this->user()));
+		return $logged_in;
     }
 
     /**
