@@ -59,6 +59,7 @@
 
                 <!-- Main content -->
                 <section class="content">
+                    <div class="loader" style="display: none;"><div class="cp-spinner cp-skeleton"></div></div>
                     @include('includes.partials.messages')
                     @yield('content')
                 </section><!-- /.content -->

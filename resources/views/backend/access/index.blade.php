@@ -28,8 +28,8 @@
                 <table id="users-table" class="table table-condensed table-hover">
                     <thead>
                     <tr>
-                        <th>{{ trans('labels.backend.access.users.table.first_name') }}</th>
                         <th>{{ trans('labels.backend.access.users.table.last_name') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.first_name') }}</th>
                         <th>{{ trans('labels.backend.access.users.table.email') }}</th>
                         <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
                         <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
@@ -59,20 +59,27 @@
 
 @section('after-scripts')
     {{ Html::script("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}
+    {!! Html::script("js/dtExtend.js") !!}
 
     <script>
         $(function () {
             $('#users-table').DataTable({
-                processing: true,
+                dom: 'lfrtip',
+                processing: false,
                 serverSide: true,
+                autoWidth: false,
                 ajax: {
                     url: '{{ route("admin.access.user.get") }}',
                     type: 'post',
-                    data: {status: 1, trashed: false}
+                    data: {status: 1, trashed: false},
+                    error: function (xhr, err) {
+                        if (err === 'parsererror')
+                            location.reload();
+                    }
                 },
                 columns: [
-                    {data: 'first_name', name: '{{config('access.users_table')}}.first_name'},
                     {data: 'last_name', name: '{{config('access.users_table')}}.last_name'},
+                    {data: 'first_name', name: '{{config('access.users_table')}}.first_name'},
                     {data: 'email', name: '{{config('access.users_table')}}.email'},
                     {data: 'confirmed', name: '{{config('access.users_table')}}.confirmed'},
                     {data: 'roles', name: '{{config('access.roles_table')}}.name', sortable: false},

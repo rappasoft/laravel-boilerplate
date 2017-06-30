@@ -28,7 +28,8 @@ mix.sass('resources/assets/sass/frontend/app.scss', 'public/css/frontend.css')
         plugins: [
             new WebpackRTLPlugin('/css/[name].rtl.css')
         ]
-    });
+    })
+    .copy('resources/assets/js/backend/dtExtend.js', 'public/js/dtExtend.js');
 
 if(mix.inProduction){
     mix.version();

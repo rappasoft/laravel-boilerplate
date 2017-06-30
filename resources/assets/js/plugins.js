@@ -28,6 +28,28 @@ function addDeleteForms() {
  * Place any jQuery/helper plugins in here.
  */
 $(function(){
+
+    var $loading = $('.loader'),
+        $document = $(document).ajaxStart(function () {
+            $loading.show();
+        }).ajaxError(function (event, jqxhr, settings, thrownError) {
+            $loading.hide();
+            location.reload();
+        }).ajaxStop(function () {
+            $loading.hide();
+        }).ajaxComplete(function () {
+            /**
+             * This is for delete buttons that are loaded via AJAX in datatables, they will not work right
+             * without this block of code
+             */
+            addDeleteForms();
+        });
+
+    /**
+     * Add the data-method="delete" forms to all delete links
+     */
+    addDeleteForms();
+
     /**
      * Place the CSRF token as a header on all pages for access in AJAX requests
      */
@@ -38,29 +60,22 @@ $(function(){
     });
 
     /**
-     * Add the data-method="delete" forms to all delete links
+     * Bind all bootstrap tooltips & popovers
      */
-    addDeleteForms();
-
-    /**
-     * This is for delete buttons that are loaded via AJAX in datatables, they will not work right
-     * without this block of code
-     */
-    $(document).ajaxComplete(function(){
-        addDeleteForms();
-    });
+    $("[data-toggle=\"tooltip\"]").tooltip();
+    $("[data-toggle=\"popover\"]").popover();
 
     /**
      * Generic confirm form delete using Sweet Alert
      */
     $('body').on('submit', 'form[name=delete_item]', function(e){
         e.preventDefault();
-        var form = this;
-        var link = $('a[data-method="delete"]');
-        var cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : "Cancel";
-        var confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : "Yes, delete";
-        var title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : "Warning";
-        var text = (link.attr('data-trans-text')) ? link.attr('data-trans-text') : "Are you sure you want to delete this item?";
+        var form = this,
+            link = $('a[data-method="delete"]'),
+            cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : "Cancel",
+            confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : "Yes, delete",
+            title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : "Warning",
+            text = (link.attr('data-trans-text')) ? link.attr('data-trans-text') : "Are you sure you want to delete this item?";
 
         swal({
             title: title,
@@ -74,17 +89,16 @@ $(function(){
             if (confirmed)
                 form.submit();
         });
-    });
 
-    /**
-     * Generic 'are you sure' confirm box
-     */
-    $('body').on('click', 'a[name=confirm_item]', function(e){
+    }).on('click', 'a[name=confirm_item]', function(e){
+        /**
+         * Generic 'are you sure' confirm box
+         */
         e.preventDefault();
-        var link = $(this);
-        var title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : "Are you sure you want to do this?";
-        var cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : "Cancel";
-        var confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : "Continue";
+        var link = $(this),
+            title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : "Are you sure you want to do this?",
+            cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : "Cancel",
+            confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : "Continue";
 
         swal({
             title: title,
@@ -98,22 +112,11 @@ $(function(){
             if (confirmed)
                 window.location = link.attr('href');
         });
-    });
 
-    /**
-     * Bind all bootstrap tooltips
-     */
-    $("[data-toggle=\"tooltip\"]").tooltip();
-
-    /**
-     * Bind all bootstrap popovers
-     */
-    $("[data-toggle=\"popover\"]").popover();
-
-    /**
-     * This closes the popover when its clicked away from
-     */
-    $('body').on('click', function (e) {
+    }).on('click', function (e) {
+        /**
+         * This closes popovers when clicked away from
+         */
         $('[data-toggle="popover"]').each(function () {
             if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
                 $(this).popover('hide');

@@ -56,16 +56,22 @@
     <script>
         $(function() {
             $('#roles-table').DataTable({
-                processing: true,
-                serverSide: true,
+                dom: 'rti',
+                processing: false,
+                serverSide: false,
+                autoWidth: false,
                 ajax: {
                     url: '{{ route("admin.access.role.get") }}',
-                    type: 'post'
+                    type: 'post',
+                    error: function (xhr, err) {
+                        if (err === 'parsererror')
+                            location.reload();
+                    }
                 },
                 columns: [
                     {data: 'name', name: '{{config('access.roles_table')}}.name'},
                     {data: 'permissions', name: '{{config('access.permissions_table')}}.display_name', sortable: false},
-                    {data: 'users', name: 'users', searchable: false, sortable: false},
+                    {data: 'users', name: 'users', searchable: false},
                     {data: 'sort', name: '{{config('access.roles_table')}}.sort'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
