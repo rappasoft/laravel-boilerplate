@@ -34,7 +34,6 @@ class PermissionTableSeeder extends Seeder
         $viewBackend = new $permission_model();
         $viewBackend->name = 'view-backend';
         $viewBackend->display_name = 'View Backend';
-        $viewBackend->sort = 1;
         $viewBackend->created_at = Carbon::now();
         $viewBackend->updated_at = Carbon::now();
         $viewBackend->save();

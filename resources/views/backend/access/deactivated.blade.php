@@ -28,7 +28,6 @@
                 <table id="users-table" class="table table-condensed table-hover">
                     <thead>
                         <tr>
-                            <th>{{ trans('labels.backend.access.users.table.id') }}</th>
                             <th>{{ trans('labels.backend.access.users.table.first_name') }}</th>
                             <th>{{ trans('labels.backend.access.users.table.last_name') }}</th>
                             <th>{{ trans('labels.backend.access.users.table.email') }}</th>
@@ -59,7 +58,6 @@
                     data: {status: 0, trashed: false}
                 },
                 columns: [
-                    {data: 'id', name: '{{config('access.users_table')}}.id'},
                     {data: 'first_name', name: '{{config('access.users_table')}}.first_name'},
                     {data: 'last_name', name: '{{config('access.users_table')}}.last_name'},
                     {data: 'email', name: '{{config('access.users_table')}}.email'},
