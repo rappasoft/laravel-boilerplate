@@ -46,7 +46,7 @@
 
 @section('after-scripts')
     {{ Html::script("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}
-    {!! Html::script("js/dtExtend.js") !!}
+    {{ Html::script("js/backend/plugin/datatables/dataTables-extend.js") }}
 
     <script>
         $(function() {

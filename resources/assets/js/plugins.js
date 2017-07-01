@@ -13,8 +13,8 @@ function addDeleteForms() {
         if (! $(this).find('form').length > 0)
             return "\n" +
                 "<form action='" + $(this).attr('href') + "' method='POST' name='delete_item' style='display:none'>\n" +
-                "   <input type='hidden' name='_method' value='" + $(this).attr('data-method') + "'>\n" +
-                "   <input type='hidden' name='_token' value='" + $('meta[name="csrf-token"]').attr('content') + "'>\n" +
+                "<input type='hidden' name='_method' value='" + $(this).attr('data-method') + "'>\n" +
+                "<input type='hidden' name='_token' value='" + $('meta[name="csrf-token"]').attr('content') + "'>\n" +
                 "</form>\n";
         else
             return "";
@@ -28,22 +28,22 @@ function addDeleteForms() {
  * Place any jQuery/helper plugins in here.
  */
 $(function(){
+    let $loading = $('.loader');
 
-    var $loading = $('.loader'),
-        $document = $(document).ajaxStart(function () {
-            $loading.show();
-        }).ajaxError(function (event, jqxhr, settings, thrownError) {
-            $loading.hide();
-            location.reload();
-        }).ajaxStop(function () {
-            $loading.hide();
-        }).ajaxComplete(function () {
-            /**
-             * This is for delete buttons that are loaded via AJAX in datatables, they will not work right
-             * without this block of code
-             */
-            addDeleteForms();
-        });
+    $(document).ajaxStart(function () {
+        $loading.show();
+    }).ajaxError(function (event, jqxhr, settings, thrownError) {
+        $loading.hide();
+        location.reload();
+    }).ajaxStop(function () {
+        $loading.hide();
+    }).ajaxComplete(function () {
+        /**
+         * This is for delete buttons that are loaded via AJAX in datatables, they will not work right
+         * without this block of code
+         */
+        addDeleteForms();
+    });
 
     /**
      * Add the data-method="delete" forms to all delete links
@@ -62,15 +62,16 @@ $(function(){
     /**
      * Bind all bootstrap tooltips & popovers
      */
-    $("[data-toggle=\"tooltip\"]").tooltip();
-    $("[data-toggle=\"popover\"]").popover();
+    $("[data-toggle='tooltip']").tooltip();
+    $("[data-toggle='popover']").popover();
 
     /**
      * Generic confirm form delete using Sweet Alert
      */
     $('body').on('submit', 'form[name=delete_item]', function(e){
         e.preventDefault();
-        var form = this,
+
+        let form = this,
             link = $('a[data-method="delete"]'),
             cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : "Cancel",
             confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : "Yes, delete",
@@ -89,13 +90,13 @@ $(function(){
             if (confirmed)
                 form.submit();
         });
-
     }).on('click', 'a[name=confirm_item]', function(e){
         /**
          * Generic 'are you sure' confirm box
          */
         e.preventDefault();
-        var link = $(this),
+
+        let link = $(this),
             title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : "Are you sure you want to do this?",
             cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : "Cancel",
             confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : "Continue";
@@ -112,7 +113,6 @@ $(function(){
             if (confirmed)
                 window.location = link.attr('href');
         });
-
     }).on('click', function (e) {
         /**
          * This closes popovers when clicked away from

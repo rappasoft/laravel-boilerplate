@@ -52,13 +52,14 @@
 
 @section('after-scripts')
     {{ Html::script("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}
+    {{ Html::script("js/backend/plugin/datatables/dataTables-extend.js") }}
 
     <script>
         $(function() {
             $('#roles-table').DataTable({
-                dom: 'rti',
+                dom: 'lfrtip',
                 processing: false,
-                serverSide: false,
+                serverSide: true,
                 autoWidth: false,
                 ajax: {
                     url: '{{ route("admin.access.role.get") }}',
@@ -75,8 +76,7 @@
                     {data: 'sort', name: '{{config('access.roles_table')}}.sort'},
                     {data: 'actions', name: 'actions', searchable: false, sortable: false}
                 ],
-                order: [[3, "asc"]],
-                lengthMenu: [[-1], ['All']]
+                order: [[3, "asc"]]
             });
         });
     </script>

@@ -1,7 +1,6 @@
 /node_modules
 /public/storage
 /public/hot
-/public/mix.*
 /storage/*.key
 /vendor
 .idea
