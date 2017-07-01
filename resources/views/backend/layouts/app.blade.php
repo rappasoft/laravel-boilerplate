@@ -59,6 +59,10 @@
 
                 <!-- Main content -->
                 <section class="content">
+                    <div class="loader" style="display: none;">
+                        <div class="ajax-spinner ajax-skeleton"></div>
+                    </div><!--loader-->
+
                     @include('includes.partials.messages')
                     @yield('content')
                 </section><!-- /.content -->
