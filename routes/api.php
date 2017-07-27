@@ -16,5 +16,5 @@
  * Namespaces indicate folder structure
  */
 Route::group(['namespace' => 'Api', 'as' => 'api.'], function () {
-    includeRouteFiles(__DIR__ . '/Api/', false);
+    includeRouteFiles(__DIR__.'/Api/', false);
 });
