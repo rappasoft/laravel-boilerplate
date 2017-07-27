@@ -20,3 +20,4 @@ Todo.rtf
 .vagrant
 /.vagrant
 npm-debug.log
+yarn-error.log
