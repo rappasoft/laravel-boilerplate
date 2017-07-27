@@ -74,7 +74,6 @@ if (! function_exists('includeRouteFiles')) {
                     }
                 }
             }
-
         } catch (Exception $e) {
             echo $e->getMessage();
         }
