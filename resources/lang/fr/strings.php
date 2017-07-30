@@ -122,6 +122,10 @@ return [
             'you_can_see_because_permission' => 'Vous voyez ce message car vous disposez de la permission \':permission\' !',
         ],
 
+        'general' => [
+            'joined'        => 'Membre depuis',
+        ],
+          
         'user' => [
             'change_email_notice' => "Si vous changez votre adresse email vous serez déconnecté jusqu'à que vous confirmiez votre nouvelle adresse email.",
             'email_changed_notice' => 'Vous devez confirmer votre nouvelle adresse email avant de pouvoir vous connecter de nouveau.',
