@@ -18,14 +18,14 @@ return [
             'users' => [
                 'activate'           => 'Activer',
                 'change_password'    => 'Changer de mot de passe',
-                'clear_session'         => 'Clear Session',
-                'confirm'             => 'Confirm',
+                'clear_session'       => 'Effacer la session',
+                'confirm'             => 'Confirmer',
                 'deactivate'         => 'Désactiver',
                 'delete_permanently' => 'Supprimer définitivement',
-                'login_as'           => 'Se connecter avec :user',
+                'login_as'           => 'Se connecter an tant que :user',
                 'resend_email'       => 'Renvoyer le mail de confirmation',
                 'restore_user'       => "Réactiver l'utilisateur",
-                'unconfirm'             => 'Un-confirm',
+                'unconfirm'           => 'Infirmer',
                 'unlink' => 'Unlink',
             ],
         ],
@@ -40,7 +40,7 @@ return [
 
     'general' => [
         'cancel' => 'Annuler',
-        'continue' => 'Continue',
+        'continue' => 'Continuer',
 
         'crud' => [
             'create' => 'Créer',
