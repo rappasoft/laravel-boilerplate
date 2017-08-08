@@ -25,7 +25,7 @@
                                             {{ $logged_in_user->name }}<br/>
                                             <small>
                                                 {{ $logged_in_user->email }}<br/>
-                                                Joined {{ $logged_in_user->created_at->format('F jS, Y') }}
+                                                {{ trans('strings.frontend.general.joined') }} {{ $logged_in_user->created_at->format('F jS, Y') }}
                                             </small>
                                         </h4>
 
