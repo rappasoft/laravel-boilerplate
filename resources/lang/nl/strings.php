@@ -49,9 +49,9 @@ return [
             ],
 
             'you_have' => [
-                'messages'      => '{0} U heeft geen berichten|{1} U heeft 1 bericht|[2,Inf] U heeft :number berichten',
-                'notifications' => '{0} U heeft geen notificaties|{1} U heeft 1 notificatie|[2,Inf] U heeft :number notificaties',
-                'tasks'         => '{0} U heeft geen taken|{1} U heeft 1 taak|[2,Inf] U heeft :number taken',
+                'messages'      => '{0} U heeft geen berichten|{1} U heeft 1 bericht|[2,*] U heeft :number berichten',
+                'notifications' => '{0} U heeft geen notificaties|{1} U heeft 1 notificatie|[2,*] U heeft :number notificaties',
+                'tasks'         => '{0} U heeft geen taken|{1} U heeft 1 taak|[2,*] U heeft :number taken',
             ],
         ],
 
