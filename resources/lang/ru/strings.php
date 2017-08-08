@@ -112,9 +112,9 @@ TEXT
             'you_can_see_because_permission' => 'Вы видите это, потому что у вас есть разрешение \':permission\'!',
         ],
 
-		'general' => [
-			'joined'        => 'Joined',
-		],
+        'general' => [
+            'joined'        => 'Joined',
+        ],
 
         'user'       => [
             'change_email_notice'  => 'При смене вашего нового E-mail, он будет перезаписан, и вы должны снова подтвердить свой новый E-mail.',

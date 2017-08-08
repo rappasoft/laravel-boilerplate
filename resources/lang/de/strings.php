@@ -122,9 +122,9 @@ return [
             'you_can_see_because_permission' => 'Du kannst dies sehen, da du folgende Berechtigung besitzt \':permission\'!',
         ],
 
-		'general' => [
-			'joined'        => 'Joined',
-		],
+        'general' => [
+            'joined'        => 'Joined',
+        ],
 
         'user' => [
             'change_email_notice' => 'Wenn du deine Email-Adresse änderst, wirst du abgemeldet, bis du deine neue Email-Adresse bestätigt hast.',
