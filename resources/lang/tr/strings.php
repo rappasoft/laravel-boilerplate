@@ -117,9 +117,9 @@ return [
             'you_can_see_because_permission' => '\':permission\' yetkisine sahip olduğunuz için bunu görüntülemektesiniz!',
         ],
 
-		'general' => [
-			'joined'        => 'Joined',
-		],
+        'general' => [
+            'joined'        => 'Joined',
+        ],
 
         'user' => [
             'change_email_notice' => 'E-postanızı değiştirirseniz, yeni e-posta adresinizi teyit edene kadar oturumunuz kapatılır.',

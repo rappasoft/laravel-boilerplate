@@ -124,9 +124,9 @@ Denna boilerplate kommer med fullt funktionerande <em>Access Control Library</em
             'you_can_see_because_permission' => 'Du kan se detta för att du har rättiheten \':permission\'!',
         ],
 
-		'general' => [
-			'joined'        => 'Joined',
-		],
+        'general' => [
+            'joined'        => 'Joined',
+        ],
 
         'user' => [
             'change_email_notice' => 'If you change your e-mail you will be logged out until you confirm your new e-mail address.',

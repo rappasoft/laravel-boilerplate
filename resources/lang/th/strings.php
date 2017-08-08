@@ -122,9 +122,9 @@ return [
             'you_can_see_because_permission' => 'คุณสามารถเห็นข้อความนี้เนื่องจากคุณมีสิทธิ์ของ \':permission\'!',
         ],
 
-		'general' => [
-			'joined'        => 'Joined',
-		],
+        'general' => [
+            'joined'        => 'Joined',
+        ],
 
         'user' => [
             'change_email_notice' => 'If you change your e-mail you will be logged out until you confirm your new e-mail address.',
