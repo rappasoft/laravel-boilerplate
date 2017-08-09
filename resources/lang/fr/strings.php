@@ -16,24 +16,24 @@ return [
     'backend' => [
         'access' => [
             'users' => [
-                'delete_user_confirm'  => "Êtes-vous sûr de vouloir supprimer cet utilisateur de façon permanente ? Toutes  les références à cet utilisateur dans l'application peuvent provoquer des erreurs et cette opération ne peut être annullée.",
+                'delete_user_confirm'  => 'Êtes-vous sûr de vouloir supprimer cet utilisateur de façon permanente ? Toutes les références à cet utilisateur dans cette application peuvent provoquer des erreurs et cette opération ne peut être annullée.',
                 'if_confirmed_off'     => '(pour le mode sans confirmation)',
                 'restore_user_confirm' => 'Restaurer cet utilisateur à son statut original ?',
             ],
         ],
 
         'dashboard' => [
-            'title'   => 'Tableau de bord administrateur',
+            'title'   => "Tableau de bord de l'administration",
             'welcome' => 'Bienvenue',
         ],
 
         'general' => [
             'all_rights_reserved' => 'Tous droits réservés.',
-            'are_you_sure'        => 'Etes-vous sûr?',
+            'are_you_sure'        => 'Êtes-vous sûr ?',
             'boilerplate_link'    => 'Laravel 5 Boilerplate',
             'continue'            => 'Continuer',
             'member_since'        => 'Membre depuis',
-            'minutes'             => ' minutes',
+            'minutes'             => ' minutes.',
             'search_placeholder'  => 'Rechercher...',
             'timeout'             => 'Vous avez été automatiquement déconnecté pour cause d\'inactivité pendant ',
 
@@ -72,12 +72,12 @@ return [
 
     'emails' => [
         'auth' => [
-            'account_confirmed' => 'Your account has been confirmed.',
-            'error'                   => 'Oups!',
-            'greeting'                => 'Bonjour!',
+            'account_confirmed' => 'Votre compte a été confirmé.',
+            'error'                   => 'Oups !',
+            'greeting'                => 'Bonjour !',
             'regards'                 => 'Salutations,',
             'trouble_clicking_button' => "Si vous ne pouvez pas cliquer sur le bouton ':action_text', copiez et collez l'URL ci-dessous dans un navigateur:",
-            'thank_you_for_using_app' => "Merci d'utiliser notre application!",
+            'thank_you_for_using_app' => "Merci d'utiliser notre application !",
 
             'password_reset_subject'    => 'Votre lien de réinitialisation',
             'password_cause_of_email'   => 'Vous recevez cet email car nous avons reçu une demande de réinitialisation de mot de passe pour ce compte.',
@@ -88,8 +88,8 @@ return [
         ],
 
         'contact' => [
-            'email_body_title' => 'You have a new contact form request: Below are the details:',
-            'subject' => 'A new :app_name contact form submission!',
+            'email_body_title' => 'Vous avez une nouvelle prise de contact dont voici les détails :',
+            'subject' => 'Nouvelle soumission du formulaire de contact sur :app_name !',
         ],
     ],
 
@@ -117,14 +117,18 @@ return [
                 'role_name'             => "L'utilisateur doit disposer d'un rôle identifié par son nom",
             ],
 
-            'view_console_it_works'          => 'Sur la console du navigateur, vous devriez voir  \'it works!\', ce qui est produit depuis le FrontendController@index',
-            'you_can_see_because'            => 'Vous voyez ce message car vous disposez du rôle \':role\'!',
-            'you_can_see_because_permission' => 'Vous voyez ce message car vous disposez de la permission \':permission\'!',
+            'view_console_it_works'          => 'Sur la console du navigateur, vous devriez voir \'it works!\', ce qui est produit depuis le FrontendController@index',
+            'you_can_see_because'            => 'Vous voyez ce message car vous disposez du rôle \':role\' !',
+            'you_can_see_because_permission' => 'Vous voyez ce message car vous disposez de la permission \':permission\' !',
+        ],
+
+        'general' => [
+            'joined'        => 'Membre depuis',
         ],
 
         'user' => [
-            'change_email_notice' => 'If you change your e-mail you will be logged out until you confirm your new e-mail address.',
-            'email_changed_notice' => 'You must confirm your new e-mail address before you can log in again.',
+            'change_email_notice' => "Si vous changez votre adresse email vous serez déconnecté jusqu'à que vous confirmiez votre nouvelle adresse email.",
+            'email_changed_notice' => 'Vous devez confirmer votre nouvelle adresse email avant de pouvoir vous connecter de nouveau.',
             'profile_updated'  => 'Profil modifié avec succès.',
             'password_updated' => 'Mot de passe modifié avec succès.',
         ],

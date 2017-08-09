@@ -19,5 +19,5 @@ return [
         'unacceptable' => 'Le login :provider est de type incorrect.',
     ],
     'throttle' => 'Vous avez effectué trop de tentatives de connexion. Veuillez ré-essayer dans :seconds secondes.',
-    'unknown'  => 'Une erreur inconnue a eu lieu.',
+    'unknown'  => 'Une erreur inconnue est survenue.',
 ];

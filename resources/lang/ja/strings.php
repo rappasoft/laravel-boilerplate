@@ -122,6 +122,10 @@ return [
             'you_can_see_because_permission' => 'You can see this because you have the permission of \':permission\'!',
         ],
 
+        'general' => [
+            'joined'        => 'Joined',
+        ],
+
         'user' => [
             'profile_updated' => 'プロフィール更新に成功しました。',
             'password_updated' => 'パスワード更新に成功しました。',

@@ -111,6 +111,11 @@ TEXT
             'you_can_see_because'            => 'Вы видите это, потому что у вас роль \':role\'!',
             'you_can_see_because_permission' => 'Вы видите это, потому что у вас есть разрешение \':permission\'!',
         ],
+
+        'general' => [
+            'joined'        => 'Joined',
+        ],
+
         'user'       => [
             'change_email_notice'  => 'При смене вашего нового E-mail, он будет перезаписан, и вы должны снова подтвердить свой новый E-mail.',
             'email_changed_notice' => 'Вы должны подтвердить Ваш новый E-mail, прежде чем вы сможете войти снова.',
