@@ -73,6 +73,13 @@ $margin-padding: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50;
   left: calc(50% + 85px);
 }
 
+@media (max-width: 767px) {
+  .ajax-spinner {
+    top: 25%;
+    left: calc(50% - 24px);
+  }
+}
+
 .ajax-skeleton {
   border-radius: 50%;
   border-top: solid 6px #3C8DBC;
