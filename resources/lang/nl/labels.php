@@ -67,6 +67,8 @@ return [
                     'email'          => 'E-mail',
                     'id'             => 'ID',
                     'last_updated'   => 'Laatst Bijgewerkt',
+                    'first_name'     => 'Voornaam',
+                    'last_name'      => 'Achternaam',
                     'name'           => 'Naam',
                     'no_deactivated' => 'Geen gedeactiveerde Gebruikers',
                     'no_deleted'     => 'Geen Verwijderde Gebruikers',
