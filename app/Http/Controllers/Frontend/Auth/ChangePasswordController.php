@@ -12,29 +12,29 @@ use App\Http\Requests\Frontend\User\ChangePasswordRequest;
 class ChangePasswordController extends Controller
 {
     /**
-   * @var UserRepository
-   */
-  protected $user;
+     * @var UserRepository
+     */
+    protected $user;
 
-  /**
-   * ChangePasswordController constructor.
-   *
-   * @param UserRepository $user
-   */
-  public function __construct(UserRepository $user)
-  {
-      $this->user = $user;
-  }
+    /**
+     * ChangePasswordController constructor.
+     *
+     * @param UserRepository $user
+     */
+    public function __construct(UserRepository $user)
+    {
+        $this->user = $user;
+    }
 
-  /**
-   * @param ChangePasswordRequest $request
-   *
-   * @return mixed
-   */
-  public function changePassword(ChangePasswordRequest $request)
-  {
-      $this->user->changePassword($request->only('old_password', 'password'));
+    /**
+     * @param ChangePasswordRequest $request
+     *
+     * @return mixed
+     */
+    public function changePassword(ChangePasswordRequest $request)
+    {
+        $this->user->changePassword($request->only('old_password', 'password'));
 
-      return redirect()->route('frontend.user.account')->withFlashSuccess(trans('strings.frontend.user.password_updated'));
-  }
+        return redirect()->route('frontend.user.account')->withFlashSuccess(trans('strings.frontend.user.password_updated'));
+    }
 }
