@@ -183,6 +183,25 @@ class EloquentHistoryRepository implements HistoryContract
         return $this->buildList($history, $paginate);
     }
 
+	/**
+	 * @param null $limit
+	 * @param bool $paginate
+	 * @param int  $pagination
+	 * @param int  $user
+	 *
+	 * @return string|\Symfony\Component\Translation\TranslatorInterface
+	 */
+	public function renderByUser($limit = null, $paginate = true, $pagination = 10, $user)
+	{
+		$history = History::with('user')->where('user_id', $user)->latest();
+		$history = $this->buildPagination($history, $limit, $paginate, $pagination);
+		if (! $history->count()) {
+			return trans('history.backend.none');
+		}
+
+		return $this->buildList($history, $paginate);
+	}
+
     /**
      * @param $type
      * @param null $limit
