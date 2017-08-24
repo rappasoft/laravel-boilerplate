@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,6 +11,10 @@ use Illuminate\Http\Request;
 |
 */
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+/*
+ * Api Routes
+ * Namespaces indicate folder structure
+ */
+Route::group(['namespace' => 'Api', 'as' => 'api.'], function () {
+    includeRouteFiles(__DIR__.'/Api/', false);
+});

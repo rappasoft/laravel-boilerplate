@@ -52,19 +52,27 @@ if (! function_exists('includeRouteFiles')) {
      * Searches sub-directories as well.
      *
      * @param $folder
+     * @param $subdirs
      */
-    function includeRouteFiles($folder)
+    function includeRouteFiles($folder, $subdirs = true)
     {
         try {
-            $rdi = new recursiveDirectoryIterator($folder);
-            $it = new recursiveIteratorIterator($rdi);
-
-            while ($it->valid()) {
-                if (! $it->isDot() && $it->isFile() && $it->isReadable() && $it->current()->getExtension() === 'php') {
-                    require $it->key();
+            if ($subdirs) {
+                $rdi = new recursiveDirectoryIterator($folder);
+                $it = new recursiveIteratorIterator($rdi);
+                while ($it->valid()) {
+                    if (! $it->isDot() && $it->isFile() && $it->isReadable() && $it->current()->getExtension() === 'php') {
+                        require $it->key();
+                    }
+                    $it->next();
                 }
-
-                $it->next();
+            } else {
+                $dir = new FilesystemIterator($folder);
+                foreach ($dir as $it) {
+                    if ($it->isFile() && $it->isReadable() && $it->getExtension() === 'php') {
+                        require $it;
+                    }
+                }
             }
         } catch (Exception $e) {
             echo $e->getMessage();
