@@ -144,6 +144,8 @@ return [
                     'associated_roles'        => 'Geassocieerde Rollen',
                     'confirmed'               => 'Bevestigd',
                     'email'                   => 'E-mail Adres',
+                    'first_name'              => 'Voornaam',
+                    'last_name'               => 'Achternaam',
                     'name'                    => 'Naam',
                     'other_permissions'       => 'Overige Permissies',
                     'password'                => 'Wachtwoord',
@@ -155,6 +157,8 @@ return [
 
         'frontend' => [
             'email'                     => 'E-mail Adres',
+            'first_name'                => 'Voornaam',
+            'last_name'                 => 'Achternaam',
             'name'                      => 'Naam',
             'password'                  => 'Wachwoord',
             'password_confirmation'     => 'Wachtwoord Bevestiging',
