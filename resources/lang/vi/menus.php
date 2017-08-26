@@ -15,43 +15,43 @@ return [
 
     'backend' => [
         'access' => [
-            'title' => 'Access Management',
+            'title' => 'Quản lý truy cập',
 
             'roles' => [
-                'all'        => 'All Roles',
-                'create'     => 'Create Role',
-                'edit'       => 'Edit Role',
-                'management' => 'Role Management',
-                'main'       => 'Roles',
+                'all'        => 'Tất cả quyền',
+                'create'     => 'Thêm quyền',
+                'edit'       => 'Chỉnh sửa quyền',
+                'management' => 'Quản lý quyền',
+                'main'       => 'Quyền',
             ],
 
             'users' => [
-                'all'             => 'All Users',
-                'change-password' => 'Change Password',
-                'create'          => 'Create User',
-                'deactivated'     => 'Deactivated Users',
-                'deleted'         => 'Deleted Users',
-                'edit'            => 'Edit User',
-                'main'            => 'Users',
-                'view'            => 'View User',
+                'all'             => 'Tất cả thành viên',
+                'change-password' => 'Đổi mật khẩu',
+                'create'          => 'Thêm thành viên',
+                'deactivated'     => 'Thành viên chưa kích hoạt',
+                'deleted'         => 'Thành viên đã xóa',
+                'edit'            => 'Chỉnh sửa thành viên',
+                'main'            => 'Thành viên',
+                'view'            => 'Thông tin thành viên',
             ],
         ],
 
         'log-viewer' => [
-            'main'      => 'Log Viewer',
-            'dashboard' => 'Dashboard',
-            'logs'      => 'Logs',
+            'main'      => 'Nhật ký hệ thống',
+            'dashboard' => 'Tổng quan',
+            'logs'      => 'Nhật ký',
         ],
 
         'sidebar' => [
-            'dashboard' => 'Dashboard',
-            'general'   => 'General',
-            'system'    => 'System',
+            'dashboard' => 'Trang quản trị',
+            'general'   => 'Tổng quan',
+            'system'    => 'Hệ thống',
         ],
     ],
 
     'language-picker' => [
-        'language' => 'Language',
+        'language' => 'Ngôn ngữ',
         /*
          * Add the new language to this array.
          * The key should have the same language code as the folder name.
@@ -77,7 +77,7 @@ return [
             'sv'    => 'Swedish',
             'th'    => 'Thai',
             'tr'    => 'Turkish',
-            'vi'    => 'Vietnamese (Tiếng Việt)',
+            'vi'    => 'Tiếng Việt',
         ],
     ],
 ];

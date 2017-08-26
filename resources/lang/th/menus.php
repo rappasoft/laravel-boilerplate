@@ -77,6 +77,7 @@ return [
             'sv'    => 'สวีเดน (Swedish)',
             'th'    => 'ไทย (Thai)',
             'tr'    => '(Turkish)',
+            'vi'    => 'Vietnamese (Tiếng Việt)',
         ],
     ],
 ];
