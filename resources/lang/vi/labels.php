@@ -34,14 +34,14 @@ return [
     'backend' => [
         'access' => [
             'roles' => [
-                'create'     => 'Tạo vai trò',
-                'edit'       => 'Chỉnh sửa vai trò',
-                'management' => 'Quản lý vai trò',
+                'create'     => 'Tạo nhóm quyền',
+                'edit'       => 'Chỉnh sửa nhóm quyền',
+                'management' => 'Quản lý nhóm quyền',
 
                 'table' => [
                     'number_of_users' => 'Số thành viên',
                     'permissions'     => 'Quyền',
-                    'role'            => 'Vai trò',
+                    'role'            => 'Nhóm quyền',
                     'sort'            => 'Sắp xếp',
                     'total'           => 'role total|roles total',
                 ],
@@ -58,7 +58,7 @@ return [
                 'edit'                => 'Chỉnh sửa thành viên',
                 'management'          => 'Quản lý thành viên',
                 'no_permissions'      => 'Không có quyền',
-                'no_roles'            => 'Chưa thiết lập vai trò.',
+                'no_roles'            => 'Chưa thiết lập nhóm quyền.',
                 'permissions'         => 'Quyền',
 
                 'table' => [
@@ -72,7 +72,7 @@ return [
                     'last_name'      => 'Tên đệm',
                     'no_deactivated' => 'Không có thành viên nào kích hoạt',
                     'no_deleted'     => 'Không có thành viên bị xóa',
-                    'roles'          => 'Vai trò',
+                    'roles'          => 'Nhóm quyền',
                     'social'         => 'Mạng xã hội',
                     'total'          => 'user total|users total',
                 ],

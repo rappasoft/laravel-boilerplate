@@ -92,7 +92,7 @@ return [
         'tests' => [
             'based_on' => [
                 'permission' => 'Quyền cơ bản - ',
-                'role'       => 'Vai trò cơ bản - ',
+                'role'       => 'Nhóm quyền cơ bản - ',
             ],
 
             'js_injected_from_controller' => 'Javascript Injected from a Controller',
@@ -102,16 +102,16 @@ return [
             'using_access_helper' => [
                 'array_permissions'     => 'Được phép truy cập nếu đúng tên \'Quyền\' (Permission) hoặc ID: tên và id thuộc 2 \'Quyền\' khác nhau',
                 'array_permissions_not' => 'Được phép truy cập nếu đúng tên \'Quyền\' (Permission) hoặc ID: tên và id cùng chung 1 \'Quyền\'',
-                'array_roles'           => 'Được phép truy cập nếu đúng tên \'Vai Trò\' (Nhóm Quyền - Role) hoặc ID: tên và id thuộc 2 \'Vai Trò\' khác nhau',
-                'array_roles_not'       => 'Được phép truy cập nếu đúng tên \'Vai Trò\' (Nhóm Quyền - Role) hoặc ID: tên và id cùng chung 1 \'Vai Trò\'',
+                'array_roles'           => 'Được phép truy cập nếu đúng tên \'Vai Trò\' (Role) hoặc ID: tên và id thuộc 2 \'Vai Trò\' khác nhau',
+                'array_roles_not'       => 'Được phép truy cập nếu đúng tên \'Vai Trò\' (Role) hoặc ID: tên và id cùng chung 1 \'Vai Trò\'',
                 'permission_id'         => 'Kiểm tra quyền truy cập bằn ID \'Quyền\' (Permission)',
                 'permission_name'       => 'Kiểm tra quyền truy cập bằn tên \'Quyền\' (Permission)',
-                'role_id'               => 'Kiểm tra quyền truy cập bằng ID \'Vai Trò\' (nhóm quyền - Role)',
-                'role_name'             => 'Kiểm tra quyền truy cập bằng tên \'Vai Trò\' (nhóm quyền - Role)',
+                'role_id'               => 'Kiểm tra quyền truy cập bằng ID \'Vai Trò\' (Role)',
+                'role_name'             => 'Kiểm tra quyền truy cập bằng tên \'Vai Trò\' (Role)',
             ],
 
             'view_console_it_works'          => 'View console, you should see \'it works!\' which is coming from FrontendController@index',
-            'you_can_see_because'            => 'Bạn có thể nhìn thấy nó vì bạn sở hữu vai trò (nhóm quyền - Role) \':role\'!',
+            'you_can_see_because'            => 'Bạn có thể nhìn thấy nó vì bạn sở hữu nhóm quyền (Role) \':role\'!',
             'you_can_see_because_permission' => 'Bạn có thể nhìn thấy nó vì bạn sở hữu quyền (Permission) \':permission\'!',
         ],
 
