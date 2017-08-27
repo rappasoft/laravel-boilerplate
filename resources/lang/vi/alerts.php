@@ -28,11 +28,11 @@ return [
             'deleted'             => 'Tài khoản đã bị xóa.',
             'deleted_permanently' => 'Tài khoản đã bị xóa vĩnh viễn.',
             'restored'            => 'Tài khoản đã được phục hồi.',
-            'session_cleared'      => "Đã xóa phiên đăng nhập của thành viên.",
+            'session_cleared'      => 'Đã xóa phiên đăng nhập của thành viên.',
             'social_deleted' => 'Gỡ bỏ liên kết tài khoản mạng xã hội thành công',
             'unconfirmed' => 'Hủy kích hoạt tài khoản thành công.',
             'updated'             => 'Cập nhật tài khoản thành công.',
-            'updated_password'    => "Mật khẩu truy cập đã được thay đổi.",
+            'updated_password'    => 'Mật khẩu truy cập đã được thay đổi.',
         ],
     ],
 
