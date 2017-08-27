@@ -77,6 +77,7 @@ return [
             'sv'    => 'السويسرية (Swedish)',
             'th'    => '(Thai)',
             'tr'    => 'اللغة التركية(Turkish)',
+            'vi'    => 'Vietnamese (Tiếng Việt) الفيتنامية',
         ],
     ],
 ];
