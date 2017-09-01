@@ -146,7 +146,7 @@ return [
                 'canada' => 'Canada Province & Territories List',
             ],
 
-            'timezone' => 'Timezone',
+            'timezone' => '时区',
         ],
 
         'user' => [
