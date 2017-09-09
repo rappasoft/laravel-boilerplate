@@ -52,9 +52,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     @yield('page-header')
-
-                    {{-- Change to Breadcrumbs::render() if you want it to error to remind you to create the breadcrumbs for the given route --}}
-                    {!! Breadcrumbs::renderIfExists() !!}
+                    {!! Breadcrumbs::render() !!}
                 </section>
 
                 <!-- Main content -->

@@ -102,7 +102,7 @@ class UserController extends Controller
     {
         return view('backend.access.edit')
             ->withUser($user)
-            ->withUserRoles($user->roles->pluck('id')->all())
+            ->with('user_roles', $user->roles->pluck('id')->all())
             ->withRoles($this->roles->getAll());
     }
 

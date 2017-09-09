@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend\Access\Role;
 
 use App\Http\Controllers\Controller;
-use Yajra\Datatables\Facades\Datatables;
+use Yajra\DataTables\Facades\DataTables;
 use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Http\Requests\Backend\Access\Role\ManageRoleRequest;
 
@@ -32,7 +32,7 @@ class RoleTableController extends Controller
      */
     public function __invoke(ManageRoleRequest $request)
     {
-        return Datatables::of($this->roles->getForDataTable())
+        return DataTables::of($this->roles->getForDataTable())
             ->escapeColumns(['name', 'sort'])
             ->addColumn('permissions', function ($role) {
                 if ($role->all) {

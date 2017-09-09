@@ -36,8 +36,8 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('frontend.auth.login')
-            ->withSocialiteLinks((new Socialite())->getSocialLinks());
+        $socialite = (new Socialite())->getSocialLinks();
+        return view('frontend.auth.login', ['socialite_links' => $socialite]);
     }
 
     /**

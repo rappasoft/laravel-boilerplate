@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend\Access\User;
 
 use App\Http\Controllers\Controller;
-use Yajra\Datatables\Facades\Datatables;
+use Yajra\DataTables\Facades\DataTables;
 use App\Repositories\Backend\Access\User\UserRepository;
 use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 
@@ -32,7 +32,7 @@ class UserTableController extends Controller
      */
     public function __invoke(ManageUserRequest $request)
     {
-        return Datatables::of($this->users->getForDataTable($request->get('status'), $request->get('trashed')))
+        return DataTables::of($this->users->getForDataTable($request->get('status'), $request->get('trashed')))
         ->escapeColumns(['first_name', 'last_name', 'email'])
         ->editColumn('confirmed', function ($user) {
             return $user->confirmed_label;
@@ -60,7 +60,6 @@ class UserTableController extends Controller
             ->setRowClass(function ($user) {
                 return ! $user->isConfirmed() && config('access.users.requires_approval') ? 'danger' : '';
             })
-            ->withTrashed()
             ->make(true);
     }
 }

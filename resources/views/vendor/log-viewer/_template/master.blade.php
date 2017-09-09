@@ -20,8 +20,6 @@
         @endif
 
         @yield('after-styles-end')
-
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.15.35/css/bootstrap-datetimepicker.min.css">
         @include('log-viewer::_template.style')
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -50,9 +48,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     @yield('page-header')
-
-                    {{-- Change to Breadcrumbs::render() if you want it to error to remind you to create the breadcrumbs for the given route --}}
-                    {!! Breadcrumbs::renderIfExists() !!}
+                    {!! Breadcrumbs::render() !!}
                 </section>
 
                 <!-- Main content -->
@@ -70,9 +66,8 @@
         {{ Html::script(mix('js/backend.js')) }}
         @yield('after-scripts-end')
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.1/moment-with-locales.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.15.35/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
         <script>
             Chart.defaults.global.responsive      = true;
             Chart.defaults.global.scaleFontFamily = "'Source Sans Pro'";
