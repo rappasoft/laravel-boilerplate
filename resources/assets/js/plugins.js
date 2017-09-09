@@ -10,7 +10,7 @@
  */
 function addDeleteForms() {
     $('[data-method]').append(function () {
-        if (! $(this).find('form').length > 0)
+        if (!$(this).find('form').length > 0)
             return "\n" +
                 "<form action='" + $(this).attr('href') + "' method='POST' name='delete_item' style='display:none'>\n" +
                 "<input type='hidden' name='_method' value='" + $(this).attr('data-method') + "'>\n" +
@@ -24,10 +24,12 @@ function addDeleteForms() {
         .attr('onclick', '$(this).find("form").submit();');
 }
 
+import swal from 'sweetalert2';
+
 /**
  * Place any jQuery/helper plugins in here.
  */
-$(function(){
+$(function () {
     let $loading = $('.loader');
 
     $(document).ajaxStart(function () {
@@ -37,7 +39,7 @@ $(function(){
         location.reload();
     }).ajaxStop(function () {
         $loading.hide();
-    }).on('draw.dt', function() {
+    }).on('draw.dt', function () {
         addDeleteForms();
     });
 
@@ -64,7 +66,7 @@ $(function(){
     /**
      * Generic confirm form delete using Sweet Alert
      */
-    $('body').on('submit', 'form[name=delete_item]', function(e){
+    $('body').on('submit', 'form[name=delete_item]', function (e) {
         e.preventDefault();
 
         let form = this,
@@ -76,17 +78,18 @@ $(function(){
 
         swal({
             title: title,
-            type: "warning",
+            text: text,
+            type: 'warning',
             showCancelButton: true,
-            cancelButtonText: cancel,
-            confirmButtonColor: "#DD6B55",
+            confirmButtonColor: '#DD6B55',
             confirmButtonText: confirm,
-            closeOnConfirm: true
-        }, function(confirmed) {
-            if (confirmed)
-                form.submit();
+            cancelButtonText: cancel
+        }).then(function () {
+            form.submit();
+        }, function (dismiss) {
         });
-    }).on('click', 'a[name=confirm_item]', function(e){
+
+    }).on('click', 'a[name=confirm_item]', function (e) {
         /**
          * Generic 'are you sure' confirm box
          */
@@ -99,15 +102,47 @@ $(function(){
 
         swal({
             title: title,
-            type: "info",
+            type: 'info',
             showCancelButton: true,
-            cancelButtonText: cancel,
-            confirmButtonColor: "#3C8DBC",
+            confirmButtonColor: '#3C8DBC',
             confirmButtonText: confirm,
-            closeOnConfirm: true
-        }, function(confirmed) {
-            if (confirmed)
-                window.location = link.attr('href');
+            cancelButtonText: cancel
+        }).then(function () {
+            window.location = link.attr('href');
+        }, function (dismiss) {
+        });
+
+    }).on("click", "a[name='delete_user_perm']", function (e) {
+        e.preventDefault();
+        let linkURL = $(this).attr("href");
+
+        swal({
+            title: "Are you sure you want to do this?",
+            text: "Are you sure you want to delete this user permanently? This can not be un-done.",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#DD6B55',
+            confirmButtonText: "Continue",
+            cancelButtonText: "Cancel",
+        }).then(function () {
+            window.location.href = linkURL;
+        }, function (dismiss) {
+        });
+    }).on("click", "a[name='restore_user']", function (e) {
+        e.preventDefault();
+        let linkURL = $(this).attr("href");
+
+        swal({
+            title: "Are you sure you want to do this?",
+            text: "Restore this user to its original state?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#DD6B55',
+            confirmButtonText: "Continue",
+            cancelButtonText: "Cancel",
+        }).then(function () {
+            window.location.href = linkURL;
+        }, function (dismiss) {
         });
     }).on('click', function (e) {
         /**

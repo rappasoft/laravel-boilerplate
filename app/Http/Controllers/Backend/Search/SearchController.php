@@ -29,7 +29,7 @@ class SearchController extends Controller
         $results = null;
 
         return view('backend.search.index')
-            ->withSearchTerm($request->get('q'))
+            ->with('search_term', $request->get('q'))
             ->withResults($results);
     }
 }

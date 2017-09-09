@@ -46,7 +46,7 @@
 
 @section('after-scripts')
     {{ Html::script("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}
-    {{ Html::script("js/backend/plugin/datatables/dataTables-extend.js") }}
+    {!! Html::script("js/dtExtend.js") !!}
 
 	<script>
 		$(function() {
@@ -76,44 +76,6 @@
                 ],
                 order: [[0, "asc"]],
                 searchDelay: 500
-            });
-
-            $("body").on("click", "a[name='delete_user_perm']", function(e) {
-                e.preventDefault();
-                var linkURL = $(this).attr("href");
-
-                swal({
-                    title: "{{ trans('strings.backend.general.are_you_sure') }}",
-                    text: "{{ trans('strings.backend.access.users.delete_user_confirm') }}",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "{{ trans('strings.backend.general.continue') }}",
-                    cancelButtonText: "{{ trans('buttons.general.cancel') }}",
-                    closeOnConfirm: false
-                }, function(isConfirmed){
-                    if (isConfirmed){
-                        window.location.href = linkURL;
-                    }
-                });
-            }).on("click", "a[name='restore_user']", function(e) {
-                e.preventDefault();
-                var linkURL = $(this).attr("href");
-
-                swal({
-                    title: "{{ trans('strings.backend.general.are_you_sure') }}",
-                    text: "{{ trans('strings.backend.access.users.restore_user_confirm') }}",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "{{ trans('strings.backend.general.continue') }}",
-                    cancelButtonText: "{{ trans('buttons.general.cancel') }}",
-                    closeOnConfirm: false
-                }, function(isConfirmed){
-                    if (isConfirmed){
-                        window.location.href = linkURL;
-                    }
-                });
             });
 		});
 	</script>

@@ -4,6 +4,7 @@
 @import "variable-overrides";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 @import "~font-awesome/scss/font-awesome";
+@import "~sweetalert2/src/sweetalert2";
 
 @import "variables";
 @import "core";
@@ -54,6 +55,3 @@
 // Miscellaneous
 @import "miscellaneous";
 @import "print";
-
-// Plugins
-@import "../plugin/sweetalert/sweetalert.scss";
