@@ -1,15 +1,12 @@
 <?php
 
-use Database\TruncateTable;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-/**
- * Class DatabaseSeeder.
- */
 class DatabaseSeeder extends Seeder
 {
-    use TruncateTable;
+
+	use TruncateTable;
 
     /**
      * Run the database seeds.
@@ -18,13 +15,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
+		Model::unguard();
 
-        $this->truncateMultiple(['sessions']);
+		//$this->truncateMultiple(['sessions']);
 
-        $this->call(AccessTableSeeder::class);
-        $this->call(HistoryTypeTableSeeder::class);
+		$this->call(AuthTableSeeder::class);
 
-        Model::reguard();
+		Model::reguard();
     }
 }

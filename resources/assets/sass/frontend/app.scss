@@ -1,3 +1,4 @@
+
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
@@ -5,10 +6,10 @@
 @import "variables";
 
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 // Font Awesome
-@import "~font-awesome/scss/font-awesome";
+@import "../../../../node_modules/font-awesome/scss/font-awesome";
 
 // Helpers
 @import "../helpers";

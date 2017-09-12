@@ -6,7 +6,7 @@
         <div class="col-xs-12">
 
             <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('navs.frontend.user.account') }}</div>
+                <div class="panel-heading">{{ __('navs.frontend.user.account') }}</div>
 
                 <div class="panel-body">
 
@@ -15,16 +15,16 @@
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
                             <li role="presentation" class="active">
-                                <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{{ trans('navs.frontend.user.profile') }}</a>
+                                <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{{ __('navs.frontend.user.profile') }}</a>
                             </li>
 
                             <li role="presentation">
-                                <a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">{{ trans('labels.frontend.user.profile.update_information') }}</a>
+                                <a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">{{ __('labels.frontend.user.profile.update_information') }}</a>
                             </li>
 
-                            @if ($logged_in_user->canChangePassword())
+                            @if (auth()->user()->canChangePassword())
                                 <li role="presentation">
-                                    <a href="#password" aria-controls="password" role="tab" data-toggle="tab">{{ trans('navs.frontend.user.change_password') }}</a>
+                                    <a href="#password" aria-controls="password" role="tab" data-toggle="tab">{{ __('navs.frontend.user.change_password') }}</a>
                                 </li>
                             @endif
                         </ul>
@@ -39,7 +39,7 @@
                                 @include('frontend.user.account.tabs.edit')
                             </div><!--tab panel profile-->
 
-                            @if ($logged_in_user->canChangePassword())
+                            @if (auth()->user()->canChangePassword())
                                 <div role="tabpanel" class="tab-pane mt-30" id="password">
                                     @include('frontend.user.account.tabs.change-password')
                                 </div><!--tab panel change password-->

@@ -7,15 +7,15 @@ namespace App\Http\Controllers;
  */
 class LanguageController extends Controller
 {
-    /**
-     * @param $lang
-     *
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function swap($lang)
-    {
-        session()->put('locale', $lang);
+	/**
+	 * @param $locale
+	 *
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function swap($locale)
+	{
+		app()->setLocale($locale);
 
-        return redirect()->back();
-    }
+		return redirect()->back();
+	}
 }

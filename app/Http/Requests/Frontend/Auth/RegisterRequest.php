@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Http\Requests\Frontend\Auth;
+namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 /**
- * Class RegisterRequest.
+ * Class RegisterRequest
+ *
+ * @package App\Http\Requests
  */
-class RegisterRequest extends Request
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -20,29 +22,29 @@ class RegisterRequest extends Request
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
-    {
-        return [
-            'first_name'           => 'required|string|max:191',
-            'last_name'            => 'required|string|max:191',
-            'email'                => ['required', 'string', 'email', 'max:191', Rule::unique('users')],
-            'password'             => 'required|string|min:6|confirmed',
-            'g-recaptcha-response' => 'required_if:captcha_status,true|captcha',
-        ];
-    }
+	/**
+	 * Get the validation rules that apply to the request.
+	 *
+	 * @return array
+	 */
+	public function rules()
+	{
+		return [
+			'first_name'           => 'required|string|max:191',
+			'last_name'            => 'required|string|max:191',
+			'email'                => ['required', 'string', 'email', 'max:191', Rule::unique('users')],
+			'password'             => 'required|string|min:6|confirmed',
+			'g-recaptcha-response' => 'required_if:captcha_status,true|captcha',
+		];
+	}
 
-    /**
-     * @return array
-     */
-    public function messages()
-    {
-        return [
-            'g-recaptcha-response.required_if' => trans('validation.required', ['attribute' => 'captcha']),
-        ];
-    }
+	/**
+	 * @return array
+	 */
+	public function messages()
+	{
+		return [
+			'g-recaptcha-response.required_if' => __('validation.required', ['attribute' => 'captcha']),
+		];
+	}
 }

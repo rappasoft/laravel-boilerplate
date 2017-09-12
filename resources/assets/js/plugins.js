@@ -47,21 +47,6 @@ $(function(){
     addDeleteForms();
 
     /**
-     * Place the CSRF token as a header on all pages for access in AJAX requests
-     */
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    /**
-     * Bind all bootstrap tooltips & popovers
-     */
-    $("[data-toggle='tooltip']").tooltip();
-    $("[data-toggle='popover']").popover();
-
-    /**
      * Generic confirm form delete using Sweet Alert
      */
     $('body').on('submit', 'form[name=delete_item]', function(e){

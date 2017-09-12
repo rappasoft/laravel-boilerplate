@@ -6,7 +6,7 @@
         <div class="col-xs-12">
 
             <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('navs.frontend.dashboard') }}</div>
+                <div class="panel-heading">{{ __('navs.frontend.dashboard') }}</div>
 
                 <div class="panel-body">
 
@@ -17,23 +17,23 @@
                             <ul class="media-list">
                                 <li class="media">
                                     <div class="media-left">
-                                        <img class="media-object profile-picture" src="{{ $logged_in_user->picture }}" alt="Profile picture">
+                                        <img class="media-object profile-picture" src="{{ auth()->user()->picture }}" alt="Profile picture">
                                     </div><!--media-left-->
 
                                     <div class="media-body">
                                         <h4 class="media-heading">
-                                            {{ $logged_in_user->name }}<br/>
+                                            {{ auth()->user()->name }}<br/>
                                             <small>
-                                                {{ $logged_in_user->email }}<br/>
-                                                {{ trans('strings.frontend.general.joined') }} {{ $logged_in_user->created_at->format('F jS, Y') }}
+                                                {{ auth()->user()->email }}<br/>
+                                                {{ __('strings.frontend.general.joined') }} {{ auth()->user()->created_at->format('F jS, Y') }}
                                             </small>
                                         </h4>
 
-                                        {{ link_to_route('frontend.user.account', trans('navs.frontend.user.account'), [], ['class' => 'btn btn-info btn-xs']) }}
+                                        {{ link_to_route('frontend.user.account', __('navs.frontend.user.account'), [], ['class' => 'btn btn-info btn-xs']) }}
 
-                                        @permission('view-backend')
-                                            {{ link_to_route('admin.dashboard', trans('navs.frontend.user.administration'), [], ['class' => 'btn btn-danger btn-xs']) }}
-                                        @endauth
+                                        @if (auth()->user()->can('view backend'))
+                                            {{ link_to_route('admin.dashboard', __('navs.frontend.user.administration'), [], ['class' => 'btn btn-danger btn-xs']) }}
+                                        @endif
                                     </div><!--media-body-->
                                 </li><!--media-->
                             </ul><!--media-list-->

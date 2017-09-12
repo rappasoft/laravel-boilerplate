@@ -2,6 +2,7 @@
 
 namespace App\Events\Frontend\Auth;
 
+use App\Models\Auth\User;
 use Illuminate\Queue\SerializesModels;
 
 /**
@@ -9,18 +10,18 @@ use Illuminate\Queue\SerializesModels;
  */
 class UserLoggedIn
 {
-    use SerializesModels;
+	use SerializesModels;
 
-    /**
-     * @var
-     */
-    public $user;
+	/**
+	 * @var
+	 */
+	public $user;
 
-    /**
-     * @param $user
-     */
-    public function __construct($user)
-    {
-        $this->user = $user;
-    }
+	/**
+	 * @param $user
+	 */
+	public function __construct(User $user)
+	{
+		$this->user = $user;
+	}
 }

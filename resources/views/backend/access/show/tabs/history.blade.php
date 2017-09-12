@@ -1,1 +1,0 @@
-{!! history()->renderEntity('User', $user->id) !!}

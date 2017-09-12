@@ -2,28 +2,28 @@
 $margin-padding: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50;
 @each $mp in $margin-padding {
   .mt-#{$mp} {
-    margin-top:#{$mp}px !important;
+	margin-top:#{$mp}px !important;
   }
   .mb-#{$mp} {
-    margin-bottom:#{$mp}px !important;
+	margin-bottom:#{$mp}px !important;
   }
   .ml-#{$mp} {
-    margin-left:#{$mp}px !important;
+	margin-left:#{$mp}px !important;
   }
   .mr-#{$mp} {
-    margin-right:#{$mp}px !important;
+	margin-right:#{$mp}px !important;
   }
 
   .pt-#{$mp} {
-    padding-top:#{$mp}px !important;
+	padding-top:#{$mp}px !important;
   }
   .pb-#{$mp} {
-    padding-bottom:#{$mp}px !important;
+	padding-bottom:#{$mp}px !important;
   }
   .pl-#{$mp} {
-    padding-left:#{$mp}px !important;
+	padding-left:#{$mp}px !important;
   }
   .pr-#{$mp} {
-    padding-right:#{$mp}px !important;
+	padding-right:#{$mp}px !important;
   }
 }
