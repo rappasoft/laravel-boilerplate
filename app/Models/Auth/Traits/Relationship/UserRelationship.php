@@ -9,12 +9,11 @@ use App\Models\Auth\SocialAccount;
  */
 trait UserRelationship
 {
-
-	/**
-	 * @return mixed
-	 */
-	public function providers()
-	{
-		return $this->hasMany(SocialAccount::class);
-	}
+    /**
+     * @return mixed
+     */
+    public function providers()
+    {
+        return $this->hasMany(SocialAccount::class);
+    }
 }
