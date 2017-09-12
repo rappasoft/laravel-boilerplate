@@ -42,10 +42,10 @@ class Kernel extends HttpKernel
             'bindings',
         ],
 
-		'admin' => [
-			'auth',
-			'permission:view backend'
-		],
+        'admin' => [
+            'auth',
+            'permission:view backend',
+        ],
     ];
 
     /**
@@ -63,8 +63,8 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
-		// Third Party
-		'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
-		'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+        // Third Party
+        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
     ];
 }
