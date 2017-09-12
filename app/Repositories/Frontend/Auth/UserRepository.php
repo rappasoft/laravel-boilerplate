@@ -2,266 +2,268 @@
 
 namespace App\Repositories\Frontend\Auth;
 
+use App\Events\Frontend\Auth\UserConfirmed;
+use App\Events\Frontend\Auth\UserProviderRegistered;
+use App\Exceptions\GeneralException;
 use App\Models\Auth\User;
 use App\Models\Auth\SocialAccount;
-use Illuminate\Support\Facades\DB;
-use App\Exceptions\GeneralException;
-use Illuminate\Support\Facades\Hash;
-use App\Repositories\Traits\CacheResults;
-use App\Events\Frontend\Auth\UserConfirmed;
-use App\Repositories\BaseEloquentRepository;
-use App\Events\Frontend\Auth\UserProviderRegistered;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use App\Repositories\BaseEloquentRepository;
+use App\Repositories\Traits\CacheResults;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 /**
- * Class UserRepository.
+ * Class UserRepository
+ *
+ * @package App\Repositories\Frontend\Auth\User
  */
 class UserRepository extends BaseEloquentRepository
 {
-    use CacheResults;
 
-    /**
-     * @var string
-     */
-    protected $model = User::class;
+	use CacheResults;
 
-    /**
-     * @param $token
-     *
-     * @return bool|\Illuminate\Database\Eloquent\Model
-     */
-    public function findByPasswordResetToken($token)
-    {
-        foreach (DB::table(config('auth.passwords.users.table'))->get() as $row) {
-            if (password_verify($token, $row->token)) {
-                return $this->getItemByColumn($row->email, 'email');
-            }
-        }
+	/**
+	 * @var string
+	 */
+	protected $model = User::class;
 
-        return false;
-    }
+	/**
+	 * @param $token
+	 *
+	 * @return bool|\Illuminate\Database\Eloquent\Model
+	 */
+	public function findByPasswordResetToken($token)
+	{
+		foreach (DB::table(config('auth.passwords.users.table'))->get() as $row) {
+			if (password_verify($token, $row->token)) {
+				return $this->getItemByColumn($row->email, 'email');
+			}
+		}
 
-    /**
-     * @param array $data
-     *
-     * @return mixed
-     */
-    public function create(array $data)
-    {
-        return DB::transaction(function () use ($data) {
-            $user = parent::create([
-                'first_name'        => $data['first_name'],
-                'last_name'         => $data['last_name'],
-                'email'             => $data['email'],
-                'confirmation_code' => md5(uniqid(mt_rand(), true)),
-                'active'            => 1,
-                'password'          => bcrypt($data['password']),
-            ]);
+		return false;
+	}
 
-            // If users require approval or needs to confirm email
-            if (config('access.users.requires_approval') || config('access.users.confirm_email')) {
-                $user->confirmed = 0;
-            } else {
-                $user->confirmed = 1;
-            }
+	/**
+	 * @param array $data
+	 *
+	 * @return mixed
+	 */
+	public function create(array $data)
+	{
+		return DB::transaction(function() use ($data) {
+			$user = parent::create([
+				'first_name'        => $data['first_name'],
+				'last_name'         => $data['last_name'],
+				'email'             => $data['email'],
+				'confirmation_code' => md5(uniqid(mt_rand(), true)),
+				'active'            => 1,
+				'password'          => bcrypt($data['password']),
+			]);
 
-            if ($user) {
-                /*
-                 * Add the default site role to the new user
-                 */
-                $user->assignRole(config('access.users.default_role'));
-            }
+			// If users require approval or needs to confirm email
+			if (config('access.users.requires_approval') || config('access.users.confirm_email')) {
+				$user->confirmed = 0;
+			} else {
+				$user->confirmed = 1;
+			}
 
-            /*
-             * If users have to confirm their email and this is not a social account,
-             * and the account does not require admin approval
-             * send the confirmation email
-             *
-             * If this is a social account they are confirmed through the social provider by default
-             */
-            if (config('access.users.confirm_email')) {
-                // Pretty much only if account approval is off, confirm email is on, and this isn't a social account.
-                $user->notify(new UserNeedsConfirmation($user->confirmation_code));
-            }
+			if ($user) {
+				/*
+				 * Add the default site role to the new user
+				 */
+				$user->assignRole(config('access.users.default_role'));
+			}
 
-            /*
-             * Return the user object
-             */
-            return $user;
-        });
-    }
+			/*
+			 * If users have to confirm their email and this is not a social account,
+			 * and the account does not require admin approval
+			 * send the confirmation email
+			 *
+			 * If this is a social account they are confirmed through the social provider by default
+			 */
+			if (config('access.users.confirm_email')) {
+				// Pretty much only if account approval is off, confirm email is on, and this isn't a social account.
+				$user->notify(new UserNeedsConfirmation($user->confirmation_code));
+			}
 
-    /**
-     * @param mixed $id
-     * @param array $input
-     *
-     * @return array|bool
-     * @throws GeneralException
-     */
-    public function update($id, array $input)
-    {
-        $user = $this->getById($id);
-        $user->first_name = $input['first_name'];
-        $user->last_name = $input['last_name'];
+			/*
+			 * Return the user object
+			 */
+			return $user;
+		});
+	}
 
-        if ($user->canChangeEmail()) {
-            //Address is not current address so they need to reconfirm
-            if ($user->email != $input['email']) {
-                //Emails have to be unique
-                if ($this->getItemByColumn($input['email'], 'email')) {
-                    throw new GeneralException(__('exceptions.frontend.auth.email_taken'));
-                }
+	/**
+	 * @param mixed $id
+	 * @param array $input
+	 *
+	 * @return array|bool
+	 * @throws GeneralException
+	 */
+	public function update($id, array $input)
+	{
+		$user = $this->getById($id);
+		$user->first_name = $input['first_name'];
+		$user->last_name = $input['last_name'];
 
-                // Force the user to re-verify his email address
-                $user->confirmation_code = md5(uniqid(mt_rand(), true));
-                $user->confirmed = 0;
-                $user->email = $input['email'];
-                $updated = $user->save();
+		if ($user->canChangeEmail()) {
+			//Address is not current address so they need to reconfirm
+			if ($user->email != $input['email']) {
+				//Emails have to be unique
+				if ($this->getItemByColumn($input['email'], 'email')) {
+					throw new GeneralException(__('exceptions.frontend.auth.email_taken'));
+				}
 
-                // Send the new confirmation e-mail
-                $user->notify(new UserNeedsConfirmation($user->confirmation_code));
+				// Force the user to re-verify his email address
+				$user->confirmation_code = md5(uniqid(mt_rand(), true));
+				$user->confirmed = 0;
+				$user->email = $input['email'];
+				$updated = $user->save();
 
-                return [
-                    'success' => $updated,
-                    'email_changed' => true,
-                ];
-            }
-        }
+				// Send the new confirmation e-mail
+				$user->notify(new UserNeedsConfirmation($user->confirmation_code));
 
-        return $user->save();
-    }
+				return [
+					'success' => $updated,
+					'email_changed' => true,
+				];
+			}
+		}
 
-    /**
-     * @param $input
-     *
-     * @return bool
-     * @throws GeneralException
-     */
-    public function updatePassword($input)
-    {
-        $user = $this->getById(auth()->id());
+		return $user->save();
+	}
 
-        if (Hash::check($input['old_password'], $user->password)) {
-            $user->password = bcrypt($input['password']);
+	/**
+	 * @param $input
+	 *
+	 * @return bool
+	 * @throws GeneralException
+	 */
+	public function updatePassword($input)
+	{
+		$user = $this->getById(auth()->id());
 
-            return $user->save();
-        }
+		if (Hash::check($input['old_password'], $user->password)) {
+			$user->password = bcrypt($input['password']);
 
-        throw new GeneralException(__('exceptions.frontend.auth.password.change_mismatch'));
-    }
+			return $user->save();
+		}
 
-    /**
-     * @param $token
-     *
-     * @return bool
-     * @throws GeneralException
-     */
-    public function confirm($token)
-    {
-        $user = $this->getItemByColumn($token, 'confirmation_code');
+		throw new GeneralException(__('exceptions.frontend.auth.password.change_mismatch'));
+	}
 
-        if ($user->confirmed == 1) {
-            throw new GeneralException(__('exceptions.frontend.auth.confirmation.already_confirmed'));
-        }
+	/**
+	 * @param $token
+	 *
+	 * @return bool
+	 * @throws GeneralException
+	 */
+	public function confirm($token)
+	{
+		$user = $this->getItemByColumn($token, 'confirmation_code');
 
-        if ($user->confirmation_code == $token) {
-            $user->confirmed = 1;
+		if ($user->confirmed == 1) {
+			throw new GeneralException(__('exceptions.frontend.auth.confirmation.already_confirmed'));
+		}
 
-            event(new UserConfirmed($user));
+		if ($user->confirmation_code == $token) {
+			$user->confirmed = 1;
 
-            return $user->save();
-        }
+			event(new UserConfirmed($user));
 
-        throw new GeneralException(__('exceptions.frontend.auth.confirmation.mismatch'));
-    }
+			return $user->save();
+		}
 
-    /**
-     * @param $data
-     * @param $provider
-     *
-     * @return mixed
-     * @throws GeneralException
-     */
-    public function findOrCreateProvider($data, $provider)
-    {
-        // User email may not provided.
-        $user_email = $data->email ?: "{$data->id}@{$provider}.com";
+		throw new GeneralException(__('exceptions.frontend.auth.confirmation.mismatch'));
+	}
 
-        // Check to see if there is a user with this email first.
-        $user = $this->getItemByColumn($user_email, 'email');
+	/**
+	 * @param $data
+	 * @param $provider
+	 *
+	 * @return mixed
+	 * @throws GeneralException
+	 */
+	public function findOrCreateProvider($data, $provider) {
+		// User email may not provided.
+		$user_email = $data->email ?: "{$data->id}@{$provider}.com";
 
-        /*
-         * If the user does not exist create them
-         * The true flag indicate that it is a social account
-         * Which triggers the script to use some default values in the create method
-         */
-        if (! $user) {
-            // Registration is not enabled
-            if (! config('access.registration')) {
-                throw new GeneralException(__('exceptions.frontend.auth.registration_disabled'));
-            }
+		// Check to see if there is a user with this email first.
+		$user = $this->getItemByColumn($user_email, 'email');
 
-            // Get users first name and last name from their full name
-            $nameParts = $this->getNameParts($data->getName());
+		/*
+		 * If the user does not exist create them
+		 * The true flag indicate that it is a social account
+		 * Which triggers the script to use some default values in the create method
+		 */
+		if (! $user) {
+			// Registration is not enabled
+			if (! config('access.registration')) {
+				throw new GeneralException(__('exceptions.frontend.auth.registration_disabled'));
+			}
 
-            $user = parent::create([
-                'first_name'  => $nameParts['first_name'],
-                'last_name'  => $nameParts['last_name'],
-                'email' => $user_email,
-                'confirmed' => 1,
-                'password' => null,
-            ]);
+			// Get users first name and last name from their full name
+			$nameParts = $this->getNameParts($data->getName());
 
-            event(new UserProviderRegistered($user));
-        }
+			$user = parent::create([
+				'first_name'  => $nameParts['first_name'],
+				'last_name'  => $nameParts['last_name'],
+				'email' => $user_email,
+				'confirmed' => 1,
+				'password' => null,
+			]);
 
-        // See if the user has logged in with this social account before
-        if (! $user->hasProvider($provider)) {
-            // Gather the provider data for saving and associate it with the user
-            $user->providers()->save(new SocialAccount([
-                'provider'    => $provider,
-                'provider_id' => $data->id,
-                'token'       => $data->token,
-                'avatar'      => $data->avatar,
-            ]));
-        } else {
-            // Update the users information, token and avatar can be updated.
-            $user->providers()->update([
-                'token'       => $data->token,
-                'avatar'      => $data->avatar,
-            ]);
-        }
+			event(new UserProviderRegistered($user));
+		}
 
-        // Return the user object
-        return $user;
-    }
+		// See if the user has logged in with this social account before
+		if (! $user->hasProvider($provider)) {
+			// Gather the provider data for saving and associate it with the user
+			$user->providers()->save(new SocialAccount([
+				'provider'    => $provider,
+				'provider_id' => $data->id,
+				'token'       => $data->token,
+				'avatar'      => $data->avatar,
+			]));
+		} else {
+			// Update the users information, token and avatar can be updated.
+			$user->providers()->update([
+				'token'       => $data->token,
+				'avatar'      => $data->avatar,
+			]);
+		}
 
-    /**
-     * @param $fullName
-     *
-     * @return array
-     */
-    protected function getNameParts($fullName)
-    {
-        $parts = array_values(array_filter(explode(' ', $fullName)));
-        $size = count($parts);
-        $result = [];
+		// Return the user object
+		return $user;
+	}
 
-        if (empty($parts)) {
-            $result['first_name'] = null;
-            $result['last_name'] = null;
-        }
+	/**
+	 * @param $fullName
+	 *
+	 * @return array
+	 */
+	protected function getNameParts($fullName)
+	{
+		$parts = array_values(array_filter(explode(' ', $fullName)));
+		$size = count($parts);
+		$result = [];
 
-        if (! empty($parts) && $size == 1) {
-            $result['first_name'] = $parts[0];
-            $result['last_name'] = null;
-        }
+		if (empty($parts)) {
+			$result['first_name'] = null;
+			$result['last_name'] = null;
+		}
 
-        if (! empty($parts) && $size >= 2) {
-            $result['first_name'] = $parts[0];
-            $result['last_name'] = $parts[1];
-        }
+		if (! empty($parts) && $size == 1) {
+			$result['first_name'] = $parts[0];
+			$result['last_name'] = null;
+		}
 
-        return $result;
-    }
+		if (! empty($parts) && $size >= 2) {
+			$result['first_name'] = $parts[0];
+			$result['last_name'] = $parts[1];
+		}
+
+		return $result;
+	}
 }

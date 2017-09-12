@@ -67,33 +67,33 @@ return [
 
     'timezone' => 'UTC',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application Locale Configuration
-    |--------------------------------------------------------------------------
-    |
-    | The application locale determines the default locale that will be used
-    | by the translation service provider. You are free to set this value
-    | to any of the locales which will be supported by the application.
-    |
-    */
+	/*
+	|--------------------------------------------------------------------------
+	| Application Locale Configuration
+	|--------------------------------------------------------------------------
+	|
+	| The application locale determines the default locale that will be used
+	| by the translation service provider. You are free to set this value
+	| to any of the locales which will be supported by the application.
+	|
+	*/
 
-    'locale' => 'en',
+	'locale' => env('APP_LOCALE', 'en'),
 
-    /*
-    |--------------------------------------------------------------------------
-    | Application Fallback Locale
-    |--------------------------------------------------------------------------
-    |
-    | The fallback locale determines the locale to use when the current one
-    | is not available. You may change the value to correspond to any of
-    | the language folders that are provided through your application.
-    |
-    */
+	/*
+	|--------------------------------------------------------------------------
+	| Application Fallback Locale
+	|--------------------------------------------------------------------------
+	|
+	| The fallback locale determines the locale to use when the current one
+	| is not available. You may change the value to correspond to any of
+	| the language folders that are provided through your application.
+	|
+	*/
 
-    'fallback_locale' => 'en',
+	'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
-    /*
+	/*
     |--------------------------------------------------------------------------
     | PHP Locale Code
     |--------------------------------------------------------------------------
@@ -102,7 +102,7 @@ return [
     | by the Carbon library when setting Carbon's localization.
     |
     */
-    'locale_php' => env('APP_LOCALE_PHP', 'en_US'),
+	'locale_php' => env('APP_LOCALE_PHP', 'en_US'),
 
     /*
     |--------------------------------------------------------------------------
@@ -178,18 +178,18 @@ return [
         /*
          * Package Service Providers...
          */
-        Creativeorange\Gravatar\GravatarServiceProvider::class,
-        HieuLe\Active\ActiveServiceProvider::class,
+		Creativeorange\Gravatar\GravatarServiceProvider::class,
+		HieuLe\Active\ActiveServiceProvider::class,
 
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        App\Providers\BladeServiceProvider::class,
+		App\Providers\BladeServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\MacroServiceProvider::class,
+		App\Providers\MacroServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
     ],
@@ -241,15 +241,15 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
-        /*
-         * Package Aliases
-         */
-        'Active' => HieuLe\Active\Facades\Active::class,
-        'Captcha' => Arcanedev\NoCaptcha\Facades\NoCaptcha::class,
-        'Form' => Collective\Html\FormFacade::class,
-        'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
-        'Html' => Collective\Html\HtmlFacade::class,
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+		/*
+		 * Package Aliases
+		 */
+		'Active' => HieuLe\Active\Facades\Active::class,
+		'Captcha' => Arcanedev\NoCaptcha\Facades\NoCaptcha::class,
+		'Form' => Collective\Html\FormFacade::class,
+		'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
+		'Html' => Collective\Html\HtmlFacade::class,
+		'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

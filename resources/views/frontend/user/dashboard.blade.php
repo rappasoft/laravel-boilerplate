@@ -31,9 +31,9 @@
 
                                         {{ link_to_route('frontend.user.account', __('navs.frontend.user.account'), [], ['class' => 'btn btn-info btn-xs']) }}
 
-                                        @if (auth()->user()->can('view backend'))
+                                        @can('view backend'))
                                             {{ link_to_route('admin.dashboard', __('navs.frontend.user.administration'), [], ['class' => 'btn btn-danger btn-xs']) }}
-                                        @endif
+                                        @endcan
                                     </div><!--media-body-->
                                 </li><!--media-->
                             </ul><!--media-list-->

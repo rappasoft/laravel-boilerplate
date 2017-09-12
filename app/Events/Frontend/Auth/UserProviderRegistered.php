@@ -10,18 +10,18 @@ use Illuminate\Queue\SerializesModels;
  */
 class UserProviderRegistered
 {
-    use SerializesModels;
+	use SerializesModels;
 
-    /**
-     * @var
-     */
-    public $user;
+	/**
+	 * @var
+	 */
+	public $user;
 
-    /**
-     * @param $user
-     */
-    public function __construct(User $user)
-    {
-        $this->user = $user;
-    }
+	/**
+	 * @param $user
+	 */
+	public function __construct(User $user)
+	{
+		$this->user = $user;
+	}
 }

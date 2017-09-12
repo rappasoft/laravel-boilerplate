@@ -49,9 +49,9 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
-                            @if (auth()->user()->can('view backend'))
+                            @can('view backend'))
                                 <li>{{ link_to_route('admin.dashboard', __('navs.frontend.user.administration')) }}</li>
-                            @endif
+                            @endcan
 
                             <li>{{ link_to_route('frontend.user.account', __('navs.frontend.user.account'), [], ['class' => active_class(Active::checkRoute('frontend.user.account')) ]) }}</li>
                             <li>{{ link_to_route('frontend.auth.logout', __('navs.general.logout')) }}</li>
