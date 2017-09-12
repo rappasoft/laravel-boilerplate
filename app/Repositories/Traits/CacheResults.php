@@ -4,13 +4,11 @@ namespace App\Repositories\Traits;
 
 /**
  * Forked from https://github.com/dannyweeks/laravel-base-repository
- * Unfortunately there was no working Laravel 5.5 version at the time of this project
+ * Unfortunately there was no working Laravel 5.5 version at the time of this project.
  *
  * TODO: Clear cache if a record is updated. Maybe use updated_at as cache key.
  *
  * Trait CacheResults
- *
- * @package App\Repositories\Traits
  */
 trait CacheResults
 {
@@ -88,7 +86,7 @@ trait CacheResults
     }
 
     /**
-     * returns Illuminate\Contracts\Cache\Repository
+     * returns Illuminate\Contracts\Cache\Repository.
      */
     protected function getCache()
     {
@@ -110,7 +108,7 @@ trait CacheResults
         // Filter any unwanted methods.
         if (isset($this->nonCacheableMethods)) {
             $methods = array_filter($methods, function ($methodName) {
-                return !in_array($methodName, $this->nonCacheableMethods);
+                return ! in_array($methodName, $this->nonCacheableMethods);
             });
         }
 
