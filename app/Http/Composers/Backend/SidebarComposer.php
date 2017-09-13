@@ -15,6 +15,7 @@ class SidebarComposer
      * @var UserRepository
      */
     protected $userRepository;
+
     /**
      * @var \Spatie\Menu\Laravel\Menu
      */
@@ -31,6 +32,7 @@ class SidebarComposer
         $this->userRepository = $userRepository;
         $this->menu = $menu->getMenu();
     }
+
     /**
      * @param View $view
      *

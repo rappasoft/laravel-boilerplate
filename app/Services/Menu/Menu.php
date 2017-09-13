@@ -2,18 +2,15 @@
 
 namespace App\Services\Menu;
 
-use App\Repositories\Backend\Access\User\UserRepository;
 use Spatie\Menu\Laravel\Link;
 use Spatie\Menu\Laravel\Menu as LaravelMenu;
+use App\Repositories\Backend\Access\User\UserRepository;
 
 /**
  * Class Menu
- *
- * @package App\Services\Menu
  */
 class Menu
 {
-
     /**
      * @var UserRepository
      */
@@ -28,7 +25,6 @@ class Menu
     {
         $this->userRepository = $userRepository;
     }
-
 
     public function getMenu()
     {
@@ -45,13 +41,13 @@ class Menu
             //System
             ->html(trans('menus.backend.sidebar.system'), ['class'=>'header'])
             ->submenuIf(
-                access()->hasRole("1"),
+                access()->hasRole('1'),
                 Link::to(
                     '#',
                     self::placeIcon(
                         'users',
                         trans('labels.backend.access.users.management')
-                    ) . self::pendingApproval()
+                    ).self::pendingApproval()
                 ),
                 LaravelMenu::new()
                     ->addClass('treeview-menu')
@@ -60,7 +56,7 @@ class Menu
                         self::placeIcon(
                             'circle-o',
                             trans('labels.backend.access.users.management')
-                        ) . self::pendingApproval()
+                        ).self::pendingApproval()
                     ))
                     ->add(Link::to(
                         route('admin.access.role.index'),
@@ -76,7 +72,7 @@ class Menu
                     self::placeIcon(
                         'list',
                         trans('menus.backend.log-viewer.main')
-                    ) . '<i class="fa fa-angle-left pull-right"></i>'
+                    ).'<i class="fa fa-angle-left pull-right"></i>'
                 ),
                 LaravelMenu::new()
                     ->addClass('treeview-menu')
@@ -104,7 +100,7 @@ class Menu
      */
     private function placeIcon(string $icon, string $text)
     {
-        return("<i class=\"fa fa-{$icon}\"></i><span>{$text}</span>");
+        return "<i class=\"fa fa-{$icon}\"></i><span>{$text}</span>";
     }
 
     /**
@@ -112,10 +108,10 @@ class Menu
      */
     private function pendingApproval()
     {
-        if ( config('access.users.requires_approval') && $this->userRepository->getUnconfirmedCount() > 0 ) {
+        if (config('access.users.requires_approval') && $this->userRepository->getUnconfirmedCount() > 0) {
             return "<span class=\"label label-danger pull-right\">{$this->userRepository->getUnconfirmedCount()}</span>";
         } else {
-            return "<i class=\"fa fa-angle-left pull-right\"></i>";
+            return '<i class="fa fa-angle-left pull-right"></i>';
         }
     }
 }
