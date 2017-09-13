@@ -3,6 +3,7 @@
 namespace App\Http\Composers\Backend;
 
 use Illuminate\View\View;
+use App\Services\Menu\Menu;
 use App\Repositories\Backend\Access\User\UserRepository;
 
 /**
@@ -16,13 +17,20 @@ class SidebarComposer
     protected $userRepository;
 
     /**
+     * @var \Spatie\Menu\Laravel\Menu
+     */
+    protected $menu;
+
+    /**
      * SidebarComposer constructor.
      *
      * @param UserRepository $userRepository
+     * @param Menu           $menu
      */
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, Menu $menu)
     {
         $this->userRepository = $userRepository;
+        $this->menu = $menu->getMenu();
     }
 
     /**
@@ -32,10 +40,6 @@ class SidebarComposer
      */
     public function compose(View $view)
     {
-        if (config('access.users.requires_approval')) {
-            $view->with('pending_approval', $this->userRepository->getUnconfirmedCount());
-        } else {
-            $view->with('pending_approval', 0);
-        }
+        $view->with('menu', $this->menu);
     }
 }
