@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Frontend\Auth\UserRepository;
 use App\Http\Requests\Frontend\User\UpdatePasswordRequest;
+use App\Repositories\Frontend\Auth\UserRepository;
 
 /**
- * Class UpdatePasswordController.
+ * Class UpdatePasswordController
+ *
+ * @package App\Http\Controllers\Frontend\Auth
  */
 class UpdatePasswordController extends Controller
 {
@@ -26,12 +28,12 @@ class UpdatePasswordController extends Controller
         $this->user = $user;
     }
 
-    /**
-     * @param UpdatePasswordRequest $request
-     *
-     * @return mixed
-     */
-    public function update(UpdatePasswordRequest $request)
+	/**
+	 * @param UpdatePasswordRequest $request
+	 *
+	 * @return mixed
+	 */
+	public function update(UpdatePasswordRequest $request)
     {
         $this->user->updatePassword($request->only('old_password', 'password'));
 

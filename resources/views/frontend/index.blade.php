@@ -2,48 +2,47 @@
 
 @section('content')
     <div class="row">
-        <example></example>
+        <div class="col-lg-12">
+            <example></example>
+        </div><!-- col-lg-12 -->
 
-        <div class="col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
                     <i class="fa fa-home"></i> {{ __('navs.general.home') }}
-                </div><!-- panel-heading -->
-
-                <div class="panel-body">
+                </div>
+                <div class="card-block">
                     {{ __('strings.frontend.welcome_to', ['place' => app_name()]) }}
-                </div><!-- panel-body -->
-            </div><!-- panel -->
-        </div><!-- col-xs-12 -->
+                </div>
+            </div><!--card-->
+        </div><!-- col-lg-12 -->
 
-        <div class="col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
                     <i class="fa fa-home"></i> Bootstrap Glyphicon {{ __('strings.frontend.test') }}
-                </div><!-- panel-heading -->
-
-                <div class="panel-body">
+                </div>
+                <div class="card-block">
                     <span class="glyphicon glyphicon-search"></span>
                     <span class="glyphicon glyphicon glyphicon-euro"></span>
                     <span class="glyphicon glyphicon glyphicon-cloud"></span>
                     <span class="glyphicon glyphicon glyphicon-envelope"></span>
-                </div><!-- panel-body -->
-            </div><!-- panel -->
-        </div><!-- col-xs-12 -->
+                </div>
+            </div><!--card-->
+        </div><!-- col-lg-12 -->
 
-        <div class="col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
                     <i class="fa fa-home"></i> Font Awesome {{ __('strings.frontend.test') }}
-                </div><!-- panel-heading -->
-
-                <div class="panel-body">
+                </div>
+                <div class="card-block">
                     <i class="fa fa-home"></i>
                     <i class="fa fa-facebook"></i>
                     <i class="fa fa-twitter"></i>
                     <i class="fa fa-pinterest"></i>
-                </div><!-- panel-body -->
-            </div><!-- panel -->
-        </div><!-- col-xs-12 -->
+                </div>
+            </div><!--card-->
+        </div><!-- col-lg-12 -->
     </div><!--row-->
 @endsection

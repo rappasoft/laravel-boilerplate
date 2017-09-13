@@ -14,120 +14,120 @@ use App\Helpers\Frontend\Auth\Socialite as SocialiteHelper;
  */
 class SocialLoginController extends Controller
 {
-    /**
-     * @var UserRepository
-     */
-    protected $user;
+	/**
+	 * @var UserRepository
+	 */
+	protected $user;
 
-    /**
-     * @var SocialiteHelper
-     */
-    protected $helper;
+	/**
+	 * @var SocialiteHelper
+	 */
+	protected $helper;
 
-    /**
-     * SocialLoginController constructor.
-     *
-     * @param UserRepository  $user
-     * @param SocialiteHelper $helper
-     */
-    public function __construct(UserRepository $user, SocialiteHelper $helper)
-    {
-        $this->user = $user;
-        $this->helper = $helper;
-    }
+	/**
+	 * SocialLoginController constructor.
+	 *
+	 * @param UserRepository  $user
+	 * @param SocialiteHelper $helper
+	 */
+	public function __construct(UserRepository $user, SocialiteHelper $helper)
+	{
+		$this->user = $user;
+		$this->helper = $helper;
+	}
 
-    /**
-     * @param Request $request
-     * @param $provider
-     *
-     * @throws GeneralException
-     *
-     * @return \Illuminate\Http\RedirectResponse|mixed
-     */
-    public function login(Request $request, $provider)
-    {
-        // There's a high probability something will go wrong
-        $user = null;
+	/**
+	 * @param Request $request
+	 * @param $provider
+	 *
+	 * @throws GeneralException
+	 *
+	 * @return \Illuminate\Http\RedirectResponse|mixed
+	 */
+	public function login(Request $request, $provider)
+	{
+		// There's a high probability something will go wrong
+		$user = null;
 
-        // If the provider is not an acceptable third party than kick back
-        if (! in_array($provider, $this->helper->getAcceptedProviders())) {
-            return redirect()->route(homeRoute())->withFlashDanger(__('auth.socialite.unacceptable', ['provider' => $provider]));
-        }
+		// If the provider is not an acceptable third party than kick back
+		if (! in_array($provider, $this->helper->getAcceptedProviders())) {
+			return redirect()->route(homeRoute())->withFlashDanger(__('auth.socialite.unacceptable', ['provider' => $provider]));
+		}
 
-        /*
-         * The first time this is hit, request is empty
-         * It's redirected to the provider and then back here, where request is populated
-         * So it then continues creating the user
-         */
-        if (! $request->all()) {
-            return $this->getAuthorizationFirst($provider);
-        }
+		/*
+		 * The first time this is hit, request is empty
+		 * It's redirected to the provider and then back here, where request is populated
+		 * So it then continues creating the user
+		 */
+		if (! $request->all()) {
+			return $this->getAuthorizationFirst($provider);
+		}
 
-        // Create the user if this is a new social account or find the one that is already there.
-        try {
-            $user = $this->user->findOrCreateProvider($this->getProviderUser($provider), $provider);
-        } catch (GeneralException $e) {
-            return redirect()->route(homeRoute())->withFlashDanger($e->getMessage());
-        }
+		// Create the user if this is a new social account or find the one that is already there.
+		try {
+			$user = $this->user->findOrCreateProvider($this->getProviderUser($provider), $provider);
+		} catch (GeneralException $e) {
+			return redirect()->route(homeRoute())->withFlashDanger($e->getMessage());
+		}
 
-        if (is_null($user)) {
-            return redirect()->route(homeRoute())->withFlashDanger(__('exceptions.frontend.auth.unknown'));
-        }
+		if (is_null($user)) {
+			return redirect()->route(homeRoute())->withFlashDanger(__('exceptions.frontend.auth.unknown'));
+		}
 
-        // Check to see if they are active.
-        if (! $user->isActive()) {
-            throw new GeneralException(__('exceptions.frontend.auth.deactivated'));
-        }
+		// Check to see if they are active.
+		if (! $user->isActive()) {
+			throw new GeneralException(__('exceptions.frontend.auth.deactivated'));
+		}
 
-        // Account approval is on
-        if ($user->isPending()) {
-            throw new GeneralException(__('exceptions.frontend.auth.confirmation.pending'));
-        }
+		// Account approval is on
+		if ($user->isPending()) {
+			throw new GeneralException(__('exceptions.frontend.auth.confirmation.pending'));
+		}
 
-        // User has been successfully created or already exists
-        auth()->login($user, true);
+		// User has been successfully created or already exists
+		auth()->login($user, true);
 
-        // Set session variable so we know which provider user is logged in as, if ever needed
-        session([config('access.socialite_session_name') => $provider]);
+		// Set session variable so we know which provider user is logged in as, if ever needed
+		session([config('access.socialite_session_name') => $provider]);
 
-        // Return to the intended url or default to the class property
-        return redirect()->intended(route(homeRoute()));
-    }
+		// Return to the intended url or default to the class property
+		return redirect()->intended(route(homeRoute()));
+	}
 
-    /**
-     * @param  $provider
-     *
-     * @return mixed
-     */
-    protected function getAuthorizationFirst($provider)
-    {
-        $socialite = Socialite::driver($provider);
-        $scopes = count(config("services.{$provider}.scopes")) ? config("services.{$provider}.scopes") : false;
-        $with = count(config("services.{$provider}.with")) ? config("services.{$provider}.with") : false;
-        $fields = count(config("services.{$provider}.fields")) ? config("services.{$provider}.fields") : false;
+	/**
+	 * @param  $provider
+	 *
+	 * @return mixed
+	 */
+	protected function getAuthorizationFirst($provider)
+	{
+		$socialite = Socialite::driver($provider);
+		$scopes = count(config("services.{$provider}.scopes")) ? config("services.{$provider}.scopes") : false;
+		$with = count(config("services.{$provider}.with")) ? config("services.{$provider}.with") : false;
+		$fields = count(config("services.{$provider}.fields")) ? config("services.{$provider}.fields") : false;
 
-        if ($scopes) {
-            $socialite->scopes($scopes);
-        }
+		if ($scopes) {
+			$socialite->scopes($scopes);
+		}
 
-        if ($with) {
-            $socialite->with($with);
-        }
+		if ($with) {
+			$socialite->with($with);
+		}
 
-        if ($fields) {
-            $socialite->fields($fields);
-        }
+		if ($fields) {
+			$socialite->fields($fields);
+		}
 
-        return $socialite->redirect();
-    }
+		return $socialite->redirect();
+	}
 
-    /**
-     * @param $provider
-     *
-     * @return mixed
-     */
-    protected function getProviderUser($provider)
-    {
-        return Socialite::driver($provider)->user();
-    }
+	/**
+	 * @param $provider
+	 *
+	 * @return mixed
+	 */
+	protected function getProviderUser($provider)
+	{
+		return Socialite::driver($provider)->user();
+	}
 }

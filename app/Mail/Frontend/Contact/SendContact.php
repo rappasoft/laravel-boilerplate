@@ -2,8 +2,8 @@
 
 namespace App\Mail\Frontend\Contact;
 
-use Illuminate\Http\Request;
 use Illuminate\Bus\Queueable;
+use Illuminate\Http\Request;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -12,35 +12,35 @@ use Illuminate\Queue\SerializesModels;
  */
 class SendContact extends Mailable
 {
-    use Queueable, SerializesModels;
+	use Queueable, SerializesModels;
 
-    /**
-     * @var Request
-     */
-    public $request;
+	/**
+	 * @var Request
+	 */
+	public $request;
 
-    /**
-     * SendContact constructor.
-     *
-     * @param Request $request
-     */
-    public function __construct(Request $request)
-    {
-        $this->request = $request;
-    }
+	/**
+	 * SendContact constructor.
+	 *
+	 * @param Request $request
+	 */
+	public function __construct(Request $request)
+	{
+		$this->request = $request;
+	}
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
-    public function build()
-    {
-        return $this->to(config('mail.from.address'), config('mail.from.name'))
-            ->view('frontend.mail.contact')
-            ->text('frontend.mail.contact-text')
-            ->subject(__('strings.emails.contact.subject', ['app_name' => app_name()]))
-            ->from($this->request->email, $this->request->name)
-            ->replyTo($this->request->email, $this->request->name);
-    }
+	/**
+	 * Build the message.
+	 *
+	 * @return $this
+	 */
+	public function build()
+	{
+		return $this->to(config('mail.from.address'), config('mail.from.name'))
+			->view('frontend.mail.contact')
+			->text('frontend.mail.contact-text')
+			->subject(__('strings.emails.contact.subject', ['app_name' => app_name()]))
+			->from($this->request->email, $this->request->name)
+			->replyTo($this->request->email, $this->request->name);
+	}
 }
