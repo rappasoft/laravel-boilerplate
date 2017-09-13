@@ -8,28 +8,26 @@ use App\Repositories\Traits\ThrowsHttpExceptions;
 
 /**
  * Forked from https://github.com/dannyweeks/laravel-base-repository
- * Unfortunately there was no working Laravel 5.5 version at the time of this project
+ * Unfortunately there was no working Laravel 5.5 version at the time of this project.
  *
  * Class BaseEloquentRepository
- *
- * @package App\Repositories
  */
 abstract class BaseEloquentRepository implements RepositoryContract
 {
     /**
-     * Name of model associated with this repository
+     * Name of model associated with this repository.
      * @var Model
      */
     protected $model;
 
     /**
-     * Array of method names of relationships available to use
+     * Array of method names of relationships available to use.
      * @var array
      */
     protected $relationships = [];
 
     /**
-     * Array of relationships to include in next query
+     * Array of relationships to include in next query.
      * @var array
      */
     protected $requiredRelationships = [];
@@ -40,18 +38,18 @@ abstract class BaseEloquentRepository implements RepositoryContract
      */
     protected $uses = [];
 
-	/**
-	 * @var int
-	 */
-	protected $cacheTtl = 60;
-
-	/**
-	 * @var bool
-	 */
-	protected $caching = true;
+    /**
+     * @var int
+     */
+    protected $cacheTtl = 60;
 
     /**
-     * Get the model from the IoC container
+     * @var bool
+     */
+    protected $caching = true;
+
+    /**
+     * Get the model from the IoC container.
      */
     public function __construct()
     {
@@ -60,7 +58,7 @@ abstract class BaseEloquentRepository implements RepositoryContract
     }
 
     /**
-     * Get all items
+     * Get all items.
      *
      * @param  string $columns specific columns to select
      * @param  string $orderBy column to sort by
@@ -70,21 +68,19 @@ abstract class BaseEloquentRepository implements RepositoryContract
     public function getAll($columns = null, $orderBy = 'created_at', $sort = 'DESC')
     {
         $query = function () use ($columns, $orderBy, $sort) {
-
             return $this->model
                 ->with($this->requiredRelationships)
                 ->orderBy($orderBy, $sort)
                 ->get($columns);
-
         };
 
         return $this->doQuery($query);
     }
 
     /**
-     * Get paged items
+     * Get paged items.
      *
-     * @param  integer $paged Items per page
+     * @param  int $paged Items per page
      * @param  string $orderBy Column to sort by
      * @param  string $sort Sort direction
      * @return \Illuminate\Pagination\Paginator
@@ -92,7 +88,6 @@ abstract class BaseEloquentRepository implements RepositoryContract
     public function getPaginated($paged = 15, $orderBy = 'created_at', $sort = 'DESC')
     {
         $query = function () use ($paged, $orderBy, $sort) {
-
             return $this->model
                 ->with($this->requiredRelationships)
                 ->orderBy($orderBy, $sort)
@@ -103,7 +98,7 @@ abstract class BaseEloquentRepository implements RepositoryContract
     }
 
     /**
-     * Items for select options
+     * Items for select options.
      *
      * @param  string $data column to display in the option
      * @param  string $key column to be used as the value in option
@@ -125,9 +120,9 @@ abstract class BaseEloquentRepository implements RepositoryContract
     }
 
     /**
-     * Get item by its id
+     * Get item by its id.
      *
-     * @param  integer $id
+     * @param  int $id
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function getById($id)
@@ -142,7 +137,7 @@ abstract class BaseEloquentRepository implements RepositoryContract
     }
 
     /**
-     * Get instance of model by column
+     * Get instance of model by column.
      *
      * @param  mixed $term search term
      * @param  string $column column to search
@@ -161,7 +156,7 @@ abstract class BaseEloquentRepository implements RepositoryContract
     }
 
     /**
-     * Get instance of model by column
+     * Get instance of model by column.
      *
      * @param  mixed $term search term
      * @param  string $column column to search
@@ -180,7 +175,7 @@ abstract class BaseEloquentRepository implements RepositoryContract
     }
 
     /**
-     * Get item by id or column
+     * Get item by id or column.
      *
      * @param  mixed $term id or term
      * @param  string $column column to search
@@ -196,7 +191,7 @@ abstract class BaseEloquentRepository implements RepositoryContract
     }
 
     /**
-     * Create new using mass assignment
+     * Create new using mass assignment.
      *
      * @param array $data
      * @return mixed
@@ -218,7 +213,7 @@ abstract class BaseEloquentRepository implements RepositoryContract
     }
 
     /**
-     * Update or crate a record and return the entity
+     * Update or crate a record and return the entity.
      *
      * @param array $identifiers columns to search for
      * @param array $data
@@ -325,7 +320,6 @@ abstract class BaseEloquentRepository implements RepositoryContract
         }
 
         if (in_array(ThrowsHttpExceptions::class, $traits)) {
-
             if ($this->shouldThrowHttpException($result, $methodName)) {
                 $this->throwNotFoundHttpException($methodName, $arguments);
             }
