@@ -19,6 +19,7 @@
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "5.4.*",
+        "spatie/laravel-menu": "2.1.*",
         "yajra/laravel-datatables-oracle": "^7.0"
     },
     "require-dev": {
