@@ -13,20 +13,20 @@ Route::post('contact/send', 'ContactController@send')->name('contact.send');
  * All route names are prefixed with 'frontend.'
  */
 Route::group(['middleware' => 'auth'], function () {
-	Route::group(['namespace' => 'User', 'as' => 'user.'], function () {
-		/*
-		 * User Dashboard Specific
-		 */
-		Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::group(['namespace' => 'User', 'as' => 'user.'], function () {
+        /*
+         * User Dashboard Specific
+         */
+        Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
-		/*
-		 * User Account Specific
-		 */
-		Route::get('account', 'AccountController@index')->name('account');
+        /*
+         * User Account Specific
+         */
+        Route::get('account', 'AccountController@index')->name('account');
 
-		/*
-		 * User Profile Specific
-		 */
-		Route::patch('profile/update', 'ProfileController@update')->name('profile.update');
-	});
+        /*
+         * User Profile Specific
+         */
+        Route::patch('profile/update', 'ProfileController@update')->name('profile.update');
+    });
 });

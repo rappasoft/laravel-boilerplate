@@ -5,9 +5,7 @@ namespace App\Http;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 /**
- * Class Kernel
- *
- * @package App\Http
+ * Class Kernel.
  */
 class Kernel extends HttpKernel
 {
@@ -40,7 +38,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-			\App\Http\Middleware\LocaleMiddleware::class,
+            \App\Http\Middleware\LocaleMiddleware::class,
         ],
 
         'api' => [
@@ -48,10 +46,10 @@ class Kernel extends HttpKernel
             'bindings',
         ],
 
-		'admin' => [
-			'auth',
-			'permission:view backend'
-		],
+        'admin' => [
+            'auth',
+            'permission:view backend',
+        ],
     ];
 
     /**
@@ -69,8 +67,8 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
-		// Modified from Spatie Permission Package
-		'permission' => \App\Http\Middleware\PermissionMiddleware::class,
-		'role' => \App\Http\Middleware\RoleMiddleware::class,
+        // Modified from Spatie Permission Package
+        'permission' => \App\Http\Middleware\PermissionMiddleware::class,
+        'role' => \App\Http\Middleware\RoleMiddleware::class,
     ];
 }
