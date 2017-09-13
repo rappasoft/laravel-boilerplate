@@ -7,7 +7,7 @@ use Spatie\Menu\Laravel\Menu as LaravelMenu;
 use App\Repositories\Backend\Access\User\UserRepository;
 
 /**
- * Class Menu
+ * Class Menu.
  */
 class Menu
 {
