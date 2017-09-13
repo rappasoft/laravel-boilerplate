@@ -1,66 +1,48 @@
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    {{ link_to_route('frontend.index', app_name(), [], ['class' => 'navbar-brand']) }}
 
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="sr-only">{{ __('labels.general.toggle_navigation') }}</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ trans('labels.general.toggle_navigation') }}">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-            {{ link_to_route('frontend.index', app_name(), [], ['class' => 'navbar-brand']) }}
-        </div>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+            @if (config('locale.status') && count(config('locale.languages')) > 1)
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownLanguageLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">{{ __('menus.language-picker.language') }}</a>
 
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
-                &nbsp;
-            </ul>
+                    @include('includes.partials.lang')
+                </li>
+            @endif
 
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                @if (config('locale.status') && count(config('locale.languages')) > 1)
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ __('menus.language-picker.language') }}
-                            <span class="caret"></span>
-                        </a>
+            @auth
+                <li class="nav-item">{{ link_to_route('frontend.user.dashboard', __('navs.frontend.dashboard'), [], ['class' => 'nav-link ' . active_class(Active::checkRoute('frontend.user.dashboard')) ]) }}</li>
+            @endauth
 
-                        @include('includes.partials.lang')
-                    </li>
+            @guest
+                <li class="nav-item">{{ link_to_route('frontend.auth.login', __('navs.frontend.login'), [], ['class' =>  'nav-link ' . active_class(Active::checkRoute('frontend.auth.login')) ]) }}</li>
+
+                @if (config('access.registration'))
+                    <li class="nav-item">{{ link_to_route('frontend.auth.register', __('navs.frontend.register'), [], ['class' =>  'nav-link ' . active_class(Active::checkRoute('frontend.auth.register')) ]) }}</li>
                 @endif
+            @else
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuUser" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">{{ auth()->user()->name }}</a>
 
-                @auth
-                    <li>{{ link_to_route('frontend.user.dashboard', __('navs.frontend.dashboard'), [], ['class' => active_class(Active::checkRoute('frontend.user.dashboard')) ]) }}</li>
-                @endauth
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuUser">
+                        @can('view backend')
+                            {{ link_to_route('admin.dashboard', __('navs.frontend.user.administration'), [], ['class' => 'dropdown-item']) }}
+                        @endcan
 
-                @guest
-                    <li>{{ link_to_route('frontend.auth.login', __('navs.frontend.login'), [], ['class' => active_class(Active::checkRoute('frontend.auth.login')) ]) }}</li>
+                        {{ link_to_route('frontend.user.account', __('navs.frontend.user.account'), [], ['class' => 'dropdown-item ' . active_class(Active::checkRoute('frontend.user.account')) ]) }}
+                        {{ link_to_route('frontend.auth.logout', __('navs.general.logout'), [], ['class' => 'dropdown-item']) }}
+                    </div>
+                </li>
+            @endguest
 
-                    @if (config('access.registration'))
-                        <li>{{ link_to_route('frontend.auth.register', __('navs.frontend.register'), [], ['class' => active_class(Active::checkRoute('frontend.auth.register')) ]) }}</li>
-                    @endif
-                @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ auth()->user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu" role="menu">
-                            @can('view backend'))
-                                <li>{{ link_to_route('admin.dashboard', __('navs.frontend.user.administration')) }}</li>
-                            @endcan
-
-                            <li>{{ link_to_route('frontend.user.account', __('navs.frontend.user.account'), [], ['class' => active_class(Active::checkRoute('frontend.user.account')) ]) }}</li>
-                            <li>{{ link_to_route('frontend.auth.logout', __('navs.general.logout')) }}</li>
-                        </ul>
-                    </li>
-                @endguest
-
-                <li>{{ link_to_route('frontend.contact', __('navs.frontend.contact'), [], ['class' => active_class(Active::checkRoute('frontend.contact')) ]) }}</li>
-            </ul>
-        </div>
+            <li class="nav-item">{{ link_to_route('frontend.contact', __('navs.frontend.contact'), [], ['class' => 'nav-link ' . active_class(Active::checkRoute('frontend.contact')) ]) }}</li>
+        </ul>
     </div>
 </nav>

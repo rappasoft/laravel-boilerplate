@@ -1,10 +1,10 @@
 <template>
     <div class="card">
         <div class="card-header">
-            Example Component
+            Example Vue Component
         </div>
-        <div class="card-block">
-            I'm an example component!
+        <div class="card-body">
+            I'm an example Vue component!
         </div>
     </div>
 </template>
