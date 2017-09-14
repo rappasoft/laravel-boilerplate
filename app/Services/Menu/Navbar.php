@@ -50,15 +50,14 @@ class Navbar
                 config('locale.status') && count(config('locale.languages')) > 1,
                 Link::to(
                     '#',
-                    trans('menus.language-picker.language') .
+                    trans('menus.language-picker.language').
                     ' <span class="caret"></span>'
                 )
-                    ->setAttribute('data-toggle', 'dropdown')
-                ,
+                    ->setAttribute('data-toggle', 'dropdown'),
                 LaravelMenu::new()
                     ->addClass('dropdown-menu')
                     ->setAttribute('role', 'menu')
-                    ->fill(array_keys(config('locale.languages')),function($menu, $item){
+                    ->fill(array_keys(config('locale.languages')), function ($menu, $item) {
                         if ($item != App::getLocale()) {
                             $menu->link('lang/'.$item, trans('menus.language-picker.langs.'.$item));
                         }
@@ -73,33 +72,32 @@ class Navbar
                 ))
             //Login
             ->addIf(
-                !access()->user(),
+                ! access()->user(),
                 Link::to(
                     route('frontend.auth.login'),
                     trans('navs.frontend.login')
                 ))
             //Register
             ->addIf(
-                (!access()->user() && config('access.users.registration')),
+                (! access()->user() && config('access.users.registration')),
                 Link::to(
                     route('frontend.auth.register'),
                     trans('navs.frontend.register')
                 ))
             //User Menu
             ->submenuIf(
-                !!(access()->user()),
+                (bool) (access()->user()),
                 Link::to(
                     '#',
-                    (access()->user()?access()->user()->name:'').
+                    (access()->user() ? access()->user()->name : '').
                     ' <span class="caret"></span>'
                 )
-                    ->setAttribute('data-toggle', 'dropdown')
-                ,
+                    ->setAttribute('data-toggle', 'dropdown'),
                 LaravelMenu::new()
                     ->addClass('dropdown-menu')
                     ->setAttribute('role', 'menu')
                     ->addIf(
-                        access()->user()?access()->user()->allow('view-backend'):false,
+                        access()->user() ? access()->user()->allow('view-backend') : false,
                         Link::to(
                         route('admin.dashboard'),
                         trans('navs.frontend.user.administration')
@@ -135,15 +133,14 @@ class Navbar
                 config('locale.status') && count(config('locale.languages')) > 1,
                 Link::to(
                     '#',
-                    self::placeIcon('language',trans('menus.language-picker.language')) .
+                    self::placeIcon('language', trans('menus.language-picker.language')).
                     ' <span class="caret"></span>'
                 )
-                    ->setAttribute('data-toggle', 'dropdown')
-                ,
+                    ->setAttribute('data-toggle', 'dropdown'),
                 LaravelMenu::new()
                     ->addClass('dropdown-menu')
                     ->setAttribute('role', 'menu')
-                    ->fill(array_keys(config('locale.languages')),function($menu, $item){
+                    ->fill(array_keys(config('locale.languages')), function ($menu, $item) {
                         if ($item != App::getLocale()) {
                             $menu->link('lang/'.$item, trans('menus.language-picker.langs.'.$item));
                         }
@@ -153,11 +150,10 @@ class Navbar
             ->submenu(
                 Link::to(
                     '#',
-                    self::placeIcon('envelope-o') .
+                    self::placeIcon('envelope-o').
                     ' <span class="label label-default">0</span>'
                 )
-                ->setAttribute('data-toggle', 'dropdown')
-                ,
+                ->setAttribute('data-toggle', 'dropdown'),
                 LaravelMenu::new()
                     ->addClass('dropdown-menu')
                     ->addParentClass('dropdown messages-menu')
@@ -171,11 +167,10 @@ class Navbar
             ->submenu(
                 Link::to(
                     '#',
-                    self::placeIcon('bell-o') .
+                    self::placeIcon('bell-o').
                     ' <span class="label label-default">0</span>'
                 )
-                    ->setAttribute('data-toggle', 'dropdown')
-                ,
+                    ->setAttribute('data-toggle', 'dropdown'),
                 LaravelMenu::new()
                     ->addClass('dropdown-menu')
                     ->addParentClass('dropdown messages-menu')
@@ -189,11 +184,10 @@ class Navbar
             ->submenu(
                 Link::to(
                     '#',
-                    self::placeIcon('flag-o') .
+                    self::placeIcon('flag-o').
                     ' <span class="label label-default">0</span>'
                 )
-                    ->setAttribute('data-toggle', 'dropdown')
-                ,
+                    ->setAttribute('data-toggle', 'dropdown'),
                 LaravelMenu::new()
                     ->addClass('dropdown-menu')
                     ->addParentClass('dropdown messages-menu')
@@ -210,8 +204,7 @@ class Navbar
                     '<img src="'.access()->user()->picture.'" class="user-image" alt="User Avatar"/>'.
                     '<span class="hidden-xs">'.access()->user()->full_name.'</span>'
                 )
-                    ->setAttribute('data-toggle', 'dropdown')
-                ,
+                    ->setAttribute('data-toggle', 'dropdown'),
                 LaravelMenu::new()
                     ->addClass('dropdown-menu')
                     ->setAttribute('role', 'menu')
@@ -219,8 +212,8 @@ class Navbar
                     ->html(
                         '<img src="'.access()->user()->picture.'" class="img-circle" alt="User Avatar" />'.
                         '<p>'.
-                            access()->user()->full_name.' - '.implode(", ", access()->user()->roles->pluck('name')->toArray()).
-                            '<small>'.trans('strings.backend.general.member_since').' '.access()->user()->created_at->format("m/d/Y").'</small>'.
+                            access()->user()->full_name.' - '.implode(', ', access()->user()->roles->pluck('name')->toArray()).
+                            '<small>'.trans('strings.backend.general.member_since').' '.access()->user()->created_at->format('m/d/Y').'</small>'.
                         '</p>',
                         ['class'=>'user-header']
                     )
@@ -233,8 +226,7 @@ class Navbar
                         '</div>'.
                         '<div class="col-xs-4 text-center">'.
                             link_to('#', 'Link').
-                        '</div>'
-                        ,
+                        '</div>',
                         ['class'=>'user-body']
                     )
                     ->html(
