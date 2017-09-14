@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "47c676fa01067472b17f8876facf8bab",
+    "content-hash": "b0c239c288b8154f2ddcb5d2328e04c8",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -238,16 +238,16 @@
         },
         {
             "name": "davejamesmiller/laravel-breadcrumbs",
-            "version": "4.1.0",
+            "version": "4.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davejamesmiller/laravel-breadcrumbs.git",
-                "reference": "eec0aebed453a9019b621f12de6554b8cd23c2cb"
+                "reference": "368d7b3a2cd21fe2e648756e5d01d3fe4fbe98e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davejamesmiller/laravel-breadcrumbs/zipball/eec0aebed453a9019b621f12de6554b8cd23c2cb",
-                "reference": "eec0aebed453a9019b621f12de6554b8cd23c2cb",
+                "url": "https://api.github.com/repos/davejamesmiller/laravel-breadcrumbs/zipball/368d7b3a2cd21fe2e648756e5d01d3fe4fbe98e1",
+                "reference": "368d7b3a2cd21fe2e648756e5d01d3fe4fbe98e1",
                 "shasum": ""
             },
             "require": {
@@ -293,7 +293,53 @@
             "keywords": [
                 "laravel"
             ],
-            "time": "2017-08-28T14:22:19+00:00"
+            "time": "2017-09-14T08:23:50+00:00"
+        },
+        {
+            "name": "digioperis/model-history",
+            "version": "0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digioperis/model-history.git",
+                "reference": "43db0665b93508e5d17284d16da72b0084577ec7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digioperis/model-history/zipball/43db0665b93508e5d17284d16da72b0084577ec7",
+                "reference": "43db0665b93508e5d17284d16da72b0084577ec7",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^5.0",
+                "illuminate/routing": "^5.0",
+                "illuminate/support": "^5.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Digioperis\\ModelHistory\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Forrence",
+                    "email": "chris@digioperis.com"
+                }
+            ],
+            "description": "Provides an easy way to track changes to Laravel models",
+            "keywords": [
+                "Audit",
+                "history",
+                "laravel",
+                "log",
+                "model"
+            ],
+            "time": "2016-04-17T17:10:28+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
