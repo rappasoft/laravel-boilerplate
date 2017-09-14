@@ -9,9 +9,11 @@
 
             <div class="card">
 
-                <div class="card-body">
+                <div class="card-header">
+                    {{ __('labels.frontend.passwords.reset_password_box_title') }}
+                </div><!--card-header-->
 
-                    <h4 class="card-title text-center">{{ __('labels.frontend.passwords.reset_password_box_title') }}</h4>
+                <div class="card-body">
 
                     @if (session('status'))
                         <div class="alert alert-success">

@@ -3,44 +3,46 @@
 @section('content')
     <div class="row">
 
-        <div class="col-xs-12">
+        <div class="col">
 
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ __('navs.frontend.user.account') }}</div>
+            <div class="card">
+                <div class="card-header">
+                    {{ __('navs.frontend.user.account') }}
+                </div>
 
-                <div class="panel-body">
+                <div class="card-body">
 
                     <div role="tabpanel">
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active">
-                                <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">{{ __('navs.frontend.user.profile') }}</a>
+                            <li class="nav-item">
+                                <a href="#profile" class="nav-link active" aria-controls="profile" role="tab" data-toggle="tab">{{ __('navs.frontend.user.profile') }}</a>
                             </li>
 
-                            <li role="presentation">
-                                <a href="#edit" aria-controls="edit" role="tab" data-toggle="tab">{{ __('labels.frontend.user.profile.update_information') }}</a>
+                            <li class="nav-item">
+                                <a href="#edit" class="nav-link" aria-controls="edit" role="tab" data-toggle="tab">{{ __('labels.frontend.user.profile.update_information') }}</a>
                             </li>
 
                             @if (auth()->user()->canChangePassword())
-                                <li role="presentation">
-                                    <a href="#password" aria-controls="password" role="tab" data-toggle="tab">{{ __('navs.frontend.user.change_password') }}</a>
+                                <li class="nav-item">
+                                    <a href="#password" class="nav-link" aria-controls="password" role="tab" data-toggle="tab">{{ __('navs.frontend.user.change_password') }}</a>
                                 </li>
                             @endif
                         </ul>
 
                         <div class="tab-content">
 
-                            <div role="tabpanel" class="tab-pane mt-30 active" id="profile">
+                            <div role="tabpanel" class="tab-pane fade show active pt-3" id="profile" aria-labelledby="profile-tab">
                                 @include('frontend.user.account.tabs.profile')
                             </div><!--tab panel profile-->
 
-                            <div role="tabpanel" class="tab-pane mt-30" id="edit">
+                            <div role="tabpanel" class="tab-pane fade show pt-3" id="edit" aria-labelledby="edit-tab">
                                 @include('frontend.user.account.tabs.edit')
                             </div><!--tab panel profile-->
 
                             @if (auth()->user()->canChangePassword())
-                                <div role="tabpanel" class="tab-pane mt-30" id="password">
+                                <div role="tabpanel" class="tab-pane fade show pt-3" id="password" aria-labelledby="password-tab">
                                     @include('frontend.user.account.tabs.change-password')
                                 </div><!--tab panel change password-->
                             @endif
@@ -49,9 +51,9 @@
 
                     </div><!--tab panel-->
 
-                </div><!--panel body-->
+                </div><!--card body-->
 
-            </div><!-- panel -->
+            </div><!-- card -->
 
         </div><!-- col-xs-12 -->
 

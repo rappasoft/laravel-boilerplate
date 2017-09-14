@@ -1,4 +1,4 @@
-<table class="table table-striped table-hover">
+<table class="table table-striped table-hover table-bordered">
     <tr>
         <th>{{ __('labels.frontend.user.profile.avatar') }}</th>
         <td><img src="{{ auth()->user()->picture }}" class="user-profile-image" /></td>

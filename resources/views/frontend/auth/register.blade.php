@@ -9,10 +9,11 @@
 
             <div class="card">
 
+                <div class="card-header">
+                    {{ __('labels.frontend.auth.register_box_title') }}
+                </div><!--card-header-->
+
                 <div class="card-body">
-
-                    <h4 class="card-title text-center">{{ __('labels.frontend.auth.register_box_title') }}</h4>
-
                     {{ Form::open(['route' => 'frontend.auth.register.post', 'class' => 'form-horizontal']) }}
 
                     <div class="form-group">
