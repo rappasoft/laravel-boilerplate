@@ -10,7 +10,6 @@
         "arcanedev/no-captcha": "^5.0",
         "creativeorange/gravatar": "~1.0",
         "davejamesmiller/laravel-breadcrumbs": "^4.1",
-        "digioperis/model-history": "^0.3.0",
         "fideloper/proxy": "~3.3",
         "hieu-le/active": "^3.5",
         "laravel/framework": "5.5.*",

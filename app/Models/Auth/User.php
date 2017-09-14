@@ -2,7 +2,6 @@
 
 namespace App\Models\Auth;
 
-use Digioperis\Traits\MaintainHistory;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Auth\Traits\SendUserPasswordReset;
@@ -14,7 +13,6 @@ class User extends Authenticatable
 {
     use HasRoles,
         Notifiable,
-        //MaintainHistory,
         SendUserPasswordReset,
         UserAttribute,
         UserRelationship;

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b0c239c288b8154f2ddcb5d2328e04c8",
+    "content-hash": "47c676fa01067472b17f8876facf8bab",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -294,52 +294,6 @@
                 "laravel"
             ],
             "time": "2017-09-14T08:23:50+00:00"
-        },
-        {
-            "name": "digioperis/model-history",
-            "version": "0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/digioperis/model-history.git",
-                "reference": "43db0665b93508e5d17284d16da72b0084577ec7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/digioperis/model-history/zipball/43db0665b93508e5d17284d16da72b0084577ec7",
-                "reference": "43db0665b93508e5d17284d16da72b0084577ec7",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "^5.0",
-                "illuminate/routing": "^5.0",
-                "illuminate/support": "^5.0",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Digioperis\\ModelHistory\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Chris Forrence",
-                    "email": "chris@digioperis.com"
-                }
-            ],
-            "description": "Provides an easy way to track changes to Laravel models",
-            "keywords": [
-                "Audit",
-                "history",
-                "laravel",
-                "log",
-                "model"
-            ],
-            "time": "2016-04-17T17:10:28+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",

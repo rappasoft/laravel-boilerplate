@@ -179,7 +179,6 @@ return [
          * Package Service Providers...
          */
         Creativeorange\Gravatar\GravatarServiceProvider::class,
-        Digioperis\ModelHistory\Providers\ModelHistoryServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
 
         /*
