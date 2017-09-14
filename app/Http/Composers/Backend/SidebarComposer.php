@@ -3,7 +3,7 @@
 namespace App\Http\Composers\Backend;
 
 use Illuminate\View\View;
-use App\Services\Menu\Menu;
+use App\Services\Menu\Sidebar;
 use App\Repositories\Backend\Access\User\UserRepository;
 
 /**
@@ -19,18 +19,18 @@ class SidebarComposer
     /**
      * @var \Spatie\Menu\Laravel\Menu
      */
-    protected $menu;
+    protected $sidebar;
 
     /**
      * SidebarComposer constructor.
      *
      * @param UserRepository $userRepository
-     * @param Menu           $menu
+     * @param Sidebar           $sidebar
      */
-    public function __construct(UserRepository $userRepository, Menu $menu)
+    public function __construct(UserRepository $userRepository, Sidebar $sidebar)
     {
         $this->userRepository = $userRepository;
-        $this->menu = $menu->getMenu();
+        $this->sidebar = $sidebar->getMenu();
     }
 
     /**
@@ -40,6 +40,6 @@ class SidebarComposer
      */
     public function compose(View $view)
     {
-        $view->with('menu', $this->menu);
+        $view->with('sidebar', $this->sidebar);
     }
 }

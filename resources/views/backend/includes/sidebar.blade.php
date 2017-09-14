@@ -27,7 +27,7 @@
     <!-- /.search form -->
 
         <!-- Sidebar Menu -->
-        {!! $menu->render() !!}
+        {!! $sidebar->render() !!}
         <!-- /.sidebar-menu -->
     </section><!-- /.sidebar -->
 </aside>

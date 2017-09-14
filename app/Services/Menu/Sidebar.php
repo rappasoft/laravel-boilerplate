@@ -7,9 +7,9 @@ use Spatie\Menu\Laravel\Menu as LaravelMenu;
 use App\Repositories\Backend\Access\User\UserRepository;
 
 /**
- * Class Menu.
+ * Class Sidebar.
  */
-class Menu
+class Sidebar
 {
     /**
      * @var UserRepository
