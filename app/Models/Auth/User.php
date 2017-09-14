@@ -14,7 +14,7 @@ class User extends Authenticatable
 {
     use HasRoles,
         Notifiable,
-		//MaintainHistory,
+        //MaintainHistory,
         SendUserPasswordReset,
         UserAttribute,
         UserRelationship;
