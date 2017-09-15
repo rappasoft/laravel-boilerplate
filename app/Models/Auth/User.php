@@ -78,6 +78,6 @@ class User extends Authenticatable
      */
     public function getDescriptionForEvent(string $eventName): string
     {
-		return ":causer.first_name :causer.last_name has {$eventName} :subject.first_name :subject.last_name";
-	}
+        return ":causer.first_name :causer.last_name has {$eventName} :subject.first_name :subject.last_name";
+    }
 }
