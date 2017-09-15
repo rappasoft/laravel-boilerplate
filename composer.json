@@ -16,6 +16,7 @@
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5.0",
+        "spatie/laravel-activitylog": "^2.1",
         "spatie/laravel-permission": "^2.5"
     },
     "require-dev": {

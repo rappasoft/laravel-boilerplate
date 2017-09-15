@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        //$this->truncateMultiple(['sessions']);
+        $this->truncateMultiple(['activity_log']);
 
         $this->call(AuthTableSeeder::class);
 
