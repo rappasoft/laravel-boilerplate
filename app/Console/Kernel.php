@@ -6,9 +6,7 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 /**
- * Class Kernel
- *
- * @package App\Console
+ * Class Kernel.
  */
 class Kernel extends ConsoleKernel
 {
