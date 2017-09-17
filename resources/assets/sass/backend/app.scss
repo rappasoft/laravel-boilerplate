@@ -1,0 +1,28 @@
+/**
+ * CoreUI - Open Source Bootstrap Admin Template
+ * @version v1.0.0-alpha.6
+ * @link http://coreui.io
+ * Copyright (c) 2017 creativeLabs Łukasz Holeczek
+ * @license MIT
+ */
+
+// Font Awesome
+@import "../../../../node_modules/font-awesome/scss/font-awesome";
+
+// Bootstrap Overrides
+@import "bootstrap-variables";
+
+// Bootstrap
+@import "../../../../node_modules/bootstrap/scss/bootstrap";
+
+// Import vendors styles
+@import "vendors/vendors";
+
+// Override core variables
+@import "core-variables";
+
+// Import core styles
+@import "core/core";
+
+// Custom styles
+@import "custom";

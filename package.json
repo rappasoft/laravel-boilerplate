@@ -17,6 +17,7 @@
     "jquery": "^3.2.1",
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
+    "pace-js": "^1.0.2",
     "popper.js": "^1.12.4",
     "tether": "^1.4.0",
     "vue": "^2.1.10",

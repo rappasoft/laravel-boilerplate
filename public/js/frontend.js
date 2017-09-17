@@ -37455,7 +37455,7 @@ if (false) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global) {/*!
- * Vue.js v2.4.3
+ * Vue.js v2.4.4
  * (c) 2014-2017 Evan You
  * Released under the MIT License.
  */
@@ -42180,7 +42180,7 @@ Object.defineProperty(Vue$3.prototype, '$ssrContext', {
   }
 });
 
-Vue$3.version = '2.4.3';
+Vue$3.version = '2.4.4';
 
 /*  */
 
@@ -48276,6 +48276,13 @@ $(function () {
 
 /***/ }),
 
+/***/ "./resources/assets/sass/backend/app.scss":
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/assets/sass/frontend/app.scss":
 /***/ (function(module, exports) {
 
@@ -48287,7 +48294,8 @@ $(function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__("./resources/assets/js/frontend/app.js");
-module.exports = __webpack_require__("./resources/assets/sass/frontend/app.scss");
+__webpack_require__("./resources/assets/sass/frontend/app.scss");
+module.exports = __webpack_require__("./resources/assets/sass/backend/app.scss");
 
 
 /***/ })
