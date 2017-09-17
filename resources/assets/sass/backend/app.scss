@@ -6,14 +6,16 @@
  * @license MIT
  */
 
-// Font Awesome
-@import "../../../../node_modules/font-awesome/scss/font-awesome";
-
-// Bootstrap Overrides
+// Variable Overrides
+@import "global-overrides";
 @import "bootstrap-variables";
 
+// Font Awesome
+@import "~font-awesome/scss/font-awesome";
+@import "~simple-line-icons/scss/simple-line-icons";
+
 // Bootstrap
-@import "../../../../node_modules/bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/bootstrap";
 
 // Import vendors styles
 @import "vendors/vendors";
