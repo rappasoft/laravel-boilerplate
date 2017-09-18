@@ -22,7 +22,7 @@ class RoleMiddleware
         if (Auth::guest()) {
             return redirect()
                 ->route(homeRoute())
-                ->withFlashDanger(trans('auth.general_error'));
+                ->withFlashDanger(__('auth.general_error'));
         }
 
         $role = is_array($role)
@@ -32,7 +32,7 @@ class RoleMiddleware
         if (! Auth::user()->hasAnyRole($role)) {
             return redirect()
                 ->route(homeRoute())
-                ->withFlashDanger(trans('auth.general_error'));
+                ->withFlashDanger(__('auth.general_error'));
         }
 
         return $next($request);

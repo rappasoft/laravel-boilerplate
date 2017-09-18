@@ -15,7 +15,7 @@
         @if (config('locale.status') && count(config('locale.languages')) > 1)
             <li class="nav-item px-3 dropdown">
                 <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <span class="d-md-down-none">{{ trans('menus.language-picker.language') }}</span>
+                    <span class="d-md-down-none">{{ __('menus.language-picker.language') }}</span>
                 </a>
 
                 @include('includes.partials.lang')
@@ -35,8 +35,8 @@
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <img src="{{ auth()->user()->picture }}" class="img-avatar" alt="{{ auth()->user()->email }}">
-                <span class="d-md-down-none">{{ auth()->user()->full_name }}</span>
+                <img src="{{ $logged_in_user->picture }}" class="img-avatar" alt="{{ $logged_in_user->email }}">
+                <span class="d-md-down-none">{{ $logged_in_user->full_name }}</span>
             </a>
 
             <div class="dropdown-menu dropdown-menu-right">

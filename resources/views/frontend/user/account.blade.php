@@ -24,7 +24,7 @@
                                 <a href="#edit" class="nav-link" aria-controls="edit" role="tab" data-toggle="tab">{{ __('labels.frontend.user.profile.update_information') }}</a>
                             </li>
 
-                            @if (auth()->user()->canChangePassword())
+                            @if ($logged_in_user->canChangePassword())
                                 <li class="nav-item">
                                     <a href="#password" class="nav-link" aria-controls="password" role="tab" data-toggle="tab">{{ __('navs.frontend.user.change_password') }}</a>
                                 </li>
@@ -41,7 +41,7 @@
                                 @include('frontend.user.account.tabs.edit')
                             </div><!--tab panel profile-->
 
-                            @if (auth()->user()->canChangePassword())
+                            @if ($logged_in_user->canChangePassword())
                                 <div role="tabpanel" class="tab-pane fade show pt-3" id="password" aria-labelledby="password-tab">
                                     @include('frontend.user.account.tabs.change-password')
                                 </div><!--tab panel change password-->

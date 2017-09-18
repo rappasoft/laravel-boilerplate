@@ -1,4 +1,4 @@
-{{ Form::model(auth()->user(), ['route' => 'frontend.user.profile.update', 'class' => 'form-horizontal', 'method' => 'PATCH']) }}
+{{ Form::model($logged_in_user, ['route' => 'frontend.user.profile.update', 'class' => 'form-horizontal', 'method' => 'PATCH']) }}
 
 <div class="form-group">
     {{ Form::label('first_name', __('validation.attributes.frontend.first_name'),
@@ -16,7 +16,7 @@
     </div>
 </div>
 
-@if (auth()->user()->canChangeEmail())
+@if ($logged_in_user->canChangeEmail())
     <div class="form-group">
         {{ Form::label('email', __('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}
         <div class="col-md-12">

@@ -18,17 +18,17 @@
                         <div class="col-md-4 order-1 order-sm-2">
 
                             <div class="card mb-4">
-                                <img class="card-img-top" src="{{ auth()->user()->picture }}" alt="Profile Picture">
+                                <img class="card-img-top" src="{{ $logged_in_user->picture }}" alt="Profile Picture">
 
                                 <div class="card-body">
                                     <h4 class="card-title">
-                                        {{ auth()->user()->name }}<br/>
+                                        {{ $logged_in_user->name }}<br/>
                                     </h4>
 
                                     <p class="card-text">
                                         <small>
-                                            {{ auth()->user()->email }}<br/>
-                                            {{ __('strings.frontend.general.joined') }} {{ auth()->user()->created_at->format('F jS, Y') }}
+                                            {{ $logged_in_user->email }}<br/>
+                                            {{ __('strings.frontend.general.joined') }} {{ $logged_in_user->created_at->format('F jS, Y') }}
                                         </small>
                                     </p>
 

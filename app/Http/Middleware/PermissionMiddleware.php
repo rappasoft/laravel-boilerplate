@@ -22,7 +22,7 @@ class PermissionMiddleware
         if (Auth::guest()) {
             return redirect()
                 ->route(homeRoute())
-                ->withFlashDanger(trans('auth.general_error'));
+                ->withFlashDanger(__('auth.general_error'));
         }
 
         $permissions = is_array($permission)
@@ -37,6 +37,6 @@ class PermissionMiddleware
 
         return redirect()
             ->route(homeRoute())
-            ->withFlashDanger(trans('auth.general_error'));
+            ->withFlashDanger(__('auth.general_error'));
     }
 }
