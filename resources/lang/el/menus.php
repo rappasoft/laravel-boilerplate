@@ -15,7 +15,7 @@ return [
 
     'backend' => [
         'access' => [
-            'title' => 'Users',
+            'title' => 'Access Management',
 
             'roles' => [
                 'all'        => 'Όλοι οι ρόλοι',

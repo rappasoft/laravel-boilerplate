@@ -23,7 +23,7 @@ return [
         ],
 
         'dashboard' => [
-            'title'   => 'Administrative Dashboard',
+            'title'   => 'Dashboard',
             'welcome' => 'Welcome',
         ],
 
