@@ -11,19 +11,18 @@ use App\Repositories\BaseEloquentRepository;
  */
 class UserRepository extends BaseEloquentRepository
 {
+    use CacheResults;
 
-	use CacheResults;
+    /**
+     * @var string
+     */
+    protected $model = User::class;
 
-	/**
-	 * @var string
-	 */
-	protected $model = User::class;
-
-	/**
-	 * @return mixed
-	 */
-	public function getUnconfirmedCount()
-	{
-		return $this->model->where('confirmed', 0)->count();
-	}
+    /**
+     * @return mixed
+     */
+    public function getUnconfirmedCount()
+    {
+        return $this->model->where('confirmed', 0)->count();
+    }
 }
