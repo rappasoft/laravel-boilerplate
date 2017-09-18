@@ -62,8 +62,8 @@ class User extends Authenticatable
     protected $appends = ['full_name'];
 
     /**
-	 * Can change this to just 'users' if you don't want to be able to differentiate between the types of history
-	 *
+     * Can change this to just 'users' if you don't want to be able to differentiate between the types of history.
+     *
      * @param string $eventName
      *
      * @return string
