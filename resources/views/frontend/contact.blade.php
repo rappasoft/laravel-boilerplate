@@ -3,57 +3,68 @@
 @section('title', app_name() . ' | Contact Us')
 
 @section('content')
-    <div class="row mb-4 justify-content-center">
+<div class="row justify-content-center">
+    <div class="col col-sm-8 align-self-center">
+        <div class="card">
+            <div class="card-header">
+                <strong>
+                    {{ __('labels.frontend.contact.box_title') }}
+                </strong>
+            </div>
 
-        <div class="col-md-8">
+            <div class="card-body">
 
-            <div class="card">
-                <div class="card-header">{{ __('labels.frontend.contact.box_title') }}</div>
+                {{ Form::open(['route' => 'frontend.contact.send', 'class' => 'form']) }}
 
-                <div class="card-body">
-
-                    {{ Form::open(['route' => 'frontend.contact.send', 'class' => 'form-horizontal']) }}
-
-                    <div class="form-group">
-                        {{ Form::label('name', __('validation.attributes.frontend.name'), ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-12">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            {{ Form::label('name', __('validation.attributes.frontend.name'), ['class' => 'control-label']) }}
                             {{ Form::text('name', null, ['class' => 'form-control', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => __('validation.attributes.frontend.name')]) }}
-                        </div><!--col-md-12-->
-                    </div><!--form-group-->
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="form-group">
-                        {{ Form::label('email', __('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-12">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            {{ Form::label('email', __('validation.attributes.frontend.email'), ['class' => 'control-label']) }}
                             {{ Form::email('email', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.email')]) }}
-                        </div><!--col-md-12-->
-                    </div><!--form-group-->
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="form-group">
-                        {{ Form::label('phone', __('validation.attributes.frontend.phone'), ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-12">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            {{ Form::label('phone', __('validation.attributes.frontend.phone'), ['class' => 'control-label']) }}
                             {{ Form::text('phone', null, ['class' => 'form-control', 'placeholder' => __('validation.attributes.frontend.phone')]) }}
-                        </div><!--col-md-12-->
-                    </div><!--form-group-->
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="form-group">
-                        {{ Form::label('message', __('validation.attributes.frontend.message'), ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-12">
-                            {{ Form::textarea('message', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.message')]) }}
-                        </div><!--col-md-12-->
-                    </div><!--form-group-->
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            {{ Form::label('message', __('validation.attributes.frontend.message'), ['class' => 'control-label']) }}
+                            {{ Form::textarea('message', null, ['class' => 'form-control', 'required' => 'required', 'rows' => '3', 'placeholder' => __('validation.attributes.frontend.message')]) }}
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="form-group">
-                        <div class="col-md-12">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
                             {{ Form::submit(__('labels.frontend.contact.button'), ['class' => 'btn btn-primary pull-right']) }}
-                        </div><!--col-md-12-->
-                    </div><!--form-group-->
+                        </div>
+                    </div>
+                </div>
 
-                    {{ Form::close() }}
-                </div><!-- panel body -->
+                {{ Form::close() }}
+            </div>
 
-            </div><!-- panel -->
+        </div>
+    </div>
+</div>
 
-        </div><!-- col-md-8 -->
-
-    </div><!-- row -->
 @endsection
