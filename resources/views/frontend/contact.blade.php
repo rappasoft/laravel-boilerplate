@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            {{ Form::label('name', __('validation.attributes.frontend.name'), ['class' => 'control-label']) }}
+                            {{ Form::label('name', __('validation.attributes.frontend.name'), ['class' => '']) }}
                             {{ Form::text('name', null, ['class' => 'form-control', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => __('validation.attributes.frontend.name')]) }}
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            {{ Form::label('email', __('validation.attributes.frontend.email'), ['class' => 'control-label']) }}
+                            {{ Form::label('email', __('validation.attributes.frontend.email'), ['class' => '']) }}
                             {{ Form::email('email', null, ['class' => 'form-control', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.email')]) }}
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            {{ Form::label('phone', __('validation.attributes.frontend.phone'), ['class' => 'control-label']) }}
+                            {{ Form::label('phone', __('validation.attributes.frontend.phone'), ['class' => '']) }}
                             {{ Form::text('phone', null, ['class' => 'form-control', 'placeholder' => __('validation.attributes.frontend.phone')]) }}
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            {{ Form::label('message', __('validation.attributes.frontend.message'), ['class' => 'control-label']) }}
+                            {{ Form::label('message', __('validation.attributes.frontend.message'), ['class' => '']) }}
                             {{ Form::textarea('message', null, ['class' => 'form-control', 'required' => 'required', 'rows' => '3', 'placeholder' => __('validation.attributes.frontend.message')]) }}
                         </div>
                     </div>

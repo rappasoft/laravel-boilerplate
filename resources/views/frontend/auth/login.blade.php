@@ -11,7 +11,9 @@
         <div class="card">
 
             <div class="card-header">
-                {{ __('labels.frontend.auth.login_box_title') }}
+                <strong>
+                    {{ __('labels.frontend.auth.login_box_title') }}
+                </strong>
             </div><!--card-header-->
 
             <div class="card-body">
@@ -21,7 +23,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            {{ Form::label('email', __('validation.attributes.frontend.email'), ['class' => 'control-label']) }}
+                            {{ Form::label('email', __('validation.attributes.frontend.email'), ['class' => '']) }}
                             {{ Form::email('email', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => __('validation.attributes.frontend.email')]) }}
                         </div>
                     </div>
@@ -30,7 +32,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            {{ Form::label('password', __('validation.attributes.frontend.password'), ['class' => 'control-label']) }}
+                            {{ Form::label('password', __('validation.attributes.frontend.password'), ['class' => '']) }}
                             {{ Form::password('password', ['class' => 'form-control', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.password')]) }}
                         </div>
                     </div>
@@ -68,9 +70,15 @@
 
                 {{ Form::close() }}
 
-                <div class="text-center">
-                    {!! $socialiteLinks !!}
+                <div class="row">
+                    <div class="col">
+                        <div class="text-center">
+                            {!! $socialiteLinks !!}
+                        </div>
+                    </div>
                 </div>
+
+
             </div><!--card body-->
 
         </div><!--card-->
