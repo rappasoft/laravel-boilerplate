@@ -129,7 +129,7 @@
                         @empty
                             <tr>
                                 <td colspan="5" class="text-center">
-                                    <span class="badge badge-default">{{ trans('log-viewer::general.empty-logs') }}</span>
+                                    <span class="badge badge-default">{{ __('log-viewer::general.empty-logs') }}</span>
                                 </td>
                             </tr>
                         @endforelse
