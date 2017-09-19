@@ -1,20 +1,22 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <div class="row">
 
-        <div class="col">
+    <div class="row justify-content-center align-items-center">
+
+        <div class="col col-sm-8 align-self-center">
 
             <div class="card">
                 <div class="card-header">
-                    {{ __('navs.frontend.user.account') }}
+                    <strong>
+                        {{ __('navs.frontend.user.account') }}
+                    </strong>
                 </div>
 
                 <div class="card-body">
 
                     <div role="tabpanel">
 
-                        <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a href="#profile" class="nav-link active" aria-controls="profile" role="tab" data-toggle="tab">{{ __('navs.frontend.user.profile') }}</a>
@@ -25,9 +27,9 @@
                             </li>
 
                             @if ($logged_in_user->canChangePassword())
-                                <li class="nav-item">
-                                    <a href="#password" class="nav-link" aria-controls="password" role="tab" data-toggle="tab">{{ __('navs.frontend.user.change_password') }}</a>
-                                </li>
+                            <li class="nav-item">
+                                <a href="#password" class="nav-link" aria-controls="password" role="tab" data-toggle="tab">{{ __('navs.frontend.user.change_password') }}</a>
+                            </li>
                             @endif
                         </ul>
 
@@ -58,4 +60,5 @@
         </div><!-- col-xs-12 -->
 
     </div><!-- row -->
+
 @endsection
