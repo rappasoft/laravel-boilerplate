@@ -53,7 +53,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            <button type="submit" name="button" class="btn btn-primary">
+                            <button type="submit" name="button" class="btn btn-success">
                                 <i class='fa fa-sign-in'></i> {{ __('labels.frontend.auth.login_button') }}
                             </button>
                         </div>

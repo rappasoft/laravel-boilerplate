@@ -20,17 +20,15 @@
                 {{ Form::open(['route' => 'frontend.auth.register.post', 'class' => 'form']) }}
 
                 <div class="row">
-                    <div class="col">
+                    <div class="col-12 col-md-6">
                         <div class="form-group">
                             {{ Form::label('first_name', __('validation.attributes.frontend.first_name')) }}
                             {{ Form::text('first_name', null,
                             ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => __('validation.attributes.frontend.first_name')]) }}
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col">
+                    <div class="col-12 col-md-6">
                         <div class="form-group">
                             {{ Form::label('last_name', __('validation.attributes.frontend.last_name')) }}
                             {{ Form::text('last_name', null,
@@ -48,43 +46,43 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            {{ Form::label('password', __('validation.attributes.frontend.password')) }}
+                            {{ Form::password('password', ['class' => 'form-control', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.password')]) }}
+                        </div>
+                    </div>
+                </div>
 
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            {{ Form::label('password_confirmation', __('validation.attributes.frontend.password_confirmation')) }}
+                            {{ Form::password('password_confirmation', ['class' => 'form-control', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.password_confirmation')]) }}
+                        </div>
+                    </div>
+                </div>
 
-                <div class="form-group">
-                    {{ Form::label('email', __('validation.attributes.frontend.email')) }}
-                    <div class="col-md-12">
-                        {{ Form::email('email', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.email')]) }}
-                    </div><!--col-md-12-->
-                </div><!--form-group-->
-
-                <div class="form-group">
-                    {{ Form::label('password', __('validation.attributes.frontend.password')) }}
-                    <div class="col-md-12">
-                        {{ Form::password('password', ['class' => 'form-control', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.password')]) }}
-                    </div><!--col-md-12-->
-                </div><!--form-group-->
-
-                <div class="form-group">
-                    {{ Form::label('password_confirmation', __('validation.attributes.frontend.password_confirmation')) }}
-                    <div class="col-md-12">
-                        {{ Form::password('password_confirmation', ['class' => 'form-control', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.password_confirmation')]) }}
-                    </div><!--col-md-12-->
-                </div><!--form-group-->
 
                 @if (config('access.captcha.registration'))
-                <div class="form-group">
-                    <div class="col-md-12">
+                <div class="row">
+                    <div class="col">
                         {!! Form::captcha() !!}
                         {{ Form::hidden('captcha_status', 'true') }}
-                    </div><!--col-md-6-->
-                </div><!--form-group-->
+                    </div>
+                </div>
                 @endif
 
-                <div class="form-group">
-                    <div class="col-md-12">
-                        {{ Form::submit(__('labels.frontend.auth.register_button'), ['class' => 'btn btn-primary']) }}
-                    </div><!--col-md-6-->
-                </div><!--form-group-->
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <button type="submit" name="button" class="btn btn-primary">
+                                <i class='fa fa-check'></i> {{ __('labels.frontend.auth.register_button') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
                 {{ Form::close() }}
             </div><!--card body-->
