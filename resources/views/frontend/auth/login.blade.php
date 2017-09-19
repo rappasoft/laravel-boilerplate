@@ -3,64 +3,80 @@
 @section('title', app_name() . ' | Login')
 
 @section('content')
+<!-- Login Page Block -->
+<div class="row justify-content-center align-items-center">
 
-    <div class="row justify-content-md-center mt-5">
+    <div class="col col-sm-8 align-self-center">
 
-        <div class="col-md-8">
+        <div class="card">
 
-            <div class="card">
+            <div class="card-header">
+                {{ __('labels.frontend.auth.login_box_title') }}
+            </div><!--card-header-->
 
-                <div class="card-header">
-                    {{ __('labels.frontend.auth.login_box_title') }}
-                </div><!--card-header-->
+            <div class="card-body">
 
-                <div class="card-body">
+                {{ Form::open(['route' => 'frontend.auth.login.post', 'class' => 'form']) }}
 
-                    {{ Form::open(['route' => 'frontend.auth.login.post', 'class' => 'form-horizontal']) }}
-
-                    <div class="form-group">
-                        {{ Form::label('email', __('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-12">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            {{ Form::label('email', __('validation.attributes.frontend.email'), ['class' => 'control-label']) }}
                             {{ Form::email('email', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => __('validation.attributes.frontend.email')]) }}
-                        </div><!--col-md-12-->
-                    </div><!--form-group-->
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="form-group">
-                        {{ Form::label('password', __('validation.attributes.frontend.password'), ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-12">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            {{ Form::label('password', __('validation.attributes.frontend.password'), ['class' => 'control-label']) }}
                             {{ Form::password('password', ['class' => 'form-control', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.password')]) }}
-                        </div><!--col-md-12-->
-                    </div><!--form-group-->
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="form-group">
-                        <div class="col-md-12 col-md-offset-4">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
                             <div class="checkbox">
                                 <label>
                                     {{ Form::checkbox('remember') }} {{ __('labels.frontend.auth.remember_me') }}
                                 </label>
                             </div>
-                        </div><!--col-md-12-->
-                    </div><!--form-group-->
-
-                    <div class="form-group">
-                        <div class="col-md-12 col-md-offset-4">
-                            {{ Form::submit(__('labels.frontend.auth.login_button'), ['class' => 'btn btn-primary', 'style' => 'margin-right:15px']) }}
-
-                            {{ link_to_route('frontend.auth.password.reset', __('labels.frontend.passwords.forgot_password')) }}
-                        </div><!--col-md-12-->
-                    </div><!--form-group-->
-
-                    {{ Form::close() }}
-
-                    <div class="text-center">
-                        {!! $socialiteLinks !!}
+                        </div>
                     </div>
-                </div><!--card body-->
+                </div>
 
-            </div><!--card-->
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <button type="submit" name="button" class="btn btn-primary">
+                                <i class='fa fa-sign-in'></i> {{ __('labels.frontend.auth.login_button') }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
-        </div><!-- col-md-8 -->
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            {{ link_to_route('frontend.auth.password.reset', __('labels.frontend.passwords.forgot_password')) }}
+                        </div>
+                    </div>
+                </div>
 
-    </div><!-- row -->
+                {{ Form::close() }}
 
+                <div class="text-center">
+                    {!! $socialiteLinks !!}
+                </div>
+            </div><!--card body-->
+
+        </div><!--card-->
+
+    </div><!-- col-md-8 -->
+
+</div><!-- row -->
+<!-- / Login Page Block -->
 @endsection
