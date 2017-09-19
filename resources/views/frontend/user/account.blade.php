@@ -1,61 +1,64 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    <div class="row">
 
-        <div class="col">
+<div class="row justify-content-center align-items-center">
 
-            <div class="card">
-                <div class="card-header">
+    <div class="col col-sm-8 align-self-center">
+
+        <div class="card">
+            <div class="card-header">
+                <strong>
                     {{ __('navs.frontend.user.account') }}
-                </div>
+                </strong>
+            </div>
 
-                <div class="card-body">
+            <div class="card-body">
 
-                    <div role="tabpanel">
+                <div role="tabpanel">
 
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="nav-item">
-                                <a href="#profile" class="nav-link active" aria-controls="profile" role="tab" data-toggle="tab">{{ __('navs.frontend.user.profile') }}</a>
-                            </li>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a href="#profile" class="nav-link active" aria-controls="profile" role="tab" data-toggle="tab">{{ __('navs.frontend.user.profile') }}</a>
+                        </li>
 
-                            <li class="nav-item">
-                                <a href="#edit" class="nav-link" aria-controls="edit" role="tab" data-toggle="tab">{{ __('labels.frontend.user.profile.update_information') }}</a>
-                            </li>
+                        <li class="nav-item">
+                            <a href="#edit" class="nav-link" aria-controls="edit" role="tab" data-toggle="tab">{{ __('labels.frontend.user.profile.update_information') }}</a>
+                        </li>
 
-                            @if ($logged_in_user->canChangePassword())
-                                <li class="nav-item">
-                                    <a href="#password" class="nav-link" aria-controls="password" role="tab" data-toggle="tab">{{ __('navs.frontend.user.change_password') }}</a>
-                                </li>
-                            @endif
-                        </ul>
+                        @if ($logged_in_user->canChangePassword())
+                        <li class="nav-item">
+                            <a href="#password" class="nav-link" aria-controls="password" role="tab" data-toggle="tab">{{ __('navs.frontend.user.change_password') }}</a>
+                        </li>
+                        @endif
+                    </ul>
 
-                        <div class="tab-content">
+                    <div class="tab-content">
 
-                            <div role="tabpanel" class="tab-pane fade show active pt-3" id="profile" aria-labelledby="profile-tab">
-                                @include('frontend.user.account.tabs.profile')
-                            </div><!--tab panel profile-->
+                        <div role="tabpanel" class="tab-pane fade show active pt-3" id="profile" aria-labelledby="profile-tab">
+                            @include('frontend.user.account.tabs.profile')
+                        </div><!--tab panel profile-->
 
-                            <div role="tabpanel" class="tab-pane fade show pt-3" id="edit" aria-labelledby="edit-tab">
-                                @include('frontend.user.account.tabs.edit')
-                            </div><!--tab panel profile-->
+                        <div role="tabpanel" class="tab-pane fade show pt-3" id="edit" aria-labelledby="edit-tab">
+                            @include('frontend.user.account.tabs.edit')
+                        </div><!--tab panel profile-->
 
-                            @if ($logged_in_user->canChangePassword())
-                                <div role="tabpanel" class="tab-pane fade show pt-3" id="password" aria-labelledby="password-tab">
-                                    @include('frontend.user.account.tabs.change-password')
-                                </div><!--tab panel change password-->
-                            @endif
+                        @if ($logged_in_user->canChangePassword())
+                        <div role="tabpanel" class="tab-pane fade show pt-3" id="password" aria-labelledby="password-tab">
+                            @include('frontend.user.account.tabs.change-password')
+                        </div><!--tab panel change password-->
+                        @endif
 
-                        </div><!--tab content-->
+                    </div><!--tab content-->
 
-                    </div><!--tab panel-->
+                </div><!--tab panel-->
 
-                </div><!--card body-->
+            </div><!--card body-->
 
-            </div><!-- card -->
+        </div><!-- card -->
 
-        </div><!-- col-xs-12 -->
+    </div><!-- col-xs-12 -->
 
-    </div><!-- row -->
+</div><!-- row -->
 @endsection
