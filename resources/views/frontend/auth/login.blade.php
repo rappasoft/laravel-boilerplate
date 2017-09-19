@@ -23,7 +23,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            {{ Form::label('email', __('validation.attributes.frontend.email'), ['class' => '']) }}
+                            {{ Form::label('email', __('validation.attributes.frontend.email')) }}
                             {{ Form::email('email', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => __('validation.attributes.frontend.email')]) }}
                         </div>
                     </div>
@@ -32,7 +32,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            {{ Form::label('password', __('validation.attributes.frontend.password'), ['class' => '']) }}
+                            {{ Form::label('password', __('validation.attributes.frontend.password')) }}
                             {{ Form::password('password', ['class' => 'form-control', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.password')]) }}
                         </div>
                     </div>
