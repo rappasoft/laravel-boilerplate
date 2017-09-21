@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Repositories\Traits\CacheResults;
-use App\Repositories\Traits\ThrowsHttpExceptions;
 
 /**
  * Forked from https://github.com/dannyweeks/laravel-base-repository
@@ -317,14 +316,6 @@ abstract class BaseEloquentRepository implements RepositoryContract
         if (in_array(CacheResults::class, $traits)) {
             // Reset caching to enabled in case it has just been disabled.
             $this->caching = true;
-        }
-
-        if (in_array(ThrowsHttpExceptions::class, $traits)) {
-            if ($this->shouldThrowHttpException($result, $methodName)) {
-                $this->throwNotFoundHttpException($methodName, $arguments);
-            }
-
-            $this->exceptionsDisabled = false;
         }
 
         return $result;

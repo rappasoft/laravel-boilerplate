@@ -5,6 +5,7 @@ namespace App\Repositories\Backend\Auth;
 use App\Models\Auth\User;
 use App\Repositories\Traits\CacheResults;
 use App\Repositories\BaseEloquentRepository;
+use Illuminate\Support\Collection;
 
 /**
  * Class UserRepository.
@@ -21,7 +22,7 @@ class UserRepository extends BaseEloquentRepository
     /**
      * @return mixed
      */
-    public function getUnconfirmedCount()
+    public function getUnconfirmedCount() : int
     {
         return $this->model->where('confirmed', 0)->count();
     }
@@ -33,7 +34,7 @@ class UserRepository extends BaseEloquentRepository
      *
      * @return mixed
      */
-    public function getActivePaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc')
+    public function getActivePaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc') : Collection
     {
         return $this->model
             ->active()
