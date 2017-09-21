@@ -5,7 +5,7 @@
 
     <ul class="nav navbar-nav d-md-down-none">
         <li class="nav-item px-3">
-            <a class="nav-link" href="{{ route('frontend.index') }}"><i class="fa fa-arrow-left"></i></a>
+            <a class="nav-link" href="{{ route('frontend.index') }}"><i class="icon-home"></i></a>
         </li>
 
         <li class="nav-item px-3">

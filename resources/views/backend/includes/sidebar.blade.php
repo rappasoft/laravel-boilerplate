@@ -25,7 +25,7 @@
 
                     <ul class="nav-dropdown-items">
                         <li class="nav-item">
-                            <a class="nav-link" href="http://google.com">
+                            <a class="nav-link" href="{{ route('admin.auth.user.index') }}">
                                 {{ __('labels.backend.access.users.management') }}
 
                                 @if ($pending_approval > 0)

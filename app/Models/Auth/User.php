@@ -4,6 +4,7 @@ namespace App\Models\Auth;
 
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use App\Models\Auth\Traits\Scope\UserScope;
 use Spatie\Activitylog\Traits\LogsActivity;
 use App\Models\Auth\Traits\SendUserPasswordReset;
 use App\Models\Auth\Traits\Attribute\UserAttribute;
@@ -20,7 +21,8 @@ class User extends Authenticatable
         Notifiable,
         SendUserPasswordReset,
         UserAttribute,
-        UserRelationship;
+        UserRelationship,
+        UserScope;
 
     /**
      * The attributes that are mass assignable.
