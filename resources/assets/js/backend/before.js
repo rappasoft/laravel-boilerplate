@@ -7,5 +7,5 @@
 // Loaded before CoreUI app.js
 require('../bootstrap');
 require('../plugin/sweetalert/sweetalert.min');
-//require('../../../../node_modules/pace-js/pace.min');
+require('../../../../node_modules/pace-js/pace.min');
 require('../plugins');

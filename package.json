@@ -17,6 +17,7 @@
     "jquery": "^3.2.1",
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
+    "pace": "github:HubSpot/pace#v1.0.2",
     "pace-js": "^1.0.2",
     "popper.js": "^1.12.4",
     "simple-line-icons": "^2.4.1",
