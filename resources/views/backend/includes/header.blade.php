@@ -15,7 +15,7 @@
         @if (config('locale.status') && count(config('locale.languages')) > 1)
             <li class="nav-item px-3 dropdown">
                 <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <span class="d-md-down-none">{{ __('menus.language-picker.language') }}</span>
+                    <span class="d-md-down-none">{{ __('menus.language-picker.language') }} ({{ strtoupper(app()->getLocale()) }})</span>
                 </a>
 
                 @include('includes.partials.lang')
