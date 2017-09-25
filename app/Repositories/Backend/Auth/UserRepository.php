@@ -3,9 +3,9 @@
 namespace App\Repositories\Backend\Auth;
 
 use App\Models\Auth\User;
-use Illuminate\Pagination\LengthAwarePaginator;
 use App\Repositories\Traits\CacheResults;
 use App\Repositories\BaseEloquentRepository;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 /**
  * Class UserRepository.
