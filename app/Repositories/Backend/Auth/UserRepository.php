@@ -3,7 +3,7 @@
 namespace App\Repositories\Backend\Auth;
 
 use App\Models\Auth\User;
-use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 use App\Repositories\Traits\CacheResults;
 use App\Repositories\BaseEloquentRepository;
 
@@ -34,7 +34,7 @@ class UserRepository extends BaseEloquentRepository
      *
      * @return mixed
      */
-    public function getActivePaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc') : Collection
+    public function getActivePaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc') : LengthAwarePaginator
     {
         return $this->model
             ->active()
