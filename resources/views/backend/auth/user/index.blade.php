@@ -2,6 +2,15 @@
 
 @section ('title', __('labels.backend.access.users.management'))
 
+@section('breadcrumb-links')
+    <li class="breadcrumb-menu d-md-down-none">
+        <div class="btn-group" role="group" aria-label="Button group">
+            <a class="btn" href="#">Static Link</a>
+            <a class="btn" href="#">Static Link</a>
+        </div>
+    </li>
+@endsection
+
 @section('content')
     <div class="card">
         <div class="card-header">

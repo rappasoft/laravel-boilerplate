@@ -6,7 +6,6 @@
  */
 
 require('../bootstrap');
-require('../plugin/sweetalert/sweetalert.min');
 require('../plugins');
 
 window.Vue = require('vue');

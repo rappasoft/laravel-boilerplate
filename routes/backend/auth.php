@@ -17,6 +17,7 @@ Route::group([
         Route::group(['namespace' => 'User'], function () {
             Route::get('user', 'UserController@index')->name('user.index');
             Route::get('user/create', 'UserController@create')->name('user.create');
+			Route::post('user/create', 'UserController@store')->name('user.store');
         });
 
         /*
