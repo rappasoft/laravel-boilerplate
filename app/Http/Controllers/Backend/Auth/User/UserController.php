@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Backend\Auth\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Auth\User\StoreUserRequest;
-use App\Repositories\Backend\Auth\PermissionRepository;
 use App\Repositories\Backend\Auth\RoleRepository;
 use App\Repositories\Backend\Auth\UserRepository;
+use App\Repositories\Backend\Auth\PermissionRepository;
+use App\Http\Requests\Backend\Auth\User\StoreUserRequest;
 use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
 
 /**
@@ -40,38 +40,39 @@ class UserController extends Controller
             ->withUsers($this->userRepository->getActivePaginated(25, 'id', 'asc'));
     }
 
-	/**
-	 * @param ManageUserRequest    $request
-	 * @param RoleRepository       $roleRepository
-	 * @param PermissionRepository $permissionRepository
-	 *
-	 * @return mixed
-	 */
-	public function create(ManageUserRequest $request, RoleRepository $roleRepository, PermissionRepository $permissionRepository)
+    /**
+     * @param ManageUserRequest    $request
+     * @param RoleRepository       $roleRepository
+     * @param PermissionRepository $permissionRepository
+     *
+     * @return mixed
+     */
+    public function create(ManageUserRequest $request, RoleRepository $roleRepository, PermissionRepository $permissionRepository)
     {
         return view('backend.auth.user.create')
-			->withRoles($roleRepository->with('permissions')->getAll(['id', 'name']))
-			->withPermissions($permissionRepository->getAll(['id', 'name']));
+            ->withRoles($roleRepository->with('permissions')->getAll(['id', 'name']))
+            ->withPermissions($permissionRepository->getAll(['id', 'name']));
     }
 
-	/**
-	 * @param StoreUserRequest $request
-	 *
-	 * @return mixed
-	 */
-	public function store(StoreUserRequest $request) {
-		$this->userRepository->store($request->only(
-			'first_name',
-			'last_name',
-			'email',
-			'password',
-			'active',
-			'confirmed',
-			'confirmation_email',
-			'roles',
-			'permissions'
-		));
+    /**
+     * @param StoreUserRequest $request
+     *
+     * @return mixed
+     */
+    public function store(StoreUserRequest $request)
+    {
+        $this->userRepository->store($request->only(
+            'first_name',
+            'last_name',
+            'email',
+            'password',
+            'active',
+            'confirmed',
+            'confirmation_email',
+            'roles',
+            'permissions'
+        ));
 
-		return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('alerts.backend.users.created'));
-	}
+        return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('alerts.backend.users.created'));
+    }
 }
