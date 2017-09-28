@@ -5,7 +5,26 @@
 @section('breadcrumb-links')
     <li class="breadcrumb-menu d-md-down-none">
         <div class="btn-group" role="group" aria-label="Button group">
-            <a class="btn" href="#">Static Link</a>
+            <div class="dropdown">
+                <a class="btn dropdown-toggle" href="#" role="button" id="breadcrumb-dropdown-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Static Link</a>
+
+                <div class="dropdown-menu" aria-labelledby="breadcrumb-dropdown-1">
+                    <a class="dropdown-item" href="#">Submenu #1</a>
+                    <a class="dropdown-item" href="#">Submenu #2</a>
+                    <a class="dropdown-item" href="#">Submenu #3</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a class="btn dropdown-toggle" href="#" role="button" id="breadcrumb-dropdown-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Static Link</a>
+
+                <div class="dropdown-menu" aria-labelledby="breadcrumb-dropdown-2">
+                    <a class="dropdown-item" href="#">Submenu #1</a>
+                    <a class="dropdown-item" href="#">Submenu #2</a>
+                    <a class="dropdown-item" href="#">Submenu #3</a>
+                </div>
+            </div>
+            
             <a class="btn" href="#">Static Link</a>
         </div>
     </li>
