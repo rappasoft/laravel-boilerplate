@@ -38432,29 +38432,6 @@ $(document).ready(function ($) {
     });
 });
 
-/****
- * CARDS ACTIONS
- */
-
-/*$(document).on('click', '.card-actions a', function(e){
-    e.preventDefault();
-
-    if ($(this).hasClass('btn-close')) {
-        $(this).parent().parent().parent().fadeOut();
-    } else if ($(this).hasClass('btn-minimize')) {
-        var $target = $(this).parent().parent().next('.card-block');
-        if (!$(this).hasClass('collapsed')) {
-            $('i',$(this)).removeClass($.panelIconOpened).addClass($.panelIconClosed);
-        } else {
-            $('i',$(this)).removeClass($.panelIconClosed).addClass($.panelIconOpened);
-        }
-
-    } else if ($(this).hasClass('btn-setting')) {
-        $('#myModal').modal('show');
-    }
-
-});*/
-
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }

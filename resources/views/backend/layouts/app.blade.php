@@ -35,6 +35,9 @@
 
             <div class="container-fluid">
                 <div class="animated fadeIn">
+                    <div class="content-header">
+                        @yield('page-header')
+                    </div>
                     @include('includes.partials.messages')
                     @yield('content')
                 </div><!--animated-->

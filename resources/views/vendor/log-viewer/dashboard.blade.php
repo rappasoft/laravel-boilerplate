@@ -1,8 +1,10 @@
 @extends('backend.layouts.app')
 
-@section('content')
-    <h1 class="mb-4">Dashboard</h1>
+@push('after-styles')
+    @include('log-viewer::_template.style')
+@endpush
 
+@section('content')
     <div class="row">
         <div class="col-md-3">
             <canvas id="stats-doughnut-chart" height="300"></canvas>
@@ -30,7 +32,14 @@
     </div>
 @endsection
 
-@section('scripts')
+@push('after-scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+    <script>
+        Chart.defaults.global.responsive      = true;
+        Chart.defaults.global.scaleFontFamily = "'Source Sans Pro'";
+        Chart.defaults.global.animationEasing = "easeOutQuart";
+    </script>
     <script>
         $(function() {
             new Chart($('canvas#stats-doughnut-chart'), {
@@ -44,4 +53,4 @@
             });
         });
     </script>
-@endsection
+@endpush

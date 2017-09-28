@@ -1,8 +1,15 @@
 @extends('backend.layouts.app')
 
-@section('content')
-    <h2 class="mb-4">Log [{{ $log->date }}]</h2>
+@push('after-styles')
+    @include('log-viewer::_template.style')
+@endpush
 
+@section('content-header')
+    @section('page-header')
+    <h5 class="mb-4">Log [{{ $log->date }}]</h5>
+@endsection
+
+@section('content')
     <div class="row">
         <div class="col-md-2">
             @include('log-viewer::_partials.menu')
@@ -49,20 +56,6 @@
                         </div>
                     </li>
                 </ul>
-                <div class="card-footer">
-                    {{-- Search --}}
-                    <form action="{{ route('log-viewer::logs.search', [$log->date, $level]) }}" method="GET">
-                        <div class="input-group">
-                            <input id="query" name="query" class="form-control" value="{!! request('query') !!}" placeholder="Type search term">
-                            <span class="input-group-btn">
-                                @if (request()->has('query'))
-                                    <a href="{{ route('log-viewer::logs.show', [$log->date]) }}" class="btn btn-default" type="button"><i class="fa fa-fw fa-remove"></i></a>
-                                @endif
-                                <button id="search-btn" class="btn btn-primary" type="submit"><i class="fa fa-fw fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
-                </div>
             </div>
 
             {{-- Log Entries --}}
