@@ -137,7 +137,7 @@ trait UserAttribute
      */
     public function getEditButtonAttribute()
     {
-        return '<a href="'.route('admin.auth.user.edit', $this).'" class="btn btn-xs btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.edit').'"></i></a> ';
+        return '<a href="'.route('admin.auth.user.edit', $this).'" class="btn btn-sm btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.edit').'"></i></a> ';
     }
 
     public function getActionButtonsAttribute()
@@ -151,7 +151,7 @@ trait UserAttribute
             //$this->login_as_button.
             //$this->show_button.
             $this->edit_button;
-        //$this->change_password_button.
+        	//$this->change_password_button.
             //$this->status_button.
             //$this->confirmed_button.
             //$this->delete_button;
