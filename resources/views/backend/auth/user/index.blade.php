@@ -30,6 +30,12 @@
     </li>
 @endsection
 
+@section('page-header')
+    <h5 class="mb-4">{{ trans('labels.backend.access.users.management') }}
+        <small class="text-muted">{{ trans('labels.backend.access.users.active') }}</small>
+    </h5>
+@endsection
+
 @section('content')
     <div class="card">
         <div class="card-header">
