@@ -24,5 +24,5 @@ return [
      * // Footer options
      * 1. '.footer-fixed'					- Fixed footer
      */
-    'body_classes' => 'app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden',
+    'body_classes' => 'app header-fixed sidebar-fixed aside-menu-off-canvas aside-menu-hidden',
 ];
