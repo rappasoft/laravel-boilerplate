@@ -2,11 +2,11 @@
 
 namespace App\Models\Auth;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Auth\Traits\Scope\UserScope;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Auth\Traits\SendUserPasswordReset;
 use App\Models\Auth\Traits\Attribute\UserAttribute;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -21,7 +21,7 @@ class User extends Authenticatable
         LogsActivity,
         Notifiable,
         SendUserPasswordReset,
-		SoftDeletes,
+        SoftDeletes,
         UserAttribute,
         UserRelationship,
         UserScope;
