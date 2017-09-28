@@ -59,3 +59,15 @@
 		}
 	}
 }
+
+.badge-env {
+	background-color: #6A1B9A;
+	font-size: .875em;
+}
+
+.list-group-item.disabled,
+.list-group-item:disabled {
+	background-color: #eee;
+    color: #777;
+    cursor: not-allowed;
+}
