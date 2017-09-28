@@ -1,13 +1,12 @@
 <style>
-
     html {
         position: relative;
         min-height: 100%;
     }
 
     body {
-        padding-top: 5rem;
-        margin-bottom: 80px;
+        padding-top: 0;
+        margin-bottom: 0;
     }
 
     .footer {
@@ -61,6 +60,7 @@
     .level {
         font-size: .875em;
         line-height: 1em;
+        color: #fff;
     }
 
     .level-none {
