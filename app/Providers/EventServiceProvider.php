@@ -5,6 +5,11 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
+/**
+ * Class EventServiceProvider
+ *
+ * @package App\Providers
+ */
 class EventServiceProvider extends ServiceProvider
 {
     /**
@@ -38,7 +43,7 @@ class EventServiceProvider extends ServiceProvider
         /*
          * Auth Subscribers
          */
-        //\App\Listeners\Backend\Access\User\UserEventListener::class,
+        \App\Listeners\Backend\Auth\User\UserEventListener::class,
         //\App\Listeners\Backend\Access\Role\RoleEventListener::class,
     ];
 

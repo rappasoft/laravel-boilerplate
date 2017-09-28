@@ -16,9 +16,7 @@
         <div class="card-header">
             {{ __('labels.backend.access.users.active') }}
 
-            <div class="pull-right">
-                @include('backend.auth.user.includes.header-buttons')
-            </div><!--pull-right-->
+            @include('backend.auth.user.includes.header-buttons')
         </div><!-- box-header -->
 
         <div class="card-body">
@@ -43,12 +41,12 @@
                                 <td>{{ $user->last_name }}</td>
                                 <td>{{ $user->first_name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td></td>
+                                <td>{!! $user->confirmed_label !!}</td>
                                 <td></td>
                                 <td></td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>{{ $user->updated_at }}</td>
-                                <td>{{ $user->actions }}</td>
+                                <td>{!! $user->action_buttons !!}</td>
                             </tr>
                         @endforeach
                     </tbody>

@@ -15,15 +15,27 @@ Route::group([
          * User Management
          */
         Route::group(['namespace' => 'User'], function () {
-            Route::get('user', 'UserController@index')->name('user.index');
-            Route::get('user/create', 'UserController@create')->name('user.create');
-            Route::post('user/create', 'UserController@store')->name('user.store');
+
+        	/*
+        	 * User CRUD
+        	 */
+			Route::resource('user', 'UserController');
+
+			/*
+             * Specific User
+             */
+			Route::group(['prefix' => 'user/{user}'], function () {
+				// Confirmation
+				Route::get('confirm', 'UserConfirmationController@confirm')->name('user.confirm');
+				Route::get('unconfirm', 'UserConfirmationController@unconfirm')->name('user.unconfirm');
+			});
         });
 
         /*
          * Role Management
          */
         Route::group(['namespace' => 'Role'], function () {
+
         });
     });
 });

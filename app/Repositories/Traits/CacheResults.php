@@ -82,7 +82,7 @@ trait CacheResults
      */
     protected function createCacheKey($functionName, $args)
     {
-        return sprintf('%s.%s.%s', get_class(), $functionName, md5(implode('|', $args)));
+        return sprintf('%s.%s.%s', get_class(), $functionName, md5(implode('|', array_collapse($args))));
     }
 
     /**

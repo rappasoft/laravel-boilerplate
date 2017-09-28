@@ -1,3 +1,6 @@
+/**
+ * This bootstrap file is used for both frontend and backend
+ */
 
 window._ = require('lodash');
 import Popper from 'popper.js/dist/umd/popper.js';

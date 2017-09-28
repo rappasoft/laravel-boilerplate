@@ -6,6 +6,6 @@ Breadcrumbs::register('admin.auth.user.index', function ($breadcrumbs) {
 });
 
 Breadcrumbs::register('admin.auth.user.create', function ($breadcrumbs) {
-    $breadcrumbs->parent('admin.dashboard');
+    $breadcrumbs->parent('admin.auth.user.index');
     $breadcrumbs->push(__('labels.backend.access.users.create'), route('admin.auth.user.create'));
 });
