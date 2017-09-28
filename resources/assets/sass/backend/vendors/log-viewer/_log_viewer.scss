@@ -1,0 +1,61 @@
+.level-card {
+	&.level-all {
+		.card-header {
+			background-color: #8A8A8A;
+		}
+	}
+
+	&.level-emergency {
+		.card-header {
+			background-color: #B71C1C;
+		}
+	}
+
+	&.level-alert {
+		.card-header {
+			background-color: #D32F2F;
+		}
+	}
+
+	&.level-critical {
+		.card-header {
+			background-color: #F44336;
+		}
+	}
+
+	&.level-error {
+		.card-header {
+			background-color: #FF5722;
+		}
+	}
+
+	&.level-warning {
+		.card-header {
+			background-color: #FF9100;
+		}
+	}
+
+	&.level-notice {
+		.card-header {
+			background-color: #4CAF50;
+		}
+	}
+
+	&.level-info {
+		.card-header {
+			background-color: #1976D2;
+		}
+	}
+
+	&.level-debug {
+		.card-header {
+			background-color: #90CAF9;
+		}
+	}
+
+	&.level-empty {
+		.card-header {
+			background-color: #D1D1D1;
+		}
+	}
+}
