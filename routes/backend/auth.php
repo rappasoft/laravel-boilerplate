@@ -16,16 +16,15 @@ Route::group([
          */
         Route::group(['namespace' => 'User'], function () {
 
-			/*
-			 * User Status'
-			 */
-			Route::get('user/deactivated', 'UserStatusController@getDeactivated')->name('user.deactivated');
-			Route::get('user/deleted', 'UserStatusController@getDeleted')->name('user.deleted');
+            /*
+             * User Status'
+             */
+            Route::get('user/deactivated', 'UserStatusController@getDeactivated')->name('user.deactivated');
+            Route::get('user/deleted', 'UserStatusController@getDeleted')->name('user.deleted');
 
-
-			/*
-			 * User CRUD
-			 */
+            /*
+             * User CRUD
+             */
             Route::resource('user', 'UserController');
 
             /*
