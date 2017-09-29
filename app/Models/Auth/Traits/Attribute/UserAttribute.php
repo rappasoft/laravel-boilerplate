@@ -151,7 +151,7 @@ trait UserAttribute
             //$this->login_as_button.
             //$this->show_button.
             $this->edit_button;
-        //$this->change_password_button.
+        	//$this->change_password_button.
             //$this->status_button.
             //$this->confirmed_button.
             //$this->delete_button;

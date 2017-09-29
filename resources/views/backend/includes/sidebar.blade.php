@@ -6,7 +6,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="icon-speedometer"></i> {{ __('menus.backend.sidebar.dashboard') }}</a>
+                <a class="nav-link {{ active_class(Active::checkUriPattern('admin/dashboard')) }}" href="{{ route('admin.dashboard') }}"><i class="icon-speedometer"></i> {{ __('menus.backend.sidebar.dashboard') }}</a>
             </li>
 
             <li class="nav-title">
@@ -14,7 +14,7 @@
             </li>
 
             @if ($logged_in_user->hasRole('administrator'))
-                <li class="nav-item nav-dropdown {{ active_class(Active::checkUriPattern('admin/auth/*'), 'open') }}">
+                <li class="nav-item nav-dropdown {{ active_class(Active::checkUriPattern('admin/auth*'), 'open') }}">
                     <a class="nav-link nav-dropdown-toggle" href="#">
                         <i class="icon-user"></i> {{ __('menus.backend.access.title') }}
 
@@ -25,7 +25,7 @@
 
                     <ul class="nav-dropdown-items">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.auth.user.index') }}">
+                            <a class="nav-link {{ active_class(Active::checkUriPattern('admin/auth/user*')) }}" href="{{ route('admin.auth.user.index') }}">
                                 {{ __('labels.backend.access.users.management') }}
 
                                 @if ($pending_approval > 0)
@@ -34,7 +34,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="http://google.com">
+                            <a class="nav-link {{ active_class(Active::checkUriPattern('admin/auth/role*')) }}" href="http://google.com">
                                 {{ __('labels.backend.access.roles.management') }}
                             </a>
                         </li>
@@ -42,19 +42,19 @@
                 </li>
             @endif
 
-            <li class="nav-item nav-dropdown">
+            <li class="nav-item nav-dropdown {{ active_class(Active::checkUriPattern('admin/log-viewer*'), 'open') }}">
                 <a class="nav-link nav-dropdown-toggle" href="#">
                     <i class="icon-list"></i> {{ __('menus.backend.log-viewer.main') }}
                 </a>
 
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('log-viewer::dashboard') }}">
+                        <a class="nav-link {{ active_class(Active::checkUriPattern('admin/log-viewer')) }}" href="{{ route('log-viewer::dashboard') }}">
                             {{ __('menus.backend.log-viewer.dashboard') }}
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('log-viewer::logs.list') }}">
+                        <a class="nav-link {{ active_class(Active::checkUriPattern('admin/log-viewer/logs*')) }}" href="{{ route('log-viewer::logs.list') }}">
                             {{ __('menus.backend.log-viewer.logs') }}
                         </a>
                     </li>
