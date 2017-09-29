@@ -3,9 +3,7 @@
 namespace App\Models\Auth\Traits\Attribute;
 
 /**
- * Trait UserAttribute
- *
- * @package App\Models\Auth\Traits\Attribute
+ * Trait UserAttribute.
  */
 trait UserAttribute
 {
@@ -38,11 +36,12 @@ trait UserAttribute
         return '<a href="'.route('admin.auth.user.confirm', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.confirm').'" name="confirm_item"><span class="badge badge-danger" style="cursor:pointer">'.__('labels.general.no').'</span></a>';
     }
 
-    public function getRolesLabelAttribute() {
-    	return implode(', ', array_map(function($item){
-    		return ucwords($item);
-		}, $this->getRoleNames()->toArray()));
-	}
+    public function getRolesLabelAttribute()
+    {
+        return implode(', ', array_map(function ($item) {
+            return ucwords($item);
+        }, $this->getRoleNames()->toArray()));
+    }
 
     /**
      * @return mixed
