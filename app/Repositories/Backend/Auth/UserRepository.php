@@ -157,6 +157,6 @@ class UserRepository extends BaseEloquentRepository
             return true;
         }
 
-        throw new GeneralException(__('exceptions.backend.access.users.cant_unconfirm')); // TODO
+        throw new GeneralException(__('exceptions.backend.access.users.cant_unconfirm'));
     }
 }
