@@ -89,7 +89,15 @@
         background-color: {{ log_styler()->color('all') }};
     }
 
+    .level-all .card-header {
+        background-color: {{ log_styler()->color('all') }};
+    }
+
     .level-emergency, .level.level-emergency {
+        background-color: {{ log_styler()->color('emergency') }};
+    }
+
+    .level-emergency .card-header {
         background-color: {{ log_styler()->color('emergency') }};
     }
 
@@ -97,7 +105,15 @@
         background-color: {{ log_styler()->color('alert') }};
     }
 
+    .level-alert .card-header {
+        background-color: {{ log_styler()->color('alert') }};
+    }
+
     .level-critical, .level.level-critical {
+        background-color: {{ log_styler()->color('critical') }};
+    }
+
+    .level-critical .card-header {
         background-color: {{ log_styler()->color('critical') }};
     }
 
@@ -105,7 +121,15 @@
         background-color: {{ log_styler()->color('error') }};
     }
 
+    .level-error .card-header {
+        background-color: {{ log_styler()->color('error') }};
+    }
+
     .level-warning, .level.level-warning {
+        background-color: {{ log_styler()->color('warning') }};
+    }
+
+    .level-warning .card-header {
         background-color: {{ log_styler()->color('warning') }};
     }
 
@@ -113,7 +137,15 @@
         background-color: {{ log_styler()->color('notice') }};
     }
 
+    .level-notice .card-header {
+        background-color: {{ log_styler()->color('notice') }};
+    }
+
     .level-info, .level.level-info {
+        background-color: {{ log_styler()->color('info') }};
+    }
+
+    .level-info .card-header {
         background-color: {{ log_styler()->color('info') }};
     }
 
@@ -121,11 +153,31 @@
         background-color: {{ log_styler()->color('debug') }};
     }
 
+    .level-debug .card-header {
+        background-color: {{ log_styler()->color('debug') }};
+    }
+
     .level-empty, .level.level-empty {
+        background-color: {{ log_styler()->color('empty') }};
+    }
+
+    .level-empty .card-header {
         background-color: {{ log_styler()->color('empty') }};
     }
 
     .label-env, .label.label-env {
         background-color: #6A1B9A;
     }
+
+    .badge-env {
+        background-color: #6A1B9A;
+        font-size: .875em;
+    }
+
+    .list-group-item.disabled,
+    .list-group-item:disabled {
+        background-color: #eee;
+        color: #777;
+        cursor: not-allowed;
+}
 </style>
