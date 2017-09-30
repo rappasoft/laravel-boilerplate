@@ -139,13 +139,13 @@ trait UserAttribute
         return false;
     }
 
-	/**
-	 * @return string
-	 */
-	public function getShowButtonAttribute()
-	{
-		return '<a href="'.route('admin.auth.user.show', $this).'" class="btn btn-sm btn-info"><i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.view').'"></i></a>';
-	}
+    /**
+     * @return string
+     */
+    public function getShowButtonAttribute()
+    {
+        return '<a href="'.route('admin.auth.user.show', $this).'" class="btn btn-sm btn-info"><i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.view').'"></i></a>';
+    }
 
     /**
      * @return string
@@ -165,11 +165,11 @@ trait UserAttribute
             //$this->clear_session_button,
             //$this->login_as_button,
             $this->show_button,
-            $this->edit_button
-			//$this->change_password_button,
-			//$this->status_button,
-			//$this->confirmed_button,
-			//$this->delete_button
-		]);
+            $this->edit_button,
+            //$this->change_password_button,
+            //$this->status_button,
+            //$this->confirmed_button,
+            //$this->delete_button
+        ]);
     }
 }
