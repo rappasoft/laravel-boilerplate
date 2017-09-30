@@ -21,10 +21,10 @@ class UserRepository extends BaseEloquentRepository
 {
     use CacheResults;
 
-	/**
-	 * @var array
-	 */
-	protected $relationships = ['activity'];
+    /**
+     * @var array
+     */
+    protected $relationships = ['activity'];
 
     /**
      * @var string

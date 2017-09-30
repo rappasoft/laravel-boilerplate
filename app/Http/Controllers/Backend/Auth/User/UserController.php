@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Backend\Auth\User;
 
-use App\Http\Controllers\Controller;
 use App\Models\Auth\User;
+use App\Http\Controllers\Controller;
 use App\Repositories\Backend\Auth\RoleRepository;
 use App\Repositories\Backend\Auth\UserRepository;
 use App\Repositories\Backend\Auth\PermissionRepository;
@@ -77,16 +77,16 @@ class UserController extends Controller
         return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('alerts.backend.users.created'));
     }
 
-	/**
-	 * @param User              $user
-	 * @param ManageUserRequest $request
-	 *
-	 * @return mixed
-	 */
-	public function show(User $user, ManageUserRequest $request)
-	{
-		return view('backend.auth.user.show')
-			->withUser($user)
-			->withActivity($user->activity()->latest()->paginate(25));
-	}
+    /**
+     * @param User              $user
+     * @param ManageUserRequest $request
+     *
+     * @return mixed
+     */
+    public function show(User $user, ManageUserRequest $request)
+    {
+        return view('backend.auth.user.show')
+            ->withUser($user)
+            ->withActivity($user->activity()->latest()->paginate(25));
+    }
 }
