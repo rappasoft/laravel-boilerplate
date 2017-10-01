@@ -36,7 +36,10 @@ trait UserAttribute
         return '<a href="'.route('admin.auth.user.confirm', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.confirm').'" name="confirm_item"><span class="badge badge-danger" style="cursor:pointer">'.__('labels.general.no').'</span></a>';
     }
 
-    public function getRolesLabelAttribute()
+	/**
+	 * @return string
+	 */
+	public function getRolesLabelAttribute()
     {
         return implode(', ', array_map(function ($item) {
             return ucwords($item);
@@ -139,12 +142,28 @@ trait UserAttribute
         return false;
     }
 
+	/**
+	 * @return string
+	 */
+	public function getClearSessionButtonAttribute()
+	{
+		if ($this->id != auth()->id() && config('session.driver') == 'database') {
+			return '<a href="'.route('admin.auth.user.clear-session', $this).'"
+			 	 data-trans-button-cancel="'.__('buttons.general.cancel').'"
+                 data-trans-button-confirm="'.__('buttons.general.continue').'"
+                 data-trans-title="'.__('strings.backend.general.are_you_sure').'"
+                 class="btn btn-sm btn-warning" name="confirm_item"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.clear_session').'"></i></a> ';
+		}
+
+		return '';
+	}
+
     /**
      * @return string
      */
     public function getShowButtonAttribute()
     {
-        return '<a href="'.route('admin.auth.user.show', $this).'" class="btn btn-sm btn-info"><i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.view').'"></i></a>';
+        return '<a href="'.route('admin.auth.user.show', $this).'" class="btn btn-sm btn-info"><i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'"></i></a>';
     }
 
     /**
@@ -155,18 +174,29 @@ trait UserAttribute
         return '<a href="'.route('admin.auth.user.edit', $this).'" class="btn btn-sm btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.edit').'"></i></a>';
     }
 
-    public function getActionButtonsAttribute()
+	/**
+	 * @return string
+	 */
+	public function getChangePasswordButtonAttribute()
+	{
+		return '<a href="'.route('admin.auth.user.change-password', $this).'" class="btn btn-sm btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.change_password').'"></i></a> ';
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getActionButtonsAttribute()
     {
         if ($this->trashed()) {
             //return $this->restore_button.$this->delete_permanently_button;
         }
 
         return implode(' ', [
-            //$this->clear_session_button,
+            $this->clear_session_button,
             //$this->login_as_button,
             $this->show_button,
             $this->edit_button,
-            //$this->change_password_button,
+            $this->change_password_button,
             //$this->status_button,
             //$this->confirmed_button,
             //$this->delete_button

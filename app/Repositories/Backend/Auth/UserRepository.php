@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Backend\Auth;
 
+use App\Events\Backend\Auth\User\UserPasswordChanged;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
@@ -101,6 +102,26 @@ class UserRepository extends BaseEloquentRepository
             throw new GeneralException(__('exceptions.backend.access.users.create_error'));
         });
     }
+
+	/**
+	 * @param User $user
+	 * @param      $input
+	 *
+	 * @return bool
+	 * @throws GeneralException
+	 */
+	public function updatePassword(User $user, $input)
+	{
+		$user->password = bcrypt($input['password']);
+
+		if ($user->save()) {
+			event(new UserPasswordChanged($user));
+
+			return true;
+		}
+
+		throw new GeneralException(trans('exceptions.backend.access.users.update_password_error'));
+	}
 
     /**
      * @param User $user

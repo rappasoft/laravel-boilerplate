@@ -34,6 +34,13 @@ Route::group([
                 // Confirmation
                 Route::get('confirm', 'UserConfirmationController@confirm')->name('user.confirm');
                 Route::get('unconfirm', 'UserConfirmationController@unconfirm')->name('user.unconfirm');
+
+				// Password
+				Route::get('password/change', 'UserPasswordController@edit')->name('user.change-password');
+				Route::patch('password/change', 'UserPasswordController@update')->name('user.change-password.post');
+
+				// Session
+				Route::get('clear-session', 'UserSessionController@clearSession')->name('user.clear-session');
             });
         });
 

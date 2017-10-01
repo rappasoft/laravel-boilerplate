@@ -31,6 +31,14 @@ class UserEventListener
         \Log::info('User Unconfirmed');
     }
 
+	/**
+	 * @param $event
+	 */
+	public function onPasswordChanged($event)
+	{
+		\Log::info('User Password Changed');
+	}
+
     /**
      * Register the listeners for the subscriber.
      *
@@ -52,5 +60,10 @@ class UserEventListener
             \App\Events\Backend\Auth\User\UserUnconfirmed::class,
             'App\Listeners\Backend\Auth\User\UserEventListener@onUnconfirmed'
         );
+
+		$events->listen(
+			\App\Events\Backend\Auth\User\UserPasswordChanged::class,
+			'App\Listeners\Backend\Auth\User\UserEventListener@onPasswordChanged'
+		);
     }
 }

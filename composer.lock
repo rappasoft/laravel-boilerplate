@@ -1682,16 +1682,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.10",
+            "version": "v2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "634bae8e911eefa89c1abfbf1b66da679ac8f54d"
+                "reference": "5da4d3c796c275c55f057af5a643ae297d96b4d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/634bae8e911eefa89c1abfbf1b66da679ac8f54d",
-                "reference": "634bae8e911eefa89c1abfbf1b66da679ac8f54d",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/5da4d3c796c275c55f057af5a643ae297d96b4d8",
+                "reference": "5da4d3c796c275c55f057af5a643ae297d96b4d8",
                 "shasum": ""
             },
             "require": {
@@ -1726,7 +1726,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2017-03-13T16:27:32+00:00"
+            "time": "2017-09-27T21:40:39+00:00"
         },
         {
             "name": "patchwork/utf8",
@@ -2138,16 +2138,16 @@
         },
         {
             "name": "spatie/laravel-activitylog",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-activitylog.git",
-                "reference": "faec48636885cb8f4893eaddad1da1b9a6da9d53"
+                "reference": "ee927e8035110254f0f40f2d33da87e2382af759"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-activitylog/zipball/faec48636885cb8f4893eaddad1da1b9a6da9d53",
-                "reference": "faec48636885cb8f4893eaddad1da1b9a6da9d53",
+                "url": "https://api.github.com/repos/spatie/laravel-activitylog/zipball/ee927e8035110254f0f40f2d33da87e2382af759",
+                "reference": "ee927e8035110254f0f40f2d33da87e2382af759",
                 "shasum": ""
             },
             "require": {
@@ -2205,32 +2205,32 @@
                 "spatie",
                 "user"
             ],
-            "time": "2017-09-12T05:43:20+00:00"
+            "time": "2017-09-28T06:28:55+00:00"
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "2.6.0",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "bf7bdc0ba53ab334c7c9ae20ac08b51df9afe3bd"
+                "reference": "6f88a4cf63412685d141ee055e50adeb64bc8222"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/bf7bdc0ba53ab334c7c9ae20ac08b51df9afe3bd",
-                "reference": "bf7bdc0ba53ab334c7c9ae20ac08b51df9afe3bd",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/6f88a4cf63412685d141ee055e50adeb64bc8222",
+                "reference": "6f88a4cf63412685d141ee055e50adeb64bc8222",
                 "shasum": ""
             },
             "require": {
-                "illuminate/auth": "~5.4.0|~5.5.0",
-                "illuminate/container": "~5.4.0|~5.5.0",
-                "illuminate/contracts": "~5.4.0|~5.5.0",
+                "illuminate/auth": "~5.3.0|~5.4.0|~5.5.0",
+                "illuminate/container": "~5.3.0|~5.4.0|~5.5.0",
+                "illuminate/contracts": "~5.3.0|~5.4.0|~5.5.0",
                 "illuminate/database": "~5.4.0|~5.5.0",
                 "php": ">=7.0"
             },
             "require-dev": {
                 "monolog/monolog": "^1.22",
-                "orchestra/testbench": "~3.4.2|~3.5.0",
+                "orchestra/testbench": "~3.3.0|~3.4.2|~3.5.0",
                 "phpunit/phpunit": "^5.7|6.2"
             },
             "type": "library",
@@ -2270,7 +2270,7 @@
                 "security",
                 "spatie"
             ],
-            "time": "2017-09-10T15:14:15+00:00"
+            "time": "2017-09-28T14:01:23+00:00"
         },
         {
             "name": "spatie/string",
