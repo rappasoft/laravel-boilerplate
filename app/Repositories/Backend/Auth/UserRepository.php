@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Backend\Auth;
 
-use App\Events\Backend\Auth\User\UserPasswordChanged;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
@@ -12,6 +11,7 @@ use App\Repositories\BaseEloquentRepository;
 use App\Events\Backend\Auth\User\UserCreated;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Events\Backend\Auth\User\UserUnconfirmed;
+use App\Events\Backend\Auth\User\UserPasswordChanged;
 use App\Notifications\Backend\Auth\UserAccountActive;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 
@@ -103,25 +103,25 @@ class UserRepository extends BaseEloquentRepository
         });
     }
 
-	/**
-	 * @param User $user
-	 * @param      $input
-	 *
-	 * @return bool
-	 * @throws GeneralException
-	 */
-	public function updatePassword(User $user, $input)
-	{
-		$user->password = bcrypt($input['password']);
+    /**
+     * @param User $user
+     * @param      $input
+     *
+     * @return bool
+     * @throws GeneralException
+     */
+    public function updatePassword(User $user, $input)
+    {
+        $user->password = bcrypt($input['password']);
 
-		if ($user->save()) {
-			event(new UserPasswordChanged($user));
+        if ($user->save()) {
+            event(new UserPasswordChanged($user));
 
-			return true;
-		}
+            return true;
+        }
 
-		throw new GeneralException(trans('exceptions.backend.access.users.update_password_error'));
-	}
+        throw new GeneralException(trans('exceptions.backend.access.users.update_password_error'));
+    }
 
     /**
      * @param User $user
