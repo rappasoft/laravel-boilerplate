@@ -6,15 +6,14 @@ Breadcrumbs::register('admin.auth.user.index', function ($breadcrumbs) {
 });
 
 Breadcrumbs::register('admin.auth.user.deactivated', function ($breadcrumbs) {
-	$breadcrumbs->parent('admin.auth.user.index');
-	$breadcrumbs->push(__('menus.backend.access.users.deactivated'), route('admin.auth.user.deactivated'));
+    $breadcrumbs->parent('admin.auth.user.index');
+    $breadcrumbs->push(__('menus.backend.access.users.deactivated'), route('admin.auth.user.deactivated'));
 });
 
 Breadcrumbs::register('admin.auth.user.deleted', function ($breadcrumbs) {
-	$breadcrumbs->parent('admin.auth.user.index');
-	$breadcrumbs->push(__('menus.backend.access.users.deleted'), route('admin.auth.user.deleted'));
+    $breadcrumbs->parent('admin.auth.user.index');
+    $breadcrumbs->push(__('menus.backend.access.users.deleted'), route('admin.auth.user.deleted'));
 });
-
 
 Breadcrumbs::register('admin.auth.user.create', function ($breadcrumbs) {
     $breadcrumbs->parent('admin.auth.user.index');

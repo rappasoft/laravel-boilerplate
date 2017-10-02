@@ -90,16 +90,16 @@ class UserController extends Controller
             ->withActivity($user->activity()->latest()->paginate(25));
     }
 
-	/**
-	 * @param User              $user
-	 * @param ManageUserRequest $request
-	 *
-	 * @return mixed
-	 */
-	public function destroy(User $user, ManageUserRequest $request)
-	{
-		$this->userRepository->delete($user->id);
+    /**
+     * @param User              $user
+     * @param ManageUserRequest $request
+     *
+     * @return mixed
+     */
+    public function destroy(User $user, ManageUserRequest $request)
+    {
+        $this->userRepository->delete($user->id);
 
-		return redirect()->route('admin.auth.user.deleted')->withFlashSuccess(__('alerts.backend.users.deleted'));
-	}
+        return redirect()->route('admin.auth.user.deleted')->withFlashSuccess(__('alerts.backend.users.deleted'));
+    }
 }
