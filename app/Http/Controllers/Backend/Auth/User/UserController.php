@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Auth\User;
 
+use App\Http\Requests\Backend\Auth\User\UpdateUserRequest;
 use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\Auth\RoleRepository;
@@ -89,6 +90,43 @@ class UserController extends Controller
             ->withUser($user)
             ->withActivity($user->activity()->latest()->paginate(25));
     }
+
+	/**
+	 * @param User                 $user
+	 * @param ManageUserRequest    $request
+	 * @param RoleRepository       $roleRepository
+	 * @param PermissionRepository $permissionRepository
+	 *
+	 * @return mixed
+	 */
+	public function edit(User $user, ManageUserRequest $request, RoleRepository $roleRepository, PermissionRepository $permissionRepository)
+	{
+		return view('backend.auth.user.edit')
+			->withUser($user)
+			->withRoles($roleRepository->getAll())
+			->withUserRoles($user->roles->pluck('name')->all())
+			->withPermissions($permissionRepository->getAll(['id', 'name']))
+			->withUserPermissions($user->permissions->pluck('name')->all());
+	}
+
+	/**
+	 * @param User              $user
+	 * @param UpdateUserRequest $request
+	 *
+	 * @return mixed
+	 */
+	public function update(User $user, UpdateUserRequest $request)
+	{
+		$this->userRepository->update($user->id, $request->only(
+			'first_name',
+			'last_name',
+			'email',
+			'roles',
+			'permissions'
+		));
+
+		return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('alerts.backend.users.updated'));
+	}
 
     /**
      * @param User              $user

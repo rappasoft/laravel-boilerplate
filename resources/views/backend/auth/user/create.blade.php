@@ -154,7 +154,7 @@
                                                @foreach($permissions as $permission)
                                                    <div class="checkbox">
                                                        <label for="permission-{{ $permission->id }}">
-                                                           <input type="checkbox" name="permissions[]" value="{{ $permission->name }}" id="permission-{{ $permission->id }}" {{ old('roles') && in_array($role->name, old('roles')) ? 'checked="checked"' : '' }} />
+                                                           <input type="checkbox" name="permissions[]" value="{{ $permission->name }}" id="permission-{{ $permission->id }}" {{ old('roles') && in_array($permission->name, old('permissions')) ? 'checked="checked"' : '' }} />
                                                            {{ ucwords($permission->name) }}
                                                        </label>
                                                    </div>

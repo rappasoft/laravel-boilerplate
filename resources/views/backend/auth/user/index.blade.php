@@ -30,6 +30,7 @@
                         <th>{{ __('labels.backend.access.users.table.email') }}</th>
                         <th>{{ __('labels.backend.access.users.table.confirmed') }}</th>
                         <th>{{ __('labels.backend.access.users.table.roles') }}</th>
+                        <th>Other Permissions</th>
                         <th>{{ __('labels.backend.access.users.table.social') }}</th>
                         <th>{{ __('labels.backend.access.users.table.created') }}</th>
                         <th>{{ __('labels.backend.access.users.table.last_updated') }}</th>
@@ -44,6 +45,7 @@
                                 <td>{{ $user->email }}</td>
                                 <td>{!! $user->confirmed_label !!}</td>
                                 <td>{!! $user->roles_label !!}</td>
+                                <td>{!! $user->permissions_label !!}</td>
                                 <td>{!! $user->social_buttons !!}</td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>{{ $user->updated_at }}</td>

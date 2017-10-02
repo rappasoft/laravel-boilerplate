@@ -5,6 +5,11 @@ namespace App\Models\Auth\Traits\Attribute;
 /**
  * Trait UserAttribute.
  */
+/**
+ * Trait UserAttribute
+ *
+ * @package App\Models\Auth\Traits\Attribute
+ */
 trait UserAttribute
 {
     /**
@@ -41,12 +46,35 @@ trait UserAttribute
      */
     public function getRolesLabelAttribute()
     {
-        return implode(', ', array_map(function ($item) {
-            return ucwords($item);
-        }, $this->getRoleNames()->toArray()));
+    	$roles = $this->getRoleNames()->toArray();
+
+    	if (count($roles)) {
+			return implode(', ', array_map(function ($item) {
+				return ucwords($item);
+			}, $roles));
+		}
+
+		return "N/A";
     }
 
-    /**
+	/**
+	 * @return string
+	 */
+	public function getPermissionsLabelAttribute()
+	{
+		$permissions = $this->getDirectPermissions()->toArray();
+
+		if (count($permissions)) {
+			return implode(', ', array_map(function ($item) {
+				return ucwords($item['name']);
+			}, $permissions));
+		}
+
+		return "N/A";
+	}
+
+
+	/**
      * @return mixed
      */
     public function canChangeEmail()
@@ -169,7 +197,7 @@ trait UserAttribute
             //Won't break, but don't let them "Login As" themselves
             if ($this->id != auth()->id()) {
                 return '<a href="'.route('admin.auth.user.login-as',
-                        $this).'" class="btn btn-sm btn-success"><i class="fa fa-lock" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.login_as',
+                        $this).'" class="btn btn-sm btn-success"><i class="fa fa-lock" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.login_as',
                         ['user' => $this->full_name]).'"></i></a> ';
             }
         }
