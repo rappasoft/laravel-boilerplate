@@ -26,8 +26,8 @@ Breadcrumbs::register('admin.auth.user.show', function ($breadcrumbs, $id) {
 });
 
 Breadcrumbs::register('admin.auth.user.edit', function ($breadcrumbs, $id) {
-	$breadcrumbs->parent('admin.auth.user.index');
-	$breadcrumbs->push(__('menus.backend.access.users.edit'), route('admin.auth.user.edit', $id));
+    $breadcrumbs->parent('admin.auth.user.index');
+    $breadcrumbs->push(__('menus.backend.access.users.edit'), route('admin.auth.user.edit', $id));
 });
 
 Breadcrumbs::register('admin.auth.user.change-password', function ($breadcrumbs, $id) {
