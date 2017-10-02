@@ -24,13 +24,13 @@
 </head>
 
 <body class="{{ config('backend.body_classes') }}">
-    @include('includes.partials.logged-in-as')
     @include('backend.includes.header')
 
     <div class="app-body">
         @include('backend.includes.sidebar')
 
         <main class="main">
+            @include('includes.partials.logged-in-as')
             {!! Breadcrumbs::render() !!}
 
             <div class="container-fluid">
