@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
+use App\Helpers\Auth\Auth;
 use Illuminate\Http\Request;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
@@ -105,8 +106,7 @@ class LoginController extends Controller
         /*
          * Remove any session data from backend
          */
-        // TODO
-        //app()->make(Auth::class)->flushTempSession();
+        app()->make(Auth::class)->flushTempSession();
 
         /*
          * Fire event, Log out user, Redirect
@@ -121,4 +121,36 @@ class LoginController extends Controller
 
         return redirect()->route('frontend.index');
     }
+
+	/**
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function logoutAs()
+	{
+		// If for some reason route is getting hit without someone already logged in
+		if (! auth()->user()) {
+			return redirect()->route('frontend.auth.login');
+		}
+
+		// If admin id is set, relogin
+		if (session()->has('admin_user_id') && session()->has('temp_user_id')) {
+			// Save admin id
+			$admin_id = session()->get('admin_user_id');
+
+			app()->make(Auth::class)->flushTempSession();
+
+			// Re-login admin
+			auth()->loginUsingId((int) $admin_id);
+
+			// Redirect to backend user page
+			return redirect()->route('admin.auth.user.index');
+		} else {
+			app()->make(Auth::class)->flushTempSession();
+
+			// Otherwise logout and redirect to login
+			auth()->logout();
+
+			return redirect()->route('frontend.auth.login');
+		}
+	}
 }
