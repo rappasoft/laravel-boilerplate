@@ -168,7 +168,7 @@ trait UserAttribute
     }
 
     /**
-	 * TODO: Test
+     * TODO: Test.
      * @return string
      */
     public function getSocialButtonsAttribute()
@@ -322,15 +322,15 @@ trait UserAttribute
      */
     public function getActionButtonsAttribute()
     {
-		if ($this->trashed()) {
-			return '
+        if ($this->trashed()) {
+            return '
 				<div class="btn-group btn-group-sm" role="group" aria-label="User Actions">
 				  '.$this->restore_button.'
 				  '.$this->delete_permanently_button.'
 				</div>';
-		}
+        }
 
-    	return '
+        return '
     	<div class="btn-group btn-group-sm" role="group" aria-label="User Actions">
 		  '.$this->show_button.'
 		  '.$this->edit_button.'
