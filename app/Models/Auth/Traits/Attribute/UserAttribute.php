@@ -6,9 +6,7 @@ namespace App\Models\Auth\Traits\Attribute;
  * Trait UserAttribute.
  */
 /**
- * Trait UserAttribute
- *
- * @package App\Models\Auth\Traits\Attribute
+ * Trait UserAttribute.
  */
 trait UserAttribute
 {
@@ -46,35 +44,34 @@ trait UserAttribute
      */
     public function getRolesLabelAttribute()
     {
-    	$roles = $this->getRoleNames()->toArray();
+        $roles = $this->getRoleNames()->toArray();
 
-    	if (count($roles)) {
-			return implode(', ', array_map(function ($item) {
-				return ucwords($item);
-			}, $roles));
-		}
+        if (count($roles)) {
+            return implode(', ', array_map(function ($item) {
+                return ucwords($item);
+            }, $roles));
+        }
 
-		return "N/A";
+        return 'N/A';
     }
 
-	/**
-	 * @return string
-	 */
-	public function getPermissionsLabelAttribute()
-	{
-		$permissions = $this->getDirectPermissions()->toArray();
+    /**
+     * @return string
+     */
+    public function getPermissionsLabelAttribute()
+    {
+        $permissions = $this->getDirectPermissions()->toArray();
 
-		if (count($permissions)) {
-			return implode(', ', array_map(function ($item) {
-				return ucwords($item['name']);
-			}, $permissions));
-		}
+        if (count($permissions)) {
+            return implode(', ', array_map(function ($item) {
+                return ucwords($item['name']);
+            }, $permissions));
+        }
 
-		return "N/A";
-	}
+        return 'N/A';
+    }
 
-
-	/**
+    /**
      * @return mixed
      */
     public function canChangeEmail()
