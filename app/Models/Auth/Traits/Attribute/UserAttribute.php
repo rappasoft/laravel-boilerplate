@@ -168,6 +168,7 @@ trait UserAttribute
     }
 
     /**
+	 * TODO: Test
      * @return string
      */
     public function getSocialButtonsAttribute()
@@ -194,8 +195,7 @@ trait UserAttribute
             //Won't break, but don't let them "Login As" themselves
             if ($this->id != auth()->id()) {
                 return '<a href="'.route('admin.auth.user.login-as',
-                        $this).'" class="btn btn-sm btn-success"><i class="fa fa-lock" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.login_as',
-                        ['user' => $this->full_name]).'"></i></a> ';
+                        $this).'" class="dropdown-item">'.__('buttons.backend.access.users.login_as', ['user' => $this->full_name]).'</a> ';
             }
         }
 
@@ -212,7 +212,7 @@ trait UserAttribute
 			 	 data-trans-button-cancel="'.__('buttons.general.cancel').'"
                  data-trans-button-confirm="'.__('buttons.general.continue').'"
                  data-trans-title="'.__('strings.backend.general.are_you_sure').'"
-                 class="btn btn-sm btn-warning" name="confirm_item"><i class="fa fa-times" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.clear_session').'"></i></a> ';
+                 class="dropdown-item" name="confirm_item">'.__('buttons.backend.access.users.clear_session').'</a> ';
         }
 
         return '';
@@ -223,7 +223,7 @@ trait UserAttribute
      */
     public function getShowButtonAttribute()
     {
-        return '<a href="'.route('admin.auth.user.show', $this).'" class="btn btn-sm btn-info"><i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'"></i></a>';
+        return '<a href="'.route('admin.auth.user.show', $this).'" class="btn btn-info"><i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'"></i></a>';
     }
 
     /**
@@ -231,7 +231,7 @@ trait UserAttribute
      */
     public function getEditButtonAttribute()
     {
-        return '<a href="'.route('admin.auth.user.edit', $this).'" class="btn btn-sm btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.edit').'"></i></a>';
+        return '<a href="'.route('admin.auth.user.edit', $this).'" class="btn btn-primary"><i class="fa fa-pencil" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.edit').'"></i></a>';
     }
 
     /**
@@ -239,7 +239,7 @@ trait UserAttribute
      */
     public function getChangePasswordButtonAttribute()
     {
-        return '<a href="'.route('admin.auth.user.change-password', $this).'" class="btn btn-sm btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.change_password').'"></i></a> ';
+        return '<a href="'.route('admin.auth.user.change-password', $this).'" class="dropdown-item">'.__('buttons.backend.access.users.change_password').'</a> ';
     }
 
     /**
@@ -253,14 +253,14 @@ trait UserAttribute
                     return '<a href="'.route('admin.auth.user.mark', [
                             $this,
                             1,
-                        ]).'" class="btn btn-sm btn-success"><i class="fa fa-play" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.activate').'"></i></a> ';
+                        ]).'" class="dropdown-item">'.__('buttons.backend.access.users.activate').'</a> ';
                 // No break
 
                 case 1:
                     return '<a href="'.route('admin.auth.user.mark', [
                             $this,
                             0,
-                        ]).'" class="btn btn-sm btn-warning"><i class="fa fa-pause" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.deactivate').'"></i></a> ';
+                        ]).'" class="dropdown-item">'.__('buttons.backend.access.users.deactivate').'</a> ';
                 // No break
 
                 default:
@@ -278,7 +278,7 @@ trait UserAttribute
     public function getConfirmedButtonAttribute()
     {
         if (! $this->isConfirmed() && ! config('access.users.requires_approval')) {
-            return '<a href="'.route('admin.auth.user.account.confirm.resend', $this).'" class="btn btn-sm btn-success"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title='.__('buttons.backend.access.users.resend_email').'"></i></a> ';
+            return '<a href="'.route('admin.auth.user.account.confirm.resend', $this).'" class="dropdown-item">'.__('buttons.backend.access.users.resend_email').'</a> ';
         }
 
         return '';
@@ -295,7 +295,7 @@ trait UserAttribute
                  data-trans-button-cancel="'.__('buttons.general.cancel').'"
                  data-trans-button-confirm="'.__('buttons.general.crud.delete').'"
                  data-trans-title="'.__('strings.backend.general.are_you_sure').'"
-                 class="btn btn-sm btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.delete').'"></i></a> ';
+                 class="dropdown-item">'.__('buttons.general.crud.delete').'</a> ';
         }
 
         return '';
@@ -306,7 +306,7 @@ trait UserAttribute
      */
     public function getDeletePermanentlyButtonAttribute()
     {
-        return '<a href="'.route('admin.auth.user.delete-permanently', $this).'" name="confirm_item" class="btn btn-sm btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.delete_permanently').'"></i></a> ';
+        return '<a href="'.route('admin.auth.user.delete-permanently', $this).'" name="confirm_item" class="btn btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.delete_permanently').'"></i></a> ';
     }
 
     /**
@@ -314,7 +314,7 @@ trait UserAttribute
      */
     public function getRestoreButtonAttribute()
     {
-        return '<a href="'.route('admin.auth.user.restore', $this).'" name="confirm_item" class="btn btn-sm btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.restore_user').'"></i></a> ';
+        return '<a href="'.route('admin.auth.user.restore', $this).'" name="confirm_item" class="btn btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.restore_user').'"></i></a> ';
     }
 
     /**
@@ -322,22 +322,32 @@ trait UserAttribute
      */
     public function getActionButtonsAttribute()
     {
-        if ($this->trashed()) {
-            return implode(' ', [
-                $this->restore_button,
-                $this->delete_permanently_button,
-            ]);
-        }
+		if ($this->trashed()) {
+			return '
+				<div class="btn-group btn-group-sm" role="group" aria-label="User Actions">
+				  '.$this->restore_button.'
+				  '.$this->delete_permanently_button.'
+				</div>';
+		}
 
-        return implode(' ', [
-            $this->clear_session_button,
-            $this->login_as_button,
-            $this->show_button,
-            $this->edit_button,
-            $this->change_password_button,
-            $this->status_button,
-            $this->confirmed_button,
-            $this->delete_button,
-        ]);
+    	return '
+    	<div class="btn-group btn-group-sm" role="group" aria-label="User Actions">
+		  '.$this->show_button.'
+		  '.$this->edit_button.'
+		
+		  <div class="btn-group" role="group">
+			<button id="userActions" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			  More
+			</button>
+			<div class="dropdown-menu" aria-labelledby="userActions">
+			  '.$this->clear_session_button.'
+			  '.$this->login_as_button.'
+			  '.$this->change_password_button.'
+			  '.$this->status_button.'
+			  '.$this->confirmed_button.'
+			  '.$this->delete_button.'
+			</div>
+		  </div>
+		</div>';
     }
 }
