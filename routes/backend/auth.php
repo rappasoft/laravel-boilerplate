@@ -31,14 +31,14 @@ Route::group([
              * Specific User
              */
             Route::group(['prefix' => 'user/{user}'], function () {
-				// Account
-				Route::get('account/confirm/resend', 'UserConfirmationController@sendConfirmationEmail')->name('user.account.confirm.resend');
+                // Account
+                Route::get('account/confirm/resend', 'UserConfirmationController@sendConfirmationEmail')->name('user.account.confirm.resend');
 
-				// Status
-				Route::get('mark/{status}', 'UserStatusController@mark')->name('user.mark')->where(['status' => '[0,1]']);
+                // Status
+                Route::get('mark/{status}', 'UserStatusController@mark')->name('user.mark')->where(['status' => '[0,1]']);
 
-				// Social
-				Route::delete('social/{social}/unlink', 'UserSocialController@unlink')->name('user.social.unlink');
+                // Social
+                Route::delete('social/{social}/unlink', 'UserSocialController@unlink')->name('user.social.unlink');
 
                 // Confirmation
                 Route::get('confirm', 'UserConfirmationController@confirm')->name('user.confirm');
@@ -52,13 +52,13 @@ Route::group([
                 Route::get('clear-session', 'UserSessionController@clearSession')->name('user.clear-session');
             });
 
-			/*
-			 * Deleted User
-			 */
-			Route::group(['prefix' => 'user/{deletedUser}'], function () {
-				Route::get('delete', 'UserStatusController@delete')->name('user.delete-permanently');
-				Route::get('restore', 'UserStatusController@restore')->name('user.restore');
-			});
+            /*
+             * Deleted User
+             */
+            Route::group(['prefix' => 'user/{deletedUser}'], function () {
+                Route::get('delete', 'UserStatusController@delete')->name('user.delete-permanently');
+                Route::get('restore', 'UserStatusController@restore')->name('user.restore');
+            });
         });
 
         /*
