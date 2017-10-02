@@ -122,35 +122,35 @@ class LoginController extends Controller
         return redirect()->route('frontend.index');
     }
 
-	/**
-	 * @return \Illuminate\Http\RedirectResponse
-	 */
-	public function logoutAs()
-	{
-		// If for some reason route is getting hit without someone already logged in
-		if (! auth()->user()) {
-			return redirect()->route('frontend.auth.login');
-		}
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function logoutAs()
+    {
+        // If for some reason route is getting hit without someone already logged in
+        if (! auth()->user()) {
+            return redirect()->route('frontend.auth.login');
+        }
 
-		// If admin id is set, relogin
-		if (session()->has('admin_user_id') && session()->has('temp_user_id')) {
-			// Save admin id
-			$admin_id = session()->get('admin_user_id');
+        // If admin id is set, relogin
+        if (session()->has('admin_user_id') && session()->has('temp_user_id')) {
+            // Save admin id
+            $admin_id = session()->get('admin_user_id');
 
-			app()->make(Auth::class)->flushTempSession();
+            app()->make(Auth::class)->flushTempSession();
 
-			// Re-login admin
-			auth()->loginUsingId((int) $admin_id);
+            // Re-login admin
+            auth()->loginUsingId((int) $admin_id);
 
-			// Redirect to backend user page
-			return redirect()->route('admin.auth.user.index');
-		} else {
-			app()->make(Auth::class)->flushTempSession();
+            // Redirect to backend user page
+            return redirect()->route('admin.auth.user.index');
+        } else {
+            app()->make(Auth::class)->flushTempSession();
 
-			// Otherwise logout and redirect to login
-			auth()->logout();
+            // Otherwise logout and redirect to login
+            auth()->logout();
 
-			return redirect()->route('frontend.auth.login');
-		}
-	}
+            return redirect()->route('frontend.auth.login');
+        }
+    }
 }
