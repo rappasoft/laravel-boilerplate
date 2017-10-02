@@ -23,7 +23,7 @@
         <div class="card-body">
             <div class="form-group row">
                 <label class="col-md-2 form-control-label" for="password">
-                    {{ trans('validation.attributes.backend.access.users.password') }}
+                    {{ __('validation.attributes.backend.access.users.password') }}
                 </label>
 
                 <div class="col-md-10">
@@ -33,7 +33,7 @@
 
             <div class="form-group row">
                 <label class="col-md-2 form-control-label" for="password_confirmation">
-                    {{ trans('validation.attributes.backend.access.users.password_confirmation') }}
+                    {{ __('validation.attributes.backend.access.users.password_confirmation') }}
                 </label>
 
                 <div class="col-md-10">

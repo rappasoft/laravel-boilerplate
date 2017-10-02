@@ -1,6 +1,6 @@
 @extends ('backend.layouts.app')
 
-@section ('title', __('labels.backend.access.users.management'))
+@section ('title', __('labels.backend.access.users.management') . ' | ' . __('labels.backend.access.users.deleted'))
 
 @section('breadcrumb-links')
     @include('backend.auth.user.includes.breadcrumb-links')
@@ -8,14 +8,14 @@
 
 @section('page-header')
     <h5 class="mb-4">{{ __('labels.backend.access.users.management') }}
-        <small class="text-muted">{{ __('labels.backend.access.users.active') }}</small>
+        <small class="text-muted">{{ __('labels.backend.access.users.deleted') }}</small>
     </h5>
 @endsection
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            {{ __('labels.backend.access.users.active') }}
+            {{ __('labels.backend.access.users.deleted') }}
 
             @include('backend.auth.user.includes.header-buttons')
         </div><!-- box-header -->
@@ -37,6 +37,7 @@
                     </tr>
                     </thead>
                     <tbody>
+                    @if ($users->count())
                         @foreach ($users as $user)
                             <tr>
                                 <td>{{ $user->last_name }}</td>
@@ -50,6 +51,9 @@
                                 <td>{!! $user->action_buttons !!}</td>
                             </tr>
                         @endforeach
+                    @else
+                        <tr><td colspan="9">There are no deleted users.</td></tr>
+                    @endif
                     </tbody>
                 </table>
             </div><!--table-responsive-->

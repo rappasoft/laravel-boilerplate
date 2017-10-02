@@ -7,8 +7,8 @@
 @endsection
 
 @section('page-header')
-    <h5 class="mb-4">{{ trans('labels.backend.access.users.management') }}
-        <small class="text-muted">{{ trans('labels.backend.access.users.create') }}</small>
+    <h5 class="mb-4">{{ __('labels.backend.access.users.management') }}
+        <small class="text-muted">{{ __('labels.backend.access.users.create') }}</small>
     </h5>
 @endsection
 

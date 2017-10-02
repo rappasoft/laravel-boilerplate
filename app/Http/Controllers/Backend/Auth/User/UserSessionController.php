@@ -23,6 +23,6 @@ class UserSessionController extends Controller
     {
         $sessionRepository->clearSession($user);
 
-        return redirect()->back()->withFlashSuccess(trans('alerts.backend.users.session_cleared'));
+        return redirect()->back()->withFlashSuccess(__('alerts.backend.users.session_cleared'));
     }
 }

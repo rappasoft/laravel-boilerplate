@@ -3,7 +3,9 @@
 namespace App\Models\Auth\Traits\Attribute;
 
 /**
- * Trait UserAttribute.
+ * Trait UserAttribute
+ *
+ * @package App\Models\Auth\Traits\Attribute
  */
 trait UserAttribute
 {
@@ -142,6 +144,20 @@ trait UserAttribute
         return false;
     }
 
+	/**
+	 * @return string
+	 */
+	public function getSocialButtonsAttribute() {
+		$accounts = [];
+
+		foreach ($this->providers as $social) {
+			$accounts[] = '<a href="'.route('admin.auth.user.social.unlink',
+					[$this, $social]).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.unlink').'" data-method="delete"><i class="fa fa-'.$social->provider.'"></i></a>';
+		}
+
+		return count($accounts) ? implode(' ', $accounts) : 'None';
+	}
+
     /**
      * @return string
      */
@@ -182,13 +198,91 @@ trait UserAttribute
         return '<a href="'.route('admin.auth.user.change-password', $this).'" class="btn btn-sm btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.change_password').'"></i></a> ';
     }
 
+	/**
+	 * @return string
+	 */
+	public function getStatusButtonAttribute()
+	{
+		if ($this->id != auth()->id()) {
+			switch ($this->active) {
+				case 0:
+					return '<a href="'.route('admin.auth.user.mark', [
+							$this,
+							1,
+						]).'" class="btn btn-sm btn-success"><i class="fa fa-play" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.activate').'"></i></a> ';
+				// No break
+
+				case 1:
+					return '<a href="'.route('admin.auth.user.mark', [
+							$this,
+							0,
+						]).'" class="btn btn-sm btn-warning"><i class="fa fa-pause" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.deactivate').'"></i></a> ';
+				// No break
+
+				default:
+					return '';
+				// No break
+			}
+		}
+
+		return '';
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getConfirmedButtonAttribute()
+	{
+		if (! $this->isConfirmed() && ! config('access.users.requires_approval')) {
+			return '<a href="'.route('admin.auth.user.account.confirm.resend', $this).'" class="btn btn-sm btn-success"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title='.__('buttons.backend.access.users.resend_email').'"></i></a> ';
+		}
+
+		return '';
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getDeleteButtonAttribute()
+	{
+		if ($this->id != auth()->id() && $this->id != 1) {
+			return '<a href="'.route('admin.auth.user.destroy', $this).'"
+                 data-method="delete"
+                 data-trans-button-cancel="'.trans('buttons.general.cancel').'"
+                 data-trans-button-confirm="'.trans('buttons.general.crud.delete').'"
+                 data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
+                 class="btn btn-sm btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.delete').'"></i></a> ';
+		}
+
+		return '';
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getDeletePermanentlyButtonAttribute()
+	{
+		return '<a href="'.route('admin.auth.user.delete-permanently', $this).'" name="confirm_item" class="btn btn-sm btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.delete_permanently').'"></i></a> ';
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getRestoreButtonAttribute()
+	{
+		return '<a href="'.route('admin.auth.user.restore', $this).'" name="confirm_item" class="btn btn-sm btn-info"><i class="fa fa-refresh" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.restore_user').'"></i></a> ';
+	}
+
     /**
      * @return string
      */
     public function getActionButtonsAttribute()
     {
         if ($this->trashed()) {
-            //return $this->restore_button.$this->delete_permanently_button;
+			return implode(' ', [
+				$this->restore_button,
+				$this->delete_permanently_button,
+			]);
         }
 
         return implode(' ', [
@@ -197,9 +291,9 @@ trait UserAttribute
             $this->show_button,
             $this->edit_button,
             $this->change_password_button,
-            //$this->status_button,
-            //$this->confirmed_button,
-            //$this->delete_button
+            $this->status_button,
+            $this->confirmed_button,
+            $this->delete_button
         ]);
     }
 }

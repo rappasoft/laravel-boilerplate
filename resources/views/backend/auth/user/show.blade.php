@@ -17,10 +17,10 @@
         <div class="col">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-expanded="true">{{ trans('labels.backend.access.users.tabs.titles.overview') }}</a>
+                    <a class="nav-link active" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-expanded="true">{{ __('labels.backend.access.users.tabs.titles.overview') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-expanded="false">{{ trans('labels.backend.access.users.tabs.titles.history') }}</a>
+                    <a class="nav-link" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-expanded="false">{{ __('labels.backend.access.users.tabs.titles.history') }}</a>
                 </li>
             </ul>
 

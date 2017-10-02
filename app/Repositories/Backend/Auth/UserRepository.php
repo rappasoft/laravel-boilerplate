@@ -2,6 +2,10 @@
 
 namespace App\Repositories\Backend\Auth;
 
+use App\Events\Backend\Auth\User\UserDeactivated;
+use App\Events\Backend\Auth\User\UserPermanentlyDeleted;
+use App\Events\Backend\Auth\User\UserReactivated;
+use App\Events\Backend\Auth\User\UserRestored;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
@@ -56,6 +60,36 @@ class UserRepository extends BaseEloquentRepository
             ->orderBy($orderBy, $sort)
             ->paginate($paged);
     }
+
+	/**
+	 * @param int    $paged
+	 * @param string $orderBy
+	 * @param string $sort
+	 *
+	 * @return LengthAwarePaginator
+	 */
+	public function getInactivePaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc') : LengthAwarePaginator
+	{
+		return $this->model
+			->active(false)
+			->orderBy($orderBy, $sort)
+			->paginate($paged);
+	}
+
+	/**
+	 * @param int    $paged
+	 * @param string $orderBy
+	 * @param string $sort
+	 *
+	 * @return LengthAwarePaginator
+	 */
+	public function getDeletedPaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc') : LengthAwarePaginator
+	{
+		return $this->model
+			->onlyTrashed()
+			->orderBy($orderBy, $sort)
+			->paginate($paged);
+	}
 
     /**
      * @param array $data
@@ -120,8 +154,41 @@ class UserRepository extends BaseEloquentRepository
             return true;
         }
 
-        throw new GeneralException(trans('exceptions.backend.access.users.update_password_error'));
+        throw new GeneralException(__('exceptions.backend.access.users.update_password_error'));
     }
+
+	/**
+	 * @param User $user
+	 * @param $status
+	 *
+	 * @throws GeneralException
+	 *
+	 * @return bool
+	 */
+	public function mark(User $user, $status)
+	{
+		if (auth()->id() == $user->id && $status == 0) {
+			throw new GeneralException(__('exceptions.backend.access.users.cant_deactivate_self'));
+		}
+
+		$user->active = $status;
+
+		switch ($status) {
+			case 0:
+				event(new UserDeactivated($user));
+				break;
+
+			case 1:
+				event(new UserReactivated($user));
+				break;
+		}
+
+		if ($user->save()) {
+			return true;
+		}
+
+		throw new GeneralException(__('exceptions.backend.access.users.mark_error'));
+	}
 
     /**
      * @param User $user
@@ -185,4 +252,48 @@ class UserRepository extends BaseEloquentRepository
 
         throw new GeneralException(__('exceptions.backend.access.users.cant_unconfirm'));
     }
+
+	/**
+	 * @param User $user
+	 *
+	 * @throws GeneralException
+	 */
+	public function forceDelete(User $user)
+	{
+		if (is_null($user->deleted_at)) {
+			throw new GeneralException(__('exceptions.backend.access.users.delete_first'));
+		}
+
+		DB::transaction(function () use ($user) {
+			if ($user->forceDelete()) {
+				event(new UserPermanentlyDeleted($user));
+
+				return true;
+			}
+
+			throw new GeneralException(__('exceptions.backend.access.users.delete_error'));
+		});
+	}
+
+	/**
+	 * @param User $user
+	 *
+	 * @throws GeneralException
+	 *
+	 * @return bool
+	 */
+	public function restore(User $user)
+	{
+		if (is_null($user->deleted_at)) {
+			throw new GeneralException(trans('exceptions.backend.access.users.cant_restore'));
+		}
+
+		if ($user->restore()) {
+			event(new UserRestored($user));
+
+			return true;
+		}
+
+		throw new GeneralException(trans('exceptions.backend.access.users.restore_error'));
+	}
 }

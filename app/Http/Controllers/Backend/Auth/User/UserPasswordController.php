@@ -48,6 +48,6 @@ class UserPasswordController extends Controller
     {
         $this->userRepository->updatePassword($user, $request->only('password'));
 
-        return redirect()->route('admin.auth.user.index')->withFlashSuccess(trans('alerts.backend.users.updated_password'));
+        return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('alerts.backend.users.updated_password'));
     }
 }

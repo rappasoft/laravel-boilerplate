@@ -208,6 +208,7 @@ class UserRepository extends BaseEloquentRepository
                 'first_name'  => $nameParts['first_name'],
                 'last_name'  => $nameParts['last_name'],
                 'email' => $user_email,
+                'active' => 1,
                 'confirmed' => 1,
                 'password' => null,
             ]);
