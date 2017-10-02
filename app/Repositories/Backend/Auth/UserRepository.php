@@ -119,7 +119,7 @@ class UserRepository extends BaseEloquentRepository
                 $user->syncRoles($data['roles']);
 
                 // See if adding any additional permissions
-                if (count($data['permissions'])) {
+                if (isset($data['permissions']) && count($data['permissions'])) {
                     $user->syncPermissions($data['permissions']);
                 }
 
