@@ -158,6 +158,26 @@ trait UserAttribute
 		return count($accounts) ? implode(' ', $accounts) : 'None';
 	}
 
+	/**
+	 * @return string
+	 */
+	public function getLoginAsButtonAttribute()
+	{
+		/*
+		 * If the admin is currently NOT spoofing a user
+		 */
+		if (! session()->has('admin_user_id') || ! session()->has('temp_user_id')) {
+			//Won't break, but don't let them "Login As" themselves
+			if ($this->id != auth()->id()) {
+				return '<a href="'.route('admin.auth.user.login-as',
+						$this).'" class="btn btn-sm btn-success"><i class="fa fa-lock" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.login_as',
+						['user' => $this->full_name]).'"></i></a> ';
+			}
+		}
+
+		return '';
+	}
+
     /**
      * @return string
      */
@@ -248,10 +268,10 @@ trait UserAttribute
 		if ($this->id != auth()->id() && $this->id != 1) {
 			return '<a href="'.route('admin.auth.user.destroy', $this).'"
                  data-method="delete"
-                 data-trans-button-cancel="'.trans('buttons.general.cancel').'"
-                 data-trans-button-confirm="'.trans('buttons.general.crud.delete').'"
-                 data-trans-title="'.trans('strings.backend.general.are_you_sure').'"
-                 class="btn btn-sm btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.general.crud.delete').'"></i></a> ';
+                 data-trans-button-cancel="'.__('buttons.general.cancel').'"
+                 data-trans-button-confirm="'.__('buttons.general.crud.delete').'"
+                 data-trans-title="'.__('strings.backend.general.are_you_sure').'"
+                 class="btn btn-sm btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.delete').'"></i></a> ';
 		}
 
 		return '';
@@ -262,7 +282,7 @@ trait UserAttribute
 	 */
 	public function getDeletePermanentlyButtonAttribute()
 	{
-		return '<a href="'.route('admin.auth.user.delete-permanently', $this).'" name="confirm_item" class="btn btn-sm btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.trans('buttons.backend.access.users.delete_permanently').'"></i></a> ';
+		return '<a href="'.route('admin.auth.user.delete-permanently', $this).'" name="confirm_item" class="btn btn-sm btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.delete_permanently').'"></i></a> ';
 	}
 
 	/**
@@ -287,7 +307,7 @@ trait UserAttribute
 
         return implode(' ', [
             $this->clear_session_button,
-            //$this->login_as_button,
+            $this->login_as_button,
             $this->show_button,
             $this->edit_button,
             $this->change_password_button,

@@ -285,7 +285,7 @@ class UserRepository extends BaseEloquentRepository
 	public function restore(User $user)
 	{
 		if (is_null($user->deleted_at)) {
-			throw new GeneralException(trans('exceptions.backend.access.users.cant_restore'));
+			throw new GeneralException(__('exceptions.backend.access.users.cant_restore'));
 		}
 
 		if ($user->restore()) {
@@ -294,6 +294,6 @@ class UserRepository extends BaseEloquentRepository
 			return true;
 		}
 
-		throw new GeneralException(trans('exceptions.backend.access.users.restore_error'));
+		throw new GeneralException(__('exceptions.backend.access.users.restore_error'));
 	}
 }
