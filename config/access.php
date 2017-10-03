@@ -63,6 +63,16 @@ return [
         'single_login' => true,
     ],
 
+	/*
+	* Configuration for roles
+	*/
+	'roles' => [
+		/*
+		 * Whether a role must contain a permission or can be used standalone as a label
+		 */
+		'role_must_contain_permission' => true,
+	],
+
     /*
      * Socialite session variable name
      * Contains the name of the currently logged in provider in the users session
