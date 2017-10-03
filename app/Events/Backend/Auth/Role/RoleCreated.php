@@ -9,18 +9,18 @@ use Illuminate\Queue\SerializesModels;
  */
 class RoleCreated
 {
-	use SerializesModels;
+    use SerializesModels;
 
-	/**
-	 * @var
-	 */
-	public $role;
+    /**
+     * @var
+     */
+    public $role;
 
-	/**
-	 * @param $role
-	 */
-	public function __construct($role)
-	{
-		$this->role = $role;
-	}
+    /**
+     * @param $role
+     */
+    public function __construct($role)
+    {
+        $this->role = $role;
+    }
 }
