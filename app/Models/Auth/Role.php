@@ -5,9 +5,7 @@ namespace App\Models\Auth;
 use App\Models\Auth\Traits\Attribute\RoleAttribute;
 
 /**
- * Class Role
- *
- * @package App\Models\Auth
+ * Class Role.
  */
 class Role extends \Spatie\Permission\Models\Role
 {
