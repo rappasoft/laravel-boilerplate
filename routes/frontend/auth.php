@@ -29,6 +29,8 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
 
         // Socialite Routes
         Route::get('login/{provider}', 'SocialLoginController@login')->name('social.login');
+        Route::get('login/{provider}/callback', 'SocialLoginController@login');
+        
 
         // Registration Routes
         if (config('access.registration')) {
