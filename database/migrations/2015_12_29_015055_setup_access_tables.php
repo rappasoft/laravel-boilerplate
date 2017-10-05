@@ -24,7 +24,7 @@ class SetupAccessTables extends Migration
         });
 
         Schema::create(config('access.roles_table'), function ($table) {
-            $table->increments('id')->unsigned();
+            $table->increments('id');
             $table->string('name');
             $table->boolean('all')->default(false);
             $table->smallInteger('sort')->default(0)->unsigned();
@@ -37,7 +37,7 @@ class SetupAccessTables extends Migration
         });
 
         Schema::create(config('access.role_user_table'), function ($table) {
-            $table->increments('id')->unsigned();
+            $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('role_id')->unsigned();
 
@@ -56,7 +56,7 @@ class SetupAccessTables extends Migration
         });
 
         Schema::create(config('access.permissions_table'), function ($table) {
-            $table->increments('id')->unsigned();
+            $table->increments('id');
             $table->string('name');
             $table->string('display_name');
             $table->timestamps();
@@ -68,7 +68,7 @@ class SetupAccessTables extends Migration
         });
 
         Schema::create(config('access.permission_role_table'), function ($table) {
-            $table->increments('id')->unsigned();
+            $table->increments('id');
             $table->integer('permission_id')->unsigned();
             $table->integer('role_id')->unsigned();
 
