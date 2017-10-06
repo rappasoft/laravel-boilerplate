@@ -24,7 +24,7 @@
                             <div class="form-group">
                                 {{ Form::label('first_name', __('validation.attributes.frontend.first_name')) }}
                                 {{ Form::text('first_name', null,
-                                ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => __('validation.attributes.frontend.first_name')]) }}
+                                ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.first_name')]) }}
                             </div><!--col-->
                         </div><!--row-->
 
