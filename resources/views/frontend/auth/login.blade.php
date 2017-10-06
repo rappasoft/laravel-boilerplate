@@ -78,12 +78,12 @@
                         </div><!--col-->
                     </div><!--row-->
 
-                </div><!--card body-->
+                </div><!-- / card body -->
 
-            </div><!--card-->
+            </div><!-- / card-->
 
-        </div><!-- col-md-8 -->
+        </div><!-- / col-6 -->
 
-    </div><!-- row -->
+    </div><!-- / row -->
 
 @endsection
