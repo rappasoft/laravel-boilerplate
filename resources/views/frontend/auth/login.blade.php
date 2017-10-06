@@ -6,7 +6,7 @@
 
     <div class="row justify-content-center align-items-center">
 
-        <div class="col col-sm-8 align-self-center">
+        <div class="col col-sm-6 align-self-center">
 
             <div class="card">
 
@@ -24,7 +24,7 @@
                         <div class="col">
                             <div class="form-group">
                                 {{ Form::label('email', __('validation.attributes.frontend.email')) }}
-                                {{ Form::email('email', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => __('validation.attributes.frontend.email')]) }}
+                                {{ Form::email('email', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.email')]) }}
                             </div><!--form-group-->
                         </div><!--col-->
                     </div><!--row-->
@@ -78,12 +78,12 @@
                         </div><!--col-->
                     </div><!--row-->
 
-                </div><!--card body-->
+                </div><!-- / card body -->
 
-            </div><!--card-->
+            </div><!-- / card-->
 
-        </div><!-- col-md-8 -->
+        </div><!-- / col-6 -->
 
-    </div><!-- row -->
+    </div><!-- / row -->
 
 @endsection
