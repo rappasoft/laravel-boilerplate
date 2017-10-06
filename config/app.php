@@ -178,7 +178,7 @@ return [
         /*
          * Package Service Providers...
          */
-		Appstract\BladeDirectives\BladeDirectivesServiceProvider::class,
+        Appstract\BladeDirectives\BladeDirectivesServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
 
