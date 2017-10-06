@@ -13,7 +13,8 @@
 @endsection
 
 @section('content')
-    {{ Form::open(['route' => 'admin.auth.user.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) }}
+    <form action="{{ route('admin.auth.user.store') }}" method="post" class="form-horizontal">
+        {{ csrf_field() }}
 
         <div class="card">
             <div class="card-header">
@@ -170,10 +171,9 @@
             </div><!-- card-body -->
 
             <div class="card-footer">
-                {{ link_to_route('admin.auth.user.index', __('buttons.general.cancel'), [], ['class' => 'btn btn-danger btn-sm']) }}
-                {{ Form::submit(__('buttons.general.crud.create'), ['class' => 'btn btn-success btn-sm pull-right']) }}
-            </div>
+                {{ form_cancel(route('admin.auth.user.index'), __('buttons.general.cancel')) }}
+                {{ form_submit(__('buttons.general.crud.create')) }}
+            </div><!--card-footer-->
         </div><!--card-->
-
-    {{ Form::close() }}
+    </form>
 @endsection

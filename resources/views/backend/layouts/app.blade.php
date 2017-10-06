@@ -15,9 +15,9 @@
     <!-- Check if the language is set to RTL, so apply the RTL layouts -->
     <!-- Otherwise apply the normal LTR layouts -->
     @langrtl
-        {{ Html::style(getRtlCss(mix('css/backend.css'))) }}
+        {{ style(getRtlCss(mix('css/backend.css'))) }}
     @else
-        {{ Html::style(mix('css/backend.css')) }}
+        {{ style(mix('css/backend.css')) }}
     @endlangrtl
 
     @stack('after-styles')
@@ -51,7 +51,7 @@
 
     <!-- Scripts -->
     @stack('before-scripts')
-    {!! Html::script(mix('js/backend.js')) !!}
+    {!! script(mix('js/backend.js')) !!}
     @stack('after-scripts')
 </body>
 </html>

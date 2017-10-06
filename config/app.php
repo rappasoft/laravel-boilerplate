@@ -250,7 +250,6 @@ return [
         'Captcha' => Arcanedev\NoCaptcha\Facades\NoCaptcha::class,
         'Form' => Collective\Html\FormFacade::class,
         'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
-        'Html' => Collective\Html\HtmlFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
