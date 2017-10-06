@@ -110,6 +110,7 @@ return [
             'login_box_title'    => 'Login',
             'login_button'       => 'Login',
             'login_with'         => 'Login with :social_media',
+            'login_with_social'  => 'Login with social account',
             'register_box_title' => 'Register',
             'register_button'    => 'Register',
             'remember_me'        => 'Remember Me',
