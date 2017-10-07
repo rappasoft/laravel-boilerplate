@@ -9,7 +9,9 @@
 @endsection
 
 @section('content')
-    <form action="{{ route('admin.auth.role.store') }}" class="form-horizontal">
+    <form action="{{ route('admin.auth.role.store') }}" method="post" class="form-horizontal">
+        {{ csrf_field() }}
+
         <div class="card">
             <div class="card-header">
                 {{ __('labels.backend.access.roles.create') }}
@@ -47,9 +49,9 @@
             </div><!-- card-body -->
 
             <div class="card-footer">
-                <a href="{{ route('admin.auth.role.index') }}" class="btn btn-danger btn-sm">{{ __('buttons.general.cancel') }}</a>
-                <button type="submit" name="submit" class="btn btn-success btn-sm pull-right">{{ __('buttons.general.crud.create') }}</button>
-            </div>
+                {{ form_cancel(route('admin.auth.role.index'), __('buttons.general.cancel')) }}
+                {{ form_submit(__('buttons.general.crud.create')) }}
+            </div><!--card-footer-->
         </div><!--card-->
     </form>
 @endsection
