@@ -223,7 +223,7 @@ trait UserAttribute
      */
     public function getShowButtonAttribute()
     {
-        return '<a href="'.route('admin.auth.user.show', $this).'" class="btn btn-info"><i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'"></i></a>';
+        return '<a href="'.route('admin.auth.user.show', $this).'" class="btn btn-info"><i class="fa fa-desktop" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'"></i></a>';
     }
 
     /**
@@ -334,7 +334,7 @@ trait UserAttribute
     	<div class="btn-group btn-group-sm" role="group" aria-label="User Actions">
 		  '.$this->show_button.'
 		  '.$this->edit_button.'
-		
+
 		  <div class="btn-group" role="group">
 			<button id="userActions" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			  More
