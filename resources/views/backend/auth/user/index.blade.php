@@ -7,22 +7,34 @@
 @endsection
 
 @section('page-header')
-    <h5 class="mb-4">{{ __('labels.backend.access.users.management') }}
+    <!-- <h5 class="mb-4">{{ __('labels.backend.access.users.management') }}
         <small class="text-muted">{{ __('labels.backend.access.users.active') }}</small>
-    </h5>
+    </h5> -->
 @endsection
 
 @section('content')
-    <div class="card">
-        <div class="card-header">
-            {{ __('labels.backend.access.users.active') }}
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-5">
+                <h4 class="card-title mb-0">
+                    {{ __('labels.backend.access.users.management') }} <small class="text-muted">{{ __('labels.backend.access.users.active') }}</small>
+                </h4>
+                <div class="small text-muted">
+                    User Management Dashboard
+                </div>
+            </div>
+            <!--/.col-->
+            <div class="col-sm-7 pull-right">
+                @include('backend.auth.user.includes.header-buttons')
+            </div>
+            <!--/.col-->
+        </div>
+        <!--/.row-->
 
-            @include('backend.auth.user.includes.header-buttons')
-        </div><!-- box-header -->
-
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-hover">
+        <div class="row mt-4">
+            <div class="col">
+                <table class="table table-responsive">
                     <thead>
                     <tr>
                         <th>{{ __('labels.backend.access.users.table.last_name') }}</th>
@@ -32,7 +44,6 @@
                         <th>{{ __('labels.backend.access.users.table.roles') }}</th>
                         <th>Other Permissions</th>
                         <th>{{ __('labels.backend.access.users.table.social') }}</th>
-                        <th>{{ __('labels.backend.access.users.table.created') }}</th>
                         <th>{{ __('labels.backend.access.users.table.last_updated') }}</th>
                         <th>{{ __('labels.general.actions') }}</th>
                     </tr>
@@ -47,24 +58,29 @@
                                 <td>{!! $user->roles_label !!}</td>
                                 <td>{!! $user->permissions_label !!}</td>
                                 <td>{!! $user->social_buttons !!}</td>
-                                <td>{{ $user->created_at }}</td>
-                                <td>{{ $user->updated_at }}</td>
+                                <td>{{ $user->updated_at->diffForHumans() }}</td>
                                 <td>{!! $user->action_buttons !!}</td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-            </div><!--table-responsive-->
-
-            <div class="pull-left">
-                {!! $users->total() !!} {{ trans_choice('labels.backend.access.users.table.total', $users->total()) }}
             </div>
-
-            <div class="pull-right">
-                {!! $users->render() !!}
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-7">
+                <div class="float-left">
+                    {!! $users->total() !!} {{ trans_choice('labels.backend.access.users.table.total', $users->total()) }}
+                </div>
             </div>
+            <div class="col-5">
+                <div class="float-right">
+                    {!! $users->render() !!}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-            <div class="clearfix"></div>
-        </div><!-- card-body -->
-    </div><!--card-->
 @endsection
