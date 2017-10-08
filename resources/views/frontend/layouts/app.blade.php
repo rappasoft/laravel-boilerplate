@@ -15,7 +15,7 @@
         <!-- Check if the language is set to RTL, so apply the RTL layouts -->
         <!-- Otherwise apply the normal LTR layouts -->
         @langrtl
-            {{ style(getRtlCss(mix('css/frontend.css'))) }}
+            {{ style(get_rtl_css(mix('css/frontend.css'))) }}
         @else
             {{ style(mix('css/frontend.css')) }}
         @endlangrtl

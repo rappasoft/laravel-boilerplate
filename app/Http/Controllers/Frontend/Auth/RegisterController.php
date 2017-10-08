@@ -37,7 +37,7 @@ class RegisterController extends Controller
      */
     public function redirectPath()
     {
-        return route(homeRoute());
+        return route(home_route());
     }
 
     /**

@@ -37,7 +37,7 @@ class UserAccessController extends Controller
             auth()->loginUsingId($user->id);
 
             // Redirect.
-            return redirect()->route(homeRoute());
+            return redirect()->route(home_route());
         }
 
         app()->make(Auth::class)->flushTempSession();
@@ -56,6 +56,6 @@ class UserAccessController extends Controller
         auth()->loginUsingId($user->id);
 
         // Redirect to frontend
-        return redirect()->route(homeRoute());
+        return redirect()->route(home_route());
     }
 }
