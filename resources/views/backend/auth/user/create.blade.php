@@ -7,112 +7,133 @@
 @endsection
 
 @section('page-header')
-    <h5 class="mb-4">{{ __('labels.backend.access.users.management') }}
+    <!-- <h5 class="mb-4">{{ __('labels.backend.access.users.management') }}
         <small class="text-muted">{{ __('labels.backend.access.users.create') }}</small>
-    </h5>
+    </h5> -->
 @endsection
 
 @section('content')
-    <form action="{{ route('admin.auth.user.store') }}" method="post" class="form-horizontal">
-        {{ csrf_field() }}
 
-        <div class="card">
-            <div class="card-header">
-                {{ __('labels.backend.access.users.create') }}
-            </div><!-- card-header -->
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-5">
+                <h4 class="card-title mb-0">
+                    {{ __('labels.backend.access.users.management') }}
+                    <small class="text-muted">{{ __('labels.backend.access.users.create') }}</small>
+                </h4>
+                <div class="small text-muted">
+                    User Management Dashboard
+                </div>
+            </div>
+            <!--/.col-->
+            <div class="col-sm-7">
+                <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
+                    <button onclick="window.history.back();"class="btn btn-warning ml-1" data-toggle="tooltip" title="Return Back"><i class="fa fa-reply"></i></button>
+                </div>
+            </div>
+            <!--/.col-->
+        </div>
+        <!--/.row-->
 
-            <div class="card-body">
-                <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="first_name">
-                        {{ __('validation.attributes.backend.access.users.first_name') }}
-                    </label>
+        <hr>
 
-                    <div class="col-md-10">
-                        <input type="text" id="first_name" name="first_name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.first_name') }}" maxlength="191" required="required" autofocus="autofocus">
-                    </div>
-                </div><!--form-group-->
+        <div class="row mt-4 mb-4">
+            <div class="col">
 
-                <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="last_name">
-                        {{ __('validation.attributes.backend.access.users.last_name') }}
-                    </label>
+                <form action="{{ route('admin.auth.user.store') }}" method="post" class="form-horizontal">
+                    {{ csrf_field() }}
 
-                    <div class="col-md-10">
-                        <input type="text" id="last_name" name="last_name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.last_name') }}" maxlength="191" required="required">
-                    </div>
-                </div><!--form-group-->
-
-                <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="email">
-                        {{ __('validation.attributes.backend.access.users.email') }}
-                    </label>
-
-                    <div class="col-md-10">
-                        <input type="email" id="email" name="email" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.email') }}" maxlength="191" required="required">
-                    </div>
-                </div><!--form-group-->
-
-                <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="password">
-                        {{ __('validation.attributes.backend.access.users.password') }}
-                    </label>
-
-                    <div class="col-md-10">
-                        <input type="password" id="password" name="password" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.password') }}" required="required">
-                    </div>
-                </div><!--form-group-->
-
-                <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="password_confirmation">
-                        {{ __('validation.attributes.backend.access.users.password_confirmation') }}
-                    </label>
-
-                    <div class="col-md-10">
-                        <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.password_confirmation') }}" required="required">
-                    </div>
-                </div><!--form-group-->
-
-                <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="active">
-                        {{ __('validation.attributes.backend.access.users.active') }}
-                    </label>
-
-                    <div class="col-md-10">
-                        <input type="checkbox" name="active" value="1" id="active" checked="checked" />
-                    </div>
-                </div><!--form-group-->
-
-                <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="confirmed">
-                        {{ __('validation.attributes.backend.access.users.confirmed') }}
-                    </label>
-
-                    <div class="col-md-10">
-                        <input type="checkbox" name="confirmed" value="1" id="confirmed" checked="checked" />
-                    </div>
-                </div><!--form-group-->
-
-                @if (! config('access.users.requires_approval'))
                     <div class="form-group row">
-                        <label class="col-md-2 form-control-label" for="confirmation_email">
-                            {{ __('validation.attributes.backend.access.users.send_confirmation_email') }}<br/>
-                            <small>{{ __('strings.backend.access.users.if_confirmed_off') }}</small>
+                        <label class="col-md-2 form-control-label" for="first_name">
+                            {{ __('validation.attributes.backend.access.users.first_name') }}
                         </label>
 
                         <div class="col-md-10">
-                            <input type="checkbox" name="confirmation_email" value="1" id="confirmation_email" />
+                            <input type="text" id="first_name" name="first_name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.first_name') }}" maxlength="191" required="required" autofocus="autofocus">
                         </div>
                     </div><!--form-group-->
-                @endif
 
-                <div class="form-group row">
-                    <label class="col-md-2 form-control-label">
-                        Abilities
-                    </label>
+                    <div class="form-group row">
+                        <label class="col-md-2 form-control-label" for="last_name">
+                            {{ __('validation.attributes.backend.access.users.last_name') }}
+                        </label>
 
-                    <div class="col-md-10">
-                        <div class="table-responsive">
-                            <table class="table">
+                        <div class="col-md-10">
+                            <input type="text" id="last_name" name="last_name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.last_name') }}" maxlength="191" required="required">
+                        </div>
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        <label class="col-md-2 form-control-label" for="email">
+                            {{ __('validation.attributes.backend.access.users.email') }}
+                        </label>
+
+                        <div class="col-md-10">
+                            <input type="email" id="email" name="email" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.email') }}" maxlength="191" required="required">
+                        </div>
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        <label class="col-md-2 form-control-label" for="password">
+                            {{ __('validation.attributes.backend.access.users.password') }}
+                        </label>
+
+                        <div class="col-md-10">
+                            <input type="password" id="password" name="password" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.password') }}" required="required">
+                        </div>
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        <label class="col-md-2 form-control-label" for="password_confirmation">
+                            {{ __('validation.attributes.backend.access.users.password_confirmation') }}
+                        </label>
+
+                        <div class="col-md-10">
+                            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.password_confirmation') }}" required="required">
+                        </div>
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        <label class="col-md-2 form-control-label" for="active">
+                            {{ __('validation.attributes.backend.access.users.active') }}
+                        </label>
+
+                        <div class="col-md-10">
+                            <input type="checkbox" name="active" value="1" id="active" checked="checked" />
+                        </div>
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        <label class="col-md-2 form-control-label" for="confirmed">
+                            {{ __('validation.attributes.backend.access.users.confirmed') }}
+                        </label>
+
+                        <div class="col-md-10">
+                            <input type="checkbox" name="confirmed" value="1" id="confirmed" checked="checked" />
+                        </div>
+                    </div><!--form-group-->
+
+                    @if (! config('access.users.requires_approval'))
+                        <div class="form-group row">
+                            <label class="col-md-2 form-control-label" for="confirmation_email">
+                                {{ __('validation.attributes.backend.access.users.send_confirmation_email') }}<br/>
+                                <small>{{ __('strings.backend.access.users.if_confirmed_off') }}</small>
+                            </label>
+
+                            <div class="col-md-10">
+                                <input type="checkbox" name="confirmation_email" value="1" id="confirmation_email" />
+                            </div>
+                        </div><!--form-group-->
+                    @endif
+
+                    <div class="form-group row">
+                        <label class="col-md-2 form-control-label">
+                            Abilities
+                        </label>
+
+                        <div class="col-md-10">
+                            <table class="table table-responsive">
                                 <thead>
                                     <tr>
                                         <th>Roles</th>
@@ -165,15 +186,32 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div><!--table-responsive-->
-                    </div>
-                </div><!--form-group-->
-            </div><!-- card-body -->
+                        </div>
+                    </div><!--form-group-->
 
-            <div class="card-footer">
-                {{ form_cancel(route('admin.auth.user.index'), __('buttons.general.cancel')) }}
-                {{ form_submit(__('buttons.general.crud.create')) }}
-            </div><!--card-footer-->
-        </div><!--card-->
-    </form>
+                    <div class="row">
+                        <div class="col">
+                            {{ form_cancel(route('admin.auth.user.index'), __('buttons.general.cancel')) }}
+                            {{ form_submit(__('buttons.general.crud.create')) }}
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <!--/.col-->
+        </div>
+        <!--/.row-->
+    </div>
+
+    <div class="card-footer">
+        <div class="row">
+            <div class="col">
+                <small class="float-right text-muted">
+
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
