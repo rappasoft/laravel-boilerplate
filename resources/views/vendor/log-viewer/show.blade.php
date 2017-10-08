@@ -176,7 +176,7 @@
     </div>
 @endsection
 
-@section('scripts')
+@push('after-scripts')
     <script>
         $(function () {
             var deleteLogModal = $('#delete-log-modal'),
@@ -199,7 +199,7 @@
                             location.replace("{{ route('log-viewer::logs.list') }}");
                         }
                         else {
-                            alert('OOPS ! This is a lack of coffee exception !')
+                            alert('OOPS ! This is a lack of coffee exception!')
                         }
                     },
                     error: function(xhr, textStatus, errorThrown) {
@@ -213,15 +213,14 @@
             });
 
             @unless (empty(log_styler()->toHighlight()))
-            $('.stack-content').each(function() {
-                var $this = $(this);
-                var html = $this.html().trim()
-                    .replace(/({!! join(log_styler()->toHighlight(), '|') !!})/gm, '<strong>$1</strong>');
+                $('.stack-content').each(function() {
+                    var $this = $(this);
+                    var html = $this.html().trim()
+                        .replace(/({!! join(log_styler()->toHighlight(), '|') !!})/gm, '<strong>$1</strong>');
 
-                $this.html(html);
-            });
+                    $this.html(html);
+                });
             @endunless
         });
     </script>
-
-@endsection
+@endpush

@@ -81,7 +81,6 @@
     </div>
 
     {!! $rows->render('log-viewer::_pagination.bootstrap-4') !!}
-
 @endsection
 
 @section('modals')
@@ -112,7 +111,7 @@
     </div>
 @endsection
 
-@section('scripts')
+@push('after-scripts')
     <script>
         $(function () {
 
@@ -166,4 +165,4 @@
             });
         });
     </script>
-@endsection
+@endpush
