@@ -20,7 +20,7 @@
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label for="first_name">{{ __('validation.attributes.frontend.first_name') }}</label>
-                                    <input type="text" name="first_name" id="first_name" class="form-control" maxlength="191" placeholder="{{ __('validation.attributes.frontend.first_name') }}" autofocus="autofocus" />
+                                    <input type="text" name="first_name" id="first_name" class="form-control" maxlength="191" placeholder="{{ __('validation.attributes.frontend.first_name') }}" />
                                 </div><!--col-->
                             </div><!--row-->
 

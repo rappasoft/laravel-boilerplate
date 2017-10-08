@@ -18,31 +18,35 @@ class Socialite
         $socialite_links = '';
 
         if (config('services.bitbucket.active')) {
-            $socialite_enable[] = link_to_route('frontend.auth.social.login', __('labels.frontend.auth.login_with', ['social_media' => 'Bit Bucket']), 'bitbucket');
+            $socialite_enable[] = "<a href='".route('frontend.auth.social.login', 'bitbucket')."' class='btn btn-sm btn-outline-info m-1'><i class='fa fa-bitbucket'></i>  ".__('labels.frontend.auth.login_with', ['social_media' => 'BitBucket'])."</a>";
         }
 
         if (config('services.facebook.active')) {
-            $socialite_enable[] = link_to_route('frontend.auth.social.login', __('labels.frontend.auth.login_with', ['social_media' => 'Facebook']), 'facebook');
+            $socialite_enable[] = "<a href='".route('frontend.auth.social.login', 'facebook')."' class='btn btn-sm btn-outline-info m-1'><i class='fa fa-facebook'></i>  ".__('labels.frontend.auth.login_with', ['social_media' => 'Facebook'])."</a>";
         }
 
         if (config('services.google.active')) {
-            $socialite_enable[] = link_to_route('frontend.auth.social.login', __('labels.frontend.auth.login_with', ['social_media' => 'Google']), 'google');
+            $socialite_enable[] = "<a href='".route('frontend.auth.social.login', 'google')."' class='btn btn-sm btn-outline-info m-1'><i class='fa fa-google'></i>  ".__('labels.frontend.auth.login_with', ['social_media' => 'Google'])."</a>";
         }
 
         if (config('services.github.active')) {
-            $socialite_enable[] = link_to_route('frontend.auth.social.login', __('labels.frontend.auth.login_with', ['social_media' => 'Github']), 'github');
+            $socialite_enable[] = "<a href='".route('frontend.auth.social.login', 'github')."' class='btn btn-sm btn-outline-info m-1'><i class='fa fa-github'></i> ".__('labels.frontend.auth.login_with', ['social_media' => 'Github'])."</a>";
         }
 
         if (config('services.linkedin.active')) {
-            $socialite_enable[] = link_to_route('frontend.auth.social.login', __('labels.frontend.auth.login_with', ['social_media' => 'Linked In']), 'linkedin');
+            $socialite_enable[] = "<a href='".route('frontend.auth.social.login', 'linkedin')."' class='btn btn-sm btn-outline-info m-1'><i class='fa fa-linkedin'></i>  ".__('labels.frontend.auth.login_with', ['social_media' => 'LinkedIn'])."</a>";
         }
 
         if (config('services.twitter.active')) {
-            $socialite_enable[] = link_to_route('frontend.auth.social.login', __('labels.frontend.auth.login_with', ['social_media' => 'Twitter']), 'twitter');
+            $socialite_enable[] = "<a href='".route('frontend.auth.social.login', 'twitter')."' class='btn btn-sm btn-outline-info m-1'><i class='fa fa-twitter'></i>  ".__('labels.frontend.auth.login_with', ['social_media' => 'Twitter'])."</a>";
         }
 
+        if (count($socialite_enable)) {
+			$socialite_links .= '<hr />';
+		}
+
         for ($i = 0; $i < count($socialite_enable); $i++) {
-            $socialite_links .= ($socialite_links != '' ? '&nbsp;|&nbsp;' : '').$socialite_enable[$i];
+            $socialite_links .= ($socialite_links != '' ? ' ' : '').$socialite_enable[$i];
         }
 
         return $socialite_links;

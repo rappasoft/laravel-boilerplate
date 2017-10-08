@@ -20,7 +20,7 @@
                             <div class="col">
                                 <div class="form-group">
                                     <label for="email">{{ __('validation.attributes.frontend.email') }}</label>
-                                    <input type="email" name="email" id="email" class="form-control" maxlength="191" placeholder="{{ __('validation.attributes.frontend.email') }}" required="required" autofocus="autofocus" />
+                                    <input type="email" name="email" id="email" class="form-control" maxlength="191" placeholder="{{ __('validation.attributes.frontend.email') }}" required="required" />
                                 </div><!--form-group-->
                             </div><!--col-->
                         </div><!--row-->
