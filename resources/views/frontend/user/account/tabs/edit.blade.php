@@ -1,11 +1,12 @@
-{{ Form::model($logged_in_user, ['route' => 'frontend.user.profile.update', 'class' => 'form-horizontal', 'method' => 'PATCH']) }}
+<form action="{{ route('frontend.user.profile.update') }}" method="post" class="form-horizontal">
+    {{ csrf_field() }}
+    {{ method_field('PATCH') }}
 
     <div class="row">
         <div class="col">
             <div class="form-group">
-                {{ Form::label('first_name', __('validation.attributes.frontend.first_name')) }}
-                {{ Form::text('first_name', null,
-                ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => __('validation.attributes.frontend.first_name')]) }}
+                <label for="first_name">{{ __('validation.attributes.frontend.first_name') }}</label>
+                <input type="text" name="first_name" id="first_name" class="form-control" maxlength="191" placeholder="{{ __('validation.attributes.frontend.first_name') }}" value="{{ $logged_in_user->first_name }}" required="required" autofocus="autofocus" />
             </div><!--form-group-->
         </div><!--col-->
     </div><!--row-->
@@ -13,9 +14,8 @@
     <div class="row">
         <div class="col">
             <div class="form-group">
-                {{ Form::label('last_name', __('validation.attributes.frontend.last_name')) }}
-                {{ Form::text('last_name', null,
-                ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.last_name')]) }}
+                <label for="last_name">{{ __('validation.attributes.frontend.last_name') }}</label>
+                <input type="text" name="last_name" id="last_name" class="form-control" maxlength="191" placeholder="{{ __('validation.attributes.frontend.last_name') }}" value="{{ $logged_in_user->last_name }}" required="required" />
             </div><!--form-group-->
         </div><!--col-->
     </div><!--row-->
@@ -27,8 +27,8 @@
                     <i class="fa fa-info-circle"></i> {{  __('strings.frontend.user.change_email_notice') }}
                 </div>
                 <div class="form-group">
-                    {{ Form::label('email', __('validation.attributes.frontend.email')) }}
-                    {{ Form::email('email', null, ['class' => 'form-control', 'required' => 'required', 'maxlength' => '191', 'placeholder' => __('validation.attributes.frontend.email')]) }}
+                    <label for="email">{{ __('validation.attributes.frontend.email') }}</label>
+                    <input type="email" name="email" id="email" class="form-control" maxlength="191" placeholder="{{ __('validation.attributes.frontend.email') }}" value="{{ $logged_in_user->email }}" required="required" />
                 </div><!--form-group-->
             </div><!--col-->
         </div><!--row-->
@@ -43,5 +43,4 @@
             </div><!--form-group-->
         </div><!--col-->
     </div><!--row-->
-
-{{ Form::close() }}
+</form>

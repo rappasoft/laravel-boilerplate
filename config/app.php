@@ -191,7 +191,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\MacroServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
     ],
@@ -248,7 +247,6 @@ return [
          */
         'Active' => HieuLe\Active\Facades\Active::class,
         'Captcha' => Arcanedev\NoCaptcha\Facades\NoCaptcha::class,
-        'Form' => Collective\Html\FormFacade::class,
         'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 

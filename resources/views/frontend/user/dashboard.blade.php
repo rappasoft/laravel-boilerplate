@@ -1,13 +1,9 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-
     <div class="row mb-4">
-
         <div class="col">
-
             <div class="card">
-
                 <div class="card-header">
                     <strong>
                         <i class="fa fa-dashboard"></i> {{ __('navs.frontend.dashboard') }}
@@ -16,9 +12,7 @@
 
                 <div class="card-body">
                     <div class="row">
-
                         <div class="col col-sm-4 order-1 order-sm-2  mb-4">
-
                             <div class="card mb-4 bg-light">
                                 <img class="card-img-top" src="{{ $logged_in_user->picture }}" alt="Profile Picture">
 
@@ -36,7 +30,7 @@
 
                                     <p class="card-text">
 
-                                        <a href="{{ route ('frontend.user.account')}}" class="btn btn-info btn-sm mb-1">
+                                        <a href="{{ route('frontend.user.account')}}" class="btn btn-info btn-sm mb-1">
                                             <i class="fa fa-user-circle-o"></i> {{ __('navs.frontend.user.account') }}
                                         </a>
 
@@ -137,19 +131,11 @@
                                         </div><!--card-body-->
                                     </div><!--card-->
                                 </div><!--col-md-6-->
-
                             </div><!--row-->
-
                         </div><!--col-md-8-->
-
                     </div><!-- row -->
-
                 </div> <!-- card-body -->
-
             </div><!-- card -->
-
         </div><!-- row -->
-
     </div><!-- row -->
-
 @endsection

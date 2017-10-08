@@ -1,11 +1,8 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-
     <div class="row justify-content-center align-items-center">
-
         <div class="col col-sm-8 align-self-center">
-
             <div class="card">
                 <div class="card-header">
                     <strong>
@@ -14,9 +11,7 @@
                 </div>
 
                 <div class="card-body">
-
                     <div role="tabpanel">
-
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a href="#profile" class="nav-link active" aria-controls="profile" role="tab" data-toggle="tab">{{ __('navs.frontend.user.profile') }}</a>
@@ -34,7 +29,6 @@
                         </ul>
 
                         <div class="tab-content">
-
                             <div role="tabpanel" class="tab-pane fade show active pt-3" id="profile" aria-labelledby="profile-tab">
                                 @include('frontend.user.account.tabs.profile')
                             </div><!--tab panel profile-->
@@ -48,17 +42,10 @@
                                     @include('frontend.user.account.tabs.change-password')
                                 </div><!--tab panel change password-->
                             @endif
-
                         </div><!--tab content-->
-
                     </div><!--tab panel-->
-
                 </div><!--card body-->
-
             </div><!-- card -->
-
         </div><!-- col-xs-12 -->
-
     </div><!-- row -->
-
 @endsection

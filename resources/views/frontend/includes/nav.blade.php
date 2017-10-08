@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-    {{ link_to_route('frontend.index', app_name(), [], ['class' => 'navbar-brand']) }}
+    <a href="{{ route('frontend.index') }}" class="navbar-brand">{{ app_name() }}</a>
 
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('labels.general.toggle_navigation') }}">
         <span class="navbar-toggler-icon"></span>
@@ -17,14 +17,14 @@
             @endif
 
             @auth
-                <li class="nav-item">{{ link_to_route('frontend.user.dashboard', __('navs.frontend.dashboard'), [], ['class' => 'nav-link ' . active_class(Active::checkRoute('frontend.user.dashboard')) ]) }}</li>
+                <li class="nav-item"><a href="{{route('frontend.user.dashboard')}}" class="nav-link {{ active_class(Active::checkRoute('frontend.user.dashboard')) }}">{{ __('navs.frontend.dashboard') }}</a></li>
             @endauth
 
             @guest
-                <li class="nav-item">{{ link_to_route('frontend.auth.login', __('navs.frontend.login'), [], ['class' =>  'nav-link ' . active_class(Active::checkRoute('frontend.auth.login')) ]) }}</li>
+                <li class="nav-item"><a href="{{route('frontend.auth.login')}}" class="nav-link {{ active_class(Active::checkRoute('frontend.auth.login')) }}">{{ __('navs.frontend.login') }}</a></li>
 
                 @if (config('access.registration'))
-                    <li class="nav-item">{{ link_to_route('frontend.auth.register', __('navs.frontend.register'), [], ['class' =>  'nav-link ' . active_class(Active::checkRoute('frontend.auth.register')) ]) }}</li>
+                    <li class="nav-item"><a href="{{route('frontend.auth.register')}}" class="nav-link {{ active_class(Active::checkRoute('frontend.auth.register')) }}">{{ __('navs.frontend.register') }}</a></li>
                 @endif
             @else
                 <li class="nav-item dropdown">
@@ -33,16 +33,16 @@
 
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuUser">
                         @can('view backend')
-                            {{ link_to_route('admin.dashboard', __('navs.frontend.user.administration'), [], ['class' => 'dropdown-item']) }}
+                            <a href="{{ route('admin.dashboard') }}" class="dropdown-item">{{ __('navs.frontend.user.administration') }}</a>
                         @endcan
 
-                        {{ link_to_route('frontend.user.account', __('navs.frontend.user.account'), [], ['class' => 'dropdown-item ' . active_class(Active::checkRoute('frontend.user.account')) ]) }}
-                        {{ link_to_route('frontend.auth.logout', __('navs.general.logout'), [], ['class' => 'dropdown-item']) }}
+                        <a href="{{ route('frontend.user.account') }}" class="dropdown-item {{ active_class(Active::checkRoute('frontend.user.account')) }}">{{ __('navs.frontend.user.account') }}</a>
+                        <a href="{{ route('frontend.auth.logout') }}" class="dropdown-item">{{ __('navs.general.logout') }}</a>
                     </div>
                 </li>
             @endguest
 
-            <li class="nav-item">{{ link_to_route('frontend.contact', __('navs.frontend.contact'), [], ['class' => 'nav-link ' . active_class(Active::checkRoute('frontend.contact')) ]) }}</li>
+            <li class="nav-item"><a href="{{route('frontend.contact')}}" class="nav-link {{ active_class(Active::checkRoute('frontend.contact')) }}">{{ __('navs.frontend.contact') }}</a></li>
         </ul>
     </div>
 </nav>
