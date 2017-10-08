@@ -9,9 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Repositories\Frontend\Auth\UserRepository;
 
 /**
- * Class RegisterController
- *
- * @package App\Http\Controllers\Frontend\Auth
+ * Class RegisterController.
  */
 class RegisterController extends Controller
 {

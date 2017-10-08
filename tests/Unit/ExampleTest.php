@@ -5,9 +5,7 @@ namespace Tests\Unit;
 use Tests\TestCase;
 
 /**
- * Class ExampleTest
- *
- * @package Tests\Unit
+ * Class ExampleTest.
  */
 class ExampleTest extends TestCase
 {
