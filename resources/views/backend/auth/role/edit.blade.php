@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+
 <div class="card">
     <div class="card-body">
         <div class="row">
@@ -25,7 +26,7 @@
             <!--/.col-->
             <div class="col-sm-7">
                 <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
-                    <button onclick="window.history.back();"class="btn btn-warning ml-1"><i class="fa fa-reply"></i></button>
+                    <button onclick="window.history.back();"class="btn btn-warning ml-1" data-toggle="tooltip" title="Return Back"><i class="fa fa-reply"></i></button>
                 </div>
             </div>
             <!--/.col-->
@@ -40,37 +41,34 @@
                     {{ csrf_field() }}
                     {{ method_field('PATCH') }}
 
+                    <div class="form-group row">
+                        <label class="col-md-2 form-control-label" for="name">
+                            {{ __('validation.attributes.backend.access.roles.name') }}
+                        </label>
 
-                    <div class="card-body">
-                        <div class="form-group row">
-                            <label class="col-md-2 form-control-label" for="name">
-                                {{ __('validation.attributes.backend.access.roles.name') }}
-                            </label>
+                        <div class="col-md-10">
+                            <input type="text" id="name" name="name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.roles.name') }}" value="{{ $role->name }}" maxlength="191" required="required" autofocus="autofocus">
+                        </div>
+                    </div><!--form-group-->
 
-                            <div class="col-md-10">
-                                <input type="text" id="name" name="name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.roles.name') }}" value="{{ $role->name }}" maxlength="191" required="required" autofocus="autofocus">
-                            </div>
-                        </div><!--form-group-->
+                    <div class="form-group row">
+                        <label class="col-md-2 form-control-label" for="name">
+                            {{ __('validation.attributes.backend.access.roles.associated_permissions') }}
+                        </label>
 
-                        <div class="form-group row">
-                            <label class="col-md-2 form-control-label" for="name">
-                                {{ __('validation.attributes.backend.access.roles.associated_permissions') }}
-                            </label>
-
-                            <div class="col-md-10">
-                                @if ($permissions->count())
-                                    @foreach($permissions as $permission)
-                                        <div class="checkbox">
-                                            <label for="permission-{{ $permission->id }}">
-                                                <input type="checkbox" name="permissions[]" value="{{ $permission->name }}" id="permission-{{ $permission->id }}" {{ in_array($permission->name, $rolePermissions) ? 'checked="checked"' : '' }} />
-                                                {{ ucwords($permission->name) }}
-                                            </label>
-                                        </div>
-                                    @endforeach
-                                @endif
-                            </div>
-                        </div><!--form-group-->
-                    </div><!-- card-body -->
+                        <div class="col-md-10">
+                            @if ($permissions->count())
+                                @foreach($permissions as $permission)
+                                    <div class="checkbox">
+                                        <label for="permission-{{ $permission->id }}">
+                                            <input type="checkbox" name="permissions[]" value="{{ $permission->name }}" id="permission-{{ $permission->id }}" {{ in_array($permission->name, $rolePermissions) ? 'checked="checked"' : '' }} />
+                                            {{ ucwords($permission->name) }}
+                                        </label>
+                                    </div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div><!--form-group-->
 
                     <div class="row">
                         <div class="col">
