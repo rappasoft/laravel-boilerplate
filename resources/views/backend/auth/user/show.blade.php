@@ -26,8 +26,10 @@
                 </div>
             </div>
             <!--/.col-->
-            <div class="col-sm-7 pull-right">
-                @include('backend.auth.user.includes.header-buttons')
+            <div class="col-sm-7">
+                <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
+                    <button onclick="window.history.back();"class="btn btn-warning ml-1"><i class="fa fa-reply"></i></button>
+                </div>
             </div>
             <!--/.col-->
         </div>
@@ -37,10 +39,10 @@
             <div class="col">
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-expanded="true">{{ __('labels.backend.access.users.tabs.titles.overview') }}</a>
+                        <a class="nav-link active" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-expanded="true"><i class="fa fa-user"></i> {{ __('labels.backend.access.users.tabs.titles.overview') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-expanded="false">{{ __('labels.backend.access.users.tabs.titles.history') }}</a>
+                        <a class="nav-link" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-expanded="false"><i class="fa fa-history"></i> {{ __('labels.backend.access.users.tabs.titles.history') }}</a>
                     </li>
                 </ul>
 
