@@ -8,6 +8,11 @@ use App\Events\Frontend\Auth\UserRegistered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Repositories\Frontend\Auth\UserRepository;
 
+/**
+ * Class RegisterController
+ *
+ * @package App\Http\Controllers\Frontend\Auth
+ */
 class RegisterController extends Controller
 {
     use RegistersUsers;

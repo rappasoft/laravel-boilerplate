@@ -121,14 +121,14 @@
                 submitBtn      = deleteLogForm.find('button[type=submit]');
 
             deleteLogModal.on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget) // Button that triggered the modal
-                var logdate = button.data('log-date') // Extract info from data-* attributes
-                var modal = $(this)
+                var button = $(event.relatedTarget); // Button that triggered the modal
+                var logdate = button.data('log-date'); // Extract info from data-* attributes
+                var modal = $(this);
                 modal.find('.modal-body p').html(
                     'Are you sure you want to <span class="badge badge-danger">DELETE</span> this log file <span class="badge badge-primary">' + logdate + '</span> ?'
                 );
                 deleteLogForm.find('input[name=date]').val(logdate)
-            })
+            });
 
             deleteLogForm.on('submit', function(event) {
                 event.preventDefault();

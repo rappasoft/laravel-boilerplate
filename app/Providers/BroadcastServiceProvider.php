@@ -5,6 +5,11 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Broadcast;
 
+/**
+ * Class BroadcastServiceProvider
+ *
+ * @package App\Providers
+ */
 class BroadcastServiceProvider extends ServiceProvider
 {
     /**

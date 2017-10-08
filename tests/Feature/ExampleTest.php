@@ -4,6 +4,11 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 
+/**
+ * Class ExampleTest
+ *
+ * @package Tests\Feature
+ */
 class ExampleTest extends TestCase
 {
     /**
