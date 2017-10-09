@@ -5,7 +5,6 @@ namespace App\Repositories\Backend\Auth;
 use App\Models\Auth\Role;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
-use App\Repositories\Traits\CacheResults;
 use App\Repositories\BaseEloquentRepository;
 use App\Events\Backend\Auth\Role\RoleCreated;
 use App\Events\Backend\Auth\Role\RoleUpdated;
@@ -15,7 +14,6 @@ use App\Events\Backend\Auth\Role\RoleUpdated;
  */
 class RoleRepository extends BaseEloquentRepository
 {
-    use CacheResults;
 
     /**
      * @var array
@@ -54,7 +52,6 @@ class RoleRepository extends BaseEloquentRepository
 
                 event(new RoleCreated($role));
 
-				app()['cache']->forget('spatie.role.cache');
                 return $role;
             }
 
@@ -92,7 +89,6 @@ class RoleRepository extends BaseEloquentRepository
 
                 event(new RoleUpdated($role));
 
-				app()['cache']->forget('spatie.role.cache');
                 return $role;
             }
 
