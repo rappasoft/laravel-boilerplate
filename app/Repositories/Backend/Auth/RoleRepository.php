@@ -54,7 +54,8 @@ class RoleRepository extends BaseEloquentRepository
 
                 event(new RoleCreated($role));
 
-				app()['cache']->forget('spatie.role.cache');
+                app()['cache']->forget('spatie.role.cache');
+
                 return $role;
             }
 
@@ -92,7 +93,8 @@ class RoleRepository extends BaseEloquentRepository
 
                 event(new RoleUpdated($role));
 
-				app()['cache']->forget('spatie.role.cache');
+                app()['cache']->forget('spatie.role.cache');
+
                 return $role;
             }
 
