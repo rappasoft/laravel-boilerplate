@@ -144,7 +144,8 @@ return [
                     'associated_roles'        => 'Tilknyttede Roller',
                     'confirmed'               => 'Bekreftet',
                     'email'                   => 'E-mailadresse',
-                    'name'                    => 'Navn',
+                    'first_name'              => 'Brukernavn',
+                    'last_name'               => 'Etternavn',
                     'other_permissions'       => 'Andre Rettigheter',
                     'password'                => 'Passord',
                     'password_confirmation'   => 'Bekreft passord',
@@ -155,7 +156,8 @@ return [
 
         'frontend' => [
             'email'                     => 'E-mailadresse',
-            'name'                      => 'Navn',
+            'first_name'                => 'Brukernavn',
+            'last_name'                 => 'Etternavn',
             'password'                  => 'Passord',
             'password_confirmation'     => 'Bekreft passord',
             'phone' => 'Phone',
