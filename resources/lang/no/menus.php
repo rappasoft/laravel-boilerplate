@@ -19,39 +19,39 @@ return [
 
             'roles' => [
                 'all'        => 'Alle Roller',
-                'create'     => 'Opret Rolle',
+                'create'     => 'Oppret Rolle',
                 'edit'       => 'Rediger Rolle',
                 'management' => 'Rolleadministration',
                 'main'       => 'Roller',
             ],
 
             'users' => [
-                'all'             => 'Alle Brugere',
-                'change-password' => 'Skift Adgangskode',
-                'create'          => 'Opret Bruger',
-                'deactivated'     => 'Deaktiverede Brugere',
-                'deleted'         => 'Slet Bruger',
-                'edit'            => 'Rediger Bruger',
-                'main'            => 'Brugere',
-                'view'            => 'View User',
+                'all'             => 'Alle Brukere',
+                'change-password' => 'Endre Passord',
+                'create'          => 'Oppret Bruker',
+                'deactivated'     => 'Deaktiverede Brukere',
+                'deleted'         => 'Slett Bruker',
+                'edit'            => 'Rediger Bruker',
+                'main'            => 'Brukere',
+                'view'            => 'Se på bruker',
             ],
         ],
 
         'log-viewer' => [
-            'main'      => 'Logbog',
+            'main'      => 'Hovedside',
             'dashboard' => 'Dashboard',
-            'logs'      => 'Logbog',
+            'logs'      => 'Logger',
         ],
 
         'sidebar' => [
-            'dashboard' => 'Betjeningspanel',
+            'dashboard' => 'Dashboard',
             'general'   => 'Generelt',
             'system'    => 'System',
         ],
     ],
 
     'language-picker' => [
-        'language' => 'Sprog',
+        'language' => 'Språk',
         /*
          * Add the new language to this array.
          * The key should have the same language code as the folder name.
@@ -63,6 +63,7 @@ return [
             'zh'    => '(Chinese Simplified)',
             'zh-TW' => '(Chinese Traditional)',
             'da'    => 'Dansk (Danish)',
+            'no'    => 'Norsk (Norwegian)',
             'de'    => 'Tysk (German)',
             'el'    => '(Greek)',
             'en'    => 'Engelsk (English)',
@@ -72,7 +73,6 @@ return [
             'it'    => 'Italiensk (Italian)',
             'ja'    => '(Japanese)',
             'nl'    => 'Hollandsk (Dutch)',
-            'no'    => 'Noors (Norwegian)',
             'pt_BR' => 'Brasiliansk portugisisk (Brazilian Portuguese)',
             'ru'    => 'Russisk (Russian)',
             'sv'    => 'Svensk (Swedish)',
