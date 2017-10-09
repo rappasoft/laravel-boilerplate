@@ -28,7 +28,7 @@ return [
             'deleted'             => 'Brukeren ble slettet.',
             'deleted_permanently' => 'Brukeren ble slettet permanent.',
             'restored'            => 'Brukeren ble gjenopprettet.',
-            'session_cleared'      => "Brukerens sessjon har blitt fjernet.",
+            'session_cleared'      => 'Brukerens sessjon har blitt fjernet.',
             'social_deleted' => 'Sosiale kontoer er fjernet.',
             'unconfirmed' => 'The user was successfully un-confirmed',
             'updated'             => 'Brukeren ble oppdateret.',
