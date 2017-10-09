@@ -59,8 +59,7 @@
                     </label>
 
                     <div class="col-md-10">
-                        <div class="table-responsive">
-                            <table class="table">
+                        <table class="table table-responsive">
                                 <thead>
                                 <tr>
                                     <th>Roles</th>
@@ -113,7 +112,6 @@
                                 </tr>
                                 </tbody>
                             </table>
-                        </div><!--table-responsive-->
                     </div>
                 </div><!--form-group-->
             </div><!-- card-body -->
