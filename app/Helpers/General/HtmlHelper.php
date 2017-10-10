@@ -70,7 +70,7 @@ class HtmlHelper
      */
     public function formCancel($cancel_to, $title, $classes = 'btn btn-danger btn-sm')
     {
-        return $this->toHtmlString('<a href="'.$cancel_to.'" class="'.$classes.'">'.$title.'</a>'.PHP_EOL);
+    	return html()->a($cancel_to, $title)->class($classes);
     }
 
     /**
@@ -81,7 +81,7 @@ class HtmlHelper
      */
     public function formSubmit($title, $classes = 'btn btn-success btn-sm pull-right')
     {
-        return $this->toHtmlString('<button type="submit" name="submit" class="'.$classes.'">'.$title.'</button>'.PHP_EOL);
+    	return html()->submit($title)->class($classes);
     }
 
     /**

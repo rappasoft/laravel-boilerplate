@@ -13,21 +13,27 @@
                 </div><!--card-header-->
 
                 <div class="card-body">
-                    <form action="{{ route('frontend.auth.register.post') }}" method="post">
-                        {{ csrf_field() }}
-
+                    {{ html()->form('POST', route('frontend.auth.register.post'))->open() }}
                         <div class="row">
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
-                                    <label for="first_name">{{ __('validation.attributes.frontend.first_name') }}</label>
-                                    <input type="text" name="first_name" id="first_name" class="form-control" maxlength="191" placeholder="{{ __('validation.attributes.frontend.first_name') }}" />
+                                    {{ html()->label(__('validation.attributes.frontend.first_name'))->for('first_name') }}
+
+                                    {{ html()->text('first_name')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.first_name'))
+                                        ->attribute('maxlength', 191) }}
                                 </div><!--col-->
                             </div><!--row-->
 
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
-                                    <label for="last_name">{{ __('validation.attributes.frontend.last_name') }}</label>
-                                    <input type="text" name="last_name" id="last_name" class="form-control" maxlength="191" placeholder="{{ __('validation.attributes.frontend.last_name') }}" autofocus="autofocus" />
+                                    {{ html()->label(__('validation.attributes.frontend.last_name'))->for('last_name') }}
+
+                                    {{ html()->text('last_name')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.last_name'))
+                                        ->attribute('maxlength', 191) }}
                                 </div><!--form-group-->
                             </div><!--col-->
                         </div><!--row-->
@@ -35,8 +41,13 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="email">{{ __('validation.attributes.frontend.email') }}</label>
-                                    <input type="email" name="email" id="email" class="form-control" maxlength="191" placeholder="{{ __('validation.attributes.frontend.email') }}" required="required" />
+                                    {{ html()->label(__('validation.attributes.frontend.email'))->for('email') }}
+
+                                    {{ html()->email('email')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.email'))
+                                        ->attribute('maxlength', 191)
+                                        ->required() }}
                                 </div><!--form-group-->
                             </div><!--col-->
                         </div><!--row-->
@@ -44,8 +55,12 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="password">{{ __('validation.attributes.frontend.password') }}</label>
-                                    <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('validation.attributes.frontend.password') }}" />
+                                    {{ html()->label(__('validation.attributes.frontend.password'))->for('password') }}
+
+                                    {{ html()->password('password')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.password'))
+                                        ->required() }}
                                 </div><!--form-group-->
                             </div><!--col-->
                         </div><!--row-->
@@ -53,8 +68,12 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="password_confirmation">{{ __('validation.attributes.frontend.password_confirmation') }}</label>
-                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('validation.attributes.frontend.password_confirmation') }}" />
+                                    {{ html()->label(__('validation.attributes.frontend.password_confirmation'))->for('password_confirmation') }}
+
+                                    {{ html()->password('password_confirmation')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.password_confirmation'))
+                                        ->required() }}
                                 </div><!--form-group-->
                             </div><!--col-->
                         </div><!--row-->
@@ -63,21 +82,19 @@
                             <div class="row">
                                 <div class="col">
                                     {!! Captcha::display() !!}
-                                    <input type="hidden" name="captcha_status" value="true" />
+                                    {{ html()->hidden('captcha_status', 'true') }}
                                 </div><!--col-->
                             </div><!--row-->
                         @endif
 
                         <div class="row">
                             <div class="col">
-                                <div class="form-group">
-                                    <button type="submit" name="button" class="btn btn-primary">
-                                        <i class='fa fa-check'></i> {{ __('labels.frontend.auth.register_button') }}
-                                    </button>
+                                <div class="form-group mb-0 clearfix">
+                                    {{ form_submit(__('labels.frontend.auth.register_button')) }}
                                 </div><!--form-group-->
                             </div><!--col-->
                         </div><!--row-->
-                    </form>
+                    {{ html()->form()->close() }}
                 </div><!-- card-body -->
             </div><!-- card -->
         </div><!-- col-md-8 -->

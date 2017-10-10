@@ -9,9 +9,7 @@
 @endsection
 
 @section('content')
-    <form action="{{ route('admin.auth.role.store') }}" method="post" class="form-horizontal">
-        {{ csrf_field() }}
-
+    {{ html()->form('POST', route('admin.auth.role.store'))->class('form-horizontal')->open() }}
         <div class="card">
             <div class="card-header">
                 {{ __('labels.backend.access.roles.create') }}
@@ -24,7 +22,12 @@
                     </label>
 
                     <div class="col-md-10">
-                        <input type="text" id="name" name="name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.roles.name') }}" maxlength="191" value="{{ old('name') }}" required="required" autofocus="autofocus">
+                        {{ html()->text('name')
+                            ->class('form-control')
+                            ->placeholder(__('validation.attributes.backend.access.roles.name'))
+                            ->attribute('maxlength', 191)
+                            ->required()
+                            ->autofocus() }}
                     </div>
                 </div><!--form-group-->
 
@@ -37,10 +40,7 @@
                         @if ($permissions->count())
                             @foreach($permissions as $permission)
                                 <div class="checkbox">
-                                    <label for="permission-{{ $permission->id }}">
-                                        <input type="checkbox" name="permissions[]" value="{{ $permission->name }}" id="permission-{{ $permission->id }}" {{ old('roles') && in_array($permission->name, old('permissions')) ? 'checked="checked"' : '' }} />
-                                        {{ ucwords($permission->name) }}
-                                    </label>
+                                    {{ html()->label(html()->checkbox('permissions[]', old('permissions') && in_array($permission->name, old('permissions')) ? true : false, $permission->name)->id('permission-'.$permission->id) . ' ' . ucwords($permission->name))->for('permission-'.$permission->id) }}
                                 </div>
                             @endforeach
                         @endif
@@ -53,5 +53,5 @@
                 {{ form_submit(__('buttons.general.crud.create')) }}
             </div><!--card-footer-->
         </div><!--card-->
-    </form>
+    {{ html()->form()->close() }}
 @endsection

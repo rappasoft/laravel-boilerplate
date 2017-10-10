@@ -13,14 +13,18 @@
                 </div><!--card-header-->
 
                 <div class="card-body">
-                    <form action="{{ route('frontend.contact.send') }}" method="post">
-                        {{ csrf_field() }}
-
+                    {{ html()->form('PATCH', route('frontend.contact.send'))->open() }}
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="name">{{ __('validation.attributes.frontend.name') }}</label>
-                                    <input type="text" name="name" id="name" class="form-control" maxlength="191" placeholder="{{ __('validation.attributes.frontend.name') }}" required="required" autofocus="autofocus" />
+                                    {{ html()->label(__('validation.attributes.frontend.name'))->for('name') }}
+
+                                    {{ html()->text('name')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.name'))
+                                        ->attribute('maxlength', 191)
+                                        ->required()
+                                        ->autofocus() }}
                                 </div><!--form-group-->
                             </div><!--col-->
                         </div><!--row-->
@@ -28,8 +32,13 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="email">{{ __('validation.attributes.frontend.email') }}</label>
-                                    <input type="email" name="email" id="email" class="form-control" maxlength="191" placeholder="{{ __('validation.attributes.frontend.email') }}" required="required" />
+                                    {{ html()->label(__('validation.attributes.frontend.email'))->for('email') }}
+
+                                    {{ html()->email('email')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.email'))
+                                        ->attribute('maxlength', 191)
+                                        ->required() }}
                                 </div><!--form-group-->
                             </div><!--col-->
                         </div><!--row-->
@@ -37,8 +46,13 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="phone">{{ __('validation.attributes.frontend.phone') }}</label>
-                                    <input type="text" name="phone" id="phone" class="form-control" maxlength="191" placeholder="{{ __('validation.attributes.frontend.phone') }}" />
+                                    {{ html()->label(__('validation.attributes.frontend.phone'))->for('phone') }}
+
+                                    {{ html()->text('phone')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.phone'))
+                                        ->attribute('maxlength', 191)
+                                        ->required() }}
                                 </div><!--form-group-->
                             </div><!--col-->
                         </div><!--row-->
@@ -46,22 +60,24 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="message">{{ __('validation.attributes.frontend.message') }}</label>
-                                    <textarea name="message" class="form-control" required="required" rows="3" placeholder="{{ __('validation.attributes.frontend.message') }}"></textarea>
+                                    {{ html()->label(__('validation.attributes.frontend.message'))->for('message') }}
+
+                                    {{ html()->textarea('message')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.message'))
+                                        ->attribute('rows', 3) }}
                                 </div><!--form-group-->
                             </div><!--col-->
                         </div><!--row-->
 
                         <div class="row">
                             <div class="col">
-                                <div class="form-group">
-                                    <button type="submit" name="button" class="btn btn-primary">
-                                        {{ __('labels.frontend.contact.button') }}
-                                    </button>
+                                <div class="form-group mb-0 clearfix">
+                                    {{ form_submit(__('labels.frontend.contact.button')) }}
                                 </div><!--form-group-->
                             </div><!--col-->
                         </div><!--row-->
-                    </form>
+                    {{ html()->form()->close() }}
                 </div><!--card-body-->
             </div><!--card-->
         </div><!--col-->

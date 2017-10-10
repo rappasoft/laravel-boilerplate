@@ -29,12 +29,16 @@
                         <tr>
                             <td>{{ ucfirst($role->name) }}</td>
                             <td>
-                                @if ($role->permissions->count())
-                                    @foreach ($role->permissions as $permission)
-                                        {{ ucwords($permission->name) }}
-                                    @endforeach
+                                @if ($role->id == 1)
+                                    All
                                 @else
-                                    None
+                                    @if ($role->permissions->count())
+                                        @foreach ($role->permissions as $permission)
+                                            {{ ucwords($permission->name) }}
+                                        @endforeach
+                                    @else
+                                        None
+                                    @endif
                                 @endif
                             </td>
                             <td>{{ $role->users->count() }}</td>

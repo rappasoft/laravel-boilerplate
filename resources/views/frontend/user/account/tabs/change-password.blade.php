@@ -1,12 +1,14 @@
-<form action="{{ route('frontend.auth.password.update') }}" method="post" class="form-horizontal">
-    {{ csrf_field() }}
-    {{ method_field('PATCH') }}
-
+{{ html()->form('PATCH', route('frontend.auth.password.update'))->class('form-horizontal')->open() }}
     <div class="row">
         <div class="col">
             <div class="form-group">
-                <label for="old_password">{{ __('validation.attributes.frontend.old_password') }}</label>
-                <input type="password" name="old_password" id="old_password" class="form-control" placeholder="{{ __('validation.attributes.frontend.old_password') }}" required="required" autofocus="autofocus" />
+                {{ html()->label(__('validation.attributes.frontend.old_password'))->for('old_password') }}
+
+                {{ html()->password('old_password')
+                    ->class('form-control')
+                    ->placeholder(__('validation.attributes.frontend.old_password'))
+                    ->autofocus()
+                    ->required() }}
             </div><!--form-group-->
         </div><!--col-->
     </div><!--row-->
@@ -14,8 +16,12 @@
     <div class="row">
         <div class="col">
             <div class="form-group">
-                <label for="password">{{ __('validation.attributes.frontend.password') }}</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('validation.attributes.frontend.password') }}" required="required" />
+                {{ html()->label(__('validation.attributes.frontend.password'))->for('password') }}
+
+                {{ html()->password('password')
+                    ->class('form-control')
+                    ->placeholder(__('validation.attributes.frontend.password'))
+                    ->required() }}
             </div><!--form-group-->
         </div><!--col-->
     </div><!--row-->
@@ -23,19 +29,21 @@
     <div class="row">
         <div class="col">
             <div class="form-group">
-                <label for="password_confirmation">{{ __('validation.attributes.frontend.password_confirmation') }}</label>
-                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('validation.attributes.frontend.password_confirmation') }}" required="required" />
+                {{ html()->label(__('validation.attributes.frontend.password_confirmation'))->for('password_confirmation') }}
+
+                {{ html()->password('password_confirmation')
+                    ->class('form-control')
+                    ->placeholder(__('validation.attributes.frontend.password_confirmation'))
+                    ->required() }}
             </div><!--form-group-->
         </div><!--col-->
     </div><!--row-->
 
     <div class="row">
         <div class="col">
-            <div class="form-group">
-                <button type="submit" name="button" class="btn btn-primary" id='change-password'>
-                    <i class='fa fa-save'></i> {{ __('labels.general.buttons.update') }}
-                </button>
+            <div class="form-group mb-0 clearfix">
+                {{ form_submit(__('labels.general.buttons.update')) }}
             </div><!--form-group-->
         </div><!--col-->
     </div><!--row-->
-</form>
+{{ html()->form()->close() }}

@@ -20,28 +20,30 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('frontend.auth.password.email.post') }}" method="post">
-                        {{ csrf_field() }}
-
+                    {{ html()->form('POST', route('frontend.auth.password.email.post'))->open() }}
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="email">{{ __('validation.attributes.frontend.email') }}</label>
-                                    <input type="email" name="email" id="email" class="form-control" maxlength="191" placeholder="{{ __('validation.attributes.frontend.email') }}" required="required" autofocus="autofocus" />
+                                    {{ html()->label(__('validation.attributes.frontend.email'))->for('email') }}
+
+                                    {{ html()->email('email')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.email'))
+                                        ->attribute('maxlength', 191)
+                                        ->required()
+                                        ->autofocus() }}
                                 </div><!--form-group-->
-                            </div>
-                        </div><!--row-->
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <button type="submit" name="button" class="btn btn-success">
-                                        <i class='fa fa-check'></i> {{ __('labels.frontend.passwords.send_password_reset_link_button') }}
-                                    </button>
-                                </div>
                             </div><!--col-->
                         </div><!--row-->
-                    </form>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group mb-0 clearfix">
+                                    {{ form_submit(__('labels.frontend.passwords.send_password_reset_link_button')) }}
+                                </div><!--form-group-->
+                            </div><!--col-->
+                        </div><!--row-->
+                    {{ html()->form()->close() }}
                 </div><!-- card-body -->
             </div><!-- card -->
         </div><!-- col-6 -->

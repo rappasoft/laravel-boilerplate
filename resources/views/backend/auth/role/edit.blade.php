@@ -9,10 +9,7 @@
 @endsection
 
 @section('content')
-    <form action="{{ route('admin.auth.role.update', $role) }}" method="post" class="form-horizontal">
-        {{ csrf_field() }}
-        {{ method_field('PATCH') }}
-
+    {{ html()->modelForm($role, 'PATCH', route('admin.auth.role.update', $role))->class('form-horizontal')->open() }}
         <div class="card">
             <div class="card-header">
                 {{ __('labels.backend.access.roles.edit') }}
@@ -25,7 +22,12 @@
                     </label>
 
                     <div class="col-md-10">
-                        <input type="text" id="name" name="name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.roles.name') }}" value="{{ old('name') ?? $role->name }}" maxlength="191" required="required" autofocus="autofocus">
+                        {{ html()->text('name')
+                            ->class('form-control')
+                            ->placeholder(__('validation.attributes.backend.access.roles.name'))
+                            ->attribute('maxlength', 191)
+                            ->required()
+                            ->autofocus() }}
                     </div>
                 </div><!--form-group-->
 
@@ -38,10 +40,7 @@
                         @if ($permissions->count())
                             @foreach($permissions as $permission)
                                 <div class="checkbox">
-                                    <label for="permission-{{ $permission->id }}">
-                                        <input type="checkbox" name="permissions[]" value="{{ $permission->name }}" id="permission-{{ $permission->id }}" {{ in_array($permission->name, $rolePermissions) ? 'checked="checked"' : '' }} />
-                                        {{ ucwords($permission->name) }}
-                                    </label>
+                                    {{ html()->label(html()->checkbox('permissions[]', in_array($permission->name, $rolePermissions), $permission->name)->id('permission-'.$permission->id) . ' ' . ucwords($permission->name))->for('permission-'.$permission->id) }}
                                 </div>
                             @endforeach
                         @endif
@@ -54,5 +53,5 @@
                 {{ form_submit(__('buttons.general.crud.update')) }}
             </div><!--card-footer-->
         </div><!--card-->
-    </form>
+    {{ html()->closeModelForm() }}
 @endsection
