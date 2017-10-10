@@ -79,7 +79,9 @@ class RoleController extends Controller
      */
     public function edit(Role $role, ManageRoleRequest $request)
     {
-		if ($role->id == 1) return redirect()->back()->withFlashDanger('You can not edit the administrator role.');
+        if ($role->id == 1) {
+            return redirect()->back()->withFlashDanger('You can not edit the administrator role.');
+        }
 
         return view('backend.auth.role.edit')
             ->withRole($role)
@@ -108,7 +110,9 @@ class RoleController extends Controller
      */
     public function destroy(Role $role, ManageRoleRequest $request)
     {
-    	if ($role->id == 1) return redirect()->back()->withFlashDanger('You can not delete the administrator role.');
+        if ($role->id == 1) {
+            return redirect()->back()->withFlashDanger('You can not delete the administrator role.');
+        }
 
         $this->roleRepository->delete($role->id);
 
