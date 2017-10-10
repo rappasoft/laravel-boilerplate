@@ -58,16 +58,16 @@
         },
         {
             "name": "appstract/laravel-blade-directives",
-            "version": "0.4.5",
+            "version": "0.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/appstract/laravel-blade-directives.git",
-                "reference": "d27d2afe01bf9b97e18ff2c9ac7e691844a12a7b"
+                "reference": "0302664c5c2176872bd42312a69218cf342beaa8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/appstract/laravel-blade-directives/zipball/d27d2afe01bf9b97e18ff2c9ac7e691844a12a7b",
-                "reference": "d27d2afe01bf9b97e18ff2c9ac7e691844a12a7b",
+                "url": "https://api.github.com/repos/appstract/laravel-blade-directives/zipball/0302664c5c2176872bd42312a69218cf342beaa8",
+                "reference": "0302664c5c2176872bd42312a69218cf342beaa8",
                 "shasum": ""
             },
             "require": {
@@ -107,7 +107,7 @@
                 "appstract",
                 "laravel-blade-directives"
             ],
-            "time": "2017-10-04T09:26:16+00:00"
+            "time": "2017-10-09T09:22:20+00:00"
         },
         {
             "name": "arcanedev/log-viewer",

@@ -28,7 +28,7 @@
                     </label>
 
                     <div class="col-md-10">
-                        <input type="text" id="first_name" name="first_name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.first_name') }}" maxlength="191" required="required" autofocus="autofocus">
+                        <input type="text" id="first_name" name="first_name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.first_name') }}" value="{{ old('first_name') }}" maxlength="191" required="required" autofocus="autofocus">
                     </div>
                 </div><!--form-group-->
 
@@ -38,7 +38,7 @@
                     </label>
 
                     <div class="col-md-10">
-                        <input type="text" id="last_name" name="last_name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.last_name') }}" maxlength="191" required="required">
+                        <input type="text" id="last_name" name="last_name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.last_name') }}" value="{{ old('last_name') }}" maxlength="191" required="required">
                     </div>
                 </div><!--form-group-->
 
@@ -48,7 +48,7 @@
                     </label>
 
                     <div class="col-md-10">
-                        <input type="email" id="email" name="email" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.email') }}" maxlength="191" required="required">
+                        <input type="email" id="email" name="email" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.email') }}" maxlength="191" value="{{ old('email') }}" required="required">
                     </div>
                 </div><!--form-group-->
 

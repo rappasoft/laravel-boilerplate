@@ -24,7 +24,7 @@
                     </label>
 
                     <div class="col-md-10">
-                        <input type="text" id="name" name="name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.roles.name') }}" maxlength="191" required="required" autofocus="autofocus">
+                        <input type="text" id="name" name="name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.roles.name') }}" maxlength="191" value="{{ old('name') }}" required="required" autofocus="autofocus">
                     </div>
                 </div><!--form-group-->
 
