@@ -32,6 +32,11 @@ class RoleRepository extends BaseEloquentRepository
      */
     public function create(array $data) : Role
     {
+    	// Make sure it doesn't already exist
+    	if ($this->roleExists($data['name'])) {
+    		throw new GeneralException('A role already exists with the name ' . $data['name']);
+		}
+
         if (! isset($data['permissions'])) {
             $data['permissions'] = [];
         }
@@ -67,7 +72,16 @@ class RoleRepository extends BaseEloquentRepository
      */
     public function update($id, array $data)
     {
+    	if ($id == 1) throw new GeneralException('You can not edit the administrator role.');
+
         $role = Role::findOrFail($id);
+
+        // If the name is changing make sure it doesn't already exist
+        if ($role->name != $data['name']) {
+			if ($this->roleExists($data['name'])) {
+				throw new GeneralException('A role already exists with the name ' . $data['name']);
+			}
+		}
 
         if (! isset($data['permissions'])) {
             $data['permissions'] = [];
@@ -94,4 +108,13 @@ class RoleRepository extends BaseEloquentRepository
             throw new GeneralException(trans('exceptions.backend.access.roles.update_error'));
         });
     }
+
+	/**
+	 * @param $name
+	 *
+	 * @return bool
+	 */
+	protected function roleExists($name) {
+    	return $this->model->where('name', $name)->count() > 0;
+	}
 }

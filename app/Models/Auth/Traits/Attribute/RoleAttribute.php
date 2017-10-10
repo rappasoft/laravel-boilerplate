@@ -33,6 +33,8 @@ trait RoleAttribute
      */
     public function getActionButtonsAttribute()
     {
+    	if ($this->id == 1) return 'N/A';
+
         return '<div class="btn-group btn-group-sm" role="group" aria-label="User Actions">
 			  '.$this->edit_button.'
 			  '.$this->delete_button.'
