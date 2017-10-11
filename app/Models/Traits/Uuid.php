@@ -17,7 +17,7 @@ trait Uuid
      */
     public function scopeUuid($query, $uuid)
     {
-        return $query->where(self::getUuidName(), $uuid);
+        return $query->where($this->getUuidName(), $uuid);
     }
 
     /**
@@ -28,7 +28,10 @@ trait Uuid
         return property_exists($this, 'uuidName') ? $this->uuidName : 'uuid';
     }
 
-    protected static function boot()
+	/**
+	 *
+	 */
+	protected static function boot()
     {
         parent::boot();
 
