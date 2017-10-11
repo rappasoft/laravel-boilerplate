@@ -26,7 +26,6 @@
             <!--/.col-->
             <div class="col-sm-7">
                 <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
-                    <button onclick="window.history.back();"class="btn btn-warning ml-1" data-toggle="tooltip" title="Return Back"><i class="fa fa-reply"></i></button>
                 </div>
             </div>
             <!--/.col-->
