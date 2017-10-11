@@ -64,7 +64,7 @@ return [
                 'mismatch'          => 'El código de verificación no coincide.',
                 'not_found'         => 'El código de verificación especificado no existe.',
                 'pending'            => 'Your account is currently pending approval.',
-                'resend'            => 'Su cuenta no ha sido verificada todavía. Por favor, revise su e-mail, o <a href="'.route('frontend.auth.account.confirm.resend', ':user_id').'">pulse aquí</a> para re-enviar el correo de verificación.',
+                'resend'            => 'Su cuenta no ha sido verificada todavía. Por favor, revise su e-mail, o <a href="'.route('frontend.auth.account.confirm.resend', ':user_uuid').'">pulse aquí</a> para re-enviar el correo de verificación.',
                 'success'           => 'Su cuenta ha sido verificada satisfactoriamente!',
                 'resent'            => 'Un nuevo correo de verificación le ha sido enviado.',
             ],

@@ -39,6 +39,10 @@ class UserConfirmationController extends Controller
             return redirect()->back()->withFlashDanger(__('alerts.backend.users.cant_resend_confirmation'));
         }
 
+		if ($user->isConfirmed()) {
+			return redirect()->back()->withFlashSuccess(__('exceptions.backend.access.users.already_confirmed'));
+		}
+
         $user->notify(new UserNeedsConfirmation($user->confirmation_code));
 
         return redirect()->back()->withFlashSuccess(__('alerts.backend.users.confirmation_email'));

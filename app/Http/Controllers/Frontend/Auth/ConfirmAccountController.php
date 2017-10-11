@@ -39,13 +39,19 @@ class ConfirmAccountController extends Controller
         return redirect()->route('frontend.auth.login')->withFlashSuccess(__('exceptions.frontend.auth.confirmation.success'));
     }
 
-    /**
-     * @param $user
-     *
-     * @return mixed
-     */
-    public function sendConfirmationEmail(User $user)
+	/**
+	 * @param $uuid
+	 *
+	 * @return mixed
+	 */
+	public function sendConfirmationEmail($uuid)
     {
+    	$user = $this->user->findByUuid($uuid);
+
+    	if ($user->isConfirmed()) {
+			return redirect()->route('frontend.auth.login')->withFlashSuccess(__('exceptions.frontend.auth.confirmation.already_confirmed'));
+		}
+
         $user->notify(new UserNeedsConfirmation($user->confirmation_code));
 
         return redirect()->route('frontend.auth.login')->withFlashSuccess(__('exceptions.frontend.auth.confirmation.resent'));
