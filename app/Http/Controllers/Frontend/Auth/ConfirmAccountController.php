@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
-use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\Frontend\Auth\UserRepository;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
@@ -39,18 +38,18 @@ class ConfirmAccountController extends Controller
         return redirect()->route('frontend.auth.login')->withFlashSuccess(__('exceptions.frontend.auth.confirmation.success'));
     }
 
-	/**
-	 * @param $uuid
-	 *
-	 * @return mixed
-	 */
-	public function sendConfirmationEmail($uuid)
+    /**
+     * @param $uuid
+     *
+     * @return mixed
+     */
+    public function sendConfirmationEmail($uuid)
     {
-    	$user = $this->user->findByUuid($uuid);
+        $user = $this->user->findByUuid($uuid);
 
-    	if ($user->isConfirmed()) {
-			return redirect()->route('frontend.auth.login')->withFlashSuccess(__('exceptions.frontend.auth.confirmation.already_confirmed'));
-		}
+        if ($user->isConfirmed()) {
+            return redirect()->route('frontend.auth.login')->withFlashSuccess(__('exceptions.frontend.auth.confirmation.already_confirmed'));
+        }
 
         $user->notify(new UserNeedsConfirmation($user->confirmation_code));
 

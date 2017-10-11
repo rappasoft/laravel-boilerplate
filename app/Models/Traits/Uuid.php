@@ -5,40 +5,35 @@ namespace App\Models\Traits;
 use Webpatser\Uuid\Uuid as PackageUuid;
 
 /**
- * Trait Uuid
- *
- * @package App
+ * Trait Uuid.
  */
 trait Uuid
 {
+    /**
+     * @param $query
+     * @param $uuid
+     *
+     * @return mixed
+     */
+    public function scopeUuid($query, $uuid)
+    {
+        return $query->where(self::getUuidName(), $uuid);
+    }
 
-	/**
-	 * @param $query
-	 * @param $uuid
-	 *
-	 * @return mixed
-	 */
-	public function scopeUuid($query, $uuid)
-	{
-		return $query->where(self::getUuidName(), $uuid);
-	}
+    /**
+     * @return string
+     */
+    public function getUuidName()
+    {
+        return property_exists($this, 'uuidName') ? $this->uuidName : 'uuid';
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getUuidName() {
-		return property_exists($this, 'uuidName') ? $this->uuidName : 'uuid';
-	}
+    protected static function boot()
+    {
+        parent::boot();
 
-	/**
-	 *
-	 */
-	protected static function boot()
-	{
-		parent::boot();
-
-		static::creating(function ($model) {
-			$model->{$model->getUuidName()} = PackageUuid::generate(4)->string;
-		});
-	}
+        static::creating(function ($model) {
+            $model->{$model->getUuidName()} = PackageUuid::generate(4)->string;
+        });
+    }
 }
