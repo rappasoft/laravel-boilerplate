@@ -13,10 +13,7 @@
 @endsection
 
 @section('content')
-    <form action="{{ route('admin.auth.user.change-password.post', $user) }}" method="post" class="form-horizontal">
-        {{ csrf_field() }}
-        {{ method_field('PATCH') }}
-
+    {{ html()->form('PATCH', route('admin.auth.user.change-password.post', $user))->class('form-horizontal') }}
         <div class="card">
             <div class="card-header">
                 {{ __('labels.backend.access.users.change_password_for', ['user' => $user->name]) }}
@@ -24,30 +21,33 @@
 
             <div class="card-body">
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="password">
-                        {{ __('validation.attributes.backend.access.users.password') }}
-                    </label>
+                    {{ html()->label(__('validation.attributes.backend.access.users.password'))->class('col-md-2 form-control-label')->for('password') }}
 
                     <div class="col-md-10">
-                        <input type="password" id="password" name="password" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.password') }}" required="required" autofocus="autofocus">
+                        {{ html()->password('password')
+                            ->class('form-control')
+                            ->placeholder( __('validation.attributes.backend.access.users.password'))
+                            ->required()
+                            ->autofocus() }}
                     </div>
                 </div><!--form-group-->
 
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="password_confirmation">
-                        {{ __('validation.attributes.backend.access.users.password_confirmation') }}
-                    </label>
+                    {{ html()->label(__('validation.attributes.backend.access.users.password_confirmation'))->class('col-md-2 form-control-label')->for('password_confirmation') }}
 
                     <div class="col-md-10">
-                        <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.password_confirmation') }}" required="required">
+                        {{ html()->password('password_confirmation')
+                            ->class('form-control')
+                            ->placeholder( __('validation.attributes.backend.access.users.password_confirmation'))
+                            ->required() }}
                     </div>
                 </div><!--form-group-->
             </div><!-- card-body -->
 
-            <div class="card-footer">
+            <div class="card-footer clearfix">
                 {{ form_cancel(route('admin.auth.user.index'), __('buttons.general.cancel')) }}
                 {{ form_submit(__('buttons.general.crud.update')) }}
             </div><!--card-footer-->
         </div><!--card-->
-    </form>
+    {{ html()->form()->close() }}
 @endsection

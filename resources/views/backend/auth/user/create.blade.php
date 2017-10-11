@@ -13,9 +13,7 @@
 @endsection
 
 @section('content')
-    <form action="{{ route('admin.auth.user.store') }}" method="post" class="form-horizontal">
-        {{ csrf_field() }}
-
+    {{ html()->form('POST', route('admin.auth.user.store'))->class('form-horizontal')->open() }}
         <div class="card">
             <div class="card-header">
                 {{ __('labels.backend.access.users.create') }}
@@ -23,92 +21,92 @@
 
             <div class="card-body">
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="first_name">
-                        {{ __('validation.attributes.backend.access.users.first_name') }}
-                    </label>
+                    {{ html()->label(__('validation.attributes.backend.access.users.first_name'))->class('col-md-2 form-control-label')->for('first_name') }}
 
                     <div class="col-md-10">
-                        <input type="text" id="first_name" name="first_name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.first_name') }}" value="{{ old('first_name') }}" maxlength="191" required="required" autofocus="autofocus">
+                        {{ html()->text('first_name')
+                            ->class('form-control')
+                            ->placeholder(__('validation.attributes.backend.access.users.first_name'))
+                            ->attribute('maxlength', 191)
+                            ->required()
+                            ->autofocus() }}
                     </div>
                 </div><!--form-group-->
 
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="last_name">
-                        {{ __('validation.attributes.backend.access.users.last_name') }}
-                    </label>
+                    {{ html()->label(__('validation.attributes.backend.access.users.last_name'))->class('col-md-2 form-control-label')->for('last_name') }}
 
                     <div class="col-md-10">
-                        <input type="text" id="last_name" name="last_name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.last_name') }}" value="{{ old('last_name') }}" maxlength="191" required="required">
+                        {{ html()->text('last_name')
+                            ->class('form-control')
+                            ->placeholder(__('validation.attributes.backend.access.users.last_name'))
+                            ->attribute('maxlength', 191)
+                            ->required() }}
                     </div>
                 </div><!--form-group-->
 
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="email">
-                        {{ __('validation.attributes.backend.access.users.email') }}
-                    </label>
+                    {{ html()->label(__('validation.attributes.backend.access.users.email'))->class('col-md-2 form-control-label')->for('email') }}
 
                     <div class="col-md-10">
-                        <input type="email" id="email" name="email" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.email') }}" maxlength="191" value="{{ old('email') }}" required="required">
+                        {{ html()->email('email')
+                            ->class('form-control')
+                            ->placeholder(__('validation.attributes.backend.access.users.email'))
+                            ->attribute('maxlength', 191)
+                            ->required() }}
                     </div>
                 </div><!--form-group-->
 
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="password">
-                        {{ __('validation.attributes.backend.access.users.password') }}
-                    </label>
+                    {{ html()->label(__('validation.attributes.backend.access.users.password'))->class('col-md-2 form-control-label')->for('password') }}
 
                     <div class="col-md-10">
-                        <input type="password" id="password" name="password" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.password') }}" required="required">
+                        {{ html()->password('password')
+                            ->class('form-control')
+                            ->placeholder(__('validation.attributes.backend.access.users.password'))
+                            ->required() }}
                     </div>
                 </div><!--form-group-->
 
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="password_confirmation">
-                        {{ __('validation.attributes.backend.access.users.password_confirmation') }}
-                    </label>
+                    {{ html()->label(__('validation.attributes.backend.access.users.password_confirmation'))->class('col-md-2 form-control-label')->for('password_confirmation') }}
 
                     <div class="col-md-10">
-                        <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.password_confirmation') }}" required="required">
+                        {{ html()->password('password_confirmation')
+                            ->class('form-control')
+                            ->placeholder(__('validation.attributes.backend.access.users.password_confirmation'))
+                            ->required() }}
                     </div>
                 </div><!--form-group-->
 
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="active">
-                        {{ __('validation.attributes.backend.access.users.active') }}
-                    </label>
+                    {{ html()->label(__('validation.attributes.backend.access.users.active'))->class('col-md-2 form-control-label')->for('active') }}
 
                     <div class="col-md-10">
-                        <input type="checkbox" name="active" value="1" id="active" checked="checked" />
+                        {{ html()->checkbox('active', true, '1') }}
                     </div>
                 </div><!--form-group-->
 
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="confirmed">
-                        {{ __('validation.attributes.backend.access.users.confirmed') }}
-                    </label>
+                    {{ html()->label(__('validation.attributes.backend.access.users.confirmed'))->class('col-md-2 form-control-label')->for('confirmed') }}
 
                     <div class="col-md-10">
-                        <input type="checkbox" name="confirmed" value="1" id="confirmed" checked="checked" />
+                        {{ html()->checkbox('confirmed', true, '1') }}
                     </div>
                 </div><!--form-group-->
 
                 @if (! config('access.users.requires_approval'))
                     <div class="form-group row">
-                        <label class="col-md-2 form-control-label" for="confirmation_email">
-                            {{ __('validation.attributes.backend.access.users.send_confirmation_email') }}<br/>
-                            <small>{{ __('strings.backend.access.users.if_confirmed_off') }}</small>
-                        </label>
+                        {{ html()->label(__('validation.attributes.backend.access.users.send_confirmation_email') . '<br/>' . '<small>' .  __('strings.backend.access.users.if_confirmed_off') . '</small>')->class('col-md-2 form-control-label')->for('first_name') }}
 
                         <div class="col-md-10">
-                            <input type="checkbox" name="confirmation_email" value="1" id="confirmation_email" />
+                            {{ html()->checkbox('confirmation_email', true, '1') }}
                         </div>
                     </div><!--form-group-->
                 @endif
 
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label">
-                        Abilities
-                    </label>
+                    {{ html()->label('Abilities')->class('col-md-2 form-control-label') }}
 
                     <div class="col-md-10">
                         <table class="table table-responsive">
@@ -126,10 +124,7 @@
                                                     <div class="card">
                                                         <div class="card-header">
                                                             <div class="checkbox">
-                                                                <label for="role-{{ $role->id }}">
-                                                                    <input type="checkbox" name="roles[]" value="{{ $role->name }}" {{ old('roles') && in_array($role->name, old('roles')) ? 'checked="checked"' : '' }} id="role-{{ $role->id }}" />
-                                                                    {{ ucfirst($role->name) }}
-                                                                </label>
+                                                                {{ html()->label(html()->checkbox('roles[]', old('roles') && in_array($role->name, old('roles')) ? true : false, $role->name)->id('role-'.$role->id) . ' ' . ucwords($role->name))->for('role-'.$role->id) }}
                                                             </div>
                                                         </div>
                                                         <div class="card-body">
@@ -153,10 +148,7 @@
                                            @if ($permissions->count())
                                                @foreach($permissions as $permission)
                                                    <div class="checkbox">
-                                                       <label for="permission-{{ $permission->id }}">
-                                                           <input type="checkbox" name="permissions[]" value="{{ $permission->name }}" id="permission-{{ $permission->id }}" {{ old('roles') && in_array($permission->name, old('permissions')) ? 'checked="checked"' : '' }} />
-                                                           {{ ucwords($permission->name) }}
-                                                       </label>
+                                                       {{ html()->label(html()->checkbox('permissions[]', old('permissions') && in_array($permission->name, old('permissions')) ? true : false, $permission->name)->id('permission-'.$permission->id) . ' ' . ucwords($permission->name))->for('permission-'.$permission->id) }}
                                                    </div>
                                                @endforeach
                                            @endif
@@ -168,10 +160,10 @@
                 </div><!--form-group-->
             </div><!-- card-body -->
 
-            <div class="card-footer">
+            <div class="card-footer clearfix">
                 {{ form_cancel(route('admin.auth.user.index'), __('buttons.general.cancel')) }}
                 {{ form_submit(__('buttons.general.crud.create')) }}
             </div><!--card-footer-->
         </div><!--card-->
-    </form>
+    {{ html()->form()->open() }}
 @endsection
