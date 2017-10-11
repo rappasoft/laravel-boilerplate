@@ -3,13 +3,9 @@
 @section('title', app_name() . ' | Login')
 
 @section('content')
-
     <div class="row justify-content-center align-items-center">
-
-        <div class="col col-sm-6 align-self-center">
-
+        <div class="col col-sm-8 align-self-center">
             <div class="card">
-
                 <div class="card-header">
                     <strong>
                         {{ __('labels.frontend.auth.login_box_title') }}
@@ -17,58 +13,60 @@
                 </div><!--card-header-->
 
                 <div class="card-body">
+                    {{ html()->form('POST', route('frontend.auth.login.post'))->open() }}
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    {{ html()->label(__('validation.attributes.frontend.email'))->for('email') }}
 
-                    {{ Form::open(['route' => 'frontend.auth.login.post', 'class' => 'form']) }}
+                                    {{ html()->email('email')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.email'))
+                                        ->attribute('maxlength', 191)
+                                        ->required() }}
+                                </div><!--form-group-->
+                            </div><!--col-->
+                        </div><!--row-->
 
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                {{ Form::label('email', __('validation.attributes.frontend.email')) }}
-                                {{ Form::email('email', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.email')]) }}
-                            </div><!--form-group-->
-                        </div><!--col-->
-                    </div><!--row-->
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    {{ html()->label(__('validation.attributes.frontend.password'))->for('password') }}
 
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                {{ Form::label('password', __('validation.attributes.frontend.password')) }}
-                                {{ Form::password('password', ['class' => 'form-control', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.password')]) }}
-                            </div><!--form-group-->
-                        </div><!--col-->
-                    </div><!--row-->
+                                    {{ html()->password('password')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.password'))
+                                        ->required() }}
+                                </div><!--form-group-->
+                            </div><!--col-->
+                        </div><!--row-->
 
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <div class="checkbox">
-                                    <label>
-                                        {{ Form::checkbox('remember') }} {{ __('labels.frontend.auth.remember_me') }}
-                                    </label>
-                                </div>
-                            </div><!--form-group-->
-                        </div><!--col-->
-                    </div><!--row-->
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <div class="checkbox">
+                                        {{ html()->label(html()->checkbox('remember', true, 1) . ' ' . __('labels.frontend.auth.remember_me'))->for('remember') }}
+                                    </div>
+                                </div><!--form-group-->
+                            </div><!--col-->
+                        </div><!--row-->
 
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <button type="submit" name="button" class="btn btn-success">
-                                    <i class='fa fa-sign-in'></i> {{ __('labels.frontend.auth.login_button') }}
-                                </button>
-                            </div><!--form-group-->
-                        </div><!--col-->
-                    </div><!--row-->
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group clearfix">
+                                    {{ form_submit(__('labels.frontend.auth.login_button')) }}
+                                </div><!--form-group-->
+                            </div><!--col-->
+                        </div><!--row-->
 
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                {{ link_to_route('frontend.auth.password.reset', __('labels.frontend.passwords.forgot_password')) }}
-                            </div><!--form-group-->
-                        </div><!--col-->
-                    </div><!--row-->
-
-                    {{ Form::close() }}
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group text-right">
+                                    <a href="{{ route('frontend.auth.password.reset') }}">{{ __('labels.frontend.passwords.forgot_password') }}</a>
+                                </div><!--form-group-->
+                            </div><!--col-->
+                        </div><!--row-->
+                    {{ html()->form()->close() }}
 
                     <div class="row">
                         <div class="col">
@@ -77,13 +75,8 @@
                             </div>
                         </div><!--col-->
                     </div><!--row-->
-
-                </div><!-- / card body -->
-
-            </div><!-- / card-->
-
-        </div><!-- / col-6 -->
-
-    </div><!-- / row -->
-
+                </div><!--card body-->
+            </div><!--card-->
+        </div><!-- col-md-8 -->
+    </div><!-- row -->
 @endsection

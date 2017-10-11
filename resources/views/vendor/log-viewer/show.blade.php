@@ -23,7 +23,7 @@
                         <a href="{{ route('log-viewer::logs.download', [$log->date]) }}" class="btn btn-sm btn-success">
                             <i class="fa fa-download"></i> DOWNLOAD
                         </a>
-                        <a href="#delete-log-modal" class="btn btn-sm btn-danger" data-toggle="modal">
+                        <a href="#delete-log-modal" class="btn btn-sm btn-danger" data-toggle="modal" data-backdrop="false">
                             <i class="fa fa-trash-o"></i> DELETE
                         </a>
                     </div>
@@ -146,10 +146,7 @@
             </div>
         </div>
     </div>
-@endsection
 
-@section('modals')
-    {{-- DELETE MODAL --}}
     <div id="delete-log-modal" class="modal fade">
         <div class="modal-dialog">
             <form id="delete-log-form" action="{{ route('log-viewer::logs.delete') }}" method="POST">
@@ -176,7 +173,7 @@
     </div>
 @endsection
 
-@section('scripts')
+@push('after-scripts')
     <script>
         $(function () {
             var deleteLogModal = $('#delete-log-modal'),
@@ -199,7 +196,7 @@
                             location.replace("{{ route('log-viewer::logs.list') }}");
                         }
                         else {
-                            alert('OOPS ! This is a lack of coffee exception !')
+                            alert('OOPS ! This is a lack of coffee exception!')
                         }
                     },
                     error: function(xhr, textStatus, errorThrown) {
@@ -213,15 +210,14 @@
             });
 
             @unless (empty(log_styler()->toHighlight()))
-            $('.stack-content').each(function() {
-                var $this = $(this);
-                var html = $this.html().trim()
-                    .replace(/({!! join(log_styler()->toHighlight(), '|') !!})/gm, '<strong>$1</strong>');
+                $('.stack-content').each(function() {
+                    var $this = $(this);
+                    var html = $this.html().trim()
+                        .replace(/({!! join(log_styler()->toHighlight(), '|') !!})/gm, '<strong>$1</strong>');
 
-                $this.html(html);
-            });
+                    $this.html(html);
+                });
             @endunless
         });
     </script>
-
-@endsection
+@endpush

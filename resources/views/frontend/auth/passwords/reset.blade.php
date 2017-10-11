@@ -3,13 +3,9 @@
 @section('title', app_name() . ' | Reset Password')
 
 @section('content')
-
     <div class="row justify-content-center align-items-center">
-
         <div class="col col-sm-6 align-self-center">
-
             <div class="card">
-
                 <div class="card-header">
                     <strong>
                         {{ __('labels.frontend.passwords.reset_password_box_title') }}
@@ -24,55 +20,59 @@
                         </div>
                     @endif
 
-                    {{ Form::open(['route' => 'frontend.auth.password.reset', 'class' => 'form-horizontal']) }}
+                    {{ html()->form('POST', route('frontend.auth.password.reset'))->class('form-horizontal')->open() }}
+                        {{ html()->hidden('token', $token) }}
 
-                    <input type="hidden" name="token" value="{{ $token }}">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    {{ html()->label(__('validation.attributes.frontend.email'))->for('email') }}
 
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                {{ Form::label('email', __('validation.attributes.frontend.email')) }}
-                                {{ Form::email('email', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.email')]) }}
-                            </div><!--form-group-->
-                        </div><!--col-->
-                    </div><!--row-->
+                                    {{ html()->email('email')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.email'))
+                                        ->attribute('maxlength', 191)
+                                        ->required() }}
+                                </div><!--form-group-->
+                            </div><!--col-->
+                        </div><!--row-->
 
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                {{ Form::label('password', __('validation.attributes.frontend.password')) }}
-                                {{ Form::password('password', ['class' => 'form-control', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.password')]) }}
-                            </div><!--form-group-->
-                        </div><!--col-->
-                    </div><!--row-->
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    {{ html()->label(__('validation.attributes.frontend.password'))->for('password') }}
 
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                {{ Form::label('password_confirmation', __('validation.attributes.frontend.password_confirmation')) }}
-                                {{ Form::password('password_confirmation', ['class' => 'form-control', 'required' => 'required', 'placeholder' => __('validation.attributes.frontend.password_confirmation')]) }}
-                            </div><!--form-group-->
-                        </div><!--col-->
-                    </div><!--row-->
+                                    {{ html()->password('password')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.password'))
+                                        ->required() }}
+                                </div><!--form-group-->
+                            </div><!--col-->
+                        </div><!--row-->
 
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-group">
-                                <button type="submit" name="button" class="btn btn-primary">
-                                    <i class='fa fa-check'></i> {{ __('labels.frontend.passwords.reset_password_button') }}
-                                </button>
-                            </div><!--form-group-->
-                        </div><!--col-->
-                    </div><!--row-->
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    {{ html()->label(__('validation.attributes.frontend.password_confirmation'))->for('password_confirmation') }}
 
-                    {{ Form::close() }}
+                                    {{ html()->password('password_confirmation')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.password_confirmation'))
+                                        ->required() }}
+                                </div><!--form-group-->
+                            </div><!--col-->
+                        </div><!--row-->
 
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group mb-0 clearfix">
+                                    {{ form_submit(__('labels.frontend.passwords.reset_password_button')) }}
+                                </div><!--form-group-->
+                            </div><!--col-->
+                        </div><!--row-->
+                    {{ html()->form()->close() }}
                 </div><!-- card-body -->
-
             </div><!-- card -->
-
         </div><!-- col-6 -->
-
     </div><!-- row -->
-
 @endsection

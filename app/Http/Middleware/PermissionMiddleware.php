@@ -21,7 +21,7 @@ class PermissionMiddleware
     {
         if (Auth::guest()) {
             return redirect()
-                ->route(homeRoute())
+                ->route(home_route())
                 ->withFlashDanger(__('auth.general_error'));
         }
 
@@ -36,7 +36,7 @@ class PermissionMiddleware
         }
 
         return redirect()
-            ->route(homeRoute())
+            ->route(home_route())
             ->withFlashDanger(__('auth.general_error'));
     }
 }

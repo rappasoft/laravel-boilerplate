@@ -5,7 +5,6 @@ namespace App\Repositories\Backend\Auth;
 use App\Models\Auth\Role;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
-use App\Repositories\Traits\CacheResults;
 use App\Repositories\BaseEloquentRepository;
 use App\Events\Backend\Auth\Role\RoleCreated;
 use App\Events\Backend\Auth\Role\RoleUpdated;
@@ -15,8 +14,6 @@ use App\Events\Backend\Auth\Role\RoleUpdated;
  */
 class RoleRepository extends BaseEloquentRepository
 {
-    use CacheResults;
-
     /**
      * @var array
      */
@@ -35,6 +32,11 @@ class RoleRepository extends BaseEloquentRepository
      */
     public function create(array $data) : Role
     {
+        // Make sure it doesn't already exist
+        if ($this->roleExists($data['name'])) {
+            throw new GeneralException('A role already exists with the name '.$data['name']);
+        }
+
         if (! isset($data['permissions'])) {
             $data['permissions'] = [];
         }
@@ -70,7 +72,17 @@ class RoleRepository extends BaseEloquentRepository
      */
     public function update($id, array $data)
     {
+        if ($id == 1) {
+            throw new GeneralException('You can not edit the administrator role.');
+        }
         $role = Role::findOrFail($id);
+
+        // If the name is changing make sure it doesn't already exist
+        if ($role->name != $data['name']) {
+            if ($this->roleExists($data['name'])) {
+                throw new GeneralException('A role already exists with the name '.$data['name']);
+            }
+        }
 
         if (! isset($data['permissions'])) {
             $data['permissions'] = [];
@@ -96,5 +108,15 @@ class RoleRepository extends BaseEloquentRepository
 
             throw new GeneralException(trans('exceptions.backend.access.roles.update_error'));
         });
+    }
+
+    /**
+     * @param $name
+     *
+     * @return bool
+     */
+    protected function roleExists($name)
+    {
+        return $this->model->where('name', $name)->count() > 0;
     }
 }

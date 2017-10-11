@@ -28,7 +28,6 @@
             <!--/.col-->
             <div class="col-sm-7">
                 <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
-                    <button onclick="window.history.back();"class="btn btn-warning ml-1" data-toggle="tooltip" title="Return Back"><i class="fa fa-reply"></i></button>
                 </div>
             </div>
             <!--/.col-->
@@ -37,27 +36,28 @@
         <hr>
         <div class="row mt-4 mb-4">
             <div class="col">
-                <form action="{{ route('admin.auth.user.change-password.post', $user) }}" method="post" class="form-horizontal">
-                    {{ csrf_field() }}
-                    {{ method_field('PATCH') }}
+                {{ html()->form('PATCH', route('admin.auth.user.change-password.post', $user))->class('form-horizontal') }}
 
                     <div class="form-group row">
-                        <label class="col-md-2 form-control-label" for="password">
-                            {{ __('validation.attributes.backend.access.users.password') }}
-                        </label>
+                        {{ html()->label(__('validation.attributes.backend.access.users.password'))->class('col-md-2 form-control-label')->for('password') }}
 
                         <div class="col-md-10">
-                            <input type="password" id="password" name="password" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.password') }}" required="required">
+                            {{ html()->password('password')
+                                ->class('form-control')
+                                ->placeholder( __('validation.attributes.backend.access.users.password'))
+                                ->required()
+                                ->autofocus() }}
                         </div>
                     </div><!--form-group-->
 
                     <div class="form-group row">
-                        <label class="col-md-2 form-control-label" for="password_confirmation">
-                            {{ __('validation.attributes.backend.access.users.password_confirmation') }}
-                        </label>
+                        {{ html()->label(__('validation.attributes.backend.access.users.password_confirmation'))->class('col-md-2 form-control-label')->for('password_confirmation') }}
 
                         <div class="col-md-10">
-                            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.password_confirmation') }}" required="required">
+                            {{ html()->password('password_confirmation')
+                                ->class('form-control')
+                                ->placeholder( __('validation.attributes.backend.access.users.password_confirmation'))
+                                ->required() }}
                         </div>
                     </div><!--form-group-->
 
@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <!-- /.row -->
-                </form>
+                {{ html()->form()->close() }}
             </div>
             <!--/.col-->
         </div>

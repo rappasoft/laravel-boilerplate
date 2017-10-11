@@ -8,6 +8,9 @@ use App\Events\Frontend\Auth\UserRegistered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Repositories\Frontend\Auth\UserRepository;
 
+/**
+ * Class RegisterController.
+ */
 class RegisterController extends Controller
 {
     use RegistersUsers;
@@ -34,7 +37,7 @@ class RegisterController extends Controller
      */
     public function redirectPath()
     {
-        return route(homeRoute());
+        return route(home_route());
     }
 
     /**

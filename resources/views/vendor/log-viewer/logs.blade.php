@@ -62,7 +62,8 @@
                                 <a href="{{ route('log-viewer::logs.download', [$date]) }}" class="btn btn-sm btn-success">
                                     <i class="fa fa-download"></i>
                                 </a>
-                                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-log-modal" data-log-date="{{ $date }}">
+
+                                <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-backdrop="false" data-target="#delete-log-modal" data-log-date="{{ $date }}">
                                     <i class="fa fa-trash-o"></i>
                                 </button>
                             </td>
@@ -82,10 +83,6 @@
 
     {!! $rows->render('log-viewer::_pagination.bootstrap-4') !!}
 
-@endsection
-
-@section('modals')
-    {{-- DELETE MODAL --}}
     <div id="delete-log-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="delete-log-modal-label" aria-hidden="true">
         <div class="modal-dialog">
             <form id="delete-log-form" action="{{ route('log-viewer::logs.delete') }}" method="POST">
@@ -112,7 +109,7 @@
     </div>
 @endsection
 
-@section('scripts')
+@push('after-scripts')
     <script>
         $(function () {
 
@@ -121,14 +118,14 @@
                 submitBtn      = deleteLogForm.find('button[type=submit]');
 
             deleteLogModal.on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget) // Button that triggered the modal
-                var logdate = button.data('log-date') // Extract info from data-* attributes
-                var modal = $(this)
+                var button = $(event.relatedTarget); // Button that triggered the modal
+                var logdate = button.data('log-date'); // Extract info from data-* attributes
+                var modal = $(this);
                 modal.find('.modal-body p').html(
                     'Are you sure you want to <span class="badge badge-danger">DELETE</span> this log file <span class="badge badge-primary">' + logdate + '</span> ?'
                 );
                 deleteLogForm.find('input[name=date]').val(logdate)
-            })
+            });
 
             deleteLogForm.on('submit', function(event) {
                 event.preventDefault();
@@ -166,4 +163,4 @@
             });
         });
     </script>
-@endsection
+@endpush

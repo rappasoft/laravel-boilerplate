@@ -1,7 +1,6 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-
     <div class="row mb-4">
         <div class="col">
             <div class="card">
@@ -36,5 +35,4 @@
             </div><!--card-->
         </div><!--col-->
     </div><!--row-->
-
 @endsection

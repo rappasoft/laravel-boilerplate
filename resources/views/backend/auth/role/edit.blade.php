@@ -26,7 +26,6 @@
             <!--/.col-->
             <div class="col-sm-7">
                 <div class="btn-toolbar float-right" role="toolbar" aria-label="Toolbar with button groups">
-                    <button onclick="window.history.back();"class="btn btn-warning ml-1" data-toggle="tooltip" title="Return Back"><i class="fa fa-reply"></i></button>
                 </div>
             </div>
             <!--/.col-->
@@ -37,33 +36,32 @@
 
         <div class="row mt-4">
             <div class="col">
-                <form action="{{ route('admin.auth.role.update', $role) }}" method="post" class="form-horizontal">
-                    {{ csrf_field() }}
-                    {{ method_field('PATCH') }}
+                {{ html()->modelForm($role, 'PATCH', route('admin.auth.role.update', $role))->class('form-horizontal')->open() }}
 
                     <div class="form-group row">
-                        <label class="col-md-2 form-control-label" for="name">
-                            {{ __('validation.attributes.backend.access.roles.name') }}
-                        </label>
+                        {{ html()->label(__('validation.attributes.backend.access.roles.name'))
+                            ->class('col-md-2 form-control-label')
+                            ->for('name') }}
 
                         <div class="col-md-10">
-                            <input type="text" id="name" name="name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.roles.name') }}" value="{{ $role->name }}" maxlength="191" required="required" autofocus="autofocus">
+                            {{ html()->text('name')
+                                ->class('form-control')
+                                ->placeholder(__('validation.attributes.backend.access.roles.name'))
+                                ->attribute('maxlength', 191)
+                                ->required() }}
                         </div>
                     </div><!--form-group-->
 
                     <div class="form-group row">
-                        <label class="col-md-2 form-control-label" for="name">
-                            {{ __('validation.attributes.backend.access.roles.associated_permissions') }}
-                        </label>
+                        {{ html()->label(__('validation.attributes.backend.access.roles.associated_permissions'))
+                            ->class('col-md-2 form-control-label')
+                            ->for('permissions') }}
 
                         <div class="col-md-10">
                             @if ($permissions->count())
                                 @foreach($permissions as $permission)
                                     <div class="checkbox">
-                                        <label for="permission-{{ $permission->id }}">
-                                            <input type="checkbox" name="permissions[]" value="{{ $permission->name }}" id="permission-{{ $permission->id }}" {{ in_array($permission->name, $rolePermissions) ? 'checked="checked"' : '' }} />
-                                            {{ ucwords($permission->name) }}
-                                        </label>
+                                        {{ html()->label(html()->checkbox('permissions[]', in_array($permission->name, $rolePermissions), $permission->name)->id('permission-'.$permission->id) . ' ' . ucwords($permission->name))->for('permission-'.$permission->id) }}
                                     </div>
                                 @endforeach
                             @endif
@@ -76,7 +74,7 @@
                             {{ form_submit(__('buttons.general.crud.update')) }}
                         </div>
                     </div>
-                </form>
+                {{ html()->closeModelForm() }}
             </div>
         </div>
     </div>

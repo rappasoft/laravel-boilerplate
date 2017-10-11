@@ -30,18 +30,21 @@
             <div class="col">
                 <table class="table table-responsive">
                     <thead>
-                    <tr>
-                        <th>{{ __('labels.backend.access.roles.table.role') }}</th>
-                        <th>{{ __('labels.backend.access.roles.table.permissions') }}</th>
-                        <th>{{ __('labels.backend.access.roles.table.number_of_users') }}</th>
-                        <th>{{ __('labels.general.actions') }}</th>
-                    </tr>
+                        <tr>
+                            <th>{{ __('labels.backend.access.roles.table.role') }}</th>
+                            <th>{{ __('labels.backend.access.roles.table.permissions') }}</th>
+                            <th>{{ __('labels.backend.access.roles.table.number_of_users') }}</th>
+                            <th>{{ __('labels.general.actions') }}</th>
+                        </tr>
                     </thead>
                     <tbody>
                         @foreach ($roles as $role)
-                            <tr>
-                                <td>{{ ucfirst($role->name) }}</td>
-                                <td>
+                        <tr>
+                            <td>{{ ucfirst($role->name) }}</td>
+                            <td>
+                                @if ($role->id == 1)
+                                    All
+                                @else
                                     @if ($role->permissions->count())
                                         @foreach ($role->permissions as $permission)
                                             {{ ucwords($permission->name) }}
@@ -49,10 +52,11 @@
                                     @else
                                         None
                                     @endif
-                                </td>
-                                <td>{{ $role->users->count() }}</td>
-                                <td>{!! $role->action_buttons !!}</td>
-                            </tr>
+                                @endif
+                            </td>
+                            <td>{{ $role->users->count() }}</td>
+                            <td>{!! $role->action_buttons !!}</td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>

@@ -5,6 +5,9 @@ namespace App\Http\Middleware;
 use Illuminate\Http\Request;
 use Fideloper\Proxy\TrustProxies as Middleware;
 
+/**
+ * Class TrustProxies.
+ */
 class TrustProxies extends Middleware
 {
     /**
