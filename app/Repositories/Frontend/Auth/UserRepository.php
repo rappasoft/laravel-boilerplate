@@ -41,21 +41,24 @@ class UserRepository extends BaseEloquentRepository
         return false;
     }
 
-	/**
-	 * @param $uuid
-	 *
-	 * @return mixed
-	 * @throws GeneralException
-	 */
-	public function findByUuid($uuid) {
-    	$user = $this->model
-			->uuid($uuid)
-			->first();
+    /**
+     * @param $uuid
+     *
+     * @return mixed
+     * @throws GeneralException
+     */
+    public function findByUuid($uuid)
+    {
+        $user = $this->model
+            ->uuid($uuid)
+            ->first();
 
-    	if ($user instanceof $this->model) return $user;
+        if ($user instanceof $this->model) {
+            return $user;
+        }
 
-		throw new GeneralException(__('exceptions.backend.access.users.not_found'));
-	}
+        throw new GeneralException(__('exceptions.backend.access.users.not_found'));
+    }
 
     /**
      * @param array $data

@@ -26,7 +26,7 @@ class User extends Authenticatable
         UserAttribute,
         UserRelationship,
         UserScope,
-		Uuid;
+        Uuid;
 
     /**
      * The attributes that are mass assignable.
