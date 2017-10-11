@@ -23,21 +23,4 @@
         <th>{{ __('labels.backend.access.users.tabs.content.overview.confirmed') }}</th>
         <td>{!! $user->confirmed_label !!}</td>
     </tr>
-
-    <tr>
-        <th>{{ __('labels.backend.access.users.tabs.content.overview.created_at') }}</th>
-        <td>{{ $user->created_at }}<br><small>({{ $user->created_at->diffForHumans() }})</small></td>
-    </tr>
-
-    <tr>
-        <th>{{ __('labels.backend.access.users.tabs.content.overview.last_updated') }}</th>
-        <td>{{ $user->updated_at }}<br/><small>({{ $user->updated_at->diffForHumans() }})</small></td>
-    </tr>
-
-    @if ($user->trashed())
-        <tr>
-            <th>{{ __('labels.backend.access.users.tabs.content.overview.deleted_at') }}</th>
-            <td>{{ $user->deleted_at }}<br/><small>({{ $user->deleted_at->diffForHumans() }})</small></td>
-        </tr>
-    @endif
 </table>

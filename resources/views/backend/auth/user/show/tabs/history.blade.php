@@ -12,7 +12,7 @@
                 <tr>
                     <td>{{ $log->description }}</td>
                     <td>
-                        @if (count($log->changes()['old']))
+                        @if (isset($log->changes()['old']) && count($log->changes()['old']))
                             <table>
                                 <thead>
                                     <tr>

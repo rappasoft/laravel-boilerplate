@@ -37,7 +37,8 @@
                 <div class="animated fadeIn">
                     <div class="content-header">
                         @yield('page-header')
-                    </div>
+                    </div><!--content-header-->
+
                     @include('includes.partials.messages')
                     @yield('content')
                 </div><!--animated-->
