@@ -12,7 +12,7 @@ Breadcrumbs::register('log-viewer::logs.list', function ($breadcrumbs) {
 
 Breadcrumbs::register('log-viewer::logs.show', function ($breadcrumbs, $date) {
     $breadcrumbs->parent('log-viewer::logs.list');
-    $breadcrumbs->push($date, url('admin/log-viewer/'.$date));
+    $breadcrumbs->push($date, url('admin/log-viewer/logs/'.$date));
 });
 
 Breadcrumbs::register('log-viewer::logs.filter', function ($breadcrumbs, $date, $filter) {
