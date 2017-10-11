@@ -17,9 +17,9 @@
 
             <div class="card-body">
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="name">
-                        {{ __('validation.attributes.backend.access.roles.name') }}
-                    </label>
+                    {{ html()->label(__('validation.attributes.backend.access.roles.name'))
+                        ->class('col-md-2 form-control-label')
+                        ->for('name') }}
 
                     <div class="col-md-10">
                         {{ html()->text('name')
@@ -32,9 +32,9 @@
                 </div><!--form-group-->
 
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="name">
-                        {{ __('validation.attributes.backend.access.roles.associated_permissions') }}
-                    </label>
+                    {{ html()->label(__('validation.attributes.backend.access.roles.associated_permissions'))
+                        ->class('col-md-2 form-control-label')
+                        ->for('permissions') }}
 
                     <div class="col-md-10">
                         @if ($permissions->count())
@@ -48,7 +48,7 @@
                 </div><!--form-group-->
             </div><!-- card-body -->
 
-            <div class="card-footer">
+            <div class="card-footer clearfix">
                 {{ form_cancel(route('admin.auth.role.index'), __('buttons.general.cancel')) }}
                 {{ form_submit(__('buttons.general.crud.update')) }}
             </div><!--card-footer-->

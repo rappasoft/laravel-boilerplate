@@ -13,10 +13,7 @@
 @endsection
 
 @section('content')
-    <form action="{{ route('admin.auth.user.update', $user->id) }}" method="post" class="form-horizontal">
-        {{ csrf_field() }}
-        {{ method_field('PATCH') }}
-
+    {{ html()->modelForm($user, 'PATCH', route('admin.auth.user.update', $user->id))->class('form-horizontal')->open() }}
         <div class="card">
             <div class="card-header">
                 {{ __('labels.backend.access.users.edit') }}
@@ -24,102 +21,101 @@
 
             <div class="card-body">
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="first_name">
-                        {{ __('validation.attributes.backend.access.users.first_name') }}
-                    </label>
+                    {{ html()->label(__('validation.attributes.backend.access.users.first_name'))->class('col-md-2 form-control-label')->for('first_name') }}
 
                     <div class="col-md-10">
-                        <input type="text" id="first_name" name="first_name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.first_name') }}" value="{{ old('first_name', $user->first_name) }}" maxlength="191" required="required" autofocus="autofocus">
+                        {{ html()->text('first_name')
+                            ->class('form-control')
+                            ->placeholder(__('validation.attributes.backend.access.users.first_name'))
+                            ->attribute('maxlength', 191)
+                            ->required()
+                            ->autofocus() }}
                     </div>
                 </div><!--form-group-->
 
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="last_name">
-                        {{ __('validation.attributes.backend.access.users.last_name') }}
-                    </label>
+                    {{ html()->label(__('validation.attributes.backend.access.users.last_name'))->class('col-md-2 form-control-label')->for('last_name') }}
 
                     <div class="col-md-10">
-                        <input type="text" id="last_name" name="last_name" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.last_name') }}" value="{{ old('last_name', $user->last_name) }}" maxlength="191" required="required">
+                        {{ html()->text('last_name')
+                            ->class('form-control')
+                            ->placeholder(__('validation.attributes.backend.access.users.last_name'))
+                            ->attribute('maxlength', 191)
+                            ->required() }}
                     </div>
                 </div><!--form-group-->
 
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label" for="email">
-                        {{ __('validation.attributes.backend.access.users.email') }}
-                    </label>
+                    {{ html()->label(__('validation.attributes.backend.access.users.email'))->class('col-md-2 form-control-label')->for('email') }}
 
                     <div class="col-md-10">
-                        <input type="email" id="email" name="email" class="form-control" placeholder="{{ __('validation.attributes.backend.access.users.email') }}" value="{{ old('email', $user->email) }}" maxlength="191" required="required">
+                        {{ html()->email('email')
+                            ->class('form-control')
+                            ->placeholder(__('validation.attributes.backend.access.users.email'))
+                            ->attribute('maxlength', 191)
+                            ->required() }}
                     </div>
                 </div><!--form-group-->
 
                 <div class="form-group row">
-                    <label class="col-md-2 form-control-label">
-                        Abilities
-                    </label>
+                    {{ html()->label('Abilities')->class('col-md-2 form-control-label') }}
 
                     <div class="col-md-10">
                         <table class="table table-responsive">
-                                <thead>
-                                <tr>
-                                    <th>Roles</th>
-                                    <th>Permissions</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        @if ($roles->count())
-                                            @foreach($roles as $role)
-                                                <div class="card">
-                                                    <div class="card-header">
-                                                        <div class="checkbox">
-                                                            <label for="role-{{ $role->id }}">
-                                                                <input type="checkbox" name="roles[]" value="{{ $role->name }}" {{ in_array($role->name, $userRoles) ? 'checked="checked"' : '' }} id="role-{{ $role->id }}" />
-                                                                {{ ucfirst($role->name) }}
-                                                            </label>
-                                                        </div>
+                            <thead>
+                            <tr>
+                                <th>Roles</th>
+                                <th>Permissions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    @if ($roles->count())
+                                        @foreach($roles as $role)
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <div class="checkbox">
+                                                        {{ html()->label(html()->checkbox('roles[]', in_array($role->name, $userRoles), $role->name)->id('role-'.$role->id) . ' ' . ucwords($role->name))->for('role-'.$role->id) }}
                                                     </div>
-                                                    <div class="card-body">
-                                                        @if ($role->id != 1)
-                                                            @if ($role->permissions->count())
-                                                                @foreach ($role->permissions as $permission)
-                                                                    <i class="fa fa-dot-circle-o"></i> {{ ucwords($permission->name) }}
-                                                                @endforeach
-                                                            @else
-                                                                None
-                                                            @endif
-                                                        @else
-                                                                All Permissions
-                                                        @endif
-                                                    </div>
-                                                </div><!--card-->
-                                            @endforeach
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($permissions->count())
-                                            @foreach($permissions as $permission)
-                                                <div class="checkbox">
-                                                    <label for="permission-{{ $permission->id }}">
-                                                        <input type="checkbox" name="permissions[]" value="{{ $permission->name }}" id="permission-{{ $permission->id }}" {{ in_array($permission->name, $userPermissions) ? 'checked="checked"' : '' }} />
-                                                        {{ ucwords($permission->name) }}
-                                                    </label>
                                                 </div>
-                                            @endforeach
-                                        @endif
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+                                                <div class="card-body">
+                                                    @if ($role->id != 1)
+                                                        @if ($role->permissions->count())
+                                                            @foreach ($role->permissions as $permission)
+                                                                <i class="fa fa-dot-circle-o"></i> {{ ucwords($permission->name) }}
+                                                            @endforeach
+                                                        @else
+                                                            None
+                                                        @endif
+                                                    @else
+                                                        All Permissions
+                                                    @endif
+                                                </div>
+                                            </div><!--card-->
+                                        @endforeach
+                                    @endif
+                                </td>
+                                <td>
+                                    @if ($permissions->count())
+                                        @foreach($permissions as $permission)
+                                            <div class="checkbox">
+                                                {{ html()->label(html()->checkbox('permissions[]', in_array($permission->name, $userPermissions), $permission->name)->id('permission-'.$permission->id) . ' ' . ucwords($permission->name))->for('permission-'.$permission->id) }}
+                                            </div>
+                                        @endforeach
+                                    @endif
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div><!--form-group-->
             </div><!-- card-body -->
 
-            <div class="card-footer">
+            <div class="card-footer clearfix">
                 {{ form_cancel(route('admin.auth.user.index'), __('buttons.general.cancel')) }}
                 {{ form_submit(__('buttons.general.crud.update')) }}
             </div><!--card-footer-->
         </div><!--card-->
-    </form>
+    {{ html()->closeModelForm() }}
 @endsection
