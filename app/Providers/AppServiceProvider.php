@@ -38,10 +38,12 @@ class AppServiceProvider extends ServiceProvider
          * Set the session variable for whether or not the app is using RTL support
          * For use in the blade directive in BladeServiceProvider
          */
-        if (config('locale.languages')[config('app.locale')][2]) {
-            session(['lang-rtl' => true]);
-        } else {
-            session()->forget('lang-rtl');
+        if (! app()->runningInConsole()){
+            if (config('locale.languages')[config('app.locale')][2]) {
+                session(['lang-rtl' => true]);
+            } else {
+                session()->forget('lang-rtl');
+            }
         }
 
         // Force SSL in production
