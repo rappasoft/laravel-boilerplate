@@ -56,9 +56,6 @@
                 </table>
             </div><!--col-->
         </div><!--row-->
-    </div><!--card-body-->
-
-    <div class="card-footer">
         <div class="row">
             <div class="col-7">
                 <div class="float-left">
@@ -72,6 +69,6 @@
                 </div>
             </div><!--col-->
         </div><!--row-->
-    </div><!--card-footer-->
+    </div><!--card-body-->
 </div><!--card-->
 @endsection
