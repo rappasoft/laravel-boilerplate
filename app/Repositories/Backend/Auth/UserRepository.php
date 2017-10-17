@@ -342,7 +342,7 @@ class UserRepository extends BaseEloquentRepository
         //Figure out if email is not the same
         if ($user->email != $email) {
             //Check to see if email exists
-            if ($this->query()->where('email', '=', $email)->first()) {
+            if ($this->model->where('email', '=', $email)->first()) {
                 throw new GeneralException(trans('exceptions.backend.access.users.email_error'));
             }
         }

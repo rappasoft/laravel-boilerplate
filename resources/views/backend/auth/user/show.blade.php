@@ -35,7 +35,7 @@
                     </div><!--tab-->
 
                     <div class="tab-pane" id="history" role="tabpanel" aria-expanded="false">
-                        @include('backend.auth.user.show.tabs.history')
+                        {{-- @include('backend.auth.user.show.tabs.history') --}}
                     </div><!--tab-->
                 </div><!--tab-content-->
             </div><!--col-->

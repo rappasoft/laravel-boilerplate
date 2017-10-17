@@ -87,8 +87,7 @@ class UserController extends Controller
     public function show(User $user, ManageUserRequest $request)
     {
         return view('backend.auth.user.show')
-            ->withUser($user)
-            ->withActivity($user->activity()->latest()->paginate(25));
+            ->withUser($user);
     }
 
     /**
