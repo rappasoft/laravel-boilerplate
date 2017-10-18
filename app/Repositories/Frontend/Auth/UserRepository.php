@@ -60,6 +60,25 @@ class UserRepository extends BaseEloquentRepository
         throw new GeneralException(__('exceptions.backend.access.users.not_found'));
     }
 
+	/**
+	 * @param $code
+	 *
+	 * @return mixed
+	 * @throws GeneralException
+	 */
+	public function findByConfirmationCode($code)
+	{
+		$user = $this->model
+			->where('confirmation_code', $code)
+			->first();
+
+		if ($user instanceof $this->model) {
+			return $user;
+		}
+
+		throw new GeneralException(__('exceptions.backend.access.users.not_found'));
+	}
+
     /**
      * @param array $data
      *
@@ -75,14 +94,9 @@ class UserRepository extends BaseEloquentRepository
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'active'            => 1,
                 'password'          => bcrypt($data['password']),
+									// If users require approval or needs to confirm email
+				'confirmed' 		=> config('access.users.requires_approval') || config('access.users.confirm_email') ? 0 : 1,
             ]);
-
-            // If users require approval or needs to confirm email
-            if (config('access.users.requires_approval') || config('access.users.confirm_email')) {
-                $user->confirmed = 0;
-            } else {
-                $user->confirmed = 1;
-            }
 
             if ($user) {
                 /*
@@ -170,20 +184,20 @@ class UserRepository extends BaseEloquentRepository
     }
 
     /**
-     * @param $token
+     * @param $code
      *
      * @return bool
      * @throws GeneralException
      */
-    public function confirm($token)
+    public function confirm($code)
     {
-        $user = $this->getItemByColumn($token, 'confirmation_code');
+        $user = $this->findByConfirmationCode($code);
 
         if ($user->confirmed == 1) {
             throw new GeneralException(__('exceptions.frontend.auth.confirmation.already_confirmed'));
         }
 
-        if ($user->confirmation_code == $token) {
+        if ($user->confirmation_code == $code) {
             $user->confirmed = 1;
 
             event(new UserConfirmed($user));

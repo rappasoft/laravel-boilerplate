@@ -19,7 +19,7 @@
                         <i class="icon-user"></i> {{ __('menus.backend.access.title') }}
 
                         @if ($pending_approval > 0)
-                            <span class="tag tag-danger">{{ $pending_approval }}</span>
+                            <span class="badge badge-danger">{{ $pending_approval }}</span>
                         @endif
                     </a>
 
@@ -29,7 +29,7 @@
                                 {{ __('labels.backend.access.users.management') }}
 
                                 @if ($pending_approval > 0)
-                                    <span class="tag tag-danger">{{ $pending_approval }}</span>
+                                    <span class="badge badge-danger">{{ $pending_approval }}</span>
                                 @endif
                             </a>
                         </li>
