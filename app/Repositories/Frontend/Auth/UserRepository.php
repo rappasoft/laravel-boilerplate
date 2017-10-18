@@ -60,24 +60,24 @@ class UserRepository extends BaseEloquentRepository
         throw new GeneralException(__('exceptions.backend.access.users.not_found'));
     }
 
-	/**
-	 * @param $code
-	 *
-	 * @return mixed
-	 * @throws GeneralException
-	 */
-	public function findByConfirmationCode($code)
-	{
-		$user = $this->model
-			->where('confirmation_code', $code)
-			->first();
+    /**
+     * @param $code
+     *
+     * @return mixed
+     * @throws GeneralException
+     */
+    public function findByConfirmationCode($code)
+    {
+        $user = $this->model
+            ->where('confirmation_code', $code)
+            ->first();
 
-		if ($user instanceof $this->model) {
-			return $user;
-		}
+        if ($user instanceof $this->model) {
+            return $user;
+        }
 
-		throw new GeneralException(__('exceptions.backend.access.users.not_found'));
-	}
+        throw new GeneralException(__('exceptions.backend.access.users.not_found'));
+    }
 
     /**
      * @param array $data
@@ -94,8 +94,8 @@ class UserRepository extends BaseEloquentRepository
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'active'            => 1,
                 'password'          => bcrypt($data['password']),
-									// If users require approval or needs to confirm email
-				'confirmed' 		=> config('access.users.requires_approval') || config('access.users.confirm_email') ? 0 : 1,
+                                    // If users require approval or needs to confirm email
+                'confirmed'        => config('access.users.requires_approval') || config('access.users.confirm_email') ? 0 : 1,
             ]);
 
             if ($user) {
