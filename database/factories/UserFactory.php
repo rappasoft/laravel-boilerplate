@@ -15,38 +15,38 @@ use App\Models\Auth\User;
 */
 
 $factory->define(User::class, function (Generator $faker) {
-	static $password;
+    static $password;
 
-	return [
-		'first_name'        => $faker->firstName,
-		'last_name'         => $faker->lastName,
-		'email'             => $faker->safeEmail,
-		'password'          => $password ?: $password = bcrypt('secret'),
-		'remember_token'    => str_random(10),
-		'confirmation_code' => md5(uniqid(mt_rand(), true)),
-	];
+    return [
+        'first_name'        => $faker->firstName,
+        'last_name'         => $faker->lastName,
+        'email'             => $faker->safeEmail,
+        'password'          => $password ?: $password = bcrypt('secret'),
+        'remember_token'    => str_random(10),
+        'confirmation_code' => md5(uniqid(mt_rand(), true)),
+    ];
 });
 
 $factory->state(User::class, 'active', function () {
-	return [
-		'status' => 1,
-	];
+    return [
+        'status' => 1,
+    ];
 });
 
 $factory->state(User::class, 'inactive', function () {
-	return [
-		'status' => 0,
-	];
+    return [
+        'status' => 0,
+    ];
 });
 
 $factory->state(User::class, 'confirmed', function () {
-	return [
-		'confirmed' => 1,
-	];
+    return [
+        'confirmed' => 1,
+    ];
 });
 
 $factory->state(User::class, 'unconfirmed', function () {
-	return [
-		'confirmed' => 0,
-	];
+    return [
+        'confirmed' => 0,
+    ];
 });
