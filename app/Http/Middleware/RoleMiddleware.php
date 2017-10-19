@@ -19,7 +19,7 @@ class RoleMiddleware
      */
     public function handle($request, Closure $next, $role)
     {
-        if (Auth::guest()) {
+        if (auth()->guest()) {
             return redirect()
                 ->route(home_route())
                 ->withFlashDanger(__('auth.general_error'));
@@ -29,7 +29,7 @@ class RoleMiddleware
             ? $role
             : explode('|', $role);
 
-        if (! Auth::user()->hasAnyRole($role)) {
+        if (! auth()->user()->hasAnyRole($role)) {
             return redirect()
                 ->route(home_route())
                 ->withFlashDanger(__('auth.general_error'));

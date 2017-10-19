@@ -60,7 +60,7 @@ class UserEventListener
      */
     public function onSocialDeleted($event)
     {
-        \Log::info('User Reactivated');
+        \Log::info('User Social Deleted');
     }
 
     /**

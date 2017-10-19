@@ -19,7 +19,7 @@ class PermissionMiddleware
      */
     public function handle($request, Closure $next, $permission)
     {
-        if (Auth::guest()) {
+        if (auth()->guest()) {
             return redirect()
                 ->route(home_route())
                 ->withFlashDanger(__('auth.general_error'));
@@ -30,7 +30,7 @@ class PermissionMiddleware
             : explode('|', $permission);
 
         foreach ($permissions as $permission) {
-            if (Auth::user()->can($permission)) {
+            if (auth()->user()->can($permission)) {
                 return $next($request);
             }
         }
