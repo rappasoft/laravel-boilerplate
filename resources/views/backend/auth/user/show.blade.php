@@ -24,18 +24,11 @@
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-expanded="true"><i class="fa fa-user"></i> {{ __('labels.backend.access.users.tabs.titles.overview') }}</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-expanded="false"><i class="fa fa-history"></i> {{ __('labels.backend.access.users.tabs.titles.history') }}</a>
-                    </li>
                 </ul>
 
                 <div class="tab-content">
                     <div class="tab-pane active" id="overview" role="tabpanel" aria-expanded="true">
                         @include('backend.auth.user.show.tabs.overview')
-                    </div><!--tab-->
-
-                    <div class="tab-pane" id="history" role="tabpanel" aria-expanded="false">
-                        {{-- @include('backend.auth.user.show.tabs.history') --}}
                     </div><!--tab-->
                 </div><!--tab-content-->
             </div><!--col-->
