@@ -86,7 +86,11 @@
                         {{ html()->label(__('validation.attributes.backend.access.users.active'))->class('col-md-2 form-control-label')->for('active') }}
 
                         <div class="col-md-10">
-                            {{ html()->checkbox('active', true, '1') }}
+                            <label class="switch switch-3d switch-primary">
+                                {{ html()->checkbox('active', true, '1')->class('switch-input') }}
+                                <span class="switch-label"></span>
+                                <span class="switch-handle"></span>
+                            </label>
                         </div><!--col-->
                     </div><!--form-group-->
 
@@ -94,16 +98,24 @@
                         {{ html()->label(__('validation.attributes.backend.access.users.confirmed'))->class('col-md-2 form-control-label')->for('confirmed') }}
 
                         <div class="col-md-10">
-                            {{ html()->checkbox('confirmed', true, '1') }}
+                            <label class="switch switch-3d switch-primary">
+                                {{ html()->checkbox('confirmed', true, '1')->class('switch-input') }}
+                                <span class="switch-label"></span>
+                                <span class="switch-handle"></span>
+                            </label>
                         </div><!--col-->
                     </div><!--form-group-->
 
                     @if (! config('access.users.requires_approval'))
                         <div class="form-group row">
-                            {{ html()->label(__('validation.attributes.backend.access.users.send_confirmation_email') . '<br/>' . '<small>' .  __('strings.backend.access.users.if_confirmed_off') . '</small>')->class('col-md-2 form-control-label')->for('first_name') }}
+                            {{ html()->label(__('validation.attributes.backend.access.users.send_confirmation_email') . '<br/>' . '<small>' .  __('strings.backend.access.users.if_confirmed_off') . '</small>')->class('col-md-2 form-control-label')->for('confirmation_email') }}
 
                             <div class="col-md-10">
-                                {{ html()->checkbox('confirmation_email', true, '1') }}
+                                <label class="switch switch-3d switch-primary">
+                                    {{ html()->checkbox('confirmation_email', true, '1')->class('switch-input') }}
+                                    <span class="switch-label"></span>
+                                    <span class="switch-handle"></span>
+                                </label>
                             </div><!--col-->
                         </div><!--form-group-->
                     @endif
@@ -127,7 +139,14 @@
                                                     <div class="card">
                                                         <div class="card-header">
                                                             <div class="checkbox">
-                                                                {{ html()->label(html()->checkbox('roles[]', old('roles') && in_array($role->name, old('roles')) ? true : false, $role->name)->id('role-'.$role->id) . ' ' . ucwords($role->name))->for('role-'.$role->id) }}
+                                                                {{ html()->label(
+                                                                        html()->checkbox('roles[]', old('roles') && in_array($role->name, old('roles')) ? true : false, $role->name)
+                                                                              ->class('switch-input')
+                                                                              ->id('role-'.$role->id)
+                                                                        . '<span class="switch-label"></span><span class="switch-handle"></span>')
+                                                                    ->class('switch switch-sm switch-3d switch-primary')
+                                                                    ->for('role-'.$role->id) }}
+                                                                {{ html()->label(ucwords($role->name))->for('role-'.$role->id) }}
                                                             </div>
                                                         </div>
                                                         <div class="card-body">
@@ -151,8 +170,15 @@
                                            @if ($permissions->count())
                                                @foreach($permissions as $permission)
                                                    <div class="checkbox">
-                                                       {{ html()->label(html()->checkbox('permissions[]', old('permissions') && in_array($permission->name, old('permissions')) ? true : false, $permission->name)->id('permission-'.$permission->id) . ' ' . ucwords($permission->name))->for('permission-'.$permission->id) }}
-                                                   </div>
+                                                        {{ html()->label(
+                                                                html()->checkbox('permissions[]', old('permissions') && in_array($permission->name, old('permissions')) ? true : false, $permission->name)
+                                                                      ->class('switch-input')
+                                                                      ->id('permission-'.$permission->id)
+                                                                . '<span class="switch-label"></span><span class="switch-handle"></span>')
+                                                            ->class('switch switch-sm switch-3d switch-primary')
+                                                            ->for('permission-'.$permission->id) }}
+                                                        {{ html()->label(ucwords($permission->name))->for('permission-'.$permission->id) }}
+                                                    </div>
                                                @endforeach
                                            @endif
                                        </td>
