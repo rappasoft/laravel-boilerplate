@@ -97,9 +97,10 @@ class RoleRepository extends BaseEloquentRepository
             if ($role->update([
                 'name' => $data['name'],
             ])) {
-                if (count($data['permissions'])) {
-                    $role->syncPermissions($data['permissions']);
+                if (!count($data['permissions'])) {
+                    $data['permissions'] = array(); // Set to empty array to remove all permissions
                 }
+                $role->syncPermissions($data['permissions']);
 
                 event(new RoleUpdated($role));
 
