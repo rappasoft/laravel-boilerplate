@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+@langrtl
+    <html lang="{{ app()->getLocale() }}" dir="rtl">
+@else
+    <html lang="{{ app()->getLocale() }}">
+@endlangrtl
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -14,11 +18,7 @@
 
     <!-- Check if the language is set to RTL, so apply the RTL layouts -->
     <!-- Otherwise apply the normal LTR layouts -->
-    @langrtl
-        {{ style(get_rtl_css(mix('css/backend.css'))) }}
-    @else
-        {{ style(mix('css/backend.css')) }}
-    @endlangrtl
+    {{ style(mix('css/backend.css')) }}
 
     @stack('after-styles')
 </head>

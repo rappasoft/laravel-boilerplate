@@ -47891,19 +47891,6 @@ function addDeleteForms() {
  * Place any jQuery/helper plugins in here.
  */
 $(function () {
-    var $loading = $('.loader');
-
-    $(document).ajaxStart(function () {
-        $loading.show();
-    }).ajaxError(function (event, jqxhr, settings, thrownError) {
-        $loading.hide();
-        location.reload();
-    }).ajaxStop(function () {
-        $loading.hide();
-    }).on('draw.dt', function () {
-        addDeleteForms();
-    });
-
     /**
      * Add the data-method="delete" forms to all delete links
      */

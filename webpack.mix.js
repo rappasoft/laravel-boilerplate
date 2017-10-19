@@ -1,5 +1,4 @@
 let mix = require('laravel-mix');
-let WebpackRTLPlugin = require('webpack-rtl-plugin');
 
 /*
  |--------------------------------------------------------------------------
@@ -19,12 +18,7 @@ mix.sass('resources/assets/sass/frontend/app.scss', 'public/css/frontend.css')
         'resources/assets/js/backend/before.js',
         'resources/assets/js/backend/app.js',
         'resources/assets/js/backend/after.js'
-    ], 'public/js/backend.js')
-    .webpackConfig({
-        plugins: [
-            new WebpackRTLPlugin('/css/[name].rtl.css')
-        ]
-    });
+    ], 'public/js/backend.js');
 
 if(mix.inProduction){
     mix.version();
