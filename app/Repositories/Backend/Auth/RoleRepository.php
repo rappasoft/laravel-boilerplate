@@ -37,7 +37,7 @@ class RoleRepository extends BaseEloquentRepository
             throw new GeneralException('A role already exists with the name '.$data['name']);
         }
 
-		if (!isset($data['permissions']) || !count($data['permissions'])) {
+        if (! isset($data['permissions']) || ! count($data['permissions'])) {
             $data['permissions'] = [];
         }
 
@@ -50,7 +50,7 @@ class RoleRepository extends BaseEloquentRepository
             $role = parent::create(['name' => $data['name']]);
 
             if ($role) {
-				$role->givePermissionTo($data['permissions']);
+                $role->givePermissionTo($data['permissions']);
 
                 event(new RoleCreated($role));
 
@@ -82,7 +82,7 @@ class RoleRepository extends BaseEloquentRepository
             }
         }
 
-        if (!isset($data['permissions']) || !count($data['permissions'])) {
+        if (! isset($data['permissions']) || ! count($data['permissions'])) {
             $data['permissions'] = [];
         }
 
