@@ -109,19 +109,20 @@ class UserRepository extends BaseEloquentRepository
                 'confirmed' => isset($data['confirmed']) ? 1 : 0,
             ]);
 
+			// See if adding any additional permissions
+			if (!isset($data['permissions']) || !count($data['permissions'])) {
+				$data['permissions'] = [];
+			}
+
             if ($user) {
                 // User must have at least one role
                 if (! count($data['roles'])) {
                     throw new GeneralException(__('exceptions.backend.access.users.role_needed_create'));
                 }
 
-                // Add selected roles
+                // Add selected roles/permissions
                 $user->syncRoles($data['roles']);
-
-                // See if adding any additional permissions
-                if (isset($data['permissions']) && count($data['permissions'])) {
-                    $user->syncPermissions($data['permissions']);
-                }
+				$user->syncPermissions($data['permissions']);
 
                 //Send confirmation email if requested and account approval is off
                 if (isset($data['confirmation_email']) && $user->confirmed == 0 && ! config('access.users.requires_approval')) {
@@ -151,19 +152,19 @@ class UserRepository extends BaseEloquentRepository
 
         $this->checkUserByEmail($user, $data['email']);
 
+		// See if adding any additional permissions
+		if (!isset($data['permissions']) || !count($data['permissions'])) {
+			$data['permissions'] = [];
+		}
+
         return DB::transaction(function () use ($user, $data) {
             if ($user->update([
                 'first_name' => $data['first_name'],
                 'last_name' => $data['last_name'],
                 'email' => $data['email'],
             ])) {
-                // Add selected roles
+                // Add selected roles/permissions
                 $user->syncRoles($data['roles']);
-
-                // See if adding any additional permissions
-                if (! isset($data['permissions']) || ! count($data['permissions'])) {
-                    $data['permissions'] = []; // Set to empty array to remove all permissions
-                }
                 $user->syncPermissions($data['permissions']);
 
                 return $user;
