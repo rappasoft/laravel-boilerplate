@@ -66,8 +66,8 @@
                             <table class="table table-responsive">
                                 <thead>
                                     <tr>
-                                        <th>Roles</th>
-                                        <th>Permissions</th>
+                                        <th>{{ __('labels.backend.access.users.table.roles') }}</th>
+                                        <th>{{ __('labels.backend.access.users.table.permissions') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -95,10 +95,10 @@
                                                                         <i class="fa fa-dot-circle-o"></i> {{ ucwords($permission->name) }}
                                                                     @endforeach
                                                                 @else
-                                                                    None
+                                                                    {{ __('labels.general.none') }}
                                                                 @endif
                                                             @else
-                                                                All Permissions
+                                                                {{ __('labels.backend.access.users.all_permissions') }}
                                                             @endif
                                                         </div>
                                                     </div><!--card-->

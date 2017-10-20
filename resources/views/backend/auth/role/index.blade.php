@@ -34,14 +34,14 @@
                             <td>{{ ucfirst($role->name) }}</td>
                             <td>
                                 @if ($role->id == 1)
-                                    All
+                                    {{ __('labels.general.all') }}
                                 @else
                                     @if ($role->permissions->count())
                                         @foreach ($role->permissions as $permission)
                                             {{ ucwords($permission->name) }}
                                         @endforeach
                                     @else
-                                        None
+                                        {{ __('labels.general.none') }}
                                     @endif
                                 @endif
                             </td>

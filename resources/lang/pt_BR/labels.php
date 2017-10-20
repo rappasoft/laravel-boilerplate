@@ -114,28 +114,6 @@ return [
             'send_password_reset_link_button' => 'Enviar link para redefinição de senha',
         ],
 
-        'macros' => [
-            'country' => [
-                'alpha'   => 'Códigos de País Alpha',
-                'alpha2'  => 'Códigos de País Alpha 2',
-                'alpha3'  => 'Códigos de País Alpha 3',
-                'numeric' => 'Códigos Numéricos País',
-            ],
-            'macro_examples' => 'Exemplo de Macros',
-            'state'          => [
-                'mexico' => 'Lista de Estados do México',
-                'us'     => [
-                    'us'       => 'Lista de estados dos EUA',
-                    'outlying' => 'Territórios Distantes EUA',
-                    'armed'    => 'Forças Armadas dos EUA',
-                ],
-            ],
-            'territories' => [
-                'canada' => 'Província do Canadá e Lista de Territórios',
-            ],
-            'timezone' => 'Fuso horário',
-        ],
-
         'user' => [
             'passwords' => [
                 'change' => 'Alterar Senha',

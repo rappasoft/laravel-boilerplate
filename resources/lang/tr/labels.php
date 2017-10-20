@@ -127,32 +127,6 @@ return [
             'send_password_reset_link_button' => 'Parolayı Sıfırlama Bağlantısı Gönder',
         ],
 
-        'macros' => [
-            'country' => [
-                'alpha'   => 'Ülke Alfa Kodları',
-                'alpha2'  => 'Ülke Alfa2 Kodları',
-                'alpha3'  => 'Ülke Alfa3 Kodları',
-                'numeric' => 'Ülke Sayısal Kodları',
-            ],
-
-            'macro_examples' => 'Makro Örnekleri',
-
-            'state' => [
-                'mexico' => 'Meksika Devlet Listesi',
-                'us'     => [
-                    'us'       => 'ABD Eyaletleri',
-                    'outlying' => 'ABD Dış Bölgeler',
-                    'armed'    => 'ABD Silahlı Kuvvetleri',
-                ],
-            ],
-
-            'territories' => [
-                'canada' => 'Kanada Eyaleti ve Bölgeler Listesi',
-            ],
-
-            'timezone' => 'Saat dilimi',
-        ],
-
         'user' => [
             'passwords' => [
                 'change' => 'Parolayı değiştir',

@@ -9,7 +9,7 @@
         </li>
 
         <li class="nav-item px-3">
-            <a class="nav-link" href="{{ route('admin.dashboard') }}">Dashboard</a>
+            <a class="nav-link" href="{{ route('admin.dashboard') }}">{{ __('navs.frontend.dashboard') }}</a>
         </li>
 
         @if (config('locale.status') && count(config('locale.languages')) > 1)
@@ -51,7 +51,7 @@
                 </div>
                 <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Link</a>
                 <a class="dropdown-item" href="#"><i class="fa fa-file"></i> Link<span class="badge badge-primary">0</span></a>
-                <a class="dropdown-item" href="{{ route('frontend.auth.logout') }}"><i class="fa fa-lock"></i> Logout</a>
+                <a class="dropdown-item" href="{{ route('frontend.auth.logout') }}"><i class="fa fa-lock"></i> {{ __('navs.general.logout') }}</a>
             </div>
         </li>
     </ul>

@@ -28,7 +28,7 @@
                         <th>{{ __('labels.backend.access.users.table.email') }}</th>
                         <th>{{ __('labels.backend.access.users.table.confirmed') }}</th>
                         <th>{{ __('labels.backend.access.users.table.roles') }}</th>
-                        <th>Other Permissions</th>
+                        <th>{{ __('labels.backend.access.users.table.other_permissions') }}</th>
                         <th>{{ __('labels.backend.access.users.table.social') }}</th>
                         <th>{{ __('labels.backend.access.users.table.last_updated') }}</th>
                         <th>{{ __('labels.general.actions') }}</th>
@@ -51,7 +51,7 @@
                                 </tr>
                             @endforeach
                         @else
-                        <tr><td colspan="9"><p class="text-center">There are no deleted users.</p></td></tr>
+                            <tr><td colspan="9"><p class="text-center">{{ __('strings.backend.access.users.no_deleted') }}</p></td></tr>
                         @endif
                     </tbody>
                 </table>

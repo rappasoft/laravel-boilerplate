@@ -31,7 +31,7 @@
                         <th>{{ __('labels.backend.access.users.table.email') }}</th>
                         <th>{{ __('labels.backend.access.users.table.confirmed') }}</th>
                         <th>{{ __('labels.backend.access.users.table.roles') }}</th>
-                        <th>Other Permissions</th>
+                        <th>{{ __('labels.backend.access.users.table.other_permissions') }}</th>
                         <th>{{ __('labels.backend.access.users.table.social') }}</th>
                         <th>{{ __('labels.backend.access.users.table.last_updated') }}</th>
                         <th>{{ __('labels.general.actions') }}</th>

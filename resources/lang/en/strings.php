@@ -18,6 +18,8 @@ return [
             'users' => [
                 'delete_user_confirm'  => 'Are you sure you want to delete this user permanently? Anywhere in the application that references this user\'s id will most likely error. Proceed at your own risk. This can not be un-done.',
                 'if_confirmed_off'     => '(If confirmed is off)',
+				'no_deactivated' => 'There are no deactivated users.',
+				'no_deleted' => 'There are no deleted users.',
                 'restore_user_confirm' => 'Restore this user to its original state?',
             ],
         ],

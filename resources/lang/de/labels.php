@@ -123,32 +123,6 @@ return [
             'send_password_reset_link_button' => 'Link zum zurücksetzen des Kennworts senden',
         ],
 
-        'macros' => [
-            'country' => [
-                'alpha'   => 'ISO Länder-Code',
-                'alpha2'  => 'ISO Länder-Code (2 Stellig)',
-                'alpha3'  => 'ISO Länder-Code (3 Stellig)',
-                'numeric' => 'Länder Nummern-Code',
-            ],
-
-            'macro_examples' => 'Makro Beispiele',
-
-            'state' => [
-                'mexico' => 'Mexico Staaten Liste',
-                'us'     => [
-                    'us'       => 'US Staaten',
-                    'outlying' => 'US Überseeterritorien',
-                    'armed'    => 'US-Streitkräfte',
-                ],
-            ],
-
-            'territories' => [
-                'canada' => 'Kanada Provinzen & Territorien Liste',
-            ],
-
-            'timezone' => 'Zeitzone',
-        ],
-
         'user' => [
             'passwords' => [
                 'change' => 'Kennwort ändern',
