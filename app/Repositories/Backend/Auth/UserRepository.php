@@ -109,10 +109,10 @@ class UserRepository extends BaseEloquentRepository
                 'confirmed' => isset($data['confirmed']) ? 1 : 0,
             ]);
 
-			// See if adding any additional permissions
-			if (!isset($data['permissions']) || !count($data['permissions'])) {
-				$data['permissions'] = [];
-			}
+            // See if adding any additional permissions
+            if (! isset($data['permissions']) || ! count($data['permissions'])) {
+                $data['permissions'] = [];
+            }
 
             if ($user) {
                 // User must have at least one role
@@ -122,7 +122,7 @@ class UserRepository extends BaseEloquentRepository
 
                 // Add selected roles/permissions
                 $user->syncRoles($data['roles']);
-				$user->syncPermissions($data['permissions']);
+                $user->syncPermissions($data['permissions']);
 
                 //Send confirmation email if requested and account approval is off
                 if (isset($data['confirmation_email']) && $user->confirmed == 0 && ! config('access.users.requires_approval')) {
@@ -152,10 +152,10 @@ class UserRepository extends BaseEloquentRepository
 
         $this->checkUserByEmail($user, $data['email']);
 
-		// See if adding any additional permissions
-		if (!isset($data['permissions']) || !count($data['permissions'])) {
-			$data['permissions'] = [];
-		}
+        // See if adding any additional permissions
+        if (! isset($data['permissions']) || ! count($data['permissions'])) {
+            $data['permissions'] = [];
+        }
 
         return DB::transaction(function () use ($user, $data) {
             if ($user->update([
