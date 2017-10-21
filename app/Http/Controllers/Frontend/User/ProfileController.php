@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Frontend\User;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Frontend\Auth\UserRepository;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
-use App\Repositories\Frontend\Access\User\UserRepository;
 
 /**
  * Class ProfileController.
@@ -33,15 +33,15 @@ class ProfileController extends Controller
      */
     public function update(UpdateProfileRequest $request)
     {
-        $output = $this->user->updateProfile(access()->id(), $request->only('first_name', 'last_name', 'email'));
+        $output = $this->user->update($request->user()->id, $request->only('first_name', 'last_name', 'email'));
 
         // E-mail address was updated, user has to reconfirm
         if (is_array($output) && $output['email_changed']) {
-            access()->logout();
+            auth()->logout();
 
-            return redirect()->route('frontend.auth.login')->withFlashInfo(trans('strings.frontend.user.email_changed_notice'));
+            return redirect()->route('frontend.auth.login')->withFlashInfo(__('strings.frontend.user.email_changed_notice'));
         }
 
-        return redirect()->route('frontend.user.account')->withFlashSuccess(trans('strings.frontend.user.profile_updated'));
+        return redirect()->route('frontend.user.account')->withFlashSuccess(__('strings.frontend.user.profile_updated'));
     }
 }

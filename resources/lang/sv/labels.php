@@ -123,32 +123,6 @@ return [
             'send_password_reset_link_button' => 'Skicka länk för att återställa lösenordet.',
         ],
 
-        'macros' => [
-            'country' => [
-                'alpha'   => 'Land Alpha koder',
-                'alpha2'  => 'Land Alpha 2 koder',
-                'alpha3'  => 'Land Alpha 3 koder',
-                'numeric' => 'Land sifferkod',
-            ],
-
-            'macro_examples' => 'Macro exempel',
-
-            'state' => [
-                'mexico' => 'Mexicos stater',
-                'us'     => [
-                    'us'       => 'USA:s stater',
-                    'outlying' => 'USA:s avlägsna territorier',
-                    'armed'    => 'US Armed Forces',
-                ],
-            ],
-
-            'territories' => [
-                'canada' => 'Kanadas provinser och områden',
-            ],
-
-            'timezone' => 'Tidszoner',
-        ],
-
         'user' => [
             'passwords' => [
                 'change' => 'Byt lösenord',

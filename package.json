@@ -11,13 +11,17 @@
   },
   "devDependencies": {
     "axios": "^0.16.2",
-    "bootstrap-sass": "^3.3.7",
+    "bootstrap": "^4.0.0-beta",
     "cross-env": "^5.0.1",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.1.1",
+    "jquery": "^3.2.1",
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
-    "vue": "^2.1.10",
-    "webpack-rtl-plugin": "^1.5.0"
+    "pace": "github:HubSpot/pace#v1.0.2",
+    "popper.js": "^1.12.4",
+    "simple-line-icons": "^2.4.1",
+    "sweetalert": "^2.0.3",
+    "tether": "^1.4.0",
+    "vue": "^2.1.10"
   }
 }

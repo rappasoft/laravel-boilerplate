@@ -62,7 +62,7 @@ return [
             'results'    => 'Search Results for :query',
         ],
 
-        'welcome' => '<p>Dit is het AdminLTE thema door <a href="https://almsaeedstudio.com/" target="_blank">https://almsaeedstudio.com/</a>. Dit is een uitgeklede versie met alleen de stijlen and scripts om het geheel draaiende te krijgen. Download de volledige versie om componenten aan het dashboard toe te voegen.</p>
+        'welcome' => '<p>Dit is het CoreUI thema door <a href="https://coreui.io/" target="_blank">creativeLabs</a>. Dit is een uitgeklede versie met alleen de stijlen and scripts om het geheel draaiende te krijgen. Download de volledige versie om componenten aan het dashboard toe te voegen.</p>
 <p>Alle functionaliteit is voor de show, met uitzondering van de <strong>Toegangs Beheer</strong> aan de linkerkant. Deze boilerplate komt standaard met een volledig functionele toegangs beheer bibliotheek om gebruikers/rollen/permissies to beheren</p>
 <p>Bedenk wel dat dit werk in uitvoering is en dat er fouten of andere problemen kunnen zijn die ik niet ben tegengekomen. Ik zal mijn best doen om deze te repareren wanneer ik deze ontvang.</p>
 <p>Hopelijk geniet je van alle werk dat ik hierin heb gestopt. Bezoek de <a href="https://github.com/rappasoft/laravel-5-boilerplate" target="_blank">GitHub</a> pagina voor meer informatie en om <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">problemen</a> te rapporteren.</p>

@@ -1,121 +1,83 @@
 <style>
-    .stack-content {
-        padding: 8px;
-        background-color: #F6F6F6;
-        border-top: 1px solid #D1D1D1;
-        color: #AE0E0E;
-        font-family: consolas,sans-serif;
-        font-size: 12px;
+    html {
+        position: relative;
+        min-height: 100%;
     }
 
-    .info-box.level {
-        display: block;
-        padding: 0;
-        margin-bottom: 15px;
-        min-height: 70px;
-        background: #fff;
+    body {
+        padding-top: 0;
+        margin-bottom: 0;
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 0;
         width: 100%;
-        box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-        border-radius: 2px;
+        height: 60px;
+        line-height: 60px;
+        background-color: #f5f5f5;
     }
 
-    .info-box.level .info-box-text,
-    .info-box.level .info-box-number,
-    .info-box.level .info-box-icon > i {
-        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    .stack-content {
+        background-color: #F6F6F6;
+        color: #AE0E0E;
+        font-family: consolas, Menlo, Courier, monospace;
+        font-size: 12px;
+        font-weight: 400;
+        white-space: pre-line;
+        max-width: 0;
+        overflow-x: auto;
+
     }
 
-    .info-box.level .info-box-text {
-        display: block;
-        font-size: 14px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    .level-card {
+        color: #FFF;
     }
 
-    .info-box.level .info-box-content {
-        padding: 5px 10px;
-        margin-left: 70px;
-    }
-
-    .info-box.level .info-box-number {
-        display: block;
-        font-weight: bold;
-        font-size: 18px;
-    }
-
-    .info-box.level .info-box-icon {
-        border-radius: 2px 0 0 2px;
-        display: block;
-        float: left;
-        height: 70px; width: 70px;
-        text-align: center;
-        font-size: 40px;
-        line-height: 70px;
+    .level-card .progress {
         background: rgba(0,0,0,0.2);
-    }
-
-    .info-box.level .progress {
-        background: rgba(0,0,0,0.2);
-        margin: 5px -10px 5px -10px;
         height: 2px;
+        margin-top: 10px;
     }
 
-    .info-box.level .progress .progress-bar {
+    .level-card .progress .progress-bar {
         background: #fff;
     }
 
-    .info-box.level-empty {
-        opacity: .6;
-        -webkit-filter: grayscale(1);
-           -moz-filter: grayscale(1);
-            -ms-filter: grayscale(1);
-                filter: grayscale(1);
-        -webkit-transition: all 0.2s ease-in-out;
-           -moz-transition: all 0.2s ease-in-out;
-             -o-transition: all 0.2s ease-in-out;
-                transition: all 0.2s ease-in-out;
-        -webkit-transition-property: -webkit-filter, opacity;
-           -moz-transition-property: -moz-filter, opacity;
-             -o-transition-property: filter, opacity;
-                transition-property: -webkit-filter, -moz-filter, -o-filter, filter, opacity;
+    .level-card .card-header {
+        line-height: 1.5em;
+        font-size: 1em;
     }
 
-    .info-box.level-empty:hover {
-        opacity: 1;
-        -webkit-filter: grayscale(0);
-           -moz-filter: grayscale(0);
-            -ms-filter: grayscale(0);
-                filter: grayscale(0);
+    .level-card .card-header .level-icon {
+        font-size: 1.5em;
+    }
+
+    .level-card .card-body {
+        font-size: 1em;
     }
 
     .level {
-        padding: 2px 6px;
-        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-        border-radius: 2px;
-        font-size: .9em;
-        font-weight: 600;
+        font-size: .875em;
+        line-height: 1em;
+        color: #fff;
     }
 
-    .badge.level-all,
-    .badge.level-emergency,
-    .badge.level-alert,
-    .badge.level-critical,
-    .badge.level-error,
-    .badge.level-warning,
-    .badge.level-notice,
-    .badge.level-info,
-    .badge.level-debug,
-    .level, .level i,
-    .info-box.level-all,
-    .info-box.level-emergency,
-    .info-box.level-alert,
-    .info-box.level-critical,
-    .info-box.level-error,
-    .info-box.level-warning,
-    .info-box.level-notice,
-    .info-box.level-info,
-    .info-box.level-debug {
+    .level-none {
+        background-color: none;
+        color: #AAA;
+    }
+
+    .level-all,
+    .level-emergency,
+    .level-alert,
+    .level-critical,
+    .level-error,
+    .level-warning,
+    .level-notice,
+    .level-info,
+    .level-debug,
+    {
         color: #FFF;
     }
 
@@ -123,47 +85,99 @@
         font-size: .85em;
     }
 
-    .badge.level-all, .level.level-all, .info-box.level-all {
+    .level-all, .level.level-all {
         background-color: {{ log_styler()->color('all') }};
     }
 
-    .badge.level-emergency, .level.level-emergency, .info-box.level-emergency {
+    .level-all .card-header {
+        background-color: {{ log_styler()->color('all') }};
+    }
+
+    .level-emergency, .level.level-emergency {
         background-color: {{ log_styler()->color('emergency') }};
     }
 
-    .badge.level-alert, .level.level-alert, .info-box.level-alert  {
+    .level-emergency .card-header {
+        background-color: {{ log_styler()->color('emergency') }};
+    }
+
+    .level-alert, .level.level-alert {
         background-color: {{ log_styler()->color('alert') }};
     }
 
-    .badge.level-critical, .level.level-critical, .info-box.level-critical {
+    .level-alert .card-header {
+        background-color: {{ log_styler()->color('alert') }};
+    }
+
+    .level-critical, .level.level-critical {
         background-color: {{ log_styler()->color('critical') }};
     }
 
-    .badge.level-error, .level.level-error, .info-box.level-error {
+    .level-critical .card-header {
+        background-color: {{ log_styler()->color('critical') }};
+    }
+
+    .level-error, .level.level-error {
         background-color: {{ log_styler()->color('error') }};
     }
 
-    .badge.level-warning, .level.level-warning, .info-box.level-warning {
+    .level-error .card-header {
+        background-color: {{ log_styler()->color('error') }};
+    }
+
+    .level-warning, .level.level-warning {
         background-color: {{ log_styler()->color('warning') }};
     }
 
-    .badge.level-notice, .level.level-notice, .info-box.level-notice {
+    .level-warning .card-header {
+        background-color: {{ log_styler()->color('warning') }};
+    }
+
+    .level-notice, .level.level-notice {
         background-color: {{ log_styler()->color('notice') }};
     }
 
-    .badge.level-info, .level.level-info, .info-box.level-info {
+    .level-notice .card-header {
+        background-color: {{ log_styler()->color('notice') }};
+    }
+
+    .level-info, .level.level-info {
         background-color: {{ log_styler()->color('info') }};
     }
 
-    .badge.level-debug, .level.level-debug, .info-box.level-debug {
+    .level-info .card-header {
+        background-color: {{ log_styler()->color('info') }};
+    }
+
+    .level-debug, .level.level-debug {
         background-color: {{ log_styler()->color('debug') }};
     }
 
-    .badge.level-empty, .level.level-empty {
+    .level-debug .card-header {
+        background-color: {{ log_styler()->color('debug') }};
+    }
+
+    .level-empty, .level.level-empty {
         background-color: {{ log_styler()->color('empty') }};
     }
 
-    .badge.label-env, .label.label-env {
+    .level-empty .card-header {
+        background-color: {{ log_styler()->color('empty') }};
+    }
+
+    .label-env, .label.label-env {
         background-color: #6A1B9A;
     }
+
+    .badge-env {
+        background-color: #6A1B9A;
+        font-size: .875em;
+    }
+
+    .list-group-item.disabled,
+    .list-group-item:disabled {
+        background-color: #eee;
+        color: #777;
+        cursor: not-allowed;
+}
 </style>

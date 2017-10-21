@@ -8,13 +8,15 @@ namespace App\Http\Controllers;
 class LanguageController extends Controller
 {
     /**
-     * @param $lang
+     * @param $locale
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function swap($lang)
+    public function swap($locale)
     {
-        session()->put('locale', $lang);
+        if (array_key_exists($locale, config('locale.languages'))) {
+            session()->put('locale', $locale);
+        }
 
         return redirect()->back();
     }

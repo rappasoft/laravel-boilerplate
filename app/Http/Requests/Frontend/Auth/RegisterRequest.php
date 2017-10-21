@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Requests\Frontend\Auth;
+namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * Class RegisterRequest.
  */
-class RegisterRequest extends Request
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -42,7 +42,7 @@ class RegisterRequest extends Request
     public function messages()
     {
         return [
-            'g-recaptcha-response.required_if' => trans('validation.required', ['attribute' => 'captcha']),
+            'g-recaptcha-response.required_if' => __('validation.required', ['attribute' => 'captcha']),
         ];
     }
 }

@@ -4,6 +4,9 @@ namespace Tests;
 
 use Illuminate\Contracts\Console\Kernel;
 
+/**
+ * Trait CreatesApplication.
+ */
 trait CreatesApplication
 {
     /**
@@ -14,10 +17,6 @@ trait CreatesApplication
     public function createApplication()
     {
         $app = require __DIR__.'/../bootstrap/app.php';
-
-        if (file_exists(dirname(__DIR__).'/.env.testing')) {
-            ( new \Dotenv\Dotenv(dirname(__DIR__), '.env.testing') )->load();
-        }
 
         $app->make(Kernel::class)->bootstrap();
 

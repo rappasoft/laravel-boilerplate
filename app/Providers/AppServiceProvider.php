@@ -6,6 +6,9 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class AppServiceProvider.
+ */
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -35,10 +38,12 @@ class AppServiceProvider extends ServiceProvider
          * Set the session variable for whether or not the app is using RTL support
          * For use in the blade directive in BladeServiceProvider
          */
-        if (config('locale.languages')[config('app.locale')][2]) {
-            session(['lang-rtl' => true]);
-        } else {
-            session()->forget('lang-rtl');
+        if (! app()->runningInConsole()) {
+            if (config('locale.languages')[config('app.locale')][2]) {
+                session(['lang-rtl' => true]);
+            } else {
+                session()->forget('lang-rtl');
+            }
         }
 
         // Force SSL in production
@@ -49,6 +54,10 @@ class AppServiceProvider extends ServiceProvider
         // Set the default string length for Laravel5.4
         // https://laravel-news.com/laravel-5-4-key-too-long-error
         Schema::defaultStringLength(191);
+
+        // Set the default template for Pagination to use the included Bootstrap 4 template
+        \Illuminate\Pagination\AbstractPaginator::defaultView('pagination::bootstrap-4');
+        \Illuminate\Pagination\AbstractPaginator::defaultSimpleView('pagination::simple-bootstrap-4');
     }
 
     /**
@@ -66,11 +75,6 @@ class AppServiceProvider extends ServiceProvider
              * Loader for registering facades.
              */
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-
-            /*
-             * Load third party local providers
-             */
-            $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
 
             /*
              * Load third party local aliases

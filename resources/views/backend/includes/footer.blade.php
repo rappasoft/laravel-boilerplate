@@ -1,9 +1,5 @@
-<!-- Main Footer -->
-<footer class="main-footer">
-    <!-- To the right -->
-    <div class="pull-right hidden-xs">
-        <a href="http://laravel-boilerplate.com" target="_blank">{{ trans('strings.backend.general.boilerplate_link') }}</a>
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; {{ date('Y') }} <a href="#">{{ app_name() }}</a>.</strong> {{ trans('strings.backend.general.all_rights_reserved') }}
+<footer class="app-footer">
+    <strong>{{ __('labels.general.copyright') }} &copy; {{ date('Y') }} <a href="http://laravel-boilerplate.com">{{ __('strings.backend.general.boilerplate_link') }}</a></strong> {{ __('strings.backend.general.all_rights_reserved') }}
+
+    <span class="float-right">Powered by <a href="http://coreui.io">CoreUI</a></span>
 </footer>

@@ -2,6 +2,7 @@
 
 namespace App\Events\Frontend\Auth;
 
+use App\Models\Auth\User;
 use Illuminate\Queue\SerializesModels;
 
 /**
@@ -19,7 +20,7 @@ class UserLoggedOut
     /**
      * @param $user
      */
-    public function __construct($user)
+    public function __construct(User $user)
     {
         $this->user = $user;
     }

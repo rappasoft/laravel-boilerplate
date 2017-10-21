@@ -91,28 +91,6 @@ return [
             'button' => 'Send Information',
         ],
 
-        'macros'    => [
-            'country'           => [
-                'alpha'     => 'Альфа коды стран',
-                'alpha2'    => 'Альфа-2 коды стран',
-                'alpha3'    => 'Альфа-3 коды стран',
-                'numeric'   => 'Country Numeric Codes',
-            ],
-            'macro_examples'    => 'Примеры макросов',
-            'state'             => [
-                'mexico'    => 'Список штатов Мексики',
-                'us'        => [
-                    'armed'     => 'US Armed Forces',
-                    'outlying'  => 'Окружающие территории США',
-                    'us'        => 'Штаты США',
-                ],
-            ],
-            'territories'       => [
-                'canada'    => 'Провинции Канады & Территории',
-            ],
-            'timezone'          => 'Часовые пояса',
-        ],
-
         'passwords' => [
             'forgot_password'                   => 'Забыли Пароль?',
             'reset_password_box_title'          => 'Сброс Пароля',

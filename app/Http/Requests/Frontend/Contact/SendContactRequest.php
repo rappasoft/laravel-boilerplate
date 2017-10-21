@@ -2,12 +2,12 @@
 
 namespace App\Http\Requests\Frontend\Contact;
 
-use App\Http\Requests\Request;
+use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * Class SendContactRequest.
  */
-class SendContactRequest extends Request
+class SendContactRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

@@ -60,7 +60,7 @@ return [
                 'mismatch' => 'あなたの確認コードが一致しません。',
                 'not_found' => 'その確認コードは存在しません。',
                 'pending'            => 'Your account is currently pending approval.',
-                'resend' => 'あなたのアカウントは確認されていません。 あなたの電子メールの確認リンクをクリックするか、 <a href="'.route('frontend.auth.account.confirm.resend', ':user_id').'">ここをクリック</a>して再送信してください。',
+                'resend' => 'あなたのアカウントは確認されていません。 あなたの電子メールの確認リンクをクリックするか、 <a href="'.route('frontend.auth.account.confirm.resend', ':user_uuid').'">ここをクリック</a>して再送信してください。',
                 'success' => 'あなたのアカウントは正常に確認されました！',
                 'resent' => '新しい確認メールがファイルのアドレスに送信されました。',
             ],
