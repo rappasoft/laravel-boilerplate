@@ -52,6 +52,12 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
+            return redirect()
+                ->route(home_route())
+                ->withFlashDanger(__('auth.general_error'));
+        }
+
         return parent::render($request, $exception);
     }
 
