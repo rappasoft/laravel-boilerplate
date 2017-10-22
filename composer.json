@@ -1,6 +1,6 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "rappasoft/laravel-5-boilerplate",
+    "description": "The Laravel Boilerplate Project.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
@@ -24,6 +24,7 @@
         "barryvdh/laravel-debugbar": "^3.0",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
+        "laravel/dusk": "^2.0",
         "mockery/mockery": "~1.0",
         "phpunit/phpunit": "~6.0"
     },
