@@ -18,7 +18,7 @@
         </div><!--row-->
 
         <div class="row mt-4">
-            <div class="col table-responsive">
+            <div class="col table-responsive-xl">
                 <table class="table">
                     <thead>
                         <tr>

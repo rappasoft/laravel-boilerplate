@@ -20,7 +20,7 @@
 
         <div class="row mt-4">
             <div class="col">
-                <table class="table table-responsive">
+                <table class="table table-responsive-xl">
                     <thead>
                     <tr>
                         <th>{{ __('labels.backend.access.users.table.last_name') }}</th>

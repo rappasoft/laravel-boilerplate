@@ -1,4 +1,4 @@
-<table class="table table-hover table-responsive">
+<table class="table table-hover table-responsive-xl">
     <tr>
         <th>{{ __('labels.backend.access.users.tabs.content.overview.avatar') }}</th>
         <td><img src="{{ $user->picture }}" class="user-profile-image" /></td>
