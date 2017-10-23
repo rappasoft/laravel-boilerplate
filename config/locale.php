@@ -42,6 +42,7 @@ return [
         'it'    => ['it', 'it_IT', false],
         'ja'    => ['ja', 'ja-JP', false],
         'nl'    => ['nl', 'nl_NL', false],
+		'no'    => ['no', 'no_NO', false],
         'pt_BR' => ['pt_BR', 'pt_BR', false],
         'ru'    => ['ru', 'ru-RU', false],
         'sv'    => ['sv', 'sv_SE', false],
