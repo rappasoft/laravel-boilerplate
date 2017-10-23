@@ -1,26 +1,26 @@
-<?php namespace App\Events\Frontend\Auth;
+<?php
 
-use App\Events\Event;
+namespace App\Events\Frontend\Auth;
+
 use Illuminate\Queue\SerializesModels;
 
 /**
- * Class UserLoggedIn
- * @package App\Events\Frontend\Auth
+ * Class UserLoggedIn.
  */
-class UserLoggedIn extends Event {
+class UserLoggedIn
+{
+    use SerializesModels;
 
-	use SerializesModels;
+    /**
+     * @var
+     */
+    public $user;
 
-	/**
-	 * @var $user
-	 */
-	public $user;
-
-	/**
-	 * @param $user
-	 */
-	public function __construct($user)
-	{
-		$this->user = $user;
-	}
+    /**
+     * @param $user
+     */
+    public function __construct($user)
+    {
+        $this->user = $user;
+    }
 }

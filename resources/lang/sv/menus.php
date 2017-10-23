@@ -13,49 +13,70 @@ return [
     |
     */
 
-    'active_users' => 'Aktiva användare',
-    'banned_users' => 'Bannade användare',
-    'create_permission' => 'Skapa rättighet',
-    'create_role' => 'Skapa roll',
-    'create_user' => 'Skapa användare',
-    'dashboard' => 'Huvudpanelen',
-    'deactivated_users' => 'Avaktiverade användare',
-    'deleted_users' => 'Raderade användare',
-    'edit_permission' => 'Redigera rättigheter',
-    'edit_role' => 'Redigera roll',
-    'edit_user' => 'Redigera användare',
-    'general' => 'Allmännt',
-    'header_buttons' => [
-        'permissions' => [
-            'all' => 'Alla rättigheter',
-            'button' => 'Rättigheter',
+    'backend' => [
+        'access' => [
+            'title' => 'Användare och rättigheter',
+
+            'roles' => [
+                'all'        => 'Alla roller',
+                'create'     => 'Skapa roll',
+                'edit'       => 'Redigera roll',
+                'management' => 'Hantera roller',
+                'main'       => 'Roller',
+            ],
+
+            'users' => [
+                'all'             => 'Alla användare',
+                'change-password' => 'Byt lösenord',
+                'create'          => 'Skapa användare',
+                'deactivated'     => 'Inaktiverade användare',
+                'deleted'         => 'Raderade användare',
+                'edit'            => 'Redigera användare',
+                'main'            => 'Användare',
+                'view'            => 'View User',
+            ],
         ],
-        'roles' => [
-            'all' => 'Alla roller',
-            'button' => 'Roller',
+
+        'log-viewer' => [
+            'main'      => 'Loggöversikt',
+            'dashboard' => 'Huvudpanelen',
+            'logs'      => 'Loggar',
         ],
-        'users' => [
-            'all' => 'Alla användare',
-            'button' => 'Användare',
-        ],
-    ],
-    'log-viewer' => [
-        'main' => 'Loggöversikt',
-        'dashboard' => 'Huvudpanelen',
-        'logs' => 'Loggar',
-    ],
-    'permission_management' => 'Hantera rättigheter',
-    'role_management' => 'Hantera roller',
-    'user_management' => 'Hantera användare',
-    'language-picker' => [
-        'language' => 'Språk',
-        'langs' => [
-            'en' => 'Engelska',
-            'it' => 'Italienska',
-            'pt-BR' => 'Portugisiska (Brasilien)',
-            'ru' => 'Ryska',
-            'sv' => 'Svenska',
+
+        'sidebar' => [
+            'dashboard' => 'Kontrollpanelen',
+            'general'   => 'Adminpanelen',
+            'system'    => 'System',
         ],
     ],
 
+    'language-picker' => [
+        'language' => 'Språk',
+        /*
+         * Add the new language to this array.
+         * The key should have the same language code as the folder name.
+         * The string should be: 'Language-name-in-your-own-language (Language-name-in-English)'.
+         * Be sure to add the new language in alphabetical order.
+         */
+        'langs' => [
+            'ar'    => 'Arabiska (Arabic)',
+            'zh'    => '(Chinese Simplified)',
+            'zh-TW' => '(Chinese Traditional)',
+            'da'    => 'Danska (Danish)',
+            'de'    => 'Tyska (German)',
+            'el'    => '(Greek)',
+            'pt_BR' => 'Brasiliansk portugisiska (Brazilian Portuguese)',
+            'en'    => 'Engelska (English)',
+            'fr'    => 'Franska (French)',
+            'id'    => 'Indonesiska (Indonesian)',
+            'it'    => 'Italienska (Italian)',
+            'ja'    => '(Japanese)',
+            'nl'    => 'Holländska (Dutch)',
+            'es'    => 'Spanska (Spanish)',
+            'ru'    => 'Ryska (Russian)',
+            'sv'    => 'Svenska (Swedish)',
+            'th'    => 'Thailändska (Thai)',
+            'tr'    => '(Turkish)',
+        ],
+    ],
 ];

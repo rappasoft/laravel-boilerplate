@@ -13,32 +13,32 @@ return [
     |
     */
 
-    'Permisos' => [
-        'created' => 'Permiso creado correctamente.',
-        'updated' => 'Permiso actualizado correctamente.',
-        'deleted' => 'Permiso eliminado correctamente.',
-        'groups'  => [
-            'created' => 'Grupo de permisos creado correctamente.',
-            'updated' => 'Grupo de permisos actualizado correctamente.',
-            'deleted' => 'Grupo de permisos eliminado correctamente.',
+    'backend' => [
+        'roles' => [
+            'created' => 'Rol creado satisfactoriamente.',
+            'deleted' => 'Rol eliminado satisfactoriamente.',
+            'updated' => 'Rol actualizado satisfactoriamente.',
+        ],
+
+        'users' => [
+            'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
+            'confirmation_email'  => 'Un nuevo mensaje de confirmación ha sido enviado a tu correo.',
+            'confirmed'              => 'The user was successfully confirmed.',
+            'created'             => 'Usuario creado satisfactoriamente.',
+            'deleted'             => 'Usuario eliminado satisfactoriamente.',
+            'deleted_permanently' => 'Usuario eliminado de forma permanente.',
+            'restored'            => 'Usuario restaurado satisfactoriamente.',
+            'session_cleared'      => "The user's session was successfully cleared.",
+            'social_deleted' => 'Social Account Successfully Removed',
+            'unconfirmed' => 'The user was successfully un-confirmed',
+            'updated'             => 'Usuario actualizado satisfactoriamente.',
+            'updated_password'    => 'Contraseña actualizada satisfactoriamente.',
         ],
     ],
 
-    'roles' => [
-        'created' => 'El rol ha sido correctamente creado.',
-        'updated' => 'El rol ha sido correctamente actualizado.',
-        'deleted' => 'El rol ha sido correctamente eliminado.'
+    'frontend' => [
+        'contact' => [
+            'sent' => 'Your information was successfully sent. We will respond back to the e-mail provided as soon as we can.',
+        ],
     ],
-
-    'users' => [
-        'created' => 'El usuario ha sido correctamente creado.',
-        'updated' => 'El usuario ha sido correctamente actualizado.',
-        'deleted' => 'El usuario ha sido correctamente eliminado.',
-        'deleted_permanently' => 'El usuario ha sido eliminado permanentemente.',
-        'restored' => 'El usuario fue restaurado correctamente.',
-        'updated_password' => "La password de usuario fue correctamente actualizada.",
-        'confirmation_email' => 'Un nuevo mail de confirmacion fue enviado a su direccion de correo.'
-
-    ]
-
 ];

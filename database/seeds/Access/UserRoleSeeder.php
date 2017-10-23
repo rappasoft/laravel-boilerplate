@@ -1,33 +1,41 @@
 <?php
 
+use Database\TruncateTable;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Database\DisableForeignKeys;
 
-class UserRoleSeeder extends Seeder {
+/**
+ * Class UserRoleSeeder.
+ */
+class UserRoleSeeder extends Seeder
+{
+    use DisableForeignKeys, TruncateTable;
 
-	public function run() {
+    /**
+     * Run the database seed.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $this->disableForeignKeys();
+        $this->truncate(config('access.role_user_table'));
 
-		if(env('DB_DRIVER') == 'mysql')
-			DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        //Attach admin role to admin user
+        $user_model = config('auth.providers.users.model');
+        $user_model = new $user_model();
+        $user_model::first()->attachRole(1);
 
-		if(env('DB_DRIVER') == 'mysql')
-			DB::table(config('access.assigned_roles_table'))->truncate();
-		elseif(env('DB_DRIVER') == 'sqlite')
-			DB::statement("DELETE FROM ".config('access.assigned_roles_table'));
-		else //For PostgreSQL or anything else
-			DB::statement("TRUNCATE TABLE ".config('access.assigned_roles_table')." CASCADE");
+        //Attach executive role to executive user
+        $user_model = config('auth.providers.users.model');
+        $user_model = new $user_model();
+        $user_model::find(2)->attachRole(2);
 
-		//Attach admin role to admin user
-		$user_model = config('auth.model');
-		$user_model = new $user_model;
-		$user_model::first()->attachRole(1);
+        //Attach user role to general user
+        $user_model = config('auth.providers.users.model');
+        $user_model = new $user_model();
+        $user_model::find(3)->attachRole(3);
 
-		//Attach user role to general user
-		$user_model = config('auth.model');
-		$user_model = new $user_model;
-		$user_model::find(2)->attachRole(2);
-
-		if(env('DB_DRIVER') == 'mysql')
-			DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-	}
+        $this->enableForeignKeys();
+    }
 }

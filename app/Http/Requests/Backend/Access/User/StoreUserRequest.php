@@ -1,13 +1,15 @@
-<?php namespace App\Http\Requests\Backend\Access\User;
+<?php
+
+namespace App\Http\Requests\Backend\Access\User;
 
 use App\Http\Requests\Request;
+use Illuminate\Validation\Rule;
 
 /**
- * Class StoreUserRequest
- * @package App\Http\Requests\Backend\Access\User
+ * Class StoreUserRequest.
  */
-class StoreUserRequest extends Request {
-
+class StoreUserRequest extends Request
+{
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -15,7 +17,7 @@ class StoreUserRequest extends Request {
      */
     public function authorize()
     {
-        return access()->can('create-users');
+        return access()->hasRole(1);
     }
 
     /**
@@ -26,10 +28,10 @@ class StoreUserRequest extends Request {
     public function rules()
     {
         return [
-            'name'					=>  'required',
-            'email'					=>	'required|email|unique:users',
-            'password'				=>	'required|alpha_num|min:6|confirmed',
-            'password_confirmation'	=>	'required|alpha_num|min:6',
+            'first_name'     => 'required|max:191',
+            'last_name'  => 'required|max:191',
+            'email'    => ['required', 'email', 'max:191', Rule::unique('users')],
+            'password' => 'required|min:6|confirmed',
         ];
     }
 }

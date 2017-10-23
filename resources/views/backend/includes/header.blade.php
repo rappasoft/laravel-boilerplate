@@ -1,164 +1,120 @@
-          <!-- Main Header -->
-          <header class="main-header">
+<header class="main-header">
 
-            <!-- Logo -->
-            <a href="{!!route('home')!!}" class="logo"><b>L5</b>Bootstrap</a>
+    <a href="{{ route('frontend.index') }}" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini">
+           {{ substr(app_name(), 0, 1) }}
+        </span>
 
-            <!-- Header Navbar -->
-            <nav class="navbar navbar-static-top" role="navigation">
-              <!-- Sidebar toggle button-->
-              <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                <span class="sr-only">{{ trans('labels.toggle_navigation') }}</span>
-              </a>
-              <!-- Navbar Right Menu -->
-              <div class="navbar-custom-menu">
-                <ul class="nav navbar-nav">
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg">
+            {{ app_name() }}
+        </span>
+    </a>
 
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ trans('menus.language-picker.language') }} <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li>{!! link_to('lang/en', trans('menus.language-picker.langs.en')) !!}</li>
-					  <li>{!! link_to('lang/es', trans('menus.language-picker.langs.es')) !!}</li>
-					  <li>{!! link_to('lang/fr-FR', trans('menus.language-picker.langs.fr-FR')) !!}</li>
-                      <li>{!! link_to('lang/it', trans('menus.language-picker.langs.it')) !!}</li>
-                      <li>{!! link_to('lang/pt-BR', trans('menus.language-picker.langs.pt-BR')) !!}</li>
-                      <li>{!! link_to('lang/ru', trans('menus.language-picker.langs.ru')) !!}</li>    
-                      <li>{!! link_to('lang/sv', trans('menus.language-picker.langs.sv')) !!}</li>
-                    </ul>
-                  </li>
+    <nav class="navbar navbar-static-top" role="navigation">
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">{{ trans('labels.general.toggle_navigation') }}</span>
+        </a>
 
-                  <!-- Messages: style can be found in dropdown.less-->
-                  <li class="dropdown messages-menu">
-                    <!-- Menu toggle button -->
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+
+                @if (config('locale.status') && count(config('locale.languages')) > 1)
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <i class="fa fa-language"></i> {{ trans('menus.language-picker.language') }} <span class="caret"></span>
+                        </a>
+                        @include('includes.partials.lang')
+                    </li>
+                @endif
+
+                <li class="dropdown messages-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <i class="fa fa-envelope-o"></i>
-                      <span class="label label-success">4</span>
+                        <i class="fa fa-envelope-o"></i>
+                        <span class="label label-default">0</span>
                     </a>
-                    <ul class="dropdown-menu">
-                      <li class="header">{{ trans_choice('strings.you_have.messages', 4, ['number' => 4]) }}</li>
-                      <li>
-                        <!-- inner menu: contains the messages -->
-                        <ul class="menu">
-                          <li><!-- start message -->
-                            <a href="#">
-                              <div class="pull-left">
-                                <!-- User Image -->
-                                <img src="{!! access()->user()->picture !!}" class="img-circle" alt="User Image"/>
-                              </div>
-                              <!-- Message title and timestamp -->
-                              <h4>
-                                Support Team
-                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                              </h4>
-                              <!-- The message -->
-                              <p>Why not buy a new awesome theme?</p>
-                            </a>
-                          </li><!-- end message -->
-                        </ul><!-- /.menu -->
-                      </li>
-                      <li class="footer"><a href="#">{{ trans('strings.see_all.messages') }}</a></li>
-                    </ul>
-                  </li><!-- /.messages-menu -->
 
-                  <!-- Notifications Menu -->
-                  <li class="dropdown notifications-menu">
-                    <!-- Menu toggle button -->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <i class="fa fa-bell-o"></i>
-                      <span class="label label-warning">0</span>
-                    </a>
                     <ul class="dropdown-menu">
-                      <li class="header">{{ trans_choice('strings.you_have.notifications', 0) }}</li>
-                      <li>
-                        <!-- Inner Menu: contains the notifications -->
-                        <ul class="menu">
-                          <li><!-- start notification -->
-                            <a href="#">
-                              <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                            </a>
-                          </li><!-- end notification -->
-                        </ul>
-                      </li>
-                      <li class="footer"><a href="#">{{ trans('strings.see_all.notifications') }}</a></li>
+                        <li class="header">{{ trans_choice('strings.backend.general.you_have.messages', 0, ['number' => 0]) }}</li>
+                        <li class="footer">
+                            {{ link_to('#', trans('strings.backend.general.see_all.messages')) }}
+                        </li>
                     </ul>
-                  </li>
-                  <!-- Tasks Menu -->
-                  <li class="dropdown tasks-menu">
-                    <!-- Menu Toggle Button -->
+                </li><!-- /.messages-menu -->
+
+                <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <i class="fa fa-flag-o"></i>
-                      <span class="label label-danger">1</span>
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-default">0</span>
                     </a>
+
                     <ul class="dropdown-menu">
-                      <li class="header">{{ trans_choice('strings.you_have.tasks', 1) }}</li>
-                      <li>
-                        <!-- Inner menu: contains the tasks -->
-                        <ul class="menu">
-                          <li><!-- Task item -->
-                            <a href="#">
-                              <!-- Task title and progress text -->
-                              <h3>
-                                Design some buttons
-                                <small class="pull-right">20%</small>
-                              </h3>
-                              <!-- The progress bar -->
-                              <div class="progress xs">
-                                <!-- Change the css width attribute to simulate progress -->
-                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                  <span class="sr-only">20% Complete</span>
-                                </div>
-                              </div>
-                            </a>
-                          </li><!-- end task item -->
-                        </ul>
-                      </li>
-                      <li class="footer">
-                        <a href="#">{{ trans('strings.see_all.tasks') }}</a>
-                      </li>
+                        <li class="header">{{ trans_choice('strings.backend.general.you_have.notifications', 0, ['number' => 0]) }}</li>
+                        <li class="footer">
+                            {{ link_to('#', trans('strings.backend.general.see_all.notifications')) }}
+                        </li>
                     </ul>
-                  </li>
-                  <!-- User Account Menu -->
-                  <li class="dropdown user user-menu">
-                    <!-- Menu Toggle Button -->
+                </li><!-- /.notifications-menu -->
+
+                <li class="dropdown tasks-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      <!-- The user image in the navbar-->
-                      <img src="{!! access()->user()->picture !!}" class="user-image" alt="User Image"/>
-                      <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                      <span class="hidden-xs">{{ access()->user()->name }}</span>
+                        <i class="fa fa-flag-o"></i>
+                        <span class="label label-default">0</span>
                     </a>
+
                     <ul class="dropdown-menu">
-                      <!-- The user image in the menu -->
-                      <li class="user-header">
-                        <img src="{!! access()->user()->picture !!}" class="img-circle" alt="User Image" />
-                        <p>
-                          {{ access()->user()->name }} - {{ trans('roles.web_developer') }}
-                          <small>{{ trans('strings.member_since') }} XX/XX/XXXX</small>
-                        </p>
-                      </li>
-                      <!-- Menu Body -->
-                      <li class="user-body">
-                        <div class="col-xs-4 text-center">
-                          <a href="#">Link</a>
-                        </div>
-                        <div class="col-xs-4 text-center">
-                          <a href="#">Link</a>
-                        </div>
-                        <div class="col-xs-4 text-center">
-                          <a href="#">Link</a>
-                        </div>
-                      </li>
-                      <!-- Menu Footer-->
-                      <li class="user-footer">
-                        <div class="pull-left">
-                          <a href="#" class="btn btn-default btn-flat">{{ trans('navs.button') }}</a>
-                        </div>
-                        <div class="pull-right">
-                          <a href="{!!url('auth/logout')!!}" class="btn btn-default btn-flat">{{ trans('navs.logout') }}</a>
-                        </div>
-                      </li>
+                        <li class="header">{{ trans_choice('strings.backend.general.you_have.tasks', 0, ['number' => 0]) }}</li>
+                        <li class="footer">
+                            {{ link_to('#', trans('strings.backend.general.see_all.tasks')) }}
+                        </li>
                     </ul>
-                  </li>
-                </ul>
-              </div>
-            </nav>
-          </header>
+                </li><!-- /.tasks-menu -->
+
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="{{ access()->user()->picture }}" class="user-image" alt="User Avatar"/>
+                        <span class="hidden-xs">{{ access()->user()->full_name }}</span>
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li class="user-header">
+                            <img src="{{ access()->user()->picture }}" class="img-circle" alt="User Avatar" />
+                            <p>
+                                {{ access()->user()->full_name }} - {{ implode(", ", access()->user()->roles->pluck('name')->toArray()) }}
+                                <small>{{ trans('strings.backend.general.member_since') }} {{ access()->user()->created_at->format("m/d/Y") }}</small>
+                            </p>
+                        </li>
+
+                        <li class="user-body">
+                            <div class="col-xs-4 text-center">
+                                {{ link_to('#', 'Link') }}
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                {{ link_to('#', 'Link') }}
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                {{ link_to('#', 'Link') }}
+                            </div>
+                        </li>
+
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="{!! route('frontend.index') !!}" class="btn btn-default btn-flat">
+                                    <i class="fa fa-home"></i>
+                                    {{ trans('navs.general.home') }}
+                                </a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="{!! route('frontend.auth.logout') !!}" class="btn btn-danger btn-flat">
+                                    <i class="fa fa-sign-out"></i>
+                                    {{ trans('navs.general.logout') }}
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-custom-menu -->
+    </nav>
+</header>

@@ -1,206 +1,144 @@
-<?php namespace App\Http\Controllers\Backend\Access\User;
+<?php
 
+namespace App\Http\Controllers\Backend\Access\User;
+
+use App\Models\Access\User\User;
 use App\Http\Controllers\Controller;
-use App\Repositories\Backend\User\UserContract;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
-use App\Repositories\Frontend\Auth\AuthenticationContract;
-use App\Http\Requests\Backend\Access\User\CreateUserRequest;
+use App\Repositories\Backend\Access\Role\RoleRepository;
+use App\Repositories\Backend\Access\User\UserRepository;
 use App\Http\Requests\Backend\Access\User\StoreUserRequest;
-use App\Http\Requests\Backend\Access\User\EditUserRequest;
-use App\Http\Requests\Backend\Access\User\MarkUserRequest;
+use App\Http\Requests\Backend\Access\User\ManageUserRequest;
 use App\Http\Requests\Backend\Access\User\UpdateUserRequest;
-use App\Http\Requests\Backend\Access\User\DeleteUserRequest;
-use App\Http\Requests\Backend\Access\User\RestoreUserRequest;
-use App\Http\Requests\Backend\Access\User\ChangeUserPasswordRequest;
-use App\Http\Requests\Backend\Access\User\UpdateUserPasswordRequest;
-use App\Repositories\Backend\Permission\PermissionRepositoryContract;
-use App\Http\Requests\Backend\Access\User\PermanentlyDeleteUserRequest;
-use App\Http\Requests\Backend\Access\User\ResendConfirmationEmailRequest;
 
 /**
- * Class UserController
+ * Class UserController.
  */
-class UserController extends Controller {
-
-	/**
-	 * @var UserContract
-	 */
-	protected $users;
-
-	/**
-	 * @var RoleRepositoryContract
-	 */
-	protected $roles;
-
-	/**
-	 * @var PermissionRepositoryContract
-	 */
-	protected $permissions;
-
-	/**
-	 * @param UserContract $users
-	 * @param RoleRepositoryContract $roles
-	 * @param PermissionRepositoryContract $permissions
-	 */
-	public function __construct(UserContract $users, RoleRepositoryContract $roles, PermissionRepositoryContract $permissions) {
-		$this->users = $users;
-		$this->roles = $roles;
-		$this->permissions = $permissions;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function index() {
-		return view('backend.access.index')
-			->withUsers($this->users->getUsersPaginated(config('access.users.default_per_page'), 1));
-	}
-
-	/**
-	 * @param CreateUserRequest $request
-	 * @return mixed
+class UserController extends Controller
+{
+    /**
+     * @var UserRepository
      */
-	public function create(CreateUserRequest $request) {
-		return view('backend.access.create')
-			->withRoles($this->roles->getAllRoles('sort', 'asc', true))
-			->withPermissions($this->permissions->getAllPermissions());
-	}
+    protected $users;
 
-	/**
-	 * @param StoreUserRequest $request
-	 * @return mixed
+    /**
+     * @var RoleRepository
      */
-	public function store(StoreUserRequest $request) {
-		$this->users->create(
-			$request->except('assignees_roles', 'permission_user'),
-			$request->only('assignees_roles'),
-			$request->only('permission_user')
-		);
-		return redirect()->route('admin.access.users.index')->withFlashSuccess(trans("alerts.users.created"));
-	}
+    protected $roles;
 
-	/**
-	 * @param $id
-	 * @param EditUserRequest $request
-	 * @return mixed
+    /**
+     * @param UserRepository $users
+     * @param RoleRepository $roles
      */
-	public function edit($id, EditUserRequest $request) {
-		$user = $this->users->findOrThrowException($id, true);
-		return view('backend.access.edit')
-			->withUser($user)
-			->withUserRoles($user->roles->lists('id')->all())
-			->withRoles($this->roles->getAllRoles('sort', 'asc', true))
-			->withUserPermissions($user->permissions->lists('id')->all())
-			->withPermissions($this->permissions->getAllPermissions());
-	}
+    public function __construct(UserRepository $users, RoleRepository $roles)
+    {
+        $this->users = $users;
+        $this->roles = $roles;
+    }
 
-	/**
-	 * @param $id
-	 * @param UpdateUserRequest $request
-	 * @return mixed
-	 */
-	public function update($id, UpdateUserRequest $request) {
-		$this->users->update($id,
-			$request->except('assignees_roles', 'permission_user'),
-			$request->only('assignees_roles'),
-			$request->only('permission_user')
-		);
-		return redirect()->route('admin.access.users.index')->withFlashSuccess(trans("alerts.users.updated"));
-	}
-
-	/**
-	 * @param $id
-	 * @param DeleteUserRequest $request
-	 * @return mixed
+    /**
+     * @param ManageUserRequest $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-	public function destroy($id, DeleteUserRequest $request) {
-		$this->users->destroy($id);
-		return redirect()->back()->withFlashSuccess(trans("alerts.users.deleted"));
-	}
+    public function index(ManageUserRequest $request)
+    {
+        return view('backend.access.index');
+    }
 
-	/**
-	 * @param $id
-	 * @param PermanentlyDeleteUserRequest $request
-	 * @return mixed
+    /**
+     * @param ManageUserRequest $request
+     *
+     * @return mixed
      */
-	public function delete($id, PermanentlyDeleteUserRequest $request) {
-		$this->users->delete($id);
-		return redirect()->back()->withFlashSuccess(trans("alerts.users.deleted_permanently"));
-	}
+    public function create(ManageUserRequest $request)
+    {
+        return view('backend.access.create')
+            ->withRoles($this->roles->getAll());
+    }
 
-	/**
-	 * @param $id
-	 * @param RestoreUserRequest $request
-	 * @return mixed
+    /**
+     * @param StoreUserRequest $request
+     *
+     * @return mixed
      */
-	public function restore($id, RestoreUserRequest $request) {
-		$this->users->restore($id);
-		return redirect()->back()->withFlashSuccess(trans("alerts.users.restored"));
-	}
+    public function store(StoreUserRequest $request)
+    {
+        $this->users->create(
+            [
+                'data' => $request->only(
+                    'first_name',
+                    'last_name',
+                    'email',
+                    'password',
+                    'status',
+                    'confirmed',
+                    'confirmation_email'
+                ),
+                'roles' => $request->only('assignees_roles'),
+            ]);
 
-	/**
-	 * @param $id
-	 * @param $status
-	 * @param MarkUserRequest $request
-	 * @return mixed
+        return redirect()->route('admin.access.user.index')->withFlashSuccess(trans('alerts.backend.users.created'));
+    }
+
+    /**
+     * @param User              $user
+     * @param ManageUserRequest $request
+     *
+     * @return mixed
      */
-	public function mark($id, $status, MarkUserRequest $request) {
-		$this->users->mark($id, $status);
-		return redirect()->back()->withFlashSuccess(trans("alerts.users.updated"));
-	}
+    public function show(User $user, ManageUserRequest $request)
+    {
+        return view('backend.access.show')
+            ->withUser($user);
+    }
 
-	/**
-	 * @return mixed
-	 */
-	public function deactivated() {
-		return view('backend.access.deactivated')
-			->withUsers($this->users->getUsersPaginated(25, 0));
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function deleted() {
-		return view('backend.access.deleted')
-			->withUsers($this->users->getDeletedUsersPaginated(25));
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function banned() {
-		return view('backend.access.banned')
-			->withUsers($this->users->getUsersPaginated(25, 2));
-	}
-
-	/**
-	 * @param $id
-	 * @param ChangeUserPasswordRequest $request
-	 * @return mixed
+    /**
+     * @param User              $user
+     * @param ManageUserRequest $request
+     *
+     * @return mixed
      */
-	public function changePassword($id, ChangeUserPasswordRequest $request) {
-		return view('backend.access.change-password')
-			->withUser($this->users->findOrThrowException($id));
-	}
+    public function edit(User $user, ManageUserRequest $request)
+    {
+        return view('backend.access.edit')
+            ->withUser($user)
+            ->withUserRoles($user->roles->pluck('id')->all())
+            ->withRoles($this->roles->getAll());
+    }
 
-	/**
-	 * @param $id
-	 * @param UpdateUserPasswordRequest $request
-	 * @return mixed
-	 */
-	public function updatePassword($id, UpdateUserPasswordRequest $request) {
-		$this->users->updatePassword($id, $request->all());
-		return redirect()->route('admin.access.users.index')->withFlashSuccess(trans("alerts.users.updated_password"));
-	}
-
-	/**
-	 * @param $user_id
-	 * @param AuthenticationContract $auth
-	 * @param ResendConfirmationEmailRequest $request
-	 * @return mixed
+    /**
+     * @param User              $user
+     * @param UpdateUserRequest $request
+     *
+     * @return mixed
      */
-	public function resendConfirmationEmail($user_id, AuthenticationContract $auth, ResendConfirmationEmailRequest $request) {
-		$auth->resendConfirmationEmail($user_id);
-		return redirect()->back()->withFlashSuccess(trans("alerts.users.confirmation_email"));
-	}
+    public function update(User $user, UpdateUserRequest $request)
+    {
+        $this->users->update($user,
+            [
+                'data' => $request->only(
+                    'first_name',
+                    'last_name',
+                    'email',
+                    'status',
+                    'confirmed'
+                ),
+                'roles' => $request->only('assignees_roles'),
+            ]);
+
+        return redirect()->route('admin.access.user.index')->withFlashSuccess(trans('alerts.backend.users.updated'));
+    }
+
+    /**
+     * @param User              $user
+     * @param ManageUserRequest $request
+     *
+     * @return mixed
+     */
+    public function destroy(User $user, ManageUserRequest $request)
+    {
+        $this->users->delete($user);
+
+        return redirect()->route('admin.access.user.deleted')->withFlashSuccess(trans('alerts.backend.users.deleted'));
+    }
 }

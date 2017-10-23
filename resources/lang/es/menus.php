@@ -13,57 +13,70 @@ return [
     |
     */
 
-    'active_users' => 'Usuarios activos',
-    'banned_users' => 'Usuarios baneados',
-    'create_permission' => 'Crear permiso',
-    'create_permission_group' => 'Crear grupo',
-    'create_role' => 'Crear rol',
-    'create_user' => 'Crear usuario',
-    'dashboard' => 'Panel de control',
-    'deactivated_users' => 'Usuarios desactivados',
-    'deleted_users' => 'Usuarios eliminados',
-    'edit_permission' => 'Editar permisos',
-    'edit_permission_group' => 'Editar grupo',
-    'edit_role' => 'Editar rol',
-    'edit_user' => 'Editar usuario',
-    'general' => 'General',
-    'header_buttons' => [
-        'permissions' => [
-            'all' => 'Todos los permisos',
-            'button' => 'Permisos',
+    'backend' => [
+        'access' => [
+            'title' => 'Administración de acceso',
 
-            'groups' => [
-                'all' => 'Todos los grupos',
-                'button' => 'Grupos',
+            'roles' => [
+                'all'        => 'Todos los Roles',
+                'create'     => 'Nuevo Rol',
+                'edit'       => 'Modificar Rol',
+                'management' => 'Administración de Roles',
+                'main'       => 'Roles',
+            ],
+
+            'users' => [
+                'all'             => 'Todos los Usuarios',
+                'change-password' => 'Cambiar la contraseña',
+                'create'          => 'Nuevo Usuario',
+                'deactivated'     => 'Usuarios Desactivados',
+                'deleted'         => 'Usuarios Eliminados',
+                'edit'            => 'Modificar Usuario',
+                'main'            => 'Usuario',
+                'view'            => 'Ver Usuario',
             ],
         ],
-        'roles' => [
-            'all' => 'Todos los roles',
-            'button' => 'Roles',
+
+        'log-viewer' => [
+            'main'      => 'Gestór de Logs',
+            'dashboard' => 'Principal',
+            'logs'      => 'Logs',
         ],
-        'users' => [
-            'all' => 'Todos los usuarios',
-            'button' => 'Usuarios',
+
+        'sidebar' => [
+            'dashboard' => 'Principal',
+            'general'   => 'General',
+            'system'    => 'Sistema',
         ],
     ],
-    'log-viewer' => [
-        'main' => 'Visor de logs',
-        'dashboard' => 'Panel de control',
-        'logs' => 'Logs',
-    ],
-    'permission_management' => 'Administracion de permisos',
-    'role_management' => 'Administracion de roles',
-    'user_management' => 'Administracion de usuarios',
-    'access_management' => 'Administracion de accesos',
+
     'language-picker' => [
         'language' => 'Idioma',
+        /*
+         * Add the new language to this array.
+         * The key should have the same language code as the folder name.
+         * The string should be: 'Language-name-in-your-own-language (Language-name-in-English)'.
+         * Be sure to add the new language in alphabetical order.
+         */
         'langs' => [
-            'en' => 'English',
-			'es' => 'Espa&ntilde;ol',
-            'it' => 'Italian',
-            'pt-BR' => 'Portuguese (Brazil)',
-            'ru' => 'Russian',
-            'sv' => 'Swedish',
+            'ar'    => 'العربية (Arabic)',
+            'zh'    => '(Chinese Simplified)',
+            'zh-TW' => '(Chinese Traditional)',
+            'da'    => 'Danés (Danish)',
+            'de'    => 'Alemán (German)',
+            'el'    => '(Greek)',
+            'en'    => 'Inglés (English)',
+            'es'    => 'Español (Spanish)',
+            'fr'    => 'Francés (French)',
+            'id'    => 'Indonesio (Indonesian)',
+            'it'    => 'Italiano (Italian)',
+            'ja'    => '(Japanese)',
+            'nl'    => 'Holandés (Dutch)',
+            'pt_BR' => 'Portugués Brasileño',
+            'ru'    => 'Russian (Russian)',
+            'sv'    => 'Sueco (Swedish)',
+            'th'    => '(Thai)',
+            'tr'    => '(Turkish)',
         ],
     ],
 ];

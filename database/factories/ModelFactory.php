@@ -1,5 +1,9 @@
 <?php
 
+use Faker\Generator;
+use App\Models\Access\Role\Role;
+use App\Models\Access\User\User;
+
 /*
 |--------------------------------------------------------------------------
 | Model Factories
@@ -11,11 +15,56 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
-	return [
-		'name' => $faker->name,
-		'email' => $faker->email,
-		'password' => bcrypt(str_random(10)),
-		'remember_token' => str_random(10),
-	];
+$factory->define(User::class, function (Generator $faker) {
+    static $password;
+
+    return [
+        'first_name'        => $faker->firstName,
+        'last_name'         => $faker->lastName,
+        'email'             => $faker->safeEmail,
+        'password'          => $password ?: $password = bcrypt('secret'),
+        'remember_token'    => str_random(10),
+        'confirmation_code' => md5(uniqid(mt_rand(), true)),
+    ];
+});
+
+$factory->state(User::class, 'active', function () {
+    return [
+        'status' => 1,
+    ];
+});
+
+$factory->state(User::class, 'inactive', function () {
+    return [
+        'status' => 0,
+    ];
+});
+
+$factory->state(User::class, 'confirmed', function () {
+    return [
+        'confirmed' => 1,
+    ];
+});
+
+$factory->state(User::class, 'unconfirmed', function () {
+    return [
+        'confirmed' => 0,
+    ];
+});
+
+/*
+ * Roles
+ */
+$factory->define(Role::class, function (Generator $faker) {
+    return [
+        'name' => $faker->name,
+        'all'  => 0,
+        'sort' => $faker->numberBetween(1, 100),
+    ];
+});
+
+$factory->state(Role::class, 'admin', function () {
+    return [
+        'all' => 1,
+    ];
 });

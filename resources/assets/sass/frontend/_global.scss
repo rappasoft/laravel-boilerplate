@@ -1,0 +1,14 @@
+// Header Styles
+.logged-in-as {
+  margin:0;
+  border-radius:0;
+}
+
+// Navbar active state
+.navbar-default .navbar-nav > li > a.active:focus,
+.navbar-default .navbar-nav > li > a.active:hover,
+.navbar-default .navbar-nav > li > a.active,
+.navbar-default .dropdown-menu > li > a.active {
+  color: #262626;
+  background-color: #f5f5f5;
+}

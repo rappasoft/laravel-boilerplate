@@ -8,6 +8,6 @@ return [
     'error'     => 'Error',
     'warning'   => 'Varning',
     'notice'    => 'Notis',
-    'info'      => 'Info',
+    'info'      => 'Information',
     'debug'     => 'Debug',
 ];

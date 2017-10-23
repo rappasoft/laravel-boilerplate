@@ -1,0 +1,138 @@
+// Header Bar when using 'Logged In As' Feature
+.logged-in-as {
+  margin: 0;
+  border-radius: 0;
+}
+
+// Margin/Padding Helpers
+$margin-padding: 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50;
+@each $mp in $margin-padding {
+  .mt-#{$mp} {
+    margin-top: #{$mp}px !important;
+  }
+  .mb-#{$mp} {
+    margin-bottom: #{$mp}px !important;
+  }
+  .ml-#{$mp} {
+    margin-left: #{$mp}px !important;
+  }
+  .mr-#{$mp} {
+    margin-right: #{$mp}px !important;
+  }
+
+  .pt-#{$mp} {
+    padding-top: #{$mp}px !important;
+  }
+  .pb-#{$mp} {
+    padding-bottom: #{$mp}px !important;
+  }
+  .pl-#{$mp} {
+    padding-left: #{$mp}px !important;
+  }
+  .pr-#{$mp} {
+    padding-right: #{$mp}px !important;
+  }
+}
+
+// Datatables
+.dataTables_length, .dataTables_paginate {
+  float: right;
+  margin-bottom: 5px;
+}
+
+.dataTables_filter, .dataTables_info {
+  float: left;
+  margin-bottom: 5px;
+}
+
+.dataTables_filter .btn-search {
+  background-color: #eee;
+  border: 1px solid #d2d6de;
+  border-left: 0;
+  border-radius: 0;
+}
+
+
+// AJAX
+.loader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9998;
+}
+
+.ajax-spinner {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  box-sizing: border-box;
+  position: absolute;
+  top: 120px;
+  left: calc(50% + 85px);
+}
+
+@media (max-width: 767px) {
+  .ajax-spinner {
+    top: 25%;
+    left: calc(50% - 24px);
+  }
+}
+
+.ajax-skeleton {
+  border-radius: 50%;
+  border-top: solid 6px #3C8DBC;
+  border-right: solid 6px transparent;
+  border-bottom: solid 6px transparent;
+  border-left: solid 6px transparent;
+  animation: ajax-skeleton-animate 1s linear infinite;
+}
+
+.ajax-skeleton:before {
+  border-radius: 50%;
+  content: " ";
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  box-sizing: border-box;
+  border-top: solid 6px transparent;
+  border-right: solid 6px transparent;
+  border-bottom: solid 6px transparent;
+  border-left: solid 6px #3C8DBC;
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  transform: rotateZ(-30deg);
+}
+
+.ajax-skeleton:after {
+  border-radius: 50%;
+  content: " ";
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  box-sizing: border-box;
+  border-top: solid 6px transparent;
+  border-right: solid 6px #3C8DBC;
+  border-bottom: solid 6px transparent;
+  border-left: solid 6px transparent;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  transform: rotateZ(30deg);
+}
+
+@keyframes ajax-skeleton-animate {
+  0% {
+    transform: rotate(0);
+    opacity: 1
+  }
+  50% {
+    opacity: .7
+  }
+  100% {
+    transform: rotate(360deg);
+    opacity: 1;
+  }
+}

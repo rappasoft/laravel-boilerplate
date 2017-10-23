@@ -1,13 +1,14 @@
-<?php namespace App\Http\Requests\Backend\Access\Role;
+<?php
+
+namespace App\Http\Requests\Backend\Access\Role;
 
 use App\Http\Requests\Request;
 
 /**
- * Class StoreRoleRequest
- * @package App\Http\Requests\Backend\Access\Role
+ * Class StoreRoleRequest.
  */
-class StoreRoleRequest extends Request {
-
+class StoreRoleRequest extends Request
+{
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -15,7 +16,7 @@ class StoreRoleRequest extends Request {
      */
     public function authorize()
     {
-        return access()->can('create-roles');
+        return access()->hasRole(1);
     }
 
     /**
@@ -26,7 +27,7 @@ class StoreRoleRequest extends Request {
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => 'required|max:191',
         ];
     }
 }

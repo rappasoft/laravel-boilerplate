@@ -1,0 +1,63 @@
+git:
+  submodules: false
+
+language: php
+
+cache:
+  directories:
+    - vendor
+    - $HOME/.composer/cache
+php:
+  - 5.6
+  - 7.0
+  - 7.1
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.0.12 # for coverage
+      env: DB_CONNECTION=mysql DB_DATABASE=boilerplate_test DB_USERNAME=root DB_PASSWORD='' DB_PORT=3306 EXEC_COVERAGE=true
+      sudo: required
+      dist: trusty
+  exclude:
+    - php: 5.6
+      env: DB_CONNECTION=mysql DB_DATABASE=boilerplate_test DB_USERNAME=root DB_PASSWORD='' DB_PORT=3306 EXEC_COVERAGE=true
+    - php: 7.0
+      env: DB_CONNECTION=mysql DB_DATABASE=boilerplate_test DB_USERNAME=root DB_PASSWORD='' DB_PORT=3306 EXEC_COVERAGE=true
+    - php: 7.1
+      env: DB_CONNECTION=mysql DB_DATABASE=boilerplate_test DB_USERNAME=root DB_PASSWORD='' DB_PORT=3306 EXEC_COVERAGE=true
+  allow_failures:
+    - env: DB_DATABASE=sqlite
+    - php: 7.0.12 # dist: trusty A dummy to run trusty, the test is not actually executed
+      env: DB_CONNECTION=mysql DB_DATABASE=boilerplate_test DB_USERNAME=root DB_PASSWORD='' DB_PORT=3306 EXEC_COVERAGE=true
+
+before_install:
+  - if [[ "$DB_CONNECTION" == "pgsql" ]]; then psql -c "DROP DATABASE IF EXISTS boilerplate_test;" -U postgres; fi
+  - if [[ "$DB_CONNECTION" == "pgsql" ]]; then psql -c "create database boilerplate_test;" -U postgres; fi
+  - if [[ "$DB_CONNECTION" == "mysql" ]]; then mysql -e "create database IF NOT EXISTS boilerplate_test;" -uroot; fi
+
+env:
+  - DB_CONNECTION=mysql DB_DATABASE=boilerplate_test DB_USERNAME=root DB_PASSWORD='' DB_PORT=3306
+  - DB_CONNECTION=pgsql DB_DATABASE=boilerplate_test DB_USERNAME=postgres DB_PASSWORD='' DB_PORT=5432
+  - DB_CONNECTION=mysql DB_DATABASE=boilerplate_test DB_USERNAME=root DB_PASSWORD='' DB_PORT=3306 EXEC_COVERAGE=true
+  - DB_DATABASE=sqlite
+
+before_script:
+  - if [[ $EXEC_COVERAGE != 'true' ]]; then phpenv config-rm xdebug.ini ; fi
+  - if [[ $EXEC_COVERAGE = 'true' ]]; then echo "memory_limit=-1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini ; fi
+  - composer self-update || true
+  - composer install --dev --no-interaction -o --no-scripts
+  - composer run-script post-root-package-install
+  - composer run-script post-create-project-cmd
+  - composer run-script post-install-cmd
+
+
+script:
+  - if [[ $EXEC_COVERAGE = 'true' ]]; then phpdbg -qrr ./vendor/bin/phpunit --coverage-clover=coverage.clover ; fi
+  - if [[ $EXEC_COVERAGE != 'true' ]]; then ./vendor/bin/phpunit ; fi
+
+after_success:
+  - if [[ $EXEC_COVERAGE = 'true' ]]; then php vendor/bin/coveralls -v -x coverage.clover ; fi
+
+after_failure:
+  - cat storage/logs/laravel-`date +"%Y-%m-%d"`.log

@@ -1,23 +1,43 @@
-<?php namespace App\Http\Middleware;
+<?php
+
+namespace App\Http\Middleware;
 
 use Closure;
 
 /**
- * Class RouteNeedsRole
- * @package App\Http\Middleware
+ * Class RouteNeedsRole.
  */
-class RouteNeedsRole {
-
-	/**
-	 * @param $request
-	 * @param callable $next
-	 * @param $role
-	 * @return mixed
+class RouteNeedsRole
+{
+    /**
+     * @param $request
+     * @param Closure $next
+     * @param $role
+     * @param bool $needsAll
+     *
+     * @return mixed
      */
-	public function handle($request, Closure $next, $role)
-	{
-		if (! access()->hasRole($role))
-			return redirect('/')->withFlashDanger("You do not have access to do that.");
-		return $next($request);
-	}
+    public function handle($request, Closure $next, $role, $needsAll = false)
+    {
+        /*
+         * Roles array
+         */
+        if (strpos($role, ';') !== false) {
+            $roles = explode(';', $role);
+            $access = access()->hasRoles($roles, ($needsAll === 'true' ? true : false));
+        } else {
+            /**
+             * Single role.
+             */
+            $access = access()->hasRole($role);
+        }
+
+        if (! $access) {
+            return redirect()
+                ->route(homeRoute())
+                ->withFlashDanger(trans('auth.general_error'));
+        }
+
+        return $next($request);
+    }
 }

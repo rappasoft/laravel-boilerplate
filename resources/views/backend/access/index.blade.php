@@ -1,76 +1,96 @@
-@extends ('backend.layouts.master')
+@extends ('backend.layouts.app')
 
-@section ('title', trans('menus.user_management'))
+@section ('title', trans('labels.backend.access.users.management'))
+
+@section('after-styles')
+    {{ Html::style("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.css") }}
+@endsection
 
 @section('page-header')
     <h1>
-        {{ trans('menus.user_management') }}
-        <small>{{ trans('menus.active_users') }}</small>
+        {{ trans('labels.backend.access.users.management') }}
+        <small>{{ trans('labels.backend.access.users.active') }}</small>
     </h1>
 @endsection
 
-@section ('breadcrumbs')
-    <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> {{ trans('menus.dashboard') }}</a></li>
-    <li class="active">{!! link_to_route('admin.access.users.index', trans('menus.user_management')) !!}</li>
-@stop
-
 @section('content')
-    @include('backend.access.includes.partials.header-buttons')
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title">{{ trans('labels.backend.access.users.active') }}</h3>
 
-    <table class="table table-striped table-bordered table-hover">
-        <thead>
-        <tr>
-            <th>{{ trans('crud.users.id') }}</th>
-            <th>{{ trans('crud.users.name') }}</th>
-            <th>{{ trans('crud.users.email') }}</th>
-            <th>{{ trans('crud.users.confirmed') }}</th>
-            <th>{{ trans('crud.users.roles') }}</th>
-            <th>{{ trans('crud.users.other_permissions') }}</th>
-            <th class="visible-lg">{{ trans('crud.users.created') }}</th>
-            <th class="visible-lg">{{ trans('crud.users.last_updated') }}</th>
-            <th>{{ trans('crud.actions') }}</th>
-        </tr>
-        </thead>
-        <tbody>
-            @foreach ($users as $user)
-                <tr>
-                    <td>{!! $user->id !!}</td>
-                    <td>{!! $user->name !!}</td>
-                    <td>{!! link_to("mailto:".$user->email, $user->email) !!}</td>
-                    <td>{!! $user->confirmed_label !!}</td>
-                    <td>
-                        @if ($user->roles()->count() > 0)
-                            @foreach ($user->roles as $role)
-                                {!! $role->name !!}<br/>
-                            @endforeach
-                        @else
-                            None
-                        @endif
-                    </td>
-                    <td>
-                        @if ($user->permissions()->count() > 0)
-                            @foreach ($user->permissions as $perm)
-                                {!! $perm->display_name !!}<br/>
-                            @endforeach
-                        @else
-                            None
-                        @endif
-                    </td>
-                    <td class="visible-lg">{!! $user->created_at->diffForHumans() !!}</td>
-                    <td class="visible-lg">{!! $user->updated_at->diffForHumans() !!}</td>
-                    <td>{!! $user->action_buttons !!}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+            <div class="box-tools pull-right">
+                @include('backend.access.includes.partials.user-header-buttons')
+            </div><!--box-tools pull-right-->
+        </div><!-- /.box-header -->
 
-    <div class="pull-left">
-        {!! $users->total() !!} {{ trans('crud.users.total') }}
-    </div>
+        <div class="box-body">
+            <div class="table-responsive">
+                <table id="users-table" class="table table-condensed table-hover">
+                    <thead>
+                    <tr>
+                        <th>{{ trans('labels.backend.access.users.table.last_name') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.first_name') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.email') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.confirmed') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.roles') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.social') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.created') }}</th>
+                        <th>{{ trans('labels.backend.access.users.table.last_updated') }}</th>
+                        <th>{{ trans('labels.general.actions') }}</th>
+                    </tr>
+                    </thead>
+                </table>
+            </div><!--table-responsive-->
+        </div><!-- /.box-body -->
+    </div><!--box-->
 
-    <div class="pull-right">
-        {!! $users->render() !!}
-    </div>
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <h3 class="box-title">{{ trans('history.backend.recent_history') }}</h3>
+            <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            </div><!-- /.box tools -->
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            {!! history()->renderType('User') !!}
+        </div><!-- /.box-body -->
+    </div><!--box box-success-->
+@endsection
 
-    <div class="clearfix"></div>
-@stop
+@section('after-scripts')
+    {{ Html::script("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}
+    {{ Html::script("js/backend/plugin/datatables/dataTables-extend.js") }}
+
+    <script>
+        $(function () {
+            $('#users-table').DataTable({
+                dom: 'lfrtip',
+                processing: false,
+                serverSide: true,
+                autoWidth: false,
+                ajax: {
+                    url: '{{ route("admin.access.user.get") }}',
+                    type: 'post',
+                    data: {status: 1, trashed: false},
+                    error: function (xhr, err) {
+                        if (err === 'parsererror')
+                            location.reload();
+                    }
+                },
+                columns: [
+                    {data: 'last_name', name: '{{config('access.users_table')}}.last_name'},
+                    {data: 'first_name', name: '{{config('access.users_table')}}.first_name'},
+                    {data: 'email', name: '{{config('access.users_table')}}.email'},
+                    {data: 'confirmed', name: '{{config('access.users_table')}}.confirmed'},
+                    {data: 'roles', name: '{{config('access.roles_table')}}.name', sortable: false},
+                    {data: 'social', name: 'social', sortable: false},
+                    {data: 'created_at', name: '{{config('access.users_table')}}.created_at'},
+                    {data: 'updated_at', name: '{{config('access.users_table')}}.updated_at'},
+                    {data: 'actions', name: 'actions', searchable: false, sortable: false}
+                ],
+                order: [[0, "asc"]],
+                searchDelay: 500
+            });
+        });
+    </script>
+@endsection

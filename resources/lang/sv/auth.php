@@ -1,5 +1,7 @@
 <?php
+
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
@@ -10,6 +12,12 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-    'failed' => 'Inloggningen misslyckades. Kontrollera uppgifterna och försök igen.',
-    'throttle' => 'För många misslyckade inloggningar. Försök igen om :seconds sekunder.',
+
+    'failed'        => 'Dessa uppgifter stämmer inte överens med vårt register.',
+    'general_error' => 'Du har inte tillstånd att göra det där.',
+    'socialite'     => [
+        'unacceptable' => ':provider kan inte att användas vid inloggning.',
+    ],
+    'throttle' => 'För många misslyckade försök att logga in i rad. Du kan försöka igen om :seconds sekunder.',
+    'unknown'  => 'Hm.. Något gick snett, ett okänt fel.',
 ];

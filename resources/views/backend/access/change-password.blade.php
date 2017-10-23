@@ -1,54 +1,58 @@
-@extends ('backend.layouts.master')
+@extends ('backend.layouts.app')
 
-@section ('title', 'User Management | Change User Password')
-
-@section ('before-styles-end')
-    {!! HTML::style('css/plugin/jquery.onoff.css') !!}
-@stop
+@section ('title', trans('labels.backend.access.users.management') . ' | ' . trans('labels.backend.access.users.change_password'))
 
 @section('page-header')
     <h1>
-        User Management
-        <small>Change Password</small>
+        {{ trans('labels.backend.access.users.management') }}
+        <small>{{ trans('labels.backend.access.users.change_password') }}</small>
     </h1>
 @endsection
 
-@section ('breadcrumbs')
-    <li><a href="{!!route('backend.dashboard')!!}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-    <li>{!! link_to_route('admin.access.users.index', 'User Management') !!}</li>
-    <li>{!! link_to_route('admin.access.users.edit', "Edit ".$user->name, $user->id) !!}</li>
-    <li class="active">{!! link_to_route('admin.access.user.change-password', 'Change Password', $user->id) !!}</li>
-@stop
-
 @section('content')
-    @include('backend.access.includes.partials.header-buttons')
+    {{ Form::open(['route' => ['admin.access.user.change-password.post', $user], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'patch']) }}
 
-    {!! Form::open(['route' => ['admin.access.user.change-password', $user->id], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post']) !!}
+        <div class="box box-success">
+            <div class="box-header with-border">
+                <h3 class="box-title">{{ trans('labels.backend.access.users.change_password_for', ['user' => $user->name]) }}</h3>
 
-        <div class="form-group">
-            <label class="col-lg-2 control-label">Password</label>
-            <div class="col-lg-10">
-                {!! Form::password('password', ['class' => 'form-control']) !!}
-            </div>
-        </div><!--form control-->
+                <div class="box-tools pull-right">
+                    @include('backend.access.includes.partials.user-header-buttons')
+                </div><!--box-tools pull-right-->
+            </div><!-- /.box-header -->
 
-        <div class="form-group">
-            <label class="col-lg-2 control-label">Confirm Password</label>
-            <div class="col-lg-10">
-                {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
-            </div>
-        </div><!--form control-->
+            <div class="box-body">
+                <div class="form-group">
+                    {{ Form::label('password', trans('validation.attributes.backend.access.users.password'), ['class' => 'col-lg-2 control-label', 'placeholder' => trans('validation.attributes.backend.access.users.password')]) }}
 
-        <div class="well">
-            <div class="pull-left">
-                <a href="{{route('admin.access.users.index')}}" class="btn btn-danger btn-xs">Cancel</a>
-            </div>
+                    <div class="col-lg-10">
+                        {{ Form::password('password', ['class' => 'form-control', 'required' => 'required', 'autofocus' => 'autofocus']) }}
+                    </div><!--col-lg-10-->
+                </div><!--form control-->
 
-            <div class="pull-right">
-                <input type="submit" class="btn btn-success btn-xs" value="Save" />
-            </div>
-            <div class="clearfix"></div>
-        </div><!--well-->
+                <div class="form-group">
+                    {{ Form::label('password_confirmation', trans('validation.attributes.backend.access.users.password_confirmation'), ['class' => 'col-lg-2 control-label', 'placeholder' => trans('validation.attributes.backend.access.users.password_confirmation')]) }}
 
-    {!! Form::close() !!}
-@stop
+                    <div class="col-lg-10">
+                        {{ Form::password('password_confirmation', ['class' => 'form-control', 'required' => 'required']) }}
+                    </div><!--col-lg-10-->
+                </div><!--form control-->
+            </div><!-- /.box-body -->
+        </div><!--box-->
+
+        <div class="box box-info">
+            <div class="box-body">
+                <div class="pull-left">
+                    {{ link_to_route('admin.access.user.index', trans('buttons.general.cancel'), [], ['class' => 'btn btn-danger btn-xs']) }}
+                </div><!--pull-left-->
+
+                <div class="pull-right">
+                    {{ Form::submit(trans('buttons.general.crud.update'), ['class' => 'btn btn-success btn-xs']) }}
+                </div><!--pull-right-->
+
+                <div class="clearfix"></div>
+            </div><!-- /.box-body -->
+        </div><!--box-->
+
+    {{ Form::close() }}
+@endsection

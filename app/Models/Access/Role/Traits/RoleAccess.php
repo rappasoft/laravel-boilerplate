@@ -1,11 +1,12 @@
-<?php namespace App\Models\Access\Role\Traits;
+<?php
+
+namespace App\Models\Access\Role\Traits;
 
 /**
- * Class RoleAccess
- * @package App\Models\Access\Role\Traits
+ * Class RoleAccess.
  */
-trait RoleAccess {
-
+trait RoleAccess
+{
     /**
      * Save the inputted permissions.
      *
@@ -51,11 +52,13 @@ trait RoleAccess {
      */
     public function detachPermission($permission)
     {
-        if (is_object($permission))
+        if (is_object($permission)) {
             $permission = $permission->getKey();
+        }
 
-        if (is_array($permission))
+        if (is_array($permission)) {
             $permission = $permission['id'];
+        }
 
         $this->permissions()->detach($permission);
     }
@@ -75,7 +78,7 @@ trait RoleAccess {
     }
 
     /**
-     * Detach multiple permissions from current role
+     * Detach multiple permissions from current role.
      *
      * @param mixed $permissions
      *

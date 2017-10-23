@@ -1,23 +1,30 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use Database\DisableForeignKeys;
 
-class AccessTableSeeder extends Seeder {
+/**
+ * Class AccessTableSeeder.
+ */
+class AccessTableSeeder extends Seeder
+{
+    use DisableForeignKeys;
 
-	public function run() {
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $this->disableForeignKeys();
 
-		if(env('DB_DRIVER')=='mysql')
-			DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        $this->call(UserTableSeeder::class);
+        $this->call(RoleTableSeeder::class);
+        $this->call(UserRoleSeeder::class);
+        $this->call(PermissionTableSeeder::class);
+        $this->call(PermissionRoleSeeder::class);
 
-		$this->call(UserTableSeeder::class);
-		$this->call(RoleTableSeeder::class);
-		$this->call(UserRoleSeeder::class);
-		$this->call(PermissionGroupTableSeeder::class);
-		$this->call(PermissionTableSeeder::class);
-		$this->call(PermissionDependencyTableSeeder::class);
-
-		if(env('DB_DRIVER')=='mysql')
-			DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-	}
+        $this->enableForeignKeys();
+    }
 }

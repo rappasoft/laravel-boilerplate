@@ -4,41 +4,41 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Alert Language Lines
+    | Языковые ресурсы вывода оповещений
     |--------------------------------------------------------------------------
     |
-    | The following language lines contain alert messages for various scenarios
-    | during CRUD operations. You are free to modify these language lines
-    | according to your application's requirements.
+    | Следующие языковые ресурсы используются для вывода
+    | сообщений в различных сценариях CRUD.
+    | Вы можете свободно изменять эти языковые ресурсы в соответствии
+    | с требованиями вашего приложения.
     |
     */
 
-    'permissions' => [
-        'created' => 'Разрешение успешно создано.',
-        'updated' => 'Разрешение успешно обновлено.',
-        'deleted' => 'Разрешение успешно удалено.',
-        'groups'  => [
-            'created' => 'Группа разрешений успешно создана.',
-            'updated' => 'Группа разрешений успешно обновлена.',
-            'deleted' => 'Группа разрешений успешно удалена.',
+    'backend'   => [
+        'roles' => [
+            'created'   => 'Новая роль создана.',
+            'deleted'   => 'Роль удалена.',
+            'updated'   => 'Роль обновлена.',
+        ],
+        'users' => [
+            'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
+            'confirmation_email'    => 'Новые параметры для подтверждения отправлены на Ваш E-mail.',
+            'confirmed'              => 'The user was successfully confirmed.',
+            'created'               => 'Новый пользователь создан.',
+            'deleted'               => 'Пользователь удален.',
+            'deleted_permanently'   => 'Пользователь удален навсегда.',
+            'restored'              => 'Пользователь восстановлен.',
+            'session_cleared'      => "The user's session was successfully cleared.",
+            'social_deleted' => 'Social Account Successfully Removed',
+            'unconfirmed' => 'The user was successfully un-confirmed',
+            'updated'               => 'Параметры пользователя обновлены.',
+            'updated_password'      => 'Пароль пользователя обновлен.',
         ],
     ],
 
-    'roles' => [
-        'created' => 'Роль успешно создана.',
-        'updated' => 'Роль успешно обновлена.',
-        'deleted' => 'Роль успешно удалена.'
+    'frontend' => [
+        'contact' => [
+            'sent' => 'Your information was successfully sent. We will respond back to the e-mail provided as soon as we can.',
+        ],
     ],
-
-    'users' => [
-        'created' => 'Пользователь успешно создан.',
-        'updated' => 'Пользователь успешно обновлен.',
-        'deleted' => 'Пользователь успешно удален.',
-        'deleted_permanently' => 'Пользователь удален навсегда.',
-        'restored' => 'Пользователь успешно восстановлен.',
-        'updated_password' => "Пароль пользователя успешно обновлен.",
-        'confirmation_email' => 'Новое подтверждение по электронной почте было отправлено на зарегистрированный адрес.'
-
-    ]
-
 ];

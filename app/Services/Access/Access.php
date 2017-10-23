@@ -1,128 +1,163 @@
-<?php namespace App\Services\Access;
+<?php
+
+namespace App\Services\Access;
+
+use App\Events\Frontend\Auth\UserLoggedIn;
+use App\Events\Frontend\Auth\UserLoggedOut;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 /**
- * Class Access
- * @package App\Services\Access
+ * Class Access.
  */
 class Access
 {
-	/**
-	 * Laravel application
-	 *
-	 * @var \Illuminate\Foundation\Application
-	 */
-	public $app;
+    /**
+     * Get the currently authenticated user or null.
+     */
+    public function user()
+    {
+        return auth()->user();
+    }
 
-	/**
-	 * Create a new confide instance.
-	 *
-	 * @param \Illuminate\Foundation\Application $app
-	 */
-	public function __construct($app)
-	{
-		$this->app = $app;
-	}
+    /**
+     * Return if the current session user is a guest or not.
+     *
+     * @return mixed
+     */
+    public function guest()
+    {
+        return auth()->guest();
+    }
 
-	/**
-	 * Get the currently authenticated user or null.
-	 */
-	public function user()
-	{
-		return auth()->user();
-	}
+    /**
+     * @return mixed
+     */
+    public function logout()
+    {
+        event(new UserLoggedOut($this->user()));
 
-	/**
-	 * @return mixed
-	 * Get the currently authenticated user's id
-	 */
-	public function id()
-	{
-		return auth()->id();
-	}
+        return auth()->logout();
+    }
 
-	/**
-	 * Checks if the current user has a Role by its name or id
-	 *
-	 * @param string $role Role name.
-	 *
-	 * @return bool
-	 */
-	public function hasRole($role)
-	{
-		if ($user = $this->user())
-			return $user->hasRole($role);
+    /**
+     * Get the currently authenticated user's id.
+     *
+     * @return mixed
+     */
+    public function id()
+    {
+        return auth()->id();
+    }
 
-		return false;
-	}
+    /**
+     * @param Authenticatable $user
+     * @param bool            $remember
+     */
+    public function login(Authenticatable $user, $remember = false)
+    {
+        $logged_in = auth()->login($user, $remember);
+        event(new UserLoggedIn($this->user()));
 
-	/**
-	 * Checks if the user has either one or more, or all of an array of roles
-	 * @param $roles
-	 * @param bool $needsAll
-	 * @return bool
-	 */
-	public function hasRoles($roles, $needsAll = false)
-	{
-		if ($user = $this->user()) {
-			//If not an array, make a one item array
-			if (! is_array($roles))
-				$roles = array($roles);
+        return $logged_in;
+    }
 
-			return $user->hasRoles($roles, $needsAll);
-		}
+    /**
+     * @param $id
+     *
+     * @return mixed
+     */
+    public function loginUsingId($id)
+    {
+        $logged_in = auth()->loginUsingId($id);
+        event(new UserLoggedIn($this->user()));
 
-		return false;
-	}
+        return $logged_in;
+    }
 
-	/**
-	 * Check if the current user has a permission by its name or id
-	 *
-	 * @param string $permission Permission name or id.
-	 *
-	 * @return bool
-	 */
-	public function can($permission)
-	{
-		if ($user = $this->user())
-			return $user->can($permission);
+    /**
+     * Checks if the current user has a Role by its name or id.
+     *
+     * @param string $role Role name.
+     *
+     * @return bool
+     */
+    public function hasRole($role)
+    {
+        if ($user = $this->user()) {
+            return $user->hasRole($role);
+        }
 
-		return false;
-	}
+        return false;
+    }
 
-	/**
-	 * Check an array of permissions and whether or not all are required to continue
-	 * @param $permissions
-	 * @param $needsAll
-	 * @return bool
-	 */
-	public function canMultiple($permissions, $needsAll = false) {
-		if ($user = $this->user()) {
-			//If not an array, make a one item array
-			if (!is_array($permissions))
-				$permissions = array($permissions);
+    /**
+     * Checks if the user has either one or more, or all of an array of roles.
+     *
+     * @param  $roles
+     * @param bool $needsAll
+     *
+     * @return bool
+     */
+    public function hasRoles($roles, $needsAll = false)
+    {
+        if ($user = $this->user()) {
+            return $user->hasRoles($roles, $needsAll);
+        }
 
-			return $user->canMultiple($permissions, $needsAll);
-		}
+        return false;
+    }
 
-		return false;
-	}
+    /**
+     * Check if the current user has a permission by its name or id.
+     *
+     * @param string $permission Permission name or id.
+     *
+     * @return bool
+     */
+    public function allow($permission)
+    {
+        if ($user = $this->user()) {
+            return $user->allow($permission);
+        }
 
-	/**
-	 * @param $permission
-	 * @return bool
-	 */
-	public function hasPermission($permission)
-	{
-		return $this->can($permission);
-	}
+        return false;
+    }
 
-	/**
-	 * @param $permissions
-	 * @param $needsAll
-	 * @return bool
-	 */
-	public function hasPermissions($permissions, $needsAll = false)
-	{
-		return $this->canMultiple($permissions, $needsAll);
-	}
+    /**
+     * Check an array of permissions and whether or not all are required to continue.
+     *
+     * @param  $permissions
+     * @param  $needsAll
+     *
+     * @return bool
+     */
+    public function allowMultiple($permissions, $needsAll = false)
+    {
+        if ($user = $this->user()) {
+            return $user->allowMultiple($permissions, $needsAll);
+        }
+
+        return false;
+    }
+
+    /**
+     * @param  $permission
+     *
+     * @return bool
+     */
+    public function hasPermission($permission)
+    {
+        return $this->allow($permission);
+    }
+
+    /**
+     * @param  $permissions
+     * @param  $needsAll
+     *
+     * @return bool
+     */
+    public function hasPermissions($permissions, $needsAll = false)
+    {
+        return $this->allowMultiple($permissions, $needsAll);
+    }
 }

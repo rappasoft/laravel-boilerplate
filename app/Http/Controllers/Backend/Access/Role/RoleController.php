@@ -1,100 +1,111 @@
-<?php namespace App\Http\Controllers\Backend\Access\Role;
+<?php
 
+namespace App\Http\Controllers\Backend\Access\Role;
+
+use App\Models\Access\Role\Role;
 use App\Http\Controllers\Controller;
-use App\Repositories\Backend\Role\RoleRepositoryContract;
-use App\Http\Requests\Backend\Access\Role\CreateRoleRequest;
+use App\Repositories\Backend\Access\Role\RoleRepository;
 use App\Http\Requests\Backend\Access\Role\StoreRoleRequest;
-use App\Http\Requests\Backend\Access\Role\EditRoleRequest;
+use App\Http\Requests\Backend\Access\Role\ManageRoleRequest;
 use App\Http\Requests\Backend\Access\Role\UpdateRoleRequest;
-use App\Http\Requests\Backend\Access\Role\DeleteRoleRequest;
-use App\Repositories\Backend\Permission\PermissionRepositoryContract;
-use App\Repositories\Backend\Permission\Group\PermissionGroupRepositoryContract;
+use App\Repositories\Backend\Access\Permission\PermissionRepository;
 
 /**
- * Class RoleController
- * @package App\Http\Controllers\Access
+ * Class RoleController.
  */
-class RoleController extends Controller {
-
-	/**
-	 * @var RoleRepositoryContract
-	 */
-	protected $roles;
-
-	/**
-	 * @var PermissionRepositoryContract
-	 */
-	protected $permissions;
-
-	/**
-	 * @param RoleRepositoryContract $roles
-	 * @param PermissionRepositoryContract $permissions
-	 */
-	public function __construct(RoleRepositoryContract $roles, PermissionRepositoryContract $permissions) {
-		$this->roles = $roles;
-		$this->permissions = $permissions;
-	}
-
-	/**
-	 * @return mixed
-	 */
-	public function index() {
-		return view('backend.access.roles.index')
-			->withRoles($this->roles->getRolesPaginated(50));
-	}
-
-	/**
-	 * @param PermissionGroupRepositoryContract $group
-	 * @param CreateRoleRequest $request
-	 * @return mixed
+class RoleController extends Controller
+{
+    /**
+     * @var RoleRepository
      */
-	public function create(PermissionGroupRepositoryContract $group, CreateRoleRequest $request) {
-		return view('backend.access.roles.create')
-			->withGroups($group->getAllGroups())
-			->withPermissions($this->permissions->getUngroupedPermissions());
-	}
+    protected $roles;
 
-	/**
-	 * @param StoreRoleRequest $request
-	 * @return mixed
-	 */
-	public function store(StoreRoleRequest $request) {
-		$this->roles->create($request->all());
-		return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans("alerts.roles.created"));
-	}
-
-	/**
-	 * @param $id
-	 * @param PermissionGroupRepositoryContract $group
-	 * @param EditRoleRequest $request
-	 * @return mixed
+    /**
+     * @var PermissionRepository
      */
-	public function edit($id, PermissionGroupRepositoryContract $group, EditRoleRequest $request) {
-		$role = $this->roles->findOrThrowException($id, true);
-		return view('backend.access.roles.edit')
-			->withRole($role)
-			->withRolePermissions($role->permissions->lists('id')->all())
-			->withGroups($group->getAllGroups())
-			->withPermissions($this->permissions->getUngroupedPermissions());
-	}
+    protected $permissions;
 
-	/**
-	 * @param $id
-	 * @param UpdateRoleRequest $request
-	 * @return mixed
-	 */
-	public function update($id, UpdateRoleRequest $request) {
-		$this->roles->update($id, $request->all());
-		return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans("alerts.roles.updated"));
-	}
-
-	/**
-	 * @param $id
-	 * @param DeleteRoleRequest $request
-	 * @return mixed
+    /**
+     * @param RoleRepository       $roles
+     * @param PermissionRepository $permissions
      */
-	public function destroy($id, DeleteRoleRequest $request) {
-		$this->roles->destroy($id);
-		return redirect()->route('admin.access.roles.index')->withFlashSuccess(trans("alerts.roles.deleted"));
-	}
+    public function __construct(RoleRepository $roles, PermissionRepository $permissions)
+    {
+        $this->roles = $roles;
+        $this->permissions = $permissions;
+    }
+
+    /**
+     * @param ManageRoleRequest $request
+     *
+     * @return mixed
+     */
+    public function index(ManageRoleRequest $request)
+    {
+        return view('backend.access.roles.index');
+    }
+
+    /**
+     * @param ManageRoleRequest $request
+     *
+     * @return mixed
+     */
+    public function create(ManageRoleRequest $request)
+    {
+        return view('backend.access.roles.create')
+            ->withPermissions($this->permissions->getAll())
+            ->withRoleCount($this->roles->getCount());
+    }
+
+    /**
+     * @param StoreRoleRequest $request
+     *
+     * @return mixed
+     */
+    public function store(StoreRoleRequest $request)
+    {
+        $this->roles->create($request->only('name', 'associated-permissions', 'permissions', 'sort'));
+
+        return redirect()->route('admin.access.role.index')->withFlashSuccess(trans('alerts.backend.roles.created'));
+    }
+
+    /**
+     * @param Role              $role
+     * @param ManageRoleRequest $request
+     *
+     * @return mixed
+     */
+    public function edit(Role $role, ManageRoleRequest $request)
+    {
+        return view('backend.access.roles.edit')
+            ->withRole($role)
+            ->withRolePermissions($role->permissions->pluck('id')->all())
+            ->withPermissions($this->permissions->getAll());
+    }
+
+    /**
+     * @param Role              $role
+     * @param UpdateRoleRequest $request
+     *
+     * @return mixed
+     */
+    public function update(Role $role, UpdateRoleRequest $request)
+    {
+        $this->roles->update($role, $request->only('name', 'associated-permissions', 'permissions', 'sort'));
+
+        return redirect()->route('admin.access.role.index')->withFlashSuccess(trans('alerts.backend.roles.updated'));
+    }
+
+    /**
+     * @param Role              $role
+     * @param ManageRoleRequest $request
+     *
+     * @return mixed
+     */
+    public function destroy(Role $role, ManageRoleRequest $request)
+    {
+        $this->roles->delete($role);
+
+        return redirect()->route('admin.access.role.index')->withFlashSuccess(trans('alerts.backend.roles.deleted'));
+    }
 }

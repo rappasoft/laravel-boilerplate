@@ -4,65 +4,69 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Menus Language Lines
+    | Языковые ресурсы названий менюшек
     |--------------------------------------------------------------------------
     |
-    | The following language lines are used in menu items throughout the system.
-    | Regardless where it is placed, a menu item can be listed here so it is easily
-    | found in a intuitive way.
+    | Следующие языковые ресурсы используются в названиях
+    | менюшек всего вашего приложения.
+    | Вы можете свободно изменять эти языковые ресурсы в соответствии
+    | с требованиями вашего приложения.
     |
     */
 
-    'active_users' => 'Активные пользователи',
-    'banned_users' => 'Заблокированные пользователи',
-    'create_permission' => 'Создать разрешение',
-    'create_permission_group' => 'Создать группу',
-    'create_role' => 'Создать роль',
-    'create_user' => 'Создать пользователя',
-    'dashboard' => 'Обзор',
-    'deactivated_users' => 'Деактивированные пользователи',
-    'deleted_users' => 'Удаленные пользователи',
-    'edit_permission' => 'Редактировать разрешение',
-    'edit_permission_group' => 'Редактировать группу',
-    'edit_role' => 'Редактировать роль',
-    'edit_user' => 'Редактировать пользователя',
-    'general' => 'Общие',
-    'header_buttons' => [
-        'permissions' => [
-            'all' => 'Все разрешения',
-            'button' => 'Разрешения',
-
-            'groups' => [
-                'all' => 'Все группы',
-                'button' => 'Группы',
+    'backend'           => [
+        'access'        => [
+            'roles' => [
+                'all'           => 'Все роли',
+                'create'        => 'Создать роль',
+                'edit'          => 'Редактировать роль',
+                'main'          => 'Роли',
+                'management'    => 'Управление доступом',
+            ],
+            'title' => 'Управление',
+            'users' => [
+                'all'               => 'Все пользователи',
+                'change-password'   => 'Изменить пароль',
+                'create'            => 'Создать пользователя',
+                'deactivated'       => 'Заблокированные пользователи',
+                'deleted'           => 'Удаленные пользователи',
+                'edit'              => 'Редактирование учётной записи',
+                'main'              => 'Пользователи',
+                'view'              => 'Просмотр учётной записи',
             ],
         ],
-        'roles' => [
-            'all' => 'Все роли',
-            'button' => 'Роли',
+        'log-viewer'    => [
+            'dashboard' => 'Обзор',
+            'logs'      => 'Все записи',
+            'main'      => 'Журнал ошибок',
         ],
-        'users' => [
-            'all' => 'Все пользователи',
-            'button' => 'Пользователи',
+        'sidebar'       => [
+            'dashboard' => 'Системная панель',
+            'general'   => 'Общие',
+            'system'    => 'Система',
         ],
     ],
-    'log-viewer' => [
-        'main' => 'Мониторинг логов',
-        'dashboard' => 'Обзор',
-        'logs' => 'Логи',
-    ],
-    'permission_management' => 'Управление разрешениями',
-    'role_management' => 'Управление ролями',
-    'user_management' => 'Управление пользователями',
-    'access_management' => 'Управление доступом',
-    'language-picker' => [
-        'language' => 'Язык',
-        'langs' => [
-            'en' => 'Английский',
-            'it' => 'Итальянский',
-            'pt-BR' => 'Португальский (Бразилия)',
-            'ru' => 'Русский',
-            'sv' => 'Шведский',
+    'language-picker'   => [
+        'langs'     => [
+            'ar'    => 'Арабский (Arabic)',
+            'zh'    => '(Chinese Simplified)',
+            'zh-TW' => '(Chinese Traditional)',
+            'da'    => 'Датский (Danish)',
+            'de'    => 'Немецкий (German)',
+            'el'    => 'Греческий (Greek)',
+            'en'    => 'Английский (English)',
+            'es'    => 'Испанский (Spanish)',
+            'fr'    => 'Французский (French)',
+            'id'    => 'Индонезийский (Indonesian)',
+            'it'    => 'Итальянский (Italian)',
+            'ja'    => '(Japanese)',
+            'nl'    => 'Голландский (Dutch)',
+            'pt_BR' => 'Бразильский Португальский (Brazilian Portuguese)',
+            'ru'    => 'Русский (Russian)',
+            'sv'    => 'Шведский (Swedish)',
+            'th'    => 'Тайский (Thai)',
+            'tr'    => '(Turkish)',
         ],
+        'language'  => 'Язык',
     ],
 ];

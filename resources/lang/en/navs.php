@@ -13,15 +13,24 @@ return [
     |
     */
 
-    'my_information' => 'My Information',
-    'change_password' => 'Change Password',
-    'administration' => 'Administration',
-    'dashboard' => 'Dashboard',
-    'home' => 'Home',
-    'login' => 'Login',
-    'logout' => 'Logout',
-    'macros' => 'Macros',
-    'register' => 'Register',
-    'button' => 'Button',
+    'general' => [
+        'home'   => 'Home',
+        'logout' => 'Logout',
+    ],
 
+    'frontend' => [
+        'contact' => 'Contact',
+        'dashboard' => 'Dashboard',
+        'login'     => 'Login',
+        'macros'    => 'Macros',
+        'register'  => 'Register',
+
+        'user' => [
+            'account'         => 'My Account',
+            'administration'  => 'Administration',
+            'change_password' => 'Change Password',
+            'my_information'  => 'My Information',
+            'profile'         => 'Profile',
+        ],
+    ],
 ];

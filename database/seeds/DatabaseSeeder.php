@@ -1,27 +1,30 @@
 <?php
 
+use Database\TruncateTable;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class DatabaseSeeder extends Seeder {
+/**
+ * Class DatabaseSeeder.
+ */
+class DatabaseSeeder extends Seeder
+{
+    use TruncateTable;
 
-	/**
-	 * Run the database seeds.
-	 *
-	 * @return void
-	 */
-	public function run()
-	{
-		Model::unguard();
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Model::unguard();
 
-		if(env('DB_DRIVER')=='mysql')
-			DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        $this->truncateMultiple(['sessions']);
 
-		$this->call(AccessTableSeeder::class);
+        $this->call(AccessTableSeeder::class);
+        $this->call(HistoryTypeTableSeeder::class);
 
-		if(env('DB_DRIVER')=='mysql')
-			DB::statement('SET FOREIGN_KEY_CHECKS=1;');
-
-		Model::reguard();
-	}
+        Model::reguard();
+    }
 }
