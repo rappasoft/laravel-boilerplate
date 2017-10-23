@@ -62,8 +62,8 @@
                     <div class="form-group row">
                         {{ html()->label('Abilities')->class('col-md-2 form-control-label') }}
 
-                        <div class="col-md-10">
-                            <table class="table table-responsive">
+                        <div class="col-md-10 table-responsive">
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th>{{ __('labels.backend.access.users.table.roles') }}</th>

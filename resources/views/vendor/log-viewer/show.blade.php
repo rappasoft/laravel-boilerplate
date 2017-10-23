@@ -75,7 +75,8 @@
                     </div>
                 @endif
 
-                <table id="entries" class="table table-responsive table-sm" style="word-break: break-word;">
+                <div class="table-responsive">
+                    <table id="entries" class="table table-sm" style="word-break: break-word;">
                     <thead>
                         <tr>
                             <th>ENV</th>
@@ -128,6 +129,7 @@
                         @endforelse
                     </tbody>
                 </table>
+                </div><!--table-responsive-->
 
                 @if ($entries->hasPages())
                     <div class="card-footer">

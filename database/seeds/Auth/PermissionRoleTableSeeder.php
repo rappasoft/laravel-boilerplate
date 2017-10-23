@@ -28,7 +28,7 @@ class PermissionRoleTableSeeder extends Seeder
         // Create Permissions
         Permission::create(['name' => 'view backend']);
 
-        // ALWAYS GIVE ADMIN ALL ROLES
+        // ALWAYS GIVE ADMIN ROLE ALL PERMISSIONS
         $admin->givePermissionTo('view backend');
 
         // Assign Permissions to other Roles

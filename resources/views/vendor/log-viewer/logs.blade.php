@@ -19,7 +19,8 @@
         </div><!-- box-header -->
 
         <div class="card-body">
-            <table class="table table-sm table-responsive table-hover">
+            <div class="table-responsive">
+                <table class="table table-sm table-hover">
                 <thead>
                     <tr>
                         @foreach($headers as $key => $header)
@@ -78,6 +79,7 @@
                     @endif
                 </tbody>
             </table>
+            </div><!--table-responsive-->
         </div>
     </div>
 
