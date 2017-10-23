@@ -3,15 +3,14 @@
 namespace Tests\Browser\Backend\Routes;
 
 use Tests\DuskTestCase;
-use Laravel\Dusk\Browser;
 use App\Models\Auth\User;
+use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\Backend\Auth\Dashboard;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class DashboardTest extends DuskTestCase
 {
     /**
-     * Test the Administrator Backend
+     * Test the Administrator Backend.
      *
      * @return void
      */
