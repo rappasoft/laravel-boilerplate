@@ -17,7 +17,7 @@ return [
         'all'     => 'Todos',
         'yes'     => 'Sim',
         'no'      => 'Não',
-        'custom'  => 'Custom', // TODO TRANSLATION
+        'custom'  => 'Personalizado',
         'actions' => 'Ações',
         'active'  => 'Ativo',
         'buttons' => [
@@ -103,8 +103,8 @@ return [
         ],
 
         'contact' => [
-            'box_title' => 'Contact Us',
-            'button' => 'Send Information',
+            'box_title' => 'Contato',
+            'button' => 'Enviar',
         ],
 
         'passwords' => [
