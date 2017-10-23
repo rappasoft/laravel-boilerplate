@@ -18,8 +18,8 @@
         </div><!--row-->
 
         <div class="row mt-4">
-            <div class="col table-responsive">
-                <table class="table">
+            <div class="col">
+                <table class="table table-responsive-xl">
                     <thead>
                         <tr>
                             <th>{{ __('labels.backend.access.roles.table.role') }}</th>
