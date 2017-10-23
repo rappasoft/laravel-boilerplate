@@ -72,7 +72,7 @@ return [
             'it'    => 'الإيطالية (Italian)',
             'ja'    => '(Japanese)',
             'nl'    => 'هولندي (Dutch)',
-			'no'    => '(Norwegian)',
+            'no'    => '(Norwegian)',
             'pt_BR' => 'البرازيلية البرتغالية (Brazilian Portuguese)',
             'ru'    => '(Russian) الروسية',
             'sv'    => 'السويسرية (Swedish)',

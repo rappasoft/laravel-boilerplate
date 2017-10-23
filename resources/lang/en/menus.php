@@ -72,7 +72,7 @@ return [
             'it'    => 'Italian',
             'ja'    => 'Japanese',
             'nl'    => 'Dutch',
-			'no'    => 'Norwegian',
+            'no'    => 'Norwegian',
             'pt_BR' => 'Brazilian Portuguese',
             'ru'    => 'Russian',
             'sv'    => 'Swedish',
