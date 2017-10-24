@@ -3,7 +3,6 @@
 namespace Tests\Browser\Backend\Routes;
 
 use Tests\DuskTestCase;
-use App\Models\Auth\User;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\Backend\Dashboard;
 

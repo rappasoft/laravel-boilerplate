@@ -42,7 +42,7 @@ class LogViewerLogs extends BasePage
     }
 
     /**
-     * Go to the log for the current date
+     * Go to the log for the current date.
      *
      * @param  \Laravel\Dusk\Browser  $browser
      * @return void
