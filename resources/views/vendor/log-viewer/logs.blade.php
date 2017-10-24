@@ -19,11 +19,10 @@
         </div><!-- box-header -->
 
         <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-sm table-hover">
+            <table class="table table-sm table-responsive-xl table-hover">
                 <thead>
-                    <tr>
-                        @foreach($headers as $key => $header)
+                <tr>
+                    @foreach($headers as $key => $header)
                         <th class="{{ $key == 'date' ? 'text-left' : 'text-center' }}">
                             @if ($key == 'date')
                                 <span class="badge badge-info level">{{ $header }}</span>
@@ -33,13 +32,13 @@
                                 </span>
                             @endif
                         </th>
-                        @endforeach
-                        <th class="text-right">Actions</th>
-                    </tr>
+                    @endforeach
+                    <th class="text-right">Actions</th>
+                </tr>
                 </thead>
                 <tbody>
-                    @if ($rows->count() > 0)
-                        @foreach($rows as $date => $row)
+                @if ($rows->count() > 0)
+                    @foreach($rows as $date => $row)
                         <tr>
                             @foreach($row as $key => $value)
                                 <td class="{{ $key == 'date' ? 'text-left' : 'text-center' }}">
@@ -69,17 +68,16 @@
                                 </button>
                             </td>
                         </tr>
-                        @endforeach
-                    @else
-                        <tr>
-                            <td colspan="11" class="text-center">
-                                <span class="badge badge-default">{{ __('log-viewer::general.empty-logs') }}</span>
-                            </td>
-                        </tr>
-                    @endif
+                    @endforeach
+                @else
+                    <tr>
+                        <td colspan="11" class="text-center">
+                            <span class="badge badge-default">{{ __('log-viewer::general.empty-logs') }}</span>
+                        </td>
+                    </tr>
+                @endif
                 </tbody>
-            </table>
-            </div><!--table-responsive-->
+            </table><!--table-responsive-->
         </div>
     </div>
 
