@@ -4,10 +4,8 @@ namespace Tests\Browser\Backend\Routes;
 
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
-use App\Models\Auth\User;
-use Tests\Browser\Pages\Backend\LogViewerDashboard;
 use Tests\Browser\Pages\Backend\LogViewerLogs;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\Browser\Pages\Backend\LogViewerDashboard;
 
 class LogViewerTest extends DuskTestCase
 {

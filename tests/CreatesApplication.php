@@ -2,19 +2,18 @@
 
 namespace Tests;
 
-use Illuminate\Contracts\Console\Kernel;
+use App\Models\Auth\Role;
+use App\Models\Auth\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
-use App\Models\Auth\User;
-use App\Models\Auth\Role;
+use Illuminate\Contracts\Console\Kernel;
 
 /**
  * Trait CreatesApplication.
  */
 trait CreatesApplication
 {
-
     /**
      * @var
      */
@@ -89,7 +88,7 @@ trait CreatesApplication
         $this->beforeApplicationDestroyed(function () {
             DB::disconnect();
         });
-        
+
         parent::tearDown();
     }
 }
