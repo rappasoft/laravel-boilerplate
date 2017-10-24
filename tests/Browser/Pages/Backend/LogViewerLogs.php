@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Browser\Pages\Backend\Auth;
+namespace Tests\Browser\Pages\Backend;
 
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Page as BasePage;
 
-class Dashboard extends BasePage
+class LogViewerLogs extends BasePage
 {
     /**
      * Get the URL for the page.
@@ -14,7 +14,7 @@ class Dashboard extends BasePage
      */
     public function url()
     {
-        return '/admin/dashboard';
+        return '/admin/log-viewer/logs';
     }
 
     /**
@@ -36,7 +36,19 @@ class Dashboard extends BasePage
     public function elements()
     {
         return [
-            '@element' => '#selector',
+            '@show' => 'tr:first-of-type td:last-of-type a.btn-info',
+            '@error' => 'a.error',
         ];
+    }
+
+    /**
+     * Go to the log for the current date
+     *
+     * @param  \Laravel\Dusk\Browser  $browser
+     * @return void
+     */
+    public function checkSingleLog(Browser $browser)
+    {
+        $browser->press('@show');
     }
 }

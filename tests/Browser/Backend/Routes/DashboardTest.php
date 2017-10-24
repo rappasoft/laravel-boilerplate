@@ -5,7 +5,7 @@ namespace Tests\Browser\Backend\Routes;
 use Tests\DuskTestCase;
 use App\Models\Auth\User;
 use Laravel\Dusk\Browser;
-use Tests\Browser\Pages\Backend\Auth\Dashboard;
+use Tests\Browser\Pages\Backend\Dashboard;
 
 class DashboardTest extends DuskTestCase
 {
@@ -17,10 +17,10 @@ class DashboardTest extends DuskTestCase
     public function testAdminDashboard()
     {
         $this->browse(function (Browser $browser) {
-            $browser->loginAs(User::find(1))
+            $browser->loginAs($this->admin)
                     ->visit(new Dashboard)
                     ->assertSee('Access Management')
-                    ->assertSee(User::find(1)->firstorFail()->full_name);
+                    ->assertSee($this->admin->name);
         });
     }
 }
