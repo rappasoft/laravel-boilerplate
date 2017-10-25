@@ -21,16 +21,16 @@ return [
         ],
 
         'users' => [
-            'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
+            'cant_resend_confirmation' => 'Uygulama şu anda kullanıcıları manuel olarak onaylamak üzere ayarlanmıştır.',
             'confirmation_email'  => 'Kayıtlı e-posta adresine yeni bir onay e-postası gönderildi.',
-            'confirmed'              => 'The user was successfully confirmed.',
+            'confirmed'              => 'Kullanıcı başarıyla onaylandı.',
             'created'             => 'Kullanıcı başarıyla oluşturuldu.',
             'deleted'             => 'Kullanıcı başarıyla silindi.',
             'deleted_permanently' => 'Kullanıcı kalıcı olarak silindi.',
             'restored'            => 'Kullanıcı başarıyla geri yüklendi.',
             'session_cleared'      => 'Kullanıcının oturumu başarıyla temizlendi.',
-            'social_deleted' => 'Social Account Successfully Removed',
-            'unconfirmed' => 'The user was successfully un-confirmed',
+            'social_deleted' => 'Sosyal hesap başarıyla silindi',
+            'unconfirmed' => 'Kullanıcı onaylanmadı',
             'updated'             => 'Kullanıcı başarıyla güncellendi.',
             'updated_password'    => 'Kullanıcının şifresi başarıyla güncellendi.',
         ],
@@ -38,7 +38,7 @@ return [
 
     'frontend' => [
         'contact' => [
-            'sent' => 'Your information was successfully sent. We will respond back to the e-mail provided as soon as we can.',
+            'sent' => 'Bilgileriniz başarıyla gönderildi. Kısa süre içinde mail adresinizden size dönüş yapacağız.',
         ],
     ],
 ];
