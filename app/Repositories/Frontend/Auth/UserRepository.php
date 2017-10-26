@@ -7,18 +7,16 @@ use App\Models\Auth\SocialAccount;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use Illuminate\Support\Facades\Hash;
-use App\Repositories\Traits\CacheResults;
 use App\Events\Frontend\Auth\UserConfirmed;
-use App\Repositories\BaseEloquentRepository;
+use App\Repositories\BaseRepository;
 use App\Events\Frontend\Auth\UserProviderRegistered;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 
 /**
  * Class UserRepository.
  */
-class UserRepository extends BaseEloquentRepository
+class UserRepository extends BaseRepository
 {
-    use CacheResults;
 
     /**
      * @var string

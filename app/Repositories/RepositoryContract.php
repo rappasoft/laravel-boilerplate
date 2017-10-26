@@ -1,95 +1,116 @@
-<?php
-
-namespace App\Repositories;
+<?php namespace App\Repositories;
 
 /**
- * Forked from https://github.com/dannyweeks/laravel-base-repository
- * Unfortunately there was no working Laravel 5.5 version at the time of this project.
- *
  * Interface RepositoryContract
+ *
+ * @package App\Repositories
  */
-interface RepositoryContract
-{
-    /**
-     * Get all items.
-     *
-     * @param  string $columns specific columns to select
-     * @param  string $orderBy column to sort by
-     * @param  string $sort sort direction
-     */
-    public function getAll($columns = null, $orderBy = 'created_at', $sort = 'DECS');
+interface RepositoryContract {
 
-    /**
-     * Get paged items.
-     *
-     * @param  int $paged Items per page
-     * @param  string $orderBy Column to sort by
-     * @param  string $sort Sort direction
-     */
-    public function getPaginated($paged = 15, $orderBy = 'created_at', $sort = 'DECS');
+	/**
+	 * @return mixed
+	 */
+	public function all();
 
-    /**
-     * Items for select options.
-     *
-     * @param  string $data column to display in the option
-     * @param  string $key column to be used as the value in option
-     * @param  string $orderBy column to sort by
-     * @param  string $sort sort direction
-     * @return array           array with key value pairs
-     */
-    public function getForSelect($data, $key = 'id', $orderBy = 'created_at', $sort = 'DECS');
+	/**
+	 * @return mixed
+	 */
+	public function count();
 
-    /**
-     * Get item by its id.
-     *
-     * @param  mixed $id
-     */
-    public function getById($id);
+	/**
+	 * @param array $data
+	 *
+	 * @return mixed
+	 */
+	public function create(array $data);
 
-    /**
-     * Get instance of model by column.
-     *
-     * @param  mixed $term search term
-     * @param  string $column column to search
-     */
-    public function getItemByColumn($term, $column = 'slug');
+	/**
+	 * @param array $data
+	 *
+	 * @return mixed
+	 */
+	public function createMultiple(array $data);
 
-    /**
-     * Get instance of model by column.
-     *
-     * @param  mixed $term search term
-     * @param  string $column column to search
-     */
-    public function getCollectionByColumn($term, $column = 'slug');
+	/**
+	 * @return mixed
+	 */
+	public function delete();
 
-    /**
-     * Get item by id or column.
-     *
-     * @param  mixed $term id or term
-     * @param  string $column column to search
-     */
-    public function getActively($term, $column = 'slug');
+	/**
+	 * @param $id
+	 *
+	 * @return mixed
+	 */
+	public function deleteById($id);
 
-    /**
-     * Create new using mass assignment.
-     *
-     * @param array $data
-     */
-    public function create(array $data);
+	/**
+	 * @param array $ids
+	 *
+	 * @return mixed
+	 */
+	public function deleteMultipleById(array $ids);
 
-    /**
-     * Update or crate a record and return the entity.
-     *
-     * @param array $identifiers columns to search for
-     * @param array $data
-     */
-    public function updateOrCreate(array $identifiers, array $data);
+	/**
+	 * @return mixed
+	 */
+	public function first();
 
-    /**
-     * Delete a record by it's ID.
-     *
-     * @param $id
-     * @return bool
-     */
-    public function delete($id);
+	/**
+	 * @return mixed
+	 */
+	public function get();
+
+	/**
+	 * @param $id
+	 *
+	 * @return mixed
+	 */
+	public function getById($id);
+
+	/**
+	 * @param $limit
+	 *
+	 * @return mixed
+	 */
+	public function limit($limit);
+
+	/**
+	 * @param $column
+	 * @param $value
+	 *
+	 * @return mixed
+	 */
+	public function orderBy($column, $value);
+
+	/**
+	 * @param       $id
+	 * @param array $data
+	 *
+	 * @return mixed
+	 */
+	public function updateById($id, array $data);
+
+	/**
+	 * @param        $column
+	 * @param        $value
+	 * @param string $operator
+	 *
+	 * @return mixed
+	 */
+	public function where($column, $value, $operator = '=');
+
+	/**
+	 * @param $column
+	 * @param $value
+	 *
+	 * @return mixed
+	 */
+	public function whereIn($column, $value);
+
+	/**
+	 * @param $relations
+	 *
+	 * @return mixed
+	 */
+	public function with($relations);
 }

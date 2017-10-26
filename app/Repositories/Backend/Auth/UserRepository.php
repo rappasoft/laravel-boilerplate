@@ -5,9 +5,8 @@ namespace App\Repositories\Backend\Auth;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
-use App\Repositories\Traits\CacheResults;
 use App\Events\Frontend\Auth\UserConfirmed;
-use App\Repositories\BaseEloquentRepository;
+use App\Repositories\BaseRepository;
 use App\Events\Backend\Auth\User\UserCreated;
 use App\Events\Backend\Auth\User\UserRestored;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -22,14 +21,8 @@ use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 /**
  * Class UserRepository.
  */
-class UserRepository extends BaseEloquentRepository
+class UserRepository extends BaseRepository
 {
-    use CacheResults;
-
-    /**
-     * @var array
-     */
-    protected $relationships = ['activity'];
 
     /**
      * @var string
@@ -96,10 +89,10 @@ class UserRepository extends BaseEloquentRepository
      *
      * @return User
      */
-    public function store(array $data) : User
+    public function create(array $data) : User
     {
         return DB::transaction(function () use ($data) {
-            $user = $this->model->create([
+            $user = parent::create([
                 'first_name' => $data['first_name'],
                 'last_name' => $data['last_name'],
                 'email' => $data['email'],
@@ -138,18 +131,14 @@ class UserRepository extends BaseEloquentRepository
         });
     }
 
-    /**
-     * @param mixed $id
-     * @param array $data
-     *
-     * @return User
-     */
-    public function update($id, array $data) : User
+	/**
+	 * @param User  $user
+	 * @param array $data
+	 *
+	 * @return User
+	 */
+	public function update(User $user, array $data) : User
     {
-        // TODO: Create different named function so we don't need another query to find
-        // the user instead of passing the User object in as the first parameter
-        $user = User::findOrFail($id);
-
         $this->checkUserByEmail($user, $data['email']);
 
         // See if adding any additional permissions

@@ -44,8 +44,10 @@ class RoleController extends Controller
     public function index(ManageRoleRequest $request)
     {
         return view('backend.auth.role.index')
-            ->withRoles($this->roleRepository->with('users', 'permissions')
-                ->getPaginated(25, 'id', 'asc'));
+            ->withRoles($this->roleRepository
+				->with('users', 'permissions')
+				->orderBy('id', 'asc')
+				->paginate(25));
     }
 
     /**
@@ -56,7 +58,7 @@ class RoleController extends Controller
     public function create(ManageRoleRequest $request)
     {
         return view('backend.auth.role.create')
-            ->withPermissions($this->permissionRepository->getAll());
+            ->withPermissions($this->permissionRepository->all());
     }
 
     /**
@@ -86,7 +88,7 @@ class RoleController extends Controller
         return view('backend.auth.role.edit')
             ->withRole($role)
             ->withRolePermissions($role->permissions->pluck('name')->all())
-            ->withPermissions($this->permissionRepository->getAll());
+            ->withPermissions($this->permissionRepository->all());
     }
 
     /**
@@ -114,7 +116,7 @@ class RoleController extends Controller
             return redirect()->back()->withFlashDanger('You can not delete the administrator role.');
         }
 
-        $this->roleRepository->delete($role->id);
+        $this->roleRepository->deleteById($role->id);
 
         event(new RoleDeleted($role));
 

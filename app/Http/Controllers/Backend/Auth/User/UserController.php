@@ -52,8 +52,8 @@ class UserController extends Controller
     public function create(ManageUserRequest $request, RoleRepository $roleRepository, PermissionRepository $permissionRepository)
     {
         return view('backend.auth.user.create')
-            ->withRoles($roleRepository->with('permissions')->getAll(['id', 'name']))
-            ->withPermissions($permissionRepository->getAll(['id', 'name']));
+            ->withRoles($roleRepository->with('permissions')->get(['id', 'name']))
+            ->withPermissions($permissionRepository->get(['id', 'name']));
     }
 
     /**
@@ -63,7 +63,7 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        $this->userRepository->store($request->only(
+        $this->userRepository->create($request->only(
             'first_name',
             'last_name',
             'email',
@@ -135,7 +135,7 @@ class UserController extends Controller
      */
     public function destroy(User $user, ManageUserRequest $request)
     {
-        $this->userRepository->delete($user->id);
+        $this->userRepository->deleteById($user->id);
 
         return redirect()->route('admin.auth.user.deleted')->withFlashSuccess(__('alerts.backend.users.deleted'));
     }

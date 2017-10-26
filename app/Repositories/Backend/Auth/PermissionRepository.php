@@ -3,20 +3,13 @@
 namespace App\Repositories\Backend\Auth;
 
 use Spatie\Permission\Models\Permission;
-use App\Repositories\Traits\CacheResults;
-use App\Repositories\BaseEloquentRepository;
+use App\Repositories\BaseRepository;
 
 /**
  * Class PermissionRepository.
  */
-class PermissionRepository extends BaseEloquentRepository
+class PermissionRepository extends BaseRepository
 {
-    use CacheResults;
-
-    /**
-     * @var array
-     */
-    protected $relationships = ['roles', 'users'];
 
     /**
      * @var string
