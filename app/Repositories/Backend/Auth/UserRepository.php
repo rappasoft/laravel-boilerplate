@@ -5,8 +5,8 @@ namespace App\Repositories\Backend\Auth;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
-use App\Events\Frontend\Auth\UserConfirmed;
 use App\Repositories\BaseRepository;
+use App\Events\Frontend\Auth\UserConfirmed;
 use App\Events\Backend\Auth\User\UserCreated;
 use App\Events\Backend\Auth\User\UserRestored;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -23,7 +23,6 @@ use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
  */
 class UserRepository extends BaseRepository
 {
-
     /**
      * @var string
      */
@@ -131,13 +130,13 @@ class UserRepository extends BaseRepository
         });
     }
 
-	/**
-	 * @param User  $user
-	 * @param array $data
-	 *
-	 * @return User
-	 */
-	public function update(User $user, array $data) : User
+    /**
+     * @param User  $user
+     * @param array $data
+     *
+     * @return User
+     */
+    public function update(User $user, array $data) : User
     {
         $this->checkUserByEmail($user, $data['email']);
 

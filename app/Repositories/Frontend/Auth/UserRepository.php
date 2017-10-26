@@ -6,9 +6,9 @@ use App\Models\Auth\User;
 use App\Models\Auth\SocialAccount;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
+use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\Hash;
 use App\Events\Frontend\Auth\UserConfirmed;
-use App\Repositories\BaseRepository;
 use App\Events\Frontend\Auth\UserProviderRegistered;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 
@@ -17,7 +17,6 @@ use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
  */
 class UserRepository extends BaseRepository
 {
-
     /**
      * @var string
      */

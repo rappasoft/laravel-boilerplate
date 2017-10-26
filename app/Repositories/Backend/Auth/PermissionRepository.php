@@ -2,15 +2,14 @@
 
 namespace App\Repositories\Backend\Auth;
 
-use Spatie\Permission\Models\Permission;
 use App\Repositories\BaseRepository;
+use Spatie\Permission\Models\Permission;
 
 /**
  * Class PermissionRepository.
  */
 class PermissionRepository extends BaseRepository
 {
-
     /**
      * @var string
      */
