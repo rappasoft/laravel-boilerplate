@@ -102,9 +102,9 @@ class UserController extends Controller
     {
         return view('backend.auth.user.edit')
             ->withUser($user)
-            ->withRoles($roleRepository->getAll())
+            ->withRoles($roleRepository->get())
             ->withUserRoles($user->roles->pluck('name')->all())
-            ->withPermissions($permissionRepository->getAll(['id', 'name']))
+            ->withPermissions($permissionRepository->get(['id', 'name']))
             ->withUserPermissions($user->permissions->pluck('name')->all());
     }
 
@@ -116,7 +116,7 @@ class UserController extends Controller
      */
     public function update(User $user, UpdateUserRequest $request)
     {
-        $this->userRepository->update($user->id, $request->only(
+        $this->userRepository->update($user, $request->only(
             'first_name',
             'last_name',
             'email',
