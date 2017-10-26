@@ -58,7 +58,7 @@ class RoleController extends Controller
     public function create(ManageRoleRequest $request)
     {
         return view('backend.auth.role.create')
-            ->withPermissions($this->permissionRepository->all());
+            ->withPermissions($this->permissionRepository->get());
     }
 
     /**
@@ -88,7 +88,7 @@ class RoleController extends Controller
         return view('backend.auth.role.edit')
             ->withRole($role)
             ->withRolePermissions($role->permissions->pluck('name')->all())
-            ->withPermissions($this->permissionRepository->all());
+            ->withPermissions($this->permissionRepository->get());
     }
 
     /**
