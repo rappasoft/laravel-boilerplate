@@ -7,9 +7,15 @@ use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\Backend\LogViewerLogs;
 use Tests\Browser\Pages\Backend\LogViewerDashboard;
 
+/**
+ * Class LogViewerTest
+ *
+ * @package Tests\Browser\Backend\Routes
+ */
 class LogViewerTest extends DuskTestCase
 {
-    public function testLogViewerDashboard()
+
+	public function testLogViewerDashboard()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->admin)
@@ -18,7 +24,7 @@ class LogViewerTest extends DuskTestCase
         });
     }
 
-    public function testLogViewerList()
+	public function testLogViewerList()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->admin)
@@ -27,7 +33,7 @@ class LogViewerTest extends DuskTestCase
         });
     }
 
-    public function testLogViewerSingle()
+	public function testLogViewerSingle()
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->admin)

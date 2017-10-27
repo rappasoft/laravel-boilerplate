@@ -6,6 +6,11 @@ use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\Backend\Dashboard;
 
+/**
+ * Class DashboardTest
+ *
+ * @package Tests\Browser\Backend\Routes
+ */
 class DashboardTest extends DuskTestCase
 {
     /**

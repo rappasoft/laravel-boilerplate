@@ -1,8 +1,9 @@
 <?php
 
-namespace Tests\Browser\Frontend\Pages;
+namespace Tests\Browser\Pages\Frontend;
 
 use Laravel\Dusk\Browser;
+use Tests\Browser\Pages\Page;
 
 class HomePage extends Page
 {
