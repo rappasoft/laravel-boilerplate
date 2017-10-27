@@ -257,7 +257,7 @@ abstract class BaseRepository implements RepositoryContract
 
         $this->newQuery()->eagerLoad();
 
-        return $this->query->where($item, $column)->first();
+        return $this->query->where($column, $item)->first();
     }
 
     /**
