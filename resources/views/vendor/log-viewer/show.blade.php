@@ -76,7 +76,7 @@
                 @endif
 
                     <div class="card-body">
-                        <table id="entries" class="table table-sm table-responsive-xl" style="word-break: break-word;">
+                        <table id="entries" class="table table-responsive w-100 d-block d-md-table" style="word-break: break-word;">
                             <thead>
                             <tr>
                                 <th>ENV</th>

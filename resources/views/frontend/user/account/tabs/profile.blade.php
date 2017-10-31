@@ -1,4 +1,4 @@
-<table class="table table-striped table-hover table-bordered">
+<table class="table table-responsive w-100 d-block d-md-table table-striped table-hover table-bordered">
     <tr>
         <th>{{ __('labels.frontend.user.profile.avatar') }}</th>
         <td><img src="{{ $logged_in_user->picture }}" class="user-profile-image" /></td>
