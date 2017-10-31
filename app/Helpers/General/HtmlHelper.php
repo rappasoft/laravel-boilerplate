@@ -10,7 +10,6 @@ use Illuminate\Contracts\Routing\UrlGenerator;
  */
 class HtmlHelper
 {
-
     /**
      * The URL generator instance.
      *
