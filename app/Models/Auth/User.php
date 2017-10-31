@@ -2,11 +2,11 @@
 
 namespace App\Models\Auth;
 
-use App\Models\Auth\Traits\Method\UserMethod;
 use App\Models\Traits\Uuid;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Auth\Traits\Scope\UserScope;
+use App\Models\Auth\Traits\Method\UserMethod;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Auth\Traits\SendUserPasswordReset;
 use App\Models\Auth\Traits\Attribute\UserAttribute;
@@ -23,7 +23,7 @@ class User extends Authenticatable
         SendUserPasswordReset,
         SoftDeletes,
         UserAttribute,
-		UserMethod,
+        UserMethod,
         UserRelationship,
         UserScope,
         Uuid;
