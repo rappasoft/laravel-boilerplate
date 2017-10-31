@@ -19,7 +19,7 @@
         </div><!-- box-header -->
 
         <div class="card-body">
-            <table class="table table-sm table-responsive-xl table-hover">
+            <table class="table table-responsive w-100 d-block d-md-table table-hover">
                 <thead>
                 <tr>
                     @foreach($headers as $key => $header)
