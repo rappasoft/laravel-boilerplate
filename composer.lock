@@ -61,16 +61,16 @@
         },
         {
             "name": "arcanedev/log-viewer",
-            "version": "4.4.0",
+            "version": "4.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ARCANEDEV/LogViewer.git",
-                "reference": "5aacb3db635db4225efad9acba65c76fe40f73da"
+                "reference": "b14e2de1dfe84db80fbc9eb4b12ce05b85a09472"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/5aacb3db635db4225efad9acba65c76fe40f73da",
-                "reference": "5aacb3db635db4225efad9acba65c76fe40f73da",
+                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/b14e2de1dfe84db80fbc9eb4b12ce05b85a09472",
+                "reference": "b14e2de1dfe84db80fbc9eb4b12ce05b85a09472",
                 "shasum": ""
             },
             "require": {
@@ -79,6 +79,7 @@
                 "psr/log": "~1.0"
             },
             "require-dev": {
+                "orchestra/testbench": "~3.5.0",
                 "phpunit/phpcov": "~4.0",
                 "phpunit/phpunit": "~6.0"
             },
@@ -122,7 +123,7 @@
                 "log-viewer",
                 "logviewer"
             ],
-            "time": "2017-08-31T16:18:24+00:00"
+            "time": "2017-10-28T10:32:04+00:00"
         },
         {
             "name": "arcanedev/no-captcha",
@@ -2084,16 +2085,16 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "2.7.3",
+            "version": "2.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "dff9df3237e82200d9e50abf7d2370bf1e6f1673"
+                "reference": "02d22e415ee5b2c73de19f2cd8331bb9980b3094"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/dff9df3237e82200d9e50abf7d2370bf1e6f1673",
-                "reference": "dff9df3237e82200d9e50abf7d2370bf1e6f1673",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/02d22e415ee5b2c73de19f2cd8331bb9980b3094",
+                "reference": "02d22e415ee5b2c73de19f2cd8331bb9980b3094",
                 "shasum": ""
             },
             "require": {
@@ -2145,7 +2146,7 @@
                 "security",
                 "spatie"
             ],
-            "time": "2017-10-22T04:22:18+00:00"
+            "time": "2017-10-26T13:38:53+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
