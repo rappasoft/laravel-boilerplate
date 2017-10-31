@@ -9,7 +9,7 @@ use Laravel\BrowserKitTesting\TestCase as BaseTestCase;
  */
 abstract class BrowserKitTestCase extends BaseTestCase
 {
-	use CreatesApplication;
+    use CreatesApplication;
 
-	public $baseUrl = 'http://localhost';
+    public $baseUrl = 'http://localhost';
 }
