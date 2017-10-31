@@ -3,11 +3,11 @@
 namespace App\Repositories;
 
 use App\Exceptions\GeneralException;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
- * Class BaseRepository
+ * Class BaseRepository.
  */
 abstract class BaseRepository implements RepositoryContract
 {
@@ -72,37 +72,38 @@ abstract class BaseRepository implements RepositoryContract
      */
     public function __construct()
     {
-		$this->makeModel();
+        $this->makeModel();
     }
 
-	/**
-	 * Specify Model class name
-	 *
-	 * @return mixed
-	 */
-	abstract function model();
+    /**
+     * Specify Model class name.
+     *
+     * @return mixed
+     */
+    abstract public function model();
 
-	/**
-	 * @return Model|mixed
-	 * @throws GeneralException
-	 */
-	public function makeModel() {
-		$model = app()->make($this->model());
+    /**
+     * @return Model|mixed
+     * @throws GeneralException
+     */
+    public function makeModel()
+    {
+        $model = app()->make($this->model());
 
-		if (!$model instanceof Model)
-			throw new GeneralException("Class {$this->model()} must be an instance of " . Model::class);
+        if (! $model instanceof Model) {
+            throw new GeneralException("Class {$this->model()} must be an instance of ".Model::class);
+        }
+        return $this->model = $model;
+    }
 
-		return $this->model = $model;
-	}
-
-	/**
-	 * Get all the model records in the database.
-	 *
-	 * @param array $columns
-	 *
-	 * @return Collection|static[]
-	 */
-	public function all(array $columns = ['*'])
+    /**
+     * Get all the model records in the database.
+     *
+     * @param array $columns
+     *
+     * @return Collection|static[]
+     */
+    public function all(array $columns = ['*'])
     {
         $this->newQuery()->eagerLoad();
 
@@ -198,14 +199,14 @@ abstract class BaseRepository implements RepositoryContract
         return $this->model->destroy($ids);
     }
 
-	/**
-	 * Get the first specified model record from the database.
-	 *
-	 * @param array $columns
-	 *
-	 * @return Model|static
-	 */
-	public function first(array $columns = ['*'])
+    /**
+     * Get the first specified model record from the database.
+     *
+     * @param array $columns
+     *
+     * @return Model|static
+     */
+    public function first(array $columns = ['*'])
     {
         $this->newQuery()->eagerLoad()->setClauses()->setScopes();
 
@@ -216,66 +217,66 @@ abstract class BaseRepository implements RepositoryContract
         return $model;
     }
 
-	/**
-	 * Get all the specified model records in the database.
-	 *
-	 * @param array $columns
-	 *
-	 * @return Collection|static[]
-	 */
-	public function get(array $columns = ['*'])
+    /**
+     * Get all the specified model records in the database.
+     *
+     * @param array $columns
+     *
+     * @return Collection|static[]
+     */
+    public function get(array $columns = ['*'])
     {
         $this->newQuery()->eagerLoad()->setClauses()->setScopes();
 
-		$models = $this->query->get($columns);
+        $models = $this->query->get($columns);
 
         $this->unsetClauses();
 
         return $models;
     }
 
-	/**
-	 * Get the specified model record from the database.
-	 *
-	 * @param       $id
-	 * @param array $columns
-	 *
-	 * @return Collection|Model
-	 */
-	public function getById($id, array $columns = ['*'])
-	{
-		$this->unsetClauses();
+    /**
+     * Get the specified model record from the database.
+     *
+     * @param       $id
+     * @param array $columns
+     *
+     * @return Collection|Model
+     */
+    public function getById($id, array $columns = ['*'])
+    {
+        $this->unsetClauses();
 
-		$this->newQuery()->eagerLoad();
+        $this->newQuery()->eagerLoad();
 
-		return $this->query->findOrFail($id, $columns);
-	}
+        return $this->query->findOrFail($id, $columns);
+    }
 
-	/**
-	 * @param       $item
-	 * @param       $column
-	 * @param array $columns
-	 *
-	 * @return Model|null|static
-	 */
-	public function getByColumn($item, $column, array $columns = ['*'])
-	{
-		$this->unsetClauses();
+    /**
+     * @param       $item
+     * @param       $column
+     * @param array $columns
+     *
+     * @return Model|null|static
+     */
+    public function getByColumn($item, $column, array $columns = ['*'])
+    {
+        $this->unsetClauses();
 
-		$this->newQuery()->eagerLoad();
+        $this->newQuery()->eagerLoad();
 
-		return $this->query->where($column, $item)->first($columns);
-	}
+        return $this->query->where($column, $item)->first($columns);
+    }
 
-	/**
-	 * @param int    $limit
-	 * @param array  $columns
-	 * @param string $pageName
-	 * @param null   $page
-	 *
-	 * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
-	 */
-	public function paginate($limit = 25, array $columns = ['*'], $pageName = 'page', $page = null)
+    /**
+     * @param int    $limit
+     * @param array  $columns
+     * @param string $pageName
+     * @param null   $page
+     *
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function paginate($limit = 25, array $columns = ['*'], $pageName = 'page', $page = null)
     {
         $this->newQuery()->eagerLoad()->setClauses()->setScopes();
 
@@ -286,25 +287,25 @@ abstract class BaseRepository implements RepositoryContract
         return $models;
     }
 
-	/**
-	 * Update the specified model record in the database.
-	 *
-	 * @param       $id
-	 * @param array $data
-	 * @param array $options
-	 *
-	 * @return Collection|Model
-	 */
-	public function updateById($id, array $data, array $options = [])
-	{
-		$this->unsetClauses();
+    /**
+     * Update the specified model record in the database.
+     *
+     * @param       $id
+     * @param array $data
+     * @param array $options
+     *
+     * @return Collection|Model
+     */
+    public function updateById($id, array $data, array $options = [])
+    {
+        $this->unsetClauses();
 
-		$model = $this->getById($id);
+        $model = $this->getById($id);
 
-		$model->update($data, $options);
+        $model->update($data, $options);
 
-		return $model;
-	}
+        return $model;
+    }
 
     /**
      * Set the query limit.

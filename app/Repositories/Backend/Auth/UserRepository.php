@@ -23,16 +23,15 @@ use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
  */
 class UserRepository extends BaseRepository
 {
+    /**
+     * @return string
+     */
+    public function model()
+    {
+        return User::class;
+    }
 
-	/**
-	 * @return string
-	 */
-	function model()
-	{
-		return User::class;
-	}
-
-	/**
+    /**
      * @return mixed
      */
     public function getUnconfirmedCount() : int
