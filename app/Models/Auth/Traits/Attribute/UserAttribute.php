@@ -7,7 +7,6 @@ namespace App\Models\Auth\Traits\Attribute;
  */
 trait UserAttribute
 {
-
     /**
      * @return string
      */
