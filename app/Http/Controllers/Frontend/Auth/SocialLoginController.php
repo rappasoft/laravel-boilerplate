@@ -17,23 +17,23 @@ class SocialLoginController extends Controller
     /**
      * @var UserRepository
      */
-    protected $user;
+    protected $userRepository;
 
     /**
      * @var SocialiteHelper
      */
-    protected $helper;
+    protected $socialiteHelper;
 
     /**
      * SocialLoginController constructor.
      *
-     * @param UserRepository  $user
-     * @param SocialiteHelper $helper
+     * @param UserRepository  $userRepository
+     * @param SocialiteHelper $socialiteHelper
      */
-    public function __construct(UserRepository $user, SocialiteHelper $helper)
+    public function __construct(UserRepository $userRepository, SocialiteHelper $socialiteHelper)
     {
-        $this->user = $user;
-        $this->helper = $helper;
+        $this->userRepository = $userRepository;
+        $this->socialiteHelper = $socialiteHelper;
     }
 
     /**
@@ -50,7 +50,7 @@ class SocialLoginController extends Controller
         $user = null;
 
         // If the provider is not an acceptable third party than kick back
-        if (! in_array($provider, $this->helper->getAcceptedProviders())) {
+        if (! in_array($provider, $this->socialiteHelper->getAcceptedProviders())) {
             return redirect()->route(home_route())->withFlashDanger(__('auth.socialite.unacceptable', ['provider' => $provider]));
         }
 
@@ -65,7 +65,7 @@ class SocialLoginController extends Controller
 
         // Create the user if this is a new social account or find the one that is already there.
         try {
-            $user = $this->user->findOrCreateProvider($this->getProviderUser($provider), $provider);
+            $user = $this->userRepository->findOrCreateProvider($this->getProviderUser($provider), $provider);
         } catch (GeneralException $e) {
             return redirect()->route(home_route())->withFlashDanger($e->getMessage());
         }

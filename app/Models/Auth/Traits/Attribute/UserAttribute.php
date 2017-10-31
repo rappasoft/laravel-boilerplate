@@ -5,9 +5,6 @@ namespace App\Models\Auth\Traits\Attribute;
 /**
  * Trait UserAttribute.
  */
-/**
- * Trait UserAttribute.
- */
 trait UserAttribute
 {
 

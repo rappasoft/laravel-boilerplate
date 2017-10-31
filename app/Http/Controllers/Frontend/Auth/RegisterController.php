@@ -19,16 +19,16 @@ class RegisterController extends Controller
     /**
      * @var UserRepository
      */
-    protected $user;
+    protected $userRepository;
 
     /**
      * RegisterController constructor.
      *
-     * @param UserRepository $user
+     * @param UserRepository $userRepository
      */
-    public function __construct(UserRepository $user)
+    public function __construct(UserRepository $userRepository)
     {
-        $this->user = $user;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -59,7 +59,7 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        $user = $this->user->create($request->only('first_name', 'last_name', 'email', 'password'));
+        $user = $this->userRepository->create($request->only('first_name', 'last_name', 'email', 'password'));
 
         // If the user must confirm their email or their account requires approval,
         // create the account but don't log them in.

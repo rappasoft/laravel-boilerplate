@@ -14,16 +14,16 @@ class UpdatePasswordController extends Controller
     /**
      * @var UserRepository
      */
-    protected $user;
+    protected $userRepository;
 
     /**
      * ChangePasswordController constructor.
      *
-     * @param UserRepository $user
+     * @param UserRepository $userRepository
      */
-    public function __construct(UserRepository $user)
+    public function __construct(UserRepository $userRepository)
     {
-        $this->user = $user;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -33,7 +33,7 @@ class UpdatePasswordController extends Controller
      */
     public function update(UpdatePasswordRequest $request)
     {
-        $this->user->updatePassword($request->only('old_password', 'password'));
+        $this->userRepository->updatePassword($request->only('old_password', 'password'));
 
         return redirect()->route('frontend.user.account')->withFlashSuccess(__('strings.frontend.user.password_updated'));
     }

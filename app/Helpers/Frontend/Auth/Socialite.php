@@ -7,6 +7,7 @@ namespace App\Helpers\Frontend\Auth;
  */
 class Socialite
 {
+
     /**
      * Generates social login links based on what is enabled.
      *

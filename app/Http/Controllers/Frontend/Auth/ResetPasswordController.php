@@ -16,16 +16,16 @@ class ResetPasswordController extends Controller
     /**
      * @var UserRepository
      */
-    protected $user;
+    protected $userRepository;
 
     /**
      * ChangePasswordController constructor.
      *
-     * @param UserRepository $user
+     * @param UserRepository $userRepository
      */
-    public function __construct(UserRepository $user)
+    public function __construct(UserRepository $userRepository)
     {
-        $this->user = $user;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -43,7 +43,7 @@ class ResetPasswordController extends Controller
             return redirect()->route('frontend.auth.password.email');
         }
 
-        $user = $this->user->findByPasswordResetToken($token);
+        $user = $this->userRepository->findByPasswordResetToken($token);
 
         if ($user && app()->make('auth.password.broker')->tokenExists($user, $token)) {
             return view('frontend.auth.passwords.reset')

@@ -16,14 +16,14 @@ class UserConfirmationController extends Controller
     /**
      * @var UserRepository
      */
-    protected $users;
+    protected $userRepository;
 
     /**
-     * @param UserRepository $users
+     * @param UserRepository $userRepository
      */
-    public function __construct(UserRepository $users)
+    public function __construct(UserRepository $userRepository)
     {
-        $this->users = $users;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -56,7 +56,7 @@ class UserConfirmationController extends Controller
      */
     public function confirm(User $user, ManageUserRequest $request)
     {
-        $this->users->confirm($user);
+        $this->userRepository->confirm($user);
 
         return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('alerts.backend.users.confirmed'));
     }
@@ -69,7 +69,7 @@ class UserConfirmationController extends Controller
      */
     public function unconfirm(User $user, ManageUserRequest $request)
     {
-        $this->users->unconfirm($user);
+        $this->userRepository->unconfirm($user);
 
         return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('alerts.backend.users.unconfirmed'));
     }

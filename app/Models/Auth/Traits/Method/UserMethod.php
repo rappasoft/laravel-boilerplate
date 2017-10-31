@@ -3,9 +3,7 @@
 namespace App\Models\Auth\Traits\Method;
 
 /**
- * Trait UserFunction
- *
- * @package App\Models\Auth\TraUserFunction
+ * Trait UserMethod
  */
 trait UserMethod
 {
