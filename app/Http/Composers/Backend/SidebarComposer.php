@@ -10,7 +10,6 @@ use App\Repositories\Backend\Auth\UserRepository;
  */
 class SidebarComposer
 {
-
     /**
      * @var UserRepository
      */
