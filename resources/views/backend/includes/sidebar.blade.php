@@ -13,7 +13,7 @@
                 {{ __('menus.backend.sidebar.system') }}
             </li>
 
-            @if ($logged_in_user->hasRole('administrator'))
+            @if ($logged_in_user->isAdmin())
                 <li class="nav-item nav-dropdown {{ active_class(Active::checkUriPattern('admin/auth*'), 'open') }}">
                     <a class="nav-link nav-dropdown-toggle" href="#">
                         <i class="icon-user"></i> {{ __('menus.backend.access.title') }}

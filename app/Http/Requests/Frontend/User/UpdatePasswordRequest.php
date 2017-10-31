@@ -16,7 +16,7 @@ class UpdatePasswordRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->user()->canChangePassword();
+        return $this->user()->canChangePassword();
     }
 
     /**
