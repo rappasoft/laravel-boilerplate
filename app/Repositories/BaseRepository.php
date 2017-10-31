@@ -93,6 +93,7 @@ abstract class BaseRepository implements RepositoryContract
         if (! $model instanceof Model) {
             throw new GeneralException("Class {$this->model()} must be an instance of ".Model::class);
         }
+
         return $this->model = $model;
     }
 
