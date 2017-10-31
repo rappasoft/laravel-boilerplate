@@ -17,12 +17,16 @@ use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
  */
 class UserRepository extends BaseRepository
 {
-    /**
-     * @var string
-     */
-    protected $model = User::class;
 
-    /**
+	/**
+	 * @return string
+	 */
+	function model()
+	{
+		return User::class;
+	}
+
+	/**
      * @param $token
      *
      * @return bool|\Illuminate\Database\Eloquent\Model
@@ -31,7 +35,7 @@ class UserRepository extends BaseRepository
     {
         foreach (DB::table(config('auth.passwords.users.table'))->get() as $row) {
             if (password_verify($token, $row->token)) {
-                return $this->getItemByColumn($row->email, 'email');
+                return $this->getByColumn($row->email, 'email');
             }
         }
 
@@ -138,7 +142,7 @@ class UserRepository extends BaseRepository
             //Address is not current address so they need to reconfirm
             if ($user->email != $input['email']) {
                 //Emails have to be unique
-                if ($this->getItemByColumn($input['email'], 'email')) {
+                if ($this->getByColumn($input['email'], 'email')) {
                     throw new GeneralException(__('exceptions.frontend.auth.email_taken'));
                 }
 
@@ -218,7 +222,7 @@ class UserRepository extends BaseRepository
         $user_email = $data->email ?: "{$data->id}@{$provider}.com";
 
         // Check to see if there is a user with this email first.
-        $user = $this->getItemByColumn($user_email, 'email');
+        $user = $this->getByColumn($user_email, 'email');
 
         /*
          * If the user does not exist create them

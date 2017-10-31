@@ -14,12 +14,16 @@ use App\Events\Backend\Auth\Role\RoleUpdated;
  */
 class RoleRepository extends BaseRepository
 {
-    /**
-     * @var string
-     */
-    protected $model = Role::class;
 
-    /**
+	/**
+	 * @return string
+	 */
+	function model()
+	{
+		return Role::class;
+	}
+
+	/**
      * @param array $data
      *
      * @return Role
