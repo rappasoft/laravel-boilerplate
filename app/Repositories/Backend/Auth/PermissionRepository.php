@@ -10,12 +10,11 @@ use Spatie\Permission\Models\Permission;
  */
 class PermissionRepository extends BaseRepository
 {
-
-	/**
-	 * @return string
-	 */
-	function model()
-	{
-		return Permission::class;
-	}
+    /**
+     * @return string
+     */
+    public function model()
+    {
+        return Permission::class;
+    }
 }
