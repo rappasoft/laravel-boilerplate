@@ -5,7 +5,7 @@ namespace Tests\Browser\Pages\Frontend\User;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\Page;
 
-class Dashboard extends Page
+class FrontendDashboard extends Page
 {
     /**
      * Get the URL for the page.

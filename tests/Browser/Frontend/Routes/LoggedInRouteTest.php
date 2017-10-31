@@ -7,8 +7,8 @@ use Laravel\Dusk\Browser;
 use Illuminate\Support\Facades\Event;
 use Tests\Browser\Pages\Frontend\HomePage;
 use App\Events\Frontend\Auth\UserLoggedOut;
-use Tests\Browser\Pages\Frontend\User\Account;
-use Tests\Browser\Pages\Frontend\User\Dashboard;
+use Tests\Browser\Pages\Frontend\User\AccountPage;
+use Tests\Browser\Pages\Frontend\User\FrontendDashboard;
 
 /**
  * Class DashboardTest.
@@ -30,7 +30,7 @@ class LoggedInRouteTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
-                ->visit(new Dashboard)
+                ->visit(new FrontendDashboard)
                 ->assertSee('Joined')
                 ->assertSee($this->user->name)
                 ->assertDontSee('Administration');
@@ -41,7 +41,7 @@ class LoggedInRouteTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->loginAs($this->user)
-                ->visit(new Account)
+                ->visit(new AccountPage)
                 ->assertSee('My Account')
                 ->assertSee('Profile')
                 ->assertSee('Update Information')

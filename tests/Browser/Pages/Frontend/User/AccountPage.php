@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\Browser\Pages\Backend\Auth;
+namespace Tests\Browser\Pages\Frontend\User;
 
 use Laravel\Dusk\Browser;
-use Laravel\Dusk\Page as BasePage;
+use Tests\Browser\Pages\Page;
 
-class Users extends BasePage
+class AccountPage extends Page
 {
     /**
      * Get the URL for the page.
@@ -14,7 +14,7 @@ class Users extends BasePage
      */
     public function url()
     {
-        return '/admin/auth/user';
+        return '/account';
     }
 
     /**

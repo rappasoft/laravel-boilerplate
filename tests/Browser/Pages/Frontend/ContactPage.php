@@ -5,7 +5,7 @@ namespace Tests\Browser\Pages\Frontend;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\Page;
 
-class Contact extends Page
+class ContactPage extends Page
 {
 	/**
 	 * Get the URL for the page.

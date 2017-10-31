@@ -9,15 +9,15 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use Laravel\Dusk\Browser;
-use Tests\Browser\Pages\Backend\Dashboard;
+use Tests\Browser\Pages\Backend\BackendDashboard;
 use Tests\Browser\Pages\Frontend\Auth\AccountConfirmation;
-use Tests\Browser\Pages\Frontend\Auth\PasswordReset;
+use Tests\Browser\Pages\Frontend\Auth\PasswordResetPage;
 use Tests\Browser\Pages\Frontend\Auth\ResendAccountConfirmation;
 use Tests\Browser\Pages\Frontend\HomePage;
-use Tests\Browser\Pages\Frontend\Contact;
-use Tests\Browser\Pages\Frontend\Auth\Login;
-use Tests\Browser\Pages\Frontend\Auth\Register;
-use Tests\Browser\Pages\Frontend\User\Account;
+use Tests\Browser\Pages\Frontend\ContactPage;
+use Tests\Browser\Pages\Frontend\Auth\LoginPage;
+use Tests\Browser\Pages\Frontend\Auth\RegisterPage;
+use Tests\Browser\Pages\Frontend\User\AccountPage;
 use Tests\DuskTestCase;
 
 class LoggedOutRouteTest extends DuskTestCase
@@ -37,7 +37,7 @@ class LoggedOutRouteTest extends DuskTestCase
 	public function testContactPage()
 	{
 		$this->browse(function (Browser $browser) {
-			$browser->visit(new Contact)
+			$browser->visit(new ContactPage)
 				->assertSee('Contact Us');
 		});
 	}
@@ -45,7 +45,7 @@ class LoggedOutRouteTest extends DuskTestCase
 	public function testLoginPage()
 	{
 		$this->browse(function (Browser $browser) {
-			$browser->visit(new Login)
+			$browser->visit(new LoginPage)
 				->assertSee('Login');
 		});
 	}
@@ -53,7 +53,7 @@ class LoggedOutRouteTest extends DuskTestCase
 	public function testRegisterPage()
 	{
 		$this->browse(function (Browser $browser) {
-			$browser->visit(new Register)
+			$browser->visit(new RegisterPage)
 				->assertSee('Register');
 		});
 	}
@@ -61,7 +61,7 @@ class LoggedOutRouteTest extends DuskTestCase
 	public function testForgotPasswordPage()
 	{
 		$this->browse(function (Browser $browser) {
-			$browser->visit(new PasswordReset)
+			$browser->visit(new PasswordResetPage)
 				->assertSee('Reset Password');
 		});
 	}
@@ -69,7 +69,7 @@ class LoggedOutRouteTest extends DuskTestCase
 	public function testDashboardPageLoggedOut()
 	{
 		$this->browse(function (Browser $browser) {
-			$browser->visit(new Dashboard)
+			$browser->visit(new BackendDashboard)
 				->assertPathIs('/login');
 		});
 	}
@@ -77,7 +77,7 @@ class LoggedOutRouteTest extends DuskTestCase
 	public function testAccountPageLoggedOut()
 	{
 		$this->browse(function (Browser $browser) {
-			$browser->visit(new Account)
+			$browser->visit(new AccountPage)
 				->assertPathIs('/login');
 		});
 	}

@@ -5,7 +5,7 @@ namespace Tests\Browser\Pages\Frontend\Auth;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\Page;
 
-class Register extends Page
+class PasswordResetPage extends Page
 {
 	/**
 	 * Get the URL for the page.
@@ -14,7 +14,7 @@ class Register extends Page
 	 */
 	public function url()
 	{
-		return '/register';
+		return '/password/reset';
 	}
 
 	/**
