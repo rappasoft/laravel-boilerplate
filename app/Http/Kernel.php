@@ -47,7 +47,7 @@ class Kernel extends HttpKernel
         ],
 
         'admin' => [
-            'auth',
+            'auth:web',
             'permission:view backend',
         ],
     ];
@@ -65,10 +65,8 @@ class Kernel extends HttpKernel
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+		'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+		'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-
-        // Modified from Spatie Permission Package
-        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
-        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
     ];
 }
