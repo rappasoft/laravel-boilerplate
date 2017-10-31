@@ -38,10 +38,10 @@ return [
          */
         'change_email' => env('CHANGE_EMAIL', false),
 
-		/*
-		 * The name of the super administrator role
-		 */
-		'admin_role' => 'administrator',
+        /*
+         * The name of the super administrator role
+         */
+        'admin_role' => 'administrator',
 
         /*
          * The default role all new registered users get added to
