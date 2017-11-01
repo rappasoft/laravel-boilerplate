@@ -1,7 +1,7 @@
 {
     "name": "rappasoft/laravel-5-boilerplate",
     "description": "The Laravel Boilerplate Project.",
-    "keywords": ["framework", "laravel"],
+    "keywords": ["framework", "laravel", "boilerplate"],
     "license": "MIT",
     "type": "project",
     "require": {
