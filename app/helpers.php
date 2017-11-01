@@ -136,15 +136,15 @@ if (! function_exists('form_submit')) {
 
 if (! function_exists('get_user_timezone')) {
 
-	/**
-	 * @return string
-	 */
-	function get_user_timezone()
-	{
-		if (auth()->user()) {
-			return auth()->user()->timezone;
-		}
+    /**
+     * @return string
+     */
+    function get_user_timezone()
+    {
+        if (auth()->user()) {
+            return auth()->user()->timezone;
+        }
 
-		return 'UTC';
-	}
+        return 'UTC';
+    }
 }
