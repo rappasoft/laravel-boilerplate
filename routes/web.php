@@ -27,6 +27,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin', 'as' => 'admin.', '
      * then limit the backend features by different roles or permissions)
      *
      * Note: Administrator has all permissions so you do not have to specify the administrator role everywhere.
+     * These routes can not be hit if the password is expired
      */
     include_route_files(__DIR__.'/backend/');
 });

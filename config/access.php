@@ -66,6 +66,12 @@ return [
          * (They can only be logged into one place at a time, all others will be logged out)
          */
         'single_login' => true,
+
+		/*
+		 * How many days before users have to change their passwords
+		 * false is off
+		 */
+		'password_expires_days' => env('PASSWORD_EXPIRES_DAYS', 30),
     ],
 
     /*

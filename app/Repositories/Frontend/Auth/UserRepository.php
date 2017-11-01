@@ -4,6 +4,7 @@ namespace App\Repositories\Frontend\Auth;
 
 use App\Models\Auth\User;
 use App\Models\Auth\SocialAccount;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
@@ -164,18 +165,21 @@ class UserRepository extends BaseRepository
         return $user->save();
     }
 
-    /**
-     * @param $input
-     *
-     * @return bool
-     * @throws GeneralException
-     */
-    public function updatePassword($input)
+	/**
+	 * @param      $input
+	 * @param bool $expired
+	 *
+	 * @return bool
+	 * @throws GeneralException
+	 */
+	public function updatePassword($input, $expired = false)
     {
         $user = $this->getById(auth()->id());
 
         if (Hash::check($input['old_password'], $user->password)) {
             $user->password = bcrypt($input['password']);
+
+            if ($expired) $user->password_changed_at = Carbon::now()->toDateTimeString();
 
             return $user->save();
         }

@@ -10,13 +10,22 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
     * These routes require the user to be logged in
     */
     Route::group(['middleware' => 'auth'], function () {
-        Route::get('logout', 'LoginController@logout')->name('logout');
+		Route::get('logout', 'LoginController@logout')->name('logout');
 
-        //For when admin is logged in as user from backend
-        Route::get('logout-as', 'LoginController@logoutAs')->name('logout-as');
+		//For when admin is logged in as user from backend
+		Route::get('logout-as', 'LoginController@logoutAs')->name('logout-as');
 
-        // Change Password Routes
-        Route::patch('password/update', 'UpdatePasswordController@update')->name('password.update');
+		// These routes can not be hit if the password is expired
+		Route::group(['middleware' => 'password_expires'], function () {
+			// Change Password Routes
+			Route::patch('password/update', 'UpdatePasswordController@update')->name('password.update');
+		});
+
+        // Password expired routes
+		if (is_numeric(config('access.users.password_expires_days'))) {
+			Route::get('password/expired', 'PasswordExpiredController@expired')->name('password.expired');
+			Route::patch('password/expired', 'PasswordExpiredController@update')->name('password.expired.update');
+		}
     });
 
     /*

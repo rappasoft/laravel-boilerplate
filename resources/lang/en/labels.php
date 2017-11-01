@@ -124,9 +124,11 @@ return [
         ],
 
         'passwords' => [
+        	'expired_password_box_title' => 'Your password has expired.',
             'forgot_password'                 => 'Forgot Your Password?',
             'reset_password_box_title'        => 'Reset Password',
             'reset_password_button'           => 'Reset Password',
+			'update_password_button'           => 'Update Password',
             'send_password_reset_link_button' => 'Send Password Reset Link',
         ],
 
