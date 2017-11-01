@@ -67,11 +67,11 @@ return [
          */
         'single_login' => true,
 
-		/*
-		 * How many days before users have to change their passwords
-		 * false is off
-		 */
-		'password_expires_days' => env('PASSWORD_EXPIRES_DAYS', 30),
+        /*
+         * How many days before users have to change their passwords
+         * false is off
+         */
+        'password_expires_days' => env('PASSWORD_EXPIRES_DAYS', 30),
     ],
 
     /*
