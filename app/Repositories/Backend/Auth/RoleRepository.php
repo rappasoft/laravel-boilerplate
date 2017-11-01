@@ -44,7 +44,7 @@ class RoleRepository extends BaseRepository
             throw new GeneralException(__('exceptions.backend.access.roles.needs_permission'));
         }
 
-        return DB::transaction(function() use ($data) {
+        return DB::transaction(function () use ($data) {
             $role = parent::create(['name' => $data['name']]);
 
             if ($role) {
@@ -59,14 +59,14 @@ class RoleRepository extends BaseRepository
         });
     }
 
-	/**
-	 * @param Role  $role
-	 * @param array $data
-	 *
-	 * @return mixed
-	 * @throws GeneralException
-	 */
-	public function update(Role $role, array $data)
+    /**
+     * @param Role  $role
+     * @param array $data
+     *
+     * @return mixed
+     * @throws GeneralException
+     */
+    public function update(Role $role, array $data)
     {
         if ($role->isAdmin()) {
             throw new GeneralException('You can not edit the administrator role.');
@@ -111,7 +111,7 @@ class RoleRepository extends BaseRepository
     protected function roleExists($name)
     {
         return $this->model
-				->where('name', $name)
-				->count() > 0;
+                ->where('name', $name)
+                ->count() > 0;
     }
 }
