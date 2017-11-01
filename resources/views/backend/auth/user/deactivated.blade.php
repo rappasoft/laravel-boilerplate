@@ -20,21 +20,22 @@
 
         <div class="row mt-4">
             <div class="col">
-                <table class="table table-responsive w-100 d-block d-md-table">
-                    <thead>
-                    <tr>
-                        <th>{{ __('labels.backend.access.users.table.last_name') }}</th>
-                        <th>{{ __('labels.backend.access.users.table.first_name') }}</th>
-                        <th>{{ __('labels.backend.access.users.table.email') }}</th>
-                        <th>{{ __('labels.backend.access.users.table.confirmed') }}</th>
-                        <th>{{ __('labels.backend.access.users.table.roles') }}</th>
-                        <th>{{ __('labels.backend.access.users.table.other_permissions') }}</th>
-                        <th>{{ __('labels.backend.access.users.table.social') }}</th>
-                        <th>{{ __('labels.backend.access.users.table.last_updated') }}</th>
-                        <th>{{ __('labels.general.actions') }}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>{{ __('labels.backend.access.users.table.last_name') }}</th>
+                            <th>{{ __('labels.backend.access.users.table.first_name') }}</th>
+                            <th>{{ __('labels.backend.access.users.table.email') }}</th>
+                            <th>{{ __('labels.backend.access.users.table.confirmed') }}</th>
+                            <th>{{ __('labels.backend.access.users.table.roles') }}</th>
+                            <th>{{ __('labels.backend.access.users.table.other_permissions') }}</th>
+                            <th>{{ __('labels.backend.access.users.table.social') }}</th>
+                            <th>{{ __('labels.backend.access.users.table.last_updated') }}</th>
+                            <th>{{ __('labels.general.actions') }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
                         @if ($users->count())
                             @foreach ($users as $user)
                                 <tr>
@@ -52,8 +53,9 @@
                         @else
                             <tr><td colspan="9"><p class="text-center">{{ __('strings.backend.access.users.no_deactivated') }}</p></td></tr>
                         @endif
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div><!--col-->
         </div><!--row-->
         <div class="row">

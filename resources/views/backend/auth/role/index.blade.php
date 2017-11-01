@@ -19,38 +19,40 @@
 
         <div class="row mt-4">
             <div class="col">
-                <table class="table table-responsive w-100 d-block d-md-table">
-                    <thead>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
                         <tr>
                             <th>{{ __('labels.backend.access.roles.table.role') }}</th>
                             <th>{{ __('labels.backend.access.roles.table.permissions') }}</th>
                             <th>{{ __('labels.backend.access.roles.table.number_of_users') }}</th>
                             <th>{{ __('labels.general.actions') }}</th>
                         </tr>
-                    </thead>
-                    <tbody>
+                        </thead>
+                        <tbody>
                         @foreach ($roles as $role)
-                        <tr>
-                            <td>{{ ucfirst($role->name) }}</td>
-                            <td>
-                                @if ($role->id == 1)
-                                    {{ __('labels.general.all') }}
-                                @else
-                                    @if ($role->permissions->count())
-                                        @foreach ($role->permissions as $permission)
-                                            {{ ucwords($permission->name) }}
-                                        @endforeach
+                            <tr>
+                                <td>{{ ucfirst($role->name) }}</td>
+                                <td>
+                                    @if ($role->id == 1)
+                                        {{ __('labels.general.all') }}
                                     @else
-                                        {{ __('labels.general.none') }}
+                                        @if ($role->permissions->count())
+                                            @foreach ($role->permissions as $permission)
+                                                {{ ucwords($permission->name) }}
+                                            @endforeach
+                                        @else
+                                            {{ __('labels.general.none') }}
+                                        @endif
                                     @endif
-                                @endif
-                            </td>
-                            <td>{{ $role->users->count() }}</td>
-                            <td>{!! $role->action_buttons !!}</td>
-                        </tr>
+                                </td>
+                                <td>{{ $role->users->count() }}</td>
+                                <td>{!! $role->action_buttons !!}</td>
+                            </tr>
                         @endforeach
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div><!--col-->
         </div><!--row-->
         <div class="row">
