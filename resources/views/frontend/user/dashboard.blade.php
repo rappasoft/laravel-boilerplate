@@ -24,7 +24,7 @@
                                     <p class="card-text">
                                         <small>
                                             <i class="fa fa-envelope-o"></i> {{ $logged_in_user->email }}<br/>
-                                            <i class="fa fa-calendar-check-o"></i> {{ __('strings.frontend.general.joined') }} {{ $logged_in_user->created_at->format('F jS, Y') }}
+                                            <i class="fa fa-calendar-check-o"></i> {{ __('strings.frontend.general.joined') }} {{ $logged_in_user->created_at->timezone(get_user_timezone())->format('F jS, Y') }}
                                         </small>
                                     </p>
 
@@ -35,7 +35,7 @@
                                         </a>
 
                                         @can('view backend')
-                                            <a href="{{ route ('admin.dashboard')}}" class="btn btn-danger btn-sm mb-1">
+                                            &nbsp;<a href="{{ route ('admin.dashboard')}}" class="btn btn-danger btn-sm mb-1">
                                                 <i class="fa fa-user-secret"></i> {{ __('navs.frontend.user.administration') }}
                                             </a>
                                         @endcan

@@ -30,6 +30,7 @@ class UpdateProfileRequest extends FormRequest
             'first_name'  => 'required|max:191',
             'last_name'  => 'required|max:191',
             'email' => 'sometimes|required|email|max:191',
+			'timezone' => 'required|max:191',
         ];
     }
 }

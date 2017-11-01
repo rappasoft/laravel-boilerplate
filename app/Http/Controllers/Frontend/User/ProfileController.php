@@ -33,7 +33,7 @@ class ProfileController extends Controller
      */
     public function update(UpdateProfileRequest $request)
     {
-        $output = $this->userRepository->update($request->user()->id, $request->only('first_name', 'last_name', 'email'));
+        $output = $this->userRepository->update($request->user()->id, $request->only('first_name', 'last_name', 'email', 'timezone'));
 
         // E-mail address was updated, user has to reconfirm
         if (is_array($output) && $output['email_changed']) {

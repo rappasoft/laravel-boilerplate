@@ -30,6 +30,7 @@ class UpdateUserRequest extends FormRequest
             'email' => 'required|email|max:191',
             'first_name'  => 'required|max:191',
             'last_name'  => 'required|max:191',
+			'timezone' => 'required|max:191',
             'roles' => 'required|array',
         ];
     }

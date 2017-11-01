@@ -133,3 +133,18 @@ if (! function_exists('form_submit')) {
         return resolve(HtmlHelper::class)->formSubmit($title, $classes);
     }
 }
+
+if (! function_exists('get_user_timezone')) {
+
+	/**
+	 * @return string
+	 */
+	function get_user_timezone()
+	{
+		if (auth()->user()) {
+			return auth()->user()->timezone;
+		}
+
+		return 'UTC';
+	}
+}

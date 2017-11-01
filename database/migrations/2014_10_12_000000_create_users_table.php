@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('active')->default(1)->unsigned();
             $table->string('confirmation_code')->nullable();
             $table->boolean('confirmed')->default(config('access.users.confirm_email') ? false : true);
+            $table->string('timezone')->default('UTC');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
