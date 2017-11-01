@@ -99,7 +99,7 @@ class RoleController extends Controller
      */
     public function update(Role $role, UpdateRoleRequest $request)
     {
-        $this->roleRepository->update($role->id, $request->only('name', 'permissions'));
+        $this->roleRepository->update($role, $request->only('name', 'permissions'));
 
         return redirect()->route('admin.auth.role.index')->withFlashSuccess(__('alerts.backend.roles.updated'));
     }
