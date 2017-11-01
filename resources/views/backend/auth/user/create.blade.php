@@ -124,14 +124,15 @@
                         {{ html()->label('Abilities')->class('col-md-2 form-control-label') }}
 
                         <div class="col-md-10">
-                            <table class="table table-responsive w-100 d-block d-md-table">
-                                <thead>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
                                     <tr>
                                         <th>{{ __('labels.backend.access.users.table.roles') }}</th>
                                         <th>{{ __('labels.backend.access.users.table.permissions') }}</th>
                                     </tr>
-                                </thead>
-                                <tbody>
+                                    </thead>
+                                    <tbody>
                                     <tr>
                                         <td>
                                             @if ($roles->count())
@@ -166,10 +167,10 @@
                                                 @endforeach
                                             @endif
                                         </td>
-                                       <td>
-                                           @if ($permissions->count())
-                                               @foreach($permissions as $permission)
-                                                   <div class="checkbox">
+                                        <td>
+                                            @if ($permissions->count())
+                                                @foreach($permissions as $permission)
+                                                    <div class="checkbox">
                                                         {{ html()->label(
                                                                 html()->checkbox('permissions[]', old('permissions') && in_array($permission->name, old('permissions')) ? true : false, $permission->name)
                                                                       ->class('switch-input')
@@ -179,12 +180,13 @@
                                                             ->for('permission-'.$permission->id) }}
                                                         {{ html()->label(ucwords($permission->name))->for('permission-'.$permission->id) }}
                                                     </div>
-                                               @endforeach
-                                           @endif
-                                       </td>
+                                                @endforeach
+                                            @endif
+                                        </td>
                                     </tr>
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div><!--col-->
                     </div><!--form-group-->
                 </div><!--col-->
