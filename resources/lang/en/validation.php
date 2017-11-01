@@ -155,7 +155,7 @@ return [
                     'password'                => 'Password',
                     'password_confirmation'   => 'Password Confirmation',
                     'send_confirmation_email' => 'Send Confirmation E-mail',
-					'timezone'				  => 'Timezone',
+                    'timezone'                  => 'Timezone',
                 ],
             ],
         ],
@@ -172,7 +172,7 @@ return [
             'new_password'              => 'New Password',
             'new_password_confirmation' => 'New Password Confirmation',
             'old_password'              => 'Old Password',
-			'timezone'					=> 'Timezone',
+            'timezone'                    => 'Timezone',
         ],
     ],
 
