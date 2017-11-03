@@ -30,11 +30,19 @@ trait UserMethod
      */
     public function getPicture($size = false)
     {
-        if (! $size) {
-            $size = config('gravatar.default.size');
-        }
+    	switch($this->avatar_type) {
+			case 'gravatar':
+				if (! $size) $size = config('gravatar.default.size');
+				return gravatar()->get($this->email, ['size' => $size]);
 
-        return gravatar()->get($this->email, ['size' => $size]);
+			case 'storage':
+				return url($this->avatar_location);
+		}
+
+		$social_avatar = $this->providers()->where('provider', $this->avatar_type)->first();
+		if (strlen($social_avatar->avatar)) return $social_avatar->avatar;
+
+		return false;
     }
 
     /**
