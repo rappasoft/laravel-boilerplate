@@ -45,12 +45,13 @@ class RoleFormTest extends BrowserKitTestCase
         // Test create with some permissions
         $this->actingAs($this->admin)
              ->visit('/admin/auth/role/create')
-             ->type('Test Role', 'name')
-             ->check('permissions[1]')
-             ->press('Create')
+			 ->submitForm('Create', [
+				 'name' => 'Test Role',
+				 'permissions' => ['view backend'],
+			 ])
              ->seePageIs('/admin/auth/role')
              ->see('The role was successfully created.')
-             ->seeInDatabase(config('permission.table_names.roles'), ['name' => 'Test Role', 'all' => 0])
+             ->seeInDatabase(config('permission.table_names.roles'), ['name' => 'Test Role'])
              ->seeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => 4]);
 
         Event::assertDispatched(RoleCreated::class);
@@ -60,24 +61,26 @@ class RoleFormTest extends BrowserKitTestCase
     {
         $this->actingAs($this->admin)
              ->visit('/admin/auth/role/create')
-             ->type('Administrator', 'name')
-             ->check('permissions')
-             ->press('Create')
-             ->seePageIs('/admin/auth/role')
-             ->see('A role already exists with the name Administrator');
+			->submitForm('Create', [
+				'name' => 'administrator',
+				'permissions' => ['view backend'],
+			])
+             ->seePageIs('/admin/auth/role/create')
+             ->see('A role already exists with the name administrator');
     }
 
     public function testRoleRequiresPermission()
     {
-        if (config('access.roles.role_must_contain_permission')) {
-            $this->actingAs($this->admin)
-                 ->visit('/admin/auth/role/create')
-                 ->type('Test Role', 'name')
-                 ->select('custom', 'associated-permissions')
-                 ->press('create-role')
-                 ->seePageIs('/admin/auth/role/create')
-                 ->see('You must select at least one permission for this role.');
-        }
+		config(['access.roles.role_must_contain_permission' => true]);
+
+		$this->actingAs($this->admin)
+			 ->visit('/admin/auth/role/create')
+			->submitForm('Create', [
+				'name' => 'Test Role',
+				'permissions' => [],
+			])
+			 ->seePageIs('/admin/auth/role/create')
+			 ->see('You must select at least one permission for this role.');
     }
 
     public function testUpdateRoleRequiredFields()
@@ -112,13 +115,14 @@ class RoleFormTest extends BrowserKitTestCase
         Event::fake();
 
         $this->actingAs($this->admin)
-             ->notSeeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => 3])
+             ->notSeeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => 3])
              ->visit('/admin/auth/role/3/edit')
-             ->check('permissions[1]')
-             ->press('Update')
+			->submitForm('Update', [
+				'permissions' => ['view backend'],
+			])
              ->seePageIs('/admin/auth/role')
              ->see('The role was successfully updated.')
-             ->seeInDatabase(config('access.permission_role_table'), ['permission_id' => 1, 'role_id' => 3]);
+             ->seeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => 3]);
 
         Event::assertDispatched(RoleUpdated::class);
     }
