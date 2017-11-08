@@ -1,11 +1,10 @@
 <?php
 
-use Tests\BrowserKitTestCase;
 use App\Models\Auth\User;
+use Tests\BrowserKitTestCase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use App\Events\Backend\Auth\User\UserCreated;
-use App\Events\Backend\Auth\User\UserDeleted;
 use App\Events\Backend\Auth\User\UserUpdated;
 use App\Events\Backend\Auth\User\UserPasswordChanged;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
@@ -198,12 +197,10 @@ class UserFormTest extends BrowserKitTestCase
 
     public function testDeleteUserForm()
     {
-
         $this->actingAs($this->admin)
              ->delete('/admin/auth/user/'.$this->user->id)
              ->assertRedirectedTo('/admin/auth/user/deleted')
              ->notSeeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null]);
-
     }
 
     public function testChangeUserPasswordForm()
