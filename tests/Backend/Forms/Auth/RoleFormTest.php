@@ -45,10 +45,10 @@ class RoleFormTest extends BrowserKitTestCase
         // Test create with some permissions
         $this->actingAs($this->admin)
              ->visit('/admin/auth/role/create')
-			 ->submitForm('Create', [
-				 'name' => 'Test Role',
-				 'permissions' => ['view backend'],
-			 ])
+             ->submitForm('Create', [
+                 'name' => 'Test Role',
+                 'permissions' => ['view backend'],
+             ])
              ->seePageIs('/admin/auth/role')
              ->see('The role was successfully created.')
              ->seeInDatabase(config('permission.table_names.roles'), ['name' => 'Test Role'])
@@ -61,26 +61,26 @@ class RoleFormTest extends BrowserKitTestCase
     {
         $this->actingAs($this->admin)
              ->visit('/admin/auth/role/create')
-			->submitForm('Create', [
-				'name' => 'administrator',
-				'permissions' => ['view backend'],
-			])
+            ->submitForm('Create', [
+                'name' => 'administrator',
+                'permissions' => ['view backend'],
+            ])
              ->seePageIs('/admin/auth/role/create')
              ->see('A role already exists with the name administrator');
     }
 
     public function testRoleRequiresPermission()
     {
-		config(['access.roles.role_must_contain_permission' => true]);
+        config(['access.roles.role_must_contain_permission' => true]);
 
-		$this->actingAs($this->admin)
-			 ->visit('/admin/auth/role/create')
-			->submitForm('Create', [
-				'name' => 'Test Role',
-				'permissions' => [],
-			])
-			 ->seePageIs('/admin/auth/role/create')
-			 ->see('You must select at least one permission for this role.');
+        $this->actingAs($this->admin)
+             ->visit('/admin/auth/role/create')
+            ->submitForm('Create', [
+                'name' => 'Test Role',
+                'permissions' => [],
+            ])
+             ->seePageIs('/admin/auth/role/create')
+             ->see('You must select at least one permission for this role.');
     }
 
     public function testUpdateRoleRequiredFields()
@@ -117,9 +117,9 @@ class RoleFormTest extends BrowserKitTestCase
         $this->actingAs($this->admin)
              ->notSeeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => 3])
              ->visit('/admin/auth/role/3/edit')
-			->submitForm('Update', [
-				'permissions' => ['view backend'],
-			])
+            ->submitForm('Update', [
+                'permissions' => ['view backend'],
+            ])
              ->seePageIs('/admin/auth/role')
              ->see('The role was successfully updated.')
              ->seeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => 3]);

@@ -58,16 +58,16 @@ class UserFormTest extends BrowserKitTestCase
         $this->actingAs($this->admin)
              ->visit('/admin/auth/user/create')
              ->submitForm('Create', [
-             	 'first_name' => $firstName,
-				 'last_name' => $lastName,
-				 'email' => $email,
-				 'password' => $password,
-				 'password_confirmation' => $password,
-				 'active' => '1',
-				 'confirmed' => '1',
-				 'confirmation_email' => '1',
-				 'roles' => ['executive', 'user'],
-			 ])
+                  'first_name' => $firstName,
+                 'last_name' => $lastName,
+                 'email' => $email,
+                 'password' => $password,
+                 'password_confirmation' => $password,
+                 'active' => '1',
+                 'confirmed' => '1',
+                 'confirmation_email' => '1',
+                 'roles' => ['executive', 'user'],
+             ])
              ->seePageIs('/admin/auth/user')
              ->see('The user was successfully created.')
              ->seeInDatabase(config('access.table_names.users'),
