@@ -161,6 +161,7 @@ return [
         ],
 
         'frontend' => [
+            'avatar'                    => 'Avatar Location',
             'email'                     => 'E-mail Address',
             'first_name'                => 'First Name',
             'last_name'                 => 'Last Name',

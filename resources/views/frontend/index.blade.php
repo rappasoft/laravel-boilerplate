@@ -16,7 +16,7 @@
 
     <div class="row mb-4">
         <div class="col">
-            <example></example>
+            <example-component></example-component>
         </div><!--col-->
     </div><!--row-->
 

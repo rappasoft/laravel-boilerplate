@@ -95,7 +95,6 @@ trait UserAttribute
     }
 
     /**
-     * TODO: Test.
      * @return string
      */
     public function getSocialButtonsAttribute()

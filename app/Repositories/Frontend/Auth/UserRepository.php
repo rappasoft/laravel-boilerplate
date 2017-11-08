@@ -126,18 +126,42 @@ class UserRepository extends BaseRepository
     }
 
     /**
-     * @param mixed $id
+     * @param       $id
      * @param array $input
+     * @param bool  $image
      *
      * @return array|bool
      * @throws GeneralException
      */
-    public function update($id, array $input)
+    public function update($id, array $input, $image = false)
     {
         $user = $this->getById($id);
         $user->first_name = $input['first_name'];
         $user->last_name = $input['last_name'];
         $user->timezone = $input['timezone'];
+        $user->avatar_type = $input['avatar_type'];
+
+        // Upload profile image if necessary
+        if ($image) {
+            $name = md5(uniqid(mt_rand(), true)).'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('img/frontend/user'), $name);
+            $user->avatar_location = 'img/frontend/user/'.$name;
+        } else {
+            // No image being passed
+            if ($input['avatar_type'] == 'storage') {
+                // If there is no existing image
+                if (! strlen(auth()->user()->avatar_location)) {
+                    throw new GeneralException('You must supply a profile image.');
+                }
+            } else {
+                // If there is a current image, and they are not using it anymore, get rid of it
+                if (strlen(auth()->user()->avatar_location)) {
+                    unlink(public_path(auth()->user()->avatar_location));
+                }
+
+                $user->avatar_location = null;
+            }
+        }
 
         if ($user->canChangeEmail()) {
             //Address is not current address so they need to reconfirm
