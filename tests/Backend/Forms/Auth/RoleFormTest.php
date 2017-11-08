@@ -1,7 +1,7 @@
 <?php
 
-use Tests\BrowserKitTestCase;
 use App\Models\Auth\Role;
+use Tests\BrowserKitTestCase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use App\Events\Backend\Auth\Role\RoleCreated;
