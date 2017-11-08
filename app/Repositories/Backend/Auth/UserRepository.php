@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Backend\Auth;
 
+use App\Events\Backend\Auth\User\UserUpdated;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
@@ -162,6 +163,8 @@ class UserRepository extends BaseRepository
                 // Add selected roles/permissions
                 $user->syncRoles($data['roles']);
                 $user->syncPermissions($data['permissions']);
+
+				event(new UserUpdated($user));
 
                 return $user;
             }

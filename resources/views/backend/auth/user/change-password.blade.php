@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-{{ html()->form('PATCH', route('admin.auth.user.change-password.post', $user))->class('form-horizontal') }}
+{{ html()->form('PATCH', route('admin.auth.user.change-password.post', $user))->class('form-horizontal')->open() }}
     <div class="card">
         <div class="card-body">
             <div class="row">

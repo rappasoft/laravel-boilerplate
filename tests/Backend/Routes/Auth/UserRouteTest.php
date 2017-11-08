@@ -68,12 +68,22 @@ class UserRouteTest extends BrowserKitTestCase
         config(['access.users.confirm_email' => true]);
         config(['access.users.requires_approval' => false]);
 
+		$this->actingAs($this->admin)
+			->visit('/admin/auth/user')
+			->visit('/admin/auth/user/'.$this->user->id.'/account/confirm/resend')
+			->seePageIs('/admin/auth/user')
+			->see('This user is already confirmed.');
+
+		$this->user->update(['confirmed' => 0]);
+
         Notification::fake();
+
         $this->actingAs($this->admin)
              ->visit('/admin/auth/user')
              ->visit('/admin/auth/user/'.$this->user->id.'/account/confirm/resend')
              ->seePageIs('/admin/auth/user')
              ->see('A new confirmation e-mail has been sent to the address on file.');
+
         Notification::assertSentTo($this->user, UserNeedsConfirmation::class);
     }
 
@@ -84,7 +94,7 @@ class UserRouteTest extends BrowserKitTestCase
              ->seePageIs('/dashboard')
              ->see('You are currently logged in as '.$this->user->full_name.'.')
              ->see($this->admin->full_name)
-             ->assertTrue(access()->id() == $this->user->id);
+             ->assertTrue(auth()->id() == $this->user->id);
     }
 
     public function testCantLoginAsSelf()
@@ -102,7 +112,7 @@ class UserRouteTest extends BrowserKitTestCase
              ->see('You are currently logged in as '.$this->user->full_name.'.')
              ->click('Re-Login as '.$this->admin->full_name)
              ->seePageIs('/admin/auth/user')
-             ->assertTrue(access()->id() == $this->admin->id);
+             ->assertTrue(auth()->id() == $this->admin->id);
     }
 
     public function testDeactivateReactivateUser()
@@ -114,11 +124,11 @@ class UserRouteTest extends BrowserKitTestCase
              ->visit('/admin/auth/user/'.$this->user->id.'/mark/0')
              ->seePageIs('/admin/auth/user/deactivated')
              ->see('The user was successfully updated.')
-             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'status' => 0])
+             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'active' => 0])
              ->visit('/admin/auth/user/'.$this->user->id.'/mark/1')
              ->seePageIs('/admin/auth/user')
              ->see('The user was successfully updated.')
-             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'status' => 1]);
+             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'active' => 1]);
 
         Event::assertDispatched(UserDeactivated::class);
         Event::assertDispatched(UserReactivated::class);
