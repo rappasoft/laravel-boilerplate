@@ -68,13 +68,13 @@ class UserRouteTest extends BrowserKitTestCase
         config(['access.users.confirm_email' => true]);
         config(['access.users.requires_approval' => false]);
 
-		$this->actingAs($this->admin)
-			->visit('/admin/auth/user')
-			->visit('/admin/auth/user/'.$this->user->id.'/account/confirm/resend')
-			->seePageIs('/admin/auth/user')
-			->see('This user is already confirmed.');
+        $this->actingAs($this->admin)
+            ->visit('/admin/auth/user')
+            ->visit('/admin/auth/user/'.$this->user->id.'/account/confirm/resend')
+            ->seePageIs('/admin/auth/user')
+            ->see('This user is already confirmed.');
 
-		$this->user->update(['confirmed' => 0]);
+        $this->user->update(['confirmed' => 0]);
 
         Notification::fake();
 

@@ -101,16 +101,16 @@ class UserFormTest extends BrowserKitTestCase
 
         $this->actingAs($this->admin)
              ->visit('/admin/auth/user/create')
-			 ->submitForm('Create', [
-				 'first_name' => $firstName,
-				 'last_name' => $lastName,
-				 'email' => $email,
-				 'password' => $password,
-				 'password_confirmation' => $password,
-				 'active' => '1',
-				 'confirmation_email' => '1',
-				 'roles' => ['executive', 'user'],
-			 ])
+             ->submitForm('Create', [
+                 'first_name' => $firstName,
+                 'last_name' => $lastName,
+                 'email' => $email,
+                 'password' => $password,
+                 'password_confirmation' => $password,
+                 'active' => '1',
+                 'confirmation_email' => '1',
+                 'roles' => ['executive', 'user'],
+             ])
              ->seePageIs('/admin/auth/user')
              ->see('The user was successfully created.')
              ->seeInDatabase(config('access.table_names.users'),
@@ -170,12 +170,12 @@ class UserFormTest extends BrowserKitTestCase
              ->see($this->user->first_name)
              ->see($this->user->last_name)
              ->see($this->user->email)
-			->submitForm('Update', [
-				'first_name'  => 'User',
-				'last_name'  => 'New',
-				'email' => 'user2@user.com',
-				'roles' => ['administrator', 'executive', 'user'],
-			])
+            ->submitForm('Update', [
+                'first_name'  => 'User',
+                'last_name'  => 'New',
+                'email' => 'user2@user.com',
+                'roles' => ['administrator', 'executive', 'user'],
+            ])
              ->seePageIs('/admin/auth/user')
              ->see('The user was successfully updated.')
              ->seeInDatabase(config('access.table_names.users'),
@@ -185,8 +185,8 @@ class UserFormTest extends BrowserKitTestCase
                      'last_name'  => 'New',
                      'email' => 'user2@user.com',
                  ])
-			 ->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => 1])
-			 ->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => 2])
+             ->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => 1])
+             ->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => 2])
              ->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => 3]);
 
         Event::assertDispatched(UserUpdated::class);

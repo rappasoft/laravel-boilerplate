@@ -2,13 +2,13 @@
 
 namespace App\Repositories\Backend\Auth;
 
-use App\Events\Backend\Auth\User\UserUpdated;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
 use App\Events\Frontend\Auth\UserConfirmed;
 use App\Events\Backend\Auth\User\UserCreated;
+use App\Events\Backend\Auth\User\UserUpdated;
 use App\Events\Backend\Auth\User\UserRestored;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Events\Backend\Auth\User\UserDeactivated;
@@ -164,7 +164,7 @@ class UserRepository extends BaseRepository
                 $user->syncRoles($data['roles']);
                 $user->syncPermissions($data['permissions']);
 
-				event(new UserUpdated($user));
+                event(new UserUpdated($user));
 
                 return $user;
             }
