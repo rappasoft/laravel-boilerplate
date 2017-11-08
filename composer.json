@@ -71,6 +71,9 @@
             "@php artisan route:clear",
             "@php artisan view:clear",
             "@php artisan config:clear"
+        ],
+        "phpunit": [
+            "phpunit > output.txt -d memory_limit=2048M"
         ]
     },
     "config": {
