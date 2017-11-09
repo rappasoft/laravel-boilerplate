@@ -92,7 +92,7 @@ class LoggedInFormTest extends BrowserKitTestCase
                 ]);
     }
 
-    /*public function testChangePasswordRequiredFields()
+    public function testChangePasswordRequiredFields()
     {
         $this->actingAs($this->user)
              ->visit('/account')
@@ -118,5 +118,5 @@ class LoggedInFormTest extends BrowserKitTestCase
              ->press('Update')
              ->seePageIs('/account')
              ->see('Password successfully updated.');
-    }*/
+    }
 }

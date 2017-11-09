@@ -43,7 +43,7 @@ class UserFormTest extends BrowserKitTestCase
              ->see('The password confirmation does not match.');
     }
 
-    /*public function testCreateUserConfirmedForm()
+    public function testCreateUserConfirmedForm()
     {
         // Make sure our events are fired
         Event::fake();
@@ -131,7 +131,7 @@ class UserFormTest extends BrowserKitTestCase
         Notification::assertSentTo([$user], UserNeedsConfirmation::class);
 
         Event::assertDispatched(UserCreated::class);
-    }*/
+    }
 
     public function testCreateUserFailsIfEmailExists()
     {

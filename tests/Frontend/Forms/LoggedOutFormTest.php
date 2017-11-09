@@ -1,7 +1,7 @@
 <?php
 
 use Tests\BrowserKitTestCase;
-use App\Models\Access\User\User;
+use App\Models\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Event;
@@ -131,9 +131,8 @@ class LoggedOutFormTest extends BrowserKitTestCase
             ->type($password, 'password')
             ->type($password, 'password_confirmation')
             ->press('Register')
+			->seePageIs('/')
             ->see('Your account was successfully created and is pending approval. An e-mail will be sent when your account is approved.')
-            ->see('Login')
-            ->seePageIs('/')
             ->seeInDatabase(config('access.table_names.users'),
                 [
                     'email' => $email,
@@ -244,7 +243,7 @@ class LoggedOutFormTest extends BrowserKitTestCase
 
         // Create default user to test with
         $unconfirmed = factory(User::class)->states('unconfirmed')->create();
-        $unconfirmed->attachRole(3); //User
+        $unconfirmed->assignRole('user');
 
         $this->visit('/login')
              ->type($unconfirmed->email, 'email')
@@ -260,7 +259,7 @@ class LoggedOutFormTest extends BrowserKitTestCase
 
         // Create default user to test with
         $unconfirmed = factory(User::class)->states('unconfirmed')->create();
-        $unconfirmed->attachRole(3); //User
+		$unconfirmed->assignRole('user');
 
         $this->visit('/login')
             ->type($unconfirmed->email, 'email')
@@ -274,7 +273,7 @@ class LoggedOutFormTest extends BrowserKitTestCase
     {
         // Create default user to test with
         $inactive = factory(User::class)->states('confirmed', 'inactive')->create();
-        $inactive->attachRole(3); //User
+        $inactive->assignRole('user');
 
         $this->visit('/login')
              ->type($inactive->email, 'email')
