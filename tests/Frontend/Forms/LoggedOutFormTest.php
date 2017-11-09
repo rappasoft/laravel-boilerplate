@@ -17,7 +17,6 @@ use App\Notifications\Frontend\Auth\UserNeedsPasswordReset;
  */
 class LoggedOutFormTest extends BrowserKitTestCase
 {
-
     public function testRegistrationRequiredFields()
     {
         $this->visit('/register')
@@ -63,7 +62,7 @@ class LoggedOutFormTest extends BrowserKitTestCase
                      'first_name' => $firstName,
                      'last_name' => $lastName,
                      'confirmed' => 1,
-					 'active' => 1,
+                     'active' => 1,
                  ]);
 
         Event::assertDispatched(UserRegistered::class);
