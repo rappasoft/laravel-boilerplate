@@ -17,7 +17,7 @@
                 </div>
             </div><!-- panel -->
 
-        </div><!-- col-md-10 -->
+        </div><!-- col-xs-12 -->
 
         @role('Administrator')
             {{-- You can also send through the Role ID --}}
@@ -32,7 +32,7 @@
                     </div>
                 </div><!-- panel -->
 
-            </div><!-- col-md-10 -->
+            </div><!-- col-xs-12 -->
         @endauth
 
         @if (access()->hasRole('Administrator'))
@@ -46,7 +46,7 @@
                     </div>
                 </div><!-- panel -->
 
-            </div><!-- col-md-10 -->
+            </div><!-- col-xs-12 -->
         @endif
 
         @if (access()->hasRole(1))
@@ -60,7 +60,7 @@
                     </div>
                 </div><!-- panel -->
 
-            </div><!-- col-md-10 -->
+            </div><!-- col-xs-12 -->
         @endif
 
         @if (access()->hasRoles(['Administrator', 1]))
@@ -74,7 +74,7 @@
                     </div>
                 </div><!-- panel -->
 
-            </div><!-- col-md-10 -->
+            </div><!-- col-xs-12 -->
         @endif
 
         {{-- The second parameter says the user must have all the roles specified. Administrator does not have the role with an id of 2, so this will not show. --}}
@@ -89,7 +89,7 @@
                     </div>
                 </div><!-- panel -->
 
-            </div><!-- col-md-10 -->
+            </div><!-- col-xs-12 -->
         @endif
 
         @permission('view-backend')
@@ -103,7 +103,7 @@
                     </div>
                 </div><!-- panel -->
 
-            </div><!-- col-md-10 -->
+            </div><!-- col-xs-12 -->
         @endauth
 
         @if (access()->hasPermission(1))
@@ -117,7 +117,7 @@
                     </div>
                 </div><!-- panel -->
 
-            </div><!-- col-md-10 -->
+            </div><!-- col-xs-12 -->
         @endif
 
         @if (access()->hasPermissions(['view-backend', 1]))
@@ -131,7 +131,7 @@
                     </div>
                 </div><!-- panel -->
 
-            </div><!-- col-md-10 -->
+            </div><!-- col-xs-12 -->
         @endif
 
         @if (access()->hasPermissions(['view-backend', 2], true))
@@ -145,7 +145,7 @@
                     </div>
                 </div><!-- panel -->
 
-            </div><!-- col-md-10 -->
+            </div><!-- col-xs-12 -->
         @endif
 
         <div class="col-xs-12">
@@ -161,7 +161,7 @@
                 </div>
             </div><!-- panel -->
 
-        </div><!-- col-md-10 -->
+        </div><!-- col-xs-12 -->
 
         <div class="col-xs-12">
 
@@ -176,7 +176,7 @@
                 </div>
             </div><!-- panel -->
 
-        </div><!-- col-md-10 -->
+        </div><!-- col-xs-12 -->
 
     </div><!--row-->
 @endsection
