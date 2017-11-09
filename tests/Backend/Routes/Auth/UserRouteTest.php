@@ -116,7 +116,7 @@ class UserRouteTest extends BrowserKitTestCase
     }
 
     public function testDeactivateReactivateUser()
-	{
+    {
         // Make sure our events are fired
         Event::fake();
 

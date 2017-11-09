@@ -1,7 +1,7 @@
 <?php
 
-use Tests\BrowserKitTestCase;
 use App\Models\Auth\User;
+use Tests\BrowserKitTestCase;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Event;
@@ -131,7 +131,7 @@ class LoggedOutFormTest extends BrowserKitTestCase
             ->type($password, 'password')
             ->type($password, 'password_confirmation')
             ->press('Register')
-			->seePageIs('/')
+            ->seePageIs('/')
             ->see('Your account was successfully created and is pending approval. An e-mail will be sent when your account is approved.')
             ->seeInDatabase(config('access.table_names.users'),
                 [
@@ -259,7 +259,7 @@ class LoggedOutFormTest extends BrowserKitTestCase
 
         // Create default user to test with
         $unconfirmed = factory(User::class)->states('unconfirmed')->create();
-		$unconfirmed->assignRole('user');
+        $unconfirmed->assignRole('user');
 
         $this->visit('/login')
             ->type($unconfirmed->email, 'email')

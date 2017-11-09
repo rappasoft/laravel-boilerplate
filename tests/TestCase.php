@@ -5,8 +5,8 @@ use App\Models\Auth\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
  * Class TestCase.
@@ -14,7 +14,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
     use DatabaseTransactions,
-		DatabaseMigrations;
+        DatabaseMigrations;
 
     /**
      * The base URL to use while testing the application.

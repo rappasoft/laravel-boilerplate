@@ -1,8 +1,8 @@
 <?php
 
 use Faker\Generator;
-use App\Models\Auth\User;
 use Webpatser\Uuid\Uuid;
+use App\Models\Auth\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,15 +19,15 @@ $factory->define(User::class, function (Generator $faker) {
     static $password;
 
     return [
-    	'uuid' 			    => Uuid::generate(4)->string,
+        'uuid' 			    => Uuid::generate(4)->string,
         'first_name'        => $faker->firstName,
         'last_name'         => $faker->lastName,
         'email'             => $faker->safeEmail,
         'password'          => $password ?: $password = bcrypt('secret'),
         'remember_token'    => str_random(10),
         'confirmation_code' => md5(uniqid(mt_rand(), true)),
-		'active' => 1,
-		'confirmed' => 1,
+        'active' => 1,
+        'confirmed' => 1,
     ];
 });
 

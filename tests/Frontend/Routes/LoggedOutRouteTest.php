@@ -13,7 +13,6 @@ use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
  */
 class LoggedOutRouteTest extends BrowserKitTestCase
 {
-
     public function testHomePage()
     {
         $this->visit('/')->assertResponseOk();

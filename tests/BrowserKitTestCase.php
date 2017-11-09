@@ -4,10 +4,10 @@ namespace Tests;
 
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Laravel\BrowserKitTesting\TestCase as BaseTestCase;
 
@@ -17,8 +17,8 @@ use Laravel\BrowserKitTesting\TestCase as BaseTestCase;
 abstract class BrowserKitTestCase extends BaseTestCase
 {
     use CreatesApplication,
-    	DatabaseTransactions,
-		DatabaseMigrations;
+        DatabaseTransactions,
+        DatabaseMigrations;
 
     /**
      * The base URL to use while testing the application.
