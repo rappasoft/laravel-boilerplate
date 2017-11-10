@@ -217,5 +217,5 @@
                 </div><!--row-->
             </div><!--card-footer-->
         </div><!--card-->
-    {{ html()->form()->open() }}
+    {{ html()->form()->close() }}
 @endsection
