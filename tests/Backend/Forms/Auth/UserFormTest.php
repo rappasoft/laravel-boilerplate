@@ -60,7 +60,7 @@ class UserFormTest extends BrowserKitTestCase
         $this->actingAs($this->admin)
              ->visit('/admin/auth/user/create')
              ->submitForm('Create', [
-				 'first_name' => $firstName,
+                 'first_name' => $firstName,
                  'last_name' => $lastName,
                  'email' => $email,
                  'password' => $password,
