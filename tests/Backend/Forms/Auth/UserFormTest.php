@@ -48,6 +48,8 @@ class UserFormTest extends BrowserKitTestCase
         // Make sure our events are fired
         Event::fake();
 
+        config(['access.users.confirm_email' => true]);
+
         // Create any needed resources
         $faker = Faker\Factory::create();
         $firstName = $faker->firstName;
@@ -58,7 +60,7 @@ class UserFormTest extends BrowserKitTestCase
         $this->actingAs($this->admin)
              ->visit('/admin/auth/user/create')
              ->submitForm('Create', [
-                  'first_name' => $firstName,
+				 'first_name' => $firstName,
                  'last_name' => $lastName,
                  'email' => $email,
                  'password' => $password,

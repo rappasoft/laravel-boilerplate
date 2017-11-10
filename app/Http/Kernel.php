@@ -24,7 +24,7 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrustProxies::class,
 
         // PageSpeed Middleware
-        \RenatoMarinho\LaravelPageSpeed\Middleware\InlineCss::class,
+        // \RenatoMarinho\LaravelPageSpeed\Middleware\InlineCss::class, (Has been causing JS issues)
         \RenatoMarinho\LaravelPageSpeed\Middleware\ElideAttributes::class,
         \RenatoMarinho\LaravelPageSpeed\Middleware\InsertDNSPrefetch::class,
         \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments::class,

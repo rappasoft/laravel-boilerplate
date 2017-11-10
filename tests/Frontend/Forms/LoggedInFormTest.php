@@ -99,7 +99,7 @@ class LoggedInFormTest extends BrowserKitTestCase
              ->type('', 'old_password')
              ->type('', 'password')
              ->type('', 'password_confirmation')
-             ->press('Update')
+             ->press('Update Password')
              ->seePageIs('/account')
              ->see('The old password field is required.')
              ->see('The password field is required.');
@@ -115,7 +115,7 @@ class LoggedInFormTest extends BrowserKitTestCase
              ->type('1234', 'old_password')
              ->type($password, 'password')
              ->type($password, 'password_confirmation')
-             ->press('Update')
+             ->press('Update Password')
              ->seePageIs('/account')
              ->see('Password successfully updated.');
     }
