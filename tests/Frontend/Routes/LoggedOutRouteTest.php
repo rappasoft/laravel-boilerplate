@@ -18,11 +18,6 @@ class LoggedOutRouteTest extends BrowserKitTestCase
         $this->visit('/')->assertResponseOk();
     }
 
-    public function testMacroPage()
-    {
-        $this->visit('/macros')->see('Macro Examples');
-    }
-
     public function testContactPage()
     {
         $this->visit('/contact')->see('Contact Us');
@@ -64,7 +59,7 @@ class LoggedOutRouteTest extends BrowserKitTestCase
         $this->visit('/account/confirm/'.$unconfirmed->confirmation_code)
              ->seePageIs('/login')
              ->see('Your account has been successfully confirmed!')
-             ->seeInDatabase(config('access.users_table'), ['email' => $unconfirmed->email, 'confirmed' => 1]);
+             ->seeInDatabase(config('access.table_names.users'), ['email' => $unconfirmed->email, 'confirmed' => 1]);
 
         Event::assertDispatched(UserConfirmed::class);
     }
@@ -73,11 +68,13 @@ class LoggedOutRouteTest extends BrowserKitTestCase
     {
         Notification::fake();
 
-        $this->visit('/account/confirm/resend/'.$this->user->id)
+        $unconfirmed = factory(User::class)->states('unconfirmed')->create();
+
+        $this->visit('/account/confirm/resend/'.$unconfirmed->uuid)
              ->seePageIs('/login')
              ->see('A new confirmation e-mail has been sent to the address on file.');
 
-        Notification::assertSentTo([$this->user],
+        Notification::assertSentTo([$unconfirmed],
             UserNeedsConfirmation::class);
     }
 
