@@ -124,11 +124,11 @@ class UserRouteTest extends BrowserKitTestCase
              ->visit('/admin/auth/user/'.$this->user->id.'/mark/0')
              ->seePageIs('/admin/auth/user/deactivated')
              ->see('The user was successfully updated.')
-             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'active' => 0])
+             ->seeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'active' => 0])
              ->visit('/admin/auth/user/'.$this->user->id.'/mark/1')
              ->seePageIs('/admin/auth/user')
              ->see('The user was successfully updated.')
-             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'active' => 1]);
+             ->seeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'active' => 1]);
 
         Event::assertDispatched(UserDeactivated::class);
         Event::assertDispatched(UserReactivated::class);
@@ -152,11 +152,11 @@ class UserRouteTest extends BrowserKitTestCase
         $this->user->save();
 
         $this->actingAs($this->admin)
-             ->notSeeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null])
+             ->notSeeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null])
              ->visit('/admin/auth/user/'.$this->user->id.'/restore')
              ->seePageIs('/admin/auth/user')
              ->see('The user was successfully restored.')
-             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null]);
+             ->seeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null]);
 
         Event::assertDispatched(UserRestored::class);
     }
@@ -164,12 +164,12 @@ class UserRouteTest extends BrowserKitTestCase
     public function testUserIsDeletedBeforeBeingRestored()
     {
         $this->actingAs($this->admin)
-             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null])
+             ->seeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null])
              ->visit('/admin/auth/user')
              ->visit('/admin/auth/user/'.$this->user->id.'/restore')
              ->seePageIs('/admin/auth/user')
              ->see('This user is not deleted so it can not be restored.')
-             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null]);
+             ->seeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null]);
     }
 
     public function testPermanentlyDeleteUser()
@@ -179,11 +179,11 @@ class UserRouteTest extends BrowserKitTestCase
 
         $this->actingAs($this->admin)
              ->delete('/admin/auth/user/'.$this->user->id)
-             ->notSeeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null])
+             ->notSeeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null])
              ->visit('/admin/auth/user/'.$this->user->id.'/delete')
              ->seePageIs('/admin/auth/user/deleted')
              ->see('The user was deleted permanently.')
-             ->notSeeInDatabase(config('access.users_table'), ['id' => $this->user->id]);
+             ->notSeeInDatabase(config('access.table_names.users'), ['id' => $this->user->id]);
 
         Event::assertDispatched(UserPermanentlyDeleted::class);
     }
@@ -191,11 +191,11 @@ class UserRouteTest extends BrowserKitTestCase
     public function testUserIsDeletedBeforeBeingPermanentlyDeleted()
     {
         $this->actingAs($this->admin)
-             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null])
+             ->seeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null])
              ->visit('/admin/auth/user')
              ->visit('/admin/auth/user/'.$this->user->id.'/delete')
              ->seePageIs('/admin/auth/user')
              ->see('This user must be deleted first before it can be destroyed permanently.')
-             ->seeInDatabase(config('access.users_table'), ['id' => $this->user->id, 'deleted_at' => null]);
+             ->seeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null]);
     }
 }
