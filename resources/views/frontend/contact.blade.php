@@ -13,7 +13,7 @@
                 </div><!--card-header-->
 
                 <div class="card-body">
-                    {{ html()->form('PATCH', route('frontend.contact.send'))->open() }}
+                    {{ html()->form('POST', route('frontend.contact.send'))->open() }}
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">

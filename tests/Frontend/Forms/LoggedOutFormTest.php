@@ -208,8 +208,7 @@ class LoggedOutFormTest extends BrowserKitTestCase
              ->see('We have e-mailed your password reset link!')
              ->seeInDatabase('password_resets', ['email' => $this->user->email]);
 
-        Notification::assertSentTo([$this->user],
-            UserNeedsPasswordReset::class);
+        Notification::assertSentTo([$this->user], UserNeedsPasswordReset::class);
     }
 
     public function testResetPasswordRequiredFields()
@@ -217,7 +216,7 @@ class LoggedOutFormTest extends BrowserKitTestCase
         $token = $this->app->make('auth.password.broker')->createToken($this->user);
 
         $this->visit('password/reset/'.$token)
-             ->see($this->user->email)
+             ->type($this->user->email, 'email')
              ->type('', 'password')
              ->type('', 'password_confirmation')
              ->press('Reset Password')
@@ -229,7 +228,7 @@ class LoggedOutFormTest extends BrowserKitTestCase
         $token = $this->app->make('auth.password.broker')->createToken($this->user);
 
         $this->visit('password/reset/'.$token)
-             ->see($this->user->email)
+             ->type($this->user->email, 'email')
              ->type('12345678', 'password')
              ->type('12345678', 'password_confirmation')
              ->press('Reset Password')
