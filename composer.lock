@@ -2017,16 +2017,16 @@
         },
         {
             "name": "renatomarinho/laravel-page-speed",
-            "version": "1.8.4",
+            "version": "1.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/renatomarinho/laravel-page-speed.git",
-                "reference": "1be7b76a64f0b9fc3622ec572991f8854ee29dce"
+                "reference": "754eef542345c0eb8ea0881dcecbeb32bda7296a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/renatomarinho/laravel-page-speed/zipball/1be7b76a64f0b9fc3622ec572991f8854ee29dce",
-                "reference": "1be7b76a64f0b9fc3622ec572991f8854ee29dce",
+                "url": "https://api.github.com/repos/renatomarinho/laravel-page-speed/zipball/754eef542345c0eb8ea0881dcecbeb32bda7296a",
+                "reference": "754eef542345c0eb8ea0881dcecbeb32bda7296a",
                 "shasum": ""
             },
             "require": {
@@ -2034,6 +2034,7 @@
                 "php": "^5.6 || ^7.0"
             },
             "require-dev": {
+                "mockery/mockery": "~0.9.4",
                 "orchestra/testbench": "^3.2",
                 "phpunit/phpunit": "^5.7 || ^6.0",
                 "squizlabs/php_codesniffer": "^2.3"
@@ -2069,7 +2070,7 @@
                 "optmize",
                 "page speed"
             ],
-            "time": "2017-11-03T22:08:15+00:00"
+            "time": "2017-11-12T10:36:45+00:00"
         },
         {
             "name": "spatie/laravel-html",

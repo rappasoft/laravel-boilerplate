@@ -68,7 +68,7 @@ class UserFormTest extends BrowserKitTestCase
                  'active' => '1',
                  'confirmed' => '1',
                  'confirmation_email' => '1',
-                 'roles' => ['executive', 'user'],
+                 'roles' => [1 => 'executive', 2 => 'user'],
              ])
              ->seePageIs('/admin/auth/user')
              ->see('The user was successfully created.')
@@ -111,7 +111,7 @@ class UserFormTest extends BrowserKitTestCase
                  'password_confirmation' => $password,
                  'active' => '1',
                  'confirmation_email' => '1',
-                 'roles' => ['executive', 'user'],
+                 'roles' => [1 => 'executive', 2 => 'user'],
              ])
              ->seePageIs('/admin/auth/user')
              ->see('The user was successfully created.')
