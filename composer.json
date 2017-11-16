@@ -16,7 +16,6 @@
         "laravel/framework": "5.5.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
-        "renatomarinho/laravel-page-speed": "^1.8",
         "spatie/laravel-html": "^2.4",
         "spatie/laravel-permission": "^2.5",
         "webpatser/laravel-uuid": "^3.0"
