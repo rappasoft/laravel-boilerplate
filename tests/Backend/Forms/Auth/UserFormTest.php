@@ -3,12 +3,12 @@
 use App\Models\Auth\User;
 use Tests\BrowserKitTestCase;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Notification;
 use App\Events\Backend\Auth\User\UserCreated;
 use App\Events\Backend\Auth\User\UserUpdated;
 use App\Events\Backend\Auth\User\UserPasswordChanged;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class UserFormTest.
@@ -46,11 +46,11 @@ class UserFormTest extends BrowserKitTestCase
 
     public function testCreateUserConfirmedForm()
     {
-		// Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
-		// Make sure our events are fired
-		$initialDispatcher = Event::getFacadeRoot();
-		Event::fake();
-		Model::setEventDispatcher($initialDispatcher);
+        // Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
+        // Make sure our events are fired
+        $initialDispatcher = Event::getFacadeRoot();
+        Event::fake();
+        Model::setEventDispatcher($initialDispatcher);
 
         config(['access.users.confirm_email' => true]);
 
@@ -92,11 +92,11 @@ class UserFormTest extends BrowserKitTestCase
 
     public function testCreateUserUnconfirmedForm()
     {
-		// Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
-		// Make sure our events are fired
-		$initialDispatcher = Event::getFacadeRoot();
-		Event::fake();
-		Model::setEventDispatcher($initialDispatcher);
+        // Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
+        // Make sure our events are fired
+        $initialDispatcher = Event::getFacadeRoot();
+        Event::fake();
+        Model::setEventDispatcher($initialDispatcher);
 
         // Make sure our notifications are sent
         Notification::fake();
