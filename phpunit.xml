@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false" backupStaticAttributes="false" bootstrap="bootstrap/autoload.php" colors="true"
+<phpunit backupGlobals="false" backupStaticAttributes="false" bootstrap="vendor/autoload.php" colors="true"
          convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true"
          processIsolation="false" stopOnFailure="true">
     <filter>
@@ -17,6 +17,7 @@
         <env name="QUEUE_DRIVER" value="sync"/>
         <env name="REGISTRATION_CAPTCHA_STATUS" value="false"/>
         <env name="SESSION_DRIVER" value="array"/>
+        <env name="PASSWORD_EXPIRES_DAYS" value="false"/>
     </php>
     <testsuites>
         <testsuite name="Application Test Suite">

@@ -1,79 +1,58 @@
-<!doctype html>
-<html class="no-js" lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<!DOCTYPE html>
+@langrtl
+    <html lang="{{ app()->getLocale() }}" dir="rtl">
+@else
+    <html lang="{{ app()->getLocale() }}">
+@endlangrtl
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>@yield('title', app_name())</title>
+    <meta name="description" content="@yield('meta_description', 'Laravel 5 Boilerplate')">
+    <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
+    @yield('meta')
 
-        <title>@yield('title', app_name())</title>
+    {{-- See https://laravel.com/docs/5.5/blade#stacks for usage --}}
+    @stack('before-styles')
 
-        <!-- Meta -->
-        <meta name="description" content="@yield('meta_description', 'Default Description')">
-        <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
-        @yield('meta')
+    <!-- Check if the language is set to RTL, so apply the RTL layouts -->
+    <!-- Otherwise apply the normal LTR layouts -->
+    {{ style(mix('css/backend.css')) }}
 
-        <!-- Styles -->
-        @yield('before-styles')
+    @stack('after-styles')
+</head>
 
-        <!-- Check if the language is set to RTL, so apply the RTL layouts -->
-        <!-- Otherwise apply the normal LTR layouts -->
-        @langRTL
-            {{ Html::style(getRtlCss(mix('css/backend.css'))) }}
-        @else
-            {{ Html::style(mix('css/backend.css')) }}
-        @endif
+<body class="{{ config('backend.body_classes') }}">
+    @include('backend.includes.header')
 
-        @yield('after-styles')
+    <div class="app-body">
+        @include('backend.includes.sidebar')
 
-        <!-- Html5 Shim and Respond.js IE8 support of Html5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        {{ Html::script('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js') }}
-        {{ Html::script('https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js') }}
-        <![endif]-->
+        <main class="main">
+            @include('includes.partials.logged-in-as')
+            {!! Breadcrumbs::render() !!}
 
-        <!-- Scripts -->
-        <script>
-            window.Laravel = <?php echo json_encode([
-                'csrfToken' => csrf_token(),
-            ]); ?>
-        </script>
-    </head>
-    <body class="skin-{{ config('backend.theme') }} {{ config('backend.layout') }}">
-        @include('includes.partials.logged-in-as')
-
-        <div class="wrapper">
-            @include('backend.includes.header')
-            @include('backend.includes.sidebar')
-
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    @yield('page-header')
-
-                    {{-- Change to Breadcrumbs::render() if you want it to error to remind you to create the breadcrumbs for the given route --}}
-                    {!! Breadcrumbs::renderIfExists() !!}
-                </section>
-
-                <!-- Main content -->
-                <section class="content">
-                    <div class="loader" style="display: none;">
-                        <div class="ajax-spinner ajax-skeleton"></div>
-                    </div><!--loader-->
+            <div class="container-fluid">
+                <div class="animated fadeIn">
+                    <div class="content-header">
+                        @yield('page-header')
+                    </div><!--content-header-->
 
                     @include('includes.partials.messages')
                     @yield('content')
-                </section><!-- /.content -->
-            </div><!-- /.content-wrapper -->
+                </div><!--animated-->
+            </div><!--container-fluid-->
+        </main><!--main-->
 
-            @include('backend.includes.footer')
-        </div><!-- ./wrapper -->
+        @include('backend.includes.aside')
+    </div><!--app-body-->
 
-        <!-- JavaScripts -->
-        @yield('before-scripts')
-        {{ Html::script(mix('js/backend.js')) }}
-        @yield('after-scripts')
-    </body>
+    @include('backend.includes.footer')
+
+    <!-- Scripts -->
+    @stack('before-scripts')
+    {!! script(mix('js/backend.js')) !!}
+    @stack('after-scripts')
+</body>
 </html>

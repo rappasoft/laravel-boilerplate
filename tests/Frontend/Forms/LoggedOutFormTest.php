@@ -1,10 +1,11 @@
 <?php
 
+use App\Models\Auth\User;
 use Tests\BrowserKitTestCase;
-use App\Models\Access\User\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Database\Eloquent\Model;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Mail\Frontend\Contact\SendContact;
 use App\Events\Frontend\Auth\UserRegistered;
@@ -17,9 +18,6 @@ use App\Notifications\Frontend\Auth\UserNeedsPasswordReset;
  */
 class LoggedOutFormTest extends BrowserKitTestCase
 {
-    /**
-     * Test that the errors work if nothing is filled in the registration form.
-     */
     public function testRegistrationRequiredFields()
     {
         $this->visit('/register')
@@ -35,15 +33,13 @@ class LoggedOutFormTest extends BrowserKitTestCase
              ->see('The password field is required.');
     }
 
-    /**
-     * Test the registration form
-     * Test it works with confirming email on or off, and that the confirm email notification is sent
-     * Note: Captcha is disabled by default in phpunit.xml.
-     */
     public function testRegistrationForm()
     {
+        // Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
         // Make sure our events are fired
+        $initialDispatcher = Event::getFacadeRoot();
         Event::fake();
+        Model::setEventDispatcher($initialDispatcher);
 
         config(['access.users.confirm_email' => false]);
         config(['access.users.requires_approval' => false]);
@@ -63,25 +59,27 @@ class LoggedOutFormTest extends BrowserKitTestCase
              ->type($password, 'password_confirmation')
              ->press('Register')
              ->see('Dashboard')
-             ->seePageIs('/')
-             ->seeInDatabase(config('access.users_table'),
+             ->seePageIs('/dashboard')
+             ->seeInDatabase(config('access.table_names.users'),
                  [
                      'email' => $email,
                      'first_name' => $firstName,
                      'last_name' => $lastName,
                      'confirmed' => 1,
+                     'active' => 1,
                  ]);
 
         Event::assertDispatched(UserRegistered::class);
     }
 
-    /**
-     * Test the required fields error messages when trying to register
-     * without filling out the fields.
-     */
     public function testRegistrationFormConfirmationRequired()
     {
+        // Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
+        // Make sure our events are fired
+        $initialDispatcher = Event::getFacadeRoot();
         Event::fake();
+        Model::setEventDispatcher($initialDispatcher);
+
         Notification::fake();
 
         config(['access.users.confirm_email' => true]);
@@ -104,7 +102,7 @@ class LoggedOutFormTest extends BrowserKitTestCase
             ->see('Your account was successfully created. We have sent you an e-mail to confirm your account.')
             ->see('Login')
             ->seePageIs('/')
-            ->seeInDatabase(config('access.users_table'),
+            ->seeInDatabase(config('access.table_names.users'),
                 [
                     'email' => $email,
                     'first_name' => $firstName,
@@ -119,13 +117,14 @@ class LoggedOutFormTest extends BrowserKitTestCase
         Event::assertDispatched(UserRegistered::class);
     }
 
-    /**
-     * Test the registration form when account are set to be pending an approval
-     * ensure they are registered but not confirmed.
-     */
     public function testRegistrationFormPendingApproval()
     {
+        // Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
+        // Make sure our events are fired
+        $initialDispatcher = Event::getFacadeRoot();
         Event::fake();
+        Model::setEventDispatcher($initialDispatcher);
+
         Notification::fake();
 
         // Set registration to pending approval
@@ -146,10 +145,9 @@ class LoggedOutFormTest extends BrowserKitTestCase
             ->type($password, 'password')
             ->type($password, 'password_confirmation')
             ->press('Register')
-            ->see('Your account was successfully created and is pending approval. An e-mail will be sent when your account is approved.')
-            ->see('Login')
             ->seePageIs('/')
-            ->seeInDatabase(config('access.users_table'),
+            ->see('Your account was successfully created and is pending approval. An e-mail will be sent when your account is approved.')
+            ->seeInDatabase(config('access.table_names.users'),
                 [
                     'email' => $email,
                     'first_name' => $firstName,
@@ -164,9 +162,6 @@ class LoggedOutFormTest extends BrowserKitTestCase
         Event::assertDispatched(UserRegistered::class);
     }
 
-    /**
-     * Test that the errors work if nothing is filled in the login form.
-     */
     public function testLoginRequiredFields()
     {
         $this->visit('/login')
@@ -178,10 +173,6 @@ class LoggedOutFormTest extends BrowserKitTestCase
              ->see('The password field is required.');
     }
 
-    /**
-     * Test that the user is logged in and redirected to the dashboard
-     * Test that the admin is logged in and redirected to the backend.
-     */
     public function testLoginForm()
     {
         // Make sure our events are fired
@@ -211,9 +202,6 @@ class LoggedOutFormTest extends BrowserKitTestCase
         Event::assertDispatched(UserLoggedIn::class);
     }
 
-    /**
-     * Test that the errors work if nothing is filled in the forgot password form.
-     */
     public function testForgotPasswordRequiredFields()
     {
         $this->visit('/password/reset')
@@ -223,10 +211,6 @@ class LoggedOutFormTest extends BrowserKitTestCase
              ->see('The email field is required.');
     }
 
-    /**
-     * Test that the forgot password form sends the user the notification and places the
-     * row in the password_resets table.
-     */
     public function testForgotPasswordForm()
     {
         Notification::fake();
@@ -238,34 +222,27 @@ class LoggedOutFormTest extends BrowserKitTestCase
              ->see('We have e-mailed your password reset link!')
              ->seeInDatabase('password_resets', ['email' => $this->user->email]);
 
-        Notification::assertSentTo([$this->user],
-            UserNeedsPasswordReset::class);
+        Notification::assertSentTo([$this->user], UserNeedsPasswordReset::class);
     }
 
-    /**
-     * Test that the errors work if nothing is filled in the reset password form.
-     */
     public function testResetPasswordRequiredFields()
     {
         $token = $this->app->make('auth.password.broker')->createToken($this->user);
 
         $this->visit('password/reset/'.$token)
-             ->see($this->user->email)
+             ->type($this->user->email, 'email')
              ->type('', 'password')
              ->type('', 'password_confirmation')
              ->press('Reset Password')
              ->see('The password field is required.');
     }
 
-    /**
-     * Test that the password reset form works and logs the user back in.
-     */
     public function testResetPasswordForm()
     {
         $token = $this->app->make('auth.password.broker')->createToken($this->user);
 
         $this->visit('password/reset/'.$token)
-             ->see($this->user->email)
+             ->type($this->user->email, 'email')
              ->type('12345678', 'password')
              ->type('12345678', 'password_confirmation')
              ->press('Reset Password')
@@ -273,16 +250,13 @@ class LoggedOutFormTest extends BrowserKitTestCase
              ->see($this->user->name);
     }
 
-    /**
-     * Test that an unconfirmed user can not login.
-     */
     public function testUnconfirmedUserCanNotLogIn()
     {
         config(['access.users.requires_approval' => false]);
 
         // Create default user to test with
         $unconfirmed = factory(User::class)->states('unconfirmed')->create();
-        $unconfirmed->attachRole(3); //User
+        $unconfirmed->assignRole('user');
 
         $this->visit('/login')
              ->type($unconfirmed->email, 'email')
@@ -292,16 +266,13 @@ class LoggedOutFormTest extends BrowserKitTestCase
              ->see('Your account is not confirmed.');
     }
 
-    /**
-     * Test that an account this is currently pending approval can not log in.
-     */
     public function testUnconfirmedUserCanNotLogInPendingApproval()
     {
         config(['access.users.requires_approval' => true]);
 
         // Create default user to test with
         $unconfirmed = factory(User::class)->states('unconfirmed')->create();
-        $unconfirmed->attachRole(3); //User
+        $unconfirmed->assignRole('user');
 
         $this->visit('/login')
             ->type($unconfirmed->email, 'email')
@@ -311,14 +282,11 @@ class LoggedOutFormTest extends BrowserKitTestCase
             ->see('Your account is currently pending approval.');
     }
 
-    /**
-     * Test that an inactive user can not login.
-     */
     public function testInactiveUserCanNotLogIn()
     {
         // Create default user to test with
         $inactive = factory(User::class)->states('confirmed', 'inactive')->create();
-        $inactive->attachRole(3); //User
+        $inactive->assignRole('user');
 
         $this->visit('/login')
              ->type($inactive->email, 'email')
@@ -328,9 +296,6 @@ class LoggedOutFormTest extends BrowserKitTestCase
              ->see('Your account has been deactivated.');
     }
 
-    /**
-     * Test that a user with invalid credentials get kicked back.
-     */
     public function testInvalidLoginCredentials()
     {
         $this->visit('/login')
@@ -341,9 +306,6 @@ class LoggedOutFormTest extends BrowserKitTestCase
              ->see('These credentials do not match our records.');
     }
 
-    /**
-     * Test the contact forms required fields.
-     */
     public function testContactFormRequiredFields()
     {
         $this->visit('/contact')
@@ -354,9 +316,6 @@ class LoggedOutFormTest extends BrowserKitTestCase
             ->see('The message field is required.');
     }
 
-    /**
-     * Test the contact form sends the mail.
-     */
     public function testContactForm()
     {
         Mail::fake();

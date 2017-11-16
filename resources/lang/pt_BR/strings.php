@@ -60,12 +60,12 @@ return [
 <p>Todas as funcionalidades são meramente demonstrativas com exceção do menu <strong>Gerenciamento de Usuários</strong> à esquerda. Este <i>boilerplate</i> vem com uma biblioteca totalmente funcional de controle de acesso para gerenciar usuários/papéis/permissões.</p>
 <p>Tenha em mente que este é um trabalho em andamento e podem existir <i>bugs</i> ou outros problemas pelos quais não passei. Farei o meu melhor para corrigí-los à medida em que os recebo.</p>
 <p>Espero que você aproveite todo o trabalho que coloquei nisto. Por favor, visite a página do <a href="https://github.com/rappasoft/laravel-5-boilerplate" target="_blank">GitHub</a> para maiores informações e reporte quaisquer <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">problemas aqui</a>.</p>
-<p><strong>This project is very demanding to keep up with given the rate at which the master Laravel branch changes, so any help is appreciated.</strong></p>
+<p><strong>Este projeto tem alta demanda de atualizações, dada a taxa de novas versões que a master do Laravel vem lançando, então toda ajuda é bem-vinda :).</strong></p>
 <p>- Anthony Rappa</p>',
     ],
     'emails' => [
         'auth' => [
-            'account_confirmed' => 'Your account has been confirmed.',
+            'account_confirmed' => 'Sua conta foi confirmada.',
             'error'                     => 'Oops!',
             'greeting'                  => 'Olá!',
             'regards'                   => 'Nossos cumprimentos,',
@@ -79,8 +79,8 @@ return [
         ],
 
         'contact' => [
-            'email_body_title' => 'You have a new contact form request: Below are the details:',
-            'subject' => 'A new :app_name contact form submission!',
+            'email_body_title' => 'Você tem um novo contato. Seguem detalhes:',
+            'subject' => 'Um novo contato de :app_name!',
         ],
     ],
     'frontend' => [
@@ -108,12 +108,12 @@ return [
         ],
 
         'general' => [
-            'joined'        => 'Joined',
+            'joined'        => 'Entrou',
         ],
 
         'user' => [
-            'change_email_notice' => 'If you change your e-mail you will be logged out until you confirm your new e-mail address.',
-            'email_changed_notice' => 'You must confirm your new e-mail address before you can log in again.',
+            'change_email_notice' => 'Se você alterar seu e-mail, você será deslogado até que confirme seu novo e-mail.',
+            'email_changed_notice' => 'Você deve confirmar seu novo e-mail antes de fazer login novamente.',
             'profile_updated'  => 'Perfil atualizado com sucesso.',
             'password_updated' => 'Senha atualizada com sucesso.',
         ],

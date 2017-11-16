@@ -123,32 +123,6 @@ return [
             'send_password_reset_link_button' => 'Invia link per il reset della password',
         ],
 
-        'macros' => [
-            'country' => [
-                'alpha'   => 'Codici di Paese alfabetici',
-                'alpha2'  => 'Codici di Paese alfabetici 2',
-                'alpha3'  => 'Codici di Paese alfabetici 3',
-                'numeric' => 'Codici di Paese numerici',
-            ],
-
-            'macro_examples' => 'Esempi di macro',
-
-            'state' => [
-                'mexico' => 'Elenco di stati del Messico',
-                'us'     => [
-                    'us'       => 'Stati degli USA',
-                    'outlying' => 'Territori remoti degli USA',
-                    'armed'    => 'Forze armate USA',
-                ],
-            ],
-
-            'territories' => [
-                'canada' => 'Province e Territori del Canada',
-            ],
-
-            'timezone' => 'Fuso orario',
-        ],
-
         'user' => [
             'passwords' => [
                 'change' => 'Change Password',

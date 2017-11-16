@@ -18,7 +18,7 @@ return [
         'logout' => 'Sair',
     ],
     'frontend' => [
-        'contact' => 'Contact',
+        'contact' => 'Contato',
         'dashboard' => 'Painel de Controle',
         'login'     => 'Entrar',
         'macros'    => 'Macros',

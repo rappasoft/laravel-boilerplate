@@ -123,32 +123,6 @@ return [
             'send_password_reset_link_button' => 'Send link til at nulstille adgangskoden',
         ],
 
-        'macros' => [
-            'country' => [
-                'alpha'   => 'Landekoder',
-                'alpha2'  => 'Landekoder (Alfa-2)',
-                'alpha3'  => 'Landekode (Alfa-3)',
-                'numeric' => 'Landekoder (Numerisk)',
-            ],
-
-            'macro_examples' => 'Eksempler på Makroer',
-
-            'state' => [
-                'mexico' => 'Mexicos stater',
-                'us'     => [
-                    'us'       => 'Amerikanske stater',
-                    'outlying' => 'Amerikanske oversøiske territorier',
-                    'armed'    => 'Amerikanske væbnede styrker',
-                ],
-            ],
-
-            'territories' => [
-                'canada' => 'Canada\'s provinser og territorier',
-            ],
-
-            'timezone' => 'Tidszone',
-        ],
-
         'user' => [
             'passwords' => [
                 'change' => 'Skift adgangskode',

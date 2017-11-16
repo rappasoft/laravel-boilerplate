@@ -21,6 +21,16 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
+        \App\Http\Middleware\TrustProxies::class,
+
+        // PageSpeed Middleware
+        // \RenatoMarinho\LaravelPageSpeed\Middleware\InlineCss::class, (Has been causing JS issues)
+        \RenatoMarinho\LaravelPageSpeed\Middleware\ElideAttributes::class,
+        \RenatoMarinho\LaravelPageSpeed\Middleware\InsertDNSPrefetch::class,
+        \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments::class,
+        \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
+        \RenatoMarinho\LaravelPageSpeed\Middleware\RemoveQuotes::class,
+        \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class,
     ];
 
     /**
@@ -40,15 +50,15 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\LocaleMiddleware::class,
         ],
 
-        'admin' => [
-            'auth',
-            'access.routeNeedsPermission:view-backend',
-            'timeout',
-        ],
-
         'api' => [
             'throttle:60,1',
             'bindings',
+        ],
+
+        'admin' => [
+            'auth',
+            'password_expires',
+            'permission:view backend',
         ],
     ];
 
@@ -65,13 +75,9 @@ class Kernel extends HttpKernel
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'password_expires' => \App\Http\Middleware\PasswordExpires::class,
+        'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+        'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'timeout'    => \App\Http\Middleware\SessionTimeout::class,
-
-        /*
-         * Access Middleware
-         */
-        'access.routeNeedsRole'       => \App\Http\Middleware\RouteNeedsRole::class,
-        'access.routeNeedsPermission' => \App\Http\Middleware\RouteNeedsPermission::class,
     ];
 }

@@ -125,32 +125,6 @@ return [
             'send_password_reset_link_button' => 'Stuur Wachtwoord Reset Link',
         ],
 
-        'macros' => [
-            'country' => [
-                'alpha'   => 'Land Alpha Codes',
-                'alpha2'  => 'Land Alpha 2 Codes',
-                'alpha3'  => 'Land Alpha 3 Codes',
-                'numeric' => 'Land Numerieke Codes',
-            ],
-
-            'macro_examples' => 'Macro Voorbeelden',
-
-            'state' => [
-                'mexico' => 'Mexico Staten Lijst',
-                'us'     => [
-                    'us'       => 'Verenigde Staten',
-                    'outlying' => 'VS afgelegen gebieden',
-                    'armed'    => 'VS Krijgsmacht',
-                ],
-            ],
-
-            'territories' => [
-                'canada' => 'Canada Provincies & Territories Lijst',
-            ],
-
-            'timezone' => 'Tijdzone',
-        ],
-
         'user' => [
             'passwords' => [
                 'change' => 'Wachtwoord veranderen',

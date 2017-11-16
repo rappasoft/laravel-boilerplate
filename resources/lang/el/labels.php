@@ -123,32 +123,6 @@ return [
             'send_password_reset_link_button' => 'Send Password Reset Link',
         ],
 
-        'macros' => [
-            'country' => [
-                'alpha'   => 'Country Alpha Codes',
-                'alpha2'  => 'Country Alpha 2 Codes',
-                'alpha3'  => 'Country Alpha 3 Codes',
-                'numeric' => 'Country Numeric Codes',
-            ],
-
-            'macro_examples' => 'Macro Examples',
-
-            'state' => [
-                'mexico' => 'Mexico State List',
-                'us'     => [
-                    'us'       => 'US States',
-                    'outlying' => 'US Outlying Territories',
-                    'armed'    => 'US Armed Forces',
-                ],
-            ],
-
-            'territories' => [
-                'canada' => 'Canada Province & Territories List',
-            ],
-
-            'timezone' => 'Timezone',
-        ],
-
         'user' => [
             'passwords' => [
                 'change' => 'Αλλαγή κωδικού',
