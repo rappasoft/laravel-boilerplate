@@ -64,7 +64,7 @@ return [
                 'mismatch'          => 'Der Aktivierungscode ist nicht korrekt.',
                 'not_found'         => 'Der Aktivierungscode existiert nicht.',
                 'pending'            => 'Your account is currently pending approval.',
-                'resend'            => 'Dein Benutzerkonto ist nicht aktiviert. Bitte klicke auf den Link in der Aktivierungsmail, oder <a href="'.route('frontend.auth.account.confirm.resend', ':user_id').'">klicke hier</a> um die Aktivierungsmail erneut zu senden.',
+                'resend'            => 'Dein Benutzerkonto ist nicht aktiviert. Bitte klicke auf den Link in der Aktivierungsmail, oder <a href="'.route('frontend.auth.account.confirm.resend', ':user_uuid').'">klicke hier</a> um die Aktivierungsmail erneut zu senden.',
                 'success'           => 'Dein Benutzerkonto wurde aktiviert!',
                 'resent'            => 'Eine neue Aktivierungsmail wurde an die hinterlegte E-Mailadresse gesendet.',
             ],

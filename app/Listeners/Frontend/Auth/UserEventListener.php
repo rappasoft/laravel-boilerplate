@@ -34,6 +34,14 @@ class UserEventListener
     /**
      * @param $event
      */
+    public function onProviderRegistered($event)
+    {
+        \Log::info('User Provider Registered: '.$event->user->full_name);
+    }
+
+    /**
+     * @param $event
+     */
     public function onConfirmed($event)
     {
         \Log::info('User Confirmed: '.$event->user->full_name);
@@ -59,6 +67,11 @@ class UserEventListener
         $events->listen(
             \App\Events\Frontend\Auth\UserRegistered::class,
             'App\Listeners\Frontend\Auth\UserEventListener@onRegistered'
+        );
+
+        $events->listen(
+            \App\Events\Frontend\Auth\UserProviderRegistered::class,
+            'App\Listeners\Frontend\Auth\UserEventListener@onProviderRegistered'
         );
 
         $events->listen(

@@ -1,7 +1,7 @@
-<ul class="dropdown-menu" role="menu">
-        @foreach (array_keys(config('locale.languages')) as $lang)
-                @if ($lang != App::getLocale())
-                        <li>{{ link_to('lang/'.$lang, trans('menus.language-picker.langs.'.$lang)) }}</li>
-                @endif
-        @endforeach
-</ul>
+<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownLanguageLink">
+    @foreach (array_keys(config('locale.languages')) as $lang)
+        @if ($lang != app()->getLocale())
+            <small><a href="{{ '/lang/'.$lang }}" class="dropdown-item">{{ __('menus.language-picker.langs.'.$lang) }}</a></small>
+        @endif
+    @endforeach
+</div>

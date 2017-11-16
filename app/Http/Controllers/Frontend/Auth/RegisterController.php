@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegisterRequest;
+use App\Helpers\Frontend\Auth\Socialite;
 use App\Events\Frontend\Auth\UserRegistered;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use App\Http\Requests\Frontend\Auth\RegisterRequest;
-use App\Repositories\Frontend\Access\User\UserRepository;
+use App\Repositories\Frontend\Auth\UserRepository;
 
 /**
  * Class RegisterController.
@@ -18,19 +19,26 @@ class RegisterController extends Controller
     /**
      * @var UserRepository
      */
-    protected $user;
+    protected $userRepository;
 
     /**
      * RegisterController constructor.
      *
-     * @param UserRepository $user
+     * @param UserRepository $userRepository
      */
-    public function __construct(UserRepository $user)
+    public function __construct(UserRepository $userRepository)
     {
-        // Where to redirect users after registering
-        $this->redirectTo = route(homeRoute());
+        $this->userRepository = $userRepository;
+    }
 
-        $this->user = $user;
+    /**
+     * Where to redirect users after login.
+     *
+     * @return string
+     */
+    public function redirectPath()
+    {
+        return route(home_route());
     }
 
     /**
@@ -40,7 +48,8 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        return view('frontend.auth.register');
+        return view('frontend.auth.register')
+            ->withSocialiteLinks((new Socialite)->getSocialLinks());
     }
 
     /**
@@ -50,18 +59,22 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request)
     {
+        $user = $this->userRepository->create($request->only('first_name', 'last_name', 'email', 'password'));
+
+        // If the user must confirm their email or their account requires approval,
+        // create the account but don't log them in.
         if (config('access.users.confirm_email') || config('access.users.requires_approval')) {
-            $user = $this->user->create($request->only('first_name', 'last_name', 'email', 'password'));
             event(new UserRegistered($user));
 
             return redirect($this->redirectPath())->withFlashSuccess(
                 config('access.users.requires_approval') ?
-                    trans('exceptions.frontend.auth.confirmation.created_pending') :
-                    trans('exceptions.frontend.auth.confirmation.created_confirm')
+                    __('exceptions.frontend.auth.confirmation.created_pending') :
+                    __('exceptions.frontend.auth.confirmation.created_confirm')
             );
         } else {
-            access()->login($this->user->create($request->only('first_name', 'last_name', 'email', 'password')));
-            event(new UserRegistered(access()->user()));
+            auth()->login($user);
+
+            event(new UserRegistered($user));
 
             return redirect($this->redirectPath());
         }

@@ -62,7 +62,7 @@ return [
             'results'    => 'Search Results for :query',
         ],
 
-        'welcome' => '<p>Quello che vedi è il tema AdminLTE sviluppato da <a href="https://almsaeedstudio.com/" target="_blank">https://almsaeedstudio.com/</a>.
+        'welcome' => '<p>Quello che vedi è il tema CoreUI sviluppato da <a href="https://coreui.io/" target="_blank">creativeLabs</a>.
     Si tratta di una versione ridotta al minimo che include solo gli stili e gli script necessari per il funzionamento.
     Scarica la versione completa per aggiungere componenti alla dashboard.</p>
 <p>Tutte le funzioni che vedi sono simulate, ad eccezione della <strong>Gestione utenti</strong> sulla sinistra.

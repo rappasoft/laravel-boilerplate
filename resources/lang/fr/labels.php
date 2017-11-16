@@ -127,32 +127,6 @@ return [
             'send_password_reset_link_button' => 'Envoyer le lien de réinitialisation',
         ],
 
-        'macros' => [
-            'country' => [
-                'alpha'   => 'Pays (norme ISO 3166-2)',
-                'alpha2'  => 'Pays par code alphabétique (à 2 lettres)',
-                'alpha3'  => 'Pays par code alphabétique (à 3 lettres)',
-                'numeric' => 'Pays par code numérique',
-            ],
-
-            'macro_examples' => 'Exemples de macros',
-
-            'state' => [
-                'mexico' => 'Liste des états du Méxique',
-                'us'     => [
-                    'us'       => '&Eacute;tats américains',
-                    'outlying' => 'Territoires extérieurs américains',
-                    'armed'    => 'Forces armées américaines',
-                ],
-            ],
-
-            'territories' => [
-                'canada' => 'Provinces et territoires du Canada',
-            ],
-
-            'timezone' => 'Fuseaux horaires',
-        ],
-
         'user' => [
             'passwords' => [
                 'change' => 'Modifier le mot de passe',

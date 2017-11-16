@@ -123,32 +123,6 @@ return [
             'send_password_reset_link_button' => 'Kirim Tautan Reset Sandi',
         ],
 
-        'macros' => [
-            'country' => [
-                'alpha'   => 'Kode Huruf Negara',
-                'alpha2'  => 'Kode Negara 2 Huruf',
-                'alpha3'  => 'Kode Negara 3 Huruf',
-                'numeric' => 'Kode Numerik Negara',
-            ],
-
-            'macro_examples' => 'Contoh Makro',
-
-            'state' => [
-                'mexico' => 'Daftar Negara Bagian Mexico',
-                'us'     => [
-                    'us'       => 'Negara Bagian AS',
-                    'outlying' => 'Teritori Terluar AS',
-                    'armed'    => 'Angkatan Bersenjata AS',
-                ],
-            ],
-
-            'territories' => [
-                'canada' => 'Daftar Propinsi dan Teritorial Kanada',
-            ],
-
-            'timezone' => 'Zona Waktu',
-        ],
-
         'user' => [
             'passwords' => [
                 'change' => 'Ubah Sandi',

@@ -1,10 +1,11 @@
 <?php
 
-use App\Models\Access\Role\Role;
-use App\Models\Access\User\User;
+use App\Models\Auth\Role;
+use App\Models\Auth\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
@@ -12,7 +13,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
  */
 abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
-    use DatabaseTransactions;
+    use DatabaseTransactions,
+        DatabaseMigrations;
 
     /**
      * The base URL to use while testing the application.
@@ -73,7 +75,6 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
         parent::setUp();
 
         // Set up the database
-        Artisan::call('migrate:refresh');
         Artisan::call('db:seed');
 
         // Run the tests in English

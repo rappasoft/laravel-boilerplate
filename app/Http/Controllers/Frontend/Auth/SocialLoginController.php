@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use Laravel\Socialite\Facades\Socialite;
-use App\Repositories\Frontend\Access\User\UserRepository;
+use App\Repositories\Frontend\Auth\UserRepository;
 use App\Helpers\Frontend\Auth\Socialite as SocialiteHelper;
 
 /**
@@ -17,23 +17,23 @@ class SocialLoginController extends Controller
     /**
      * @var UserRepository
      */
-    protected $user;
+    protected $userRepository;
 
     /**
      * @var SocialiteHelper
      */
-    protected $helper;
+    protected $socialiteHelper;
 
     /**
      * SocialLoginController constructor.
      *
-     * @param UserRepository  $user
-     * @param SocialiteHelper $helper
+     * @param UserRepository  $userRepository
+     * @param SocialiteHelper $socialiteHelper
      */
-    public function __construct(UserRepository $user, SocialiteHelper $helper)
+    public function __construct(UserRepository $userRepository, SocialiteHelper $socialiteHelper)
     {
-        $this->user = $user;
-        $this->helper = $helper;
+        $this->userRepository = $userRepository;
+        $this->socialiteHelper = $socialiteHelper;
     }
 
     /**
@@ -50,8 +50,8 @@ class SocialLoginController extends Controller
         $user = null;
 
         // If the provider is not an acceptable third party than kick back
-        if (! in_array($provider, $this->helper->getAcceptedProviders())) {
-            return redirect()->route(homeRoute())->withFlashDanger(trans('auth.socialite.unacceptable', ['provider' => $provider]));
+        if (! in_array($provider, $this->socialiteHelper->getAcceptedProviders())) {
+            return redirect()->route(home_route())->withFlashDanger(__('auth.socialite.unacceptable', ['provider' => $provider]));
         }
 
         /*
@@ -65,33 +65,33 @@ class SocialLoginController extends Controller
 
         // Create the user if this is a new social account or find the one that is already there.
         try {
-            $user = $this->user->findOrCreateSocial($this->getSocialUser($provider), $provider);
+            $user = $this->userRepository->findOrCreateProvider($this->getProviderUser($provider), $provider);
         } catch (GeneralException $e) {
-            return redirect()->route(homeRoute())->withFlashDanger($e->getMessage());
+            return redirect()->route(home_route())->withFlashDanger($e->getMessage());
         }
 
-        if (is_null($user) || ! isset($user)) {
-            return redirect()->route(homeRoute())->withFlashDanger(trans('exceptions.frontend.auth.unknown'));
+        if (is_null($user)) {
+            return redirect()->route(home_route())->withFlashDanger(__('exceptions.frontend.auth.unknown'));
         }
 
         // Check to see if they are active.
         if (! $user->isActive()) {
-            throw new GeneralException(trans('exceptions.frontend.auth.deactivated'));
+            throw new GeneralException(__('exceptions.frontend.auth.deactivated'));
         }
 
         // Account approval is on
         if ($user->isPending()) {
-            throw new GeneralException(trans('exceptions.frontend.auth.confirmation.pending'));
+            throw new GeneralException(__('exceptions.frontend.auth.confirmation.pending'));
         }
 
         // User has been successfully created or already exists
-        access()->login($user, true);
+        auth()->login($user, true);
 
         // Set session variable so we know which provider user is logged in as, if ever needed
         session([config('access.socialite_session_name') => $provider]);
 
         // Return to the intended url or default to the class property
-        return redirect()->intended(route(homeRoute()));
+        return redirect()->intended(route(home_route()));
     }
 
     /**
@@ -99,7 +99,7 @@ class SocialLoginController extends Controller
      *
      * @return mixed
      */
-    private function getAuthorizationFirst($provider)
+    protected function getAuthorizationFirst($provider)
     {
         $socialite = Socialite::driver($provider);
         $scopes = count(config("services.{$provider}.scopes")) ? config("services.{$provider}.scopes") : false;
@@ -126,7 +126,7 @@ class SocialLoginController extends Controller
      *
      * @return mixed
      */
-    private function getSocialUser($provider)
+    protected function getProviderUser($provider)
     {
         return Socialite::driver($provider)->user();
     }

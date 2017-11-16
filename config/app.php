@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel 5 Boilerplate'),
+    'name' => env('APP_NAME', 'Laravel '.app()->version().' Boilerplate'),
 
     /*
     |--------------------------------------------------------------------------
@@ -178,28 +178,19 @@ return [
         /*
          * Package Service Providers...
          */
-        Arcanedev\LogViewer\LogViewerServiceProvider::class,
-        Arcanedev\NoCaptcha\NoCaptchaServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class,
+        Appstract\BladeDirectives\BladeDirectivesServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
-        DaveJamesMiller\Breadcrumbs\ServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
-        Laravel\Tinker\TinkerServiceProvider::class,
-        Yajra\Datatables\DatatablesServiceProvider::class,
 
         /*
          * Application Service Providers...
          */
-        App\Providers\AccessServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\BladeServiceProvider::class,
-        //App\Providers\BroadcastServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\HistoryServiceProvider::class,
-        App\Providers\MacroServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
     ],
@@ -252,15 +243,12 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         /*
-         * Third Party Aliases
+         * Package Aliases
          */
-        'Active'      => HieuLe\Active\Facades\Active::class,
-        'Breadcrumbs' => DaveJamesMiller\Breadcrumbs\Facade::class,
-        'Captcha'     => Arcanedev\NoCaptcha\Facades\NoCaptcha::class,
-        'Form'        => Collective\Html\FormFacade::class,
-        'Gravatar'    => Creativeorange\Gravatar\Facades\Gravatar::class,
-        'Html'        => Collective\Html\HtmlFacade::class,
-        'Socialite'   => Laravel\Socialite\Facades\Socialite::class,
+        'Active' => HieuLe\Active\Facades\Active::class,
+        'Captcha' => Arcanedev\NoCaptcha\Facades\NoCaptcha::class,
+        'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
     ],
 

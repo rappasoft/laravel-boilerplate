@@ -60,7 +60,7 @@ return [
                 'mismatch' => '您的確認碼不匹配。 ',
                 'not_found' => '該確認碼不存在。 ',
                 'pending'            => 'Your account is currently pending approval.',
-                'resend' => '您的帳戶未確認。請點擊您的電子郵件中的確認鏈接，或<a href="'.route('frontend.auth.account.confirm.resend', ':user_id').'">點擊此處</a> 重新發送確認電子郵件。 ',
+                'resend' => '您的帳戶未確認。請點擊您的電子郵件中的確認鏈接，或<a href="'.route('frontend.auth.account.confirm.resend', ':user_uuid').'">點擊此處</a> 重新發送確認電子郵件。 ',
                 'success' => '您的帳戶已成功確認！ ',
                 'resent' => '新的確認電子郵件已發送到文件上的地址。 ',
             ],

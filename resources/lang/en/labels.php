@@ -17,6 +17,7 @@ return [
         'all'     => 'All',
         'yes'     => 'Yes',
         'no'      => 'No',
+        'copyright' => 'Copyright',
         'custom'  => 'Custom',
         'actions' => 'Actions',
         'active'  => 'Active',
@@ -72,6 +73,8 @@ return [
                     'last_name'      => 'Last Name',
                     'no_deactivated' => 'No Deactivated Users',
                     'no_deleted'     => 'No Deleted Users',
+                    'other_permissions' => 'Other Permissions',
+                    'permissions' => 'Permissions',
                     'roles'          => 'Roles',
                     'social' => 'Social',
                     'total'          => 'user total|users total',
@@ -121,36 +124,12 @@ return [
         ],
 
         'passwords' => [
+            'expired_password_box_title' => 'Your password has expired.',
             'forgot_password'                 => 'Forgot Your Password?',
             'reset_password_box_title'        => 'Reset Password',
             'reset_password_button'           => 'Reset Password',
+            'update_password_button'           => 'Update Password',
             'send_password_reset_link_button' => 'Send Password Reset Link',
-        ],
-
-        'macros' => [
-            'country' => [
-                'alpha'   => 'Country Alpha Codes',
-                'alpha2'  => 'Country Alpha 2 Codes',
-                'alpha3'  => 'Country Alpha 3 Codes',
-                'numeric' => 'Country Numeric Codes',
-            ],
-
-            'macro_examples' => 'Macro Examples',
-
-            'state' => [
-                'mexico' => 'Mexico State List',
-                'us'     => [
-                    'us'       => 'US States',
-                    'outlying' => 'US Outlying Territories',
-                    'armed'    => 'US Armed Forces',
-                ],
-            ],
-
-            'territories' => [
-                'canada' => 'Canada Province & Territories List',
-            ],
-
-            'timezone' => 'Timezone',
         ],
 
         'user' => [

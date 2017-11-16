@@ -18,6 +18,6 @@ class GlobalComposer
      */
     public function compose(View $view)
     {
-        $view->with('logged_in_user', access()->user());
+        $view->with('logged_in_user', auth()->user());
     }
 }

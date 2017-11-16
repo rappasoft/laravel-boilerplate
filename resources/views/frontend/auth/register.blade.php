@@ -3,84 +3,115 @@
 @section('title', app_name() . ' | Register')
 
 @section('content')
-    <div class="row">
+    <div class="row justify-content-center align-items-center">
+        <div class="col col-sm-8 align-self-center">
+            <div class="card">
+                <div class="card-header">
+                    <strong>
+                        {{ __('labels.frontend.auth.register_box_title') }}
+                    </strong>
+                </div><!--card-header-->
 
-        <div class="col-md-8 col-md-offset-2">
+                <div class="card-body">
+                    {{ html()->form('POST', route('frontend.auth.register.post'))->open() }}
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    {{ html()->label(__('validation.attributes.frontend.first_name'))->for('first_name') }}
 
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('labels.frontend.auth.register_box_title') }}</div>
+                                    {{ html()->text('first_name')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.first_name'))
+                                        ->attribute('maxlength', 191) }}
+                                </div><!--col-->
+                            </div><!--row-->
 
-                <div class="panel-body">
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    {{ html()->label(__('validation.attributes.frontend.last_name'))->for('last_name') }}
 
-                    {{ Form::open(['route' => 'frontend.auth.register.post', 'class' => 'form-horizontal']) }}
+                                    {{ html()->text('last_name')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.last_name'))
+                                        ->attribute('maxlength', 191) }}
+                                </div><!--form-group-->
+                            </div><!--col-->
+                        </div><!--row-->
 
-                    <div class="form-group">
-                        {{ Form::label('first_name', trans('validation.attributes.frontend.first_name'),
-                        ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-6">
-                            {{ Form::text('first_name', null,
-                            ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'autofocus' => 'autofocus', 'placeholder' => trans('validation.attributes.frontend.first_name')]) }}
-                        </div><!--col-md-6-->
-                    </div><!--form-group-->
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    {{ html()->label(__('validation.attributes.frontend.email'))->for('email') }}
 
-                    <div class="form-group">
-                        {{ Form::label('last_name', trans('validation.attributes.frontend.last_name'),
-                        ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-6">
-                            {{ Form::text('last_name', null,
-                            ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.last_name')]) }}
-                        </div><!--col-md-6-->
-                    </div><!--form-group-->
+                                    {{ html()->email('email')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.email'))
+                                        ->attribute('maxlength', 191)
+                                        ->required() }}
+                                </div><!--form-group-->
+                            </div><!--col-->
+                        </div><!--row-->
 
-                    <div class="form-group">
-                        {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-6">
-                            {{ Form::email('email', null, ['class' => 'form-control', 'maxlength' => '191', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.email')]) }}
-                        </div><!--col-md-6-->
-                    </div><!--form-group-->
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    {{ html()->label(__('validation.attributes.frontend.password'))->for('password') }}
 
-                    <div class="form-group">
-                        {{ Form::label('password', trans('validation.attributes.frontend.password'), ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-6">
-                            {{ Form::password('password', ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.password')]) }}
-                        </div><!--col-md-6-->
-                    </div><!--form-group-->
+                                    {{ html()->password('password')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.password'))
+                                        ->required() }}
+                                </div><!--form-group-->
+                            </div><!--col-->
+                        </div><!--row-->
 
-                    <div class="form-group">
-                        {{ Form::label('password_confirmation', trans('validation.attributes.frontend.password_confirmation'), ['class' => 'col-md-4 control-label']) }}
-                        <div class="col-md-6">
-                            {{ Form::password('password_confirmation', ['class' => 'form-control', 'required' => 'required', 'placeholder' => trans('validation.attributes.frontend.password_confirmation')]) }}
-                        </div><!--col-md-6-->
-                    </div><!--form-group-->
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    {{ html()->label(__('validation.attributes.frontend.password_confirmation'))->for('password_confirmation') }}
 
-                    @if (config('access.captcha.registration'))
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                {!! Form::captcha() !!}
-                                {{ Form::hidden('captcha_status', 'true') }}
-                            </div><!--col-md-6-->
-                        </div><!--form-group-->
-                    @endif
+                                    {{ html()->password('password_confirmation')
+                                        ->class('form-control')
+                                        ->placeholder(__('validation.attributes.frontend.password_confirmation'))
+                                        ->required() }}
+                                </div><!--form-group-->
+                            </div><!--col-->
+                        </div><!--row-->
 
-                    <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
-                            {{ Form::submit(trans('labels.frontend.auth.register_button'), ['class' => 'btn btn-primary']) }}
-                        </div><!--col-md-6-->
-                    </div><!--form-group-->
+                        @if (config('access.captcha.registration'))
+                            <div class="row">
+                                <div class="col">
+                                    {!! Captcha::display() !!}
+                                    {{ html()->hidden('captcha_status', 'true') }}
+                                </div><!--col-->
+                            </div><!--row-->
+                        @endif
 
-                    {{ Form::close() }}
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group mb-0 clearfix">
+                                    {{ form_submit(__('labels.frontend.auth.register_button')) }}
+                                </div><!--form-group-->
+                            </div><!--col-->
+                        </div><!--row-->
+                    {{ html()->form()->close() }}
 
-                </div><!-- panel body -->
-
-            </div><!-- panel -->
-
+                    <div class="row">
+                        <div class="col">
+                            <div class="text-center">
+                                {!! $socialiteLinks !!}
+                            </div>
+                        </div><!--/ .col -->
+                    </div><!-- / .row -->
+                    
+                </div><!-- card-body -->
+            </div><!-- card -->
         </div><!-- col-md-8 -->
-
     </div><!-- row -->
 @endsection
 
-@section('after-scripts')
+@push('after-scripts')
     @if (config('access.captcha.registration'))
         {!! Captcha::script() !!}
     @endif
-@endsection
+@endpush

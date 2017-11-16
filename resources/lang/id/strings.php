@@ -62,7 +62,7 @@ return [
             'results'    => 'Hasil Pencarian untuk :query',
         ],
 
-        'welcome' => '<p>Ini adalah tema AdminLTE theme oleh <a href="https://almsaeedstudio.com/" target="_blank">https://almsaeedstudio.com/</a>. Ini adalah versi yang dipreteli dengan hanya gaya dan skrip yang diperlukan untuk membuatnya berjalan. Download versi lengkap untuk mulai menambahkan komponen ke dasbor Anda.</p>
+        'welcome' => '<p>Ini adalah tema CoreUI theme oleh <a href="https://coreui.io/" target="_blank">creativeLabs</a>. Ini adalah versi yang dipreteli dengan hanya gaya dan skrip yang diperlukan untuk membuatnya berjalan. Download versi lengkap untuk mulai menambahkan komponen ke dasbor Anda.</p>
 <p>Semua fungsi tersebut adalah untuk menunjukkan dengan pengecualian <strong>Manajemen Pengguna</strong>. boilerplate ini dilengkapi dengan library access control yang berfungsi penuh untuk mengelola pengguna/peran/izin.</p>
 <p>Perlu diingat ini adalah sebuah pekerjaan yang sedang berjalan dan mungkin ada bug atau masalah lain yang saya belum temukan. Saya akan melakukan yang terbaik untuk memperbaikinya saat saya menemukannya.</p>
 <p>Harap Anda menikmati semua pekerjaan yang saya telah lakukan disini. Silakan kunjungi ke halaman <a href="https://github.com/rappasoft/laravel-5-boilerplate" target="_blank">GitHub</a> untuk informasi lebih lanjut dan melaporkan masalah apapun <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">di sini</a>.</p>

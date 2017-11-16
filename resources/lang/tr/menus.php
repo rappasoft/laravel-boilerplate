@@ -72,6 +72,7 @@ return [
             'it'    => 'İtalyanca (Italian)',
             'ja'    => 'Japonca (Japanese)',
             'nl'    => 'Hollandaca (Dutch)',
+            'no'    => 'Norveçli (Norwegian)',
             'pt_BR' => 'Brezilya Portekizcesi (Brazilian Portuguese)',
             'ru'    => 'Rusça (Russian)',
             'sv'    => 'İsveççe (Swedish)',

@@ -72,6 +72,7 @@ return [
             'it'    => 'Italiano (Italian)',
             'ja'    => '(Japanese)',
             'nl'    => 'Holandés (Dutch)',
+            'no'    => 'Noruego (Norwegian)',
             'pt_BR' => 'Portugués Brasileño',
             'ru'    => 'Russian (Russian)',
             'sv'    => 'Sueco (Swedish)',

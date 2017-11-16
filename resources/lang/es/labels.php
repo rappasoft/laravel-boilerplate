@@ -123,32 +123,6 @@ return [
             'send_password_reset_link_button' => 'Enviar el correo de verificación',
         ],
 
-        'macros' => [
-            'country' => [
-                'alpha'   => 'Código Alfa de País',
-                'alpha2'  => 'Código Alfa 2 de País',
-                'alpha3'  => 'Código Alfa 3 de País',
-                'numeric' => 'Código Numérico de País',
-            ],
-
-            'macro_examples' => 'Ejemplos de Macro',
-
-            'state' => [
-                'mexico' => 'Listado de Estados de México',
-                'us'     => [
-                    'us'       => 'Estados Unidos',
-                    'outlying' => 'Territorios Periféricos de Estados Unidos',
-                    'armed'    => 'Fuerzas Armadas de Estados Unidos',
-                ],
-            ],
-
-            'territories' => [
-                'canada' => 'Listado de Provincias y Territorios de Canada',
-            ],
-
-            'timezone' => 'Zonas horarias',
-        ],
-
         'user' => [
             'passwords' => [
                 'change' => 'Cambiar la contraseña',

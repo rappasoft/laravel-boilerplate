@@ -62,17 +62,21 @@ return [
             'results'    => '搜索 :query 的结果',
         ],
 
-        'welcome' => '<p>This is the AdminLTE theme by <a href="https://almsaeedstudio.com/" target="_blank">https://almsaeedstudio.com/</a>. This is a stripped down version with only the necessary styles and scripts to get it running. Download the full version to start adding components to your dashboard.</p>
-<p>All the functionality is for show with the exception of the <strong>Access Management</strong> to the left. This boilerplate comes with a fully functional access control library to manage users/roles/permissions.</p>
-<p>Keep in mind it is a work in progress and their may be bugs or other issues I have not come across. I will do my best to fix them as I receive them.</p>
-<p>Hope you enjoy all of the work I have put into this. Please visit the <a href="https://github.com/rappasoft/laravel-5-boilerplate" target="_blank">GitHub</a> page for more information and report any <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">issues here</a>.</p>
-<p><strong>This project is very demanding to keep up with given the rate at which the master Laravel branch changes, so any help is appreciated.</strong></p>
+        'welcome' => '<p>这是 AdminLTE 模板 <a href="https://almsaeedstudio.com/" target="_blank">https://almsaeedstudio.com/</a>. 这是精简版，仅包含必要的样式和脚本，请下载完整版本来开始添加元素到你的控制面板。</p>
+<p>
+    所有功能为在左边显示<strong>访问管理</strong>错误。本样板包含完整的用户/角色/权限 访问控制库
+</p>
+<p>请留意，本样板仍在开发中，可能仍有一些没有顾忌的错误或者问题，我会尽我全力在接到错误报告后修复它们。
+</p>
+<p>希望你喜欢我的工作，请访问 <a href="https://github.com/rappasoft/laravel-5-boilerplate" target="_blank">GitHub</a> 获取更多信息，并 <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">在此提交issue</a>.</p>
+<p><strong>本项目非常苛刻地与Laravel mater分支的更新频率同步， 所以感谢所有人给予的任何帮助.
+</strong></p>
 <p>- Anthony Rappa</p>',
     ],
 
     'emails' => [
         'auth' => [
-            'account_confirmed' => 'Your account has been confirmed.',
+            'account_confirmed' => '你的账户已经被确认',
             'error'                   => '哎呀！',
             'greeting'                => '你好！',
             'regards'                 => '问候,',
@@ -88,8 +92,8 @@ return [
         ],
 
         'contact' => [
-            'email_body_title' => 'You have a new contact form request: Below are the details:',
-            'subject' => 'A new :app_name contact form submission!',
+            'email_body_title' => '你有一个新的联系请求， 详情如下：',
+            'subject' => '一个新提交的 :app_name 联系请求',
         ],
     ],
 
@@ -107,30 +111,30 @@ return [
             'using_blade_extensions' => '使用Blade扩展',
 
             'using_access_helper' => [
-                'array_permissions'     => 'Using Access Helper with Array of Permission Names or ID\'s where the user does have to possess all.',
-                'array_permissions_not' => 'Using Access Helper with Array of Permission Names or ID\'s where the user does not have to possess all.',
-                'array_roles'           => 'Using Access Helper with Array of Role Names or ID\'s where the user does have to possess all.',
-                'array_roles_not'       => 'Using Access Helper with Array of Role Names or ID\'s where the user does not have to possess all.',
-                'permission_id'         => 'Using Access Helper with Permission ID',
-                'permission_name'       => 'Using Access Helper with Permission Name',
-                'role_id'               => 'Using Access Helper with Role ID',
-                'role_name'             => 'Using Access Helper with Role Name',
+                'array_permissions'     => '访问控制-用户拥有的权限Name或权限ID数组必须完全匹配.',
+                'array_permissions_not' => '访问控制-用户拥有的权限Name或权限ID数组不必完全匹配',
+                'array_roles'           => '访问控制-用户拥有的角色Name或角色ID数组必须完全匹配',
+                'array_roles_not'       => '访问控制-用户拥有的角色Name或角色ID数组不必完全匹配',
+                'permission_id'         => '访问控制-用户拥有指定权限ID',
+                'permission_name'       => '访问控制-用户拥有指定权限Name',
+                'role_id'               => '访问控制-用户拥有指定角色ID',
+                'role_name'             => '访问控制-用户拥有指定角色Name',
             ],
 
-            'view_console_it_works'          => 'View console, you should see \'it works!\' which is coming from FrontendController@index',
-            'you_can_see_because'            => 'You can see this because you have the role of \':role\'!',
-            'you_can_see_because_permission' => 'You can see this because you have the permission of \':permission\'!',
+            'view_console_it_works'          => '检查 console, 你应该看到来自 FrontendController@index 的 \'it works!\' ',
+            'you_can_see_because'            => '看到这条信息是因为你拥有角色 \':role\'!',
+            'you_can_see_because_permission' => '看条这条信息是因为你拥有权限 \':permission\'!',
         ],
 
         'general' => [
-            'joined'        => 'Joined',
+            'joined'        => '加入',
         ],
 
         'user' => [
-            'change_email_notice' => 'If you change your e-mail you will be logged out until you confirm your new e-mail address.',
-            'email_changed_notice' => 'You must confirm your new e-mail address before you can log in again.',
-            'profile_updated'  => 'Profile successfully updated.',
-            'password_updated' => 'Password successfully updated.',
+            'change_email_notice' => '如果你更改你的邮件地址，你会被登出系统直到你确认你的新邮件地址。',
+            'email_changed_notice' => '在登录之前，你必须确认你的新邮件地址。',
+            'profile_updated'  => '个人资料更新成功。',
+            'password_updated' => '密码修改成功。',
         ],
 
         'welcome_to' => '欢迎来到 :place',
