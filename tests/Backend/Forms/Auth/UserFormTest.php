@@ -8,6 +8,7 @@ use App\Events\Backend\Auth\User\UserCreated;
 use App\Events\Backend\Auth\User\UserUpdated;
 use App\Events\Backend\Auth\User\UserPasswordChanged;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class UserFormTest.
@@ -45,8 +46,11 @@ class UserFormTest extends BrowserKitTestCase
 
     public function testCreateUserConfirmedForm()
     {
-        // Make sure our events are fired
-        Event::fake();
+		// Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
+		// Make sure our events are fired
+		$initialDispatcher = Event::getFacadeRoot();
+		Event::fake();
+		Model::setEventDispatcher($initialDispatcher);
 
         config(['access.users.confirm_email' => true]);
 
@@ -77,7 +81,7 @@ class UserFormTest extends BrowserKitTestCase
                      'first_name' => $firstName,
                      'last_name' => $lastName,
                      'email' => $email,
-                     'status' => 1,
+                     'active' => 1,
                      'confirmed' => 1,
                  ])
              ->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => 4, 'role_id' => 2])
@@ -88,8 +92,11 @@ class UserFormTest extends BrowserKitTestCase
 
     public function testCreateUserUnconfirmedForm()
     {
-        // Make sure our events are fired
-        Event::fake();
+		// Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
+		// Make sure our events are fired
+		$initialDispatcher = Event::getFacadeRoot();
+		Event::fake();
+		Model::setEventDispatcher($initialDispatcher);
 
         // Make sure our notifications are sent
         Notification::fake();
@@ -109,6 +116,7 @@ class UserFormTest extends BrowserKitTestCase
                  'email' => $email,
                  'password' => $password,
                  'password_confirmation' => $password,
+                 'confirmed' => false,
                  'active' => '1',
                  'confirmation_email' => '1',
                  'roles' => [1 => 'executive', 2 => 'user'],

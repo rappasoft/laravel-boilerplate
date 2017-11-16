@@ -43,7 +43,7 @@ trait UserMethod
         }
 
         $social_avatar = $this->providers()->where('provider', $this->avatar_type)->first();
-        if (strlen($social_avatar->avatar)) {
+        if ($social_avatar && strlen($social_avatar->avatar)) {
             return $social_avatar->avatar;
         }
 

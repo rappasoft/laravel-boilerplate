@@ -104,9 +104,9 @@ class UserRepository extends BaseRepository
                 'email' => $data['email'],
                 'timezone' => $data['timezone'],
                 'password' => bcrypt($data['password']),
-                'active' => isset($data['active']) ? 1 : 0,
+                'active' => isset($data['active']) && $data['active'] == '1' ? 1 : 0,
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
-                'confirmed' => isset($data['confirmed']) ? 1 : 0,
+                'confirmed' => isset($data['confirmed']) && $data['confirmed'] == '1' ? 1 : 0,
             ]);
 
             // See if adding any additional permissions
