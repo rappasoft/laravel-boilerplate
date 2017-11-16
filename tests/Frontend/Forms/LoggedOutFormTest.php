@@ -5,13 +5,13 @@ use Tests\BrowserKitTestCase;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Database\Eloquent\Model;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Mail\Frontend\Contact\SendContact;
 use App\Events\Frontend\Auth\UserRegistered;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 use App\Notifications\Frontend\Auth\UserNeedsPasswordReset;
-use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class LoggedOutFormTest.
@@ -35,11 +35,11 @@ class LoggedOutFormTest extends BrowserKitTestCase
 
     public function testRegistrationForm()
     {
-		// Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
-		// Make sure our events are fired
-		$initialDispatcher = Event::getFacadeRoot();
-		Event::fake();
-		Model::setEventDispatcher($initialDispatcher);
+        // Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
+        // Make sure our events are fired
+        $initialDispatcher = Event::getFacadeRoot();
+        Event::fake();
+        Model::setEventDispatcher($initialDispatcher);
 
         config(['access.users.confirm_email' => false]);
         config(['access.users.requires_approval' => false]);
@@ -74,11 +74,11 @@ class LoggedOutFormTest extends BrowserKitTestCase
 
     public function testRegistrationFormConfirmationRequired()
     {
-		// Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
-		// Make sure our events are fired
-		$initialDispatcher = Event::getFacadeRoot();
-		Event::fake();
-		Model::setEventDispatcher($initialDispatcher);
+        // Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
+        // Make sure our events are fired
+        $initialDispatcher = Event::getFacadeRoot();
+        Event::fake();
+        Model::setEventDispatcher($initialDispatcher);
 
         Notification::fake();
 
@@ -119,11 +119,11 @@ class LoggedOutFormTest extends BrowserKitTestCase
 
     public function testRegistrationFormPendingApproval()
     {
-		// Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
-		// Make sure our events are fired
-		$initialDispatcher = Event::getFacadeRoot();
-		Event::fake();
-		Model::setEventDispatcher($initialDispatcher);
+        // Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
+        // Make sure our events are fired
+        $initialDispatcher = Event::getFacadeRoot();
+        Event::fake();
+        Model::setEventDispatcher($initialDispatcher);
 
         Notification::fake();
 
