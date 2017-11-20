@@ -9,18 +9,18 @@ use Illuminate\Queue\SerializesModels;
  */
 class UserDeleted
 {
-	use SerializesModels;
+    use SerializesModels;
 
-	/**
-	 * @var
-	 */
-	public $user;
+    /**
+     * @var
+     */
+    public $user;
 
-	/**
-	 * @param $user
-	 */
-	public function __construct($user)
-	{
-		$this->user = $user;
-	}
+    /**
+     * @param $user
+     */
+    public function __construct($user)
+    {
+        $this->user = $user;
+    }
 }
