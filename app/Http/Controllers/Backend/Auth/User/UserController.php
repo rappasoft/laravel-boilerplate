@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend\Auth\User;
 
+use App\Events\Backend\Auth\User\UserDeleted;
 use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\Backend\Auth\RoleRepository;
@@ -138,6 +139,8 @@ class UserController extends Controller
     public function destroy(User $user, ManageUserRequest $request)
     {
         $this->userRepository->deleteById($user->id);
+
+        event(new UserDeleted($user));
 
         return redirect()->route('admin.auth.user.deleted')->withFlashSuccess(__('alerts.backend.users.deleted'));
     }
