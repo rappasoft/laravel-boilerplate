@@ -26,6 +26,14 @@ class UserEventListener
     /**
      * @param $event
      */
+    public function onDeleted($event)
+    {
+        \Log::info('User Deleted');
+    }
+
+    /**
+     * @param $event
+     */
     public function onConfirmed($event)
     {
         \Log::info('User Confirmed');
@@ -102,6 +110,11 @@ class UserEventListener
         $events->listen(
             \App\Events\Backend\Auth\User\UserUpdated::class,
             'App\Listeners\Backend\Auth\User\UserEventListener@onUpdated'
+        );
+
+        $events->listen(
+            \App\Events\Backend\Auth\User\UserDeleted::class,
+            'App\Listeners\Backend\Auth\User\UserEventListener@onDeleted'
         );
 
         $events->listen(
