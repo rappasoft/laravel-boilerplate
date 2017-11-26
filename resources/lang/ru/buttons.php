@@ -14,37 +14,40 @@ return [
     |
     */
 
-    'backend'   => [
-        'access'    => [
+    'backend' => [
+        'access' => [
             'users' => [
-                'activate'              => 'Активировать',
-                'change_password'       => 'Изменить пароль',
-                'deactivate'            => 'Деактивировать',
-                'delete_permanently'    => 'Удалить навсегда',
-                'login_as'              => 'Войти как :user',
-                'resend_email'          => 'Повторно отправить подтверждение на E-mail',
-                'restore_user'          => 'Восстановить учетную запись',
-                'unconfirm'             => 'Un-confirm',
-                'unlink' => 'Unlink',
+                'activate'           => 'Активировать',
+                'change_password'    => 'Изменить пароль',
+                'clear_session'      => 'Очистить Сессию',
+                'confirm'            => 'Подтвержден',
+                'deactivate'         => 'Деактивировать',
+                'delete_permanently' => 'Удалить навсегда',
+                'login_as'           => 'Войти как :user',
+                'resend_email'       => 'Повторно отправить подтверждение на E-mail',
+                'restore_user'       => 'Восстановить учетную запись',
+                'unconfirm'          => 'Отменить',
+                'unlink'             => 'Отключить',
             ],
         ],
     ],
-    'emails'    => [
-        'auth'  => [
-            'confirm_account'   => 'Подтвердить учетную запись',
-            'reset_password'    => 'Сбросить пароль',
+    'emails'  => [
+        'auth' => [
+            'confirm_account' => 'Подтвердить учетную запись',
+            'reset_password'  => 'Сбросить пароль',
         ],
     ],
-    'general'   => [
-        'cancel'    => 'Отменa',
-        'crud'      => [
-            'create'    => 'Создать',
-            'delete'    => 'Удалить',
-            'edit'      => 'Редактировать',
-            'update'    => 'Применить',
-            'view'      => 'Просмотр',
+    'general' => [
+        'cancel'   => 'Отменa',
+        'continue' => 'Далее',
+        'crud'     => [
+            'create' => 'Создать',
+            'delete' => 'Удалить',
+            'edit'   => 'Редактировать',
+            'update' => 'Применить',
+            'view'   => 'Просмотр',
         ],
-        'save'      => 'Сохранить',
-        'view'      => 'Просмотр',
+        'save'     => 'Сохранить',
+        'view'     => 'Просмотр',
     ],
 ];
