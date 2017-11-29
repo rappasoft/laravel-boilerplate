@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->uuid('uuid');
             $table->string('first_name');
-            $table->string('last_name');
+            $table->string('last_name')->nullable();
             $table->string('email')->unique();
             $table->string('avatar_type')->default('gravatar');
             $table->string('avatar_location')->nullable();
