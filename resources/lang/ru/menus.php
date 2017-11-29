@@ -14,43 +14,50 @@ return [
     |
     */
 
-    'backend'           => [
-        'access'        => [
+    'backend'         => [
+        'access'     => [
+            'title' => 'Администрирование',
             'roles' => [
-                'all'           => 'Все роли',
-                'create'        => 'Создать роль',
-                'edit'          => 'Редактировать роль',
-                'main'          => 'Роли',
-                'management'    => 'Управление доступом',
+                'all'        => 'Все роли',
+                'create'     => 'Создать роль',
+                'edit'       => 'Редактировать роль',
+                'management' => 'Управление доступом',
+                'main'       => 'Роли',
             ],
-            'title' => 'Управление',
             'users' => [
-                'all'               => 'Все пользователи',
-                'change-password'   => 'Изменить пароль',
-                'create'            => 'Создать пользователя',
-                'deactivated'       => 'Заблокированные пользователи',
-                'deleted'           => 'Удаленные пользователи',
-                'edit'              => 'Редактирование учётной записи',
-                'main'              => 'Пользователи',
-                'view'              => 'Просмотр учётной записи',
+                'all'             => 'Все пользователи',
+                'change-password' => 'Изменить пароль',
+                'create'          => 'Создать пользователя',
+                'deactivated'     => 'Заблокированные пользователи',
+                'deleted'         => 'Удаленные пользователи',
+                'edit'            => 'Редактирование учётной записи',
+                'main'            => 'Пользователи',
+                'view'            => 'Просмотр учётной записи',
             ],
         ],
-        'log-viewer'    => [
+        'log-viewer' => [
+            'main'      => 'Журнал ошибок',
             'dashboard' => 'Обзор',
             'logs'      => 'Все записи',
-            'main'      => 'Журнал ошибок',
         ],
-        'sidebar'       => [
+        'sidebar'    => [
             'dashboard' => 'Системная панель',
-            'general'   => 'Общие',
+            'general'   => 'Главная',
             'system'    => 'Система',
         ],
     ],
-    'language-picker'   => [
-        'langs'     => [
+    'language-picker' => [
+        'language' => 'Язык',
+        /*
+         * Add the new language to this array.
+         * The key should have the same language code as the folder name.
+         * The string should be: 'Language-name-in-your-own-language (Language-name-in-English)'.
+         * Be sure to add the new language in alphabetical order.
+         */
+        'langs'    => [
             'ar'    => 'Арабский (Arabic)',
-            'zh'    => '(Chinese Simplified)',
-            'zh-TW' => '(Chinese Traditional)',
+            'zh'    => 'Китайский (Chinese Simplified)',
+            'zh-TW' => 'Китайский (Chinese Traditional)',
             'da'    => 'Датский (Danish)',
             'de'    => 'Немецкий (German)',
             'el'    => 'Греческий (Greek)',
@@ -59,15 +66,14 @@ return [
             'fr'    => 'Французский (French)',
             'id'    => 'Индонезийский (Indonesian)',
             'it'    => 'Итальянский (Italian)',
-            'ja'    => '(Japanese)',
+            'ja'    => 'Японский (Japanese)',
             'nl'    => 'Голландский (Dutch)',
             'no'    => 'норвежский (Norwegian)',
             'pt_BR' => 'Бразильский Португальский (Brazilian Portuguese)',
             'ru'    => 'Русский (Russian)',
             'sv'    => 'Шведский (Swedish)',
             'th'    => 'Тайский (Thai)',
-            'tr'    => '(Turkish)',
+            'tr'    => 'Турецкий (Turkish)',
         ],
-        'language'  => 'Язык',
     ],
 ];
