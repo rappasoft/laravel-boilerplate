@@ -72,7 +72,7 @@ return [
 
     'emails' => [
         'auth' => [
-            'account_confirmed' => 'Your account has been confirmed.',
+            'account_confirmed' => 'Su cuenta ha sido confirmada.',
             'error'                   => 'Ups!',
             'greeting'                => 'Hola!',
             'regards'                 => 'Saludos,',
@@ -88,8 +88,8 @@ return [
         ],
 
         'contact' => [
-            'email_body_title' => 'You have a new contact form request: Below are the details:',
-            'subject' => 'A new :app_name contact form submission!',
+            'email_body_title' => 'Tiene una nueva solicitud del formulario de contacto: a continuación los detalles:',
+            'subject' => '¡Nueva solicitud del formulario de contacto :app_name!',
         ],
     ],
 
