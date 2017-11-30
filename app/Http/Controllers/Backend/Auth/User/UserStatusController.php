@@ -72,7 +72,10 @@ class UserStatusController extends Controller
      */
     public function delete(User $deletedUser, ManageUserRequest $request)
     {
-        $this->userRepository->forceDelete($deletedUser);
+        \DB::transaction(function () use ($deletedUser) {
+            $deletedUser->providers()->delete();
+            $this->userRepository->forceDelete($deletedUser);
+        });
 
         return redirect()->route('admin.auth.user.deleted')->withFlashSuccess(__('alerts.backend.users.deleted_permanently'));
     }
