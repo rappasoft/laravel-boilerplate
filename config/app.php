@@ -246,7 +246,6 @@ return [
          * Package Aliases
          */
         'Active' => HieuLe\Active\Facades\Active::class,
-        'Captcha' => Arcanedev\NoCaptcha\Facades\NoCaptcha::class,
         'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
 
