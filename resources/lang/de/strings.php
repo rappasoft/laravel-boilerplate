@@ -18,6 +18,8 @@ return [
             'users' => [
                 'delete_user_confirm'  => 'Bist du dir sicher, dass du diesen Benutzer permanent löschen möchtest? Überall wo die Benutzer-ID referenziert ist, wird es höchstwahrscheinlich zu Fehlern kommen. Fortfahren auf eigenes Risiko. Dies kann nicht rückgängig gemacht werden.',
                 'if_confirmed_off'     => '(Wenn nicht bestätigt)',
+                'no_deactivated' => 'Es gibt keine inaktiven Nutzer.',
+                'no_deleted' => 'Es gibt keine gelöschten Nutzer.',
                 'restore_user_confirm' => 'Benutzer in den Originalzustand wiederherstellen?',
             ],
         ],

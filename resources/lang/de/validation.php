@@ -57,6 +57,7 @@ return [
         'array'   => ':attribute darf nicht mehr Einträge enthalten als :max Einträge.',
     ],
     'mimes'                => ':attribute muss eine Datei des folgenden Typs sein: :values.',
+    'mimetypes'            => ':attribute muss eine Datei des folgenden Typs sein: :values.',
     'min'                  => [
         'numeric' => ':attribute muss mindestens :min sein.',
         'file'    => ':attribute muss mindestens :min Kilobytes gross sein.',
@@ -84,6 +85,7 @@ return [
     'string'               => ':attribute muss eine Zeichenkette sein.',
     'timezone'             => ':attribute muss eine gültige Zeitzone sein.',
     'unique'               => ':attribute ist schon vergeben.',
+    'uploaded'             => ':attribute wurde nicht hochgeladen.',
     'url'                  => ':attribute Format ist ungültig.',
 
     /*
@@ -130,6 +132,8 @@ return [
                     ],
 
                     'name'   => 'Name',
+                    'first_name' => 'Vorname',
+                    'last_name'  => 'Nachname',
                     'system' => 'System?',
                 ],
 
@@ -145,24 +149,31 @@ return [
                     'confirmed'               => 'Bestätigt',
                     'email'                   => 'E-Mailadresse',
                     'name'                    => 'Name',
+                    'last_name'               => 'Vorname',
+                    'first_name'              => 'Nachname',
                     'other_permissions'       => 'Andere Berechtigungen',
                     'password'                => 'Kennwort',
                     'password_confirmation'   => 'Kennwort (Wdh.)',
                     'send_confirmation_email' => 'Bestätigungs E-Mail senden',
+                    'timezone'                  => 'Zeitzone',
                 ],
             ],
         ],
 
         'frontend' => [
+            'avatar'                    => 'Avatar Adresse',
             'email'                     => 'E-Mailadresse',
+            'first_name'                => 'Vorname',
+            'last_name'                 => 'Nachname',
             'name'                      => 'Name',
             'password'                  => 'Kennwort',
             'password_confirmation'     => 'Kennwort (Wdh.)',
             'phone' => 'Phone',
             'message' => 'Message',
-            'old_password'              => 'Altes Kennwort',
             'new_password'              => 'Neues Kennwort',
             'new_password_confirmation' => 'Neues Kennwort (Wdh.)',
+            'old_password'              => 'Altes Kennwort',
+            'timezone'                    => 'Zeitzone',
         ],
     ],
 
