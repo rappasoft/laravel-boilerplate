@@ -275,7 +275,7 @@ class UserRepository extends BaseRepository
                 'active' => 1,
                 'confirmed' => 1,
                 'password' => null,
-                'avatar' => $provider,
+                'avatar_type' => $provider,
             ]);
 
             event(new UserProviderRegistered($user));
