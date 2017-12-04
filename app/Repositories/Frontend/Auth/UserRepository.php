@@ -275,6 +275,7 @@ class UserRepository extends BaseRepository
                 'active' => 1,
                 'confirmed' => 1,
                 'password' => null,
+                'avatar' => $provider,
             ]);
 
             event(new UserProviderRegistered($user));
@@ -295,6 +296,9 @@ class UserRepository extends BaseRepository
                 'token'       => $data->token,
                 'avatar'      => $data->avatar,
             ]);
+
+            $user->avatar_type = $provider;
+            $user->update();
         }
 
         // Return the user object
