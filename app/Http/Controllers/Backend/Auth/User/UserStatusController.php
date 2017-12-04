@@ -47,14 +47,15 @@ class UserStatusController extends Controller
             ->withUsers($this->userRepository->getDeletedPaginated(25, 'id', 'asc'));
     }
 
-    /**
-     * @param User $user
-     * @param $status
-     * @param ManageUserRequest $request
-     *
-     * @return mixed
-     */
-    public function mark(User $user, $status, ManageUserRequest $request)
+	/**
+	 * @param User              $user
+	 * @param                   $status
+	 * @param ManageUserRequest $request
+	 *
+	 * @return mixed
+	 * @throws \App\Exceptions\GeneralException
+	 */
+	public function mark(User $user, $status, ManageUserRequest $request)
     {
         $this->userRepository->mark($user, $status);
 
@@ -64,29 +65,27 @@ class UserStatusController extends Controller
         )->withFlashSuccess(__('alerts.backend.users.updated'));
     }
 
-    /**
-     * @param User              $deletedUser
-     * @param ManageUserRequest $request
-     *
-     * @return mixed
-     */
-    public function delete(User $deletedUser, ManageUserRequest $request)
+	/**
+	 * @param User              $deletedUser
+	 * @param ManageUserRequest $request
+	 *
+	 * @return mixed
+	 * @throws \App\Exceptions\GeneralException
+	 */
+	public function delete(User $deletedUser, ManageUserRequest $request)
     {
-        \DB::transaction(function () use ($deletedUser) {
-            $deletedUser->providers()->delete();
-            $this->userRepository->forceDelete($deletedUser);
-        });
-
+		$this->userRepository->forceDelete($deletedUser);
         return redirect()->route('admin.auth.user.deleted')->withFlashSuccess(__('alerts.backend.users.deleted_permanently'));
     }
 
-    /**
-     * @param User              $deletedUser
-     * @param ManageUserRequest $request
-     *
-     * @return mixed
-     */
-    public function restore(User $deletedUser, ManageUserRequest $request)
+	/**
+	 * @param User              $deletedUser
+	 * @param ManageUserRequest $request
+	 *
+	 * @return mixed
+	 * @throws \App\Exceptions\GeneralException
+	 */
+	public function restore(User $deletedUser, ManageUserRequest $request)
     {
         $this->userRepository->restore($deletedUser);
 
