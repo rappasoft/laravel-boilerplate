@@ -96,7 +96,7 @@ class UserRepository extends BaseRepository
                 'active'            => 1,
                 'password'          => bcrypt($data['password']),
                                     // If users require approval or needs to confirm email
-                'confirmed'        => config('access.users.requires_approval') || config('access.users.confirm_email') ? 0 : 1,
+                'confirmed'         => config('access.users.requires_approval') || config('access.users.confirm_email') ? 0 : 1,
             ]);
 
             if ($user) {
@@ -275,6 +275,7 @@ class UserRepository extends BaseRepository
                 'active' => 1,
                 'confirmed' => 1,
                 'password' => null,
+                'avatar_type' => $provider,
             ]);
 
             event(new UserProviderRegistered($user));
@@ -295,6 +296,9 @@ class UserRepository extends BaseRepository
                 'token'       => $data->token,
                 'avatar'      => $data->avatar,
             ]);
+
+            $user->avatar_type = $provider;
+            $user->update();
         }
 
         // Return the user object
