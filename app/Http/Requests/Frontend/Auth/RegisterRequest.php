@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
-use Arcanedev\NoCaptcha\Rules\CaptchaRule;
 use Illuminate\Validation\Rule;
+use Arcanedev\NoCaptcha\Rules\CaptchaRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
