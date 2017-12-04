@@ -96,7 +96,7 @@ class UserRepository extends BaseRepository
                 'active'            => 1,
                 'password'          => bcrypt($data['password']),
                                     // If users require approval or needs to confirm email
-                'confirmed'        => config('access.users.requires_approval') || config('access.users.confirm_email') ? 0 : 1,
+                'confirmed'         => config('access.users.requires_approval') || config('access.users.confirm_email') ? 0 : 1,
             ]);
 
             if ($user) {
