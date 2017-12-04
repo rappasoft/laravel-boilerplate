@@ -301,8 +301,8 @@ class UserRepository extends BaseRepository
         }
 
         return DB::transaction(function () use ($user) {
-        	// Delete associated relationships
-        	$user->providers()->delete();
+            // Delete associated relationships
+            $user->providers()->delete();
 
             if ($user->forceDelete()) {
                 event(new UserPermanentlyDeleted($user));
