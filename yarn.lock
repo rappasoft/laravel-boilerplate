@@ -658,6 +658,12 @@ babel-plugin-transform-regenerator@^6.22.0:
   dependencies:
     regenerator-transform "^0.10.0"
 
+babel-plugin-transform-runtime@^6.23.0:
+  version "6.23.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-runtime/-/babel-plugin-transform-runtime-6.23.0.tgz#88490d446502ea9b8e7efb0fe09ec4d99479b1ee"
+  dependencies:
+    babel-runtime "^6.22.0"
+
 babel-plugin-transform-strict-mode@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-strict-mode/-/babel-plugin-transform-strict-mode-6.24.1.tgz#d5faf7aa578a65bbe591cf5edae04a0c67020758"
@@ -981,11 +987,11 @@ browserslist@^1.3.6, browserslist@^1.5.2, browserslist@^1.7.6:
     electron-to-chromium "^1.2.7"
 
 browserslist@^2.1.2, browserslist@^2.9.1:
-  version "2.9.1"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-2.9.1.tgz#b72d3982ab01b5cd24da62ff6d45573886aff275"
+  version "2.10.0"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-2.10.0.tgz#bac5ee1cc69ca9d96403ffb8a3abdc5b6aed6346"
   dependencies:
-    caniuse-lite "^1.0.30000770"
-    electron-to-chromium "^1.3.27"
+    caniuse-lite "^1.0.30000780"
+    electron-to-chromium "^1.3.28"
 
 buffer-crc32@~0.2.3:
   version "0.2.13"
@@ -1086,12 +1092,12 @@ caniuse-api@^1.5.2:
     lodash.uniq "^4.5.0"
 
 caniuse-db@^1.0.30000529, caniuse-db@^1.0.30000634, caniuse-db@^1.0.30000639:
-  version "1.0.30000778"
-  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000778.tgz#167c60e9542a2aa60537c446fb3881d853a3072a"
+  version "1.0.30000780"
+  resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30000780.tgz#8d1977561d00ff0f0ed2b6b66140328ab4504c0a"
 
-caniuse-lite@^1.0.30000770, caniuse-lite@^1.0.30000777:
-  version "1.0.30000778"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000778.tgz#f1e7cb8b13b1f6744402291d75f0bcd4c3160369"
+caniuse-lite@^1.0.30000777, caniuse-lite@^1.0.30000780:
+  version "1.0.30000780"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000780.tgz#1f9095f2efd4940e0ba6c5992ab7a9b64cc35ba4"
 
 capture-stack-trace@^1.0.0:
   version "1.0.0"
@@ -1882,9 +1888,9 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
 
-electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.27:
-  version "1.3.27"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.27.tgz#78ecb8a399066187bb374eede35d9c70565a803d"
+electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.28:
+  version "1.3.28"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.28.tgz#8dd4e6458086644e9f9f0a1cf32e2a1f9dffd9ee"
 
 elliptic@^6.0.0:
   version "6.4.0"
@@ -3499,13 +3505,14 @@ kind-of@^4.0.0:
     is-buffer "^1.1.5"
 
 laravel-mix@^1.0:
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/laravel-mix/-/laravel-mix-1.6.2.tgz#d7df2f63ad0008e07414728e7acc204be3d7e27d"
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/laravel-mix/-/laravel-mix-1.7.0.tgz#3a3e996a07eb50a97479d418421cc484fb3d8b4d"
   dependencies:
     autoprefixer "^7.1.1"
     babel-core "^6.24.1"
     babel-loader "^7.1.1"
     babel-plugin-transform-object-rest-spread "^6.26.0"
+    babel-plugin-transform-runtime "^6.23.0"
     babel-preset-env "^1.5.1"
     chokidar "^1.7.0"
     clean-css "^4.1.3"
@@ -4870,8 +4877,8 @@ preserve@^0.2.0:
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"
 
 prettier@^1.7.0:
-  version "1.8.2"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.8.2.tgz#bff83e7fd573933c607875e5ba3abbdffb96aeb8"
+  version "1.9.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.9.1.tgz#41638a0d47c1efbd1b7d5a742aaa5548eab86d70"
 
 private@^0.1.6, private@^0.1.7, private@~0.1.5:
   version "0.1.8"
@@ -5906,8 +5913,8 @@ svgo@^0.7.0:
     whet.extend "~0.9.9"
 
 sweetalert2@^7.0.7:
-  version "7.0.7"
-  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-7.0.7.tgz#92be337862639c906cd4f73f6eb1b99734a89b9c"
+  version "7.0.8"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-7.0.8.tgz#bce91e571ad55cee298a4034208418312dfc512a"
 
 tapable@^0.2.7:
   version "0.2.8"
@@ -6404,8 +6411,8 @@ webpack-dev-middleware@^1.11.0:
     time-stamp "^2.0.0"
 
 webpack-dev-server@^2.5.1:
-  version "2.9.5"
-  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.9.5.tgz#79336fba0087a66ae491f4869f6545775b18daa8"
+  version "2.9.7"
+  resolved "https://registry.yarnpkg.com/webpack-dev-server/-/webpack-dev-server-2.9.7.tgz#100ad6a14775478924d417ca6dcfb9d52a98faed"
   dependencies:
     ansi-html "0.0.7"
     array-includes "^3.0.3"
@@ -6457,8 +6464,8 @@ webpack-sources@^1.0.1:
     source-map "~0.6.1"
 
 webpack@^3.5.0:
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.9.1.tgz#9a60aa544ed5d4d454c069e3f521aa007e02643c"
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-3.10.0.tgz#5291b875078cf2abf42bdd23afe3f8f96c17d725"
   dependencies:
     acorn "^5.0.0"
     acorn-dynamic-import "^2.0.0"
