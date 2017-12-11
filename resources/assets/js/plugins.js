@@ -50,21 +50,14 @@ $(function(){
             confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : "Yes, delete",
             title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : "Are you sure you want to delete this item?";
 
-        swal(title, {
-            buttons: {
-                cancel: cancel,
-                confirm: {
-                    text: confirm,
-                    value: 'confirm',
-                },
-            },
-            icon: 'warning'
-        }).then((value) => {
-            switch (value) {
-                case 'confirm':
-                    form.submit();
-                break;
-            }
+        swal({
+            title: title,
+            showCancelButton: true,
+            confirmButtonText: confirm,
+            cancelButtonText: cancel,
+            type: 'warning'
+        }).then((result) => {
+            result.value && form.submit();
         });
     }).on('click', 'a[name=confirm_item]', function(e){
         /**
@@ -77,21 +70,14 @@ $(function(){
             cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : "Cancel",
             confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : "Continue";
 
-        swal(title, {
-            buttons: {
-                cancel: cancel,
-                confirm: {
-                    text: confirm,
-                    value: 'confirm',
-                },
-            },
-            icon: 'info'
-        }).then((value) => {
-            switch (value) {
-                case 'confirm':
-                    window.location = link.attr('href');
-                break;
-            }
+        swal({
+            title: title,
+            showCancelButton: true,
+            confirmButtonText: confirm,
+            cancelButtonText: cancel,
+            type: 'info'
+        }).then((result) => {
+            result.value && window.location.assign(link.attr('href'));
         });
     });
 });

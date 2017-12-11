@@ -20,7 +20,7 @@
     "pace": "github:HubSpot/pace#v1.0.2",
     "popper.js": "^1.12.4",
     "simple-line-icons": "^2.4.1",
-    "sweetalert": "^2.0.3",
+    "sweetalert2": "^7.0.7",
     "tether": "^1.4.0",
     "vue": "^2.5.7"
   }

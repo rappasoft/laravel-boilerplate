@@ -3,6 +3,7 @@
  */
 
 window._ = require('lodash');
+window.swal = require('sweetalert2');
 import Popper from 'popper.js/dist/umd/popper.js';
 
 /**
