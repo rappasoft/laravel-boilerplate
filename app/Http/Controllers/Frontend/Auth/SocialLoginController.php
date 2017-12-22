@@ -102,9 +102,9 @@ class SocialLoginController extends Controller
     protected function getAuthorizationFirst($provider)
     {
         $socialite = Socialite::driver($provider);
-        $scopes = !isset(config("services.{$provider}.scopes")) ? config("services.{$provider}.scopes") : false;
-        $with = !isset(config("services.{$provider}.with")) ? config("services.{$provider}.with") : false;
-        $fields = !isset(config("services.{$provider}.fields")) ? config("services.{$provider}.fields") : false;
+        $scopes = null !== config("services.{$provider}.scopes") ? config("services.{$provider}.scopes") : false;
+        $with = null !== config("services.{$provider}.with") ? config("services.{$provider}.with") : false;
+        $fields = null !== config("services.{$provider}.fields") ? config("services.{$provider}.fields") : false;
 
         if ($scopes) {
             $socialite->scopes($scopes);
