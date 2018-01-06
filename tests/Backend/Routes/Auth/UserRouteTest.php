@@ -1,7 +1,9 @@
 <?php
 
+namespace Tests\Backend\Routes\Auth;
+
 use Carbon\Carbon;
-use Tests\BrowserKitTestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use App\Events\Backend\Auth\User\UserRestored;
@@ -9,193 +11,256 @@ use App\Events\Backend\Auth\User\UserDeactivated;
 use App\Events\Backend\Auth\User\UserReactivated;
 use App\Events\Backend\Auth\User\UserPermanentlyDeleted;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use Tests\TestCase;
 
 /**
  * Class UserRouteTest.
  */
-class UserRouteTest extends BrowserKitTestCase
+class UserRouteTest extends TestCase
 {
-    public function testActiveUsers()
-    {
-        $this->actingAs($this->admin)->visit('/admin/auth/user')->see('Active Users');
-    }
+    use RefreshDatabase;
 
-    public function testDeactivatedUsers()
+    /** @test */
+    public function an_admin_can_access_active_users_page()
     {
-        $this->actingAs($this->admin)->visit('/admin/auth/user/deactivated')->see('Deactivated Users');
-    }
+        $this->setUpAcl();
 
-    public function testDeletedUsers()
-    {
-        $this->actingAs($this->admin)->visit('/admin/auth/user/deleted')->see('Deleted Users');
-    }
-
-    public function testCreateUser()
-    {
-        $this->actingAs($this->admin)->visit('/admin/auth/user/create')->see('Create User');
-    }
-
-    public function testViewUser()
-    {
         $this->actingAs($this->admin)
-             ->visit('/admin/auth/user/'.$this->user->id)
-             ->see('View User')
-             ->see('Overview')
-             ->see($this->user->first_name)
-             ->see($this->user->last_name)
-             ->see($this->user->email);
+            ->get('/admin/auth/user')
+            ->assertSeeText('Active Users');
     }
 
-    public function testEditUser()
+    /** @test */
+    public function an_admin_can_access_deactivated_users_page()
     {
+        $this->setUpAcl();
+
         $this->actingAs($this->admin)
-             ->visit('/admin/auth/user/'.$this->user->id.'/edit')
-             ->see('Edit User')
-             ->see($this->user->first_name)
-             ->see($this->user->last_name)
-             ->see($this->user->email);
+            ->get('/admin/auth/user/deactivated')
+            ->assertSeeText('Deactivated Users');
     }
 
-    public function testChangeUserPassword()
+    /** @test */
+    public function an_admin_can_access_deleted_users_page()
     {
+        $this->setUpAcl();
+
         $this->actingAs($this->admin)
-             ->visit('/admin/auth/user/'.$this->user->id.'/password/change')
-             ->see('Change Password for '.$this->user->full_name);
+            ->get('/admin/auth/user/deleted')
+            ->assertSeeText('Deleted Users');
     }
 
-    public function testResendUserConfirmationEmail()
+    /** @test */
+    public function an_admin_can_access_create_user_page()
     {
+        $this->setUpAcl();
+
+        $this->actingAs($this->admin)
+            ->get('/admin/auth/user/create')
+            ->assertSeeText('Create User');
+    }
+
+    /** @test */
+    public function an_admin_can_view_single_user_page()
+    {
+        $this->setUpAcl();
+
+        $this->actingAs($this->admin)
+            ->get('/admin/auth/user/' . $this->user->id)
+            ->assertSeeText('View User')
+            ->assertSeeText('Overview')
+            ->assertSeeText($this->user->first_name)
+            ->assertSeeText($this->user->last_name)
+            ->assertSeeText($this->user->email);
+    }
+
+    /** @test */
+    public function an_admin_can_access_the_edit_user_page()
+    {
+        $this->setUpAcl();
+
+        $this->actingAs($this->admin)
+            ->get('/admin/auth/user/' . $this->user->id . '/edit')
+            ->assertSeeText('Edit User');
+    }
+
+    /** @test */
+    public function an_admin_can_access_a_user_change_password_page()
+    {
+        $this->setUpAcl();
+
+        $this->actingAs($this->admin)
+            ->get('/admin/auth/user/' . $this->user->id . '/password/change')
+            ->assertSeeText('Change Password for ' . $this->user->full_name);
+    }
+
+    /** @test  */
+    public function an_admin_can_resend_users_confirmation_email()
+    {
+        $this->setUpAcl();
+        Notification::fake();
+
         config(['access.users.confirm_email' => true]);
         config(['access.users.requires_approval' => false]);
 
         $this->actingAs($this->admin)
-            ->visit('/admin/auth/user')
-            ->visit('/admin/auth/user/'.$this->user->id.'/account/confirm/resend')
-            ->seePageIs('/admin/auth/user')
-            ->see('This user is already confirmed.');
+            ->from('/admin/auth/user')
+            ->get('/admin/auth/user/' . $this->user->id . '/account/confirm/resend')
+            ->assertRedirect('/admin/auth/user');
 
         $this->user->update(['confirmed' => 0]);
 
-        Notification::fake();
-
         $this->actingAs($this->admin)
-             ->visit('/admin/auth/user')
-             ->visit('/admin/auth/user/'.$this->user->id.'/account/confirm/resend')
-             ->seePageIs('/admin/auth/user')
-             ->see('A new confirmation e-mail has been sent to the address on file.');
+            ->followingRedirects()
+            ->from('/admin/auth/user')
+            ->get('/admin/auth/user/' . $this->user->id . '/account/confirm/resend')
+            ->assertSeeText('A new confirmation e-mail has been sent to the address on file.');
 
         Notification::assertSentTo($this->user, UserNeedsConfirmation::class);
     }
 
-    public function testLoginAsUser()
+    /** @test */
+    public function an_admin_can_impersonate_other_users()
     {
+        $this->setUpAcl();
+
         $this->actingAs($this->admin)
-             ->visit('/admin/auth/user/'.$this->user->id.'/login-as')
-             ->seePageIs('/dashboard')
-             ->see('You are currently logged in as '.$this->user->full_name.'.')
-             ->see($this->admin->full_name)
-             ->assertTrue(auth()->id() == $this->user->id);
+            ->followingRedirects()
+            ->get('/admin/auth/user/' . $this->user->id . '/login-as')
+            ->assertSeeText('You are currently logged in as ' . $this->user->full_name . '.')
+            ->assertSeeText($this->admin->full_name);
+
+        $this->assertAuthenticatedAs($this->user);
     }
 
-    public function testCantLoginAsSelf()
+    /** @test */
+    public function impersonation_of_himself_does_not_work()
     {
+        $this->setUpAcl();
+
         $this->actingAs($this->admin)
-             ->visit('/admin/auth/user/'.$this->admin->id.'/login-as')
-             ->see('Do not try to login as yourself.');
+            ->followingRedirects()
+            ->get('/admin/auth/user/' . $this->admin->id . '/login-as')
+            ->assertSeeText('Do not try to login as yourself.');
     }
 
-    public function testLogoutAsUser()
+    /** @test */
+    public function an_admin_can_exit_an_impersonation()
     {
+        $this->setUpAcl();
+
         $this->actingAs($this->admin)
-             ->visit('/admin/auth/user/'.$this->user->id.'/login-as')
-             ->seePageIs('/dashboard')
-             ->see('You are currently logged in as '.$this->user->full_name.'.')
-             ->click('Re-Login as '.$this->admin->full_name)
-             ->seePageIs('/admin/auth/user')
-             ->assertTrue(auth()->id() == $this->admin->id);
+            ->followingRedirects()
+            ->get('/admin/auth/user/' . $this->user->id . '/login-as')
+            ->assertSeeText('You are currently logged in as ' . $this->user->full_name . '.');
+
+        $this->assertAuthenticatedAs($this->user);
+
+        $this->get('/logout-as')->assertRedirect('admin/auth/user');
+
+        $this->assertAuthenticatedAs($this->admin);
     }
 
-    public function testDeactivateReactivateUser()
+    /** @test */
+    public function an_admin_can_deactivate_users()
     {
-        // Make sure our events are fired
+        $this->setUpAcl();
         Event::fake();
 
         $this->actingAs($this->admin)
-             ->visit('/admin/auth/user/'.$this->user->id.'/mark/0')
-             ->seePageIs('/admin/auth/user/deactivated')
-             ->see('The user was successfully updated.')
-             ->seeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'active' => 0])
-             ->visit('/admin/auth/user/'.$this->user->id.'/mark/1')
-             ->seePageIs('/admin/auth/user')
-             ->see('The user was successfully updated.')
-             ->seeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'active' => 1]);
+            ->followingRedirects()
+            ->get('/admin/auth/user/' . $this->user->id . '/mark/0')
+            ->assertSeeText('The user was successfully updated.');
 
         Event::assertDispatched(UserDeactivated::class);
+    }
+
+    /** @test */
+    public function an_admin_can_reactivate_users()
+    {
+        $this->setUpAcl();
+        Event::fake();
+
+        $this->user->update(['active' => 0]);
+
+        $this->actingAs($this->admin)
+            ->followingRedirects()
+            ->get('/admin/auth/user/' . $this->user->id . '/mark/1')
+            ->assertSeeText('The user was successfully updated.');
+
         Event::assertDispatched(UserReactivated::class);
     }
 
-    public function testCantNotDeactivateSelf()
+    /** @test */
+    public function an_admin_cant_deactivate_himself()
     {
+        $this->setUpAcl();
+
         $this->actingAs($this->admin)
-             ->visit('/admin/auth/user')
-             ->visit('/admin/auth/user/'.$this->admin->id.'/mark/0')
-             ->seePageIs('/admin/auth/user')
-             ->see('You can not do that to yourself.');
+            ->followingRedirects()
+            ->get('/admin/auth/user/' . $this->admin->id . '/mark/0')
+            ->assertSeeText('You can not do that to yourself.');
     }
 
-    public function testRestoreUser()
+    /** @test */
+    public function an_admin_can_restore_users()
     {
-        // Make sure our events are fired
+        $this->setUpAcl();
         Event::fake();
 
-        $this->user->deleted_at = Carbon::now();
+        $this->assertDatabaseHas(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null]);
+
+        $now = Carbon::now();
+        $this->user->deleted_at = $now;
         $this->user->save();
 
-        $this->actingAs($this->admin)
-             ->notSeeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null])
-             ->visit('/admin/auth/user/'.$this->user->id.'/restore')
-             ->seePageIs('/admin/auth/user')
-             ->see('The user was successfully restored.')
-             ->seeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null]);
+        $this->assertDatabaseHas(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => $now]);
 
+        $this->actingAs($this->admin)
+            ->followingRedirects()
+            ->get('/admin/auth/user/' . $this->user->id . '/restore')
+            ->assertSeeText('The user was successfully restored.');
+
+        $this->assertDatabaseHas(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null]);
         Event::assertDispatched(UserRestored::class);
     }
 
-    public function testUserIsDeletedBeforeBeingRestored()
+    /** @test */
+    public function a_not_deleted_user_cant_be_restored()
     {
+        $this->setUpAcl();
+
         $this->actingAs($this->admin)
-             ->seeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null])
-             ->visit('/admin/auth/user')
-             ->visit('/admin/auth/user/'.$this->user->id.'/restore')
-             ->seePageIs('/admin/auth/user')
-             ->see('This user is not deleted so it can not be restored.')
-             ->seeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null]);
+            ->followingRedirects()
+            ->get('/admin/auth/user/' . $this->user->id . '/restore')
+            ->assertSeeText('This user is not deleted so it can not be restored.');
     }
 
-    public function testPermanentlyDeleteUser()
+    /** @test */
+    public function an_admin_can_delete_user_permanently()
     {
-        // Make sure our events are fired
+        $this->setUpAcl();
         Event::fake();
 
         $this->actingAs($this->admin)
-             ->delete('/admin/auth/user/'.$this->user->id)
-             ->notSeeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null])
-             ->visit('/admin/auth/user/'.$this->user->id.'/delete')
-             ->seePageIs('/admin/auth/user/deleted')
-             ->see('The user was deleted permanently.')
-             ->notSeeInDatabase(config('access.table_names.users'), ['id' => $this->user->id]);
+            ->delete('/admin/auth/user/' . $this->user->id);
+
+        $this->actingAs($this->admin)
+            ->followingRedirects()
+            ->get('/admin/auth/user/' . $this->user->id . '/delete')
+            ->assertSeeText('The user was deleted permanently.');
 
         Event::assertDispatched(UserPermanentlyDeleted::class);
     }
 
-    public function testUserIsDeletedBeforeBeingPermanentlyDeleted()
+    /** @test */
+    public function a_user_must_be_deleted_before_destroed_permanently()
     {
+        $this->setUpAcl();
+
         $this->actingAs($this->admin)
-             ->seeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null])
-             ->visit('/admin/auth/user')
-             ->visit('/admin/auth/user/'.$this->user->id.'/delete')
-             ->seePageIs('/admin/auth/user')
-             ->see('This user must be deleted first before it can be destroyed permanently.')
-             ->seeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null]);
+            ->followingRedirects()
+            ->get('/admin/auth/user/' . $this->user->id . '/delete')
+            ->assertSeeText('This user must be deleted first before it can be destroyed permanently.');
     }
 }
