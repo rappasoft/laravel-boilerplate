@@ -15,6 +15,8 @@ class UserRoleTest extends TestCase
     /** @test */
     public function attach_and_detach_role_from_user_by_object()
     {
+        $this->setUpAcl();
+
         $this->assertDatabaseMissing(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
         $this->user->assignRole($this->adminRole);
         $this->assertDatabaseHas(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
@@ -25,6 +27,8 @@ class UserRoleTest extends TestCase
     /** @test */
     public function attach_and_detach_roles_by_object_from_user()
     {
+        $this->setUpAcl();
+
         $this->assertDatabaseMissing(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
         $this->assertDatabaseMissing(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->executiveRole->id]);
         $this->user->assignRole($this->adminRole, $this->executiveRole);
