@@ -1,46 +1,37 @@
 <?php
 
-use Tests\BrowserKitTestCase;
+namespace Tests\backend\Auth\User;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 /**
  * Class UserRoleTest.
  */
-class UserRoleTest extends BrowserKitTestCase
+class UserRoleTest extends TestCase
 {
-    public function testAttachRoleToUserByObject()
-    {
-        $this->notSeeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
-        $this->user->assignRole($this->adminRole);
-        $this->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
-    }
+    use RefreshDatabase;
 
-    public function testDetachRoleByObjectFromUser()
+    /** @test */
+    public function attach_and_detach_role_from_user_by_object()
     {
-        $this->notSeeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
+        $this->assertDatabaseMissing(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
         $this->user->assignRole($this->adminRole);
-        $this->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
+        $this->assertDatabaseHas(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
         $this->user->removeRole($this->adminRole);
-        $this->notSeeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
+        $this->assertDatabaseMissing(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
     }
 
-    public function testAttachRolesByObjectToUser()
+    /** @test */
+    public function attach_and_detach_roles_by_object_from_user()
     {
-        $this->notSeeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
-        $this->notSeeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->executiveRole->id]);
-        $this->user->assignRole([$this->adminRole, $this->executiveRole]);
-        $this->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
-        $this->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->executiveRole->id]);
-    }
-
-    public function testDetachRolesByObjectFromUser()
-    {
-        $this->notSeeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
-        $this->notSeeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->executiveRole->id]);
+        $this->assertDatabaseMissing(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
+        $this->assertDatabaseMissing(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->executiveRole->id]);
         $this->user->assignRole($this->adminRole, $this->executiveRole);
-        $this->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
-        $this->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->executiveRole->id]);
+        $this->assertDatabaseHas(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
+        $this->assertDatabaseHas(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->executiveRole->id]);
         $this->user->syncRoles([]);
-        $this->notSeeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
-        $this->notSeeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->executiveRole->id]);
+        $this->assertDatabaseMissing(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->adminRole->id]);
+        $this->assertDatabaseMissing(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => $this->executiveRole->id]);
     }
 }
