@@ -1,162 +1,151 @@
 <?php
 
+namespace Tests\Backend\Forms\Auth;
+
 use App\Models\Auth\Role;
-use Tests\BrowserKitTestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use App\Events\Backend\Auth\Role\RoleCreated;
 use App\Events\Backend\Auth\Role\RoleDeleted;
 use App\Events\Backend\Auth\Role\RoleUpdated;
+use Tests\TestCase;
 
 /**
  * Class RoleFormTest.
  */
-class RoleFormTest extends BrowserKitTestCase
+class RoleFormTest extends TestCase
 {
-    public function testCreateRoleRequiredFieldsAll()
+    use RefreshDatabase;
+
+    /** @test */
+    public function the_name_is_required()
     {
-        // All Permissions
-        $this->actingAs($this->admin)
-             ->visit('/admin/auth/role/create')
-             ->type('', 'name')
-             ->press('Create')
-             ->seePageIs('/admin/auth/role/create')
-             ->see('The name field is required.');
+        $this->setUpAcl();
+
+        $response = $this->actingAs($this->admin)
+            ->post('/admin/auth/role', ['name' => '']);
+
+        $response->assertSessionHasErrors('name');
     }
 
-    public function testCreateRoleRequiredFieldsSpecificPermissions()
-    {
-        if (config('access.roles.role_must_contain_permission')) {
-            // Custom Permissions
-            $this->actingAs($this->admin)
-                ->visit('/admin/auth/role/create')
-                ->type('Test Role', 'name')
-                ->press('Create')
-                ->seePageIs('/admin/auth/role/create')
-                ->see('You must select at least one permission for this role.');
-        }
-    }
-
+    /** @test */
     public function testCreateRoleFormSpecificPermissions()
     {
+        $this->setUpAcl();
         // Make sure our events are fired
         Event::fake();
 
         // Test create with some permissions
         $this->actingAs($this->admin)
-             ->visit('/admin/auth/role/create')
-             ->submitForm('Create', [
-                 'name' => 'Test Role',
-                 'permissions' => ['view backend'],
-             ])
-             ->seePageIs('/admin/auth/role')
-             ->see('The role was successfully created.')
-             ->seeInDatabase(config('permission.table_names.roles'), ['name' => 'Test Role'])
-             ->seeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => 4]);
+            ->followingRedirects()
+            ->post('/admin/auth/role', [
+                'name' => 'Test Role',
+                'permissions' => ['view backend'],
+            ])
+            ->assertSeeText('The role was successfully created.');
+
+        $this->assertDatabaseHas(config('permission.table_names.roles'), ['name' => 'Test Role']);
+        $this->assertDatabaseHas(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => 4]);
 
         Event::assertDispatched(RoleCreated::class);
     }
 
-    public function testRoleAlreadyExists()
+    /** @test */
+    public function the_role_name_needs_to_be_unique()
     {
+        $this->setUpAcl();
+
         $this->actingAs($this->admin)
-             ->visit('/admin/auth/role/create')
-            ->submitForm('Create', [
+            ->followingRedirects()
+            ->post('/admin/auth/role', [
                 'name' => 'administrator',
                 'permissions' => ['view backend'],
             ])
-             ->seePageIs('/admin/auth/role/create')
-             ->see('A role already exists with the name administrator');
+            ->assertSeeText('A role already exists with the name administrator');
     }
 
-    public function testRoleRequiresPermission()
+    /** @test */
+    public function role_requires_permission()
     {
+        $this->setUpAcl();
         config(['access.roles.role_must_contain_permission' => true]);
 
         $this->actingAs($this->admin)
-             ->visit('/admin/auth/role/create')
-            ->submitForm('Create', [
+            ->followingRedirects()
+            ->post('/admin/auth/role', [
                 'name' => 'Test Role',
                 'permissions' => [],
             ])
-             ->seePageIs('/admin/auth/role/create')
-             ->see('You must select at least one permission for this role.');
+            ->assertSeeText('You must select at least one permission for this role.');
     }
 
-    public function testUpdateRoleRequiredFields()
+    /** @test */
+    public function name_is_required_when_updating_role()
     {
+        $this->setUpAcl();
+
         $this->actingAs($this->admin)
-             ->visit('/admin/auth/role/2/edit')
-             ->type('', 'name')
-             ->press('Update')
-             ->seePageIs('/admin/auth/role/2/edit')
-             ->see('The name field is required.');
+            ->followingRedirects()
+            ->patch('/admin/auth/role/2', ['name' => ''])
+            ->assertSeeText('The name field is required.');
     }
 
-    public function testUpdateRoleFormAll()
+    /** @test */
+    public function a_role_name_can_be_updated()
     {
-        // Make sure our events are fired
+        $this->setUpAcl();
         Event::fake();
 
         $this->actingAs($this->admin)
-             ->visit('/admin/auth/role/2/edit')
-             ->type('Executive Edited', 'name')
-             ->press('Update')
-             ->seePageIs('/admin/auth/role')
-             ->see('The role was successfully updated.')
-             ->seeInDatabase(config('permission.table_names.roles'), ['id' => 2, 'name' => 'Executive Edited']);
+            ->patch('/admin/auth/role/2', ['name' => 'Executive Edited', 'permissions' => ['view backend']])
+            ->assertSessionHas(['flash_success' => 'The role was successfully updated.']);
+
+        $this->assertDatabaseHas(config('permission.table_names.roles'), ['id' => 2, 'name' => 'Executive Edited']);
 
         Event::assertDispatched(RoleUpdated::class);
     }
 
-    public function testUpdateRoleFormSpecificPermissions()
+    /** @test */
+    public function add_specific_permissions_to_roles()
     {
-        // Make sure our events are fired
+        $this->setUpAcl();
         Event::fake();
 
+        $this->assertDatabaseMissing(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => 3]);
+
+        //role id 3 is user with setUpAcl()
         $this->actingAs($this->admin)
-             ->notSeeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => 3])
-             ->visit('/admin/auth/role/3/edit')
-            ->submitForm('Update', [
-                'permissions' => ['view backend'],
-            ])
-             ->seePageIs('/admin/auth/role')
-             ->see('The role was successfully updated.')
-             ->seeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => 3]);
+            ->patch('/admin/auth/role/3', ['name' => 'user', 'permissions' => ['view backend']])
+            ->assertSessionHas(['flash_success' => 'The role was successfully updated.']);
+
+        $this->assertDatabaseHas(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => 3]);
 
         Event::assertDispatched(RoleUpdated::class);
     }
 
-    public function testUpdateRoleRequiresPermission()
+    /** @test */
+    public function a_role_can_be_deleted()
     {
-        if (config('access.roles.role_must_contain_permission')) {
-            $this->actingAs($this->admin)
-                ->visit('/admin/auth/role/3/edit')
-                ->press('Update')
-                ->seePageIs('/admin/auth/role/3/edit')
-                ->see('You must select at least one permission for this role.');
-        }
-    }
-
-    public function testDeleteRoleForm()
-    {
-        // Make sure our events are fired
+        $this->setUpAcl();
         Event::fake();
 
-        $role = Role::create(['name' => 'Test Role']);
+        $role = factory(Role::class)->create(['name' => 'Test Role']);
 
+        $this->assertDatabaseHas(config('permission.table_names.roles'), ['id' => $role->id]);
         $this->actingAs($this->admin)
-             ->seeInDatabase(config('permission.table_names.roles'), ['id' => $role->id])
-             ->delete('/admin/auth/role/'.$role->id)
-             ->assertRedirectedTo('/admin/auth/role')
-             ->notSeeInDatabase(config('permission.table_names.roles'), ['id' => $role->id])
-             ->seeInSession(['flash_success' => 'The role was successfully deleted.']);
+            ->delete('/admin/auth/role/' . $role->id)
+            ->assertSessionHas(['flash_success' => 'The role was successfully deleted.']);
+
+        $this->assertDatabaseMissing(config('permission.table_names.roles'), ['id' => $role->id]);
 
         Event::assertDispatched(RoleDeleted::class);
     }
 
-    public function testDeleteRoleWithPermissions()
+    /** @test */
+    public function delete_role_with_permissions()
     {
+        $this->setUpAcl();
         // Make sure our events are fired
         Event::fake();
 
@@ -164,22 +153,23 @@ class RoleFormTest extends BrowserKitTestCase
         DB::table(config('permission.table_names.model_has_roles'))->where('role_id', 2)->delete();
 
         $this->actingAs($this->admin)
-             ->visit('/admin/auth/role')
-             ->delete('/admin/auth/role/2')
-             ->assertRedirectedTo('/admin/auth/role')
-             ->notSeeInDatabase(config('permission.table_names.roles'), ['id' => 2])
-             ->seeInSession(['flash_success' => 'The role was successfully deleted.']);
+            ->delete('/admin/auth/role/2')
+            ->assertSessionHas(['flash_success' => 'The role was successfully deleted.']);
+
+        $this->assertDatabaseMissing(config('permission.table_names.roles'), ['id' => 2]);
 
         Event::assertDispatched(RoleDeleted::class);
     }
 
-    public function testCanNotDeleteAdministratorRole()
+    /** @test */
+    public function administrator_role_can_not_be_deleted()
     {
+        $this->setUpAcl();
+
         $this->actingAs($this->admin)
-             ->visit('/admin/auth/role')
-             ->delete('/admin/auth/role/1')
-             ->assertRedirectedTo('/admin/auth/role')
-             ->seeInDatabase(config('permission.table_names.roles'), ['id' => 1, 'name' => 'administrator'])
-             ->seeInSession(['flash_danger' => 'You can not delete the administrator role.']);
+            ->delete('/admin/auth/role/1')
+            ->assertSessionHas(['flash_danger' => 'You can not delete the administrator role.']);
+
+        $this->assertDatabaseHas(config('permission.table_names.roles'), ['id' => 1, 'name' => 'administrator']);
     }
 }
