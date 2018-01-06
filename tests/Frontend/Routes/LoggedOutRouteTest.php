@@ -1,51 +1,58 @@
 <?php
 
+namespace Tests\Frontend\Routes;
+
+use App\Models\Auth\Role;
 use App\Models\Auth\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\BrowserKitTestCase;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserConfirmed;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use Tests\TestCase;
 
 /**
  * Class LoggedOutRouteTest.
  */
-class LoggedOutRouteTest extends BrowserKitTestCase
+class LoggedOutRouteTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function testHomePage()
     {
-        $this->visit('/')->assertResponseOk();
+        $this->get('/')->assertStatus(200);
     }
 
     public function testContactPage()
     {
-        $this->visit('/contact')->see('Contact Us');
+        $this->get('/contact')->assertSee('Contact Us');
     }
 
     public function testLoginPage()
     {
-        $this->visit('/login')->see('Login');
+        $this->get('/login')->assertSee('Login');
     }
 
     public function testRegisterPage()
     {
-        $this->visit('/register')->see('Register');
+        $this->get('/register')->assertSee('Register');
     }
 
     public function testForgotPasswordPage()
     {
-        $this->visit('password/reset')->see('Reset Password');
+        $this->get('password/reset')->assertSee('Reset Password');
     }
 
     public function testDashboardPageLoggedOut()
     {
-        $this->visit('/dashboard')->seePageIs('/login');
+        $this->get('/dashboard')->assertRedirect('/login');
     }
 
     public function testAccountPageLoggedOut()
     {
-        $this->visit('/account')->seePageIs('/login');
+        $this->get('/account')->assertRedirect('/login');
     }
 
     public function testConfirmAccountRoute()
@@ -54,12 +61,16 @@ class LoggedOutRouteTest extends BrowserKitTestCase
 
         // Create default user to test with
         $unconfirmed = factory(User::class)->states('unconfirmed')->create();
+        factory(Role::class)->create(['name' => 'user']);
         $unconfirmed->assignRole('user');
 
-        $this->visit('/account/confirm/'.$unconfirmed->confirmation_code)
-             ->seePageIs('/login')
-             ->see('Your account has been successfully confirmed!')
-             ->seeInDatabase(config('access.table_names.users'), ['email' => $unconfirmed->email, 'confirmed' => 1]);
+        $this->get('/account/confirm/' . $unconfirmed->confirmation_code)
+            ->assertRedirect('/login')
+            ->followRedirects()
+            ->assertSeeText('Your account has been successfully confirmed!');
+
+
+        $this->assertDatabaseHas(config('access.table_names.users'), ['email' => $unconfirmed->email, 'confirmed' => 1]);
 
         Event::assertDispatched(UserConfirmed::class);
     }
@@ -70,29 +81,21 @@ class LoggedOutRouteTest extends BrowserKitTestCase
 
         $unconfirmed = factory(User::class)->states('unconfirmed')->create();
 
-        $this->visit('/account/confirm/resend/'.$unconfirmed->uuid)
-             ->seePageIs('/login')
-             ->see('A new confirmation e-mail has been sent to the address on file.');
+        $this->get('/account/confirm/resend/' . $unconfirmed->uuid)
+            ->assertRedirect('/login')
+            ->followRedirects()
+            ->assertSeeText('A new confirmation e-mail has been sent to the address on file.');
 
         Notification::assertSentTo([$unconfirmed],
             UserNeedsConfirmation::class);
     }
 
-    public function testLanguageSwitcher()
-    {
-        if (config('locale.status')) {
-            $this->visit('lang/es')
-                ->see('Registrarse')
-                ->assertSessionHas('locale', 'es');
-
-            App::setLocale('en');
-        }
-    }
-
     public function test404Page()
     {
-        $response = $this->call('GET', '7g48hwbfw9eufj');
-        $this->assertEquals(404, $response->getStatusCode());
-        $this->assertContains('Page Not Found', $response->getContent());
+        $response = $this->get('7g48hwbfw9eufj');
+
+        $response
+            ->assertStatus(404)
+            ->assertSeeText('Page Not Found');
     }
 }
