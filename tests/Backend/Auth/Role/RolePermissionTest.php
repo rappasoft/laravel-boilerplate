@@ -1,55 +1,78 @@
 <?php
 
-use Tests\BrowserKitTestCase;
+namespace Tests\Backend\Auth\Role;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Spatie\Permission\Models\Permission;
+use Tests\TestCase;
 
-class RolePermissionTest extends BrowserKitTestCase
+class RolePermissionTest extends TestCase
 {
-    public function testSavePermissionsToRole()
+    use RefreshDatabase;
+
+    /** @test */
+    public function permissions_can_be_synced_to_roles()
     {
-        $this->notSeeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
+        $this->setUpAcl();
+
+        $this->assertDatabaseMissing(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
         $this->userRole->syncPermissions('view backend');
-        $this->seeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
+        $this->assertDatabaseHas(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
     }
 
-    public function testEmptyPermissionsFromRole()
+    /** @test */
+    public function a_role_can_empty_the_synced_permissions()
     {
-        $this->notSeeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
+        $this->setUpAcl();
+
+        $this->assertDatabaseMissing(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
         $this->userRole->givePermissionTo('view backend');
-        $this->seeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
+        $this->assertDatabaseHas(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
         $this->userRole->syncPermissions([]);
-        $this->notSeeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
+        $this->assertDatabaseMissing(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
     }
 
-    public function testAttachPermissionToRoleByObject()
+    /** @test */
+    public function attach_permission_to_roles_by_object()
     {
-        $this->notSeeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
+        $this->setUpAcl();
+
+        $this->assertDatabaseMissing(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
         $this->userRole->givePermissionTo(Permission::findOrFail(1));
-        $this->seeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
+        $this->assertDatabaseHas(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
     }
 
-    public function testDetachPermissionFromRoleByObject()
+    /** @test */
+    public function detach_permissions_from_roles_by_object()
     {
-        $this->notSeeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
+        $this->setUpAcl();
+
+        $this->assertDatabaseMissing(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
         $this->userRole->givePermissionTo(Permission::findOrFail(1));
-        $this->seeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
+        $this->assertDatabaseHas(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
         $this->userRole->revokePermissionTo(Permission::findOrFail(1));
-        $this->notSeeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
+        $this->assertDatabaseMissing(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
     }
 
-    public function testAttachPermissionsToRoleByObject()
+    /** @test */
+    public function attach_permissions_to_role_by_object()
     {
-        $this->notSeeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
+        $this->setUpAcl();
+
+        $this->assertDatabaseMissing(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
         $this->userRole->givePermissionTo([Permission::findOrFail(1)]);
-        $this->seeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
+        $this->assertDatabaseHas(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
     }
 
-    public function testDetachPermissionsFromRoleByObject()
+    /** @test */
+    public function detach_permissions_from_role_by_object()
     {
-        $this->notSeeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
+        $this->setUpAcl();
+
+        $this->assertDatabaseMissing(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
         $this->userRole->givePermissionTo([Permission::findOrFail(1)]);
-        $this->seeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
+        $this->assertDatabaseHas(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
         $this->userRole->syncPermissions([]);
-        $this->notSeeInDatabase(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
+        $this->assertDatabaseMissing(config('permission.table_names.role_has_permissions'), ['permission_id' => 1, 'role_id' => $this->userRole->id]);
     }
 }
