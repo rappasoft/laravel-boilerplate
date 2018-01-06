@@ -1,38 +1,48 @@
 <?php
 
+namespace Tests\Backend\Auth\User;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\BrowserKitTestCase;
+use Tests\TestCase;
 
 /**
  * Class UserAccessTest.
  */
-class UserAccessTest extends BrowserKitTestCase
+class UserAccessTest extends TestCase
 {
-    public function testUserCantAccessAdminDashboard()
+    use RefreshDatabase;
+
+    /** @test */
+    public function user_cant_access_admin_dashboard()
     {
-        $this->visit('/')
-             ->actingAs($this->user)
-             ->visit('/admin/dashboard')
-             ->seePageIs('/dashboard')
-             ->see('You do not have access to do that.');
+        $this->setUpAcl();
+
+        $this->actingAs($this->user)
+            ->followingRedirects()
+            ->get('/admin/dashboard')
+            ->assertSeeText('You do not have access to do that.');
     }
 
-    public function testExecutiveCanAccessAdminDashboard()
+    /** @test */
+    public function executive_can_access_admin_dashboard()
     {
-        $this->visit('/')
-             ->actingAs($this->executive)
-             ->visit('/admin/dashboard')
-             ->seePageIs('/admin/dashboard')
-             ->see($this->executive->name);
+        $this->setUpAcl();
+
+        $this->actingAs($this->executive)
+            ->followingRedirects()
+            ->get('/admin/dashboard')
+            ->assertSeeText($this->executive->name);
     }
 
-    public function testExecutiveCantAccessManageRoles()
+    /** @test */
+    public function executive_cant_access_manage_roles()
     {
-        $this->visit('/')
-             ->actingAs($this->executive)
-             ->visit('/admin/dashboard')
-             ->seePageIs('/admin/dashboard')
-             ->visit('/admin/auth/role')
-             ->seePageIs('/admin/dashboard')
-             ->see('You do not have access to do that.');
+        $this->setUpAcl();
+
+        $this->actingAs($this->executive)
+            ->followingRedirects()
+            ->get('/admin/auth/role')
+            ->assertSeeText('You do not have access to do that.');
     }
 }
