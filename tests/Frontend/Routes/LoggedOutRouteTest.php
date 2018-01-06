@@ -18,77 +18,83 @@ class LoggedOutRouteTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testHomePage()
+    /** @test */
+    public function the_home_page_works()
     {
         $this->get('/')->assertStatus(200);
     }
 
-    public function testContactPage()
+    /** @test */
+    public function the_contact_page_works()
     {
         $this->get('/contact')->assertSee('Contact Us');
     }
 
-    public function testLoginPage()
+    /** @test */
+    public function the_login_page_works()
     {
         $this->get('/login')->assertSee('Login');
     }
 
-    public function testRegisterPage()
+    /** @test */
+    public function the_register_page_works()
     {
         $this->get('/register')->assertSee('Register');
     }
 
-    public function testForgotPasswordPage()
+    /** @test */
+    public function the_forgot_password_page_works()
     {
         $this->get('password/reset')->assertSee('Reset Password');
     }
 
-    public function testDashboardPageLoggedOut()
+    /** @test */
+    public function unauthenticated_user_cant_access_dashboard()
     {
         $this->get('/dashboard')->assertRedirect('/login');
     }
 
-    public function testAccountPageLoggedOut()
+    /** @test */
+    public function unauthenticated_user_cant_access_account_page()
     {
         $this->get('/account')->assertRedirect('/login');
     }
 
-    public function testConfirmAccountRoute()
+    /** @test */
+    public function a_user_account_can_be_confirmed()
     {
+        $this->setUpAcl();
         Event::fake();
 
         // Create default user to test with
         $unconfirmed = factory(User::class)->states('unconfirmed')->create();
-        factory(Role::class)->create(['name' => 'user']);
         $unconfirmed->assignRole('user');
 
-        $this->get('/account/confirm/' . $unconfirmed->confirmation_code)
-            ->assertRedirect('/login')
-            ->followRedirects()
+        $this->followingRedirects()
+            ->get('/account/confirm/' . $unconfirmed->confirmation_code)
             ->assertSeeText('Your account has been successfully confirmed!');
 
-
-        $this->assertDatabaseHas(config('access.table_names.users'), ['email' => $unconfirmed->email, 'confirmed' => 1]);
+        $this->assertEquals(1,$unconfirmed->fresh()->confirmed);
 
         Event::assertDispatched(UserConfirmed::class);
     }
 
+    /** @test */
     public function testResendConfirmAccountRoute()
     {
         Notification::fake();
 
         $unconfirmed = factory(User::class)->states('unconfirmed')->create();
 
-        $this->get('/account/confirm/resend/' . $unconfirmed->uuid)
-            ->assertRedirect('/login')
-            ->followRedirects()
+        $this->followingRedirects()
+            ->get('/account/confirm/resend/' . $unconfirmed->uuid)
             ->assertSeeText('A new confirmation e-mail has been sent to the address on file.');
 
-        Notification::assertSentTo([$unconfirmed],
-            UserNeedsConfirmation::class);
+        Notification::assertSentTo([$unconfirmed], UserNeedsConfirmation::class);
     }
 
-    public function test404Page()
+    /** @test */
+    public function an_invalid_route_shows_404()
     {
         $response = $this->get('7g48hwbfw9eufj');
 

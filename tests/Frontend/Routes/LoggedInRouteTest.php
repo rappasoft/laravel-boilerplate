@@ -24,7 +24,8 @@ class LoggedInRouteTest extends TestCase
         $this->setUpAcl();
     }
 
-    public function testHomePageLoggedIn()
+    /** @test */
+    public function a_normal_user_doesnt_see_administration()
     {
         $this->actingAs($this->user)
             ->get('/')
@@ -33,10 +34,8 @@ class LoggedInRouteTest extends TestCase
             ->assertDontSee('Administration');
     }
 
-    /**
-     * Test the dashboard page works and displays the users information.
-     */
-    public function testDashboardPage()
+    /** @test */
+    public function the_dashboard_works_and_displays_the_users_info()
     {
         $this->actingAs($this->user)
             ->get('/dashboard')
@@ -45,10 +44,8 @@ class LoggedInRouteTest extends TestCase
             ->assertDontSeeText('Administration');
     }
 
-    /**
-     * Test the account page works and displays the users information.
-     */
-    public function testAccountPage()
+    /** @test */
+    public function the_account_page_works_and_displays_the_users_info()
     {
         $this->actingAs($this->user)
             ->get('/account')
@@ -59,10 +56,8 @@ class LoggedInRouteTest extends TestCase
             ->assertDontSeeText('Administration');
     }
 
-    /**
-     * Test the account page works and displays the users information.
-     */
-    public function testLoggedInAdmin()
+    /** @test */
+    public function an_admin_sees_administration()
     {
         $this->actingAs($this->admin)
             ->get('/')
@@ -70,10 +65,8 @@ class LoggedInRouteTest extends TestCase
             ->assertSeeText($this->admin->name);
     }
 
-    /**
-     * Test the logout button redirects the user back to home and the login button is again visible.
-     */
-    public function testLogoutRoute()
+    /** @test */
+    public function a_user_can_log_out()
     {
         Event::fake();
 

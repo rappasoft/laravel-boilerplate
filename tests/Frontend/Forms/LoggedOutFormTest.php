@@ -24,7 +24,8 @@ class LoggedOutFormTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function testRegistrationRequiredFields()
+    /** @test */
+    public function the_registration_form_has_required_fields()
     {
         $response = $this->post('/register', [
             'first_name' => '',
@@ -36,7 +37,8 @@ class LoggedOutFormTest extends TestCase
         $response->assertSessionHasErrors(['first_name', 'last_name', 'email', 'password']);
     }
 
-    public function testRegistrationForm()
+    /** @test */
+    public function a_user_can_register_a_new_account()
     {
         $this->setUpAcl();
         // Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
@@ -57,17 +59,20 @@ class LoggedOutFormTest extends TestCase
         ]);
 
         $response->assertRedirect('/dashboard');
-        $this->assertDatabaseHas(config('access.table_names.users'), [
-            'first_name' => 'John',
-            'last_name' => 'Doe',
-            'email' => 'john@example.com',
-            'confirmed' => 1,
-            'active' => 1,
-        ]);
+
+        $user = User::where('email','john@example.com')->first();
+
+        $this->assertEquals('John', $user->first_name);
+        $this->assertEquals('Doe', $user->last_name);
+        $this->assertEquals('john@example.com', $user->email);
+        $this->assertEquals(1, $user->confirmed);
+        $this->assertEquals(1, $user->active);
+
         Event::assertDispatched(UserRegistered::class);
     }
 
-    public function testRegistrationFormConfirmationRequired()
+    /** @test */
+    public function a_user_needs_to_confirm_email_if_confirm_email_is_true()
     {
         $this->withoutExceptionHandling();
         $this->setUpAcl();
@@ -103,7 +108,8 @@ class LoggedOutFormTest extends TestCase
         Event::assertDispatched(UserRegistered::class);
     }
 
-    public function testRegistrationFormPendingApproval()
+    /** @test */
+    public function a_new_user_needs_to_be_confirmed_if_requires_approval_is_true()
     {
         $this->setUpAcl();
         // Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
@@ -139,7 +145,8 @@ class LoggedOutFormTest extends TestCase
         Event::assertDispatched(UserRegistered::class);
     }
 
-    public function testLoginRequiredFields()
+    /** @test */
+    public function email_and_password_are_required_in_login_form()
     {
         $response = $this->from('/login')->post('/login', [
             'email' => '',
@@ -150,62 +157,64 @@ class LoggedOutFormTest extends TestCase
         $response->assertSessionHasErrors(['email', 'password']);
     }
 
-    public function testLoginFormAsAdmin()
+    /** @test */
+    public function an_admin_gets_redirect_to_the_admin_dashboard_after_login()
     {
         $this->setUpAcl();
         // Make sure our events are fired
         Event::fake();
 
         //Admin Test
-        $this->followingRedirects()->post('/login', [
+        $this->post('/login', [
             'email' => $this->admin->email,
             'password' => '1234'
         ])
-            ->assertSeeText('Access Management');
+            ->assertRedirect('/admin/dashboard');
 
         $this->assertAuthenticatedAs($this->admin);
 
         Event::assertDispatched(UserLoggedIn::class);
     }
 
-    public function testLoginFormAsUser()
+    /** @test */
+    public function a_user_get_redirected_to_normal_dashboard_after_login()
     {
         $this->setUpAcl();
         // Make sure our events are fired
         Event::fake();
 
         $this
-            ->followingRedirects()
             ->post('/login', [
                 'email' => $this->user->email,
                 'password' => '1234'
             ])
-            ->assertSeeText($this->user->email);
+            ->assertRedirect('/dashboard');
 
         $this->assertAuthenticatedAs($this->user);
 
         Event::assertDispatched(UserLoggedIn::class);
     }
 
-    public function testForgotPasswordRequiredFields()
+    /** @test */
+    public function email_is_required_in_email_password_form()
     {
         $response = $this->post('/password/reset',['email' => '']);
         $response->assertSessionHasErrors('email');
     }
 
-    public function testForgotPasswordForm()
+    /** @test */
+    public function an_email_gets_sent_if_password_reset_is_requested()
     {
         $this->setUpAcl();
         Notification::fake();
 
-        $this->post('password/email',['email' => $this->user->email]);
-
-        $this->assertDatabaseHas('password_resets', ['email' => $this->user->email]);
+        $this->post('password/email',['email' => 'user@user.com']);
 
         Notification::assertSentTo([$this->user], UserNeedsPasswordReset::class);
     }
 
-    public function testResetPasswordRequiredFields()
+    /** @test */
+    public function the_reset_password_form_has_required_fields()
     {
         $this->setUpAcl();
         $token = $this->app->make('auth.password.broker')->createToken($this->user);
@@ -220,7 +229,7 @@ class LoggedOutFormTest extends TestCase
         $response->assertSessionHasErrors('password');
     }
 
-    public function testResetPasswordForm()
+    public function a_password_can_be_resetted()
     {
         $this->setUpAcl();
         $token = $this->app->make('auth.password.broker')->createToken($this->user);
@@ -235,7 +244,8 @@ class LoggedOutFormTest extends TestCase
         $this->assertTrue(Hash::check('new_password', $this->user->fresh()->password));
     }
 
-    public function testUnconfirmedUserCanNotLogIn()
+    /** @test */
+    public function unconfirmed_user_cant_login()
     {
         $this->setUpAcl();
         config(['access.users.requires_approval' => false]);
@@ -247,9 +257,12 @@ class LoggedOutFormTest extends TestCase
         $this->followingRedirects()
             ->post('/login',['email' => $unconfirmed->email, 'password' => 'secret'])
             ->assertSeeText('Your account is not confirmed.');
+
+        $this->assertFalse($this->isAuthenticated());
     }
 
-    public function testUnconfirmedUserCanNotLogInPendingApproval()
+    /** @test */
+    public function unconfirmed_user_cant_login_if_requires_approval_is_true()
     {
         $this->setUpAcl();
         config(['access.users.requires_approval' => true]);
@@ -261,9 +274,12 @@ class LoggedOutFormTest extends TestCase
         $this->followingRedirects()
             ->post('/login',['email' => $unconfirmed->email, 'password' => 'secret'])
             ->assertSeeText('Your account is currently pending approval.');
+
+        $this->assertFalse($this->isAuthenticated());
     }
 
-    public function testInactiveUserCanNotLogIn()
+    /** @test */
+    public function inactive_users_cant_login()
     {
         $this->setUpAcl();
         // Create default user to test with
@@ -273,9 +289,12 @@ class LoggedOutFormTest extends TestCase
         $this->followingRedirects()
             ->post('/login',['email' => $inactive->email, 'password' => 'secret'])
             ->assertSeeText('Your account has been deactivated.');
+
+        $this->assertFalse($this->isAuthenticated());
     }
 
-    public function testInvalidLoginCredentials()
+    /** @test */
+    public function cant_login_with_invalid_credentials()
     {
         $this->setUpAcl();
         $this->withoutExceptionHandling();
@@ -288,7 +307,8 @@ class LoggedOutFormTest extends TestCase
         ]);
     }
 
-    public function testContactFormRequiredFields()
+    /** @test  */
+    public function the_contact_form_has_required_fields()
     {
         $response = $this->post('/contact/send', [
             'name' => '',
@@ -299,7 +319,8 @@ class LoggedOutFormTest extends TestCase
         $response->assertSessionHasErrors(['name','email','message']);
     }
 
-    public function testContactForm()
+    /** @test */
+    public function an_email_gets_sent_when_contact_form_is_submitted()
     {
         Mail::fake();
 
