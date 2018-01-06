@@ -3,7 +3,6 @@
 namespace Tests\Backend\Auth\User;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\BrowserKitTestCase;
 use Tests\TestCase;
 
 /**
