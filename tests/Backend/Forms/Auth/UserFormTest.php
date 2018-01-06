@@ -1,7 +1,9 @@
 <?php
 
+namespace Tests\Backend\Forms\Auth;
+
 use App\Models\Auth\User;
-use Tests\BrowserKitTestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Notification;
@@ -9,42 +11,38 @@ use App\Events\Backend\Auth\User\UserCreated;
 use App\Events\Backend\Auth\User\UserUpdated;
 use App\Events\Backend\Auth\User\UserPasswordChanged;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use Tests\TestCase;
 
 /**
  * Class UserFormTest.
  */
-class UserFormTest extends BrowserKitTestCase
+class UserFormTest extends TestCase
 {
-    public function testCreateUserRequiredFields()
+    use RefreshDatabase;
+
+    public function setUp()
     {
-        $this->actingAs($this->admin)
-             ->visit('/admin/auth/user/create')
-             ->type('', 'first_name')
-             ->type('', 'last_name')
-             ->type('', 'email')
-             ->type('', 'password')
-             ->type('', 'password_confirmation')
-             ->press('Create')
-             ->see('The first name field is required.')
-             ->see('The last name field is required.')
-             ->see('The email field is required.')
-             ->see('The password field is required.');
+        parent::setUp();
+
+        $this->setUpAcl();
     }
 
-    public function testCreateUserPasswordsDoNotMatch()
+    /** @test */
+    public function create_user_has_required_fields()
     {
-        $this->actingAs($this->admin)
-             ->visit('/admin/auth/user/create')
-             ->type('Test', 'first_name')
-             ->type('User', 'last_name')
-             ->type('test@test.com', 'email')
-             ->type('123456', 'password')
-             ->type('1234567', 'password_confirmation')
-             ->press('Create')
-             ->see('The password confirmation does not match.');
+        $response = $this->actingAs($this->admin)
+            ->post('/admin/auth/user', [
+                'first_name' => '',
+                'last_name' => '',
+                'email' => '',
+                'password' => '',
+            ]);
+
+        $response->assertSessionHasErrors(['first_name', 'last_name', 'email', 'password']);
     }
 
-    public function testCreateUserConfirmedForm()
+    /** @test */
+    public function admin_can_create_new_user()
     {
         // Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
         // Make sure our events are fired
@@ -52,192 +50,154 @@ class UserFormTest extends BrowserKitTestCase
         Event::fake();
         Model::setEventDispatcher($initialDispatcher);
 
-        config(['access.users.confirm_email' => true]);
+        $response = $this->actingAs($this->admin)
+            ->post('/admin/auth/user', [
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'john@example.com',
+                'password' => 'password',
+                'password_confirmation' => 'password',
+                'active' => '1',
+                'confirmed' => '1',
+                'timezone' => 'UTC',
+                'confirmation_email' => '1',
+                'roles' => [1 => 'executive', 2 => 'user'],
+            ]);
 
-        // Create any needed resources
-        $faker = Faker\Factory::create();
-        $firstName = $faker->firstName;
-        $lastName = $faker->lastName;
-        $email = $faker->safeEmail;
-        $password = $faker->password(8);
+        $response->assertSessionHas(['flash_success' => 'The user was successfully created.']);
 
-        $this->actingAs($this->admin)
-             ->visit('/admin/auth/user/create')
-             ->submitForm('Create', [
-                 'first_name' => $firstName,
-                 'last_name' => $lastName,
-                 'email' => $email,
-                 'password' => $password,
-                 'password_confirmation' => $password,
-                 'active' => '1',
-                 'confirmed' => '1',
-                 'confirmation_email' => '1',
-                 'roles' => [1 => 'executive', 2 => 'user'],
-             ])
-             ->seePageIs('/admin/auth/user')
-             ->see('The user was successfully created.')
-             ->seeInDatabase(config('access.table_names.users'),
-                 [
-                     'first_name' => $firstName,
-                     'last_name' => $lastName,
-                     'email' => $email,
-                     'active' => 1,
-                     'confirmed' => 1,
-                 ])
-             ->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => 4, 'role_id' => 2])
-             ->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => 4, 'role_id' => 3]);
+        $this->assertDatabaseHas(config('access.table_names.users'),
+            [
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'john@example.com',
+                'active' => 1,
+                'confirmed' => 1,
+            ]);
+        $this->assertDatabaseHas(config('permission.table_names.model_has_roles'), ['model_id' => 4, 'role_id' => 2]);
+        $this->assertDatabaseHas(config('permission.table_names.model_has_roles'), ['model_id' => 4, 'role_id' => 3]);
 
         Event::assertDispatched(UserCreated::class);
     }
 
-    public function testCreateUserUnconfirmedForm()
+    /** @test */
+    public function when_an_unconfirmed_user_is_created_a_notification_will_be_sent()
     {
-        // Hacky workaround for this issue (https://github.com/laravel/framework/issues/18066)
-        // Make sure our events are fired
-        $initialDispatcher = Event::getFacadeRoot();
-        Event::fake();
-        Model::setEventDispatcher($initialDispatcher);
-
+        $this->withoutExceptionHandling();
         // Make sure our notifications are sent
         Notification::fake();
 
-        // Create any needed resources
-        $faker = Faker\Factory::create();
-        $firstName = $faker->firstName;
-        $lastName = $faker->lastName;
-        $email = $faker->safeEmail;
-        $password = $faker->password(8);
+        $response = $this->actingAs($this->admin)
+            ->post('/admin/auth/user', [
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'john@example.com',
+                'password' => 'password',
+                'password_confirmation' => 'password',
+                'active' => '1',
+                'confirmed' => '0',
+                'timezone' => 'UTC',
+                'confirmation_email' => '1',
+                'roles' => [1 => 'executive', 2 => 'user'],
+            ]);
 
-        $this->actingAs($this->admin)
-             ->visit('/admin/auth/user/create')
-             ->submitForm('Create', [
-                 'first_name' => $firstName,
-                 'last_name' => $lastName,
-                 'email' => $email,
-                 'password' => $password,
-                 'password_confirmation' => $password,
-                 'confirmed' => false,
-                 'active' => '1',
-                 'confirmation_email' => '1',
-                 'roles' => [1 => 'executive', 2 => 'user'],
-             ])
-             ->seePageIs('/admin/auth/user')
-             ->see('The user was successfully created.')
-             ->seeInDatabase(config('access.table_names.users'),
-                 [
-                     'first_name' => $firstName,
-                     'last_name' => $lastName,
-                     'email' => $email,
-                     'active' => 1,
-                     'confirmed' => 0,
-                 ])
-             ->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => 4, 'role_id' => 2])
-             ->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => 4, 'role_id' => 3]);
+        $response->assertSessionHas(['flash_success' => 'The user was successfully created.']);
 
-        // Get the user that was inserted into the database
-        $user = User::where('email', $email)->first();
-
-        // Check that the user was sent the confirmation email
-        Notification::assertSentTo([$user], UserNeedsConfirmation::class);
-
-        Event::assertDispatched(UserCreated::class);
+        $user = User::where('email', 'john@example.com')->first();
+        Notification::assertSentTo($user, UserNeedsConfirmation::class);
     }
 
-    public function testCreateUserFailsIfEmailExists()
+    /** @test */
+    public function user_email_needs_to_be_unique()
     {
-        $this->actingAs($this->admin)
-             ->visit('/admin/auth/user/create')
-             ->type('User', 'first_name')
-             ->type('Surname', 'last_name')
-             ->type('user@user.com', 'email')
-             ->type('123456', 'password')
-             ->type('123456', 'password_confirmation')
-             ->press('Create')
-             ->seePageIs('/admin/auth/user/create')
-             ->see('The email has already been taken.');
+        $response = $this->actingAs($this->admin)
+            ->post('/admin/auth/user', [
+                'first_name' => 'John',
+                'last_name' => 'Doe',
+                'email' => 'user@user.com', //a user with this email is created by the ACL seed.
+                'password' => 'password',
+                'password_confirmation' => 'password',
+                'active' => '1',
+                'confirmed' => '0',
+                'timezone' => 'UTC',
+                'confirmation_email' => '1',
+                'roles' => [1 => 'executive', 2 => 'user'],
+            ]);
+
+        $response->assertSessionHasErrors('email');
     }
 
-    public function testUpdateUserRequiredFields()
+    /** @test */
+    public function a_user_has_required_fields()
     {
-        $this->actingAs($this->admin)
-             ->visit('/admin/auth/user/3/edit')
-             ->type('', 'first_name')
-             ->type('', 'last_name')
-             ->type('', 'email')
-             ->press('Update')
-             ->see('The first name field is required.')
-             ->see('The last name field is required.')
-             ->see('The email field is required.');
+        $response = $this->actingAs($this->admin)
+            ->post('/admin/auth/user', []);
+
+        $response->assertSessionHasErrors(['first_name', 'last_name', 'email', 'timezone', 'password', 'roles']);
     }
 
-    public function testUpdateUserForm()
+    /** @test */
+    public function a_user_can_be_updated()
     {
-        // Make sure our events are fired
         Event::fake();
 
-        $this->actingAs($this->admin)
-             ->visit('/admin/auth/user/'.$this->user->id.'/edit')
-             ->see($this->user->first_name)
-             ->see($this->user->last_name)
-             ->see($this->user->email)
-            ->submitForm('Update', [
-                'first_name'  => 'User',
-                'last_name'  => 'New',
+        $response = $this->actingAs($this->admin)->patch('/admin/auth/user/' . $this->user->id, [
+            'first_name' => 'User',
+            'last_name' => 'New',
+            'email' => 'user2@user.com',
+            'timezone' => 'UTC',
+            'roles' => ['administrator', 'executive', 'user'],
+        ]);
+
+        $response->assertSessionHas(['flash_success' => 'The user was successfully updated.']);
+        $this->assertDatabaseHas(config('access.table_names.users'),
+            [
+                'id' => $this->user->id,
+                'first_name' => 'User',
+                'last_name' => 'New',
                 'email' => 'user2@user.com',
-                'roles' => ['administrator', 'executive', 'user'],
-            ])
-             ->seePageIs('/admin/auth/user')
-             ->see('The user was successfully updated.')
-             ->seeInDatabase(config('access.table_names.users'),
-                 [
-                     'id' => $this->user->id,
-                     'first_name'  => 'User',
-                     'last_name'  => 'New',
-                     'email' => 'user2@user.com',
-                 ])
-             ->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => 1])
-             ->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => 2])
-             ->seeInDatabase(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => 3]);
+            ]);
+        $this->assertDatabaseHas(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => 1]);
+        $this->assertDatabaseHas(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => 2]);
+        $this->assertDatabaseHas(config('permission.table_names.model_has_roles'), ['model_id' => $this->user->id, 'role_id' => 3]);
 
         Event::assertDispatched(UserUpdated::class);
     }
 
-    public function testDeleteUserForm()
+    /** @test */
+    public function a_user_can_be_deleted()
     {
-        $this->actingAs($this->admin)
-             ->delete('/admin/auth/user/'.$this->user->id)
-             ->assertRedirectedTo('/admin/auth/user/deleted')
-             ->notSeeInDatabase(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null]);
+        $response = $this->actingAs($this->admin)
+            ->delete('/admin/auth/user/' . $this->user->id);
+
+        $response->assertSessionHas(['flash_success' => 'The user was successfully deleted.']);
+        $this->assertDatabaseMissing(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null]);
     }
 
-    public function testChangeUserPasswordForm()
+    /** @test */
+    public function the_user_password_can_be_changed()
     {
-        // Make sure our events are fired
         Event::fake();
 
-        $password = '87654321';
-
-        $this->actingAs($this->admin)
-             ->visit('/admin/auth/user/'.$this->user->id.'/password/change')
-             ->see('Change Password for '.$this->user->name)
-             ->type($password, 'password')
-             ->type($password, 'password_confirmation')
-             ->press('Update')
-             ->seePageIs('/admin/auth/user')
-             ->see('The user\'s password was successfully updated.');
+        $response = $this->actingAs($this->admin)
+            ->patch('/admin/auth/user/' . $this->user->id . '/password/change',[
+                'password' => '12345678',
+                'password_confirmation' => '12345678',
+            ]);
+        $response->assertSessionHas(['flash_success' => 'The user\'s password was successfully updated.']);
 
         Event::assertDispatched(UserPasswordChanged::class);
     }
 
-    public function testChangeUserPasswordDoNotMatch()
+    /** @test */
+    public function the_passwords_must_match()
     {
-        $this->actingAs($this->admin)
-             ->visit('/admin/auth/user/'.$this->user->id.'/password/change')
-             ->see('Change Password for '.$this->user->name)
-             ->type('123456', 'password')
-             ->type('1234567', 'password_confirmation')
-             ->press('Update')
-             ->seePageIs('/admin/auth/user/'.$this->user->id.'/password/change')
-             ->see('The password confirmation does not match.');
+        $response = $this->actingAs($this->admin)
+            ->patch('/admin/auth/user/' . $this->user->id . '/password/change',[
+                'password' => '1234567',
+                'password_confirmation' => '12345678',
+            ]);
+
+        $response->assertSessionHasErrors('password');
     }
 }
