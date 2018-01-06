@@ -171,14 +171,16 @@ class UserRepository extends BaseRepository
                     throw new GeneralException(__('exceptions.frontend.auth.email_taken'));
                 }
 
-                // Force the user to re-verify his email address
-                $user->confirmation_code = md5(uniqid(mt_rand(), true));
-                $user->confirmed = 0;
+                // Force the user to re-verify his email address if config is set
+                if(config('access.users.confirm_email')){
+                    $user->confirmation_code = md5(uniqid(mt_rand(), true));
+                    $user->confirmed = 0;
+                    $user->notify(new UserNeedsConfirmation($user->confirmation_code));
+                }
                 $user->email = $input['email'];
                 $updated = $user->save();
 
                 // Send the new confirmation e-mail
-                $user->notify(new UserNeedsConfirmation($user->confirmation_code));
 
                 return [
                     'success' => $updated,
