@@ -16,13 +16,14 @@ class RegisterUserTest extends TestCase
     use RefreshDatabase;
 
     /**
-     * Helper function for registering a user
+     * Helper function for registering a user.
      * @param array $userData
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
     protected function registerUser($userData = [])
     {
         factory(Role::class)->create(['name' => 'user']);
+
         return $this->post('/register', array_merge([
             'first_name' => 'John',
             'last_name' => 'Doe',
