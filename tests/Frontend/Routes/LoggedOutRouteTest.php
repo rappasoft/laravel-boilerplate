@@ -5,8 +5,6 @@ namespace Tests\Frontend\Routes;
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\BrowserKitTestCase;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserConfirmed;
 use Illuminate\Support\Facades\Notification;
