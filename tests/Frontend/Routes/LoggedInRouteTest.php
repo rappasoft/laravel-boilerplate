@@ -1,20 +1,36 @@
 <?php
 
-use Tests\BrowserKitTestCase;
+namespace Tests\Frontend\Routes;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedOut;
+use Tests\TestCase;
 
 /**
  * Class LoggedInRouteTest.
  */
-class LoggedInRouteTest extends BrowserKitTestCase
+class LoggedInRouteTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * Test the homepage works and the dashboard button appears.
      */
+
+    protected function setUp()
+    {
+        parent::setUp();
+        $this->setUpAcl();
+    }
+
     public function testHomePageLoggedIn()
     {
-        $this->actingAs($this->user)->visit('/')->see('Dashboard')->see($this->user->name)->dontSee('Administration');
+        $this->actingAs($this->user)
+            ->get('/')
+            ->assertSeeText('Dashboard')
+            ->assertSeeText($this->user->name)
+            ->assertDontSee('Administration');
     }
 
     /**
@@ -23,10 +39,10 @@ class LoggedInRouteTest extends BrowserKitTestCase
     public function testDashboardPage()
     {
         $this->actingAs($this->user)
-             ->visit('/dashboard')
-             ->see($this->user->email)
-             ->see('Joined')
-             ->dontSee('Administration');
+            ->get('/dashboard')
+            ->assertSeeText($this->user->email)
+            ->assertSeeText('Joined')
+            ->assertDontSeeText('Administration');
     }
 
     /**
@@ -35,12 +51,12 @@ class LoggedInRouteTest extends BrowserKitTestCase
     public function testAccountPage()
     {
         $this->actingAs($this->user)
-             ->visit('/account')
-             ->see('My Account')
-             ->see('Profile')
-             ->see('Update Information')
-             ->see('Change Password')
-             ->dontSee('Administration');
+            ->get('/account')
+            ->assertSeeText('My Account')
+            ->assertSeeText('Profile')
+            ->assertSeeText('Update Information')
+            ->assertSeeText('Change Password')
+            ->assertDontSeeText('Administration');
     }
 
     /**
@@ -48,7 +64,10 @@ class LoggedInRouteTest extends BrowserKitTestCase
      */
     public function testLoggedInAdmin()
     {
-        $this->actingAs($this->admin)->visit('/')->see('Administration')->see($this->admin->name);
+        $this->actingAs($this->admin)
+            ->get('/')
+            ->assertSeeText('Administration')
+            ->assertSeeText($this->admin->name);
     }
 
     /**
@@ -56,10 +75,13 @@ class LoggedInRouteTest extends BrowserKitTestCase
      */
     public function testLogoutRoute()
     {
-        // Make sure our events are fired
         Event::fake();
 
-        $this->actingAs($this->user)->visit('/logout')->see('Login')->see('Register');
+        $this->actingAs($this->user)
+            ->get('/logout')
+            ->assertRedirect('/');
+
+        $this->assertFalse($this->isAuthenticated());
 
         Event::assertDispatched(UserLoggedOut::class);
     }

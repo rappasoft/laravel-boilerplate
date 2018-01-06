@@ -3,6 +3,8 @@
 namespace Tests;
 
 
+use App\Models\Auth\Role;
+use App\Models\Auth\User;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Foundation\Testing\TestResponse;
 
@@ -12,6 +14,37 @@ use Illuminate\Foundation\Testing\TestResponse;
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
+
+    /**
+     * @var
+     */
+    protected $admin;
+
+    /**
+     * @var
+     */
+    protected $executive;
+
+    /**
+     * @var
+     */
+    protected $user;
+
+    /**
+     * @var
+     */
+    protected $adminRole;
+
+    /**
+     * @var
+     */
+    protected $executiveRole;
+
+    /**
+     * @var
+     */
+    protected $userRole;
+
 
     protected function setUp()
     {
@@ -29,5 +62,20 @@ abstract class TestCase extends BaseTestCase
 
             return $response;
         });
+    }
+
+    protected function setUpAcl()
+    {
+        $this->artisan('db:seed');
+
+        /*
+         * Create class properties to be used in tests
+         */
+        $this->admin = User::find(1);
+        $this->executive = User::find(2);
+        $this->user = User::find(3);
+        $this->adminRole = Role::find(1);
+        $this->executiveRole = Role::find(2);
+        $this->userRole = Role::find(3);
     }
 }
