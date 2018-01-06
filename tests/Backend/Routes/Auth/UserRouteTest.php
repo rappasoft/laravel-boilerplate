@@ -3,15 +3,15 @@
 namespace Tests\Backend\Routes\Auth;
 
 use Carbon\Carbon;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use App\Events\Backend\Auth\User\UserRestored;
 use App\Events\Backend\Auth\User\UserDeactivated;
 use App\Events\Backend\Auth\User\UserReactivated;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Events\Backend\Auth\User\UserPermanentlyDeleted;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-use Tests\TestCase;
 
 /**
  * Class UserRouteTest.
@@ -66,7 +66,7 @@ class UserRouteTest extends TestCase
         $this->setUpAcl();
 
         $this->actingAs($this->admin)
-            ->get('/admin/auth/user/' . $this->user->id)
+            ->get('/admin/auth/user/'.$this->user->id)
             ->assertSeeText('View User')
             ->assertSeeText('Overview')
             ->assertSeeText($this->user->first_name)
@@ -80,7 +80,7 @@ class UserRouteTest extends TestCase
         $this->setUpAcl();
 
         $this->actingAs($this->admin)
-            ->get('/admin/auth/user/' . $this->user->id . '/edit')
+            ->get('/admin/auth/user/'.$this->user->id.'/edit')
             ->assertSeeText('Edit User');
     }
 
@@ -90,8 +90,8 @@ class UserRouteTest extends TestCase
         $this->setUpAcl();
 
         $this->actingAs($this->admin)
-            ->get('/admin/auth/user/' . $this->user->id . '/password/change')
-            ->assertSeeText('Change Password for ' . $this->user->full_name);
+            ->get('/admin/auth/user/'.$this->user->id.'/password/change')
+            ->assertSeeText('Change Password for '.$this->user->full_name);
     }
 
     /** @test  */
@@ -105,7 +105,7 @@ class UserRouteTest extends TestCase
 
         $this->actingAs($this->admin)
             ->from('/admin/auth/user')
-            ->get('/admin/auth/user/' . $this->user->id . '/account/confirm/resend')
+            ->get('/admin/auth/user/'.$this->user->id.'/account/confirm/resend')
             ->assertRedirect('/admin/auth/user');
 
         $this->user->update(['confirmed' => 0]);
@@ -113,7 +113,7 @@ class UserRouteTest extends TestCase
         $this->actingAs($this->admin)
             ->followingRedirects()
             ->from('/admin/auth/user')
-            ->get('/admin/auth/user/' . $this->user->id . '/account/confirm/resend')
+            ->get('/admin/auth/user/'.$this->user->id.'/account/confirm/resend')
             ->assertSeeText('A new confirmation e-mail has been sent to the address on file.');
 
         Notification::assertSentTo($this->user, UserNeedsConfirmation::class);
@@ -126,8 +126,8 @@ class UserRouteTest extends TestCase
 
         $this->actingAs($this->admin)
             ->followingRedirects()
-            ->get('/admin/auth/user/' . $this->user->id . '/login-as')
-            ->assertSeeText('You are currently logged in as ' . $this->user->full_name . '.')
+            ->get('/admin/auth/user/'.$this->user->id.'/login-as')
+            ->assertSeeText('You are currently logged in as '.$this->user->full_name.'.')
             ->assertSeeText($this->admin->full_name);
 
         $this->assertAuthenticatedAs($this->user);
@@ -140,7 +140,7 @@ class UserRouteTest extends TestCase
 
         $this->actingAs($this->admin)
             ->followingRedirects()
-            ->get('/admin/auth/user/' . $this->admin->id . '/login-as')
+            ->get('/admin/auth/user/'.$this->admin->id.'/login-as')
             ->assertSeeText('Do not try to login as yourself.');
     }
 
@@ -151,8 +151,8 @@ class UserRouteTest extends TestCase
 
         $this->actingAs($this->admin)
             ->followingRedirects()
-            ->get('/admin/auth/user/' . $this->user->id . '/login-as')
-            ->assertSeeText('You are currently logged in as ' . $this->user->full_name . '.');
+            ->get('/admin/auth/user/'.$this->user->id.'/login-as')
+            ->assertSeeText('You are currently logged in as '.$this->user->full_name.'.');
 
         $this->assertAuthenticatedAs($this->user);
 
@@ -169,7 +169,7 @@ class UserRouteTest extends TestCase
 
         $this->actingAs($this->admin)
             ->followingRedirects()
-            ->get('/admin/auth/user/' . $this->user->id . '/mark/0')
+            ->get('/admin/auth/user/'.$this->user->id.'/mark/0')
             ->assertSeeText('The user was successfully updated.');
 
         Event::assertDispatched(UserDeactivated::class);
@@ -185,7 +185,7 @@ class UserRouteTest extends TestCase
 
         $this->actingAs($this->admin)
             ->followingRedirects()
-            ->get('/admin/auth/user/' . $this->user->id . '/mark/1')
+            ->get('/admin/auth/user/'.$this->user->id.'/mark/1')
             ->assertSeeText('The user was successfully updated.');
 
         Event::assertDispatched(UserReactivated::class);
@@ -198,7 +198,7 @@ class UserRouteTest extends TestCase
 
         $this->actingAs($this->admin)
             ->followingRedirects()
-            ->get('/admin/auth/user/' . $this->admin->id . '/mark/0')
+            ->get('/admin/auth/user/'.$this->admin->id.'/mark/0')
             ->assertSeeText('You can not do that to yourself.');
     }
 
@@ -218,7 +218,7 @@ class UserRouteTest extends TestCase
 
         $this->actingAs($this->admin)
             ->followingRedirects()
-            ->get('/admin/auth/user/' . $this->user->id . '/restore')
+            ->get('/admin/auth/user/'.$this->user->id.'/restore')
             ->assertSeeText('The user was successfully restored.');
 
         $this->assertDatabaseHas(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null]);
@@ -232,7 +232,7 @@ class UserRouteTest extends TestCase
 
         $this->actingAs($this->admin)
             ->followingRedirects()
-            ->get('/admin/auth/user/' . $this->user->id . '/restore')
+            ->get('/admin/auth/user/'.$this->user->id.'/restore')
             ->assertSeeText('This user is not deleted so it can not be restored.');
     }
 
@@ -243,11 +243,11 @@ class UserRouteTest extends TestCase
         Event::fake();
 
         $this->actingAs($this->admin)
-            ->delete('/admin/auth/user/' . $this->user->id);
+            ->delete('/admin/auth/user/'.$this->user->id);
 
         $this->actingAs($this->admin)
             ->followingRedirects()
-            ->get('/admin/auth/user/' . $this->user->id . '/delete')
+            ->get('/admin/auth/user/'.$this->user->id.'/delete')
             ->assertSeeText('The user was deleted permanently.');
 
         Event::assertDispatched(UserPermanentlyDeleted::class);
@@ -260,7 +260,7 @@ class UserRouteTest extends TestCase
 
         $this->actingAs($this->admin)
             ->followingRedirects()
-            ->get('/admin/auth/user/' . $this->user->id . '/delete')
+            ->get('/admin/auth/user/'.$this->user->id.'/delete')
             ->assertSeeText('This user must be deleted first before it can be destroyed permanently.');
     }
 }

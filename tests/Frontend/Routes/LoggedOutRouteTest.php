@@ -2,14 +2,13 @@
 
 namespace Tests\Frontend\Routes;
 
-use App\Models\Auth\Role;
+use Tests\TestCase;
 use App\Models\Auth\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserConfirmed;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-use Tests\TestCase;
 
 /**
  * Class LoggedOutRouteTest.
@@ -71,10 +70,10 @@ class LoggedOutRouteTest extends TestCase
         $unconfirmed->assignRole('user');
 
         $this->followingRedirects()
-            ->get('/account/confirm/' . $unconfirmed->confirmation_code)
+            ->get('/account/confirm/'.$unconfirmed->confirmation_code)
             ->assertSeeText('Your account has been successfully confirmed!');
 
-        $this->assertEquals(1,$unconfirmed->fresh()->confirmed);
+        $this->assertEquals(1, $unconfirmed->fresh()->confirmed);
 
         Event::assertDispatched(UserConfirmed::class);
     }
@@ -87,7 +86,7 @@ class LoggedOutRouteTest extends TestCase
         $unconfirmed = factory(User::class)->states('unconfirmed')->create();
 
         $this->followingRedirects()
-            ->get('/account/confirm/resend/' . $unconfirmed->uuid)
+            ->get('/account/confirm/resend/'.$unconfirmed->uuid)
             ->assertSeeText('A new confirmation e-mail has been sent to the address on file.');
 
         Notification::assertSentTo([$unconfirmed], UserNeedsConfirmation::class);

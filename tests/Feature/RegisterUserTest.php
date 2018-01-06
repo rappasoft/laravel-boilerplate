@@ -2,14 +2,14 @@
 
 namespace Tests\Feature;
 
-use App\Events\Frontend\Auth\UserRegistered;
-use App\Models\Auth\Role;
-use App\Repositories\Backend\Auth\UserRepository;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
+use App\Models\Auth\Role;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Database\Eloquent\Model;
+use App\Events\Frontend\Auth\UserRegistered;
+use App\Repositories\Backend\Auth\UserRepository;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class RegisterUserTest extends TestCase
 {
@@ -56,7 +56,6 @@ class RegisterUserTest extends TestCase
         $this->assertEquals($newUser->last_name, 'Doe');
         $this->assertTrue(Hash::check('password', $newUser->password));
     }
-
 
     /** @test */
     public function an_event_get_fired_on_registration()

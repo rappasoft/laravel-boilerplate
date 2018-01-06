@@ -2,10 +2,9 @@
 
 namespace Tests\Frontend\Forms;
 
+use Tests\TestCase;
 use App\Models\Auth\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Database\Eloquent\Model;
@@ -13,9 +12,10 @@ use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Mail\Frontend\Contact\SendContact;
 use App\Events\Frontend\Auth\UserRegistered;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 use App\Notifications\Frontend\Auth\UserNeedsPasswordReset;
-use Tests\TestCase;
 
 /**
  * Class LoggedOutFormTest.
@@ -60,7 +60,7 @@ class LoggedOutFormTest extends TestCase
 
         $response->assertRedirect('/dashboard');
 
-        $user = User::where('email','john@example.com')->first();
+        $user = User::where('email', 'john@example.com')->first();
 
         $this->assertEquals('John', $user->first_name);
         $this->assertEquals('Doe', $user->last_name);
@@ -167,7 +167,7 @@ class LoggedOutFormTest extends TestCase
         //Admin Test
         $this->post('/login', [
             'email' => $this->admin->email,
-            'password' => '1234'
+            'password' => '1234',
         ])
             ->assertRedirect('/admin/dashboard');
 
@@ -186,7 +186,7 @@ class LoggedOutFormTest extends TestCase
         $this
             ->post('/login', [
                 'email' => $this->user->email,
-                'password' => '1234'
+                'password' => '1234',
             ])
             ->assertRedirect('/dashboard');
 
@@ -198,7 +198,7 @@ class LoggedOutFormTest extends TestCase
     /** @test */
     public function email_is_required_in_email_password_form()
     {
-        $response = $this->post('/password/reset',['email' => '']);
+        $response = $this->post('/password/reset', ['email' => '']);
         $response->assertSessionHasErrors('email');
     }
 
@@ -208,7 +208,7 @@ class LoggedOutFormTest extends TestCase
         $this->setUpAcl();
         Notification::fake();
 
-        $this->post('password/email',['email' => 'user@user.com']);
+        $this->post('password/email', ['email' => 'user@user.com']);
 
         Notification::assertSentTo([$this->user], UserNeedsPasswordReset::class);
     }
@@ -219,11 +219,11 @@ class LoggedOutFormTest extends TestCase
         $this->setUpAcl();
         $token = $this->app->make('auth.password.broker')->createToken($this->user);
 
-        $response = $this->post('password/reset',[
+        $response = $this->post('password/reset', [
             'token' => $token,
             'email' => $this->user->email,
             'password' => '',
-            'password_confirmation' => ''
+            'password_confirmation' => '',
         ]);
 
         $response->assertSessionHasErrors('password');
@@ -234,11 +234,11 @@ class LoggedOutFormTest extends TestCase
         $this->setUpAcl();
         $token = $this->app->make('auth.password.broker')->createToken($this->user);
 
-        $this->post('password/reset',[
+        $this->post('password/reset', [
             'token' => $token,
             'email' => $this->user->email,
             'password' => 'new_password',
-            'password_confirmation' => 'new_password'
+            'password_confirmation' => 'new_password',
         ]);
 
         $this->assertTrue(Hash::check('new_password', $this->user->fresh()->password));
@@ -255,7 +255,7 @@ class LoggedOutFormTest extends TestCase
         $unconfirmed->assignRole('user');
 
         $this->followingRedirects()
-            ->post('/login',['email' => $unconfirmed->email, 'password' => 'secret'])
+            ->post('/login', ['email' => $unconfirmed->email, 'password' => 'secret'])
             ->assertSeeText('Your account is not confirmed.');
 
         $this->assertFalse($this->isAuthenticated());
@@ -272,7 +272,7 @@ class LoggedOutFormTest extends TestCase
         $unconfirmed->assignRole('user');
 
         $this->followingRedirects()
-            ->post('/login',['email' => $unconfirmed->email, 'password' => 'secret'])
+            ->post('/login', ['email' => $unconfirmed->email, 'password' => 'secret'])
             ->assertSeeText('Your account is currently pending approval.');
 
         $this->assertFalse($this->isAuthenticated());
@@ -287,7 +287,7 @@ class LoggedOutFormTest extends TestCase
         $inactive->assignRole('user');
 
         $this->followingRedirects()
-            ->post('/login',['email' => $inactive->email, 'password' => 'secret'])
+            ->post('/login', ['email' => $inactive->email, 'password' => 'secret'])
             ->assertSeeText('Your account has been deactivated.');
 
         $this->assertFalse($this->isAuthenticated());
@@ -303,7 +303,7 @@ class LoggedOutFormTest extends TestCase
 
         $this->post('/login', [
             'email' => $this->user->email,
-            'password' => '9s8gy8s9diguh4iev'
+            'password' => '9s8gy8s9diguh4iev',
         ]);
     }
 
@@ -316,7 +316,7 @@ class LoggedOutFormTest extends TestCase
             'message' => '',
         ]);
 
-        $response->assertSessionHasErrors(['name','email','message']);
+        $response->assertSessionHasErrors(['name', 'email', 'message']);
     }
 
     /** @test */

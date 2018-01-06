@@ -2,10 +2,10 @@
 
 namespace Tests\Frontend\Routes;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedOut;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 /**
  * Class LoggedInRouteTest.
@@ -17,7 +17,6 @@ class LoggedInRouteTest extends TestCase
     /**
      * Test the homepage works and the dashboard button appears.
      */
-
     protected function setUp()
     {
         parent::setUp();

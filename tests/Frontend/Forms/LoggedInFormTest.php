@@ -2,10 +2,10 @@
 
 namespace Tests\Frontend\Forms;
 
-use App\Models\Auth\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
+use App\Models\Auth\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 /**
  * Class LoggedInFormTest.
@@ -59,7 +59,7 @@ class LoggedInFormTest extends TestCase
                 'last_name' => 'Snowden',
                 'email' => 'edward@snowden.com',
                 'timezone' => 'UTC',
-                'avatar_type' => 'gravatar'
+                'avatar_type' => 'gravatar',
             ]);
 
         $updatedUser = User::find($this->user->id);
@@ -84,9 +84,8 @@ class LoggedInFormTest extends TestCase
                 'last_name' => 'Snowden',
                 'email' => 'edward@snowden.com',
                 'timezone' => 'UTC',
-                'avatar_type' => 'gravatar'
+                'avatar_type' => 'gravatar',
             ]);
-
 
         $updatedUser = User::find($this->user->id);
 

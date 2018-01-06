@@ -2,16 +2,16 @@
 
 namespace Tests\Backend\Forms\Auth;
 
+use Tests\TestCase;
 use App\Models\Auth\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Notification;
 use App\Events\Backend\Auth\User\UserCreated;
 use App\Events\Backend\Auth\User\UserUpdated;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Events\Backend\Auth\User\UserPasswordChanged;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-use Tests\TestCase;
 
 /**
  * Class UserFormTest.
@@ -141,7 +141,7 @@ class UserFormTest extends TestCase
     {
         Event::fake();
 
-        $response = $this->actingAs($this->admin)->patch('/admin/auth/user/' . $this->user->id, [
+        $response = $this->actingAs($this->admin)->patch('/admin/auth/user/'.$this->user->id, [
             'first_name' => 'User',
             'last_name' => 'New',
             'email' => 'user2@user.com',
@@ -168,7 +168,7 @@ class UserFormTest extends TestCase
     public function a_user_can_be_deleted()
     {
         $response = $this->actingAs($this->admin)
-            ->delete('/admin/auth/user/' . $this->user->id);
+            ->delete('/admin/auth/user/'.$this->user->id);
 
         $response->assertSessionHas(['flash_success' => 'The user was successfully deleted.']);
         $this->assertDatabaseMissing(config('access.table_names.users'), ['id' => $this->user->id, 'deleted_at' => null]);
@@ -180,7 +180,7 @@ class UserFormTest extends TestCase
         Event::fake();
 
         $response = $this->actingAs($this->admin)
-            ->patch('/admin/auth/user/' . $this->user->id . '/password/change',[
+            ->patch('/admin/auth/user/'.$this->user->id.'/password/change', [
                 'password' => '12345678',
                 'password_confirmation' => '12345678',
             ]);
@@ -193,7 +193,7 @@ class UserFormTest extends TestCase
     public function the_passwords_must_match()
     {
         $response = $this->actingAs($this->admin)
-            ->patch('/admin/auth/user/' . $this->user->id . '/password/change',[
+            ->patch('/admin/auth/user/'.$this->user->id.'/password/change', [
                 'password' => '1234567',
                 'password_confirmation' => '12345678',
             ]);
