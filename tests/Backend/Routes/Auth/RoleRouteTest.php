@@ -1,27 +1,44 @@
 <?php
 
-use Tests\BrowserKitTestCase;
+namespace Tests\Backend\Routes\Auth;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 /**
  * Class RoleRouteTest.
  */
-class RoleRouteTest extends BrowserKitTestCase
+class RoleRouteTest extends TestCase
 {
-    public function testRolesIndex()
-    {
-        $this->actingAs($this->admin)->visit('/admin/auth/role')->see('Role Management');
-    }
+    use RefreshDatabase;
 
-    public function testCreateRole()
+    /** @test */
+    public function admin_can_access_roles_index()
     {
-        $this->actingAs($this->admin)->visit('/admin/auth/role/create')->see('Create Role');
-    }
+        $this->setUpAcl();
 
-    public function testEditRole()
-    {
         $this->actingAs($this->admin)
-             ->visit('/admin/auth/role/'.$this->userRole->id.'/edit')
-             ->see('Edit Role')
-             ->see($this->userRole->name);
+            ->get('/admin/auth/role')
+            ->assertSeeText('Role Management');
+    }
+
+    /** @test */
+    public function admin_can_access_the_role_create_page()
+    {
+        $this->setUpAcl();
+
+        $this->actingAs($this->admin)
+            ->get('/admin/auth/role/create')
+            ->assertSeeText('Create Role');
+    }
+
+    /** @test */
+    public function an_admin_can_access_the_edit_role_page()
+    {
+        $this->setUpAcl();
+
+        $this->actingAs($this->admin)
+            ->get('/admin/auth/role/' . $this->userRole->id . '/edit')
+            ->assertSeeText('Edit Role');
     }
 }
