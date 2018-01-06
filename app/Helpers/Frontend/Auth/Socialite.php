@@ -44,7 +44,7 @@ class Socialite
         if ($count = count($socialite_enable)) {
             $socialite_links .= '<hr />';
         }
-        
+
         for ($i = 0; $i < $count; $i++) {
             $socialite_links .= ($socialite_links != '' ? ' ' : '').$socialite_enable[$i];
         }
