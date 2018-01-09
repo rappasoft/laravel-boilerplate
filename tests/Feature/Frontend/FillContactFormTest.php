@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Frontend;
 
 use Tests\TestCase;
 use Illuminate\Support\Facades\Mail;
@@ -8,6 +8,12 @@ use App\Mail\Frontend\Contact\SendContact;
 
 class FillContactFormTest extends TestCase
 {
+    /** @test */
+    public function the_contact_route_exists()
+    {
+        $this->get('/contact')->assertStatus(200);
+    }
+
     /** @test */
     public function a_contact_mail_gets_sent()
     {
@@ -20,7 +26,7 @@ class FillContactFormTest extends TestCase
             'message' => 'This is a test message',
         ]);
 
-        $response->assertSessionHas('flash_success');
+        $response->assertSessionHas(['flash_success' => __('alerts.frontend.contact.sent')]);
         Mail::assertSent(SendContact::class);
     }
 
