@@ -16,9 +16,11 @@ return [
     'backend' => [
         'access' => [
             'users' => [
-                'delete_user_confirm'  => 'Estás seguro de querer eliminar este Usuario de forma permanente? Esto puede producir un error grave en aquéllas partes de la aplicación que hagan referencia al mismo. Proceda con cautela. Esta operación no puede ser revertida.',
-                'if_confirmed_off'     => '(Si la confirmación está desactivada)',
-                'restore_user_confirm' => 'Restaurar este Usuario a su estado original?',
+                'delete_user_confirm'   => 'Estás seguro de querer eliminar este Usuario de forma permanente? Esto puede producir un error grave en aquéllas partes de la aplicación que hagan referencia al mismo. Proceda con cautela. Esta operación no puede ser revertida.',
+                'if_confirmed_off'      => '(Si la confirmación está desactivada)',
+                'no_deactivated'        => 'No hay usuarios desactivados.',
+                'no_deleted'            => 'No hay usuarios eliminados.',                
+                'restore_user_confirm'  => 'Restaurar este Usuario a su estado original?',
             ],
         ],
 
@@ -72,24 +74,24 @@ return [
 
     'emails' => [
         'auth' => [
-            'account_confirmed' => 'Su cuenta ha sido confirmada.',
-            'error'                   => 'Ups!',
-            'greeting'                => 'Hola!',
-            'regards'                 => 'Saludos,',
-            'trouble_clicking_button' => 'Si está presentando problemas haciendo clic en el botón ":action_text", copia y pega el enlace en su navegador:',
-            'thank_you_for_using_app' => 'Gracias por utilizar nuestra aplicación!',
+            'account_confirmed'         => 'Su cuenta ha sido confirmada.',
+            'error'                     => 'Ups!',
+            'greeting'                  => 'Hola!',
+            'regards'                   => 'Saludos,',
+            'trouble_clicking_button'   => 'Si está presentando problemas haciendo clic en el botón ":action_text", copia y pega el enlace en su navegador:',
+            'thank_you_for_using_app'   => 'Gracias por utilizar nuestra aplicación!',
 
             'password_reset_subject'    => 'Su enlace de reinicio de contraseña',
             'password_cause_of_email'   => 'Usted está recibiendo este correo porque hemos recibido una solicitud de reinicio de contraseña para su cuenta.',
             'password_if_not_requested' => 'Si usted no hizo la solicitud, ninguna acción es requerida.',
             'reset_password'            => 'Pulse aquí para reiniciar su contraseña',
 
-            'click_to_confirm' => 'Pulse aquí para verificar su cuenta:',
+            'click_to_confirm'          => 'Pulse aquí para verificar su cuenta:',
         ],
 
         'contact' => [
             'email_body_title' => 'Tiene una nueva solicitud del formulario de contacto: a continuación los detalles:',
-            'subject' => '¡Nueva solicitud del formulario de contacto :app_name!',
+            'subject'          => '¡Nueva solicitud del formulario de contacto :app_name!',
         ],
     ],
 
@@ -104,7 +106,7 @@ return [
 
             'js_injected_from_controller' => 'Javascript inyectado desde el Controlador',
 
-            'using_blade_extensions' => 'Usando las extensiones de Blade',
+            'using_blade_extensions'      => 'Usando las extensiones de Blade',
 
             'using_access_helper' => [
                 'array_permissions'     => 'Uso de Access Helper con lista de nombres de Permisos o ID\'s donde el usuario tiene que tenerlos todos.',
@@ -127,10 +129,10 @@ return [
         ],
 
         'user' => [
-            'change_email_notice' => 'If you change your e-mail you will be logged out until you confirm your new e-mail address.',
+            'change_email_notice'  => 'If you change your e-mail you will be logged out until you confirm your new e-mail address.',
             'email_changed_notice' => 'You must confirm your new e-mail address before you can log in again.',
-            'profile_updated'  => 'Perfil actualizado satisfactoriamente.',
-            'password_updated' => 'Contraseña actualizada satisfactoriamente.',
+            'profile_updated'      => 'Perfil actualizado satisfactoriamente.',
+            'password_updated'     => 'Contraseña actualizada satisfactoriamente.',
         ],
 
         'welcome_to' => 'Bienvenido a :place',
