@@ -1,6 +1,8 @@
 /node_modules
 /public/hot
 /public/storage
+/public/js/frontend.js
+/public/mix-manifest.json
 /storage/*.key
 /vendor
 /.idea
@@ -19,5 +21,6 @@ Thumbs.db
 .project
 _ide_helper.php
 composer.phar
+composer.lock
 error.log
 output.txt
