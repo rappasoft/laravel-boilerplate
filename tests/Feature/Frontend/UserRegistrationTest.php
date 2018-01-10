@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Frontend;
 
+use App\Events\Frontend\Auth\UserConfirmed;
 use App\Events\Frontend\Auth\UserRegistered;
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
@@ -74,6 +75,33 @@ class UserRegistrationTest extends TestCase
 
         $this->registerUser(['email' => 'john@example.com']);
         $user = (new UserRepository())->where('email', 'john@example.com')->first();
+
+        Notification::assertSentTo($user, UserNeedsConfirmation::class);
+    }
+
+    /** @test */
+    public function a_user_account_can_confirm_his_email()
+    {
+        $user = factory(User::class)->states('unconfirmed')->create();
+        Event::fake();
+
+        $response = $this->get('/account/confirm/' . $user->confirmation_code);
+
+        $response->assertSessionHas(['flash_success' => __('exceptions.frontend.auth.confirmation.success')]);
+        $this->assertEquals(1,$user->fresh()->confirmed);
+        Event::assertDispatched(UserConfirmed::class);
+    }
+
+    /** @test */
+    public function confirmation_can_be_resent()
+    {
+        Notification::fake();
+
+        $user = factory(User::class)->states('unconfirmed')->create();
+
+        $response = $this->get('/account/confirm/resend/' . $user->uuid);
+
+        $response->assertSessionHas(['flash_success' => __('exceptions.frontend.auth.confirmation.resent')]);
 
         Notification::assertSentTo($user, UserNeedsConfirmation::class);
     }
