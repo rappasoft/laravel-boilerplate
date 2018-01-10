@@ -12,7 +12,6 @@
         "codedungeon/phpunit-result-printer": "0.4.4",
         "creativeorange/gravatar": "~1.0",
         "davejamesmiller/laravel-breadcrumbs": "^4.1",
-        "doctrine/dbal": "^2.6",
         "fideloper/proxy": "~3.3",
         "hieu-le/active": "^3.5",
         "laravel/framework": "5.5.*",
@@ -29,8 +28,7 @@
         "fzaninotto/faker": "~1.4",
         "laravel/browser-kit-testing": "^2.0",
         "mockery/mockery": "~1.0",
-        "phpunit/phpunit": "~6.0",
-        "symfony/thanks": "^1.0"
+        "phpunit/phpunit": "~6.0"
     },
     "autoload": {
         "classmap": [
