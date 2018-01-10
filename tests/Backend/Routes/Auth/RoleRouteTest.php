@@ -2,8 +2,8 @@
 
 namespace Tests\Backend\Routes\Auth;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 /**
  * Class RoleRouteTest.
@@ -38,7 +38,7 @@ class RoleRouteTest extends TestCase
         $this->setUpAcl();
 
         $this->actingAs($this->admin)
-            ->get('/admin/auth/role/' . $this->userRole->id . '/edit')
+            ->get('/admin/auth/role/'.$this->userRole->id.'/edit')
             ->assertSeeText('Edit Role');
     }
 }

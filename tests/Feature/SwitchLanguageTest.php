@@ -10,6 +10,6 @@ class SwitchLanguageTest extends TestCase
     public function the_language_can_be_switched()
     {
         $response = $this->get('/lang/de');
-        $response->assertSessionHas('locale','de');
+        $response->assertSessionHas('locale', 'de');
     }
 }

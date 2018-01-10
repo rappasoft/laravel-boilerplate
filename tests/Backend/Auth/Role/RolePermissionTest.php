@@ -2,9 +2,9 @@
 
 namespace Tests\Backend\Auth\Role;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Spatie\Permission\Models\Permission;
 use Tests\TestCase;
+use Spatie\Permission\Models\Permission;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class RolePermissionTest extends TestCase
 {

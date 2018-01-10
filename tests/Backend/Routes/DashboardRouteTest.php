@@ -2,8 +2,8 @@
 
 namespace Tests\Backend\Routes;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 /**
  * Class DashboardRouteTest.
@@ -11,6 +11,7 @@ use Tests\TestCase;
 class DashboardRouteTest extends TestCase
 {
     use RefreshDatabase;
+
     /** @test */
     public function admin_can_access_admin_dashboard()
     {

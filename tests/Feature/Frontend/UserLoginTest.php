@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Frontend;
 
+use Tests\TestCase;
+use App\Models\Auth\User;
+use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
-use App\Models\Auth\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Event;
 use Illuminate\Validation\ValidationException;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserLoginTest extends TestCase
 {
@@ -25,13 +25,13 @@ class UserLoginTest extends TestCase
     {
         $user = factory(User::class)->create([
             'email' => 'john@example.com',
-            'password' => bcrypt('secret')
+            'password' => bcrypt('secret'),
         ]);
         Event::fake();
 
         $this->post('/login', [
             'email' => 'john@example.com',
-            'password' => 'secret'
+            'password' => 'secret',
         ]);
 
         Event::assertDispatched(UserLoggedIn::class);
@@ -48,7 +48,7 @@ class UserLoginTest extends TestCase
 
         $response = $this->post('/login', [
             'email' => 'john@example.com',
-            'password' => 'secret'
+            'password' => 'secret',
         ]);
 
         $response->assertSessionHas('flash_danger');
@@ -65,7 +65,7 @@ class UserLoginTest extends TestCase
 
         $response = $this->post('/login', [
             'email' => 'john@example.com',
-            'password' => 'secret'
+            'password' => 'secret',
         ]);
 
         $response->assertSessionHas('flash_danger');
@@ -103,7 +103,7 @@ class UserLoginTest extends TestCase
 
         $this->post('/login', [
             'email' => 'not-existend@user.com',
-            'password' => '9s8gy8s9diguh4iev'
+            'password' => '9s8gy8s9diguh4iev',
         ]);
     }
 

@@ -2,12 +2,12 @@
 
 namespace Tests\Feature\Frontend;
 
+use Tests\TestCase;
 use App\Models\Auth\User;
-use App\Notifications\Frontend\Auth\UserNeedsPasswordReset;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Notifications\Frontend\Auth\UserNeedsPasswordReset;
 
 class ResetPasswordTest extends TestCase
 {
@@ -44,7 +44,7 @@ class ResetPasswordTest extends TestCase
             'token' => '',
             'email' => '',
             'password' => '',
-            'password_confirmation' => ''
+            'password_confirmation' => '',
         ]);
 
         $response->assertSessionHasErrors(['token', 'email', 'password']);
@@ -60,7 +60,7 @@ class ResetPasswordTest extends TestCase
             'token' => $token,
             'email' => 'john@example.com',
             'password' => 'new_password',
-            'password_confirmation' => 'new_password'
+            'password_confirmation' => 'new_password',
         ]);
 
         $this->assertTrue(Hash::check('new_password', $user->fresh()->password));

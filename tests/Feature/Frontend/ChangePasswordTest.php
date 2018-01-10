@@ -2,10 +2,10 @@
 
 namespace Tests\Feature\Frontend;
 
-use App\Models\Auth\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
+use App\Models\Auth\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ChangePasswordTest extends TestCase
 {

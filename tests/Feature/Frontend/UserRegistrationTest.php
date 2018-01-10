@@ -2,18 +2,18 @@
 
 namespace Tests\Feature\Frontend;
 
-use App\Events\Frontend\Auth\UserConfirmed;
-use App\Events\Frontend\Auth\UserRegistered;
+use Tests\TestCase;
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
-use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-use App\Repositories\Backend\Auth\UserRepository;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Database\Eloquent\Model;
+use App\Events\Frontend\Auth\UserConfirmed;
+use App\Events\Frontend\Auth\UserRegistered;
 use Illuminate\Support\Facades\Notification;
-use Tests\TestCase;
+use App\Repositories\Backend\Auth\UserRepository;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 
 class UserRegistrationTest extends TestCase
 {
@@ -85,10 +85,10 @@ class UserRegistrationTest extends TestCase
         $user = factory(User::class)->states('unconfirmed')->create();
         Event::fake();
 
-        $response = $this->get('/account/confirm/' . $user->confirmation_code);
+        $response = $this->get('/account/confirm/'.$user->confirmation_code);
 
         $response->assertSessionHas(['flash_success' => __('exceptions.frontend.auth.confirmation.success')]);
-        $this->assertEquals(1,$user->fresh()->confirmed);
+        $this->assertEquals(1, $user->fresh()->confirmed);
         Event::assertDispatched(UserConfirmed::class);
     }
 
@@ -99,7 +99,7 @@ class UserRegistrationTest extends TestCase
 
         $user = factory(User::class)->states('unconfirmed')->create();
 
-        $response = $this->get('/account/confirm/resend/' . $user->uuid);
+        $response = $this->get('/account/confirm/resend/'.$user->uuid);
 
         $response->assertSessionHas(['flash_success' => __('exceptions.frontend.auth.confirmation.resent')]);
 
@@ -114,7 +114,7 @@ class UserRegistrationTest extends TestCase
         $response = $this->registerUser();
         $response->assertSessionHas(['flash_success' => __('exceptions.frontend.auth.confirmation.created_pending')]);
 
-        $response = $this->post('/login',['email' => 'john@example.com','password' => 'password']);
+        $response = $this->post('/login', ['email' => 'john@example.com', 'password' => 'password']);
 
         $response->assertSessionHas(['flash_danger' => __('exceptions.frontend.auth.confirmation.pending')]);
     }

@@ -4,16 +4,16 @@ namespace App\Repositories\Frontend\Auth;
 
 use Carbon\Carbon;
 use App\Models\Auth\User;
-use App\Models\Auth\SocialAccount;
 use Illuminate\Http\UploadedFile;
+use App\Models\Auth\SocialAccount;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use App\Events\Frontend\Auth\UserConfirmed;
 use App\Events\Frontend\Auth\UserProviderRegistered;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * Class UserRepository.
@@ -145,7 +145,7 @@ class UserRepository extends BaseRepository
 
         // Upload profile image if necessary
         if ($image) {
-            $user->avatar_location = $image->store('/avatars','public');
+            $user->avatar_location = $image->store('/avatars', 'public');
         } else {
             // No image being passed
             if ($input['avatar_type'] == 'storage') {

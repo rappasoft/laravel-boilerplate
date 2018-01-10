@@ -2,14 +2,14 @@
 
 namespace Tests\Backend\Forms\Auth;
 
+use Tests\TestCase;
 use App\Models\Auth\Role;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use App\Events\Backend\Auth\Role\RoleCreated;
 use App\Events\Backend\Auth\Role\RoleDeleted;
 use App\Events\Backend\Auth\Role\RoleUpdated;
-use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 /**
  * Class RoleFormTest.
@@ -134,7 +134,7 @@ class RoleFormTest extends TestCase
 
         $this->assertDatabaseHas(config('permission.table_names.roles'), ['id' => $role->id]);
         $this->actingAs($this->admin)
-            ->delete('/admin/auth/role/' . $role->id)
+            ->delete('/admin/auth/role/'.$role->id)
             ->assertSessionHas(['flash_success' => 'The role was successfully deleted.']);
 
         $this->assertDatabaseMissing(config('permission.table_names.roles'), ['id' => $role->id]);

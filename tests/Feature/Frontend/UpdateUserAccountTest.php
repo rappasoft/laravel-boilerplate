@@ -2,20 +2,20 @@
 
 namespace Tests\Feature\Frontend;
 
-use App\Models\Auth\User;
-use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
+use App\Models\Auth\User;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
 
 class UpdateUserAccountTest extends TestCase
 {
     use RefreshDatabase;
 
     /**
-     * helper method for valid user data with option to override
+     * helper method for valid user data with option to override.
      * @param array $userData
      * @return array
      */
@@ -26,7 +26,7 @@ class UpdateUserAccountTest extends TestCase
             'last_name' => 'Doe',
             'email' => 'john@example.com',
             'timezone' => 'UTC',
-            'avatar_type' => 'gravatar'
+            'avatar_type' => 'gravatar',
         ], $userData);
     }
 
@@ -35,7 +35,6 @@ class UpdateUserAccountTest extends TestCase
     {
         $this->get('/account')->assertRedirect('/login');
     }
-
 
     /** @test */
     public function a_user_can_update_his_profile()
@@ -47,7 +46,7 @@ class UpdateUserAccountTest extends TestCase
                 'last_name' => 'Doe',
                 'email' => 'john@example.com',
                 'timezone' => 'UTC',
-                'avatar_type' => 'gravatar'
+                'avatar_type' => 'gravatar',
             ]));
 
         $user = $user->fresh();
@@ -123,7 +122,7 @@ class UpdateUserAccountTest extends TestCase
         $this->actingAs($user)
             ->patch('/profile/update', $this->getValidUserData([
                 'avatar_type' => 'storage',
-                'avatar_location' => UploadedFile::fake()->image('avatar.jpg')
+                'avatar_location' => UploadedFile::fake()->image('avatar.jpg'),
             ]));
 
         Storage::disk('public')->assertExists("{$user->fresh()->avatar_location}");
