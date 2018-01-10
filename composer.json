@@ -9,6 +9,7 @@
         "appstract/laravel-blade-directives": "^0.4.4",
         "arcanedev/log-viewer": "^4.4",
         "arcanedev/no-captcha": "^5.0",
+        "codedungeon/phpunit-result-printer": "0.4.4",
         "creativeorange/gravatar": "~1.0",
         "davejamesmiller/laravel-breadcrumbs": "^4.1",
         "doctrine/dbal": "^2.6",
