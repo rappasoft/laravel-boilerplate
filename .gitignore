@@ -18,6 +18,7 @@ Thumbs.db
 *.sublime-workspace
 .project
 _ide_helper.php
+.phpstorm.meta.php
 composer.phar
 error.log
 output.txt
