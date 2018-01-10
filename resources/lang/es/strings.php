@@ -19,7 +19,7 @@ return [
                 'delete_user_confirm'   => 'Estás seguro de querer eliminar este Usuario de forma permanente? Esto puede producir un error grave en aquéllas partes de la aplicación que hagan referencia al mismo. Proceda con cautela. Esta operación no puede ser revertida.',
                 'if_confirmed_off'      => '(Si la confirmación está desactivada)',
                 'no_deactivated'        => 'No hay usuarios desactivados.',
-                'no_deleted'            => 'No hay usuarios eliminados.',                
+                'no_deleted'            => 'No hay usuarios eliminados.',
                 'restore_user_confirm'  => 'Restaurar este Usuario a su estado original?',
             ],
         ],

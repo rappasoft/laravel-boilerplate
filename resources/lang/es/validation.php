@@ -84,7 +84,7 @@ return [
     'string'               => 'El campo :attribute debe contener texto.',
     'timezone'             => 'El campo :attribute debe contener una zona horaria válida.',
     'unique'               => 'El campo :attribute ya está en uso.',
-    'uploaded'             => 'El campo :attribute no se pudo actualizar.',    
+    'uploaded'             => 'El campo :attribute no se pudo actualizar.',
     'url'                  => 'El enlace :attribute debe tener un formato válido.',
 
     /*
@@ -132,7 +132,7 @@ return [
 
                     'name'   => 'Nombre',
                     'first_name' => 'Nombre',
-                    'last_name'  => 'Apellidos',                    
+                    'last_name'  => 'Apellidos',
                     'system' => 'Sistema?',
                 ],
 
@@ -155,7 +155,7 @@ return [
                     'password_confirmation'   => 'Confirmación de la Contraseña',
                     'send_confirmation_email' => 'Enviar Correo de confirmación',
                     'timezone'                => 'Zona Horaria',
-                    'language'                => 'Lenguaje',                    
+                    'language'                => 'Lenguaje',
                 ],
             ],
         ],
@@ -164,7 +164,7 @@ return [
             'avatar'                    => 'Localización Avatar',
             'email'                     => 'Dirección de Correo',
             'first_name'                => 'Nombre',
-            'last_name'                 => 'Apellidos',               
+            'last_name'                 => 'Apellidos',
             'name'                      => 'Nombre completo',
             'password'                  => 'Contraseña',
             'password_confirmation'     => 'Confirmación de la Contraseña',
@@ -174,7 +174,7 @@ return [
             'new_password'              => 'Nueva Contraseña',
             'new_password_confirmation' => 'Confirmación de la Nueva Contraseña',
             'timezone'                  => 'Zona Horaria',
-            'language'                  => 'Lenguaje',            
+            'language'                  => 'Lenguaje',
         ],
     ],
 

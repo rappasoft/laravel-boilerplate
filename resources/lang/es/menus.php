@@ -79,5 +79,5 @@ return [
             'th'    => '(Thai)',
             'tr'    => '(Turkish)',
         ],
-    ],  
+    ],
 ];
