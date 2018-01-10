@@ -18,16 +18,7 @@ class RoleFormTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function the_name_is_required()
-    {
-        $this->setUpAcl();
 
-        $response = $this->actingAs($this->admin)
-            ->post('/admin/auth/role', ['name' => '']);
-
-        $response->assertSessionHasErrors('name');
-    }
 
     /** @test */
     public function testCreateRoleFormSpecificPermissions()
