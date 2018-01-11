@@ -1,11 +1,10 @@
 <?php
 
-
 namespace Tests\Feature\Backend\Role;
 
-
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
 
 class ReadRolesTest extends TestCase
 {
@@ -18,5 +17,4 @@ class ReadRolesTest extends TestCase
 
         $this->get('/admin/auth/role')->assertStatus(200);
     }
-
 }

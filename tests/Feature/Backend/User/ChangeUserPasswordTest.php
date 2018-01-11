@@ -1,14 +1,12 @@
 <?php
 
-
 namespace Tests\Feature\Backend\User;
 
-
-use App\Events\Backend\Auth\User\UserPasswordChanged;
-use App\Models\Auth\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
+use App\Models\Auth\User;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Events\Backend\Auth\User\UserPasswordChanged;
 
 class ChangeUserPasswordTest extends TestCase
 {
@@ -55,5 +53,4 @@ class ChangeUserPasswordTest extends TestCase
 
         Event::assertDispatched(UserPasswordChanged::class);
     }
-
 }

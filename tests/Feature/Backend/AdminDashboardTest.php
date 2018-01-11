@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Backend;
 
-use App\Models\Auth\User;
 use Tests\TestCase;
+use App\Models\Auth\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 /**
