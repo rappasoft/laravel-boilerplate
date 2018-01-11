@@ -1,15 +1,13 @@
 <?php
 
-
 namespace Tests\Feature\Backend\User;
 
-
-use App\Events\Backend\Auth\User\UserPermanentlyDeleted;
-use App\Events\Backend\Auth\User\UserRestored;
-use App\Models\Auth\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
+use App\Models\Auth\User;
+use Illuminate\Support\Facades\Event;
+use App\Events\Backend\Auth\User\UserRestored;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Events\Backend\Auth\User\UserPermanentlyDeleted;
 
 class DeleteUserTest extends TestCase
 {
