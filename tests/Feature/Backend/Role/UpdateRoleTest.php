@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Backend\Role;
 
-use App\Events\Backend\Auth\Role\RoleUpdated;
-use App\Models\Auth\Role;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
+use App\Models\Auth\Role;
+use Illuminate\Support\Facades\Event;
+use App\Events\Backend\Auth\Role\RoleUpdated;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UpdateRoleTest extends TestCase
 {
@@ -49,7 +49,7 @@ class UpdateRoleTest extends TestCase
         $role = factory(Role::class)->create();
         $this->loginAsAdmin();
 
-        $this->patch("/admin/auth/role/{$role->id}", ['name' => 'new name','permissions' => ['view backend']]);
+        $this->patch("/admin/auth/role/{$role->id}", ['name' => 'new name', 'permissions' => ['view backend']]);
 
         $this->assertEquals('new name', $role->fresh()->name);
     }
@@ -61,7 +61,7 @@ class UpdateRoleTest extends TestCase
         Event::fake();
         $this->loginAsAdmin();
 
-        $this->patch("/admin/auth/role/{$role->id}", ['name' => 'new name','permissions' => ['view backend']]);
+        $this->patch("/admin/auth/role/{$role->id}", ['name' => 'new name', 'permissions' => ['view backend']]);
 
         Event::assertDispatched(RoleUpdated::class);
     }

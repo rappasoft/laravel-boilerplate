@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Backend\Role;
 
-use App\Events\Backend\Auth\Role\RoleCreated;
-use App\Models\Auth\Role;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
+use App\Models\Auth\Role;
+use Illuminate\Support\Facades\Event;
+use App\Events\Backend\Auth\Role\RoleCreated;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CreateRoleTest extends TestCase
 {
@@ -55,7 +55,7 @@ class CreateRoleTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $this->post('/admin/auth/role', ['name' => 'new role','permissions' => ['view backend']]);
+        $this->post('/admin/auth/role', ['name' => 'new role', 'permissions' => ['view backend']]);
 
         $role = Role::where(['name' => 'new role'])->first();
 
@@ -68,7 +68,7 @@ class CreateRoleTest extends TestCase
         $this->loginAsAdmin();
         Event::fake();
 
-        $this->post('/admin/auth/role', ['name' => 'new role','permissions' => ['view backend']]);
+        $this->post('/admin/auth/role', ['name' => 'new role', 'permissions' => ['view backend']]);
 
         Event::assertDispatched(RoleCreated::class);
     }

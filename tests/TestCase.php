@@ -4,9 +4,8 @@ namespace Tests;
 
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
-use Illuminate\Foundation\Testing\TestResponse;
-use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 /**
  * Class TestCase.
