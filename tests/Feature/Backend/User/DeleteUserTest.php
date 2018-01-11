@@ -16,6 +16,16 @@ class DeleteUserTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function an_admin_can_access_deleted_users_page()
+    {
+        $this->loginAsAdmin();
+
+        $response = $this->get('/admin/auth/user/deleted');
+
+        $response->assertStatus(200);
+    }
+
+    /** @test */
     public function a_user_must_be_soft_deleted_before_permanently_deleted()
     {
         $this->loginAsAdmin();
@@ -63,5 +73,17 @@ class DeleteUserTest extends TestCase
         $response = $this->get("/admin/auth/user/{$user->id}/restore");
 
         $response->assertSessionHas(['flash_danger' => __('exceptions.backend.access.users.cant_restore')]);
+    }
+
+    /** @test */
+    public function a_user_can_be_deleted()
+    {
+        $this->loginAsAdmin();
+        $user = factory(User::class)->create();
+
+        $response = $this->delete("/admin/auth/user/{$user->id}");
+
+        $response->assertSessionHas(['flash_success' => __('alerts.backend.users.deleted')]);
+        $this->assertDatabaseMissing(config('access.table_names.users'), ['id' => $user->id, 'deleted_at' => null]);
     }
 }

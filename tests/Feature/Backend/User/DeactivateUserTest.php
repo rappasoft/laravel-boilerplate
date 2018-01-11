@@ -14,6 +14,16 @@ class DeactivateUserTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function an_admin_can_access_deactivated_users_page()
+    {
+        $this->loginAsAdmin();
+
+        $response = $this->get('/admin/auth/user/deactivated');
+
+        $response->assertStatus(200);
+    }
+
+    /** @test */
     public function an_admin_can_deactivate_users()
     {
         $user = factory(User::class)->create();
