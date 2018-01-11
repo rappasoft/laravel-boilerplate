@@ -54,3 +54,9 @@ $factory->state(User::class, 'unconfirmed', function () {
         'confirmed' => 0,
     ];
 });
+
+$factory->state(User::class, 'softDeleted', function () {
+    return [
+        'deleted_at' => \Illuminate\Support\Carbon::now(),
+    ];
+});

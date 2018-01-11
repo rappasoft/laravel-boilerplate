@@ -4,7 +4,7 @@ namespace Tests;
 
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
-use Illuminate\Foundation\Testing\TestResponse;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 /**
@@ -44,24 +44,6 @@ abstract class TestCase extends BaseTestCase
      */
     protected $userRole;
 
-    protected function setUp()
-    {
-        parent::setUp();
-
-        $test = $this;
-
-        TestResponse::macro('followRedirects', function ($testCase = null) use ($test) {
-            $response = $this;
-            $testCase = $testCase ?: $test;
-
-            while ($response->isRedirect()) {
-                $response = $testCase->get($response->headers->get('Location'));
-            }
-
-            return $response;
-        });
-    }
-
     protected function setUpAcl()
     {
         $this->artisan('db:seed');
@@ -75,5 +57,16 @@ abstract class TestCase extends BaseTestCase
         $this->adminRole = Role::find(1);
         $this->executiveRole = Role::find(2);
         $this->userRole = Role::find(3);
+    }
+
+    protected function loginAsAdmin()
+    {
+        $adminRole = factory(Role::class)->create(['name' => config('access.users.admin_role')]);
+        $adminRole->givePermissionTo(factory(Permission::class)->create(['name' => 'view backend']));
+        $user = factory(User::class)->create();
+        $user->assignRole($adminRole);
+        $this->actingAs($user);
+
+        return $user;
     }
 }
