@@ -2,7 +2,6 @@
 
 @section('title', app_name() . ' | '.__('labels.frontend.passwords.expired_password_box_title'))
 
-
 @section('content')
     <div class="row justify-content-center align-items-center">
         <div class="col col-sm-6 align-self-center">
