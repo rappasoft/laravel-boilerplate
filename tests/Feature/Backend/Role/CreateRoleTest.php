@@ -13,6 +13,14 @@ class CreateRoleTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function an_admin_can_access_the_create_role_page()
+    {
+        $this->loginAsAdmin();
+
+        $this->get('/admin/auth/role/create')->assertStatus(200);
+    }
+
+    /** @test */
     public function the_name_is_required()
     {
         $this->loginAsAdmin();
