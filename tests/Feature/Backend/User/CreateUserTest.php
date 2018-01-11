@@ -1,8 +1,8 @@
 <?php
 
 namespace Tests\Feature\Backend\User;
-use Tests\TestCase;
 
+use Tests\TestCase;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Notification;
 use App\Events\Backend\Auth\User\UserCreated;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-
 
 class CreateUserTest extends TestCase
 {
