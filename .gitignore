@@ -1,6 +1,10 @@
 /node_modules
-/public/hot
-/public/storage
+/public/*
+!/public/img/backend/logo.png
+!/public/.htaccess
+!/public/favicon.ico
+!/public/index.php
+!/public/robots.txt
 /storage/*.key
 /vendor
 /.idea
