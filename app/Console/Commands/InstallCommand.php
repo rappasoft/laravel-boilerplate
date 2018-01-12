@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\FilesystemManager;
-use Illuminate\Support\Facades\Storage;
 
 class InstallCommand extends Command
 {
@@ -23,7 +22,7 @@ class InstallCommand extends Command
     protected $description = 'This command will start and interactive installation process';
 
     /**
-     * @var FilesystemManager $filesystem
+     * @var FilesystemManager
      */
     protected $filesystem;
 
@@ -41,7 +40,7 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        if (!$this->filesystem->disk('base')->exists('.env')) {
+        if (! $this->filesystem->disk('base')->exists('.env')) {
             $this->info('Copy .env.example to .env...');
             $this->filesystem->disk('base')->copy('.env.example', '.env');
             $this->info('Generating application key');
@@ -52,7 +51,7 @@ class InstallCommand extends Command
             $this->info('.env file found. Abort installation...');
         }
 
-        if (!$this->filesystem->disk('base')->exists('node_modules')) {
+        if (! $this->filesystem->disk('base')->exists('node_modules')) {
             $this->info('Download frontend dependencies...');
             exec('npm install');
             $this->info('Building Frontend...');
