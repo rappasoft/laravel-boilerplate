@@ -14,13 +14,14 @@ return [
     */
 
     'general' => [
-        'all'     => 'Todos',
-        'yes'     => 'Sí',
-        'no'      => 'No',
-        'custom'  => 'Personalizado',
-        'actions' => 'Acciones',
-        'active'  => 'Activo',
-        'buttons' => [
+        'all'       => 'Todos',
+        'yes'       => 'Sí',
+        'no'        => 'No',
+        'copyright' => 'Copyright',
+        'custom'    => 'Personalizado',
+        'actions'   => 'Acciones',
+        'active'    => 'Activo',
+        'buttons'   => [
             'save'   => 'Guardar',
             'update' => 'Actualizar',
         ],
@@ -62,17 +63,21 @@ return [
                 'permissions'         => 'Permisos',
 
                 'table' => [
-                    'confirmed'      => 'Confirmado',
-                    'created'        => 'Creado',
-                    'email'          => 'Correo',
-                    'id'             => 'ID',
-                    'last_updated'   => 'Última modificación',
-                    'name'           => 'Nombre',
-                    'no_deactivated' => 'Ningún Usuario desactivado disponible',
-                    'no_deleted'     => 'Ningún Usuario eliminado disponible',
-                    'roles'          => 'Roles',
-                    'social' => 'Cuenta Social',
-                    'total'          => 'Todos los Usuarios',
+                    'confirmed'         => 'Confirmado',
+                    'created'           => 'Creado',
+                    'email'             => 'Correo',
+                    'id'                => 'ID',
+                    'last_updated'      => 'Última modificación',
+                    'name'              => 'Nombre',
+                    'first_name'        => 'Nombre',
+                    'last_name'         => 'Apellidos',
+                    'no_deactivated'    => 'Ningún Usuario desactivado disponible',
+                    'no_deleted'        => 'Ningún Usuario eliminado disponible',
+                    'other_permissions' => 'Otros Permisos',
+                    'permissions'       => 'Permisos',
+                    'roles'             => 'Roles',
+                    'social'            => 'Cuenta Social',
+                    'total'             => 'Todos los Usuarios',
                 ],
 
                 'tabs' => [
@@ -90,6 +95,8 @@ return [
                             'email'        => 'E-mail',
                             'last_updated' => 'Última Actualización',
                             'name'         => 'Nombre',
+                            'first_name'   => 'Nombre',
+                            'last_name'    => 'Apellidos',
                             'status'       => 'Estatus',
                         ],
                     ],
@@ -117,9 +124,11 @@ return [
         ],
 
         'passwords' => [
-            'forgot_password'                 => 'Se ha olvidado la contraseña?',
+            'expired_password_box_title'      => 'Tu contraseña a expirado.',
+            'forgot_password'                 => 'Has olvidado la contraseña?',
             'reset_password_box_title'        => 'Reiniciar contraseña',
             'reset_password_button'           => 'Reiniciar contraseña',
+            'update_password_button'          => 'Actualizar contraseña',
             'send_password_reset_link_button' => 'Enviar el correo de verificación',
         ],
 
@@ -135,9 +144,10 @@ return [
                 'email'              => 'Correo',
                 'last_updated'       => 'Última modificación',
                 'name'               => 'Nombre',
+                'first_name'         => 'Nombre',
+                'last_name'          => 'Apellidos',
                 'update_information' => 'Actualizar la información',
             ],
         ],
-
     ],
 ];

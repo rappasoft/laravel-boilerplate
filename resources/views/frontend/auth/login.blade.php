@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', app_name() . ' | Login')
+@section('title', app_name() . ' | '.__('labels.frontend.auth.login_box_title'))
 
 @section('content')
     <div class="row justify-content-center align-items-center">
