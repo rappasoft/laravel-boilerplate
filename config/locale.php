@@ -38,6 +38,7 @@ return [
         'en'    => ['en', 'en_US', false],
         'es'    => ['es', 'es_ES', false],
         'fr'    => ['fr', 'fr_FR', false],
+        'he'    => ['he', 'he_IL', true],
         'id'    => ['id', 'id_ID', false],
         'it'    => ['it', 'it_IT', false],
         'ja'    => ['ja', 'ja-JP', false],
