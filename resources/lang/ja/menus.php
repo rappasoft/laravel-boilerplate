@@ -68,6 +68,7 @@ return [
             'en'    => '英語（English）',
             'es'    => 'スペイン語（Spanish）',
             'fr'    => 'フランス語（French）',
+            'he'    => 'ヘブライ語 (Hebrew)',
             'id'    => 'インドネシア語（Indonesian）',
             'it'    => 'イタリア語（Italian）',
             'ja'    => '日本語（Japanese）',
