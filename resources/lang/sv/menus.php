@@ -68,6 +68,7 @@ return [
             'pt_BR' => 'Brasiliansk portugisiska (Brazilian Portuguese)',
             'en'    => 'Engelska (English)',
             'fr'    => 'Franska (French)',
+            'he'    => 'Hebreiska (Hebrew)',
             'id'    => 'Indonesiska (Indonesian)',
             'it'    => 'Italienska (Italian)',
             'ja'    => '(Japanese)',
