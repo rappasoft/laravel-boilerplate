@@ -40,6 +40,8 @@ class UpdateUserAccountTest extends TestCase
     public function a_user_can_update_his_profile()
     {
         $user = factory(User::class)->create();
+        config(['access.users.change_email' => true]);
+
         $this->actingAs($user)
             ->patch('/profile/update', $this->getValidUserData([
                 'first_name' => 'John',
@@ -48,7 +50,6 @@ class UpdateUserAccountTest extends TestCase
                 'timezone' => 'UTC',
                 'avatar_type' => 'gravatar',
             ]));
-
         $user = $user->fresh();
 
         $this->assertEquals($user->first_name, 'John');
@@ -133,6 +134,7 @@ class UpdateUserAccountTest extends TestCase
     {
         $user = factory(User::class)->create();
         config(['access.users.confirm_email' => true]);
+        config(['access.users.change_email' => true]);
         Notification::fake();
 
         $this->assertEquals($user->confirmed, 1);

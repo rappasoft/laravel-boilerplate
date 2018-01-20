@@ -216,6 +216,8 @@ class UserRegistrationTest extends TestCase
     /** @test */
     public function it_redirects_to_dashboard_after_successful_registration()
     {
+        config(['access.users.confirm_email' => false]);
+
         $response = $this->registerUser();
 
         $response->assertRedirect('/dashboard');
