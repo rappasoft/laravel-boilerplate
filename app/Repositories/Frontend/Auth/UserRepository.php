@@ -4,11 +4,13 @@ namespace App\Repositories\Frontend\Auth;
 
 use Carbon\Carbon;
 use App\Models\Auth\User;
+use Illuminate\Http\UploadedFile;
 use App\Models\Auth\SocialAccount;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use App\Events\Frontend\Auth\UserConfirmed;
 use App\Events\Frontend\Auth\UserProviderRegistered;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
@@ -80,12 +82,14 @@ class UserRepository extends BaseRepository
         throw new GeneralException(__('exceptions.backend.access.users.not_found'));
     }
 
-    /**
-     * @param array $data
-     *
-     * @return mixed
-     */
-    public function create(array $data)
+	/**
+	 * @param array $data
+	 *
+	 * @return \Illuminate\Database\Eloquent\Model|mixed
+	 * @throws \Exception
+	 * @throws \Throwable
+	 */
+	public function create(array $data)
     {
         return DB::transaction(function () use ($data) {
             $user = parent::create([
@@ -128,7 +132,7 @@ class UserRepository extends BaseRepository
     /**
      * @param       $id
      * @param array $input
-     * @param bool  $image
+     * @param bool|UploadedFile  $image
      *
      * @return array|bool
      * @throws GeneralException
@@ -143,9 +147,7 @@ class UserRepository extends BaseRepository
 
         // Upload profile image if necessary
         if ($image) {
-            $name = md5(uniqid(mt_rand(), true)).'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('img/frontend/user'), $name);
-            $user->avatar_location = 'img/frontend/user/'.$name;
+            $user->avatar_location = $image->store('/avatars', 'public');
         } else {
             // No image being passed
             if ($input['avatar_type'] == 'storage') {
@@ -156,7 +158,7 @@ class UserRepository extends BaseRepository
             } else {
                 // If there is a current image, and they are not using it anymore, get rid of it
                 if (strlen(auth()->user()->avatar_location)) {
-                    unlink(public_path(auth()->user()->avatar_location));
+                    Storage::disk('public')->delete(auth()->user()->avatar_location);
                 }
 
                 $user->avatar_location = null;
@@ -171,14 +173,16 @@ class UserRepository extends BaseRepository
                     throw new GeneralException(__('exceptions.frontend.auth.email_taken'));
                 }
 
-                // Force the user to re-verify his email address
-                $user->confirmation_code = md5(uniqid(mt_rand(), true));
-                $user->confirmed = 0;
+                // Force the user to re-verify his email address if config is set
+                if (config('access.users.confirm_email')) {
+                    $user->confirmation_code = md5(uniqid(mt_rand(), true));
+                    $user->confirmed = 0;
+                    $user->notify(new UserNeedsConfirmation($user->confirmation_code));
+                }
                 $user->email = $input['email'];
                 $updated = $user->save();
 
                 // Send the new confirmation e-mail
-                $user->notify(new UserNeedsConfirmation($user->confirmation_code));
 
                 return [
                     'success' => $updated,

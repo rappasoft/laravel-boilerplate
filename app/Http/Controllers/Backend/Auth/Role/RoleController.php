@@ -105,15 +105,16 @@ class RoleController extends Controller
     }
 
     /**
-     * @param Role              $role
+     * @param Role $role
      * @param ManageRoleRequest $request
      *
      * @return mixed
+     * @throws \Exception
      */
     public function destroy(Role $role, ManageRoleRequest $request)
     {
         if ($role->isAdmin()) {
-            return redirect()->route('admin.auth.role.index')->withFlashDanger('You can not delete the administrator role.');
+            return redirect()->route('admin.auth.role.index')->withFlashDanger(__('exceptions.backend.access.roles.cant_delete_admin'));
         }
 
         $this->roleRepository->deleteById($role->id);
