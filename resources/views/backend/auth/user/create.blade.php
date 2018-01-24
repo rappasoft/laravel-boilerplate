@@ -88,7 +88,7 @@
                             <div class="col-md-10">
                                 <select name="timezone" id="timezone" class="form-control" required="required">
                                     @foreach (timezone_identifiers_list() as $timezone)
-                                        <option value="{{ $timezone }}" {{ $timezone == 'UTC' ? 'selected' : '' }} {{ $timezone == old('timezone') ? ' selected' : '' }}>{{ $timezone }}</option>
+                                        <option value="{{ $timezone }}" {{ $timezone == config('app.timezone') ? 'selected' : '' }} {{ $timezone == old('timezone') ? ' selected' : '' }}>{{ $timezone }}</option>
                                     @endforeach
                                 </select>
                             </div><!--col-->
