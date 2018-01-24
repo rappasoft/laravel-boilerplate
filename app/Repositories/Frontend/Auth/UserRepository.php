@@ -82,12 +82,14 @@ class UserRepository extends BaseRepository
         throw new GeneralException(__('exceptions.backend.access.users.not_found'));
     }
 
-    /**
-     * @param array $data
-     *
-     * @return mixed
-     */
-    public function create(array $data)
+	/**
+	 * @param array $data
+	 *
+	 * @return \Illuminate\Database\Eloquent\Model|mixed
+	 * @throws \Exception
+	 * @throws \Throwable
+	 */
+	public function create(array $data)
     {
         return DB::transaction(function () use ($data) {
             $user = parent::create([
