@@ -1,10 +1,7 @@
 /node_modules
-/public/*
-!/public/img/backend/logo.png
-!/public/.htaccess
-!/public/favicon.ico
-!/public/index.php
-!/public/robots.txt
+/public/hot
+/public/storage
+public/images
 /storage/*.key
 /vendor
 /.idea
@@ -22,6 +19,7 @@ Thumbs.db
 *.sublime-workspace
 .project
 _ide_helper.php
+.phpstorm.meta.php
 composer.phar
 error.log
 output.txt

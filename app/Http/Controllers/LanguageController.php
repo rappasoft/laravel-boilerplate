@@ -12,7 +12,7 @@ class LanguageController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function swap($locale)
+    public function __invoke($locale)
     {
         if (array_key_exists($locale, config('locale.languages'))) {
             session()->put('locale', $locale);
