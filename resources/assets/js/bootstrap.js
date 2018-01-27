@@ -16,7 +16,6 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     // Required for BS4
-    window.Tether = require('tether');
     window.Popper = Popper;
 
     require('bootstrap');
