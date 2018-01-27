@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Filesystem\FilesystemManager;
 
 class InstallCommand extends Command
 {

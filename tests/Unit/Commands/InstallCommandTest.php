@@ -4,7 +4,6 @@ namespace Tests\Unit\Commands;
 
 use Illuminate\Support\Facades\File;
 use Mockery;
-use Mockery\MockInterface;
 use Tests\TestCase;
 
 class InstallCommandTest extends TestCase
