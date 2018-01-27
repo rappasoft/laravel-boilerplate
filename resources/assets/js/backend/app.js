@@ -1,25 +1,3 @@
-/*****
- * CONFIGURATION
- */
-//Main navigation
-$.navigation = $('nav > ul.nav');
-
-$.panelIconOpened = 'icon-arrow-up';
-$.panelIconClosed = 'icon-arrow-down';
-
-//Default colours
-$.brandPrimary =  '#20a8d8';
-$.brandSuccess =  '#4dbd74';
-$.brandInfo =     '#63c2de';
-$.brandWarning =  '#f8cb00';
-$.brandDanger =   '#f86c6b';
-
-$.grayDark =      '#2a2c36';
-$.gray =          '#55595c';
-$.grayLight =     '#818a91';
-$.grayLighter =   '#d1d4d7';
-$.grayLightest =  '#f8f9fa';
-
 'use strict';
 
 /****
@@ -27,7 +5,7 @@ $.grayLightest =  '#f8f9fa';
  */
 $(document).ready(function($){
     // Dropdown Menu
-    $.navigation.on('click', 'a', function(e){
+    $('nav > ul.nav').on('click', 'a', function(e){
 
         if ($.ajaxLoad) {
             e.preventDefault();
@@ -42,8 +20,8 @@ $(document).ready(function($){
 
     function resizeBroadcast() {
 
-        var timesRun = 0;
-        var interval = setInterval(function(){
+        let timesRun = 0;
+        let interval = setInterval(function(){
             timesRun += 1;
             if(timesRun === 5){
                 clearInterval(interval);
