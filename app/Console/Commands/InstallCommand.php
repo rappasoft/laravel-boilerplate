@@ -19,51 +19,47 @@ class InstallCommand extends Command
      *
      * @var string
      */
-    protected $description = 'This command will start and interactive installation process';
-
-    /**
-     * @var FilesystemManager
-     */
-    protected $filesystem;
-
-    public function __construct(FilesystemManager $filesystem)
-    {
-        parent::__construct();
-        $this->filesystem = $filesystem;
-    }
+    protected $description = 'This command will start an interactive installation process';
 
     /**
      * Execute the console command.
      *
-     * @return mixed
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * @return void
      */
     public function handle()
     {
-        if (! $this->filesystem->disk('base')->exists('.env')) {
-            $this->info('Copy .env.example to .env...');
-            $this->filesystem->disk('base')->copy('.env.example', '.env');
-            $this->info('Generating application key');
+        $this->info('Laravel Boilerplate Installation');
+
+        $this->createEnvFile();
+
+        if (strlen(config('app.key')) === 0) {
             $this->call('key:generate');
-            $this->info('Updating database credentials...');
-            $this->updateEnvironmentFile($this->requestDatabaseCredentials());
-        } else {
-            $this->info('.env file found. Abort installation...');
+            $this->line('Application Key properly generated');
         }
 
-        if (! $this->filesystem->disk('base')->exists('node_modules')) {
-            $this->info('Download frontend dependencies...');
-            exec('npm install');
-            $this->info('Building Frontend...');
-            $this->info('npm run dev');
-        } else {
-            $this->info('Frontend dependencies already installed. Skipping...');
+        $this->updateEnvironmentFile($this->requestDatabaseCredentials());
+
+        $this->call('cache:clear');
+
+        $this->info('Installation complete. Happy Developing');
+    }
+
+    /**
+     * Update the .env file from an array of $key => $value pairs.
+     *
+     * @param  array $updatedValues
+     * @return void
+     */
+    protected function updateEnvironmentFile($updatedValues)
+    {
+        $envFile = $this->laravel->environmentFilePath();
+        foreach ($updatedValues as $key => $value) {
+            file_put_contents($envFile, preg_replace(
+                "/{$key}=(.*)/",
+                "{$key}={$value}",
+                file_get_contents($envFile)
+            ));
         }
-
-        $this->info('Installation finished!');
-        $this->info('To migrate database run: php artisan migrate:fresh --seed');
-
-        return $this;
     }
 
     /**
@@ -76,24 +72,18 @@ class InstallCommand extends Command
         return [
             'DB_DATABASE' => $this->ask('Database name'),
             'DB_USERNAME' => $this->ask('Database user'),
-            'DB_PASSWORD' => $this->secret('Database password ("null" for no password)'),
+            'DB_PASSWORD' => $this->secret('Database password'),
         ];
     }
 
     /**
-     * Update the .env file from an array of $key => $value pairs.
-     *
-     * @param  array $updatedValues
-     * @return void
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     * Create the initial .env file.
      */
-    protected function updateEnvironmentFile($updatedValues)
+    protected function createEnvFile()
     {
-        foreach ($updatedValues as $key => $value) {
-            $this->filesystem->disk('base')->put('.env', preg_replace(
-                "/{$key}=(.*)/",
-                "{$key}={$value}",
-                $this->filesystem->disk('base')->get('.env')));
+        if (!file_exists('.env')) {
+            copy(base_path('.env.example'), base_path('.env'));
+            $this->line('.env file successfully created');
         }
     }
 }
