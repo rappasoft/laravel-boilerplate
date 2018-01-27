@@ -80,7 +80,7 @@ class InstallCommand extends Command
      */
     protected function createEnvFile()
     {
-        if (!file_exists('.env')) {
+        if (! file_exists('.env')) {
             copy(base_path('.env.example'), base_path('.env'));
             $this->line('.env file successfully created');
         }

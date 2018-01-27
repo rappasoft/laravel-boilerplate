@@ -2,13 +2,12 @@
 
 namespace Tests\Unit\Commands;
 
-use Illuminate\Support\Facades\File;
 use Mockery;
 use Tests\TestCase;
+use Illuminate\Support\Facades\File;
 
 class InstallCommandTest extends TestCase
 {
-
     public function setUp()
     {
         parent::setUp();
@@ -22,9 +21,8 @@ class InstallCommandTest extends TestCase
         File::move(base_path('.env.backup'), base_path('.env'));
     }
 
-
     /** @test */
-    function it_creates_the_example_file()
+    public function it_creates_the_example_file()
     {
         $this->assertFileNotExists('.env');
         $this->artisan('boilerplate:install', ['--no-interaction' => true]);
@@ -32,7 +30,7 @@ class InstallCommandTest extends TestCase
     }
 
     /** @test */
-    function it_generates_an_app_key()
+    public function it_generates_an_app_key()
     {
         $key = 'APP_KEY';
         $this->artisan('boilerplate:install', ['--no-interaction' => true]);
@@ -40,7 +38,7 @@ class InstallCommandTest extends TestCase
     }
 
     /** @test */
-    function it_sets_the_database_env_config()
+    public function it_sets_the_database_env_config()
     {
         $command = Mockery::mock("App\Console\Commands\InstallCommand[ask,secret]", function ($mock) {
             $mock->shouldReceive('ask')->with('Database name')->andReturn('mydatabase');
@@ -57,7 +55,7 @@ class InstallCommandTest extends TestCase
     }
 
     /**
-     * returns value of an environment variable
+     * returns value of an environment variable.
      * @param $key
      * @return mixed
      */
@@ -65,6 +63,7 @@ class InstallCommandTest extends TestCase
     {
         $file = file_get_contents(base_path('.env'));
         preg_match("/{$key}=(.*)/", $file, $matches);
+
         return $matches[1];
     }
 }
