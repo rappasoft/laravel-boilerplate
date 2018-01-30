@@ -60,10 +60,10 @@ return [
                 'already_confirmed' => 'Su cuenta ya ha sido verificada.',
                 'confirm'           => 'Revise su correo y verifique su cuenta!',
                 'created_confirm'   => 'Su cuenta ha sido creada. Le hemos enviado un e-mail con un enlace de verificación.',
-                'created_pending'   => 'Your account was successfully created and is pending approval. An e-mail will be sent when your account is approved.',
+                'created_pending'   => 'Su cuenta fue creada con éxito y está pendiente de aprobación. Se enviará un correo electrónico cuando su cuenta sea aprobada.',
                 'mismatch'          => 'El código de verificación no coincide.',
                 'not_found'         => 'El código de verificación especificado no existe.',
-                'pending'           => 'Your account is currently pending approval.',
+                'pending'           => 'Su cuenta esta actualmente pendiente de aprobación',
                 'resend'            => 'Su cuenta no ha sido verificada todavía. Por favor, revise su e-mail, o <a href="'.route('frontend.auth.account.confirm.resend', ':user_uuid').'">pulse aquí</a> para re-enviar el correo de verificación.',
                 'success'           => 'Su cuenta ha sido verificada satisfactoriamente!',
                 'resent'            => 'Un nuevo correo de verificación le ha sido enviado.',
@@ -77,7 +77,7 @@ return [
                 'reset_problem'   => 'Hubo un problema al restablecer su contraseña. Por favor, vuelva a enviar el correo electrónico de restablecimiento de contraseña',
             ],
 
-            'registration_disabled' => 'Registration is currently closed.',
+            'registration_disabled' => 'Los registros se encuentran actualmente cerrado.',
         ],
     ],
 ];

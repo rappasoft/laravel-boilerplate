@@ -91,7 +91,7 @@ return [
                             'avatar'       => 'Avatar',
                             'confirmed'    => 'Confirmado',
                             'created_at'   => 'Creación',
-                            'deleted_at'   => 'Deleted At',
+                            'deleted_at'   => 'Eliminación',
                             'email'        => 'E-mail',
                             'last_updated' => 'Última Actualización',
                             'name'         => 'Nombre',
