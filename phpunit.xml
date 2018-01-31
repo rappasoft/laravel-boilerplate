@@ -21,14 +21,9 @@
         <env name="PASSWORD_EXPIRES_DAYS" value="false"/>
     </php>
     <testsuites>
-        <testsuite name="Frontend">
+        <testsuite name="Unit">
             <directory suffix="Test.php">
-                ./tests/Frontend
-            </directory>
-        </testsuite>
-        <testsuite name="Backend">
-            <directory suffix="Test.php">
-                ./tests/Backend
+                ./tests/Unit
             </directory>
         </testsuite>
         <testsuite name="Feature">
