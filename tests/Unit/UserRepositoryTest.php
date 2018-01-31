@@ -2,14 +2,14 @@
 
 namespace Tests\Unit;
 
-use App\Events\Backend\Auth\User\UserCreated;
-use App\Events\Backend\Auth\User\UserUpdated;
+use Tests\TestCase;
 use App\Models\Auth\Role;
 use App\Models\Auth\User;
-use App\Repositories\Backend\Auth\UserRepository;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Event;
-use Tests\TestCase;
+use Illuminate\Database\Eloquent\Model;
+use App\Events\Backend\Auth\User\UserCreated;
+use App\Events\Backend\Auth\User\UserUpdated;
+use App\Repositories\Backend\Auth\UserRepository;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class UserRepositoryTest extends TestCase
@@ -38,7 +38,7 @@ class UserRepositoryTest extends TestCase
             'email' => 'john@example.com',
             'timezone' => 'UTC',
             'password' => 'secret',
-            'roles' => ['test-role']
+            'roles' => ['test-role'],
         ], $userData);
     }
 
@@ -54,7 +54,6 @@ class UserRepositoryTest extends TestCase
     public function it_can_paginate_the_active_users()
     {
         factory(User::class, 30)->create();
-
 
         $paginatedUsers = $this->userRepository->getActivePaginated(25);
 
@@ -73,7 +72,6 @@ class UserRepositoryTest extends TestCase
         factory(User::class, 30)->create();
         factory(User::class, 25)->states('inactive')->create();
 
-
         $paginatedUsers = $this->userRepository->getInactivePaginated(10);
 
         $this->assertEquals(3, $paginatedUsers->lastPage());
@@ -81,13 +79,11 @@ class UserRepositoryTest extends TestCase
         $this->assertEquals(25, $paginatedUsers->total());
     }
 
-
     /** @test */
     public function it_can_paginate_the_soft_deleted_inactive_users()
     {
         factory(User::class, 30)->create();
         factory(User::class, 25)->states('softDeleted')->create();
-
 
         $paginatedUsers = $this->userRepository->getDeletedPaginated(10);
 
@@ -119,7 +115,7 @@ class UserRepositoryTest extends TestCase
         Event::fake();
         Model::setEventDispatcher($initialDispatcher);
         // We need at least one role to create a user
-        $user = factory(User::class)->create();;
+        $user = factory(User::class)->create();
 
         $this->userRepository->update($user, $this->getValidUserData([
             'first_name' => 'updated',
