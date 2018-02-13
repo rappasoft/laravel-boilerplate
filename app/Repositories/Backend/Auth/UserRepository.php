@@ -18,6 +18,7 @@ use App\Events\Backend\Auth\User\UserPasswordChanged;
 use App\Notifications\Backend\Auth\UserAccountActive;
 use App\Events\Backend\Auth\User\UserPermanentlyDeleted;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UserRepository.
@@ -90,12 +91,14 @@ class UserRepository extends BaseRepository
             ->paginate($paged);
     }
 
-    /**
-     * @param array $data
-     *
-     * @return User
-     */
-    public function create(array $data) : User
+	/**
+	 * @param array $data
+	 *
+	 * @return User
+	 * @throws \Exception
+	 * @throws \Throwable
+	 */
+	public function create(array $data) : User
     {
         return DB::transaction(function () use ($data) {
             $user = parent::create([
@@ -103,7 +106,7 @@ class UserRepository extends BaseRepository
                 'last_name' => $data['last_name'],
                 'email' => $data['email'],
                 'timezone' => $data['timezone'],
-                'password' => bcrypt($data['password']),
+                'password' => Hash::make($data['password']),
                 'active' => isset($data['active']) && $data['active'] == '1' ? 1 : 0,
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'confirmed' => isset($data['confirmed']) && $data['confirmed'] == '1' ? 1 : 0,
@@ -138,13 +141,16 @@ class UserRepository extends BaseRepository
         });
     }
 
-    /**
-     * @param User  $user
-     * @param array $data
-     *
-     * @return User
-     */
-    public function update(User $user, array $data) : User
+	/**
+	 * @param User  $user
+	 * @param array $data
+	 *
+	 * @return User
+	 * @throws GeneralException
+	 * @throws \Exception
+	 * @throws \Throwable
+	 */
+	public function update(User $user, array $data) : User
     {
         $this->checkUserByEmail($user, $data['email']);
 
@@ -182,7 +188,7 @@ class UserRepository extends BaseRepository
      */
     public function updatePassword(User $user, $input) : User
     {
-        $user->password = bcrypt($input['password']);
+        $user->password = Hash::make($input['password']);
 
         if ($user->save()) {
             event(new UserPasswordChanged($user));
@@ -288,13 +294,15 @@ class UserRepository extends BaseRepository
         throw new GeneralException(__('exceptions.backend.access.users.cant_unconfirm'));
     }
 
-    /**
-     * @param User $user
-     *
-     * @return User
-     * @throws GeneralException
-     */
-    public function forceDelete(User $user) : User
+	/**
+	 * @param User $user
+	 *
+	 * @return User
+	 * @throws GeneralException
+	 * @throws \Exception
+	 * @throws \Throwable
+	 */
+	public function forceDelete(User $user) : User
     {
         if (is_null($user->deleted_at)) {
             throw new GeneralException(__('exceptions.backend.access.users.delete_first'));
