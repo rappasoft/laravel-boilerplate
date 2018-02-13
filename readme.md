@@ -15,7 +15,7 @@ Please join us in our Slack channel to get faster responses to your questions. G
 
 ### Laravel 5.5
 
-You can download the last build of Laravel 5.4 [here](https://github.com/rappasoft/laravel-5-boilerplate/tree/Legacy_5.5).
+You can download the last build of Laravel 5.5 [here](https://github.com/rappasoft/laravel-5-boilerplate/tree/Legacy_5.5).
 
 ### Laravel 5.4
 
