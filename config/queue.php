@@ -62,7 +62,7 @@ return [
             'connection' => 'default',
             'queue' => 'default',
             'retry_after' => 90,
-			'block_for' => null,
+            'block_for' => null,
         ],
 
     ],

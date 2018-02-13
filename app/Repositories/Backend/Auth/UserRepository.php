@@ -6,6 +6,7 @@ use App\Models\Auth\User;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
+use Illuminate\Support\Facades\Hash;
 use App\Events\Frontend\Auth\UserConfirmed;
 use App\Events\Backend\Auth\User\UserCreated;
 use App\Events\Backend\Auth\User\UserUpdated;
@@ -18,7 +19,6 @@ use App\Events\Backend\Auth\User\UserPasswordChanged;
 use App\Notifications\Backend\Auth\UserAccountActive;
 use App\Events\Backend\Auth\User\UserPermanentlyDeleted;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
-use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UserRepository.
@@ -91,14 +91,14 @@ class UserRepository extends BaseRepository
             ->paginate($paged);
     }
 
-	/**
-	 * @param array $data
-	 *
-	 * @return User
-	 * @throws \Exception
-	 * @throws \Throwable
-	 */
-	public function create(array $data) : User
+    /**
+     * @param array $data
+     *
+     * @return User
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function create(array $data) : User
     {
         return DB::transaction(function () use ($data) {
             $user = parent::create([
@@ -141,16 +141,16 @@ class UserRepository extends BaseRepository
         });
     }
 
-	/**
-	 * @param User  $user
-	 * @param array $data
-	 *
-	 * @return User
-	 * @throws GeneralException
-	 * @throws \Exception
-	 * @throws \Throwable
-	 */
-	public function update(User $user, array $data) : User
+    /**
+     * @param User  $user
+     * @param array $data
+     *
+     * @return User
+     * @throws GeneralException
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function update(User $user, array $data) : User
     {
         $this->checkUserByEmail($user, $data['email']);
 
@@ -294,15 +294,15 @@ class UserRepository extends BaseRepository
         throw new GeneralException(__('exceptions.backend.access.users.cant_unconfirm'));
     }
 
-	/**
-	 * @param User $user
-	 *
-	 * @return User
-	 * @throws GeneralException
-	 * @throws \Exception
-	 * @throws \Throwable
-	 */
-	public function forceDelete(User $user) : User
+    /**
+     * @param User $user
+     *
+     * @return User
+     * @throws GeneralException
+     * @throws \Exception
+     * @throws \Throwable
+     */
+    public function forceDelete(User $user) : User
     {
         if (is_null($user->deleted_at)) {
             throw new GeneralException(__('exceptions.backend.access.users.delete_first'));
