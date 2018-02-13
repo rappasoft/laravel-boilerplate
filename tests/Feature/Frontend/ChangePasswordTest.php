@@ -14,7 +14,7 @@ class ChangePasswordTest extends TestCase
     /** @test */
     public function the_password_can_be_changed()
     {
-        $user = factory(User::class)->create(['password' => bcrypt('1234')]);
+        $user = factory(User::class)->create(['password' => Hash::make('1234')]);
 
         $response = $this->actingAs($user)
             ->patch('/password/update', [
@@ -30,7 +30,7 @@ class ChangePasswordTest extends TestCase
     /** @test */
     public function the_password_must_be_confirmed()
     {
-        $user = factory(User::class)->create(['password' => bcrypt('1234')]);
+        $user = factory(User::class)->create(['password' => Hash::make('1234')]);
 
         $response = $this->actingAs($user)
             ->patch('/password/update', [

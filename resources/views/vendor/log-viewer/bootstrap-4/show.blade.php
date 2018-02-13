@@ -5,7 +5,7 @@
 @endpush
 
 @section('content-header')
-    @section('page-header')
+@section('page-header')
     <h5 class="mb-4">Log [{{ $log->date }}]</h5>
 @endsection
 
@@ -75,63 +75,63 @@
                     </div>
                 @endif
 
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="entries" class="table" style="word-break: break-word;">
-                                <thead>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="entries" class="table" style="word-break: break-word;">
+                            <thead>
+                            <tr>
+                                <th>ENV</th>
+                                <th>Level</th>
+                                <th>Time</th>
+                                <th>Header</th>
+                                <th class="text-right">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @forelse($entries as $key => $entry)
                                 <tr>
-                                    <th>ENV</th>
-                                    <th>Level</th>
-                                    <th>Time</th>
-                                    <th>Header</th>
-                                    <th class="text-right">Actions</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @forelse($entries as $key => $entry)
-                                    <tr>
-                                        <td>
-                                            <span class="badge badge-env">{{ $entry->env }}</span>
-                                        </td>
-                                        <td>
+                                    <td>
+                                        <span class="badge badge-env">{{ $entry->env }}</span>
+                                    </td>
+                                    <td>
                                     <span class="badge level level-{{ $entry->level }}">
                                         {!! $entry->level() !!}
                                     </span>
-                                        </td>
-                                        <td>
+                                    </td>
+                                    <td>
                                     <span class="badge badge-default">
                                         {{ $entry->datetime->format('H:i:s') }}
                                     </span>
-                                        </td>
-                                        <td>
-                                            {{ $entry->header }}
-                                        </td>
-                                        <td class="text-right">
-                                            @if ($entry->hasStack())
-                                                <a class="btn btn-sm btn-outline-info" role="button" data-toggle="collapse" href="#log-stack-{{ $key }}" aria-expanded="false" aria-controls="log-stack-{{ $key }}">
-                                                    <i class="fa fa-toggle-on"></i> Stack
-                                                </a>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    @if ($entry->hasStack())
-                                        <tr class="stack-content collapse" id="log-stack-{{ $key }}">
-                                            <td colspan="5" class="stack">
-                                                {!! trim($entry->stack()) !!}
-                                            </td>
-                                        </tr>
-                                    @endif
-                                @empty
-                                    <tr>
-                                        <td colspan="5" class="text-center">
-                                            <span class="badge badge-default">{{ __('log-viewer::general.empty-logs') }}</span>
+                                    </td>
+                                    <td>
+                                        {{ $entry->header }}
+                                    </td>
+                                    <td class="text-right">
+                                        @if ($entry->hasStack())
+                                            <a class="btn btn-sm btn-outline-info" role="button" data-toggle="collapse" href="#log-stack-{{ $key }}" aria-expanded="false" aria-controls="log-stack-{{ $key }}">
+                                                <i class="fa fa-toggle-on"></i> Stack
+                                            </a>
+                                        @endif
+                                    </td>
+                                </tr>
+                                @if ($entry->hasStack())
+                                    <tr class="stack-content collapse" id="log-stack-{{ $key }}">
+                                        <td colspan="5" class="stack">
+                                            {!! trim($entry->stack()) !!}
                                         </td>
                                     </tr>
-                                @endforelse
-                                </tbody>
-                            </table>
-                        </div><!--table-responsive-->
-                    </div><!--card-body-->
+                                @endif
+                            @empty
+                                <tr>
+                                    <td colspan="5" class="text-center">
+                                        <span class="badge badge-default">{{ __('log-viewer::general.empty-logs') }}</span>
+                                    </td>
+                                </tr>
+                            @endforelse
+                            </tbody>
+                        </table>
+                    </div><!--table-responsive-->
+                </div><!--card-body-->
                 @if ($entries->hasPages())
                     <div class="card-footer">
                         <div class="row">
@@ -213,13 +213,13 @@
             });
 
             @unless (empty(log_styler()->toHighlight()))
-                $('.stack-content').each(function() {
-                    var $this = $(this);
-                    var html = $this.html().trim()
-                        .replace(/({!! join(log_styler()->toHighlight(), '|') !!})/gm, '<strong>$1</strong>');
+            $('.stack-content').each(function() {
+                var $this = $(this);
+                var html = $this.html().trim()
+                    .replace(/({!! join(log_styler()->toHighlight(), '|') !!})/gm, '<strong>$1</strong>');
 
-                    $this.html(html);
-                });
+                $this.html(html);
+            });
             @endunless
         });
     </script>

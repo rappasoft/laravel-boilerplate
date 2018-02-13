@@ -6,6 +6,7 @@ use App\Models\Auth\User;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
+use Illuminate\Support\Facades\Hash;
 use App\Events\Frontend\Auth\UserConfirmed;
 use App\Events\Backend\Auth\User\UserCreated;
 use App\Events\Backend\Auth\User\UserUpdated;
@@ -94,6 +95,8 @@ class UserRepository extends BaseRepository
      * @param array $data
      *
      * @return User
+     * @throws \Exception
+     * @throws \Throwable
      */
     public function create(array $data) : User
     {
@@ -103,7 +106,7 @@ class UserRepository extends BaseRepository
                 'last_name' => $data['last_name'],
                 'email' => $data['email'],
                 'timezone' => $data['timezone'],
-                'password' => bcrypt($data['password']),
+                'password' => Hash::make($data['password']),
                 'active' => isset($data['active']) && $data['active'] == '1' ? 1 : 0,
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'confirmed' => isset($data['confirmed']) && $data['confirmed'] == '1' ? 1 : 0,
@@ -143,6 +146,9 @@ class UserRepository extends BaseRepository
      * @param array $data
      *
      * @return User
+     * @throws GeneralException
+     * @throws \Exception
+     * @throws \Throwable
      */
     public function update(User $user, array $data) : User
     {
@@ -182,7 +188,7 @@ class UserRepository extends BaseRepository
      */
     public function updatePassword(User $user, $input) : User
     {
-        $user->password = bcrypt($input['password']);
+        $user->password = Hash::make($input['password']);
 
         if ($user->save()) {
             event(new UserPasswordChanged($user));
@@ -293,6 +299,8 @@ class UserRepository extends BaseRepository
      *
      * @return User
      * @throws GeneralException
+     * @throws \Exception
+     * @throws \Throwable
      */
     public function forceDelete(User $user) : User
     {

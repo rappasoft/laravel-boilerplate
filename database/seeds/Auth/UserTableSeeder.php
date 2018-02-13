@@ -24,7 +24,7 @@ class UserTableSeeder extends Seeder
             'first_name'        => 'Admin',
             'last_name'         => 'Istrator',
             'email'             => 'admin@admin.com',
-            'password'          => bcrypt('1234'),
+            'password'          => Hash::make('1234'),
             'confirmation_code' => md5(uniqid(mt_rand(), true)),
             'confirmed'         => true,
         ]);
@@ -33,7 +33,7 @@ class UserTableSeeder extends Seeder
             'first_name'        => 'Backend',
             'last_name'         => 'User',
             'email'             => 'executive@executive.com',
-            'password'          => bcrypt('1234'),
+            'password'          => Hash::make('1234'),
             'confirmation_code' => md5(uniqid(mt_rand(), true)),
             'confirmed'         => true,
         ]);
@@ -42,7 +42,7 @@ class UserTableSeeder extends Seeder
             'first_name'        => 'Default',
             'last_name'         => 'User',
             'email'             => 'user@user.com',
-            'password'          => bcrypt('1234'),
+            'password'          => Hash::make('1234'),
             'confirmation_code' => md5(uniqid(mt_rand(), true)),
             'confirmed'         => true,
         ]);

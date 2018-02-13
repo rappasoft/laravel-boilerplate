@@ -4,6 +4,7 @@ namespace Tests\Feature\Frontend;
 
 use Tests\TestCase;
 use App\Models\Auth\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
@@ -25,7 +26,7 @@ class UserLoginTest extends TestCase
     {
         $user = factory(User::class)->create([
             'email' => 'john@example.com',
-            'password' => bcrypt('secret'),
+            'password' => Hash::make('secret'),
         ]);
         Event::fake();
 
@@ -43,7 +44,7 @@ class UserLoginTest extends TestCase
     {
         factory(User::class)->states('inactive')->create([
             'email' => 'john@example.com',
-            'password' => bcrypt('secret'),
+            'password' => Hash::make('secret'),
         ]);
 
         $response = $this->post('/login', [
@@ -60,7 +61,7 @@ class UserLoginTest extends TestCase
     {
         factory(User::class)->states('unconfirmed')->create([
             'email' => 'john@example.com',
-            'password' => bcrypt('secret'),
+            'password' => Hash::make('secret'),
         ]);
 
         $response = $this->post('/login', [
