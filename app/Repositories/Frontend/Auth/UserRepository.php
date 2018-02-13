@@ -98,7 +98,7 @@ class UserRepository extends BaseRepository
                 'email'             => $data['email'],
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'active'            => 1,
-                'password'          => bcrypt($data['password']),
+                'password'          => Hash::make($data['password']),
                                     // If users require approval or needs to confirm email
                 'confirmed'         => config('access.users.requires_approval') || config('access.users.confirm_email') ? 0 : 1,
             ]);
@@ -206,7 +206,7 @@ class UserRepository extends BaseRepository
         $user = $this->getById(auth()->id());
 
         if (Hash::check($input['old_password'], $user->password)) {
-            $user->password = bcrypt($input['password']);
+            $user->password = Hash::make($input['password']);
 
             if ($expired) {
                 $user->password_changed_at = Carbon::now()->toDateTimeString();

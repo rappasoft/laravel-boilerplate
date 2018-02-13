@@ -1,10 +1,15 @@
 <template>
-    <div class="card">
-        <div class="card-header">
-            <i class="fa fa-code"></i> Example Vue Component
-        </div>
-        <div class="card-body">
-            I'm an example Vue component!
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card card-default">
+                    <div class="card-header">Example Component</div>
+
+                    <div class="card-body">
+                        I'm an example Vue component!
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
