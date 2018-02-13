@@ -160,17 +160,19 @@ return [
         ],
 
         'frontend' => [
+            'avatar'                    => 'Avatar',
             'email'                     => 'Adresse email',
             'last_name'                 => 'Nom',
             'first_name'                => 'Prénom',
             'name'                      => 'Nom complet',
             'password'                  => 'Mot de passe',
             'password_confirmation'     => 'Confirmation',
-            'phone' => 'Téléphone',
-            'message' => 'Message',
+            'phone'                     => 'Téléphone',
+            'message'                   => 'Message',
             'new_password'              => 'Nouveau mot de passe',
             'new_password_confirmation' => 'Confirmation du nouveau mot de passe',
             'old_password'              => 'Ancien mot de passe',
+            'timezone'                  => 'Fuseau Horaire',
         ],
     ],
 

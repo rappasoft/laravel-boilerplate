@@ -72,6 +72,8 @@ return [
                     'last_name'      => 'Nom',
                     'no_deactivated' => "Pas d'utilisateurs désactivés",
                     'no_deleted'     => "Pas d'utilisateurs supprimés",
+                    'other_permissions' => 'Autres permissions',
+                    'permissions'    => 'Permissions',
                     'roles'          => 'Rôles',
                     'social' => 'Réseau social',
                     'total'          => 'utilisateur total|utilisateurs total',
