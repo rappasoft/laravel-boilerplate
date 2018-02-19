@@ -3,6 +3,7 @@
 namespace App\Models\Auth;
 
 use App\Models\Traits\Uuid;
+use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Auth\Traits\Scope\UserScope;
@@ -26,7 +27,8 @@ class User extends Authenticatable
         UserMethod,
         UserRelationship,
         UserScope,
-        Uuid;
+        Uuid,
+        HasApiTokens;
 
     /**
      * The attributes that are mass assignable.

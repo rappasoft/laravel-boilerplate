@@ -309,6 +309,66 @@ class UserRepository extends BaseRepository
         return $user;
     }
 
+
+    public function findOrCreateProviderSocialUser($data, $provider)
+    {
+        // User email may not provided.
+        $user_email = $data->email ?: "{$data->id}@{$provider}.com";
+
+        // Check to see if there is a user with this email first.
+        $user = $this->getByColumn($user_email, 'email');
+
+        /*
+         * If the user does not exist create them
+         * The true flag indicate that it is a social account
+         * Which triggers the script to use some default values in the create method
+         */
+        if (! $user) {
+            // Registration is not enabled
+            if (! config('access.registration')) {
+                throw new GeneralException(__('exceptions.frontend.auth.registration_disabled'));
+            }
+
+            // Get users first name and last name from their full name
+            $nameParts = $this->getNameParts($data->getName());
+
+            $user = parent::create([
+                'first_name'  => $nameParts['first_name'],
+                'last_name'  => $nameParts['last_name'],
+                'email' => $user_email,
+                'active' => 1,
+                'confirmed' => 1,
+                'password' => null,
+                'avatar_type' => $provider,
+            ]);
+
+            event(new UserProviderRegistered($user));
+        }
+
+        // See if the user has logged in with this social account before
+        if (! $user->hasProvider($provider)) {
+            // Gather the provider data for saving and associate it with the user
+            $user->providers()->save(new SocialAccount([
+                'provider'    => $provider,
+                'provider_id' => $data->id,
+                'token'       => $data->token,
+                'avatar'      => $data->avatar,
+            ]));
+        } else {
+            // Update the users information, token and avatar can be updated.
+            $user->providers()->update([
+                'token'       => $data->token,
+                'avatar'      => $data->avatar,
+            ]);
+
+            $user->avatar_type = $provider;
+            $user->update();
+        }
+
+        // Return the user object
+        return $user;
+    }
+
     /**
      * @param $fullName
      *
