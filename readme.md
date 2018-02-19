@@ -1,3 +1,38 @@
+### Commands to run after cloning
+
+composer install
+
+composer update
+
+npm install
+
+.env creation and updating database details
+
+php artisan key:generate
+
+php artisan migrate
+
+php artisan passport:install
+
+php artisan db:seed
+
+npm install
+
+php artisan storage:link
+
+####Login:
+
+Username: admin@admin.com
+
+Password: 1234
+
+### important note
+
+When deploying Passport to your production servers for the first time, you will likely need to run the passport:keys command. This command generates the encryption keys Passport needs in order to generate access token. The generated keys are not typically kept in source control:
+
+php artisan passport:keys
+
+
 ## Laravel 5.6 Boilerplate
 
 [![Latest Stable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/stable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate)
@@ -12,14 +47,6 @@
 ### Slack Channel
 
 Please join us in our Slack channel to get faster responses to your questions. Get your invite here: https://laravel-5-boilerplate.herokuapp.com
-
-### Laravel 5.5
-
-You can download the last build of Laravel 5.5 [here](https://github.com/rappasoft/laravel-5-boilerplate/tree/Legacy_5.5).
-
-### Laravel 5.4
-
-You can download the last build of Laravel 5.4 [here](https://github.com/rappasoft/laravel-5-boilerplate/tree/Legacy_5.4).
 
 ### Introduction
 
