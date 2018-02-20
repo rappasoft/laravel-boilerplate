@@ -27,7 +27,7 @@ class SocialLoginController extends Controller
     /**
      * SocialLoginController constructor.
      *
-     * @param UserRepository  $userRepository
+     * @param UserRepository $userRepository
      * @param SocialiteHelper $socialiteHelper
      */
     public function __construct(UserRepository $userRepository, SocialiteHelper $socialiteHelper)
@@ -50,7 +50,7 @@ class SocialLoginController extends Controller
         $user = null;
 
         // If the provider is not an acceptable third party than kick back
-        if (! in_array($provider, $this->socialiteHelper->getAcceptedProviders())) {
+        if (!in_array($provider, $this->socialiteHelper->getAcceptedProviders())) {
             return redirect()->route(home_route())->withFlashDanger(__('auth.socialite.unacceptable', ['provider' => $provider]));
         }
 
@@ -59,7 +59,7 @@ class SocialLoginController extends Controller
          * It's redirected to the provider and then back here, where request is populated
          * So it then continues creating the user
          */
-        if (! $request->all()) {
+        if (!$request->all()) {
             return $this->getAuthorizationFirst($provider);
         }
 
@@ -75,7 +75,7 @@ class SocialLoginController extends Controller
         }
 
         // Check to see if they are active.
-        if (! $user->isActive()) {
+        if (!$user->isActive()) {
             throw new GeneralException(__('exceptions.frontend.auth.deactivated'));
         }
 
@@ -104,8 +104,10 @@ class SocialLoginController extends Controller
         $socialite = Socialite::driver($provider);
         $scopes = count(config("services.{$provider}.scopes")) ? config("services.{$provider}.scopes") : false;
         $with = count(config("services.{$provider}.with")) ? config("services.{$provider}.with") : false;
-        $fields = count(config("services.{$provider}.fields")) ? config("services.{$provider}.fields") : false;
-
+        if (!is_null(config("services.{$provider}.fields")))
+            $fields = count(config("services.{$provider}.fields")) ? config("services.{$provider}.fields") : false;
+        else
+            $fields = false;
         if ($scopes) {
             $socialite->scopes($scopes);
         }
