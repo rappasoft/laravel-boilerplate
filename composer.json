@@ -25,6 +25,7 @@
         "barryvdh/laravel-ide-helper": "^2.4",
         "codedungeon/phpunit-result-printer": "^0.6.0",
         "filp/whoops": "~2.0",
+        "friendsofphp/php-cs-fixer": "^2.10",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "~1.0",
         "phpunit/phpunit": "~7.0"
@@ -72,6 +73,14 @@
         ],
         "phpunit": [
             "phpunit > output.txt -d memory_limit=2048M"
+        ],
+        "test": "./vendor/bin/phpunit",
+        "format": [
+            "./vendor/bin/php-cs-fixer fix app/  --show-progress=estimating",
+            "./vendor/bin/php-cs-fixer fix config/  --show-progress=estimating",
+            "./vendor/bin/php-cs-fixer fix database/  --show-progress=estimating",
+            "./vendor/bin/php-cs-fixer fix resources/  --show-progress=estimating",
+            "./vendor/bin/php-cs-fixer fix tests/  --show-progress=estimating"
         ]
     },
     "config": {

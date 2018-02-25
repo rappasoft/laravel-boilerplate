@@ -24,7 +24,8 @@ class ComposerServiceProvider extends ServiceProvider
          */
         View::composer(
         // This class binds the $logged_in_user variable to every view
-            '*', GlobalComposer::class
+            '*',
+            GlobalComposer::class
         );
 
         /*
@@ -36,7 +37,8 @@ class ComposerServiceProvider extends ServiceProvider
          */
         View::composer(
         // This binds items like number of users pending approval when account approval is set to true
-            'backend.includes.sidebar', SidebarComposer::class
+            'backend.includes.sidebar',
+            SidebarComposer::class
         );
     }
 
