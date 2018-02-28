@@ -4,9 +4,6 @@
 // Font Awesome
 @import "../../../../node_modules/font-awesome/scss/font-awesome";
 
-// Bootstrap Overrides
-@import "custom";
-
 // Bootstrap
 @import "../../../../node_modules/bootstrap/scss/bootstrap";
 
@@ -15,5 +12,8 @@
 
 // Pages
 @import "pages/dashboard";
+
+// Bootstrap Overrides
+@import "custom";
 
 // Plugins
