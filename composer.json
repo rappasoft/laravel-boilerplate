@@ -74,7 +74,6 @@
         "phpunit": [
             "phpunit > output.txt -d memory_limit=2048M"
         ],
-        "test": "./vendor/bin/phpunit",
         "format": [
             "./vendor/bin/php-cs-fixer fix app/  --show-progress=estimating",
             "./vendor/bin/php-cs-fixer fix config/  --show-progress=estimating",
