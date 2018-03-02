@@ -26,8 +26,10 @@ trait UserAttribute
     {
         if ($this->isConfirmed()) {
             if ($this->id != 1 && $this->id != auth()->id()) {
-                return '<a href="'.route('admin.auth.user.unconfirm',
-                        $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.unconfirm').'" name="confirm_item"><span class="badge badge-success" style="cursor:pointer">'.__('labels.general.yes').'</span></a>';
+                return '<a href="'.route(
+                    'admin.auth.user.unconfirm',
+                        $this
+                ).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.unconfirm').'" name="confirm_item"><span class="badge badge-success" style="cursor:pointer">'.__('labels.general.yes').'</span></a>';
             } else {
                 return '<span class="badge badge-success">'.__('labels.general.yes').'</span>';
             }
@@ -102,8 +104,10 @@ trait UserAttribute
         $accounts = [];
 
         foreach ($this->providers as $social) {
-            $accounts[] = '<a href="'.route('admin.auth.user.social.unlink',
-                    [$this, $social]).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.unlink').'" data-method="delete"><i class="fa fa-'.$social->provider.'"></i></a>';
+            $accounts[] = '<a href="'.route(
+                'admin.auth.user.social.unlink',
+                    [$this, $social]
+            ).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.unlink').'" data-method="delete"><i class="fa fa-'.$social->provider.'"></i></a>';
         }
 
         return count($accounts) ? implode(' ', $accounts) : 'None';
@@ -120,8 +124,10 @@ trait UserAttribute
         if (! session()->has('admin_user_id') || ! session()->has('temp_user_id')) {
             //Won't break, but don't let them "Login As" themselves
             if ($this->id != auth()->id()) {
-                return '<a href="'.route('admin.auth.user.login-as',
-                        $this).'" class="dropdown-item">'.__('buttons.backend.access.users.login_as', ['user' => $this->full_name]).'</a> ';
+                return '<a href="'.route(
+                    'admin.auth.user.login-as',
+                        $this
+                ).'" class="dropdown-item">'.__('buttons.backend.access.users.login_as', ['user' => $this->full_name]).'</a> ';
             }
         }
 
@@ -180,18 +186,15 @@ trait UserAttribute
                             $this,
                             1,
                         ]).'" class="dropdown-item">'.__('buttons.backend.access.users.activate').'</a> ';
-                // No break
 
                 case 1:
                     return '<a href="'.route('admin.auth.user.mark', [
                             $this,
                             0,
                         ]).'" class="dropdown-item">'.__('buttons.backend.access.users.deactivate').'</a> ';
-                // No break
 
                 default:
                     return '';
-                // No break
             }
         }
 

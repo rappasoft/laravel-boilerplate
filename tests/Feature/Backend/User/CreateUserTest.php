@@ -80,14 +80,16 @@ class CreateUserTest extends TestCase
             'roles' => [1 => 'administrator'],
         ]);
 
-        $this->assertDatabaseHas(config('access.table_names.users'),
+        $this->assertDatabaseHas(
+            config('access.table_names.users'),
             [
                 'first_name' => 'John',
                 'last_name' => 'Doe',
                 'email' => 'john@example.com',
                 'active' => 1,
                 'confirmed' => 1,
-            ]);
+            ]
+        );
 
         $response->assertSessionHas(['flash_success' => 'The user was successfully created.']);
         Event::assertDispatched(UserCreated::class);
