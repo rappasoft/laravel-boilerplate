@@ -16,6 +16,9 @@
                     <small class="text-muted">{{ __('labels.backend.access.users.deleted') }}</small>
                 </h4>
             </div><!--col-->
+            <div class="col-sm-7">
+                @include('backend.auth.user.includes.header-search')
+            </div><!--col-->
         </div><!--row-->
 
         <div class="row mt-4">

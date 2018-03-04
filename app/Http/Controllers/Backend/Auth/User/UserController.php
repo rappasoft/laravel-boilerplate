@@ -11,6 +11,7 @@ use App\Repositories\Backend\Auth\PermissionRepository;
 use App\Http\Requests\Backend\Auth\User\StoreUserRequest;
 use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
 use App\Http\Requests\Backend\Auth\User\UpdateUserRequest;
+use Illuminate\Support\Facades\Input;
 
 /**
  * Class UserController.
@@ -39,8 +40,16 @@ class UserController extends Controller
      */
     public function index(ManageUserRequest $request)
     {
+        $search = $request->get('search', '');
+        $orderBy = $request->get('orderBy', 'id');
+        $sort = $request->get('sort', 'desc');
+        $users = $this->userRepository->getActivePaginated(25, $search, $orderBy, $sort);
+        $users->appends(Input::only(['search', 'sort', 'orderBy']));
         return view('backend.auth.user.index')
-            ->withUsers($this->userRepository->getActivePaginated(25, 'id', 'asc'));
+            ->withUsers($users)
+            ->withSearch($search)
+            ->withSort($sort)
+            ->withOrderBy($orderBy);
     }
 
     /**
