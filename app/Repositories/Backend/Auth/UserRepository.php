@@ -59,8 +59,9 @@ class UserRepository extends BaseRepository
         if (!empty($search)) {
             $search = '%' . $search . '%';
             $query->where(function ($subquery) use ($search) {
-                $subquery->where('first_name', 'ILIKE', $search)
-                    ->orWhere('last_name', 'ILIKE', $search);
+                $subquery->where('first_name', 'LIKE', $search)
+                    ->orWhere('last_name', 'LIKE', $search)
+                    ->orWhere('email', 'LIKE', $search);
             });
         }
         if ($sort != 'desc') {
@@ -86,8 +87,9 @@ class UserRepository extends BaseRepository
         if (!empty($search)) {
             $search = '%' . $search . '%';
             $query->where(function ($subquery) use ($search) {
-                $subquery->where('first_name', 'ILIKE', $search)
-                    ->orWhere('last_name', 'ILIKE', $search);
+                $subquery->where('first_name', 'LIKE', $search)
+                    ->orWhere('last_name', 'LIKE', $search)
+                    ->orWhere('email', 'LIKE', $search);
             });
         }
         if ($sort != 'desc') {
@@ -113,8 +115,9 @@ class UserRepository extends BaseRepository
         if (!empty($search)) {
             $search = '%' . $search . '%';
             $query->where(function ($subquery) use ($search) {
-                $subquery->where('first_name', 'ILIKE', $search)
-                    ->orWhere('last_name', 'ILIKE', $search);
+                $subquery->where('first_name', 'LIKE', $search)
+                    ->orWhere('last_name', 'LIKE', $search)
+                    ->orWhere('email', 'LIKE', $search);
             });
         }
         if ($sort != 'desc') {
