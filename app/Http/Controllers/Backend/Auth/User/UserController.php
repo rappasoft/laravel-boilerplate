@@ -41,7 +41,8 @@ class UserController extends Controller
     public function index(ManageUserRequest $request)
     {
         $search = $request->get('search', '');
-        $orderBy = $request->get('orderBy', 'id');
+        //$orderBy = $request->get('orderBy', 'id');
+        $orderBy = 'created_at';
         $sort = $request->get('sort', 'desc');
         $users = $this->userRepository->getActivePaginated(25, $search, $orderBy, $sort);
         $users->appends(Input::only(['search', 'sort', 'orderBy']));

@@ -67,7 +67,6 @@ class UserRepository extends BaseRepository
         if ($sort != 'desc') {
             $sort = 'asc';
         }
-        $orderBy = 'created_at';
 
         return $query->orderBy($orderBy, $sort)->paginate($paged);
     }
@@ -96,7 +95,6 @@ class UserRepository extends BaseRepository
         if ($sort != 'desc') {
             $sort = 'asc';
         }
-        $orderBy = 'created_at';
 
         return $query->orderBy($orderBy, $sort)->paginate($paged);
     }
@@ -125,7 +123,6 @@ class UserRepository extends BaseRepository
         if ($sort != 'desc') {
             $sort = 'asc';
         }
-        $orderBy = 'created_at';
 
         return $query->orderBy($orderBy, $sort)->paginate($paged);
     }

@@ -34,7 +34,8 @@ class UserStatusController extends Controller
     public function getDeactivated(ManageUserRequest $request)
     {
         $search = $request->get('search', '');
-        $orderBy = $request->get('orderBy', 'id');
+        //$orderBy = $request->get('orderBy', 'id');
+        $orderBy = 'created_at';
         $sort = $request->get('sort', 'desc');
         $users = $this->userRepository->getInactivePaginated(25, $search, $orderBy, $sort);
         $users->appends(Input::only(['search', 'sort', 'orderBy']));
@@ -54,7 +55,8 @@ class UserStatusController extends Controller
     public function getDeleted(ManageUserRequest $request)
     {
         $search = $request->get('search', '');
-        $orderBy = $request->get('orderBy', 'id');
+        //$orderBy = $request->get('orderBy', 'id');
+        $orderBy = 'created_at';
         $sort = $request->get('sort', 'desc');
         $users = $this->userRepository->getDeletedPaginated(25, $search, $orderBy, $sort);
         $users->appends(Input::only(['search', 'sort', 'orderBy']));
