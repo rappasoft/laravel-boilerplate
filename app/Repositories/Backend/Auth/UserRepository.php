@@ -56,8 +56,8 @@ class UserRepository extends BaseRepository
         $query = $this->model
             ->with('roles', 'permissions', 'providers')
             ->active();
-        if (!empty($search)) {
-            $search = '%' . $search . '%';
+        if (! empty($search)) {
+            $search = '%'.$search.'%';
             $query->where(function ($subquery) use ($search) {
                 $subquery->where('first_name', 'LIKE', $search)
                     ->orWhere('last_name', 'LIKE', $search)
@@ -68,6 +68,7 @@ class UserRepository extends BaseRepository
             $sort = 'asc';
         }
         $orderBy = 'created_at';
+
         return $query->orderBy($orderBy, $sort)->paginate($paged);
     }
 
@@ -84,8 +85,8 @@ class UserRepository extends BaseRepository
         $query = $this->model
             ->with('roles', 'permissions', 'providers')
             ->active(false);
-        if (!empty($search)) {
-            $search = '%' . $search . '%';
+        if (! empty($search)) {
+            $search = '%'.$search.'%';
             $query->where(function ($subquery) use ($search) {
                 $subquery->where('first_name', 'LIKE', $search)
                     ->orWhere('last_name', 'LIKE', $search)
@@ -96,6 +97,7 @@ class UserRepository extends BaseRepository
             $sort = 'asc';
         }
         $orderBy = 'created_at';
+
         return $query->orderBy($orderBy, $sort)->paginate($paged);
     }
 
@@ -112,8 +114,8 @@ class UserRepository extends BaseRepository
         $query = $this->model
             ->with('roles', 'permissions', 'providers')
             ->onlyTrashed();
-        if (!empty($search)) {
-            $search = '%' . $search . '%';
+        if (! empty($search)) {
+            $search = '%'.$search.'%';
             $query->where(function ($subquery) use ($search) {
                 $subquery->where('first_name', 'LIKE', $search)
                     ->orWhere('last_name', 'LIKE', $search)
@@ -124,6 +126,7 @@ class UserRepository extends BaseRepository
             $sort = 'asc';
         }
         $orderBy = 'created_at';
+        
         return $query->orderBy($orderBy, $sort)->paginate($paged);
     }
 
