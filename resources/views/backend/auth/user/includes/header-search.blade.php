@@ -4,5 +4,4 @@
     <input type="hidden" name="orderBy" id="orderBy" value="{{ $orderBy }}">
     <input type="text" id='searchText' name="search" class="mb-2 form-control" value="{{ old('search',$search) }}" placeholder="@lang('strings.backend.general.search_placeholder')" />
     {{ html()->form()->close() }}
-    <a href="{{ route('admin.auth.user.create') }}" class="btn btn-success ml-1" data-toggle="tooltip" title="Create New"><i class="fa fa-plus-circle"></i></a>
 </div><!--btn-toolbar-->

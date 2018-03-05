@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Auth\User;
 
 use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
 use App\Events\Backend\Auth\User\UserDeleted;
 use App\Repositories\Backend\Auth\RoleRepository;
 use App\Repositories\Backend\Auth\UserRepository;
@@ -39,8 +40,18 @@ class UserController extends Controller
      */
     public function index(ManageUserRequest $request)
     {
+        $search = $request->get('search', '');
+        //$orderBy = $request->get('orderBy', 'id');
+        $orderBy = 'created_at';
+        $sort = $request->get('sort', 'desc');
+        $users = $this->userRepository->getActivePaginated(25, $search, $orderBy, $sort);
+        $users->appends(Input::only(['search', 'sort', 'orderBy']));
+
         return view('backend.auth.user.index')
-            ->withUsers($this->userRepository->getActivePaginated(25, 'id', 'asc'));
+            ->withUsers($users)
+            ->withSearch($search)
+            ->withSort($sort)
+            ->withOrderBy($orderBy);
     }
 
     /**
