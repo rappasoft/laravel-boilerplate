@@ -38,6 +38,7 @@ class UserStatusController extends Controller
         $sort = $request->get('sort', 'desc');
         $users = $this->userRepository->getInactivePaginated(25, $search, $orderBy, $sort);
         $users->appends(Input::only(['search', 'sort', 'orderBy']));
+
         return view('backend.auth.user.deactivated')
             ->withUsers($users)
             ->withSearch($search)
@@ -57,6 +58,7 @@ class UserStatusController extends Controller
         $sort = $request->get('sort', 'desc');
         $users = $this->userRepository->getDeletedPaginated(25, $search, $orderBy, $sort);
         $users->appends(Input::only(['search', 'sort', 'orderBy']));
+
         return view('backend.auth.user.deleted')
             ->withUsers($users)
             ->withSearch($search)

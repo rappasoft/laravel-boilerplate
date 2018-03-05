@@ -45,6 +45,7 @@ class UserController extends Controller
         $sort = $request->get('sort', 'desc');
         $users = $this->userRepository->getActivePaginated(25, $search, $orderBy, $sort);
         $users->appends(Input::only(['search', 'sort', 'orderBy']));
+
         return view('backend.auth.user.index')
             ->withUsers($users)
             ->withSearch($search)

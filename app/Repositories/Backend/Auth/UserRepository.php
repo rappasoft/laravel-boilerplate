@@ -126,7 +126,7 @@ class UserRepository extends BaseRepository
             $sort = 'asc';
         }
         $orderBy = 'created_at';
-        
+
         return $query->orderBy($orderBy, $sort)->paginate($paged);
     }
 
