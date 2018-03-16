@@ -64,7 +64,7 @@ return [
         'array'   => ':attribute moet ten minste :min items bevatten.',
     ],
     'not_in'               => 'Het geselcteerde :attribute is ongeldig.',
-	'not_regex'            => 'The :attribute format is invalid.',
+    'not_regex'            => 'The :attribute format is invalid.',
     'numeric'              => ':attribute moet numeriek zijn.',
     'present'              => ':attribute veld is verplicht.',
     'regex'                => ':attribute formaat is ongeldig.',
