@@ -64,7 +64,7 @@ return [
         'array'   => ':attribute måste innehålla minst :min objekt.',
     ],
     'not_in'               => 'Det valda :attribute är ogiltigt.',
-	'not_regex'            => 'The :attribute format is invalid.',
+    'not_regex'            => 'The :attribute format is invalid.',
     'numeric'              => ':attribute måste vara en siffra.',
     'present'              => 'The :attribute field must be present.',
     'regex'                => 'Formatet för :attribute är ogiltigt.',
