@@ -64,6 +64,7 @@ return [
         'array'   => ':attribute harus minimal :min item.',
     ],
     'not_in'               => ':attribute yang dipilih tidak benar.',
+	'not_regex'            => 'The :attribute format is invalid.',
     'numeric'              => ':attribute harus berupa angka.',
     'present'              => ':attribute wajib ada.',
     'regex'                => 'Format :attribute tidak benar.',

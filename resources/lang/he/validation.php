@@ -65,6 +65,7 @@ return [
         'array'   => 'השדה :attribute חייב להכיל לפחות :min פריטים.',
     ],
     'not_in'               => 'נבחר :attribute לא תקין.',
+	'not_regex'            => 'The :attribute format is invalid.',
     'numeric'              => 'השדה :attribute חייב להיות מספר.',
     'present'              => 'השדה :attribute חייב להיות נוכח.',
     'regex'                => 'השדה :attribute מכיל פורמט לא תקין.',
