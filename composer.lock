@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b8453c8f02ca3382e6de48f57b41b84e",
+    "content-hash": "dd75e25baa791348f84a1e68899245ec",
     "packages": [
         {
             "name": "appstract/laravel-blade-directives",
@@ -2028,16 +2028,16 @@
         },
         {
             "name": "spatie/laravel-html",
-            "version": "2.19.0",
+            "version": "2.19.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-html.git",
-                "reference": "93c5aed9f26f55e7377ac04dd1de378875c7ad20"
+                "reference": "331b149fd4e0b758793a857d8ca58eba66ea9c52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-html/zipball/93c5aed9f26f55e7377ac04dd1de378875c7ad20",
-                "reference": "93c5aed9f26f55e7377ac04dd1de378875c7ad20",
+                "url": "https://api.github.com/repos/spatie/laravel-html/zipball/331b149fd4e0b758793a857d8ca58eba66ea9c52",
+                "reference": "331b149fd4e0b758793a857d8ca58eba66ea9c52",
                 "shasum": ""
             },
             "require": {
@@ -2092,7 +2092,7 @@
                 "html",
                 "spatie"
             ],
-            "time": "2018-03-09T14:51:19+00:00"
+            "time": "2018-03-23T14:55:29+00:00"
         },
         {
             "name": "spatie/laravel-permission",
