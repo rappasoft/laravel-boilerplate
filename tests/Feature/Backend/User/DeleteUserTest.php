@@ -42,7 +42,7 @@ class DeleteUserTest extends TestCase
         Event::fake();
 
         $response = $this->get("/admin/auth/user/{$user->id}/restore");
-        $response->assertSessionHas(['flash_success' => 'The user was successfully restored.']);
+        $response->assertSessionHas(['flash_success' => __('alerts.backend.users.restored')]);
 
         $this->assertNull($user->fresh()->deleted_at);
         Event::assertDispatched(UserRestored::class);

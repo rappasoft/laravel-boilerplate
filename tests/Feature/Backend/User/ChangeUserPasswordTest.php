@@ -49,7 +49,7 @@ class ChangeUserPasswordTest extends TestCase
             'password_confirmation' => '12345678',
         ]);
 
-        $response->assertSessionHas(['flash_success' => 'The user\'s password was successfully updated.']);
+        $response->assertSessionHas(['flash_success' => __('alerts.backend.users.updated_password')]);
 
         Event::assertDispatched(UserPasswordChanged::class);
     }
