@@ -8,7 +8,7 @@ class DatabaseSeeder extends Seeder
     use TruncateTable;
 
     /**
-     * Run the database seeds.
+     * Seed the application's database.
      *
      * @return void
      */
