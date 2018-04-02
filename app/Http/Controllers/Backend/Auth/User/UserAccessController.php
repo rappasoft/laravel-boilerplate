@@ -13,15 +13,15 @@ use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
  */
 class UserAccessController extends Controller
 {
+
     /**
-     * @param User              $user
      * @param ManageUserRequest $request
-     *
-     * @throws GeneralException
+     * @param User              $user
      *
      * @return \Illuminate\Http\RedirectResponse
+     * @throws GeneralException
      */
-    public function loginAs(User $user, ManageUserRequest $request)
+    public function loginAs(ManageUserRequest $request, User $user)
     {
         // Overwrite who we're logging in as, if we're already logged in as someone else.
         if (session()->has('admin_user_id') && session()->has('temp_user_id')) {

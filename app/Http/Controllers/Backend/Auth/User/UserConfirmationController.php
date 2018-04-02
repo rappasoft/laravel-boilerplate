@@ -27,12 +27,12 @@ class UserConfirmationController extends Controller
     }
 
     /**
-     * @param User              $user
      * @param ManageUserRequest $request
+     * @param User              $user
      *
      * @return mixed
      */
-    public function sendConfirmationEmail(User $user, ManageUserRequest $request)
+    public function sendConfirmationEmail(ManageUserRequest $request, User $user)
     {
         // Shouldn't allow users to confirm their own accounts when the application is set to manual confirmation
         if (config('access.users.requires_approval')) {
@@ -49,12 +49,13 @@ class UserConfirmationController extends Controller
     }
 
     /**
-     * @param User              $user
      * @param ManageUserRequest $request
+     * @param User              $user
      *
      * @return mixed
+     * @throws \App\Exceptions\GeneralException
      */
-    public function confirm(User $user, ManageUserRequest $request)
+    public function confirm(ManageUserRequest $request, User $user)
     {
         $this->userRepository->confirm($user);
 
@@ -62,12 +63,13 @@ class UserConfirmationController extends Controller
     }
 
     /**
-     * @param User              $user
      * @param ManageUserRequest $request
+     * @param User              $user
      *
      * @return mixed
+     * @throws \App\Exceptions\GeneralException
      */
-    public function unconfirm(User $user, ManageUserRequest $request)
+    public function unconfirm(ManageUserRequest $request, User $user)
     {
         $this->userRepository->unconfirm($user);
 

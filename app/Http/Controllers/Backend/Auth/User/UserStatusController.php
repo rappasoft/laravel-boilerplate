@@ -48,14 +48,14 @@ class UserStatusController extends Controller
     }
 
     /**
+     * @param ManageUserRequest $request
      * @param User              $user
      * @param                   $status
-     * @param ManageUserRequest $request
      *
      * @return mixed
      * @throws \App\Exceptions\GeneralException
      */
-    public function mark(User $user, $status, ManageUserRequest $request)
+    public function mark(ManageUserRequest $request, User $user, $status)
     {
         $this->userRepository->mark($user, $status);
 
@@ -67,13 +67,14 @@ class UserStatusController extends Controller
     }
 
     /**
-     * @param User              $deletedUser
      * @param ManageUserRequest $request
+     * @param User              $deletedUser
      *
      * @return mixed
      * @throws \App\Exceptions\GeneralException
+     * @throws \Throwable
      */
-    public function delete(User $deletedUser, ManageUserRequest $request)
+    public function delete(ManageUserRequest $request, User $deletedUser)
     {
         $this->userRepository->forceDelete($deletedUser);
 
@@ -81,13 +82,13 @@ class UserStatusController extends Controller
     }
 
     /**
-     * @param User              $deletedUser
      * @param ManageUserRequest $request
+     * @param User              $deletedUser
      *
      * @return mixed
      * @throws \App\Exceptions\GeneralException
      */
-    public function restore(User $deletedUser, ManageUserRequest $request)
+    public function restore(ManageUserRequest $request, User $deletedUser)
     {
         $this->userRepository->restore($deletedUser);
 

@@ -13,15 +13,17 @@ use App\Repositories\Backend\Access\User\SocialRepository;
  */
 class UserSocialController extends Controller
 {
+
     /**
-     * @param User                 $user
-     * @param SocialAccount          $social
-     * @param ManageUserRequest    $request
-     * @param SocialRepository $socialRepository
+     * @param ManageUserRequest $request
+     * @param SocialRepository  $socialRepository
+     * @param User              $user
+     * @param SocialAccount     $social
      *
      * @return mixed
+     * @throws \App\Exceptions\GeneralException
      */
-    public function unlink(User $user, SocialAccount $social, ManageUserRequest $request, SocialRepository $socialRepository)
+    public function unlink(ManageUserRequest $request, SocialRepository $socialRepository, User $user, SocialAccount $social)
     {
         $socialRepository->delete($user, $social);
 
