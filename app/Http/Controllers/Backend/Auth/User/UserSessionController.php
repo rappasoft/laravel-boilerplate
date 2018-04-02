@@ -12,7 +12,6 @@ use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
  */
 class UserSessionController extends Controller
 {
-
     /**
      * @param ManageUserRequest $request
      * @param SessionRepository $sessionRepository
