@@ -13,7 +13,6 @@ use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
  */
 class UserAccessController extends Controller
 {
-
     /**
      * @param ManageUserRequest $request
      * @param User              $user

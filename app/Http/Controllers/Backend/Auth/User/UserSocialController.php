@@ -13,7 +13,6 @@ use App\Repositories\Backend\Access\User\SocialRepository;
  */
 class UserSocialController extends Controller
 {
-
     /**
      * @param ManageUserRequest $request
      * @param SocialRepository  $socialRepository

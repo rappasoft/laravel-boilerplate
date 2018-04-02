@@ -11,7 +11,6 @@ use App\Http\Requests\Frontend\User\UpdateProfileRequest;
  */
 class ProfileController extends Controller
 {
-
     /**
      * @var UserRepository
      */
