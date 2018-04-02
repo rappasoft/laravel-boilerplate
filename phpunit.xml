@@ -14,7 +14,7 @@
         <env name="CACHE_DRIVER" value="array"/>
         <env name="DB_CONNECTION" value="sqlite_testing"/>
         <env name="ENABLE_REGISTRATION" value="true"/>
-        <env name="MAIL_DRIVER" value="log"/>
+        <env name="MAIL_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
         <env name="REGISTRATION_CAPTCHA_STATUS" value="false"/>
         <env name="SESSION_DRIVER" value="array"/>
