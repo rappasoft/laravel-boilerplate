@@ -77,6 +77,15 @@
         "phpunit": [
             "phpunit > output.txt -d memory_limit=2048M"
         ],
+        "coverage-xml": [
+            "phpunit --coverage-clover ./coverage.xml"
+        ],
+        "coverage-html": [
+            "phpunit --coverage-html ./coverage"
+        ],
+        "coverage-text": [
+            "phpunit --coverage-text"
+        ],
         "format": [
             "./vendor/bin/php-cs-fixer fix app/  --show-progress=estimating",
             "./vendor/bin/php-cs-fixer fix config/  --show-progress=estimating",
