@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a href="{{ route('log-viewer::dashboard') }}" class="navbar-brand">
-        <i class="fa fa-fw fa-book"></i> LogViewer
+        <i class="fas fa-fw fa-book"></i> LogViewer
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarLogviewerLinks" aria-controls="navbarLogviewerLinks" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,12 +9,12 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item {{ Route::is('log-viewer::dashboard') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('log-viewer::dashboard') }}">
-                    <i class="fa fa-dashboard"></i> Dashboard
+                    <i class="fas fa-tachometer"></i> Dashboard
                 </a>
             </li>
             <li class="nav-item {{ Route::is('log-viewer::logs.list') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('log-viewer::logs.list') }}">
-                    <i class="fa fa-archive"></i> Logs
+                    <i class="fas fa-archive"></i> Logs
                 </a>
             </li>
         </ul>
