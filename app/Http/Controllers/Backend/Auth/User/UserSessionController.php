@@ -13,13 +13,14 @@ use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
 class UserSessionController extends Controller
 {
     /**
-     * @param User              $user
      * @param ManageUserRequest $request
      * @param SessionRepository $sessionRepository
+     * @param User              $user
      *
      * @return mixed
+     * @throws \App\Exceptions\GeneralException
      */
-    public function clearSession(User $user, ManageUserRequest $request, SessionRepository $sessionRepository)
+    public function clearSession(ManageUserRequest $request, SessionRepository $sessionRepository, User $user)
     {
         $sessionRepository->clearSession($user);
 

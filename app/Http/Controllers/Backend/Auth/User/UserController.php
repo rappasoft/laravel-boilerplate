@@ -61,6 +61,7 @@ class UserController extends Controller
      * @param StoreUserRequest $request
      *
      * @return mixed
+     * @throws \Throwable
      */
     public function store(StoreUserRequest $request)
     {
@@ -81,26 +82,26 @@ class UserController extends Controller
     }
 
     /**
-     * @param User              $user
      * @param ManageUserRequest $request
+     * @param User              $user
      *
      * @return mixed
      */
-    public function show(User $user, ManageUserRequest $request)
+    public function show(ManageUserRequest $request, User $user)
     {
         return view('backend.auth.user.show')
             ->withUser($user);
     }
 
     /**
-     * @param User                 $user
      * @param ManageUserRequest    $request
      * @param RoleRepository       $roleRepository
      * @param PermissionRepository $permissionRepository
+     * @param User                 $user
      *
      * @return mixed
      */
-    public function edit(User $user, ManageUserRequest $request, RoleRepository $roleRepository, PermissionRepository $permissionRepository)
+    public function edit(ManageUserRequest $request, RoleRepository $roleRepository, PermissionRepository $permissionRepository, User $user)
     {
         return view('backend.auth.user.edit')
             ->withUser($user)
@@ -111,12 +112,14 @@ class UserController extends Controller
     }
 
     /**
-     * @param User              $user
      * @param UpdateUserRequest $request
+     * @param User              $user
      *
      * @return mixed
+     * @throws \App\Exceptions\GeneralException
+     * @throws \Throwable
      */
-    public function update(User $user, UpdateUserRequest $request)
+    public function update(UpdateUserRequest $request, User $user)
     {
         $this->userRepository->update($user, $request->only(
             'first_name',
@@ -131,12 +134,13 @@ class UserController extends Controller
     }
 
     /**
-     * @param User              $user
      * @param ManageUserRequest $request
+     * @param User              $user
      *
      * @return mixed
+     * @throws \Exception
      */
-    public function destroy(User $user, ManageUserRequest $request)
+    public function destroy(ManageUserRequest $request, User $user)
     {
         $this->userRepository->deleteById($user->id);
 

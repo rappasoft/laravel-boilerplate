@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\Hash;
-use App\Events\Frontend\Auth\UserConfirmed;
 use App\Events\Backend\Auth\User\UserCreated;
 use App\Events\Backend\Auth\User\UserUpdated;
 use App\Events\Backend\Auth\User\UserRestored;
+use App\Events\Backend\Auth\User\UserConfirmed;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Events\Backend\Auth\User\UserDeactivated;
 use App\Events\Backend\Auth\User\UserReactivated;
@@ -239,7 +239,7 @@ class UserRepository extends BaseRepository
      */
     public function confirm(User $user) : User
     {
-        if ($user->confirmed == 1) {
+        if ($user->confirmed) {
             throw new GeneralException(__('exceptions.backend.access.users.already_confirmed'));
         }
 
@@ -268,7 +268,7 @@ class UserRepository extends BaseRepository
      */
     public function unconfirm(User $user) : User
     {
-        if ($user->confirmed == 0) {
+        if (! $user->confirmed) {
             throw new GeneralException(__('exceptions.backend.access.users.not_confirmed'));
         }
 
