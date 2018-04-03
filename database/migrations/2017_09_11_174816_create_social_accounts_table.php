@@ -24,7 +24,7 @@ class CreateSocialAccountsTable extends Migration
             $table->string('provider_id');
             // token length updated to 255 because when api client send access token
             // and that token authenticated by service provider that return big access token
-            $table->string('token', 255)->nullable();
+            $table->string('token', 511)->nullable();
             $table->string('avatar')->nullable();
             $table->timestamps();
         });
