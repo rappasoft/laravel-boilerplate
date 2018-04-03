@@ -53,14 +53,10 @@ Route::group([
 
                 // Session
                 Route::get('clear-session', 'UserSessionController@clearSession')->name('user.clear-session');
-            });
 
-            /*
-             * Deleted User
-             */
-            Route::group(['prefix' => 'user/{deletedUser}'], function () {
-                Route::get('delete', 'UserStatusController@delete')->name('user.delete-permanently');
-                Route::get('restore', 'UserStatusController@restore')->name('user.restore');
+                // Deleted
+				Route::get('delete', 'UserStatusController@delete')->name('user.delete-permanently');
+				Route::get('restore', 'UserStatusController@restore')->name('user.restore');
             });
         });
 
