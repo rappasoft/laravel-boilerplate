@@ -37,6 +37,7 @@ return [
         'el'    => ['el', 'el_GR', false],
         'en'    => ['en', 'en_US', false],
         'es'    => ['es', 'es_ES', false],
+        'fa'    => ['fa', 'fa_IR', true],
         'fr'    => ['fr', 'fr_FR', false],
         'he'    => ['he', 'he_IL', true],
         'id'    => ['id', 'id_ID', false],

@@ -67,6 +67,7 @@ return [
             'el'    => 'Yunani (Greek)',
             'en'    => 'Inggris (English)',
             'es'    => 'Spanyol (Spanish)',
+            'fa'    => 'Persia (Persian)',
             'fr'    => 'Perancis (French)',
             'he'    => 'Ibrani (Hebrew)',
             'id'    => 'Bahasa Indonesia (Indonesian)',
