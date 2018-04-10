@@ -15,6 +15,7 @@ return [
 
     'failed'        => 'Zugangsdaten nicht gefunden.',
     'general_error' => 'Du hast keine Berechtigung um dies zu machen.',
+	'password_used' => 'You can not set a password that you have previously used.',
     'socialite'     => [
         'unacceptable' => ':provider ist kein akzeptierter Anmeldetyp.',
     ],

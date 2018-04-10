@@ -206,13 +206,11 @@ class UserRepository extends BaseRepository
         $user = $this->getById(auth()->id());
 
         if (Hash::check($input['old_password'], $user->password)) {
-            $user->password = Hash::make($input['password']);
-
             if ($expired) {
                 $user->password_changed_at = Carbon::now()->toDateTimeString();
             }
 
-            return $user->save();
+            return $user->update(['password' => $input['password']]);
         }
 
         throw new GeneralException(__('exceptions.frontend.auth.password.change_mismatch'));

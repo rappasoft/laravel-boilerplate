@@ -188,9 +188,7 @@ class UserRepository extends BaseRepository
      */
     public function updatePassword(User $user, $input) : User
     {
-        $user->password = Hash::make($input['password']);
-
-        if ($user->save()) {
+        if ($user->update(['password' => $input['password']])) {
             event(new UserPasswordChanged($user));
 
             return $user;
@@ -310,7 +308,9 @@ class UserRepository extends BaseRepository
 
         return DB::transaction(function () use ($user) {
             // Delete associated relationships
+			$user->passwordHistories()->delete();
             $user->providers()->delete();
+            $user->sessions()->delete();
 
             if ($user->forceDelete()) {
                 event(new UserPermanentlyDeleted($user));

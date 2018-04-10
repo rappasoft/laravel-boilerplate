@@ -15,6 +15,7 @@ return [
 
     'failed'        => 'Brukernavn eller passord stemmer ikke.',
     'general_error' => 'Du har ikke tilgang til at utføre denne handling.',
+	'password_used' => 'You can not set a password that you have previously used.',
     'socialite'     => [
         'unacceptable' => ':provider kan ikke brukes som login.',
     ],

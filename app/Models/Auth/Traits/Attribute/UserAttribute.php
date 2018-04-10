@@ -2,11 +2,31 @@
 
 namespace App\Models\Auth\Traits\Attribute;
 
+use Illuminate\Support\Facades\Hash;
+
 /**
- * Trait UserAttribute.
+ * Trait UserAttribute
+ *
+ * @package App\Models\Auth\Traits\Attribute
  */
 trait UserAttribute
 {
+
+	/**
+	 * @param $password
+	 */
+	public function setPasswordAttribute($password) {
+		$hash = Hash::make($password);
+
+		if (config('access.users.password_history')) {
+			$this->passwordHistories()->create([
+				'password' => $hash,
+			]);
+		}
+
+		$this->attributes['password'] = $hash;
+	}
+
     /**
      * @return string
      */

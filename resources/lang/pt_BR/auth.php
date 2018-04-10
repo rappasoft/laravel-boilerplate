@@ -16,6 +16,7 @@ return [
 
     'failed'        => 'Estas credenciais não correspondem com nossos registros.',
     'general_error' => 'Você não tem acesso para fazer isso.',
+	'password_used' => 'You can not set a password that you have previously used.',
     'socialite'     => [
         'unacceptable' => ':provider não é um tipo de login aceitável.',
     ],

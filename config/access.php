@@ -72,6 +72,12 @@ return [
          * false is off
          */
         'password_expires_days' => env('PASSWORD_EXPIRES_DAYS', 30),
+
+		/**
+		 * The number of most recent previous passwords to check against when changing/resetting a password
+		 * false is off which doesn't log password changes or check against them
+		 */
+		'password_history' => env('PASSWORD_HISTORY', 3),
     ],
 
     /*

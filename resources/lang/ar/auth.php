@@ -15,6 +15,7 @@ return [
 
     'failed'        => 'البيانات المدخلة لا تتطابق مع قاعدة بيناتنا.',
     'general_error' => 'ليس لديك صلاحية الوصول إلى هذا.',
+	'password_used' => 'You can not set a password that you have previously used.',
     'socialite'     => [
         'unacceptable' => ':provider ليس نوع تسجيل دخول صحيح.',
     ],
