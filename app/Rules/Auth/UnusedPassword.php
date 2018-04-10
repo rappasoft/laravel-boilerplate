@@ -3,7 +3,8 @@
 namespace App\Rules\Auth;
 
 use App\Models\Auth\User;
-use App\Repositories\Backend\Auth\UserRepository;
+use App\Repositories\Backend\Auth\UserRepository as BackendUserRepository;
+use App\Repositories\Frontend\Auth\UserRepository as FrontendUserRepository;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
@@ -46,8 +47,16 @@ class UnusedPassword implements Rule
 		}
 
 		if (! $this->user instanceof User) {
-    		$this->user = resolve(UserRepository::class)->getById($this->user);
+    		if (is_numeric($this->user)) {
+				$this->user = resolve(BackendUserRepository::class)->getById($this->user);
+			} else {
+				$this->user = resolve(FrontendUserRepository::class)->findByPasswordResetToken($this->user);
+			}
 		}
+
+		if (! $this->user || null === $this->user) {
+    		return false;
+    	}
 
     	$histories = $this->user
 			->passwordHistories()
