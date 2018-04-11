@@ -113,8 +113,9 @@ class RoleRepository extends BaseRepository
     {
         $query = $this->model
             ->where('name', $name);
-        if ($exclude !== null)
+        if ($exclude !== null) {
             $query->where('id', '!=', $exclude->id);
+        }
         return $query->count() > 0;
     }
 }
