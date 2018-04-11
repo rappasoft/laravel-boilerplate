@@ -28,6 +28,7 @@ class AuthTableSeeder extends Seeder
             config('permission.table_names.permissions'),
             config('permission.table_names.roles'),
             config('access.table_names.users'),
+			config('access.table_names.password_histories'),
         ]);
 
         $this->call(UserTableSeeder::class);
