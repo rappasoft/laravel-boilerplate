@@ -74,7 +74,7 @@ class RoleRepository extends BaseRepository
 
         // If the name is changing make sure it doesn't already exist
         if ($role->name != $data['name']) {
-            if ($this->roleExists($data['name'])) {
+            if ($this->roleExists($data['name'], $role)) {
                 throw new GeneralException('A role already exists with the name '.$data['name']);
             }
         }
@@ -105,13 +105,16 @@ class RoleRepository extends BaseRepository
 
     /**
      * @param $name
+     * @param Role $exclude
      *
      * @return bool
      */
-    protected function roleExists($name)
+    protected function roleExists($name, $exclude = null)
     {
-        return $this->model
-                ->where('name', $name)
-                ->count() > 0;
+        $query = $this->model
+            ->where('name', $name);
+        if ($exclude !== null)
+            $query->where('id', '!=', $exclude->id);
+        return $query->count() > 0;
     }
 }
