@@ -60,8 +60,8 @@ class UnusedPassword implements Rule
 
     	$histories = $this->user
 			->passwordHistories()
-			->latest()
 			->take(config('access.users.password_history'))
+			->orderBy('id', 'desc')
 			->get();
 
         foreach ($histories as $history) {
