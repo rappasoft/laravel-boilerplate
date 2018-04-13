@@ -5,6 +5,7 @@ namespace Tests\Feature\Frontend;
 use App\Models\Auth\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 class PasswordExpirationTest extends TestCase
@@ -51,7 +52,23 @@ class PasswordExpirationTest extends TestCase
 
 	/** @test */
 	public function a_user_can_use_the_same_password_when_history_is_off_on_password_expiration() {
+		config(['access.users.password_history' => false]);
+		config(['access.users.password_expires_days' => 30]);
 
+		$user = factory(User::class)->create([
+			'password' => 'secret',
+			'password_changed_at' => Carbon::now()->subMonths(2)->toDateTimeString()
+		]);
+
+		$response = $this->actingAs($user)
+			->patch('/password/expired', [
+				'old_password' => 'secret',
+				'password' => 'secret',
+				'password_confirmation' => 'secret',
+			]);
+
+		$response->assertSessionHas('flash_success');
+		$this->assertTrue(Hash::check('secret', $user->fresh()->password));
 	}
 
 	/** @test */
