@@ -22,6 +22,7 @@ $factory->define(User::class, function (Generator $faker) {
         'last_name'         => $faker->lastName,
         'email'             => $faker->safeEmail,
         'password'          => 'secret',
+		'password_changed_at' => null,
         'remember_token'    => str_random(10),
         'confirmation_code' => md5(uniqid(mt_rand(), true)),
         'active' => 1,
