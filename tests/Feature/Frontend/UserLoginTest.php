@@ -4,7 +4,6 @@ namespace Tests\Feature\Frontend;
 
 use Tests\TestCase;
 use App\Models\Auth\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;

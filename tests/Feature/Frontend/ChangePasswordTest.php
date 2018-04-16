@@ -57,85 +57,88 @@ class ChangePasswordTest extends TestCase
         $response->assertSessionHasErrors('old_password');
     }
 
-	/** @test */
-    public function a_user_can_use_the_same_password_when_history_is_off_on_account_change_password() {
-    	config(['access.users.password_history' => false]);
+    /** @test */
+    public function a_user_can_use_the_same_password_when_history_is_off_on_account_change_password()
+    {
+        config(['access.users.password_history' => false]);
 
-		$user = factory(User::class)->create(['password' => 'secret']);
+        $user = factory(User::class)->create(['password' => 'secret']);
 
-		$response = $this->actingAs($user)
-			->patch('/password/update', [
-				'old_password' => 'secret',
-				'password' => 'secret',
-				'password_confirmation' => 'secret',
-			]);
+        $response = $this->actingAs($user)
+            ->patch('/password/update', [
+                'old_password' => 'secret',
+                'password' => 'secret',
+                'password_confirmation' => 'secret',
+            ]);
 
-		$response->assertSessionHas('flash_success');
-		$this->assertTrue(Hash::check('secret', $user->fresh()->password));
-	}
+        $response->assertSessionHas('flash_success');
+        $this->assertTrue(Hash::check('secret', $user->fresh()->password));
+    }
 
-	/** @test */
-	public function a_user_can_not_use_the_same_password_when_history_is_on_on_account_change_password() {
-		config(['access.users.password_history' => 1]);
+    /** @test */
+    public function a_user_can_not_use_the_same_password_when_history_is_on_on_account_change_password()
+    {
+        config(['access.users.password_history' => 1]);
 
-		$user = factory(User::class)->create(['password' => 'secret']);
+        $user = factory(User::class)->create(['password' => 'secret']);
 
-		// Change once
-		$this->actingAs($user)
-			->patch('/password/update', [
-				'old_password' => 'secret',
-				'password' => 'secret2',
-				'password_confirmation' => 'secret2',
-			]);
+        // Change once
+        $this->actingAs($user)
+            ->patch('/password/update', [
+                'old_password' => 'secret',
+                'password' => 'secret2',
+                'password_confirmation' => 'secret2',
+            ]);
 
-		$this->assertTrue(Hash::check('secret2', $user->fresh()->password));
+        $this->assertTrue(Hash::check('secret2', $user->fresh()->password));
 
-		// Change back
-		$response = $this->actingAs($user)
-			->patch('/password/update', [
-				'old_password' => 'secret2',
-				'password' => 'secret',
-				'password_confirmation' => 'secret',
-			]);
+        // Change back
+        $response = $this->actingAs($user)
+            ->patch('/password/update', [
+                'old_password' => 'secret2',
+                'password' => 'secret',
+                'password_confirmation' => 'secret',
+            ]);
 
-		$response->assertSessionHasErrors();
-		$errors = session('errors');
-		$this->assertEquals($errors->get('password')[0], __('auth.password_used'));
-		$this->assertTrue(Hash::check('secret2', $user->fresh()->password));
-	}
+        $response->assertSessionHasErrors();
+        $errors = session('errors');
+        $this->assertEquals($errors->get('password')[0], __('auth.password_used'));
+        $this->assertTrue(Hash::check('secret2', $user->fresh()->password));
+    }
 
-	/** @test */
-	public function a_user_can_reuse_a_password_after_it_surpasses_the_limit() {
-		config(['access.users.password_history' => 2]);
+    /** @test */
+    public function a_user_can_reuse_a_password_after_it_surpasses_the_limit()
+    {
+        config(['access.users.password_history' => 2]);
 
-		$user = factory(User::class)->create(['password' => 'secret']);
+        $user = factory(User::class)->create(['password' => 'secret']);
 
-		// Change once
-		$this->actingAs($user)
-			->patch('/password/update', [
-				'old_password' => 'secret',
-				'password' => 'secret2',
-				'password_confirmation' => 'secret2',
-			]);
+        // Change once
+        $this->actingAs($user)
+            ->patch('/password/update', [
+                'old_password' => 'secret',
+                'password' => 'secret2',
+                'password_confirmation' => 'secret2',
+            ]);
 
-		$this->assertTrue(Hash::check('secret2', $user->fresh()->password));
+        $this->assertTrue(Hash::check('secret2', $user->fresh()->password));
 
-		// Change twice
-		$this->actingAs($user)
-			->patch('/password/update', [
-				'old_password' => 'secret2',
-				'password' => 'secret3',
-				'password_confirmation' => 'secret3',
-			]);
+        // Change twice
+        $this->actingAs($user)
+            ->patch('/password/update', [
+                'old_password' => 'secret2',
+                'password' => 'secret3',
+                'password_confirmation' => 'secret3',
+            ]);
 
-		$response = $this->actingAs($user)
-			->patch('/password/update', [
-				'old_password' => 'secret3',
-				'password' => 'secret',
-				'password_confirmation' => 'secret',
-			]);
+        $response = $this->actingAs($user)
+            ->patch('/password/update', [
+                'old_password' => 'secret3',
+                'password' => 'secret',
+                'password_confirmation' => 'secret',
+            ]);
 
-		$response->assertSessionHas('flash_success');
-		$this->assertTrue(Hash::check('secret', $user->fresh()->password));
-	}
+        $response->assertSessionHas('flash_success');
+        $this->assertTrue(Hash::check('secret', $user->fresh()->password));
+    }
 }

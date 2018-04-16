@@ -15,7 +15,7 @@ return [
 
     'failed'        => 'Toegangsgegevens niet gevonden',
     'general_error' => 'Je hebt niet de rechten om dat te doen.',
-	'password_used' => 'You can not set a password that you have previously used.',
+    'password_used' => 'You can not set a password that you have previously used.',
     'socialite'     => [
         'unacceptable' => ':provider is niet een geaccepteerd login type.',
     ],

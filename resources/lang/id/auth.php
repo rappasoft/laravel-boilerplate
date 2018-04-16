@@ -15,7 +15,7 @@ return [
 
     'failed'        => 'Identitas tersebut tidak cocok dengan catatan kami.',
     'general_error' => 'Anda tidak memiliki akses untuk melakukan itu.',
-	'password_used' => 'You can not set a password that you have previously used.',
+    'password_used' => 'You can not set a password that you have previously used.',
     'socialite'     => [
         'unacceptable' => ':provider bukanlah jenis login diterima.',
     ],

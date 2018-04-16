@@ -3,28 +3,25 @@
 namespace App\Rules\Auth;
 
 use App\Models\Auth\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Contracts\Validation\Rule;
 use App\Repositories\Backend\Auth\UserRepository as BackendUserRepository;
 use App\Repositories\Frontend\Auth\UserRepository as FrontendUserRepository;
-use Illuminate\Contracts\Validation\Rule;
-use Illuminate\Support\Facades\Hash;
 
 /**
- * Class UnusedPassword
- *
- * @package App\Rules\Auth
+ * Class UnusedPassword.
  */
 class UnusedPassword implements Rule
 {
-
-	/**
-	 * @var
-	 */
-	protected $user;
+    /**
+     * @var
+     */
+    protected $user;
 
     /**
      * Create a new rule instance.
      *
-	 * @param $user
+     * @param $user
      * @return void
      */
     public function __construct($user)
@@ -41,36 +38,36 @@ class UnusedPassword implements Rule
      */
     public function passes($attribute, $value)
     {
-    	// Option is off
-    	if (! config('access.users.password_history')) {
-    		return true;
-		}
+        // Option is off
+        if (! config('access.users.password_history')) {
+            return true;
+        }
 
-		if (! $this->user instanceof User) {
-    		if (is_numeric($this->user)) {
-				$this->user = resolve(BackendUserRepository::class)->getById($this->user);
-			} else {
-				$this->user = resolve(FrontendUserRepository::class)->findByPasswordResetToken($this->user);
-			}
-		}
+        if (! $this->user instanceof User) {
+            if (is_numeric($this->user)) {
+                $this->user = resolve(BackendUserRepository::class)->getById($this->user);
+            } else {
+                $this->user = resolve(FrontendUserRepository::class)->findByPasswordResetToken($this->user);
+            }
+        }
 
-		if (! $this->user || null === $this->user) {
-    		return false;
-    	}
+        if (! $this->user || null === $this->user) {
+            return false;
+        }
 
-    	$histories = $this->user
-			->passwordHistories()
-			->take(config('access.users.password_history'))
-			->orderBy('id', 'desc')
-			->get();
+        $histories = $this->user
+            ->passwordHistories()
+            ->take(config('access.users.password_history'))
+            ->orderBy('id', 'desc')
+            ->get();
 
         foreach ($histories as $history) {
-			if (Hash::check($value, $history->password)) {
-				return false;
-			}
-		}
+            if (Hash::check($value, $history->password)) {
+                return false;
+            }
+        }
 
-		return true;
+        return true;
     }
 
     /**

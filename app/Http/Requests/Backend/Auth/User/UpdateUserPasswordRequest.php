@@ -28,7 +28,7 @@ class UpdateUserPasswordRequest extends FormRequest
     public function rules()
     {
         return [
-			'password'     => ['required', 'min:6', 'confirmed', new UnusedPassword((int)$this->segment(4))],
+            'password'     => ['required', 'min:6', 'confirmed', new UnusedPassword((int) $this->segment(4))],
         ];
     }
 }
