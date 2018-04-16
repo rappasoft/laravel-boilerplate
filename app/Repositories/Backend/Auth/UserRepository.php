@@ -6,7 +6,6 @@ use App\Models\Auth\User;
 use Illuminate\Support\Facades\DB;
 use App\Exceptions\GeneralException;
 use App\Repositories\BaseRepository;
-use Illuminate\Support\Facades\Hash;
 use App\Events\Backend\Auth\User\UserCreated;
 use App\Events\Backend\Auth\User\UserUpdated;
 use App\Events\Backend\Auth\User\UserRestored;
@@ -308,7 +307,7 @@ class UserRepository extends BaseRepository
 
         return DB::transaction(function () use ($user) {
             // Delete associated relationships
-			$user->passwordHistories()->delete();
+            $user->passwordHistories()->delete();
             $user->providers()->delete();
             $user->sessions()->delete();
 

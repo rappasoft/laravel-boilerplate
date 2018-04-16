@@ -15,7 +15,7 @@ return [
 
     'failed'        => '用户名或密码错误。',
     'general_error' => '你没有权限执行此操作。',
-	'password_used' => 'You can not set a password that you have previously used.',
+    'password_used' => 'You can not set a password that you have previously used.',
     'socialite'     => [
         'unacceptable' => ':provider 不是可接受的登录类型。',
     ],

@@ -15,7 +15,7 @@ return [
 
     'failed'        => 'Le credenziali non corrispondono a quelle registrate.',
     'general_error' => 'Non hai diritti sufficienti per questa operazione.',
-	'password_used' => 'You can not set a password that you have previously used.',
+    'password_used' => 'You can not set a password that you have previously used.',
     'socialite'     => [
         'unacceptable' => ':provider non è supportato.',
     ],

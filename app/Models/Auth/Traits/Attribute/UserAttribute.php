@@ -5,30 +5,28 @@ namespace App\Models\Auth\Traits\Attribute;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * Trait UserAttribute
- *
- * @package App\Models\Auth\Traits\Attribute
+ * Trait UserAttribute.
  */
 trait UserAttribute
 {
+    /**
+     * @param $password
+     */
+    public function setPasswordAttribute($password) : void
+    {
+        // If password was accidentally passed in already hashed, try not to double hash it
+        if (
+            (\strlen($password) === 60 && preg_match('/^\$2y\$/', $password)) ||
+            (\strlen($password) === 95 && preg_match('/^\$argon2i\$/', $password))
+        ) {
+            $hash = $password;
+        } else {
+            $hash = Hash::make($password);
+        }
 
-	/**
-	 * @param $password
-	 */
-	public function setPasswordAttribute($password) : void {
-		// If password was accidentally passed in already hashed, try not to double hash it
-		if (
-			(\strlen($password) === 60 && preg_match('/^\$2y\$/', $password)) ||
-			(\strlen($password) === 95 && preg_match('/^\$argon2i\$/', $password))
-		) {
-			$hash = $password;
-		} else {
-			$hash = Hash::make($password);
-		}
-
-		// Note: Password Histories are logged from the \App\Observer\User\UserObserver class
-		$this->attributes['password'] = $hash;
-	}
+        // Note: Password Histories are logged from the \App\Observer\User\UserObserver class
+        $this->attributes['password'] = $hash;
+    }
 
     /**
      * @return string

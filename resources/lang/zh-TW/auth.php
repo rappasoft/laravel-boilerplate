@@ -15,7 +15,7 @@ return [
 
     'failed' => '賬戶不存在，請重新輸入。 ',
     'general_error' => '沒有操作權限。 ',
-	'password_used' => 'You can not set a password that you have previously used.',
+    'password_used' => 'You can not set a password that you have previously used.',
     'socialite' => [
         'unacceptable' => ':provider 的登錄方式失敗。 ',
     ],

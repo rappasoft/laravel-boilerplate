@@ -15,7 +15,7 @@ return [
 
     'failed'        => 'Las credenciales no se han encontrado.',
     'general_error' => 'No tiene suficientes permisos..',
-	'password_used' => 'You can not set a password that you have previously used.',
+    'password_used' => 'You can not set a password that you have previously used.',
     'socialite'     => [
         'unacceptable' => ':provider no es un tipo de autenticación válida.',
     ],
