@@ -73,6 +73,31 @@ class PasswordExpirationTest extends TestCase
 
 	/** @test */
 	public function a_user_can_not_use_the_same_password_when_history_is_on_on_password_expiration() {
+		config(['access.users.password_history' => 3]);
+		config(['access.users.password_expires_days' => 30]);
 
+		$user = factory(User::class)->create([
+			'password' => 'secret',
+			'password_changed_at' => Carbon::now()->subMonths(2)->toDateTimeString()
+		]);
+
+		$this->actingAs($user)
+			->patch('/password/expired', [
+				'old_password' => 'secret',
+				'password' => 'secret2',
+				'password_confirmation' => 'secret2',
+			]);
+
+		$response = $this->actingAs($user)
+			->patch('/password/expired', [
+				'old_password' => 'secret2',
+				'password' => 'secret',
+				'password_confirmation' => 'secret',
+			]);
+
+		$response->assertSessionHasErrors();
+		$errors = session('errors');
+		$this->assertEquals($errors->get('password')[0], __('auth.password_used'));
+		$this->assertTrue(Hash::check('secret2', $user->fresh()->password));
 	}
 }
