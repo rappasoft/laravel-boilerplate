@@ -78,7 +78,7 @@ class ChangePasswordTest extends TestCase
     /** @test */
     public function a_user_can_not_use_the_same_password_when_history_is_on_on_account_change_password()
     {
-        config(['access.users.password_history' => 1]);
+        config(['access.users.password_history' => 3]);
 
         $user = factory(User::class)->create(['password' => 'secret']);
 
