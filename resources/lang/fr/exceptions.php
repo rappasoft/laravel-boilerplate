@@ -64,7 +64,7 @@ return [
                 'mismatch'          => 'Votre code de confirmation est invalide.',
                 'not_found'         => "Votre code de confirmation n'existe pas.",
                 'pending'            => 'Votre compte est actuellement en attente de validation.',
-                'resend'            => 'Votre compte n\'est pas confirmé. Veuillez utiliser le lien qui vous a été envoyé par email, ou <a href="'.route('frontend.auth.account.confirm.resend', ':user_uuid').'">cliquez ici </a> pour recevoir un nouvel email.',
+                'resend'            => 'Votre compte n\'est pas confirmé. Veuillez utiliser le lien qui vous a été envoyé par email, ou <a href=":url">cliquez ici </a> pour recevoir un nouvel email.',
                 'success'           => 'Votre compte est maintenant confirmé !',
                 'resent'            => "Un nouvel email a été envoyé à l'adresse enregistrée.",
             ],

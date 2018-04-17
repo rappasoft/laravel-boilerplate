@@ -64,7 +64,7 @@ return [
                 'mismatch'          => '您的确认码不匹配。',
                 'not_found'         => '该确认码不存在。',
                 'pending'            => '您的账户正在等待处理',
-                'resend'            => '您的帐户未确认。请点击您的电子邮件中的确认链接，或 <a href="'.route('frontend.auth.account.confirm.resend', ':user_id').'">点击此处</a> 重新发送确认电子邮件。',
+                'resend'            => '您的帐户未确认。请点击您的电子邮件中的确认链接，或 <a href=":url">点击此处</a> 重新发送确认电子邮件。',
                 'success'           => '您的帐户已成功确认！',
                 'resent'            => '新的确认电子邮件已发送到文件上的地址。',
             ],

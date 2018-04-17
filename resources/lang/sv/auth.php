@@ -15,6 +15,7 @@ return [
 
     'failed'        => 'Dessa uppgifter stämmer inte överens med vårt register.',
     'general_error' => 'Du har inte tillstånd att göra det där.',
+    'password_used' => 'You can not set a password that you have previously used.',
     'socialite'     => [
         'unacceptable' => ':provider kan inte att användas vid inloggning.',
     ],

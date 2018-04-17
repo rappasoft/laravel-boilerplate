@@ -62,7 +62,7 @@ return [
                 'mismatch'          => 'Seu código de confirmação não corresponde.',
                 'not_found'         => 'Esse código de confirmação não existe.',
                 'pending'            => 'Sua conta aguarda aprovação para ser ativada.',
-                'resend'            => 'Sua conta não está confirmada. Por favor, clique no link de confirmação em seu e-mail, ou <a href="'.route('frontend.auth.account.confirm.resend', ':user_id').'">clique aqui</a> para reenviar o e-mail de confirmação.',
+                'resend'            => 'Sua conta não está confirmada. Por favor, clique no link de confirmação em seu e-mail, ou <a href=":url">clique aqui</a> para reenviar o e-mail de confirmação.',
                 'success'           => 'Sua conta foi confirmada com sucesso!',
                 'resent'            => 'Um novo e-mail de confirmação foi enviado para você.',
             ],

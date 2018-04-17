@@ -43,15 +43,15 @@
                 <div class="dropdown-header text-center">
                     <strong>Heading</strong>
                 </div>
-                <a class="dropdown-item" href="#"><i class="fa fa-bell-o"></i> Link<span class="badge badge-info">0</span></a>
-                <a class="dropdown-item" href="#"><i class="fa fa-envelope-o"></i> Link</a>
+                <a class="dropdown-item" href="#"><i class="fas fa-link"></i> Link<span class="badge badge-primary">0</span></a>
+                <a class="dropdown-item" href="#"><i class="fas fa-link"></i> Link</a>
 
                 <div class="dropdown-header text-center">
                     <strong>Heading</strong>
                 </div>
-                <a class="dropdown-item" href="#"><i class="fa fa-wrench"></i> Link</a>
-                <a class="dropdown-item" href="#"><i class="fa fa-file"></i> Link<span class="badge badge-primary">0</span></a>
-                <a class="dropdown-item" href="{{ route('frontend.auth.logout') }}"><i class="fa fa-lock"></i> {{ __('navs.general.logout') }}</a>
+                <a class="dropdown-item" href="#"><i class="fas fa-link"></i> Link</a>
+                <a class="dropdown-item" href="#"><i class="fas fa-link"></i> Link</a>
+                <a class="dropdown-item" href="{{ route('frontend.auth.logout') }}"><i class="fas fa-lock"></i> {{ __('navs.general.logout') }}</a>
             </div>
         </li>
     </ul>

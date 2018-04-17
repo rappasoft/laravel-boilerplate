@@ -25,3 +25,5 @@ error.log
 output.txt
 /.vscode
 .php_cs.cache
+coverage.xml
+/coverage

@@ -60,7 +60,7 @@ return [
                 'mismatch'          => 'Din bekreftelseskode matcher ikke.',
                 'not_found'         => 'Denne bekreftelseskode finnes ikke.',
                 'pending'            => 'Din konto venter på å bli godkjent.',
-                'resend'            => 'Din konto er ikke bekreftet. Klikk på linket i bekreftelsesmailen eller <a href="'.route('frontend.auth.account.confirm.resend', ':user_id').'">klikk her</a> for å sende den på nytt.',
+                'resend'            => 'Din konto er ikke bekreftet. Klikk på linket i bekreftelsesmailen eller <a href=":url">klikk her</a> for å sende den på nytt.',
                 'success'           => 'Din konto er blitt godkjent!',
                 'resent'            => 'En ny bekreftelsesmail er blitt sendt til din e-mailadresse.',
             ],

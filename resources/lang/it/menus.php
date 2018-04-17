@@ -67,6 +67,7 @@ return [
             'el'    => '(Greek)',
             'en'    => 'Inglese (English)',
             'es'    => 'Spagnol (Spanish)',
+            'fa'    => 'Persiano (Persian)',
             'fr'    => 'Francese (French)',
             'he'    => 'Ebraico (Hebrew)',
             'id'    => 'Indonesiano (Indonesian)',

@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">
                     <strong>
-                        <i class="fa fa-dashboard"></i> {{ __('navs.frontend.dashboard') }}
+                        <i class="fas fa-tachometer-alt"></i> {{ __('navs.frontend.dashboard') }}
                     </strong>
                 </div><!--card-header-->
 
@@ -23,20 +23,20 @@
 
                                     <p class="card-text">
                                         <small>
-                                            <i class="fa fa-envelope-o"></i> {{ $logged_in_user->email }}<br/>
-                                            <i class="fa fa-calendar-check-o"></i> {{ __('strings.frontend.general.joined') }} {{ $logged_in_user->created_at->timezone(get_user_timezone())->format('F jS, Y') }}
+                                            <i class="fas fa-envelope"></i> {{ $logged_in_user->email }}<br/>
+                                            <i class="fas fa-calendar-check"></i> {{ __('strings.frontend.general.joined') }} {{ $logged_in_user->created_at->timezone(get_user_timezone())->format('F jS, Y') }}
                                         </small>
                                     </p>
 
                                     <p class="card-text">
 
                                         <a href="{{ route('frontend.user.account')}}" class="btn btn-info btn-sm mb-1">
-                                            <i class="fa fa-user-circle-o"></i> {{ __('navs.frontend.user.account') }}
+                                            <i class="fas fa-user-circle"></i> {{ __('navs.frontend.user.account') }}
                                         </a>
 
                                         @can('view backend')
                                             &nbsp;<a href="{{ route ('admin.dashboard')}}" class="btn btn-danger btn-sm mb-1">
-                                                <i class="fa fa-user-secret"></i> {{ __('navs.frontend.user.administration') }}
+                                                <i class="fas fa-user-secret"></i> {{ __('navs.frontend.user.administration') }}
                                             </a>
                                         @endcan
                                     </p>

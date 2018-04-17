@@ -60,7 +60,7 @@ return [
                 'mismatch'          => 'Din bekræftelseskode matcher ikke.',
                 'not_found'         => 'Denne bekræftelseskode findes ikke.',
                 'pending'            => 'Your account is currently pending approval.',
-                'resend'            => 'Din konto er ikke bekræftet. Klik på linket i bekræftelsesmailen eller <a href="'.route('frontend.auth.account.confirm.resend', ':user_uuid').'">klik her</a> for at gensende bekræftelsesmailen.',
+                'resend'            => 'Din konto er ikke bekræftet. Klik på linket i bekræftelsesmailen eller <a href=":url">klik her</a> for at gensende bekræftelsesmailen.',
                 'success'           => 'Din konto er blevet bekræftet!',
                 'resent'            => 'En ny bekræftelsesmail er blevet sendt til den kendte e-mailadresse.',
             ],

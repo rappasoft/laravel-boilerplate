@@ -4,6 +4,7 @@ namespace Tests\Feature\Backend\User;
 
 use Tests\TestCase;
 use App\Models\Auth\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Events\Backend\Auth\User\UserPasswordChanged;
@@ -52,5 +53,46 @@ class ChangeUserPasswordTest extends TestCase
         $response->assertSessionHas(['flash_success' => __('alerts.backend.users.updated_password')]);
 
         Event::assertDispatched(UserPasswordChanged::class);
+    }
+
+    /** @test */
+    public function an_admin_can_use_the_same_password_when_history_is_off_on_backend_user_password_change()
+    {
+        config(['access.users.password_history' => false]);
+
+        $this->loginAsAdmin();
+        $user = factory(User::class)->create(['password' => 'secret']);
+
+        $response = $this->patch("/admin/auth/user/{$user->id}/password/change", [
+            'password' => 'secret',
+            'password_confirmation' => 'secret',
+        ]);
+
+        $response->assertSessionHas(['flash_success' => __('alerts.backend.users.updated_password')]);
+        $this->assertTrue(Hash::check('secret', $user->fresh()->password));
+    }
+
+    /** @test */
+    public function an_admin_can_not_use_the_same_password_when_history_is_on_on_backend_user_password_change()
+    {
+        config(['access.users.password_history' => 3]);
+
+        $this->loginAsAdmin();
+        $user = factory(User::class)->create(['password' => 'secret']);
+
+        $this->patch("/admin/auth/user/{$user->id}/password/change", [
+            'password' => 'secret2',
+            'password_confirmation' => 'secret2',
+        ]);
+
+        $response = $this->patch("/admin/auth/user/{$user->id}/password/change", [
+            'password' => 'secret',
+            'password_confirmation' => 'secret',
+        ]);
+
+        $response->assertSessionHasErrors();
+        $errors = session('errors');
+        $this->assertEquals($errors->get('password')[0], __('auth.password_used'));
+        $this->assertTrue(Hash::check('secret2', $user->fresh()->password));
     }
 }

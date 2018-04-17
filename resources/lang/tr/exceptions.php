@@ -64,7 +64,7 @@ return [
                 'mismatch'          => 'Onay kodunuz uyuşmuyor.',
                 'not_found'         => 'Onay kodu mevcut değil.',
                 'pending'            => 'Your account is currently pending approval.',
-                'resend'            => 'Hesabınız doğrulanmadı. Lütfen e-postanızdaki onay bağlantısını tıklayın veya onay e-postasını yeniden göndermek için <a href="'.route('frontend.auth.account.confirm.resend', ':user_uuid').'">buraya tıklayın</a>',
+                'resend'            => 'Hesabınız doğrulanmadı. Lütfen e-postanızdaki onay bağlantısını tıklayın veya onay e-postasını yeniden göndermek için <a href=":url">buraya tıklayın</a>',
                 'success'           => 'Hesabınız başarıyla onaylandı!',
                 'resent'            => 'Kayıtlı e-posta adresine yeni bir onay e-postası gönderildi.',
             ],

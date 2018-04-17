@@ -55,7 +55,7 @@
         <div class="row">
             <div class="col">
                 <div class="alert alert-info">
-                    <i class="fa fa-info-circle"></i> {{  __('strings.frontend.user.change_email_notice') }}
+                    <i class="fas fa-info-circle"></i> {{  __('strings.frontend.user.change_email_notice') }}
                 </div>
 
                 <div class="form-group">

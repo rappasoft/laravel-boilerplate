@@ -64,7 +64,7 @@ return [
                 'mismatch'          => 'Kode konfirmasi Anda tidak cocok.',
                 'not_found'         => 'Kode konfirmasi tersebut tidak ada.',
                 'pending'            => 'Your account is currently pending approval.',
-                'resend'            => 'Akun Anda belum dikonfirmasi. Silakan klik link konfirmasi di e-mail Anda, atau <a href="'.route('frontend.auth.account.confirm.resend', ':user_uuid').'">klik disini</a> untuk mengirim ulang e-mail konfirmasi.',
+                'resend'            => 'Akun Anda belum dikonfirmasi. Silakan klik link konfirmasi di e-mail Anda, atau <a href=":url">klik disini</a> untuk mengirim ulang e-mail konfirmasi.',
                 'success'           => 'Akun Anda telah berhasil dikonfirmasi!',
                 'resent'            => 'Sebuah e-mail konfirmasi baru telah dikirimkan ke alamat terkait.',
             ],
