@@ -15,13 +15,13 @@ return [
 
     'general' => [
         'home'   => 'Inicio',
-        'logout' => 'Cerrar Sessión',
+        'logout' => 'Cerrar Sesión',
     ],
 
     'frontend' => [
         'contact'   => 'Contacto',
         'dashboard' => 'Principal',
-        'login'     => 'Iniciar Sessión',
+        'login'     => 'Iniciar Sesión',
         'macros'    => 'Macros',
         'register'  => 'Registrarse',
 
