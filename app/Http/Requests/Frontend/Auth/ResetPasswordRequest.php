@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Requests\Backend\Auth\User;
+namespace App\Http\Requests\Frontend\Auth;
 
 use App\Rules\Auth\UnusedPassword;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class UpdateUserPasswordRequest.
+ * Class ResetPasswordRequest.
  */
-class UpdateUserPasswordRequest extends FormRequest
+class ResetPasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -17,7 +17,7 @@ class UpdateUserPasswordRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->isAdmin();
+        return true;
     }
 
     /**
@@ -28,7 +28,9 @@ class UpdateUserPasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'password'     => ['required', 'min:6', 'confirmed', new UnusedPassword((int) $this->segment(4))],
+            'token' => 'required',
+            'email' => 'required|email',
+            'password'     => ['required', 'min:6', 'confirmed', new UnusedPassword($this->get('token'))],
         ];
     }
 }
