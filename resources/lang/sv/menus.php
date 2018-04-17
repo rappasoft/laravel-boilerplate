@@ -67,6 +67,7 @@ return [
             'el'    => '(Greek)',
             'pt_BR' => 'Brasiliansk portugisiska (Brazilian Portuguese)',
             'en'    => 'Engelska (English)',
+            'fa'    => 'Perser (Persian)',
             'fr'    => 'Franska (French)',
             'he'    => 'Hebreiska (Hebrew)',
             'id'    => 'Indonesiska (Indonesian)',
