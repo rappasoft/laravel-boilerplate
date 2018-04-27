@@ -5,6 +5,7 @@
   padding: 0;
   margin: 0;
   background-color: $navbar-bg;
+
   @include borders($navbar-border);
 
   .navbar-brand {
@@ -18,6 +19,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: $navbar-brand-logo-size;
+
     @include borders($navbar-brand-border);
   }
 
@@ -109,7 +111,7 @@
 }
 
 .navbar-divider {
-  background-color: rgba(0,0,0,.075);
+  background-color: rgba(0, 0, 0, .075);
 }
 
 @include media-breakpoint-up(lg) {
@@ -120,6 +122,7 @@
         background-color: $navbar-brand-minimized-bg;
         background-image: $navbar-brand-minimized-logo;
         background-size: $navbar-brand-minimized-logo-size;
+
         @include borders($navbar-brand-minimized-border);
       }
     }

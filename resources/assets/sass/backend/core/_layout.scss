@@ -1,5 +1,5 @@
 // IE10&11 Flexbox fix
-@media all and (-ms-high-contrast:none) {
+@media all and (-ms-high-contrast: none) {
   html {
     display: flex;
     flex-direction: column;
@@ -210,6 +210,7 @@ app-root {
 .breadcrumb-fixed {
   .main {
     $breadcrumb-height: 2 * $breadcrumb-padding-y + $font-size-base + 1.5 * $spacer;
+
     padding-top: $breadcrumb-height;
   }
 
@@ -309,12 +310,15 @@ app-root {
     width: 100%;
     text-align: center;
     background-color: $navbar-brand-bg;
+
     @include borders($navbar-brand-border);
 
     .navbar-toggler {
       @if (lightness( $navbar-brand-bg ) > 40) {
         color: $navbar-color;
-      } @else {
+      }
+
+      @else {
         color: #fff;
       }
     }

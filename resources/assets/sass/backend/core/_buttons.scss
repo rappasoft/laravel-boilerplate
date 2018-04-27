@@ -87,6 +87,7 @@ button {
       margin-left: 0 !important;
     }
   }
+
   @include button-social-size($input-btn-padding-y, $input-btn-padding-x, $font-size-base, $line-height-base, $btn-border-radius);
 
   &.btn-lg {
@@ -96,7 +97,6 @@ button {
   &.btn-sm {
     @include button-social-size($input-btn-padding-y-sm, $input-btn-padding-x-sm, $font-size-sm, $line-height-sm, $btn-border-radius-sm);
   }
-
 }
 
 .btn-facebook {
@@ -106,7 +106,6 @@ button {
   &::before {
     content: "\f09a";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -125,7 +124,6 @@ button {
   &::before {
     content: "\f099";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -144,7 +142,6 @@ button {
   &::before {
     content: "\f0e1";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -163,7 +160,6 @@ button {
   &::before {
     content: "\f16e";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -182,7 +178,6 @@ button {
   &::before {
     content: "\f173";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -201,7 +196,6 @@ button {
   &::before {
     content: "\f168";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -220,7 +214,6 @@ button {
   &::before {
     content: "\f09b";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -239,7 +232,6 @@ button {
   &::before {
     content: "\f13b";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -258,7 +250,6 @@ button {
   &::before {
     content: "\f19b";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -277,7 +268,6 @@ button {
   &::before {
     content: "\f16c";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -296,7 +286,6 @@ button {
   &::before {
     content: "\f13c";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -315,7 +304,6 @@ button {
   &::before {
     content: "\f167";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -334,7 +322,6 @@ button {
   &::before {
     content: "\f17d";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -353,7 +340,6 @@ button {
   &::before {
     content: "\f0d5";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -372,7 +358,6 @@ button {
   &::before {
     content: "\f16d";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -391,7 +376,6 @@ button {
   &::before {
     content: "\f0d2";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -410,7 +394,6 @@ button {
   &::before {
     content: "\f189";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -429,7 +412,6 @@ button {
   &::before {
     content: "\f19e";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -448,7 +430,6 @@ button {
   &::before {
     content: "\f1b4";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -467,7 +448,6 @@ button {
   &::before {
     content: "\f16b";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -486,7 +466,6 @@ button {
   &::before {
     content: "\f1a1";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -505,7 +484,6 @@ button {
   &::before {
     content: "\f1bc";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -524,7 +502,6 @@ button {
   &::before {
     content: "\f1ca";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -543,7 +520,6 @@ button {
   &::before {
     content: "\f180";
     background: darken($color, 5%);
-
   }
 
   &:hover {
@@ -562,7 +538,6 @@ button {
   &::before {
     content: "\f194";
     background: darken($color, 5%);
-
   }
 
   &:hover {

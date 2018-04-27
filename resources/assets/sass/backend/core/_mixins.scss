@@ -3,6 +3,7 @@
   font-size: $font-size;
   line-height: $line-height;
   border: 0;
+
   @include border-radius($border-radius);
 
   &::before {
@@ -11,6 +12,7 @@
     padding: $padding-y 0;
     font-size: $font-size;
     line-height: $line-height;
+
     @include border-radius($border-radius);
   }
 
@@ -49,30 +51,44 @@
 @mixin borders($borders) {
   @each $border in $borders {
     $direction: nth($border, 1);
+
     @if $direction == "all" {
       $size: map-get(map-get($borders, $direction), size);
       $style: map-get(map-get($borders, $direction), style);
       $color: map-get(map-get($borders, $direction), color);
+
       border: $size $style $color;
-    } @else if $direction == "top" {
+    }
+
+    @else if $direction == "top" {
       $size: map-get(map-get($borders, $direction), size);
       $style: map-get(map-get($borders, $direction), style);
       $color: map-get(map-get($borders, $direction), color);
+
       border-top: $size $style $color;
-    } @else if $direction == "right" {
+    }
+
+    @else if $direction == "right" {
       $size: map-get(map-get($borders, $direction), size);
       $style: map-get(map-get($borders, $direction), style);
       $color: map-get(map-get($borders, $direction), color);
+
       border-right: $size $style $color;
-    } @else if $direction == "bottom" {
+    }
+
+    @else if $direction == "bottom" {
       $size: map-get(map-get($borders, $direction), size);
       $style: map-get(map-get($borders, $direction), style);
       $color: map-get(map-get($borders, $direction), color);
+
       border-bottom: $size $style $color;
-    } @else if $direction == "left" {
+    }
+
+    @else if $direction == "left" {
       $size: map-get(map-get($borders, $direction), size);
       $style: map-get(map-get($borders, $direction), style);
       $color: map-get(map-get($borders, $direction), color);
+
       border-left: $size $style $color;
     }
   }
@@ -83,16 +99,22 @@
 
   @each $border in $borders {
     $direction: nth($border, 1);
+
     @if $direction == "all" {
       $size: map-get(map-get($borders, $direction), size);
       $sidebar-width: ($sidebar-width - (2 * $size));
-    } @else if $direction == "right" {
-      $size: map-get(map-get($borders, $direction), size);
-      $sidebar-width: $sidebar-width - $size;
-    } @else if $direction == "left" {
+    }
+
+    @else if $direction == "right" {
       $size: map-get(map-get($borders, $direction), size);
       $sidebar-width: $sidebar-width - $size;
     }
+
+    @else if $direction == "left" {
+      $size: map-get(map-get($borders, $direction), size);
+      $sidebar-width: $sidebar-width - $size;
+    }
+
     width: $sidebar-width;
   }
 }
@@ -100,6 +122,7 @@
 @mixin bg-variant($parent, $color) {
   #{$parent} {
     @include border-radius($card-border-radius-inner $card-border-radius-inner $card-border-radius-inner $card-border-radius-inner);
+
     color: #fff !important;
     background-color: $color !important;
   }
