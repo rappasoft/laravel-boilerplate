@@ -52,7 +52,7 @@ class UserRepository extends BaseRepository
     public function getActivePaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc') : LengthAwarePaginator
     {
         return $this->model
-            ->with('roles', 'permissions', 'providers')
+            ::with('roles', 'permissions', 'providers')
             ->active()
             ->orderBy($orderBy, $sort)
             ->paginate($paged);
@@ -68,7 +68,7 @@ class UserRepository extends BaseRepository
     public function getInactivePaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc') : LengthAwarePaginator
     {
         return $this->model
-            ->with('roles', 'permissions', 'providers')
+            ::with('roles', 'permissions', 'providers')
             ->active(false)
             ->orderBy($orderBy, $sort)
             ->paginate($paged);
@@ -84,7 +84,7 @@ class UserRepository extends BaseRepository
     public function getDeletedPaginated($paged = 25, $orderBy = 'created_at', $sort = 'desc') : LengthAwarePaginator
     {
         return $this->model
-            ->with('roles', 'permissions', 'providers')
+            ::with('roles', 'permissions', 'providers')
             ->onlyTrashed()
             ->orderBy($orderBy, $sort)
             ->paginate($paged);
@@ -154,7 +154,7 @@ class UserRepository extends BaseRepository
         $this->checkUserByEmail($user, $data['email']);
 
         // See if adding any additional permissions
-        if (! isset($data['permissions']) || ! count($data['permissions'])) {
+        if (! isset($data['permissions']) || ! \count($data['permissions'])) {
             $data['permissions'] = [];
         }
 
@@ -214,11 +214,11 @@ class UserRepository extends BaseRepository
         switch ($status) {
             case 0:
                 event(new UserDeactivated($user));
-            break;
+                break;
 
             case 1:
                 event(new UserReactivated($user));
-            break;
+                break;
         }
 
         if ($user->save()) {
@@ -301,7 +301,7 @@ class UserRepository extends BaseRepository
      */
     public function forceDelete(User $user) : User
     {
-        if (is_null($user->deleted_at)) {
+        if (null === $user->deleted_at) {
             throw new GeneralException(__('exceptions.backend.access.users.delete_first'));
         }
 
@@ -329,7 +329,7 @@ class UserRepository extends BaseRepository
      */
     public function restore(User $user) : User
     {
-        if (is_null($user->deleted_at)) {
+        if (null === $user->deleted_at) {
             throw new GeneralException(__('exceptions.backend.access.users.cant_restore'));
         }
 
@@ -350,12 +350,9 @@ class UserRepository extends BaseRepository
      */
     protected function checkUserByEmail(User $user, $email)
     {
-        //Figure out if email is not the same
-        if ($user->email != $email) {
-            //Check to see if email exists
-            if ($this->model->where('email', '=', $email)->first()) {
-                throw new GeneralException(trans('exceptions.backend.access.users.email_error'));
-            }
+        //Figure out if email is not the same && if email exists
+        if (($user->email != $email) && $this->model->where('email', '=', $email)->first()) {
+            throw new GeneralException(trans('exceptions.backend.access.users.email_error'));
         }
     }
 }

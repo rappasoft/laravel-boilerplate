@@ -66,9 +66,8 @@ if (! function_exists('home_route')) {
         if (auth()->check()) {
             if (auth()->user()->can('view backend')) {
                 return 'admin.dashboard';
-            } else {
-                return 'frontend.user.dashboard';
             }
+            return 'frontend.user.dashboard';
         }
 
         return 'frontend.index';
@@ -142,7 +141,7 @@ if (! function_exists('get_user_timezone')) {
     function get_user_timezone()
     {
         if (auth()->user()) {
-            return auth()->user()->timezone;
+            return auth()->user()->timezone;    // timezone not a field of Authenticatable!
         }
 
         return 'UTC';

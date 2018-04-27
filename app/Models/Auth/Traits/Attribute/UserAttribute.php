@@ -15,8 +15,7 @@ trait UserAttribute
     public function setPasswordAttribute($password) : void
     {
         // If password was accidentally passed in already hashed, try not to double hash it
-        if (
-            (\strlen($password) === 60 && preg_match('/^\$2y\$/', $password)) ||
+        if ((\strlen($password) === 60 && preg_match('/^\$2y\$/', $password)) ||
             (\strlen($password) === 95 && preg_match('/^\$argon2i\$/', $password))
         ) {
             $hash = $password;
@@ -49,11 +48,10 @@ trait UserAttribute
             if ($this->id != 1 && $this->id != auth()->id()) {
                 return '<a href="'.route(
                     'admin.auth.user.unconfirm',
-                        $this
+                    $this
                 ).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.unconfirm').'" name="confirm_item"><span class="badge badge-success" style="cursor:pointer">'.__('labels.general.yes').'</span></a>';
-            } else {
-                return '<span class="badge badge-success">'.__('labels.general.yes').'</span>';
             }
+            return '<span class="badge badge-success">'.__('labels.general.yes').'</span>';
         }
 
         return '<a href="'.route('admin.auth.user.confirm', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.confirm').'" name="confirm_item"><span class="badge badge-danger" style="cursor:pointer">'.__('labels.general.no').'</span></a>';
@@ -127,7 +125,7 @@ trait UserAttribute
         foreach ($this->providers as $social) {
             $accounts[] = '<a href="'.route(
                 'admin.auth.user.social.unlink',
-                    [$this, $social]
+                [$this, $social]
             ).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.unlink').'" data-method="delete"><i class="fas fa-'.$social->provider.'"></i></a>';
         }
 
@@ -147,7 +145,7 @@ trait UserAttribute
             if ($this->id != auth()->id()) {
                 return '<a href="'.route(
                     'admin.auth.user.login-as',
-                        $this
+                    $this
                 ).'" class="dropdown-item">'.__('buttons.backend.access.users.login_as', ['user' => $this->full_name]).'</a> ';
             }
         }
