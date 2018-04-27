@@ -67,6 +67,7 @@ if (! function_exists('home_route')) {
             if (auth()->user()->can('view backend')) {
                 return 'admin.dashboard';
             }
+
             return 'frontend.user.dashboard';
         }
 

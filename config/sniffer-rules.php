@@ -82,6 +82,6 @@ return [
         [
             'classSuffix' => 'Test',
             'methodPrefix' => ['test'],
-        ]
-    ]
+        ],
+    ],
 ];

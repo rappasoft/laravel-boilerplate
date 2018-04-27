@@ -51,6 +51,7 @@ trait UserAttribute
                     $this
                 ).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.unconfirm').'" name="confirm_item"><span class="badge badge-success" style="cursor:pointer">'.__('labels.general.yes').'</span></a>';
             }
+            
             return '<span class="badge badge-success">'.__('labels.general.yes').'</span>';
         }
 
