@@ -1,5 +1,6 @@
 ## Testing
 * `cd laravel-5-boilerplate/`
+* `npm i -g eslint jscsrc jshint sass-lint stylelint`    # or yarn global add 
 * `composer validate`
 * `composer phpunit`
 * `composer coverage-text`
@@ -7,8 +8,8 @@
 * `npm run test`
 * `npm run develop`   # or production, etc.
 * `phpcs --standard=PSR2 -n app`  # Better: edit PSR2, lineLength in ruleset.xml
-* `phpcs --standard=PSR2 app | grep -v 'Line exceeds'`
-* * `phpcbf --standard=PSR2 -n app`  # to fix any / some warnings
+* `phpcs --standard=PSR2 app | grep -v 'Line exceeds'`  # to catch all unknown warnings
+* * `phpcbf --standard=PSR2 -n app`  # to fix any | some warnings
 * `php artisan sniff -n`
 * `eslint resources/`
 * `jshint resources/`
