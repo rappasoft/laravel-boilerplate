@@ -5,24 +5,28 @@
 .avatar {
   $width: 36px;
   $status-width: 10px;
+
   @include avatar($width,$status-width);
 }
 
 .avatar.avatar-xs {
   $width: 20px;
   $status-width: 8px;
+
   @include avatar($width,$status-width);
 }
 
 .avatar.avatar-sm {
   $width: 24px;
   $status-width: 8px;
+
   @include avatar($width,$status-width);
 }
 
 .avatar.avatar-lg {
   $width: 72px;
   $status-width: 12px;
+
   @include avatar($width,$status-width);
 }
 
@@ -47,5 +51,4 @@
   // .avatar.avatar-lg {
   //
   // }
-
 }

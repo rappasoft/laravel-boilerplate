@@ -1,0 +1,18 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "jasmine": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module"
+    },
+    "rules": {
+        "camelcase": 0,
+        "curly": 2,
+        "no-unused-vars": [2, {"args":"none"}],
+        "semi": 2,
+        "no-underscore-dangle": 0
+    }
+}
