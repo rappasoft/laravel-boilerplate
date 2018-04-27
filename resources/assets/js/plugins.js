@@ -10,14 +10,15 @@
  */
 function addDeleteForms() {
     $('[data-method]').append(function () {
-        if (! $(this).find('form').length > 0)
-            return "\n" +
-                "<form action='" + $(this).attr('href') + "' method='POST' name='delete_item' style='display:none'>\n" +
-                "<input type='hidden' name='_method' value='" + $(this).attr('data-method') + "'>\n" +
-                "<input type='hidden' name='_token' value='" + $('meta[name="csrf-token"]').attr('content') + "'>\n" +
-                "</form>\n";
-        else
-            return "";
+        if ($(this).find('form').length <= 0) {
+            return '\n' +
+                '<form action=\'' + $(this).attr('href') + '\' method=\'POST\' name=\'delete_item\' style=\'display:none\'>\n' +
+                '<input type=\'hidden\' name=\'_method\' value=\'' + $(this).attr('data-method') + '\'>\n' +
+                '<input type=\'hidden\' name=\'_token\' value=\'' + $('meta[name="csrf-token"]').attr('content') + '\'>\n' +
+                '</form>\n';
+        } else {
+            return '';
+        }
     })
         .removeAttr('href')
         .attr('style', 'cursor:pointer;')
@@ -27,7 +28,7 @@ function addDeleteForms() {
 /**
  * Place any jQuery/helper plugins in here.
  */
-$(function(){
+$(function () {
     /**
      * Add the data-method="delete" forms to all delete links
      */
@@ -36,19 +37,20 @@ $(function(){
     /**
      * Bind all bootstrap tooltips & popovers
      */
-    $("[data-toggle='tooltip']").tooltip();
+    $('[data-toggle=\'tooltip\']').tooltip();
 
     /**
      * Generic confirm form delete using Sweet Alert
      */
-    $('body').on('submit', 'form[name=delete_item]', function(e){
+    $('body').on('submit', 'form[name=delete_item]', function (e) {
         e.preventDefault();
 
-        let form = this,
+        let that = this,
+            form = that,
             link = $('a[data-method="delete"]'),
-            cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : "Cancel",
-            confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : "Yes, delete",
-            title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : "Are you sure you want to delete this item?";
+            cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : 'Cancel',
+            confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : 'Yes, delete',
+            title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : 'Are you sure you want to delete this item?';
 
         swal({
             title: title,
@@ -57,18 +59,18 @@ $(function(){
             cancelButtonText: cancel,
             type: 'warning'
         }).then((result) => {
-            result.value && form.submit();
+            return result.value && form.submit();
         });
-    }).on('click', 'a[name=confirm_item]', function(e){
+    }).on('click', 'a[name=confirm_item]', function (e) {
         /**
          * Generic 'are you sure' confirm box
          */
         e.preventDefault();
 
         let link = $(this),
-            title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : "Are you sure you want to do this?",
-            cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : "Cancel",
-            confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : "Continue";
+            title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : 'Are you sure you want to do this?',
+            cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : 'Cancel',
+            confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : 'Continue';
 
         swal({
             title: title,
@@ -77,7 +79,7 @@ $(function(){
             cancelButtonText: cancel,
             type: 'info'
         }).then((result) => {
-            result.value && window.location.assign(link.attr('href'));
+            return result.value && window.location.assign(link.attr('href'));
         });
     });
 });

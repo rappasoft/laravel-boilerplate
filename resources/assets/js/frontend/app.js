@@ -18,6 +18,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
+// eslint-disable-next-line
 const app = new Vue({
     el: '#app'
 });

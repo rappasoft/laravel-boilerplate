@@ -20,14 +20,25 @@ $.grayLight =     '#818a91';
 $.grayLighter =   '#d1d4d7';
 $.grayLightest =  '#f8f9fa';
 
-'use strict';
-
 /****
  * MAIN NAVIGATION
  */
-$(document).ready(function($){
+$(document).ready(function ($) {
+    'use strict';
+    function resizeBroadcast() {
+
+        var timesRun = 0;
+        var interval = setInterval(function () {
+            timesRun += 1;
+            if (timesRun === 5) {
+                clearInterval(interval);
+            }
+            window.dispatchEvent(new Event('resize'));
+        }, 62.5);
+    }
+
     // Dropdown Menu
-    $.navigation.on('click', 'a', function(e){
+    $.navigation.on('click', 'a', function (e) {
 
         if ($.ajaxLoad) {
             e.preventDefault();
@@ -40,20 +51,8 @@ $(document).ready(function($){
 
     });
 
-    function resizeBroadcast() {
-
-        var timesRun = 0;
-        var interval = setInterval(function(){
-            timesRun += 1;
-            if(timesRun === 5){
-                clearInterval(interval);
-            }
-            window.dispatchEvent(new Event('resize'));
-        }, 62.5);
-    }
-
     /* ---------- Main Menu Open/Close, Min/Full ---------- */
-    $('.navbar-toggler').click(function(){
+    $('.navbar-toggler').click(function () {
 
         if ($(this).hasClass('sidebar-toggler')) {
             $('body').toggleClass('sidebar-hidden');
@@ -77,27 +76,29 @@ $(document).ready(function($){
 
     });
 
-    $('.sidebar-close').click(function(){
+    $('.sidebar-close').click(function () {
         $('body').toggleClass('sidebar-opened').parent().toggleClass('sidebar-opened');
     });
 
     /* ---------- Disable moving to top ---------- */
-    $('a[href="#"][data-top!=true]').click(function(e){
+    $('a[href="#"][data-top!=true]').click(function (e) {
         e.preventDefault();
     });
 
 });
 
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-function init(url) {
-
-    /* ---------- Tooltip ---------- */
-    $('[rel="tooltip"],[data-rel="tooltip"]').tooltip({"placement":"bottom",delay: { show: 400, hide: 200 }});
-
-    /* ---------- Popover ---------- */
-    $('[rel="popover"],[data-rel="popover"],[data-toggle="popover"]').popover();
-
-}
+// Unused?
+// function capitalizeFirstLetter(string) {
+//     'use strict';
+//     return string.charAt(0).toUpperCase() + string.slice(1);
+// }
+//
+// function init(url) {
+//     'use strict';
+//
+//     /* ---------- Tooltip ---------- */
+//     $('[rel="tooltip"],[data-rel="tooltip"]').tooltip({"placement":"bottom",delay: { show: 400, hide: 200 }});
+//
+//     /* ---------- Popover ---------- */
+//     $('[rel="popover"],[data-rel="popover"],[data-toggle="popover"]').popover();
+// }
