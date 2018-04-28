@@ -15,7 +15,7 @@
 
             @if ($logged_in_user->isAdmin())
                 <li class="nav-item nav-dropdown {{ active_class(Active::checkUriPattern('admin/auth*'), 'open') }}">
-                    <a class="nav-link nav-dropdown-toggle" href="#">
+                    <a class="nav-link nav-dropdown-toggle {{ active_class(Active::checkUriPattern('admin/auth*')) }}" href="#">
                         <i class="icon-user"></i> {{ __('menus.backend.access.title') }}
 
                         @if ($pending_approval > 0)
@@ -43,7 +43,7 @@
             @endif
 
             <li class="nav-item nav-dropdown {{ active_class(Active::checkUriPattern('admin/log-viewer*'), 'open') }}">
-                <a class="nav-link nav-dropdown-toggle" href="#">
+                <a class="nav-link nav-dropdown-toggle {{ active_class(Active::checkUriPattern('admin/log-viewer*')) }}" href="#">
                     <i class="icon-list"></i> {{ __('menus.backend.log-viewer.main') }}
                 </a>
 
