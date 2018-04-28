@@ -177,6 +177,7 @@ return [
         App\Providers\ObserverServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        SocialEngine\SnifferRules\ServiceProvider::class,
     ],
 
     /*

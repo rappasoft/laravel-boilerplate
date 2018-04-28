@@ -214,11 +214,11 @@ class UserRepository extends BaseRepository
         switch ($status) {
             case 0:
                 event(new UserDeactivated($user));
-            break;
+                break;
 
             case 1:
                 event(new UserReactivated($user));
-            break;
+                break;
         }
 
         if ($user->save()) {
