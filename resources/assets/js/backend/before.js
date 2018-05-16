@@ -8,3 +8,9 @@
 require('../bootstrap');
 require('pace');
 require('../plugins');
+
+window.Vue = require('vue');
+
+const app = new Vue({
+    el: '#app-backend'
+});
