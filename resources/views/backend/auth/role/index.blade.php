@@ -32,7 +32,7 @@
                         <tbody>
                         @foreach ($roles as $role)
                             <tr>
-                                <td>{{ ucfirst($role->name) }}</td>
+                                <td>{{ ucwords($role->name) }}</td>
                                 <td>
                                     @if ($role->id == 1)
                                         {{ __('labels.general.all') }}

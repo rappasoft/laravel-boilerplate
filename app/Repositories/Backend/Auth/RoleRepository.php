@@ -32,20 +32,20 @@ class RoleRepository extends BaseRepository
     {
         // Make sure it doesn't already exist
         if ($this->roleExists($data['name'])) {
-            throw new GeneralException('A role already exists with the name '.$data['name']);
+            throw new GeneralException('A role already exists with the name ' . $data['name']);
         }
 
-        if (! isset($data['permissions']) || ! count($data['permissions'])) {
+        if (! isset($data['permissions']) || ! \count($data['permissions'])) {
             $data['permissions'] = [];
         }
 
         //See if the role must contain a permission as per config
-        if (config('access.roles.role_must_contain_permission') && count($data['permissions']) == 0) {
+        if (config('access.roles.role_must_contain_permission') && \count($data['permissions']) === 0) {
             throw new GeneralException(__('exceptions.backend.access.roles.needs_permission'));
         }
 
         return DB::transaction(function () use ($data) {
-            $role = parent::create(['name' => $data['name']]);
+            $role = parent::create(['name' => strtolower($data['name'])]);
 
             if ($role) {
                 $role->givePermissionTo($data['permissions']);
@@ -73,24 +73,24 @@ class RoleRepository extends BaseRepository
         }
 
         // If the name is changing make sure it doesn't already exist
-        if ($role->name != $data['name']) {
+        if ($role->name !== strtolower($data['name'])) {
             if ($this->roleExists($data['name'])) {
-                throw new GeneralException('A role already exists with the name '.$data['name']);
+                throw new GeneralException('A role already exists with the name ' . $data['name']);
             }
         }
 
-        if (! isset($data['permissions']) || ! count($data['permissions'])) {
+        if (! isset($data['permissions']) || ! \count($data['permissions'])) {
             $data['permissions'] = [];
         }
 
         //See if the role must contain a permission as per config
-        if (config('access.roles.role_must_contain_permission') && count($data['permissions']) == 0) {
+        if (config('access.roles.role_must_contain_permission') && \count($data['permissions']) === 0) {
             throw new GeneralException(__('exceptions.backend.access.roles.needs_permission'));
         }
 
         return DB::transaction(function () use ($role, $data) {
             if ($role->update([
-                'name' => $data['name'],
+                'name' => strtolower($data['name']),
             ])) {
                 $role->syncPermissions($data['permissions']);
 
@@ -108,10 +108,10 @@ class RoleRepository extends BaseRepository
      *
      * @return bool
      */
-    protected function roleExists($name)
+    protected function roleExists($name) : bool
     {
         return $this->model
-                ->where('name', $name)
+                ->where('name', strtolower($name))
                 ->count() > 0;
     }
 }
