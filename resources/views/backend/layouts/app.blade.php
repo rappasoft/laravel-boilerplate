@@ -24,31 +24,33 @@
 </head>
 
 <body class="{{ config('backend.body_classes') }}">
-    @include('backend.includes.header')
+    <div id="app-backend">
+        @include('backend.includes.header')
 
-    <div class="app-body">
-        @include('backend.includes.sidebar')
+        <div class="app-body">
+            @include('backend.includes.sidebar')
 
-        <main class="main">
-            @include('includes.partials.logged-in-as')
-            {!! Breadcrumbs::render() !!}
+            <main class="main">
+                @include('includes.partials.logged-in-as')
+                {!! Breadcrumbs::render() !!}
 
-            <div class="container-fluid">
-                <div class="animated fadeIn">
-                    <div class="content-header">
-                        @yield('page-header')
-                    </div><!--content-header-->
+                <div class="container-fluid">
+                    <div class="animated fadeIn">
+                        <div class="content-header">
+                            @yield('page-header')
+                        </div><!--content-header-->
 
-                    @include('includes.partials.messages')
-                    @yield('content')
-                </div><!--animated-->
-            </div><!--container-fluid-->
-        </main><!--main-->
+                        @include('includes.partials.messages')
+                        @yield('content')
+                    </div><!--animated-->
+                </div><!--container-fluid-->
+            </main><!--main-->
 
-        @include('backend.includes.aside')
-    </div><!--app-body-->
+            @include('backend.includes.aside')
+        </div><!--app-body-->
 
-    @include('backend.includes.footer')
+        @include('backend.includes.footer')
+    </div>
 
     <!-- Scripts -->
     @stack('before-scripts')
