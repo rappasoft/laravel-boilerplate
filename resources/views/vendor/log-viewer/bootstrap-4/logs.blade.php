@@ -66,7 +66,7 @@
                                         </a>
 
                                         <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-backdrop="false" data-target="#delete-log-modal" data-log-date="{{ $date }}">
-                                            <i class="fa fa-trash-o"></i>
+                                            <i class="fas fa-trash"></i>
                                         </button>
                                     </div>
                                 </td>
