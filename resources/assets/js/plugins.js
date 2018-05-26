@@ -34,6 +34,15 @@ $(function(){
     addDeleteForms();
 
     /**
+     * Disable all submit buttons once clicked
+     */
+    $('form').submit(function() {
+        $(this).find('input[type="submit"]').attr("disabled", true);
+        $(this).find('button[type="submit"]').attr("disabled", true);
+        return true;
+    });
+
+    /**
      * Bind all bootstrap tooltips & popovers
      */
     $("[data-toggle='tooltip']").tooltip();

@@ -42,6 +42,18 @@ return [
     'exists'               => 'נבחר :attribute לא תקין.',
     'file'                 => 'השדה :attribute חייב להכיל קובץ.',
     'filled'               => 'השדה :attribute לא יכול להיות ריק.',
+    'gt'                   => [
+        'numeric' => 'The :attribute must be greater than :value.',
+        'file'    => 'The :attribute must be greater than :value kilobytes.',
+        'string'  => 'The :attribute must be greater than :value characters.',
+        'array'   => 'The :attribute must have more than :value items.',
+    ],
+    'gte'                  => [
+        'numeric' => 'The :attribute must be greater than or equal :value.',
+        'file'    => 'The :attribute must be greater than or equal :value kilobytes.',
+        'string'  => 'The :attribute must be greater than or equal :value characters.',
+        'array'   => 'The :attribute must have :value items or more.',
+    ],
     'image'                => 'השדה :attribute חייב להכיל תמונה.',
     'in'                   => 'נבחר :attribute לא תקין.',
     'in_array'             => 'השדה :attribute לא קיים ב :other.',
@@ -50,6 +62,18 @@ return [
     'ipv4'                 => 'השדה :attribute חייב להכיל כתובת IPv4 תקינה.',
     'ipv6'                 => 'השדה :attribute חייב להכיל כתובת IPv6 תקינה.',
     'json'                 => 'השדה :attribute חייב להכיל מחרוזת JSON.',
+    'lt'                   => [
+        'numeric' => 'The :attribute must be less than :value.',
+        'file'    => 'The :attribute must be less than :value kilobytes.',
+        'string'  => 'The :attribute must be less than :value characters.',
+        'array'   => 'The :attribute must have less than :value items.',
+    ],
+    'lte'                  => [
+        'numeric' => 'The :attribute must be less than or equal :value.',
+        'file'    => 'The :attribute must be less than or equal :value kilobytes.',
+        'string'  => 'The :attribute must be less than or equal :value characters.',
+        'array'   => 'The :attribute must not have more than :value items.',
+    ],
     'max'                  => [
         'numeric' => 'השדה :attribute לא יכול להיות גדול מ-:max.',
         'file'    => 'השדה :attribute לא יכול להיות גדול מ-:max קילובייט.',
