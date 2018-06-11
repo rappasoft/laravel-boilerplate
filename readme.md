@@ -5,6 +5,9 @@
 [![StyleCI](https://styleci.io/repos/30171828/shield?style=plastic)](https://styleci.io/repos/30171828/shield?style=plastic)
 [![CircleCI](https://circleci.com/gh/rappasoft/laravel-5-boilerplate/tree/master.svg?style=svg)](https://circleci.com/gh/rappasoft/laravel-5-boilerplate/tree/master)
 
+### Unofficial Documentation
+See testing.md for what is changing in this release
+
 ### Official Documentation
 
 [Click here for the official documentation](http://laravel-boilerplate.com)
