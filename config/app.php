@@ -161,9 +161,6 @@ return [
         /*
          * Package Service Providers that aren't auto-discover...
          */
-        Appstract\BladeDirectives\BladeDirectivesServiceProvider::class,
-        Creativeorange\Gravatar\GravatarServiceProvider::class,
-        HieuLe\Active\ActiveServiceProvider::class,
 
         /*
          * Application Service Providers...

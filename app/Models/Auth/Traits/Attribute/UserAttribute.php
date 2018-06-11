@@ -66,7 +66,7 @@ trait UserAttribute
     {
         $roles = $this->getRoleNames()->toArray();
 
-        if (count($roles)) {
+        if (\count($roles)) {
             return implode(', ', array_map(function ($item) {
                 return ucwords($item);
             }, $roles));
@@ -82,7 +82,7 @@ trait UserAttribute
     {
         $permissions = $this->getDirectPermissions()->toArray();
 
-        if (count($permissions)) {
+        if (\count($permissions)) {
             return implode(', ', array_map(function ($item) {
                 return ucwords($item['name']);
             }, $permissions));
@@ -148,7 +148,7 @@ trait UserAttribute
                 return '<a href="'.route(
                     'admin.auth.user.login-as',
                         $this
-                ).'" class="dropdown-item">'.__('buttons.backend.access.users.login_as', ['user' => $this->full_name]).'</a> ';
+                ).'" class="dropdown-item">'.__('buttons.backend.access.users.login_as', ['user' => e($this->full_name)]).'</a> ';
             }
         }
 
