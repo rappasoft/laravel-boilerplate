@@ -5,7 +5,7 @@
         </button>
 
         @foreach ($errors->all() as $error)
-            {!! $error !!}<br/>
+            {{ $error }}<br/>
         @endforeach
     </div>
 @elseif (session()->get('flash_success'))
@@ -15,9 +15,9 @@
         </button>
 
         @if(is_array(json_decode(session()->get('flash_success'), true)))
-            {!! implode('', session()->get('flash_success')->all(':message<br/>')) !!}
+            {{ implode('', session()->get('flash_success')->all(':message<br/>')) }}
         @else
-            {!! session()->get('flash_success') !!}
+            {{ session()->get('flash_success') }}
         @endif
     </div>
 @elseif (session()->get('flash_warning'))
@@ -27,9 +27,9 @@
         </button>
 
         @if(is_array(json_decode(session()->get('flash_warning'), true)))
-            {!! implode('', session()->get('flash_warning')->all(':message<br/>')) !!}
+            {{ implode('', session()->get('flash_warning')->all(':message<br/>')) }}
         @else
-            {!! session()->get('flash_warning') !!}
+            {{ session()->get('flash_warning') }}
         @endif
     </div>
 @elseif (session()->get('flash_info'))
@@ -39,9 +39,9 @@
         </button>
 
         @if(is_array(json_decode(session()->get('flash_info'), true)))
-            {!! implode('', session()->get('flash_info')->all(':message<br/>')) !!}
+            {{ implode('', session()->get('flash_info')->all(':message<br/>')) }}
         @else
-            {!! session()->get('flash_info') !!}
+            {{ session()->get('flash_info') }}
         @endif
     </div>
 @elseif (session()->get('flash_danger'))
@@ -51,9 +51,9 @@
         </button>
 
         @if(is_array(json_decode(session()->get('flash_danger'), true)))
-            {!! implode('', session()->get('flash_danger')->all(':message<br/>')) !!}
+            {{ implode('', session()->get('flash_danger')->all(':message<br/>')) }}
         @else
-            {!! session()->get('flash_danger') !!}
+            {{ session()->get('flash_danger') }}
         @endif
     </div>
 @elseif (session()->get('flash_message'))
@@ -63,9 +63,9 @@
         </button>
 
         @if(is_array(json_decode(session()->get('flash_message'), true)))
-            {!! implode('', session()->get('flash_message')->all(':message<br/>')) !!}
+            {{ implode('', session()->get('flash_message')->all(':message<br/>')) }}
         @else
-            {!! session()->get('flash_message') !!}
+            {{ session()->get('flash_message') }}
         @endif
     </div>
 @endif
