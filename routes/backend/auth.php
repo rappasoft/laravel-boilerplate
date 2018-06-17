@@ -9,7 +9,7 @@ Route::group([
     'namespace'  => 'Auth',
 ], function () {
     Route::group([
-        'middleware' => 'role:administrator',
+        'middleware' => 'role:'.config('access.users.admin_role'),
     ], function () {
         /*
          * User Management
