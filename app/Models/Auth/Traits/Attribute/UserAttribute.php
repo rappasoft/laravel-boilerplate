@@ -176,7 +176,7 @@ trait UserAttribute
      */
     public function getShowButtonAttribute()
     {
-        return '<a href="'.route('admin.auth.user.show', $this).'" class="btn btn-info"><i class="fas fa-eye" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'"></i></a>';
+        return '<a href="'.route('admin.auth.user.show', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'" class="btn btn-info"><i class="fas fa-eye"></i></a>';
     }
 
     /**
@@ -184,7 +184,7 @@ trait UserAttribute
      */
     public function getEditButtonAttribute()
     {
-        return '<a href="'.route('admin.auth.user.edit', $this).'" class="btn btn-primary"><i class="fas fa-edit" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.edit').'"></i></a>';
+        return '<a href="'.route('admin.auth.user.edit', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.edit').'" class="btn btn-primary"><i class="fas fa-edit text-dark"></i></a>';
     }
 
     /**
@@ -274,14 +274,14 @@ trait UserAttribute
     {
         if ($this->trashed()) {
             return '
-				<div class="btn-group btn-group-sm" role="group" aria-label="User Actions">
+				<div class="btn-group" role="group" aria-label="User Actions">
 				  '.$this->restore_button.'
 				  '.$this->delete_permanently_button.'
 				</div>';
         }
 
         return '
-    	<div class="btn-group btn-group-sm" role="group" aria-label="User Actions">
+    	<div class="btn-group" role="group" aria-label="User Actions">
 		  '.$this->show_button.'
 		  '.$this->edit_button.'
 		
