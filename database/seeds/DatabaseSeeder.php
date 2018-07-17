@@ -16,12 +16,12 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-		$this->truncateMultiple([
-			'audits',
-			'cache',
-			'jobs',
-			'sessions',
-		]);
+        $this->truncateMultiple([
+            'audits',
+            'cache',
+            'jobs',
+            'sessions',
+        ]);
 
         $this->call(AuthTableSeeder::class);
 

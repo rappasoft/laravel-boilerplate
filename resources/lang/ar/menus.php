@@ -46,7 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'اللوحة الرئيسية',
             'general'   => 'عام',
-			'history'   => 'History',
+            'history'   => 'History',
             'system'    => 'System',
         ],
     ],

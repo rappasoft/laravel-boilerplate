@@ -46,7 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => '指示板',
             'general'   => '常规',
-			'history'   => 'History',
+            'history'   => 'History',
             'system'    => '系统',
         ],
     ],
