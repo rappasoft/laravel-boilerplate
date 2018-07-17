@@ -3,13 +3,13 @@
 namespace App\Models\Auth;
 
 use App\Models\Traits\Uuid;
-use OwenIt\Auditing\Contracts\Auditable;
-use OwenIt\Auditing\Auditable as AuditableTrait;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use OwenIt\Auditing\Contracts\Auditable;
 use App\Models\Auth\Traits\Scope\UserScope;
 use App\Models\Auth\Traits\Method\UserMethod;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Auditable as AuditableTrait;
 use App\Models\Auth\Traits\SendUserPasswordReset;
 use App\Models\Auth\Traits\Attribute\UserAttribute;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -21,7 +21,7 @@ use App\Models\Auth\Traits\Relationship\UserRelationship;
 class User extends Authenticatable implements Auditable
 {
     use AuditableTrait,
-		HasRoles,
+        HasRoles,
         Notifiable,
         SendUserPasswordReset,
         SoftDeletes,
@@ -50,18 +50,18 @@ class User extends Authenticatable implements Auditable
         'timezone',
     ];
 
-	/**
-	 * Attributes to exclude from the Audit.
-	 *
-	 * @var array
-	 */
-	protected $auditExclude = [
-		'id',
-		'uuid',
-		'password',
-		'confirmation_code',
-		'remember_token',
-	];
+    /**
+     * Attributes to exclude from the Audit.
+     *
+     * @var array
+     */
+    protected $auditExclude = [
+        'id',
+        'uuid',
+        'password',
+        'confirmation_code',
+        'remember_token',
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
