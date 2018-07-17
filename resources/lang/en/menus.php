@@ -46,6 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'Dashboard',
             'general'   => 'General',
+			'history'   => 'History',
             'system'    => 'System',
         ],
     ],

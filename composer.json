@@ -9,6 +9,7 @@
         "appstract/laravel-blade-directives": "^0.4.4",
         "arcanedev/log-viewer": "^4.5",
         "arcanedev/no-captcha": "^5.0",
+        "beyondcode/laravel-self-diagnosis": "^0.4.1",
         "creativeorange/gravatar": "~1.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.0",
         "fideloper/proxy": "^4.0",
@@ -16,6 +17,7 @@
         "laravel/framework": "5.6.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "^1.0",
+        "owen-it/laravel-auditing": "^7.0",
         "spatie/laravel-html": "^2.4",
         "spatie/laravel-permission": "^2.5",
         "webpatser/laravel-uuid": "^3.0"
@@ -71,7 +73,12 @@
             "@php artisan cache:clear",
             "@php artisan route:clear",
             "@php artisan view:clear",
-            "@php artisan config:clear"
+            "@php artisan config:clear",
+            "composer dumpautoload -o"
+        ],
+        "cache-all": [
+            "@php artisan config:cache",
+            "@php artisan route:cache"
         ],
         "phpunit": [
             "phpunit > output.txt -d memory_limit=2048M"
