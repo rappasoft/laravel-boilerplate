@@ -3,16 +3,12 @@
 namespace App\Models\Auth;
 
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Contracts\Auditable;
-use OwenIt\Auditing\Auditable as AuditableTrait;
-use App\Models\Auth\Traits\Attribute\SocialAccountAttribute;
 
 /**
  * Class SocialAccount.
  */
-class SocialAccount extends Model implements Auditable
+class SocialAccount extends Model
 {
-    use AuditableTrait, SocialAccountAttribute;
 
     /**
      * The database table used by the model.
