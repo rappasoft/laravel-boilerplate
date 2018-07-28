@@ -46,6 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'داشبورد',
             'general'   => 'عمومی',
+            'history'   => 'History',
             'system'    => 'سامانه',
         ],
     ],

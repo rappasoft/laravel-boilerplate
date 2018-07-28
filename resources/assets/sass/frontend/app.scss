@@ -1,16 +1,16 @@
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Bootstrap
-@import "../../../../node_modules/bootstrap/scss/bootstrap";
+@import '../../../../node_modules/bootstrap/scss/bootstrap';
 
 // Global
-@import "global";
+@import 'global';
 
 // Pages
-@import "pages/dashboard";
+@import 'pages/dashboard';
 
 // Bootstrap Overrides
-@import "custom";
+@import 'custom';
 
 // Plugins

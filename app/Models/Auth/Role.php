@@ -10,5 +10,6 @@ use App\Models\Auth\Traits\Attribute\RoleAttribute;
  */
 class Role extends \Spatie\Permission\Models\Role
 {
-    use RoleAttribute, RoleMethod;
+    use RoleAttribute,
+        RoleMethod;
 }
