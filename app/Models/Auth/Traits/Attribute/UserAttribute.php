@@ -286,7 +286,7 @@ trait UserAttribute
 		  '.$this->show_button.'
 		  '.$this->edit_button.'
 		
-		  <div class="btn-group" role="group">
+		  <div class="btn-group btn-group-sm" role="group">
 			<button id="userActions" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			  More
 			</button>
