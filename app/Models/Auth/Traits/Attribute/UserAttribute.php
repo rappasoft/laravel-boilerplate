@@ -136,10 +136,10 @@ trait UserAttribute
             $accounts[] = '<a href="'.route(
                 'admin.auth.user.social.unlink',
                     [$this, $social]
-            ).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.unlink').'" data-method="delete"><i class="fas fa-'.$social->provider.'"></i></a>';
+            ).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.unlink').'" data-method="delete"><i class="fab fa-'.$social->provider.'"></i></a>';
         }
 
-        return count($accounts) ? implode(' ', $accounts) : 'None';
+        return \count($accounts) ? implode(' ', $accounts) : 'None';
     }
 
     /**
