@@ -7,12 +7,11 @@ namespace App\Models\Auth\Traits\Attribute;
  */
 trait SocialAccountAttribute
 {
-
-	/**
-	 * @return mixed
-	 */
-	public function getAuditableLabelAttribute()
-	{
-		return ucfirst($this->provider);
-	}
+    /**
+     * @return mixed
+     */
+    public function getAuditableLabelAttribute()
+    {
+        return ucfirst($this->provider);
+    }
 }

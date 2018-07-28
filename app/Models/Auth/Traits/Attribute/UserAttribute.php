@@ -9,14 +9,13 @@ use Illuminate\Support\Facades\Hash;
  */
 trait UserAttribute
 {
-
-	/**
-	 * @return mixed
-	 */
-	public function getAuditableLabelAttribute()
-	{
-		return $this->full_name;
-	}
+    /**
+     * @return mixed
+     */
+    public function getAuditableLabelAttribute()
+    {
+        return $this->full_name;
+    }
 
     /**
      * @param $password
