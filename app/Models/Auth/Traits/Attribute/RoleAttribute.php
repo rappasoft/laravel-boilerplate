@@ -7,7 +7,6 @@ namespace App\Models\Auth\Traits\Attribute;
  */
 trait RoleAttribute
 {
-
     /**
      * @return string
      */
