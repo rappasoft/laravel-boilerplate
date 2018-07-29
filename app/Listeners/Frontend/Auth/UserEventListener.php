@@ -4,6 +4,7 @@ namespace App\Listeners\Frontend\Auth;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Request;
+
 /**
  * Class UserEventListener.
  */
@@ -18,9 +19,9 @@ class UserEventListener
 
         // Update the logging in users time and IP
         $event->user->update([
-			'last_login_at' => Carbon::now()->toDateTimeString(),
-			'last_login_ip' => Request::getClientIp(),
-		]);
+            'last_login_at' => Carbon::now()->toDateTimeString(),
+            'last_login_ip' => Request::getClientIp(),
+        ]);
     }
 
     /**
