@@ -34,6 +34,7 @@
     "vue": "^2.5.7"
   },
   "jest": {
+    "testURL": "http://localhost",
     "roots": [
       "<rootDir>/tests/Javascript/"
     ],
