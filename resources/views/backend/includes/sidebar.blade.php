@@ -40,10 +40,6 @@
                         </li>
                     </ul>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link {{ active_class(Active::checkUriPattern('admin/history')) }}" href="{{ route('admin.history.index') }}"><i class="icon-clock"></i> {{ __('menus.backend.sidebar.history') }}</a>
-                </li>
             @endif
 
             <li class="nav-item nav-dropdown {{ active_class(Active::checkUriPattern('admin/log-viewer*'), 'open') }}">
