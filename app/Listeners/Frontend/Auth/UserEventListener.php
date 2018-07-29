@@ -2,6 +2,9 @@
 
 namespace App\Listeners\Frontend\Auth;
 
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Request;
+
 /**
  * Class UserEventListener.
  */
@@ -13,6 +16,12 @@ class UserEventListener
     public function onLoggedIn($event)
     {
         \Log::info('User Logged In: '.$event->user->full_name);
+
+        // Update the logging in users time and IP
+        $event->user->update([
+            'last_login_at' => Carbon::now()->toDateTimeString(),
+            'last_login_ip' => Request::getClientIp(),
+        ]);
     }
 
     /**

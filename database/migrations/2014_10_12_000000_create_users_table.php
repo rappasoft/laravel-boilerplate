@@ -30,6 +30,8 @@ class CreateUsersTable extends Migration
             $table->string('confirmation_code')->nullable();
             $table->boolean('confirmed')->default(config('access.users.confirm_email') ? false : true);
             $table->string('timezone')->default('UTC');
+            $table->timestamp('last_login_at')->nullable();
+            $table->string('last_login_ip')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
