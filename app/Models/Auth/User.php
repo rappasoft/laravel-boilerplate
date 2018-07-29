@@ -45,6 +45,8 @@ class User extends Authenticatable
         'confirmation_code',
         'confirmed',
         'timezone',
+		'last_login_at',
+		'last_login_ip',
     ];
 
     /**
