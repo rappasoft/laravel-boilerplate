@@ -1,4 +1,4 @@
-let mix = require('laravel-mix');
+const mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,14 +11,16 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.sass('resources/assets/sass/frontend/app.scss', 'public/css/frontend.css')
-    .sass('resources/assets/sass/backend/app.scss', 'public/css/backend.css')
-    .js('resources/assets/js/frontend/app.js', 'public/js/frontend.js')
+mix.setPublicPath('public')
+
+mix.sass('resources/assets/sass/frontend/app.scss', 'css/frontend.css')
+    .sass('resources/assets/sass/backend/app.scss', 'css/backend.css')
+    .js('resources/assets/js/frontend/app.js', 'js/frontend.js')
     .js([
         'resources/assets/js/backend/before.js',
         'resources/assets/js/backend/app.js',
         'resources/assets/js/backend/after.js'
-    ], 'public/js/backend.js');
+    ], 'js/backend.js');
 
 if (mix.inProduction() || process.env.npm_lifecycle_event !== 'hot') {
     mix.version();
