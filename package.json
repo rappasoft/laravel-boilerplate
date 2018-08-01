@@ -12,10 +12,10 @@
     "tdd": "npm run test -- --watch --notify"
   },
   "devDependencies": {
-    "@fortawesome/fontawesome": "^1.1.5",
-    "@fortawesome/fontawesome-free-brands": "^5.0.9",
-    "@fortawesome/fontawesome-free-regular": "^5.0.9",
-    "@fortawesome/fontawesome-free-solid": "^5.0.9",
+    "@fortawesome/fontawesome-svg-core": "^1.2.2",
+    "@fortawesome/free-brands-svg-icons": "^5.2.0",
+    "@fortawesome/free-regular-svg-icons": "^5.2.0",
+    "@fortawesome/free-solid-svg-icons": "^5.2.0",
     "@vue/test-utils": "^1.0.0-beta.10",
     "axios": "^0.18",
     "babel-jest": "^22.1.0",
@@ -30,7 +30,6 @@
     "popper.js": "^1.12.4",
     "simple-line-icons": "^2.4.1",
     "sweetalert2": "^7.0.7",
-    "tether": "^1.4.0",
     "vue": "^2.5.7"
   },
   "jest": {
