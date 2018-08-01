@@ -145,6 +145,8 @@ return [
         ],
         'frontend' => [
             'email'                     => 'Endereço de e-mail',
+            'first_name'                => 'Primeiro Nome',
+            'last_name'                 => 'Sobrenome',
             'name'                      => 'Nome',
             'password'                  => 'Senha',
             'password_confirmation'     => 'Confirme sua senha',
