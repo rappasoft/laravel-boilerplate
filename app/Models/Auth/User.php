@@ -80,4 +80,14 @@ class User extends Authenticatable implements Auditable
      * @var array
      */
     protected $appends = ['full_name'];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'active' => 'boolean',
+        'confirmed' => 'boolean',
+    ];
 }
