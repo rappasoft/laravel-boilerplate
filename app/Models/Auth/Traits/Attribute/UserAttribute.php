@@ -10,14 +10,6 @@ use Illuminate\Support\Facades\Hash;
 trait UserAttribute
 {
     /**
-     * @return mixed
-     */
-    public function getAuditableLabelAttribute()
-    {
-        return $this->full_name;
-    }
-
-    /**
      * @param $password
      */
     public function setPasswordAttribute($password) : void
@@ -136,10 +128,10 @@ trait UserAttribute
             $accounts[] = '<a href="'.route(
                 'admin.auth.user.social.unlink',
                     [$this, $social]
-            ).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.unlink').'" data-method="delete"><i class="fas fa-'.$social->provider.'"></i></a>';
+            ).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.unlink').'" data-method="delete"><i class="fab fa-'.$social->provider.'"></i></a>';
         }
 
-        return count($accounts) ? implode(' ', $accounts) : 'None';
+        return \count($accounts) ? implode(' ', $accounts) : 'None';
     }
 
     /**
@@ -293,7 +285,7 @@ trait UserAttribute
 		  '.$this->show_button.'
 		  '.$this->edit_button.'
 		
-		  <div class="btn-group" role="group">
+		  <div class="btn-group btn-group-sm" role="group">
 			<button id="userActions" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			  More
 			</button>

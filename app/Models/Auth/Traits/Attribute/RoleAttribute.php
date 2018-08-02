@@ -8,14 +8,6 @@ namespace App\Models\Auth\Traits\Attribute;
 trait RoleAttribute
 {
     /**
-     * @return mixed
-     */
-    public function getAuditableLabelAttribute()
-    {
-        return $this->name;
-    }
-
-    /**
      * @return string
      */
     public function getEditButtonAttribute()

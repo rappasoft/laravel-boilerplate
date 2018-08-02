@@ -25,6 +25,27 @@
                 <th>{{ __('labels.backend.access.users.tabs.content.overview.confirmed') }}</th>
                 <td>{!! $user->confirmed_label !!}</td>
             </tr>
+
+            <tr>
+                <th>{{ __('labels.backend.access.users.tabs.content.overview.timezone') }}</th>
+                <td>{{ $user->timezone }}</td>
+            </tr>
+
+            <tr>
+                <th>{{ __('labels.backend.access.users.tabs.content.overview.last_login_at') }}</th>
+                <td>
+                    @if ($user->last_login_at)
+                        {{ $user->last_login_at->timezone(get_user_timezone())->toDateTimeString() }}
+                    @else
+                        N/A
+                    @endif
+                </td>
+            </tr>
+
+            <tr>
+                <th>{{ __('labels.backend.access.users.tabs.content.overview.last_login_ip') }}</th>
+                <td>{{ $user->last_login_ip or 'N/A' }}</td>
+            </tr>
         </table>
     </div>
 </div><!--table-responsive-->
