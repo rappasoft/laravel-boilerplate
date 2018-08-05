@@ -66,21 +66,22 @@ class ResetPasswordTest extends TestCase
         $this->assertTrue(Hash::check('Business01', $user->fresh()->password));
     }
 
-	/** @test */
-	public function the_password_can_be_validated() {
-		$user = factory(User::class)->create(['email' => 'john@example.com']);
-		$token = $this->app->make('auth.password.broker')->createToken($user);
+    /** @test */
+    public function the_password_can_be_validated()
+    {
+        $user = factory(User::class)->create(['email' => 'john@example.com']);
+        $token = $this->app->make('auth.password.broker')->createToken($user);
 
-		$response = $this->followingRedirects()
-			->post('password/reset', [
-			'token' => $token,
-			'email' => 'john@example.com',
-			'password' => 'secret',
-			'password_confirmation' => 'secret',
-		]);
+        $response = $this->followingRedirects()
+            ->post('password/reset', [
+            'token' => $token,
+            'email' => 'john@example.com',
+            'password' => 'secret',
+            'password_confirmation' => 'secret',
+        ]);
 
-		$this->assertContains(__('auth.password_rules'), $response->content());
-	}
+        $this->assertContains(__('auth.password_rules'), $response->content());
+    }
 
     /** @test */
     public function a_user_can_use_the_same_password_when_history_is_off_on_password_reset()

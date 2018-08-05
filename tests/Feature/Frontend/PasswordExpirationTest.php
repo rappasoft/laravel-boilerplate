@@ -53,29 +53,29 @@ class PasswordExpirationTest extends TestCase
         $this->assertEquals(200, $response->getStatusCode());
     }
 
-	/** @test */
-	public function the_password_can_be_validated() {
-		config(['access.users.password_history' => false]);
-		config(['access.users.password_expires_days' => 30]);
+    /** @test */
+    public function the_password_can_be_validated()
+    {
+        config(['access.users.password_history' => false]);
+        config(['access.users.password_expires_days' => 30]);
 
-		$user = factory(User::class)->create([
-			'password' => 'Business01',
-			'password_changed_at' => Carbon::now()->subMonths(2)->toDateTimeString(),
-		]);
+        $user = factory(User::class)->create([
+            'password' => 'Business01',
+            'password_changed_at' => Carbon::now()->subMonths(2)->toDateTimeString(),
+        ]);
 
-		$response = $this->actingAs($user)
-			->followingRedirects()
-			->patch('/password/expired', [
-				'old_password' => 'Business01',
-				'password' => 'secret',
-				'password_confirmation' => 'secret',
-			]);
+        $response = $this->actingAs($user)
+            ->followingRedirects()
+            ->patch('/password/expired', [
+                'old_password' => 'Business01',
+                'password' => 'secret',
+                'password_confirmation' => 'secret',
+            ]);
 
-		$this->assertContains(__('auth.password_rules'), $response->content());
-	}
+        $this->assertContains(__('auth.password_rules'), $response->content());
+    }
 
-
-	/** @test */
+    /** @test */
     public function a_user_can_use_the_same_password_when_history_is_off_on_password_expiration()
     {
         config(['access.users.password_history' => false]);
