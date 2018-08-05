@@ -13,19 +13,20 @@ class ChangeUserPasswordTest extends TestCase
 {
     use RefreshDatabase;
 
-	/** @test */
-	public function the_password_can_be_validated() {
-		$this->loginAsAdmin();
-		$user = factory(User::class)->create();
+    /** @test */
+    public function the_password_can_be_validated()
+    {
+        $this->loginAsAdmin();
+        $user = factory(User::class)->create();
 
-		$response = $this->followingRedirects()
-			->patch("/admin/auth/user/{$user->id}/password/change", [
-				'password' => '12345678',
-				'password_confirmation' => '12345678',
-			]);
+        $response = $this->followingRedirects()
+            ->patch("/admin/auth/user/{$user->id}/password/change", [
+                'password' => '12345678',
+                'password_confirmation' => '12345678',
+            ]);
 
-		$this->assertContains(__('auth.password_rules'), $response->content());
-	}
+        $this->assertContains(__('auth.password_rules'), $response->content());
+    }
 
     /** @test */
     public function an_admin_can_access_a_user_change_password_page()
