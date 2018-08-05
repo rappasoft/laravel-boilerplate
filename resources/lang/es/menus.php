@@ -38,7 +38,7 @@ return [
         ],
 
         'log-viewer' => [
-            'main'      => 'Gestór de Logs',
+            'main'      => 'Gestor de Logs',
             'dashboard' => 'Principal',
             'logs'      => 'Logs',
         ],
@@ -46,7 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'Principal',
             'general'   => 'General',
-            'history'   => 'History',
+            'history'   => 'Historia',
             'system'    => 'Sistema',
         ],
     ],
