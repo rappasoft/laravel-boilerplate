@@ -15,6 +15,7 @@ return [
 
     'failed'        => 'Dessa uppgifter stämmer inte överens med vårt register.',
     'general_error' => 'Du har inte tillstånd att göra det där.',
+	'password_rules' => 'Your password must be more than 8 characters long, should contain at least 1 uppercase, 1 lowercase and 1 number.',
     'password_used' => 'You can not set a password that you have previously used.',
     'socialite'     => [
         'unacceptable' => ':provider kan inte att användas vid inloggning.',

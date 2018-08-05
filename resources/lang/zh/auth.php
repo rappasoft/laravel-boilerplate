@@ -15,6 +15,7 @@ return [
 
     'failed'        => '用户名或密码错误。',
     'general_error' => '你没有权限执行此操作。',
+	'password_rules' => 'Your password must be more than 8 characters long, should contain at least 1 uppercase, 1 lowercase and 1 number.',
     'password_used' => 'You can not set a password that you have previously used.',
     'socialite'     => [
         'unacceptable' => ':provider 不是可接受的登录类型。',

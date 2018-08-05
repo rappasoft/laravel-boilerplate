@@ -53,26 +53,48 @@ class PasswordExpirationTest extends TestCase
         $this->assertEquals(200, $response->getStatusCode());
     }
 
-    /** @test */
+	/** @test */
+	public function the_password_can_be_validated() {
+		config(['access.users.password_history' => false]);
+		config(['access.users.password_expires_days' => 30]);
+
+		$user = factory(User::class)->create([
+			'password' => 'Business01',
+			'password_changed_at' => Carbon::now()->subMonths(2)->toDateTimeString(),
+		]);
+
+		$response = $this->actingAs($user)
+			->followingRedirects()
+			->patch('/password/expired', [
+				'old_password' => 'Business01',
+				'password' => 'secret',
+				'password_confirmation' => 'secret',
+			]);
+
+		$this->assertContains(__('auth.password_rules'), $response->content());
+	}
+
+
+	/** @test */
     public function a_user_can_use_the_same_password_when_history_is_off_on_password_expiration()
     {
         config(['access.users.password_history' => false]);
         config(['access.users.password_expires_days' => 30]);
 
         $user = factory(User::class)->create([
-            'password' => 'secret',
+            'password' => 'Business01',
             'password_changed_at' => Carbon::now()->subMonths(2)->toDateTimeString(),
         ]);
 
         $response = $this->actingAs($user)
             ->patch('/password/expired', [
-                'old_password' => 'secret',
-                'password' => 'secret',
-                'password_confirmation' => 'secret',
+                'old_password' => 'Business01',
+                'password' => 'Business01',
+                'password_confirmation' => 'Business01',
             ]);
 
         $response->assertSessionHas('flash_success');
-        $this->assertTrue(Hash::check('secret', $user->fresh()->password));
+        $this->assertTrue(Hash::check('Business01', $user->fresh()->password));
     }
 
     /** @test */
@@ -82,27 +104,27 @@ class PasswordExpirationTest extends TestCase
         config(['access.users.password_expires_days' => 30]);
 
         $user = factory(User::class)->create([
-            'password' => 'secret',
+            'password' => 'Business01',
             'password_changed_at' => Carbon::now()->subMonths(2)->toDateTimeString(),
         ]);
 
         $this->actingAs($user)
             ->patch('/password/expired', [
-                'old_password' => 'secret',
-                'password' => 'secret2',
-                'password_confirmation' => 'secret2',
+                'old_password' => 'Business01',
+                'password' => 'Business02',
+                'password_confirmation' => 'Business02',
             ]);
 
         $response = $this->actingAs($user)
             ->patch('/password/expired', [
-                'old_password' => 'secret2',
-                'password' => 'secret',
-                'password_confirmation' => 'secret',
+                'old_password' => 'Business02',
+                'password' => 'Business01',
+                'password_confirmation' => 'Business01',
             ]);
 
         $response->assertSessionHasErrors();
         $errors = session('errors');
         $this->assertEquals($errors->get('password')[0], __('auth.password_used'));
-        $this->assertTrue(Hash::check('secret2', $user->fresh()->password));
+        $this->assertTrue(Hash::check('Business02', $user->fresh()->password));
     }
 }

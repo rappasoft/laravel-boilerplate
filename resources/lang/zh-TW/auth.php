@@ -15,6 +15,7 @@ return [
 
     'failed' => '賬戶不存在，請重新輸入。 ',
     'general_error' => '沒有操作權限。 ',
+	'password_rules' => 'Your password must be more than 8 characters long, should contain at least 1 uppercase, 1 lowercase and 1 number.',
     'password_used' => 'You can not set a password that you have previously used.',
     'socialite' => [
         'unacceptable' => ':provider 的登錄方式失敗。 ',
