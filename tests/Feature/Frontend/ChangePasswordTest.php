@@ -11,20 +11,21 @@ class ChangePasswordTest extends TestCase
 {
     use RefreshDatabase;
 
-	/** @test */
-	public function the_password_can_be_validated() {
-		$user = factory(User::class)->create(['password' => '1234']);
+    /** @test */
+    public function the_password_can_be_validated()
+    {
+        $user = factory(User::class)->create(['password' => '1234']);
 
-		$response = $this->actingAs($user)
-			->followingRedirects()
-			->patch('/password/update', [
-				'old_password' => '1234',
-				'password' => '12345678',
-				'password_confirmation' => '12345678',
-			]);
+        $response = $this->actingAs($user)
+            ->followingRedirects()
+            ->patch('/password/update', [
+                'old_password' => '1234',
+                'password' => '12345678',
+                'password_confirmation' => '12345678',
+            ]);
 
-		$this->assertContains(__('auth.password_rules'), $response->content());
-	}
+        $this->assertContains(__('auth.password_rules'), $response->content());
+    }
 
     /** @test */
     public function the_password_can_be_changed()
