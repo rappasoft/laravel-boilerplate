@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
+use App\Events\Frontend\Auth\UserLoggedIn;
 use Illuminate\Http\Request;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
@@ -89,6 +90,8 @@ class SocialLoginController extends Controller
 
         // Set session variable so we know which provider user is logged in as, if ever needed
         session([config('access.socialite_session_name') => $provider]);
+
+        event(new UserLoggedIn(auth()->user()));
 
         // Return to the intended url or default to the class property
         return redirect()->intended(route(home_route()));
