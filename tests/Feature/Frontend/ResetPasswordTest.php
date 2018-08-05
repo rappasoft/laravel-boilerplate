@@ -59,11 +59,11 @@ class ResetPasswordTest extends TestCase
         $this->post('password/reset', [
             'token' => $token,
             'email' => 'john@example.com',
-            'password' => 'Business01',
-            'password_confirmation' => 'Business01',
+            'password' => ']EqZL4}zBT',
+            'password_confirmation' => ']EqZL4}zBT',
         ]);
 
-        $this->assertTrue(Hash::check('Business01', $user->fresh()->password));
+        $this->assertTrue(Hash::check(']EqZL4}zBT', $user->fresh()->password));
     }
 
 	/** @test */
@@ -87,18 +87,18 @@ class ResetPasswordTest extends TestCase
     {
         config(['access.users.password_history' => false]);
 
-        $user = factory(User::class)->create(['email' => 'john@example.com', 'password' => 'Business01']);
+        $user = factory(User::class)->create(['email' => 'john@example.com', 'password' => ']EqZL4}zBT']);
         $token = $this->app->make('auth.password.broker')->createToken($user);
 
         $response = $this->post('password/reset', [
             'token' => $token,
             'email' => 'john@example.com',
-            'password' => 'Business01',
-            'password_confirmation' => 'Business01',
+            'password' => ']EqZL4}zBT',
+            'password_confirmation' => ']EqZL4}zBT',
         ]);
 
         $response->assertSessionHas('flash_success');
-        $this->assertTrue(Hash::check('Business01', $user->fresh()->password));
+        $this->assertTrue(Hash::check(']EqZL4}zBT', $user->fresh()->password));
     }
 
     /** @test */
@@ -106,17 +106,17 @@ class ResetPasswordTest extends TestCase
     {
         config(['access.users.password_history' => 3]);
 
-        $user = factory(User::class)->create(['email' => 'john@example.com', 'password' => 'Business01']);
+        $user = factory(User::class)->create(['email' => 'john@example.com', 'password' => ']EqZL4}zBT']);
 
         // Change once
         $this->actingAs($user)
             ->patch('/password/update', [
-                'old_password' => 'Business01',
-                'password' => 'Business02',
-                'password_confirmation' => 'Business02',
+                'old_password' => ']EqZL4}zBT',
+                'password' => ':ZqD~57}1t',
+                'password_confirmation' => ':ZqD~57}1t',
             ]);
 
-        $this->assertTrue(Hash::check('Business02', $user->fresh()->password));
+        $this->assertTrue(Hash::check(':ZqD~57}1t', $user->fresh()->password));
 
         auth()->logout();
 
@@ -124,13 +124,13 @@ class ResetPasswordTest extends TestCase
         $response = $this->post('password/reset', [
             'token' => $token,
             'email' => 'john@example.com',
-            'password' => 'Business01',
-            'password_confirmation' => 'Business01',
+            'password' => ']EqZL4}zBT',
+            'password_confirmation' => ']EqZL4}zBT',
         ]);
 
         $response->assertSessionHasErrors();
         $errors = session('errors');
         $this->assertEquals($errors->get('password')[0], __('auth.password_used'));
-        $this->assertTrue(Hash::check('Business02', $user->fresh()->password));
+        $this->assertTrue(Hash::check(':ZqD~57}1t', $user->fresh()->password));
     }
 }

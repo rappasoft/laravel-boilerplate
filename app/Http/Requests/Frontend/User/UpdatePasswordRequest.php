@@ -4,6 +4,7 @@ namespace App\Http\Requests\Frontend\User;
 
 use App\Rules\Auth\ChangePassword;
 use App\Rules\Auth\UnusedPassword;
+use DivineOmega\LaravelPasswordExposedValidationRule\PasswordExposed;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -30,7 +31,13 @@ class UpdatePasswordRequest extends FormRequest
     {
         return [
             'old_password' => 'required',
-            'password'     => ['required', new ChangePassword(), 'confirmed', new UnusedPassword($this->user())],
+            'password'     => [
+            	'required',
+				'confirmed',
+				new ChangePassword(),
+				new PasswordExposed(),
+				new UnusedPassword($this->user())
+			],
         ];
     }
 }

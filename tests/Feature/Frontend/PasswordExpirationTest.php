@@ -59,14 +59,14 @@ class PasswordExpirationTest extends TestCase
 		config(['access.users.password_expires_days' => 30]);
 
 		$user = factory(User::class)->create([
-			'password' => 'Business01',
+			'password' => ']EqZL4}zBT',
 			'password_changed_at' => Carbon::now()->subMonths(2)->toDateTimeString(),
 		]);
 
 		$response = $this->actingAs($user)
 			->followingRedirects()
 			->patch('/password/expired', [
-				'old_password' => 'Business01',
+				'old_password' => ']EqZL4}zBT',
 				'password' => 'secret',
 				'password_confirmation' => 'secret',
 			]);
@@ -82,19 +82,19 @@ class PasswordExpirationTest extends TestCase
         config(['access.users.password_expires_days' => 30]);
 
         $user = factory(User::class)->create([
-            'password' => 'Business01',
+            'password' => ']EqZL4}zBT',
             'password_changed_at' => Carbon::now()->subMonths(2)->toDateTimeString(),
         ]);
 
         $response = $this->actingAs($user)
             ->patch('/password/expired', [
-                'old_password' => 'Business01',
-                'password' => 'Business01',
-                'password_confirmation' => 'Business01',
+                'old_password' => ']EqZL4}zBT',
+                'password' => ']EqZL4}zBT',
+                'password_confirmation' => ']EqZL4}zBT',
             ]);
 
         $response->assertSessionHas('flash_success');
-        $this->assertTrue(Hash::check('Business01', $user->fresh()->password));
+        $this->assertTrue(Hash::check(']EqZL4}zBT', $user->fresh()->password));
     }
 
     /** @test */
@@ -104,27 +104,27 @@ class PasswordExpirationTest extends TestCase
         config(['access.users.password_expires_days' => 30]);
 
         $user = factory(User::class)->create([
-            'password' => 'Business01',
+            'password' => ']EqZL4}zBT',
             'password_changed_at' => Carbon::now()->subMonths(2)->toDateTimeString(),
         ]);
 
         $this->actingAs($user)
             ->patch('/password/expired', [
-                'old_password' => 'Business01',
-                'password' => 'Business02',
-                'password_confirmation' => 'Business02',
+                'old_password' => ']EqZL4}zBT',
+                'password' => ':ZqD~57}1t',
+                'password_confirmation' => ':ZqD~57}1t',
             ]);
 
         $response = $this->actingAs($user)
             ->patch('/password/expired', [
-                'old_password' => 'Business02',
-                'password' => 'Business01',
-                'password_confirmation' => 'Business01',
+                'old_password' => ':ZqD~57}1t',
+                'password' => ']EqZL4}zBT',
+                'password_confirmation' => ']EqZL4}zBT',
             ]);
 
         $response->assertSessionHasErrors();
         $errors = session('errors');
         $this->assertEquals($errors->get('password')[0], __('auth.password_used'));
-        $this->assertTrue(Hash::check('Business02', $user->fresh()->password));
+        $this->assertTrue(Hash::check(':ZqD~57}1t', $user->fresh()->password));
     }
 }
