@@ -4,19 +4,22 @@
 
 window._ = require('lodash');
 window.swal = require('sweetalert2');
+// Required for BS4
 import Popper from 'popper.js/dist/umd/popper.js';
 
 /**
- * Font Awesome 5
+ * Font Awesome >=5.1
  */
-import fontawesome from '@fortawesome/fontawesome';
-import solid from '@fortawesome/fontawesome-free-solid';
-import regular from '@fortawesome/fontawesome-free-regular';
-import brands from '@fortawesome/fontawesome-free-brands';
 
-fontawesome.library.add(solid);
-fontawesome.library.add(regular);
-fontawesome.library.add(brands);
+import { library, dom } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
+library.add(fab, far, fas);
+
+// Kicks off the process of finding <i> tags and replacing with <svg>
+dom.watch()
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -26,10 +29,6 @@ fontawesome.library.add(brands);
 
 try {
     window.$ = window.jQuery = require('jquery');
-
-    // Required for BS4
-    window.Tether = require('tether');
-    window.Popper = Popper;
 
     require('bootstrap');
 } catch (e) {}
@@ -50,7 +49,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * a simple convenience so we don't have to attach every token manually.
  */
 
-let token = document.head.querySelector('meta[name="csrf-token"]');
+const token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
