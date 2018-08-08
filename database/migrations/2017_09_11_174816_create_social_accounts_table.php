@@ -22,7 +22,7 @@ class CreateSocialAccountsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('provider', 32);
             $table->string('provider_id');
-            $table->string('token')->nullable();
+            $table->string('token', 255)->nullable();
             $table->string('avatar')->nullable();
             $table->timestamps();
         });
