@@ -80,7 +80,7 @@ trait UserMethod
      */
     public function isActive()
     {
-        return $this->active == 1;
+        return $this->active;
     }
 
     /**
@@ -88,7 +88,7 @@ trait UserMethod
      */
     public function isConfirmed()
     {
-        return $this->confirmed == 1;
+        return $this->confirmed;
     }
 
     /**
@@ -96,6 +96,6 @@ trait UserMethod
      */
     public function isPending()
     {
-        return config('access.users.requires_approval') && $this->confirmed == 0;
+        return config('access.users.requires_approval') && ! $this->confirmed;
     }
 }

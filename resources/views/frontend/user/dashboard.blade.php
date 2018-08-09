@@ -26,7 +26,7 @@
                                     <p class="card-text">
                                         <small>
                                             <i class="fas fa-envelope"></i> {{ $logged_in_user->email }}<br/>
-                                            <i class="fas fa-calendar-check"></i> {{ __('strings.frontend.general.joined') }} {{ $logged_in_user->created_at->timezone(get_user_timezone())->format('F jS, Y') }}
+                                            <i class="fas fa-calendar-check"></i> {{ __('strings.frontend.general.joined') }} {{ timezone()->convertToLocal($logged_in_user->created_at, 'F jS, Y') }}
                                         </small>
                                     </p>
 

@@ -70,7 +70,6 @@ class UserController extends Controller
             'last_name',
             'email',
             'password',
-            'timezone',
             'active',
             'confirmed',
             'confirmation_email',
@@ -125,7 +124,6 @@ class UserController extends Controller
             'first_name',
             'last_name',
             'email',
-            'timezone',
             'roles',
             'permissions'
         ));

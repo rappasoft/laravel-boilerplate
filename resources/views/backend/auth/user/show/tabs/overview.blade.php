@@ -35,7 +35,7 @@
                 <th>{{ __('labels.backend.access.users.tabs.content.overview.last_login_at') }}</th>
                 <td>
                     @if ($user->last_login_at)
-                        {{ $user->last_login_at->timezone(get_user_timezone())->toDateTimeString() }}
+                        {{ timezone()->convertToLocal($user->last_login_at) }}
                     @else
                         N/A
                     @endif
