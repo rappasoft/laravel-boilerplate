@@ -1,7 +1,7 @@
 <?php
 
-use App\Helpers\General\HtmlHelper;
 use App\Helpers\General\Timezone;
+use App\Helpers\General\HtmlHelper;
 
 /*
  * Global helpers file with misc functions.
@@ -29,13 +29,13 @@ if (! function_exists('gravatar')) {
 }
 
 if (! function_exists('timezone')) {
-	/**
-	 * Access the timezone helper.
-	 */
-	function timezone()
-	{
-		return resolve(Timezone::class);
-	}
+    /**
+     * Access the timezone helper.
+     */
+    function timezone()
+    {
+        return resolve(Timezone::class);
+    }
 }
 
 if (! function_exists('include_route_files')) {
