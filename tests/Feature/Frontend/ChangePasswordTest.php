@@ -12,6 +12,22 @@ class ChangePasswordTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
+    public function the_password_can_be_validated()
+    {
+        $user = factory(User::class)->create(['password' => '1234']);
+
+        $response = $this->actingAs($user)
+            ->followingRedirects()
+            ->patch('/password/update', [
+                'old_password' => '1234',
+                'password' => '12345678',
+                'password_confirmation' => '12345678',
+            ]);
+
+        $this->assertContains(__('auth.password_rules'), $response->content());
+    }
+
+    /** @test */
     public function the_password_can_be_changed()
     {
         $user = factory(User::class)->create(['password' => '1234']);
@@ -19,12 +35,12 @@ class ChangePasswordTest extends TestCase
         $response = $this->actingAs($user)
             ->patch('/password/update', [
                 'old_password' => '1234',
-                'password' => '12345678',
-                'password_confirmation' => '12345678',
+                'password' => 'Boilerplate01',
+                'password_confirmation' => 'Boilerplate01',
             ]);
 
         $response->assertSessionHas('flash_success');
-        $this->assertTrue(Hash::check('12345678', $user->fresh()->password));
+        $this->assertTrue(Hash::check('Boilerplate01', $user->fresh()->password));
     }
 
     /** @test */
@@ -35,7 +51,7 @@ class ChangePasswordTest extends TestCase
         $response = $this->actingAs($user)
             ->patch('/password/update', [
                 'old_password' => '1234',
-                'password' => '12345678',
+                'password' => 'Boilerplate01',
                 'password_confirmation' => '',
             ]);
 
@@ -50,8 +66,8 @@ class ChangePasswordTest extends TestCase
         $response = $this->actingAs($user)
             ->patch('/password/update', [
                 'old_password' => '',
-                'password' => '123456',
-                'password_confirmation' => '123456',
+                'password' => 'Boilerplate01',
+                'password_confirmation' => 'Boilerplate01',
             ]);
 
         $response->assertSessionHasErrors('old_password');
@@ -62,17 +78,17 @@ class ChangePasswordTest extends TestCase
     {
         config(['access.users.password_history' => false]);
 
-        $user = factory(User::class)->create(['password' => 'secret']);
+        $user = factory(User::class)->create(['password' => 'Boilerplate01']);
 
         $response = $this->actingAs($user)
             ->patch('/password/update', [
-                'old_password' => 'secret',
-                'password' => 'secret',
-                'password_confirmation' => 'secret',
+                'old_password' => 'Boilerplate01',
+                'password' => 'Boilerplate01',
+                'password_confirmation' => 'Boilerplate01',
             ]);
 
         $response->assertSessionHas('flash_success');
-        $this->assertTrue(Hash::check('secret', $user->fresh()->password));
+        $this->assertTrue(Hash::check('Boilerplate01', $user->fresh()->password));
     }
 
     /** @test */
@@ -80,30 +96,30 @@ class ChangePasswordTest extends TestCase
     {
         config(['access.users.password_history' => 3]);
 
-        $user = factory(User::class)->create(['password' => 'secret']);
+        $user = factory(User::class)->create(['password' => 'Boilerplate01']);
 
         // Change once
         $this->actingAs($user)
             ->patch('/password/update', [
-                'old_password' => 'secret',
-                'password' => 'secret2',
-                'password_confirmation' => 'secret2',
+                'old_password' => 'Boilerplate01',
+                'password' => 'Boilerplate02',
+                'password_confirmation' => 'Boilerplate02',
             ]);
 
-        $this->assertTrue(Hash::check('secret2', $user->fresh()->password));
+        $this->assertTrue(Hash::check('Boilerplate02', $user->fresh()->password));
 
         // Change back
         $response = $this->actingAs($user)
             ->patch('/password/update', [
-                'old_password' => 'secret2',
-                'password' => 'secret',
-                'password_confirmation' => 'secret',
+                'old_password' => 'Boilerplate02',
+                'password' => 'Boilerplate01',
+                'password_confirmation' => 'Boilerplate01',
             ]);
 
         $response->assertSessionHasErrors();
         $errors = session('errors');
         $this->assertEquals($errors->get('password')[0], __('auth.password_used'));
-        $this->assertTrue(Hash::check('secret2', $user->fresh()->password));
+        $this->assertTrue(Hash::check('Boilerplate02', $user->fresh()->password));
     }
 
     /** @test */
@@ -111,34 +127,34 @@ class ChangePasswordTest extends TestCase
     {
         config(['access.users.password_history' => 2]);
 
-        $user = factory(User::class)->create(['password' => 'secret']);
+        $user = factory(User::class)->create(['password' => 'Boilerplate01']);
 
         // Change once
         $this->actingAs($user)
             ->patch('/password/update', [
-                'old_password' => 'secret',
-                'password' => 'secret2',
-                'password_confirmation' => 'secret2',
+                'old_password' => 'Boilerplate01',
+                'password' => 'Boilerplate02',
+                'password_confirmation' => 'Boilerplate02',
             ]);
 
-        $this->assertTrue(Hash::check('secret2', $user->fresh()->password));
+        $this->assertTrue(Hash::check('Boilerplate02', $user->fresh()->password));
 
         // Change twice
         $this->actingAs($user)
             ->patch('/password/update', [
-                'old_password' => 'secret2',
-                'password' => 'secret3',
-                'password_confirmation' => 'secret3',
+                'old_password' => 'Boilerplate02',
+                'password' => 'Boilerplate03',
+                'password_confirmation' => 'Boilerplate03',
             ]);
 
         $response = $this->actingAs($user)
             ->patch('/password/update', [
-                'old_password' => 'secret3',
-                'password' => 'secret',
-                'password_confirmation' => 'secret',
+                'old_password' => 'Boilerplate03',
+                'password' => 'Boilerplate01',
+                'password_confirmation' => 'Boilerplate01',
             ]);
 
         $response->assertSessionHas('flash_success');
-        $this->assertTrue(Hash::check('secret', $user->fresh()->password));
+        $this->assertTrue(Hash::check('Boilerplate01', $user->fresh()->password));
     }
 }

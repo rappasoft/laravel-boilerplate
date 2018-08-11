@@ -142,7 +142,6 @@ class UserRepository extends BaseRepository
         $user = $this->getById($id);
         $user->first_name = $input['first_name'];
         $user->last_name = $input['last_name'];
-        $user->timezone = $input['timezone'];
         $user->avatar_type = $input['avatar_type'];
 
         // Upload profile image if necessary

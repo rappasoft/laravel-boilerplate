@@ -3,7 +3,6 @@
 namespace App\Listeners\Frontend\Auth;
 
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Request;
 
 /**
  * Class UserEventListener.
@@ -15,13 +14,27 @@ class UserEventListener
      */
     public function onLoggedIn($event)
     {
-        \Log::info('User Logged In: '.$event->user->full_name);
+        $ip_address = request()->getClientIp();
 
-        // Update the logging in users time and IP
-        $event->user->update([
+        // Update the logging in users time & IP
+        $event->user->fill([
             'last_login_at' => Carbon::now()->toDateTimeString(),
-            'last_login_ip' => Request::getClientIp(),
+            'last_login_ip' => $ip_address,
         ]);
+
+        // Update the timezone via IP address
+        $geoip = geoip($ip_address);
+
+        if ($event->user->timezone !== $geoip['timezone']) {
+            // Update the users timezone
+            $event->user->fill([
+                'timezone' => $geoip['timezone'],
+            ]);
+        }
+
+        $event->user->save();
+
+        \Log::info('User Logged In: '.$event->user->full_name);
     }
 
     /**

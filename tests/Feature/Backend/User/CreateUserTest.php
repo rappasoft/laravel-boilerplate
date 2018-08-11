@@ -32,7 +32,7 @@ class CreateUserTest extends TestCase
 
         $response = $this->post('/admin/auth/user', []);
 
-        $response->assertSessionHasErrors(['first_name', 'last_name', 'email', 'timezone', 'password', 'roles']);
+        $response->assertSessionHasErrors(['first_name', 'last_name', 'email', 'password', 'roles']);
     }
 
     /** @test */

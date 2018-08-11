@@ -14,11 +14,11 @@
         </tr>
         <tr>
             <th>{{ __('labels.frontend.user.profile.created_at') }}</th>
-            <td>{{ $logged_in_user->created_at->timezone(get_user_timezone()) }} ({{ $logged_in_user->created_at->diffForHumans() }})</td>
+            <td>{{ timezone()->convertToLocal($logged_in_user->created_at) }} ({{ $logged_in_user->created_at->diffForHumans() }})</td>
         </tr>
         <tr>
             <th>{{ __('labels.frontend.user.profile.last_updated') }}</th>
-            <td>{{ $logged_in_user->updated_at->timezone(get_user_timezone()) }} ({{ $logged_in_user->updated_at->diffForHumans() }})</td>
+            <td>{{ timezone()->convertToLocal($logged_in_user->updated_at) }} ({{ $logged_in_user->updated_at->diffForHumans() }})</td>
         </tr>
     </table>
 </div>

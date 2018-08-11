@@ -96,6 +96,6 @@ trait UserMethod
      */
     public function isPending()
     {
-        return config('access.users.requires_approval') && !$this->confirmed;
+        return config('access.users.requires_approval') && ! $this->confirmed;
     }
 }
