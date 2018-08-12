@@ -19,7 +19,7 @@
                     </div><!--col-->
                 </div><!--row-->
 
-                <hr />
+                <hr>
 
                 <div class="row mt-4 mb-4">
                     <div class="col">
@@ -86,10 +86,9 @@
                             {{ html()->label(__('validation.attributes.backend.access.users.active'))->class('col-md-2 form-control-label')->for('active') }}
 
                             <div class="col-md-10">
-                                <label class="switch switch-3d switch-primary">
+                                <label class="switch switch-label switch-pill switch-primary">
                                     {{ html()->checkbox('active', true, '1')->class('switch-input') }}
-                                    <span class="switch-label"></span>
-                                    <span class="switch-handle"></span>
+                                    <span class="switch-slider" data-checked="yes" data-unchecked="no"></span>
                                 </label>
                             </div><!--col-->
                         </div><!--form-group-->
@@ -98,10 +97,9 @@
                             {{ html()->label(__('validation.attributes.backend.access.users.confirmed'))->class('col-md-2 form-control-label')->for('confirmed') }}
 
                             <div class="col-md-10">
-                                <label class="switch switch-3d switch-primary">
+                                <label class="switch switch-label switch-pill switch-primary">
                                     {{ html()->checkbox('confirmed', true, '1')->class('switch-input') }}
-                                    <span class="switch-label"></span>
-                                    <span class="switch-handle"></span>
+                                    <span class="switch-slider" data-checked="yes" data-unchecked="no"></span>
                                 </label>
                             </div><!--col-->
                         </div><!--form-group-->
@@ -111,10 +109,9 @@
                                 {{ html()->label(__('validation.attributes.backend.access.users.send_confirmation_email') . '<br/>' . '<small>' .  __('strings.backend.access.users.if_confirmed_off') . '</small>')->class('col-md-2 form-control-label')->for('confirmation_email') }}
 
                                 <div class="col-md-10">
-                                    <label class="switch switch-3d switch-primary">
+                                    <label class="switch switch-label switch-pill switch-primary">
                                         {{ html()->checkbox('confirmation_email', true, '1')->class('switch-input') }}
-                                        <span class="switch-label"></span>
-                                        <span class="switch-handle"></span>
+                                        <span class="switch-slider" data-checked="yes" data-unchecked="no"></span>
                                     </label>
                                 </div><!--col-->
                             </div><!--form-group-->
@@ -135,17 +132,17 @@
                                         <tbody>
                                         <tr>
                                             <td>
-                                                @if ($roles->count())
+                                                @if($roles->count())
                                                     @foreach($roles as $role)
                                                         <div class="card">
                                                             <div class="card-header">
-                                                                <div class="checkbox">
+                                                                <div class="checkbox d-flex align-items-center">
                                                                     {{ html()->label(
                                                                             html()->checkbox('roles[]', old('roles') && in_array($role->name, old('roles')) ? true : false, $role->name)
                                                                                   ->class('switch-input')
                                                                                   ->id('role-'.$role->id)
-                                                                            . '<span class="switch-label"></span><span class="switch-handle"></span>')
-                                                                        ->class('switch switch-sm switch-3d switch-primary')
+                                                                            . '<span class="switch-slider" data-checked="on" data-unchecked="off"></span>')
+                                                                        ->class('switch switch-label switch-pill switch-primary mr-2')
                                                                         ->for('role-'.$role->id) }}
                                                                     {{ html()->label(ucwords($role->name))->for('role-'.$role->id) }}
                                                                 </div>
@@ -168,15 +165,15 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($permissions->count())
+                                                @if($permissions->count())
                                                     @foreach($permissions as $permission)
-                                                        <div class="checkbox">
+                                                        <div class="checkbox d-flex align-items-center">
                                                             {{ html()->label(
                                                                     html()->checkbox('permissions[]', old('permissions') && in_array($permission->name, old('permissions')) ? true : false, $permission->name)
                                                                           ->class('switch-input')
                                                                           ->id('permission-'.$permission->id)
-                                                                    . '<span class="switch-label"></span><span class="switch-handle"></span>')
-                                                                ->class('switch switch-sm switch-3d switch-primary')
+                                                                        . '<span class="switch-slider" data-checked="on" data-unchecked="off"></span>')
+                                                                    ->class('switch switch-label switch-pill switch-primary mr-2')
                                                                 ->for('permission-'.$permission->id) }}
                                                             {{ html()->label(ucwords($permission->name))->for('permission-'.$permission->id) }}
                                                         </div>

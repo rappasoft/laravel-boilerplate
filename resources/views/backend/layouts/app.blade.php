@@ -23,7 +23,7 @@
     @stack('after-styles')
 </head>
 
-<body class="{{ config('backend.body_classes') }}">
+<body class="header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show {{ config('backend.body_classes') }}">
     @include('backend.includes.header')
 
     <div class="app-body">
