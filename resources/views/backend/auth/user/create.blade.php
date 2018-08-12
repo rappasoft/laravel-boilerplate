@@ -121,7 +121,7 @@
                         @endif
 
                         <div class="form-group row">
-                            {{ html()->label('Abilities')->class('col-md-2 form-control-label') }}
+                            {{ html()->label(__('labels.backend.access.users.table.abilities'))->class('col-md-2 form-control-label') }}
 
                             <div class="col-md-10">
                                 <div class="table-responsive">

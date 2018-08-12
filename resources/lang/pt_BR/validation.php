@@ -136,6 +136,8 @@ return [
                     'confirmed'               => 'Confirmado',
                     'email'                   => 'Endereço de e-mail',
                     'name'                    => 'Nome',
+                    'first_name'              => 'Primeiro Nome',
+                    'last_name'               => 'Sobrenome',
                     'other_permissions'       => 'Outras Permissões',
                     'password'                => 'Senha',
                     'password_confirmation'   => 'Confirme sua senha',
