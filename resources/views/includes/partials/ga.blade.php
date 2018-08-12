@@ -1,4 +1,4 @@
-@if (config("analytics.google-analytics") && config("analytics.google-analytics") != "UA-XXXXX-X")
+@if(config("analytics.google-analytics") && config("analytics.google-analytics") != "UA-XXXXX-X")
     {{-- Google Analytics: change UA-XXXXX-X to be your site's ID. --}}
     @script
         (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

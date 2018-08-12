@@ -1,6 +1,6 @@
-@extends ('backend.layouts.app')
+@extends('backend.layouts.app')
 
-@section ('title', __('labels.backend.access.roles.management') . ' | ' . __('labels.backend.access.roles.edit'))
+@section('title', __('labels.backend.access.roles.management') . ' | ' . __('labels.backend.access.roles.edit'))
 
 @section('content')
 {{ html()->modelForm($role, 'PATCH', route('admin.auth.role.update', $role))->class('form-horizontal')->open() }}
@@ -9,8 +9,8 @@
             <div class="row">
                 <div class="col-sm-5">
                     <h4 class="card-title mb-0">
-                        {{ __('labels.backend.access.roles.management') }}
-                        <small class="text-muted">{{ __('labels.backend.access.roles.edit') }}</small>
+                        @lang('labels.backend.access.roles.management')
+                        <small class="text-muted">@lang('labels.backend.access.roles.edit')</small>
                     </h4>
                 </div><!--col-->
             </div><!--row-->
@@ -40,7 +40,7 @@
                             ->for('permissions') }}
 
                         <div class="col-md-10">
-                            @if ($permissions->count())
+                            @if($permissions->count())
                                 @foreach($permissions as $permission)
                                     <div class="checkbox">
                                         {{ html()->label(

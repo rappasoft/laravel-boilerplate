@@ -9,13 +9,13 @@
         </li>
 
         <li class="nav-item px-3">
-            <a class="nav-link" href="{{ route('admin.dashboard') }}">{{ __('navs.frontend.dashboard') }}</a>
+            <a class="nav-link" href="{{ route('admin.dashboard') }}">@lang('navs.frontend.dashboard')</a>
         </li>
 
-        @if (config('locale.status') && count(config('locale.languages')) > 1)
+        @if(config('locale.status') && count(config('locale.languages')) > 1)
             <li class="nav-item px-3 dropdown">
                 <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <span class="d-md-down-none">{{ __('menus.language-picker.language') }} ({{ strtoupper(app()->getLocale()) }})</span>
+                    <span class="d-md-down-none">@lang('menus.language-picker.language') ({{ strtoupper(app()->getLocale()) }})</span>
                 </a>
 
                 @include('includes.partials.lang')
@@ -51,7 +51,7 @@
                 </div>
                 <a class="dropdown-item" href="#"><i class="fas fa-link"></i> Link</a>
                 <a class="dropdown-item" href="#"><i class="fas fa-link"></i> Link</a>
-                <a class="dropdown-item" href="{{ route('frontend.auth.logout') }}"><i class="fas fa-lock"></i> {{ __('navs.general.logout') }}</a>
+                <a class="dropdown-item" href="{{ route('frontend.auth.logout') }}"><i class="fas fa-lock"></i> @lang('navs.general.logout')</a>
             </div>
         </li>
     </ul>

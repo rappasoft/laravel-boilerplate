@@ -1,6 +1,6 @@
-@extends ('backend.layouts.app')
+@extends('backend.layouts.app')
 
-@section ('title', __('labels.backend.access.users.management') . ' | ' . __('labels.backend.access.users.create'))
+@section('title', __('labels.backend.access.users.management') . ' | ' . __('labels.backend.access.users.create'))
 
 @section('breadcrumb-links')
     @include('backend.auth.user.includes.breadcrumb-links')
@@ -13,8 +13,8 @@
                 <div class="row">
                     <div class="col-sm-5">
                         <h4 class="card-title mb-0">
-                            {{ __('labels.backend.access.users.management') }}
-                            <small class="text-muted">{{ __('labels.backend.access.users.create') }}</small>
+                            @lang('labels.backend.access.users.management')
+                            <small class="text-muted">@lang('labels.backend.access.users.create')</small>
                         </h4>
                     </div><!--col-->
                 </div><!--row-->
@@ -106,7 +106,7 @@
                             </div><!--col-->
                         </div><!--form-group-->
 
-                        @if (! config('access.users.requires_approval'))
+                        @if(! config('access.users.requires_approval'))
                             <div class="form-group row">
                                 {{ html()->label(__('validation.attributes.backend.access.users.send_confirmation_email') . '<br/>' . '<small>' .  __('strings.backend.access.users.if_confirmed_off') . '</small>')->class('col-md-2 form-control-label')->for('confirmation_email') }}
 
@@ -128,14 +128,14 @@
                                     <table class="table">
                                         <thead>
                                         <tr>
-                                            <th>{{ __('labels.backend.access.users.table.roles') }}</th>
-                                            <th>{{ __('labels.backend.access.users.table.permissions') }}</th>
+                                            <th>@lang('labels.backend.access.users.table.roles')</th>
+                                            <th>@lang('labels.backend.access.users.table.permissions')</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
                                             <td>
-                                                @if ($roles->count())
+                                                @if($roles->count())
                                                     @foreach($roles as $role)
                                                         <div class="card">
                                                             <div class="card-header">
@@ -151,16 +151,16 @@
                                                                 </div>
                                                             </div>
                                                             <div class="card-body">
-                                                                @if ($role->id != 1)
-                                                                    @if ($role->permissions->count())
-                                                                        @foreach ($role->permissions as $permission)
+                                                                @if($role->id != 1)
+                                                                    @if($role->permissions->count())
+                                                                        @foreach($role->permissions as $permission)
                                                                             <i class="fas fa-dot-circle"></i> {{ ucwords($permission->name) }}
                                                                         @endforeach
                                                                     @else
-                                                                        {{ __('labels.general.none') }}
+                                                                        @lang('labels.general.none')
                                                                     @endif
                                                                 @else
-                                                                    {{ __('labels.backend.access.users.all_permissions') }}
+                                                                    @lang('labels.backend.access.users.all_permissions')
                                                                 @endif
                                                             </div>
                                                         </div><!--card-->
@@ -168,7 +168,7 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($permissions->count())
+                                                @if($permissions->count())
                                                     @foreach($permissions as $permission)
                                                         <div class="checkbox">
                                                             {{ html()->label(
