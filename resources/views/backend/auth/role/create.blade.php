@@ -15,7 +15,7 @@
                 </div><!--col-->
             </div><!--row-->
 
-            <hr />
+            <hr>
 
             <div class="row mt-4">
                 <div class="col">
@@ -40,15 +40,15 @@
                             ->for('permissions') }}
 
                         <div class="col-md-10">
-                            @if ($permissions->count())
+                            @if($permissions->count())
                                 @foreach($permissions as $permission)
-                                    <div class="checkbox">
+                                    <div class="checkbox d-flex align-items-center">
                                         {{ html()->label(
                                                 html()->checkbox('permissions[]', old('permissions') && in_array($permission->name, old('permissions')) ? true : false, $permission->name)
                                                       ->class('switch-input')
                                                       ->id('permission-'.$permission->id)
-                                                . '<span class="switch-label"></span><span class="switch-handle"></span>')
-                                            ->class('switch switch-sm switch-3d switch-primary')
+                                                    . '<span class="switch-slider" data-checked="on" data-unchecked="off"></span>')
+                                                ->class('switch switch-label switch-pill switch-primary mr-2')
                                             ->for('permission-'.$permission->id) }}
                                         {{ html()->label(ucwords($permission->name))->for('permission-'.$permission->id) }}
                                     </div>

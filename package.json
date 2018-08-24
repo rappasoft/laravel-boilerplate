@@ -12,6 +12,7 @@
     "tdd": "npm run test -- --watch --notify"
   },
   "devDependencies": {
+    "@coreui/coreui": "^2.0.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.2",
     "@fortawesome/free-brands-svg-icons": "^5.2.0",
     "@fortawesome/free-regular-svg-icons": "^5.2.0",
@@ -48,5 +49,8 @@
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
       ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
     }
+  },
+  "dependencies": {
+    "perfect-scrollbar": "^1.4.0"
   }
 }
