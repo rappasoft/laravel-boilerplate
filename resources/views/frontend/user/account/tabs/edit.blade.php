@@ -8,8 +8,8 @@
                     <input type="radio" name="avatar_type" value="gravatar" {{ $logged_in_user->avatar_type == 'gravatar' ? 'checked' : '' }} /> Gravatar
                     <input type="radio" name="avatar_type" value="storage" {{ $logged_in_user->avatar_type == 'storage' ? 'checked' : '' }} /> Upload
 
-                    @foreach ($logged_in_user->providers as $provider)
-                        @if (strlen($provider->avatar))
+                    @foreach($logged_in_user->providers as $provider)
+                        @if(strlen($provider->avatar))
                             <input type="radio" name="avatar_type" value="{{ $provider->provider }}" {{ $logged_in_user->avatar_type == $provider->provider ? 'checked' : '' }} /> {{ ucfirst($provider->provider) }}
                         @endif
                     @endforeach
@@ -55,7 +55,7 @@
         <div class="row">
             <div class="col">
                 <div class="alert alert-info">
-                    <i class="fas fa-info-circle"></i> {{  __('strings.frontend.user.change_email_notice') }}
+                    <i class="fas fa-info-circle"></i> @lang('strings.frontend.user.change_email_notice')
                 </div>
 
                 <div class="form-group">
