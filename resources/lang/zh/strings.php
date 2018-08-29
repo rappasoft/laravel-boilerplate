@@ -62,7 +62,7 @@ return [
             'results'    => '搜索 :query 的结果',
         ],
 
-		'welcome' => 'Welcome to the Dashboard',
+        'welcome' => 'Welcome to the Dashboard',
     ],
 
     'emails' => [

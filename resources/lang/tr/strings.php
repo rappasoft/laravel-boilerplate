@@ -62,7 +62,7 @@ return [
             'results'    => 'Sorgu için arama sonuçları: :query',
         ],
 
-		'welcome' => 'Welcome to the Dashboard',
+        'welcome' => 'Welcome to the Dashboard',
     ],
 
     'emails' => [

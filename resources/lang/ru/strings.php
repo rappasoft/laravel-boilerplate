@@ -65,7 +65,7 @@ return [
             'title'      => 'Результаты поиска',
         ],
 
-		'welcome' => 'Welcome to the Dashboard',
+        'welcome' => 'Welcome to the Dashboard',
     ],
 
     'emails'   => [
