@@ -12,6 +12,7 @@
     "tdd": "npm run test -- --watch --notify"
   },
   "devDependencies": {
+    "@coreui/coreui": "^2.0.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.2",
     "@fortawesome/free-brands-svg-icons": "^5.2.0",
     "@fortawesome/free-regular-svg-icons": "^5.2.0",
@@ -27,6 +28,7 @@
     "laravel-mix": "^2.0",
     "lodash": "^4.17.4",
     "pace": "github:HubSpot/pace#v1.0.2",
+    "perfect-scrollbar": "^1.4.0",
     "popper.js": "^1.12.4",
     "simple-line-icons": "^2.4.1",
     "sweetalert2": "^7.0.7",
