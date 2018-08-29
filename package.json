@@ -28,6 +28,7 @@
     "laravel-mix": "^2.0",
     "lodash": "^4.17.4",
     "pace": "github:HubSpot/pace#v1.0.2",
+    "perfect-scrollbar": "^1.4.0",
     "popper.js": "^1.12.4",
     "simple-line-icons": "^2.4.1",
     "sweetalert2": "^7.0.7",
@@ -49,8 +50,5 @@
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
       ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
     }
-  },
-  "dependencies": {
-    "perfect-scrollbar": "^1.4.0"
   }
 }

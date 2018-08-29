@@ -48,9 +48,9 @@ $(function () {
 
         const form = this;
         const link = $('a[data-method="delete"]');
-        const cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : 'Cancelar';
-        const confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : 'Sim, apagar';
-        const title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : 'Você tem certeza que deseja apagar esse ítem?';
+        const cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : 'Cancel';
+        const confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : 'Yes, delete';
+        const title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : 'Are you sure you want to delete this item?';
 
         swal({
             title: title,
@@ -68,9 +68,9 @@ $(function () {
         e.preventDefault();
 
         const link = $(this);
-        const title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : 'Você tem certeza que quer fazer isso?';
-        const cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : 'Cancelar';
-        const confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : 'Continuar';
+        const title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : 'Are you sure you want to do this?';
+        const cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : 'Cancel';
+        const confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : 'Continue';
 
         swal({
             title: title,
@@ -80,6 +80,6 @@ $(function () {
             type: 'info'
         }).then((result) => {
             result.value && window.location.assign(link.attr('href'));
-        })
-    })
-})
+        });
+    });
+});
