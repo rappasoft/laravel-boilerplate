@@ -62,7 +62,7 @@ return [
             'results'    => 'Sorgu için arama sonuçları: :query',
         ],
 
-        'welcome' => '<p>MaviRota Rezervasyon sistemine hoşgeldiniz.</p>',
+		'welcome' => 'Welcome to the Dashboard',
     ],
 
     'emails' => [

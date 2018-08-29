@@ -56,12 +56,7 @@ return [
             'results'    => 'Resultados da busca por :query',
         ],
 
-        'welcome' => '<p>Este é o tema CoreUI por <a href="https://coreui.io/" target="_blank">creativeLabs</a>. Esta é uma versão reduzida com apenas os estilos e scripts necessários para que o tema funcione. Baixe a versão completa para começar a adicionar componentes a seu painel de controle.</p>
-<p>Todas as funcionalidades são meramente demonstrativas com exceção do menu <strong>Gerenciamento de Usuários</strong> à esquerda. Este <i>boilerplate</i> vem com uma biblioteca totalmente funcional de controle de acesso para gerenciar usuários/papéis/permissões.</p>
-<p>Tenha em mente que este é um trabalho em andamento e podem existir <i>bugs</i> ou outros problemas pelos quais não passei. Farei o meu melhor para corrigí-los à medida em que os recebo.</p>
-<p>Espero que você aproveite todo o trabalho que coloquei nisto. Por favor, visite a página do <a href="https://github.com/rappasoft/laravel-5-boilerplate" target="_blank">GitHub</a> para maiores informações e reporte quaisquer <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">problemas aqui</a>.</p>
-<p><strong>Este projeto tem alta demanda de atualizações, dada a taxa de novas versões que a master do Laravel vem lançando, então toda ajuda é bem-vinda :).</strong></p>
-<p>- Anthony Rappa</p>',
+		'welcome' => 'Welcome to the Dashboard',
     ],
     'emails' => [
         'auth' => [
