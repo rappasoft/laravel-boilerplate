@@ -35,6 +35,8 @@
 
         <!-- Scripts -->
         @stack('before-scripts')
+        {!! script(mix('js/manifest.js')) !!}
+        {!! script(mix('js/vendor.js')) !!}
         {!! script(mix('js/frontend.js')) !!}
         @stack('after-scripts')
 
