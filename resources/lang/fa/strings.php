@@ -64,7 +64,7 @@ return [
             'results'    => 'نتایج جستجو برای :query',
         ],
 
-		'welcome' => 'Welcome to the Dashboard',
+        'welcome' => 'Welcome to the Dashboard',
     ],
 
     'emails' => [

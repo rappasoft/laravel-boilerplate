@@ -64,7 +64,7 @@ return [
             'results'    => 'Suchergebnisse für :query',
         ],
 
-		'welcome' => 'Welcome to the Dashboard',
+        'welcome' => 'Welcome to the Dashboard',
     ],
 
     'emails' => [
