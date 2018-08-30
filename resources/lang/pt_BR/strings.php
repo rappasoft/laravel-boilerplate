@@ -16,6 +16,8 @@ return [
     'backend' => [
         'access' => [
             'users' => [
+                'no_deactivated'       => 'Não há usuários desativados.',
+                'no_deleted'           => 'Não há usuários excluídos.',
                 'delete_user_confirm'  => 'Tem certeza de que deseja excluir este usuário permanentemente? Em algum lugar do aplicativo pode fazer referência ao id deste usuário e possivelmente pode ocasionar um erro. Prossiga por sua conta e risco. Isso não pode ser desfeito.',
                 'if_confirmed_off'     => '(Se confirmado estiver desligado)',
                 'restore_user_confirm' => 'Restaurar esse usuário ao seu estado original?',
