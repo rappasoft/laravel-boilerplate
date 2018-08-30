@@ -1,6 +1,6 @@
-@extends ('backend.layouts.app')
+@extends('backend.layouts.app')
 
-@section ('title', app_name() . ' | ' . __('labels.backend.access.users.management'))
+@section('title', app_name() . ' | ' . __('labels.backend.access.users.management'))
 
 @section('breadcrumb-links')
     @include('backend.auth.user.includes.breadcrumb-links')
@@ -27,19 +27,19 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>{{ __('labels.backend.access.users.table.last_name') }}</th>
-                            <th>{{ __('labels.backend.access.users.table.first_name') }}</th>
-                            <th>{{ __('labels.backend.access.users.table.email') }}</th>
-                            <th>{{ __('labels.backend.access.users.table.confirmed') }}</th>
-                            <th>{{ __('labels.backend.access.users.table.roles') }}</th>
-                            <th>{{ __('labels.backend.access.users.table.other_permissions') }}</th>
-                            <th>{{ __('labels.backend.access.users.table.social') }}</th>
-                            <th>{{ __('labels.backend.access.users.table.last_updated') }}</th>
-                            <th>{{ __('labels.general.actions') }}</th>
+                            <th>@lang('labels.backend.access.users.table.last_name')</th>
+                            <th>@lang('labels.backend.access.users.table.first_name')</th>
+                            <th>@lang('labels.backend.access.users.table.email')</th>
+                            <th>@lang('labels.backend.access.users.table.confirmed')</th>
+                            <th>@lang('labels.backend.access.users.table.roles')</th>
+                            <th>@lang('labels.backend.access.users.table.other_permissions')</th>
+                            <th>@lang('labels.backend.access.users.table.social')</th>
+                            <th>@lang('labels.backend.access.users.table.last_updated')</th>
+                            <th>@lang('labels.general.actions')</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($users as $user)
+                        @foreach($users as $user)
                             <tr>
                                 <td>{{ $user->last_name }}</td>
                                 <td>{{ $user->first_name }}</td>

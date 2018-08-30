@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', app_name() . ' | '.__('labels.frontend.contact.box_title'))
+@section('title', app_name() . ' | ' . __('labels.frontend.contact.box_title'))
 
 @section('content')
     <div class="row justify-content-center">
@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <strong>
-                        {{ __('labels.frontend.contact.box_title') }}
+                        @lang('labels.frontend.contact.box_title')
                     </strong>
                 </div><!--card-header-->
 

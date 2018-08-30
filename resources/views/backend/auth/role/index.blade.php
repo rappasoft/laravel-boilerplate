@@ -1,6 +1,6 @@
-@extends ('backend.layouts.app')
+@extends('backend.layouts.app')
 
-@section ('title', app_name() . ' | '. __('labels.backend.access.roles.management'))
+@section('title', app_name() . ' | '. __('labels.backend.access.roles.management'))
 
 @section('content')
 <div class="card">
@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-sm-5">
                 <h4 class="card-title mb-0">
-                    {{ __('labels.backend.access.roles.management') }}
+                    @lang('labels.backend.access.roles.management')
                 </h4>
             </div><!--col-->
 
@@ -23,26 +23,26 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>{{ __('labels.backend.access.roles.table.role') }}</th>
-                            <th>{{ __('labels.backend.access.roles.table.permissions') }}</th>
-                            <th>{{ __('labels.backend.access.roles.table.number_of_users') }}</th>
-                            <th>{{ __('labels.general.actions') }}</th>
+                            <th>@lang('labels.backend.access.roles.table.role')</th>
+                            <th>@lang('labels.backend.access.roles.table.permissions')</th>
+                            <th>@lang('labels.backend.access.roles.table.number_of_users')</th>
+                            <th>@lang('labels.general.actions')</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($roles as $role)
+                        @foreach($roles as $role)
                             <tr>
                                 <td>{{ ucwords($role->name) }}</td>
                                 <td>
-                                    @if ($role->id == 1)
-                                        {{ __('labels.general.all') }}
+                                    @if($role->id == 1)
+                                        @lang('labels.general.all')
                                     @else
-                                        @if ($role->permissions->count())
-                                            @foreach ($role->permissions as $permission)
+                                        @if($role->permissions->count())
+                                            @foreach($role->permissions as $permission)
                                                 {{ ucwords($permission->name) }}
                                             @endforeach
                                         @else
-                                            {{ __('labels.general.none') }}
+                                            @lang('labels.general.none')
                                         @endif
                                     @endif
                                 </td>

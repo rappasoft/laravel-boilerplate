@@ -37,7 +37,7 @@ trait RoleAttribute
             return 'N/A';
         }
 
-        return '<div class="btn-group btn-group-sm" role="group" aria-label="User Actions">
+        return '<div class="btn-group btn-group-sm" role="group" aria-label="'.__('labels.backend.access.users.user_actions').'">
 			  '.$this->edit_button.'
 			  '.$this->delete_button.'
 			</div>';

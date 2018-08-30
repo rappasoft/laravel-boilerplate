@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', app_name() . ' | '.__('labels.frontend.auth.register_box_title'))
+@section('title', app_name() . ' | ' . __('labels.frontend.auth.register_box_title'))
 
 @section('content')
     <div class="row justify-content-center align-items-center">
@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <strong>
-                        {{ __('labels.frontend.auth.register_box_title') }}
+                        @lang('labels.frontend.auth.register_box_title')
                     </strong>
                 </div><!--card-header-->
 
@@ -78,7 +78,7 @@
                             </div><!--col-->
                         </div><!--row-->
 
-                        @if (config('access.captcha.registration'))
+                        @if(config('access.captcha.registration'))
                             <div class="row">
                                 <div class="col">
                                     {!! Captcha::display() !!}
@@ -103,7 +103,7 @@
                             </div>
                         </div><!--/ .col -->
                     </div><!-- / .row -->
-                    
+
                 </div><!-- card-body -->
             </div><!-- card -->
         </div><!-- col-md-8 -->
@@ -111,7 +111,7 @@
 @endsection
 
 @push('after-scripts')
-    @if (config('access.captcha.registration'))
+    @if(config('access.captcha.registration'))
         {!! Captcha::script() !!}
     @endif
 @endpush

@@ -22,7 +22,7 @@ class CreateSocialAccountsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('provider', 32);
             $table->string('provider_id');
-            $table->string('token')->nullable();
+            $table->text('token')->nullable(); // Text because Facebook tokens can be greater than 255 characters
             $table->string('avatar')->nullable();
             $table->timestamps();
         });

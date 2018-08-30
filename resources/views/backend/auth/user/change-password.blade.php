@@ -1,6 +1,6 @@
-@extends ('backend.layouts.app')
+@extends('backend.layouts.app')
 
-@section ('title', __('labels.backend.access.users.management') . ' | ' . __('labels.backend.access.users.change_password'))
+@section('title', __('labels.backend.access.users.management') . ' | ' . __('labels.backend.access.users.change_password'))
 
 @section('breadcrumb-links')
     @include('backend.auth.user.includes.breadcrumb-links')
@@ -13,12 +13,12 @@
             <div class="row">
                 <div class="col-sm-5">
                     <h4 class="card-title mb-0">
-                        {{ __('labels.backend.access.users.management') }}
-                        <small class="text-muted">{{ __('labels.backend.access.users.change_password') }}</small>
+                        @lang('labels.backend.access.users.management')
+                        <small class="text-muted">@lang('labels.backend.access.users.change_password')</small>
                     </h4>
 
                     <div class="small text-muted">
-                        {{ __('labels.backend.access.users.change_password_for', ['user' => $user->name]) }}
+                        @lang('labels.backend.access.users.change_password_for', ['user' => $user->name])
                     </div>
                 </div><!--col-->
             </div><!--row-->

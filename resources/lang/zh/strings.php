@@ -62,16 +62,7 @@ return [
             'results'    => '搜索 :query 的结果',
         ],
 
-        'welcome' => '<p>这是 AdminLTE 模板 <a href="https://almsaeedstudio.com/" target="_blank">https://almsaeedstudio.com/</a>. 这是精简版，仅包含必要的样式和脚本，请下载完整版本来开始添加元素到你的控制面板。</p>
-<p>
-    所有功能为在左边显示<strong>访问管理</strong>错误。本样板包含完整的用户/角色/权限 访问控制库
-</p>
-<p>请留意，本样板仍在开发中，可能仍有一些没有顾忌的错误或者问题，我会尽我全力在接到错误报告后修复它们。
-</p>
-<p>希望你喜欢我的工作，请访问 <a href="https://github.com/rappasoft/laravel-5-boilerplate" target="_blank">GitHub</a> 获取更多信息，并 <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">在此提交issue</a>.</p>
-<p><strong>本项目非常苛刻地与Laravel mater分支的更新频率同步， 所以感谢所有人给予的任何帮助.
-</strong></p>
-<p>- Anthony Rappa</p>',
+        'welcome' => 'Welcome to the Dashboard',
     ],
 
     'emails' => [
