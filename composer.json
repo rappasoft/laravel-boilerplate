@@ -24,6 +24,7 @@
         "webpatser/laravel-uuid": "^3.0"
     },
     "require-dev": {
+        "beyondcode/laravel-dump-server": "^1.0",
         "barryvdh/laravel-debugbar": "^3.0",
         "barryvdh/laravel-ide-helper": "^2.4",
         "codedungeon/phpunit-result-printer": "^0.19.10",
