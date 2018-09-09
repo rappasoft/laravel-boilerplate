@@ -1,15 +1,15 @@
 <?php
 
-use App\Http\Controllers\Backend\Auth\User\UserController;
-use App\Http\Controllers\Backend\Auth\User\UserConfirmationController;
-use App\Http\Controllers\Backend\Auth\User\UserStatusController;
-use App\Http\Controllers\Backend\Auth\User\UserPasswordController;
-use App\Http\Controllers\Backend\Auth\User\UserAccessController;
-use App\Http\Controllers\Backend\Auth\User\UserSessionController;
-use App\Http\Controllers\Backend\Auth\User\UserSocialController;
 use App\Http\Controllers\Backend\Auth\Role\RoleController;
+use App\Http\Controllers\Backend\Auth\User\UserController;
+use App\Http\Controllers\Backend\Auth\User\UserAccessController;
+use App\Http\Controllers\Backend\Auth\User\UserSocialController;
+use App\Http\Controllers\Backend\Auth\User\UserStatusController;
+use App\Http\Controllers\Backend\Auth\User\UserSessionController;
+use App\Http\Controllers\Backend\Auth\User\UserPasswordController;
+use App\Http\Controllers\Backend\Auth\User\UserConfirmationController;
 
-/**
+/*
  * All route names are prefixed with 'admin.auth'.
  */
 Route::group([
@@ -33,18 +33,18 @@ Route::group([
          * User CRUD
          */
         Route::get('user', [UserController::class, 'index'])->name('user.index');
-		Route::get('user/create', [UserController::class, 'create'])->name('user.create');
-		Route::post('user', [UserController::class, 'store'])->name('user.store');
+        Route::get('user/create', [UserController::class, 'create'])->name('user.create');
+        Route::post('user', [UserController::class, 'store'])->name('user.store');
 
         /*
          * Specific User
          */
         Route::group(['prefix' => 'user/{user}'], function () {
-        	// User
-			Route::get('/', [UserController::class, 'show'])->name('user.show');
-			Route::get('edit', [UserController::class, 'edit'])->name('user.edit');
-			Route::patch('/', [UserController::class, 'update'])->name('user.update');
-			Route::delete('/', [UserController::class, 'destroy'])->name('user.destroy');
+            // User
+            Route::get('/', [UserController::class, 'show'])->name('user.show');
+            Route::get('edit', [UserController::class, 'edit'])->name('user.edit');
+            Route::patch('/', [UserController::class, 'update'])->name('user.update');
+            Route::delete('/', [UserController::class, 'destroy'])->name('user.destroy');
 
             // Account
             Route::get('account/confirm/resend', [UserConfirmationController::class, 'sendConfirmationEmail'])->name('user.account.confirm.resend');
@@ -79,14 +79,14 @@ Route::group([
      * Role Management
      */
     Route::group(['namespace' => 'Role'], function () {
-		Route::get('role', [RoleController::class, 'index'])->name('role.index');
-		Route::get('role/create', [RoleController::class, 'create'])->name('role.create');
-		Route::post('role', [RoleController::class, 'store'])->name('role.store');
+        Route::get('role', [RoleController::class, 'index'])->name('role.index');
+        Route::get('role/create', [RoleController::class, 'create'])->name('role.create');
+        Route::post('role', [RoleController::class, 'store'])->name('role.store');
 
-		Route::group(['prefix' => 'role/{role}'], function () {
-			Route::get('edit', [RoleController::class, 'edit'])->name('role.edit');
-			Route::patch('/', [RoleController::class, 'update'])->name('role.update');
-			Route::delete('/', [RoleController::class, 'destroy'])->name('role.destroy');
-		});
+        Route::group(['prefix' => 'role/{role}'], function () {
+            Route::get('edit', [RoleController::class, 'edit'])->name('role.edit');
+            Route::patch('/', [RoleController::class, 'update'])->name('role.update');
+            Route::delete('/', [RoleController::class, 'destroy'])->name('role.destroy');
+        });
     });
 });

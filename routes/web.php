@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\LanguageController;
 
-/**
+/*
  * Global Routes
  * Routes that are used between both frontend and backend.
  */
