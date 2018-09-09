@@ -19,7 +19,17 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers;
 
-    /**
+	/**
+	 * Where to redirect users after login.
+	 *
+	 * @return string
+	 */
+	public function redirectPath()
+	{
+		return route(home_route());
+	}
+
+	/**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showLoginForm()
