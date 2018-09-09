@@ -17,7 +17,6 @@ use App\Repositories\Frontend\Auth\UserSessionRepository;
  */
 class LoginController extends Controller
 {
-
     use AuthenticatesUsers;
 
     /**
