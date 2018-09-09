@@ -9,13 +9,13 @@
         "appstract/laravel-blade-directives": "^0.4.4",
         "arcanedev/log-viewer": "^4.5",
         "arcanedev/no-captcha": "^5.0",
-        "beyondcode/laravel-self-diagnosis": "^0.4.1",
+        "beyondcode/laravel-self-diagnosis": "^1.0",
         "creativeorange/gravatar": "~1.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.0",
         "divineomega/laravel-password-exposed-validation-rule": "^1.2",
         "fideloper/proxy": "^4.0",
         "hieu-le/active": "^3.5",
-        "laravel/framework": "5.6.*",
+        "laravel/framework": "5.7.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "^1.0",
         "spatie/laravel-html": "^2.4",
@@ -24,6 +24,7 @@
         "webpatser/laravel-uuid": "^3.0"
     },
     "require-dev": {
+        "beyondcode/laravel-dump-server": "^1.0",
         "barryvdh/laravel-debugbar": "^3.0",
         "barryvdh/laravel-ide-helper": "^2.4",
         "codedungeon/phpunit-result-printer": "^0.19.10",

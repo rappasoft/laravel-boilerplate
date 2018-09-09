@@ -51,7 +51,7 @@
                                 </tr>
                             @endforeach
                         @else
-                            <tr><td colspan="9"><p class="text-center">@lang('strings.backend.access.users.no_deactivated') }}</p></td></tr>
+                            <tr><td colspan="9"><p class="text-center">@lang('strings.backend.access.users.no_deactivated')</p></td></tr>
                         @endif
                         </tbody>
                     </table>

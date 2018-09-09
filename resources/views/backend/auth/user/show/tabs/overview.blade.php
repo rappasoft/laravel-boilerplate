@@ -44,7 +44,7 @@
 
             <tr>
                 <th>@lang('labels.backend.access.users.tabs.content.overview.last_login_ip')</th>
-                <td>{{ $user->last_login_ip or 'N/A' }}</td>
+                <td>{{ $user->last_login_ip ?? 'N/A' }}</td>
             </tr>
         </table>
     </div>
