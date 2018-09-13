@@ -8,6 +8,13 @@ import swal from 'sweetalert2';
 import $ from 'jquery';
 import 'popper.js/dist/umd/popper'; // Required for BS4
 import 'bootstrap';
+import moment from 'moment';
+import DataTable from 'datatables.net';
+import DataTableBootstrap from 'datatables.net-bs4';
+import DataTableBootstrapButtons from 'datatables.net-buttons-bs4';
+import DataTableSelect from 'datatables.net-select';
+import toastr from 'toastr';
+import blockUI from 'block-ui';
 
 /**
  * Font Awesome >=5.1
@@ -36,6 +43,13 @@ dom.watch();
 window.$ = window.jQuery = $;
 window.swal = swal;
 window._ = _; // Lodash
+window.moment = moment;
+window.DataTable = DataTable;
+window.DataTableBootstrap = DataTableBootstrap;
+window.DataTableBootstrapButtons = DataTableBootstrapButtons;
+window.DataTableSelect = DataTableSelect;
+window.toastr = toastr;
+window.blockUI = blockUI;
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
