@@ -485,16 +485,16 @@
         },
         {
             "name": "divineomega/do-file-cache",
-            "version": "v2.0.1",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DivineOmega/DO-File-Cache.git",
-                "reference": "86132ceb8843e5c876d637586c350e70c844cd67"
+                "reference": "261c6e30a0de8cd325f826d08b2e51b2e367a1a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DivineOmega/DO-File-Cache/zipball/86132ceb8843e5c876d637586c350e70c844cd67",
-                "reference": "86132ceb8843e5c876d637586c350e70c844cd67",
+                "url": "https://api.github.com/repos/DivineOmega/DO-File-Cache/zipball/261c6e30a0de8cd325f826d08b2e51b2e367a1a3",
+                "reference": "261c6e30a0de8cd325f826d08b2e51b2e367a1a3",
                 "shasum": ""
             },
             "require": {
@@ -502,7 +502,7 @@
             },
             "require-dev": {
                 "php-coveralls/php-coveralls": "^2.1",
-                "phpunit/phpunit": "^5.7"
+                "phpunit/phpunit": "^6.5"
             },
             "type": "library",
             "extra": {
@@ -528,7 +528,7 @@
                 "library",
                 "php"
             ],
-            "time": "2018-07-12T20:12:19+00:00"
+            "time": "2018-09-12T23:08:34+00:00"
         },
         {
             "name": "divineomega/do-file-cache-psr-6",
@@ -1383,16 +1383,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.7.2",
+            "version": "v5.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "86e1f98a6d2aab018e0257a7cb2ef2110d64a873"
+                "reference": "536a024e3ef6b93f55f4039a7f4568efa7e60aea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/86e1f98a6d2aab018e0257a7cb2ef2110d64a873",
-                "reference": "86e1f98a6d2aab018e0257a7cb2ef2110d64a873",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/536a024e3ef6b93f55f4039a7f4568efa7e60aea",
+                "reference": "536a024e3ef6b93f55f4039a7f4568efa7e60aea",
                 "shasum": ""
             },
             "require": {
@@ -1520,7 +1520,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-09-06T14:01:05+00:00"
+            "time": "2018-09-11T13:42:55+00:00"
         },
         {
             "name": "laravel/socialite",
