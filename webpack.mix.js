@@ -13,13 +13,13 @@ const mix = require('laravel-mix');
 
 mix.setPublicPath('public');
 
-mix.sass('resources/assets/sass/frontend/app.scss', 'css/frontend.css')
-    .sass('resources/assets/sass/backend/app.scss', 'css/backend.css')
-    .js('resources/assets/js/frontend/app.js', 'js/frontend.js')
+mix.sass('resources/sass/frontend/app.scss', 'css/frontend.css')
+    .sass('resources/sass/backend/app.scss', 'css/backend.css')
+    .js('resources/js/frontend/app.js', 'js/frontend.js')
     .js([
-        'resources/assets/js/backend/before.js',
-        'resources/assets/js/backend/app.js',
-        'resources/assets/js/backend/after.js'
+        'resources/js/backend/before.js',
+        'resources/js/backend/app.js',
+        'resources/js/backend/after.js'
     ], 'js/backend.js')
     .extract([
         'jquery',
