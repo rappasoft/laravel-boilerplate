@@ -15,7 +15,7 @@ class UserAccessController extends Controller
 {
     /**
      * @param ManageUserRequest $request
-     * @param User              $user
+     * @param User $user
      *
      * @return \Illuminate\Http\RedirectResponse
      * @throws GeneralException
@@ -53,6 +53,9 @@ class UserAccessController extends Controller
 
         // Login user
         auth()->loginUsingId($user->id);
+
+
+
 
         // Redirect to frontend
         return redirect()->route(home_route());

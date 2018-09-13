@@ -10,9 +10,9 @@
 use App\Http\Controllers\LanguageController;
 
 
-Route::get('lang/locale', [LanguageController::class, 'changeLanguage']);
+Route::get('lang/locale', [LanguageController::class, 'getCurrentLanguage']);
 Route::get('lang/resource', [LanguageController::class, 'getResourceLanguage']);
-Route::get('lang/{lang}', [LanguageController::class, 'getCurrentLanguage']);
+Route::get('lang/{lang}', [LanguageController::class, 'changeLanguage']);
 
 /*
  * Frontend Routes

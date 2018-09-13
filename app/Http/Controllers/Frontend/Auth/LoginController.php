@@ -62,7 +62,7 @@ class LoginController extends Controller
         /*
          * Check to see if the users account is confirmed and active
          */
-        if (! $user->isConfirmed()) {
+        if (!$user->isConfirmed()) {
             auth()->logout();
 
             // If the user is pending (account approval is on)
@@ -73,12 +73,17 @@ class LoginController extends Controller
             // Otherwise see if they want to resent the confirmation e-mail
 
             throw new GeneralException(__('exceptions.frontend.auth.confirmation.resend', ['url' => route('frontend.auth.account.confirm.resend', $user->{$user->getUuidName()})]));
-        } elseif (! $user->isActive()) {
+        } elseif (!$user->isActive()) {
             auth()->logout();
             throw new GeneralException(__('exceptions.frontend.auth.deactivated'));
         }
 
+        $tokenResult = $user->createToken('Authorization');
+
+        \Session::put('Authorization', 'Bearer ' . $tokenResult->accessToken);
+
         event(new UserLoggedIn($user));
+
 
         // If only allowed one session at a time
         if (config('access.users.single_login')) {
@@ -129,7 +134,7 @@ class LoginController extends Controller
     public function logoutAs()
     {
         // If for some reason route is getting hit without someone already logged in
-        if (! auth()->user()) {
+        if (!auth()->user()) {
             return redirect()->route('frontend.auth.login');
         }
 
@@ -141,7 +146,7 @@ class LoginController extends Controller
             app()->make(Auth::class)->flushTempSession();
 
             // Re-login admin
-            auth()->loginUsingId((int) $admin_id);
+            auth()->loginUsingId((int)$admin_id);
 
             // Redirect to backend user page
             return redirect()->route('admin.auth.user.index');
