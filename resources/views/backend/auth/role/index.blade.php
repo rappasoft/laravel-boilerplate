@@ -20,7 +20,7 @@
         <div class="row mt-4">
             <div class="col">
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover table-bordered">
                         <thead>
                         <tr>
                             <th>@lang('labels.backend.access.roles.table.role')</th>
@@ -56,12 +56,6 @@
             </div><!--col-->
         </div><!--row-->
         <div class="row">
-            <div class="col-7">
-                <div class="float-left">
-                    {!! $roles->total() !!} {{ trans_choice('labels.backend.access.roles.table.total', $roles->total()) }}
-                </div>
-            </div><!--col-->
-
             <div class="col-5">
                 <div class="float-right">
                     {!! $roles->render() !!}
