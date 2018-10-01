@@ -5,10 +5,15 @@ var lbp = lbp || {};
 
     lbp.appPath = lbp.appPath || '/';
     lbp.pageLoadTime = new Date();
-
     lbp.request = {
-        create: function (url, dataBodyRequest) {
-            return window.axios.post(url, dataBodyRequest)
+        create: function (url, data, params) {
+            const mergedParams = $.extend(params, {
+                method: "POST",
+                headers: {
+                    "Authorization": $("#token").val()
+                }
+            });
+            return window.axios.post(url, data, mergedParams)
                 .then(function (response) {
                     return response.data;
                 })
@@ -17,7 +22,13 @@ var lbp = lbp || {};
                 });
         },
         get: function (url, params) {
-            return window.axios.get(url, params)
+            const mergedParams = $.extend(params, {
+                method: "GET",
+                headers: {
+                    "Authorization": $("#token").val()
+                }
+            });
+            return window.axios.get(url, mergedParams)
                 .then(function (response) {
                     return response.data;
                 })

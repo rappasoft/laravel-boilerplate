@@ -1,10 +1,10 @@
-webpackJsonp([2],{
+webpackJsonp([1],{
 
 /***/ "./node_modules/@coreui/coreui/dist/js/coreui.js":
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
-  * CoreUI v2.0.6 (https://coreui.io)
+  * CoreUI v2.0.14 (https://coreui.io)
   * Copyright 2018 Łukasz Holeczek
   * Licensed under MIT (https://coreui.io)
   */
@@ -35,7 +35,7 @@ webpackJsonp([2],{
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI (v2.0.6): ajax-load.js
+   * CoreUI (v2.0.14): ajax-load.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -47,7 +47,7 @@ webpackJsonp([2],{
      * ------------------------------------------------------------------------
      */
     var NAME = 'ajaxLoad';
-    var VERSION = '2.0.6';
+    var VERSION = '2.0.14';
     var DATA_KEY = 'coreui.ajaxLoad';
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
     var ClassName = {
@@ -240,7 +240,7 @@ webpackJsonp([2],{
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI (v2.0.6): toggle-classes.js
+   * CoreUI (v2.0.14): toggle-classes.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -265,7 +265,7 @@ webpackJsonp([2],{
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI (v2.0.6): aside-menu.js
+   * CoreUI (v2.0.14): aside-menu.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -277,7 +277,7 @@ webpackJsonp([2],{
      * ------------------------------------------------------------------------
      */
     var NAME = 'aside-menu';
-    var VERSION = '2.0.6';
+    var VERSION = '2.0.14';
     var DATA_KEY = 'coreui.aside-menu';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
@@ -374,7 +374,7 @@ webpackJsonp([2],{
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI (v2.0.6): sidebar.js
+   * CoreUI (v2.0.14): sidebar.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -386,11 +386,14 @@ webpackJsonp([2],{
      * ------------------------------------------------------------------------
      */
     var NAME = 'sidebar';
-    var VERSION = '2.0.6';
+    var VERSION = '2.0.14';
     var DATA_KEY = 'coreui.sidebar';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
+    var Default = {
+      transition: 400
+    };
     var ClassName = {
       ACTIVE: 'active',
       BRAND_MINIMIZED: 'brand-minimized',
@@ -405,7 +408,8 @@ webpackJsonp([2],{
       DESTROY: 'destroy',
       INIT: 'init',
       LOAD_DATA_API: "load" + EVENT_KEY + DATA_API_KEY,
-      TOGGLE: 'toggle'
+      TOGGLE: 'toggle',
+      UPDATE: 'update'
     };
     var Selector = {
       BODY: 'body',
@@ -432,6 +436,7 @@ webpackJsonp([2],{
     function () {
       function Sidebar(element) {
         this._element = element;
+        this.ps = null;
         this.perfectScrollbar(Event.INIT);
         this.setActiveLink();
 
@@ -443,36 +448,54 @@ webpackJsonp([2],{
 
       // Public
       _proto.perfectScrollbar = function perfectScrollbar(event) {
-        if (typeof PerfectScrollbar !== 'undefined') {
-          var ps;
+        var _this = this;
 
+        if (typeof PerfectScrollbar !== 'undefined') {
           if (event === Event.INIT && !document.body.classList.contains(ClassName.SIDEBAR_MINIMIZED)) {
-            ps = new PerfectScrollbar(document.querySelector(Selector.NAVIGATION_CONTAINER), {
-              suppressScrollX: true
-            });
+            this.ps = this.makeScrollbar();
           }
 
           if (event === Event.DESTROY) {
-            ps = new PerfectScrollbar(document.querySelector(Selector.NAVIGATION_CONTAINER), {
-              suppressScrollX: true
-            });
-            ps.destroy();
-            ps = null;
+            this.destroyScrollbar();
           }
 
           if (event === Event.TOGGLE) {
             if (document.body.classList.contains(ClassName.SIDEBAR_MINIMIZED)) {
-              ps = new PerfectScrollbar(document.querySelector(Selector.NAVIGATION_CONTAINER), {
-                suppressScrollX: true
-              });
-              ps.destroy();
-              ps = null;
+              this.destroyScrollbar();
             } else {
-              ps = new PerfectScrollbar(document.querySelector(Selector.NAVIGATION_CONTAINER), {
-                suppressScrollX: true
-              });
+              this.ps = this.makeScrollbar(); // ToDo: find real fix for ps rtl
+
+              this.ps.isRtl = false;
             }
           }
+
+          if (event === Event.UPDATE && !document.body.classList.contains(ClassName.SIDEBAR_MINIMIZED)) {
+            // ToDo: Add smooth transition
+            setTimeout(function () {
+              _this.destroyScrollbar();
+
+              _this.ps = _this.makeScrollbar(); // ToDo: find real fix for ps rtl
+
+              _this.ps.isRtl = false;
+            }, Default.transition);
+          }
+        }
+      };
+
+      _proto.makeScrollbar = function makeScrollbar(container) {
+        if (container === void 0) {
+          container = Selector.NAVIGATION_CONTAINER;
+        }
+
+        return new PerfectScrollbar(document.querySelector(container), {
+          suppressScrollX: true
+        });
+      };
+
+      _proto.destroyScrollbar = function destroyScrollbar() {
+        if (this.ps) {
+          this.ps.destroy();
+          this.ps = null;
         }
       };
 
@@ -496,7 +519,7 @@ webpackJsonp([2],{
 
 
       _proto._addEventListeners = function _addEventListeners() {
-        var _this = this;
+        var _this2 = this;
 
         $$$1(Selector.BRAND_MINIMIZER).on(Event.CLICK, function (event) {
           event.preventDefault();
@@ -508,13 +531,15 @@ webpackJsonp([2],{
           event.stopPropagation();
           var dropdown = event.target;
           $$$1(dropdown).parent().toggleClass(ClassName.OPEN);
+
+          _this2.perfectScrollbar(Event.UPDATE);
         });
         $$$1(Selector.SIDEBAR_MINIMIZER).on(Event.CLICK, function (event) {
           event.preventDefault();
           event.stopPropagation();
           $$$1(Selector.BODY).toggleClass(ClassName.SIDEBAR_MINIMIZED);
 
-          _this.perfectScrollbar(Event.TOGGLE);
+          _this2.perfectScrollbar(Event.TOGGLE);
         });
         $$$1(Selector.SIDEBAR_TOGGLER).on(Event.CLICK, function (event) {
           event.preventDefault();
@@ -580,7 +605,7 @@ webpackJsonp([2],{
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v2.0.6): get-style.js
+   * CoreUI Utilities (v2.0.14): get-style.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -647,7 +672,7 @@ webpackJsonp([2],{
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v2.0.6): hex-to-rgb.js
+   * CoreUI Utilities (v2.0.14): hex-to-rgb.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -683,7 +708,7 @@ webpackJsonp([2],{
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI Utilities (v2.0.6): hex-to-rgba.js
+   * CoreUI Utilities (v2.0.14): hex-to-rgba.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -723,7 +748,7 @@ webpackJsonp([2],{
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI (v2.0.6): rgb-to-hex.js
+   * CoreUI (v2.0.14): rgb-to-hex.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */
@@ -748,7 +773,7 @@ webpackJsonp([2],{
 
   /**
    * --------------------------------------------------------------------------
-   * CoreUI (v2.0.6): index.js
+   * CoreUI (v2.0.14): index.js
    * Licensed under MIT (https://coreui.io/license)
    * --------------------------------------------------------------------------
    */

@@ -12,7 +12,7 @@
     "tdd": "npm run test -- --watch --notify"
   },
   "devDependencies": {
-    "@coreui/coreui": "^2.0.4",
+    "@coreui/coreui": "^2.0.14",
     "@fortawesome/fontawesome-svg-core": "^1.2.2",
     "@fortawesome/free-brands-svg-icons": "^5.2.0",
     "@fortawesome/free-regular-svg-icons": "^5.2.0",
@@ -31,7 +31,7 @@
     "perfect-scrollbar": "^1.4.0",
     "popper.js": "^1.14.4",
     "simple-line-icons": "^2.4.1",
-    "sweetalert2": "^7.26.28",
+    "sweetalert2": "^7.28.4",
     "vue": "^2.5.17"
   },
   "jest": {
@@ -58,6 +58,7 @@
     "datatables.net-buttons-bs4": "^1.5.3",
     "datatables.net-select": "^1.2.7",
     "moment": "^2.22.2",
-    "toastr": "^2.1.4"
+    "toastr": "^2.1.4",
+    "vue-google-charts": "^0.3.1"
   }
 }

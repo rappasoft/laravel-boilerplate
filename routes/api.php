@@ -14,5 +14,9 @@ use Illuminate\Http\Request;
 */
 Route::group(['middleware' => 'auth:api'], function () {
     Route::get('logout', 'AuthController@logout');
-    Route::get('user', 'Api\UserController@user');
+    Route::get('user', [\App\Http\Controllers\Api\UserController::class, 'user']);
+
+    Route::post('user/create', function (Request $request) {
+        return response()->json(["user" => $request->all()]);
+    });
 });
