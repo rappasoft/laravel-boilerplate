@@ -168,7 +168,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-sm btn-danger" data-loading-text="Loading&hellip;"><i class="fa fa-trash"></i> DELETE FILE</button>
-                        <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
+                        <button type="button" class="btn btn-sm btn-primary pull-left" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
                     </div>
                 </div>
             </form>
