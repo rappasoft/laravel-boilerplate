@@ -19,7 +19,7 @@
                                 <div class="form-group">
                                     {{ html()->label(__('validation.attributes.frontend.name'))->for('name') }}
 
-                                    {{ html()->text('name', optional($user)->name)
+                                    {{ html()->text('name')
                                         ->class('form-control')
                                         ->placeholder(__('validation.attributes.frontend.name'))
                                         ->attribute('maxlength', 191)
@@ -34,7 +34,7 @@
                                 <div class="form-group">
                                     {{ html()->label(__('validation.attributes.frontend.email'))->for('email') }}
 
-                                    {{ html()->email('email', optional($user)->email)
+                                    {{ html()->email('email')
                                         ->class('form-control')
                                         ->placeholder(__('validation.attributes.frontend.email'))
                                         ->attribute('maxlength', 191)

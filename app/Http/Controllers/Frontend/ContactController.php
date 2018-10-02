@@ -17,9 +17,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        return view('frontend.contact', [
-            'user' => auth()->user(),
-        ]);
+        return view('frontend.contact');
     }
 
     /**
