@@ -93,7 +93,7 @@ return [
 
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Faker Locale
     |--------------------------------------------------------------------------
@@ -103,7 +103,7 @@ return [
     | localized telephone numbers, street address information and more.
     |
     */
-	'faker_locale' => 'en_US',
+    'faker_locale' => 'en_US',
 
     /*
     |--------------------------------------------------------------------------
