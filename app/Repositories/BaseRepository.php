@@ -479,7 +479,7 @@ abstract class BaseRepository implements RepositoryContract
     public function __call($scope, $args)
     {
         $this->scopes[$scope] = $args;
-        
+
         return $this;
     }
 }
