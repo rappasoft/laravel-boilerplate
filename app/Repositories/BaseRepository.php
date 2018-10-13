@@ -447,7 +447,7 @@ abstract class BaseRepository implements RepositoryContract
     protected function setScopes()
     {
         foreach ($this->scopes as $method => $args) {
-            $this->query->$method(implode(', ', $args));
+            $this->query->$method(...$args);
         }
 
         return $this;
@@ -465,6 +465,21 @@ abstract class BaseRepository implements RepositoryContract
         $this->scopes = [];
         $this->take = null;
 
+        return $this;
+    }
+
+    /**
+     * Add the given query scope.
+     *
+     * @param string $scope
+     * @param array $args
+     *
+     * @return $this
+     */
+    public function __call($scope, $args)
+    {
+        $this->scopes[$scope] = $args;
+        
         return $this;
     }
 }
