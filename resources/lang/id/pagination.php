@@ -13,6 +13,6 @@ return [
     |
     */
 
-    'previous' => '« Sebelumnya',
-    'next'     => 'Selanjutnya »',
+    'previous' => '&laquo; Sebelumnya',
+    'next'     => 'Selanjutnya &raquo;',
 ];
