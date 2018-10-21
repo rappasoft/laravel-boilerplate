@@ -1,5 +1,5 @@
 import {shallow} from '@vue/test-utils';
-import Example from '../../resources/assets/js/frontend/components/ExampleComponent.vue';
+import Example from '../../resources/js/frontend/components/ExampleComponent.vue';
 
 describe('Example', () => {
     let wrapper;
