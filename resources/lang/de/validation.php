@@ -112,7 +112,7 @@ return [
     'unique'               => ':attribute ist schon vergeben.',
     'uploaded'             => ':attribute wurde nicht hochgeladen.',
     'url'                  => ':attribute Format ist ungültig.',
-	'uuid' => 'The :attribute must be a valid UUID.',
+    'uuid' => 'The :attribute must be a valid UUID.',
 
     /*
     |--------------------------------------------------------------------------

@@ -110,7 +110,7 @@ return [
     'timezone'             => ':attribute skal være en gyldig tidssone.',
     'unique'               => ':attribute er allerede i bruk.',
     'url'                  => ':attribute er ikke i det riktig format.',
-	'uuid' => 'The :attribute must be a valid UUID.',
+    'uuid' => 'The :attribute must be a valid UUID.',
 
     /*
     |--------------------------------------------------------------------------

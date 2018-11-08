@@ -112,7 +112,7 @@ return [
     'unique'               => ':attribute זה כבר נתפס.',
     'uploaded'             => 'הקובץ :attribute לא הועלה.',
     'url'                  => 'הפורמט בשדה :attribute לא תקין.',
-	'uuid' => 'The :attribute must be a valid UUID.',
+    'uuid' => 'The :attribute must be a valid UUID.',
 
     /*
     |--------------------------------------------------------------------------

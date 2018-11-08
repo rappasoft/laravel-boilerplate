@@ -110,7 +110,7 @@ return [
     'timezone'             => ':attribute deve essere un fuso orario valido.',
     'unique'               => ':attribute è già stato utilizzato.',
     'url'                  => 'Il formato di :attribute non è valido.',
-	'uuid' => 'The :attribute must be a valid UUID.',
+    'uuid' => 'The :attribute must be a valid UUID.',
 
     /*
     |--------------------------------------------------------------------------
