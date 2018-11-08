@@ -111,7 +111,7 @@ return [
     'unique'               => ':attribute قبلا گرفته شده است.',
     'uploaded'             => ':attribute بارگذاری نشد.',
     'url'                  => ':attribute قالب نامعتبر است.',
-	'uuid' => 'The :attribute must be a valid UUID.',
+    'uuid' => 'The :attribute must be a valid UUID.',
 
     /*
     |--------------------------------------------------------------------------

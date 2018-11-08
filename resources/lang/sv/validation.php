@@ -110,7 +110,7 @@ return [
     'timezone'             => ':attribute måste vara en giltig tidszon.',
     'unique'               => ':attribute används redan.',
     'url'                  => 'Formatet :attribute är ogiltigt.',
-	'uuid' => 'The :attribute must be a valid UUID.',
+    'uuid' => 'The :attribute must be a valid UUID.',
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

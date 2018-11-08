@@ -111,7 +111,7 @@ return [
     'unique'               => 'El campo :attribute ya está en uso.',
     'uploaded'             => 'El campo :attribute no se pudo actualizar.',
     'url'                  => 'El enlace :attribute debe tener un formato válido.',
-	'uuid' => 'The :attribute must be a valid UUID.',
+    'uuid' => 'The :attribute must be a valid UUID.',
 
     /*
     |--------------------------------------------------------------------------
