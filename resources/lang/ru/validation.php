@@ -44,16 +44,16 @@ return [
     'file'                 => 'Поле :attribute должно быть файлом.',
     'filled'               => 'Поле :attribute обязательно для заполнения.',
     'gt'                   => [
-        'numeric' => 'The :attribute must be greater than :value.',
-        'file'    => 'The :attribute must be greater than :value kilobytes.',
-        'string'  => 'The :attribute must be greater than :value characters.',
-        'array'   => 'The :attribute must have more than :value items.',
+        'numeric' => 'Поле :attribute должно быть больше :value.',
+        'file'    => 'Размер файла в поле :attribute должен быть больше :value Килобайт(а).',
+        'string'  => 'Количество символов в поле :attribute должно быть больше :value.',
+        'array'   => 'Количество элементов в поле :attribute должно быть больше :value.',
     ],
     'gte'                  => [
-        'numeric' => 'The :attribute must be greater than or equal :value.',
-        'file'    => 'The :attribute must be greater than or equal :value kilobytes.',
-        'string'  => 'The :attribute must be greater than or equal :value characters.',
-        'array'   => 'The :attribute must have :value items or more.',
+        'numeric' => 'Поле :attribute должно быть больше или равно :value.',
+        'file'    => 'Размер файла в поле :attribute должен быть больше или равен :value Килобайт(а).',
+        'string'  => 'Количество символов в поле :attribute должно быть больше или равно :value.',
+        'array'   => 'Количество элементов в поле :attribute должно быть больше или равно :value.',
     ],
     'image'                => 'Поле :attribute должно быть изображением.',
     'in'                   => 'Выбранное значение для :attribute ошибочно.',
@@ -113,6 +113,7 @@ return [
     'unique'               => 'Такое значение поля :attribute уже существует.',
     'uploaded'             => 'Загрузка поля :attribute не удалась.',
     'url'                  => 'Поле :attribute имеет ошибочный формат.',
+    'uuid'                 => 'Поле :attribute должно быть корректным UUID.',
 
     /*
     |--------------------------------------------------------------------------
@@ -175,6 +176,7 @@ return [
                     'password_confirmation'   => 'Проверка пароля',
                     'send_confirmation_email' => 'Отправить подтверждение на E-mail',
                     'timezone'                => 'Часовой пояс',
+                    'language'                => 'Язык',
                 ],
             ],
         ],
@@ -192,6 +194,7 @@ return [
             'new_password_confirmation' => 'Подтверждение нового пароля',
             'old_password'              => 'Старый пароль',
             'timezone'                  => 'Часовой пояс',
+            'language'                  => 'Язык',
         ],
     ],
 ];
