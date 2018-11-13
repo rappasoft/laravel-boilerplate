@@ -47,9 +47,9 @@ return [
         'no'    => ['no', 'no_NO', false],
         'pt_BR' => ['pt_BR', 'pt_BR', false],
         'ru'    => ['ru', 'ru-RU', false],
-        'uk'    => ['uk', 'uk-UA', false],
         'sv'    => ['sv', 'sv_SE', false],
         'th'    => ['th', 'th_TH', false],
         'tr'    => ['tr', 'tr_TR', false],
+        'uk'    => ['uk', 'uk-UA', false],
     ],
 ];
