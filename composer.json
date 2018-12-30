@@ -1,9 +1,13 @@
 {
     "name": "rappasoft/laravel-5-boilerplate",
-    "description": "The Laravel Boilerplate Project.",
-    "keywords": ["framework", "laravel", "boilerplate"],
-    "license": "MIT",
     "type": "project",
+    "description": "The Laravel Boilerplate Project.",
+    "keywords": [
+        "framework",
+        "laravel",
+        "boilerplate"
+    ],
+    "license": "MIT",
     "require": {
         "php": "^7.1.3",
         "appstract/laravel-blade-directives": "^0.4.4",
@@ -35,6 +39,11 @@
         "nunomaduro/collision": "^2.0",
         "phpunit/phpunit": "^7.0"
     },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
     "autoload": {
         "classmap": [
             "database/seeds",
@@ -57,18 +66,20 @@
             "dont-discover": []
         }
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "scripts": {
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
-        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
             "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
         ],
         "clear-all": [
             "@php artisan clear-compiled",
@@ -102,10 +113,5 @@
             "./vendor/bin/php-cs-fixer fix routes/  --show-progress=estimating",
             "./vendor/bin/php-cs-fixer fix tests/  --show-progress=estimating"
         ]
-    },
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "optimize-autoloader": true
     }
 }
