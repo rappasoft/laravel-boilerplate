@@ -32,7 +32,7 @@ return [
     'boolean'              => ":attributeには、'true'か'false'を指定してください。",
     'confirmed'            => ':attributeと:attribute確認が一致しません。',
     'date'                 => ':attributeは、正しい日付ではありません。',
-	'date_equals' => 'The :attribute must be a date equal to :date.',
+    'date_equals' => 'The :attribute must be a date equal to :date.',
     'date_format'          => ":attributeの形式は、':format'と合いません。",
     'different'            => ':attributeと:otherには、異なるものを指定してください。',
     'digits'               => ':attributeは、:digits桁にしてください。',
