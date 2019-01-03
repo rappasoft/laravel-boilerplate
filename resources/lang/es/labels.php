@@ -27,8 +27,9 @@ return [
         ],
         'hide'              => 'Ocultar',
         'inactive'          => 'Inactivo',
-        'none'              => 'Ningúno',
+        'none'              => 'Ninguno',
         'show'              => 'Mostrar',
+        'more'              => 'Más',
         'toggle_navigation' => 'Abrir/Cerrar menú de navegación',
     ],
 
@@ -59,7 +60,7 @@ return [
                 'edit'                => 'Modificar Usuario',
                 'management'          => 'Administración de Usuarios',
                 'no_permissions'      => 'Sin Permisos',
-                'no_roles'            => 'No hay Roles disponibles.',
+                'no_roles'            => 'No hay Roles disponibles',
                 'permissions'         => 'Permisos',
 
                 'table' => [
@@ -93,7 +94,7 @@ return [
                             'created_at'   => 'Creación',
                             'deleted_at'   => 'Eliminación',
                             'email'        => 'E-mail',
-                            'last_login_at' => 'Último Login En',
+                            'last_login_at' => 'Último Login en',
                             'last_login_ip' => 'Último Login IP',
                             'last_updated' => 'Última Actualización',
                             'name'         => 'Nombre',
@@ -127,8 +128,8 @@ return [
         ],
 
         'passwords' => [
-            'expired_password_box_title'      => 'Tu contraseña a expirado.',
-            'forgot_password'                 => 'Has olvidado la contraseña?',
+            'expired_password_box_title'      => 'Tu contraseña ha expirado.',
+            'forgot_password'                 => '¿Has olvidado la contraseña?',
             'reset_password_box_title'        => 'Reiniciar contraseña',
             'reset_password_button'           => 'Reiniciar contraseña',
             'update_password_button'          => 'Actualizar contraseña',
