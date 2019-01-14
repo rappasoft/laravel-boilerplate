@@ -80,6 +80,7 @@ return [
             'sv'    => '瑞典语（Swedish）',
             'th'    => '泰语（Thai）',
             'tr'    => '土耳其语(Turkish)',
+            'uk'    => '(Ukrainian)',
         ],
     ],
 ];
