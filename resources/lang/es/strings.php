@@ -16,11 +16,11 @@ return [
     'backend' => [
         'access' => [
             'users' => [
-                'delete_user_confirm'   => 'Estás seguro de querer eliminar este Usuario de forma permanente? Esto puede producir un error grave en aquéllas partes de la aplicación que hagan referencia al mismo. Proceda con cautela. Esta operación no puede ser revertida.',
+                'delete_user_confirm'   => '¿Está seguro de querer eliminar este Usuario de forma permanente? Esto puede producir un error grave en aquellas partes de la aplicación que hagan referencia al mismo. Proceda con cautela. Esta operación no puede deshacerse.',
                 'if_confirmed_off'      => '(Si la confirmación está desactivada)',
                 'no_deactivated'        => 'No hay usuarios desactivados.',
                 'no_deleted'            => 'No hay usuarios eliminados.',
-                'restore_user_confirm'  => 'Restaurar este Usuario a su estado original?',
+                'restore_user_confirm'  => '¿Restaurar este Usuario a su estado original?',
             ],
         ],
 
@@ -31,7 +31,7 @@ return [
 
         'general' => [
             'all_rights_reserved' => 'Todos los derechos reservados.',
-            'are_you_sure'        => 'Está seguro?',
+            'are_you_sure'        => '¿Está seguro?',
             'boilerplate_link'    => 'Laravel 5 Boilerplate',
             'continue'            => 'Continuar',
             'member_since'        => 'Miembro desde',
@@ -51,41 +51,41 @@ return [
             ],
 
             'you_have' => [
-                'messages'      => '{0} No tiene nuevos mensajes|{1} Tiene 1 nuevo mensaje|[2,Inf] Tiene :number mensajes nuevos',
-                'notifications' => '{0} No tiene nuevas notificaciones|{1} Tiene 1 nueva notificación|[2,Inf] Tiene :number notificaciones',
+                'messages'      => '{0} No tiene nuevos mensajes|{1} Tiene un nuevo mensaje|[2,Inf] Tiene :number nuevos mensajes ',
+                'notifications' => '{0} No tiene nuevas notificaciones|{1} Tiene una nueva notificación|[2,Inf] Tiene :number nuevas notificaciones',
                 'tasks'         => '{0} No tiene nuevas tareas|{1} Tiene 1 nueva tarea|[2,Inf] Tiene :number nuevas tareas',
             ],
         ],
 
         'search' => [
-            'empty'      => 'Favor escribir un término de busqueda.',
-            'incomplete' => 'Debes escribir tu propia lógica de busqueda para este sistema.',
-            'title'      => 'Resultados de la Busqueda',
-            'results'    => 'Resultados de la busqueda para :query',
+            'empty'      => 'Por favor, escriba un término de búsqueda.',
+            'incomplete' => 'Debe escribir su propia lógica de búsqueda para este sistema.',
+            'title'      => 'Resultados de la búsqueda',
+            'results'    => 'Resultados de la búsqueda para :query',
         ],
 
-        'welcome' => 'Welcome to the Dashboard',
+        'welcome' => 'Bienenvidos al Panel de Control',
     ],
 
     'emails' => [
         'auth' => [
             'account_confirmed'         => 'Su cuenta ha sido confirmada.',
-            'error'                     => 'Ups!',
-            'greeting'                  => 'Hola!',
+            'error'                     => '¡Ups!',
+            'greeting'                  => '¡Hola!',
             'regards'                   => 'Saludos,',
-            'trouble_clicking_button'   => 'Si está presentando problemas haciendo clic en el botón ":action_text", copia y pega el enlace en su navegador:',
-            'thank_you_for_using_app'   => 'Gracias por utilizar nuestra aplicación!',
+            'trouble_clicking_button'   => 'Si tiene problemas haciendo clic en el botón ":action_text", copie y pegue el enlace en su navegador:',
+            'thank_you_for_using_app'   => '¡Gracias por utilizar nuestra aplicación!',
 
             'password_reset_subject'    => 'Su enlace de reinicio de contraseña',
-            'password_cause_of_email'   => 'Usted está recibiendo este correo porque hemos recibido una solicitud de reinicio de contraseña para su cuenta.',
-            'password_if_not_requested' => 'Si usted no hizo la solicitud, ninguna acción es requerida.',
+            'password_cause_of_email'   => 'Ha recibido este correo porque hemos recibido una solicitud de reinicio de contraseña para su cuenta.',
+            'password_if_not_requested' => 'Si usted no hizo la solicitud, no haga nada.',
             'reset_password'            => 'Pulse aquí para reiniciar su contraseña',
 
             'click_to_confirm'          => 'Pulse aquí para verificar su cuenta:',
         ],
 
         'contact' => [
-            'email_body_title' => 'Tiene una nueva solicitud del formulario de contacto: a continuación los detalles:',
+            'email_body_title' => 'Tiene una nueva solicitud del formulario de contacto. A continuación los detalles:',
             'subject'          => '¡Nueva solicitud del formulario de contacto :app_name!',
         ],
     ],
@@ -115,8 +115,8 @@ return [
             ],
 
             'view_console_it_works'          => 'Mire la consola del navegador, deberia ver \'Funciona!!\' que tiene su origen en FrontendController@index',
-            'you_can_see_because'            => 'Puede ver esto, por que dispone del Rol \':role\'!',
-            'you_can_see_because_permission' => 'Puede ver esto, por que dispone del Permiso \':permission\'!',
+            'you_can_see_because'            => 'Puede ver esto porque dispone del Rol \':role\'!',
+            'you_can_see_because_permission' => 'Puede ver esto porque dispone del Permiso \':permission\'!',
         ],
 
         'general' => [
@@ -126,8 +126,8 @@ return [
         'user' => [
             'change_email_notice'  => 'Si cambia su correo electrónico, se cerrará la sesión hasta que confirme su nueva dirección de correo electrónico.',
             'email_changed_notice' => 'Debe confirmar su nueva dirección de correo electrónico antes de poder iniciar sesión de nuevo.',
-            'profile_updated'      => 'Perfil actualizado satisfactoriamente.',
-            'password_updated'     => 'Contraseña actualizada satisfactoriamente.',
+            'profile_updated'      => 'Perfil actualizado correctamente.',
+            'password_updated'     => 'Contraseña actualizada correctamente.',
         ],
 
         'welcome_to' => 'Bienvenido a :place',
