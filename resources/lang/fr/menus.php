@@ -81,6 +81,7 @@ return [
             'sv'    => 'Suédois (Swedish)',
             'th'    => 'Thaïlandais (Thai)',
             'tr'    => 'Turc (Turkish)',
+            'uk'    => '(Ukrainian)',
         ],
     ],
 ];

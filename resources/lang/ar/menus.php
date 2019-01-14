@@ -81,6 +81,7 @@ return [
             'sv'    => 'السويسرية (Swedish)',
             'th'    => '(Thai)',
             'tr'    => 'اللغة التركية(Turkish)',
+            'uk'    => '(Ukrainian) الأوكراني',
         ],
     ],
 ];
