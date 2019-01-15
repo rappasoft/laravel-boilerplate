@@ -31,10 +31,8 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
         });
 
         // Password expired routes
-        if (is_numeric(config('access.users.password_expires_days'))) {
-            Route::get('password/expired', [PasswordExpiredController::class, 'expired'])->name('password.expired');
-            Route::patch('password/expired', [PasswordExpiredController::class, 'update'])->name('password.expired.update');
-        }
+        Route::get('password/expired', [PasswordExpiredController::class, 'expired'])->name('password.expired');
+        Route::patch('password/expired', [PasswordExpiredController::class, 'update'])->name('password.expired.update');
     });
 
     /*
@@ -50,10 +48,8 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
         Route::get('login/{provider}/callback', [SocialLoginController::class, 'login']);
 
         // Registration Routes
-        if (config('access.registration')) {
-            Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-            Route::post('register', [RegisterController::class, 'register'])->name('register.post');
-        }
+        Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+        Route::post('register', [RegisterController::class, 'register'])->name('register.post');
 
         // Confirm Account Routes
         Route::get('account/confirm/{token}', [ConfirmAccountController::class, 'confirm'])->name('account.confirm');
