@@ -93,6 +93,10 @@
             "@php artisan config:cache",
             "@php artisan route:cache"
         ],
+        "cc": [
+            "composer clear-all",
+            "composer cache-all"
+        ],
         "phpunit": [
             "phpunit > output.txt -d memory_limit=2048M"
         ],
