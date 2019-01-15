@@ -62,6 +62,8 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request)
     {
+        abort_unless(config('access.registration'), 404);
+
         $user = $this->userRepository->create($request->only('first_name', 'last_name', 'email', 'password'));
 
         // If the user must confirm their email or their account requires approval,

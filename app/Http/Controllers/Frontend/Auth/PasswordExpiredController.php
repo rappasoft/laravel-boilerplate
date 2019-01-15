@@ -16,6 +16,8 @@ class PasswordExpiredController extends Controller
      */
     public function expired()
     {
+        abort_unless(config('access.users.password_expires_days'), 404);
+
         return view('frontend.auth.passwords.expired');
     }
 
@@ -28,8 +30,11 @@ class PasswordExpiredController extends Controller
      */
     public function update(UpdatePasswordRequest $request, UserRepository $userRepository)
     {
+        abort_unless(config('access.users.password_expires_days'), 404);
+
         $userRepository->updatePassword($request->only('old_password', 'password'), true);
 
-        return redirect()->route('frontend.user.account')->withFlashSuccess(__('strings.frontend.user.password_updated'));
+        return redirect()->route('frontend.user.account')
+            ->withFlashSuccess(__('strings.frontend.user.password_updated'));
     }
 }
