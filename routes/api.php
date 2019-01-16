@@ -13,6 +13,21 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+/**
+ *
+ */
+Route::group(['prefix' => 'auth', 'namespace' => 'API\v1\Auth'], function()
+{
+    Route::post('login', 'APIAuthController@postLogin')->name('api.auth.login');
+});
+
+Route::group(['namespace' => 'API\v1\Auth', 'middleware' => 'jwt.customauth'], function () 
+{
+	Route::get('logout', 'APIAuthController@logout')->name('api.auth.logout');
+});
+
+
+Route::group(['namespace' => 'API\v1', 'middleware' => 'jwt.customauth'], function () 
+{
+    include_route_files(__DIR__.'/Api/v1/');
 });

@@ -12,11 +12,12 @@ use App\Models\Auth\Traits\SendUserPasswordReset;
 use App\Models\Auth\Traits\Attribute\UserAttribute;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Auth\Traits\Relationship\UserRelationship;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 /**
  * Class User.
  */
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use HasRoles,
         Notifiable,
@@ -76,4 +77,29 @@ class User extends Authenticatable
         'active' => 'boolean',
         'confirmed' => 'boolean',
     ];
+
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Get Custom Claims
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        // Append custom 'exp' claim to still contain in the decoded claim response
+        // This helps support old app versions who may not have the key removed
+        return [
+            'exp'       => strtotime('+10 years', time()),
+            'auth_type' => 'user'
+        ];
+    }
 }

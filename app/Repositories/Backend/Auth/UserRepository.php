@@ -150,7 +150,10 @@ class UserRepository extends BaseRepository
      */
     public function update(User $user, array $data) : User
     {
-        $this->checkUserByEmail($user, $data['email']);
+        if(isset($data['email']))
+        {
+            $this->checkUserByEmail($user, $data['email']);
+        }
 
         // See if adding any additional permissions
         if (! isset($data['permissions']) || ! count($data['permissions'])) {
@@ -158,14 +161,36 @@ class UserRepository extends BaseRepository
         }
 
         return DB::transaction(function () use ($user, $data) {
-            if ($user->update([
-                'first_name' => $data['first_name'],
-                'last_name' => $data['last_name'],
-                'email' => $data['email'],
-            ])) {
+
+            $userData = [];
+
+            if(isset($data['first_name']))
+            {
+                $userData['first_name'] = $data['first_name'];
+            }
+
+            if(isset($data['last_name']))
+            {
+                $userData['last_name'] = $data['last_name'];
+            }
+
+            if(isset($data['email']))
+            {
+                $userData['email'] = $data['email'];
+            }
+
+            if ($user->update($userData)) 
+            {
                 // Add selected roles/permissions
-                $user->syncRoles($data['roles']);
-                $user->syncPermissions($data['permissions']);
+                if(isset($data['roles']))
+                {
+                    $user->syncRoles($data['roles']);
+                }
+
+                if(isset($data['permissions']))
+                {
+                    $user->syncPermissions($data['permissions']);
+                }
 
                 event(new UserUpdated($user));
 

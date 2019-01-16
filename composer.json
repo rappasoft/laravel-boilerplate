@@ -21,6 +21,7 @@
         "spatie/laravel-html": "^2.4",
         "spatie/laravel-permission": "^2.5",
         "torann/geoip": "^1.0",
+        "tymon/jwt-auth": "dev-develop",
         "webpatser/laravel-uuid": "^3.0"
     },
     "require-dev": {
