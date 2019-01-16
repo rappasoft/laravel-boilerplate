@@ -18,14 +18,6 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class APIAuthController extends BaseAPIController
 {
     /**
-     * \Tymon\JWTAuth\JWTAuth
-     *
-     * @var object
-     */
-    protected $jwt;
-
-     
-    /**
      * Post API Login
      *
      * @param Request $request

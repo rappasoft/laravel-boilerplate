@@ -3,6 +3,7 @@
 /**
  * Class APIUserController
  *
+ * @author Anuj Jaha <er.anujjaha@gmail.com>
  */
 
 use App\Models\Auth\User;

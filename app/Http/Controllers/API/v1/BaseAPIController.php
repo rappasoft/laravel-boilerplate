@@ -3,7 +3,7 @@
 /**
  * Class BaseAPIController
  *
- * @Auther Anuj Jaha ( er.anujjaha@gmail.com )
+ * @Auther Anuj Jaha <er.anujjaha@gmail.com>
  */
 
 use App\Http\Controllers\Controller;
