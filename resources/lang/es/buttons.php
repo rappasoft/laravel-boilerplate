@@ -18,12 +18,12 @@ return [
             'users' => [
                 'activate'           => 'Activar',
                 'change_password'    => 'Cambiar contraseña',
-                'clear_session'      => 'Eliminar Sesión',
+                'clear_session'      => 'Eliminar sesión',
                 'confirm'            => 'Confirmar',
                 'deactivate'         => 'Desactivar',
                 'delete_permanently' => 'Eliminar de forma permanente',
                 'login_as'           => 'Iniciar sesión como :user',
-                'resend_email'       => 'Reenviar E-mail de confirmación',
+                'resend_email'       => 'Reenviar e-mail de confirmación',
                 'restore_user'       => 'Restaurar Usuario',
                 'unconfirm'          => 'Deshacer',
                 'unlink'             => 'Desactivar',
@@ -40,7 +40,7 @@ return [
 
     'general' => [
         'cancel'   => 'Cancelar',
-        'continue' => 'Continue',
+        'continue' => 'Continuar',
 
         'crud' => [
             'create' => 'Crear',

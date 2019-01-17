@@ -96,6 +96,8 @@ class ResetPasswordController extends Controller
     {
         $user->password = $password;
 
+        $user->password_changed_at = now();
+
         $user->setRememberToken(Str::random(60));
 
         $user->save();

@@ -16,8 +16,8 @@ return [
 
     'failed'        => 'Имя пользователя и пароль не совпадают.',
     'general_error' => 'У вас нет прав для просмотра этой страницы.',
-    'password_rules' => 'Your password must be more than 8 characters long, should contain at least 1 uppercase, 1 lowercase and 1 number.',
-    'password_used' => 'You can not set a password that you have previously used.',
+    'password_rules' => 'Ваш пароль должен быть длиной более 8 символов, должен содержать минимум 1 заглавную букву, 1 маленькую букву и 1 номер.',
+    'password_used' => 'Вы не можете установить пароль, который вы ранее использовали.',
     'socialite'     => [
         'unacceptable'  => ':provider не приемлемый тип для входа.',
     ],
