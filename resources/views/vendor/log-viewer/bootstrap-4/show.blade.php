@@ -91,7 +91,7 @@
                             @forelse($entries as $key => $entry)
                                 <tr>
                                     <td>
-                                        <span class="badge badge-env">{{ $entry->env }}</span>
+                                        <span class="badge badge-env white-font">{{ $entry->env }}</span>
                                     </td>
                                     <td>
                                     <span class="badge level level-{{ $entry->level }}">

@@ -10475,3 +10475,11 @@ a.text-dark:focus {
   max-height: 90px;
 }
 
+.profile-image {
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.pl-30 {
+  padding-left: 30%; 
+}

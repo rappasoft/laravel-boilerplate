@@ -16,9 +16,15 @@
                 </div>
             </div><!--form-group-->
 
-            <div class="form-group hidden" id="avatar_location">
-                {{ html()->file('avatar_location')->class('form-control') }}
-            </div><!--form-group-->
+            <div class="row hidden" id="avatar_location">
+                <div class="form-group">
+                    {{ html()->file('avatar_location')->class('form-control') }}
+                </div><!--form-group-->
+                <div class="form-group">
+                    <p class="text-center pl-30"> @lang('labels.frontend.user.profile.avatar')</p>
+                    <img src="{{ $logged_in_user->picture }}" class="user-profile-image profile-image pl-30" />
+                </div><!--form-group-->
+            </div>
         </div><!--col-->
     </div><!--row-->
 
