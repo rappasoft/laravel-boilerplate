@@ -1,4 +1,5 @@
-{{ html()->form('PATCH', route('frontend.auth.password.update'))->class('form-horizontal')->open() }}
+{{ html()->form('POSt', route('frontend.auth.password.update'))->class('form-horizontal')->open() }}
+    @method('PATCH')
     <div class="row">
         <div class="col">
             <div class="form-group">
