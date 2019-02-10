@@ -12,6 +12,29 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        /*
+         * Sets third party service providers that are only needed on local/testing environments
+         */
+        if ($this->app->environment() != 'production') {
+            /**
+             * Loader for registering facades.
+             */
+            $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+
+            /*
+             * Load third party local aliases
+             */
+            $loader->alias('Debugbar', \Barryvdh\Debugbar\Facade::class);
+        }
+    }
+
+    /**
      * Bootstrap any application services.
      *
      * @return void
@@ -58,28 +81,5 @@ class AppServiceProvider extends ServiceProvider
         // Set the default template for Pagination to use the included Bootstrap 4 template
         \Illuminate\Pagination\AbstractPaginator::defaultView('pagination::bootstrap-4');
         \Illuminate\Pagination\AbstractPaginator::defaultSimpleView('pagination::simple-bootstrap-4');
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        /*
-         * Sets third party service providers that are only needed on local/testing environments
-         */
-        if ($this->app->environment() != 'production') {
-            /**
-             * Loader for registering facades.
-             */
-            $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-
-            /*
-             * Load third party local aliases
-             */
-            $loader->alias('Debugbar', \Barryvdh\Debugbar\Facade::class);
-        }
     }
 }
