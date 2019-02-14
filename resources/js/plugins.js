@@ -52,7 +52,7 @@ $(function () {
         const confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : 'Yes, delete';
         const title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : 'Are you sure you want to delete this item?';
 
-        swal({
+        Swal.fire({
             title: title,
             showCancelButton: true,
             confirmButtonText: confirm,
@@ -72,7 +72,7 @@ $(function () {
         const cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : 'Cancel';
         const confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : 'Continue';
 
-        swal({
+        Swal.fire({
             title: title,
             showCancelButton: true,
             confirmButtonText: confirm,
