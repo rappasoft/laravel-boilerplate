@@ -54,18 +54,10 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = ['password', 'remember_token'];
-
-    /**
-     * @var array
-     */
-    protected $dates = ['last_login_at', 'deleted_at'];
-
-    /**
-     * The dynamic attributes from mutators that should be returned with the user object.
-     * @var array
-     */
-    protected $appends = ['full_name'];
+    protected $hidden = [
+        'password',
+        'remember_token'
+    ];
 
     /**
      * The attributes that should be cast to native types.
@@ -75,5 +67,21 @@ class User extends Authenticatable
     protected $casts = [
         'active' => 'boolean',
         'confirmed' => 'boolean',
+        'email_verified_at' => 'datetime',
+    ];
+
+    /**
+     * @var array
+     */
+    protected $dates = [
+        'last_login_at',
+    ];
+
+    /**
+     * The dynamic attributes from mutators that should be returned with the user object.
+     * @var array
+     */
+    protected $appends = [
+        'full_name'
     ];
 }

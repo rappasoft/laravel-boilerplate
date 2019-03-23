@@ -19,7 +19,7 @@
         "divineomega/laravel-password-exposed-validation-rule": "^1.2",
         "fideloper/proxy": "^4.0",
         "hieu-le/active": "^3.5",
-        "laravel/framework": "5.7.*",
+        "laravel/framework": "5.8.*",
         "laravel/socialite": "^3.0",
         "laravel/tinker": "^1.0",
         "spatie/laravel-html": "^2.4",
@@ -31,13 +31,13 @@
         "beyondcode/laravel-dump-server": "^1.0",
         "barryvdh/laravel-debugbar": "^3.0",
         "barryvdh/laravel-ide-helper": "^2.4",
-        "codedungeon/phpunit-result-printer": "^0.19.10",
+        "codedungeon/phpunit-result-printer": "^0.26.1",
         "filp/whoops": "^2.0",
         "friendsofphp/php-cs-fixer": "^2.10",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^2.0",
-        "phpunit/phpunit": "^7.0"
+        "nunomaduro/collision": "^3.0",
+        "phpunit/phpunit": "^8.0"
     },
     "config": {
         "optimize-autoloader": true,

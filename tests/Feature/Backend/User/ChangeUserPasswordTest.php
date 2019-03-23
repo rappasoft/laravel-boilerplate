@@ -25,7 +25,7 @@ class ChangeUserPasswordTest extends TestCase
                 'password_confirmation' => '12345678',
             ]);
 
-        $this->assertContains(__('auth.password_rules'), $response->content());
+        $this->assertStringContainsString(__('auth.password_rules'), $response->content());
     }
 
     /** @test */

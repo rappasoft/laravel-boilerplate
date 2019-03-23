@@ -1,4 +1,4 @@
-## Laravel 5.7 Boilerplate
+## Laravel 5.8 Boilerplate
 
 [![Latest Stable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/stable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate)
 [![Latest Unstable Version](https://poser.pugx.org/rappasoft/laravel-5-boilerplate/v/unstable)](https://packagist.org/packages/rappasoft/laravel-5-boilerplate) 
@@ -12,14 +12,6 @@
 ### Slack Channel
 
 Please join us in our Slack channel to get faster responses to your questions. Get your invite here: https://laravel-5-boilerplate.herokuapp.com
-
-### Laravel 5.6
-
-You can download the last build of Laravel 5.6 [here](https://github.com/rappasoft/laravel-5-boilerplate/tree/Legacy_5.6).
-
-### Laravel 5.5
-
-You can download the last build of Laravel 5.5 [here](https://github.com/rappasoft/laravel-5-boilerplate/tree/Legacy_5.5).
 
 ### Introduction
 

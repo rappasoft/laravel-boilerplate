@@ -80,7 +80,7 @@ class ResetPasswordTest extends TestCase
             'password_confirmation' => 'secret',
         ]);
 
-        $this->assertContains(__('auth.password_rules'), $response->content());
+        $this->assertStringContainsString(__('auth.password_rules'), $response->content());
     }
 
     /** @test */
