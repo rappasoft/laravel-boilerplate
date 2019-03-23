@@ -51,9 +51,9 @@ return [
         'enabled'    => true,
 
         'attributes' => [
-			'prefix'     => 'admin/log-viewer',
+            'prefix'     => 'admin/log-viewer',
 
-			'middleware' => ['web', 'admin'],
+            'middleware' => ['web', 'admin'],
         ],
     ],
 
@@ -100,7 +100,7 @@ return [
      */
 
     'icons' =>  [
-        /**
+        /*
          * Font awesome >= 4.3
          * http://fontawesome.io/icons/
          */
