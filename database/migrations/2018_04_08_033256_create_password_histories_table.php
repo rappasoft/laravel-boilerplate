@@ -20,9 +20,9 @@ class CreatePasswordHistoriesTable extends Migration
             $table->timestamps();
         });
 
-		Schema::table(config('access.table_names.password_histories'), function (Blueprint $table) {
-			$table->foreign('user_id')->references('id')->on('users');
-		});
+        Schema::table(config('access.table_names.password_histories'), function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
     }
 
     /**

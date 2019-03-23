@@ -26,9 +26,9 @@ class CreateSocialAccountsTable extends Migration
             $table->timestamps();
         });
 
-		Schema::table('social_accounts', function (Blueprint $table) {
-			$table->foreign('user_id')->references('id')->on('users');
-		});
+        Schema::table('social_accounts', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
+        });
     }
 
     /**
