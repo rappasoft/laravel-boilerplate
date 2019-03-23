@@ -10,9 +10,8 @@
     "license": "MIT",
     "require": {
         "php": "^7.1.3",
-        "appstract/laravel-blade-directives": "^0.4.4",
-        "arcanedev/log-viewer": "^4.5",
-        "arcanedev/no-captcha": "^5.0",
+        "arcanedev/log-viewer": "4.7",
+        "arcanedev/no-captcha": "^9.0",
         "beyondcode/laravel-self-diagnosis": "^1.0",
         "creativeorange/gravatar": "~1.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.0",
