@@ -2,7 +2,7 @@
 
 namespace App\Models\Traits;
 
-use Webpatser\Uuid\Uuid as PackageUuid;
+use Ramsey\Uuid\Uuid as PackageUuid;
 
 /**
  * Trait Uuid.
@@ -33,7 +33,7 @@ trait Uuid
         parent::boot();
 
         static::creating(function ($model) {
-            $model->{$model->getUuidName()} = PackageUuid::generate(4)->string;
+            $model->{$model->getUuidName()} = PackageUuid::uuid4()->toString();
         });
     }
 }

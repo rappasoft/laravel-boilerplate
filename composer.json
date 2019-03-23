@@ -24,8 +24,7 @@
         "laravel/tinker": "^1.0",
         "spatie/laravel-html": "^2.4",
         "spatie/laravel-permission": "^2.5",
-        "torann/geoip": "^1.0",
-        "webpatser/laravel-uuid": "^3.0"
+        "torann/geoip": "^1.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

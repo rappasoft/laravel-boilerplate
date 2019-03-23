@@ -1,7 +1,7 @@
 <?php
 
 use Faker\Generator;
-use Webpatser\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 use App\Models\Auth\User;
 
 /*
@@ -17,7 +17,7 @@ use App\Models\Auth\User;
 
 $factory->define(User::class, function (Generator $faker) {
     return [
-        'uuid' 			    => Uuid::generate(4)->string,
+        'uuid' 			    => Uuid::uuid4()->toString(),
         'first_name'        => $faker->firstName,
         'last_name'         => $faker->lastName,
         'email'             => $faker->safeEmail,
@@ -57,6 +57,6 @@ $factory->state(User::class, 'unconfirmed', function () {
 
 $factory->state(User::class, 'softDeleted', function () {
     return [
-        'deleted_at' => \Illuminate\Support\Carbon::now(),
+        'deleted_at' => now(),
     ];
 });
