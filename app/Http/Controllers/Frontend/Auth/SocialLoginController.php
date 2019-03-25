@@ -52,7 +52,7 @@ class SocialLoginController extends Controller
 
         // If the provider is not an acceptable third party than kick back
         if (! in_array($provider, $this->socialiteHelper->getAcceptedProviders())) {
-            return redirect()->route(home_route())->withFlashDanger(__('auth.socialite.unacceptable', ['provider' => $provider]));
+            return redirect()->route(home_route())->withFlashDanger(__('auth.socialite.unacceptable', ['provider' => e($provider)]));
         }
 
         /*

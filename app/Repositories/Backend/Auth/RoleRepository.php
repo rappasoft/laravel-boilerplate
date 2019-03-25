@@ -32,7 +32,7 @@ class RoleRepository extends BaseRepository
     {
         // Make sure it doesn't already exist
         if ($this->roleExists($data['name'])) {
-            throw new GeneralException('A role already exists with the name '.$data['name']);
+            throw new GeneralException('A role already exists with the name '.e($data['name']));
         }
 
         if (! isset($data['permissions']) || ! \count($data['permissions'])) {

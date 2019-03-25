@@ -72,7 +72,7 @@ class LoginController extends Controller
 
             // Otherwise see if they want to resent the confirmation e-mail
 
-            throw new GeneralException(__('exceptions.frontend.auth.confirmation.resend', ['url' => route('frontend.auth.account.confirm.resend', $user->{$user->getUuidName()})]));
+            throw new GeneralException(__('exceptions.frontend.auth.confirmation.resend', ['url' => route('frontend.auth.account.confirm.resend', e($user->{$user->getUuidName()}))]));
         } elseif (! $user->isActive()) {
             auth()->logout();
             throw new GeneralException(__('exceptions.frontend.auth.deactivated'));
