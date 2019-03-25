@@ -15,7 +15,7 @@
         "beyondcode/laravel-self-diagnosis": "^1.0",
         "creativeorange/gravatar": "~1.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.0",
-        "divineomega/laravel-password-exposed-validation-rule": "^1.2",
+        "divineomega/laravel-password-exposed-validation-rule": "^2.0.1",
         "fideloper/proxy": "^4.0",
         "hieu-le/active": "^3.5",
         "laravel/framework": "5.8.*",
