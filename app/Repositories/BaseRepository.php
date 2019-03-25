@@ -122,7 +122,7 @@ abstract class BaseRepository implements RepositoryContract
      */
     public function count() : int
     {
-        return $this->get()->count();
+        return $this->model->count();
     }
 
     /**
