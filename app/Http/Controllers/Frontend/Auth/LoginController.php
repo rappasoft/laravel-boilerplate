@@ -10,7 +10,6 @@ use App\Helpers\Frontend\Auth\Socialite;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Repositories\Frontend\Auth\UserSessionRepository;
 
 /**
  * Class LoginController.
@@ -81,7 +80,7 @@ class LoginController extends Controller
         event(new UserLoggedIn($user));
 
         if (config('access.users.single_login')) {
-			auth()->logoutOtherDevices($request->password);
+            auth()->logoutOtherDevices($request->password);
         }
 
         return redirect()->intended($this->redirectPath());
