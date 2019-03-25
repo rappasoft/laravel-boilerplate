@@ -4,7 +4,7 @@
 
 import _ from 'lodash'
 import axios from 'axios'
-import swal from 'sweetalert2';
+import Swal from 'sweetalert2';
 import $ from 'jquery';
 import 'popper.js/dist/umd/popper'; // Required for BS4
 import 'bootstrap';
@@ -34,7 +34,7 @@ dom.watch();
  */
 
 window.$ = window.jQuery = $;
-window.swal = swal;
+window.Swal = Swal;
 window._ = _; // Lodash
 
 /**
