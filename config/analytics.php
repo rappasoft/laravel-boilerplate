@@ -9,5 +9,5 @@ return [
     |
     | Found in views/includes/partials/ga.blade.php
     */
-	env('google-analytics', 'UA-XXXXX-X'),
+    env('google-analytics', 'UA-XXXXX-X'),
 ];
