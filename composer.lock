@@ -4,8 +4,67 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "893b8435c0f7f6f0e1f9ad60e04702f0",
+    "content-hash": "a83afc9a40a12464d77100b3849ade45",
     "packages": [
+        {
+            "name": "albertcht/invisible-recaptcha",
+            "version": "v1.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/albertcht/invisible-recaptcha.git",
+                "reference": "5e5f06447bbb0068dbfe81dca8c35f77814d7122"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/albertcht/invisible-recaptcha/zipball/5e5f06447bbb0068dbfe81dca8c35f77814d7122",
+                "reference": "5e5f06447bbb0068dbfe81dca8c35f77814d7122",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "illuminate/support": "^5.0",
+                "php": "^5.6.4 || ^7.0"
+            },
+            "require-dev": {
+                "illuminate/view": "^5.0",
+                "phpunit/phpunit": "^6.1|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AlbertCht\\InvisibleReCaptcha\\InvisibleReCaptchaServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AlbertCht\\InvisibleReCaptcha\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Albert Chen",
+                    "homepage": "https://www.albert-chen.com"
+                }
+            ],
+            "description": "Invisible reCAPTCHA For Laravel.",
+            "keywords": [
+                "captcha",
+                "invisible",
+                "invisible-recaptcha",
+                "laravel",
+                "laravel5",
+                "no-captcha",
+                "php",
+                "recaptcha"
+            ],
+            "time": "2019-03-01T13:36:45+00:00"
+        },
         {
             "name": "arcanedev/log-viewer",
             "version": "4.7.0",
@@ -72,125 +131,6 @@
                 "logviewer"
             ],
             "time": "2019-02-27T19:05:04+00:00"
-        },
-        {
-            "name": "arcanedev/no-captcha",
-            "version": "9.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ARCANEDEV/noCAPTCHA.git",
-                "reference": "f012c78b1c6b562c8ed692f121652f484d700248"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ARCANEDEV/noCAPTCHA/zipball/f012c78b1c6b562c8ed692f121652f484d700248",
-                "reference": "f012c78b1c6b562c8ed692f121652f484d700248",
-                "shasum": ""
-            },
-            "require": {
-                "arcanedev/php-html": "~2.0.0",
-                "arcanedev/support": "~4.5.0",
-                "ext-curl": "*",
-                "ext-json": "*",
-                "php": ">=7.1.3",
-                "psr/http-message": "~1.0"
-            },
-            "require-dev": {
-                "arcanedev/laravel-html": "~5.8.0",
-                "orchestra/testbench": "~3.8.0",
-                "phpunit/phpcov": "~5.0|~6.0",
-                "phpunit/phpunit": "~7.0|~8.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Arcanedev\\NoCaptcha\\NoCaptchaServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Arcanedev\\NoCaptcha\\": "src/"
-                },
-                "files": [
-                    "helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "ARCANEDEV",
-                    "email": "arcanedev.maroc@gmail.com",
-                    "homepage": "https://github.com/arcanedev-maroc",
-                    "role": "Developer"
-                }
-            ],
-            "description": "No CAPTCHA (new Google reCAPTCHA) with Laravel support",
-            "homepage": "https://github.com/ARCANEDEV/noCAPTCHA",
-            "keywords": [
-                "arcanedev",
-                "captcha",
-                "google",
-                "laravel",
-                "no-captcha",
-                "recaptcha"
-            ],
-            "time": "2019-02-27T21:43:52+00:00"
-        },
-        {
-            "name": "arcanedev/php-html",
-            "version": "2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ARCANEDEV/php-html.git",
-                "reference": "a1b7093c3753dc2621e3c9fff182b7ad2d7d558e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ARCANEDEV/php-html/zipball/a1b7093c3753dc2621e3c9fff182b7ad2d7d558e",
-                "reference": "a1b7093c3753dc2621e3c9fff182b7ad2d7d558e",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "~5.8",
-                "php": ">=7.1.3"
-            },
-            "require-dev": {
-                "ext-dom": "*",
-                "phpunit/phpcov": "~5.0|~6.0",
-                "phpunit/phpunit": "~7.0|~8.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Arcanedev\\Html\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "ARCANEDEV",
-                    "email": "arcanedev.maroc@gmail.com",
-                    "homepage": "https://github.com/arcanedev-maroc",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A simple way to create html tags with php.",
-            "homepage": "https://github.com/ARCANEDEV/php-html",
-            "keywords": [
-                "arcanedev",
-                "form",
-                "html",
-                "tags"
-            ],
-            "time": "2019-02-27T20:30:33+00:00"
         },
         {
             "name": "arcanedev/support",
@@ -5209,16 +5149,16 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "v1.6.0",
+            "version": "v1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "c7f2050c68a9ab0bdb0f98567ec08d80ea7d24d5"
+                "reference": "53120e0eb10355388d6ccbe462f1fea34ddadb24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/c7f2050c68a9ab0bdb0f98567ec08d80ea7d24d5",
-                "reference": "c7f2050c68a9ab0bdb0f98567ec08d80ea7d24d5",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/53120e0eb10355388d6ccbe462f1fea34ddadb24",
+                "reference": "53120e0eb10355388d6ccbe462f1fea34ddadb24",
                 "shasum": ""
             },
             "require": {
@@ -5273,7 +5213,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2017-12-06T07:11:42+00:00"
+            "time": "2019-03-25T19:12:02+00:00"
         },
         {
             "name": "doctrine/instantiator",

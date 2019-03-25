@@ -9,6 +9,7 @@ return [
         /*
          * Whether the registration captcha is on or off
          */
+		'contact' => env('CONTACT_CAPTCHA_STATUS', false),
         'registration' => env('REGISTRATION_CAPTCHA_STATUS', false),
     ],
 
