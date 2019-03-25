@@ -24,6 +24,7 @@
         <server name="ENABLE_REGISTRATION" value="true"/>
         <server name="MAIL_DRIVER" value="array"/>
         <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="CONTACT_CAPTCHA_STATUS" value="false"/>
         <server name="REGISTRATION_CAPTCHA_STATUS" value="false"/>
         <server name="SESSION_DRIVER" value="array"/>
     </php>

@@ -29,7 +29,7 @@
     "lodash": "^4.17.5",
     "pace": "github:HubSpot/pace#v1.0.2",
     "perfect-scrollbar": "^1.4.0",
-    "popper.js": "^1.12.4",
+    "popper.js": "^1.12",
     "resolve-url-loader": "^2.3.1",
     "sass": "^1.15.2",
     "sass-loader": "^7.1.0",
