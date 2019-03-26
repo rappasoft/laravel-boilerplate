@@ -16,12 +16,12 @@ use OwenIt\Auditing\Contracts\Auditable as AuditableInterface;
  */
 class BaseUser extends Authenticatable implements AuditableInterface
 {
-	use Auditable,
-		HasRoles,
-		Notifiable,
-		SendUserPasswordReset,
-		SoftDeletes,
-		Uuid;
+    use Auditable,
+        HasRoles,
+        Notifiable,
+        SendUserPasswordReset,
+        SoftDeletes,
+        Uuid;
 
 	/**
 	 * The attributes that are mass assignable.
@@ -45,27 +45,27 @@ class BaseUser extends Authenticatable implements AuditableInterface
 		'to_be_logged_out',
 	];
 
-	/**
-	 * The attributes that should be hidden for arrays.
-	 *
-	 * @var array
-	 */
-	protected $hidden = [
-		'password',
-		'remember_token',
-	];
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
 
-	/**
-	 * Attributes to exclude from the Audit.
-	 *
-	 * @var array
-	 */
-	protected $auditExclude = [
-		'id',
-		'password',
-		'remember_token',
-		'confirmation_code',
-	];
+    /**
+     * Attributes to exclude from the Audit.
+     *
+     * @var array
+     */
+    protected $auditExclude = [
+        'id',
+        'password',
+        'remember_token',
+        'confirmation_code',
+    ];
 
 	/**
 	 * The attributes that should be cast to native types.
@@ -78,19 +78,19 @@ class BaseUser extends Authenticatable implements AuditableInterface
 		'to_be_logged_out' => 'boolean',
 	];
 
-	/**
-	 * @var array
-	 */
-	protected $dates = [
-		'last_login_at',
-		'password_changed_at',
-	];
+    /**
+     * @var array
+     */
+    protected $dates = [
+        'last_login_at',
+        'password_changed_at',
+    ];
 
-	/**
-	 * The dynamic attributes from mutators that should be returned with the user object.
-	 * @var array
-	 */
-	protected $appends = [
-		'full_name',
-	];
+    /**
+     * The dynamic attributes from mutators that should be returned with the user object.
+     * @var array
+     */
+    protected $appends = [
+        'full_name',
+    ];
 }
