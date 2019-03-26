@@ -2,8 +2,8 @@
 
 namespace App\Models\Auth;
 
-use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Auditable;
+use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
 
 /**
@@ -11,8 +11,7 @@ use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
  */
 class SocialAccount extends Model implements AuditableContract
 {
-
-	use Auditable;
+    use Auditable;
 
     /**
      * The database table used by the model.
@@ -27,10 +26,10 @@ class SocialAccount extends Model implements AuditableContract
      * @var array
      */
     protected $fillable = [
-    	'user_id',
-		'provider',
-		'provider_id',
-		'token',
-		'avatar'
-	];
+        'user_id',
+        'provider',
+        'provider_id',
+        'token',
+        'avatar',
+    ];
 }
