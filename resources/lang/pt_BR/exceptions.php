@@ -45,7 +45,6 @@ return [
                 'restore_error'         => 'Houve um problema ao restaurar esse usuário. Por favor, tente novamente.',
                 'role_needed_create'    => 'Você deve escolher pelo menos uma função.',
                 'role_needed'           => 'Você deve escolher pelo menos uma função.',
-                'session_wrong_driver'  => 'Você deve configurar seu Session Driver para Database para usar esta função.',
                 'social_delete_error'   => 'Houve um problema ao tentar remover a mídia social do usuário.',
                 'update_error'          => 'Houve um problema ao atualizar esse usuário. Por favor, tente novamente.',
                 'update_password_error' => 'Houve um problema ao alterar a senha do usuário. Por favor, tente novamente.',

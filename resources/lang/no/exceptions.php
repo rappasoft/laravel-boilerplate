@@ -42,7 +42,6 @@ return [
                 'restore_error'         => 'Det oppstod et problem ved gjennoprettelsen av denne brukeren. Prøv igjen.',
                 'role_needed_create'    => 'Du må velge mindst én rolle.',
                 'role_needed'           => 'Du må velge mindst én rolle.',
-                'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
                 'social_delete_error' => 'Det oppstod et problem med fjerningen av de sosiale kontoene til denne brukeren.',
                 'update_error'          => 'Det oppstod et problem ved oppdatering av denne brukeren. Prøv igjen.',
                 'update_password_error' => 'Det oppstod et problem ved endring av brukerens passord. Prøv igjen.',

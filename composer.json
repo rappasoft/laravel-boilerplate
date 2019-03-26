@@ -21,6 +21,7 @@
         "laravel/framework": "5.8.*",
         "laravel/socialite": "^4.1",
         "laravel/tinker": "^1.0",
+        "owen-it/laravel-auditing": "^9.0",
         "spatie/laravel-html": "^2.4",
         "spatie/laravel-permission": "^2.36",
         "torann/geoip": "^1.0"
