@@ -144,7 +144,7 @@ trait UserAttribute
          */
         if (! session()->has('admin_user_id') || ! session()->has('temp_user_id')) {
             //Won't break, but don't let them "Login As" themselves
-            if ($this->id != auth()->id()) {
+            if ($this->id !== auth()->id()) {
                 return '<a href="'.route(
                     'admin.auth.user.login-as',
                     $this
@@ -160,7 +160,7 @@ trait UserAttribute
      */
     public function getClearSessionButtonAttribute()
     {
-        if ($this->id != auth()->id() && config('session.driver') == 'database') {
+        if ($this->id !== auth()->id()) {
             return '<a href="'.route('admin.auth.user.clear-session', $this).'"
 			 	 data-trans-button-cancel="'.__('buttons.general.cancel').'"
                  data-trans-button-confirm="'.__('buttons.general.continue').'"

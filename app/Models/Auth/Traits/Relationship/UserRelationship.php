@@ -11,20 +11,13 @@ use App\Models\Auth\PasswordHistory;
  */
 trait UserRelationship
 {
+
     /**
      * @return mixed
      */
     public function providers()
     {
         return $this->hasMany(SocialAccount::class);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function sessions()
-    {
-        return $this->hasMany(Session::class);
     }
 
     /**

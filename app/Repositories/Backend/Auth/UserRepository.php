@@ -307,7 +307,6 @@ class UserRepository extends BaseRepository
             // Delete associated relationships
             $user->passwordHistories()->delete();
             $user->providers()->delete();
-            $user->sessions()->delete();
 
             if ($user->forceDelete()) {
                 event(new UserPermanentlyDeleted($user));

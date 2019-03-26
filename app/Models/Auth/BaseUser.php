@@ -42,6 +42,7 @@ class BaseUser extends Authenticatable implements AuditableInterface
 		'timezone',
 		'last_login_at',
 		'last_login_ip',
+		'to_be_logged_out',
 	];
 
 	/**
@@ -74,6 +75,7 @@ class BaseUser extends Authenticatable implements AuditableInterface
 	protected $casts = [
 		'active' => 'boolean',
 		'confirmed' => 'boolean',
+		'to_be_logged_out' => 'boolean',
 	];
 
 	/**
