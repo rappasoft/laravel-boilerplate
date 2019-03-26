@@ -23,27 +23,27 @@ class BaseUser extends Authenticatable implements AuditableInterface
         SoftDeletes,
         Uuid;
 
-	/**
-	 * The attributes that are mass assignable.
-	 *
-	 * @var array
-	 */
-	protected $fillable = [
-		'first_name',
-		'last_name',
-		'email',
-		'avatar_type',
-		'avatar_location',
-		'password',
-		'password_changed_at',
-		'active',
-		'confirmation_code',
-		'confirmed',
-		'timezone',
-		'last_login_at',
-		'last_login_ip',
-		'to_be_logged_out',
-	];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'email',
+        'avatar_type',
+        'avatar_location',
+        'password',
+        'password_changed_at',
+        'active',
+        'confirmation_code',
+        'confirmed',
+        'timezone',
+        'last_login_at',
+        'last_login_ip',
+        'to_be_logged_out',
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -67,16 +67,16 @@ class BaseUser extends Authenticatable implements AuditableInterface
         'confirmation_code',
     ];
 
-	/**
-	 * The attributes that should be cast to native types.
-	 *
-	 * @var array
-	 */
-	protected $casts = [
-		'active' => 'boolean',
-		'confirmed' => 'boolean',
-		'to_be_logged_out' => 'boolean',
-	];
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'active' => 'boolean',
+        'confirmed' => 'boolean',
+        'to_be_logged_out' => 'boolean',
+    ];
 
     /**
      * @var array
