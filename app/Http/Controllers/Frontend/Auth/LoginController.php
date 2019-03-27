@@ -72,8 +72,11 @@ class LoginController extends Controller
             // Otherwise see if they want to resent the confirmation e-mail
 
             throw new GeneralException(__('exceptions.frontend.auth.confirmation.resend', ['url' => route('frontend.auth.account.confirm.resend', e($user->{$user->getUuidName()}))]));
-        } elseif (! $user->isActive()) {
+        }
+
+        if (! $user->isActive()) {
             auth()->logout();
+
             throw new GeneralException(__('exceptions.frontend.auth.deactivated'));
         }
 
@@ -105,7 +108,7 @@ class LoginController extends Controller
         /*
          * Remove any session data from backend
          */
-        app()->make(AuthHelper::class)->flushTempSession();
+        resolve(AuthHelper::class)->flushTempSession();
 
         /*
          * Fire event, Log out user, Redirect
@@ -136,20 +139,19 @@ class LoginController extends Controller
             // Save admin id
             $admin_id = session()->get('admin_user_id');
 
-            app()->make(AuthHelper::class)->flushTempSession();
+            resolve(AuthHelper::class)->flushTempSession();
 
             // Re-login admin
             auth()->loginUsingId((int) $admin_id);
 
             // Redirect to backend user page
             return redirect()->route('admin.auth.user.index');
-        } else {
-            app()->make(AuthHelper::class)->flushTempSession();
-
-            // Otherwise logout and redirect to login
-            auth()->logout();
-
-            return redirect()->route('frontend.auth.login');
         }
+
+		resolve(AuthHelper::class)->flushTempSession();
+
+		auth()->logout();
+
+		return redirect()->route('frontend.auth.login');
     }
 }

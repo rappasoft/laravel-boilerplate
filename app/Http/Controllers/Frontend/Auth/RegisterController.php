@@ -76,12 +76,12 @@ class RegisterController extends Controller
                     __('exceptions.frontend.auth.confirmation.created_pending') :
                     __('exceptions.frontend.auth.confirmation.created_confirm')
             );
-        } else {
-            auth()->login($user);
-
-            event(new UserRegistered($user));
-
-            return redirect($this->redirectPath());
         }
+
+		auth()->login($user);
+
+		event(new UserRegistered($user));
+
+		return redirect($this->redirectPath());
     }
 }

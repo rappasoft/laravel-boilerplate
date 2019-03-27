@@ -10,6 +10,7 @@ use Throwable;
  */
 class ReportableException extends Exception
 {
+
     /**
      * @var
      */
