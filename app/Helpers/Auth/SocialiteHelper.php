@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Helpers\Frontend\Auth;
+namespace App\Helpers\Auth;
 
 /**
  * Class Socialite.
  */
-class Socialite
+class SocialiteHelper
 {
     /**
      * Generates social login links based on what is enabled.

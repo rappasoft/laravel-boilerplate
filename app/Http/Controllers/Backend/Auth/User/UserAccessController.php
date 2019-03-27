@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend\Auth\User;
 
 use App\Models\Auth\User;
-use App\Helpers\Auth\Auth;
+use App\Helpers\Auth\AuthHelper;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
@@ -39,7 +39,7 @@ class UserAccessController extends Controller
             return redirect()->route(home_route());
         }
 
-        app()->make(Auth::class)->flushTempSession();
+        app()->make(AuthHelper::class)->flushTempSession();
 
         // Won't break, but don't let them "Login As" themselves
         if ($request->user()->id == $user->id) {

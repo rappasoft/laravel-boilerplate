@@ -279,12 +279,12 @@ class UserRepository extends BaseRepository
                 'avatar_type' => $provider,
             ]);
 
-			if ($user) {
-				/*
-				 * Add the default site role to the new user
-				 */
-				$user->assignRole(config('access.users.default_role'));
-			}
+            if ($user) {
+                /*
+                 * Add the default site role to the new user
+                 */
+                $user->assignRole(config('access.users.default_role'));
+            }
 
             event(new UserProviderRegistered($user));
         }

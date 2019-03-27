@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Laravel\Socialite\Facades\Socialite;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Repositories\Frontend\Auth\UserRepository;
-use App\Helpers\Frontend\Auth\Socialite as SocialiteHelper;
+use App\Helpers\Auth\SocialiteHelper;
 
 /**
  * Class SocialLoginController.

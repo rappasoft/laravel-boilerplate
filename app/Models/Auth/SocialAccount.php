@@ -11,7 +11,6 @@ use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
  */
 class SocialAccount extends Model implements AuditableContract
 {
-
     use Auditable;
 
     /**
@@ -34,13 +33,13 @@ class SocialAccount extends Model implements AuditableContract
         'avatar',
     ];
 
-	/**
-	 * Attributes to exclude from the Audit.
-	 *
-	 * @var array
-	 */
-	protected $auditExclude = [
-		'id',
-		'token',
-	];
+    /**
+     * Attributes to exclude from the Audit.
+     *
+     * @var array
+     */
+    protected $auditExclude = [
+        'id',
+        'token',
+    ];
 }

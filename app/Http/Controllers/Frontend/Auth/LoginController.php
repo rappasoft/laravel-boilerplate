@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
-use App\Helpers\Auth\Auth;
+use App\Helpers\Auth\AuthHelper;
 use Illuminate\Http\Request;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
-use App\Helpers\Frontend\Auth\Socialite;
+use App\Helpers\Auth\SocialiteHelper;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -34,7 +34,7 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view('frontend.auth.login')
-            ->withSocialiteLinks((new Socialite)->getSocialLinks());
+            ->withSocialiteLinks((new SocialiteHelper)->getSocialLinks());
     }
 
     /**
@@ -105,7 +105,7 @@ class LoginController extends Controller
         /*
          * Remove any session data from backend
          */
-        app()->make(Auth::class)->flushTempSession();
+        app()->make(AuthHelper::class)->flushTempSession();
 
         /*
          * Fire event, Log out user, Redirect
@@ -136,7 +136,7 @@ class LoginController extends Controller
             // Save admin id
             $admin_id = session()->get('admin_user_id');
 
-            app()->make(Auth::class)->flushTempSession();
+            app()->make(AuthHelper::class)->flushTempSession();
 
             // Re-login admin
             auth()->loginUsingId((int) $admin_id);
@@ -144,7 +144,7 @@ class LoginController extends Controller
             // Redirect to backend user page
             return redirect()->route('admin.auth.user.index');
         } else {
-            app()->make(Auth::class)->flushTempSession();
+            app()->make(AuthHelper::class)->flushTempSession();
 
             // Otherwise logout and redirect to login
             auth()->logout();
