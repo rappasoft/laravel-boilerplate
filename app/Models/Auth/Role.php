@@ -17,12 +17,12 @@ class Role extends SpatieRole implements AuditableContract
         RoleAttribute,
         RoleMethod;
 
-	/**
-	 * Attributes to exclude from the Audit.
-	 *
-	 * @var array
-	 */
-	protected $auditExclude = [
-		'id',
-	];
+    /**
+     * Attributes to exclude from the Audit.
+     *
+     * @var array
+     */
+    protected $auditExclude = [
+        'id',
+    ];
 }
