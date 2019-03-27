@@ -10,7 +10,6 @@ use Throwable;
  */
 class GeneralException extends Exception
 {
-
     /**
      * @var
      */

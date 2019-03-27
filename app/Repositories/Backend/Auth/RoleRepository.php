@@ -22,14 +22,14 @@ class RoleRepository extends BaseRepository
         return Role::class;
     }
 
-	/**
-	 * @param array $data
-	 *
-	 * @return Role
-	 * @throws GeneralException
-	 * @throws \Throwable
-	 */
-	public function create(array $data) : Role
+    /**
+     * @param array $data
+     *
+     * @return Role
+     * @throws GeneralException
+     * @throws \Throwable
+     */
+    public function create(array $data) : Role
     {
         // Make sure it doesn't already exist
         if ($this->roleExists($data['name'])) {
@@ -60,15 +60,15 @@ class RoleRepository extends BaseRepository
         });
     }
 
-	/**
-	 * @param Role  $role
-	 * @param array $data
-	 *
-	 * @return mixed
-	 * @throws GeneralException
-	 * @throws \Throwable
-	 */
-	public function update(Role $role, array $data)
+    /**
+     * @param Role  $role
+     * @param array $data
+     *
+     * @return mixed
+     * @throws GeneralException
+     * @throws \Throwable
+     */
+    public function update(Role $role, array $data)
     {
         if ($role->isAdmin()) {
             throw new GeneralException('You can not edit the administrator role.');
@@ -113,7 +113,7 @@ class RoleRepository extends BaseRepository
     protected function roleExists($name) : bool
     {
         return $this->model
-			->where('name', strtolower($name))
-			->count() > 0;
+            ->where('name', strtolower($name))
+            ->count() > 0;
     }
 }

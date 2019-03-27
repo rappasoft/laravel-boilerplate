@@ -148,10 +148,10 @@ class LoginController extends Controller
             return redirect()->route('admin.auth.user.index');
         }
 
-		resolve(AuthHelper::class)->flushTempSession();
+        resolve(AuthHelper::class)->flushTempSession();
 
-		auth()->logout();
+        auth()->logout();
 
-		return redirect()->route('frontend.auth.login');
+        return redirect()->route('frontend.auth.login');
     }
 }
