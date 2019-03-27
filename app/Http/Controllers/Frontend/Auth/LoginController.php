@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
-use App\Helpers\Auth\AuthHelper;
 use Illuminate\Http\Request;
+use App\Helpers\Auth\AuthHelper;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
 use App\Helpers\Auth\SocialiteHelper;
