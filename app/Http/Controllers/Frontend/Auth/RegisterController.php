@@ -78,10 +78,10 @@ class RegisterController extends Controller
             );
         }
 
-		auth()->login($user);
+        auth()->login($user);
 
-		event(new UserRegistered($user));
+        event(new UserRegistered($user));
 
-		return redirect($this->redirectPath());
+        return redirect($this->redirectPath());
     }
 }
