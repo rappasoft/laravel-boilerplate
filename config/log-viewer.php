@@ -33,6 +33,16 @@ return [
     'locale'        => 'auto',
 
     /* -----------------------------------------------------------------
+     |  Theme
+     | -----------------------------------------------------------------
+     |  Supported themes :
+     |    'bootstrap-3', 'bootstrap-4'
+     |  Make your own theme by adding a folder to the views directory and specifying it here.
+     */
+
+    'theme'         => 'bootstrap-4',
+
+    /* -----------------------------------------------------------------
      |  Route settings
      | -----------------------------------------------------------------
      */
@@ -50,7 +60,7 @@ return [
     /* -----------------------------------------------------------------
      |  Log entries per page
      | -----------------------------------------------------------------
-     |  This defines how many log entries are displayed per page.
+     |  This defines how many logs & entries are displayed per page.
      */
 
     'per-page'      => 30,

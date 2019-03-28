@@ -28,12 +28,11 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name'     => 'required|max:191',
-            'last_name'  => 'required|max:191',
+            'first_name'     => ['required', 'max:191'],
+            'last_name'  => ['required', 'max:191'],
             'email'    => ['required', 'email', 'max:191', Rule::unique('users')],
-            'timezone' => 'required|max:191',
-            'password' => 'required|min:6|confirmed',
-            'roles' => 'required|array',
+            'password' => ['required', 'min:6', 'confirmed'],
+            'roles' => ['required', 'array'],
         ];
     }
 }

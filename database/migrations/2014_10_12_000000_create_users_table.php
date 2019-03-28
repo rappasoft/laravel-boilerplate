@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create(config('access.table_names.users'), function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->uuid('uuid');
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
@@ -29,7 +29,10 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('active')->default(1)->unsigned();
             $table->string('confirmation_code')->nullable();
             $table->boolean('confirmed')->default(config('access.users.confirm_email') ? false : true);
-            $table->string('timezone')->default('UTC');
+            $table->string('timezone')->nullable();
+            $table->timestamp('last_login_at')->nullable();
+            $table->string('last_login_ip')->nullable();
+            $table->boolean('to_be_logged_out')->default(false);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

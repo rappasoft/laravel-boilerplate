@@ -24,7 +24,7 @@
                             <i class="fa fa-download"></i> DOWNLOAD
                         </a>
                         <a href="#delete-log-modal" class="btn btn-sm btn-danger" data-toggle="modal" data-backdrop="false">
-                            <i class="fa fa-trash-o"></i> DELETE
+                            <i class="fa fa-trash"></i> DELETE
                         </a>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
 
             {{-- Log Entries --}}
             <div class="card mt-4">
-                @if ($entries->hasPages())
+                @if($entries->hasPages())
                     <div class="card-header">
                         <div class="row">
                             <div class="col">
@@ -107,14 +107,14 @@
                                         {{ $entry->header }}
                                     </td>
                                     <td class="text-right">
-                                        @if ($entry->hasStack())
+                                        @if($entry->hasStack())
                                             <a class="btn btn-sm btn-outline-info" role="button" data-toggle="collapse" href="#log-stack-{{ $key }}" aria-expanded="false" aria-controls="log-stack-{{ $key }}">
                                                 <i class="fa fa-toggle-on"></i> Stack
                                             </a>
                                         @endif
                                     </td>
                                 </tr>
-                                @if ($entry->hasStack())
+                                @if($entry->hasStack())
                                     <tr class="stack-content collapse" id="log-stack-{{ $key }}">
                                         <td colspan="5" class="stack">
                                             {!! trim($entry->stack()) !!}
@@ -132,7 +132,7 @@
                         </table>
                     </div><!--table-responsive-->
                 </div><!--card-body-->
-                @if ($entries->hasPages())
+                @if($entries->hasPages())
                     <div class="card-footer">
                         <div class="row">
                             <div class="col">
@@ -167,8 +167,8 @@
                         <p>Are you sure you want to <span class="badge badge-danger">DELETE</span> this log file <span class="badge badge-primary">{{ $log->date }}</span> ?</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-sm btn-danger" data-loading-text="Loading&hellip;"><i class="fa fa-trash-o"></i> DELETE FILE</button>
-                        <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
+                        <button type="submit" class="btn btn-sm btn-danger" data-loading-text="Loading&hellip;"><i class="fa fa-trash"></i> DELETE FILE</button>
+                        <button type="button" class="btn btn-sm btn-primary pull-left" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
                     </div>
                 </div>
             </form>
@@ -212,7 +212,7 @@
                 return false;
             });
 
-            @unless (empty(log_styler()->toHighlight()))
+            @unless(empty(log_styler()->toHighlight()))
             $('.stack-content').each(function() {
                 var $this = $(this);
                 var html = $this.html().trim()

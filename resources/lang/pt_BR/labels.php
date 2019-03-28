@@ -29,9 +29,14 @@ return [
         'none'              => 'Nenhum',
         'show'              => 'Mostrar',
         'toggle_navigation' => 'Mostrar / Esconder Navegação',
+        'create_new'        => 'Criar novo',
+        'toolbar_btn_groups' => 'Barra de ferramentas com grupo de botões',
+        'more'              => 'Mais',
+        'none'              => 'Nenhuma',
     ],
     'backend' => [
         'access' => [
+
             'roles' => [
                 'create'     => 'Criar Papel',
                 'edit'       => 'Criar Papel',
@@ -44,19 +49,22 @@ return [
                     'total'           => 'total de permissao|total de permissões',
                 ],
             ],
+
             'users' => [
                 'active'              => 'Ativar Usuários',
                 'all_permissions'     => 'Todas as Permissões',
                 'change_password'     => 'Alterar Senha',
                 'change_password_for' => 'Alterar senha para :user',
                 'create'              => 'Criar Usuário',
-                'deactivated'         => 'Desativar Usuários',
-                'deleted'             => 'Excluir Usuários',
+                'deactivated'         => 'Usuários Desativados',
+                'deleted'             => 'Usuários Excluídos',
                 'edit'                => 'Editar Usuário',
                 'management'          => 'Gerenciamento Usuários',
                 'no_permissions'      => 'Sem permissões',
                 'no_roles'            => 'Sem papéis para definir.',
                 'permissions'         => 'Permissões',
+                'user_actions'        => 'Ações de Usuários',
+
                 'table'               => [
                     'confirmed'      => 'Confirmado',
                     'created'        => 'Criado',
@@ -67,14 +75,21 @@ return [
                     'no_deactivated' => 'Nenhum usuário desativado.',
                     'no_deleted'     => 'Nenhum usuário excluído',
                     'roles'          => 'Papéis',
-                    'social' => 'Social',
+                    'social'         => 'Social',
                     'total'          => 'total de usuário|total de usuários',
+                    'last_name'      => 'Sobrenome',
+                    'first_name'     => 'Primeiro Nome',
+                    'other_permissions' => 'Outras Permissões',
+                    'permissions'    => 'Permissões',
+                    'abilities'      => 'Habilidades',
                 ],
+
                 'tabs' => [
                     'titles' => [
                         'overview' => 'Visão Geral',
                         'history'  => 'Histórico',
                     ],
+
                     'content' => [
                         'overview' => [
                             'avatar'       => 'Avatar',
@@ -82,9 +97,12 @@ return [
                             'created_at'   => 'Criado em',
                             'deleted_at'   => 'Apagado em',
                             'email'        => 'E-mail',
+                            'last_login_at' => 'Último login em',
+                            'last_login_ip' => 'Último IP de login',
                             'last_updated' => 'Última atualização',
                             'name'         => 'Nome',
                             'status'       => 'Estado',
+                            'timezone'     => 'Timezone',
                         ],
                     ],
                 ],

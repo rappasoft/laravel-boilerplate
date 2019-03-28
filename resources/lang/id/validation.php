@@ -31,6 +31,7 @@ return [
     'boolean'              => ':attribute harus berupa true atau false',
     'confirmed'            => 'Konfirmasi :attribute tidak cocok.',
     'date'                 => ':attribute bukan tanggal yang benar.',
+    'date_equals' => 'The :attribute must be a date equal to :date.',
     'date_format'          => ':attribute tidak cocok dengan format :format.',
     'different'            => ':attribute dan :other harus berbeda.',
     'digits'               => ':attribute harus berupa angka :digits.',
@@ -106,11 +107,13 @@ return [
         'string'  => ':attribute harus berukuran :size karakter.',
         'array'   => ':attribute harus mengandung :size item.',
     ],
+    'starts_with' => 'The :attribute must start with one of the following: :values',
     'string'               => ':attribute harus berupa string.',
     'timezone'             => ':attribute harus berupa zona waktu yang benar.',
     'unique'               => ':attribute sudah ada sebelumnya.',
     'uploaded'             => ':attribute gagal diunggah.',
     'url'                  => 'Format :attribute tidak benar.',
+    'uuid' => 'The :attribute must be a valid UUID.',
 
     /*
     |--------------------------------------------------------------------------

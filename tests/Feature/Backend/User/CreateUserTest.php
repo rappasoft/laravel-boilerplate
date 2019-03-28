@@ -32,7 +32,7 @@ class CreateUserTest extends TestCase
 
         $response = $this->post('/admin/auth/user', []);
 
-        $response->assertSessionHasErrors(['first_name', 'last_name', 'email', 'timezone', 'password', 'roles']);
+        $response->assertSessionHasErrors(['first_name', 'last_name', 'email', 'password', 'roles']);
     }
 
     /** @test */
@@ -86,8 +86,8 @@ class CreateUserTest extends TestCase
                 'first_name' => 'John',
                 'last_name' => 'Doe',
                 'email' => 'john@example.com',
-                'active' => 1,
-                'confirmed' => 1,
+                'active' => true,
+                'confirmed' => true,
             ]
         );
 

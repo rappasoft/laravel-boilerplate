@@ -5,9 +5,10 @@ namespace App\Http\Controllers\Frontend\Auth;
 use Illuminate\Http\Request;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
+use App\Helpers\Auth\SocialiteHelper;
 use Laravel\Socialite\Facades\Socialite;
+use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Repositories\Frontend\Auth\UserRepository;
-use App\Helpers\Frontend\Auth\Socialite as SocialiteHelper;
 
 /**
  * Class SocialLoginController.
@@ -50,8 +51,8 @@ class SocialLoginController extends Controller
         $user = null;
 
         // If the provider is not an acceptable third party than kick back
-        if (! in_array($provider, $this->socialiteHelper->getAcceptedProviders())) {
-            return redirect()->route(home_route())->withFlashDanger(__('auth.socialite.unacceptable', ['provider' => $provider]));
+        if (! in_array($provider, $this->socialiteHelper->getAcceptedProviders(), true)) {
+            return redirect()->route(home_route())->withFlashDanger(__('auth.socialite.unacceptable', ['provider' => e($provider)]));
         }
 
         /*
@@ -70,7 +71,7 @@ class SocialLoginController extends Controller
             return redirect()->route(home_route())->withFlashDanger($e->getMessage());
         }
 
-        if (is_null($user)) {
+        if ($user === null) {
             return redirect()->route(home_route())->withFlashDanger(__('exceptions.frontend.auth.unknown'));
         }
 
@@ -89,6 +90,8 @@ class SocialLoginController extends Controller
 
         // Set session variable so we know which provider user is logged in as, if ever needed
         session([config('access.socialite_session_name') => $provider]);
+
+        event(new UserLoggedIn(auth()->user()));
 
         // Return to the intended url or default to the class property
         return redirect()->intended(route(home_route()));

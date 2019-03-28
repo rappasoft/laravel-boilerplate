@@ -27,12 +27,13 @@ class RoleRepository extends BaseRepository
      *
      * @return Role
      * @throws GeneralException
+     * @throws \Throwable
      */
     public function create(array $data) : Role
     {
         // Make sure it doesn't already exist
         if ($this->roleExists($data['name'])) {
-            throw new GeneralException('A role already exists with the name '.$data['name']);
+            throw new GeneralException('A role already exists with the name '.e($data['name']));
         }
 
         if (! isset($data['permissions']) || ! \count($data['permissions'])) {
@@ -65,6 +66,7 @@ class RoleRepository extends BaseRepository
      *
      * @return mixed
      * @throws GeneralException
+     * @throws \Throwable
      */
     public function update(Role $role, array $data)
     {
@@ -111,7 +113,7 @@ class RoleRepository extends BaseRepository
     protected function roleExists($name) : bool
     {
         return $this->model
-                ->where('name', strtolower($name))
-                ->count() > 0;
+            ->where('name', strtolower($name))
+            ->count() > 0;
     }
 }

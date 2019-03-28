@@ -32,6 +32,7 @@ return [
     'boolean'              => 'ข้อมูล :attribute ต้องเป็นจริง หรือเท็จ เท่านั้น',
     'confirmed'            => 'ข้อมูล :attribute ไม่ตรงกัน',
     'date'                 => 'ข้อมูล :attribute ต้องเป็นวันที่',
+    'date_equals' => 'The :attribute must be a date equal to :date.',
     'date_format'          => 'ข้อมูล :attribute ไม่ตรงกับข้อมูลกำหนด :format',
     'different'            => 'ข้อมูล :attribute และ :other ต้องไม่เท่ากัน',
     'digits'               => 'ข้อมูล :attribute ต้องเป็น :digits',
@@ -106,10 +107,12 @@ return [
         'string'  => 'ข้อมูล :attribute ต้องเท่ากับ :size ตัวอักษร',
         'array'   => 'ข้อมูล :attribute ต้องเท่ากับ :size ค่า',
     ],
+    'starts_with' => 'The :attribute must start with one of the following: :values',
     'string'               => 'ข้อมูล :attribute ต้องเป็นอักขระ',
     'timezone'             => 'ข้อมูล :attribute ต้องเป็นข้อมูลเขตเวลาที่ถูกต้อง',
     'unique'               => 'ข้อมูล :attribute ไม่สามารถใช้ได้',
     'url'                  => 'ข้อมูล :attribute ไม่ถูกต้อง',
+    'uuid' => 'The :attribute must be a valid UUID.',
 
     /*
     |--------------------------------------------------------------------------

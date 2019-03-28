@@ -47,7 +47,6 @@ class UpdateUserAccountTest extends TestCase
                 'first_name' => 'John',
                 'last_name' => 'Doe',
                 'email' => 'john@example.com',
-                'timezone' => 'UTC',
                 'avatar_type' => 'gravatar',
             ]));
         $user = $user->fresh();
@@ -55,7 +54,6 @@ class UpdateUserAccountTest extends TestCase
         $this->assertEquals($user->first_name, 'John');
         $this->assertEquals($user->last_name, 'Doe');
         $this->assertEquals($user->email, 'john@example.com');
-        $this->assertEquals($user->timezone, 'UTC');
         $this->assertEquals($user->avatar_type, 'gravatar');
     }
 
@@ -93,17 +91,6 @@ class UpdateUserAccountTest extends TestCase
     }
 
     /** @test */
-    public function the_timezone_is_required()
-    {
-        $user = factory(User::class)->create();
-
-        $response = $this->actingAs($user)
-            ->patch('/profile/update', $this->getValidUserData(['timezone' => '']));
-
-        $response->assertSessionHasErrors(['timezone']);
-    }
-
-    /** @test */
     public function the_avatar_type_is_required()
     {
         $user = factory(User::class)->create();
@@ -137,12 +124,12 @@ class UpdateUserAccountTest extends TestCase
         config(['access.users.change_email' => true]);
         Notification::fake();
 
-        $this->assertEquals($user->confirmed, 1);
+        $this->assertEquals($user->confirmed, true);
 
         $this->actingAs($user)
             ->patch('/profile/update', $this->getValidUserData());
 
-        $this->assertEquals($user->fresh()->confirmed, 0);
+        $this->assertEquals($user->fresh()->confirmed, false);
         Notification::assertSentTo($user, UserNeedsConfirmation::class);
     }
 
@@ -152,11 +139,11 @@ class UpdateUserAccountTest extends TestCase
         $user = factory(User::class)->create();
         config(['access.users.confirm_email' => false]);
 
-        $this->assertEquals($user->confirmed, 1);
+        $this->assertEquals($user->confirmed, true);
 
         $this->actingAs($user)
             ->patch('/profile/update', $this->getValidUserData());
 
-        $this->assertEquals($user->fresh()->confirmed, 1);
+        $this->assertEquals($user->fresh()->confirmed, true);
     }
 }

@@ -46,6 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'Tableau de bord',
             'general'   => 'Général',
+            'history'   => 'History',
             'system'    => 'Système',
         ],
     ],
@@ -80,6 +81,7 @@ return [
             'sv'    => 'Suédois (Swedish)',
             'th'    => 'Thaïlandais (Thai)',
             'tr'    => 'Turc (Turkish)',
+            'uk'    => '(Ukrainian)',
         ],
     ],
 ];

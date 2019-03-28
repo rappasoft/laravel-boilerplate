@@ -32,6 +32,7 @@ return [
     'boolean'              => 'يجب أن تكون قيمة الحقل :attribute إما true أو false ',
     'confirmed'            => 'حقل التأكيد غير مُطابق للحقل :attribute',
     'date'                 => 'الحقل :attribute ليس تاريخًا صحيحًا',
+    'date_equals' => 'The :attribute must be a date equal to :date.',
     'date_format'          => 'لا يتوافق الحقل :attribute مع الشكل :format.',
     'different'            => 'يجب أن يكون الحقلان :attribute و :other مُختلفان',
     'digits'               => 'يجب أن يحتوي الحقل :attribute على :digits رقمًا/أرقام',
@@ -106,10 +107,12 @@ return [
         'string'  => 'يجب أن يحتوي النص :attribute عن ما لا يقل عن  :size حرفٍ/أحرف.',
         'array'   => 'يجب أن يحتوي الحقل :attribute عن ما لا يقل عن:min عنصرٍ/عناصر',
     ],
+    'starts_with' => 'The :attribute must start with one of the following: :values',
     'string'               => 'يجب أن يكون الحقل :attribute نصآ.',
     'timezone'             => 'يجب أن يكون :attribute نطاقًا زمنيًا صحيحًا',
     'unique'               => 'قيمة الحقل :attribute مُستخدمة من قبل',
     'url'                  => 'صيغة الرابط :attribute غير صحيحة',
+    'uuid' => 'The :attribute must be a valid UUID.',
 
     /*
     |--------------------------------------------------------------------------

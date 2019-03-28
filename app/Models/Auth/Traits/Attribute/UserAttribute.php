@@ -49,7 +49,7 @@ trait UserAttribute
             if ($this->id != 1 && $this->id != auth()->id()) {
                 return '<a href="'.route(
                     'admin.auth.user.unconfirm',
-                        $this
+                    $this
                 ).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.unconfirm').'" name="confirm_item"><span class="badge badge-success" style="cursor:pointer">'.__('labels.general.yes').'</span></a>';
             } else {
                 return '<span class="badge badge-success">'.__('labels.general.yes').'</span>';
@@ -66,7 +66,7 @@ trait UserAttribute
     {
         $roles = $this->getRoleNames()->toArray();
 
-        if (count($roles)) {
+        if (\count($roles)) {
             return implode(', ', array_map(function ($item) {
                 return ucwords($item);
             }, $roles));
@@ -82,7 +82,7 @@ trait UserAttribute
     {
         $permissions = $this->getDirectPermissions()->toArray();
 
-        if (count($permissions)) {
+        if (\count($permissions)) {
             return implode(', ', array_map(function ($item) {
                 return ucwords($item['name']);
             }, $permissions));
@@ -127,11 +127,11 @@ trait UserAttribute
         foreach ($this->providers as $social) {
             $accounts[] = '<a href="'.route(
                 'admin.auth.user.social.unlink',
-                    [$this, $social]
-            ).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.unlink').'" data-method="delete"><i class="fas fa-'.$social->provider.'"></i></a>';
+                [$this, $social]
+            ).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.unlink').'" data-method="delete"><i class="fab fa-'.$social->provider.'"></i></a>';
         }
 
-        return count($accounts) ? implode(' ', $accounts) : 'None';
+        return \count($accounts) ? implode(' ', $accounts) : __('labels.general.none');
     }
 
     /**
@@ -144,11 +144,11 @@ trait UserAttribute
          */
         if (! session()->has('admin_user_id') || ! session()->has('temp_user_id')) {
             //Won't break, but don't let them "Login As" themselves
-            if ($this->id != auth()->id()) {
+            if ($this->id !== auth()->id()) {
                 return '<a href="'.route(
                     'admin.auth.user.login-as',
-                        $this
-                ).'" class="dropdown-item">'.__('buttons.backend.access.users.login_as', ['user' => $this->full_name]).'</a> ';
+                    $this
+                ).'" class="dropdown-item">'.__('buttons.backend.access.users.login_as', ['user' => e($this->full_name)]).'</a> ';
             }
         }
 
@@ -160,7 +160,7 @@ trait UserAttribute
      */
     public function getClearSessionButtonAttribute()
     {
-        if ($this->id != auth()->id() && config('session.driver') == 'database') {
+        if ($this->id !== auth()->id()) {
             return '<a href="'.route('admin.auth.user.clear-session', $this).'"
 			 	 data-trans-button-cancel="'.__('buttons.general.cancel').'"
                  data-trans-button-confirm="'.__('buttons.general.continue').'"
@@ -176,7 +176,7 @@ trait UserAttribute
      */
     public function getShowButtonAttribute()
     {
-        return '<a href="'.route('admin.auth.user.show', $this).'" class="btn btn-info"><i class="fas fa-eye" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'"></i></a>';
+        return '<a href="'.route('admin.auth.user.show', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.view').'" class="btn btn-info"><i class="fas fa-eye"></i></a>';
     }
 
     /**
@@ -184,7 +184,7 @@ trait UserAttribute
      */
     public function getEditButtonAttribute()
     {
-        return '<a href="'.route('admin.auth.user.edit', $this).'" class="btn btn-primary"><i class="fas fa-edit" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.edit').'"></i></a>';
+        return '<a href="'.route('admin.auth.user.edit', $this).'" data-toggle="tooltip" data-placement="top" title="'.__('buttons.general.crud.edit').'" class="btn btn-primary"><i class="fas fa-edit"></i></a>';
     }
 
     /**
@@ -264,7 +264,7 @@ trait UserAttribute
      */
     public function getRestoreButtonAttribute()
     {
-        return '<a href="'.route('admin.auth.user.restore', $this).'" name="confirm_item" class="btn btn-info"><i class="fas fa-refresh" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.restore_user').'"></i></a> ';
+        return '<a href="'.route('admin.auth.user.restore', $this).'" name="confirm_item" class="btn btn-info"><i class="fas fa-sync" data-toggle="tooltip" data-placement="top" title="'.__('buttons.backend.access.users.restore_user').'"></i></a> ';
     }
 
     /**
@@ -274,20 +274,20 @@ trait UserAttribute
     {
         if ($this->trashed()) {
             return '
-				<div class="btn-group btn-group-sm" role="group" aria-label="User Actions">
+				<div class="btn-group" role="group" aria-label="'.__('labels.backend.access.users.user_actions').'">
 				  '.$this->restore_button.'
 				  '.$this->delete_permanently_button.'
 				</div>';
         }
 
         return '
-    	<div class="btn-group btn-group-sm" role="group" aria-label="User Actions">
+    	<div class="btn-group" role="group" aria-label="'.__('labels.backend.access.users.user_actions').'">
 		  '.$this->show_button.'
 		  '.$this->edit_button.'
-		
-		  <div class="btn-group" role="group">
+
+		  <div class="btn-group btn-group-sm" role="group">
 			<button id="userActions" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			  More
+			  '.__('labels.general.more').'
 			</button>
 			<div class="dropdown-menu" aria-labelledby="userActions">
 			  '.$this->clear_session_button.'

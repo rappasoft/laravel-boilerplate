@@ -1,4 +1,6 @@
-{{ html()->modelForm($logged_in_user, 'PATCH', route('frontend.user.profile.update'))->class('form-horizontal')->attribute('enctype', 'multipart/form-data')->open() }}
+{{ html()->modelForm($logged_in_user, 'POST', route('frontend.user.profile.update'))->class('form-horizontal')->attribute('enctype', 'multipart/form-data')->open() }}
+    @method('PATCH')
+
     <div class="row">
         <div class="col">
             <div class="form-group">
@@ -8,8 +10,8 @@
                     <input type="radio" name="avatar_type" value="gravatar" {{ $logged_in_user->avatar_type == 'gravatar' ? 'checked' : '' }} /> Gravatar
                     <input type="radio" name="avatar_type" value="storage" {{ $logged_in_user->avatar_type == 'storage' ? 'checked' : '' }} /> Upload
 
-                    @foreach ($logged_in_user->providers as $provider)
-                        @if (strlen($provider->avatar))
+                    @foreach($logged_in_user->providers as $provider)
+                        @if(strlen($provider->avatar))
                             <input type="radio" name="avatar_type" value="{{ $provider->provider }}" {{ $logged_in_user->avatar_type == $provider->provider ? 'checked' : '' }} /> {{ ucfirst($provider->provider) }}
                         @endif
                     @endforeach
@@ -55,7 +57,7 @@
         <div class="row">
             <div class="col">
                 <div class="alert alert-info">
-                    <i class="fas fa-info-circle"></i> {{  __('strings.frontend.user.change_email_notice') }}
+                    <i class="fas fa-info-circle"></i> @lang('strings.frontend.user.change_email_notice')
                 </div>
 
                 <div class="form-group">
@@ -70,20 +72,6 @@
             </div><!--col-->
         </div><!--row-->
     @endif
-
-    <div class="row">
-        <div class="col">
-            <div class="form-group">
-                {{ html()->label(__('validation.attributes.frontend.timezone'))->for('timezone') }}
-
-                <select name="timezone" id="timezone" class="form-control" required="required">
-                    @foreach (timezone_identifiers_list() as $timezone)
-                        <option value="{{ $timezone }}" {{ $timezone == $logged_in_user->timezone ? 'selected' : '' }} {{ $timezone == old('timezone') ? ' selected' : '' }}>{{ $timezone }}</option>
-                    @endforeach
-                </select>
-            </div><!--form-group-->
-        </div><!--col-->
-    </div><!--row-->
 
     <div class="row">
         <div class="col">

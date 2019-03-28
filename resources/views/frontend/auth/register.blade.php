@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', app_name() . ' | '.__('labels.frontend.auth.register_box_title'))
+@section('title', app_name() . ' | ' . __('labels.frontend.auth.register_box_title'))
 
 @section('content')
     <div class="row justify-content-center align-items-center">
@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <strong>
-                        {{ __('labels.frontend.auth.register_box_title') }}
+                        @lang('labels.frontend.auth.register_box_title')
                     </strong>
                 </div><!--card-header-->
 
@@ -22,7 +22,8 @@
                                     {{ html()->text('first_name')
                                         ->class('form-control')
                                         ->placeholder(__('validation.attributes.frontend.first_name'))
-                                        ->attribute('maxlength', 191) }}
+                                        ->attribute('maxlength', 191)
+                                        ->required()}}
                                 </div><!--col-->
                             </div><!--row-->
 
@@ -33,7 +34,8 @@
                                     {{ html()->text('last_name')
                                         ->class('form-control')
                                         ->placeholder(__('validation.attributes.frontend.last_name'))
-                                        ->attribute('maxlength', 191) }}
+                                        ->attribute('maxlength', 191)
+                                        ->required() }}
                                 </div><!--form-group-->
                             </div><!--col-->
                         </div><!--row-->
@@ -78,10 +80,10 @@
                             </div><!--col-->
                         </div><!--row-->
 
-                        @if (config('access.captcha.registration'))
+                        @if(config('access.captcha.registration'))
                             <div class="row">
                                 <div class="col">
-                                    {!! Captcha::display() !!}
+                                    @captcha
                                     {{ html()->hidden('captcha_status', 'true') }}
                                 </div><!--col-->
                             </div><!--row-->
@@ -103,7 +105,7 @@
                             </div>
                         </div><!--/ .col -->
                     </div><!-- / .row -->
-                    
+
                 </div><!-- card-body -->
             </div><!-- card -->
         </div><!-- col-md-8 -->
@@ -111,7 +113,7 @@
 @endsection
 
 @push('after-scripts')
-    @if (config('access.captcha.registration'))
-        {!! Captcha::script() !!}
+    @if(config('access.captcha.registration'))
+        @captchaScripts
     @endif
 @endpush

@@ -46,6 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => '指示板',
             'general'   => '常规',
+            'history'   => 'History',
             'system'    => '系统',
         ],
     ],
@@ -79,6 +80,7 @@ return [
             'sv'    => '瑞典语（Swedish）',
             'th'    => '泰语（Thai）',
             'tr'    => '土耳其语(Turkish)',
+            'uk'    => '(Ukrainian)',
         ],
     ],
 ];

@@ -13,12 +13,13 @@ return [
     |
     */
 
-    'failed'        => 'Las credenciales no se han encontrado.',
-    'general_error' => 'No tiene suficientes permisos..',
-    'password_used' => 'You can not set a password that you have previously used.',
-    'socialite'     => [
-        'unacceptable' => ':provider no es un tipo de autenticación válida.',
+    'failed'            => 'Las credenciales no se han encontrado.',
+    'general_error'     => 'No tiene suficientes permisos.',
+    'password_rules'    => 'Su contraseña debe tener más de 8 caracteres, al menos una letra mayúscula, una minúscula y un número.',
+    'password_used'     => 'No puede establecer una contraseña que haya usado previamente.',
+    'socialite'         => [
+        'unacceptable'      => ':provider no es un tipo de autenticación válido.',
     ],
-    'throttle' => 'Demasiados intentos de inicio de sesión. Vuelva a intentarlo en :seconds segundos.',
-    'unknown'  => 'Se ha producido un error desconocido.',
+    'throttle'          => 'Demasiados intentos de inicio de sesión. Vuelva a intentarlo en :seconds segundos.',
+    'unknown'           => 'Se ha producido un error desconocido.',
 ];

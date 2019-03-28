@@ -38,7 +38,7 @@ return [
         ],
 
         'log-viewer' => [
-            'main'      => 'Gestór de Logs',
+            'main'      => 'Gestor de Logs',
             'dashboard' => 'Principal',
             'logs'      => 'Logs',
         ],
@@ -46,6 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'Principal',
             'general'   => 'General',
+            'history'   => 'Historia',
             'system'    => 'Sistema',
         ],
     ],
@@ -80,6 +81,7 @@ return [
             'sv'    => 'Sueco (Swedish)',
             'th'    => '(Thai)',
             'tr'    => '(Turkish)',
+            'uk'    => '(Ukrainian)',
         ],
     ],
 ];

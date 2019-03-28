@@ -46,6 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'Kontrollpanelen',
             'general'   => 'Adminpanelen',
+            'history'   => 'History',
             'system'    => 'System',
         ],
     ],
@@ -80,6 +81,7 @@ return [
             'sv'    => 'Svenska (Swedish)',
             'th'    => 'Thailändska (Thai)',
             'tr'    => '(Turkish)',
+            'uk'    => '(Ukrainian)',
         ],
     ],
 ];

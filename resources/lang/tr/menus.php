@@ -46,6 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'Kokpit',
             'general'   => 'Genel',
+            'history'   => 'History',
             'system'    => 'Sistem',
         ],
     ],
@@ -80,6 +81,7 @@ return [
             'sv'    => 'İsveççe (Swedish)',
             'th'    => 'Tay (Thai)',
             'tr'    => 'Türkçe (Turkish)',
+            'uk'    => '(Ukrainian)',
         ],
     ],
 ];

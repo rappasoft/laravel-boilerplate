@@ -46,7 +46,8 @@ return [
         'sidebar' => [
             'dashboard' => 'แผงควบคุม',
             'general'   => 'ทั่วไป',
-        'system'        => 'ระบบ',
+            'history'   => 'History',
+               'system'        => 'ระบบ',
         ],
     ],
 
@@ -80,6 +81,7 @@ return [
             'sv'    => 'สวีเดน (Swedish)',
             'th'    => 'ไทย (Thai)',
             'tr'    => '(Turkish)',
+            'uk'    => '(Ukrainian)',
         ],
     ],
 ];

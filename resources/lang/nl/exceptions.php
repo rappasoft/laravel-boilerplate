@@ -46,7 +46,6 @@ return [
                 'restore_error'         => 'Er is een probleem opgetreden bij het herstellen van de gebruiker. Probeer het nogmaals.',
                 'role_needed_create'    => 'U moet ten minste één rol kiezen. De gebruiker is aangemaakt maar gedeactiveerd.',
                 'role_needed'           => 'U moet ten minste één rol kiezen.',
-                'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
                 'social_delete_error' => 'There was a problem removing the social account from the user.',
                 'update_error'          => 'Er is een probleem opgetreden bij het bijwerken van de gebruiker. Probeer het nogmaals.',
                 'update_password_error' => 'Er is een probleem opgetreden bij het aanpassen van het wachtwoord van de gebruiker. Probeer het nogmaals.',

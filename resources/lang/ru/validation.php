@@ -33,6 +33,7 @@ return [
     'boolean'              => 'Поле :attribute должно иметь значение логического типа.',
     'confirmed'            => 'Поле :attribute не совпадает с подтверждением.',
     'date'                 => 'Поле :attribute не является датой.',
+    'date_equals' => 'The :attribute must be a date equal to :date.',
     'date_format'          => 'Поле :attribute не соответствует формату :format.',
     'different'            => 'Поля :attribute и :other должны различаться.',
     'digits'               => 'Длина цифрового поля :attribute должна быть :digits.',
@@ -108,11 +109,13 @@ return [
         'numeric' => 'Поле :attribute должно быть равным :size.',
         'string'  => 'Количество символов в поле :attribute должно быть равным :size.',
     ],
+    'starts_with' => 'The :attribute must start with one of the following: :values',
     'string'               => 'Поле :attribute должно быть строкой.',
     'timezone'             => 'Поле :attribute должно быть действительным часовым поясом.',
     'unique'               => 'Такое значение поля :attribute уже существует.',
     'uploaded'             => 'Загрузка поля :attribute не удалась.',
     'url'                  => 'Поле :attribute имеет ошибочный формат.',
+    'uuid' => 'The :attribute must be a valid UUID.',
 
     /*
     |--------------------------------------------------------------------------

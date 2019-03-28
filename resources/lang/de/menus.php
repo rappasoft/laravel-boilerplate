@@ -46,6 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'Dashboard',
             'general'   => 'Allgemein',
+            'history'   => 'History',
             'system'    => 'System',
         ],
     ],
@@ -80,6 +81,7 @@ return [
             'sv'    => 'Schwedisch (Swedish)',
             'th'    => '(Thai)',
             'tr'    => '(Turkish)',
+            'uk'    => 'Ukrainisch (Ukrainian)',
         ],
     ],
 ];

@@ -32,6 +32,7 @@ return [
     'boolean'              => ':attribute 必须为布尔值。',
     'confirmed'            => ':attribute 两次输入不一致。',
     'date'                 => ':attribute 不是一个有效的日期。',
+    'date_equals' => 'The :attribute must be a date equal to :date.',
     'date_format'          => ':attribute 的格式必须为 :format。',
     'different'            => ':attribute 和 :other 必须不同。',
     'digits'               => ':attribute 必须是 :digits 位的数字。',
@@ -107,11 +108,13 @@ return [
         'string'  => ':attribute 必须是 :size 个字符。',
         'array'   => ':attribute 必须为 :size 个单元。',
     ],
+    'starts_with' => 'The :attribute must start with one of the following: :values',
     'string'               => ':attribute 必须是一个字符串。',
     'timezone'             => ':attribute 必须是一个合法的时区值。',
     'unique'               => ':attribute 已经存在。',
     'uploaded'             => ':attribute 上传失败。',
     'url'                  => ':attribute 格式不正确。',
+    'uuid' => 'The :attribute must be a valid UUID.',
 
     /*
     |--------------------------------------------------------------------------

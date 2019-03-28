@@ -32,6 +32,7 @@ return [
     'boolean'              => 'Le champ :attribute doit être vrai ou faux.',
     'confirmed'            => 'Le champ de confirmation :attribute ne correspond pas.',
     'date'                 => "Le champ :attribute n'est pas une date valide.",
+    'date_equals' => 'The :attribute must be a date equal to :date.',
     'date_format'          => 'Le champ :attribute ne correspond pas au format :format.',
     'different'            => 'Les champs :attribute et :other doivent être différents.',
     'digits'               => 'Le champ :attribute doit contenir :digits chiffres.',
@@ -107,11 +108,13 @@ return [
         'string'  => 'Le texte de :attribute doit contenir :size caractères.',
         'array'   => 'Le tableau :attribute doit contenir :size éléments.',
     ],
+    'starts_with' => 'The :attribute must start with one of the following: :values',
     'string'               => 'Le champ :attribute doit être une chaîne de caractères.',
     'timezone'             => 'Le champ :attribute doit être un fuseau horaire valide.',
     'unique'               => 'La valeur du champ :attribute est déjà utilisée.',
     'uploaded'             => 'Le fichier du champ :attribute n\'a pu être téléchargé.',
     'url'                  => 'Le format de \'URL de :attribute n\'est pas valide.',
+    'uuid' => 'The :attribute must be a valid UUID.',
 
     /*
     |--------------------------------------------------------------------------

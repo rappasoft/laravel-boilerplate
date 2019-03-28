@@ -21,7 +21,7 @@ class UserRepositoryTest extends TestCase
      */
     protected $userRepository;
 
-    protected function setUp()
+    protected function setUp() : void
     {
         parent::setUp();
 

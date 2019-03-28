@@ -88,16 +88,19 @@ return [
 
                     'content' => [
                         'overview' => [
-                            'avatar'       => 'Avatar',
-                            'confirmed'    => 'Confirmado',
-                            'created_at'   => 'Creación',
-                            'deleted_at'   => 'Eliminación',
-                            'email'        => 'E-mail',
-                            'last_updated' => 'Última Actualización',
-                            'name'         => 'Nombre',
-                            'first_name'   => 'Nombre',
-                            'last_name'    => 'Apellidos',
-                            'status'       => 'Estatus',
+                            'avatar'        => 'Avatar',
+                            'confirmed'     => 'Confirmado',
+                            'created_at'    => 'Creación',
+                            'deleted_at'    => 'Eliminación',
+                            'email'         => 'E-mail',
+                            'last_login_at' => 'Último login',
+                            'last_login_ip' => 'IP último login',
+                            'last_updated'  => 'Última Actualización',
+                            'name'          => 'Nombre',
+                            'first_name'    => 'Nombre',
+                            'last_name'     => 'Apellidos',
+                            'status'        => 'Estado',
+                            'timezone'      => 'Zona horaria',
                         ],
                     ],
                 ],
@@ -120,12 +123,12 @@ return [
 
         'contact' => [
             'box_title' => 'Contáctenos',
-            'button' => 'Enviar información',
+            'button'    => 'Enviar información',
         ],
 
         'passwords' => [
-            'expired_password_box_title'      => 'Tu contraseña a expirado.',
-            'forgot_password'                 => 'Has olvidado la contraseña?',
+            'expired_password_box_title'      => 'Su contraseña ha expirado',
+            'forgot_password'                 => '¿Ha olvidado su contraseña?',
             'reset_password_box_title'        => 'Reiniciar contraseña',
             'reset_password_button'           => 'Reiniciar contraseña',
             'update_password_button'          => 'Actualizar contraseña',

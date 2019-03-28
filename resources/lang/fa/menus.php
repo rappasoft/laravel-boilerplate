@@ -46,6 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'داشبورد',
             'general'   => 'عمومی',
+            'history'   => 'History',
             'system'    => 'سامانه',
         ],
     ],
@@ -80,6 +81,7 @@ return [
             'sv'    => 'سوئدی (Swedish)',
             'th'    => 'تایلندی (Thai)',
             'tr'    => 'ترکی (Turkish)',
+            'uk'    => '(Ukrainian)',
         ],
     ],
 ];

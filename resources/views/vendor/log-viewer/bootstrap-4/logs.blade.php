@@ -25,7 +25,7 @@
                     <tr>
                         @foreach($headers as $key => $header)
                             <th class="{{ $key == 'date' ? 'text-left' : 'text-center' }}">
-                                @if ($key == 'date')
+                                @if($key == 'date')
                                     <span class="badge badge-info level">{{ $header }}</span>
                                 @else
                                     <span class="badge level level-{{ $key }}">
@@ -38,16 +38,16 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @if ($rows->count() > 0)
+                    @if($rows->count() > 0)
                         @foreach($rows as $date => $row)
                             <tr>
                                 @foreach($row as $key => $value)
                                     <td class="{{ $key == 'date' ? 'text-left' : 'text-center' }}">
-                                        @if ($key == 'date')
+                                        @if($key == 'date')
                                             <a href="{{ route('log-viewer::logs.show', [$value]) }}" class="btn btn-sm btn-primary">
                                                 {{ $value }}
                                             </a>
-                                        @elseif ($value == 0)
+                                        @elseif($value == 0)
                                             <span class="badge level level-empty">{{ $value }}</span>
                                         @else
                                             <a href="{{ route('log-viewer::logs.filter', [$date, $key]) }}">
@@ -104,8 +104,8 @@
                         <p></p>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-sm btn-danger" data-loading-text="Loading&hellip;"><i class="fa fa-trash-o"></i> DELETE FILE</button>
-                        <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
+                        <button type="submit" class="btn btn-sm btn-danger" data-loading-text="Loading&hellip;"><i class="fa fa-trash"></i> DELETE FILE</button>
+                        <button type="button" class="btn btn-sm btn-primary pull-left" data-dismiss="modal"><i class="fa fa-times"></i> Cancel</button>
                     </div>
                 </div>
             </form>

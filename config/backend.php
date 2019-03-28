@@ -15,7 +15,7 @@ return [
      *
      * // Aside options
      * 1. '.aside-menu-fixed'			    - Fixed Aside Menu
-     * 2. '.aside-menu-hidden'			    - Hidden Aside Menu
+     * 2. ''			    - Hidden Aside Menu
      * 3. '.aside-menu-off-canvas'	        - Off Canvas Aside Menu
      *
      * // Breadcrumb options
@@ -24,5 +24,5 @@ return [
      * // Footer options
      * 1. '.footer-fixed'					- Fixed footer
      */
-    'body_classes' => 'app header-fixed sidebar-fixed aside-menu-off-canvas aside-menu-hidden',
+    'body_classes' => 'app header-fixed sidebar-fixed aside-menu-off-canvas sidebar-lg-show',
 ];

@@ -32,6 +32,7 @@ return [
     'boolean'              => ':attribute può essere solo vero o falso.',
     'confirmed'            => 'La conferma di :attribute non corrisponde.',
     'date'                 => ':attribute non è una data valida.',
+    'date_equals' => 'The :attribute must be a date equal to :date.',
     'date_format'          => ':attribute non corrisponde al formato :format.',
     'different'            => ':attribute e :other devono essere diversi.',
     'digits'               => ':attribute deve avere :digits cifre.',
@@ -106,10 +107,12 @@ return [
         'string'  => ':attribute deve contenere :size caratteri.',
         'array'   => ':attribute deve contenere :size elementi.',
     ],
+    'starts_with' => 'The :attribute must start with one of the following: :values',
     'string'               => ':attribute deve essere una stringa.',
     'timezone'             => ':attribute deve essere un fuso orario valido.',
     'unique'               => ':attribute è già stato utilizzato.',
     'url'                  => 'Il formato di :attribute non è valido.',
+    'uuid' => 'The :attribute must be a valid UUID.',
 
     /*
     |--------------------------------------------------------------------------

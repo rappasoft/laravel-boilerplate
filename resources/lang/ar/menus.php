@@ -46,6 +46,7 @@ return [
         'sidebar' => [
             'dashboard' => 'اللوحة الرئيسية',
             'general'   => 'عام',
+            'history'   => 'History',
             'system'    => 'System',
         ],
     ],
@@ -80,6 +81,7 @@ return [
             'sv'    => 'السويسرية (Swedish)',
             'th'    => '(Thai)',
             'tr'    => 'اللغة التركية(Turkish)',
+            'uk'    => '(Ukrainian) الأوكراني',
         ],
     ],
 ];
