@@ -57,10 +57,10 @@ class UserStatusController extends Controller
      */
     public function mark(ManageUserRequest $request, User $user, $status)
     {
-        $this->userRepository->mark($user, (int)$status);
+        $this->userRepository->mark($user, (int) $status);
 
         return redirect()->route(
-			(int)$status === 1 ?
+            (int) $status === 1 ?
             'admin.auth.user.index' :
             'admin.auth.user.deactivated'
         )->withFlashSuccess(__('alerts.backend.users.updated'));
