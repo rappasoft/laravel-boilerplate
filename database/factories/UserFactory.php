@@ -25,32 +25,32 @@ $factory->define(User::class, function (Generator $faker) {
         'password_changed_at' => null,
         'remember_token'    => str_random(10),
         'confirmation_code' => md5(uniqid(mt_rand(), true)),
-        'active' => 1,
-        'confirmed' => 1,
+        'active' => true,
+        'confirmed' => true,
     ];
 });
 
 $factory->state(User::class, 'active', function () {
     return [
-        'active' => 1,
+        'active' => true,
     ];
 });
 
 $factory->state(User::class, 'inactive', function () {
     return [
-        'active' => 0,
+        'active' => false,
     ];
 });
 
 $factory->state(User::class, 'confirmed', function () {
     return [
-        'confirmed' => 1,
+        'confirmed' => true,
     ];
 });
 
 $factory->state(User::class, 'unconfirmed', function () {
     return [
-        'confirmed' => 0,
+        'confirmed' => false,
     ];
 });
 

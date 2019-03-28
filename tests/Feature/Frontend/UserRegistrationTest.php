@@ -88,7 +88,7 @@ class UserRegistrationTest extends TestCase
         $response = $this->get('/account/confirm/'.$user->confirmation_code);
 
         $response->assertSessionHas(['flash_success' => __('exceptions.frontend.auth.confirmation.success')]);
-        $this->assertEquals(1, $user->fresh()->confirmed);
+        $this->assertEquals(true, $user->fresh()->confirmed);
         Event::assertDispatched(UserConfirmed::class);
     }
 

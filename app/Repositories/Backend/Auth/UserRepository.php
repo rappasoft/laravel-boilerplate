@@ -38,7 +38,7 @@ class UserRepository extends BaseRepository
     public function getUnconfirmedCount() : int
     {
         return $this->model
-            ->where('confirmed', 0)
+            ->where('confirmed', false)
             ->count();
     }
 
@@ -105,9 +105,9 @@ class UserRepository extends BaseRepository
                 'last_name' => $data['last_name'],
                 'email' => $data['email'],
                 'password' => $data['password'],
-                'active' => isset($data['active']) && $data['active'] == '1' ? 1 : 0,
+                'active' => isset($data['active']) && $data['active'] === '1',
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
-                'confirmed' => isset($data['confirmed']) && $data['confirmed'] == '1' ? 1 : 0,
+                'confirmed' => isset($data['confirmed']) && $data['confirmed'] === '1',
             ]);
 
             // See if adding any additional permissions
@@ -126,7 +126,7 @@ class UserRepository extends BaseRepository
                 $user->syncPermissions($data['permissions']);
 
                 //Send confirmation email if requested and account approval is off
-                if (isset($data['confirmation_email']) && $user->confirmed == 0 && ! config('access.users.requires_approval')) {
+                if ($user->confirmed === false && isset($data['confirmation_email']) && ! config('access.users.requires_approval')) {
                     $user->notify(new UserNeedsConfirmation($user->confirmation_code));
                 }
 
@@ -203,7 +203,7 @@ class UserRepository extends BaseRepository
      */
     public function mark(User $user, $status) : User
     {
-        if (auth()->id() == $user->id && $status == 0) {
+        if ($status === 0 && auth()->id() === $user->id) {
             throw new GeneralException(__('exceptions.backend.access.users.cant_deactivate_self'));
         }
 
@@ -238,7 +238,7 @@ class UserRepository extends BaseRepository
             throw new GeneralException(__('exceptions.backend.access.users.already_confirmed'));
         }
 
-        $user->confirmed = 1;
+        $user->confirmed = true;
         $confirmed = $user->save();
 
         if ($confirmed) {
@@ -267,17 +267,17 @@ class UserRepository extends BaseRepository
             throw new GeneralException(__('exceptions.backend.access.users.not_confirmed'));
         }
 
-        if ($user->id == 1) {
+        if ($user->id === 1) {
             // Cant un-confirm admin
             throw new GeneralException(__('exceptions.backend.access.users.cant_unconfirm_admin'));
         }
 
-        if ($user->id == auth()->id()) {
+        if ($user->id === auth()->id()) {
             // Cant un-confirm self
             throw new GeneralException(__('exceptions.backend.access.users.cant_unconfirm_self'));
         }
 
-        $user->confirmed = 0;
+        $user->confirmed = false;
         $unconfirmed = $user->save();
 
         if ($unconfirmed) {
@@ -299,7 +299,7 @@ class UserRepository extends BaseRepository
      */
     public function forceDelete(User $user) : User
     {
-        if (is_null($user->deleted_at)) {
+        if ($user->deleted_at === null) {
             throw new GeneralException(__('exceptions.backend.access.users.delete_first'));
         }
 
@@ -326,7 +326,7 @@ class UserRepository extends BaseRepository
      */
     public function restore(User $user) : User
     {
-        if (is_null($user->deleted_at)) {
+        if ($user->deleted_at === null) {
             throw new GeneralException(__('exceptions.backend.access.users.cant_restore'));
         }
 
@@ -347,12 +347,9 @@ class UserRepository extends BaseRepository
      */
     protected function checkUserByEmail(User $user, $email)
     {
-        //Figure out if email is not the same
-        if ($user->email != $email) {
-            //Check to see if email exists
-            if ($this->model->where('email', '=', $email)->first()) {
-                throw new GeneralException(trans('exceptions.backend.access.users.email_error'));
-            }
+        // Figure out if email is not the same and check to see if email exists
+        if ($user->email !== $email && $this->model->where('email', '=', $email)->first()) {
+			throw new GeneralException(trans('exceptions.backend.access.users.email_error'));
         }
     }
 }

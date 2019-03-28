@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Frontend\Auth;
 
-use Carbon\Carbon;
 use App\Models\Auth\User;
 use Illuminate\Http\UploadedFile;
 use App\Models\Auth\SocialAccount;
@@ -97,10 +96,10 @@ class UserRepository extends BaseRepository
                 'last_name'         => $data['last_name'],
                 'email'             => $data['email'],
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
-                'active'            => 1,
+                'active'            => true,
                 'password'          => $data['password'],
                                     // If users require approval or needs to confirm email
-                'confirmed'         => config('access.users.requires_approval') || config('access.users.confirm_email') ? 0 : 1,
+                'confirmed'         => !(config('access.users.requires_approval') || config('access.users.confirm_email')),
             ]);
 
             if ($user) {
@@ -149,14 +148,14 @@ class UserRepository extends BaseRepository
             $user->avatar_location = $image->store('/avatars', 'public');
         } else {
             // No image being passed
-            if ($input['avatar_type'] == 'storage') {
+            if ($input['avatar_type'] === 'storage') {
                 // If there is no existing image
-                if (! strlen(auth()->user()->avatar_location)) {
+                if (auth()->user()->avatar_location === '') {
                     throw new GeneralException('You must supply a profile image.');
                 }
             } else {
                 // If there is a current image, and they are not using it anymore, get rid of it
-                if (strlen(auth()->user()->avatar_location)) {
+                if (auth()->user()->avatar_location !== '') {
                     Storage::disk('public')->delete(auth()->user()->avatar_location);
                 }
 
@@ -166,7 +165,7 @@ class UserRepository extends BaseRepository
 
         if ($user->canChangeEmail()) {
             //Address is not current address so they need to reconfirm
-            if ($user->email != $input['email']) {
+            if ($user->email !== $input['email']) {
                 //Emails have to be unique
                 if ($this->getByColumn($input['email'], 'email')) {
                     throw new GeneralException(__('exceptions.frontend.auth.email_taken'));
@@ -175,7 +174,7 @@ class UserRepository extends BaseRepository
                 // Force the user to re-verify his email address if config is set
                 if (config('access.users.confirm_email')) {
                     $user->confirmation_code = md5(uniqid(mt_rand(), true));
-                    $user->confirmed = 0;
+                    $user->confirmed = false;
                     $user->notify(new UserNeedsConfirmation($user->confirmation_code));
                 }
                 $user->email = $input['email'];
@@ -206,7 +205,7 @@ class UserRepository extends BaseRepository
 
         if (Hash::check($input['old_password'], $user->password)) {
             if ($expired) {
-                $user->password_changed_at = Carbon::now()->toDateTimeString();
+                $user->password_changed_at = now()->toDateTimeString();
             }
 
             return $user->update(['password' => $input['password']]);
@@ -225,12 +224,12 @@ class UserRepository extends BaseRepository
     {
         $user = $this->findByConfirmationCode($code);
 
-        if ($user->confirmed == 1) {
+        if ($user->confirmed === false) {
             throw new GeneralException(__('exceptions.frontend.auth.confirmation.already_confirmed'));
         }
 
-        if ($user->confirmation_code == $code) {
-            $user->confirmed = 1;
+        if ($user->confirmation_code === $code) {
+            $user->confirmed = false;
 
             event(new UserConfirmed($user));
 
@@ -273,8 +272,8 @@ class UserRepository extends BaseRepository
                 'first_name'  => $nameParts['first_name'],
                 'last_name'  => $nameParts['last_name'],
                 'email' => $user_email,
-                'active' => 1,
-                'confirmed' => 1,
+                'active' => true,
+                'confirmed' => true,
                 'password' => null,
                 'avatar_type' => $provider,
             ]);
