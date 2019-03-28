@@ -55,8 +55,8 @@ class DeactivateUserTest extends TestCase
         $admin = $this->loginAsAdmin();
 
         $response = $this
-			->from('admin/auth/user')
-			->get("/admin/auth/user/{$admin->id}/mark/0");
+            ->from('admin/auth/user')
+            ->get("/admin/auth/user/{$admin->id}/mark/0");
 
         $response->assertSessionHas(['flash_danger' => __('exceptions.backend.access.users.cant_deactivate_self')]);
     }
