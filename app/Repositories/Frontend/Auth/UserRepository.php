@@ -224,12 +224,12 @@ class UserRepository extends BaseRepository
     {
         $user = $this->findByConfirmationCode($code);
 
-        if ($user->confirmed === false) {
+        if ($user->confirmed === true) {
             throw new GeneralException(__('exceptions.frontend.auth.confirmation.already_confirmed'));
         }
 
         if ($user->confirmation_code === $code) {
-            $user->confirmed = false;
+            $user->confirmed = true;
 
             event(new UserConfirmed($user));
 

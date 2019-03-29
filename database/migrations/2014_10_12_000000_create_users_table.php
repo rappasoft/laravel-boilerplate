@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar_location')->nullable();
             $table->string('password')->nullable();
             $table->timestamp('password_changed_at')->nullable();
-            $table->tinyInteger('active')->default(1)->unsigned();
+            $table->unsignedTinyInteger('active')->default(1);
             $table->string('confirmation_code')->nullable();
             $table->boolean('confirmed')->default(config('access.users.confirm_email') ? false : true);
             $table->string('timezone')->nullable();
