@@ -23,7 +23,6 @@
         "laravel/tinker": "^1.0",
         "owen-it/laravel-auditing": "^9.0",
         "predis/predis": "^1.1",
-        "roave/security-advisories" : "dev-master",
         "spatie/laravel-html": "^2.4",
         "spatie/laravel-permission": "^2.36",
         "torann/geoip": "^1.0"
@@ -38,7 +37,8 @@
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^8.0"
+        "phpunit/phpunit": "^8.0",
+        "roave/security-advisories" : "dev-master"
     },
     "config": {
         "optimize-autoloader": true,

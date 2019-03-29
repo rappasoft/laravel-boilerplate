@@ -17,7 +17,6 @@
         </whitelist>
     </filter>
     <php>
-        <ini name="memory_limit" value="512M" />
         <server name="APP_ENV" value="testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>
