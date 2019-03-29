@@ -11,7 +11,7 @@
     "require": {
         "php": "^7.1.3",
         "albertcht/invisible-recaptcha": "^1.9",
-        "arcanedev/log-viewer": "4.7",
+        "arcanedev/log-viewer": "^4.7",
         "beyondcode/laravel-self-diagnosis": "^1.0",
         "creativeorange/gravatar": "~1.0",
         "davejamesmiller/laravel-breadcrumbs": "^5.0",
@@ -23,6 +23,7 @@
         "laravel/tinker": "^1.0",
         "owen-it/laravel-auditing": "^9.0",
         "predis/predis": "^1.1",
+        "roave/security-advisories" : "dev-master",
         "spatie/laravel-html": "^2.4",
         "spatie/laravel-permission": "^2.36",
         "torann/geoip": "^1.0"
@@ -113,6 +114,11 @@
             "./vendor/bin/php-cs-fixer fix resources/  --show-progress=estimating",
             "./vendor/bin/php-cs-fixer fix routes/  --show-progress=estimating",
             "./vendor/bin/php-cs-fixer fix tests/  --show-progress=estimating"
+        ],
+        "self-diagnosis": [
+            "@composer validate",
+            "@php artisan self-diagnosis",
+            "npm audit"
         ]
     }
 }
