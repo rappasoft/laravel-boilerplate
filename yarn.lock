@@ -6926,10 +6926,10 @@ resolve-from@^3.0.0:
   resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-3.0.0.tgz#b22c7af7d9d6881bc8b6e653335eebcb0a188748"
   integrity sha1-six699nWiBvItuZTM17rywoYh0g=
 
-resolve-url-loader@2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/resolve-url-loader/-/resolve-url-loader-2.3.1.tgz#b462fc7a78a22baf3ee462568d8ff5d766f7f1da"
-  integrity sha512-tpt4A/tOT8jxRDa91RbBV4c22AGj+WllOxT8rYSYhT2XDdL33Nca9HudwVx4mvP9PLokz+wpCu44tWUGVMYYLA==
+resolve-url-loader@2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/resolve-url-loader/-/resolve-url-loader-2.3.2.tgz#83bb9ebc392b66c563795eef22f078970357a26e"
+  integrity sha512-sc/UVgiADdoTc+4cGPB7cUCnlEkzlxD1NXHw4oa9qA0fp30H8mAQ2ePJBP9MQ029DUuhEPouhNdvzT37pBCV0g==
   dependencies:
     adjust-sourcemap-loader "^1.1.0"
     camelcase "^4.1.0"
