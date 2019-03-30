@@ -11,11 +11,9 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.setPublicPath('public');
-
-mix.setResourceRoot('../');
-
-mix.sass('resources/sass/frontend/app.scss', 'css/frontend.css')
+mix.setPublicPath('public')
+    .setResourceRoot('../') // turns assets paths in css relative to css file
+    .sass('resources/sass/frontend/app.scss', 'css/frontend.css')
     .sass('resources/sass/backend/app.scss', 'css/backend.css')
     .js('resources/js/frontend/app.js', 'js/frontend.js')
     .js([
@@ -24,18 +22,28 @@ mix.sass('resources/sass/frontend/app.scss', 'css/frontend.css')
         'resources/js/backend/after.js'
     ], 'js/backend.js')
     .extract([
+        /* Extract packages from node_modules, only those used by front and
+        backend, to vendor.js */
         'jquery',
         'bootstrap',
-        'popper.js/dist/umd/popper',
+        'popper.js',
         'axios',
         'sweetalert2',
-        'lodash',
-        '@fortawesome/fontawesome-svg-core',
-        '@fortawesome/free-brands-svg-icons',
-        '@fortawesome/free-regular-svg-icons',
-        '@fortawesome/free-solid-svg-icons'
-    ]);
+        'lodash'
+    ])
+    .sourceMaps();
 
-if (mix.inProduction() || process.env.npm_lifecycle_event !== 'hot') {
-    mix.version();
+if (mix.inProduction()) {
+    mix.version()
+        .options({
+            // optimize js minification process
+            terser: {
+                cache: true,
+                parallel: true,
+                sourceMap: true
+            }
+        });
+} else {
+    // Uses inline source-maps on development
+    mix.webpackConfig({ devtool: 'inline-source-map' });
 }

@@ -12,5 +12,12 @@
 // Import styles
 @import "~@coreui/coreui/scss/coreui";
 
-// If you want to add something do it here
-@import "custom";
+// Here you can add other styles
+@import '~simple-line-icons/scss/simple-line-icons';
+
+// Fix mobile footer
+.app-footer {
+    flex: 0 0;
+    padding-top: map-get($spacers, 3);
+    padding-bottom: map-get($spacers, 3);
+}

@@ -1,8 +1,11 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
+// Bootstrap Overrides
+@import 'variables';
+
 // Bootstrap
-@import '../../../node_modules/bootstrap/scss/bootstrap';
+@import '~bootstrap/scss/bootstrap';
 
 // Global
 @import 'global';
@@ -10,7 +13,10 @@
 // Pages
 @import 'pages/dashboard';
 
-// Bootstrap Overrides
-@import 'custom';
-
 // Plugins
+
+// FontAwesome 5
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
