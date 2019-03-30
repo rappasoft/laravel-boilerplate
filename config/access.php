@@ -9,6 +9,7 @@ return [
         /*
          * Whether the registration captcha is on or off
          */
+        'contact' => env('CONTACT_CAPTCHA_STATUS', false),
         'registration' => env('REGISTRATION_CAPTCHA_STATUS', false),
     ],
 
@@ -61,12 +62,12 @@ return [
         'username' => 'email',
 
         /*
-         * Session Database Driver Only
          * When active, a user can only have one session active at a time
          * That is all other sessions for that user will be deleted when they log in
          * (They can only be logged into one place at a time, all others will be logged out)
+         * AuthenticateSession middleware must be enabled
          */
-        'single_login' => true,
+        'single_login' => env('SINGLE_LOGIN', true),
 
         /*
          * How many days before users have to change their passwords

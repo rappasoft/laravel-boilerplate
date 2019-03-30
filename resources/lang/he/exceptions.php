@@ -46,7 +46,6 @@ return [
                 'restore_error'         => 'הייתה בעיה בשחזור המשתמש. אנא נסו שוב.',
                 'role_needed_create'    => 'משתמש חייב לפחות תפקיד אחד.',
                 'role_needed'           => 'משתמש חייב לפחות תפקיד אחד.',
-                'session_wrong_driver'  => 'כדי להשתמש בתכונה הזו, צריך שה-session driver יהיה database',
                 'social_delete_error' => 'הייתה בעיה בהסרת הפרופיל החברתי של המשתמש.',
                 'update_error'          => 'הייתה בעיה בעדכון המשתמש. אנא נסו שוב.',
                 'update_password_error' => 'הייתה בעיה בעדכון סיסמת המשתמש. אנא נסו שוב.',

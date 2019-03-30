@@ -46,7 +46,6 @@ return [
                 'restore_error'         => "Un problème est survenu lors de la restauration de l'utilisateur. Veuillez réessayer.",
                 'role_needed_create'    => 'Vous devez sélectionner au moins un rôle.',
                 'role_needed'           => 'Vous devez sélectionner au moins un rôle.',
-                'session_wrong_driver'  => 'Votre pilote de session doit être configuré avec une base de données pour utiliser cette fonctionalité.',
                 'social_delete_error' => "Un problème est survenu lors de la suppression du compte de réseau social de l'utilisateur.",
                 'update_error'          => "Un problème est survenu lors de la mise à jour de l'utilisateur. Veuillez réessayer.",
                 'update_password_error' => "Un problème est survenu lors du changement du mot de passe de l'utilisateur. Veuillez réessayer.",

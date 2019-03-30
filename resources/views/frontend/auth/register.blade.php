@@ -22,7 +22,8 @@
                                     {{ html()->text('first_name')
                                         ->class('form-control')
                                         ->placeholder(__('validation.attributes.frontend.first_name'))
-                                        ->attribute('maxlength', 191) }}
+                                        ->attribute('maxlength', 191)
+                                        ->required()}}
                                 </div><!--col-->
                             </div><!--row-->
 
@@ -33,7 +34,8 @@
                                     {{ html()->text('last_name')
                                         ->class('form-control')
                                         ->placeholder(__('validation.attributes.frontend.last_name'))
-                                        ->attribute('maxlength', 191) }}
+                                        ->attribute('maxlength', 191)
+                                        ->required() }}
                                 </div><!--form-group-->
                             </div><!--col-->
                         </div><!--row-->
@@ -81,7 +83,7 @@
                         @if(config('access.captcha.registration'))
                             <div class="row">
                                 <div class="col">
-                                    {!! Captcha::display() !!}
+                                    @captcha
                                     {{ html()->hidden('captcha_status', 'true') }}
                                 </div><!--col-->
                             </div><!--row-->
@@ -112,6 +114,6 @@
 
 @push('after-scripts')
     @if(config('access.captcha.registration'))
-        {!! Captcha::script() !!}
+        @captchaScripts
     @endif
 @endpush

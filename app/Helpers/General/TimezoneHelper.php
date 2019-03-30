@@ -7,7 +7,7 @@ use Carbon\Carbon;
 /**
  * Class Timezone.
  */
-class Timezone
+class TimezoneHelper
 {
     /**
      * @param Carbon $date

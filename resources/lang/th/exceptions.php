@@ -46,7 +46,6 @@ return [
                 'restore_error'         => 'มีข้อผิดพลาดในการกู้คืนผู้ใช้นี้ กรุณาลองใหม่อีกครั้ง',
                 'role_needed_create'    => 'คุณต้องเลือกอย่างน้อยหนึ่งบทบาท',
                 'role_needed'           => 'คุณต้องเลือกอย่างน้อยหนึ่งบทบาท',
-                'session_wrong_driver'  => 'Your session driver must be set to database to use this feature.',
                 'social_delete_error' => 'There was a problem removing the social account from the user.',
                 'update_error'          => 'มีข้อผิดพลาดในการแก้ไขผู้ใช้นี้ กรุณาลองใหม่อีกครั้ง',
                 'update_password_error' => 'มีข้อผิดพลาดในการเปลี่ยนรหัสผ่านของผู้ใช้นี้ กรุณาลองใหม่อีกครั้ง',

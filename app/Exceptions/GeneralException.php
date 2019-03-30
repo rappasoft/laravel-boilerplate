@@ -50,7 +50,7 @@ class GeneralException extends Exception
          */
         return redirect()
             ->back()
-            ->withInput($request->except('password', 'password_confirmation'))
+            ->withInput()
             ->withFlashDanger($this->message);
     }
 }

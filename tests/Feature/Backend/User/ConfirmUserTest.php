@@ -25,7 +25,7 @@ class ConfirmUserTest extends TestCase
 
         $response = $this->get("/admin/auth/user/{$user->id}/confirm");
 
-        $this->assertEquals(1, $user->fresh()->confirmed);
+        $this->assertEquals(true, $user->fresh()->confirmed);
         Event::assertDispatched(UserConfirmed::class);
 
         $response->assertSessionHas(['flash_success' => __('alerts.backend.users.confirmed')]);
@@ -66,7 +66,7 @@ class ConfirmUserTest extends TestCase
 
         $response = $this->get("/admin/auth/user/{$user->id}/unconfirm");
 
-        $this->assertEquals(0, $user->fresh()->confirmed);
+        $this->assertEquals(false, $user->fresh()->confirmed);
         Event::assertDispatched(UserUnconfirmed::class);
 
         $response->assertSessionHas(['flash_success' => __('alerts.backend.users.unconfirmed')]);
@@ -113,7 +113,7 @@ class ConfirmUserTest extends TestCase
 
         $this->get("/admin/auth/user/{$user->id}/confirm");
 
-        $this->assertEquals(1, $user->fresh()->confirmed);
+        $this->assertEquals(true, $user->fresh()->confirmed);
     }
 
     /** @test */
@@ -124,6 +124,6 @@ class ConfirmUserTest extends TestCase
 
         $this->get("/admin/auth/user/{$user->id}/unconfirm");
 
-        $this->assertEquals(0, $user->fresh()->confirmed);
+        $this->assertEquals(false, $user->fresh()->confirmed);
     }
 }

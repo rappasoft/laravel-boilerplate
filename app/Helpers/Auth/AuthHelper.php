@@ -5,7 +5,7 @@ namespace App\Helpers\Auth;
 /**
  * Class Auth.
  */
-class Auth
+class AuthHelper
 {
     /**
      * Remove old session variables from admin logging in as user.

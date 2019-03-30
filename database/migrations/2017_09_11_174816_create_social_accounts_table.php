@@ -18,13 +18,16 @@ class CreateSocialAccountsTable extends Migration
     {
         Schema::create('social_accounts', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id');
             $table->string('provider', 32);
             $table->string('provider_id');
             $table->text('token')->nullable(); // Text because Facebook tokens can be greater than 255 characters
             $table->string('avatar')->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('social_accounts', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

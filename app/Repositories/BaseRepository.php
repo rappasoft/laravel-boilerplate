@@ -88,7 +88,7 @@ abstract class BaseRepository implements RepositoryContract
      */
     public function makeModel()
     {
-        $model = app()->make($this->model());
+        $model = resolve($this->model());
 
         if (! $model instanceof Model) {
             throw new GeneralException("Class {$this->model()} must be an instance of ".Model::class);
@@ -122,7 +122,7 @@ abstract class BaseRepository implements RepositoryContract
      */
     public function count() : int
     {
-        return $this->get()->count();
+        return $this->model->count();
     }
 
     /**

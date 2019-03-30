@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -21,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
         /*
          * Sets third party service providers that are only needed on local/testing environments
          */
-        if ($this->app->environment() != 'production') {
+        if ($this->app->environment() !== 'production') {
             /**
              * Loader for registering facades.
              */
@@ -70,9 +71,9 @@ class AppServiceProvider extends ServiceProvider
         }
 
         // Force SSL in production
-        if ($this->app->environment() == 'production') {
-            //URL::forceScheme('https');
-        }
+        /*if ($this->app->environment() === 'production') {
+            URL::forceScheme('https');
+        }*/
 
         // Set the default string length for Laravel5.4
         // https://laravel-news.com/laravel-5-4-key-too-long-error
@@ -81,5 +82,14 @@ class AppServiceProvider extends ServiceProvider
         // Set the default template for Pagination to use the included Bootstrap 4 template
         \Illuminate\Pagination\AbstractPaginator::defaultView('pagination::bootstrap-4');
         \Illuminate\Pagination\AbstractPaginator::defaultSimpleView('pagination::simple-bootstrap-4');
+
+        // Custom Blade Directives
+        /*
+         * The block of code inside this directive indicates
+         * the chosen language requests RTL support.
+         */
+        Blade::if('langrtl', function ($session_identifier = 'lang-rtl') {
+            return session()->has($session_identifier);
+        });
     }
 }

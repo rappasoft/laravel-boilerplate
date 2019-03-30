@@ -110,7 +110,7 @@ class UpdateUserAccountTest extends TestCase
         $this->actingAs($user)
             ->patch('/profile/update', $this->getValidUserData([
                 'avatar_type' => 'storage',
-                'avatar_location' => UploadedFile::fake()->image('avatar.jpg'),
+                'avatar_location' => UploadedFile::fake()->image('avatar.png'),
             ]));
 
         Storage::disk('public')->assertExists("{$user->fresh()->avatar_location}");
@@ -124,12 +124,12 @@ class UpdateUserAccountTest extends TestCase
         config(['access.users.change_email' => true]);
         Notification::fake();
 
-        $this->assertEquals($user->confirmed, 1);
+        $this->assertEquals($user->confirmed, true);
 
         $this->actingAs($user)
             ->patch('/profile/update', $this->getValidUserData());
 
-        $this->assertEquals($user->fresh()->confirmed, 0);
+        $this->assertEquals($user->fresh()->confirmed, false);
         Notification::assertSentTo($user, UserNeedsConfirmation::class);
     }
 
@@ -139,11 +139,11 @@ class UpdateUserAccountTest extends TestCase
         $user = factory(User::class)->create();
         config(['access.users.confirm_email' => false]);
 
-        $this->assertEquals($user->confirmed, 1);
+        $this->assertEquals($user->confirmed, true);
 
         $this->actingAs($user)
             ->patch('/profile/update', $this->getValidUserData());
 
-        $this->assertEquals($user->fresh()->confirmed, 1);
+        $this->assertEquals($user->fresh()->confirmed, true);
     }
 }

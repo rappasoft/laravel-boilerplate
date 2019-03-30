@@ -65,10 +65,20 @@
                                     {{ html()->textarea('message')
                                         ->class('form-control')
                                         ->placeholder(__('validation.attributes.frontend.message'))
-                                        ->attribute('rows', 3) }}
+                                        ->attribute('rows', 3)
+                                        ->required() }}
                                 </div><!--form-group-->
                             </div><!--col-->
                         </div><!--row-->
+
+                        @if(config('access.captcha.contact'))
+                            <div class="row">
+                                <div class="col">
+                                    @captcha
+                                    {{ html()->hidden('captcha_status', 'true') }}
+                                </div><!--col-->
+                            </div><!--row-->
+                        @endif
 
                         <div class="row">
                             <div class="col">
@@ -83,3 +93,9 @@
         </div><!--col-->
     </div><!--row-->
 @endsection
+
+@push('after-scripts')
+    @if(config('access.captcha.contact'))
+        @captchaScripts
+    @endif
+@endpush

@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Frontend;
 
-use Carbon\Carbon;
 use Tests\TestCase;
 use App\Models\Auth\User;
 use Illuminate\Support\Facades\Hash;
@@ -17,7 +16,7 @@ class PasswordExpirationTest extends TestCase
     {
         config(['access.users.password_expires_days' => 30]);
 
-        $user = factory(User::class)->create(['password_changed_at' => Carbon::now()->subMonths(2)->toDateTimeString()]);
+        $user = factory(User::class)->create(['password_changed_at' => now()->subMonths(2)->toDateTimeString()]);
 
         $response = $this->actingAs($user)
             ->get('/dashboard')
@@ -31,7 +30,7 @@ class PasswordExpirationTest extends TestCase
     {
         config(['access.users.password_expires_days' => 30]);
 
-        $user = factory(User::class)->create(['password_changed_at' => Carbon::now()->subWeek()->toDateTimeString()]);
+        $user = factory(User::class)->create(['password_changed_at' => now()->subWeek()->toDateTimeString()]);
 
         $this->actingAs($user);
 
@@ -46,7 +45,7 @@ class PasswordExpirationTest extends TestCase
     {
         config(['access.users.password_expires_days' => false]);
 
-        $user = factory(User::class)->create(['password_changed_at' => Carbon::now()->subMonths(2)->toDateTimeString()]);
+        $user = factory(User::class)->create(['password_changed_at' => now()->subMonths(2)->toDateTimeString()]);
 
         $response = $this->actingAs($user)->get('/dashboard');
 
@@ -61,7 +60,7 @@ class PasswordExpirationTest extends TestCase
 
         $user = factory(User::class)->create([
             'password' => ']EqZL4}zBT',
-            'password_changed_at' => Carbon::now()->subMonths(2)->toDateTimeString(),
+            'password_changed_at' => now()->subMonths(2)->toDateTimeString(),
         ]);
 
         $response = $this->actingAs($user)
@@ -72,7 +71,7 @@ class PasswordExpirationTest extends TestCase
                 'password_confirmation' => 'secret',
             ]);
 
-        $this->assertContains(__('auth.password_rules'), $response->content());
+        $this->assertStringContainsString(__('auth.password_rules'), $response->content());
     }
 
     /** @test */
@@ -83,7 +82,7 @@ class PasswordExpirationTest extends TestCase
 
         $user = factory(User::class)->create([
             'password' => ']EqZL4}zBT',
-            'password_changed_at' => Carbon::now()->subMonths(2)->toDateTimeString(),
+            'password_changed_at' => now()->subMonths(2)->toDateTimeString(),
         ]);
 
         $response = $this->actingAs($user)
@@ -105,7 +104,7 @@ class PasswordExpirationTest extends TestCase
 
         $user = factory(User::class)->create([
             'password' => ']EqZL4}zBT',
-            'password_changed_at' => Carbon::now()->subMonths(2)->toDateTimeString(),
+            'password_changed_at' => now()->subMonths(2)->toDateTimeString(),
         ]);
 
         $this->actingAs($user)

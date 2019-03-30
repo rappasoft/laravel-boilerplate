@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\Frontend\Auth;
 
-use App\Helpers\Auth\Auth;
 use Illuminate\Http\Request;
+use App\Helpers\Auth\AuthHelper;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
-use App\Helpers\Frontend\Auth\Socialite;
+use App\Helpers\Auth\SocialiteHelper;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Repositories\Frontend\Auth\UserSessionRepository;
 
 /**
  * Class LoginController.
@@ -35,7 +34,7 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view('frontend.auth.login')
-            ->withSocialiteLinks((new Socialite)->getSocialLinks());
+            ->withSocialiteLinks((new SocialiteHelper)->getSocialLinks());
     }
 
     /**
@@ -72,17 +71,19 @@ class LoginController extends Controller
 
             // Otherwise see if they want to resent the confirmation e-mail
 
-            throw new GeneralException(__('exceptions.frontend.auth.confirmation.resend', ['url' => route('frontend.auth.account.confirm.resend', $user->{$user->getUuidName()})]));
-        } elseif (! $user->isActive()) {
+            throw new GeneralException(__('exceptions.frontend.auth.confirmation.resend', ['url' => route('frontend.auth.account.confirm.resend', e($user->{$user->getUuidName()}))]));
+        }
+
+        if (! $user->isActive()) {
             auth()->logout();
+
             throw new GeneralException(__('exceptions.frontend.auth.deactivated'));
         }
 
         event(new UserLoggedIn($user));
 
-        // If only allowed one session at a time
         if (config('access.users.single_login')) {
-            resolve(UserSessionRepository::class)->clearSessionExceptCurrent($user);
+            auth()->logoutOtherDevices($request->password);
         }
 
         return redirect()->intended($this->redirectPath());
@@ -107,7 +108,7 @@ class LoginController extends Controller
         /*
          * Remove any session data from backend
          */
-        app()->make(Auth::class)->flushTempSession();
+        resolve(AuthHelper::class)->flushTempSession();
 
         /*
          * Fire event, Log out user, Redirect
@@ -138,20 +139,19 @@ class LoginController extends Controller
             // Save admin id
             $admin_id = session()->get('admin_user_id');
 
-            app()->make(Auth::class)->flushTempSession();
+            resolve(AuthHelper::class)->flushTempSession();
 
             // Re-login admin
             auth()->loginUsingId((int) $admin_id);
 
             // Redirect to backend user page
             return redirect()->route('admin.auth.user.index');
-        } else {
-            app()->make(Auth::class)->flushTempSession();
-
-            // Otherwise logout and redirect to login
-            auth()->logout();
-
-            return redirect()->route('frontend.auth.login');
         }
+
+        resolve(AuthHelper::class)->flushTempSession();
+
+        auth()->logout();
+
+        return redirect()->route('frontend.auth.login');
     }
 }

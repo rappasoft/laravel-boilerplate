@@ -46,7 +46,6 @@ return [
                 'restore_error'           => 'Hubo un problema al restaurar el Usuario. Inténtelo de nuevo.',
                 'role_needed_create'      => 'Los Usuarios deben tener al menos un Rol.',
                 'role_needed'             => 'Debe elegir al menos un Rol.',
-                'session_wrong_driver'    => 'Su controlador de sesión debe configurarse en la base de datos para usar esta característica.',
                 'social_delete_error'     => 'Hubo un problema al eliminar la cuenta social del Usuario.',
                 'update_error'            => 'Hubo un problema al modificar el Usuario. Inténtelo de nuevo.',
                 'update_password_error'   => 'Hubo un problema al cambiar la contraseña. Inténtelo de nuevo.',

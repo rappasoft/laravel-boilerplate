@@ -1,9 +1,8 @@
 <?php
 
 use Faker\Generator;
-use Webpatser\Uuid\Uuid;
+use Ramsey\Uuid\Uuid;
 use App\Models\Auth\User;
-use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,46 +17,45 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Generator $faker) {
     return [
-        'uuid' 			    => Uuid::generate(4)->string,
+        'uuid' 			    => Uuid::uuid4()->toString(),
         'first_name'        => $faker->firstName,
         'last_name'         => $faker->lastName,
         'email'             => $faker->safeEmail,
-        //'email_verified_at' => now(),
         'password'          => 'secret',
         'password_changed_at' => null,
-        'remember_token'    => Str::random(10),
+        'remember_token'    => str_random(10),
         'confirmation_code' => md5(uniqid(mt_rand(), true)),
-        'active' => 1,
-        'confirmed' => 1,
+        'active' => true,
+        'confirmed' => true,
     ];
 });
 
 $factory->state(User::class, 'active', function () {
     return [
-        'active' => 1,
+        'active' => true,
     ];
 });
 
 $factory->state(User::class, 'inactive', function () {
     return [
-        'active' => 0,
+        'active' => false,
     ];
 });
 
 $factory->state(User::class, 'confirmed', function () {
     return [
-        'confirmed' => 1,
+        'confirmed' => true,
     ];
 });
 
 $factory->state(User::class, 'unconfirmed', function () {
     return [
-        'confirmed' => 0,
+        'confirmed' => false,
     ];
 });
 
 $factory->state(User::class, 'softDeleted', function () {
     return [
-        'deleted_at' => \Illuminate\Support\Carbon::now(),
+        'deleted_at' => now(),
     ];
 });
