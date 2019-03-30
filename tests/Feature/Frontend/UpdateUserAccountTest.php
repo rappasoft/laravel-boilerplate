@@ -110,7 +110,7 @@ class UpdateUserAccountTest extends TestCase
         $this->actingAs($user)
             ->patch('/profile/update', $this->getValidUserData([
                 'avatar_type' => 'storage',
-                'avatar_location' => UploadedFile::fake()->image('avatar.jpg'),
+                'avatar_location' => UploadedFile::fake()->image('avatar.png'),
             ]));
 
         Storage::disk('public')->assertExists("{$user->fresh()->avatar_location}");
