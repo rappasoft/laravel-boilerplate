@@ -1,35 +1,11 @@
 {
-  "env": {
-    "test": {
-      "presets": [
-        ["@babel/preset-env", {
-          "targets": {
-            "node": "current"
-          }
+    "presets": [
+        ["@babel/env", {
+            "forceAllTransforms": true,
+            "targets": {
+                "node": "current"
+            }
         }]
-      ]
-    },
-    "development": {
-      "presets": [
-        ["@babel/preset-env", {
-          "modules": false,
-          "targets": {
-            "browsers": "> 2%",
-            "uglify": true
-          }
-        }]
-      ]
-    },
-    "production": {
-      "presets": [
-        ["@babel/preset-env", {
-          "modules": false,
-          "targets": {
-            "browsers": "> 2%",
-            "uglify": true
-          }
-        }]
-      ]
-    }
-  }
+    ],
+    "sourceMaps": true
 }

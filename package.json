@@ -15,23 +15,19 @@
         "tdd": "cross-var $npm_execpath run test -- --watch --notify"
     },
     "devDependencies": {
-        "@babel/core": "^7.4.0",
         "@coreui/coreui": "^2.1.9",
-        "@fortawesome/fontawesome-svg-core": "^1.2.17",
-        "@fortawesome/free-brands-svg-icons": "^5.8.1",
-        "@fortawesome/free-regular-svg-icons": "^5.8.1",
-        "@fortawesome/free-solid-svg-icons": "^5.8.1",
+        "@fortawesome/fontawesome-free": "^5.8.1",
         "@vue/test-utils": "^1.0.0-beta.29",
-        "axios": "^0.18",
+        "axios": "^0.18.0",
         "babel-core": "^7.0.0-bridge.0",
         "babel-jest": "^24.5.0",
         "bootstrap": "^4.3.1",
-        "cross-env": "^5.1",
+        "cross-env": "^5.2.0",
         "cross-var": "^1.1.0",
-        "jest-vue-preprocessor": "^1.5.0",
-        "jquery": "^3.2",
+        "jest": "^24.5.0",
+        "jquery": "^3.3.1",
         "laravel-mix": "^4.0.15",
-        "lodash": "^4.17.5",
+        "lodash": "^4.17.11",
         "pace": "github:HubSpot/pace#v1.0.2",
         "perfect-scrollbar": "^1.4.0",
         "popper.js": "^1.14.7",
@@ -39,9 +35,14 @@
         "sass": "^1.17.3",
         "sass-loader": "^7.1.0",
         "simple-line-icons": "^2.4.1",
-        "sweetalert2": "^8.0.5",
+        "sweetalert2": "^8.7.0",
         "vue": "^2.6.10",
+        "vue-jest": "^3.0.4",
         "vue-template-compiler": "^2.6.10"
+    },
+    "browserslist": {
+        "development": "last 1 version",
+        "production": ">2%, Firefox ESR"
     },
     "jest": {
         "testURL": "http://localhost",
@@ -49,15 +50,18 @@
             "<rootDir>/tests/Javascript/"
         ],
         "moduleNameMapper": {
-            "^vue$": "vue/dist/vue.common.js"
+            "^@/(.*)$": "<rootDir>/resources/js/$1"
         },
         "moduleFileExtensions": [
             "js",
             "vue"
         ],
         "transform": {
-            "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-            ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
+            "^.+\\.js$": "babel-jest",
+            ".*\\.(vue)$": "vue-jest"
         }
+    },
+    "engines": {
+        "node": ">=6.0.0"
     }
 }
