@@ -12,7 +12,6 @@
     "tdd": "npm run test -- --watch --notify"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.0",
     "@coreui/coreui": "^2.1.9",
     "@fortawesome/fontawesome-svg-core": "^1.2.17",
     "@fortawesome/free-brands-svg-icons": "^5.8.1",
@@ -20,41 +19,41 @@
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@vue/test-utils": "^1.0.0-beta.29",
     "axios": "^0.18",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^24.5.0",
-    "babel-template": "^6.26.0",
+    "babel-core": "^7.0.0-0",
+    "babel-loader": "^8.0.5",
     "bootstrap": "^4.3.1",
     "cross-env": "^5.2",
-    "jest-vue-preprocessor": "^1.5.0",
+    "jest": "^24.5.0",
+    "jest-serializer-vue": "^2.0.2",
     "jquery": "^3.2",
     "laravel-mix": "^4.0.15",
     "lodash": "^4.17.5",
     "pace": "github:HubSpot/pace#v1.0.2",
     "perfect-scrollbar": "^1.4.0",
     "popper.js": "^1.14.7",
-    "resolve-url-loader": "^2.3.2",
+    "resolve-url-loader": "2.3.1",
     "sass": "^1.17.3",
     "sass-loader": "^7.1.0",
     "simple-line-icons": "^2.4.1",
-    "sweetalert2": "^8.0.5",
+    "sweetalert2": "^8.7.1",
     "vue": "^2.6.10",
+    "vue-jest": "^3.0.4",
     "vue-template-compiler": "^2.6.10"
   },
   "jest": {
-    "testURL": "http://localhost",
-    "roots": [
-      "<rootDir>/tests/Javascript/"
-    ],
-    "moduleNameMapper": {
-      "^vue$": "vue/dist/vue.common.js"
-    },
     "moduleFileExtensions": [
       "js",
       "vue"
     ],
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/js/frontend/components/$1"
+    },
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      ".*\\.(vue)$": "<rootDir>/node_modules/jest-vue-preprocessor"
-    }
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+    },
+    "snapshotSerializers": [
+      "<rootDir>/node_modules/jest-serializer-vue"
+    ]
   }
 }
