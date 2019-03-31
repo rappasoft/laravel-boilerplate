@@ -1,16 +1,13 @@
+@import "../global";
+
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Bootstrap
-@import '../../../node_modules/bootstrap/scss/bootstrap';
+// Bootstrap Overrides
+@import 'variables';
 
-// Global
-@import 'global';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
 
 // Pages
 @import 'pages/dashboard';
-
-// Bootstrap Overrides
-@import 'custom';
-
-// Plugins
