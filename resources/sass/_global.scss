@@ -1,0 +1,13 @@
+// Plugins
+
+// FontAwesome 5
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+
+// Header Styles
+.logged-in-as {
+  margin: 0;
+  border-radius: 0;
+}
