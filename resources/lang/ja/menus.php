@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Menus Language Lines
@@ -46,7 +45,7 @@ return [
         'sidebar' => [
             'dashboard' => 'Dashboard',
             'general' => '一般',
-            'history'   => 'History',
+            'history' => 'History',
             'system' => 'システム',
         ],
     ],
@@ -60,28 +59,28 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'ar'    => 'アラビア語（Arabic）',
-            'zh'    => '中国語（Chinese Simplified）',
+            'ar' => 'アラビア語（Arabic）',
+            'zh' => '中国語（Chinese Simplified）',
             'zh-TW' => '中国語（Chinese Traditional）',
-            'da'    => 'デンマーク語（Danish）',
-            'de'    => 'ドイツ人（German）',
-            'el'    => 'ギリシャ語（Greek）',
-            'en'    => '英語（English）',
-            'es'    => 'スペイン語（Spanish）',
-            'fa'    => 'ペルシア語 (Persian)',
-            'fr'    => 'フランス語（French）',
-            'he'    => 'ヘブライ語 (Hebrew)',
-            'id'    => 'インドネシア語（Indonesian）',
-            'it'    => 'イタリア語（Italian）',
-            'ja'    => '日本語（Japanese）',
-            'nl'    => 'オランダ語（Dutch）',
-            'no'    => 'ノルウェーの (Norwegian)',
+            'da' => 'デンマーク語（Danish）',
+            'de' => 'ドイツ人（German）',
+            'el' => 'ギリシャ語（Greek）',
+            'en' => '英語（English）',
+            'es' => 'スペイン語（Spanish）',
+            'fa' => 'ペルシア語 (Persian)',
+            'fr' => 'フランス語（French）',
+            'he' => 'ヘブライ語 (Hebrew)',
+            'id' => 'インドネシア語（Indonesian）',
+            'it' => 'イタリア語（Italian）',
+            'ja' => '日本語（Japanese）',
+            'nl' => 'オランダ語（Dutch）',
+            'no' => 'ノルウェーの (Norwegian)',
             'pt_BR' => 'ブラジルポルトガル語（Brazilian Portuguese）',
-            'ru'    => 'ロシア語（Russian）',
-            'sv'    => 'スウェーデン語（Swedish）',
-            'th'    => 'タイ語（Thai）',
-            'tr'    => '(Turkish)',
-            'uk'    => '(Ukrainian)',
+            'ru' => 'ロシア語（Russian）',
+            'sv' => 'スウェーデン語（Swedish）',
+            'th' => 'タイ語（Thai）',
+            'tr' => '(Turkish)',
+            'uk' => '(Ukrainian)',
         ],
     ],
 ];

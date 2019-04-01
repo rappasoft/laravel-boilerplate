@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Menus Language Lines
@@ -18,36 +17,36 @@ return [
             'title' => 'Zugriffsverwaltung',
 
             'roles' => [
-                'all'        => 'Alle Rollen',
-                'create'     => 'Rolle erstellen',
-                'edit'       => 'Rolle bearbeiten',
+                'all' => 'Alle Rollen',
+                'create' => 'Rolle erstellen',
+                'edit' => 'Rolle bearbeiten',
                 'management' => 'Rollen verwalten',
-                'main'       => 'Rollen',
+                'main' => 'Rollen',
             ],
 
             'users' => [
-                'all'             => 'Alle Benutzer',
+                'all' => 'Alle Benutzer',
                 'change-password' => 'Kennwort ändern',
-                'create'          => 'Benutzer erstellen',
-                'deactivated'     => 'Deaktivierte Benutzer',
-                'deleted'         => 'Gelöschte Benutzer',
-                'edit'            => 'Benutzer bearbeiten',
-                'main'            => 'Benutzer',
-                'view'            => 'Benutzer anzeigen',
+                'create' => 'Benutzer erstellen',
+                'deactivated' => 'Deaktivierte Benutzer',
+                'deleted' => 'Gelöschte Benutzer',
+                'edit' => 'Benutzer bearbeiten',
+                'main' => 'Benutzer',
+                'view' => 'Benutzer anzeigen',
             ],
         ],
 
         'log-viewer' => [
-            'main'      => 'Logbuch',
+            'main' => 'Logbuch',
             'dashboard' => 'Dashboard',
-            'logs'      => 'Logs',
+            'logs' => 'Logs',
         ],
 
         'sidebar' => [
             'dashboard' => 'Dashboard',
-            'general'   => 'Allgemein',
-            'history'   => 'History',
-            'system'    => 'System',
+            'general' => 'Allgemein',
+            'history' => 'History',
+            'system' => 'System',
         ],
     ],
 
@@ -60,28 +59,28 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'ar'    => 'العربية (Arabic)',
-            'zh'    => '(Chinese Simplified)',
+            'ar' => 'العربية (Arabic)',
+            'zh' => '(Chinese Simplified)',
             'zh-TW' => '(Chinese Traditional)',
-            'da'    => 'Dänisch (Danish)',
-            'de'    => 'Deutsch (German)',
-            'el'    => '(Greek)',
-            'en'    => 'Englisch (English)',
-            'es'    => 'Spanisch (Spanish)',
-            'fa'    => 'Persisch (Persian)',
-            'fr'    => 'Französisch (French)',
-            'he'    => 'Hebräisch (Hebrew)',
-            'id'    => 'Indonesisch (Indonesian)',
-            'it'    => 'Italienisch (Italian)',
-            'ja'    => 'Japanisch (Japanese)',
-            'nl'    => 'Niederländisch (Dutch)',
-            'no'    => 'Norwegisch (Norwegian)',
+            'da' => 'Dänisch (Danish)',
+            'de' => 'Deutsch (German)',
+            'el' => '(Greek)',
+            'en' => 'Englisch (English)',
+            'es' => 'Spanisch (Spanish)',
+            'fa' => 'Persisch (Persian)',
+            'fr' => 'Französisch (French)',
+            'he' => 'Hebräisch (Hebrew)',
+            'id' => 'Indonesisch (Indonesian)',
+            'it' => 'Italienisch (Italian)',
+            'ja' => 'Japanisch (Japanese)',
+            'nl' => 'Niederländisch (Dutch)',
+            'no' => 'Norwegisch (Norwegian)',
             'pt_BR' => 'Brasilianisches Portugiesisch (Brazilian Portuguese)',
-            'ru'    => 'Russisch (Russian)',
-            'sv'    => 'Schwedisch (Swedish)',
-            'th'    => '(Thai)',
-            'tr'    => '(Turkish)',
-            'uk'    => 'Ukrainisch (Ukrainian)',
+            'ru' => 'Russisch (Russian)',
+            'sv' => 'Schwedisch (Swedish)',
+            'th' => '(Thai)',
+            'tr' => '(Turkish)',
+            'uk' => 'Ukrainisch (Ukrainian)',
         ],
     ],
 ];

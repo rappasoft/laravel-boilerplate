@@ -20,23 +20,15 @@ class LocaleMiddleware
      */
     public function handle($request, Closure $next)
     {
-        /*
-         * Locale is enabled and allowed to be changed
-         */
+        // Locale is enabled and allowed to be changed
         if (config('locale.status') && session()->has('locale') && array_key_exists(session()->get('locale'), config('locale.languages'))) {
-            /*
-                 * Set the Laravel locale
-                 */
+            // Set the Laravel locale
             app()->setLocale(session()->get('locale'));
 
-            /*
-             * setLocale for php. Enables ->formatLocalized() with localized values for dates
-             */
+            // setLocale for php. Enables ->formatLocalized() with localized values for dates
             setlocale(LC_TIME, config('locale.languages')[session()->get('locale')][1]);
 
-            /*
-             * setLocale to use Carbon source locales. Enables diffForHumans() localized
-             */
+            // setLocale to use Carbon source locales. Enables diffForHumans() localized
             Carbon::setLocale(config('locale.languages')[session()->get('locale')][0]);
 
             /*

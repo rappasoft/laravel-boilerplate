@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Navs Language Lines
@@ -14,23 +13,23 @@ return [
     */
 
     'general' => [
-        'home'   => 'Anasayfa',
+        'home' => 'Anasayfa',
         'logout' => 'Çıkış',
     ],
 
     'frontend' => [
         'contact' => 'Contact',
         'dashboard' => 'Kokpit',
-        'login'     => 'Giriş',
-        'macros'    => 'Makrolar',
-        'register'  => 'Kayıt',
+        'login' => 'Giriş',
+        'macros' => 'Makrolar',
+        'register' => 'Kayıt',
 
         'user' => [
-            'account'         => 'Hesabım',
-            'administration'  => 'Yönetim',
+            'account' => 'Hesabım',
+            'administration' => 'Yönetim',
             'change_password' => 'Parolayı Değiştir',
-            'my_information'  => 'Bilgilerim',
-            'profile'         => 'Profil',
+            'my_information' => 'Bilgilerim',
+            'profile' => 'Profil',
         ],
     ],
 ];

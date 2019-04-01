@@ -32,7 +32,7 @@ class DeleteRoleTest extends TestCase
 
         $response = $this->delete('/admin/auth/role/1');
 
-        $response->assertSessionHas(['flash_danger' =>__('exceptions.backend.access.roles.cant_delete_admin')]);
+        $response->assertSessionHas(['flash_danger' => __('exceptions.backend.access.roles.cant_delete_admin')]);
     }
 
     /** @test */

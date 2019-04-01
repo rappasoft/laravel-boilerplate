@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Strings Language Lines
@@ -118,7 +117,7 @@ return [
         ],
 
         'general' => [
-            'joined'        => 'Joined',
+            'joined' => 'Joined',
         ],
 
         'user' => [

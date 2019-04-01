@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Menus Language Lines
@@ -18,36 +17,36 @@ return [
             'title' => 'Access',
 
             'roles' => [
-                'all'        => 'All Roles',
-                'create'     => 'Create Role',
-                'edit'       => 'Edit Role',
+                'all' => 'All Roles',
+                'create' => 'Create Role',
+                'edit' => 'Edit Role',
                 'management' => 'Role Management',
-                'main'       => 'Roles',
+                'main' => 'Roles',
             ],
 
             'users' => [
-                'all'             => 'All Users',
+                'all' => 'All Users',
                 'change-password' => 'Change Password',
-                'create'          => 'Create User',
-                'deactivated'     => 'Deactivated Users',
-                'deleted'         => 'Deleted Users',
-                'edit'            => 'Edit User',
-                'main'            => 'Users',
-                'view'            => 'View User',
+                'create' => 'Create User',
+                'deactivated' => 'Deactivated Users',
+                'deleted' => 'Deleted Users',
+                'edit' => 'Edit User',
+                'main' => 'Users',
+                'view' => 'View User',
             ],
         ],
 
         'log-viewer' => [
-            'main'      => 'Log Viewer',
+            'main' => 'Log Viewer',
             'dashboard' => 'Dashboard',
-            'logs'      => 'Logs',
+            'logs' => 'Logs',
         ],
 
         'sidebar' => [
             'dashboard' => 'Dashboard',
-            'general'   => 'General',
-            'history'   => 'History',
-            'system'    => 'System',
+            'general' => 'General',
+            'history' => 'History',
+            'system' => 'System',
         ],
     ],
 
@@ -60,28 +59,28 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'ar'    => 'Arabic',
-            'zh'    => 'Chinese Simplified',
+            'ar' => 'Arabic',
+            'zh' => 'Chinese Simplified',
             'zh-TW' => 'Chinese Traditional',
-            'da'    => 'Danish',
-            'de'    => 'German',
-            'el'    => 'Greek',
-            'en'    => 'English',
-            'es'    => 'Spanish',
-            'fa'    => 'Persian',
-            'fr'    => 'French',
-            'he'    => 'Hebrew',
-            'id'    => 'Indonesian',
-            'it'    => 'Italian',
-            'ja'    => 'Japanese',
-            'nl'    => 'Dutch',
-            'no'    => 'Norwegian',
+            'da' => 'Danish',
+            'de' => 'German',
+            'el' => 'Greek',
+            'en' => 'English',
+            'es' => 'Spanish',
+            'fa' => 'Persian',
+            'fr' => 'French',
+            'he' => 'Hebrew',
+            'id' => 'Indonesian',
+            'it' => 'Italian',
+            'ja' => 'Japanese',
+            'nl' => 'Dutch',
+            'no' => 'Norwegian',
             'pt_BR' => 'Brazilian Portuguese',
-            'ru'    => 'Russian',
-            'sv'    => 'Swedish',
-            'th'    => 'Thai',
-            'tr'    => 'Turkish',
-            'uk'    => 'Ukrainian',
+            'ru' => 'Russian',
+            'sv' => 'Swedish',
+            'th' => 'Thai',
+            'tr' => 'Turkish',
+            'uk' => 'Ukrainian',
         ],
     ],
 ];

@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Navs Language Lines
@@ -14,23 +13,23 @@ return [
     */
 
     'general' => [
-        'home'   => 'Αρχική',
+        'home' => 'Αρχική',
         'logout' => 'Αποσύνδεση',
     ],
 
     'frontend' => [
         'contact' => 'Contact',
         'dashboard' => 'Dashboard',
-        'login'     => 'Σύνδεση',
-        'macros'    => 'Macros',
-        'register'  => 'Εγγραφή',
+        'login' => 'Σύνδεση',
+        'macros' => 'Macros',
+        'register' => 'Εγγραφή',
 
         'user' => [
-            'account'         => 'Ο λογαριασμός μου',
-            'administration'  => 'Διαχείριση',
+            'account' => 'Ο λογαριασμός μου',
+            'administration' => 'Διαχείριση',
             'change_password' => 'Αλλαγή κωδικού',
-            'my_information'  => 'Οι πληροφορίες μου',
-            'profile'         => 'Προφίλ',
+            'my_information' => 'Οι πληροφορίες μου',
+            'profile' => 'Προφίλ',
         ],
     ],
 ];

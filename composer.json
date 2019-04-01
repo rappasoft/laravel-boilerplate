@@ -108,12 +108,7 @@
             "phpunit --coverage-text"
         ],
         "format": [
-            "./vendor/bin/php-cs-fixer fix app/  --show-progress=estimating",
-            "./vendor/bin/php-cs-fixer fix config/  --show-progress=estimating",
-            "./vendor/bin/php-cs-fixer fix database/  --show-progress=estimating",
-            "./vendor/bin/php-cs-fixer fix resources/  --show-progress=estimating",
-            "./vendor/bin/php-cs-fixer fix routes/  --show-progress=estimating",
-            "./vendor/bin/php-cs-fixer fix tests/  --show-progress=estimating"
+            "php-cs-fixer fix --show-progress=estimating --config=.php_cs.dist"
         ],
         "self-diagnosis": [
             "@composer validate",

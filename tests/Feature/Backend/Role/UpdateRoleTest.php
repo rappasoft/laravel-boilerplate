@@ -51,7 +51,7 @@ class UpdateRoleTest extends TestCase
 
         $this->patch("/admin/auth/role/{$role->id}", ['name' => 'new name', 'permissions' => ['view backend']]);
 
-        $this->assertEquals('new name', $role->fresh()->name);
+        $this->assertSame('new name', $role->fresh()->name);
     }
 
     /** @test */

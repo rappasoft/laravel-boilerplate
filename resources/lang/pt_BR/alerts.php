@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Alert Language Lines
@@ -23,17 +22,17 @@ return [
 
         'users' => [
             'cant_resend_confirmation' => 'A aplicação está configurada para aprovar usuários manualmente.',
-            'confirmation_email'  => 'Uma nova confirmação de e-mail será enviada.',
-            'confirmed'           => 'O usuário foi confirmado com sucesso.',
-            'created'             => 'O usuário foi criado com sucesso.',
-            'deleted'             => 'O usuário foi excluído com sucesso.',
+            'confirmation_email' => 'Uma nova confirmação de e-mail será enviada.',
+            'confirmed' => 'O usuário foi confirmado com sucesso.',
+            'created' => 'O usuário foi criado com sucesso.',
+            'deleted' => 'O usuário foi excluído com sucesso.',
             'deleted_permanently' => 'O usuário foi excluído permanentemente.',
-            'restored'            => 'O usuário foi restaurado com sucesso.',
-            'session_cleared'     => 'Sessão do usuário foi removida com sucesso.',
-            'social_deleted'      => 'Mídia Social removida com sucesso.',
-            'unconfirmed'         => 'Confirmação do usuário foi removida com sucesso.',
-            'updated'             => 'O usuário foi atualizado com sucesso.',
-            'updated_password'    => 'A senha do usuário foi atualizada com sucesso.',
+            'restored' => 'O usuário foi restaurado com sucesso.',
+            'session_cleared' => 'Sessão do usuário foi removida com sucesso.',
+            'social_deleted' => 'Mídia Social removida com sucesso.',
+            'unconfirmed' => 'Confirmação do usuário foi removida com sucesso.',
+            'updated' => 'O usuário foi atualizado com sucesso.',
+            'updated_password' => 'A senha do usuário foi atualizada com sucesso.',
         ],
     ],
 

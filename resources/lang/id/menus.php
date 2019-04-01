@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Menus Language Lines
@@ -18,36 +17,36 @@ return [
             'title' => 'Manajemen Akses',
 
             'roles' => [
-                'all'        => 'Semua Peran',
-                'create'     => 'Buat Peran',
-                'edit'       => 'Edit Peran',
+                'all' => 'Semua Peran',
+                'create' => 'Buat Peran',
+                'edit' => 'Edit Peran',
                 'management' => 'Manajemen Peran',
-                'main'       => 'Peran',
+                'main' => 'Peran',
             ],
 
             'users' => [
-                'all'             => 'Semua Pengguna',
+                'all' => 'Semua Pengguna',
                 'change-password' => 'Ubah Sandi',
-                'create'          => 'Buat Pengguna',
-                'deactivated'     => 'Pengguna Dinonaktifkan',
-                'deleted'         => 'Pengguna Dihapus',
-                'edit'            => 'Edit Pengguna',
-                'main'            => 'Pengguna',
-                'view'            => 'Lihat Pengguna',
+                'create' => 'Buat Pengguna',
+                'deactivated' => 'Pengguna Dinonaktifkan',
+                'deleted' => 'Pengguna Dihapus',
+                'edit' => 'Edit Pengguna',
+                'main' => 'Pengguna',
+                'view' => 'Lihat Pengguna',
             ],
         ],
 
         'log-viewer' => [
-            'main'      => 'Pengamat Catatan',
+            'main' => 'Pengamat Catatan',
             'dashboard' => 'Dasbor',
-            'logs'      => 'Catatan',
+            'logs' => 'Catatan',
         ],
 
         'sidebar' => [
             'dashboard' => 'Dasbor',
-            'general'   => 'Umum',
-            'history'   => 'History',
-            'system'    => 'Sistem',
+            'general' => 'Umum',
+            'history' => 'History',
+            'system' => 'Sistem',
         ],
     ],
 
@@ -60,28 +59,28 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'ar'    => '(Arabic)',
-            'zh'    => '(Chinese Simplified)',
+            'ar' => '(Arabic)',
+            'zh' => '(Chinese Simplified)',
             'zh-TW' => '(Chinese Traditional)',
-            'da'    => '(Danish)',
-            'de'    => 'Jerman (German)',
-            'el'    => 'Yunani (Greek)',
-            'en'    => 'Inggris (English)',
-            'es'    => 'Spanyol (Spanish)',
-            'fa'    => 'Persia (Persian)',
-            'fr'    => 'Perancis (French)',
-            'he'    => 'Ibrani (Hebrew)',
-            'id'    => 'Bahasa Indonesia (Indonesian)',
-            'it'    => 'Italia (Italian)',
-            'ja'    => '(Japanese)',
-            'nl'    => 'Belanda (Dutch)',
-            'no'    => 'Norwegia (Norwegian)',
+            'da' => '(Danish)',
+            'de' => 'Jerman (German)',
+            'el' => 'Yunani (Greek)',
+            'en' => 'Inggris (English)',
+            'es' => 'Spanyol (Spanish)',
+            'fa' => 'Persia (Persian)',
+            'fr' => 'Perancis (French)',
+            'he' => 'Ibrani (Hebrew)',
+            'id' => 'Bahasa Indonesia (Indonesian)',
+            'it' => 'Italia (Italian)',
+            'ja' => '(Japanese)',
+            'nl' => 'Belanda (Dutch)',
+            'no' => 'Norwegia (Norwegian)',
             'pt_BR' => 'Bahasa Portugis Brasil (Brazilian Portuguese)',
-            'ru'    => 'Rusia (Russian)',
-            'sv'    => 'Swedia (Swedish)',
-            'th'    => 'Bahasa (Thai)',
-            'tr'    => '(Turkish)',
-            'uk'    => '(Ukrainian)',
+            'ru' => 'Rusia (Russian)',
+            'sv' => 'Swedia (Swedish)',
+            'th' => 'Bahasa (Thai)',
+            'tr' => '(Turkish)',
+            'uk' => '(Ukrainian)',
         ],
     ],
 ];

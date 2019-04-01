@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Labels Language Lines
@@ -14,93 +13,93 @@ return [
     */
 
     'general' => [
-        'all'     => 'همه',
-        'yes'     => 'آری',
-        'no'      => 'خیر',
+        'all' => 'همه',
+        'yes' => 'آری',
+        'no' => 'خیر',
         'copyright' => 'کپی‌رایت',
-        'custom'  => 'سفارشی',
+        'custom' => 'سفارشی',
         'actions' => 'اعمال',
-        'active'  => 'فعال',
+        'active' => 'فعال',
         'buttons' => [
-            'save'   => 'ثبت',
+            'save' => 'ثبت',
             'update' => 'به‌روز رسانی',
         ],
-        'hide'              => 'مخفی',
-        'inactive'          => 'غیرفعال',
-        'none'              => 'هیچ',
-        'show'              => 'نمایش',
+        'hide' => 'مخفی',
+        'inactive' => 'غیرفعال',
+        'none' => 'هیچ',
+        'show' => 'نمایش',
         'toggle_navigation' => 'تغییر ناوبری',
     ],
 
     'backend' => [
         'access' => [
             'roles' => [
-                'create'     => 'ایجاد نقش',
-                'edit'       => 'ویرایش نقش',
+                'create' => 'ایجاد نقش',
+                'edit' => 'ویرایش نقش',
                 'management' => 'مدیریت نقش',
 
                 'table' => [
                     'number_of_users' => 'تعداد کاربران',
-                    'permissions'     => 'مجوزها',
-                    'role'            => 'نقش',
-                    'sort'            => 'مرتب‌سازی',
-                    'total'           => 'تعداد نقش|تعداد نقش‌ها',
+                    'permissions' => 'مجوزها',
+                    'role' => 'نقش',
+                    'sort' => 'مرتب‌سازی',
+                    'total' => 'تعداد نقش|تعداد نقش‌ها',
                 ],
             ],
 
             'users' => [
-                'active'              => 'کاربران فعال',
-                'all_permissions'     => 'همه‌ی مجوزها',
-                'change_password'     => 'تغییر گذرواژه',
+                'active' => 'کاربران فعال',
+                'all_permissions' => 'همه‌ی مجوزها',
+                'change_password' => 'تغییر گذرواژه',
                 'change_password_for' => 'تغییر گذرواژه‌ی :user',
-                'create'              => 'ایجاد کاربر',
-                'deactivated'         => 'کاربران غیر فعال',
-                'deleted'             => 'کاربران حذف‌شده',
-                'edit'                => 'ویرایش کاربر',
-                'management'          => 'مدیریت کاربر',
-                'no_permissions'      => 'بدون مجوز',
-                'no_roles'            => 'بدون نقش',
-                'permissions'         => 'مجوزها',
+                'create' => 'ایجاد کاربر',
+                'deactivated' => 'کاربران غیر فعال',
+                'deleted' => 'کاربران حذف‌شده',
+                'edit' => 'ویرایش کاربر',
+                'management' => 'مدیریت کاربر',
+                'no_permissions' => 'بدون مجوز',
+                'no_roles' => 'بدون نقش',
+                'permissions' => 'مجوزها',
 
                 'table' => [
-                    'confirmed'      => 'تاییدشده',
-                    'created'        => 'تاریخ ایجاد',
-                    'email'          => 'رایانامه',
-                    'id'             => 'شناسه',
-                    'last_updated'   => 'آخرین تغییر',
-                    'name'           => 'نام',
-                    'first_name'     => 'نام',
-                    'last_name'      => 'نام خانوادگی',
+                    'confirmed' => 'تاییدشده',
+                    'created' => 'تاریخ ایجاد',
+                    'email' => 'رایانامه',
+                    'id' => 'شناسه',
+                    'last_updated' => 'آخرین تغییر',
+                    'name' => 'نام',
+                    'first_name' => 'نام',
+                    'last_name' => 'نام خانوادگی',
                     'no_deactivated' => 'هیچ کاربر غیرفعالی نیست',
-                    'no_deleted'     => 'هیچ کاربری حذف نشده',
+                    'no_deleted' => 'هیچ کاربری حذف نشده',
                     'other_permissions' => 'دیگر مجوزها',
                     'permissions' => 'مجوزها',
-                    'roles'          => 'نقش‌ها',
+                    'roles' => 'نقش‌ها',
                     'social' => 'شبکه‌اجتماعی',
-                    'total'          => 'تعداد کاربر|تعداد کاربران',
+                    'total' => 'تعداد کاربر|تعداد کاربران',
                 ],
 
                 'tabs' => [
                     'titles' => [
                         'overview' => 'دید کلی',
-                        'history'  => 'تاریخچه',
+                        'history' => 'تاریخچه',
                     ],
 
                     'content' => [
                         'overview' => [
-                            'avatar'       => 'تصویر',
-                            'confirmed'    => 'تاییدشده',
-                            'created_at'   => 'تاریخ ایجاد',
-                            'deleted_at'   => 'تاریخ حذف',
-                            'email'        => 'ایمیل',
+                            'avatar' => 'تصویر',
+                            'confirmed' => 'تاییدشده',
+                            'created_at' => 'تاریخ ایجاد',
+                            'deleted_at' => 'تاریخ حذف',
+                            'email' => 'ایمیل',
                             'last_login_at' => 'Last Login At',
                             'last_login_ip' => 'Last Login IP',
                             'last_updated' => 'آخرین تغییر',
-                            'name'         => 'نام',
-                            'first_name'   => 'نام',
-                            'last_name'    => 'نام خانوادگی',
-                            'status'       => 'وضعیت',
-                            'timezone'     => 'Timezone',
+                            'name' => 'نام',
+                            'first_name' => 'نام',
+                            'last_name' => 'نام خانوادگی',
+                            'status' => 'وضعیت',
+                            'timezone' => 'Timezone',
                         ],
                     ],
                 ],
@@ -111,14 +110,13 @@ return [
     ],
 
     'frontend' => [
-
         'auth' => [
-            'login_box_title'    => 'ورود',
-            'login_button'       => 'ورود',
-            'login_with'         => 'ورود با :social_media',
+            'login_box_title' => 'ورود',
+            'login_button' => 'ورود',
+            'login_with' => 'ورود با :social_media',
             'register_box_title' => 'ثبت نام',
-            'register_button'    => 'ثبت نام',
-            'remember_me'        => 'مرا به خاطر بسپار',
+            'register_button' => 'ثبت نام',
+            'remember_me' => 'مرا به خاطر بسپار',
         ],
 
         'contact' => [
@@ -128,10 +126,10 @@ return [
 
         'passwords' => [
             'expired_password_box_title' => 'گذرواژه شما منقضی شده است.',
-            'forgot_password'                 => 'گذرواژه‌ی خود را فراموش کرده‌اید؟',
-            'reset_password_box_title'        => 'بازنشانی گذرواژه',
-            'reset_password_button'           => 'بازنشانی گذرواژه',
-            'update_password_button'           => 'به‌روز رسانی گذرواژه',
+            'forgot_password' => 'گذرواژه‌ی خود را فراموش کرده‌اید؟',
+            'reset_password_box_title' => 'بازنشانی گذرواژه',
+            'reset_password_button' => 'بازنشانی گذرواژه',
+            'update_password_button' => 'به‌روز رسانی گذرواژه',
             'send_password_reset_link_button' => 'ارسال پیوند بازنشانی گذرواژه',
         ],
 
@@ -141,17 +139,16 @@ return [
             ],
 
             'profile' => [
-                'avatar'             => 'تصویر',
-                'created_at'         => 'تاریخ ایجاد',
-                'edit_information'   => 'ویرایش اطلاعات',
-                'email'              => 'ایمیل',
-                'last_updated'       => 'آخرین تغییر',
-                'name'               => 'نام',
-                'first_name'         => 'نام',
-                'last_name'          => 'نام خانوادگی',
+                'avatar' => 'تصویر',
+                'created_at' => 'تاریخ ایجاد',
+                'edit_information' => 'ویرایش اطلاعات',
+                'email' => 'ایمیل',
+                'last_updated' => 'آخرین تغییر',
+                'name' => 'نام',
+                'first_name' => 'نام',
+                'last_name' => 'نام خانوادگی',
                 'update_information' => 'به‌روز رسانی اطلاعات',
             ],
         ],
-
     ],
 ];

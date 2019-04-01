@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
@@ -13,13 +12,13 @@ return [
     |
     */
 
-    'failed'        => 'البيانات المدخلة لا تتطابق مع قاعدة بيناتنا.',
+    'failed' => 'البيانات المدخلة لا تتطابق مع قاعدة بيناتنا.',
     'general_error' => 'ليس لديك صلاحية الوصول إلى هذا.',
     'password_rules' => 'Your password must be more than 8 characters long, should contain at least 1 uppercase, 1 lowercase and 1 number.',
     'password_used' => 'You can not set a password that you have previously used.',
-    'socialite'     => [
+    'socialite' => [
         'unacceptable' => ':provider ليس نوع تسجيل دخول صحيح.',
     ],
     'throttle' => 'ثانية من محاولات تسجيل الدخول الفاشلة، برجاء المحاولة مرة أخرى بعد :seconds seconds.',
-    'unknown'  => 'لقد حدث خطأ غير معروف.',
+    'unknown' => 'لقد حدث خطأ غير معروف.',
 ];

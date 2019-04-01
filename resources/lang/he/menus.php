@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Menus Language Lines
@@ -18,36 +17,36 @@ return [
             'title' => 'ניהול גישה',
 
             'roles' => [
-                'all'        => 'כל התפקידים',
-                'create'     => 'יצירת תפקיד',
-                'edit'       => 'עריכת תפקיד',
+                'all' => 'כל התפקידים',
+                'create' => 'יצירת תפקיד',
+                'edit' => 'עריכת תפקיד',
                 'management' => 'ניהול תפקידים',
-                'main'       => 'תפקידים',
+                'main' => 'תפקידים',
             ],
 
             'users' => [
-                'all'             => 'כל המשתמשים',
+                'all' => 'כל המשתמשים',
                 'change-password' => 'עדכון סיסמה',
-                'create'          => 'יצירת משתמש',
-                'deactivated'     => 'משתמשים לא פעילים',
-                'deleted'         => 'משתמשים שנמחקו',
-                'edit'            => 'עריכת משתמשים',
-                'main'            => 'משתמשים',
-                'view'            => 'הצג משתמש',
+                'create' => 'יצירת משתמש',
+                'deactivated' => 'משתמשים לא פעילים',
+                'deleted' => 'משתמשים שנמחקו',
+                'edit' => 'עריכת משתמשים',
+                'main' => 'משתמשים',
+                'view' => 'הצג משתמש',
             ],
         ],
 
         'log-viewer' => [
-            'main'      => 'קורא דו&quot;חות',
+            'main' => 'קורא דו&quot;חות',
             'dashboard' => 'לוח בקרה',
-            'logs'      => 'דו&quot;חות',
+            'logs' => 'דו&quot;חות',
         ],
 
         'sidebar' => [
             'dashboard' => 'לוח בקרה',
-            'general'   => 'כללי',
-            'history'   => 'History',
-            'system'    => 'מערכת',
+            'general' => 'כללי',
+            'history' => 'History',
+            'system' => 'מערכת',
         ],
     ],
 
@@ -60,28 +59,28 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'ar'    => 'ערבית (Arabic)',
-            'zh'    => 'סינית מופשטת (Chinese Simplified)',
+            'ar' => 'ערבית (Arabic)',
+            'zh' => 'סינית מופשטת (Chinese Simplified)',
             'zh-TW' => 'סינית מסורתית (Chinese Traditional)',
-            'da'    => 'דנית (Danish)',
-            'de'    => 'גרמנית (German)',
-            'el'    => 'יוונית (Greek)',
-            'en'    => 'אנגלית (English)',
-            'es'    => 'ספרדית (Spanish)',
-            'fa'    => 'פַּרסִית (Persian)',
-            'fr'    => 'צרפתית (French)',
-            'he'    => 'עברית (Hebrew)',
-            'id'    => 'אינדונזית (Indonesian)',
-            'it'    => 'איטלקית (Italian)',
-            'ja'    => 'יפנית (Japanese)',
-            'nl'    => 'הולנדית (Dutch)',
-            'no'    => 'נורווגית (Norwegian)',
+            'da' => 'דנית (Danish)',
+            'de' => 'גרמנית (German)',
+            'el' => 'יוונית (Greek)',
+            'en' => 'אנגלית (English)',
+            'es' => 'ספרדית (Spanish)',
+            'fa' => 'פַּרסִית (Persian)',
+            'fr' => 'צרפתית (French)',
+            'he' => 'עברית (Hebrew)',
+            'id' => 'אינדונזית (Indonesian)',
+            'it' => 'איטלקית (Italian)',
+            'ja' => 'יפנית (Japanese)',
+            'nl' => 'הולנדית (Dutch)',
+            'no' => 'נורווגית (Norwegian)',
             'pt_BR' => 'פורטוגזית ברזילאית (Brazilian Portuguese)',
-            'ru'    => 'רוסית (Russian)',
-            'sv'    => 'שוודית (Swedish)',
-            'th'    => 'תאית (Thai)',
-            'tr'    => 'תורכית (Turkish)',
-            'uk'    => '(Ukrainian)',
+            'ru' => 'רוסית (Russian)',
+            'sv' => 'שוודית (Swedish)',
+            'th' => 'תאית (Thai)',
+            'tr' => 'תורכית (Turkish)',
+            'uk' => '(Ukrainian)',
         ],
     ],
 ];

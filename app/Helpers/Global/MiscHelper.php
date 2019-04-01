@@ -1,7 +1,6 @@
 <?php
 
 if (! function_exists('camelcase_to_word')) {
-
     /**
      * @param $str
      *

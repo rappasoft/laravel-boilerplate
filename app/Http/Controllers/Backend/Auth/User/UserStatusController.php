@@ -52,8 +52,8 @@ class UserStatusController extends Controller
      * @param User              $user
      * @param                   $status
      *
-     * @return mixed
      * @throws \App\Exceptions\GeneralException
+     * @return mixed
      */
     public function mark(ManageUserRequest $request, User $user, $status)
     {
@@ -70,9 +70,9 @@ class UserStatusController extends Controller
      * @param ManageUserRequest $request
      * @param User              $deletedUser
      *
-     * @return mixed
      * @throws \App\Exceptions\GeneralException
      * @throws \Throwable
+     * @return mixed
      */
     public function delete(ManageUserRequest $request, User $deletedUser)
     {
@@ -85,8 +85,8 @@ class UserStatusController extends Controller
      * @param ManageUserRequest $request
      * @param User              $deletedUser
      *
-     * @return mixed
      * @throws \App\Exceptions\GeneralException
+     * @return mixed
      */
     public function restore(ManageUserRequest $request, User $deletedUser)
     {

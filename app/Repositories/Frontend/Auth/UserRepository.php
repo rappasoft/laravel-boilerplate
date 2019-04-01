@@ -46,8 +46,8 @@ class UserRepository extends BaseRepository
     /**
      * @param $uuid
      *
-     * @return mixed
      * @throws GeneralException
+     * @return mixed
      */
     public function findByUuid($uuid)
     {
@@ -65,8 +65,8 @@ class UserRepository extends BaseRepository
     /**
      * @param $code
      *
-     * @return mixed
      * @throws GeneralException
+     * @return mixed
      */
     public function findByConfirmationCode($code)
     {
@@ -84,28 +84,26 @@ class UserRepository extends BaseRepository
     /**
      * @param array $data
      *
-     * @return \Illuminate\Database\Eloquent\Model|mixed
      * @throws \Exception
      * @throws \Throwable
+     * @return \Illuminate\Database\Eloquent\Model|mixed
      */
     public function create(array $data)
     {
         return DB::transaction(function () use ($data) {
             $user = parent::create([
-                'first_name'        => $data['first_name'],
-                'last_name'         => $data['last_name'],
-                'email'             => $data['email'],
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],
+                'email' => $data['email'],
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
-                'active'            => true,
-                'password'          => $data['password'],
-                                    // If users require approval or needs to confirm email
-                'confirmed'         => ! (config('access.users.requires_approval') || config('access.users.confirm_email')),
+                'active' => true,
+                'password' => $data['password'],
+                // If users require approval or needs to confirm email
+                'confirmed' => ! (config('access.users.requires_approval') || config('access.users.confirm_email')),
             ]);
 
             if ($user) {
-                /*
-                 * Add the default site role to the new user
-                 */
+                // Add the default site role to the new user
                 $user->assignRole(config('access.users.default_role'));
             }
 
@@ -121,9 +119,7 @@ class UserRepository extends BaseRepository
                 $user->notify(new UserNeedsConfirmation($user->confirmation_code));
             }
 
-            /*
-             * Return the user object
-             */
+            // Return the user object
             return $user;
         });
     }
@@ -133,8 +129,8 @@ class UserRepository extends BaseRepository
      * @param array $input
      * @param bool|UploadedFile  $image
      *
-     * @return array|bool
      * @throws GeneralException
+     * @return array|bool
      */
     public function update($id, array $input, $image = false)
     {
@@ -196,8 +192,8 @@ class UserRepository extends BaseRepository
      * @param      $input
      * @param bool $expired
      *
-     * @return bool
      * @throws GeneralException
+     * @return bool
      */
     public function updatePassword($input, $expired = false)
     {
@@ -217,8 +213,8 @@ class UserRepository extends BaseRepository
     /**
      * @param $code
      *
-     * @return bool
      * @throws GeneralException
+     * @return bool
      */
     public function confirm($code)
     {
@@ -243,8 +239,8 @@ class UserRepository extends BaseRepository
      * @param $data
      * @param $provider
      *
-     * @return mixed
      * @throws GeneralException
+     * @return mixed
      */
     public function findOrCreateProvider($data, $provider)
     {
@@ -269,8 +265,8 @@ class UserRepository extends BaseRepository
             $nameParts = $this->getNameParts($data->getName());
 
             $user = parent::create([
-                'first_name'  => $nameParts['first_name'],
-                'last_name'  => $nameParts['last_name'],
+                'first_name' => $nameParts['first_name'],
+                'last_name' => $nameParts['last_name'],
                 'email' => $user_email,
                 'active' => true,
                 'confirmed' => true,
@@ -279,9 +275,7 @@ class UserRepository extends BaseRepository
             ]);
 
             if ($user) {
-                /*
-                 * Add the default site role to the new user
-                 */
+                // Add the default site role to the new user
                 $user->assignRole(config('access.users.default_role'));
             }
 
@@ -292,16 +286,16 @@ class UserRepository extends BaseRepository
         if (! $user->hasProvider($provider)) {
             // Gather the provider data for saving and associate it with the user
             $user->providers()->save(new SocialAccount([
-                'provider'    => $provider,
+                'provider' => $provider,
                 'provider_id' => $data->id,
-                'token'       => $data->token,
-                'avatar'      => $data->avatar,
+                'token' => $data->token,
+                'avatar' => $data->avatar,
             ]));
         } else {
             // Update the users information, token and avatar can be updated.
             $user->providers()->update([
-                'token'       => $data->token,
-                'avatar'      => $data->avatar,
+                'token' => $data->token,
+                'avatar' => $data->avatar,
             ]);
 
             $user->avatar_type = $provider;

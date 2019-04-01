@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Menus Language Lines
@@ -18,36 +17,36 @@ return [
             'title' => 'Adgangsadministration',
 
             'roles' => [
-                'all'        => 'Alle Roller',
-                'create'     => 'Oppret Rolle',
-                'edit'       => 'Rediger Rolle',
+                'all' => 'Alle Roller',
+                'create' => 'Oppret Rolle',
+                'edit' => 'Rediger Rolle',
                 'management' => 'Rolleadministration',
-                'main'       => 'Roller',
+                'main' => 'Roller',
             ],
 
             'users' => [
-                'all'             => 'Alle Brukere',
+                'all' => 'Alle Brukere',
                 'change-password' => 'Endre Passord',
-                'create'          => 'Oppret Bruker',
-                'deactivated'     => 'Deaktiverede Brukere',
-                'deleted'         => 'Slett Bruker',
-                'edit'            => 'Rediger Bruker',
-                'main'            => 'Brukere',
-                'view'            => 'Se på bruker',
+                'create' => 'Oppret Bruker',
+                'deactivated' => 'Deaktiverede Brukere',
+                'deleted' => 'Slett Bruker',
+                'edit' => 'Rediger Bruker',
+                'main' => 'Brukere',
+                'view' => 'Se på bruker',
             ],
         ],
 
         'log-viewer' => [
-            'main'      => 'Hovedside',
+            'main' => 'Hovedside',
             'dashboard' => 'Dashboard',
-            'logs'      => 'Logger',
+            'logs' => 'Logger',
         ],
 
         'sidebar' => [
             'dashboard' => 'Dashboard',
-            'general'   => 'Generelt',
-            'history'   => 'History',
-            'system'    => 'System',
+            'general' => 'Generelt',
+            'history' => 'History',
+            'system' => 'System',
         ],
     ],
 
@@ -60,28 +59,28 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'ar'    => 'Arabisk (Arabic)',
-            'zh'    => '(Chinese Simplified)',
+            'ar' => 'Arabisk (Arabic)',
+            'zh' => '(Chinese Simplified)',
             'zh-TW' => '(Chinese Traditional)',
-            'da'    => 'Dansk (Danish)',
-            'de'    => 'Tysk (German)',
-            'el'    => '(Greek)',
-            'en'    => 'Engelsk (English)',
-            'es'    => 'Spansk (Spanish)',
-            'fa'    => 'Persian (Persian)',
-            'fr'    => 'Fransk (French)',
-            'he'    => 'Hebraisk (Hebrew)',
-            'id'    => 'Indonesisk (Indonesian)',
-            'it'    => 'Italiensk (Italian)',
-            'ja'    => '(Japanese)',
-            'nl'    => 'Hollandsk (Dutch)',
-            'no'    => 'Norsk (Norwegian)',
+            'da' => 'Dansk (Danish)',
+            'de' => 'Tysk (German)',
+            'el' => '(Greek)',
+            'en' => 'Engelsk (English)',
+            'es' => 'Spansk (Spanish)',
+            'fa' => 'Persian (Persian)',
+            'fr' => 'Fransk (French)',
+            'he' => 'Hebraisk (Hebrew)',
+            'id' => 'Indonesisk (Indonesian)',
+            'it' => 'Italiensk (Italian)',
+            'ja' => '(Japanese)',
+            'nl' => 'Hollandsk (Dutch)',
+            'no' => 'Norsk (Norwegian)',
             'pt_BR' => 'Brasiliansk portugisisk (Brazilian Portuguese)',
-            'ru'    => 'Russisk (Russian)',
-            'sv'    => 'Svensk (Swedish)',
-            'th'    => '(Thai)',
-            'tr'    => '(Turkish)',
-            'uk'    => '(Ukrainian)',
+            'ru' => 'Russisk (Russian)',
+            'sv' => 'Svensk (Swedish)',
+            'th' => '(Thai)',
+            'tr' => '(Turkish)',
+            'uk' => '(Ukrainian)',
         ],
     ],
 ];

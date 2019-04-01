@@ -42,17 +42,17 @@ class CreateUserTest extends TestCase
         factory(User::class)->create(['email' => 'john@example.com']);
 
         $response = $this->post('/admin/auth/user', [
-                'first_name' => 'John',
-                'last_name' => 'Doe',
-                'email' => 'john@example.com',
-                'password' => 'password',
-                'password_confirmation' => 'password',
-                'active' => '1',
-                'confirmed' => '0',
-                'timezone' => 'UTC',
-                'confirmation_email' => '1',
-                'roles' => [1 => 'executive', 2 => 'user'],
-            ]);
+            'first_name' => 'John',
+            'last_name' => 'Doe',
+            'email' => 'john@example.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+            'active' => '1',
+            'confirmed' => '0',
+            'timezone' => 'UTC',
+            'confirmation_email' => '1',
+            'roles' => [1 => 'executive', 2 => 'user'],
+        ]);
 
         $response->assertSessionHasErrors('email');
     }

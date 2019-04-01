@@ -93,9 +93,9 @@ class UserRepository extends BaseRepository
     /**
      * @param array $data
      *
-     * @return User
      * @throws \Exception
      * @throws \Throwable
+     * @return User
      */
     public function create(array $data) : User
     {
@@ -143,10 +143,10 @@ class UserRepository extends BaseRepository
      * @param User  $user
      * @param array $data
      *
-     * @return User
      * @throws GeneralException
      * @throws \Exception
      * @throws \Throwable
+     * @return User
      */
     public function update(User $user, array $data) : User
     {
@@ -180,8 +180,8 @@ class UserRepository extends BaseRepository
      * @param User $user
      * @param      $input
      *
-     * @return User
      * @throws GeneralException
+     * @return User
      */
     public function updatePassword(User $user, $input) : User
     {
@@ -198,8 +198,8 @@ class UserRepository extends BaseRepository
      * @param User $user
      * @param      $status
      *
-     * @return User
      * @throws GeneralException
+     * @return User
      */
     public function mark(User $user, $status) : User
     {
@@ -213,7 +213,6 @@ class UserRepository extends BaseRepository
             case 0:
                 event(new UserDeactivated($user));
             break;
-
             case 1:
                 event(new UserReactivated($user));
             break;
@@ -229,8 +228,8 @@ class UserRepository extends BaseRepository
     /**
      * @param User $user
      *
-     * @return User
      * @throws GeneralException
+     * @return User
      */
     public function confirm(User $user) : User
     {
@@ -258,8 +257,8 @@ class UserRepository extends BaseRepository
     /**
      * @param User $user
      *
-     * @return User
      * @throws GeneralException
+     * @return User
      */
     public function unconfirm(User $user) : User
     {
@@ -292,10 +291,10 @@ class UserRepository extends BaseRepository
     /**
      * @param User $user
      *
-     * @return User
      * @throws GeneralException
      * @throws \Exception
      * @throws \Throwable
+     * @return User
      */
     public function forceDelete(User $user) : User
     {
@@ -321,8 +320,8 @@ class UserRepository extends BaseRepository
     /**
      * @param User $user
      *
-     * @return User
      * @throws GeneralException
+     * @return User
      */
     public function restore(User $user) : User
     {

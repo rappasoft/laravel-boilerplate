@@ -32,7 +32,7 @@ class ResetPasswordRequest extends FormRequest
         return [
             'token' => ['required'],
             'email' => ['required', 'email'],
-            'password'     => [
+            'password' => [
                 'required',
                 'confirmed',
                 new ChangePassword(),

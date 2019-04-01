@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Buttons Language Lines
@@ -16,16 +15,16 @@ return [
     'backend' => [
         'access' => [
             'users' => [
-                'activate'           => 'Aktivera',
-                'change_password'    => 'Byt lösenord',
-                'clear_session'         => 'Clear Session',
-                'confirm'             => 'Confirm',
-                'deactivate'         => 'Inaktivera',
-                'resend_email'       => 'Skicka bekräftelsemail igen.',
+                'activate' => 'Aktivera',
+                'change_password' => 'Byt lösenord',
+                'clear_session' => 'Clear Session',
+                'confirm' => 'Confirm',
+                'deactivate' => 'Inaktivera',
+                'resend_email' => 'Skicka bekräftelsemail igen.',
                 'delete_permanently' => 'Radera permanent',
-                'login_as'           => 'Login As :user',
-                'restore_user'       => 'Återställ',
-                'unconfirm'             => 'Un-confirm',
+                'login_as' => 'Login As :user',
+                'restore_user' => 'Återställ',
+                'unconfirm' => 'Un-confirm',
                 'unlink' => 'Unlink',
             ],
         ],
@@ -34,7 +33,7 @@ return [
     'emails' => [
         'auth' => [
             'confirm_account' => 'Bekräfta konto',
-            'reset_password'  => 'Återställ lösenord',
+            'reset_password' => 'Återställ lösenord',
         ],
     ],
 
@@ -45,9 +44,9 @@ return [
         'crud' => [
             'create' => 'Skapa',
             'delete' => 'Radera',
-            'edit'   => 'Redigera',
+            'edit' => 'Redigera',
             'update' => 'Uppdatera',
-            'view'   => 'View',
+            'view' => 'View',
         ],
 
         'save' => 'Spara',

@@ -3,7 +3,6 @@
 use Illuminate\Support\Str;
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Default Cache Store
@@ -32,7 +31,6 @@ return [
     */
 
     'stores' => [
-
         'apc' => [
             'driver' => 'apc',
         ],
@@ -83,7 +81,6 @@ return [
             'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
             'table' => env('DYNAMODB_CACHE_TABLE', 'cache'),
         ],
-
     ],
 
     /*
@@ -98,5 +95,4 @@ return [
     */
 
     'prefix' => env('CACHE_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_cache'),
-
 ];
