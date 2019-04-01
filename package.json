@@ -34,7 +34,6 @@
         "resolve-url-loader": "^2.3.2",
         "sass": "^1.17.3",
         "sass-loader": "^7.1.0",
-        "simple-line-icons": "^2.4.1",
         "sweetalert2": "^8.7.0",
         "vue": "^2.6.10",
         "vue-jest": "^3.0.4",

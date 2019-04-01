@@ -12,7 +12,7 @@
 
     <ul class="nav navbar-nav d-md-down-none">
         <li class="nav-item px-3">
-            <a class="nav-link" href="{{ route('frontend.index') }}"><i class="icon-home"></i></a>
+            <a class="nav-link" href="{{ route('frontend.index') }}"><i class="fas fa-home"></i></a>
         </li>
 
         <li class="nav-item px-3">
@@ -33,17 +33,17 @@
     <ul class="nav navbar-nav ml-auto">
         <li class="nav-item d-md-down-none">
             <a class="nav-link" href="#">
-                <i class="icon-bell"></i>
+                <i class="fas fa-bell"></i>
             </a>
         </li>
         <li class="nav-item d-md-down-none">
             <a class="nav-link" href="#">
-                <i class="icon-list"></i>
+                <i class="fas fa-list"></i>
             </a>
         </li>
         <li class="nav-item d-md-down-none">
             <a class="nav-link" href="#">
-                <i class="icon-location-pin"></i>
+                <i class="fas fa-map-marker-alt"></i>
             </a>
         </li>
         <li class="nav-item dropdown">
