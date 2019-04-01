@@ -17,8 +17,8 @@ class UserAccessController extends Controller
      * @param ManageUserRequest $request
      * @param User              $user
      *
-     * @return \Illuminate\Http\RedirectResponse
      * @throws GeneralException
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function loginAs(ManageUserRequest $request, User $user)
     {

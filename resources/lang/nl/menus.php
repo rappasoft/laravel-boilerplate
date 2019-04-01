@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Menus Language Lines
@@ -18,36 +17,36 @@ return [
             'title' => 'Toegangs Beheer',
 
             'roles' => [
-                'all'        => 'Alle Rollen',
-                'create'     => 'Creëer Rol',
-                'edit'       => 'Rol aanpassen',
+                'all' => 'Alle Rollen',
+                'create' => 'Creëer Rol',
+                'edit' => 'Rol aanpassen',
                 'management' => 'Rol Beheer',
-                'main'       => 'Rollen',
+                'main' => 'Rollen',
             ],
 
             'users' => [
-                'all'             => 'Alle Gebruikers',
+                'all' => 'Alle Gebruikers',
                 'change-password' => 'Wachtwoord veranderen',
-                'create'          => 'Gebruiker aanmaken',
-                'deactivated'     => 'Gedeactiveerde Gebruikers',
-                'deleted'         => 'Verwijderde Gebruikers',
-                'edit'            => 'Gebruiker aanpassen',
-                'main'            => 'Gebruikers',
-                'view'            => 'Bekijk Gebruiker',
+                'create' => 'Gebruiker aanmaken',
+                'deactivated' => 'Gedeactiveerde Gebruikers',
+                'deleted' => 'Verwijderde Gebruikers',
+                'edit' => 'Gebruiker aanpassen',
+                'main' => 'Gebruikers',
+                'view' => 'Bekijk Gebruiker',
             ],
         ],
 
         'log-viewer' => [
-            'main'      => 'Log Viewer',
+            'main' => 'Log Viewer',
             'dashboard' => 'Dashboard',
-            'logs'      => 'Logs',
+            'logs' => 'Logs',
         ],
 
         'sidebar' => [
             'dashboard' => 'Dashboard',
-            'general'   => 'Algemeen',
-            'history'   => 'History',
-            'system'    => 'System',
+            'general' => 'Algemeen',
+            'history' => 'History',
+            'system' => 'System',
         ],
     ],
 
@@ -60,28 +59,28 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'ar'    => 'Arabisch (Arabic)',
-            'zh'    => '(Chinese Simplified)',
+            'ar' => 'Arabisch (Arabic)',
+            'zh' => '(Chinese Simplified)',
             'zh-TW' => '(Chinese Traditional)',
-            'da'    => 'Deens (Danish)',
-            'de'    => 'Duits (German)',
-            'el'    => '(Greek)',
-            'en'    => 'Engels (English)',
-            'es'    => 'Spaans (Spanish)',
-            'fa'    => 'Perzisch (Persian)',
-            'fr'    => 'Frans (French)',
-            'he'    => 'Hebreeuws (Hebrew)',
-            'id'    => 'Indonesisch (Indonesian)',
-            'it'    => 'Italiaans (Italian)',
-            'ja'    => '(Japanese)',
-            'nl'    => 'Nederlands (Dutch)',
-            'no'    => 'Noors (Norwegin)',
+            'da' => 'Deens (Danish)',
+            'de' => 'Duits (German)',
+            'el' => '(Greek)',
+            'en' => 'Engels (English)',
+            'es' => 'Spaans (Spanish)',
+            'fa' => 'Perzisch (Persian)',
+            'fr' => 'Frans (French)',
+            'he' => 'Hebreeuws (Hebrew)',
+            'id' => 'Indonesisch (Indonesian)',
+            'it' => 'Italiaans (Italian)',
+            'ja' => '(Japanese)',
+            'nl' => 'Nederlands (Dutch)',
+            'no' => 'Noors (Norwegin)',
             'pt_BR' => 'Braziliaans Portugees (Brazilian Portuguese)',
-            'ru'    => 'Russisch (Russian)',
-            'sv'    => 'Zweeds (Swedish)',
-            'th'    => 'Thais (Thai)',
-            'tr'    => '(Turkish)',
-            'uk'    => '(Ukrainian)',
+            'ru' => 'Russisch (Russian)',
+            'sv' => 'Zweeds (Swedish)',
+            'th' => 'Thais (Thai)',
+            'tr' => '(Turkish)',
+            'uk' => '(Ukrainian)',
         ],
     ],
 ];

@@ -47,7 +47,7 @@ class UserRepositoryTest extends TestCase
     {
         factory(User::class, 30)->states('unconfirmed')->create();
 
-        $this->assertEquals(30, $this->userRepository->getUnconfirmedCount());
+        $this->assertSame(30, $this->userRepository->getUnconfirmedCount());
     }
 
     /** @test */
@@ -57,13 +57,13 @@ class UserRepositoryTest extends TestCase
 
         $paginatedUsers = $this->userRepository->getActivePaginated(25);
 
-        $this->assertEquals(2, $paginatedUsers->lastPage());
-        $this->assertEquals(25, $paginatedUsers->perPage());
-        $this->assertEquals(30, $paginatedUsers->total());
+        $this->assertSame(2, $paginatedUsers->lastPage());
+        $this->assertSame(25, $paginatedUsers->perPage());
+        $this->assertSame(30, $paginatedUsers->total());
 
         $newPaginatedUsers = $this->userRepository->getActivePaginated(5);
 
-        $this->assertEquals(5, $newPaginatedUsers->perPage());
+        $this->assertSame(5, $newPaginatedUsers->perPage());
     }
 
     /** @test */
@@ -74,9 +74,9 @@ class UserRepositoryTest extends TestCase
 
         $paginatedUsers = $this->userRepository->getInactivePaginated(10);
 
-        $this->assertEquals(3, $paginatedUsers->lastPage());
-        $this->assertEquals(10, $paginatedUsers->perPage());
-        $this->assertEquals(25, $paginatedUsers->total());
+        $this->assertSame(3, $paginatedUsers->lastPage());
+        $this->assertSame(10, $paginatedUsers->perPage());
+        $this->assertSame(25, $paginatedUsers->total());
     }
 
     /** @test */
@@ -87,9 +87,9 @@ class UserRepositoryTest extends TestCase
 
         $paginatedUsers = $this->userRepository->getDeletedPaginated(10);
 
-        $this->assertEquals(3, $paginatedUsers->lastPage());
-        $this->assertEquals(10, $paginatedUsers->perPage());
-        $this->assertEquals(25, $paginatedUsers->total());
+        $this->assertSame(3, $paginatedUsers->lastPage());
+        $this->assertSame(10, $paginatedUsers->perPage());
+        $this->assertSame(25, $paginatedUsers->total());
     }
 
     /** @test */
@@ -99,11 +99,11 @@ class UserRepositoryTest extends TestCase
         Event::fake();
         Model::setEventDispatcher($initialDispatcher);
 
-        $this->assertEquals(0, User::count());
+        $this->assertSame(0, User::count());
 
         $this->userRepository->create($this->getValidUserData());
 
-        $this->assertEquals(1, User::count());
+        $this->assertSame(1, User::count());
 
         Event::assertDispatched(UserCreated::class);
     }
@@ -123,9 +123,9 @@ class UserRepositoryTest extends TestCase
             'email' => 'new@email.com',
         ]));
 
-        $this->assertEquals('updated', $user->fresh()->first_name);
-        $this->assertEquals('name', $user->fresh()->last_name);
-        $this->assertEquals('new@email.com', $user->fresh()->email);
+        $this->assertSame('updated', $user->fresh()->first_name);
+        $this->assertSame('name', $user->fresh()->last_name);
+        $this->assertSame('new@email.com', $user->fresh()->email);
 
         Event::assertDispatched(UserUpdated::class);
     }

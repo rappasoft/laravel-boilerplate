@@ -53,14 +53,12 @@ class LoginController extends Controller
      * @param Request $request
      * @param         $user
      *
-     * @return \Illuminate\Http\RedirectResponse
      * @throws GeneralException
+     * @return \Illuminate\Http\RedirectResponse
      */
     protected function authenticated(Request $request, $user)
     {
-        /*
-         * Check to see if the users account is confirmed and active
-         */
+        // Check to see if the users account is confirmed and active
         if (! $user->isConfirmed()) {
             auth()->logout();
 
@@ -98,26 +96,18 @@ class LoginController extends Controller
      */
     public function logout(Request $request)
     {
-        /*
-         * Remove the socialite session variable if exists
-         */
+        // Remove the socialite session variable if exists
         if (app('session')->has(config('access.socialite_session_name'))) {
             app('session')->forget(config('access.socialite_session_name'));
         }
 
-        /*
-         * Remove any session data from backend
-         */
+        // Remove any session data from backend
         resolve(AuthHelper::class)->flushTempSession();
 
-        /*
-         * Fire event, Log out user, Redirect
-         */
+        // Fire event, Log out user, Redirect
         event(new UserLoggedOut($request->user()));
 
-        /*
-         * Laravel specific logic
-         */
+        // Laravel specific logic
         $this->guard()->logout();
         $request->session()->invalidate();
 

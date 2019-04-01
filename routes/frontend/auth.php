@@ -14,10 +14,7 @@ use App\Http\Controllers\Frontend\Auth\PasswordExpiredController;
  * All route names are prefixed with 'frontend.auth'.
  */
 Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
-
-    /*
-    * These routes require the user to be logged in
-    */
+    // These routes require the user to be logged in
     Route::group(['middleware' => 'auth'], function () {
         Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -35,9 +32,7 @@ Route::group(['namespace' => 'Auth', 'as' => 'auth.'], function () {
         Route::patch('password/expired', [PasswordExpiredController::class, 'update'])->name('password.expired.update');
     });
 
-    /*
-     * These routes require no user to be logged in
-     */
+    // These routes require no user to be logged in
     Route::group(['middleware' => 'guest'], function () {
         // Authentication Routes
         Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');

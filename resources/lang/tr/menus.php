@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Menus Language Lines
@@ -18,36 +17,36 @@ return [
             'title' => 'Erişim Yönetimi',
 
             'roles' => [
-                'all'        => 'Tüm Roller',
-                'create'     => 'Rol Oluştur',
-                'edit'       => 'Rol Düzenle',
+                'all' => 'Tüm Roller',
+                'create' => 'Rol Oluştur',
+                'edit' => 'Rol Düzenle',
                 'management' => 'Rol Yönetimi',
-                'main'       => 'Roller',
+                'main' => 'Roller',
             ],
 
             'users' => [
-                'all'             => 'Tüm Kullanıcılar',
+                'all' => 'Tüm Kullanıcılar',
                 'change-password' => 'Parolayı Değiştir',
-                'create'          => 'Kullanıcı Oluştur',
-                'deactivated'     => 'Pasif Kullanıcılar',
-                'deleted'         => 'Silinmiş Kullanıcılar',
-                'edit'            => 'Kullanıcıyı Düzenle',
-                'main'            => 'Kullanıcılar',
-                'view'            => 'Kullanıcıyı Görüntüle',
+                'create' => 'Kullanıcı Oluştur',
+                'deactivated' => 'Pasif Kullanıcılar',
+                'deleted' => 'Silinmiş Kullanıcılar',
+                'edit' => 'Kullanıcıyı Düzenle',
+                'main' => 'Kullanıcılar',
+                'view' => 'Kullanıcıyı Görüntüle',
             ],
         ],
 
         'log-viewer' => [
-            'main'      => 'Log Görüntüleyici',
+            'main' => 'Log Görüntüleyici',
             'dashboard' => 'Kokpit',
-            'logs'      => 'Loglar',
+            'logs' => 'Loglar',
         ],
 
         'sidebar' => [
             'dashboard' => 'Kokpit',
-            'general'   => 'Genel',
-            'history'   => 'History',
-            'system'    => 'Sistem',
+            'general' => 'Genel',
+            'history' => 'History',
+            'system' => 'Sistem',
         ],
     ],
 
@@ -60,28 +59,28 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'ar'    => 'Arapça (Arabic)',
-            'zh'    => 'Basitleştirilmiş Çince (Chinese Simplified)',
+            'ar' => 'Arapça (Arabic)',
+            'zh' => 'Basitleştirilmiş Çince (Chinese Simplified)',
             'zh-TW' => 'Geleneksel Çince (Chinese Traditional)',
-            'da'    => 'Danimarka (Danish)',
-            'de'    => 'Almanca (German)',
-            'el'    => 'Yunanca (Greek)',
-            'en'    => 'İngilizce (English)',
-            'es'    => 'İspanyolca (Spanish)',
-            'fa'    => 'Farsça (Persian)',
-            'fr'    => 'Fransızca (French)',
-            'he'    => 'İbranice (Hebrew)',
-            'id'    => 'Endonezya (Indonesian)',
-            'it'    => 'İtalyanca (Italian)',
-            'ja'    => 'Japonca (Japanese)',
-            'nl'    => 'Hollandaca (Dutch)',
-            'no'    => 'Norveçli (Norwegian)',
+            'da' => 'Danimarka (Danish)',
+            'de' => 'Almanca (German)',
+            'el' => 'Yunanca (Greek)',
+            'en' => 'İngilizce (English)',
+            'es' => 'İspanyolca (Spanish)',
+            'fa' => 'Farsça (Persian)',
+            'fr' => 'Fransızca (French)',
+            'he' => 'İbranice (Hebrew)',
+            'id' => 'Endonezya (Indonesian)',
+            'it' => 'İtalyanca (Italian)',
+            'ja' => 'Japonca (Japanese)',
+            'nl' => 'Hollandaca (Dutch)',
+            'no' => 'Norveçli (Norwegian)',
             'pt_BR' => 'Brezilya Portekizcesi (Brazilian Portuguese)',
-            'ru'    => 'Rusça (Russian)',
-            'sv'    => 'İsveççe (Swedish)',
-            'th'    => 'Tay (Thai)',
-            'tr'    => 'Türkçe (Turkish)',
-            'uk'    => '(Ukrainian)',
+            'ru' => 'Rusça (Russian)',
+            'sv' => 'İsveççe (Swedish)',
+            'th' => 'Tay (Thai)',
+            'tr' => 'Türkçe (Turkish)',
+            'uk' => '(Ukrainian)',
         ],
     ],
 ];

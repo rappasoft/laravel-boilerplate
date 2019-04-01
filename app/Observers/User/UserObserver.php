@@ -13,7 +13,6 @@ class UserObserver
      * Listen to the User created event.
      *
      * @param  \App\Models\Auth\User  $user
-     * @return void
      */
     public function created(User $user) : void
     {
@@ -24,7 +23,6 @@ class UserObserver
      * Listen to the User updated event.
      *
      * @param  \App\Models\Auth\User  $user
-     * @return void
      */
     public function updated(User $user) : void
     {

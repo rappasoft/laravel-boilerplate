@@ -22,7 +22,7 @@ class PasswordExpirationTest extends TestCase
             ->get('/dashboard')
             ->assertRedirect('/password/expired');
 
-        $this->assertEquals(302, $response->getStatusCode());
+        $this->assertSame(302, $response->getStatusCode());
     }
 
     /** @test */
@@ -37,7 +37,7 @@ class PasswordExpirationTest extends TestCase
         $response = $this->actingAs($user)
             ->get('/dashboard');
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /** @test */
@@ -49,7 +49,7 @@ class PasswordExpirationTest extends TestCase
 
         $response = $this->actingAs($user)->get('/dashboard');
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertSame(200, $response->getStatusCode());
     }
 
     /** @test */
@@ -123,7 +123,7 @@ class PasswordExpirationTest extends TestCase
 
         $response->assertSessionHasErrors();
         $errors = session('errors');
-        $this->assertEquals($errors->get('password')[0], __('auth.password_used'));
+        $this->assertSame($errors->get('password')[0], __('auth.password_used'));
         $this->assertTrue(Hash::check(':ZqD~57}1t', $user->fresh()->password));
     }
 }

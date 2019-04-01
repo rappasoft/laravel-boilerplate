@@ -17,13 +17,13 @@ use App\Models\Auth\User;
 
 $factory->define(User::class, function (Generator $faker) {
     return [
-        'uuid' 			    => Uuid::uuid4()->toString(),
-        'first_name'        => $faker->firstName,
-        'last_name'         => $faker->lastName,
-        'email'             => $faker->safeEmail,
-        'password'          => 'secret',
+        'uuid' => Uuid::uuid4()->toString(),
+        'first_name' => $faker->firstName,
+        'last_name' => $faker->lastName,
+        'email' => $faker->safeEmail,
+        'password' => 'secret',
         'password_changed_at' => null,
-        'remember_token'    => str_random(10),
+        'remember_token' => str_random(10),
         'confirmation_code' => md5(uniqid(mt_rand(), true)),
         'active' => true,
         'confirmed' => true,

@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Buttons Language Lines
@@ -23,7 +22,7 @@ return [
                 'login_as' => 'Login As :user',
                 'resend_email' => '重新發送確認電子郵件',
                 'restore_user' => '還原用戶',
-                'unconfirm'             => 'Un-confirm',
+                'unconfirm' => 'Un-confirm',
                 'unlink' => 'Unlink',
             ],
         ],

@@ -29,8 +29,8 @@ class ProfileController extends Controller
     /**
      * @param UpdateProfileRequest $request
      *
-     * @return mixed
      * @throws \App\Exceptions\GeneralException
+     * @return mixed
      */
     public function update(UpdateProfileRequest $request)
     {

@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Buttons Language Lines
@@ -16,16 +15,16 @@ return [
     'backend' => [
         'access' => [
             'users' => [
-                'activate'           => 'Aktivér',
-                'change_password'    => 'Oppdater passord',
-                'clear_session'         => 'Fjern Sessjonen',
-                'confirm'             => 'Confirm',
-                'deactivate'         => 'Deaktiver',
+                'activate' => 'Aktivér',
+                'change_password' => 'Oppdater passord',
+                'clear_session' => 'Fjern Sessjonen',
+                'confirm' => 'Confirm',
+                'deactivate' => 'Deaktiver',
                 'delete_permanently' => 'Slett permanent',
-                'login_as'           => 'Logg inn som :user',
-                'resend_email'       => 'Send ny bekreftelsesmail',
-                'restore_user'       => 'Gjennopprett bruker',
-                'unconfirm'             => 'Un-confirm',
+                'login_as' => 'Logg inn som :user',
+                'resend_email' => 'Send ny bekreftelsesmail',
+                'restore_user' => 'Gjennopprett bruker',
+                'unconfirm' => 'Un-confirm',
                 'unlink' => 'Unlink',
             ],
         ],
@@ -34,7 +33,7 @@ return [
     'emails' => [
         'auth' => [
             'confirm_account' => 'Bekreft Konto',
-            'reset_password'  => 'Send Passord på nytt',
+            'reset_password' => 'Send Passord på nytt',
         ],
     ],
 
@@ -45,9 +44,9 @@ return [
         'crud' => [
             'create' => 'Opprett',
             'delete' => 'Slett',
-            'edit'   => 'Rediger',
+            'edit' => 'Rediger',
             'update' => 'Oppdater',
-            'view'   => 'View',
+            'view' => 'View',
         ],
 
         'save' => 'Lagre',

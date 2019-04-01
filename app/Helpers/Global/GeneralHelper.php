@@ -23,7 +23,6 @@ if (! function_exists('gravatar')) {
 }
 
 if (! function_exists('home_route')) {
-
     /**
      * Return the route to the "home" page depending on authentication/authorization status.
      *
@@ -34,9 +33,9 @@ if (! function_exists('home_route')) {
         if (auth()->check()) {
             if (auth()->user()->can('view backend')) {
                 return 'admin.dashboard';
-            } else {
-                return 'frontend.user.dashboard';
             }
+
+            return 'frontend.user.dashboard';
         }
 
         return 'frontend.index';

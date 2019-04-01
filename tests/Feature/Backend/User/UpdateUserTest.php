@@ -44,9 +44,9 @@ class UpdateUserTest extends TestCase
         $user = factory(User::class)->create();
         Event::fake();
 
-        $this->assertNotEquals('John', $user->first_name);
-        $this->assertNotEquals('Doe', $user->last_name);
-        $this->assertNotEquals('john@example.com', $user->email);
+        $this->assertNotSame('John', $user->first_name);
+        $this->assertNotSame('Doe', $user->last_name);
+        $this->assertNotSame('john@example.com', $user->email);
 
         $this->patch("/admin/auth/user/{$user->id}", [
             'first_name' => 'John',
@@ -56,9 +56,9 @@ class UpdateUserTest extends TestCase
             'roles' => ['administrator'],
         ]);
 
-        $this->assertEquals('John', $user->fresh()->first_name);
-        $this->assertEquals('Doe', $user->fresh()->last_name);
-        $this->assertEquals('john@example.com', $user->fresh()->email);
+        $this->assertSame('John', $user->fresh()->first_name);
+        $this->assertSame('Doe', $user->fresh()->last_name);
+        $this->assertSame('john@example.com', $user->fresh()->email);
 
         Event::assertDispatched(UserUpdated::class);
     }

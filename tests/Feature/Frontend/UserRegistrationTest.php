@@ -62,8 +62,8 @@ class UserRegistrationTest extends TestCase
         ]);
 
         $newUser = (new UserRepository())->where('email', 'john@example.com')->first();
-        $this->assertEquals($newUser->first_name, 'John');
-        $this->assertEquals($newUser->last_name, 'Doe');
+        $this->assertSame($newUser->first_name, 'John');
+        $this->assertSame($newUser->last_name, 'Doe');
         $this->assertTrue(Hash::check('password', $newUser->password));
     }
 
@@ -88,7 +88,7 @@ class UserRegistrationTest extends TestCase
         $response = $this->get('/account/confirm/'.$user->confirmation_code);
 
         $response->assertSessionHas(['flash_success' => __('exceptions.frontend.auth.confirmation.success')]);
-        $this->assertEquals(true, $user->fresh()->confirmed);
+        $this->assertSame(true, $user->fresh()->confirmed);
         Event::assertDispatched(UserConfirmed::class);
     }
 

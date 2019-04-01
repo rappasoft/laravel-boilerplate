@@ -22,7 +22,6 @@ class UnusedPassword implements Rule
      * Create a new rule instance.
      *
      * @param $user
-     * @return void
      */
     public function __construct($user)
     {

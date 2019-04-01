@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Buttons Language Lines
@@ -16,16 +15,16 @@ return [
     'backend' => [
         'access' => [
             'users' => [
-                'activate'           => 'Activate',
-                'change_password'    => 'Change Password',
-                'clear_session'         => 'Clear Session',
-                'confirm'             => 'Confirm',
-                'deactivate'         => 'Deactivate',
+                'activate' => 'Activate',
+                'change_password' => 'Change Password',
+                'clear_session' => 'Clear Session',
+                'confirm' => 'Confirm',
+                'deactivate' => 'Deactivate',
                 'delete_permanently' => 'Delete Permanently',
-                'login_as'           => 'Login As :user',
-                'resend_email'       => 'Resend Confirmation E-mail',
-                'restore_user'       => 'Restore User',
-                'unconfirm'             => 'Un-confirm',
+                'login_as' => 'Login As :user',
+                'resend_email' => 'Resend Confirmation E-mail',
+                'restore_user' => 'Restore User',
+                'unconfirm' => 'Un-confirm',
                 'unlink' => 'Unlink',
             ],
         ],
@@ -34,7 +33,7 @@ return [
     'emails' => [
         'auth' => [
             'confirm_account' => 'Confirm Account',
-            'reset_password'  => 'Reset Password',
+            'reset_password' => 'Reset Password',
         ],
     ],
 
@@ -45,9 +44,9 @@ return [
         'crud' => [
             'create' => 'Create',
             'delete' => 'Delete',
-            'edit'   => 'Edit',
+            'edit' => 'Edit',
             'update' => 'Update',
-            'view'   => 'View',
+            'view' => 'View',
         ],
 
         'save' => 'Save',

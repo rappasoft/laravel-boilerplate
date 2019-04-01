@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Strings Language Lines
@@ -16,8 +15,8 @@ return [
     'backend' => [
         'access' => [
             'users' => [
-                'delete_user_confirm'  => 'Bist du dir sicher, dass du diesen Benutzer permanent löschen möchtest? Überall wo die Benutzer-ID referenziert ist, wird es höchstwahrscheinlich zu Fehlern kommen. Fortfahren auf eigenes Risiko. Dies kann nicht rückgängig gemacht werden.',
-                'if_confirmed_off'     => '(Wenn nicht bestätigt)',
+                'delete_user_confirm' => 'Bist du dir sicher, dass du diesen Benutzer permanent löschen möchtest? Überall wo die Benutzer-ID referenziert ist, wird es höchstwahrscheinlich zu Fehlern kommen. Fortfahren auf eigenes Risiko. Dies kann nicht rückgängig gemacht werden.',
+                'if_confirmed_off' => '(Wenn nicht bestätigt)',
                 'no_deactivated' => 'Es gibt keine inaktiven Nutzer.',
                 'no_deleted' => 'Es gibt keine gelöschten Nutzer.',
                 'restore_user_confirm' => 'Benutzer in den Originalzustand wiederherstellen?',
@@ -25,43 +24,43 @@ return [
         ],
 
         'dashboard' => [
-            'title'   => 'Administratives Dashboard',
+            'title' => 'Administratives Dashboard',
             'welcome' => 'Willkommen',
         ],
 
         'general' => [
             'all_rights_reserved' => 'Alle Rechte vorbehalten.',
-            'are_you_sure'        => 'Bist du dir sicher?',
-            'boilerplate_link'    => 'Laravel 5 Boilerplate',
-            'continue'            => 'Fortsetzen',
-            'member_since'        => 'Mitglied seit',
-            'minutes'             => ' Minuten',
-            'search_placeholder'  => 'Suchen...',
-            'timeout'             => 'Du wurdest aus Sicherheitsgründen automatisch abgemeldet weil du inaktiv warst seit ',
+            'are_you_sure' => 'Bist du dir sicher?',
+            'boilerplate_link' => 'Laravel 5 Boilerplate',
+            'continue' => 'Fortsetzen',
+            'member_since' => 'Mitglied seit',
+            'minutes' => ' Minuten',
+            'search_placeholder' => 'Suchen...',
+            'timeout' => 'Du wurdest aus Sicherheitsgründen automatisch abgemeldet weil du inaktiv warst seit ',
 
             'see_all' => [
-                'messages'      => 'Alle Nachrichten anzeigen',
+                'messages' => 'Alle Nachrichten anzeigen',
                 'notifications' => 'Alle anzeigen',
-                'tasks'         => 'Alle Aufgaben anzeigen',
+                'tasks' => 'Alle Aufgaben anzeigen',
             ],
 
             'status' => [
-                'online'  => 'Angemeldet',
+                'online' => 'Angemeldet',
                 'offline' => 'Abgemeldet',
             ],
 
             'you_have' => [
-                'messages'      => '{0} Du hast keine Nachrichten|{1} Du hast 1 Nachricht|[2,Inf] Du hast :number Nachrichten',
+                'messages' => '{0} Du hast keine Nachrichten|{1} Du hast 1 Nachricht|[2,Inf] Du hast :number Nachrichten',
                 'notifications' => '{0} Du hast keine Benachrichtigungen|{1} Du hast 1 Benachrichtigung|[2,Inf] Du hast :number Benachrichtigungen',
-                'tasks'         => '{0} Du hast keine Aufgaben|{1} Du hast 1 Aufgabe|[2,Inf] Du hast :number Aufgaben',
+                'tasks' => '{0} Du hast keine Aufgaben|{1} Du hast 1 Aufgabe|[2,Inf] Du hast :number Aufgaben',
             ],
         ],
 
         'search' => [
-            'empty'      => 'Bitte gib einen Suchbegriff ein.',
+            'empty' => 'Bitte gib einen Suchbegriff ein.',
             'incomplete' => 'Du musst deinen eigenen Such-Algorithmus für dieses System schreiben.',
-            'title'      => 'Suchergebnisse',
-            'results'    => 'Suchergebnisse für :query',
+            'title' => 'Suchergebnisse',
+            'results' => 'Suchergebnisse für :query',
         ],
 
         'welcome' => 'Welcome to the Dashboard',
@@ -70,16 +69,16 @@ return [
     'emails' => [
         'auth' => [
             'account_confirmed' => 'Your account has been confirmed.',
-            'error'                   => 'Hoppla!',
-            'greeting'                => 'Hallo!',
-            'regards'                 => 'Viele Grüße,',
+            'error' => 'Hoppla!',
+            'greeting' => 'Hallo!',
+            'regards' => 'Viele Grüße,',
             'trouble_clicking_button' => 'Wenn du Probleme hast den ":action_text"-Knopf zu drücken, kopiere die URL unten in deinen Web Browser:',
             'thank_you_for_using_app' => 'Danke, dass du diese Anwendung benutzst!',
 
-            'password_reset_subject'    => 'Dein Link zum Zurücksetzen des Kennworts',
-            'password_cause_of_email'   => 'Du erhältst diese Email weil wir eine Anforderung erhalten haben, das Kennwort für dieses Konto zurückzusetzen.',
+            'password_reset_subject' => 'Dein Link zum Zurücksetzen des Kennworts',
+            'password_cause_of_email' => 'Du erhältst diese Email weil wir eine Anforderung erhalten haben, das Kennwort für dieses Konto zurückzusetzen.',
             'password_if_not_requested' => 'Wenn du keine Zurücksetzung deines Kennworts angefordert hast, ist keine weitere Aktion erforderlich.',
-            'reset_password'            => 'Klick hier, um dein Passwort zurückzusetzen',
+            'reset_password' => 'Klick hier, um dein Passwort zurückzusetzen',
 
             'click_to_confirm' => 'Klick hier, um dein Konto zu aktivieren:',
         ],
@@ -96,7 +95,7 @@ return [
         'tests' => [
             'based_on' => [
                 'permission' => 'Anhand von Berechtigungen - ',
-                'role'       => 'Anhand von Rollen - ',
+                'role' => 'Anhand von Rollen - ',
             ],
 
             'js_injected_from_controller' => 'Javascript von einem Controller eingefügt',
@@ -104,29 +103,29 @@ return [
             'using_blade_extensions' => 'Verwenden von Blade-Erweiterungen',
 
             'using_access_helper' => [
-                'array_permissions'     => 'Verwenden von Access Helper mit Array von Berechtigungs-Namen oder ID\'s bei der der Benutzer alle besitzen muss.',
+                'array_permissions' => 'Verwenden von Access Helper mit Array von Berechtigungs-Namen oder ID\'s bei der der Benutzer alle besitzen muss.',
                 'array_permissions_not' => 'Verwenden von Access Helper mit Array von Berechtigungs-Namen oder ID\'s bei der der Benutzer nicht alle besitzen muss.',
-                'array_roles'           => 'Verwenden von Access Helper mit Array von Rollen-Namen oder ID\'s bei der der Benutzer alle besitzen muss.',
-                'array_roles_not'       => 'Verwenden von Access Helper mit Array von Rolen-Namen oder ID\'s bei der der Benutzer nicht alle besitzen muss.',
-                'permission_id'         => 'Verwenden von Access Helper mit Berechtigungs-ID',
-                'permission_name'       => 'Verwenden von Access Helper mit Berechtigungs-Name',
-                'role_id'               => 'Verwenden von Access Helper mit Rollen-ID',
-                'role_name'             => 'Verwenden von Access Helper mit Rollen-Name',
+                'array_roles' => 'Verwenden von Access Helper mit Array von Rollen-Namen oder ID\'s bei der der Benutzer alle besitzen muss.',
+                'array_roles_not' => 'Verwenden von Access Helper mit Array von Rolen-Namen oder ID\'s bei der der Benutzer nicht alle besitzen muss.',
+                'permission_id' => 'Verwenden von Access Helper mit Berechtigungs-ID',
+                'permission_name' => 'Verwenden von Access Helper mit Berechtigungs-Name',
+                'role_id' => 'Verwenden von Access Helper mit Rollen-ID',
+                'role_name' => 'Verwenden von Access Helper mit Rollen-Name',
             ],
 
-            'view_console_it_works'          => 'Schaue in die Konsole, du solltest \'it works!\' sehen, welches vom FrontendController@index kommt',
-            'you_can_see_because'            => 'Du kannst dies sehen, da du folgende Rolle besitzt \':role\'!',
+            'view_console_it_works' => 'Schaue in die Konsole, du solltest \'it works!\' sehen, welches vom FrontendController@index kommt',
+            'you_can_see_because' => 'Du kannst dies sehen, da du folgende Rolle besitzt \':role\'!',
             'you_can_see_because_permission' => 'Du kannst dies sehen, da du folgende Berechtigung besitzt \':permission\'!',
         ],
 
         'general' => [
-            'joined'        => 'Joined',
+            'joined' => 'Joined',
         ],
 
         'user' => [
             'change_email_notice' => 'Wenn du deine Email-Adresse änderst, wirst du abgemeldet, bis du deine neue Email-Adresse bestätigt hast.',
             'email_changed_notice' => 'Du musst deine neue Email-Adresse bestätigen, bevor du dich wieder anmelden kannst.',
-            'profile_updated'  => 'Profil aktualisiert.',
+            'profile_updated' => 'Profil aktualisiert.',
             'password_updated' => 'Passwort aktualisiert.',
         ],
 

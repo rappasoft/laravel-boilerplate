@@ -30,7 +30,7 @@ class UpdateUserPasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'password'     => [
+            'password' => [
                 'required',
                 'confirmed',
                 new ChangePassword(),

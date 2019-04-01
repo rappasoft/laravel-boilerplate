@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Authentication Language Lines
@@ -13,13 +12,13 @@ return [
     |
     */
 
-    'failed'        => 'Brukernavn eller passord stemmer ikke.',
+    'failed' => 'Brukernavn eller passord stemmer ikke.',
     'general_error' => 'Du har ikke tilgang til at utføre denne handling.',
     'password_rules' => 'Your password must be more than 8 characters long, should contain at least 1 uppercase, 1 lowercase and 1 number.',
     'password_used' => 'You can not set a password that you have previously used.',
-    'socialite'     => [
+    'socialite' => [
         'unacceptable' => ':provider kan ikke brukes som login.',
     ],
     'throttle' => 'For mange mislykkede forsøk. Prøv igen om :seconds sekunder.',
-    'unknown'  => 'Det oppstod en ukjent feil.',
+    'unknown' => 'Det oppstod en ukjent feil.',
 ];

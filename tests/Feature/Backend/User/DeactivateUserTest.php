@@ -32,7 +32,7 @@ class DeactivateUserTest extends TestCase
 
         $this->get("/admin/auth/user/{$user->id}/mark/0");
 
-        $this->assertEquals(false, $user->fresh()->active);
+        $this->assertSame(false, $user->fresh()->active);
         Event::assertDispatched(UserDeactivated::class);
     }
 
@@ -45,7 +45,7 @@ class DeactivateUserTest extends TestCase
 
         $this->get("/admin/auth/user/{$user->id}/mark/1");
 
-        $this->assertEquals(true, $user->fresh()->active);
+        $this->assertSame(true, $user->fresh()->active);
         Event::assertDispatched(UserReactivated::class);
     }
 

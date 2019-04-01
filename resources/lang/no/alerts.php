@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Alert Language Lines
@@ -22,17 +21,17 @@ return [
 
         'users' => [
             'cant_resend_confirmation' => 'Applikasjonen er satt til å godkjenne brukere manuelt.',
-            'confirmation_email'  => 'En ny bekreftelsesmail er sendt til brukeren.',
-            'confirmed'              => 'Brukeren ble godkjent.',
-            'created'             => 'Brukeren ble opprettet.',
-            'deleted'             => 'Brukeren ble slettet.',
+            'confirmation_email' => 'En ny bekreftelsesmail er sendt til brukeren.',
+            'confirmed' => 'Brukeren ble godkjent.',
+            'created' => 'Brukeren ble opprettet.',
+            'deleted' => 'Brukeren ble slettet.',
             'deleted_permanently' => 'Brukeren ble slettet permanent.',
-            'restored'            => 'Brukeren ble gjenopprettet.',
-            'session_cleared'      => 'Brukerens sessjon har blitt fjernet.',
+            'restored' => 'Brukeren ble gjenopprettet.',
+            'session_cleared' => 'Brukerens sessjon har blitt fjernet.',
             'social_deleted' => 'Sosiale kontoer er fjernet.',
             'unconfirmed' => 'The user was successfully un-confirmed',
-            'updated'             => 'Brukeren ble oppdateret.',
-            'updated_password'    => 'Brukerens passord ble oppdateret.',
+            'updated' => 'Brukeren ble oppdateret.',
+            'updated_password' => 'Brukerens passord ble oppdateret.',
         ],
     ],
 

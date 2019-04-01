@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Buttons Language Lines
@@ -16,17 +15,17 @@ return [
     'backend' => [
         'access' => [
             'users' => [
-                'activate'           => 'Activar',
-                'change_password'    => 'Cambiar contraseña',
-                'clear_session'      => 'Eliminar sesión',
-                'confirm'            => 'Confirmar',
-                'deactivate'         => 'Desactivar',
+                'activate' => 'Activar',
+                'change_password' => 'Cambiar contraseña',
+                'clear_session' => 'Eliminar sesión',
+                'confirm' => 'Confirmar',
+                'deactivate' => 'Desactivar',
                 'delete_permanently' => 'Eliminar de forma permanente',
-                'login_as'           => 'Iniciar sesión como :user',
-                'resend_email'       => 'Reenviar e-mail de confirmación',
-                'restore_user'       => 'Restaurar Usuario',
-                'unconfirm'          => 'Deshacer',
-                'unlink'             => 'Desactivar',
+                'login_as' => 'Iniciar sesión como :user',
+                'resend_email' => 'Reenviar e-mail de confirmación',
+                'restore_user' => 'Restaurar Usuario',
+                'unconfirm' => 'Deshacer',
+                'unlink' => 'Desactivar',
             ],
         ],
     ],
@@ -34,20 +33,20 @@ return [
     'emails' => [
         'auth' => [
             'confirm_account' => 'Confirmar Cuenta',
-            'reset_password'  => 'Resetear Contraseña',
+            'reset_password' => 'Resetear Contraseña',
         ],
     ],
 
     'general' => [
-        'cancel'   => 'Cancelar',
+        'cancel' => 'Cancelar',
         'continue' => 'Continuar',
 
         'crud' => [
             'create' => 'Crear',
             'delete' => 'Eliminar',
-            'edit'   => 'Modificar',
+            'edit' => 'Modificar',
             'update' => 'Actualizar',
-            'view'   => 'Visualizar',
+            'view' => 'Visualizar',
         ],
 
         'save' => 'Guardar',

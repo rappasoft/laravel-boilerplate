@@ -23,9 +23,9 @@ class ManageUserSocialTest extends TestCase
             'avatar' => null,
         ]);
 
-        $this->assertEquals(1, $user->fresh()->providers()->count());
+        $this->assertSame(1, $user->fresh()->providers()->count());
         $response = $this->delete("/admin/auth/user/{$user->id}/social/{$provider->id}/unlink");
-        $this->assertEquals(0, $user->fresh()->providers()->count());
+        $this->assertSame(0, $user->fresh()->providers()->count());
         $response->assertSessionHas(['flash_success' => __('alerts.backend.users.social_deleted')]);
     }
 
@@ -42,9 +42,9 @@ class ManageUserSocialTest extends TestCase
             'avatar' => null,
         ]);
 
-        $this->assertEquals(1, $user->fresh()->providers()->count());
+        $this->assertSame(1, $user->fresh()->providers()->count());
         $response = $this->delete("/admin/auth/user/{$user->id}/social/{$provider->id}/unlink");
-        $this->assertEquals(0, $user->fresh()->providers()->count());
+        $this->assertSame(0, $user->fresh()->providers()->count());
         $response->assertSessionHas(['flash_success' => __('alerts.backend.users.social_deleted')]);
     }
 }
