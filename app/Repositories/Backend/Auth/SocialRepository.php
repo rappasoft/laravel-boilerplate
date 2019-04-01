@@ -16,8 +16,8 @@ class SocialRepository
      * @param User        $user
      * @param SocialAccount $social
      *
-     * @return bool
      * @throws GeneralException
+     * @return bool
      */
     public function delete(User $user, SocialAccount $social)
     {

@@ -118,7 +118,7 @@ class ChangePasswordTest extends TestCase
 
         $response->assertSessionHasErrors();
         $errors = session('errors');
-        $this->assertEquals($errors->get('password')[0], __('auth.password_used'));
+        $this->assertSame($errors->get('password')[0], __('auth.password_used'));
         $this->assertTrue(Hash::check('Boilerplate02', $user->fresh()->password));
     }
 

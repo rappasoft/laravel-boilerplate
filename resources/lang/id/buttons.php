@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Buttons Language Lines
@@ -16,16 +15,16 @@ return [
     'backend' => [
         'access' => [
             'users' => [
-                'activate'           => 'Aktifkan',
-                'change_password'    => 'Ubah Sandi',
-                'clear_session'         => 'Clear Session',
-                'confirm'             => 'Confirm',
-                'deactivate'         => 'Lumpuhkan',
+                'activate' => 'Aktifkan',
+                'change_password' => 'Ubah Sandi',
+                'clear_session' => 'Clear Session',
+                'confirm' => 'Confirm',
+                'deactivate' => 'Lumpuhkan',
                 'delete_permanently' => 'Hapus Permanen',
-                'login_as'           => 'Login sebagai :user',
-                'resend_email'       => 'Kirim Ulang Email Konfirmasi',
-                'restore_user'       => 'Restorasi Pengguna',
-                'unconfirm'             => 'Un-confirm',
+                'login_as' => 'Login sebagai :user',
+                'resend_email' => 'Kirim Ulang Email Konfirmasi',
+                'restore_user' => 'Restorasi Pengguna',
+                'unconfirm' => 'Un-confirm',
                 'unlink' => 'Unlink',
             ],
         ],
@@ -34,7 +33,7 @@ return [
     'emails' => [
         'auth' => [
             'confirm_account' => 'Konfirmasi Akun',
-            'reset_password'  => 'Reset Sandi',
+            'reset_password' => 'Reset Sandi',
         ],
     ],
 
@@ -45,9 +44,9 @@ return [
         'crud' => [
             'create' => 'Buat',
             'delete' => 'Hapus',
-            'edit'   => 'Edit',
+            'edit' => 'Edit',
             'update' => 'Perbarui',
-            'view'   => 'Lihat',
+            'view' => 'Lihat',
         ],
 
         'save' => 'Simpan',

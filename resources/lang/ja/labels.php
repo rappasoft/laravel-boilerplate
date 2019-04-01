@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Labels Language Lines
@@ -93,7 +92,7 @@ return [
                             'last_updated' => '最終更新日',
                             'name' => '名前',
                             'status' => 'ステータス',
-                            'timezone'     => 'Timezone',
+                            'timezone' => 'Timezone',
                         ],
                     ],
                 ],
@@ -104,7 +103,6 @@ return [
     ],
 
     'frontend' => [
-
         'auth' => [
             'login_box_title' => 'ログイン',
             'login_button' => 'ログイン',
@@ -141,6 +139,5 @@ return [
                 'update_information' => '情報更新',
             ],
         ],
-
     ],
 ];

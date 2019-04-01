@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | HTTP Language Lines
@@ -13,13 +12,12 @@ return [
     */
 
     '404' => [
-        'title'       => 'Página não encontrada',
+        'title' => 'Página não encontrada',
         'description' => 'Desculpe, mas a página que você estava tentando visualizar não existe.',
     ],
 
     '503' => [
-        'title'       => 'Voltamos logo',
+        'title' => 'Voltamos logo',
         'description' => 'Voltamos logo.',
     ],
-
 ];

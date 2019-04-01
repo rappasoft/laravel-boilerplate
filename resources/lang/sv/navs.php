@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Navs Language Lines
@@ -14,23 +13,23 @@ return [
     */
 
     'general' => [
-        'home'   => 'Start',
+        'home' => 'Start',
         'logout' => 'Logga ut',
     ],
 
     'frontend' => [
         'contact' => 'Contact',
         'dashboard' => 'Kontrollpanelen',
-        'login'     => 'Logga in',
-        'macros'    => 'Macros',
-        'register'  => 'Registrera',
+        'login' => 'Logga in',
+        'macros' => 'Macros',
+        'register' => 'Registrera',
 
         'user' => [
-            'account'         => 'Mitt konto',
-            'administration'  => 'Adminpanelen',
+            'account' => 'Mitt konto',
+            'administration' => 'Adminpanelen',
             'change_password' => 'Byt lösenord',
-            'my_information'  => 'Min profil',
-            'profile'         => 'Profil',
+            'my_information' => 'Min profil',
+            'profile' => 'Profil',
         ],
     ],
 ];

@@ -1,19 +1,14 @@
 <?php
 
 return [
-
-    /*
-     * A list of environment aliases mapped to the actual environment configuration.
-     */
+    // A list of environment aliases mapped to the actual environment configuration.
     'environment_aliases' => [
         'prod' => 'production',
         'live' => 'production',
         'local' => 'development',
     ],
 
-    /*
-     * Common checks that will be performed on all environments.
-     */
+    // Common checks that will be performed on all environments.
     'checks' => [
         \BeyondCode\SelfDiagnosis\Checks\AppKeyIsSet::class,
         \BeyondCode\SelfDiagnosis\Checks\CorrectPhpVersionIsInstalled::class,
@@ -45,9 +40,7 @@ return [
         \BeyondCode\SelfDiagnosis\Checks\StorageDirectoryIsLinked::class,
     ],
 
-    /*
-     * Environment specific checks that will only be performed for the corresponding environment.
-     */
+    // Environment specific checks that will only be performed for the corresponding environment.
     'environment_checks' => [
         'development' => [
             \BeyondCode\SelfDiagnosis\Checks\ComposerWithDevDependenciesIsUpToDate::class,
@@ -66,5 +59,4 @@ return [
             \BeyondCode\SelfDiagnosis\Checks\RoutesAreCached::class,
         ],
     ],
-
 ];

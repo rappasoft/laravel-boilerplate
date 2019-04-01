@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Buttons Language Lines
@@ -16,16 +15,16 @@ return [
     'backend' => [
         'access' => [
             'users' => [
-                'activate'           => 'Activer',
-                'change_password'    => 'Changer de mot de passe',
-                'clear_session'      => 'Effacer la session',
-                'confirm'            => 'Confirmer',
-                'deactivate'         => 'Désactiver',
+                'activate' => 'Activer',
+                'change_password' => 'Changer de mot de passe',
+                'clear_session' => 'Effacer la session',
+                'confirm' => 'Confirmer',
+                'deactivate' => 'Désactiver',
                 'delete_permanently' => 'Supprimer définitivement',
-                'login_as'           => 'Se connecter an tant que :user',
-                'resend_email'       => 'Renvoyer le mail de confirmation',
-                'restore_user'       => "Réactiver l'utilisateur",
-                'unconfirm'          => 'Infirmer',
+                'login_as' => 'Se connecter an tant que :user',
+                'resend_email' => 'Renvoyer le mail de confirmation',
+                'restore_user' => "Réactiver l'utilisateur",
+                'unconfirm' => 'Infirmer',
                 'unlink' => 'Unlink',
             ],
         ],
@@ -34,7 +33,7 @@ return [
     'emails' => [
         'auth' => [
             'confirm_account' => 'Confirmer le compte',
-            'reset_password'  => 'Réinitialiser le mot de passe',
+            'reset_password' => 'Réinitialiser le mot de passe',
         ],
     ],
 
@@ -45,9 +44,9 @@ return [
         'crud' => [
             'create' => 'Créer',
             'delete' => 'Supprimer',
-            'edit'   => 'Editer',
+            'edit' => 'Editer',
             'update' => 'Mettre à jour',
-            'view'   => 'Voir',
+            'view' => 'Voir',
         ],
 
         'save' => 'Sauvegarder',

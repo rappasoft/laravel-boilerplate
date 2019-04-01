@@ -3,22 +3,21 @@
 use Arcanedev\LogViewer\Contracts\Utilities\Filesystem;
 
 return [
-
     /* -----------------------------------------------------------------
      |  Log files storage path
      | -----------------------------------------------------------------
      */
 
-    'storage-path'  => storage_path('logs'),
+    'storage-path' => storage_path('logs'),
 
     /* -----------------------------------------------------------------
      |  Log files pattern
      | -----------------------------------------------------------------
      */
 
-    'pattern'       => [
-        'prefix'    => Filesystem::PATTERN_PREFIX,    // 'laravel-'
-        'date'      => Filesystem::PATTERN_DATE,      // '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'
+    'pattern' => [
+        'prefix' => Filesystem::PATTERN_PREFIX,    // 'laravel-'
+        'date' => Filesystem::PATTERN_DATE,      // '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'
         'extension' => Filesystem::PATTERN_EXTENSION, // '.log'
     ],
 
@@ -30,7 +29,7 @@ return [
      |    'pl', 'pt-BR', 'ro', 'ru', 'sv', 'th', 'tr', 'zh-TW', 'zh'
      */
 
-    'locale'        => 'auto',
+    'locale' => 'auto',
 
     /* -----------------------------------------------------------------
      |  Theme
@@ -40,18 +39,18 @@ return [
      |  Make your own theme by adding a folder to the views directory and specifying it here.
      */
 
-    'theme'         => 'bootstrap-4',
+    'theme' => 'bootstrap-4',
 
     /* -----------------------------------------------------------------
      |  Route settings
      | -----------------------------------------------------------------
      */
 
-    'route'         => [
-        'enabled'    => true,
+    'route' => [
+        'enabled' => true,
 
         'attributes' => [
-            'prefix'     => 'admin/log-viewer',
+            'prefix' => 'admin/log-viewer',
 
             'middleware' => ['web', 'admin'],
         ],
@@ -63,22 +62,22 @@ return [
      |  This defines how many logs & entries are displayed per page.
      */
 
-    'per-page'      => 30,
+    'per-page' => 30,
 
     /* -----------------------------------------------------------------
      |  LogViewer's Facade
      | -----------------------------------------------------------------
      */
 
-    'facade'        => 'LogViewer',
+    'facade' => 'LogViewer',
 
     /* -----------------------------------------------------------------
      |  Download settings
      | -----------------------------------------------------------------
      */
 
-    'download'      => [
-        'prefix'    => 'laravel-',
+    'download' => [
+        'prefix' => 'laravel-',
 
         'extension' => 'log',
     ],
@@ -88,8 +87,8 @@ return [
      | -----------------------------------------------------------------
      */
 
-    'menu'  => [
-        'filter-route'  => 'log-viewer::logs.filter',
+    'menu' => [
+        'filter-route' => 'log-viewer::logs.filter',
 
         'icons-enabled' => true,
     ],
@@ -99,20 +98,20 @@ return [
      | -----------------------------------------------------------------
      */
 
-    'icons' =>  [
+    'icons' => [
         /*
          * Font awesome >= 4.3
          * http://fontawesome.io/icons/
          */
-        'all'       => 'fa fa-fw fa-list',                 // http://fontawesome.io/icon/list/
+        'all' => 'fa fa-fw fa-list',                 // http://fontawesome.io/icon/list/
         'emergency' => 'fa fa-fw fa-bug',                  // http://fontawesome.io/icon/bug/
-        'alert'     => 'fa fa-fw fa-bullhorn',             // http://fontawesome.io/icon/bullhorn/
-        'critical'  => 'fa fa-fw fa-heartbeat',            // http://fontawesome.io/icon/heartbeat/
-        'error'     => 'fa fa-fw fa-times-circle',         // http://fontawesome.io/icon/times-circle/
-        'warning'   => 'fa fa-fw fa-exclamation-triangle', // http://fontawesome.io/icon/exclamation-triangle/
-        'notice'    => 'fa fa-fw fa-exclamation-circle',   // http://fontawesome.io/icon/exclamation-circle/
-        'info'      => 'fa fa-fw fa-info-circle',          // http://fontawesome.io/icon/info-circle/
-        'debug'     => 'fa fa-fw fa-life-ring',            // http://fontawesome.io/icon/life-ring/
+        'alert' => 'fa fa-fw fa-bullhorn',             // http://fontawesome.io/icon/bullhorn/
+        'critical' => 'fa fa-fw fa-heartbeat',            // http://fontawesome.io/icon/heartbeat/
+        'error' => 'fa fa-fw fa-times-circle',         // http://fontawesome.io/icon/times-circle/
+        'warning' => 'fa fa-fw fa-exclamation-triangle', // http://fontawesome.io/icon/exclamation-triangle/
+        'notice' => 'fa fa-fw fa-exclamation-circle',   // http://fontawesome.io/icon/exclamation-circle/
+        'info' => 'fa fa-fw fa-info-circle',          // http://fontawesome.io/icon/info-circle/
+        'debug' => 'fa fa-fw fa-life-ring',            // http://fontawesome.io/icon/life-ring/
     ],
 
     /* -----------------------------------------------------------------
@@ -120,18 +119,18 @@ return [
      | -----------------------------------------------------------------
      */
 
-    'colors' =>  [
-        'levels'    => [
-            'empty'     => '#D1D1D1',
-            'all'       => '#8A8A8A',
+    'colors' => [
+        'levels' => [
+            'empty' => '#D1D1D1',
+            'all' => '#8A8A8A',
             'emergency' => '#B71C1C',
-            'alert'     => '#D32F2F',
-            'critical'  => '#F44336',
-            'error'     => '#FF5722',
-            'warning'   => '#FF9100',
-            'notice'    => '#4CAF50',
-            'info'      => '#1976D2',
-            'debug'     => '#90CAF9',
+            'alert' => '#D32F2F',
+            'critical' => '#F44336',
+            'error' => '#FF5722',
+            'warning' => '#FF9100',
+            'notice' => '#4CAF50',
+            'info' => '#1976D2',
+            'debug' => '#90CAF9',
         ],
     ],
 
@@ -144,5 +143,4 @@ return [
         '^#\d+',
         '^Stack trace:',
     ],
-
 ];

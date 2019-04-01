@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Alert Language Lines
@@ -22,17 +21,17 @@ return [
 
         'users' => [
             'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
-            'confirmation_email'  => 'Een nieuwe bevestigings e-mail is verzonden naar het aangegeven adres.',
-            'confirmed'              => 'The user was successfully confirmed.',
-            'created'             => 'De gebruiker is succesvol aangemaakt.',
-            'deleted'             => 'De gebruiker is succesvol verwijderd.',
+            'confirmation_email' => 'Een nieuwe bevestigings e-mail is verzonden naar het aangegeven adres.',
+            'confirmed' => 'The user was successfully confirmed.',
+            'created' => 'De gebruiker is succesvol aangemaakt.',
+            'deleted' => 'De gebruiker is succesvol verwijderd.',
             'deleted_permanently' => 'De gebruiker is permanent verwijderd.',
-            'restored'            => 'De gebruiker is met succes hersteld.',
-            'session_cleared'      => "The user's session was successfully cleared.",
+            'restored' => 'De gebruiker is met succes hersteld.',
+            'session_cleared' => "The user's session was successfully cleared.",
             'social_deleted' => 'Social Account Successfully Removed',
             'unconfirmed' => 'The user was successfully un-confirmed',
-            'updated'             => 'De gebruiker is succesvol bijgewerkt.',
-            'updated_password'    => 'Het wachtwoord van de gebruiker is succesvol bijgewerkt',
+            'updated' => 'De gebruiker is succesvol bijgewerkt.',
+            'updated_password' => 'Het wachtwoord van de gebruiker is succesvol bijgewerkt',
         ],
     ],
 

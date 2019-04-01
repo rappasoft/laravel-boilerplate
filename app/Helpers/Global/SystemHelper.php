@@ -1,7 +1,6 @@
 <?php
 
 if (! function_exists('include_route_files')) {
-
     /**
      * Loops through a folder and requires all PHP files
      * Searches sub-directories as well.

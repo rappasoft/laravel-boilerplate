@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Menus Language Lines
@@ -18,36 +17,36 @@ return [
             'title' => 'Användare och rättigheter',
 
             'roles' => [
-                'all'        => 'Alla roller',
-                'create'     => 'Skapa roll',
-                'edit'       => 'Redigera roll',
+                'all' => 'Alla roller',
+                'create' => 'Skapa roll',
+                'edit' => 'Redigera roll',
                 'management' => 'Hantera roller',
-                'main'       => 'Roller',
+                'main' => 'Roller',
             ],
 
             'users' => [
-                'all'             => 'Alla användare',
+                'all' => 'Alla användare',
                 'change-password' => 'Byt lösenord',
-                'create'          => 'Skapa användare',
-                'deactivated'     => 'Inaktiverade användare',
-                'deleted'         => 'Raderade användare',
-                'edit'            => 'Redigera användare',
-                'main'            => 'Användare',
-                'view'            => 'View User',
+                'create' => 'Skapa användare',
+                'deactivated' => 'Inaktiverade användare',
+                'deleted' => 'Raderade användare',
+                'edit' => 'Redigera användare',
+                'main' => 'Användare',
+                'view' => 'View User',
             ],
         ],
 
         'log-viewer' => [
-            'main'      => 'Loggöversikt',
+            'main' => 'Loggöversikt',
             'dashboard' => 'Huvudpanelen',
-            'logs'      => 'Loggar',
+            'logs' => 'Loggar',
         ],
 
         'sidebar' => [
             'dashboard' => 'Kontrollpanelen',
-            'general'   => 'Adminpanelen',
-            'history'   => 'History',
-            'system'    => 'System',
+            'general' => 'Adminpanelen',
+            'history' => 'History',
+            'system' => 'System',
         ],
     ],
 
@@ -60,28 +59,28 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'ar'    => 'Arabiska (Arabic)',
-            'zh'    => '(Chinese Simplified)',
+            'ar' => 'Arabiska (Arabic)',
+            'zh' => '(Chinese Simplified)',
             'zh-TW' => '(Chinese Traditional)',
-            'da'    => 'Danska (Danish)',
-            'de'    => 'Tyska (German)',
-            'el'    => '(Greek)',
+            'da' => 'Danska (Danish)',
+            'de' => 'Tyska (German)',
+            'el' => '(Greek)',
             'pt_BR' => 'Brasiliansk portugisiska (Brazilian Portuguese)',
-            'en'    => 'Engelska (English)',
-            'fa'    => 'Perser (Persian)',
-            'fr'    => 'Franska (French)',
-            'he'    => 'Hebreiska (Hebrew)',
-            'id'    => 'Indonesiska (Indonesian)',
-            'it'    => 'Italienska (Italian)',
-            'ja'    => '(Japanese)',
-            'nl'    => 'Holländska (Dutch)',
-            'no'    => 'Norsk (Norwegian)',
-            'es'    => 'Spanska (Spanish)',
-            'ru'    => 'Ryska (Russian)',
-            'sv'    => 'Svenska (Swedish)',
-            'th'    => 'Thailändska (Thai)',
-            'tr'    => '(Turkish)',
-            'uk'    => '(Ukrainian)',
+            'en' => 'Engelska (English)',
+            'fa' => 'Perser (Persian)',
+            'fr' => 'Franska (French)',
+            'he' => 'Hebreiska (Hebrew)',
+            'id' => 'Indonesiska (Indonesian)',
+            'it' => 'Italienska (Italian)',
+            'ja' => '(Japanese)',
+            'nl' => 'Holländska (Dutch)',
+            'no' => 'Norsk (Norwegian)',
+            'es' => 'Spanska (Spanish)',
+            'ru' => 'Ryska (Russian)',
+            'sv' => 'Svenska (Swedish)',
+            'th' => 'Thailändska (Thai)',
+            'tr' => '(Turkish)',
+            'uk' => '(Ukrainian)',
         ],
     ],
 ];

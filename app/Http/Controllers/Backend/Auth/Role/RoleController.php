@@ -45,9 +45,9 @@ class RoleController extends Controller
     {
         return view('backend.auth.role.index')
             ->withRoles($this->roleRepository
-                ->with('users', 'permissions')
-                ->orderBy('id')
-                ->paginate());
+            ->with('users', 'permissions')
+            ->orderBy('id')
+            ->paginate());
     }
 
     /**
@@ -64,8 +64,8 @@ class RoleController extends Controller
     /**
      * @param StoreRoleRequest $request
      *
-     * @return mixed
      * @throws \App\Exceptions\GeneralException
+     * @return mixed
      */
     public function store(StoreRoleRequest $request)
     {
@@ -96,8 +96,8 @@ class RoleController extends Controller
      * @param UpdateRoleRequest $request
      * @param Role              $role
      *
-     * @return mixed
      * @throws \App\Exceptions\GeneralException
+     * @return mixed
      */
     public function update(UpdateRoleRequest $request, Role $role)
     {
@@ -110,8 +110,8 @@ class RoleController extends Controller
      * @param ManageRoleRequest $request
      * @param Role              $role
      *
-     * @return mixed
      * @throws \Exception
+     * @return mixed
      */
     public function destroy(ManageRoleRequest $request, Role $role)
     {

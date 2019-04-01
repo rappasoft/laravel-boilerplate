@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Menus Language Lines
@@ -18,36 +17,36 @@ return [
             'title' => 'مدیریت دسترسی',
 
             'roles' => [
-                'all'        => 'همه نقش‌ها',
-                'create'     => 'ایجاد نقش',
-                'edit'       => 'ویرایش نقش',
+                'all' => 'همه نقش‌ها',
+                'create' => 'ایجاد نقش',
+                'edit' => 'ویرایش نقش',
                 'management' => 'مدیریت نقش',
-                'main'       => 'نقش‌ها',
+                'main' => 'نقش‌ها',
             ],
 
             'users' => [
-                'all'             => 'همه کاربران',
+                'all' => 'همه کاربران',
                 'change-password' => 'تغییر گذرواژه',
-                'create'          => 'ایجاد کاربر',
-                'deactivated'     => 'کاربران غیرفعال',
-                'deleted'         => 'کاربران حذف شده',
-                'edit'            => 'ویرایش کاربر',
-                'main'            => 'کاربران',
-                'view'            => 'نمایش کاربر',
+                'create' => 'ایجاد کاربر',
+                'deactivated' => 'کاربران غیرفعال',
+                'deleted' => 'کاربران حذف شده',
+                'edit' => 'ویرایش کاربر',
+                'main' => 'کاربران',
+                'view' => 'نمایش کاربر',
             ],
         ],
 
         'log-viewer' => [
-            'main'      => 'نمایش لاگ',
+            'main' => 'نمایش لاگ',
             'dashboard' => 'داشبورد',
-            'logs'      => 'لاگ‌ها',
+            'logs' => 'لاگ‌ها',
         ],
 
         'sidebar' => [
             'dashboard' => 'داشبورد',
-            'general'   => 'عمومی',
-            'history'   => 'History',
-            'system'    => 'سامانه',
+            'general' => 'عمومی',
+            'history' => 'History',
+            'system' => 'سامانه',
         ],
     ],
 
@@ -60,28 +59,28 @@ return [
          * Be sure to add the new language in alphabetical order.
          */
         'langs' => [
-            'ar'    => 'عربی (Arabic)',
-            'zh'    => 'چینی ساده (Chinese Simplified)',
+            'ar' => 'عربی (Arabic)',
+            'zh' => 'چینی ساده (Chinese Simplified)',
             'zh-TW' => 'چینی سنتی (Chinese Traditional)',
-            'da'    => 'دانمارکی (Danish)',
-            'de'    => 'آلمانی (German)',
-            'el'    => 'یونانی (Greek)',
-            'en'    => 'انگلیسی (English)',
-            'es'    => 'اسپانیولی (Spanish)',
-            'fa'    => 'فارسی',
-            'fr'    => 'فرانسوی (French)',
-            'he'    => 'عبری (Hebrew)',
-            'id'    => 'اندونزیایی (Indonesian)',
-            'it'    => 'ایتالیایی (Italian)',
-            'ja'    => 'ژاپنی (Japanese)',
-            'nl'    => 'هلندی (Dutch)',
-            'no'    => 'نروژی (Norwegian)',
+            'da' => 'دانمارکی (Danish)',
+            'de' => 'آلمانی (German)',
+            'el' => 'یونانی (Greek)',
+            'en' => 'انگلیسی (English)',
+            'es' => 'اسپانیولی (Spanish)',
+            'fa' => 'فارسی',
+            'fr' => 'فرانسوی (French)',
+            'he' => 'عبری (Hebrew)',
+            'id' => 'اندونزیایی (Indonesian)',
+            'it' => 'ایتالیایی (Italian)',
+            'ja' => 'ژاپنی (Japanese)',
+            'nl' => 'هلندی (Dutch)',
+            'no' => 'نروژی (Norwegian)',
             'pt_BR' => 'پرتغالی برزیلی (Brazilian Portuguese)',
-            'ru'    => 'روسی (Russian)',
-            'sv'    => 'سوئدی (Swedish)',
-            'th'    => 'تایلندی (Thai)',
-            'tr'    => 'ترکی (Turkish)',
-            'uk'    => '(Ukrainian)',
+            'ru' => 'روسی (Russian)',
+            'sv' => 'سوئدی (Swedish)',
+            'th' => 'تایلندی (Thai)',
+            'tr' => 'ترکی (Turkish)',
+            'uk' => '(Ukrainian)',
         ],
     ],
 ];

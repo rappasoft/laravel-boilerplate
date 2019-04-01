@@ -51,10 +51,10 @@ class UpdateUserAccountTest extends TestCase
             ]));
         $user = $user->fresh();
 
-        $this->assertEquals($user->first_name, 'John');
-        $this->assertEquals($user->last_name, 'Doe');
-        $this->assertEquals($user->email, 'john@example.com');
-        $this->assertEquals($user->avatar_type, 'gravatar');
+        $this->assertSame($user->first_name, 'John');
+        $this->assertSame($user->last_name, 'Doe');
+        $this->assertSame($user->email, 'john@example.com');
+        $this->assertSame($user->avatar_type, 'gravatar');
     }
 
     /** @test */
@@ -124,12 +124,12 @@ class UpdateUserAccountTest extends TestCase
         config(['access.users.change_email' => true]);
         Notification::fake();
 
-        $this->assertEquals($user->confirmed, true);
+        $this->assertSame($user->confirmed, true);
 
         $this->actingAs($user)
             ->patch('/profile/update', $this->getValidUserData());
 
-        $this->assertEquals($user->fresh()->confirmed, false);
+        $this->assertSame($user->fresh()->confirmed, false);
         Notification::assertSentTo($user, UserNeedsConfirmation::class);
     }
 
@@ -139,11 +139,11 @@ class UpdateUserAccountTest extends TestCase
         $user = factory(User::class)->create();
         config(['access.users.confirm_email' => false]);
 
-        $this->assertEquals($user->confirmed, true);
+        $this->assertSame($user->confirmed, true);
 
         $this->actingAs($user)
             ->patch('/profile/update', $this->getValidUserData());
 
-        $this->assertEquals($user->fresh()->confirmed, true);
+        $this->assertSame($user->fresh()->confirmed, true);
     }
 }

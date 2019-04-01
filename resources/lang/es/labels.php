@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Labels Language Lines
@@ -14,93 +13,93 @@ return [
     */
 
     'general' => [
-        'all'       => 'Todos',
-        'yes'       => 'Sí',
-        'no'        => 'No',
+        'all' => 'Todos',
+        'yes' => 'Sí',
+        'no' => 'No',
         'copyright' => 'Copyright',
-        'custom'    => 'Personalizado',
-        'actions'   => 'Acciones',
-        'active'    => 'Activo',
-        'buttons'   => [
-            'save'   => 'Guardar',
+        'custom' => 'Personalizado',
+        'actions' => 'Acciones',
+        'active' => 'Activo',
+        'buttons' => [
+            'save' => 'Guardar',
             'update' => 'Actualizar',
         ],
-        'hide'              => 'Ocultar',
-        'inactive'          => 'Inactivo',
-        'none'              => 'Ningúno',
-        'show'              => 'Mostrar',
+        'hide' => 'Ocultar',
+        'inactive' => 'Inactivo',
+        'none' => 'Ningúno',
+        'show' => 'Mostrar',
         'toggle_navigation' => 'Abrir/Cerrar menú de navegación',
     ],
 
     'backend' => [
         'access' => [
             'roles' => [
-                'create'     => 'Crear Rol',
-                'edit'       => 'Modificar Rol',
+                'create' => 'Crear Rol',
+                'edit' => 'Modificar Rol',
                 'management' => 'Administración de Roles',
 
                 'table' => [
                     'number_of_users' => 'Número de Usuarios',
-                    'permissions'     => 'Permisos',
-                    'role'            => 'Rol',
-                    'sort'            => 'Orden',
-                    'total'           => 'Todos los Roles',
+                    'permissions' => 'Permisos',
+                    'role' => 'Rol',
+                    'sort' => 'Orden',
+                    'total' => 'Todos los Roles',
                 ],
             ],
 
             'users' => [
-                'active'              => 'Usuarios activos',
-                'all_permissions'     => 'Todos los Permisos',
-                'change_password'     => 'Cambiar la contraseña',
+                'active' => 'Usuarios activos',
+                'all_permissions' => 'Todos los Permisos',
+                'change_password' => 'Cambiar la contraseña',
                 'change_password_for' => 'Cambiar la contraseña para :user',
-                'create'              => 'Crear Usuario',
-                'deactivated'         => 'Usuarios desactivados',
-                'deleted'             => 'Usuarios eliminados',
-                'edit'                => 'Modificar Usuario',
-                'management'          => 'Administración de Usuarios',
-                'no_permissions'      => 'Sin Permisos',
-                'no_roles'            => 'No hay Roles disponibles.',
-                'permissions'         => 'Permisos',
+                'create' => 'Crear Usuario',
+                'deactivated' => 'Usuarios desactivados',
+                'deleted' => 'Usuarios eliminados',
+                'edit' => 'Modificar Usuario',
+                'management' => 'Administración de Usuarios',
+                'no_permissions' => 'Sin Permisos',
+                'no_roles' => 'No hay Roles disponibles.',
+                'permissions' => 'Permisos',
 
                 'table' => [
-                    'confirmed'         => 'Confirmado',
-                    'created'           => 'Creado',
-                    'email'             => 'Correo',
-                    'id'                => 'ID',
-                    'last_updated'      => 'Última modificación',
-                    'name'              => 'Nombre',
-                    'first_name'        => 'Nombre',
-                    'last_name'         => 'Apellidos',
-                    'no_deactivated'    => 'Ningún Usuario desactivado disponible',
-                    'no_deleted'        => 'Ningún Usuario eliminado disponible',
+                    'confirmed' => 'Confirmado',
+                    'created' => 'Creado',
+                    'email' => 'Correo',
+                    'id' => 'ID',
+                    'last_updated' => 'Última modificación',
+                    'name' => 'Nombre',
+                    'first_name' => 'Nombre',
+                    'last_name' => 'Apellidos',
+                    'no_deactivated' => 'Ningún Usuario desactivado disponible',
+                    'no_deleted' => 'Ningún Usuario eliminado disponible',
                     'other_permissions' => 'Otros Permisos',
-                    'permissions'       => 'Permisos',
-                    'roles'             => 'Roles',
-                    'social'            => 'Cuenta Social',
-                    'total'             => 'Todos los Usuarios',
+                    'permissions' => 'Permisos',
+                    'roles' => 'Roles',
+                    'social' => 'Cuenta Social',
+                    'total' => 'Todos los Usuarios',
                 ],
 
                 'tabs' => [
                     'titles' => [
                         'overview' => 'Resúmen',
-                        'history'  => 'Historia',
+                        'history' => 'Historia',
                     ],
 
                     'content' => [
                         'overview' => [
-                            'avatar'        => 'Avatar',
-                            'confirmed'     => 'Confirmado',
-                            'created_at'    => 'Creación',
-                            'deleted_at'    => 'Eliminación',
-                            'email'         => 'E-mail',
+                            'avatar' => 'Avatar',
+                            'confirmed' => 'Confirmado',
+                            'created_at' => 'Creación',
+                            'deleted_at' => 'Eliminación',
+                            'email' => 'E-mail',
                             'last_login_at' => 'Último login',
                             'last_login_ip' => 'IP último login',
-                            'last_updated'  => 'Última Actualización',
-                            'name'          => 'Nombre',
-                            'first_name'    => 'Nombre',
-                            'last_name'     => 'Apellidos',
-                            'status'        => 'Estado',
-                            'timezone'      => 'Zona horaria',
+                            'last_updated' => 'Última Actualización',
+                            'name' => 'Nombre',
+                            'first_name' => 'Nombre',
+                            'last_name' => 'Apellidos',
+                            'status' => 'Estado',
+                            'timezone' => 'Zona horaria',
                         ],
                     ],
                 ],
@@ -111,27 +110,26 @@ return [
     ],
 
     'frontend' => [
-
         'auth' => [
-            'login_box_title'    => 'Iniciar Sesión',
-            'login_button'       => 'Iniciar Sesión',
-            'login_with'         => 'Iniciar Sesión mediante :social_media',
+            'login_box_title' => 'Iniciar Sesión',
+            'login_button' => 'Iniciar Sesión',
+            'login_with' => 'Iniciar Sesión mediante :social_media',
             'register_box_title' => 'Registrarse',
-            'register_button'    => 'Registrarse',
-            'remember_me'        => 'Recordarme',
+            'register_button' => 'Registrarse',
+            'remember_me' => 'Recordarme',
         ],
 
         'contact' => [
             'box_title' => 'Contáctenos',
-            'button'    => 'Enviar información',
+            'button' => 'Enviar información',
         ],
 
         'passwords' => [
-            'expired_password_box_title'      => 'Su contraseña ha expirado',
-            'forgot_password'                 => '¿Ha olvidado su contraseña?',
-            'reset_password_box_title'        => 'Reiniciar contraseña',
-            'reset_password_button'           => 'Reiniciar contraseña',
-            'update_password_button'          => 'Actualizar contraseña',
+            'expired_password_box_title' => 'Su contraseña ha expirado',
+            'forgot_password' => '¿Ha olvidado su contraseña?',
+            'reset_password_box_title' => 'Reiniciar contraseña',
+            'reset_password_button' => 'Reiniciar contraseña',
+            'update_password_button' => 'Actualizar contraseña',
             'send_password_reset_link_button' => 'Enviar el correo de verificación',
         ],
 
@@ -141,14 +139,14 @@ return [
             ],
 
             'profile' => [
-                'avatar'             => 'Avatar',
-                'created_at'         => 'Creado el',
-                'edit_information'   => 'Modificar la información',
-                'email'              => 'Correo',
-                'last_updated'       => 'Última modificación',
-                'name'               => 'Nombre',
-                'first_name'         => 'Nombre',
-                'last_name'          => 'Apellidos',
+                'avatar' => 'Avatar',
+                'created_at' => 'Creado el',
+                'edit_information' => 'Modificar la información',
+                'email' => 'Correo',
+                'last_updated' => 'Última modificación',
+                'name' => 'Nombre',
+                'first_name' => 'Nombre',
+                'last_name' => 'Apellidos',
                 'update_information' => 'Actualizar la información',
             ],
         ],

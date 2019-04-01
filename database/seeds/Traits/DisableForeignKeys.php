@@ -11,12 +11,12 @@ trait DisableForeignKeys
      * @var array
      */
     private $commands = [
-        'mysql'  => [
-            'enable'  => 'SET FOREIGN_KEY_CHECKS=1;',
+        'mysql' => [
+            'enable' => 'SET FOREIGN_KEY_CHECKS=1;',
             'disable' => 'SET FOREIGN_KEY_CHECKS=0;',
         ],
         'sqlite' => [
-            'enable'  => 'PRAGMA foreign_keys = ON;',
+            'enable' => 'PRAGMA foreign_keys = ON;',
             'disable' => 'PRAGMA foreign_keys = OFF;',
         ],
         'sqlsrv' => [

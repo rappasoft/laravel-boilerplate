@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Alert Language Lines
@@ -21,18 +20,18 @@ return [
         ],
 
         'users' => [
-            'cant_resend_confirmation'  => 'La aplicación está actualmente configurada para aprobación manual de usuarios.',
-            'confirmation_email'        => 'Un nuevo mensaje de confirmación ha sido enviado a su correo.',
-            'confirmed'                 => 'El usuario fue confirmado correctamente.',
-            'created'                   => 'El usuario fue creado correctamente.',
-            'deleted'                   => 'El usuario fue eliminado correctamente.',
-            'deleted_permanently'       => 'El usuario fue eliminado de forma permanente.',
-            'restored'                  => 'El usuario fue restaurado correctamente.',
-            'session_cleared'           => 'La sesión del usuario se borró correctamente.',
-            'social_deleted'            => 'La cuenta social fue eliminada correctamente.',
-            'unconfirmed'               => 'El usuario fue desconfirmado correctamente',
-            'updated'                   => 'El usuario fue actualizado correctamente.',
-            'updated_password'          => 'La contraseña fue actualizada correctamente.',
+            'cant_resend_confirmation' => 'La aplicación está actualmente configurada para aprobación manual de usuarios.',
+            'confirmation_email' => 'Un nuevo mensaje de confirmación ha sido enviado a su correo.',
+            'confirmed' => 'El usuario fue confirmado correctamente.',
+            'created' => 'El usuario fue creado correctamente.',
+            'deleted' => 'El usuario fue eliminado correctamente.',
+            'deleted_permanently' => 'El usuario fue eliminado de forma permanente.',
+            'restored' => 'El usuario fue restaurado correctamente.',
+            'session_cleared' => 'La sesión del usuario se borró correctamente.',
+            'social_deleted' => 'La cuenta social fue eliminada correctamente.',
+            'unconfirmed' => 'El usuario fue desconfirmado correctamente',
+            'updated' => 'El usuario fue actualizado correctamente.',
+            'updated_password' => 'La contraseña fue actualizada correctamente.',
         ],
     ],
 

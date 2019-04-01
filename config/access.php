@@ -1,53 +1,34 @@
 <?php
 
 return [
-
-    /*
-     * Application captcha specific settings
-     */
+    // Application captcha specific settings
     'captcha' => [
-        /*
-         * Whether the registration captcha is on or off
-         */
+        // Whether the registration captcha is on or off
         'contact' => env('CONTACT_CAPTCHA_STATUS', false),
         'registration' => env('REGISTRATION_CAPTCHA_STATUS', false),
     ],
 
-    /*
-     * Whether or not registration is enabled
-     */
+    // Whether or not registration is enabled
     'registration' => env('ENABLE_REGISTRATION', true),
 
-    /*
-     * Table names for access tables
-     */
+    // Table names for access tables
     'table_names' => [
         'password_histories' => 'password_histories',
         'users' => 'users',
     ],
 
-    /*
-     * Configurations for the user
-     */
+    // Configurations for the user
     'users' => [
-        /*
-         * Whether or not the user has to confirm their email when signing up
-         */
+        // Whether or not the user has to confirm their email when signing up
         'confirm_email' => env('CONFIRM_EMAIL', false),
 
-        /*
-         * Whether or not the users email can be changed on the edit profile screen
-         */
+        // Whether or not the users email can be changed on the edit profile screen
         'change_email' => env('CHANGE_EMAIL', false),
 
-        /*
-         * The name of the super administrator role
-         */
+        // The name of the super administrator role
         'admin_role' => 'administrator',
 
-        /*
-         * The default role all new registered users get added to
-         */
+        // The default role all new registered users get added to
         'default_role' => 'user',
 
         /*
@@ -56,9 +37,7 @@ return [
          */
         'requires_approval' => env('REQUIRES_APPROVAL', false),
 
-        /*
-         * Login username to be used by the controller.
-         */
+        // Login username to be used by the controller.
         'username' => 'email',
 
         /*
@@ -82,13 +61,9 @@ return [
         'password_history' => env('PASSWORD_HISTORY', 3),
     ],
 
-    /*
-    * Configuration for roles
-    */
+    // Configuration for roles
     'roles' => [
-        /*
-         * Whether a role must contain a permission or can be used standalone as a label
-         */
+        // Whether a role must contain a permission or can be used standalone as a label
         'role_must_contain_permission' => true,
     ],
 

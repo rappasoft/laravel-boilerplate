@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Labels Language Lines
@@ -14,86 +13,86 @@ return [
     */
 
     'general' => [
-        'all'     => 'Alle',
-        'yes'     => 'Ja',
-        'no'      => 'Nej',
-        'custom'  => 'Brugerdefineret',
+        'all' => 'Alle',
+        'yes' => 'Ja',
+        'no' => 'Nej',
+        'custom' => 'Brugerdefineret',
         'actions' => 'Handlinger',
-        'active'  => 'Active',
+        'active' => 'Active',
         'buttons' => [
-            'save'   => 'Gem',
+            'save' => 'Gem',
             'update' => 'Opdater',
         ],
-        'hide'              => 'Skjul',
-        'inactive'          => 'Inactive',
-        'none'              => 'Ingen',
-        'show'              => 'Vis',
+        'hide' => 'Skjul',
+        'inactive' => 'Inactive',
+        'none' => 'Ingen',
+        'show' => 'Vis',
         'toggle_navigation' => 'Navigation',
     ],
 
     'backend' => [
         'access' => [
             'roles' => [
-                'create'     => 'Opret Rolle',
-                'edit'       => 'Opdater Rolle',
+                'create' => 'Opret Rolle',
+                'edit' => 'Opdater Rolle',
                 'management' => 'Rolleadministration',
 
                 'table' => [
                     'number_of_users' => 'Antal Brugere',
-                    'permissions'     => 'Rettigheder',
-                    'role'            => 'Rolle',
-                    'sort'            => 'Sortér',
-                    'total'           => 'rolle i alt|roller i alt',
+                    'permissions' => 'Rettigheder',
+                    'role' => 'Rolle',
+                    'sort' => 'Sortér',
+                    'total' => 'rolle i alt|roller i alt',
                 ],
             ],
 
             'users' => [
-                'active'              => 'Aktive Brugere',
-                'all_permissions'     => 'Alle Rettigheder',
-                'change_password'     => 'Skift Adgangskode',
+                'active' => 'Aktive Brugere',
+                'all_permissions' => 'Alle Rettigheder',
+                'change_password' => 'Skift Adgangskode',
                 'change_password_for' => 'Skift Adgangskode for :user',
-                'create'              => 'Opret Bruger',
-                'deactivated'         => 'Deaktiverde Brugere',
-                'deleted'             => 'Slettede Brugere',
-                'edit'                => 'Rediger Bruger',
-                'management'          => 'Brugeradministration',
-                'no_permissions'      => 'Ingen Rettigheder',
-                'no_roles'            => 'Ingen Rolle valgt.',
-                'permissions'         => 'Rettigheder',
+                'create' => 'Opret Bruger',
+                'deactivated' => 'Deaktiverde Brugere',
+                'deleted' => 'Slettede Brugere',
+                'edit' => 'Rediger Bruger',
+                'management' => 'Brugeradministration',
+                'no_permissions' => 'Ingen Rettigheder',
+                'no_roles' => 'Ingen Rolle valgt.',
+                'permissions' => 'Rettigheder',
 
                 'table' => [
-                    'confirmed'      => 'Bekræftet',
-                    'created'        => 'Oprettet',
-                    'email'          => 'Email',
-                    'id'             => 'Id',
-                    'last_updated'   => 'Sidst Opdateret',
-                    'name'           => 'Navn',
+                    'confirmed' => 'Bekræftet',
+                    'created' => 'Oprettet',
+                    'email' => 'Email',
+                    'id' => 'Id',
+                    'last_updated' => 'Sidst Opdateret',
+                    'name' => 'Navn',
                     'no_deactivated' => 'Ingen Deaktiverede Brugere',
-                    'no_deleted'     => 'Ingen Slettede Brugere',
-                    'roles'          => 'Roller',
+                    'no_deleted' => 'Ingen Slettede Brugere',
+                    'roles' => 'Roller',
                     'social' => 'Social',
-                    'total'          => 'bruger i alt|brugere i alt',
+                    'total' => 'bruger i alt|brugere i alt',
                 ],
 
                 'tabs' => [
                     'titles' => [
                         'overview' => 'Overview',
-                        'history'  => 'History',
+                        'history' => 'History',
                     ],
 
                     'content' => [
                         'overview' => [
-                            'avatar'       => 'Avatar',
-                            'confirmed'    => 'Confirmed',
-                            'created_at'   => 'Created At',
-                            'deleted_at'   => 'Deleted At',
-                            'email'        => 'E-mail',
+                            'avatar' => 'Avatar',
+                            'confirmed' => 'Confirmed',
+                            'created_at' => 'Created At',
+                            'deleted_at' => 'Deleted At',
+                            'email' => 'E-mail',
                             'last_login_at' => 'Last Login At',
                             'last_login_ip' => 'Last Login IP',
                             'last_updated' => 'Last Updated',
-                            'name'         => 'Name',
-                            'status'       => 'Status',
-                            'timezone'     => 'Timezone',
+                            'name' => 'Name',
+                            'status' => 'Status',
+                            'timezone' => 'Timezone',
                         ],
                     ],
                 ],
@@ -104,14 +103,13 @@ return [
     ],
 
     'frontend' => [
-
         'auth' => [
-            'login_box_title'    => 'Log ind',
-            'login_button'       => 'Log ind',
-            'login_with'         => 'Log ind med :social_media',
+            'login_box_title' => 'Log ind',
+            'login_button' => 'Log ind',
+            'login_with' => 'Log ind med :social_media',
             'register_box_title' => 'Opret',
-            'register_button'    => 'Opret',
-            'remember_me'        => 'Husk mig',
+            'register_button' => 'Opret',
+            'remember_me' => 'Husk mig',
         ],
 
         'contact' => [
@@ -120,9 +118,9 @@ return [
         ],
 
         'passwords' => [
-            'forgot_password'                 => 'Glemt din adgangskode?',
-            'reset_password_box_title'        => 'Nulstil adgangskode',
-            'reset_password_button'           => 'Nulstil adgangskode',
+            'forgot_password' => 'Glemt din adgangskode?',
+            'reset_password_box_title' => 'Nulstil adgangskode',
+            'reset_password_button' => 'Nulstil adgangskode',
             'send_password_reset_link_button' => 'Send link til at nulstille adgangskoden',
         ],
 
@@ -132,15 +130,14 @@ return [
             ],
 
             'profile' => [
-                'avatar'             => 'Avatar',
-                'created_at'         => 'Oprettet den',
-                'edit_information'   => 'Rediger information',
-                'email'              => 'Email',
-                'last_updated'       => 'Sidst opdateret',
-                'name'               => 'Navn',
+                'avatar' => 'Avatar',
+                'created_at' => 'Oprettet den',
+                'edit_information' => 'Rediger information',
+                'email' => 'Email',
+                'last_updated' => 'Sidst opdateret',
+                'name' => 'Navn',
                 'update_information' => 'Opdater information',
             ],
         ],
-
     ],
 ];

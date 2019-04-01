@@ -25,9 +25,9 @@ class RoleRepository extends BaseRepository
     /**
      * @param array $data
      *
-     * @return Role
      * @throws GeneralException
      * @throws \Throwable
+     * @return Role
      */
     public function create(array $data) : Role
     {
@@ -64,9 +64,9 @@ class RoleRepository extends BaseRepository
      * @param Role  $role
      * @param array $data
      *
-     * @return mixed
      * @throws GeneralException
      * @throws \Throwable
+     * @return mixed
      */
     public function update(Role $role, array $data)
     {

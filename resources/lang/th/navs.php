@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Navs Language Lines
@@ -14,23 +13,23 @@ return [
     */
 
     'general' => [
-        'home'   => 'หน้าแรก',
+        'home' => 'หน้าแรก',
         'logout' => 'ออกจากระบบ',
     ],
 
     'frontend' => [
         'contact' => 'Contact',
         'dashboard' => 'แผงควบคุม',
-        'login'     => 'เข้าสู่ระบบ',
-        'macros'    => 'Macros',
-        'register'  => 'ลงทะเบียน',
+        'login' => 'เข้าสู่ระบบ',
+        'macros' => 'Macros',
+        'register' => 'ลงทะเบียน',
 
         'user' => [
-        'account'             => 'บัญชีของฉัน',
-            'administration'  => 'หน้าแอดมิน',
+            'account' => 'บัญชีของฉัน',
+            'administration' => 'หน้าแอดมิน',
             'change_password' => 'เปลี่ยนรหัสผ่าน',
-            'my_information'  => 'ข้อมูลของฉัน',
-        'profile'             => 'ข้อมูลส่วนตัว',
+            'my_information' => 'ข้อมูลของฉัน',
+            'profile' => 'ข้อมูลส่วนตัว',
         ],
     ],
 ];

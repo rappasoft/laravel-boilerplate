@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Alert Language Lines
@@ -23,7 +22,7 @@ return [
         'users' => [
             'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
             'confirmation_email' => '新的確認電子郵件已發送到文件上的地址。 ',
-            'confirmed'              => 'The user was successfully confirmed.',
+            'confirmed' => 'The user was successfully confirmed.',
             'created' => '用戶已成功創建。 ',
             'deleted' => '用戶已成功刪除。 ',
             'deleted_permanently' => '用戶被永久刪除。 ',

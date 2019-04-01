@@ -14,31 +14,23 @@ class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
      */
     public function register()
     {
-        /*
-         * Sets third party service providers that are only needed on local/testing environments
-         */
+        // Sets third party service providers that are only needed on local/testing environments
         if ($this->app->environment() !== 'production') {
             /**
              * Loader for registering facades.
              */
             $loader = \Illuminate\Foundation\AliasLoader::getInstance();
 
-            /*
-             * Load third party local aliases
-             */
+            // Load third party local aliases
             $loader->alias('Debugbar', \Barryvdh\Debugbar\Facade::class);
         }
     }
 
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
     public function boot()
     {
@@ -48,14 +40,10 @@ class AppServiceProvider extends ServiceProvider
          * These will be overridden by LocaleMiddleware if the session local is set
          */
 
-        /*
-         * setLocale for php. Enables ->formatLocalized() with localized values for dates
-         */
+        // setLocale for php. Enables ->formatLocalized() with localized values for dates
         setlocale(LC_TIME, config('app.locale_php'));
 
-        /*
-         * setLocale to use Carbon source locales. Enables diffForHumans() localized
-         */
+        // setLocale to use Carbon source locales. Enables diffForHumans() localized
         Carbon::setLocale(config('app.locale'));
 
         /*

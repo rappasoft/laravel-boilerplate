@@ -83,8 +83,8 @@ abstract class BaseRepository implements RepositoryContract
     abstract public function model();
 
     /**
-     * @return Model|mixed
      * @throws GeneralException
+     * @return Model|mixed
      */
     public function makeModel()
     {
@@ -178,8 +178,8 @@ abstract class BaseRepository implements RepositoryContract
      *
      * @param $id
      *
-     * @return bool|null
      * @throws \Exception
+     * @return bool|null
      */
     public function deleteById($id) : bool
     {

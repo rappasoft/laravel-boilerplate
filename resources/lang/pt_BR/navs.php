@@ -14,21 +14,21 @@ return [
      */
 
     'general' => [
-        'home'   => 'Início',
+        'home' => 'Início',
         'logout' => 'Sair',
     ],
     'frontend' => [
         'contact' => 'Contato',
         'dashboard' => 'Painel de Controle',
-        'login'     => 'Entrar',
-        'macros'    => 'Macros',
-        'register'  => 'Registrar',
-        'user'      => [
-            'account'         => 'Minha Conta',
-            'administration'  => 'Administração',
+        'login' => 'Entrar',
+        'macros' => 'Macros',
+        'register' => 'Registrar',
+        'user' => [
+            'account' => 'Minha Conta',
+            'administration' => 'Administração',
             'change_password' => 'Alterar Senha',
-            'my_information'  => 'Minhas Informações',
-            'profile'         => 'Perfil',
+            'my_information' => 'Minhas Informações',
+            'profile' => 'Perfil',
         ],
     ],
 ];

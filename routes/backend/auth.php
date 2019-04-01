@@ -9,36 +9,25 @@ use App\Http\Controllers\Backend\Auth\User\UserSessionController;
 use App\Http\Controllers\Backend\Auth\User\UserPasswordController;
 use App\Http\Controllers\Backend\Auth\User\UserConfirmationController;
 
-/*
- * All route names are prefixed with 'admin.auth'.
- */
+// All route names are prefixed with 'admin.auth'.
 Route::group([
-    'prefix'     => 'auth',
-    'as'         => 'auth.',
-    'namespace'  => 'Auth',
+    'prefix' => 'auth',
+    'as' => 'auth.',
+    'namespace' => 'Auth',
     'middleware' => 'role:'.config('access.users.admin_role'),
 ], function () {
-    /*
-     * User Management
-     */
+    // User Management
     Route::group(['namespace' => 'User'], function () {
-
-        /*
-         * User Status'
-         */
+        // User Status'
         Route::get('user/deactivated', [UserStatusController::class, 'getDeactivated'])->name('user.deactivated');
         Route::get('user/deleted', [UserStatusController::class, 'getDeleted'])->name('user.deleted');
 
-        /*
-         * User CRUD
-         */
+        // User CRUD
         Route::get('user', [UserController::class, 'index'])->name('user.index');
         Route::get('user/create', [UserController::class, 'create'])->name('user.create');
         Route::post('user', [UserController::class, 'store'])->name('user.store');
 
-        /*
-         * Specific User
-         */
+        // Specific User
         Route::group(['prefix' => 'user/{user}'], function () {
             // User
             Route::get('/', [UserController::class, 'show'])->name('user.show');
@@ -75,9 +64,7 @@ Route::group([
         });
     });
 
-    /*
-     * Role Management
-     */
+    // Role Management
     Route::group(['namespace' => 'Role'], function () {
         Route::get('role', [RoleController::class, 'index'])->name('role.index');
         Route::get('role/create', [RoleController::class, 'create'])->name('role.create');
