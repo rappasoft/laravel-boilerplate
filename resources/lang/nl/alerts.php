@@ -20,16 +20,16 @@ return [
         ],
 
         'users' => [
-            'cant_resend_confirmation' => 'The application is currently set to manually approve users.',
+            'cant_resend_confirmation' => 'Nieuwe gebruikers dienen manueel goedgekeurd te worden.',
             'confirmation_email' => 'Een nieuwe bevestigings e-mail is verzonden naar het aangegeven adres.',
-            'confirmed' => 'The user was successfully confirmed.',
+            'confirmed' => 'De aanmelding van deze gebruiker is succesvol bevestigd.',
             'created' => 'De gebruiker is succesvol aangemaakt.',
             'deleted' => 'De gebruiker is succesvol verwijderd.',
             'deleted_permanently' => 'De gebruiker is permanent verwijderd.',
             'restored' => 'De gebruiker is met succes hersteld.',
-            'session_cleared' => "The user's session was successfully cleared.",
-            'social_deleted' => 'Social Account Successfully Removed',
-            'unconfirmed' => 'The user was successfully un-confirmed',
+            'session_cleared' => "De sessie van deze gebruiker werd succesvol geleegd.",
+            'social_deleted' => 'Social media account succesvol verwijderd.',
+            'unconfirmed' => 'De bevestiging van deze gebruiker is succesvol ongedaan gemaakt.',
             'updated' => 'De gebruiker is succesvol bijgewerkt.',
             'updated_password' => 'Het wachtwoord van de gebruiker is succesvol bijgewerkt',
         ],
@@ -37,7 +37,7 @@ return [
 
     'frontend' => [
         'contact' => [
-            'sent' => 'Your information was successfully sent. We will respond back to the e-mail provided as soon as we can.',
+            'sent' => 'Het formulier is succesvol verzonden. Wij nemen zo snel mogelijk contact met u op.',
         ],
     ],
 ];
