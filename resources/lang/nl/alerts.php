@@ -27,7 +27,7 @@ return [
             'deleted' => 'De gebruiker is succesvol verwijderd.',
             'deleted_permanently' => 'De gebruiker is permanent verwijderd.',
             'restored' => 'De gebruiker is met succes hersteld.',
-            'session_cleared' => "De sessie van deze gebruiker werd succesvol geleegd.",
+            'session_cleared' => 'De sessie van deze gebruiker werd succesvol geleegd.',
             'social_deleted' => 'Social media account succesvol verwijderd.',
             'unconfirmed' => 'De bevestiging van deze gebruiker is succesvol ongedaan gemaakt.',
             'updated' => 'De gebruiker is succesvol bijgewerkt.',
