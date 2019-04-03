@@ -37,7 +37,7 @@ return [
         ],
 
         'log-viewer' => [
-            'main' => 'Log Viewer',
+            'main' => 'Logs',
             'dashboard' => 'Dashboard',
             'logs' => 'Logs',
         ],
@@ -45,8 +45,8 @@ return [
         'sidebar' => [
             'dashboard' => 'Dashboard',
             'general' => 'Algemeen',
-            'history' => 'History',
-            'system' => 'System',
+            'history' => 'Geschiedenis',
+            'system' => 'Systeem',
         ],
     ],
 
@@ -60,11 +60,11 @@ return [
          */
         'langs' => [
             'ar' => 'Arabisch (Arabic)',
-            'zh' => '(Chinese Simplified)',
-            'zh-TW' => '(Chinese Traditional)',
+            'zh' => 'Chinees (Chinese Simplified)',
+            'zh-TW' => 'Chinees (Chinese Traditional)',
             'da' => 'Deens (Danish)',
             'de' => 'Duits (German)',
-            'el' => '(Greek)',
+            'el' => 'Grieks (Greek)',
             'en' => 'Engels (English)',
             'es' => 'Spaans (Spanish)',
             'fa' => 'Perzisch (Persian)',
@@ -72,15 +72,15 @@ return [
             'he' => 'Hebreeuws (Hebrew)',
             'id' => 'Indonesisch (Indonesian)',
             'it' => 'Italiaans (Italian)',
-            'ja' => '(Japanese)',
+            'ja' => 'Japans (Japanese)',
             'nl' => 'Nederlands (Dutch)',
             'no' => 'Noors (Norwegin)',
             'pt_BR' => 'Braziliaans Portugees (Brazilian Portuguese)',
             'ru' => 'Russisch (Russian)',
             'sv' => 'Zweeds (Swedish)',
             'th' => 'Thais (Thai)',
-            'tr' => '(Turkish)',
-            'uk' => '(Ukrainian)',
+            'tr' => 'Turks (Turkish)',
+            'uk' => 'Oekraïens (Ukrainian)',
         ],
     ],
 ];
