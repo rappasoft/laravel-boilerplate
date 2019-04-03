@@ -37,7 +37,7 @@ return [
             'timeout' => 'Automatisch uitgelogd vanwege veiligheidsredenen aangezien er geen activiteit was in ',
 
             'see_all' => [
-                'messages' => 'Alle messages bekijken',
+                'messages' => 'Alle berichten bekijken',
                 'notifications' => 'Bekijk alles',
                 'tasks' => ' Alle taken bekijken',
             ],
@@ -55,17 +55,17 @@ return [
         ],
 
         'search' => [
-            'empty' => 'Please enter a search term.',
-            'incomplete' => 'You must write your own search logic for this system.',
-            'title' => 'Search Results',
-            'results' => 'Search Results for :query',
+            'empty' => 'Voer een zoekterm in.',
+            'incomplete' => 'Je moet een eigen zoeksysteem implementeren.',
+            'title' => 'Zoekresultaten',
+            'results' => 'Zoekresultaten voor :query',
         ],
 
-        'welcome' => 'Welcome to the Dashboard',
+        'welcome' => 'Welkom op het Dashboard',
     ],
     'emails' => [
         'auth' => [
-            'account_confirmed' => 'Your account has been confirmed.',
+            'account_confirmed' => 'Uw account werd goedgekeurd.',
             'error' => 'Oeps!',
             'greeting' => 'Hallo!',
             'regards' => 'Groet,',
@@ -81,8 +81,8 @@ return [
         ],
 
         'contact' => [
-            'email_body_title' => 'You have a new contact form request: Below are the details:',
-            'subject' => 'A new :app_name contact form submission!',
+            'email_body_title' => 'Je hebt een nieuw contactaanvraag:',
+            'subject' => 'Het contactformulier op :app_name werd ingevuld!',
         ],
     ],
 
@@ -116,12 +116,12 @@ return [
         ],
 
         'general' => [
-            'joined' => 'Joined',
+            'joined' => 'Geregistreerd',
         ],
 
         'user' => [
-            'change_email_notice' => 'If you change your e-mail you will be logged out until you confirm your new e-mail address.',
-            'email_changed_notice' => 'You must confirm your new e-mail address before you can log in again.',
+            'change_email_notice' => 'Als je je e-mailadres aanpast zul je automatisch uitloggen tot je het nieuw e-mailadres bevestigt.',
+            'email_changed_notice' => 'Je moet je nieuw e-mailadres bevestigen voordat je kan inloggen.',
             'profile_updated' => 'Profiel succesvol bijgewerkt.',
             'password_updated' => 'Wachtwoord succesvol bijgewerkt.',
         ],

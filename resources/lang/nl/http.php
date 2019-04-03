@@ -11,7 +11,7 @@ return [
     */
 
     '404' => [
-        'title' => 'Pagina Niet Gevonden',
+        'title' => 'Pagina niet gevonden',
         'description' => 'Sorry, de pagina die u probeert te bekijken bestaat niet.',
     ],
 
