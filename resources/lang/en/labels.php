@@ -32,7 +32,6 @@ return [
         'create_new' => 'Create New',
         'toolbar_btn_groups' => 'Toolbar with button groups',
         'more' => 'More',
-        'none' => 'None',
     ],
 
     'backend' => [

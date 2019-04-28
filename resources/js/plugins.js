@@ -82,4 +82,6 @@ $(function () {
             result.value && window.location.assign(link.attr('href'));
         });
     });
+
+    $('[data-toggle="tooltip"]').tooltip();
 });

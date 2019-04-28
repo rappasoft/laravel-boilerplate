@@ -14,8 +14,8 @@ return [
 
     'failed' => 'Toegangsgegevens niet gevonden',
     'general_error' => 'Je hebt niet de rechten om dat te doen.',
-    'password_rules' => 'Your password must be more than 8 characters long, should contain at least 1 uppercase, 1 lowercase and 1 number.',
-    'password_used' => 'You can not set a password that you have previously used.',
+    'password_rules' => 'Je wachtwoord moet minstens 8 tekens lang zijn, moet minstens 1 hoofdletter, 1 kleine letter en 1 nummer bevatten.',
+    'password_used' => 'Je kan geen wachtwoord instellen dat je al eerder gebruikte.',
     'socialite' => [
         'unacceptable' => ':provider is niet een geaccepteerd login type.',
     ],
