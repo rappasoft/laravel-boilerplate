@@ -23,6 +23,8 @@
         @stack('after-styles')
     </head>
     <body>
+        @include('includes.partials.demo')
+
         <div id="app">
             @include('includes.partials.logged-in-as')
             @include('frontend.includes.nav')
