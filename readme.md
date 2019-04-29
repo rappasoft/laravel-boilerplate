@@ -9,6 +9,10 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/rappasoft/laravel-5-boilerplate.svg)
 ![GitHub stars](https://img.shields.io/github/stars/rappasoft/laravel-5-boilerplate.svg?style=social)
 
+### Demo Credentials
+
+**User:** admin@admin.com  
+**Password:** secret
 
 ### Official Documentation
 
