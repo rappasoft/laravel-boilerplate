@@ -72,6 +72,15 @@ class AppServiceProvider extends ServiceProvider
         \Illuminate\Pagination\AbstractPaginator::defaultSimpleView('pagination::simple-bootstrap-4');
 
         // Custom Blade Directives
+
+        /*
+         * The block of code inside this directive indicates
+         * the project is currently running in demo mode.
+         */
+        Blade::if('demo', function () {
+            return config('app.demo');
+        });
+
         /*
          * The block of code inside this directive indicates
          * the chosen language requests RTL support.
