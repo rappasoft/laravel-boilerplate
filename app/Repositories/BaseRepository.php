@@ -51,9 +51,9 @@ abstract class BaseRepository implements RepositoryContract
      *
      * @var array
      */
-	protected $whereIns = [];
+    protected $whereIns = [];
 
-	/**
+    /**
      * Array of one or more where in clause parameters.
      *
      * @var array
@@ -374,9 +374,9 @@ abstract class BaseRepository implements RepositoryContract
         $this->whereIns[] = compact('column', 'values');
 
         return $this;
-	}
+    }
 
-	/**
+    /**
      * Add a simple where not in clause to the query.
      *
      * @param string $column
@@ -451,9 +451,9 @@ abstract class BaseRepository implements RepositoryContract
 
         foreach ($this->whereIns as $whereIn) {
             $this->query->whereIn($whereIn['column'], $whereIn['values']);
-		}
+        }
 
-		foreach ($this->whereNotIns as $whereIn) {
+        foreach ($this->whereNotIns as $whereIn) {
             $this->query->whereNotIn($whereIn['column'], $whereIn['values']);
         }
 

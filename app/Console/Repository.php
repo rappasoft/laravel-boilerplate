@@ -9,12 +9,12 @@ use Symfony\Component\Console\Input\InputOption;
 class Repository extends GeneratorCommand
 {
 
-	/**
+    /**
      * The console command name.
      *
      * @var string
      */
-	protected $name = 'make:repository';
+    protected $name = 'make:repository';
 
 
     /**
@@ -29,7 +29,7 @@ class Repository extends GeneratorCommand
      *
      * @var string
      */
-	protected $type = 'Repository';
+    protected $type = 'Repository';
 
 
 
@@ -63,9 +63,9 @@ class Repository extends GeneratorCommand
     protected function getDefaultNamespace($rootNamespace)
     {
         return $rootNamespace.'\Repositories';
-	}
+    }
 
-	    /**
+        /**
      * Get the console command options.
      *
      * @return array
