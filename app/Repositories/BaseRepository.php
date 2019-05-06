@@ -51,7 +51,14 @@ abstract class BaseRepository implements RepositoryContract
      *
      * @var array
      */
-    protected $whereIns = [];
+	protected $whereIns = [];
+
+	/**
+     * Array of one or more where in clause parameters.
+     *
+     * @var array
+     */
+    protected $whereNotIns = [];
 
     /**
      * Array of one or more ORDER BY column/value pairs.
@@ -367,7 +374,25 @@ abstract class BaseRepository implements RepositoryContract
         $this->whereIns[] = compact('column', 'values');
 
         return $this;
+	}
+
+	/**
+     * Add a simple where not in clause to the query.
+     *
+     * @param string $column
+     * @param mixed  $values
+     *
+     * @return $this
+     */
+    public function whereNotIn($column, $values)
+    {
+        $values = is_array($values) ? $values : [$values];
+
+        $this->whereNotIns[] = compact('column', 'values');
+
+        return $this;
     }
+
 
     /**
      * Set Eloquent relationships to eager load.
@@ -426,6 +451,10 @@ abstract class BaseRepository implements RepositoryContract
 
         foreach ($this->whereIns as $whereIn) {
             $this->query->whereIn($whereIn['column'], $whereIn['values']);
+		}
+
+		foreach ($this->whereNotIns as $whereIn) {
+            $this->query->whereNotIn($whereIn['column'], $whereIn['values']);
         }
 
         foreach ($this->orderBys as $orders) {
