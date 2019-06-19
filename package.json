@@ -8,7 +8,7 @@
         "development": "cross-env NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "watch": "cross-var $npm_execpath run development -- --watch",
         "watch-poll": "cross-var $npm_execpath run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "hot": "cross-env NODE_ENV=development webpack-dev-server --disableHostCheck=true --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "cross-var $npm_execpath run production",
         "production": "cross-env NODE_ENV=production webpack --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "test": "cross-env NODE_ENV=test jest",
@@ -37,7 +37,8 @@
         "sweetalert2": "^8.7.0",
         "vue": "^2.6.10",
         "vue-jest": "^3.0.4",
-        "vue-template-compiler": "^2.6.10"
+        "vue-template-compiler": "^2.6.10",
+        "webpack-dev-server": "^3.7.2"
     },
     "browserslist": {
         "development": "last 1 version",
