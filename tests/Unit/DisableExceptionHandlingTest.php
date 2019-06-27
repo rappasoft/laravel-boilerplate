@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use Tests\TestCase; 
 use Illuminate\Foundation\Testing\RefreshDatabase;
  
-Class DisableExceptionHandlingTest extends TestCase
+class DisableExceptionHandlingTest extends TestCase
 {
     use RefreshDatabase;
     
@@ -17,8 +17,7 @@ Class DisableExceptionHandlingTest extends TestCase
             $this->disableExceptionHandling();
             $response = $this->get('admin');
             $response->assertStatus(302);
-        }
-        catch(\Exception $ex){
+        } catch(\Exception $ex) {
             $this->assertEquals('Unauthenticated.', $ex->getMessage());
         }
     }
