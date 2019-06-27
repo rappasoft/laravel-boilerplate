@@ -39,6 +39,7 @@ return [
     'dimensions' => 'The :attribute has invalid image dimensions.',
     'distinct' => 'The :attribute field has a duplicate value.',
     'email' => 'Fältet :attribute måste innehålla en korrekt e-postadress.',
+    'ends_with' => 'The :attribute must end with one of the following: :values',
     'exists' => 'Det valda :attribute är ogiltigt.',
     'file' => 'The :attribute must be a file.',
     'filled' => 'Fältet :attribute är obligatoriskt.',

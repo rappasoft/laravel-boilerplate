@@ -13,6 +13,7 @@ npm-debug.log
 yarn-error.log
 .env
 .env.dusk.*
+.env.backup
 .DS_Store
 Thumbs.db
 *.sublime-project

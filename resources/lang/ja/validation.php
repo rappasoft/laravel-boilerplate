@@ -39,6 +39,7 @@ return [
     'dimensions' => 'The :attribute has invalid image dimensions.',
     'distinct' => 'The :attribute field has a duplicate value.',
     'email' => ':attributeは、有効なメールアドレス形式で指定してください。',
+    'ends_with' => 'The :attribute must end with one of the following: :values',
     'exists' => '選択された:attributeは、有効ではありません。',
     'file' => 'The :attribute must be a file.',
     'filled' => ':attributeは必須です。',

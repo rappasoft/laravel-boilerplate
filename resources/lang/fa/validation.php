@@ -39,6 +39,7 @@ return [
     'dimensions' => ':attribute ابعاد نامعتبر دارد.',
     'distinct' => ':attribute فیلد مقدار تکراری دارد.',
     'email' => ':attribute باید یک رایانامه معتبر باشد.',
+    'ends_with' => 'The :attribute must end with one of the following: :values',
     'exists' => ':attribute انتخاب شده نامعتبر است.',
     'file' => ':attribute باید یک فایل باشد.',
     'filled' => ':attribute فیلد باید یک مقدار داشته باشد.',

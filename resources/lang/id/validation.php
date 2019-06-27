@@ -38,6 +38,7 @@ return [
     'dimensions' => ':attribute tidak memiliki dimensi gambar yang benar.',
     'distinct' => ':attribute memiliki nilai yang duplikat.',
     'email' => ':attribute harus berupa alamat surel yang benar.',
+    'ends_with' => 'The :attribute must end with one of the following: :values',
     'exists' => ':attribute yang dipilih tidak benar.',
     'file' => ':attribute harus berupa sebuah berkas.',
     'filled' => ':attribute wajib diisi.',
