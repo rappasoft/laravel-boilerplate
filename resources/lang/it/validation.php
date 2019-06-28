@@ -39,6 +39,7 @@ return [
     'dimensions' => 'The :attribute has invalid image dimensions.',
     'distinct' => 'The :attribute field has a duplicate value.',
     'email' => ':attribute deve essere un indirizzo email valido.',
+    'ends_with' => 'The :attribute must end with one of the following: :values',
     'exists' => 'La selezione per :attribute non è valida.',
     'file' => 'The :attribute must be a file.',
     'filled' => ':attribute è obbligatorio.',

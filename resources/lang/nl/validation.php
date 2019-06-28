@@ -39,6 +39,7 @@ return [
     'dimensions' => ':attribute heeft ongeldige afbeelding dimensies.',
     'distinct' => ':attribute bevat een duplicate waarde.',
     'email' => ':attribute moet een geldig e-mail adres zijn.',
+    'ends_with' => 'The :attribute must end with one of the following: :values',
     'exists' => 'Het geselecteerde :attribute is ongeldig.',
     'file' => ':attribute moet een bestand zijn.',
     'filled' => ':attribute veld is verplicht.',

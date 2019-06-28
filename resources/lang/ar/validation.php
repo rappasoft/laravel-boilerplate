@@ -39,6 +39,7 @@ return [
     'dimensions' => 'The :attribute has invalid image dimensions.',
     'distinct' => 'للحقل :attribute قيمة مُكرّرة.',
     'email' => 'يجب أن يكون :attribute عنوان بريد إلكتروني صحيح البُنية',
+    'ends_with' => 'The :attribute must end with one of the following: :values',
     'exists' => 'الحقل :attribute لاغٍ',
     'file' => 'The :attribute must be a file.',
     'filled' => 'الحقل :attribute إجباري',

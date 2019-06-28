@@ -39,6 +39,7 @@ return [
     'dimensions' => 'O :attribute possui dimensões inválidas para a imagem.',
     'distinct' => 'O campo :attribute possui um valor duplicado.',
     'email' => 'O campo :attribute não contém um endereço de email válido.',
+    'ends_with' => 'The :attribute must end with one of the following: :values',
     'exists' => 'O valor selecionado para o campo :attribute é inválido.',
     'file' => 'O :attribute deve ser um arquivo.',
     'filled' => 'O campo :attribute é obrigatório.',

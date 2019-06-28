@@ -39,6 +39,7 @@ return [
     'dimensions' => 'Les dimensions de l\'image :attribute ne sont pas conformes.',
     'distinct' => 'Le champ :attribute doit être une valeur unique.',
     'email' => 'Le champ :attribute doit être une adresse email valide.',
+    'ends_with' => 'The :attribute must end with one of the following: :values',
     'exists' => 'Le champ :attribute n\'existe pas.',
     'file' => 'Le champ :attribute doit être un fichier.',
     'filled' => 'Le champ :attribute est obligatoire.',
