@@ -27,11 +27,11 @@ return [
             'deleted' => 'İstifadəçi uğurla silindi.',
             'deleted_permanently' => 'İstifadəçi davamlı olaraq silindi.',
             'restored' => 'İstifadəçi uğurla geriyə yükləndi.',
-            'session_cleared' => "İstifadəçinin sessiyası uğurla təmizləndi.",
+            'session_cleared' => " İstifadəçinin sessiyası uğurla təmizləndi.",
             'social_deleted' => 'Sosial hesab uğurla silindi',
             'unconfirmed' => 'İstifadəçi təsdiqlənmədi',
             'updated' => 'İstifadəçi uğurla yeniləndi.',
-            'updated_password' => "İstifadəçinin şifrəsi uğurla yeniləndi.",
+            'updated_password' => " İstifadəçinin şifrəsi uğurla yeniləndi.",
         ],
     ],
 

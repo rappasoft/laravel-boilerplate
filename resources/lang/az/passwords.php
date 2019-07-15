@@ -16,5 +16,5 @@ return [
     'reset' => 'Şifrəniz sıfırlandı!',
     'sent' => 'Elektron poçt ünvanınıza şifrənin sıfırlanması üçün məktub göndərildi',
     'token' => 'Şifrəni sıfırlamaq üçün istifadə etdiyiniz token keçərsizdir.',
-    'user' => "Qeyd etdiyiniz Elektron poçt ünvanına aid istifadəçi tapa bilmədik",
+    'user' => " Qeyd etdiyiniz Elektron poçt ünvanına aid istifadəçi tapa bilmədik",
 ];
