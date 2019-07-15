@@ -13,23 +13,23 @@ return [
     */
 
     'general' => [
-        'home' => 'Home',
-        'logout' => 'Logout',
+        'home' => 'Ana Səhifə',
+        'logout' => 'Çıxış',
     ],
 
     'frontend' => [
-        'contact' => 'Contact',
+        'contact' => 'Əlaqə',
         'dashboard' => 'Dashboard',
-        'login' => 'Login',
-        'macros' => 'Macros',
-        'register' => 'Register',
+        'login' => 'Daxil ol',
+        'macros' => 'Makrolar',
+        'register' => 'Qeydiyyat',
 
         'user' => [
-            'account' => 'My Account',
-            'administration' => 'Administration',
-            'change_password' => 'Change Password',
-            'my_information' => 'My Information',
-            'profile' => 'Profile',
+            'account' => 'Mənim Hesabım',
+            'administration' => 'İdarə heyəti',
+            'change_password' => 'Şifrəni Dəyiş',
+            'my_information' => 'Mənim Məlumatlarım',
+            'profile' => 'Profil',
         ],
     ],
 ];

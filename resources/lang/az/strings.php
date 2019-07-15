@@ -25,66 +25,66 @@ return [
 
         'dashboard' => [
             'title' => 'Dashboard',
-            'welcome' => 'Welcome',
+            'welcome' => 'Xoş gəldiniz',
         ],
 
         'general' => [
-            'all_rights_reserved' => 'All Rights Reserved.',
-            'are_you_sure' => 'Are you sure you want to do this?',
+            'all_rights_reserved' => 'Bütün hüquqlar qorunur.',
+            'are_you_sure' => 'Bunu etmək istədiyinizə əminsiniz?',
             'boilerplate_link' => 'Laravel 5 Boilerplate',
-            'continue' => 'Continue',
-            'member_since' => 'Member since',
-            'minutes' => ' minutes',
-            'search_placeholder' => 'Search...',
-            'timeout' => 'You were automatically logged out for security reasons since you had no activity in ',
+            'continue' => 'Davam',
+            'member_since' => 'Qeydiyyat vaxtı',
+            'minutes' => ' dəqiqələr',
+            'search_placeholder' => 'Axtar...',
+            'timeout' => 'Sistemdə aktivliyiniz olmadığı üçün siz avtomatik çıxış etdiniz ',
 
             'see_all' => [
-                'messages' => 'See all messages',
-                'notifications' => 'View all',
-                'tasks' => 'View all tasks',
+                'messages' => 'Bütün mesajlara bax',
+                'notifications' => 'Hamısına bax',
+                'tasks' => 'Bütün tapşırıqlara abx',
             ],
 
             'status' => [
-                'online' => 'Online',
-                'offline' => 'Offline',
+                'online' => 'Xətdə',
+                'offline' => 'Xətdən kənar',
             ],
 
             'you_have' => [
-                'messages' => '{0} You don\'t have messages|{1} You have 1 message|[2,Inf] You have :number messages',
-                'notifications' => '{0} You don\'t have notifications|{1} You have 1 notification|[2,Inf] You have :number notifications',
-                'tasks' => '{0} You don\'t have tasks|{1} You have 1 task|[2,Inf] You have :number tasks',
+                'messages' => '{0} Mesajınız yoxdur|{1} 1 mesajınız var|[2,Inf] :number messages sayda mesajınız var',
+                'notifications' => '{0} bildirişiniz yoxdur |{1} Sizin bir bildirişiniz var |[2,Inf] Sizin :number sayda mesajınız var',
+                'tasks' => '{0} Sizin tapşırığınız yoxdur |{1} Sizin bir taskınız var |[2,Inf] Siz :number sayda tapşırığa maliksiniz',
             ],
         ],
 
         'search' => [
-            'empty' => 'Please enter a search term.',
-            'incomplete' => 'You must write your own search logic for this system.',
-            'title' => 'Search Results',
-            'results' => 'Search Results for :query',
+            'empty' => 'Axtarış üçün söz daxil edin.',
+            'incomplete' => 'Bu axtarış sistemi üçün şəxsi axtarış məntiqinizi yazmalısınız.',
+            'title' => 'Axtarış nəticələri',
+            'results' => ':query açar sözü üçün nəticələr',
         ],
 
-        'welcome' => 'Welcome to the Dashboard',
+        'welcome' => 'Dashboarda xoş gəldiniz',
     ],
 
     'emails' => [
         'auth' => [
-            'account_confirmed' => 'Your account has been confirmed.',
-            'error' => 'Whoops!',
-            'greeting' => 'Hello!',
-            'regards' => 'Regards,',
-            'trouble_clicking_button' => 'If you’re having trouble clicking the ":action_text" button, copy and paste the URL below into your web browser:',
-            'thank_you_for_using_app' => 'Thank you for using our application!',
+            'account_confirmed' => 'Hesabınız təsdiqləndi.',
+            'error' => 'Xəta!',
+            'greeting' => 'Salam!',
+            'regards' => 'Hörmətlə,',
+            'trouble_clicking_button' => 'Əgər ":action_text" düyməsinə klik etməkdə çətinlik çəkirsizsə, aşağıdakı linki kopyalayıb brauzerdə daxil olun:',
+            'thank_you_for_using_app' => 'Tətbiqetməmizi istifadə etdiyiniz üçün təşəkkür edirik!',
 
-            'password_reset_subject' => 'Reset Password',
-            'password_cause_of_email' => 'You are receiving this email because we received a password reset request for your account.',
-            'password_if_not_requested' => 'If you did not request a password reset, no further action is required.',
-            'reset_password' => 'Click here to reset your password',
+            'password_reset_subject' => 'Şifrəni sıfırla',
+            'password_cause_of_email' => 'Biz şifrənin sıfırlanması üçün xahiş əldə etdik buna görədə siz bu emaili almısınız.',
+            'password_if_not_requested' => 'Əgər şifrə sıfırlanması xahişi etməmisinizsə,heç bir hərəkət tələb edilmir.',
+            'reset_password' => 'Şifrəni sıfırlamaq üçün bura klik edin',
 
-            'click_to_confirm' => 'Click here to confirm your account:',
+            'click_to_confirm' => 'Hesabınızı təsdiqləmək üçün bura klik edin:',
         ],
 
         'contact' => [
-            'email_body_title' => 'You have a new contact form request: Below are the details:',
+            'email_body_title' => 'Sizin əlaqə formundan yeni istəyiniz var: Aşağıda detallara baxın:',
             'subject' => 'A new :app_name contact form submission!',
         ],
     ],
@@ -94,13 +94,13 @@ return [
 
         'tests' => [
             'based_on' => [
-                'permission' => 'Permission Based - ',
-                'role' => 'Role Based - ',
+                'permission' => 'İcazə əsaslı - ',
+                'role' => 'Rol əsaslı - ',
             ],
 
-            'js_injected_from_controller' => 'Javascript Injected from a Controller',
+            'js_injected_from_controller' => 'Controllerdən Javascript daxil edildi',
 
-            'using_blade_extensions' => 'Using Blade Extensions',
+            'using_blade_extensions' => 'Blade əlavələrinin istifadəsi',
 
             'using_access_helper' => [
                 'array_permissions' => 'Using Access Helper with Array of Permission Names or ID\'s where the user does have to possess all.',
@@ -119,16 +119,16 @@ return [
         ],
 
         'general' => [
-            'joined' => 'Joined',
+            'joined' => 'Qoşuldu',
         ],
 
         'user' => [
-            'change_email_notice' => 'If you change your e-mail you will be logged out until you confirm your new e-mail address.',
-            'email_changed_notice' => 'You must confirm your new e-mail address before you can log in again.',
-            'profile_updated' => 'Profile successfully updated.',
-            'password_updated' => 'Password successfully updated.',
+            'change_email_notice' => 'Email adresinizi dəyişdiyiniz halda yeni email adresini təsdiq edənə qədər çıxış etmiş olacaqsınız',
+            'email_changed_notice' => 'Daxil olmamışdan əvvəl email təsdiqləməsi etməyiniz lazımdır',
+            'profile_updated' => 'Profil uğurla yeniləndi.',
+            'password_updated' => 'Şifrə uğurla yeniləndi.',
         ],
 
-        'welcome_to' => 'Welcome to :place',
+        'welcome_to' => 'Xoş Gəldiniz :place -ə',
     ],
 ];

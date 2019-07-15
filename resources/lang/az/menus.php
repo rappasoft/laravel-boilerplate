@@ -14,44 +14,44 @@ return [
 
     'backend' => [
         'access' => [
-            'title' => 'Access',
+            'title' => 'Giriş',
 
             'roles' => [
-                'all' => 'All Roles',
-                'create' => 'Create Role',
-                'edit' => 'Edit Role',
-                'management' => 'Role Management',
-                'main' => 'Roles',
+                'all' => 'Bütün Rollar',
+                'create' => 'Rol yarat',
+                'edit' => 'Rolu yenilə',
+                'management' => 'Rolun İdarəedilməsi',
+                'main' => 'Rollar',
             ],
 
             'users' => [
-                'all' => 'All Users',
-                'change-password' => 'Change Password',
-                'create' => 'Create User',
-                'deactivated' => 'Deactivated Users',
-                'deleted' => 'Deleted Users',
-                'edit' => 'Edit User',
-                'main' => 'Users',
-                'view' => 'View User',
+                'all' => 'Bütün İstifadəçilər',
+                'change-password' => 'Şifrəni dəyiş',
+                'create' => 'İstifadəçi yarat',
+                'deactivated' => 'Deaktiv İstifadəçilər',
+                'deleted' => 'Silinmiş İstifadəçilər',
+                'edit' => 'İstifadəçini yenilə',
+                'main' => 'İstifadəçilər',
+                'view' => 'İstifadəçiyə bax',
             ],
         ],
 
         'log-viewer' => [
-            'main' => 'Log Viewer',
+            'main' => 'Loglara bax',
             'dashboard' => 'Dashboard',
-            'logs' => 'Logs',
+            'logs' => 'Loglar',
         ],
 
         'sidebar' => [
             'dashboard' => 'Dashboard',
-            'general' => 'General',
-            'history' => 'History',
-            'system' => 'System',
+            'general' => 'Ümumi',
+            'history' => 'Arxiv',
+            'system' => 'Sistem',
         ],
     ],
 
     'language-picker' => [
-        'language' => 'Language',
+        'language' => 'Dil',
         /*
          * Add the new language to this array.
          * The key should have the same language code as the folder name.
@@ -60,6 +60,7 @@ return [
          */
         'langs' => [
             'ar' => 'Arabic',
+            'az' => 'Azerbaijan',
             'zh' => 'Chinese Simplified',
             'zh-TW' => 'Chinese Traditional',
             'da' => 'Danish',

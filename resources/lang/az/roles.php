@@ -12,6 +12,6 @@ return [
     |
     */
 
-    'administrator' => 'Administrator',
-    'user' => 'User',
+    'administrator' => 'İdarə heyəti',
+    'user' => 'İstifadəçi',
 ];
