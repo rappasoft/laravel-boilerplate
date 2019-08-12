@@ -37,7 +37,10 @@ class UpdatePasswordRequest extends FormRequest
                     new ChangePassword(),
                     new UnusedPassword($this->user()),
                 ],
-                PasswordRules::changePassword($this->email)
+                PasswordRules::changePassword(
+                    $this->email,
+                    config('access.users.password_history') ? 'old_password' : null
+                )
             ),
         ];
     }
