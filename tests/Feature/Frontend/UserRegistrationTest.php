@@ -32,8 +32,8 @@ class UserRegistrationTest extends TestCase
             'first_name' => 'John',
             'last_name' => 'Doe',
             'email' => 'john@example.com',
-            'password' => 'password',
-            'password_confirmation' => 'password',
+            'password' => 'OC4Nzu270N!QBVi%U%qX',
+            'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
         ], $userData));
     }
 
@@ -57,14 +57,14 @@ class UserRegistrationTest extends TestCase
             'first_name' => 'John',
             'last_name' => 'Doe',
             'email' => 'john@example.com',
-            'password' => 'password',
-            'password_confirmation' => 'password',
+            'password' => 'OC4Nzu270N!QBVi%U%qX',
+            'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
         ]);
 
         $newUser = (new UserRepository())->where('email', 'john@example.com')->first();
         $this->assertSame($newUser->first_name, 'John');
         $this->assertSame($newUser->last_name, 'Doe');
-        $this->assertTrue(Hash::check('password', $newUser->password));
+        $this->assertTrue(Hash::check('OC4Nzu270N!QBVi%U%qX', $newUser->password));
     }
 
     /** @test */
@@ -114,7 +114,7 @@ class UserRegistrationTest extends TestCase
         $response = $this->registerUser();
         $response->assertSessionHas(['flash_success' => __('exceptions.frontend.auth.confirmation.created_pending')]);
 
-        $response = $this->post('/login', ['email' => 'john@example.com', 'password' => 'password']);
+        $response = $this->post('/login', ['email' => 'john@example.com', 'password' => 'OC4Nzu270N!QBVi%U%qX']);
 
         $response->assertSessionHas(['flash_danger' => __('exceptions.frontend.auth.confirmation.pending')]);
     }

@@ -14,7 +14,6 @@ return [
 
     'failed' => 'これらの資格情報は記録と一致しません。',
     'general_error' => 'あなたはアクセスできません。',
-    'password_rules' => 'Your password must be more than 8 characters long, should contain at least 1 uppercase, 1 lowercase and 1 number.',
     'password_used' => 'You can not set a password that you have previously used.',
     'socialite' => [
         'unacceptable' => ':provider 受け入れ可能なログインタイプではありません。',

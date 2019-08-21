@@ -55,6 +55,7 @@ return [
          */
         'langs' => [
             'ar' => 'Арабский (Arabic)',
+            'az' => 'Azerbaijan',
             'zh' => 'Китайский (Chinese Simplified)',
             'zh-TW' => 'Китайский (Chinese Traditional)',
             'da' => 'Датский (Danish)',

@@ -60,6 +60,7 @@ return [
          */
         'langs' => [
             'ar' => 'อารบิก (Arabic)',
+            'az' => 'Azerbaijan',
             'zh' => '(Chinese Simplified)',
             'zh-TW' => '(Chinese Traditional)',
             'da' => 'เดนมา์ก (Danish)',

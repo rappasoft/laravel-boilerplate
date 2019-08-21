@@ -80,7 +80,7 @@ class ResetPasswordTest extends TestCase
                 'password_confirmation' => 'secret',
             ]);
 
-        $this->assertStringContainsString(__('auth.password_rules'), $response->content());
+        $this->assertStringContainsString('The password must be at least 8 characters.', $response->content());
     }
 
     /** @test */

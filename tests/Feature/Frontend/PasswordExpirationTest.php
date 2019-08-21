@@ -71,7 +71,7 @@ class PasswordExpirationTest extends TestCase
                 'password_confirmation' => 'secret',
             ]);
 
-        $this->assertStringContainsString(__('auth.password_rules'), $response->content());
+        $this->assertStringContainsString('The password must be at least 8 characters.', $response->content());
     }
 
     /** @test */
@@ -81,19 +81,19 @@ class PasswordExpirationTest extends TestCase
         config(['access.users.password_expires_days' => 30]);
 
         $user = factory(User::class)->create([
-            'password' => ']EqZL4}zBT',
+            'password' => 'OC4Nzu270N!QBVi%U%qX',
             'password_changed_at' => now()->subMonths(2)->toDateTimeString(),
         ]);
 
         $response = $this->actingAs($user)
             ->patch('/password/expired', [
-                'old_password' => ']EqZL4}zBT',
-                'password' => ']EqZL4}zBT',
-                'password_confirmation' => ']EqZL4}zBT',
+                'old_password' => 'OC4Nzu270N!QBVi%U%qX',
+                'password' => 'OC4Nzu270N!QBVi%U%qX',
+                'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
             ]);
 
         $response->assertSessionHas('flash_success');
-        $this->assertTrue(Hash::check(']EqZL4}zBT', $user->fresh()->password));
+        $this->assertTrue(Hash::check('OC4Nzu270N!QBVi%U%qX', $user->fresh()->password));
     }
 
     /** @test */
