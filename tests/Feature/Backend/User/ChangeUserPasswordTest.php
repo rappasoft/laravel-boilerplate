@@ -21,11 +21,11 @@ class ChangeUserPasswordTest extends TestCase
 
         $response = $this->followingRedirects()
             ->patch("/admin/auth/user/{$user->id}/password/change", [
-                'password' => '12345678',
-                'password_confirmation' => '12345678',
+                'password' => '1234567',
+                'password_confirmation' => '1234567',
             ]);
 
-        $this->assertStringContainsString(__('auth.password_rules'), $response->content());
+        $this->assertStringContainsString('The password must be at least 8 characters.', $response->content());
     }
 
     /** @test */

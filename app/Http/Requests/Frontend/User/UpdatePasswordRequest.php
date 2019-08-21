@@ -33,7 +33,6 @@ class UpdatePasswordRequest extends FormRequest
             'old_password' => ['required'],
             'password' => array_merge(
                 [
-                    new ChangePassword(),
                     new UnusedPassword($this->user()),
                 ],
                 PasswordRules::changePassword(
