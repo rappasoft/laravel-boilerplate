@@ -108,4 +108,4 @@ All notable changes to this project will be documented in this file.
 - Fix: Socially logged in users get assigned the default role
 
 [Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v5.3.8...HEAD
-[5.3.8]: https://github.com/olivierlacan/keep-a-changelog/compare/v5.3.7...v5.3.8
+[5.3.8]: https://github.com/rappasoft/laravel-boilerplate/compare/v5.3.7...v5.3.8
