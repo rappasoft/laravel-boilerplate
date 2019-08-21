@@ -65,7 +65,7 @@ return [
 </p>
 <p>جميع الإمكانيات المتوافرة هنا هي للعرض فقط بإستثناء <strong>إدارة المستخدمين</strong> المتواجدة على اليمين و <strong>عارض السجلات</strong> الموجودة بالأسفل. هذا النمط يأتي مع مكتبة وظيفية بالكامل للتحكم في الوصول إلى إدارة المستخدمين / الأدوار / الصلاحيات.</p>
 <p>ضع في الإعتبار أن العمل لا يزال مستمراً وقد تتواجد بعض المشاكل أو الأخطاء التي لم تصادفنا. سأقوم بكل جهدي لإصلاحها حالما أتوصل إليها.</p>
-<p>أتمنى أن تستمع بالمجهود الذي بذلته في هذا العمل. الرجاء زيارة صفحة <a href="https://github.com/rappasoft/laravel-boilerplate" target="_blank">GitHub</a> للمزيد من المعلومات أو <a href="https://github.com/rappasoft/Laravel-5-Boilerplate/issues" target="_blank">الإبلاغ عن الأخطاء أو المشاكل</a>.</p>
+<p>أتمنى أن تستمع بالمجهود الذي بذلته في هذا العمل. الرجاء زيارة صفحة <a href="https://github.com/rappasoft/laravel-boilerplate" target="_blank">GitHub</a> للمزيد من المعلومات أو <a href="https://github.com/rappasoft/laravel-boilerplate/issues" target="_blank">الإبلاغ عن الأخطاء أو المشاكل</a>.</p>
 <p><strong>هذا المشروع من الصعب عليه جدا مواكبة المعدل الذي يتغير عليه فرع Laravel الرئيسي، لذلك أي مساعدة سوف تكون محل تقدير.</strong></p>
 <p>- أنتوني ربّا</p>
 <p>- Anthony Rappa</p>',
