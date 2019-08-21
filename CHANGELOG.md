@@ -3,6 +3,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [5.3.8] - 2019-08-21
+### Added
+
 ## 5.3.7 - 2019-08-21
 ### Added
 - Actual changelog
@@ -95,4 +98,5 @@ All notable changes to this project will be documented in this file.
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v5.3.7...HEAD
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v5.3.8...HEAD
+[5.3.8]: https://github.com/olivierlacan/keep-a-changelog/compare/v5.3.7...v5.3.8
