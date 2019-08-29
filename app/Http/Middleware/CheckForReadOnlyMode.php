@@ -6,9 +6,7 @@ use Closure;
 use Illuminate\Http\Response;
 
 /**
- * Class CheckForReadOnlyMode
- *
- * @package App\Http\Middleware
+ * Class CheckForReadOnlyMode.
  */
 class CheckForReadOnlyMode
 {
