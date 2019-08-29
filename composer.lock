@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5f27f4ac74eb467a911ea38047ad8bd6",
+    "content-hash": "9ec759f36d7c37243a86f88b5f2573de",
     "packages": [
         {
             "name": "albertcht/invisible-recaptcha",
