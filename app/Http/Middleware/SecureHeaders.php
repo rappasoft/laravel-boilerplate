@@ -1,11 +1,11 @@
-<?php namespace App\Http\Middleware;
+<?php
+
+namespace App\Http\Middleware;
 
 use Closure;
 
 /**
- * Class SecureHeaders
- *
- * @package App\Http\Middleware
+ * Class SecureHeaders.
  */
 class SecureHeaders
 {
