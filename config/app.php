@@ -53,6 +53,17 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Application Testing Mode
+    |--------------------------------------------------------------------------
+    |
+    | When your application is currently running tests
+    |
+    */
+
+    'testing' => env('APP_TESTING', false),
+
+    /*
+    |--------------------------------------------------------------------------
     | Application URL
     |--------------------------------------------------------------------------
     |
@@ -63,8 +74,6 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-
-    'asset_url' => env('ASSET_URL', null),
 
     /*
     |--------------------------------------------------------------------------
@@ -239,7 +248,5 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
-        // Package Aliases
     ],
 ];
