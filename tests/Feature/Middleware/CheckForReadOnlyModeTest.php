@@ -8,14 +8,14 @@ use App\Models\Auth\User;
 use Illuminate\Http\Response;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class CheckForDemoModeTest extends TestCase
+class CheckForReadOnlyModeTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function a_user_can_not_alter_data_if_demo_mode_is_enabled()
+    public function a_user_can_not_alter_data_if_read_only_mode_is_enabled()
     {
-        config(['app.demo' => true]);
+        config(['app.read_only' => true]);
         $role = factory(Role::class)->create();
 
         $this->loginAsAdmin();
@@ -27,9 +27,9 @@ class CheckForDemoModeTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_alter_data_if_demo_mode_is_disabled()
+    public function a_user_can_alter_data_if_read_only_mode_is_disabled()
     {
-        config(['app.demo' => false]);
+        config(['app.read_only' => false]);
         $role = factory(Role::class)->create();
 
         $this->loginAsAdmin();
@@ -42,9 +42,9 @@ class CheckForDemoModeTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_login_if_demo_mode_is_enabled()
+    public function a_user_can_login_if_read_only_mode_is_enabled()
     {
-        config(['app.demo' => true]);
+        config(['app.read_only' => true]);
 
         $user = factory(User::class)->create([
             'email' => 'john@example.com',

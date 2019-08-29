@@ -75,10 +75,10 @@ class AppServiceProvider extends ServiceProvider
 
         /*
          * The block of code inside this directive indicates
-         * the project is currently running in demo mode.
+         * the project is currently running in read only mode.
          */
-        Blade::if('demo', function () {
-            return config('app.demo');
+        Blade::if('readonly', function () {
+            return config('app.read_only');
         });
 
         /*

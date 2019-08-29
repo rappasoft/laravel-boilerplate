@@ -23,7 +23,7 @@
         @stack('after-styles')
     </head>
     <body>
-        @include('includes.partials.demo')
+        @include('includes.partials.read-only')
 
         <div id="app">
             @include('includes.partials.logged-in-as')

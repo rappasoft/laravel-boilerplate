@@ -17,7 +17,7 @@
         </whitelist>
     </filter>
     <php>
-        <server name="APP_DEMO" value="false"/>
+        <server name="APP_READ_ONLY" value="false"/>
         <server name="APP_ENV" value="testing"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>

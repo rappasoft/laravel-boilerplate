@@ -4,13 +4,13 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Is In Demo Mode
+    | Application Is In Read Only Mode
     |--------------------------------------------------------------------------
     |
-    | This value is for whether the project is in demo mode or not.
+    | This value is for whether the project is in read only mode or not.
     |
     */
-    'demo' => env('APP_DEMO', false),
+    'read_only' => env('APP_READ_ONLY', false),
 
     /*
     |--------------------------------------------------------------------------

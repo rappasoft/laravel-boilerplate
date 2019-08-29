@@ -6,9 +6,11 @@ use Closure;
 use Illuminate\Http\Response;
 
 /**
- * Class CheckForDemoMode.
+ * Class CheckForReadOnlyMode
+ *
+ * @package App\Http\Middleware
  */
-class CheckForDemoMode
+class CheckForReadOnlyMode
 {
     /**
      * Handle an incoming request.
@@ -20,7 +22,7 @@ class CheckForDemoMode
      */
     public function handle($request, Closure $next)
     {
-        if (config('app.demo')) {
+        if (config('app.read_only')) {
             if ($request->isMethod('post') || $request->isMethod('patch') || $request->isMethod('delete')) {
                 abort_if($request->path() !== 'login', Response::HTTP_UNAUTHORIZED);
             }

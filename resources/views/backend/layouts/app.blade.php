@@ -30,7 +30,7 @@
         @include('backend.includes.sidebar')
 
         <main class="main">
-            @include('includes.partials.demo')
+            @include('includes.partials.read-only')
             @include('includes.partials.logged-in-as')
             {!! Breadcrumbs::render() !!}
 
