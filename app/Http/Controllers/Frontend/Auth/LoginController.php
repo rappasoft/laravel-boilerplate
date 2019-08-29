@@ -61,6 +61,9 @@ class LoginController extends Controller
         $request->validate([
             $this->username() => 'required|string',
             'password' => PasswordRules::login(),
+            'g-recaptcha-response' => ['required_if:captcha_status,true', 'captcha'],
+        ], [
+            'g-recaptcha-response.required_if' => __('validation.required', ['attribute' => 'captcha']),
         ]);
     }
 
