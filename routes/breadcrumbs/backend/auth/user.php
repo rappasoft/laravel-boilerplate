@@ -1,7 +1,6 @@
 <?php
 
 Breadcrumbs::for('admin.auth.user.index', function ($trail) {
-    $trail->parent('admin.dashboard');
     $trail->push(__('labels.backend.access.users.management'), route('admin.auth.user.index'));
 });
 
