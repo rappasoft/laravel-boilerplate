@@ -30,26 +30,26 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($roles as $role)
-                            <tr>
-                                <td>{{ ucwords($role->name) }}</td>
-                                <td>
-                                    @if($role->id == 1)
-                                        @lang('labels.general.all')
-                                    @else
-                                        @if($role->permissions->count())
-                                            @foreach($role->permissions as $permission)
-                                                {{ ucwords($permission->name) }}
-                                            @endforeach
+                            @foreach($roles as $role)
+                                <tr>
+                                    <td>{{ ucwords($role->name) }}</td>
+                                    <td>
+                                        @if($role->id === 1)
+                                            @lang('labels.general.all')
                                         @else
-                                            @lang('labels.general.none')
+                                            @if($role->permissions->count())
+                                                @foreach($role->permissions as $permission)
+                                                    {{ ucwords($permission->name) }}
+                                                @endforeach
+                                            @else
+                                                @lang('labels.general.none')
+                                            @endif
                                         @endif
-                                    @endif
-                                </td>
-                                <td>{{ $role->users->count() }}</td>
-                                <td>{!! $role->action_buttons !!}</td>
-                            </tr>
-                        @endforeach
+                                    </td>
+                                    <td>{{ $role->users->count() }}</td>
+                                    <td>@include('backend.auth.role.includes.actions', ['role' => $role])</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

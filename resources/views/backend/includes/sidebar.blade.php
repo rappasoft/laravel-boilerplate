@@ -13,11 +13,11 @@
                 </a>
             </li>
 
-            <li class="nav-title">
-                @lang('menus.backend.sidebar.system')
-            </li>
-
             @if ($logged_in_user->isAdmin())
+                <li class="nav-title">
+                    @lang('menus.backend.sidebar.system')
+                </li>
+
                 <li class="nav-item nav-dropdown {{
                     active_class(Active::checkUriPattern('admin/auth*'), 'open')
                 }}">
