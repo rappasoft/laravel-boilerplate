@@ -7,7 +7,6 @@ namespace App\Helpers\Auth;
  */
 class SocialiteHelper
 {
-
     /**
      * List of the accepted third party provider types to login with.
      *
