@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-##6.0.0 - TBD
+## [6.0.0] - TBD
 ### Added
 - Added captcha to login request
 - Added server variable that denotes whether or not the application is currently running tests, false by default but enabled by phpunit.xml
