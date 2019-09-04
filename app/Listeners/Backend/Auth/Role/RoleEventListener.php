@@ -3,8 +3,8 @@
 namespace App\Listeners\Backend\Auth\Role;
 
 use App\Events\Backend\Auth\Role\RoleCreated;
-use App\Events\Backend\Auth\Role\RoleUpdated;
 use App\Events\Backend\Auth\Role\RoleDeleted;
+use App\Events\Backend\Auth\Role\RoleUpdated;
 
 /**
  * Class RoleEventListener.
