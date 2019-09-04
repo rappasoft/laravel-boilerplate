@@ -4425,27 +4425,28 @@
         },
         {
             "name": "torann/geoip",
-            "version": "1.0.9",
+            "version": "1.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Torann/laravel-geoip.git",
-                "reference": "dc3c4fc17779b3521736dd4e04d1fa2dd8f55db9"
+                "reference": "07095246a0f3b28603f8dd455c46932d0d1dede8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Torann/laravel-geoip/zipball/dc3c4fc17779b3521736dd4e04d1fa2dd8f55db9",
-                "reference": "dc3c4fc17779b3521736dd4e04d1fa2dd8f55db9",
+                "url": "https://api.github.com/repos/Torann/laravel-geoip/zipball/07095246a0f3b28603f8dd455c46932d0d1dede8",
+                "reference": "07095246a0f3b28603f8dd455c46932d0d1dede8",
                 "shasum": ""
             },
             "require": {
-                "illuminate/console": "~5.0",
-                "illuminate/support": "~5.0",
-                "php": "^7.0"
+                "illuminate/console": "~5.5|^6.0",
+                "illuminate/support": "~5.5|^6.0",
+                "php": "^7.1",
+                "vlucas/phpdotenv": "^3.5"
             },
             "require-dev": {
                 "geoip2/geoip2": "~2.1",
                 "mockery/mockery": "^0.9.4",
-                "phpunit/phpunit": "^4.8"
+                "phpunit/phpunit": "^7.0"
             },
             "suggest": {
                 "geoip2/geoip2": "Required to use the MaxMind database or web service with GeoIP (~2.1).",
@@ -4494,7 +4495,7 @@
                 "location",
                 "maxmind"
             ],
-            "time": "2019-01-21T15:59:28+00:00"
+            "time": "2019-09-04T14:43:36+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -5370,16 +5371,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "1.4.9",
+            "version": "1.4.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "fd73e1844216fe611d309611f2b2ec51453c165e"
+                "reference": "5082ea8e531894dca7ffcee25206d93cd25aca42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/fd73e1844216fe611d309611f2b2ec51453c165e",
-                "reference": "fd73e1844216fe611d309611f2b2ec51453c165e",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/5082ea8e531894dca7ffcee25206d93cd25aca42",
+                "reference": "5082ea8e531894dca7ffcee25206d93cd25aca42",
                 "shasum": ""
             },
             "require": {
@@ -5434,7 +5435,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2019-09-04T13:19:06+00:00"
+            "time": "2019-09-04T19:13:40+00:00"
         },
         {
             "name": "filp/whoops",
