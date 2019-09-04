@@ -10,7 +10,6 @@ use Illuminate\Http\Response;
  */
 class CheckForReadOnlyMode
 {
-
     /**
      * @var array
      */
@@ -19,7 +18,7 @@ class CheckForReadOnlyMode
         'unconfirm',
         'mark/0',
         'mark/1',
-        'clear-session'
+        'clear-session',
     ];
 
     /**
@@ -41,7 +40,7 @@ class CheckForReadOnlyMode
             // Block any other specific get requests that may alter data
             if ($request->isMethod('get')) {
                 collect($this->disallowed)
-                    ->each(function($item) use($request) {
+                    ->each(function ($item) use ($request) {
                         if (strpos($request->path(), $item) !== false) {
                             abort(Response::HTTP_UNAUTHORIZED);
                         }
