@@ -12,12 +12,6 @@ return [
     // Whether or not registration is enabled
     'registration' => env('ENABLE_REGISTRATION', true),
 
-    // Table names for access tables
-    'table_names' => [
-        'password_histories' => 'password_histories',
-        'users' => 'users',
-    ],
-
     // Configurations for the user
     'users' => [
         // Whether or not the user has to confirm their email when signing up

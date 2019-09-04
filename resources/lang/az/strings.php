@@ -31,7 +31,7 @@ return [
         'general' => [
             'all_rights_reserved' => 'Bütün hüquqlar qorunur.',
             'are_you_sure' => 'Bunu etmək istədiyinizə əminsiniz?',
-            'boilerplate_link' => 'Laravel 5 Boilerplate',
+            'boilerplate_link' => 'Laravel Boilerplate',
             'continue' => 'Davam',
             'member_since' => 'Qeydiyyat vaxtı',
             'minutes' => ' dəqiqələr',

@@ -30,7 +30,7 @@ return [
         'general' => [
             'all_rights_reserved' => 'Todos os direitos reservados.',
             'are_you_sure' => 'Tem certeza?',
-            'boilerplate_link' => 'Laravel 5 Boilerplate',
+            'boilerplate_link' => 'Laravel Boilerplate',
             'continue' => 'Continuar',
             'member_since' => 'Membro desde',
             'minutes' => ' minutos',

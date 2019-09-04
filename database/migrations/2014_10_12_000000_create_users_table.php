@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('access.table_names.users'), function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->uuid('uuid');
             $table->string('first_name')->nullable();
@@ -42,6 +42,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('access.table_names.users'));
+        Schema::dropIfExists('users');
     }
 }

@@ -29,7 +29,7 @@ return [
         'general' => [
             'all_rights_reserved' => 'جميع الحقوق محفوظة.',
             'are_you_sure' => 'هل أنت متأكد؟',
-            'boilerplate_link' => 'Laravel 5 Boilerplate',
+            'boilerplate_link' => 'Laravel Boilerplate',
             'continue' => 'متابعة',
             'member_since' => 'عضو منذ',
             'minutes' => ' minutes',

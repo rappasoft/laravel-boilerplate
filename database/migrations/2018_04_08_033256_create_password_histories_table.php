@@ -11,14 +11,14 @@ class CreatePasswordHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create(config('access.table_names.password_histories'), function (Blueprint $table) {
+        Schema::create('password_histories', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('user_id');
             $table->string('password');
             $table->timestamps();
         });
 
-        Schema::table(config('access.table_names.password_histories'), function (Blueprint $table) {
+        Schema::table('password_histories', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
@@ -28,6 +28,6 @@ class CreatePasswordHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(config('access.table_names.password_histories'));
+        Schema::dropIfExists('password_histories');
     }
 }
