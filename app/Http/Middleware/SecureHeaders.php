@@ -9,9 +9,9 @@ use Closure;
  */
 class SecureHeaders
 {
-     // Note: This class is disabled by default
-     // You may enable it in the Kernel if you wish to use it
-     // You must set the values to your liking, they have been set to sensible defaults
+    // Note: This class is disabled by default
+    // You may enable it in the Kernel if you wish to use it
+    // You must set the values to your liking, they have been set to sensible defaults
 
     // Enumerate headers which you do not want in your application's responses.
     // Great starting point would be to go check out @Scott_Helme's:
