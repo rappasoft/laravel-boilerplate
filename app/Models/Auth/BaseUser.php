@@ -3,10 +3,10 @@
 namespace App\Models\Auth;
 
 use App\Models\Traits\Uuid;
-use Lab404\Impersonate\Models\Impersonate;
 use OwenIt\Auditing\Auditable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use Lab404\Impersonate\Models\Impersonate;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Auth\Traits\SendUserPasswordReset;
 use Illuminate\Foundation\Auth\User as Authenticatable;
