@@ -31,13 +31,9 @@
                        class="dropdown-item" name="confirm_item">@lang('buttons.backend.access.users.clear_session')</a>
                 @endif
 
-                {{--
-                    // If the admin is currently NOT spoofing a user
-                    // Also it won't break, but don't let them "Login As" themselves
-                --}}
-                @if ($user->id !== auth()->id() && (! session()->has('admin_user_id') || ! session()->has('temp_user_id')))
-                    <a href="{{ route('admin.auth.user.login-as', $user) }}" class="dropdown-item">@lang('buttons.backend.access.users.login_as', ['user' => $user->full_name])</a>
-                @endif
+                @canBeImpersonated($user)
+                    <a href="{{ route('impersonate', $user->id) }}" class="dropdown-item">@lang('buttons.backend.access.users.login_as', ['user' => $user->full_name])</a>
+                @endCanBeImpersonated
 
                 <a href="{{ route('admin.auth.user.change-password', $user) }}" class="dropdown-item">@lang('buttons.backend.access.users.change_password')</a>
 

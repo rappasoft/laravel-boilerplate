@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Auth\User;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -59,6 +60,12 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
+
+        // For the 'Login As' functionality from the 404labfr/laravel-impersonate package
+        Route::middleware('web')
+            ->group(function (Router $router) {
+                $router->impersonate();
+        });
     }
 
     /**

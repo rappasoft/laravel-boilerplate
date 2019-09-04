@@ -3,6 +3,7 @@
 namespace App\Models\Auth;
 
 use App\Models\Traits\Uuid;
+use Lab404\Impersonate\Models\Impersonate;
 use OwenIt\Auditing\Auditable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -18,6 +19,7 @@ class BaseUser extends Authenticatable implements AuditableInterface
 {
     use Auditable,
         HasRoles,
+        Impersonate,
         Notifiable,
         SendUserPasswordReset,
         SoftDeletes,
@@ -93,4 +95,26 @@ class BaseUser extends Authenticatable implements AuditableInterface
     protected $appends = [
         'full_name',
     ];
+
+    /**
+     * Return true or false if the user can impersonate an other user.
+     *
+     * @param void
+     * @return  bool
+     */
+    public function canImpersonate()
+    {
+        return $this->isAdmin();
+    }
+
+    /**
+     * Return true or false if the user can be impersonate.
+     *
+     * @param void
+     * @return  bool
+     */
+    public function canBeImpersonated()
+    {
+        return $this->id !== 1;
+    }
 }
