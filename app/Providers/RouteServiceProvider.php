@@ -65,7 +65,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->group(function (Router $router) {
                 $router->impersonate();
-        });
+            });
     }
 
     /**
