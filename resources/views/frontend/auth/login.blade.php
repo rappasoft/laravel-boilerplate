@@ -80,7 +80,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="text-center">
-                                {!! $socialiteLinks !!}
+                                @include('frontend.auth.includes.socialite')
                             </div>
                         </div><!--col-->
                     </div><!--row-->

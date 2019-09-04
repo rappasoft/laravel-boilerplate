@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Helpers\Auth\AuthHelper;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
-use App\Helpers\Auth\SocialiteHelper;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -34,8 +33,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('frontend.auth.login')
-            ->withSocialiteLinks((new SocialiteHelper)->getSocialLinks());
+        return view('frontend.auth.login');
     }
 
     /**
