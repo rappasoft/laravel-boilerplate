@@ -14,7 +14,6 @@ use App\Events\Backend\Auth\Role\RoleUpdated;
  */
 class RoleRepository extends BaseRepository
 {
-
     /**
      * RoleRepository constructor.
      *

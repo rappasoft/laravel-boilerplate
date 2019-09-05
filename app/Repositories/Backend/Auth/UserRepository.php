@@ -24,7 +24,6 @@ use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
  */
 class UserRepository extends BaseRepository
 {
-
     /**
      * UserRepository constructor.
      *
