@@ -57,9 +57,9 @@ if (! function_exists('form_submit')) {
     }
 }
 
-if (!function_exists('active_class')) {
+if (! function_exists('active_class')) {
     /**
-     * Get the active class if the condition is not falsy
+     * Get the active class if the condition is not falsy.
      *
      * @param        $condition
      * @param string $activeClass
