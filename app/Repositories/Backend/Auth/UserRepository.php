@@ -24,12 +24,15 @@ use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
  */
 class UserRepository extends BaseRepository
 {
+
     /**
-     * @return string
+     * UserRepository constructor.
+     *
+     * @param  User  $model
      */
-    public function model()
+    public function __construct(User $model)
     {
-        return User::class;
+        $this->model = $model;
     }
 
     /**
@@ -100,7 +103,7 @@ class UserRepository extends BaseRepository
     public function create(array $data) : User
     {
         return DB::transaction(function () use ($data) {
-            $user = parent::create([
+            $user = $this->model::create([
                 'first_name' => $data['first_name'],
                 'last_name' => $data['last_name'],
                 'email' => $data['email'],

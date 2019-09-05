@@ -14,12 +14,15 @@ use App\Events\Backend\Auth\Role\RoleUpdated;
  */
 class RoleRepository extends BaseRepository
 {
+
     /**
-     * @return string
+     * RoleRepository constructor.
+     *
+     * @param  Role  $model
      */
-    public function model()
+    public function __construct(Role $model)
     {
-        return Role::class;
+        $this->model = $model;
     }
 
     /**
@@ -46,7 +49,7 @@ class RoleRepository extends BaseRepository
         }
 
         return DB::transaction(function () use ($data) {
-            $role = parent::create(['name' => strtolower($data['name'])]);
+            $role = $this->model::create(['name' => strtolower($data['name'])]);
 
             if ($role) {
                 $role->givePermissionTo($data['permissions']);

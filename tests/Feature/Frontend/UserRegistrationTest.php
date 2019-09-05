@@ -61,7 +61,7 @@ class UserRegistrationTest extends TestCase
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
         ]);
 
-        $newUser = (new UserRepository())->where('email', 'john@example.com')->first();
+        $newUser = resolve(UserRepository::class)->where('email', 'john@example.com')->first();
         $this->assertSame($newUser->first_name, 'John');
         $this->assertSame($newUser->last_name, 'Doe');
         $this->assertTrue(Hash::check('OC4Nzu270N!QBVi%U%qX', $newUser->password));
@@ -74,7 +74,7 @@ class UserRegistrationTest extends TestCase
         Notification::fake();
 
         $this->registerUser(['email' => 'john@example.com']);
-        $user = (new UserRepository())->where('email', 'john@example.com')->first();
+        $user = resolve(UserRepository::class)->where('email', 'john@example.com')->first();
 
         Notification::assertSentTo($user, UserNeedsConfirmation::class);
     }
