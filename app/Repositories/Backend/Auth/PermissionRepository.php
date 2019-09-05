@@ -10,7 +10,6 @@ use Spatie\Permission\Models\Permission;
  */
 class PermissionRepository extends BaseRepository
 {
-
     /**
      * PermissionRepository constructor.
      *

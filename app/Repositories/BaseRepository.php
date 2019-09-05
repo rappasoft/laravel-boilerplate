@@ -3,80 +3,70 @@
 namespace App\Repositories;
 
 /**
- * Class BaseRepository
+ * Class BaseRepository.
  *
  * Modified from: https://github.com/kylenoland/laravel-base-repository
- *
- * @package App\Repositories
  */
-abstract class BaseRepository implements RepositoryContract {
-
+abstract class BaseRepository implements RepositoryContract
+{
     /**
-     * The repository model
+     * The repository model.
      *
      * @var \Illuminate\Database\Eloquent\Model
      */
     protected $model;
 
-
     /**
-     * The query builder
+     * The query builder.
      *
      * @var \Illuminate\Database\Eloquent\Builder
      */
     protected $query;
 
-
     /**
-     * Alias for the query limit
+     * Alias for the query limit.
      *
      * @var int
      */
     protected $take;
 
-
     /**
-     * Array of related models to eager load
+     * Array of related models to eager load.
      *
      * @var array
      */
-    protected $with = array();
-
+    protected $with = [];
 
     /**
-     * Array of one or more where clause parameters
+     * Array of one or more where clause parameters.
      *
      * @var array
      */
-    protected $wheres = array();
-
+    protected $wheres = [];
 
     /**
-     * Array of one or more where in clause parameters
+     * Array of one or more where in clause parameters.
      *
      * @var array
      */
-    protected $whereIns = array();
-
+    protected $whereIns = [];
 
     /**
-     * Array of one or more ORDER BY column/value pairs
+     * Array of one or more ORDER BY column/value pairs.
      *
      * @var array
      */
-    protected $orderBys = array();
-
+    protected $orderBys = [];
 
     /**
-     * Array of scope methods to call on the model
+     * Array of scope methods to call on the model.
      *
      * @var array
      */
-    protected $scopes = array();
-
+    protected $scopes = [];
 
     /**
-     * Get all the model records in the database
+     * Get all the model records in the database.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -91,9 +81,8 @@ abstract class BaseRepository implements RepositoryContract {
         return $models;
     }
 
-
     /**
-     * Count the number of specified model records in the database
+     * Count the number of specified model records in the database.
      *
      * @return int
      */
@@ -103,7 +92,7 @@ abstract class BaseRepository implements RepositoryContract {
     }
 
     /**
-     * Get the first specified model record from the database
+     * Get the first specified model record from the database.
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
@@ -119,7 +108,7 @@ abstract class BaseRepository implements RepositoryContract {
     }
 
     /**
-     * Get all the specified model records in the database
+     * Get all the specified model records in the database.
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
@@ -135,7 +124,7 @@ abstract class BaseRepository implements RepositoryContract {
     }
 
     /**
-     * Get the specified model record from the database
+     * Get the specified model record from the database.
      *
      * @param $id
      *
@@ -167,7 +156,7 @@ abstract class BaseRepository implements RepositoryContract {
     }
 
     /**
-     * Delete the specified model record from the database
+     * Delete the specified model record from the database.
      *
      * @param $id
      *
@@ -182,7 +171,7 @@ abstract class BaseRepository implements RepositoryContract {
     }
 
     /**
-     * Set the query limit
+     * Set the query limit.
      *
      * @param int $limit
      *
@@ -196,7 +185,7 @@ abstract class BaseRepository implements RepositoryContract {
     }
 
     /**
-     * Set an ORDER BY clause
+     * Set an ORDER BY clause.
      *
      * @param string $column
      * @param string $direction
@@ -229,7 +218,7 @@ abstract class BaseRepository implements RepositoryContract {
     }
 
     /**
-     * Add a simple where clause to the query
+     * Add a simple where clause to the query.
      *
      * @param string $column
      * @param string $value
@@ -245,7 +234,7 @@ abstract class BaseRepository implements RepositoryContract {
     }
 
     /**
-     * Add a simple where in clause to the query
+     * Add a simple where in clause to the query.
      *
      * @param string $column
      * @param mixed  $values
@@ -254,7 +243,7 @@ abstract class BaseRepository implements RepositoryContract {
      */
     public function whereIn($column, $values)
     {
-        $values = is_array($values) ? $values : array($values);
+        $values = is_array($values) ? $values : [$values];
 
         $this->whereIns[] = compact('column', 'values');
 
@@ -262,7 +251,7 @@ abstract class BaseRepository implements RepositoryContract {
     }
 
     /**
-     * Set Eloquent relationships to eager load
+     * Set Eloquent relationships to eager load.
      *
      * @param $relations
      *
@@ -270,7 +259,9 @@ abstract class BaseRepository implements RepositoryContract {
      */
     public function with($relations)
     {
-        if (is_string($relations)) $relations = func_get_args();
+        if (is_string($relations)) {
+            $relations = func_get_args();
+        }
 
         $this->with = $relations;
 
@@ -278,7 +269,7 @@ abstract class BaseRepository implements RepositoryContract {
     }
 
     /**
-     * Create a new instance of the model's query builder
+     * Create a new instance of the model's query builder.
      *
      * @return $this
      */
@@ -290,14 +281,13 @@ abstract class BaseRepository implements RepositoryContract {
     }
 
     /**
-     * Add relationships to the query builder to eager load
+     * Add relationships to the query builder to eager load.
      *
      * @return $this
      */
     protected function eagerLoad()
     {
-        foreach($this->with as $relation)
-        {
+        foreach ($this->with as $relation) {
             $this->query->with($relation);
         }
 
@@ -305,29 +295,25 @@ abstract class BaseRepository implements RepositoryContract {
     }
 
     /**
-     * Set clauses on the query builder
+     * Set clauses on the query builder.
      *
      * @return $this
      */
     protected function setClauses()
     {
-        foreach($this->wheres as $where)
-        {
+        foreach ($this->wheres as $where) {
             $this->query->where($where['column'], $where['operator'], $where['value']);
         }
 
-        foreach($this->whereIns as $whereIn)
-        {
+        foreach ($this->whereIns as $whereIn) {
             $this->query->whereIn($whereIn['column'], $whereIn['values']);
         }
 
-        foreach($this->orderBys as $orders)
-        {
+        foreach ($this->orderBys as $orders) {
             $this->query->orderBy($orders['column'], $orders['direction']);
         }
 
-        if(isset($this->take) and ! is_null($this->take))
-        {
+        if (isset($this->take) and ! is_null($this->take)) {
             $this->query->take($this->take);
         }
 
@@ -335,14 +321,13 @@ abstract class BaseRepository implements RepositoryContract {
     }
 
     /**
-     * Set query scopes
+     * Set query scopes.
      *
      * @return $this
      */
     protected function setScopes()
     {
-        foreach($this->scopes as $method => $args)
-        {
+        foreach ($this->scopes as $method => $args) {
             $this->query->$method(implode(', ', $args));
         }
 
@@ -350,16 +335,16 @@ abstract class BaseRepository implements RepositoryContract {
     }
 
     /**
-     * Reset the query clause parameter arrays
+     * Reset the query clause parameter arrays.
      *
      * @return $this
      */
     protected function unsetClauses()
     {
-        $this->wheres   = array();
-        $this->whereIns = array();
-        $this->scopes   = array();
-        $this->take     = null;
+        $this->wheres = [];
+        $this->whereIns = [];
+        $this->scopes = [];
+        $this->take = null;
 
         return $this;
     }
