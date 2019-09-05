@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d04d52fea63df51a7c4c1be14e80a7ea",
+    "content-hash": "d23af44ea8dc79cd314d075e17d98456",
     "packages": [
         {
             "name": "albertcht/invisible-recaptcha",
@@ -1110,69 +1110,6 @@
             "time": "2019-07-01T23:21:34+00:00"
         },
         {
-            "name": "hieu-le/active",
-            "version": "3.5.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/letrunghieu/active.git",
-                "reference": "42d0f50be74b89d730bb4c0ee8c32447630506c6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/letrunghieu/active/zipball/42d0f50be74b89d730bb4c0ee8c32447630506c6",
-                "reference": "42d0f50be74b89d730bb4c0ee8c32447630506c6",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "^5.5",
-                "php": ">=7.0"
-            },
-            "require-dev": {
-                "codeclimate/php-test-reporter": "dev-master",
-                "orchestra/testbench": "^3.1",
-                "phpunit/phpunit": "~6.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "HieuLe\\Active\\ActiveServiceProvider"
-                    ],
-                    "aliases": {
-                        "Active": "HieuLe\\Active\\Facades\\Active"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "HieuLe\\Active\\": "src/",
-                    "HieuLe\\ActiveTest\\": "tests/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Hieu Le",
-                    "email": "letrunghieu.cse09@gmail.com",
-                    "homepage": "https://www.hieule.info"
-                }
-            ],
-            "description": "The helper class for Laravel (4/5) applications to get active class base on current route",
-            "homepage": "https://www.hieule.info/tag/laravel-active/",
-            "keywords": [
-                "active",
-                "laravel",
-                "routing"
-            ],
-            "time": "2017-09-07T02:36:51+00:00"
-        },
-        {
             "name": "lab404/laravel-impersonate",
             "version": "1.4.1",
             "source": {
@@ -1788,16 +1725,16 @@
         },
         {
             "name": "nyholm/psr7",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Nyholm/psr7.git",
-                "reference": "27c828a165ff936f9fe9056baa9cabe0c70a423c"
+                "reference": "55ff6b76573f5b242554c9775792bd59fb52e11c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Nyholm/psr7/zipball/27c828a165ff936f9fe9056baa9cabe0c70a423c",
-                "reference": "27c828a165ff936f9fe9056baa9cabe0c70a423c",
+                "url": "https://api.github.com/repos/Nyholm/psr7/zipball/55ff6b76573f5b242554c9775792bd59fb52e11c",
+                "reference": "55ff6b76573f5b242554c9775792bd59fb52e11c",
                 "shasum": ""
             },
             "require": {
@@ -1846,7 +1783,7 @@
                 "psr-17",
                 "psr-7"
             ],
-            "time": "2019-08-22T18:22:08+00:00"
+            "time": "2019-09-05T13:24:16+00:00"
         },
         {
             "name": "opis/closure",
@@ -4425,16 +4362,16 @@
         },
         {
             "name": "torann/geoip",
-            "version": "1.0.10",
+            "version": "1.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Torann/laravel-geoip.git",
-                "reference": "07095246a0f3b28603f8dd455c46932d0d1dede8"
+                "reference": "d00e9b5b9c8e9c79c47fc4d78d4b47db1cd532c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Torann/laravel-geoip/zipball/07095246a0f3b28603f8dd455c46932d0d1dede8",
-                "reference": "07095246a0f3b28603f8dd455c46932d0d1dede8",
+                "url": "https://api.github.com/repos/Torann/laravel-geoip/zipball/d00e9b5b9c8e9c79c47fc4d78d4b47db1cd532c3",
+                "reference": "d00e9b5b9c8e9c79c47fc4d78d4b47db1cd532c3",
                 "shasum": ""
             },
             "require": {
@@ -4495,7 +4432,7 @@
                 "location",
                 "maxmind"
             ],
-            "time": "2019-09-04T14:43:36+00:00"
+            "time": "2019-09-05T12:50:24+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -5371,16 +5308,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "1.4.11",
+            "version": "1.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "5082ea8e531894dca7ffcee25206d93cd25aca42"
+                "reference": "b83c91fc70a028c4715854bb0b7e708daac3c20c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/5082ea8e531894dca7ffcee25206d93cd25aca42",
-                "reference": "5082ea8e531894dca7ffcee25206d93cd25aca42",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/b83c91fc70a028c4715854bb0b7e708daac3c20c",
+                "reference": "b83c91fc70a028c4715854bb0b7e708daac3c20c",
                 "shasum": ""
             },
             "require": {
@@ -5435,7 +5372,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2019-09-04T19:13:40+00:00"
+            "time": "2019-09-05T14:31:41+00:00"
         },
         {
             "name": "filp/whoops",
