@@ -8,26 +8,26 @@
     "packages": [
         {
             "name": "albertcht/invisible-recaptcha",
-            "version": "v1.9.2",
+            "version": "v1.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/albertcht/invisible-recaptcha.git",
-                "reference": "7aae21d07ef16ca14a7d0ec5b06472e2076fedef"
+                "reference": "0e03f61f55fdff961f203e9d96cbd9ecfb152df5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/albertcht/invisible-recaptcha/zipball/7aae21d07ef16ca14a7d0ec5b06472e2076fedef",
-                "reference": "7aae21d07ef16ca14a7d0ec5b06472e2076fedef",
+                "url": "https://api.github.com/repos/albertcht/invisible-recaptcha/zipball/0e03f61f55fdff961f203e9d96cbd9ecfb152df5",
+                "reference": "0e03f61f55fdff961f203e9d96cbd9ecfb152df5",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.2",
-                "illuminate/support": "^5.0",
+                "illuminate/support": "^5.0|^6.0",
                 "php": "^5.6.4 || ^7.0"
             },
             "require-dev": {
-                "illuminate/view": "^5.0",
-                "phpunit/phpunit": "^6.1|^7.0"
+                "illuminate/view": "^5.0|^6.0",
+                "phpunit/phpunit": "^8.0"
             },
             "type": "library",
             "extra": {
@@ -63,7 +63,7 @@
                 "php",
                 "recaptcha"
             ],
-            "time": "2019-06-13T12:23:02+00:00"
+            "time": "2019-09-05T17:22:43+00:00"
         },
         {
             "name": "arcanedev/log-viewer",
