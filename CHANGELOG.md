@@ -13,7 +13,7 @@ All notable changes to this project will be documented in this file.
 - Added the https://github.com/404labfr/laravel-impersonate package to replace my home grown impersonate feature with much stronger functionality
 
 ### Changed
-- Update to laravel commit: 65959b25bf791ab7afeac2ffa5a29394638c688f
+- Update to laravel commit: 31394de4d736c171d40bb03d50313c60b0e4af38
 - Enabled debugbar models
 - Converted “Demo Mode” to “Read Only Mode” to be more generic
 - Update package versions
@@ -24,6 +24,7 @@ All notable changes to this project will be documented in this file.
 - Condense language dropdown padding
 - Refactor socialite buttons to php includes
 - Add array of paths that can not be accessed as GET requests in read only mode
+- Update base repository and refactor anything that broke
 
 ### Removed
 - Removed unused avatar images from CoreUI
@@ -34,6 +35,7 @@ All notable changes to this project will be documented in this file.
 - Removed laravel dump server, laravel tinker, laravel self-diagnosis from default install
 - Removed backend.php config file and just put comment in layout file
 - Removed unused helper file
+- Removed letrunghieu/active for homegrown one since I’m not waiting for them to update to laravel 6.0
 
 ## [5.3.8] - 2019-08-21
 ### Added

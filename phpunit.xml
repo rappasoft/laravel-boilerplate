@@ -9,6 +9,18 @@
          processIsolation="false"
          stopOnFailure="false"
          printerClass="Codedungeon\PHPUnitPrettyResultPrinter\Printer">
+    <testsuites>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">
+                ./tests/Unit
+            </directory>
+        </testsuite>
+        <testsuite name="Feature">
+            <directory suffix="Test.php">
+                ./tests/Feature
+            </directory>
+        </testsuite>
+    </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">
@@ -16,6 +28,9 @@
             </directory>
         </whitelist>
     </filter>
+    <extensions>
+        <extension class="Tests\Bootstrap"/>
+    </extensions>
     <php>
         <server name="APP_TESTING" value="true"/>
         <server name="APP_READ_ONLY" value="false"/>
@@ -31,16 +46,4 @@
         <server name="LOGIN_CAPTCHA_STATUS" value="false"/>
         <server name="SESSION_DRIVER" value="array"/>
     </php>
-    <testsuites>
-        <testsuite name="Unit">
-            <directory suffix="Test.php">
-                ./tests/Unit
-            </directory>
-        </testsuite>
-        <testsuite name="Feature">
-            <directory suffix="Test.php">
-                ./tests/Feature
-            </directory>
-        </testsuite>
-    </testsuites>
 </phpunit>
