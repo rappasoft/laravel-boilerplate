@@ -3,22 +3,19 @@
 namespace App\Models\Auth;
 
 use App\Models\Traits\Uuid;
-use OwenIt\Auditing\Auditable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Lab404\Impersonate\Models\Impersonate;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Auth\Traits\SendUserPasswordReset;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use OwenIt\Auditing\Contracts\Auditable as AuditableInterface;
 
 /**
  * Class User.
  */
-class BaseUser extends Authenticatable implements AuditableInterface
+class BaseUser extends Authenticatable
 {
-    use Auditable,
-        HasRoles,
+    use HasRoles,
         Impersonate,
         Notifiable,
         SendUserPasswordReset,
@@ -48,25 +45,11 @@ class BaseUser extends Authenticatable implements AuditableInterface
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
+     * The dynamic attributes from mutators that should be returned with the user object.
      * @var array
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * Attributes to exclude from the Audit.
-     *
-     * @var array
-     */
-    protected $auditExclude = [
-        'id',
-        'password',
-        'remember_token',
-        'confirmation_code',
+    protected $appends = [
+        'full_name',
     ];
 
     /**
@@ -89,11 +72,13 @@ class BaseUser extends Authenticatable implements AuditableInterface
     ];
 
     /**
-     * The dynamic attributes from mutators that should be returned with the user object.
+     * The attributes that should be hidden for arrays.
+     *
      * @var array
      */
-    protected $appends = [
-        'full_name',
+    protected $hidden = [
+        'password',
+        'remember_token',
     ];
 
     /**

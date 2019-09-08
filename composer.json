@@ -19,7 +19,6 @@
         "langleyfoxall/laravel-nist-password-rules": "^4.0",
         "laravel/framework": "5.8.*",
         "laravel/socialite": "^4.1",
-        "owen-it/laravel-auditing": "^9.2",
         "spatie/laravel-html": "^2.22",
         "spatie/laravel-permission": "^2.37",
         "torann/geoip": "^1.0"
