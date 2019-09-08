@@ -91,11 +91,17 @@ return [
     */
 
     'events' => [
+        // 'retrieved',
         'created',
         'updated',
         'restored',
         'deleted',
         'forceDeleted',
+        'toggled',
+        'synced',
+        'existingPivotUpdated',
+        'attached',
+        'detached',
     ],
 
     /*
