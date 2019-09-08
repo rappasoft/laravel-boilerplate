@@ -11,7 +11,6 @@ use Altek\Accountant\Recordable as RecordableTrait;
  */
 class SocialAccount extends Model implements Recordable
 {
-
     use RecordableTrait;
 
     /**
