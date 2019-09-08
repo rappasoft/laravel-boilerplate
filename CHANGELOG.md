@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [6.0.0] - TBD
+## [6.0.0] - 2019-09-08
 ### Added
 - Added captcha to login request
 - Added server variable that denotes whether or not the application is currently running tests, false by default but enabled by phpunit.xml
@@ -143,5 +143,6 @@ All notable changes to this project will be documented in this file.
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v5.3.8...development
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.0...development
+[6.0.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v5.3.8...v6.0.0
 [5.3.8]: https://github.com/rappasoft/laravel-boilerplate/compare/v5.3.7...v5.3.8
