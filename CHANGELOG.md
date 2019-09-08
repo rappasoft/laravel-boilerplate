@@ -13,6 +13,7 @@ All notable changes to this project will be documented in this file.
 - Added the https://github.com/404labfr/laravel-impersonate package to replace my home grown impersonate feature with much stronger functionality
 
 ### Changed
+- Upgrade to Laravel 6.0
 - Update to laravel commit: 31394de4d736c171d40bb03d50313c60b0e4af38
 - Enabled debugbar models
 - Converted “Demo Mode” to “Read Only Mode” to be more generic
@@ -36,6 +37,7 @@ All notable changes to this project will be documented in this file.
 - Removed backend.php config file and just put comment in layout file
 - Removed unused helper file
 - Removed letrunghieu/active for homegrown one since I’m not waiting for them to update to laravel 6.0
+- Removed owen-it/laravel-auditing until it supports Laravel 6.0
 
 ## [5.3.8] - 2019-08-21
 ### Added
