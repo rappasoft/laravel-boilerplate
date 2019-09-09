@@ -3,21 +3,26 @@
 namespace App\Models\Auth;
 
 use App\Models\Traits\Uuid;
+use Altek\Eventually\Eventually;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use Altek\Accountant\Contracts\Recordable;
 use Lab404\Impersonate\Models\Impersonate;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Auth\Traits\SendUserPasswordReset;
+use Altek\Accountant\Recordable as RecordableTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class User.
  */
-class BaseUser extends Authenticatable
+class BaseUser extends Authenticatable implements Recordable
 {
     use HasRoles,
+        Eventually,
         Impersonate,
         Notifiable,
+        RecordableTrait,
         SendUserPasswordReset,
         SoftDeletes,
         Uuid;
