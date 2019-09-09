@@ -2,16 +2,13 @@
 
 namespace App\Models\Auth;
 
-use Illuminate\Database\Eloquent\Model;
-use Altek\Accountant\Contracts\Recordable;
-use Altek\Accountant\Recordable as RecordableTrait;
+use App\Models\RecordingModel;
 
 /**
  * Class SocialAccount.
  */
-class SocialAccount extends Model implements Recordable
+class SocialAccount extends RecordingModel
 {
-    use RecordableTrait;
 
     /**
      * The database table used by the model.

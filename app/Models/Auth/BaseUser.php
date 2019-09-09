@@ -16,7 +16,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 /**
  * Class User.
  */
-class BaseUser extends Authenticatable implements Recordable
+abstract class BaseUser extends Authenticatable implements Recordable
 {
     use HasRoles,
         Eventually,

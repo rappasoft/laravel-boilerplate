@@ -91,6 +91,7 @@ return [
     */
 
     'events' => [
+        // Note: Do not enable 'retrieved' on the User model: https://altek.gitlab.io/accountant/troubleshooting.html#php-fatal-error-maximum-function-nesting-level-of-512-reached-aborting
         // 'retrieved',
         'created',
         'updated',
