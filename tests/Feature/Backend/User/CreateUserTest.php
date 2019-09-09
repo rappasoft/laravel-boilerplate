@@ -81,7 +81,7 @@ class CreateUserTest extends TestCase
         ]);
 
         $this->assertDatabaseHas(
-            config('access.table_names.users'),
+            'users',
             [
                 'first_name' => 'John',
                 'last_name' => 'Doe',

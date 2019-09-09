@@ -2,6 +2,10 @@
 
 namespace App\Listeners\Backend\Auth\Role;
 
+use App\Events\Backend\Auth\Role\RoleCreated;
+use App\Events\Backend\Auth\Role\RoleDeleted;
+use App\Events\Backend\Auth\Role\RoleUpdated;
+
 /**
  * Class RoleEventListener.
  */
@@ -12,7 +16,7 @@ class RoleEventListener
      */
     public function onCreated($event)
     {
-        \Log::info('Role Created');
+        logger('Role Created');
     }
 
     /**
@@ -20,7 +24,7 @@ class RoleEventListener
      */
     public function onUpdated($event)
     {
-        \Log::info('Role Updated');
+        logger('Role Updated');
     }
 
     /**
@@ -28,7 +32,7 @@ class RoleEventListener
      */
     public function onDeleted($event)
     {
-        \Log::info('Role Deleted');
+        logger('Role Deleted');
     }
 
     /**
@@ -39,17 +43,17 @@ class RoleEventListener
     public function subscribe($events)
     {
         $events->listen(
-            \App\Events\Backend\Auth\Role\RoleCreated::class,
+            RoleCreated::class,
             'App\Listeners\Backend\Auth\Role\RoleEventListener@onCreated'
         );
 
         $events->listen(
-            \App\Events\Backend\Auth\Role\RoleUpdated::class,
+            RoleUpdated::class,
             'App\Listeners\Backend\Auth\Role\RoleEventListener@onUpdated'
         );
 
         $events->listen(
-            \App\Events\Backend\Auth\Role\RoleDeleted::class,
+            RoleDeleted::class,
             'App\Listeners\Backend\Auth\Role\RoleEventListener@onDeleted'
         );
     }

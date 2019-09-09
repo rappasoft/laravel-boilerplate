@@ -4,13 +4,13 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Is In Demo Mode
+    | Application Is In Read Only Mode
     |--------------------------------------------------------------------------
     |
-    | This value is for whether the project is in demo mode or not.
+    | This value is for whether the project is in read only mode or not.
     |
     */
-    'demo' => env('APP_DEMO', false),
+    'read_only' => env('APP_READ_ONLY', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -50,6 +50,17 @@ return [
     */
 
     'debug' => env('APP_DEBUG', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application Testing Mode
+    |--------------------------------------------------------------------------
+    |
+    | When your application is currently running tests
+    |
+    */
+
+    'testing' => env('APP_TESTING', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -239,7 +250,5 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
-        // Package Aliases
     ],
 ];

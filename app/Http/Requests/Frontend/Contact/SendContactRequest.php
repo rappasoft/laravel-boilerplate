@@ -28,7 +28,7 @@ class SendContactRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'email' => ['required'],
+            'email' => ['required', 'email'],
             'message' => ['required'],
             'g-recaptcha-response' => ['required_if:captcha_status,true', 'captcha'],
         ];

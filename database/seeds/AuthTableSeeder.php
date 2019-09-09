@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Spatie\Permission\PermissionRegistrar;
 
 /**
  * Class AuthTableSeeder.
@@ -17,7 +18,7 @@ class AuthTableSeeder extends Seeder
         $this->disableForeignKeys();
 
         // Reset cached roles and permissions
-        app()['cache']->forget('spatie.permission.cache');
+        resolve(PermissionRegistrar::class)->forgetCachedPermissions();
 
         $this->truncateMultiple([
             config('permission.table_names.model_has_permissions'),
@@ -25,8 +26,8 @@ class AuthTableSeeder extends Seeder
             config('permission.table_names.role_has_permissions'),
             config('permission.table_names.permissions'),
             config('permission.table_names.roles'),
-            config('access.table_names.users'),
-            config('access.table_names.password_histories'),
+            'users',
+            'password_histories',
             'password_resets',
             'social_accounts',
         ]);

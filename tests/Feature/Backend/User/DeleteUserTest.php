@@ -82,6 +82,6 @@ class DeleteUserTest extends TestCase
         $response = $this->delete("/admin/auth/user/{$user->id}");
 
         $response->assertSessionHas(['flash_success' => __('alerts.backend.users.deleted')]);
-        $this->assertDatabaseMissing(config('access.table_names.users'), ['id' => $user->id, 'deleted_at' => null]);
+        $this->assertDatabaseMissing('users', ['id' => $user->id, 'deleted_at' => null]);
     }
 }

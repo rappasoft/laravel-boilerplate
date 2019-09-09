@@ -2,27 +2,16 @@
 
 namespace App\Models\Auth;
 
-use OwenIt\Auditing\Auditable;
+use Altek\Accountant\Contracts\Recordable;
 use App\Models\Auth\Traits\Method\RoleMethod;
 use Spatie\Permission\Models\Role as SpatieRole;
-use App\Models\Auth\Traits\Attribute\RoleAttribute;
-use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use Altek\Accountant\Recordable as RecordableTrait;
 
 /**
  * Class Role.
  */
-class Role extends SpatieRole implements AuditableContract
+class Role extends SpatieRole implements Recordable
 {
-    use Auditable,
-        RoleAttribute,
+    use RecordableTrait,
         RoleMethod;
-
-    /**
-     * Attributes to exclude from the Audit.
-     *
-     * @var array
-     */
-    protected $auditExclude = [
-        'id',
-    ];
 }

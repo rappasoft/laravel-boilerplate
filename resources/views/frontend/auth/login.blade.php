@@ -59,6 +59,15 @@
                             </div><!--col-->
                         </div><!--row-->
 
+                        @if(config('access.captcha.login'))
+                            <div class="row">
+                                <div class="col">
+                                    @captcha
+                                    {{ html()->hidden('captcha_status', 'true') }}
+                                </div><!--col-->
+                            </div><!--row-->
+                        @endif
+
                         <div class="row">
                             <div class="col">
                                 <div class="form-group text-right">
@@ -71,7 +80,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="text-center">
-                                {!! $socialiteLinks !!}
+                                @include('frontend.auth.includes.socialite')
                             </div>
                         </div><!--col-->
                     </div><!--row-->
@@ -80,3 +89,9 @@
         </div><!-- col-md-8 -->
     </div><!-- row -->
 @endsection
+
+@push('after-scripts')
+    @if(config('access.captcha.login'))
+        @captchaScripts
+    @endif
+@endpush

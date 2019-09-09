@@ -3,22 +3,26 @@
 namespace App\Models\Auth;
 
 use App\Models\Traits\Uuid;
-use OwenIt\Auditing\Auditable;
+use Altek\Eventually\Eventually;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use Altek\Accountant\Contracts\Recordable;
+use Lab404\Impersonate\Models\Impersonate;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\Auth\Traits\SendUserPasswordReset;
+use Altek\Accountant\Recordable as RecordableTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use OwenIt\Auditing\Contracts\Auditable as AuditableInterface;
 
 /**
  * Class User.
  */
-class BaseUser extends Authenticatable implements AuditableInterface
+abstract class BaseUser extends Authenticatable implements Recordable
 {
-    use Auditable,
-        HasRoles,
+    use HasRoles,
+        Eventually,
+        Impersonate,
         Notifiable,
+        RecordableTrait,
         SendUserPasswordReset,
         SoftDeletes,
         Uuid;
@@ -46,25 +50,11 @@ class BaseUser extends Authenticatable implements AuditableInterface
     ];
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
+     * The dynamic attributes from mutators that should be returned with the user object.
      * @var array
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
-
-    /**
-     * Attributes to exclude from the Audit.
-     *
-     * @var array
-     */
-    protected $auditExclude = [
-        'id',
-        'password',
-        'remember_token',
-        'confirmation_code',
+    protected $appends = [
+        'full_name',
     ];
 
     /**
@@ -87,10 +77,34 @@ class BaseUser extends Authenticatable implements AuditableInterface
     ];
 
     /**
-     * The dynamic attributes from mutators that should be returned with the user object.
+     * The attributes that should be hidden for arrays.
+     *
      * @var array
      */
-    protected $appends = [
-        'full_name',
+    protected $hidden = [
+        'password',
+        'remember_token',
     ];
+
+    /**
+     * Return true or false if the user can impersonate an other user.
+     *
+     * @param void
+     * @return  bool
+     */
+    public function canImpersonate()
+    {
+        return $this->isAdmin();
+    }
+
+    /**
+     * Return true or false if the user can be impersonate.
+     *
+     * @param void
+     * @return  bool
+     */
+    public function canBeImpersonated()
+    {
+        return $this->id !== 1;
+    }
 }

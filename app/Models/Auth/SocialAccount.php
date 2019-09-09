@@ -2,17 +2,13 @@
 
 namespace App\Models\Auth;
 
-use OwenIt\Auditing\Auditable;
-use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Contracts\Auditable as AuditableContract;
+use App\Models\RecordingModel;
 
 /**
  * Class SocialAccount.
  */
-class SocialAccount extends Model implements AuditableContract
+class SocialAccount extends RecordingModel
 {
-    use Auditable;
-
     /**
      * The database table used by the model.
      *
@@ -31,15 +27,5 @@ class SocialAccount extends Model implements AuditableContract
         'provider_id',
         'token',
         'avatar',
-    ];
-
-    /**
-     * Attributes to exclude from the Audit.
-     *
-     * @var array
-     */
-    protected $auditExclude = [
-        'id',
-        'token',
     ];
 }

@@ -9,26 +9,6 @@
          processIsolation="false"
          stopOnFailure="false"
          printerClass="Codedungeon\PHPUnitPrettyResultPrinter\Printer">
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">
-                ./app
-            </directory>
-        </whitelist>
-    </filter>
-    <php>
-        <server name="APP_DEMO" value="false"/>
-        <server name="APP_ENV" value="testing"/>
-        <server name="BCRYPT_ROUNDS" value="4"/>
-        <server name="CACHE_DRIVER" value="array"/>
-        <server name="DB_CONNECTION" value="sqlite_testing"/>
-        <server name="ENABLE_REGISTRATION" value="true"/>
-        <server name="MAIL_DRIVER" value="array"/>
-        <server name="QUEUE_CONNECTION" value="sync"/>
-        <server name="CONTACT_CAPTCHA_STATUS" value="false"/>
-        <server name="REGISTRATION_CAPTCHA_STATUS" value="false"/>
-        <server name="SESSION_DRIVER" value="array"/>
-    </php>
     <testsuites>
         <testsuite name="Unit">
             <directory suffix="Test.php">
@@ -41,4 +21,34 @@
             </directory>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">
+                ./app
+            </directory>
+        </whitelist>
+    </filter>
+    <extensions>
+        <extension class="Tests\Bootstrap"/>
+    </extensions>
+    <php>
+        <server name="APP_CONFIG_CACHE" value="bootstrap/cache/config.phpunit.php"/>
+        <server name="APP_SERVICES_CACHE" value="bootstrap/cache/services.phpunit.php"/>
+        <server name="APP_PACKAGES_CACHE" value="bootstrap/cache/packages.phpunit.php"/>
+        <server name="APP_ROUTES_CACHE" value="bootstrap/cache/routes.phpunit.php"/>
+        <server name="APP_EVENTS_CACHE" value="bootstrap/cache/events.phpunit.php"/>
+        <server name="APP_TESTING" value="true"/>
+        <server name="APP_READ_ONLY" value="false"/>
+        <server name="APP_ENV" value="testing"/>
+        <server name="BCRYPT_ROUNDS" value="4"/>
+        <server name="CACHE_DRIVER" value="array"/>
+        <server name="CONTACT_CAPTCHA_STATUS" value="false"/>
+        <server name="DB_CONNECTION" value="sqlite_testing"/>
+        <server name="ENABLE_REGISTRATION" value="true"/>
+        <server name="LOGIN_CAPTCHA_STATUS" value="false"/>
+        <server name="MAIL_DRIVER" value="array"/>
+        <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="REGISTRATION_CAPTCHA_STATUS" value="false"/>
+        <server name="SESSION_DRIVER" value="array"/>
+    </php>
 </phpunit>

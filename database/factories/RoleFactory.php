@@ -1,8 +1,9 @@
 <?php
 
+use App\Models\Auth\Role;
 use Faker\Generator as Faker;
 
-$factory->define(\App\Models\Auth\Role::class, function (Faker $faker) {
+$factory->define(Role::class, function (Faker $faker) {
     return [
         'name' => $faker->word,
     ];

@@ -56,3 +56,19 @@ if (! function_exists('form_submit')) {
         return resolve(HtmlHelper::class)->formSubmit($title, $classes);
     }
 }
+
+if (! function_exists('active_class')) {
+    /**
+     * Get the active class if the condition is not falsy.
+     *
+     * @param        $condition
+     * @param string $activeClass
+     * @param string $inactiveClass
+     *
+     * @return string
+     */
+    function active_class($condition, $activeClass = 'active', $inactiveClass = '')
+    {
+        return $condition ? $activeClass : $inactiveClass;
+    }
+}

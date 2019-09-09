@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Backend\Auth\Role\RoleController;
 use App\Http\Controllers\Backend\Auth\User\UserController;
-use App\Http\Controllers\Backend\Auth\User\UserAccessController;
 use App\Http\Controllers\Backend\Auth\User\UserSocialController;
 use App\Http\Controllers\Backend\Auth\User\UserStatusController;
 use App\Http\Controllers\Backend\Auth\User\UserSessionController;
@@ -51,9 +50,6 @@ Route::group([
             // Password
             Route::get('password/change', [UserPasswordController::class, 'edit'])->name('user.change-password');
             Route::patch('password/change', [UserPasswordController::class, 'update'])->name('user.change-password.post');
-
-            // Access
-            Route::get('login-as', [UserAccessController::class, 'loginAs'])->name('user.login-as');
 
             // Session
             Route::get('clear-session', [UserSessionController::class, 'clearSession'])->name('user.clear-session');

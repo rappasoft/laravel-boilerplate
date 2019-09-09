@@ -43,12 +43,12 @@
                                     <td>{{ $user->last_name }}</td>
                                     <td>{{ $user->first_name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{!! $user->confirmed_label !!}</td>
-                                    <td>{!! $user->roles_label !!}</td>
-                                    <td>{!! $user->permissions_label !!}</td>
-                                    <td>{!! $user->social_buttons !!}</td>
+                                    <td>@include('backend.auth.user.includes.confirm', ['user' => $user])</td>
+                                    <td>{{ $user->roles_label }}</td>
+                                    <td>{{ $user->permissions_label }}</td>
+                                    <td>@include('backend.auth.user.includes.social-buttons', ['user' => $user])</td>
                                     <td>{{ $user->updated_at->diffForHumans() }}</td>
-                                    <td>{!! $user->action_buttons !!}</td>
+                                    <td>@include('backend.auth.user.includes.actions', ['user' => $user])</td>
                                 </tr>
                             @endforeach
                         @else

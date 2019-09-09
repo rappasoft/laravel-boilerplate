@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Helpers\Auth\SocialiteHelper;
 use App\Http\Requests\RegisterRequest;
 use App\Events\Frontend\Auth\UserRegistered;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -50,8 +49,7 @@ class RegisterController extends Controller
     {
         abort_unless(config('access.registration'), 404);
 
-        return view('frontend.auth.register')
-            ->withSocialiteLinks((new SocialiteHelper)->getSocialLinks());
+        return view('frontend.auth.register');
     }
 
     /**

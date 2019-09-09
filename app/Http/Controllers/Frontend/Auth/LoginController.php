@@ -3,10 +3,8 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 use Illuminate\Http\Request;
-use App\Helpers\Auth\AuthHelper;
 use App\Exceptions\GeneralException;
 use App\Http\Controllers\Controller;
-use App\Helpers\Auth\SocialiteHelper;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -34,8 +32,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('frontend.auth.login')
-            ->withSocialiteLinks((new SocialiteHelper)->getSocialLinks());
+        return view('frontend.auth.login');
     }
 
     /**
@@ -61,6 +58,9 @@ class LoginController extends Controller
         $request->validate([
             $this->username() => 'required|string',
             'password' => PasswordRules::login(),
+            'g-recaptcha-response' => ['required_if:captcha_status,true', 'captcha'],
+        ], [
+            'g-recaptcha-response.required_if' => __('validation.required', ['attribute' => 'captcha']),
         ]);
     }
 
@@ -118,9 +118,6 @@ class LoginController extends Controller
             app('session')->forget(config('access.socialite_session_name'));
         }
 
-        // Remove any session data from backend
-        resolve(AuthHelper::class)->flushTempSession();
-
         // Fire event, Log out user, Redirect
         event(new UserLoggedOut($request->user()));
 
@@ -129,36 +126,5 @@ class LoginController extends Controller
         $request->session()->invalidate();
 
         return redirect()->route('frontend.index');
-    }
-
-    /**
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function logoutAs()
-    {
-        // If for some reason route is getting hit without someone already logged in
-        if (! auth()->user()) {
-            return redirect()->route('frontend.auth.login');
-        }
-
-        // If admin id is set, relogin
-        if (session()->has('admin_user_id') && session()->has('temp_user_id')) {
-            // Save admin id
-            $admin_id = session()->get('admin_user_id');
-
-            resolve(AuthHelper::class)->flushTempSession();
-
-            // Re-login admin
-            auth()->loginUsingId((int) $admin_id);
-
-            // Redirect to backend user page
-            return redirect()->route('admin.auth.user.index');
-        }
-
-        resolve(AuthHelper::class)->flushTempSession();
-
-        auth()->logout();
-
-        return redirect()->route('frontend.auth.login');
     }
 }

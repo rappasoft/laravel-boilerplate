@@ -43,7 +43,7 @@ class ReportableException extends Exception
      */
     public function render($request)
     {
-        // All instances of GeneralException redirect back with a flash message to show a bootstrap alert-error
+        // All instances of ReportableException redirect back with a flash message to show a bootstrap alert-error
         return redirect()
             ->back()
             ->withInput()

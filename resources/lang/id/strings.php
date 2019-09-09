@@ -29,7 +29,7 @@ return [
         'general' => [
             'all_rights_reserved' => 'Hak Cipta Dilindungi.',
             'are_you_sure' => 'Anda yakin?',
-            'boilerplate_link' => 'Laravel 5 Boilerplate',
+            'boilerplate_link' => 'Laravel Boilerplate',
             'continue' => 'Lanjutjan',
             'member_since' => 'Anggota sejak',
             'minutes' => ' menit',

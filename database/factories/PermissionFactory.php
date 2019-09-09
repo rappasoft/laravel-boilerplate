@@ -1,7 +1,8 @@
 <?php
 
 use Faker\Generator as Faker;
+use Spatie\Permission\Models\Permission;
 
-$factory->define(\Spatie\Permission\Models\Permission::class, function (Faker $faker) {
+$factory->define(Permission::class, function (Faker $faker) {
     return [];
 });
