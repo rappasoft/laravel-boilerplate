@@ -7,9 +7,7 @@ use Altek\Accountant\Contracts\Recordable;
 use Altek\Accountant\Recordable as RecordableTrait;
 
 /**
- * Class RecordingModel
- *
- * @package App\Models
+ * Class RecordingModel.
  */
 abstract class RecordingModel extends Model implements Recordable
 {

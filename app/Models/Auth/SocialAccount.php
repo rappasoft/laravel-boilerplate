@@ -9,7 +9,6 @@ use App\Models\RecordingModel;
  */
 class SocialAccount extends RecordingModel
 {
-
     /**
      * The database table used by the model.
      *
