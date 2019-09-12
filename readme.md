@@ -36,7 +36,7 @@ Thank you for considering contributing to the Laravel Boilerplate project! Pleas
 
 ### Security Vulnerabilities
 
-If you discover a security vulnerability within this boilerplate, please send an e-mail to Anthony Rappa at rappa819@gmail.com, or create a pull request if possible. All security vulnerabilities will be promptly addressed. Please reference [this page](https://github.com/rappasoft/laravel-boilerplate/wiki/7.-Security-Fixes) to make sure you are up to date.
+If you discover a security vulnerability within this boilerplate, please send an e-mail to Anthony Rappa at rappa819@gmail.com, or create a pull request if possible. All security vulnerabilities will be promptly addressed.
 
 ### Donations
 
