@@ -1,0 +1,21 @@
+name: CI for Laravel Boilerplate
+
+on:
+  push:
+    branches:
+    - master
+    - development
+
+jobs:
+  laravel-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Copy ENV Laravel Configuration for CI
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+    - name: Install Dependencies
+      run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+    - name: Generate Key
+      run: php artisan key:generate
+    - name: Execute Tests
+      run: vendor/bin/phpunit
