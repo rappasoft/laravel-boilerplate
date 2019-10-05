@@ -76,7 +76,6 @@ class UserController extends Controller
             'roles',
             'permissions'
         ));
-
         return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('alerts.backend.users.created'));
     }
 
@@ -127,7 +126,6 @@ class UserController extends Controller
             'roles',
             'permissions'
         ));
-
         return redirect()->route('admin.auth.user.index')->withFlashSuccess(__('alerts.backend.users.updated'));
     }
 

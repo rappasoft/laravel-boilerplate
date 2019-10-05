@@ -1,0 +1,43 @@
+version: "3"
+services:
+
+  web:
+
+    image: webhbb:2.0
+    build:
+      context: .
+      dockerfile: container-build/web/Dockerfile
+    environment:
+    - MYSQL_DATABASE=hbbdev
+    - MYSQL_USER=dink
+    - MYSQL_PASSWORD=123qwe
+    - MYSQL_HOST=127.0.2.1
+    ports:
+    - "127.0.2.1:80:80"
+    volumes:
+    - .:/var/www
+    depends_on:
+    - db
+
+  db:
+    image: mysql:5.7
+    ports:
+    - "127.0.2.1:3306:3306"
+    environment:
+    - MYSQL_USER=dink
+    - MYSQL_PASSWORD=123qwe
+    - MYSQL_DATABASE=hbbdev
+    - MYSQL_ROOT_PASSWORD=123456
+    volumes:
+    - "mysql_data:/var/lib/mysql"
+    - ./data/schema1.sql:/docker-entrypoint-initdb.d/schema.sql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "127.0.2.1:8082:80"
+    environment:
+      PMA_HOST: "db"
+      PMA_PORT: 3306
+volumes:
+  mysql_data: { driver: local }

@@ -75,6 +75,13 @@ trait UserMethod
     {
         return $this->hasRole(config('access.users.admin_role'));
     }
+    /**
+     * @return mixed
+     */
+    public function isSuperAdmin()
+    {
+        return $this->hasRole(config('access.users.admin_role'));
+    }
 
     /**
      * @return bool

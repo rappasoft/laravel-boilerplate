@@ -19,6 +19,22 @@ abstract class TestCase extends BaseTestCase
      *
      * @return mixed
      */
+    protected function getSuperAdminRole()
+    {
+        if ($role = Role::whereName(config('access.users.super_admin_role'))->first()) {
+            return $role;
+        }
+
+        $superAdminRole = factory(Role::class)->create(['name' => config('access.users.super_admin_role')]);
+        $superAdminRole->givePermissionTo(factory(Permission::class)->create(['name' => 'view backend']));
+
+        return $superAdminRole;
+    }
+    /**
+     * Create the admin role or return it if it already exists.
+     *
+     * @return mixed
+     */
     protected function getAdminRole()
     {
         if ($role = Role::whereName(config('access.users.admin_role'))->first()) {
@@ -46,6 +62,21 @@ abstract class TestCase extends BaseTestCase
 
         return $admin;
     }
+    /**
+     * Create an super administrator.
+     *
+     * @param array $attributes
+     *
+     * @return mixed
+     */
+    protected function createSuperAdmin(array $attributes = [])
+    {
+        $superAdminRole = $this->getSuperAdminRole();
+        $superAdmin = factory(User::class)->create($attributes);
+        $superAdmin->assignRole($superAdminRole);
+
+        return $superAdmin;
+    }
 
     /**
      * Login the given administrator or create the first if none supplied.
@@ -63,5 +94,15 @@ abstract class TestCase extends BaseTestCase
         $this->actingAs($admin);
 
         return $admin;
+    }
+    protected function loginAsSuperAdmin($superAdmin = false)
+    {
+        if (! $superAdmin) {
+            $superAdmin = $this->createSuperAdmin();
+        }
+
+        $this->actingAs($superAdmin);
+
+        return $superAdmin;
     }
 }

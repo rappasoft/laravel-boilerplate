@@ -77,7 +77,7 @@ class CreateUserTest extends TestCase
             'confirmed' => '1',
             'timezone' => 'UTC',
             'confirmation_email' => '1',
-            'roles' => [1 => 'administrator'],
+            'roles' => [1 => 'admin'],
         ]);
 
         $this->assertDatabaseHas(
@@ -111,7 +111,7 @@ class CreateUserTest extends TestCase
             'confirmed' => '0',
             'timezone' => 'UTC',
             'confirmation_email' => '1',
-            'roles' => [1 => 'administrator'],
+            'roles' => [1 => 'admin'],
         ]);
 
         $response->assertSessionHas(['flash_success' => __('alerts.backend.users.created')]);

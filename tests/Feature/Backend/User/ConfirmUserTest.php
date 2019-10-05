@@ -4,6 +4,7 @@ namespace Tests\Backend\User;
 
 use Tests\TestCase;
 use App\Models\Auth\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use App\Events\Backend\Auth\User\UserConfirmed;
@@ -83,12 +84,11 @@ class ConfirmUserTest extends TestCase
     }
 
     /** @test */
-    public function an_admin_cannot_be_unconfirmed()
+    public function a_super_admin_cannot_be_unconfirmed()
     {
-        $admin = $this->loginAsAdmin();
+        $admin = $this->loginAsSuperAdmin();
         $second_admin = $this->createAdmin();
         $this->actingAs($second_admin);
-
         $response = $this->get("/admin/auth/user/{$admin->id}/unconfirm");
         $response->assertSessionHas(['flash_danger' => __('exceptions.backend.access.users.cant_unconfirm_admin')]);
     }
@@ -99,8 +99,8 @@ class ConfirmUserTest extends TestCase
         $this->loginAsAdmin();
 
         $second_admin = $this->createAdmin();
+        
         $this->actingAs($second_admin);
-
         $response = $this->get("/admin/auth/user/{$second_admin->id}/unconfirm");
         $response->assertSessionHas(['flash_danger' => __('exceptions.backend.access.users.cant_unconfirm_self')]);
     }

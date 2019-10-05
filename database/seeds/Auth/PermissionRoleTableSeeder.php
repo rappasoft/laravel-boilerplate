@@ -19,8 +19,10 @@ class PermissionRoleTableSeeder extends Seeder
         $this->disableForeignKeys();
 
         // Create Roles
+        Role::create(['name' => config('access.users.super_admin_role')]);
         Role::create(['name' => config('access.users.admin_role')]);
         Role::create(['name' => config('access.users.default_role')]);
+       
 
         // Create Permissions
         Permission::create(['name' => 'view backend']);

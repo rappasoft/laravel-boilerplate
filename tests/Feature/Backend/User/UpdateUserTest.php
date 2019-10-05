@@ -4,6 +4,7 @@ namespace Tests\Feature\Backend\User;
 
 use Tests\TestCase;
 use App\Models\Auth\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use App\Events\Backend\Auth\User\UserUpdated;
@@ -39,23 +40,24 @@ class UpdateUserTest extends TestCase
 
     /** @test */
     public function a_user_can_be_updated()
-    {
+    {   $this->withoutExceptionHandling();
         $this->loginAsAdmin();
         $user = factory(User::class)->create();
         Event::fake();
-
+       
         $this->assertNotSame('John', $user->first_name);
         $this->assertNotSame('Doe', $user->last_name);
         $this->assertNotSame('john@example.com', $user->email);
-
+        // var_dump($user);
+        // var_dump('User to update -->' . $user->id);
         $this->patch("/admin/auth/user/{$user->id}", [
             'first_name' => 'John',
             'last_name' => 'Doe',
             'email' => 'john@example.com',
             'timezone' => 'UTC',
-            'roles' => ['administrator'],
+            'roles' => ['admin'],
         ]);
-
+            // var_dump('user after update ' .$user->fresh()->id);
         $this->assertSame('John', $user->fresh()->first_name);
         $this->assertSame('Doe', $user->fresh()->last_name);
         $this->assertSame('john@example.com', $user->fresh()->email);

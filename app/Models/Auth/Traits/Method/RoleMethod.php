@@ -14,4 +14,8 @@ trait RoleMethod
     {
         return $this->name === config('access.users.admin_role');
     }
+    public function isSuperAdmin()
+    {
+        return $this->name === config('access.users.super_admin_role');
+    }
 }

@@ -268,7 +268,7 @@ class UserRepository extends BaseRepository
             throw new GeneralException(__('exceptions.backend.access.users.not_confirmed'));
         }
 
-        if ($user->id === 1) {
+        if ($user->hasrole('super admin')) {
             // Cant un-confirm admin
             throw new GeneralException(__('exceptions.backend.access.users.cant_unconfirm_admin'));
         }
