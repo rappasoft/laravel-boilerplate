@@ -40,7 +40,7 @@ class UpdateUserTest extends TestCase
 
     /** @test */
     public function a_user_can_be_updated()
-    {   $this->withoutExceptionHandling();
+    {
         $this->loginAsAdmin();
         $user = factory(User::class)->create();
         Event::fake();

@@ -27,7 +27,7 @@ class DeleteRoleTest extends TestCase
 
     /** @test */
     public function a_role_with_assigned_users_cant_be_deleted()
-    {   $this->withoutExceptionHandling();
+    {  
         $this->loginAsAdmin();
         $roleid = Role::where('name', '=', 'admin')->value('id');
         
