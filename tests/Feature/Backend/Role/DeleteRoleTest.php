@@ -30,7 +30,9 @@ class DeleteRoleTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $response = $this->delete('/admin/auth/role/1');
+        $roleId = Role::where('name', '=', 'administrator')->value('id');
+
+        $response = $this->delete('/admin/auth/role/'.$roleId);
 
         $response->assertSessionHas(['flash_danger' => __('exceptions.backend.access.roles.cant_delete_admin')]);
     }
