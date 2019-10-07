@@ -40,6 +40,20 @@
                         </thead>
                         <tbody>
                         @foreach($users as $user)
+                        @role('super administrator')
+                        <tr>
+                            <td>{{ $user->last_name }}</td>
+                            <td>{{ $user->first_name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>@include('backend.auth.user.includes.confirm', ['user' => $user])</td>
+                            <td>{{ $user->roles_label }}</td>
+                            <td>{{ $user->permissions_label }}</td>
+                            <td>@include('backend.auth.user.includes.social-buttons', ['user' => $user])</td>
+                            <td>{{ $user->updated_at->diffForHumans() }}</td>
+                            <td>@include('backend.auth.user.includes.actions', ['user' => $user])</td>
+                        </tr>
+                        @else
+                        @if(!$user->hasRole(config('access.users.super_admin_role')))
                             <tr>
                                 <td>{{ $user->last_name }}</td>
                                 <td>{{ $user->first_name }}</td>
@@ -51,6 +65,9 @@
                                 <td>{{ $user->updated_at->diffForHumans() }}</td>
                                 <td>@include('backend.auth.user.includes.actions', ['user' => $user])</td>
                             </tr>
+                          @endif  
+                        @endrole
+
                         @endforeach
                         </tbody>
                     </table>

@@ -83,7 +83,7 @@ class RoleController extends Controller
      */
     public function edit(ManageRoleRequest $request, Role $role)
     {
-        if ($role->isAdmin()) {
+        if ($role->isSuperAdmin()) {
             return redirect()->route('admin.auth.role.index')->withFlashDanger('You can not edit the administrator role.');
         }
 

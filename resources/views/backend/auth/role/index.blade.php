@@ -31,6 +31,30 @@
                         </thead>
                         <tbody>
                             @foreach($roles as $role)
+                            @role('super administrator')
+                            <tr>
+                                <td>{{ ucwords($role->name) }}</td>
+                                <td>
+                                    @if($role->id === 1)
+                                        @lang('labels.general.all')
+                                    @else
+                                        @if($role->permissions->count())
+                                            @foreach($role->permissions as $permission)
+                                                {{ ucwords($permission->name) }}
+                                            @endforeach
+                                        @else
+                                            @lang('labels.general.none')
+                                        @endif
+                                    @endif
+                                </td>
+                                <td>{{ $role->users->count() }}</td>
+                                <td>@include('backend.auth.role.includes.actions', ['role' => $role])</td>
+                            </tr>
+                            @else
+
+                            @endrole
+                            @if($role->name != config('access.users.super_admin_role'))
+                            @if($role->name != config('access.users.admin_role'))
                                 <tr>
                                     <td>{{ ucwords($role->name) }}</td>
                                     <td>
@@ -49,6 +73,8 @@
                                     <td>{{ $role->users->count() }}</td>
                                     <td>@include('backend.auth.role.includes.actions', ['role' => $role])</td>
                                 </tr>
+                            @endif
+                            @endif
                             @endforeach
                         </tbody>
                     </table>

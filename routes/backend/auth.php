@@ -13,7 +13,7 @@ Route::group([
     'prefix' => 'auth',
     'as' => 'auth.',
     'namespace' => 'Auth',
-    'middleware' => 'role:'.config('access.users.admin_role'),
+    'middleware' => ['role:'.config('access.users.super_admin_role') .'|' . config('access.users.admin_role')  ] ,
 ], function () {
     // User Management
     Route::group(['namespace' => 'User'], function () {

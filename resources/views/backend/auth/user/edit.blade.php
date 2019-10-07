@@ -75,6 +75,7 @@
                                         <td>
                                             @if($roles->count())
                                                 @foreach($roles as $role)
+                                                @if($role->name != config('access.users.super_admin_role'))
                                                     <div class="card">
                                                         <div class="card-header">
                                                             <div class="checkbox d-flex align-items-center">
@@ -88,6 +89,7 @@
                                                                 {{ html()->label(ucwords($role->name))->for('role-'.$role->id) }}
                                                             </div>
                                                         </div>
+                                                    @endif    
                                                         <div class="card-body">
                                                             @if($role->id != 1)
                                                                 @if($role->permissions->count())
