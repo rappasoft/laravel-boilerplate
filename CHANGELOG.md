@@ -3,6 +3,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [6.0.1] - 2019-10-22
+
+### Added
+
+- Added facade/ignition-code-editor to be able to edit files right from ignition screens
+- Added facade/ignition-self-diagnosis to for useful checklist of things that could get fixed when encountering an error
+- Added facade/ignition-tinker-tab which adds a tinker tab in ignition which uses laravel tinker behind the scenes to be able to use tinker right from error screens
+
+### Changed
+
+- Update to Laravel Commit 953b488b8bb681d4d6e12227645c7c1b7ac26935 (Without password confirmation stuff)
+- Fix socialite bug (https://github.com/rappasoft/laravel-boilerplate/issues/1284)
+
 ## [6.0.0] - 2019-09-08
 ### Added
 - Added captcha to login request
@@ -143,6 +156,7 @@ All notable changes to this project will be documented in this file.
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.0...development
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.1...development
+[6.0.1]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.0...v6.0.1
 [6.0.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v5.3.8...v6.0.0
 [5.3.8]: https://github.com/rappasoft/laravel-boilerplate/compare/v5.3.7...v5.3.8
