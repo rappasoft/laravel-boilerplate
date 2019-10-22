@@ -266,7 +266,7 @@ class UserRepository extends BaseRepository
             // Get users first name and last name from their full name
             $nameParts = $this->getNameParts($data->getName());
 
-            $user = parent::create([
+            $user = $this->model::create([
                 'first_name' => $nameParts['first_name'],
                 'last_name' => $nameParts['last_name'],
                 'email' => $user_email,

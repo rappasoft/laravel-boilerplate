@@ -17,7 +17,8 @@ class ReadUsersTest extends TestCase
 
         $response = $this->get('/admin/auth/user/create');
 
-        $response->assertStatus(200);
+        $response->assertStatus(200)
+            ->assertSee('E-mail Address');
     }
 
     /** @test */
@@ -28,6 +29,7 @@ class ReadUsersTest extends TestCase
 
         $response = $this->get("/admin/auth/user/{$user->id}");
 
-        $response->assertStatus(200);
+        $response->assertStatus(200)
+            ->assertSee('Overview');
     }
 }
