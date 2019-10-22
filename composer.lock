@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "43a502e60e827db33350cee9c299ff7c",
+    "content-hash": "664f421803fa437b4d093065a0d67a56",
     "packages": [
         {
             "name": "albertcht/invisible-recaptcha",
@@ -208,16 +208,16 @@
         },
         {
             "name": "arcanedev/log-viewer",
-            "version": "5.1.4",
+            "version": "5.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ARCANEDEV/LogViewer.git",
-                "reference": "560d395293b1d5797443b836b9fa18da872204cc"
+                "reference": "b6658e6bc7b61489c1accb8bfecd3ea2d3bab741"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/560d395293b1d5797443b836b9fa18da872204cc",
-                "reference": "560d395293b1d5797443b836b9fa18da872204cc",
+                "url": "https://api.github.com/repos/ARCANEDEV/LogViewer/zipball/b6658e6bc7b61489c1accb8bfecd3ea2d3bab741",
+                "reference": "b6658e6bc7b61489c1accb8bfecd3ea2d3bab741",
                 "shasum": ""
             },
             "require": {
@@ -262,7 +262,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Provides a Log Viewer for Laravel 5",
+            "description": "Provides a Log Viewer for Laravel 5/6",
             "homepage": "https://github.com/ARCANEDEV/LogViewer",
             "keywords": [
                 "arcanedev",
@@ -273,7 +273,7 @@
                 "log-viewer",
                 "logviewer"
             ],
-            "time": "2019-10-03T13:08:24+00:00"
+            "time": "2019-10-19T17:04:00+00:00"
         },
         {
             "name": "arcanedev/support",
@@ -386,16 +386,16 @@
         },
         {
             "name": "davejamesmiller/laravel-breadcrumbs",
-            "version": "5.3.0",
+            "version": "5.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/davejamesmiller/laravel-breadcrumbs.git",
-                "reference": "1edeee4a77f467293aa5e5ea4a0b8f010216b8da"
+                "reference": "40a73bc9b32fbbee18938dc92228dea161365245"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/davejamesmiller/laravel-breadcrumbs/zipball/1edeee4a77f467293aa5e5ea4a0b8f010216b8da",
-                "reference": "1edeee4a77f467293aa5e5ea4a0b8f010216b8da",
+                "url": "https://api.github.com/repos/davejamesmiller/laravel-breadcrumbs/zipball/40a73bc9b32fbbee18938dc92228dea161365245",
+                "reference": "40a73bc9b32fbbee18938dc92228dea161365245",
                 "shasum": ""
             },
             "require": {
@@ -441,7 +441,7 @@
             "keywords": [
                 "laravel"
             ],
-            "time": "2019-09-03T15:24:57+00:00"
+            "time": "2019-10-20T18:25:39+00:00"
         },
         {
             "name": "divineomega/do-file-cache",
@@ -969,6 +969,131 @@
             "time": "2019-03-17T18:48:37+00:00"
         },
         {
+            "name": "facade/flare-client-php",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facade/flare-client-php.git",
+                "reference": "608c2be3157b09f1868ca97ea4ddf3434ee83d63"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/608c2be3157b09f1868ca97ea4ddf3434ee83d63",
+                "reference": "608c2be3157b09f1868ca97ea4ddf3434ee83d63",
+                "shasum": ""
+            },
+            "require": {
+                "facade/ignition-contracts": "~1.0",
+                "illuminate/pipeline": "~5.5|~5.6|~5.7|~5.8|^6.0",
+                "php": "^7.1",
+                "symfony/http-foundation": "~3.3|~4.1",
+                "symfony/var-dumper": "^3.4|^4.0"
+            },
+            "require-dev": {
+                "larapack/dd": "^1.1",
+                "phpunit/phpunit": "^7.5.16",
+                "spatie/phpunit-snapshot-assertions": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Facade\\FlareClient\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Send PHP errors to Flare",
+            "homepage": "https://github.com/facade/flare-client-php",
+            "keywords": [
+                "exception",
+                "facade",
+                "flare",
+                "reporting"
+            ],
+            "time": "2019-10-07T19:15:46+00:00"
+        },
+        {
+            "name": "facade/ignition",
+            "version": "1.11.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facade/ignition.git",
+                "reference": "862cbc2dfffa1fa28b47822a116e5b2e03b421db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/862cbc2dfffa1fa28b47822a116e5b2e03b421db",
+                "reference": "862cbc2dfffa1fa28b47822a116e5b2e03b421db",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "facade/flare-client-php": "^1.1",
+                "facade/ignition-contracts": "^1.0",
+                "filp/whoops": "^2.4",
+                "illuminate/support": "~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ^6.0",
+                "monolog/monolog": "^1.12 || ^2.0",
+                "php": "^7.1",
+                "scrivo/highlight.php": "^9.15",
+                "symfony/console": "^3.4 || ^4.0",
+                "symfony/var-dumper": "^3.4 || ^4.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.14",
+                "mockery/mockery": "^1.2",
+                "orchestra/testbench": "^3.5 || ^3.6 || ^3.7 || ^3.8 || ^4.0"
+            },
+            "suggest": {
+                "laravel/telescope": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Facade\\Ignition\\IgnitionServiceProvider"
+                    ],
+                    "aliases": {
+                        "Flare": "Facade\\Ignition\\Facades\\Flare"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Facade\\Ignition\\": "src"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A beautiful error page for Laravel applications.",
+            "homepage": "https://github.com/facade/ignition",
+            "keywords": [
+                "error",
+                "flare",
+                "laravel",
+                "page"
+            ],
+            "time": "2019-10-13T10:42:06+00:00"
+        },
+        {
             "name": "facade/ignition-contracts",
             "version": "1.0.0",
             "source": {
@@ -1065,6 +1190,67 @@
                 "trusted proxy"
             ],
             "time": "2019-09-03T16:45:42+00:00"
+        },
+        {
+            "name": "filp/whoops",
+            "version": "2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/filp/whoops.git",
+                "reference": "cde50e6720a39fdacb240159d3eea6865d51fd96"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/cde50e6720a39fdacb240159d3eea6865d51fd96",
+                "reference": "cde50e6720a39fdacb240159d3eea6865d51fd96",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9 || ^7.0",
+                "psr/log": "^1.0.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9 || ^1.0",
+                "phpunit/phpunit": "^4.8.35 || ^5.7",
+                "symfony/var-dumper": "^2.6 || ^3.0 || ^4.0"
+            },
+            "suggest": {
+                "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
+                "whoops/soap": "Formats errors as SOAP responses"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Whoops\\": "src/Whoops/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Filipe Dobreira",
+                    "role": "Developer",
+                    "homepage": "https://github.com/filp"
+                }
+            ],
+            "description": "php error handling for cool kids",
+            "homepage": "https://filp.github.io/whoops/",
+            "keywords": [
+                "error",
+                "exception",
+                "handling",
+                "library",
+                "throwable",
+                "whoops"
+            ],
+            "time": "2019-08-07T09:00:00+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1365,16 +1551,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v6.2.0",
+            "version": "v6.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "cacce5a77fa94793cf25345d67387632134d75dd"
+                "reference": "80914c430fb5e49f492812d704ba6aeec03d80a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/cacce5a77fa94793cf25345d67387632134d75dd",
-                "reference": "cacce5a77fa94793cf25345d67387632134d75dd",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/80914c430fb5e49f492812d704ba6aeec03d80a2",
+                "reference": "80914c430fb5e49f492812d704ba6aeec03d80a2",
                 "shasum": ""
             },
             "require": {
@@ -1507,7 +1693,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2019-10-08T12:50:06+00:00"
+            "time": "2019-10-15T13:38:24+00:00"
         },
         {
             "name": "laravel/socialite",
@@ -1575,16 +1761,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.56",
+            "version": "1.0.57",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "90e3f83cb10ef6b058d70f95267030e7a6236518"
+                "reference": "0e9db7f0b96b9f12dcf6f65bc34b72b1a30ea55a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/90e3f83cb10ef6b058d70f95267030e7a6236518",
-                "reference": "90e3f83cb10ef6b058d70f95267030e7a6236518",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/0e9db7f0b96b9f12dcf6f65bc34b72b1a30ea55a",
+                "reference": "0e9db7f0b96b9f12dcf6f65bc34b72b1a30ea55a",
                 "shasum": ""
             },
             "require": {
@@ -1655,7 +1841,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2019-10-12T13:05:59+00:00"
+            "time": "2019-10-16T21:01:05+00:00"
         },
         {
             "name": "league/oauth1-client",
@@ -1803,16 +1989,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.25.1",
+            "version": "2.25.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "d59c6cea9c4a3547bb6c0dfec451319abdaa4fb1"
+                "reference": "d07636581795383e2fea2d711212d30f941f2039"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d59c6cea9c4a3547bb6c0dfec451319abdaa4fb1",
-                "reference": "d59c6cea9c4a3547bb6c0dfec451319abdaa4fb1",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d07636581795383e2fea2d711212d30f941f2039",
+                "reference": "d07636581795383e2fea2d711212d30f941f2039",
                 "shasum": ""
             },
             "require": {
@@ -1866,7 +2052,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2019-10-05T15:52:23+00:00"
+            "time": "2019-10-20T11:05:44+00:00"
         },
         {
             "name": "nyholm/psr7",
@@ -1932,16 +2118,16 @@
         },
         {
             "name": "opis/closure",
-            "version": "3.4.0",
+            "version": "3.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opis/closure.git",
-                "reference": "60a97fff133b1669a5b1776aa8ab06db3f3962b7"
+                "reference": "e79f851749c3caa836d7ccc01ede5828feb762c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opis/closure/zipball/60a97fff133b1669a5b1776aa8ab06db3f3962b7",
-                "reference": "60a97fff133b1669a5b1776aa8ab06db3f3962b7",
+                "url": "https://api.github.com/repos/opis/closure/zipball/e79f851749c3caa836d7ccc01ede5828feb762c7",
+                "reference": "e79f851749c3caa836d7ccc01ede5828feb762c7",
                 "shasum": ""
             },
             "require": {
@@ -1989,7 +2175,7 @@
                 "serialization",
                 "serialize"
             ],
-            "time": "2019-09-02T21:07:33+00:00"
+            "time": "2019-10-19T18:38:51+00:00"
         },
         {
             "name": "paragonie/certainty",
@@ -2162,16 +2348,16 @@
         },
         {
             "name": "paragonie/sodium_compat",
-            "version": "v1.11.1",
+            "version": "v1.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/sodium_compat.git",
-                "reference": "a9f968bc99485f85f9303a8524c3485a7e87bc15"
+                "reference": "8228b286d6b8fe24825f42ce02403f72656ac826"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/a9f968bc99485f85f9303a8524c3485a7e87bc15",
-                "reference": "a9f968bc99485f85f9303a8524c3485a7e87bc15",
+                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/8228b286d6b8fe24825f42ce02403f72656ac826",
+                "reference": "8228b286d6b8fe24825f42ce02403f72656ac826",
                 "shasum": ""
             },
             "require": {
@@ -2179,7 +2365,7 @@
                 "php": "^5.2.4|^5.3|^5.4|^5.5|^5.6|^7|^8"
             },
             "require-dev": {
-                "phpunit/phpunit": "^3|^4|^5"
+                "phpunit/phpunit": "^3|^4|^5|^6|^7"
             },
             "suggest": {
                 "ext-libsodium": "PHP < 7.0: Better performance, password hashing (Argon2i), secure memory management (memzero), and better security.",
@@ -2240,7 +2426,7 @@
                 "secret-key cryptography",
                 "side-channel resistant"
             ],
-            "time": "2019-09-12T12:05:58+00:00"
+            "time": "2019-10-19T15:30:42+00:00"
         },
         {
             "name": "php-http/discovery",
@@ -2871,6 +3057,73 @@
             "time": "2018-07-19T23:38:55+00:00"
         },
         {
+            "name": "scrivo/highlight.php",
+            "version": "v9.15.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/scrivo/highlight.php.git",
+                "reference": "9ad3adb4456dc91196327498dbbce6aa1ba1239e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/scrivo/highlight.php/zipball/9ad3adb4456dc91196327498dbbce6aa1ba1239e",
+                "reference": "9ad3adb4456dc91196327498dbbce6aa1ba1239e",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8|^5.7",
+                "symfony/finder": "^2.8"
+            },
+            "suggest": {
+                "ext-dom": "Needed to make use of the features in the utilities namespace"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Highlight\\": "",
+                    "HighlightUtilities\\": ""
+                },
+                "files": [
+                    "HighlightUtilities/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Geert Bergman",
+                    "role": "Project Author",
+                    "homepage": "http://www.scrivo.org/"
+                },
+                {
+                    "name": "Vladimir Jimenez",
+                    "role": "Contributor",
+                    "homepage": "https://allejo.io"
+                },
+                {
+                    "name": "Martin Folkers",
+                    "role": "Contributor",
+                    "homepage": "https://twobrain.io"
+                }
+            ],
+            "description": "Server side syntax highlighter that supports 185 languages. It's a PHP port of highlight.js",
+            "keywords": [
+                "code",
+                "highlight",
+                "highlight.js",
+                "highlight.php",
+                "syntax"
+            ],
+            "time": "2019-08-27T04:27:48+00:00"
+        },
+        {
             "name": "spatie/laravel-html",
             "version": "2.24.0",
             "source": {
@@ -2940,16 +3193,16 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "3.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "5bac2326fe73c7da9a3ae07dcf5fb44224e45f6f"
+                "reference": "e3821559c69b2b1ea8fdd967fa89ba13a01ead78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/5bac2326fe73c7da9a3ae07dcf5fb44224e45f6f",
-                "reference": "5bac2326fe73c7da9a3ae07dcf5fb44224e45f6f",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/e3821559c69b2b1ea8fdd967fa89ba13a01ead78",
+                "reference": "e3821559c69b2b1ea8fdd967fa89ba13a01ead78",
                 "shasum": ""
             },
             "require": {
@@ -2960,7 +3213,7 @@
                 "php": "^7.2"
             },
             "require-dev": {
-                "orchestra/testbench": "^3.8",
+                "orchestra/testbench": "^3.8|^4.0",
                 "phpunit/phpunit": "^8.0",
                 "predis/predis": "^1.1"
             },
@@ -3004,7 +3257,7 @@
                 "security",
                 "spatie"
             ],
-            "time": "2019-09-02T14:57:53+00:00"
+            "time": "2019-10-16T19:25:56+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5641,131 +5894,6 @@
             "time": "2019-03-17T17:37:11+00:00"
         },
         {
-            "name": "facade/flare-client-php",
-            "version": "1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/facade/flare-client-php.git",
-                "reference": "608c2be3157b09f1868ca97ea4ddf3434ee83d63"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/facade/flare-client-php/zipball/608c2be3157b09f1868ca97ea4ddf3434ee83d63",
-                "reference": "608c2be3157b09f1868ca97ea4ddf3434ee83d63",
-                "shasum": ""
-            },
-            "require": {
-                "facade/ignition-contracts": "~1.0",
-                "illuminate/pipeline": "~5.5|~5.6|~5.7|~5.8|^6.0",
-                "php": "^7.1",
-                "symfony/http-foundation": "~3.3|~4.1",
-                "symfony/var-dumper": "^3.4|^4.0"
-            },
-            "require-dev": {
-                "larapack/dd": "^1.1",
-                "phpunit/phpunit": "^7.5.16",
-                "spatie/phpunit-snapshot-assertions": "^2.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Facade\\FlareClient\\": "src"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Send PHP errors to Flare",
-            "homepage": "https://github.com/facade/flare-client-php",
-            "keywords": [
-                "exception",
-                "facade",
-                "flare",
-                "reporting"
-            ],
-            "time": "2019-10-07T19:15:46+00:00"
-        },
-        {
-            "name": "facade/ignition",
-            "version": "1.11.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/facade/ignition.git",
-                "reference": "dc56111b19e160236084dc6ab460e9c08912ecac"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/dc56111b19e160236084dc6ab460e9c08912ecac",
-                "reference": "dc56111b19e160236084dc6ab460e9c08912ecac",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "facade/flare-client-php": "^1.1",
-                "facade/ignition-contracts": "^1.0",
-                "filp/whoops": "^2.4",
-                "illuminate/support": "~5.5.0 || ~5.6.0 || ~5.7.0 || ~5.8.0 || ^6.0",
-                "monolog/monolog": "^1.12 || ^2.0",
-                "php": "^7.1",
-                "scrivo/highlight.php": "^9.15",
-                "symfony/console": "^3.4 || ^4.0",
-                "symfony/var-dumper": "^3.4 || ^4.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.14",
-                "mockery/mockery": "^1.2",
-                "orchestra/testbench": "^3.5 || ^3.6 || ^3.7 || ^3.8 || ^4.0"
-            },
-            "suggest": {
-                "laravel/telescope": "^2.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Facade\\Ignition\\IgnitionServiceProvider"
-                    ],
-                    "aliases": {
-                        "Flare": "Facade\\Ignition\\Facades\\Flare"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Facade\\Ignition\\": "src"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "A beautiful error page for Laravel applications.",
-            "homepage": "https://github.com/facade/ignition",
-            "keywords": [
-                "error",
-                "flare",
-                "laravel",
-                "page"
-            ],
-            "time": "2019-10-08T07:36:31+00:00"
-        },
-        {
             "name": "facade/ignition-code-editor",
             "version": "1.0.1",
             "source": {
@@ -5932,67 +6060,6 @@
                 "web-tinker"
             ],
             "time": "2019-08-31T00:54:31+00:00"
-        },
-        {
-            "name": "filp/whoops",
-            "version": "2.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/filp/whoops.git",
-                "reference": "cde50e6720a39fdacb240159d3eea6865d51fd96"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/cde50e6720a39fdacb240159d3eea6865d51fd96",
-                "reference": "cde50e6720a39fdacb240159d3eea6865d51fd96",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.5.9 || ^7.0",
-                "psr/log": "^1.0.1"
-            },
-            "require-dev": {
-                "mockery/mockery": "^0.9 || ^1.0",
-                "phpunit/phpunit": "^4.8.35 || ^5.7",
-                "symfony/var-dumper": "^2.6 || ^3.0 || ^4.0"
-            },
-            "suggest": {
-                "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
-                "whoops/soap": "Formats errors as SOAP responses"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Whoops\\": "src/Whoops/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Filipe Dobreira",
-                    "role": "Developer",
-                    "homepage": "https://github.com/filp"
-                }
-            ],
-            "description": "php error handling for cool kids",
-            "homepage": "https://filp.github.io/whoops/",
-            "keywords": [
-                "error",
-                "exception",
-                "handling",
-                "library",
-                "throwable",
-                "whoops"
-            ],
-            "time": "2019-08-07T09:00:00+00:00"
         },
         {
             "name": "friendsofphp/php-cs-fixer",
@@ -6361,23 +6428,23 @@
         },
         {
             "name": "justinrainbow/json-schema",
-            "version": "5.2.8",
+            "version": "5.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/justinrainbow/json-schema.git",
-                "reference": "dcb6e1006bb5fd1e392b4daa68932880f37550d4"
+                "reference": "44c6787311242a979fa15c704327c20e7221a0e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/dcb6e1006bb5fd1e392b4daa68932880f37550d4",
-                "reference": "dcb6e1006bb5fd1e392b4daa68932880f37550d4",
+                "url": "https://api.github.com/repos/justinrainbow/json-schema/zipball/44c6787311242a979fa15c704327c20e7221a0e4",
+                "reference": "44c6787311242a979fa15c704327c20e7221a0e4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "~2.2.20",
+                "friendsofphp/php-cs-fixer": "~2.2.20||~2.15.1",
                 "json-schema/json-schema-test-suite": "1.2.0",
                 "phpunit/phpunit": "^4.8.35"
             },
@@ -6423,7 +6490,7 @@
                 "json",
                 "schema"
             ],
-            "time": "2019-01-14T23:55:14+00:00"
+            "time": "2019-09-25T14:49:45+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -7769,73 +7836,6 @@
             "time": "2019-10-09T14:04:58+00:00"
         },
         {
-            "name": "scrivo/highlight.php",
-            "version": "v9.15.10.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/scrivo/highlight.php.git",
-                "reference": "9ad3adb4456dc91196327498dbbce6aa1ba1239e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/scrivo/highlight.php/zipball/9ad3adb4456dc91196327498dbbce6aa1ba1239e",
-                "reference": "9ad3adb4456dc91196327498dbbce6aa1ba1239e",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8|^5.7",
-                "symfony/finder": "^2.8"
-            },
-            "suggest": {
-                "ext-dom": "Needed to make use of the features in the utilities namespace"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Highlight\\": "",
-                    "HighlightUtilities\\": ""
-                },
-                "files": [
-                    "HighlightUtilities/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Geert Bergman",
-                    "role": "Project Author",
-                    "homepage": "http://www.scrivo.org/"
-                },
-                {
-                    "name": "Vladimir Jimenez",
-                    "role": "Contributor",
-                    "homepage": "https://allejo.io"
-                },
-                {
-                    "name": "Martin Folkers",
-                    "role": "Contributor",
-                    "homepage": "https://twobrain.io"
-                }
-            ],
-            "description": "Server side syntax highlighter that supports 185 languages. It's a PHP port of highlight.js",
-            "keywords": [
-                "code",
-                "highlight",
-                "highlight.js",
-                "highlight.php",
-                "syntax"
-            ],
-            "time": "2019-08-27T04:27:48+00:00"
-        },
-        {
             "name": "sebastian/code-unit-reverse-lookup",
             "version": "1.0.1",
             "source": {
@@ -8545,19 +8545,21 @@
         },
         {
             "name": "spatie/laravel-web-tinker",
-            "version": "1.5.3",
+            "version": "1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-web-tinker.git",
-                "reference": "43d4f310b40b746eb193e57ea2e57fe28ef9f3f0"
+                "reference": "8dbecfbfc6b47b8bda504414bd4d7ac198b115f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-web-tinker/zipball/43d4f310b40b746eb193e57ea2e57fe28ef9f3f0",
-                "reference": "43d4f310b40b746eb193e57ea2e57fe28ef9f3f0",
+                "url": "https://api.github.com/repos/spatie/laravel-web-tinker/zipball/8dbecfbfc6b47b8bda504414bd4d7ac198b115f4",
+                "reference": "8dbecfbfc6b47b8bda504414bd4d7ac198b115f4",
                 "shasum": ""
             },
             "require": {
+                "illuminate/cookie": "^5.8|^6.0",
+                "illuminate/session": "^5.8|^6.0",
                 "illuminate/support": "^5.8|^6.0",
                 "laravel/tinker": "^1.0",
                 "php": "^7.2"
@@ -8601,7 +8603,7 @@
                 "spatie",
                 "web-tinker"
             ],
-            "time": "2019-10-12T14:18:17+00:00"
+            "time": "2019-10-16T13:38:28+00:00"
         },
         {
             "name": "symfony/filesystem",
