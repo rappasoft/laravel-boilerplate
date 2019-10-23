@@ -20,7 +20,7 @@ class CreateSocialAccountsTable extends Migration
             $table->string('provider', 32);
             $table->string('provider_id');
             $table->text('token')->nullable(); // Text because Facebook tokens can be greater than 255 characters
-            $table->string('avatar')->nullable();
+            $table->text('avatar')->nullable(); // Text because Google avatar addresses can be greater than 255 characters
             $table->timestamps();
         });
 
