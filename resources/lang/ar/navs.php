@@ -18,18 +18,18 @@ return [
     ],
 
     'frontend' => [
-        'contact' => 'Contact',
+        'contact' => 'تواصل معنا',
         'dashboard' => 'لوحة التحكم',
         'login' => 'تسجيل دخول',
         'macros' => 'ماكرو',
         'register' => 'تسجيل',
 
         'user' => [
-            'account' => 'My Account',
+            'account' => 'حسابي',
             'administration' => 'الإدارة',
             'change_password' => 'تغيير كلمة المرور',
             'my_information' => 'بياناتي',
-            'profile' => 'Profile',
+            'profile' => 'البروفايل',
         ],
     ],
 ];

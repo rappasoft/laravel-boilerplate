@@ -7,9 +7,11 @@
                 {{ html()->label(__('validation.attributes.frontend.avatar'))->for('avatar') }}
 
                 <div>
-                    <input type="radio" name="avatar_type" value="gravatar" {{ $logged_in_user->avatar_type == 'gravatar' ? 'checked' : '' }} /> Gravatar
-                    <input type="radio" name="avatar_type" value="storage" {{ $logged_in_user->avatar_type == 'storage' ? 'checked' : '' }} /> Upload
 
+                    <input type="radio" name="avatar_type" value="gravatar" {{ $logged_in_user->avatar_type == 'gravatar' ? 'checked' : '' }} />
+                    @lang('validation.attributes.frontend.gravatar')
+                    <input type="radio" name="avatar_type" value="storage" {{ $logged_in_user->avatar_type == 'storage' ? 'checked' : '' }} />
+                    @lang('validation.attributes.frontend.upload')
                     @foreach($logged_in_user->providers as $provider)
                         @if(strlen($provider->avatar))
                             <input type="radio" name="avatar_type" value="{{ $provider->provider }}" {{ $logged_in_user->avatar_type == $provider->provider ? 'checked' : '' }} /> {{ ucfirst($provider->provider) }}

@@ -189,6 +189,8 @@ return [
         ],
 
         'frontend' => [
+            'gravatar' => 'Gravatar',
+            'upload' => 'Upload',
             'avatar' => 'Avatar Location',
             'email' => 'E-mail Address',
             'first_name' => 'First Name',

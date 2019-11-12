@@ -113,8 +113,8 @@ return [
         ],
 
         'contact' => [
-            'box_title' => 'Contact Us',
-            'button' => 'Send Information',
+            'box_title' => 'تواصل معنا',
+            'button' => 'إرسال',
         ],
 
         'passwords' => [
