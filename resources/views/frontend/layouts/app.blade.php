@@ -22,7 +22,7 @@
 
         @stack('after-styles')
     </head>
-    <body>
+<body class="{{ str_replace('_', '-', app()->getLocale())=='ar'?'rtl':'ltr' }}">
         @include('includes.partials.read-only')
 
         <div id="app">
