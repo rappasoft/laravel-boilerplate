@@ -49,7 +49,7 @@
                                 <td>{{ $user->permissions_label }}</td>
                                 <td>@include('backend.auth.user.includes.social-buttons', ['user' => $user])</td>
                                 <td>{{ $user->updated_at->diffForHumans() }}</td>
-                                <td>@include('backend.auth.user.includes.actions', ['user' => $user])</td>
+                                <td class="btn-td">@include('backend.auth.user.includes.actions', ['user' => $user])</td>
                             </tr>
                         @endforeach
                         </tbody>
