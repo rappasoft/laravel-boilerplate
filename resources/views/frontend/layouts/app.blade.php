@@ -19,6 +19,7 @@
         <!-- Check if the language is set to RTL, so apply the RTL layouts -->
         <!-- Otherwise apply the normal LTR layouts -->
         {{ style(mix('css/frontend.css')) }}
+        {{ style(mix('frontend/css/footer.css')) }}
 
         @stack('after-styles')
     </head>
@@ -34,6 +35,9 @@
                 @yield('content')
             </div><!-- container -->
         </div><!-- #app -->
+
+        @include('frontend.includes.footer')
+
 
         <!-- Scripts -->
         @stack('before-scripts')
