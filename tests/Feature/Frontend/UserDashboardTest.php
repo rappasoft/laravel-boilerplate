@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Frontend;
 
-use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class UserDashboardTest extends TestCase
 {

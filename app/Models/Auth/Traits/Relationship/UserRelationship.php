@@ -2,8 +2,8 @@
 
 namespace App\Models\Auth\Traits\Relationship;
 
-use App\Models\Auth\SocialAccount;
 use App\Models\Auth\PasswordHistory;
+use App\Models\Auth\SocialAccount;
 
 /**
  * Class UserRelationship.

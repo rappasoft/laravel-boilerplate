@@ -2,22 +2,22 @@
 
 namespace App\Repositories\Backend\Auth;
 
-use App\Models\Auth\User;
-use Illuminate\Support\Facades\DB;
-use App\Exceptions\GeneralException;
-use App\Repositories\BaseRepository;
-use App\Events\Backend\Auth\User\UserCreated;
-use App\Events\Backend\Auth\User\UserUpdated;
-use App\Events\Backend\Auth\User\UserRestored;
 use App\Events\Backend\Auth\User\UserConfirmed;
-use Illuminate\Pagination\LengthAwarePaginator;
+use App\Events\Backend\Auth\User\UserCreated;
 use App\Events\Backend\Auth\User\UserDeactivated;
-use App\Events\Backend\Auth\User\UserReactivated;
-use App\Events\Backend\Auth\User\UserUnconfirmed;
 use App\Events\Backend\Auth\User\UserPasswordChanged;
-use App\Notifications\Backend\Auth\UserAccountActive;
 use App\Events\Backend\Auth\User\UserPermanentlyDeleted;
+use App\Events\Backend\Auth\User\UserReactivated;
+use App\Events\Backend\Auth\User\UserRestored;
+use App\Events\Backend\Auth\User\UserUnconfirmed;
+use App\Events\Backend\Auth\User\UserUpdated;
+use App\Exceptions\GeneralException;
+use App\Models\Auth\User;
+use App\Notifications\Backend\Auth\UserAccountActive;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use App\Repositories\BaseRepository;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class UserRepository.
