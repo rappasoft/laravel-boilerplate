@@ -6,6 +6,17 @@
 // Import styles
 @import "~@coreui/coreui/scss/coreui";
 
+// Fix inaccessible dropdown in .table-responsive dropdown buttons
+.table-responsive {
+    overflow-x: inherit;
+    td:not(.btn-td) {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        max-width: 200px;
+    }
+}
+
 // Fix mobile footer
 .app-footer {
     flex: 0 0;
