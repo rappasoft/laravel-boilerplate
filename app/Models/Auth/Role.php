@@ -3,9 +3,9 @@
 namespace App\Models\Auth;
 
 use Altek\Accountant\Contracts\Recordable;
+use Altek\Accountant\Recordable as RecordableTrait;
 use App\Models\Auth\Traits\Method\RoleMethod;
 use Spatie\Permission\Models\Role as SpatieRole;
-use Altek\Accountant\Recordable as RecordableTrait;
 
 /**
  * Class Role.

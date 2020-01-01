@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Backend\Auth\User;
 
-use App\Models\Auth\User;
 use App\Http\Controllers\Controller;
-use App\Repositories\Backend\Auth\UserRepository;
 use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
 use App\Http\Requests\Backend\Auth\User\UpdateUserPasswordRequest;
+use App\Models\Auth\User;
+use App\Repositories\Backend\Auth\UserRepository;
 
 /**
  * Class UserPasswordController.

@@ -57,7 +57,7 @@ $(function () {
             showCancelButton: true,
             confirmButtonText: confirm,
             cancelButtonText: cancel,
-            type: 'warning'
+            icon: 'warning'
         }).then((result) => {
             result.value && form.submit();
         });
@@ -77,7 +77,7 @@ $(function () {
             showCancelButton: true,
             confirmButtonText: confirm,
             cancelButtonText: cancel,
-            type: 'info'
+            icon: 'info'
         }).then((result) => {
             result.value && window.location.assign(link.attr('href'));
         });

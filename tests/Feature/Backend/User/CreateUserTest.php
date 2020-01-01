@@ -2,14 +2,14 @@
 
 namespace Tests\Feature\Backend\User;
 
-use Tests\TestCase;
-use App\Models\Auth\User;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Notification;
 use App\Events\Backend\Auth\User\UserCreated;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Models\Auth\User;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Notification;
+use Tests\TestCase;
 
 class CreateUserTest extends TestCase
 {

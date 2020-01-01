@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Frontend;
 
-use Tests\TestCase;
-use App\Models\Auth\User;
-use Illuminate\Support\Facades\Event;
 use App\Events\Frontend\Auth\UserLoggedIn;
 use App\Events\Frontend\Auth\UserLoggedOut;
-use Illuminate\Validation\ValidationException;
+use App\Models\Auth\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Validation\ValidationException;
+use Tests\TestCase;
 
 class UserLoginTest extends TestCase
 {

@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Backend\Role;
 
-use Tests\TestCase;
-use App\Models\Auth\Role;
-use Illuminate\Support\Facades\Event;
 use App\Events\Backend\Auth\Role\RoleCreated;
+use App\Models\Auth\Role;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
+use Tests\TestCase;
 
 class CreateRoleTest extends TestCase
 {

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\Frontend\Contact\SendContact;
 use App\Http\Requests\Frontend\Contact\SendContactRequest;
+use App\Mail\Frontend\Contact\SendContact;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Class ContactController.

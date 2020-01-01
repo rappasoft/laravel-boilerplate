@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use RecursiveIteratorIterator;
-use RecursiveDirectoryIterator;
 use Illuminate\Support\ServiceProvider;
+use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 
 /**
  * Class HelperServiceProvider.

@@ -2,13 +2,13 @@
 
 namespace Tests\Feature\Frontend;
 
-use Tests\TestCase;
 use App\Models\Auth\User;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Notification;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Storage;
+use Tests\TestCase;
 
 class UpdateUserAccountTest extends TestCase
 {
