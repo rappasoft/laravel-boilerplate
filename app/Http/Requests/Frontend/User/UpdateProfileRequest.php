@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Frontend\User;
 
-use Illuminate\Validation\Rule;
 use App\Helpers\Auth\SocialiteHelper;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 /**
  * Class UpdateProfileRequest.

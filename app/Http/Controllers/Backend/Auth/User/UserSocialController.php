@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Backend\Auth\User;
 
-use App\Models\Auth\User;
-use App\Models\Auth\SocialAccount;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
+use App\Models\Auth\SocialAccount;
+use App\Models\Auth\User;
 use App\Repositories\Backend\Access\User\SocialRepository;
 
 /**

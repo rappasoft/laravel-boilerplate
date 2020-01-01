@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Backend;
 
-use Tests\TestCase;
 use App\Models\Auth\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 /**
  * Class DashboardRouteTest.

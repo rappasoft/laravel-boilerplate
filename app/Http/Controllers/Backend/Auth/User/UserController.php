@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Backend\Auth\User;
 
-use App\Models\Auth\User;
-use App\Http\Controllers\Controller;
 use App\Events\Backend\Auth\User\UserDeleted;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
+use App\Http\Requests\Backend\Auth\User\StoreUserRequest;
+use App\Http\Requests\Backend\Auth\User\UpdateUserRequest;
+use App\Models\Auth\User;
+use App\Repositories\Backend\Auth\PermissionRepository;
 use App\Repositories\Backend\Auth\RoleRepository;
 use App\Repositories\Backend\Auth\UserRepository;
-use App\Repositories\Backend\Auth\PermissionRepository;
-use App\Http\Requests\Backend\Auth\User\StoreUserRequest;
-use App\Http\Requests\Backend\Auth\User\ManageUserRequest;
-use App\Http\Requests\Backend\Auth\User\UpdateUserRequest;
 
 /**
  * Class UserController.

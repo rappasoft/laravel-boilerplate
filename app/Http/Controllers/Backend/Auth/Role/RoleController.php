@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Backend\Auth\Role;
 
-use App\Models\Auth\Role;
-use App\Http\Controllers\Controller;
 use App\Events\Backend\Auth\Role\RoleDeleted;
-use App\Repositories\Backend\Auth\RoleRepository;
-use App\Repositories\Backend\Auth\PermissionRepository;
-use App\Http\Requests\Backend\Auth\Role\StoreRoleRequest;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Auth\Role\ManageRoleRequest;
+use App\Http\Requests\Backend\Auth\Role\StoreRoleRequest;
 use App\Http\Requests\Backend\Auth\Role\UpdateRoleRequest;
+use App\Models\Auth\Role;
+use App\Repositories\Backend\Auth\PermissionRepository;
+use App\Repositories\Backend\Auth\RoleRepository;
 
 /**
  * Class RoleController.

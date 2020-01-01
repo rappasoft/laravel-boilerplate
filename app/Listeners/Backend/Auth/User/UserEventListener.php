@@ -2,17 +2,17 @@
 
 namespace App\Listeners\Backend\Auth\User;
 
-use App\Events\Backend\Auth\User\UserCreated;
-use App\Events\Backend\Auth\User\UserDeleted;
-use App\Events\Backend\Auth\User\UserUpdated;
-use App\Events\Backend\Auth\User\UserRestored;
 use App\Events\Backend\Auth\User\UserConfirmed;
+use App\Events\Backend\Auth\User\UserCreated;
 use App\Events\Backend\Auth\User\UserDeactivated;
-use App\Events\Backend\Auth\User\UserReactivated;
-use App\Events\Backend\Auth\User\UserUnconfirmed;
-use App\Events\Backend\Auth\User\UserSocialDeleted;
+use App\Events\Backend\Auth\User\UserDeleted;
 use App\Events\Backend\Auth\User\UserPasswordChanged;
 use App\Events\Backend\Auth\User\UserPermanentlyDeleted;
+use App\Events\Backend\Auth\User\UserReactivated;
+use App\Events\Backend\Auth\User\UserRestored;
+use App\Events\Backend\Auth\User\UserSocialDeleted;
+use App\Events\Backend\Auth\User\UserUnconfirmed;
+use App\Events\Backend\Auth\User\UserUpdated;
 
 /**
  * Class UserEventListener.
