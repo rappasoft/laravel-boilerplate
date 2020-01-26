@@ -19,7 +19,7 @@
             </div><!--form-group-->
 
             <div class="form-group hidden" id="avatar_location">
-                {{ html()->file('avatar_location')->class('form-control') }}
+                {{ html()->file('avatar_location')->class('form-control-file') }}
             </div><!--form-group-->
         </div><!--col-->
     </div><!--row-->
