@@ -28,6 +28,8 @@ return [
         'none' => 'Keine',
         'show' => 'Anzeigen',
         'toggle_navigation' => 'Navigation umschalten',
+        'more' => 'Mehr',
+        'greate_new' => 'Neue erstellen',
     ],
 
     'backend' => [
