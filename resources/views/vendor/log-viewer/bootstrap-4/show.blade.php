@@ -213,14 +213,18 @@
             });
 
             @unless(empty(log_styler()->toHighlight()))
+            @php
+                $htmlHighlight = version_compare(PHP_VERSION, '7.4.0') >= 0
+                    ? join('|', log_styler()->toHighlight())
+                    : join(log_styler()->toHighlight(), '|');
+            @endphp
             $('.stack-content').each(function() {
                 var $this = $(this);
                 var html = $this.html().trim()
-                    .replace(/({!! join(log_styler()->toHighlight(), '|') !!})/gm, '<strong>$1</strong>');
-
+                    .replace(/({!! $htmlHighlight !!})/gm, '<strong>$1</strong>');
+                @endunless
                 $this.html(html);
             });
-            @endunless
         });
     </script>
 @endpush
