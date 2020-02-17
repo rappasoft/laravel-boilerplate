@@ -31,7 +31,7 @@ class RoleRepository extends BaseRepository
      * @throws \Throwable
      * @return Role
      */
-    public function create(array $data) : Role
+    public function create(array $data): Role
     {
         // Make sure it doesn't already exist
         if ($this->roleExists($data['name'])) {
@@ -112,7 +112,7 @@ class RoleRepository extends BaseRepository
      *
      * @return bool
      */
-    protected function roleExists($name) : bool
+    protected function roleExists($name): bool
     {
         return $this->model
             ->where('name', strtolower($name))

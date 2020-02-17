@@ -15,7 +15,7 @@ class TimezoneHelper
      *
      * @return Carbon
      */
-    public function convertToLocal(Carbon $date, $format = 'D M j G:i:s T Y') : string
+    public function convertToLocal(Carbon $date, $format = 'D M j G:i:s T Y'): string
     {
         return $date->setTimezone(auth()->user()->timezone ?? config('app.timezone'))->format($format);
     }
@@ -25,7 +25,7 @@ class TimezoneHelper
      *
      * @return Carbon
      */
-    public function convertFromLocal($date) : Carbon
+    public function convertFromLocal($date): Carbon
     {
         return Carbon::parse($date, auth()->user()->timezone)->setTimezone('UTC');
     }
