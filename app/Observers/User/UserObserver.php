@@ -14,7 +14,7 @@ class UserObserver
      *
      * @param  \App\Models\Auth\User  $user
      */
-    public function created(User $user) : void
+    public function created(User $user): void
     {
         $this->logPasswordHistory($user);
     }
@@ -24,7 +24,7 @@ class UserObserver
      *
      * @param  \App\Models\Auth\User  $user
      */
-    public function updated(User $user) : void
+    public function updated(User $user): void
     {
         // Only log password history on update if the password actually changed
         if ($user->isDirty('password')) {
@@ -35,7 +35,7 @@ class UserObserver
     /**
      * @param User $user
      */
-    private function logPasswordHistory(User $user) : void
+    private function logPasswordHistory(User $user): void
     {
         if (config('access.users.password_history')) {
             $user->passwordHistories()->create([

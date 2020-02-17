@@ -34,7 +34,7 @@
         "facade/ignition-self-diagnosis": "^1.0",
         "facade/ignition-tinker-tab": "^1.0",
         "friendsofphp/php-cs-fixer": "^2.14",
-        "fzaninotto/faker": "^1.4",
+        "fzaninotto/faker": "^1.9.1",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
         "phpunit/phpunit": "^8.0",
