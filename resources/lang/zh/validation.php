@@ -159,6 +159,8 @@ return [
                     ],
 
                     'name' => '名称',
+                    'first_name' => '名',
+                    'last_name' => '姓',
                     'system' => '系统?',
                 ],
 
@@ -174,16 +176,23 @@ return [
                     'confirmed' => '已确认',
                     'email' => '电子邮件地址',
                     'name' => '名称',
+                    'first_name' => '名',
+                    'last_name' => '姓',
                     'other_permissions' => '其他权限',
                     'password' => '密码',
                     'password_confirmation' => '确认密码',
                     'send_confirmation_email' => '发送确认电子邮件',
+                    'timezone' => '时区',
+                    'language' => '语言',
                 ],
             ],
         ],
 
         'frontend' => [
+            'avatar' => '头像位置',
             'email' => '电子邮件',
+            'first_name' => '名',
+            'last_name' => '姓',
             'name' => '用户名',
             'password' => '密码',
             'password_confirmation' => '确认密码',
@@ -192,6 +201,8 @@ return [
             'old_password' => '旧密码',
             'new_password' => '新密码',
             'new_password_confirmation' => '确认新密码',
+            'timezone' => '时区',
+            'language' => '语言',
         ],
     ],
 ];
