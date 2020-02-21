@@ -246,6 +246,17 @@ class UserRepository extends BaseRepository
      */
     public function findOrCreateProvider($data, $provider)
     {
+        $socialAccount = SocialAccount::where(
+            [
+                'provider' => $provider,
+                'provider_id' => $data->id,
+            ]
+        )->first();
+
+        if (!blank($socialAccount) && $user = $socialAccount->user) {
+            return $user;
+        }
+        
         // User email may not provided.
         $user_email = $data->email ?: "{$data->id}@{$provider}.com";
 
