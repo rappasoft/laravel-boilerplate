@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [6.0.4] - 2020-04-09
+
+### Changed
+
+- Fixed typo in translation file
+- Dependency updates
+
 ## [6.0.3] - 2020-02-17
 
 ### Changed
@@ -176,7 +183,8 @@ All notable changes to this project will be documented in this file.
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.3...development
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.4...development
+[6.0.4]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.3...v6.0.4
 [6.0.3]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.2...v6.0.3
 [6.0.2]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.1...v6.0.2
 [6.0.1]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.0...v6.0.1

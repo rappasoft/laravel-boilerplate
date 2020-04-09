@@ -29,7 +29,7 @@ return [
         'show' => 'Anzeigen',
         'toggle_navigation' => 'Navigation umschalten',
         'more' => 'Mehr',
-        'greate_new' => 'Neue erstellen',
+        'create_new' => 'Neue erstellen',
     ],
 
     'backend' => [
