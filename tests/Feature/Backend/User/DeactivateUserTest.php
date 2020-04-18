@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Backend\User;
+namespace Tests\Feature\Backend\User;
 
 use App\Events\Backend\Auth\User\UserDeactivated;
 use App\Events\Backend\Auth\User\UserReactivated;
