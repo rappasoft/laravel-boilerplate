@@ -6,6 +6,3 @@
 
 # Be explicit
 Try to be as explicit as you can when you ask anything.
-
-# What version?
-Please when it's necessary, provide the version of your copy of the boilerplate. You can find the version number in the original README.md.

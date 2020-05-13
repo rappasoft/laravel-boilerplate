@@ -1,71 +1,81 @@
-<header class="app-header navbar">
-    <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
-        <span class="navbar-toggler-icon"></span>
+<header class="c-header c-header-light c-header-fixed">
+    <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
+        <i class="c-icon c-icon-lg cil-menu"></i>
     </button>
-    <a class="navbar-brand" href="#">
-        <img class="navbar-brand-full" src="{{ asset('img/backend/brand/logo.svg') }}" width="89" height="25" alt="CoreUI Logo">
-        <img class="navbar-brand-minimized" src="{{ asset('img/backend/brand/sygnet.svg') }}" width="30" height="30" alt="CoreUI Logo">
+
+    <a class="c-header-brand d-lg-none" href="#">
+        <svg width="118" height="46" alt="CoreUI Logo">
+            <use xlink:href="{{ asset('img/brand/coreui.svg#full') }}"></use>
+        </svg>
     </a>
-    <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
-        <span class="navbar-toggler-icon"></span>
+
+    <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
+        <i class="c-icon c-icon-lg cil-menu"></i>
     </button>
 
-    <ul class="nav navbar-nav d-md-down-none">
-        <li class="nav-item px-3">
-            <a class="nav-link" href="{{ route('frontend.index') }}"><i class="fas fa-home"></i></a>
-        </li>
-
-        <li class="nav-item px-3">
-            <a class="nav-link" href="{{ route('admin.dashboard') }}">@lang('navs.frontend.dashboard')</a>
-        </li>
+    <ul class="c-header-nav d-md-down-none">
+        <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="{{ route('frontend.index') }}">Home</a></li>
 
         @if(config('locale.status') && count(config('locale.languages')) > 1)
-            <li class="nav-item px-3 dropdown">
-                <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                    <span class="d-md-down-none">@lang('menus.language-picker.language') ({{ strtoupper(app()->getLocale()) }})</span>
-                </a>
+            <li class="c-header-nav-item dropdown">
+                <x-utils.link
+                    :text="__(getLocaleName(app()->getLocale()))"
+                    class="c-header-nav-link dropdown-toggle"
+                    id="navbarDropdownLanguageLink"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false" />
 
                 @include('includes.partials.lang')
             </li>
         @endif
     </ul>
 
-    <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item d-md-down-none">
-            <a class="nav-link" href="#">
-                <i class="fas fa-bell"></i>
-            </a>
+    <ul class="c-header-nav ml-auto mr-4">
+        <li class="c-header-nav-item d-md-down-none mx-2">
+            <x-utils.link class="c-header-nav-link" icon="c-icon cil-bell" />
         </li>
-        <li class="nav-item d-md-down-none">
-            <a class="nav-link" href="#">
-                <i class="fas fa-list"></i>
-            </a>
+
+        <li class="c-header-nav-item d-md-down-none mx-2">
+            <x-utils.link class="c-header-nav-link" icon="c-icon cil-list-rich" />
         </li>
-        <li class="nav-item d-md-down-none">
-            <a class="nav-link" href="#">
-                <i class="fas fa-map-marker-alt"></i>
-            </a>
+
+        <li class="c-header-nav-item d-md-down-none mx-2">
+            <x-utils.link class="c-header-nav-link" icon="c-icon cil-envelope-open" />
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-            <img src="{{ $logged_in_user->picture }}" class="img-avatar" alt="{{ $logged_in_user->email }}">
-            <span class="d-md-down-none">{{ $logged_in_user->full_name }}</span>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right">
-            <div class="dropdown-header text-center">
-              <strong>Account</strong>
+
+        <li class="c-header-nav-item dropdown">
+            <x-utils.link class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                <x-slot name="text">
+                    <div class="c-avatar">
+                        <img class="c-avatar-img" src="{{ $logged_in_user->avatar }}" alt="{{ $logged_in_user->email ?? '' }}">
+                    </div>
+                </x-slot>
+            </x-utils.link>
+
+            <div class="dropdown-menu dropdown-menu-right pt-0">
+                <div class="dropdown-header bg-light py-2">
+                    <strong>Account</strong>
+                </div>
+
+                <x-utils.link
+                    class="dropdown-item"
+                    icon="c-icon mr-2 cil-account-logout"
+                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    <x-slot name="text">
+                        {{ __('Logout') }}
+                        <x-forms.post :action="route('frontend.auth.logout')" id="logout-form" class="d-none" />
+                    </x-slot>
+                </x-utils.link>
             </div>
-            <a class="dropdown-item" href="{{ route('frontend.auth.logout') }}">
-                <i class="fas fa-lock"></i> @lang('navs.general.logout')
-            </a>
-          </div>
         </li>
     </ul>
 
-    <button class="navbar-toggler aside-menu-toggler d-md-down-none" type="button" data-toggle="aside-menu-lg-show">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <button class="navbar-toggler aside-menu-toggler d-lg-none" type="button" data-toggle="aside-menu-show">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="c-subheader justify-content-between px-3">
+        {!! Breadcrumbs::render() !!}
+
+        <div class="c-subheader-nav d-md-down-none mfe-2">
+            @yield('breadcrumb-links')
+        </div>
+    </div><!--c-subheader-->
 </header>

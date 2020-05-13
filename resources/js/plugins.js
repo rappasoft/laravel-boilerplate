@@ -1,87 +1,84 @@
 /**
- * Allows you to add data-method="METHOD to links to automatically inject a form
- * with the method on click
- *
- * Example: <a href="{{route('customers.destroy', $customer->id)}}"
- * data-method="delete" name="delete_item">Delete</a>
- *
- * Injects a form with that's fired on click of the link with a DELETE request.
- * Good because you don't have to dirty your HTML with delete forms everywhere.
- */
-function addDeleteForms() {
-    $('[data-method]').append(function () {
-        if (!$(this).find('form').length > 0) {
-            return "\n<form action='" + $(this).attr('href') + "' method='POST' name='delete_item' style='display:none'>\n" +
-                "<input type='hidden' name='_method' value='" + $(this).attr('data-method') + "'>\n" +
-                "<input type='hidden' name='_token' value='" + $('meta[name="csrf-token"]').attr('content') + "'>\n" +
-                '</form>\n';
-        } else { return '' }
-    })
-        .attr('href', '#')
-        .attr('style', 'cursor:pointer;')
-        .attr('onclick', '$(this).find("form").submit();');
-}
-
-/**
  * Place any jQuery/helper plugins in here.
  */
 $(function () {
+
     /**
-     * Add the data-method="delete" forms to all delete links
+     * Disable submit inputs in the given form
+     *
+     * @param form
      */
-    addDeleteForms();
+    function disableSubmitButtons(form) {
+        form.find('input[type="submit"]').attr('disabled', true);
+        form.find('button[type="submit"]').attr('disabled', true);
+    }
+
+    /**
+     * Enable the submit inputs in a given form
+     *
+     * @param form
+     */
+    function enableSubmitButtons(form) {
+        form.find('input[type="submit"]').removeAttr('disabled');
+        form.find('button[type="submit"]').removeAttr('disabled');
+    }
 
     /**
      * Disable all submit buttons once clicked
      */
     $('form').submit(function () {
-        $(this).find('input[type="submit"]').attr('disabled', true);
-        $(this).find('button[type="submit"]').attr('disabled', true);
+        disableSubmitButtons($(this));
         return true;
     });
 
     /**
-     * Generic confirm form delete using Sweet Alert
+     * Add a confirmation to a delete button/form
      */
-    $('body').on('submit', 'form[name=delete_item]', function (e) {
+    $('body').on('submit', 'form[name=delete-item]', function(e) {
         e.preventDefault();
 
-        const form = this;
-        const link = $('a[data-method="delete"]');
-        const cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : 'Cancel';
-        const confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : 'Yes, delete';
-        const title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : 'Are you sure you want to delete this item?';
-
         Swal.fire({
-            title: title,
+            title: 'Are you sure you want to delete this item?',
             showCancelButton: true,
-            confirmButtonText: confirm,
-            cancelButtonText: cancel,
+            confirmButtonText: 'Confirm Delete',
+            cancelButtonText: 'Cancel',
             icon: 'warning'
         }).then((result) => {
-            result.value && form.submit();
+            if (result.value) {
+                this.submit()
+            } else {
+                enableSubmitButtons($(this));
+            }
         });
-    }).on('click', 'a[name=confirm_item]', function (e) {
+    }).on('click', 'a[name=confirm-item]', function (e) {
         /**
-         * Generic 'are you sure' confirm box
+         * Add an 'are you sure' pop-up to any button/link
          */
         e.preventDefault();
 
-        const link = $(this);
-        const title = (link.attr('data-trans-title')) ? link.attr('data-trans-title') : 'Are you sure you want to do this?';
-        const cancel = (link.attr('data-trans-button-cancel')) ? link.attr('data-trans-button-cancel') : 'Cancel';
-        const confirm = (link.attr('data-trans-button-confirm')) ? link.attr('data-trans-button-confirm') : 'Continue';
-
         Swal.fire({
-            title: title,
+            title: 'Are you sure you want to do this?',
             showCancelButton: true,
-            confirmButtonText: confirm,
-            cancelButtonText: cancel,
-            icon: 'info'
+            confirmButtonText: 'Continue',
+            cancelButtonText: 'Cancel',
+            icon: 'info',
         }).then((result) => {
-            result.value && window.location.assign(link.attr('href'));
+            result.value && window.location.assign($(this).attr('href'));
         });
     });
 
-    $('[data-toggle="tooltip"]').tooltip();
+    // Remember tab on page load
+    $('a[data-toggle="tab"], a[data-toggle="pill"]').on('shown.bs.tab', function (e) {
+        var hash = $(e.target).attr('href');
+        if (history.pushState) {
+            history.pushState(null, null, hash);
+        } else {
+            location.hash = hash;
+        }
+    });
+
+    var hash = window.location.hash;
+    if (hash) {
+        $('.nav-link[href="' + hash + '"]').tab('show');
+    }
 });

@@ -1,13 +1,12 @@
-// Plugins
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
 
-// FontAwesome 5
-@import "~@fortawesome/fontawesome-free/scss/fontawesome";
-@import "~@fortawesome/fontawesome-free/scss/brands";
-@import "~@fortawesome/fontawesome-free/scss/regular";
-@import "~@fortawesome/fontawesome-free/scss/solid";
-
-// Header Styles
-.read-only, .logged-in-as {
-  margin: 0 !important;
-  border-radius: 0 !important;
+// Styles
+.alert-header {
+    margin: 0 !important;
+    border-radius: 0 !important;
 }

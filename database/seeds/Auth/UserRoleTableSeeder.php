@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Auth\User;
+use App\Domains\Auth\Models\User;
 use Illuminate\Database\Seeder;
 
 /**
@@ -17,8 +17,7 @@ class UserRoleTableSeeder extends Seeder
     {
         $this->disableForeignKeys();
 
-        User::find(1)->assignRole(config('access.users.admin_role'));
-        User::find(2)->assignRole(config('access.users.default_role'));
+        User::find(1)->assignRole(config('access.roles.admin'));
 
         $this->enableForeignKeys();
     }

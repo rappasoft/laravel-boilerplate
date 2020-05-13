@@ -1,66 +1,32 @@
 {
-    "name": "@rappasoft/laravel-boilerplate",
-    "author": "rappasoft rappa819@gmail.com",
     "private": true,
-    "license": "MIT",
     "scripts": {
-        "dev": "cross-var $npm_execpath run development",
-        "development": "cross-env NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "cross-var $npm_execpath run development -- --watch",
-        "watch-poll": "cross-var $npm_execpath run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "cross-var $npm_execpath run production",
-        "production": "cross-env NODE_ENV=production webpack --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "test": "cross-env NODE_ENV=test jest",
-        "tdd": "cross-var $npm_execpath run test -- --watch --notify"
+        "dev": "npm run development",
+        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "watch": "npm run development -- --watch",
+        "watch-poll": "npm run watch -- --watch-poll",
+        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "prod": "npm run production",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "@coreui/coreui": "^2.1.12",
-        "@fortawesome/fontawesome-free": "^5.9.0",
-        "@vue/test-utils": "^1.0.0-beta.29",
+        "@coreui/coreui": "^3.0.0",
+        "@coreui/icons": "^1.0.1",
+        "@fortawesome/fontawesome-free": "^5.12.1",
+        "@popperjs/core": "^2.0.6",
         "axios": "^0.19",
-        "babel-core": "^7.0.0-bridge.0",
-        "babel-jest": "^24.8.0",
-        "bootstrap": "^4.3.1",
+        "bootstrap": "^4.0.0",
         "cross-env": "^7.0",
-        "cross-var": "^1.1.0",
-        "jest": "^24.8.0",
-        "jquery": "^3.4.1",
+        "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.13",
-        "pace": "github:HubSpot/pace#v1.0.2",
-        "perfect-scrollbar": "^1.4.0",
-        "popper.js": "^1.15.0",
-        "resolve-url-loader": "^3.1.1",
-        "sass": "^1.21.0",
+        "perfect-scrollbar": "^1.5.0",
+        "popper.js": "^1.16.1",
+        "resolve-url-loader": "^2.3.1",
+        "sass": "^1.20.1",
         "sass-loader": "^8.0.0",
-        "sweetalert2": "^9.3.5",
-        "vue": "^2.6.10",
-        "vue-jest": "^3.0.4",
+        "sweetalert2": "^9.8.2",
+        "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
-    },
-    "browserslist": {
-        "development": "last 1 version",
-        "production": ">2%, Firefox ESR"
-    },
-    "jest": {
-        "testURL": "http://localhost",
-        "roots": [
-            "<rootDir>/tests/Javascript/"
-        ],
-        "moduleNameMapper": {
-            "^@/(.*)$": "<rootDir>/resources/js/$1"
-        },
-        "moduleFileExtensions": [
-            "js",
-            "vue"
-        ],
-        "transform": {
-            "^.+\\.js$": "babel-jest",
-            ".*\\.(vue)$": "vue-jest"
-        }
-    },
-    "engines": {
-        "node": ">=6.0.0"
     }
 }

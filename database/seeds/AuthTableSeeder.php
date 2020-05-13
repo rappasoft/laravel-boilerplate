@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 use Spatie\Permission\PermissionRegistrar;
 
 /**
@@ -18,6 +19,7 @@ class AuthTableSeeder extends Seeder
         $this->disableForeignKeys();
 
         // Reset cached roles and permissions
+        Artisan::call('cache:clear');
         resolve(PermissionRegistrar::class)->forgetCachedPermissions();
 
         $this->truncateMultiple([
@@ -27,9 +29,8 @@ class AuthTableSeeder extends Seeder
             config('permission.table_names.permissions'),
             config('permission.table_names.roles'),
             'users',
-            'password_histories',
-            'password_resets',
-            'social_accounts',
+//            'password_histories',
+//            'password_resets',
         ]);
 
         $this->call(UserTableSeeder::class);

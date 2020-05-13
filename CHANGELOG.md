@@ -3,12 +3,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [6.0.4] - 2020-04-09
+## [7.0.0] - 2020-XX-XX
 
 ### Changed
 
-- Fixed typo in translation file
-- Dependency updates
+### Added
+
+### Removed
 
 ## [6.0.3] - 2020-02-17
 
@@ -16,7 +17,7 @@ All notable changes to this project will be documented in this file.
 
 - Update to Laravel commit: c78a1d8184f00f8270d8a135cc21590837b6bfbd
 - Fix log viewer error
-- Rename include_route_files to include_files_in_folder
+- Rename includeRouteFiles to includeFilesInFolder
 - Update form-control-file class
 
 ## [6.0.2] - 2020-01-01
@@ -183,8 +184,8 @@ All notable changes to this project will be documented in this file.
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.4...development
-[6.0.4]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.3...v6.0.4
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.0.0...development
+[7.0.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.3...v7.0.0
 [6.0.3]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.2...v6.0.3
 [6.0.2]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.1...v6.0.2
 [6.0.1]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.0...v6.0.1

@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     /*
     |--------------------------------------------------------------------------
     | View Name
@@ -9,9 +10,14 @@ return [
     | Choose a view to display when Breadcrumbs::render() is called.
     | Built in templates are:
     |
-    | - 'breadcrumbs::bootstrap4' - Twitter Bootstrap v4
-    | - 'breadcrumbs::bootstrap3' - Twitter Bootstrap v3
-    | - 'breadcrumbs::bootstrap2' - Twitter Bootstrap v2
+    | - 'breadcrumbs::bootstrap4'  - Bootstrap 4
+    | - 'breadcrumbs::bootstrap3'  - Bootstrap 3
+    | - 'breadcrumbs::bootstrap2'  - Bootstrap 2
+    | - 'breadcrumbs::bulma'       - Bulma
+    | - 'breadcrumbs::foundation6' - Foundation 6
+    | - 'breadcrumbs::materialize' - Materialize
+    | - 'breadcrumbs::uikit'       - UIkit
+    | - 'breadcrumbs::json-ld'     - JSON-LD Structured Data
     |
     | Or a custom view, e.g. '_partials/breadcrumbs'.
     |
@@ -50,4 +56,20 @@ return [
 
     // When a named breadcrumb is used but doesn't exist (InvalidBreadcrumbException)
     'invalid-named-breadcrumb-exception' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Classes
+    |--------------------------------------------------------------------------
+    |
+    | Subclass the default classes for more advanced customisations.
+    |
+    */
+
+    // Manager
+    'manager-class' => DaveJamesMiller\Breadcrumbs\BreadcrumbsManager::class,
+
+    // Generator
+    'generator-class' => DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator::class,
+
 ];

@@ -1,62 +1,31 @@
 <?php
 
-use App\Models\Auth\User;
-use Faker\Generator;
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+use App\Domains\Auth\Models\User;
+use Faker\Generator as Faker;
 use Illuminate\Support\Str;
-use Ramsey\Uuid\Uuid;
 
 /*
 |--------------------------------------------------------------------------
 | Model Factories
 |--------------------------------------------------------------------------
 |
-| Here you may define all of your model factories. Model factories give
-| you a convenient way to create models for testing and seeding your
-| database. Just tell the factory how a default model should look.
+| This directory should contain each of the model factory definitions for
+| your application. Factories provide a convenient way to generate new
+| model instances for testing / seeding your application's database.
 |
 */
 
-$factory->define(User::class, function (Generator $faker) {
+$factory->define(User::class, function (Faker $faker) {
     return [
-        'uuid' => Uuid::uuid4()->toString(),
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->lastName,
+        'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'password' => 'secret',
-        'password_changed_at' => null,
+        'email_verified_at' => now(),
+        'password' => 'password',
         'remember_token' => Str::random(10),
-        'confirmation_code' => md5(uniqid(mt_rand(), true)),
         'active' => true,
-        'confirmed' => true,
-    ];
-});
 
-$factory->state(User::class, 'active', function () {
-    return [
-        'active' => true,
-    ];
-});
-
-$factory->state(User::class, 'inactive', function () {
-    return [
-        'active' => false,
-    ];
-});
-
-$factory->state(User::class, 'confirmed', function () {
-    return [
-        'confirmed' => true,
-    ];
-});
-
-$factory->state(User::class, 'unconfirmed', function () {
-    return [
-        'confirmed' => false,
-    ];
-});
-
-$factory->state(User::class, 'softDeleted', function () {
-    return [
-        'deleted_at' => now(),
+//        'uuid' => Uuid::uuid4()->toString(),
+//        'password_changed_at' => null,
     ];
 });

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace App\Domains\Auth\Exceptions;
 
 use Exception;
 use Throwable;

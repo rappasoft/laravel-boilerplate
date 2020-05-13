@@ -4,16 +4,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Application Is In Read Only Mode
-    |--------------------------------------------------------------------------
-    |
-    | This value is for whether the project is in read only mode or not.
-    |
-    */
-    'read_only' => env('APP_READ_ONLY', false),
-
-    /*
-    |--------------------------------------------------------------------------
     | Application Name
     |--------------------------------------------------------------------------
     |
@@ -23,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel '.app()->version().' Boilerplate'),
+    'name' => env('APP_NAME', 'Laravel Boilerplate'),
 
     /*
     |--------------------------------------------------------------------------
@@ -88,7 +78,7 @@ return [
     |
     */
 
-    'timezone' => env('APP_TIMEZONE', 'UTC'),
+    'timezone' => 'UTC',
 
     /*
     |--------------------------------------------------------------------------
@@ -101,7 +91,7 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
+    'locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -114,7 +104,7 @@ return [
     |
     */
 
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+    'fallback_locale' => 'en',
 
     /*
     |--------------------------------------------------------------------------
@@ -126,18 +116,8 @@ return [
     | localized telephone numbers, street address information and more.
     |
     */
-    'faker_locale' => 'en_US',
 
-    /*
-    |--------------------------------------------------------------------------
-    | PHP Locale Code
-    |--------------------------------------------------------------------------
-    |
-    | The PHP locale determines the default locale that will be used
-    | by the Carbon library when setting Carbon's localization.
-    |
-    */
-    'locale_php' => env('APP_LOCALE_PHP', 'en_US'),
+    'faker_locale' => 'en_US',
 
     /*
     |--------------------------------------------------------------------------
@@ -166,7 +146,10 @@ return [
     */
 
     'providers' => [
-        // Laravel Framework Service Providers...
+
+        /*
+         * Laravel Framework Service Providers...
+         */
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -190,17 +173,22 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        // Package Service Providers that aren't auto-discover...
+        /*
+         * Package Service Providers...
+         */
 
-        // Application Service Providers...
+        /*
+         * Application Service Providers...
+         */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\ComposerServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
-        App\Providers\ObserverServiceProvider::class,
+        App\Providers\LocaleServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
     ],
 
     /*
@@ -215,6 +203,7 @@ return [
     */
 
     'aliases' => [
+
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
@@ -250,5 +239,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
     ],
+
 ];

@@ -9,59 +9,58 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.2",
+        "php": "^7.2.5",
         "albertcht/invisible-recaptcha": "^1.9",
-        "altek/accountant": "^1.2",
+        "altek/accountant": "^2.0",
         "altek/eventually": "^1.0",
-        "arcanedev/log-viewer": "^5.0",
-        "creativeorange/gravatar": "~1.0",
-        "davejamesmiller/laravel-breadcrumbs": "^5.0",
-        "facade/ignition": "^1.11",
+        "creativeorange/gravatar": "^1.0",
+        "davejamesmiller/laravel-breadcrumbs": "^5.3",
         "fideloper/proxy": "^4.0",
-        "lab404/laravel-impersonate": "^1.4",
-        "langleyfoxall/laravel-nist-password-rules": "^4.0",
-        "laravel/framework": "^6.3",
-        "laravel/socialite": "^4.1",
-        "spatie/laravel-html": "^2.22",
-        "spatie/laravel-permission": "^3.0",
-        "torann/geoip": "^1.0"
+        "fruitcake/laravel-cors": "^1.0",
+        "jamesmills/laravel-timezone": "^1.9",
+        "langleyfoxall/laravel-nist-password-rules": "^4.1",
+        "laravel/framework": "^7.0",
+        "laravel/socialite": "^4.3",
+        "laravel/tinker": "^2.0",
+        "laravel/ui": "^2.0",
+        "livewire/livewire": "^1.0",
+        "rappasoft/laravel-livewire-tables": "^0.1.1",
+        "rappasoft/lockout": "^2.0",
+        "spatie/laravel-permission": "^3.11"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.6",
-        "codedungeon/phpunit-result-printer": "^0.26.1",
-        "facade/ignition-code-editor": "^1.0",
-        "facade/ignition-self-diagnosis": "^1.0",
-        "facade/ignition-tinker-tab": "^1.0",
-        "friendsofphp/php-cs-fixer": "^2.14",
+        "codedungeon/phpunit-result-printer": "^0.26.2",
+        "facade/ignition": "^2.0",
         "fzaninotto/faker": "^1.9.1",
+        "matt-allan/laravel-code-style": "^0.5.1",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^3.0",
-        "phpunit/phpunit": "^8.0",
-        "roave/security-advisories": "dev-master"
+        "nunomaduro/collision": "^4.1",
+        "phpunit/phpunit": "^8.5"
     },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true
     },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
     "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
         "classmap": [
             "database/seeds",
             "database/factories"
-        ],
-        "psr-4": {
-            "App\\": "app/"
-        }
+        ]
     },
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": []
         }
     },
     "minimum-stability": "dev",
@@ -85,30 +84,25 @@
             "@php artisan route:clear",
             "@php artisan view:clear",
             "@php artisan config:clear",
+            "@php artisan permission:cache-reset",
             "composer dumpautoload -o"
         ],
         "cache-all": [
             "@php artisan config:cache",
             "@php artisan route:cache"
         ],
-        "cc": [
+        "reset": [
             "composer clear-all",
             "composer cache-all"
         ],
         "phpunit": [
             "phpunit > output.txt -d memory_limit=2048M"
         ],
-        "coverage-xml": [
-            "phpunit --coverage-clover ./coverage.xml"
-        ],
-        "coverage-html": [
+        "coverage": [
             "phpunit --coverage-html ./coverage"
         ],
-        "coverage-text": [
-            "phpunit --coverage-text"
-        ],
         "format": [
-            "php-cs-fixer fix --show-progress=estimating --config=.php_cs.dist"
+            "php-cs-fixer fix --show-progress=estimating --config=.php_cs"
         ]
     }
 }

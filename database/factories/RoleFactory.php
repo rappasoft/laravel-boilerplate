@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Auth\Role;
+use App\Domains\Auth\Models\Role;
 use Faker\Generator as Faker;
 
 $factory->define(Role::class, function (Faker $faker) {

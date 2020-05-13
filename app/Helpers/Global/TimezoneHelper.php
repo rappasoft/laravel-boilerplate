@@ -1,6 +1,6 @@
 <?php
 
-use App\Helpers\General\TimezoneHelper;
+use JamesMills\LaravelTimezone\Timezone;
 
 if (! function_exists('timezone')) {
     /**
@@ -8,6 +8,6 @@ if (! function_exists('timezone')) {
      */
     function timezone()
     {
-        return resolve(TimezoneHelper::class);
+        return resolve(Timezone::class);
     }
 }

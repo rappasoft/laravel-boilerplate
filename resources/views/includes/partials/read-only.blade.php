@@ -1,5 +1,5 @@
 @readonly
-    <div class="alert alert-info read-only">
-        The Application is currently in read only mode. All requests other than GET are disabled.
-    </div>
+    <x-utils.alert type="info" class="alert-header" :dismissable="false">
+        {{ __('The Application is currently in read only mode. All requests other than GET are disabled.') }}
+    </x-utils.alert>
 @endreadonly

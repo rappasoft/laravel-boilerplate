@@ -1,14 +1,31 @@
 <?php
 
-if (! function_exists('app_name')) {
+use Illuminate\Support\HtmlString;
+
+if (! function_exists('appName')) {
     /**
      * Helper to grab the application name.
      *
      * @return mixed
      */
-    function app_name()
+    function appName()
     {
-        return config('app.name');
+        return config('app.name', 'Laravel Boilerplate');
+    }
+}
+
+if (! function_exists('emptyCell')) {
+
+    /**
+     * What text to display in an empty table cell.
+     *
+     * @param  string  $text
+     *
+     * @return string
+     */
+    function emptyCell($text = '&nbsp;')
+    {
+        return new HtmlString($text);
     }
 }
 
@@ -22,15 +39,15 @@ if (! function_exists('gravatar')) {
     }
 }
 
-if (! function_exists('home_route')) {
+if (! function_exists('homeRoute')) {
     /**
      * Return the route to the "home" page depending on authentication/authorization status.
      *
      * @return string
      */
-    function home_route()
+    function homeRoute()
     {
-        if (auth()->check()) {
+        if (config('access.options.redirect') && auth()->check()) {
             if (auth()->user()->can('view backend')) {
                 return 'admin.dashboard';
             }
@@ -39,5 +56,15 @@ if (! function_exists('home_route')) {
         }
 
         return 'frontend.index';
+    }
+}
+
+if (! function_exists('htmlLang')) {
+    /**
+     * Access the htmlLang helper.
+     */
+    function htmlLang()
+    {
+        return str_replace('_', '-', app()->getLocale());
     }
 }

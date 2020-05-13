@@ -2,10 +2,11 @@
 
 return [
     'default' => [
+
         // By default, images are presented at 80px by 80px if no size parameter is supplied.
         // You may request a specific image size, which will be dynamically delivered from Gravatar
         // by passing a single pixel dimension (since the images are square):
-        'size' => 80,
+        'size'   => 80,
 
         // the fallback image, can be a string or a url
         // for more info, visit: http://en.gravatar.com/site/implement/images/#default-image

@@ -1,78 +1,35 @@
 @extends('frontend.layouts.app')
 
-@section('title', app_name() . ' | ' . __('labels.frontend.passwords.reset_password_box_title'))
-
 @section('content')
-    <div class="row justify-content-center align-items-center">
-        <div class="col col-sm-6 align-self-center">
-            <div class="card">
-                <div class="card-header">
-                    <strong>
-                        @lang('labels.frontend.passwords.reset_password_box_title')
-                    </strong>
-                </div><!--card-header-->
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <x-frontend.card>
+                <x-slot name="header">
+                    {{ __('Reset Password') }}
+                </x-slot>
 
-                <div class="card-body">
+                <x-slot name="body">
+                    <x-forms.post :action="route('frontend.auth.password.update')">
+                        <x-forms.hidden name="token" :value="$token" />
 
-                    @if(session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                        <x-forms.group for="email" labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" :label="__('E-mail Address')">
+                            <x-forms.email id="email" name="email" :value="$email ?? old('email')" required autocomplete="email" autofocus />
+                        </x-forms.group>
 
-                    {{ html()->form('POST', route('frontend.auth.password.reset'))->class('form-horizontal')->open() }}
-                        {{ html()->hidden('token', $token) }}
+                        <x-forms.group for="password" labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" :label="__('Password')">
+                            <x-forms.password id="password" name="password" required autocomplete="password" />
+                        </x-forms.group>
 
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    {{ html()->label(__('validation.attributes.frontend.email'))->for('email') }}
+                        <x-forms.group for="password_confirmation" labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" :label="__('Confirm Password')">
+                            <x-forms.password id="password_confirmation" name="password_confirmation" required autocomplete="new-password" />
+                        </x-forms.group>
 
-                                    {{ html()->email('email')
-                                        ->class('form-control')
-                                        ->placeholder(__('validation.attributes.frontend.email'))
-                                        ->attribute('maxlength', 191)
-                                        ->required() }}
-                                </div><!--form-group-->
-                            </div><!--col-->
-                        </div><!--row-->
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    {{ html()->label(__('validation.attributes.frontend.password'))->for('password') }}
-
-                                    {{ html()->password('password')
-                                        ->class('form-control')
-                                        ->placeholder(__('validation.attributes.frontend.password'))
-                                        ->required() }}
-                                </div><!--form-group-->
-                            </div><!--col-->
-                        </div><!--row-->
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group">
-                                    {{ html()->label(__('validation.attributes.frontend.password_confirmation'))->for('password_confirmation') }}
-
-                                    {{ html()->password('password_confirmation')
-                                        ->class('form-control')
-                                        ->placeholder(__('validation.attributes.frontend.password_confirmation'))
-                                        ->required() }}
-                                </div><!--form-group-->
-                            </div><!--col-->
-                        </div><!--row-->
-
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group mb-0 clearfix">
-                                    {{ form_submit(__('labels.frontend.passwords.reset_password_button')) }}
-                                </div><!--form-group-->
-                            </div><!--col-->
-                        </div><!--row-->
-                    {{ html()->form()->close() }}
-                </div><!-- card-body -->
-            </div><!-- card -->
-        </div><!-- col-6 -->
-    </div><!-- row -->
+                        <x-forms.group :noLabel="true" groupClass="form-group row mb-0" bodyClass="col-md-6 offset-md-4">
+                            <x-forms.submit class="btn btn-primary" :text="__('Reset Password')" />
+                        </x-forms.group>
+                    </x-forms.post>
+                </x-slot>
+            </x-frontend.card>
+        </div><!--col-md-8-->
+    </div><!--row-->
 @endsection
