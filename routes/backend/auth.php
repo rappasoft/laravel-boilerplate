@@ -15,7 +15,6 @@ Route::group([
 
         // Specific User
         Route::group(['prefix' => '{user}'], function () {
-
         });
     });
 

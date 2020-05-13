@@ -25,7 +25,7 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
         'active' => true,
 
-//        'uuid' => Uuid::uuid4()->toString(),
-//        'password_changed_at' => null,
+        //        'uuid' => Uuid::uuid4()->toString(),
+        //        'password_changed_at' => null,
     ];
 });

@@ -9,13 +9,10 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\URL;
 
 /**
- * Class VerifyEmail
- *
- * @package App\Domains\Auth\Notifications\Frontend
+ * Class VerifyEmail.
  */
 class VerifyEmail extends Notification
 {
-
     /**
      * Get the notification's channels.
      *

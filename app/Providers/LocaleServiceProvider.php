@@ -23,7 +23,7 @@ class LocaleServiceProvider extends ServiceProvider
     /**
      * Register the locale blade extensions.
      */
-    protected function registerBladeExtensions() : void
+    protected function registerBladeExtensions(): void
     {
         /*
          * The block of code inside this directive indicates

@@ -6,9 +6,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 /**
- * Class ResetPasswordNotification
- *
- * @package App\Domains\Auth\Notifications\Frontend
+ * Class ResetPasswordNotification.
  */
 class ResetPasswordNotification extends Notification
 {

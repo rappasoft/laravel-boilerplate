@@ -20,7 +20,7 @@ trait RoleMethod
     /**
      * @return mixed
      */
-    public function isAdmin() : bool
+    public function isAdmin(): bool
     {
         return $this->id === config('access.roles.admin');
     }

@@ -20,7 +20,7 @@ class RolesTable extends TableComponent
     /**
      * @return Builder
      */
-    public function query() : Builder
+    public function query(): Builder
     {
         return Role::with('permissions:id,name,description')
             ->withCount('users');
@@ -29,7 +29,7 @@ class RolesTable extends TableComponent
     /**
      * @return array
      */
-    public function columns() : array
+    public function columns(): array
     {
         return [
             Column::make('Name')
