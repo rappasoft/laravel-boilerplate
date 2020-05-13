@@ -10,7 +10,7 @@ trait RoleAttribute
     /**
      * @return string
      */
-    public function getPermissionsLabelAttribute() : string
+    public function getPermissionsLabelAttribute(): string
     {
         if ($this->id === config('access.roles.admin')) {
             return 'All';

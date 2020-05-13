@@ -28,7 +28,7 @@ class UserService extends BaseService
      * @return mixed
      * @throws RegisterException
      */
-    public function registerUser(array $data = []) : User
+    public function registerUser(array $data = []): User
     {
         $user = $this->createUser($data);
 
@@ -48,7 +48,7 @@ class UserService extends BaseService
      * @return mixed
      * @throws RegisterException
      */
-    public function registerProvider($info, $provider) : User
+    public function registerProvider($info, $provider): User
     {
         $user = $this->model::where('provider_id', $info->id)->first();
 
@@ -77,7 +77,7 @@ class UserService extends BaseService
      *
      * @return User
      */
-    public function updateProfile(User $user, array $data = []) : User
+    public function updateProfile(User $user, array $data = []): User
     {
         $user->name = $data['name'] ?? null;
 
@@ -98,7 +98,7 @@ class UserService extends BaseService
      * @return User
      * @throws \Throwable
      */
-    public function updatePassword(User $user, $data) : User
+    public function updatePassword(User $user, $data): User
     {
         // TODO: Refactor the rest to throw_if
         throw_if(
@@ -114,7 +114,7 @@ class UserService extends BaseService
      *
      * @return User
      */
-    protected function createUser(array $data = []) : User
+    protected function createUser(array $data = []): User
     {
         return $this->model::create([
             'name' => $data['name'] ?? null,
@@ -132,7 +132,7 @@ class UserService extends BaseService
      *
      * @return User
      */
-    protected function assignDefaultRole(User $user) : User
+    protected function assignDefaultRole(User $user): User
     {
         return $user->assignRole(config('access.roles.default'));
     }

@@ -80,7 +80,7 @@ class RoleService extends BaseService
      *
      * @return array
      */
-    private function getPermissions(array $data = []) : array
+    private function getPermissions(array $data = []): array
     {
         if (! isset($data['permissions']) || ! count($data['permissions'])) {
             return [];

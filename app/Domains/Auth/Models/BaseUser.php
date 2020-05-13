@@ -86,15 +86,15 @@ abstract class BaseUser extends Authenticatable implements Recordable, MustVerif
      * @param  string  $token
      * @return void
      */
-    public function sendPasswordResetNotification($token) : void
+    public function sendPasswordResetNotification($token): void
     {
         $this->notify(new ResetPasswordNotification($token));
     }
 
     /**
-     * Send the registration verification email
+     * Send the registration verification email.
      */
-    public function sendEmailVerificationNotification() : void
+    public function sendEmailVerificationNotification(): void
     {
         $this->notify(new VerifyEmail);
     }
