@@ -29,16 +29,6 @@ if (! function_exists('emptyCell')) {
     }
 }
 
-if (! function_exists('gravatar')) {
-    /**
-     * Access the gravatar helper.
-     */
-    function gravatar()
-    {
-        return app('gravatar');
-    }
-}
-
 if (! function_exists('homeRoute')) {
     /**
      * Return the route to the "home" page depending on authentication/authorization status.

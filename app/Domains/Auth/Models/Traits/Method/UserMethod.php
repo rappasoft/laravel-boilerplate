@@ -55,8 +55,6 @@ trait UserMethod
      */
     public function getAvatar($size = null)
     {
-        return gravatar()->get($this->email, [
-            'size' => config('gravatar.default.size', $size),
-        ]);
+        return 'https://gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?s='.config('avatar.size', $size);
     }
 }
