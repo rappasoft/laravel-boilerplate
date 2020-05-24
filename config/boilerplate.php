@@ -2,7 +2,7 @@
 
 /**
  * All configuration options for Laravel Boilerplate
- * http://laravel-boilerplate.com
+ * http://laravel-boilerplate.com.
  */
 
 return [
