@@ -12,9 +12,12 @@ Route::group([
     // User Management
     Route::group(['prefix' => 'user', 'middleware' => 'permission:access.users.*'], function () {
         Route::get('/', [UserController::class, 'index'])->name('user.index')->middleware('permission:access.users.view');
+        Route::get('create', [UserController::class, 'create'])->name('user.create')->middleware(['permission:access.users.create']);
+        Route::post('/', [UserController::class, 'store'])->name('user.store')->middleware(['permission:access.users.create']);
 
         // Specific User
         Route::group(['prefix' => '{user}'], function () {
+
         });
     });
 

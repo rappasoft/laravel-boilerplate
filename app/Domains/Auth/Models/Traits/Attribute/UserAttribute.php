@@ -30,4 +30,32 @@ trait UserAttribute
     {
         return $this->getAvatar();
     }
+
+    /**
+     * @return string
+     */
+    public function getVerifiedLabelAttribute() : string
+    {
+        if ($this->email_verified_at) {
+            return '<span class="badge badge-success">Yes</span>';
+        }
+
+        return '<span class="badge badge-light">No</span>';
+    }
+
+    /**
+     * @return string
+     */
+    public function getRolesLabelAttribute()
+    {
+        $roles = $this->getRoleNames()->toArray();
+
+        if (count($roles)) {
+            return implode(', ', array_map(function ($item) {
+                return ucwords($item);
+            }, $roles));
+        }
+
+        return 'N/A';
+    }
 }

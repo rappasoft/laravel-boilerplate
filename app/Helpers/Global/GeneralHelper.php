@@ -23,7 +23,7 @@ if (! function_exists('emptyCell')) {
      *
      * @return string
      */
-    function emptyCell($text = '&nbsp;')
+    function emptyCell($text = '—')
     {
         return new HtmlString($text);
     }

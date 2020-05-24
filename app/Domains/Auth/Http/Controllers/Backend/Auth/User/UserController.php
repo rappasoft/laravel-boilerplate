@@ -15,6 +15,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('permission:access.users.read')->only('index');
+        $this->middleware('permission:access.users.create')->only('create');
     }
 
     /**
@@ -23,5 +24,10 @@ class UserController extends Controller
     public function index()
     {
         return view('backend.auth.user.index');
+    }
+
+    public function create()
+    {
+        return view('backend.auth.user.create');
     }
 }
