@@ -37,7 +37,7 @@ if (! function_exists('homeRoute')) {
      */
     function homeRoute()
     {
-        if (config('access.options.redirect') && auth()->check()) {
+        if (config('boilerplate.access.options.redirect') && auth()->check()) {
             if (auth()->user()->can('view backend')) {
                 return 'admin.dashboard';
             }

@@ -12,7 +12,7 @@ trait UserMethod
      */
     public function isAdmin()
     {
-        return $this->hasRole(config('access.roles.admin'));
+        return $this->hasRole(config('boilerplate.access.roles.admin'));
     }
 
     /**
@@ -28,7 +28,7 @@ trait UserMethod
      */
     public function canChangeEmail()
     {
-        return config('access.options.change_email');
+        return config('boilerplate.access.options.change_email');
     }
 
     /**
@@ -55,6 +55,6 @@ trait UserMethod
      */
     public function getAvatar($size = null)
     {
-        return 'https://gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?s='.config('avatar.size', $size);
+        return 'https://gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?s='.config('boilerplate.avatar.size', $size);
     }
 }

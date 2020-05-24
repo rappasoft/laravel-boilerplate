@@ -78,7 +78,7 @@
                 @else
                     <a href="{{ route('frontend.auth.login') }}">Login</a>
 
-                    @if (config('access.options.registration'))
+                    @if (config('boilerplate.access.options.registration'))
                         <a href="{{ route('frontend.auth.register') }}">Register</a>
                     @endif
                 @endauth

@@ -34,7 +34,7 @@
                             class="nav-link" />
                     </li>
 
-                    @if (config('access.options.registration'))
+                    @if (config('boilerplate.access.options.registration'))
                         <li class="nav-item">
                             <x-utils.link
                                 :href="route('frontend.auth.register')"
