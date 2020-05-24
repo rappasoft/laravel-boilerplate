@@ -34,7 +34,7 @@ trait UserAttribute
     /**
      * @return string
      */
-    public function getVerifiedLabelAttribute() : string
+    public function getVerifiedLabelAttribute(): string
     {
         if ($this->email_verified_at) {
             return '<span class="badge badge-success">Yes</span>';
