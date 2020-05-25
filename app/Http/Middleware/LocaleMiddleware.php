@@ -20,7 +20,7 @@ class LocaleMiddleware
     public function handle($request, Closure $next)
     {
         // Locale is enabled and allowed to be changed
-        if (config('locale.status') && session()->has('locale')) {
+        if (config('boilerplate.locale.status') && session()->has('locale')) {
             setAllLocale(session()->get('locale'));
         }
 
