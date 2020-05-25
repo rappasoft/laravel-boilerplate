@@ -11,7 +11,6 @@ use Illuminate\Support\ServiceProvider;
  */
 class ComposerServiceProvider extends ServiceProvider
 {
-
     /**
      * Register bindings in the container.
      *
