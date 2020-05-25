@@ -21,6 +21,7 @@ class AnnouncementService extends BaseService
 
     /**
      * Get all the enabled announcements
+     * For the frontend or globally
      * Where there's either no time frame or
      * if there is a start and end date, make sure the current time is in between that or
      * if there is only a start date, make sure the current time is past that or
@@ -28,28 +29,29 @@ class AnnouncementService extends BaseService
      *
      * @return mixed
      */
-    public function getForDisplay()
+    public function getForFrontend()
     {
         return $this->model::enabled()
-            ->where(function ($query) {
-                $query->where(function ($query) {
-                    $query->whereNull('starts_at')
-                        ->whereNull('ends_at');
-                })->orWhere(function ($query) {
-                    $query->whereNotNull('starts_at')
-                        ->whereNotNull('ends_at')
-                        ->where('starts_at', '<=', now())
-                        ->where('ends_at', '>=', now());
-                })->orWhere(function ($query) {
-                    $query->whereNotNull('starts_at')
-                        ->whereNull('ends_at')
-                        ->where('starts_at', '<=', now());
-                })->orWhere(function ($query) {
-                    $query->whereNull('starts_at')
-                        ->whereNotNull('ends_at')
-                        ->where('ends_at', '>=', now());
-                });
-            })
+            ->forArea($this->model::TYPE_FRONTEND)
+            ->inTimeFrame()
+            ->get();
+    }
+
+    /**
+     * Get all the enabled announcements
+     * For the backend or globally
+     * Where there's either no time frame or
+     * if there is a start and end date, make sure the current time is in between that or
+     * if there is only a start date, make sure the current time is past that or
+     * if there is only an end date, make sure the current time is before that.
+     *
+     * @return mixed
+     */
+    public function getForBackend()
+    {
+        return $this->model::enabled()
+            ->forArea($this->model::TYPE_BACKEND)
+            ->inTimeFrame()
             ->get();
     }
 }

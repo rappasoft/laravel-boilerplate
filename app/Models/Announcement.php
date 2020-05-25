@@ -11,10 +11,14 @@ class Announcement extends RecordingModel
 {
     use AnnouncementScope;
 
+    public const TYPE_FRONTEND = 'frontend';
+    public const TYPE_BACKEND = 'backend';
+
     /**
      * @var string[]
      */
     protected $fillable = [
+        'area',
         'type',
         'message',
         'enabled',
