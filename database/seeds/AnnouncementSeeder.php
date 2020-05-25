@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use App\Models\Announcement;
+use Illuminate\Database\Seeder;
 
 /**
  * Class AnnouncementSeeder.
