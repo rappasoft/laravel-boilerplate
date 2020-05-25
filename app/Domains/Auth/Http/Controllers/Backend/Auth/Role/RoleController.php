@@ -6,8 +6,8 @@ use App\Domains\Auth\Http\Requests\Backend\Auth\Role\StoreRoleRequest;
 use App\Domains\Auth\Http\Requests\Backend\Auth\Role\UpdateRoleRequest;
 use App\Domains\Auth\Models\Permission;
 use App\Domains\Auth\Models\Role;
-use App\Services\RoleService;
 use App\Http\Controllers\Controller;
+use App\Services\RoleService;
 
 /**
  * Class RoleController.

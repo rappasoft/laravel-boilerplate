@@ -5,13 +5,10 @@ namespace App\Models;
 use App\Models\Traits\Scope\AnnouncementScope;
 
 /**
- * Class Announcement
- *
- * @package App\Models
+ * Class Announcement.
  */
 class Announcement extends RecordingModel
 {
-
     use AnnouncementScope;
 
     /**

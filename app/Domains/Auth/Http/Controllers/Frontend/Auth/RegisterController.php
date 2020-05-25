@@ -2,8 +2,8 @@
 
 namespace App\Domains\Auth\Http\Controllers\Frontend\Auth;
 
-use App\Services\UserService;
 use App\Http\Controllers\Controller;
+use App\Services\UserService;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
 use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;

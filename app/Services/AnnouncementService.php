@@ -3,16 +3,12 @@
 namespace App\Services;
 
 use App\Models\Announcement;
-use Illuminate\Support\Facades\DB;
 
 /**
- * Class AnnouncementService
- *
- * @package App\Services
+ * Class AnnouncementService.
  */
 class AnnouncementService extends BaseService
 {
-
     /**
      * AnnouncementService constructor.
      *
