@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Http\Composers\GlobalComposer;
+use App\Services\AnnouncementService;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -16,19 +16,12 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Global
-        View::composer(
-            // This class binds the $logged_in_user variable to every view
-            '*',
-            GlobalComposer::class
-        );
-    }
+        View::composer('*', function ($view) {
+            $view->with('logged_in_user', auth()->user());
+        });
 
-    /**
-     * Register the service provider.
-     */
-    public function register()
-    {
-        //
+        View::composer(['frontend.index', '*.layouts.app'], function ($view) {
+            $view->with('announcements', resolve(AnnouncementService::class)->getForDisplay());
+        });
     }
 }

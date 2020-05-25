@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\Auth\Services;
+namespace App\Services;
 
 /**
  * Class BaseRepository.

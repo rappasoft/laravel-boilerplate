@@ -3,7 +3,7 @@
 namespace App\Domains\Auth\Http\Controllers\Frontend\Auth;
 
 use App\Domains\Auth\Http\Requests\Frontend\Auth\UpdatePasswordRequest;
-use App\Domains\Auth\Services\UserService;
+use App\Services\UserService;
 use App\Http\Controllers\Controller;
 
 /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\Auth\Services;
+namespace App\Services;
 
 use App\Domains\Auth\Exceptions\GeneralException;
 use App\Domains\Auth\Models\Role;
