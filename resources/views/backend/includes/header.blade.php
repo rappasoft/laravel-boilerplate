@@ -32,18 +32,6 @@
     </ul>
 
     <ul class="c-header-nav ml-auto mr-4">
-        <li class="c-header-nav-item d-md-down-none mx-2">
-            <x-utils.link class="c-header-nav-link" icon="c-icon cil-bell" />
-        </li>
-
-        <li class="c-header-nav-item d-md-down-none mx-2">
-            <x-utils.link class="c-header-nav-link" icon="c-icon cil-list-rich" />
-        </li>
-
-        <li class="c-header-nav-item d-md-down-none mx-2">
-            <x-utils.link class="c-header-nav-link" icon="c-icon cil-envelope-open" />
-        </li>
-
         <li class="c-header-nav-item dropdown">
             <x-utils.link class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <x-slot name="text">

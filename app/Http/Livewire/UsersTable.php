@@ -37,9 +37,9 @@ class UsersTable extends TableComponent
             Column::make('E-mail', 'email')
                 ->searchable()
                 ->sortable(),
-            Column::make('Verified', 'verified_label')
-                ->customAttribute()
-                ->html()
+            Column::make('Verified')
+                // TODO: get a second param to the view method for var name in the view by modifying livewire tables
+                ->view('backend.auth.user.includes.verified')
                 ->sortable(function ($builder, $direction) {
                     return $builder->orderBy('email_verified_at', $direction);
                 }),

@@ -7,6 +7,15 @@ namespace App\Domains\Auth\Models\Traits\Method;
  */
 trait UserMethod
 {
+
+    /**
+     * @return mixed
+     */
+    public function canChangeEmail()
+    {
+        return config('boilerplate.access.options.change_email');
+    }
+
     /**
      * @return mixed
      */
@@ -24,17 +33,9 @@ trait UserMethod
     }
 
     /**
-     * @return mixed
-     */
-    public function canChangeEmail()
-    {
-        return config('boilerplate.access.options.change_email');
-    }
-
-    /**
      * @return bool
      */
-    public function isConfirmed()
+    public function isVerified()
     {
         return $this->email_verified_at !== null;
     }

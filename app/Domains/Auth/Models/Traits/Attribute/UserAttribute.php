@@ -34,18 +34,6 @@ trait UserAttribute
     /**
      * @return string
      */
-    public function getVerifiedLabelAttribute(): string
-    {
-        if ($this->email_verified_at) {
-            return '<span class="badge badge-success">Yes</span>';
-        }
-
-        return '<span class="badge badge-light">No</span>';
-    }
-
-    /**
-     * @return string
-     */
     public function getRolesLabelAttribute()
     {
         $roles = $this->getRoleNames()->toArray();

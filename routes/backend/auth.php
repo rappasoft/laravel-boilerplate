@@ -17,6 +17,7 @@ Route::group([
 
         // Specific User
         Route::group(['prefix' => '{user}'], function () {
+            Route::get('/', [UserController::class, 'show'])->name('user.show')->middleware('permission:access.users.read');
         });
     });
 
