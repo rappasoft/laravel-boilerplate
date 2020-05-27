@@ -25,7 +25,7 @@ class UsersTable extends TableComponent
     /**
      * @param  string  $status
      */
-    public function mount($status = 'active') : void
+    public function mount($status = 'active'): void
     {
         $this->status = $status;
     }
