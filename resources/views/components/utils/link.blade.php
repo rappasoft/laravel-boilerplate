@@ -1,3 +1,4 @@
+
 @props(['active' => '', 'text' => '', 'hide' => false, 'icon' => false])
 
 @if (!$hide)

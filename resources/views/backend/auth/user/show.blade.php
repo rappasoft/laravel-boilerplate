@@ -40,7 +40,7 @@
 
                 <tr>
                     <th>@lang('Timezone')</th>
-                    <td>{{ $user->timezone }}</td>
+                    <td>{{ $user->timezone ?? 'N/A' }}</td>
                 </tr>
 
                 <tr>
@@ -58,6 +58,18 @@
                     <th>@lang('Last Known IP Address')</th>
                     <td>{{ $user->last_login_ip ?? 'N/A' }}</td>
                 </tr>
+
+                @if ($user->isSocial())
+                    <tr>
+                        <th>@lang('Provider')</th>
+                        <td>{{ $user->provider ?? 'N/A' }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>@lang('Provider ID')</th>
+                        <td>{{ $user->provider_id ?? 'N/A' }}</td>
+                    </tr>
+                @endif
             </table>
         </x-slot>
 

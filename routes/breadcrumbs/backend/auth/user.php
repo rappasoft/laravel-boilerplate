@@ -13,3 +13,8 @@ Breadcrumbs::for('admin.auth.user.show', function ($trail, $id) {
     $trail->parent('admin.auth.user.index');
     $trail->push(__('View User'), route('admin.auth.user.show', $id));
 });
+
+Breadcrumbs::for('admin.auth.user.deleted', function ($trail) {
+    $trail->parent('admin.auth.user.index');
+    $trail->push(__('Deleted Users'), route('admin.auth.user.deleted'));
+});

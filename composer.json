@@ -23,7 +23,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "livewire/livewire": "^1.0",
-        "rappasoft/laravel-livewire-tables": "^0.1.4",
+        "rappasoft/laravel-livewire-tables": "^0.1.5",
         "rappasoft/lockout": "^2.0",
         "spatie/laravel-permission": "^3.11"
     },

@@ -22,13 +22,6 @@ return [
              */
             'change_email' => env('CHANGE_EMAIL', false),
 
-            /**
-             * Whether or not a user can be permanently deleted from the system via the backend
-             * The regular delete button will still exist, and will soft delete the user
-             * but the permanently deleted button on the 'deleted users' screen will be hidden.
-             */
-            'permanently_delete_users' => false,
-
             /*
              * Use the homeRoute() helper to determine where to send the user after login based on their status
              * If false the frontend.index route will be used
@@ -47,6 +40,15 @@ return [
              * AuthenticateSession middleware must be enabled
              */
             'single_login' => env('SINGLE_LOGIN', true),
+        ],
+
+        'users' => [
+            /**
+             * Whether or not a user can be permanently deleted from the system via the backend
+             * The regular delete button will still exist, and will soft delete the user
+             * but the permanently deleted button on the 'deleted users' screen will be hidden.
+             */
+            'permanently_delete' => false,
         ],
 
         'roles' => [

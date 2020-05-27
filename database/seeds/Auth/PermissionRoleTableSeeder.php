@@ -48,11 +48,13 @@ class PermissionRoleTableSeeder extends Seeder
         ]);
 
         // Users category
-        Permission::create([
+        $users = Permission::create([
             'parent_id' => $access->id,
             'name' => 'access.users.*',
             'description' => 'All Users',
-        ])->children()->saveMany([
+        ]);
+
+        $users->children()->saveMany([
             new Permission([
                 'name' => 'access.users.read',
                 'description' => 'View Users',
@@ -72,7 +74,20 @@ class PermissionRoleTableSeeder extends Seeder
                 'description' => 'Delete Users',
                 'sort' => 4,
             ]),
+            new Permission([
+                'name' => 'access.users.restore',
+                'description' => 'Restore Users',
+                'sort' => 5,
+            ]),
         ]);
+
+        if (config('boilerplate.access.users.permanently_delete')) {
+            $users->children()->create([
+                'name'        => 'access.users.permanently-delete',
+                'description' => 'Permanently Delete Users',
+                'sort'        => 6,
+            ]);
+        }
 
         // Roles category
         Permission::create([

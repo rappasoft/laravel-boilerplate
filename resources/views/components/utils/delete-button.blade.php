@@ -6,7 +6,7 @@
             name="delete-item"
             button-class="btn btn-danger btn-sm"
         >
-            <i class="fas fa-trash"></i> {{ __('Delete') }}
+            <i class="fas fa-trash"></i> {{ $text ?? __('Delete') }}
         </x-utils.form-button>
     @endif
 @else
@@ -16,6 +16,6 @@
         name="delete-item"
         button-class="btn btn-danger btn-sm"
     >
-        <i class="fas fa-trash"></i> {{ __('Delete') }}
+        <i class="fas fa-trash"></i> {{ $text ?? __('Delete') }}
     </x-utils.form-button>
 @endif

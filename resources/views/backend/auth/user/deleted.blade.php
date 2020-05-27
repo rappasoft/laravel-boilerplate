@@ -7,15 +7,11 @@
 @section('content')
     <x-backend.card>
         <x-slot name="header">
-            {{ __('User Management') }}
-        </x-slot>
-
-        <x-slot name="headerActions">
-            <x-utils.link icon="c-icon cil-plus" class="card-header-action" :href="route('admin.auth.user.create')" :text="__('Create User')" />
+            {{ __('Deleted Users') }}
         </x-slot>
 
         <x-slot name="body">
-            <livewire:users-table />
+            <livewire:users-table status="deleted" />
         </x-slot>
     </x-backend.card>
 @endsection

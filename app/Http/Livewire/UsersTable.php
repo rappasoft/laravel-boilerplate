@@ -18,10 +18,27 @@ class UsersTable extends TableComponent
     public $sortField = 'name';
 
     /**
+     * @var string
+     */
+    public $status;
+
+    /**
+     * @param  string  $status
+     */
+    public function mount($status = 'active') : void
+    {
+        $this->status = $status;
+    }
+
+    /**
      * @return Builder
      */
     public function query(): Builder
     {
+        if ($this->status === 'deleted') {
+            return User::onlyTrashed();
+        }
+
         return User::query();
     }
 

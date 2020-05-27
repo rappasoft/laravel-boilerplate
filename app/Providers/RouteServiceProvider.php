@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Domains\Auth\Models\User;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +34,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // To be able to restore a user, since the default binding is a find and would result in a 404
+        Route::bind('deletedUser', function ($id) {
+            return User::onlyTrashed()->find($id);
+        });
 
         parent::boot();
     }
