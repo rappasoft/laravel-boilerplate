@@ -1,5 +1,7 @@
 @extends('backend.layouts.app')
 
+@section('title', __('Update Role'))
+
 @section('content')
     <x-forms.patch :action="route('admin.auth.role.update', $role)">
         <x-backend.card>

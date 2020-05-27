@@ -1,11 +1,13 @@
 @extends('frontend.layouts.app')
 
+@section('title', __('Verify Your E-mail Address'))
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
             <x-frontend.card>
                 <x-slot name="header">
-                    @lang('Verify Your Email Address')
+                    @lang('Verify Your E-mail Address')
                 </x-slot>
 
                 <x-slot name="body">

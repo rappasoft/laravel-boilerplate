@@ -1,5 +1,7 @@
 @extends('backend.layouts.app')
 
+@section('title', __('Create User'))
+
 @section('content')
     <x-forms.post :action="route('admin.auth.user.store')">
         <x-backend.card>

@@ -1,5 +1,7 @@
 @extends('frontend.layouts.app')
 
+@section('title', __('Dashboard'))
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">

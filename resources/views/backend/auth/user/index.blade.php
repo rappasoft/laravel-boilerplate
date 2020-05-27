@@ -1,5 +1,7 @@
 @extends('backend.layouts.app')
 
+@section('title', __('User Management'))
+
 @section('breadcrumb-links')
     @include('backend.auth.user.includes.breadcrumb-links')
 @endsection

@@ -23,7 +23,7 @@ Route::group(['as' => 'auth.'], function () {
         Route::post('password/confirm', [ConfirmPasswordController::class, 'confirm']);
         Route::patch('password/update', [UpdatePasswordController::class, 'update'])->name('password.change'); // Dup
 
-        // Email Verification
+        // E-mail Verification
         Route::get('email/verify', [VerificationController::class, 'show'])->name('verification.notice');
         Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
         Route::post('email/resend', [VerificationController::class, 'resend'])->name('verification.resend');

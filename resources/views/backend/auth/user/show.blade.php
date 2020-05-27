@@ -1,5 +1,7 @@
 @extends('backend.layouts.app')
 
+@section('title', __('View User'))
+
 @section('content')
     <x-backend.card>
         <x-slot name="header">

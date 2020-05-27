@@ -1,5 +1,7 @@
 @extends('backend.layouts.app')
 
+@section('title', __('Deleted Users'))
+
 @section('breadcrumb-links')
     @include('backend.auth.user.includes.breadcrumb-links')
 @endsection
