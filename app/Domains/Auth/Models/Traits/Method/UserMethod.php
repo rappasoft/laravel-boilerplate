@@ -12,7 +12,7 @@ trait UserMethod
      */
     public function canChangeEmail()
     {
-        return config('boilerplate.access.options.change_email');
+        return config('boilerplate.access.users.change_email');
     }
 
     /**

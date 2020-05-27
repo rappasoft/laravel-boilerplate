@@ -17,12 +17,6 @@ return [
         'options' => [
 
             /*
-             * Whether or not a user can change their email address after
-             * their account has already been created
-             */
-            'change_email' => env('CHANGE_EMAIL', false),
-
-            /*
              * Use the homeRoute() helper to determine where to send the user after login based on their status
              * If false the frontend.index route will be used
              */
@@ -43,6 +37,12 @@ return [
         ],
 
         'users' => [
+            /*
+             * Whether or not a user can change their email address after
+             * their account has already been created
+             */
+            'change_email' => env('CHANGE_EMAIL', false),
+
             /**
              * Whether or not a user can be permanently deleted from the system via the backend
              * The regular delete button will still exist, and will soft delete the user

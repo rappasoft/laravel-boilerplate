@@ -49,7 +49,7 @@
                     <th>@lang('Last Login At')</th>
                     <td>
                         @if($user->last_login_at)
-                            {{ timezone()->convertToLocal($user->last_login_at) }}
+                            @displayDate($user->last_login_at)
                         @else
                             N/A
                         @endif
@@ -77,11 +77,11 @@
 
         <x-slot name="footer">
             <small class="float-right text-muted">
-                <strong>@lang('Account Created'):</strong> {{ timezone()->convertToLocal($user->created_at) }} ({{ $user->created_at->diffForHumans() }}),
-                <strong>@lang('Last Updated'):</strong> {{ timezone()->convertToLocal($user->updated_at) }} ({{ $user->updated_at->diffForHumans() }})
+                <strong>@lang('Account Created'):</strong> @displayDate($user->created_at) ({{ $user->created_at->diffForHumans() }}),
+                <strong>@lang('Last Updated'):</strong> @displayDate($user->updated_at) ({{ $user->updated_at->diffForHumans() }})
 
                 @if($user->trashed())
-                    <strong>@lang('Account Deleted'):</strong> {{ timezone()->convertToLocal($user->deleted_at) }} ({{ $user->deleted_at->diffForHumans() }})
+                    <strong>@lang('Account Deleted'):</strong> @displayDate($user->deleted_at) ({{ $user->deleted_at->diffForHumans() }})
                 @endif
             </small>
         </x-slot>
