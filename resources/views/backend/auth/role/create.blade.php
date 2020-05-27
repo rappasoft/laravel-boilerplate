@@ -4,7 +4,7 @@
     <x-forms.post :action="route('admin.auth.role.store')">
         <x-backend.card>
             <x-slot name="header">
-                {{ __('Create Role') }}
+                @lang('Create Role')
             </x-slot>
 
             <x-slot name="headerActions">

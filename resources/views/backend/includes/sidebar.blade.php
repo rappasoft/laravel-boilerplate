@@ -18,7 +18,7 @@
                 :text="__('Dashboard')" />
         </li>
 
-        <li class="c-sidebar-nav-title">{{ __('System') }}</li>
+        <li class="c-sidebar-nav-title">@lang('System')</li>
 
         <li class="c-sidebar-nav-dropdown {{ activeClass(Route::is('admin.auth.user.*') || Route::is('admin.auth.role.*'), 'c-open c-show') }}">
             <x-utils.link

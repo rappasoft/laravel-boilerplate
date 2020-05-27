@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <x-frontend.card>
                 <x-slot name="header">
-                    {{ __('Login') }}
+                    @lang('Login')
                 </x-slot>
 
                 <x-slot name="body">

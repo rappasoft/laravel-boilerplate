@@ -5,7 +5,7 @@
             :text="appName()"
             class="navbar-brand" />
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="@lang('Toggle navigation')">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -86,7 +86,7 @@
                                 class="dropdown-item"
                                 onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 <x-slot name="text">
-                                    {{ __('Logout') }}
+                                    @lang('Logout')
                                     <x-forms.post :action="route('frontend.auth.logout')" id="logout-form" class="d-none" />
                                 </x-slot>
                             </x-utils.link>

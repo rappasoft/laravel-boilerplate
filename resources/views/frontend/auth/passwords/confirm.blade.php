@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <x-frontend.card>
                 <x-slot name="header">
-                    {{ __('Please confirm your password before continuing.') }}
+                    @lang('Please confirm your password before continuing.') }}
                 </x-slot>
 
                 <x-slot name="body">

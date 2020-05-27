@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <x-frontend.card>
                 <x-slot name="header">
-                    {{ __('Reset Password') }}
+                    @lang('Reset Password')
                 </x-slot>
 
                 <x-slot name="body">

@@ -43,7 +43,7 @@
 
             <div class="dropdown-menu dropdown-menu-right pt-0">
                 <div class="dropdown-header bg-light py-2">
-                    <strong>Account</strong>
+                    <strong>@lang('Account')</strong>
                 </div>
 
                 <x-utils.link
@@ -51,7 +51,7 @@
                     icon="c-icon mr-2 cil-account-logout"
                     onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                     <x-slot name="text">
-                        {{ __('Logout') }}
+                        @lang('Logout')
                         <x-forms.post :action="route('frontend.auth.logout')" id="logout-form" class="d-none" />
                     </x-slot>
                 </x-utils.link>

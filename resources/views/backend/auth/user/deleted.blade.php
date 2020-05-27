@@ -7,7 +7,7 @@
 @section('content')
     <x-backend.card>
         <x-slot name="header">
-            {{ __('Deleted Users') }}
+            @lang('Deleted Users')
         </x-slot>
 
         <x-slot name="body">

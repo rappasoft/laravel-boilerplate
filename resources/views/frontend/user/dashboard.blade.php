@@ -6,11 +6,11 @@
             <div class="col-md-10">
                 <x-frontend.card>
                     <x-slot name="header">
-                        {{ __('Dashboard') }}
+                        @lang('Dashboard')
                     </x-slot>
 
                     <x-slot name="body">
-                        {{ __('You are logged in!') }}
+                        @lang('You are logged in!')
                     </x-slot>
                 </x-frontend.card>
             </div><!--col-md-10-->

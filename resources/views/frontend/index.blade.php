@@ -75,12 +75,12 @@
         <div id="app" class="flex-center position-ref full-height">
             <div class="top-right links">
                 @auth
-                    <a href="{{ route('frontend.user.dashboard') }}">Dashboard</a>
+                    <a href="{{ route('frontend.user.dashboard') }}">@lang('Dashboard')</a>
                 @else
-                    <a href="{{ route('frontend.auth.login') }}">Login</a>
+                    <a href="{{ route('frontend.auth.login') }}">@lang('Login')</a>
 
                     @if (config('boilerplate.access.options.registration'))
-                        <a href="{{ route('frontend.auth.register') }}">Register</a>
+                        <a href="{{ route('frontend.auth.register') }}">@lang('Register')</a>
                     @endif
                 @endauth
             </div><!--top-right-->
@@ -93,7 +93,7 @@
                 </div><!--title-->
 
                 <div class="links">
-                    <a href="http://laravel-boilerplate.com" target="_blank"><i class="fa fa-book"></i> Docs</a>
+                    <a href="http://laravel-boilerplate.com" target="_blank"><i class="fa fa-book"></i> @lang('Docs')</a>
                     <a href="https://github.com/rappasoft/laravel-boilerplate" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                 </div><!--links-->
             </div><!--content-->

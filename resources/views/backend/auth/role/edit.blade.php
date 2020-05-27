@@ -4,7 +4,7 @@
     <x-forms.patch :action="route('admin.auth.role.update', $role)">
         <x-backend.card>
             <x-slot name="header">
-                {{ __('Create Role') }}
+                @lang('Update Role')
             </x-slot>
 
             <x-slot name="headerActions">

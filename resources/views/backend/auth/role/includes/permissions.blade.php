@@ -2,7 +2,7 @@
     @include('backend.auth.role.includes.no-permissions-message')
 
     @if ($general->count())
-        <h5 class="mb-3">{{ __('General Permissions') }}</h5>
+        <h5 class="mb-3">@lang('General Permissions')</h5>
 
         <div class="row">
             <div class="col">
@@ -21,7 +21,7 @@
     @endif
 
     @if ($categories->count())
-        <h5 class="mb-3">{{ __('Permission Categories') }}</h5>
+        <h5 class="mb-3">@lang('Permission Categories')</h5>
 
         <ul id="tree" class="m-0 p-0" style="list-style: none;">
             @foreach($categories as $category)

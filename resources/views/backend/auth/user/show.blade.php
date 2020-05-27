@@ -3,7 +3,7 @@
 @section('content')
     <x-backend.card>
         <x-slot name="header">
-            {{ __('View User') }}
+            @lang('View User')
         </x-slot>
 
         <x-slot name="headerActions">
@@ -75,11 +75,11 @@
 
         <x-slot name="footer">
             <small class="float-right text-muted">
-                <strong>@lang('Created At'):</strong> {{ timezone()->convertToLocal($user->created_at) }} ({{ $user->created_at->diffForHumans() }}),
+                <strong>@lang('Account Created'):</strong> {{ timezone()->convertToLocal($user->created_at) }} ({{ $user->created_at->diffForHumans() }}),
                 <strong>@lang('Last Updated'):</strong> {{ timezone()->convertToLocal($user->updated_at) }} ({{ $user->updated_at->diffForHumans() }})
 
                 @if($user->trashed())
-                    <strong>@lang('Deleted At'):</strong> {{ timezone()->convertToLocal($user->deleted_at) }} ({{ $user->deleted_at->diffForHumans() }})
+                    <strong>@lang('Account Deleted'):</strong> {{ timezone()->convertToLocal($user->deleted_at) }} ({{ $user->deleted_at->diffForHumans() }})
                 @endif
             </small>
         </x-slot>

@@ -7,7 +7,7 @@
 @section('content')
     <x-backend.card>
         <x-slot name="header">
-            {{ __('User Management') }}
+            @lang('User Management')
         </x-slot>
 
         <x-slot name="headerActions">
