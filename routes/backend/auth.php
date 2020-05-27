@@ -1,8 +1,8 @@
 <?php
 
 use App\Domains\Auth\Http\Controllers\Backend\Auth\Role\RoleController;
-use App\Domains\Auth\Http\Controllers\Backend\Auth\User\UserController;
 use App\Domains\Auth\Http\Controllers\Backend\Auth\User\DeletedUserController;
+use App\Domains\Auth\Http\Controllers\Backend\Auth\User\UserController;
 
 // All route names are prefixed with 'admin.auth'.
 Route::group([
@@ -25,7 +25,6 @@ Route::group([
             Route::get('edit', [UserController::class, 'edit'])->name('user.edit')->middleware('permission:access.users.update');
             Route::patch('/', [UserController::class, 'update'])->name('user.update')->middleware('permission:access.users.update');
             Route::delete('/', [UserController::class, 'destroy'])->name('user.destroy')->middleware('permission:access.users.delete');
-
 
 //            Route::get('mark/{status}', [UserStatusController::class, 'mark'])->name('user.mark')->where(['status' => '[0,1]']);
         });

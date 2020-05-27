@@ -11,7 +11,6 @@ use App\Services\UserService;
  */
 class UserController extends Controller
 {
-
     /**
      * @var UserService
      */
