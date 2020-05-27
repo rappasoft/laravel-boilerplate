@@ -74,7 +74,7 @@ return [
     |
     | Found in views/includes/partials/ga.blade.php
     */
-    'google-analytics' => env('GOOGLE_ANALYTICS', 'UA-XXXXX-X'),
+    'google_analytics' => env('GOOGLE_ANALYTICS', 'UA-XXXXX-X'),
 
     /*
     |--------------------------------------------------------------------------
