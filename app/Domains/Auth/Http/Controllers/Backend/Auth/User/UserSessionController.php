@@ -10,7 +10,6 @@ use App\Http\Controllers\Controller;
  */
 class UserSessionController extends Controller
 {
-
     /**
      * @param  User  $user
      *
