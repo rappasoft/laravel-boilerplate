@@ -34,11 +34,19 @@
                 More
             </a>
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="margin: 0px;">
-    {{--            <a class="dropdown-item" href="#">Clear Session</a>--}}
-    {{--            <a class="dropdown-item" href="#">Login As {{ $model->name }}</a>--}}
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
     {{--            <a class="dropdown-item" href="#">Change Password</a>--}}
+
                 @if ($model->id !== 1 && $model->id !== auth()->id())
+                    <x-utils.link
+                        :href="route('admin.auth.user.clear-session', $model)"
+                        class="dropdown-item"
+                        :text="__('Clear Session')"
+                        name="confirm-item"
+                        permission="access.users.clear-session" />
+
+                    {{--            <a class="dropdown-item" href="#">Login As {{ $model->name }}</a>--}}
+
                     <x-utils.link
                         :href="route('admin.auth.user.mark', [$model, 0])"
                         class="dropdown-item"
@@ -50,5 +58,3 @@
         </div>
     @endif
 @endif
-
-{{-- TODO: Cleanup based on status --}}

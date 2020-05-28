@@ -40,6 +40,7 @@ abstract class BaseUser extends Authenticatable implements Recordable, MustVerif
         'timezone',
         'last_login_at',
         'last_login_ip',
+        'to_be_logged_out',
         'provider',
         'provider_id',
     ];
@@ -71,6 +72,7 @@ abstract class BaseUser extends Authenticatable implements Recordable, MustVerif
         'active' => 'boolean',
         'last_login_at' => 'datetime',
         'email_verified_at' => 'datetime',
+        'to_be_logged_out' => 'boolean',
     ];
 
     /**

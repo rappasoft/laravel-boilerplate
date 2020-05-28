@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('timezone')->nullable();
             $table->timestamp('last_login_at')->nullable();
             $table->string('last_login_ip')->nullable();
+            $table->boolean('to_be_logged_out')->default(false);
             $table->string('provider')->nullable();
             $table->string('provider_id')->nullable();
             $table->rememberToken();

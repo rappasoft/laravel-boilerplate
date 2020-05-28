@@ -89,6 +89,11 @@ class PermissionRoleTableSeeder extends Seeder
                 'description' => 'Reactivate Users',
                 'sort' => 8,
             ]),
+            new Permission([
+                'name' => 'access.users.clear-session',
+                'description' => 'Clear User Sessions',
+                'sort' => 9,
+            ]),
         ]);
 
         if (config('boilerplate.access.users.permanently_delete')) {

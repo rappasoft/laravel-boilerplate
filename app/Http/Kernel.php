@@ -39,6 +39,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \App\Http\Middleware\LocaleMiddleware::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Domains\Auth\Http\Middleware\ToBeLoggedOut::class,
         ],
 
         'api' => [
