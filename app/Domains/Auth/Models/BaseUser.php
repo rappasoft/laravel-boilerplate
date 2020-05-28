@@ -12,6 +12,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Lab404\Impersonate\Models\Impersonate;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -21,6 +22,7 @@ abstract class BaseUser extends Authenticatable implements Recordable, MustVerif
 {
     use HasRoles,
         Eventually,
+        Impersonate,
         MustVerifyEmailTrait,
         Notifiable,
         RecordableTrait,
@@ -99,5 +101,27 @@ abstract class BaseUser extends Authenticatable implements Recordable, MustVerif
     public function sendEmailVerificationNotification(): void
     {
         $this->notify(new VerifyEmail);
+    }
+
+    /**
+     * Return true or false if the user can impersonate an other user.
+     *
+     * @param void
+     * @return  bool
+     */
+    public function canImpersonate() : bool
+    {
+        return $this->isAdmin();
+    }
+
+    /**
+     * Return true or false if the user can be impersonate.
+     *
+     * @param void
+     * @return  bool
+     */
+    public function canBeImpersonated() : bool
+    {
+        return $this->id !== 1;
     }
 }

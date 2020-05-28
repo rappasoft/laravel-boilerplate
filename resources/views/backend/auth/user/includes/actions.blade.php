@@ -47,6 +47,10 @@
 
                     {{--            <a class="dropdown-item" href="#">Login As {{ $model->name }}</a>--}}
 
+                    @canBeImpersonated($model)
+                        <a href="{{ route('impersonate', $model->id) }}" class="dropdown-item">@lang('Login As') {{ $model->full_name }}</a>
+                    @endCanBeImpersonated
+
                     <x-utils.link
                         :href="route('admin.auth.user.mark', [$model, 0])"
                         class="dropdown-item"

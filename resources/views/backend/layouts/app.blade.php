@@ -20,6 +20,7 @@
     <div class="c-wrapper c-fixed-components">
         @include('backend.includes.header')
         @include('includes.partials.read-only')
+        @include('includes.partials.logged-in-as')
         @include('includes.partials.announcements')
 
         <div class="c-body">
