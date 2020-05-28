@@ -109,7 +109,7 @@ abstract class BaseUser extends Authenticatable implements Recordable, MustVerif
      * @param void
      * @return  bool
      */
-    public function canImpersonate() : bool
+    public function canImpersonate(): bool
     {
         return $this->isAdmin();
     }
@@ -120,7 +120,7 @@ abstract class BaseUser extends Authenticatable implements Recordable, MustVerif
      * @param void
      * @return  bool
      */
-    public function canBeImpersonated() : bool
+    public function canBeImpersonated(): bool
     {
         return $this->id !== 1;
     }
