@@ -11,7 +11,6 @@ use App\Services\UserService;
  */
 class DeactivatedUserController extends Controller
 {
-
     /**
      * @var UserService
      */
@@ -44,10 +43,10 @@ class DeactivatedUserController extends Controller
      */
     public function update(User $user, $status)
     {
-        $this->userService->mark($user, (int)$status);
+        $this->userService->mark($user, (int) $status);
 
         return redirect()->route(
-            (int)$status === 1 ?
+            (int) $status === 1 ?
                 'admin.auth.user.index' :
                 'admin.auth.user.deactivated'
         )->withFlashSuccess(__('The user was successfully updated.'));
