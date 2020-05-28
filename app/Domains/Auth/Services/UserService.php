@@ -115,7 +115,7 @@ class UserService extends BaseService
      * @return User
      * @throws GeneralException
      */
-    public function delete(User $user)
+    public function delete(User $user) : User
     {
         if ($user->id === 1) {
             throw new GeneralException(__('You can not delete the administrator account.'));
@@ -172,6 +172,32 @@ class UserService extends BaseService
         }
 
         throw new GeneralException(__('There was a problem permanently deleting this user. Please try again.'));
+    }
+
+    /**
+     * @param  User  $user
+     * @param $status
+     *
+     * @return User
+     * @throws GeneralException
+     */
+    public function mark(User $user, $status): User
+    {
+        if ($status === 0 && auth()->id() === $user->id) {
+            throw new GeneralException(__('You can not do that to yourself.'));
+        }
+
+        if ($status === 0 && $user->id === 1) {
+            throw new GeneralException(__('You can not deactivate the administrator account.'));
+        }
+
+        $user->active = $status;
+
+        if ($user->save()) {
+            return $user;
+        }
+
+        throw new GeneralException(__('There was a problem updating this user. Please try again.'));
     }
 
     /**

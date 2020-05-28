@@ -3,6 +3,7 @@
 use App\Domains\Auth\Http\Controllers\Backend\Auth\Role\RoleController;
 use App\Domains\Auth\Http\Controllers\Backend\Auth\User\DeletedUserController;
 use App\Domains\Auth\Http\Controllers\Backend\Auth\User\UserController;
+use App\Domains\Auth\Http\Controllers\Backend\Auth\User\DeactivatedUserController;
 
 // All route names are prefixed with 'admin.auth'.
 Route::group([
@@ -12,7 +13,9 @@ Route::group([
 ], function () {
     // User Management
     Route::group(['prefix' => 'user', 'middleware' => 'permission:access.users.*'], function () {
-//        Route::get('deactivated', [UserStatusController::class, 'getDeactivated'])->name('user.deactivated');
+        Route::get('deactivated', [DeactivatedUserController::class, 'index'])->name('user.deactivated')
+            ->middleware('permission:access.users.deactivate|permission:access.users.reactivate');
+
         Route::get('deleted', [DeletedUserController::class, 'index'])->name('user.deleted')
             ->middleware('permission:access.users.delete|access.users.restore|access.users.permanently-delete');
 
@@ -26,7 +29,9 @@ Route::group([
             Route::patch('/', [UserController::class, 'update'])->name('user.update')->middleware('permission:access.users.update');
             Route::delete('/', [UserController::class, 'destroy'])->name('user.destroy')->middleware('permission:access.users.delete');
 
-//            Route::get('mark/{status}', [UserStatusController::class, 'mark'])->name('user.mark')->where(['status' => '[0,1]']);
+            Route::get('mark/{status}', [DeactivatedUserController::class, 'update'])->name('user.mark')
+                ->where(['status' => '[0,1]'])
+                ->middleware('permission:access.users.deactivate|permission:access.users.reactivate');
         });
 
         Route::group(['prefix' => '{deletedUser}'], function () {

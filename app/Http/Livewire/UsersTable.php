@@ -39,7 +39,11 @@ class UsersTable extends TableComponent
             return User::onlyTrashed();
         }
 
-        return User::query();
+        if ($this->status === 'deactivated') {
+            return User::onlyDeactivated();
+        }
+
+        return User::onlyActive();
     }
 
     /**

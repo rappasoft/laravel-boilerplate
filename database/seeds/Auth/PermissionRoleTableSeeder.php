@@ -77,7 +77,17 @@ class PermissionRoleTableSeeder extends Seeder
             new Permission([
                 'name' => 'access.users.restore',
                 'description' => 'Restore Users',
-                'sort' => 5,
+                'sort' => 6,
+            ]),
+            new Permission([
+                'name' => 'access.users.deactivate',
+                'description' => 'Deactivate Users',
+                'sort' => 7,
+            ]),
+            new Permission([
+                'name' => 'access.users.reactivate',
+                'description' => 'Reactivate Users',
+                'sort' => 8,
             ]),
         ]);
 
@@ -85,7 +95,7 @@ class PermissionRoleTableSeeder extends Seeder
             $users->children()->create([
                 'name'        => 'access.users.permanently-delete',
                 'description' => 'Permanently Delete Users',
-                'sort'        => 6,
+                'sort'        => 5,
             ]);
         }
 

@@ -62,7 +62,7 @@
     <div class="c-subheader justify-content-between px-3">
         {!! Breadcrumbs::render() !!}
 
-        <div class="c-subheader-nav d-md-down-none mfe-2">
+        <div class="c-subheader-nav mfe-2">
             @yield('breadcrumb-links')
         </div>
     </div><!--c-subheader-->
