@@ -111,7 +111,7 @@ abstract class BaseUser extends Authenticatable implements Recordable, MustVerif
      */
     public function canImpersonate() : bool
     {
-        return $this->isAdmin();
+        return $this->can('access.users.impersonate');
     }
 
     /**

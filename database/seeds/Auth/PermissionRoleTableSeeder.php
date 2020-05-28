@@ -94,6 +94,11 @@ class PermissionRoleTableSeeder extends Seeder
                 'description' => 'Clear User Sessions',
                 'sort' => 9,
             ]),
+            new Permission([
+                'name' => 'access.users.impersonate',
+                'description' => 'Impersonate Users',
+                'sort' => 10,
+            ]),
         ]);
 
         if (config('boilerplate.access.users.permanently_delete')) {

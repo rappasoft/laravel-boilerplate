@@ -45,10 +45,12 @@
                         name="confirm-item"
                         permission="access.users.clear-session" />
 
-                    {{--            <a class="dropdown-item" href="#">Login As {{ $model->name }}</a>--}}
-
                     @canBeImpersonated($model)
-                        <a href="{{ route('impersonate', $model->id) }}" class="dropdown-item">@lang('Login As') {{ $model->full_name }}</a>
+                        <x-utils.link
+                            :href="route('impersonate', $model->id)"
+                            class="dropdown-item"
+                            :text="__('Login As ' . $model->name)"
+                            permission="access.users.impersonate" />
                     @endCanBeImpersonated
 
                     <x-utils.link
