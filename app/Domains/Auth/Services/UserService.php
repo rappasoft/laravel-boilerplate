@@ -103,7 +103,7 @@ class UserService extends BaseService
         // TODO: Refactor the rest to throw_if
         if (isset($data['current_password'])) {
             throw_if(
-                !Hash::check($data['current_password'], $user->password),
+                ! Hash::check($data['current_password'], $user->password),
                 new GeneralException(__('That is not your old password.'))
             );
         }
