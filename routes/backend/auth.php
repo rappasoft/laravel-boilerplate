@@ -5,6 +5,7 @@ use App\Domains\Auth\Http\Controllers\Backend\Auth\User\DeactivatedUserControlle
 use App\Domains\Auth\Http\Controllers\Backend\Auth\User\DeletedUserController;
 use App\Domains\Auth\Http\Controllers\Backend\Auth\User\UserController;
 use App\Domains\Auth\Http\Controllers\Backend\Auth\User\UserSessionController;
+use App\Domains\Auth\Http\Controllers\Backend\Auth\User\UserPasswordController;
 
 // All route names are prefixed with 'admin.auth'.
 Route::group([
@@ -24,7 +25,7 @@ Route::group([
 
         Route::get('/', [UserController::class, 'index'])
             ->name('user.index')
-            ->middleware('permission:access.users.read');
+            ->middleware('permission:access.users.read|permission:access.users.create|permission:access.users.update|permission:access.users.delete|permission:access.users.deactivate|permission:access.users.clear-session|permission:access.users.change-password');
 
         Route::get('create', [UserController::class, 'create'])
             ->name('user.create')
@@ -59,6 +60,14 @@ Route::group([
             Route::get('clear-session', [UserSessionController::class, 'update'])
                 ->name('user.clear-session')
                 ->middleware('permission:access.users.clear-session');
+
+            Route::get('password/change', [UserPasswordController::class, 'edit'])
+                ->name('user.change-password')
+                ->middleware('permission:access.users.change-password');
+
+            Route::patch('password/change', [UserPasswordController::class, 'update'])
+                ->name('user.change-password.update')
+                ->middleware('permission:access.users.change-password');
         });
 
         Route::group(['prefix' => '{deletedUser}'], function () {

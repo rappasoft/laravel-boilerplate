@@ -24,18 +24,36 @@
             permission="access.users.reactivate" />
     @endif
 
-    @if ($model->id !== 1 && $model->id !== auth()->id())
+    @if ($model->id !== 1 && $model->id !== $logged_in_user->id)
         <x-utils.delete-button :href="route('admin.auth.user.destroy', $model)" permission="access.users.delete" />
     @endif
 
-    @if ($model->isActive())
+    @if ($model->id === 1)
         <div class="dropdown d-inline-block">
-            <a class="btn btn-sm btn-secondary dropdown-toggle" id="dropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="btn btn-sm btn-secondary dropdown-toggle" id="moreMenuLink" href="#" role="button" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false">
                 More
             </a>
 
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    {{--            <a class="dropdown-item" href="#">Change Password</a>--}}
+            <div class="dropdown-menu" aria-labelledby="moreMenuLink">
+                <x-utils.link
+                    :href="route('admin.auth.user.change-password', $model)"
+                    class="dropdown-item"
+                    :text="__('Change Password')"
+                    permission="access.users.change-password" />
+            </div>
+        </div>
+    @elseif ($model->id !== 1 && $model->isActive())
+        <div class="dropdown d-inline-block">
+            <a class="btn btn-sm btn-secondary dropdown-toggle" id="moreMenuLink" href="#" role="button" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false">
+                More
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="moreMenuLink">
+                <x-utils.link
+                    :href="route('admin.auth.user.change-password', $model)"
+                    class="dropdown-item"
+                    :text="__('Change Password')"
+                    permission="access.users.change-password" />
 
                 @if ($model->id !== 1 && $model->id !== auth()->id())
                     <x-utils.link

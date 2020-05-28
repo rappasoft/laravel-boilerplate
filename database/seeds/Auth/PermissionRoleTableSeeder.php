@@ -99,6 +99,11 @@ class PermissionRoleTableSeeder extends Seeder
                 'description' => 'Impersonate Users',
                 'sort' => 10,
             ]),
+            new Permission([
+                'name' => 'access.users.change-password',
+                'description' => 'Change User Passwords',
+                'sort' => 11,
+            ]),
         ]);
 
         if (config('boilerplate.access.users.permanently_delete')) {

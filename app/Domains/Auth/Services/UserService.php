@@ -101,10 +101,12 @@ class UserService extends BaseService
     public function updatePassword(User $user, $data): User
     {
         // TODO: Refactor the rest to throw_if
-        throw_if(
-            ! Hash::check($data['current_password'], $user->password),
-            new GeneralException(__('That is not your old password.'))
-        );
+        if (isset($data['current_password'])) {
+            throw_if(
+                !Hash::check($data['current_password'], $user->password),
+                new GeneralException(__('That is not your old password.'))
+            );
+        }
 
         return tap($user)->update(['password' => $data['password']]);
     }
