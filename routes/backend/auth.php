@@ -1,9 +1,9 @@
 <?php
 
 use App\Domains\Auth\Http\Controllers\Backend\Auth\Role\RoleController;
+use App\Domains\Auth\Http\Controllers\Backend\Auth\User\DeactivatedUserController;
 use App\Domains\Auth\Http\Controllers\Backend\Auth\User\DeletedUserController;
 use App\Domains\Auth\Http\Controllers\Backend\Auth\User\UserController;
-use App\Domains\Auth\Http\Controllers\Backend\Auth\User\DeactivatedUserController;
 
 // All route names are prefixed with 'admin.auth'.
 Route::group([

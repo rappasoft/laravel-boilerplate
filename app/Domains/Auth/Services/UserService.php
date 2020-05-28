@@ -115,7 +115,7 @@ class UserService extends BaseService
      * @return User
      * @throws GeneralException
      */
-    public function delete(User $user) : User
+    public function delete(User $user): User
     {
         if ($user->id === 1) {
             throw new GeneralException(__('You can not delete the administrator account.'));
