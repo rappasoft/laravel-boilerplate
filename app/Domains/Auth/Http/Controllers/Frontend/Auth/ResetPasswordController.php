@@ -2,6 +2,7 @@
 
 namespace App\Domains\Auth\Http\Controllers\Frontend\Auth;
 
+use App\Domains\Auth\Rules\UnusedPassword;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
@@ -46,12 +47,18 @@ class ResetPasswordController extends Controller
      *
      * @return array
      */
+    // TODO: Somehow move to form request?
     protected function rules()
     {
         return [
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => PasswordRules::changePassword(request()->get('email')),
+            'token' => ['required'],
+            'email' => ['required', 'email'],
+            'password' => array_merge(
+                [
+                    new UnusedPassword(request('token')), // TODO: Use email?
+                ],
+                PasswordRules::changePassword(request('email'))
+            ),
         ];
     }
 

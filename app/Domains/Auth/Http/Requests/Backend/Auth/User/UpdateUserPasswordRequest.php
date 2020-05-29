@@ -3,6 +3,7 @@
 namespace App\Domains\Auth\Http\Requests\Backend\Auth\User;
 
 //use App\Rules\Auth\UnusedPassword;
+use App\Domains\Auth\Rules\UnusedPassword;
 use Illuminate\Foundation\Http\FormRequest;
 use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
 
@@ -31,7 +32,7 @@ class UpdateUserPasswordRequest extends FormRequest
         return [
             'password' => array_merge(
                 [
-                    //new UnusedPassword((int) $this->segment(4)),
+                    new UnusedPassword((int)$this->segment(4)),
                 ],
                 PasswordRules::changePassword($this->email)
             ),

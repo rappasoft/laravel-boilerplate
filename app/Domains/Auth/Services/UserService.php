@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Domains\Auth\Exceptions\GeneralException;
 use App\Domains\Auth\Exceptions\RegisterException;
 use App\Domains\Auth\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 /**
@@ -20,6 +21,22 @@ class UserService extends BaseService
     public function __construct(User $user)
     {
         $this->model = $user;
+    }
+
+    /**
+     * @param $token
+     *
+     * @return bool|\Illuminate\Database\Eloquent\Model
+     */
+    public function findByPasswordResetToken($token)
+    {
+        foreach (DB::table(config('auth.passwords.users.table'))->get() as $row) {
+            if (password_verify($token, $row->token)) {
+                return $this->getByColumn($row->email, 'email');
+            }
+        }
+
+        return false;
     }
 
     /**

@@ -15,7 +15,7 @@ trait UserAttribute
     public function setPasswordAttribute($password): void
     {
         // If password was accidentally passed in already hashed, try not to double hash it
-        // Note: Password Histories are logged from the \App\Observer\User\UserObserver class
+        // Note: Password Histories are logged from the \App\Domains\Auth\Observer\UserObserver class
         $this->attributes['password'] =
             (strlen($password) === 60 && preg_match('/^\$2y\$/', $password)) ||
             (strlen($password) === 95 && preg_match('/^\$argon2i\$/', $password)) ?
