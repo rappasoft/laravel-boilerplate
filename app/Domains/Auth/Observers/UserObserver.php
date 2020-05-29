@@ -9,7 +9,6 @@ use App\Domains\Auth\Models\User;
  */
 class UserObserver
 {
-
     /**
      * @param  User  $user
      */
