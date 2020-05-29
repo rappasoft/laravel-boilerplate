@@ -9,7 +9,6 @@ use App\Domains\Auth\Models\PasswordHistory;
  */
 trait UserRelationship
 {
-
     /**
      * @return mixed
      */

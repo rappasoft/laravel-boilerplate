@@ -36,7 +36,7 @@ class UnusedPassword implements Rule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value) : bool
+    public function passes($attribute, $value): bool
     {
         // Option is off
         if (! config('boilerplate.access.users.password_history')) {
@@ -76,7 +76,7 @@ class UnusedPassword implements Rule
      *
      * @return string
      */
-    public function message() : string
+    public function message(): string
     {
         return __('You can not set a password that you have previously used within the last :num times.', ['num' => config('boilerplate.access.users.password_history')]);
     }
