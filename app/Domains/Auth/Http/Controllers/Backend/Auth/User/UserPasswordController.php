@@ -12,7 +12,6 @@ use App\Services\UserService;
  */
 class UserPasswordController extends Controller
 {
-
     /**
      * @var UserService
      */
