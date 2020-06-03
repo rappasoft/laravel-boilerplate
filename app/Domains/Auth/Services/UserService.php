@@ -99,7 +99,7 @@ class UserService extends BaseService
      * @throws GeneralException
      * @throws \Throwable
      */
-    public function store(array $data = []) : User
+    public function store(array $data = []): User
     {
         DB::beginTransaction();
 
@@ -119,7 +119,7 @@ class UserService extends BaseService
             DB::commit();
 
             // They didn't want to auto verify the email, but do they want to send the confirmation email to do so?
-            if (!isset($data['email_verified']) && isset($data['send_confirmation_email']) && $data['send_confirmation_email'] === '1') {
+            if (! isset($data['email_verified']) && isset($data['send_confirmation_email']) && $data['send_confirmation_email'] === '1') {
                 $user->sendEmailVerificationNotification();
             }
 
@@ -137,7 +137,7 @@ class UserService extends BaseService
      * @return User
      * @throws \Throwable
      */
-    public function update(User $user, array $data = []) : User
+    public function update(User $user, array $data = []): User
     {
         DB::beginTransaction();
 

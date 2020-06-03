@@ -10,7 +10,6 @@ use App\Services\BaseService;
  */
 class PermissionService extends BaseService
 {
-
     /**
      * PermissionService constructor.
      *

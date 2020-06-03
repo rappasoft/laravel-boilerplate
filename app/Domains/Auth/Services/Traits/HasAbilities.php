@@ -7,7 +7,6 @@ namespace App\Domains\Auth\Services\Traits;
  */
 trait HasAbilities
 {
-
     /**
      * @param  array  $data
      *
