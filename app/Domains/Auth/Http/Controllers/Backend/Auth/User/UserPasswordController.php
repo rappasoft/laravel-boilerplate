@@ -4,8 +4,8 @@ namespace App\Domains\Auth\Http\Controllers\Backend\Auth\User;
 
 use App\Domains\Auth\Http\Requests\Backend\Auth\User\UpdateUserPasswordRequest;
 use App\Domains\Auth\Models\User;
+use App\Domains\Auth\Services\UserService;
 use App\Http\Controllers\Controller;
-use App\Services\UserService;
 
 /**
  * Class UserPasswordController.

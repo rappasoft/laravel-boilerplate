@@ -72,6 +72,8 @@
                         <td>{{ $user->provider_id ?? 'N/A' }}</td>
                     </tr>
                 @endif
+
+                {{-- TODO: Add roles/permissions --}}
             </table>
         </x-slot>
 

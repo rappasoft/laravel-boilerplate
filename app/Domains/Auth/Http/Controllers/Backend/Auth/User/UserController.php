@@ -2,9 +2,14 @@
 
 namespace App\Domains\Auth\Http\Controllers\Backend\Auth\User;
 
+use App\Domains\Auth\Http\Requests\Backend\Auth\User\StoreUserRequest;
+use App\Domains\Auth\Http\Requests\Backend\Auth\User\UpdateUserRequest;
 use App\Domains\Auth\Models\User;
+use App\Domains\Auth\Services\PermissionService;
+use App\Domains\Auth\Services\RoleService;
+use App\Domains\Auth\Services\UserService;
 use App\Http\Controllers\Controller;
-use App\Services\UserService;
+use Illuminate\Http\Request;
 
 /**
  * Class UserController.
@@ -17,21 +22,27 @@ class UserController extends Controller
     protected $userService;
 
     /**
+     * @var RoleService
+     */
+    protected $roleService;
+
+    /**
+     * @var PermissionService
+     */
+    protected $permissionService;
+
+    /**
      * UserController constructor.
      *
      * @param  UserService  $userService
+     * @param  RoleService  $roleService
+     * @param  PermissionService  $permissionService
      */
-    public function __construct(UserService $userService)
+    public function __construct(UserService $userService, RoleService $roleService, PermissionService $permissionService)
     {
-        // TODO: Keep these here or no?
-        $this->middleware('permission:access.users.read')->only('index');
-        $this->middleware('permission:access.users.create')->only('create');
-        $this->middleware('permission:access.users.create')->only('store');
-//        $this->middleware('permission:access.users.update')->only('edit');
-//        $this->middleware('permission:access.users.update')->only('update');
-        $this->middleware('permission:access.users.delete')->only('destroy');
-
         $this->userService = $userService;
+        $this->roleService = $roleService;
+        $this->permissionService = $permissionService;
     }
 
     /**
@@ -43,11 +54,27 @@ class UserController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return mixed
      */
     public function create()
     {
-        return view('backend.auth.user.create');
+        return view('backend.auth.user.create')
+            ->withRoles($this->roleService->with('permissions')->get())
+            ->withCategories($this->permissionService->getCategorizedPermissions())
+            ->withGeneral($this->permissionService->getUncategorizedPermissions());
+    }
+
+    /**
+     * @param  StoreUserRequest  $request
+     *
+     * @return mixed
+     * @throws \App\Domains\Auth\Exceptions\GeneralException
+     */
+    public function store(StoreUserRequest $request)
+    {
+        $user = $this->userService->store($request->validated());
+
+        return redirect()->route('admin.auth.user.show', $user)->withFlashSuccess(__('The user was successfully created.'));
     }
 
     /**
@@ -59,6 +86,44 @@ class UserController extends Controller
     {
         return view('backend.auth.user.show')
             ->withUser($user);
+    }
+
+    /**
+     * @param  Request  $request
+     * @param  User  $user
+     *
+     * @return mixed
+     */
+    public function edit(Request $request, User $user)
+    {
+        if ($user->id === 1 && $request->user()->id !== 1) {
+            return redirect()->route('admin.auth.user.index')->withFlashDanger(__('Only the administrator can update this user.'));
+        }
+
+        return view('backend.auth.user.edit')
+            ->withUser($user)
+            ->withRoles($this->roleService->with('permissions')->get())
+            ->withCategories($this->permissionService->getCategorizedPermissions())
+            ->withGeneral($this->permissionService->getUncategorizedPermissions())
+            ->withUsedPermissions($user->permissions->modelKeys());
+    }
+
+    /**
+     * @param  UpdateUserRequest  $request
+     * @param  User  $user
+     *
+     * @return mixed
+     * @throws \Throwable
+     */
+    public function update(UpdateUserRequest $request, User $user)
+    {
+        if ($user->id === 1 && $request->user()->id !== 1) {
+            return redirect()->route('admin.auth.user.index')->withFlashDanger(__('Only the administrator can update this user.'));
+        }
+
+        $this->userService->update($user, $request->validated());
+
+        return redirect()->route('admin.auth.user.show', $user)->withFlashSuccess(__('The user was successfully updated.'));
     }
 
     /**

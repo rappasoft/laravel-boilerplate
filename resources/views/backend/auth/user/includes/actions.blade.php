@@ -12,7 +12,7 @@
     @endif
 @else
     <x-utils.view-button :href="route('admin.auth.user.show', $model)" permission="access.users.read" />
-    {{--<x-utils.edit-button :href="route('admin.auth.user.edit', $model)" permission="access.users.update" />--}}
+    <x-utils.edit-button :href="route('admin.auth.user.edit', $model)" permission="access.users.update" />
 
     @if (! $model->isActive())
         <x-utils.link

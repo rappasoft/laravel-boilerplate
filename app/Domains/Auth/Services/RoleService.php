@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Services;
+namespace App\Domains\Auth\Services;
 
 use App\Domains\Auth\Exceptions\GeneralException;
 use App\Domains\Auth\Models\Role;
+use App\Domains\Auth\Services\Traits\HasAbilities;
+use App\Services\BaseService;
 use Exception;
 use Illuminate\Support\Facades\DB;
 
@@ -12,6 +14,9 @@ use Illuminate\Support\Facades\DB;
  */
 class RoleService extends BaseService
 {
+
+    use HasAbilities;
+
     /**
      * RoleService constructor.
      *
@@ -31,13 +36,11 @@ class RoleService extends BaseService
      */
     public function store(array $data = []): Role
     {
-        $permissions = $this->getPermissions($data);
-
         DB::beginTransaction();
 
         try {
             $role = $this->model::create(['name' => $data['name']]);
-            $role->syncPermissions($permissions);
+            $role->syncPermissions($this->getPermissions($data));
         } catch (Exception $e) {
             DB::rollBack();
             throw new GeneralException(__('There was a problem creating the role.'));
@@ -58,12 +61,10 @@ class RoleService extends BaseService
      */
     public function update(Role $role, array $data = []): Role
     {
-        $permissions = $this->getPermissions($data);
-
         DB::beginTransaction();
 
         try {
-            $role->syncPermissions($permissions);
+            $role->syncPermissions($this->getPermissions($data));
             $role->update(['name' => $data['name']]);
         } catch (Exception $e) {
             DB::rollBack();
@@ -73,19 +74,5 @@ class RoleService extends BaseService
         DB::commit();
 
         return $role;
-    }
-
-    /**
-     * @param  array  $data
-     *
-     * @return array
-     */
-    private function getPermissions(array $data = []): array
-    {
-        if (! isset($data['permissions']) || ! count($data['permissions'])) {
-            return [];
-        }
-
-        return $data['permissions'];
     }
 }

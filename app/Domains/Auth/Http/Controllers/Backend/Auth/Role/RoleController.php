@@ -4,10 +4,10 @@ namespace App\Domains\Auth\Http\Controllers\Backend\Auth\Role;
 
 use App\Domains\Auth\Http\Requests\Backend\Auth\Role\StoreRoleRequest;
 use App\Domains\Auth\Http\Requests\Backend\Auth\Role\UpdateRoleRequest;
-use App\Domains\Auth\Models\Permission;
 use App\Domains\Auth\Models\Role;
+use App\Domains\Auth\Services\PermissionService;
+use App\Domains\Auth\Services\RoleService;
 use App\Http\Controllers\Controller;
-use App\Services\RoleService;
 
 /**
  * Class RoleController.
@@ -20,21 +20,20 @@ class RoleController extends Controller
     protected $roleService;
 
     /**
+     * @var PermissionService
+     */
+    protected $permissionService;
+
+    /**
      * RoleController constructor.
      *
      * @param  RoleService  $roleService
+     * @param  PermissionService  $permissionService
      */
-    public function __construct(RoleService $roleService)
+    public function __construct(RoleService $roleService, PermissionService $permissionService)
     {
-        // TODO: Keep these here or no?
-        $this->middleware('permission:access.roles.read')->only('index');
-        $this->middleware('permission:access.roles.create')->only('create');
-        $this->middleware('permission:access.roles.create')->only('store');
-        $this->middleware('permission:access.roles.update')->only('edit');
-        $this->middleware('permission:access.roles.update')->only('update');
-        $this->middleware('permission:access.roles.delete')->only('destroy');
-
         $this->roleService = $roleService;
+        $this->permissionService = $permissionService;
     }
 
     /**
@@ -51,8 +50,8 @@ class RoleController extends Controller
     public function create()
     {
         return view('backend.auth.role.create')
-            ->withCategories(Permission::isMaster()->with('children')->get())
-            ->withGeneral(Permission::singular()->orderBy('sort', 'asc')->get());
+            ->withCategories($this->permissionService->getCategorizedPermissions())
+            ->withGeneral($this->permissionService->getUncategorizedPermissions());
     }
 
     /**
@@ -77,9 +76,10 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         return view('backend.auth.role.edit')
-            ->withCategories(Permission::isMaster()->with('children')->get())
-            ->withGeneral(Permission::singular()->orderBy('sort', 'asc')->get())
-            ->withRole($role->load('permissions'));
+            ->withCategories($this->permissionService->getCategorizedPermissions())
+            ->withGeneral($this->permissionService->getUncategorizedPermissions())
+            ->withRole($role->load('permissions'))
+            ->withUsedPermissions($role->permissions->modelKeys());
     }
 
     /**
@@ -105,6 +105,7 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
+        // TODO: Extract to roleService to keep extra logic out of controllers?
         if ($role->users()->count()) {
             return redirect()->back()->withFlashDanger(__('You can not delete a role with associated users.'));
         }

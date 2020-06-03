@@ -9,14 +9,19 @@ Breadcrumbs::for('admin.auth.user.create', function ($trail) {
     $trail->push(__('Create User'), route('admin.auth.user.create'));
 });
 
-Breadcrumbs::for('admin.auth.user.show', function ($trail, $id) {
+Breadcrumbs::for('admin.auth.user.show', function ($trail, $user) {
     $trail->parent('admin.auth.user.index');
-    $trail->push(__('View User'), route('admin.auth.user.show', $id));
+    $trail->push(__($user->name), route('admin.auth.user.show', $user));
 });
 
-Breadcrumbs::for('admin.auth.user.change-password', function ($trail, $id) {
+Breadcrumbs::for('admin.auth.user.edit', function ($trail, $user) {
+    $trail->parent('admin.auth.user.show', $user);
+    $trail->push(__('Edit User'), route('admin.auth.user.edit', $user));
+});
+
+Breadcrumbs::for('admin.auth.user.change-password', function ($trail, $user) {
     $trail->parent('admin.auth.user.index');
-    $trail->push(__('Change Password'), route('admin.auth.user.change-password', $id));
+    $trail->push(__('Change Password'), route('admin.auth.user.change-password', $user));
 });
 
 Breadcrumbs::for('admin.auth.user.deleted', function ($trail) {

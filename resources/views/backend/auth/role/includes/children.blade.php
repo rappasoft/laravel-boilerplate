@@ -1,11 +1,11 @@
 <ul style="list-style: none">
-    @foreach($children as $child)
+    @foreach($children as $permission)
         <li>
-            <input type="checkbox" name="permissions[]" {{ isset($role) && in_array($child->id, $role->permissions->modelKeys(), true) ? 'checked' : '' }} value="{{ $child->name }}" id="{{ $child->name }}" />
-            <label for="{{ $child->name }}">{{ $child->description ?? $child->name }}</label>
+            <input type="checkbox" name="permissions[]" {{ in_array($permission->id, $usedPermissions ?? [], true) ? 'checked' : '' }} value="{{ $permission->name }}" id="{{ $permission->name }}" />
+            <label for="{{ $permission->name }}">{{ $permission->description ?? $permission->name }}</label>
 
-            @if($child->children->count())
-                @include('backend.auth.role.includes.children', ['children' => $child->children])
+            @if($permission->children->count())
+                @include('backend.auth.role.includes.children', ['children' => $permission->children])
             @endif
         </li>
     @endforeach

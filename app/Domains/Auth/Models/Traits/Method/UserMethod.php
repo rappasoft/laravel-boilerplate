@@ -16,6 +16,14 @@ trait UserMethod
     }
 
     /**
+     * @return bool
+     */
+    public function isMasterAdmin()
+    {
+        return $this->id === 1;
+    }
+
+    /**
      * @return mixed
      */
     public function isAdmin()

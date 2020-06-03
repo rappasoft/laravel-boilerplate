@@ -18,7 +18,7 @@
                     <x-forms.text name="name" :placeholder="__('Name')" :value="old('name')" required />
                 </x-forms.group>
 
-                @include('backend.auth.role.includes.permissions')
+                @include('backend.auth.includes.permissions')
             </x-slot>
 
             <x-slot name="footer">

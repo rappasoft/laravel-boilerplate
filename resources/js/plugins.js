@@ -2,6 +2,23 @@
  * Place any jQuery/helper plugins in here.
  */
 $(function () {
+    /**
+     * Checkbox tree for permission selecting
+     */
+    $('#tree :checkbox').on('change', function (e){
+        e.stopPropagation();
+        let clk_checkbox = $(this),
+            chk_state = clk_checkbox.is(':checked'),
+            parent_li = clk_checkbox.closest('li'),
+            parent_uls = parent_li.parents('ul');
+        parent_li.find(':checkbox').prop('checked', chk_state).attr('disabled', chk_state);
+        parent_uls.each(function(){
+            let parent_ul = $(this),
+                parent_state = (parent_ul.find(':checkbox').length === parent_ul.find(':checked').length);
+            parent_ul.siblings(':checkbox').prop('checked', parent_state).attr('disabled', parent_state);
+        });
+        clk_checkbox.removeAttr('disabled');
+    });
 
     /**
      * Disable submit inputs in the given form
@@ -69,16 +86,12 @@ $(function () {
 
     // Remember tab on page load
     $('a[data-toggle="tab"], a[data-toggle="pill"]').on('shown.bs.tab', function (e) {
-        var hash = $(e.target).attr('href');
-        if (history.pushState) {
-            history.pushState(null, null, hash);
-        } else {
-            location.hash = hash;
-        }
+        let hash = $(e.target).attr('href');
+        history.pushState ? history.pushState(null, null, hash) : location.hash = hash;
     });
 
-    var hash = window.location.hash;
+    let hash = window.location.hash;
     if (hash) {
-        $('.nav-link[href="' + hash + '"]').tab('show');
+        $('.nav-link[href="'+hash+'"]').tab('show');
     }
 });

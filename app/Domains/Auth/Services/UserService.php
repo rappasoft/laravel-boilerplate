@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Services;
+namespace App\Domains\Auth\Services;
 
 use App\Domains\Auth\Exceptions\GeneralException;
 use App\Domains\Auth\Exceptions\RegisterException;
 use App\Domains\Auth\Models\User;
+use App\Domains\Auth\Services\Traits\HasAbilities;
+use App\Services\BaseService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,6 +15,8 @@ use Illuminate\Support\Facades\Hash;
  */
 class UserService extends BaseService
 {
+    use HasAbilities;
+
     /**
      * UserService constructor.
      *
@@ -89,6 +93,71 @@ class UserService extends BaseService
     }
 
     /**
+     * @param  array  $data
+     *
+     * @return User
+     * @throws GeneralException
+     * @throws \Throwable
+     */
+    public function store(array $data = []) : User
+    {
+        DB::beginTransaction();
+
+        $user = $this->createUser([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => $data['password'],
+            'email_verified_at' => isset($data['email_verified']) && $data['email_verified'] === '1' ? now() : null,
+            'active' => isset($data['active']) && $data['active'] === '1',
+        ]);
+
+        if ($user) {
+            // Add selected roles/permissions
+            $user->syncRoles($this->getRoles($data));
+            $user->syncPermissions($this->getPermissions($data));
+
+            DB::commit();
+
+            // They didn't want to auto verify the email, but do they want to send the confirmation email to do so?
+            if (!isset($data['email_verified']) && isset($data['send_confirmation_email']) && $data['send_confirmation_email'] === '1') {
+                $user->sendEmailVerificationNotification();
+            }
+
+            return $user;
+        }
+
+        DB::rollBack();
+        throw new GeneralException(__('There was a problem creating this user. Please try again.'));
+    }
+
+    /**
+     * @param  User  $user
+     * @param  array  $data
+     *
+     * @return User
+     * @throws \Throwable
+     */
+    public function update(User $user, array $data = []) : User
+    {
+        DB::beginTransaction();
+
+        $user->update([
+            'name' => $data['name'],
+            'email' => $data['email'],
+        ]);
+
+        if ($user->id !== 1) {
+            // Replace selected roles/permissions
+            $user->syncRoles($this->getRoles($data));
+            $user->syncPermissions($this->getPermissions($data));
+        }
+
+        DB::commit();
+
+        return $user;
+    }
+
+    /**
      * @param  User  $user
      * @param  array  $data
      *
@@ -126,6 +195,32 @@ class UserService extends BaseService
         }
 
         return tap($user)->update(['password' => $data['password']]);
+    }
+
+    /**
+     * @param  User  $user
+     * @param $status
+     *
+     * @return User
+     * @throws GeneralException
+     */
+    public function mark(User $user, $status): User
+    {
+        if ($status === 0 && auth()->id() === $user->id) {
+            throw new GeneralException(__('You can not do that to yourself.'));
+        }
+
+        if ($status === 0 && $user->id === 1) {
+            throw new GeneralException(__('You can not deactivate the administrator account.'));
+        }
+
+        $user->active = $status;
+
+        if ($user->save()) {
+            return $user;
+        }
+
+        throw new GeneralException(__('There was a problem updating this user. Please try again.'));
     }
 
     /**
@@ -191,32 +286,6 @@ class UserService extends BaseService
         }
 
         throw new GeneralException(__('There was a problem permanently deleting this user. Please try again.'));
-    }
-
-    /**
-     * @param  User  $user
-     * @param $status
-     *
-     * @return User
-     * @throws GeneralException
-     */
-    public function mark(User $user, $status): User
-    {
-        if ($status === 0 && auth()->id() === $user->id) {
-            throw new GeneralException(__('You can not do that to yourself.'));
-        }
-
-        if ($status === 0 && $user->id === 1) {
-            throw new GeneralException(__('You can not deactivate the administrator account.'));
-        }
-
-        $user->active = $status;
-
-        if ($user->save()) {
-            return $user;
-        }
-
-        throw new GeneralException(__('There was a problem updating this user. Please try again.'));
     }
 
     /**

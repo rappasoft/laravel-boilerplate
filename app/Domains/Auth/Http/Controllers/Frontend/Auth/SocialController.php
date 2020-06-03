@@ -3,8 +3,8 @@
 namespace App\Domains\Auth\Http\Controllers\Frontend\Auth;
 
 use App\Domains\Auth\Events\UserLoggedIn;
+use App\Domains\Auth\Services\UserService;
 use App\Http\Controllers\Controller;
-use App\Services\UserService;
 use Laravel\Socialite\Facades\Socialite;
 
 /**

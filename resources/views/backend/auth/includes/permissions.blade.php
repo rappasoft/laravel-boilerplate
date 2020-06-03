@@ -8,7 +8,7 @@
             <div class="col">
                 @foreach($general as $permission)
                     <span class="d-block">
-                        <input type="checkbox" name="permissions[]" {{ isset($role) && in_array($permission->id, $role->permissions->modelKeys(), true) ? 'checked' : '' }} value="{{ $permission->name }}" id="{{ $permission->name }}" />
+                        <input type="checkbox" name="permissions[]" {{ in_array($permission->id, $usedPermissions ?? [], true) ? 'checked' : '' }} value="{{ $permission->name }}" id="{{ $permission->name }}" />
                         <label for="{{ $permission->name }}">{{ $permission->description ?? $permission->name }}</label>
                     </span>
                 @endforeach
@@ -24,13 +24,13 @@
         <h5 class="mb-3">@lang('Permission Categories')</h5>
 
         <ul id="tree" class="m-0 p-0" style="list-style: none;">
-            @foreach($categories as $category)
+            @foreach($categories as $permission)
                 <li>
-                    <input type="checkbox" name="permissions[]" {{ isset($role) && in_array($category->id, $role->permissions->modelKeys(), true) ? 'checked' : '' }} value="{{ $category->name }}" id="{{ $category->name }}" />
-                    <label for="{{ $category->name }}">{{ $category->description ?? $category->name }}</label>
+                    <input type="checkbox" name="permissions[]" {{ in_array($permission->id, $usedPermissions ?? [], true) ? 'checked' : '' }} value="{{ $permission->name }}" id="{{ $permission->name }}" />
+                    <label for="{{ $permission->name }}">{{ $permission->description ?? $permission->name }}</label>
 
-                    @if($category->children->count())
-                        @include('backend.auth.role.includes.children', ['children' => $category->children])
+                    @if($permission->children->count())
+                        @include('backend.auth.role.includes.children', ['children' => $permission->children])
                     @endif
                 </li>
             @endforeach

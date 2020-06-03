@@ -44,14 +44,14 @@ class PermissionRoleTableSeeder extends Seeder
         // Access master category
         $access = Permission::create([
             'name' => 'access.*',
-            'description' => 'Access',
+            'description' => 'All Access Permissions',
         ]);
 
         // Users category
         $users = Permission::create([
             'parent_id' => $access->id,
             'name' => 'access.users.*',
-            'description' => 'All Users',
+            'description' => 'All User Permissions',
         ]);
 
         $users->children()->saveMany([
@@ -118,7 +118,7 @@ class PermissionRoleTableSeeder extends Seeder
         Permission::create([
             'parent_id' => $access->id,
             'name' => 'access.roles.*',
-            'description' => 'All Roles',
+            'description' => 'All Role Permissions',
             'sort' => 2,
         ])->children()->saveMany([
             new Permission([

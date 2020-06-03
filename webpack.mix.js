@@ -18,6 +18,7 @@ mix.setPublicPath('public')
     .js('resources/js/frontend/app.js', 'js/frontend.js')
     .js('resources/js/backend/app.js', 'js/backend.js')
     .extract([
+        'alpinejs',
         'jquery',
         'bootstrap',
         'popper.js',
