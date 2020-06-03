@@ -43,7 +43,7 @@ class UpdateUserRequest extends FormRequest
     public function messages()
     {
         return [
-            'roles.required' => __('You must select one or more roles.')
+            'roles.required' => __('You must select one or more roles.'),
         ];
     }
 }
