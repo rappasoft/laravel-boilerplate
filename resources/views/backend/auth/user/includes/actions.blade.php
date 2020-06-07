@@ -11,7 +11,7 @@
         <x-utils.delete-button :href="route('admin.auth.user.permanently-delete', $model)" permission="access.users.permanently-delete" :text="__('Permanently Delete')" />
     @endif
 @else
-    <x-utils.view-button :href="route('admin.auth.user.show', $model)" permission="access.users.read" />
+    <x-utils.view-button :href="route('admin.auth.user.show', $model)" permission="access.users.list" />
     <x-utils.edit-button :href="route('admin.auth.user.edit', $model)" permission="access.users.update" />
 
     @if (! $model->isActive())
@@ -28,7 +28,7 @@
         <x-utils.delete-button :href="route('admin.auth.user.destroy', $model)" permission="access.users.delete" />
     @endif
 
-    @if ($model->id === 1)
+    @if ($model->id === 1 && $logged_in_user->isMasterAdmin())
         <div class="dropdown d-inline-block">
             <a class="btn btn-sm btn-secondary dropdown-toggle" id="moreMenuLink" href="#" role="button" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false">
                 More
@@ -43,42 +43,49 @@
             </div>
         </div>
     @elseif ($model->id !== 1 && $model->isActive())
-        <div class="dropdown d-inline-block">
-            <a class="btn btn-sm btn-secondary dropdown-toggle" id="moreMenuLink" href="#" role="button" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false">
-                More
-            </a>
+        @if (
+            $logged_in_user->can('access.users.change-password') ||
+            $logged_in_user->can('access.users.clear-session') ||
+            $logged_in_user->can('access.users.impersonate') ||
+            $logged_in_user->can('access.users.deactivate')
+        )
+            <div class="dropdown d-inline-block">
+                <a class="btn btn-sm btn-secondary dropdown-toggle" id="moreMenuLink" href="#" role="button" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false">
+                    More
+                </a>
 
-            <div class="dropdown-menu" aria-labelledby="moreMenuLink">
-                <x-utils.link
-                    :href="route('admin.auth.user.change-password', $model)"
-                    class="dropdown-item"
-                    :text="__('Change Password')"
-                    permission="access.users.change-password" />
-
-                @if ($model->id !== 1 && $model->id !== auth()->id())
+                <div class="dropdown-menu" aria-labelledby="moreMenuLink">
                     <x-utils.link
-                        :href="route('admin.auth.user.clear-session', $model)"
+                        :href="route('admin.auth.user.change-password', $model)"
                         class="dropdown-item"
-                        :text="__('Clear Session')"
-                        name="confirm-item"
-                        permission="access.users.clear-session" />
+                        :text="__('Change Password')"
+                        permission="access.users.change-password" />
 
-                    @canBeImpersonated($model)
+                    @if ($model->id !== 1 && $model->id !== auth()->id())
                         <x-utils.link
-                            :href="route('impersonate', $model->id)"
+                            :href="route('admin.auth.user.clear-session', $model)"
                             class="dropdown-item"
-                            :text="__('Login As ' . $model->name)"
-                            permission="access.users.impersonate" />
-                    @endCanBeImpersonated
+                            :text="__('Clear Session')"
+                            name="confirm-item"
+                            permission="access.users.clear-session" />
 
-                    <x-utils.link
-                        :href="route('admin.auth.user.mark', [$model, 0])"
-                        class="dropdown-item"
-                        :text="__('Deactivate')"
-                        name="confirm-item"
-                        permission="access.users.deactivate" />
-                @endif
+                        @canBeImpersonated($model)
+                            <x-utils.link
+                                :href="route('impersonate', $model->id)"
+                                class="dropdown-item"
+                                :text="__('Login As ' . $model->name)"
+                                permission="access.users.impersonate" />
+                        @endCanBeImpersonated
+
+                        <x-utils.link
+                            :href="route('admin.auth.user.mark', [$model, 0])"
+                            class="dropdown-item"
+                            :text="__('Deactivate')"
+                            name="confirm-item"
+                            permission="access.users.deactivate" />
+                    @endif
+                </div>
             </div>
-        </div>
+        @endif
     @endif
 @endif

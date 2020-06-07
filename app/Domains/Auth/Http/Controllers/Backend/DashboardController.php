@@ -9,13 +9,6 @@ use App\Http\Controllers\Controller;
  */
 class DashboardController extends Controller
 {
-    /**
-     * DashboardController constructor.
-     */
-    public function __construct()
-    {
-        $this->middleware('permission:dashboard')->only('index');
-    }
 
     /**
      * @return \Illuminate\View\View

@@ -11,21 +11,27 @@ use App\Domains\Auth\Http\Controllers\Backend\Auth\User\UserSessionController;
 Route::group([
     'prefix' => 'auth',
     'as' => 'auth.',
-    'middleware' => ['permission:access.*', 'password.confirm:frontend.auth.password.confirm'],
+    'middleware' => [
+        'permission:access.users.list,create,update,delete,restore,deactivate,reactivate,clear-session,impersonate,change-password|access.roles.list,create,update,delete',
+        'password.confirm:frontend.auth.password.confirm'
+    ],
 ], function () {
     // User Management
-    Route::group(['prefix' => 'user', 'middleware' => 'permission:access.users.*'], function () {
+    Route::group([
+        'prefix' => 'user',
+        'middleware' => 'permission:access.users.list,create,update,delete,restore,deactivate,reactivate,clear-session,impersonate,change-password'
+    ], function () {
         Route::get('deactivated', [DeactivatedUserController::class, 'index'])
             ->name('user.deactivated')
-            ->middleware('permission:access.users.deactivate|permission:access.users.reactivate');
+            ->middleware('permission:access.users.deactivate,reactivate');
 
         Route::get('deleted', [DeletedUserController::class, 'index'])
             ->name('user.deleted')
-            ->middleware('permission:access.users.delete|access.users.restore|access.users.permanently-delete');
+            ->middleware('permission:access.users.delete,restore,permanently-delete');
 
         Route::get('/', [UserController::class, 'index'])
             ->name('user.index')
-            ->middleware('permission:access.users.read|permission:access.users.create|permission:access.users.update|permission:access.users.delete|permission:access.users.deactivate|permission:access.users.clear-session|permission:access.users.change-password');
+            ->middleware('permission:access.users.list,create,update,delete,deactivate,clear-session,change-password');
 
         Route::get('create', [UserController::class, 'create'])
             ->name('user.create')
@@ -38,7 +44,7 @@ Route::group([
         Route::group(['prefix' => '{user}'], function () {
             Route::get('/', [UserController::class, 'show'])
                 ->name('user.show')
-                ->middleware('permission:access.users.read');
+                ->middleware('permission:access.users.list');
 
             Route::get('edit', [UserController::class, 'edit'])
                 ->name('user.edit')
@@ -55,7 +61,7 @@ Route::group([
             Route::get('mark/{status}', [DeactivatedUserController::class, 'update'])
                 ->name('user.mark')
                 ->where(['status' => '[0,1]'])
-                ->middleware('permission:access.users.deactivate|permission:access.users.reactivate');
+                ->middleware('permission:access.users.deactivate,reactivate');
 
             Route::get('clear-session', [UserSessionController::class, 'update'])
                 ->name('user.clear-session')
@@ -84,10 +90,13 @@ Route::group([
     });
 
     // Role Management
-    Route::group(['prefix' => 'role', 'middleware' => 'permission:access.roles.*'], function () {
+    Route::group([
+        'prefix' => 'role',
+        'middleware' => 'permission:access.roles.list,create,update,delete'
+    ], function () {
         Route::get('/', [RoleController::class, 'index'])
             ->name('role.index')
-            ->middleware('permission:access.roles.read');
+            ->middleware('permission:access.roles.list');
 
         Route::get('create', [RoleController::class, 'create'])
             ->name('role.create')

@@ -62,7 +62,7 @@
                         </x-utils.link>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            @if ($logged_in_user->isAdmin())
+                            @if ($logged_in_user->can('view backend'))
                                 <x-utils.link
                                     :href="route('admin.dashboard')"
                                     :text="__('Administration')"

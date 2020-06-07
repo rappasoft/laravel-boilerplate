@@ -35,28 +35,22 @@ class PermissionRoleTableSeeder extends Seeder
             'description' => 'Access Administration',
         ]);
 
-        Permission::create([
-            'name' => 'dashboard',
-            'description' => 'Dashboard',
-            'sort' => 2,
-        ]);
-
         // Access master category
         $access = Permission::create([
-            'name' => 'access.*',
+            'name' => 'access',
             'description' => 'All Access Permissions',
         ]);
 
         // Users category
         $users = Permission::create([
             'parent_id' => $access->id,
-            'name' => 'access.users.*',
+            'name' => 'access.users',
             'description' => 'All User Permissions',
         ]);
 
         $users->children()->saveMany([
             new Permission([
-                'name' => 'access.users.read',
+                'name' => 'access.users.list',
                 'description' => 'View Users',
             ]),
             new Permission([
@@ -117,12 +111,12 @@ class PermissionRoleTableSeeder extends Seeder
         // Roles category
         Permission::create([
             'parent_id' => $access->id,
-            'name' => 'access.roles.*',
+            'name' => 'access.roles',
             'description' => 'All Role Permissions',
             'sort' => 2,
         ])->children()->saveMany([
             new Permission([
-                'name' => 'access.roles.read',
+                'name' => 'access.roles.list',
                 'description' => 'View Roles',
             ]),
             new Permission([
