@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
  */
 class DashboardController extends Controller
 {
-
     /**
      * @return \Illuminate\View\View
      */

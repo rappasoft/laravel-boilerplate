@@ -13,13 +13,13 @@ Route::group([
     'as' => 'auth.',
     'middleware' => [
         'permission:access.users.list,create,update,delete,restore,deactivate,reactivate,clear-session,impersonate,change-password|access.roles.list,create,update,delete',
-        'password.confirm:frontend.auth.password.confirm'
+        'password.confirm:frontend.auth.password.confirm',
     ],
 ], function () {
     // User Management
     Route::group([
         'prefix' => 'user',
-        'middleware' => 'permission:access.users.list,create,update,delete,restore,deactivate,reactivate,clear-session,impersonate,change-password'
+        'middleware' => 'permission:access.users.list,create,update,delete,restore,deactivate,reactivate,clear-session,impersonate,change-password',
     ], function () {
         Route::get('deactivated', [DeactivatedUserController::class, 'index'])
             ->name('user.deactivated')
@@ -92,7 +92,7 @@ Route::group([
     // Role Management
     Route::group([
         'prefix' => 'role',
-        'middleware' => 'permission:access.roles.list,create,update,delete'
+        'middleware' => 'permission:access.roles.list,create,update,delete',
     ], function () {
         Route::get('/', [RoleController::class, 'index'])
             ->name('role.index')
