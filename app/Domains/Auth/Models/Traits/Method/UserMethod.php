@@ -7,7 +7,6 @@ namespace App\Domains\Auth\Models\Traits\Method;
  */
 trait UserMethod
 {
-
     /**
      * @return bool
      */

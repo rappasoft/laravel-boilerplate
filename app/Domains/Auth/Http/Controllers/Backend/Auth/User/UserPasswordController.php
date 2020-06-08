@@ -47,7 +47,7 @@ class UserPasswordController extends Controller
      */
     public function update(UpdateUserPasswordRequest $request, User $user)
     {
-        if ($user->isMasterAdmin() && !$request->user()->isMasterAdmin()) {
+        if ($user->isMasterAdmin() && ! $request->user()->isMasterAdmin()) {
             return redirect()->route('admin.auth.user.index')->withFlashDanger(__('You can not update the administrators password.'));
         }
 
