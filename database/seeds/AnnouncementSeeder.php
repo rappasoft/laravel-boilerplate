@@ -20,7 +20,7 @@ class AnnouncementSeeder extends Seeder
         $this->truncate('announcements');
 
         if (app()->environment(['local', 'testing'])) {
-            /**
+            /*
              * Note: There is currently no UI for this feature. If you are going to build a UI, and if you are going to use a WYSIWYG editor for the message (because it supports HTML on the frontend) that you properly sanitize the input before it is stored in the database.
              */
             Announcement::create([

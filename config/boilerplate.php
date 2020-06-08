@@ -52,7 +52,7 @@ return [
              */
             'password_history' => env('PASSWORD_HISTORY', 3),
 
-            /**
+            /*
              * Whether or not a user can be permanently deleted from the system via the backend
              * The regular delete button will still exist, and will soft delete the user
              * but the permanently deleted button on the 'deleted users' screen will be hidden.
