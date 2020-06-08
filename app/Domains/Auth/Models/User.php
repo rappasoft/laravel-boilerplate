@@ -20,9 +20,7 @@ use Lab404\Impersonate\Models\Impersonate;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
- * Class User
- *
- * @package App\Domains\Auth\Models
+ * Class User.
  */
 class User extends Authenticatable implements Recordable, MustVerifyEmail
 {
@@ -132,6 +130,6 @@ class User extends Authenticatable implements Recordable, MustVerifyEmail
      */
     public function canBeImpersonated(): bool
     {
-        return !$this->isMasterAdmin();
+        return ! $this->isMasterAdmin();
     }
 }
