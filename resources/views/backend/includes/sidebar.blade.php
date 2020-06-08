@@ -18,22 +18,22 @@
                 :text="__('Dashboard')" />
         </li>
 
-        @if (
-            $logged_in_user->can('access.users.list') ||
-            $logged_in_user->can('access.users.create') ||
-            $logged_in_user->can('access.users.update') ||
-            $logged_in_user->can('access.users.delete') ||
-            $logged_in_user->can('access.users.restore') ||
-            $logged_in_user->can('access.users.deactivate') ||
-            $logged_in_user->can('access.users.reactivate') ||
-            $logged_in_user->can('access.users.clear-session') ||
-            $logged_in_user->can('access.users.impersonate') ||
-            $logged_in_user->can('access.users.change-password') ||
-            $logged_in_user->can('access.roles.list') ||
-            $logged_in_user->can('access.roles.create') ||
-            $logged_in_user->can('access.roles.update') ||
-            $logged_in_user->can('access.roles.delete')
-        )
+        @if ($logged_in_user->hasAnyPermission([
+            'access.users.list',
+            'access.users.create',
+            'access.users.update',
+            'access.users.delete',
+            'access.users.restore',
+            'access.users.deactivate',
+            'access.users.reactivate',
+            'access.users.clear-session',
+            'access.users.impersonate',
+            'access.users.change-password',
+            'access.roles.list',
+            'access.roles.create',
+            'access.roles.update',
+            'access.roles.delete',
+        ]))
             <li class="c-sidebar-nav-title">@lang('System')</li>
 
             <li class="c-sidebar-nav-dropdown {{ activeClass(Route::is('admin.auth.user.*') || Route::is('admin.auth.role.*'), 'c-open c-show') }}">
@@ -44,18 +44,18 @@
                     :text="__('Access')" />
 
                 <ul class="c-sidebar-nav-dropdown-items">
-                    @if (
-                        $logged_in_user->can('access.users.list') ||
-                        $logged_in_user->can('access.users.create') ||
-                        $logged_in_user->can('access.users.update') ||
-                        $logged_in_user->can('access.users.delete') ||
-                        $logged_in_user->can('access.users.restore') ||
-                        $logged_in_user->can('access.users.deactivate') ||
-                        $logged_in_user->can('access.users.reactivate') ||
-                        $logged_in_user->can('access.users.clear-session') ||
-                        $logged_in_user->can('access.users.impersonate') ||
-                        $logged_in_user->can('access.users.change-password')
-                    )
+                    @if ($logged_in_user->hasAnyPermission([
+                        'access.users.list',
+                        'access.users.create',
+                        'access.users.update',
+                        'access.users.delete',
+                        'access.users.restore',
+                        'access.users.deactivate',
+                        'access.users.reactivate',
+                        'access.users.clear-session',
+                        'access.users.impersonate',
+                        'access.users.change-password',
+                    ]))
                         <li class="c-sidebar-nav-item">
                             <x-utils.link
                                 :href="route('admin.auth.user.index')"
@@ -65,12 +65,12 @@
                         </li>
                     @endif
 
-                    @if (
-                        $logged_in_user->can('access.roles.list') ||
-                        $logged_in_user->can('access.roles.create') ||
-                        $logged_in_user->can('access.roles.update') ||
-                        $logged_in_user->can('access.roles.delete')
-                    )
+                    @if ($logged_in_user->hasAnyPermission([
+                        'access.roles.list',
+                        'access.roles.create',
+                        'access.roles.update',
+                        'access.roles.delete',
+                    ]))
                         <li class="c-sidebar-nav-item">
                             <x-utils.link
                                 :href="route('admin.auth.role.index')"

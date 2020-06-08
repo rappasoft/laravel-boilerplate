@@ -7,13 +7,6 @@ namespace App\Domains\Auth\Models\Traits\Method;
  */
 trait UserMethod
 {
-    /**
-     * @return mixed
-     */
-    public function canChangeEmail()
-    {
-        return config('boilerplate.access.users.change_email');
-    }
 
     /**
      * @return bool
@@ -29,6 +22,14 @@ trait UserMethod
     public function isAdmin()
     {
         return $this->hasRole(config('boilerplate.access.roles.admin'));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function canChangeEmail()
+    {
+        return config('boilerplate.access.users.change_email');
     }
 
     /**

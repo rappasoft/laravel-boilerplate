@@ -12,7 +12,7 @@ trait RoleAttribute
      */
     public function getPermissionsLabelAttribute(): string
     {
-        if ($this->id === config('boilerplate.access.roles.admin')) {
+        if ($this->isAdmin()) {
             return 'All';
         }
 

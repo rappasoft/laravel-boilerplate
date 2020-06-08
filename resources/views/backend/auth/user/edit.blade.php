@@ -22,7 +22,7 @@
                     <x-forms.email name="email" :placeholder="__('E-mail Address')" :value="$user->email" required />
                 </x-forms.group>
 
-                @if ($user->id !== 1)
+                @if (!$user->isMasterAdmin())
                     @include('backend.auth.includes.roles')
                     @include('backend.auth.includes.permissions')
                 @endif

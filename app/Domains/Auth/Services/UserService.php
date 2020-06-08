@@ -146,7 +146,7 @@ class UserService extends BaseService
             'email' => $data['email'],
         ]);
 
-        if ($user->id !== 1) {
+        if (!$user->isMasterAdmin()) {
             // Replace selected roles/permissions
             $user->syncRoles($this->getRoles($data));
             $user->syncPermissions($this->getPermissions($data));
@@ -210,7 +210,7 @@ class UserService extends BaseService
             throw new GeneralException(__('You can not do that to yourself.'));
         }
 
-        if ($status === 0 && $user->id === 1) {
+        if ($status === 0 && $user->isMasterAdmin()) {
             throw new GeneralException(__('You can not deactivate the administrator account.'));
         }
 
@@ -231,7 +231,7 @@ class UserService extends BaseService
      */
     public function delete(User $user): User
     {
-        if ($user->id === 1) {
+        if ($user->isMasterAdmin()) {
             throw new GeneralException(__('You can not delete the administrator account.'));
         }
 
