@@ -8,11 +8,19 @@
         permission="access.users.restore" />
 
     @if (config('boilerplate.access.users.permanently_delete'))
-        <x-utils.delete-button :href="route('admin.auth.user.permanently-delete', $model)" permission="access.users.permanently-delete" :text="__('Permanently Delete')" />
+        <x-utils.delete-button
+            :href="route('admin.auth.user.permanently-delete', $model)"
+            permission="access.users.permanently-delete"
+            :text="__('Permanently Delete')" />
     @endif
 @else
-    <x-utils.view-button :href="route('admin.auth.user.show', $model)" permission="access.users.list" />
-    <x-utils.edit-button :href="route('admin.auth.user.edit', $model)" permission="access.users.update" />
+    <x-utils.view-button
+        :href="route('admin.auth.user.show', $model)"
+        permission="access.users.list" />
+
+    <x-utils.edit-button
+        :href="route('admin.auth.user.edit', $model)"
+        permission="access.users.update" />
 
     @if (! $model->isActive())
         <x-utils.link
@@ -47,12 +55,13 @@
         !$model->isMasterAdmin() && // This is not the master admin
         $model->isActive() && // The account is active
         $model->id !== $logged_in_user->id && // It's not the person logged in
-        $logged_in_user->hasAnyPermission([ // Any they have at lease one of the abilities in this dropdown
-            'access.users.change-password',
-            'access.users.clear-session',
-            'access.users.impersonate',
-            'access.users.deactivate'
-        ])
+        // Any they have at lease one of the abilities in this dropdown
+        (
+            $logged_in_user->can('access.users.change-password') ||
+            $logged_in_user->can('access.users.clear-session') ||
+            $logged_in_user->can('access.users.impersonate') ||
+            $logged_in_user->can('access.users.deactivate')
+        )
     )
         <div class="dropdown d-inline-block">
             <a class="btn btn-sm btn-secondary dropdown-toggle" id="moreMenuLink" href="#" role="button" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false">
