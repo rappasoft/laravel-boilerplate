@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Domains\Auth\Http\Requests\Backend\Auth\User;
+namespace App\Domains\Auth\Http\Requests\Backend\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
 
 /**
- * Class StoreUserRequest.
+ * Class UpdateUserRequest.
  */
-class StoreUserRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,12 +29,10 @@ class StoreUserRequest extends FormRequest
     {
         return [
             'name' => ['required'],
-            'email' => ['required', 'email', Rule::unique('users')],
-            'password' => PasswordRules::register($this->email),
-            'active' => ['sometimes', 'in:1'],
-            'email_verified' => ['sometimes', 'in:1'],
-            'send_confirmation_email' => ['sometimes', 'in:1'],
-            'roles' => ['required', 'array'],
+            'email' => ['required', 'email', Rule::unique('users')->ignore($this->user->id)],
+            'roles' => [Rule::requiredIf(function () {
+                return ! $this->user->isMasterAdmin();
+            }), 'array'],
             'permissions' => ['sometimes', 'array'],
         ];
     }

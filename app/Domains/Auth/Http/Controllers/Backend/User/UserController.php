@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Domains\Auth\Http\Controllers\Backend\Auth\User;
+namespace App\Domains\Auth\Http\Controllers\Backend\User;
 
-use App\Domains\Auth\Http\Requests\Backend\Auth\User\StoreUserRequest;
-use App\Domains\Auth\Http\Requests\Backend\Auth\User\UpdateUserRequest;
+use App\Domains\Auth\Http\Requests\Backend\User\StoreUserRequest;
+use App\Domains\Auth\Http\Requests\Backend\User\UpdateUserRequest;
 use App\Domains\Auth\Models\User;
 use App\Domains\Auth\Services\PermissionService;
 use App\Domains\Auth\Services\RoleService;

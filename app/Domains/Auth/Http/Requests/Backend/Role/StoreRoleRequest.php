@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Domains\Auth\Http\Requests\Backend\Auth\Role;
+namespace App\Domains\Auth\Http\Requests\Backend\Role;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
 /**
- * Class UpdateRoleRequest.
+ * Class StoreRoleRequest.
  */
-class UpdateRoleRequest extends FormRequest
+class StoreRoleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,7 +28,7 @@ class UpdateRoleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', Rule::unique('roles')->ignore($this->role)],
+            'name' => ['required', Rule::unique('roles')],
             'permissions' => ['sometimes', 'array'],
             'permissions.*' => [Rule::exists('permissions', 'name')],
         ];

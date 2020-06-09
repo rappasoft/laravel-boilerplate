@@ -22,7 +22,7 @@ Route::group(['as' => 'frontend.'], function () {
  */
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
     /*
-     * These routes need view-backend permission
+     * These routes need 'view backend' permission
      * (good if you want to allow more than one group in the backend,
      * then limit the backend features by different roles or permissions)
      *

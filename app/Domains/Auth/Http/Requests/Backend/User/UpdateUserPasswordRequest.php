@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\Auth\Http\Requests\Backend\Auth\User;
+namespace App\Domains\Auth\Http\Requests\Backend\User;
 
 //use App\Rules\Auth\UnusedPassword;
 use App\Domains\Auth\Rules\UnusedPassword;

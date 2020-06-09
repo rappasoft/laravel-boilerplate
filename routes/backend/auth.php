@@ -1,11 +1,11 @@
 <?php
 
-use App\Domains\Auth\Http\Controllers\Backend\Auth\Role\RoleController;
-use App\Domains\Auth\Http\Controllers\Backend\Auth\User\DeactivatedUserController;
-use App\Domains\Auth\Http\Controllers\Backend\Auth\User\DeletedUserController;
-use App\Domains\Auth\Http\Controllers\Backend\Auth\User\UserController;
-use App\Domains\Auth\Http\Controllers\Backend\Auth\User\UserPasswordController;
-use App\Domains\Auth\Http\Controllers\Backend\Auth\User\UserSessionController;
+use App\Domains\Auth\Http\Controllers\Backend\Role\RoleController;
+use App\Domains\Auth\Http\Controllers\Backend\User\DeactivatedUserController;
+use App\Domains\Auth\Http\Controllers\Backend\User\DeletedUserController;
+use App\Domains\Auth\Http\Controllers\Backend\User\UserController;
+use App\Domains\Auth\Http\Controllers\Backend\User\UserPasswordController;
+use App\Domains\Auth\Http\Controllers\Backend\User\UserSessionController;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
 use Tabuna\Breadcrumbs\Trail;
