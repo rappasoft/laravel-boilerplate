@@ -13,7 +13,6 @@
         "albertcht/invisible-recaptcha": "^1.9",
         "altek/accountant": "^2.0",
         "altek/eventually": "^1.0",
-        "davejamesmiller/laravel-breadcrumbs": "^5.3",
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^1.0",
         "jamesmills/laravel-timezone": "^1.9",
@@ -26,7 +25,8 @@
         "livewire/livewire": "^1.0",
         "rappasoft/laravel-livewire-tables": "^0.1.5",
         "rappasoft/lockout": "^2.0",
-        "spatie/laravel-permission": "^3.11"
+        "spatie/laravel-permission": "^3.11",
+        "tabuna/breadcrumbs": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",

@@ -6,6 +6,9 @@ use App\Domains\Auth\Http\Controllers\Backend\Auth\User\DeletedUserController;
 use App\Domains\Auth\Http\Controllers\Backend\Auth\User\UserController;
 use App\Domains\Auth\Http\Controllers\Backend\Auth\User\UserPasswordController;
 use App\Domains\Auth\Http\Controllers\Backend\Auth\User\UserSessionController;
+use Tabuna\Breadcrumbs\Trail;
+use App\Domains\Auth\Models\Role;
+use App\Domains\Auth\Models\User;
 
 // All route names are prefixed with 'admin.auth'.
 Route::group([
@@ -20,12 +23,30 @@ Route::group([
         Route::group([
             'middleware' => 'role:'.config('boilerplate.access.roles.admin'),
         ], function () {
-            Route::get('deleted', [DeletedUserController::class, 'index'])->name('deleted');
-            Route::get('create', [UserController::class, 'create'])->name('create');
+            Route::get('deleted', [DeletedUserController::class, 'index'])
+                ->name('deleted')
+                ->breadcrumbs(function (Trail $trail) {
+                    $trail->parent('admin.auth.user.index')
+                        ->push(__('Deleted Users'), route('admin.auth.user.deleted'));
+                });
+
+            Route::get('create', [UserController::class, 'create'])
+                ->name('create')
+                ->breadcrumbs(function (Trail $trail) {
+                    $trail->parent('admin.auth.user.index')
+                        ->push(__('Create User'), route('admin.auth.user.create'));
+                });
+
             Route::post('/', [UserController::class, 'store'])->name('store');
 
             Route::group(['prefix' => '{user}'], function () {
-                Route::get('edit', [UserController::class, 'edit'])->name('edit');
+                Route::get('edit', [UserController::class, 'edit'])
+                    ->name('edit')
+                    ->breadcrumbs(function (Trail $trail, User $user) {
+                        $trail->parent('admin.auth.user.index')
+                            ->push(__('Editing :user', ['user' => $user->name]), route('admin.auth.user.edit', $user));
+                    });
+
                 Route::patch('/', [UserController::class, 'update'])->name('update');
                 Route::delete('/', [UserController::class, 'destroy'])->name('destroy');
             });
@@ -44,16 +65,28 @@ Route::group([
         ], function () {
             Route::get('deactivated', [DeactivatedUserController::class, 'index'])
                 ->name('deactivated')
-                ->middleware('permission:access.users.reactivate');
+                ->middleware('permission:access.users.reactivate')
+                ->breadcrumbs(function (Trail $trail) {
+                    $trail->parent('admin.auth.user.index')
+                        ->push(__('Deactivated Users'), route('admin.auth.user.deactivated'));
+                });
 
             Route::get('/', [UserController::class, 'index'])
                 ->name('index')
-                ->middleware('permission:access.users.list,deactivate,clear-session,impersonate,change-password');
+                ->middleware('permission:access.users.list,deactivate,clear-session,impersonate,change-password')
+                ->breadcrumbs(function (Trail $trail) {
+                    $trail->parent('admin.dashboard')
+                        ->push(__('User Management'), route('admin.auth.user.index'));
+                });
 
             Route::group(['prefix' => '{user}'], function () {
                 Route::get('/', [UserController::class, 'show'])
                     ->name('show')
-                    ->middleware('permission:access.users.list');
+                    ->middleware('permission:access.users.list')
+                    ->breadcrumbs(function (Trail $trail, User $user) {
+                        $trail->parent('admin.auth.user.index')
+                            ->push(__('Viewing :user', ['user' => $user->name]), route('admin.auth.user.show', $user));
+                    });
 
                 Route::get('mark/{status}', [DeactivatedUserController::class, 'update'])
                     ->name('mark')
@@ -66,7 +99,11 @@ Route::group([
 
                 Route::get('password/change', [UserPasswordController::class, 'edit'])
                     ->name('change-password')
-                    ->middleware('permission:access.users.change-password');
+                    ->middleware('permission:access.users.change-password')
+                    ->breadcrumbs(function (Trail $trail, User $user) {
+                        $trail->parent('admin.auth.user.index')
+                            ->push(__('Changing Password for :user', ['user' => $user->name]), route('admin.auth.user.change-password', $user));
+                    });
 
                 Route::patch('password/change', [UserPasswordController::class, 'update'])
                     ->name('change-password.update')
@@ -80,12 +117,30 @@ Route::group([
         'as' => 'role.',
         'middleware' => 'role:'.config('boilerplate.access.roles.admin'),
     ], function () {
-        Route::get('/', [RoleController::class, 'index'])->name('index');
-        Route::get('create', [RoleController::class, 'create'])->name('create');
+        Route::get('/', [RoleController::class, 'index'])
+            ->name('index')
+            ->breadcrumbs(function (Trail $trail) {
+                $trail->parent('admin.dashboard')
+                    ->push(__('Role Management'), route('admin.auth.role.index'));
+            });
+
+        Route::get('create', [RoleController::class, 'create'])
+            ->name('create')
+            ->breadcrumbs(function (Trail $trail) {
+                $trail->parent('admin.auth.role.index')
+                    ->push(__('Create Role'), route('admin.auth.role.create'));
+            });
+
         Route::post('/', [RoleController::class, 'store'])->name('store');
 
         Route::group(['prefix' => '{role}'], function () {
-            Route::get('edit', [RoleController::class, 'edit'])->name('edit');
+            Route::get('edit', [RoleController::class, 'edit'])
+                ->name('edit')
+                ->breadcrumbs(function (Trail $trail, Role $role) {
+                    $trail->parent('admin.auth.role.index')
+                        ->push(__('Editing :role', ['role' => $role->name]), route('admin.auth.role.edit', $role));
+                });
+
             Route::patch('/', [RoleController::class, 'update'])->name('update');
             Route::delete('/', [RoleController::class, 'destroy'])->name('destroy');
         });

@@ -60,7 +60,7 @@
     </ul>
 
     <div class="c-subheader justify-content-between px-3">
-        {!! Breadcrumbs::render() !!}
+        @include('backend.includes.partials.breadcrumbs')
 
         <div class="c-subheader-nav mfe-2">
             @yield('breadcrumb-links')
