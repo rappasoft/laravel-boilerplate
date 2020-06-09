@@ -14,7 +14,6 @@
                 class="card-header-action"
                 :href="route('admin.auth.role.create')"
                 :text="__('Create Role')"
-                permission="access.roles.create"
             />
         </x-slot>
 

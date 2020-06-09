@@ -1,26 +1,21 @@
-@if ($model->trashed())
+@if ($model->trashed() && $logged_in_user->isAdmin())
     <x-utils.link
         :href="route('admin.auth.user.restore', $model)"
         class="btn btn-info btn-sm"
         icon="fas fa-sync-alt"
         :text="__('Restore')"
-        name="confirm-item"
-        permission="access.users.restore" />
+        name="confirm-item" />
 
     @if (config('boilerplate.access.users.permanently_delete'))
         <x-utils.delete-button
             :href="route('admin.auth.user.permanently-delete', $model)"
-            permission="access.users.permanently-delete"
             :text="__('Permanently Delete')" />
     @endif
 @else
-    <x-utils.view-button
-        :href="route('admin.auth.user.show', $model)"
-        permission="access.users.list" />
-
-    <x-utils.edit-button
-        :href="route('admin.auth.user.edit', $model)"
-        permission="access.users.update" />
+    @if ($logged_in_user->isAdmin())
+        <x-utils.view-button :href="route('admin.auth.user.show', $model)" />
+        <x-utils.edit-button :href="route('admin.auth.user.edit', $model)" />
+    @endif
 
     @if (! $model->isActive())
         <x-utils.link
@@ -32,8 +27,8 @@
             permission="access.users.reactivate" />
     @endif
 
-    @if ($model->id !== $logged_in_user->id && !$model->isMasterAdmin())
-        <x-utils.delete-button :href="route('admin.auth.user.destroy', $model)" permission="access.users.delete" />
+    @if ($model->id !== $logged_in_user->id && !$model->isMasterAdmin() && $logged_in_user->isAdmin())
+        <x-utils.delete-button :href="route('admin.auth.user.destroy', $model)" />
     @endif
 
     {{-- The logged in user is the master admin, and the row is the master admin. Only the master admin can do anything to themselves --}}

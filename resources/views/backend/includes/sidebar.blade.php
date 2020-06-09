@@ -19,20 +19,15 @@
         </li>
 
         @if (
-            $logged_in_user->can('access.users.list') ||
-            $logged_in_user->can('access.users.create') ||
-            $logged_in_user->can('access.users.update') ||
-            $logged_in_user->can('access.users.delete') ||
-            $logged_in_user->can('access.users.restore') ||
-            $logged_in_user->can('access.users.deactivate') ||
-            $logged_in_user->can('access.users.reactivate') ||
-            $logged_in_user->can('access.users.clear-session') ||
-            $logged_in_user->can('access.users.impersonate') ||
-            $logged_in_user->can('access.users.change-password') ||
-            $logged_in_user->can('access.roles.list') ||
-            $logged_in_user->can('access.roles.create') ||
-            $logged_in_user->can('access.roles.update') ||
-            $logged_in_user->can('access.roles.delete')
+            $logged_in_user->isAdmin() ||
+            (
+                $logged_in_user->can('access.users.list') ||
+                $logged_in_user->can('access.users.deactivate') ||
+                $logged_in_user->can('access.users.reactivate') ||
+                $logged_in_user->can('access.users.clear-session') ||
+                $logged_in_user->can('access.users.impersonate') ||
+                $logged_in_user->can('access.users.change-password')
+            )
         )
             <li class="c-sidebar-nav-title">@lang('System')</li>
 
@@ -45,16 +40,15 @@
 
                 <ul class="c-sidebar-nav-dropdown-items">
                     @if (
-                        $logged_in_user->can('access.users.list') ||
-                        $logged_in_user->can('access.users.create') ||
-                        $logged_in_user->can('access.users.update') ||
-                        $logged_in_user->can('access.users.delete') ||
-                        $logged_in_user->can('access.users.restore') ||
-                        $logged_in_user->can('access.users.deactivate') ||
-                        $logged_in_user->can('access.users.reactivate') ||
-                        $logged_in_user->can('access.users.clear-session') ||
-                        $logged_in_user->can('access.users.impersonate') ||
-                        $logged_in_user->can('access.users.change-password')
+                        $logged_in_user->isAdmin() ||
+                        (
+                            $logged_in_user->can('access.users.list') ||
+                            $logged_in_user->can('access.users.deactivate') ||
+                            $logged_in_user->can('access.users.reactivate') ||
+                            $logged_in_user->can('access.users.clear-session') ||
+                            $logged_in_user->can('access.users.impersonate') ||
+                            $logged_in_user->can('access.users.change-password')
+                        )
                     )
                         <li class="c-sidebar-nav-item">
                             <x-utils.link
@@ -64,13 +58,8 @@
                                 :active="activeClass(Route::is('admin.auth.user.*'), 'c-active')" />
                         </li>
                     @endif
-                    
-                    @if (
-                        $logged_in_user->can('access.roles.list') ||
-                        $logged_in_user->can('access.roles.create') ||
-                        $logged_in_user->can('access.roles.update') ||
-                        $logged_in_user->can('access.roles.delete')
-                    )
+
+                    @if ($logged_in_user->isAdmin())
                         <li class="c-sidebar-nav-item">
                             <x-utils.link
                                 :href="route('admin.auth.role.index')"

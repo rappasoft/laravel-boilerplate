@@ -23,10 +23,6 @@ class DeletedUserController extends Controller
      */
     public function __construct(UserService $userService)
     {
-        // TODO: keep?
-        $this->middleware('permission:access.users.delete|access.users.restore|access.users.permanently-delete')->only('index');
-        $this->middleware('permission:access.users.restore')->only('update');
-
         $this->userService = $userService;
     }
 

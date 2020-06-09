@@ -11,113 +11,85 @@ use App\Domains\Auth\Http\Controllers\Backend\Auth\User\UserSessionController;
 Route::group([
     'prefix' => 'auth',
     'as' => 'auth.',
-    'middleware' => [
-        'permission:access.users.list,create,update,delete,restore,deactivate,reactivate,clear-session,impersonate,change-password|access.roles.list,create,update,delete',
-        'password.confirm:frontend.auth.password.confirm',
-    ],
+    'middleware' => 'password.confirm:frontend.auth.password.confirm',
 ], function () {
-    // User Management
     Route::group([
         'prefix' => 'user',
-        'middleware' => 'permission:access.users.list,create,update,delete,restore,deactivate,reactivate,clear-session,impersonate,change-password',
+        'as' => 'user.'
     ], function () {
-        Route::get('deactivated', [DeactivatedUserController::class, 'index'])
-            ->name('user.deactivated')
-            ->middleware('permission:access.users.deactivate,reactivate');
+        Route::group([
+            'middleware' => 'role:'.config('boilerplate.access.roles.admin'), // TODO
+//            'middleware' => 'role:Administrator'
+        ], function () {
+            Route::get('deleted', [DeletedUserController::class, 'index'])->name('deleted');
+            Route::get('create', [UserController::class, 'create'])->name('create');
+            Route::post('/', [UserController::class, 'store'])->name('store');
 
-        Route::get('deleted', [DeletedUserController::class, 'index'])
-            ->name('user.deleted')
-            ->middleware('permission:access.users.delete,restore,permanently-delete');
+            Route::group(['prefix' => '{user}'], function () {
+                Route::get('edit', [UserController::class, 'edit'])->name('edit');
+                Route::patch('/', [UserController::class, 'update'])->name('update');
+                Route::delete('/', [UserController::class, 'destroy'])->name('destroy');
+            });
 
-        Route::get('/', [UserController::class, 'index'])
-            ->name('user.index')
-            ->middleware('permission:access.users.list,create,update,delete,deactivate,clear-session,change-password');
+            Route::group(['prefix' => '{deletedUser}'], function () {
+                Route::get('restore', [DeletedUserController::class, 'update'])->name('restore');
 
-        Route::get('create', [UserController::class, 'create'])
-            ->name('user.create')
-            ->middleware('permission:access.users.create');
-
-        Route::post('/', [UserController::class, 'store'])
-            ->name('user.store')
-            ->middleware('permission:access.users.create');
-
-        Route::group(['prefix' => '{user}'], function () {
-            Route::get('/', [UserController::class, 'show'])
-                ->name('user.show')
-                ->middleware('permission:access.users.list');
-
-            Route::get('edit', [UserController::class, 'edit'])
-                ->name('user.edit')
-                ->middleware('permission:access.users.update');
-
-            Route::patch('/', [UserController::class, 'update'])
-                ->name('user.update')
-                ->middleware('permission:access.users.update');
-
-            Route::delete('/', [UserController::class, 'destroy'])
-                ->name('user.destroy')
-                ->middleware('permission:access.users.delete');
-
-            Route::get('mark/{status}', [DeactivatedUserController::class, 'update'])
-                ->name('user.mark')
-                ->where(['status' => '[0,1]'])
-                ->middleware('permission:access.users.deactivate,reactivate');
-
-            Route::get('clear-session', [UserSessionController::class, 'update'])
-                ->name('user.clear-session')
-                ->middleware('permission:access.users.clear-session');
-
-            Route::get('password/change', [UserPasswordController::class, 'edit'])
-                ->name('user.change-password')
-                ->middleware('permission:access.users.change-password');
-
-            Route::patch('password/change', [UserPasswordController::class, 'update'])
-                ->name('user.change-password.update')
-                ->middleware('permission:access.users.change-password');
+                if (config('boilerplate.access.users.permanently_delete')) {
+                    Route::delete('permanently-delete', [DeletedUserController::class, 'destroy'])->name('permanently-delete');
+                }
+            });
         });
 
-        Route::group(['prefix' => '{deletedUser}'], function () {
-            Route::get('restore', [DeletedUserController::class, 'update'])
-                ->name('user.restore')
-                ->middleware('permission:access.users.restore');
+        Route::group([
+            'middleware' => 'permission:access.users.list,deactivate,reactivate,clear-session,impersonate,change-password',
+        ], function () {
+            Route::get('deactivated', [DeactivatedUserController::class, 'index'])
+                ->name('deactivated')
+                ->middleware('permission:access.users.reactivate');
 
-            if (config('boilerplate.access.users.permanently_delete')) {
-                Route::delete('permanently-delete', [DeletedUserController::class, 'destroy'])
-                    ->name('user.permanently-delete')
-                    ->middleware('permission:access.users.permanently-delete');
-            }
+            Route::get('/', [UserController::class, 'index'])
+                ->name('index')
+                ->middleware('permission:access.users.list,create,update,delete,deactivate,clear-session,change-password');
+
+            Route::group(['prefix' => '{user}'], function () {
+                Route::get('/', [UserController::class, 'show'])
+                    ->name('show')
+                    ->middleware('permission:access.users.list');
+
+                Route::get('mark/{status}', [DeactivatedUserController::class, 'update'])
+                    ->name('mark')
+                    ->where(['status' => '[0,1]'])
+                    ->middleware('permission:access.users.deactivate,reactivate');
+
+                Route::get('clear-session', [UserSessionController::class, 'update'])
+                    ->name('clear-session')
+                    ->middleware('permission:access.users.clear-session');
+
+                Route::get('password/change', [UserPasswordController::class, 'edit'])
+                    ->name('change-password')
+                    ->middleware('permission:access.users.change-password');
+
+                Route::patch('password/change', [UserPasswordController::class, 'update'])
+                    ->name('change-password.update')
+                    ->middleware('permission:access.users.change-password');
+            });
         });
     });
 
-    // Role Management
     Route::group([
         'prefix' => 'role',
-        'middleware' => 'permission:access.roles.list,create,update,delete',
+        'as' => 'role.',
+        'middleware' => 'role:'.config('boilerplate.access.roles.admin'), // TODO
+//        'middleware' => 'role:Administrator'
     ], function () {
-        Route::get('/', [RoleController::class, 'index'])
-            ->name('role.index')
-            ->middleware('permission:access.roles.list');
-
-        Route::get('create', [RoleController::class, 'create'])
-            ->name('role.create')
-            ->middleware('permission:access.roles.create');
-
-        Route::post('/', [RoleController::class, 'store'])
-            ->name('role.store')
-            ->middleware('permission:access.roles.create');
+        Route::get('/', [RoleController::class, 'index'])->name('index');
+        Route::get('create', [RoleController::class, 'create'])->name('create');
+        Route::post('/', [RoleController::class, 'store'])->name('store');
 
         Route::group(['prefix' => '{role}'], function () {
-            Route::get('edit', [RoleController::class, 'edit'])
-                ->name('role.edit')
-                ->middleware('permission:access.roles.update');
-
-            Route::patch('/', [RoleController::class, 'update'])
-                ->name('role.update')
-                ->middleware('permission:access.roles.update');
-
-            Route::delete('/', [RoleController::class, 'destroy'])
-                ->name('role.destroy')
-                ->middleware('permission:access.roles.delete');
+            Route::get('edit', [RoleController::class, 'edit'])->name('edit');
+            Route::patch('/', [RoleController::class, 'update'])->name('update');
+            Route::delete('/', [RoleController::class, 'destroy'])->name('destroy');
         });
     });
 });

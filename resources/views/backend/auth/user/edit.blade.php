@@ -22,10 +22,8 @@
                     <x-forms.email name="email" :placeholder="__('E-mail Address')" :value="$user->email" required />
                 </x-forms.group>
 
-                @if (!$user->isMasterAdmin())
-                    @include('backend.auth.includes.roles')
-                    @include('backend.auth.includes.permissions')
-                @endif
+                @include('backend.auth.includes.roles')
+                @include('backend.auth.includes.permissions')
             </x-slot>
 
             <x-slot name="footer">
