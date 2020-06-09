@@ -96,7 +96,7 @@ class UserController extends Controller
      */
     public function edit(Request $request, User $user)
     {
-        if ($user->isMasterAdmin() && !$request->user()->isMasterAdmin()) {
+        if ($user->isMasterAdmin() && ! $request->user()->isMasterAdmin()) {
             return redirect()->route('admin.auth.user.index')->withFlashDanger(__('Only the administrator can update this user.'));
         }
 
@@ -117,7 +117,7 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        if ($user->isMasterAdmin() && !$request->user()->isMasterAdmin()) {
+        if ($user->isMasterAdmin() && ! $request->user()->isMasterAdmin()) {
             return redirect()->route('admin.auth.user.index')->withFlashDanger(__('Only the administrator can update this user.'));
         }
 
