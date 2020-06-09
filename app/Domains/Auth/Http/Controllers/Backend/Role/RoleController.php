@@ -2,6 +2,8 @@
 
 namespace App\Domains\Auth\Http\Controllers\Backend\Role;
 
+use App\Domains\Auth\Http\Requests\Backend\Role\DeleteRoleRequest;
+use App\Domains\Auth\Http\Requests\Backend\Role\EditRoleRequest;
 use App\Domains\Auth\Http\Requests\Backend\Role\StoreRoleRequest;
 use App\Domains\Auth\Http\Requests\Backend\Role\UpdateRoleRequest;
 use App\Domains\Auth\Models\Role;
@@ -69,16 +71,13 @@ class RoleController extends Controller
     }
 
     /**
+     * @param  EditRoleRequest  $request
      * @param  Role  $role
      *
      * @return mixed
      */
-    public function edit(Role $role)
+    public function edit(EditRoleRequest $request, Role $role)
     {
-        if ($role->isAdmin()) {
-            return redirect()->route('admin.auth.role.index')->withFlashDanger(__('You can not edit the Administrator role.'));
-        }
-
         return view('backend.auth.role.edit')
             ->withCategories($this->permissionService->getCategorizedPermissions())
             ->withGeneral($this->permissionService->getUncategorizedPermissions())
@@ -96,32 +95,21 @@ class RoleController extends Controller
      */
     public function update(UpdateRoleRequest $request, Role $role)
     {
-        if ($role->isAdmin()) {
-            return redirect()->route('admin.auth.role.index')->withFlashDanger(__('You can not edit the Administrator role.'));
-        }
-
         $this->roleService->update($role, $request->validated());
 
         return redirect()->route('admin.auth.role.index')->withFlashSuccess(__('The role was successfully updated.'));
     }
 
     /**
+     * @param  DeleteRoleRequest  $request
      * @param  Role  $role
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return mixed
      * @throws \Exception
      */
-    public function destroy(Role $role)
+    public function destroy(DeleteRoleRequest $request, Role $role)
     {
-        if ($role->isAdmin()) {
-            return redirect()->route('admin.auth.role.index')->withFlashDanger(__('You can not delete the Administrator role.'));
-        }
-
-        if ($role->users()->count()) {
-            return redirect()->back()->withFlashDanger(__('You can not delete a role with associated users.'));
-        }
-
-        $this->roleService->deleteById($role->id);
+        $this->roleService->delete($role);
 
         return redirect()->route('admin.auth.role.index')->withFlashSuccess(__('The role was successfully deleted.'));
     }

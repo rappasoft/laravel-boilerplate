@@ -29,7 +29,7 @@ class RoleService extends BaseService
     /**
      * @param  array  $data
      *
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model
+     * @return Role
      * @throws GeneralException
      * @throws \Throwable
      */
@@ -73,5 +73,20 @@ class RoleService extends BaseService
         DB::commit();
 
         return $role;
+    }
+
+    /**
+     * @param  Role  $role
+     *
+     * @return bool
+     * @throws GeneralException
+     */
+    public function delete(Role $role): bool
+    {
+        if ($role->users()->count()) {
+            throw new GeneralException(__('You can not delete a role with associated users.'));
+        }
+
+        return $this->deleteById($role->id);
     }
 }

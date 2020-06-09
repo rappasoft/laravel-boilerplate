@@ -3,12 +3,11 @@
 namespace App\Domains\Auth\Http\Requests\Backend\Role;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 /**
- * Class UpdateRoleRequest.
+ * Class DeleteRoleRequest.
  */
-class UpdateRoleRequest extends FormRequest
+class DeleteRoleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,9 +27,7 @@ class UpdateRoleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', Rule::unique('roles')->ignore($this->role)],
-            'permissions' => ['sometimes', 'array'],
-            'permissions.*' => [Rule::exists('permissions', 'name')],
+            //
         ];
     }
 }
