@@ -75,6 +75,10 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
+        if ($role->isAdmin()) {
+            return redirect()->route('admin.auth.role.index')->withFlashDanger(__('You can not edit the Administrator role.'));
+        }
+
         return view('backend.auth.role.edit')
             ->withCategories($this->permissionService->getCategorizedPermissions())
             ->withGeneral($this->permissionService->getUncategorizedPermissions())
@@ -92,6 +96,10 @@ class RoleController extends Controller
      */
     public function update(UpdateRoleRequest $request, Role $role)
     {
+        if ($role->isAdmin()) {
+            return redirect()->route('admin.auth.role.index')->withFlashDanger(__('You can not edit the Administrator role.'));
+        }
+
         $this->roleService->update($role, $request->validated());
 
         return redirect()->route('admin.auth.role.index')->withFlashSuccess(__('The role was successfully updated.'));
@@ -105,7 +113,10 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        // TODO: Extract to roleService to keep extra logic out of controllers?
+        if ($role->isAdmin()) {
+            return redirect()->route('admin.auth.role.index')->withFlashDanger(__('You can not delete the Administrator role.'));
+        }
+
         if ($role->users()->count()) {
             return redirect()->back()->withFlashDanger(__('You can not delete a role with associated users.'));
         }

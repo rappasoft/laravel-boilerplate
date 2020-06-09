@@ -63,14 +63,15 @@ return [
         'roles' => [
 
             /*
-             * The ID of the administrator role
-             * Should be 1 by design
+             * The name of the administrator role
+             * Should be Administrator by design and unable to change from the backend
              * It is not recommended to change
              */
-            'admin' => 1,
+            'admin' => 'Administrator',
 
             /*
              * The ID of the default role to give newly registered users
+             * Use ID because the name can be changed from the backend
              */
             'default' => 2,
         ],

@@ -18,8 +18,7 @@ Route::group([
         'as' => 'user.',
     ], function () {
         Route::group([
-            'middleware' => 'role:'.config('boilerplate.access.roles.admin'), // TODO
-            //            'middleware' => 'role:Administrator'
+            'middleware' => 'role:'.config('boilerplate.access.roles.admin'),
         ], function () {
             Route::get('deleted', [DeletedUserController::class, 'index'])->name('deleted');
             Route::get('create', [UserController::class, 'create'])->name('create');
@@ -79,8 +78,7 @@ Route::group([
     Route::group([
         'prefix' => 'role',
         'as' => 'role.',
-        'middleware' => 'role:'.config('boilerplate.access.roles.admin'), // TODO
-        //        'middleware' => 'role:Administrator'
+        'middleware' => 'role:'.config('boilerplate.access.roles.admin'),
     ], function () {
         Route::get('/', [RoleController::class, 'index'])->name('index');
         Route::get('create', [RoleController::class, 'create'])->name('create');

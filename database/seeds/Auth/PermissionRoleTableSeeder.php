@@ -20,7 +20,7 @@ class PermissionRoleTableSeeder extends Seeder
 
         // Create Roles
         Role::create([
-            'id' => config('boilerplate.access.roles.admin'),
+            'id' => 1,
             'name' => 'Administrator',
         ]);
 
