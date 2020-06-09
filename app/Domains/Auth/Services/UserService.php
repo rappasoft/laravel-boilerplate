@@ -146,7 +146,7 @@ class UserService extends BaseService
             'email' => $data['email'],
         ]);
 
-        if (! $user->isMasterAdmin()) {
+        if (!$user->isMasterAdmin()) {
             // Replace selected roles/permissions
             $user->syncRoles($this->getRoles($data));
             $user->syncPermissions($this->getPermissions($data));

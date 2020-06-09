@@ -31,7 +31,7 @@ class UpdateUserRequest extends FormRequest
             'name' => ['required'],
             'email' => ['required', 'email', Rule::unique('users')->ignore($this->user->id)],
             'roles' => [Rule::requiredIf(function () {
-                return ! $this->user->isMasterAdmin();
+                return !$this->user->isMasterAdmin();
             }), 'array'],
             'permissions' => ['sometimes', 'array'],
         ];
