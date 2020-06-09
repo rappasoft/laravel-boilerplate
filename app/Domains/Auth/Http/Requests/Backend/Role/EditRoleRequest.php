@@ -16,7 +16,7 @@ class EditRoleRequest extends FormRequest
      */
     public function authorize()
     {
-        return !$this->role->isAdmin();
+        return ! $this->role->isAdmin();
     }
 
     /**
