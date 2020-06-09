@@ -48,7 +48,7 @@ Route::group([
 
             Route::get('/', [UserController::class, 'index'])
                 ->name('index')
-                ->middleware('permission:access.users.list,create,update,delete,deactivate,clear-session,change-password');
+                ->middleware('permission:access.users.list,deactivate,clear-session,impersonate,change-password');
 
             Route::group(['prefix' => '{user}'], function () {
                 Route::get('/', [UserController::class, 'show'])
