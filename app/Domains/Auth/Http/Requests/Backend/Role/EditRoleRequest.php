@@ -2,6 +2,7 @@
 
 namespace App\Domains\Auth\Http\Requests\Backend\Role;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
@@ -29,5 +30,17 @@ class EditRoleRequest extends FormRequest
         return [
             //
         ];
+    }
+
+    /**
+     * Handle a failed authorization attempt.
+     *
+     * @return void
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    protected function failedAuthorization()
+    {
+        throw new AuthorizationException(__('You can not edit the Administrator role.'));
     }
 }

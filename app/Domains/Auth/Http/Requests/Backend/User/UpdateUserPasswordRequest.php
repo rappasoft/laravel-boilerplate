@@ -2,8 +2,8 @@
 
 namespace App\Domains\Auth\Http\Requests\Backend\User;
 
-//use App\Rules\Auth\UnusedPassword;
 use App\Domains\Auth\Rules\UnusedPassword;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
 use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
 
@@ -19,7 +19,7 @@ class UpdateUserPasswordRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return !($this->user->isMasterAdmin() && !$this->user()->isMasterAdmin());
     }
 
     /**
@@ -37,5 +37,17 @@ class UpdateUserPasswordRequest extends FormRequest
                 PasswordRules::changePassword($this->email)
             ),
         ];
+    }
+
+    /**
+     * Handle a failed authorization attempt.
+     *
+     * @return void
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    protected function failedAuthorization()
+    {
+        throw new AuthorizationException(__('Only the administrator can change their password.'));
     }
 }

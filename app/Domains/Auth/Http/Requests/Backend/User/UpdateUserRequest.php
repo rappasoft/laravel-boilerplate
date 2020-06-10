@@ -2,6 +2,7 @@
 
 namespace App\Domains\Auth\Http\Requests\Backend\User;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -17,7 +18,7 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return !($this->user->isMasterAdmin() && !$this->user()->isMasterAdmin());
     }
 
     /**
@@ -45,5 +46,17 @@ class UpdateUserRequest extends FormRequest
         return [
             'roles.required' => __('You must select one or more roles.'),
         ];
+    }
+
+    /**
+     * Handle a failed authorization attempt.
+     *
+     * @return void
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    protected function failedAuthorization()
+    {
+        throw new AuthorizationException(__('Only the administrator can update this user.'));
     }
 }

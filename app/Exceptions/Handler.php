@@ -46,10 +46,16 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        if ($exception instanceof UnauthorizedException || $exception instanceof AuthorizationException) {
+        if ($exception instanceof UnauthorizedException) {
             return redirect()
                 ->route(homeRoute())
                 ->withFlashDanger(__('You do not have access to do that.'));
+        }
+
+        if ($exception instanceof AuthorizationException) {
+            return redirect()
+                ->back()
+                ->withFlashDanger($exception->getMessage() ?? __('You do not have access to do that.'));
         }
 
         if ($exception instanceof ModelNotFoundException) {

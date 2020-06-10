@@ -231,10 +231,6 @@ class UserService extends BaseService
      */
     public function delete(User $user): User
     {
-        if ($user->isMasterAdmin()) {
-            throw new GeneralException(__('You can not delete the administrator account.'));
-        }
-
         if ($user->id === auth()->id()) {
             throw new GeneralException(__('You can not delete yourself.'));
         }

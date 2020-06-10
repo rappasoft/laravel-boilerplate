@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Domains\Auth\Http\Requests\Backend\Role;
+namespace App\Domains\Auth\Http\Requests\Backend\User;
 
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 /**
- * Class UpdateRoleRequest.
+ * Class EditUserPasswordRequest.
  */
-class UpdateRoleRequest extends FormRequest
+class EditUserPasswordRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -18,7 +17,7 @@ class UpdateRoleRequest extends FormRequest
      */
     public function authorize()
     {
-        return !$this->role->isAdmin();
+        return !($this->user->isMasterAdmin() && !$this->user()->isMasterAdmin());
     }
 
     /**
@@ -29,9 +28,7 @@ class UpdateRoleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', Rule::unique('roles')->ignore($this->role)],
-            'permissions' => ['sometimes', 'array'],
-            'permissions.*' => [Rule::exists('permissions', 'name')],
+            //
         ];
     }
 
@@ -44,6 +41,6 @@ class UpdateRoleRequest extends FormRequest
      */
     protected function failedAuthorization()
     {
-        throw new AuthorizationException(__('You can not edit the Administrator role.'));
+        throw new AuthorizationException(__('Only the administrator can change their password.'));
     }
 }

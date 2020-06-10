@@ -2,6 +2,8 @@
 
 namespace App\Domains\Auth\Http\Controllers\Backend\User;
 
+use App\Domains\Auth\Http\Requests\Backend\User\DeleteUserRequest;
+use App\Domains\Auth\Http\Requests\Backend\User\EditUserRequest;
 use App\Domains\Auth\Http\Requests\Backend\User\StoreUserRequest;
 use App\Domains\Auth\Http\Requests\Backend\User\UpdateUserRequest;
 use App\Domains\Auth\Models\User;
@@ -9,7 +11,6 @@ use App\Domains\Auth\Services\PermissionService;
 use App\Domains\Auth\Services\RoleService;
 use App\Domains\Auth\Services\UserService;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 /**
  * Class UserController.
@@ -69,6 +70,7 @@ class UserController extends Controller
      *
      * @return mixed
      * @throws \App\Domains\Auth\Exceptions\GeneralException
+     * @throws \Throwable
      */
     public function store(StoreUserRequest $request)
     {
@@ -89,17 +91,13 @@ class UserController extends Controller
     }
 
     /**
-     * @param  Request  $request
+     * @param  EditUserRequest  $request
      * @param  User  $user
      *
      * @return mixed
      */
-    public function edit(Request $request, User $user)
+    public function edit(EditUserRequest $request, User $user)
     {
-        if ($user->isMasterAdmin() && ! $request->user()->isMasterAdmin()) {
-            return redirect()->route('admin.auth.user.index')->withFlashDanger(__('Only the administrator can update this user.'));
-        }
-
         return view('backend.auth.user.edit')
             ->withUser($user)
             ->withRoles($this->roleService->with('permissions')->get())
@@ -117,22 +115,19 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
-        if ($user->isMasterAdmin() && ! $request->user()->isMasterAdmin()) {
-            return redirect()->route('admin.auth.user.index')->withFlashDanger(__('Only the administrator can update this user.'));
-        }
-
         $this->userService->update($user, $request->validated());
 
         return redirect()->route('admin.auth.user.show', $user)->withFlashSuccess(__('The user was successfully updated.'));
     }
 
     /**
+     * @param  DeleteUserRequest  $request
      * @param  User  $user
      *
      * @return mixed
      * @throws \App\Domains\Auth\Exceptions\GeneralException
      */
-    public function destroy(User $user)
+    public function destroy(DeleteUserRequest $request, User $user)
     {
         $this->userService->delete($user);
 
