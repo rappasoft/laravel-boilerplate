@@ -11,7 +11,6 @@ use App\Http\Controllers\Controller;
  */
 class UserSessionController extends Controller
 {
-
     /**
      * @param  ClearUserSessionRequest  $request
      * @param  User  $user

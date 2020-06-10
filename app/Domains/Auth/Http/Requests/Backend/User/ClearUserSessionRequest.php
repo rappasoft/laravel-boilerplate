@@ -6,9 +6,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class ClearUserSessionRequest
- *
- * @package App\Domains\Auth\Http\Requests\Backend\User
+ * Class ClearUserSessionRequest.
  */
 class ClearUserSessionRequest extends FormRequest
 {
