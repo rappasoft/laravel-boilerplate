@@ -6,9 +6,7 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Class DeleteUserRequest
- *
- * @package App\Domains\Auth\Http\Requests\Backend\User
+ * Class DeleteUserRequest.
  */
 class DeleteUserRequest extends FormRequest
 {
@@ -19,7 +17,7 @@ class DeleteUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return !$this->user->isMasterAdmin();
+        return ! $this->user->isMasterAdmin();
     }
 
     /**
