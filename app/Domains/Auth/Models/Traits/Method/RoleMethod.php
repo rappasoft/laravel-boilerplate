@@ -10,18 +10,18 @@ use Illuminate\Support\Collection;
 trait RoleMethod
 {
     /**
-     * @return Collection
-     */
-    public function getPermissionDescriptions(): Collection
-    {
-        return $this->permissions->pluck('description');
-    }
-
-    /**
      * @return mixed
      */
     public function isAdmin(): bool
     {
         return $this->name === config('boilerplate.access.roles.admin');
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getPermissionDescriptions(): Collection
+    {
+        return $this->permissions->pluck('description');
     }
 }

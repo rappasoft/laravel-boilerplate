@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Services;
+namespace App\Domains\Announcement\Services;
 
-use App\Models\Announcement;
+use App\Domains\Announcement\Models\Announcement;
+use App\Services\BaseService;
 
 /**
  * Class AnnouncementService.

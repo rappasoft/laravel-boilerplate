@@ -44,7 +44,7 @@ trait UserMethod
      */
     public function isVerified()
     {
-        return $this->email_verified_at !== null;
+        return $this->email_verified_at;
     }
 
     /**
@@ -52,7 +52,7 @@ trait UserMethod
      */
     public function isSocial()
     {
-        return $this->provider !== null && $this->provider_id !== null;
+        return $this->provider && $this->provider_id;
     }
 
     /**

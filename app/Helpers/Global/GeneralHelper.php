@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\HtmlString;
-
 if (! function_exists('appName')) {
     /**
      * Helper to grab the application name.
@@ -11,21 +9,6 @@ if (! function_exists('appName')) {
     function appName()
     {
         return config('app.name', 'Laravel Boilerplate');
-    }
-}
-
-if (! function_exists('emptyCell')) {
-
-    /**
-     * What text to display in an empty table cell.
-     *
-     * @param  string  $text
-     *
-     * @return string
-     */
-    function emptyCell($text = '—')
-    {
-        return new HtmlString($text);
     }
 }
 

@@ -85,7 +85,7 @@ class UserService extends BaseService
             if ($user) {
                 $this->assignDefaultRole($user);
             } else {
-                throw new RegisterException(__('There was a problem connecting to '.$provider));
+                throw new RegisterException(__('There was a problem connecting to :provider', ['provider' => $provider]));
             }
         }
 

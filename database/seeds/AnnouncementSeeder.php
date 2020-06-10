@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Announcement;
+use App\Domains\Announcement\Models\Announcement;
 use Illuminate\Database\Seeder;
 
 /**

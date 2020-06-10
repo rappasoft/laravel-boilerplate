@@ -47,7 +47,6 @@ class ResetPasswordController extends Controller
      *
      * @return array
      */
-    // TODO: Somehow move to form request?
     protected function rules()
     {
         return [

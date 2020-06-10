@@ -3,6 +3,7 @@
  */
 $(function () {
     /**
+     * // TODO: Finish, doesn't work on update screens on page load
      * Checkbox tree for permission selecting
      */
     $('#tree :checkbox').on('change', function (e){

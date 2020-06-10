@@ -34,7 +34,6 @@ class UpdatePasswordController extends Controller
      */
     public function update(UpdatePasswordRequest $request)
     {
-        // TODO: Make sure can only update own password
         $this->userService->updatePassword($request->user(), $request->validated());
 
         return redirect()->route('frontend.user.account', ['#password'])->withFlashSuccess(__('Password successfully updated.'));

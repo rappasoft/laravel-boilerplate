@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Services\AnnouncementService;
+use App\Domains\Announcement\Services\AnnouncementService;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 

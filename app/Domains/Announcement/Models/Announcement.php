@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Domains\Announcement\Models;
 
-use App\Models\Traits\Scope\AnnouncementScope;
+use App\Domains\Announcement\Models\Traits\Scope\AnnouncementScope;
+use App\Models\RecordingModel;
 
 /**
  * Class Announcement.

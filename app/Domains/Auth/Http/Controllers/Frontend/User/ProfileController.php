@@ -33,8 +33,6 @@ class ProfileController extends Controller
      */
     public function update(UpdateProfileRequest $request)
     {
-        // TODO: Gate for user to only be able to update themselves
-
         $this->userService->updateProfile($request->user(), $request->validated());
 
         if (session()->has('resent')) {
