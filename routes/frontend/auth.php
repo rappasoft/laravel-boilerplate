@@ -3,12 +3,12 @@
 use App\Domains\Auth\Http\Controllers\Frontend\Auth\ConfirmPasswordController;
 use App\Domains\Auth\Http\Controllers\Frontend\Auth\ForgotPasswordController;
 use App\Domains\Auth\Http\Controllers\Frontend\Auth\LoginController;
+use App\Domains\Auth\Http\Controllers\Frontend\Auth\PasswordExpiredController;
 use App\Domains\Auth\Http\Controllers\Frontend\Auth\RegisterController;
 use App\Domains\Auth\Http\Controllers\Frontend\Auth\ResetPasswordController;
 use App\Domains\Auth\Http\Controllers\Frontend\Auth\SocialController;
 use App\Domains\Auth\Http\Controllers\Frontend\Auth\UpdatePasswordController;
 use App\Domains\Auth\Http\Controllers\Frontend\Auth\VerificationController;
-use App\Domains\Auth\Http\Controllers\Frontend\Auth\PasswordExpiredController;
 
 /*
  * Frontend Access Controllers
