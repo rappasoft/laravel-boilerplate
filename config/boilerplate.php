@@ -14,7 +14,34 @@ return [
     | Configurations related to the boilerplate's access/authorization options
     */
     'access' => [
-        'options' => [
+        'users' => [
+            /*
+             * Whether or not a user can change their email address after
+             * their account has already been created
+             */
+            'change_email' => env('CHANGE_EMAIL', false),
+
+            /*
+            * How many days before users have to change their passwords
+            * false is off
+            */
+            'password_expires_days' => env('PASSWORD_EXPIRES_DAYS', 30),
+
+            /*
+             * The number of most recent previous passwords to check against when changing/resetting a password
+             * false is off which doesn't log password changes or check against them
+             *
+             * Note: Enabling single_login will have an effect on this as it force changes the users password on login,
+             * which will force a record into the password_histories table. I currently do not have a fix in mind.
+             */
+            'password_history' => env('PASSWORD_HISTORY', 3),
+
+            /*
+             * Whether or not a user can be permanently deleted from the system via the backend
+             * The regular delete button will still exist, and will soft delete the user
+             * but the permanently deleted button on the 'deleted users' screen will be hidden.
+             */
+            'permanently_delete' => false,
 
             /*
              * Use the homeRoute() helper to determine where to send the user after login based on their status
@@ -34,30 +61,6 @@ return [
              * AuthenticateSession middleware must be enabled
              */
             'single_login' => env('SINGLE_LOGIN', false),
-        ],
-
-        'users' => [
-            /*
-             * Whether or not a user can change their email address after
-             * their account has already been created
-             */
-            'change_email' => env('CHANGE_EMAIL', false),
-
-            /*
-             * The number of most recent previous passwords to check against when changing/resetting a password
-             * false is off which doesn't log password changes or check against them
-             *
-             * Note: Enabling single_login will have an effect on this as it force changes the users password on login,
-             * which will force a record into the password_histories table. I currently do not have a fix in mind.
-             */
-            'password_history' => env('PASSWORD_HISTORY', 3),
-
-            /*
-             * Whether or not a user can be permanently deleted from the system via the backend
-             * The regular delete button will still exist, and will soft delete the user
-             * but the permanently deleted button on the 'deleted users' screen will be hidden.
-             */
-            'permanently_delete' => false,
         ],
 
         'roles' => [

@@ -80,7 +80,7 @@
                 @else
                     <a href="{{ route('frontend.auth.login') }}">@lang('Login')</a>
 
-                    @if (config('boilerplate.access.options.registration'))
+                    @if (config('boilerplate.access.users.registration'))
                         <a href="{{ route('frontend.auth.register') }}">@lang('Register')</a>
                     @endif
                 @endauth

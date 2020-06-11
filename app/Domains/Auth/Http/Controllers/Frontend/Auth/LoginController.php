@@ -71,7 +71,7 @@ class LoginController extends Controller
 
         event(new UserLoggedIn($user));
 
-        if (config('boilerplate.access.options.single_login')) {
+        if (config('boilerplate.access.users.single_login')) {
             auth()->logoutOtherDevices($request->password);
         }
 
