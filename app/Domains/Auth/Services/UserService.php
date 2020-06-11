@@ -180,13 +180,13 @@ class UserService extends BaseService
     /**
      * @param  User  $user
      * @param $data
+     * @param  bool  $expired
      *
      * @return User
      * @throws \Throwable
      */
-    public function updatePassword(User $user, $data): User
+    public function updatePassword(User $user, $data, $expired = false): User
     {
-        // TODO: Refactor the rest to throw_if
         if (isset($data['current_password'])) {
             throw_if(
                 ! Hash::check($data['current_password'], $user->password),
@@ -194,7 +194,14 @@ class UserService extends BaseService
             );
         }
 
-        return tap($user)->update(['password' => $data['password']]);
+        if ($expired) {
+            // TODO: Can we extract this and the one from the user event listener out to the user observer and check for the dirty password?
+            $user->password_changed_at = now();
+        }
+
+        $user->password = $data['password'];
+
+        return tap($user)->update();
     }
 
     /**

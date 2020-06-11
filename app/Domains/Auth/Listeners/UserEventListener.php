@@ -3,6 +3,7 @@
 namespace App\Domains\Auth\Listeners;
 
 use App\Domains\Auth\Events\UserLoggedIn;
+use Illuminate\Auth\Events\PasswordReset;
 
 /**
  * Class UserEventListener.
@@ -22,6 +23,16 @@ class UserEventListener
     }
 
     /**
+     * @param $event
+     */
+    public function onPasswordReset($event)
+    {
+        $event->user->update([
+            'password_changed_at' => now(),
+        ]);
+    }
+
+    /**
      * Register the listeners for the subscriber.
      *
      * @param \Illuminate\Events\Dispatcher $events
@@ -31,6 +42,11 @@ class UserEventListener
         $events->listen(
             UserLoggedIn::class,
             'App\Domains\Auth\Listeners\UserEventListener@onLoggedIn'
+        );
+
+        $events->listen(
+            PasswordReset::class,
+            'App\Domains\Auth\Listeners\UserEventListener@onPasswordReset'
         );
     }
 }

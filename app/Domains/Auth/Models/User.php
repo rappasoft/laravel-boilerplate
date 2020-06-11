@@ -46,6 +46,7 @@ class User extends Authenticatable implements Recordable, MustVerifyEmail
         'email',
         'email_verified_at',
         'password',
+        'password_changed_at',
         'active',
         'timezone',
         'last_login_at',
@@ -71,6 +72,7 @@ class User extends Authenticatable implements Recordable, MustVerifyEmail
     protected $dates = [
         'last_login_at',
         'email_verified_at',
+        'password_changed_at',
     ];
 
     /**

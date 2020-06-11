@@ -8,6 +8,7 @@ use App\Domains\Auth\Http\Controllers\Frontend\Auth\ResetPasswordController;
 use App\Domains\Auth\Http\Controllers\Frontend\Auth\SocialController;
 use App\Domains\Auth\Http\Controllers\Frontend\Auth\UpdatePasswordController;
 use App\Domains\Auth\Http\Controllers\Frontend\Auth\VerificationController;
+use App\Domains\Auth\Http\Controllers\Frontend\Auth\PasswordExpiredController;
 
 /*
  * Frontend Access Controllers
@@ -18,15 +19,23 @@ Route::group(['as' => 'auth.'], function () {
         // Authentication
         Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-        // Passwords
-        Route::get('password/confirm', [ConfirmPasswordController::class, 'showConfirmForm'])->name('password.confirm');
-        Route::post('password/confirm', [ConfirmPasswordController::class, 'confirm']);
-        Route::patch('password/update', [UpdatePasswordController::class, 'update'])->name('password.change'); // Dup
+        // Password expired routes
+        Route::get('password/expired', [PasswordExpiredController::class, 'expired'])->name('password.expired');
+        Route::patch('password/expired', [PasswordExpiredController::class, 'update'])->name('password.expired.update');
 
-        // E-mail Verification
-        Route::get('email/verify', [VerificationController::class, 'show'])->name('verification.notice');
-        Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
-        Route::post('email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+        // These routes can not be hit if the password is expired
+        Route::group(['middleware' => 'password.expires'], function () {
+            // Passwords
+            Route::get('password/confirm', [ConfirmPasswordController::class, 'showConfirmForm'])->name('password.confirm');
+            Route::post('password/confirm', [ConfirmPasswordController::class, 'confirm']);
+
+            Route::patch('password/update', [UpdatePasswordController::class, 'update'])->name('password.change');
+
+            // E-mail Verification
+            Route::get('email/verify', [VerificationController::class, 'show'])->name('verification.notice');
+            Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
+            Route::post('email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+        });
     });
 
     Route::group(['middleware' => 'guest'], function () {
@@ -35,7 +44,7 @@ Route::group(['as' => 'auth.'], function () {
         Route::post('login', [LoginController::class, 'login']);
 
         // Registration
-        if (config('boilerplate.access.options.registration')) {
+        if (config('boilerplate.access.users.registration')) {
             Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
             Route::post('register', [RegisterController::class, 'register']);
         }

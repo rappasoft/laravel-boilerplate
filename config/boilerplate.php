@@ -25,7 +25,7 @@ return [
             * How many days before users have to change their passwords
             * false is off
             */
-            'password_expires_days' => env('PASSWORD_EXPIRES_DAYS', 30),
+            'password_expires_days' => env('PASSWORD_EXPIRES_DAYS', 120),
 
             /*
              * The number of most recent previous passwords to check against when changing/resetting a password

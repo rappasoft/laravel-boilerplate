@@ -22,11 +22,8 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => 'password',
+        'password_changed_at' => null,
         'remember_token' => Str::random(10),
         'active' => true,
-
-        // TODO?
-        //        'uuid' => Uuid::uuid4()->toString(),
-        //        'password_changed_at' => null,
     ];
 });
