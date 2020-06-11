@@ -6,13 +6,10 @@ use Carbon\Carbon;
 use Closure;
 
 /**
- * Class PasswordExpires
- *
- * @package App\Domains\Auth\Http\Middleware
+ * Class PasswordExpires.
  */
 class PasswordExpires
 {
-
     /**
      * @param $request
      * @param  Closure  $next
