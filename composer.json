@@ -26,6 +26,7 @@
         "rappasoft/laravel-livewire-tables": "^0.1.5",
         "rappasoft/lockout": "^2.0",
         "spatie/laravel-permission": "^3.11",
+        "spatie/laravel-responsecache": "^6.6",
         "tabuna/breadcrumbs": "^1.0"
     },
     "require-dev": {
@@ -85,6 +86,7 @@
             "@php artisan view:clear",
             "@php artisan config:clear",
             "@php artisan permission:cache-reset",
+            "@php artisan responsecache:clear",
             "composer dumpautoload -o"
         ],
         "cache-all": [

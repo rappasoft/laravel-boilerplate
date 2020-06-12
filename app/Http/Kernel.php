@@ -40,6 +40,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\LocaleMiddleware::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Domains\Auth\Http\Middleware\ToBeLoggedOut::class,
+            \Spatie\ResponseCache\Middlewares\CacheResponse::class,
         ],
 
         'api' => [
@@ -63,6 +64,7 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
+        'doNotCacheResponse' => \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
