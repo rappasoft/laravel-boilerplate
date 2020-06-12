@@ -194,8 +194,8 @@ class UserService extends BaseService
             );
         }
 
+        // Reset the expiration clock
         if ($expired) {
-            // TODO: Can we extract this and the one from the user event listener out to the user observer and check for the dirty password?
             $user->password_changed_at = now();
         }
 
