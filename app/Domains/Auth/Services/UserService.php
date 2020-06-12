@@ -278,7 +278,7 @@ class UserService extends BaseService
      * @return bool
      * @throws GeneralException
      */
-    public function permanentlyDelete(User $user): bool
+    public function destroy(User $user): bool
     {
         if ($user->deleted_at === null) {
             throw new GeneralException(__('This user is not deleted so it can not be permanently deleted.'));

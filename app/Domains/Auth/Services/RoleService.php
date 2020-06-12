@@ -81,7 +81,7 @@ class RoleService extends BaseService
      * @return bool
      * @throws GeneralException
      */
-    public function delete(Role $role): bool
+    public function destroy(Role $role): bool
     {
         if ($role->users()->count()) {
             throw new GeneralException(__('You can not delete a role with associated users.'));

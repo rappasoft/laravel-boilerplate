@@ -109,7 +109,7 @@ class RoleController extends Controller
      */
     public function destroy(DeleteRoleRequest $request, Role $role)
     {
-        $this->roleService->delete($role);
+        $this->roleService->destroy($role);
 
         return redirect()->route('admin.auth.role.index')->withFlashSuccess(__('The role was successfully deleted.'));
     }

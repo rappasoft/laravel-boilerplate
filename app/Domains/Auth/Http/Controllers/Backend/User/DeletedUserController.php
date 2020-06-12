@@ -57,7 +57,7 @@ class DeletedUserController extends Controller
     {
         abort_unless(config('boilerplate.access.users.permanently_delete'), 404);
 
-        $this->userService->permanentlyDelete($deletedUser);
+        $this->userService->destroy($deletedUser);
 
         return redirect()->route('admin.auth.user.deleted')->withFlashSuccess(__('The user was permanently deleted.'));
     }
