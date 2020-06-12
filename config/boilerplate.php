@@ -14,7 +14,7 @@ return [
     | Configurations related to the boilerplate's access/authorization options
     */
     'access' => [
-        'users' => [
+        'user' => [
             /*
              * Whether or not a user can change their email address after
              * their account has already been created
@@ -63,7 +63,7 @@ return [
             'single_login' => env('SINGLE_LOGIN', false),
         ],
 
-        'roles' => [
+        'role' => [
 
             /*
              * The name of the administrator role

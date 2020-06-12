@@ -121,7 +121,7 @@ class User extends Authenticatable implements Recordable, MustVerifyEmail
      */
     public function canImpersonate(): bool
     {
-        return $this->can('access.users.impersonate');
+        return $this->can('access.user.impersonate');
     }
 
     /**

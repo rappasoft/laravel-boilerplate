@@ -6,7 +6,7 @@
         :text="__('Restore')"
         name="confirm-item" />
 
-    @if (config('boilerplate.access.users.permanently_delete'))
+    @if (config('boilerplate.access.user.permanently_delete'))
         <x-utils.delete-button
             :href="route('admin.auth.user.permanently-delete', $model)"
             :text="__('Permanently Delete')" />
@@ -24,7 +24,7 @@
             icon="fas fa-sync-alt"
             :text="__('Restore')"
             name="confirm-item"
-            permission="access.users.reactivate" />
+            permission="access.user.reactivate" />
     @endif
 
     @if ($model->id !== $logged_in_user->id && !$model->isMasterAdmin() && $logged_in_user->isAdmin())
@@ -43,7 +43,7 @@
                     :href="route('admin.auth.user.change-password', $model)"
                     class="dropdown-item"
                     :text="__('Change Password')"
-                    permission="access.users.change-password" />
+                    permission="access.user.change-password" />
             </div>
         </div>
     @elseif (
@@ -52,10 +52,10 @@
         $model->id !== $logged_in_user->id && // It's not the person logged in
         // Any they have at lease one of the abilities in this dropdown
         (
-            $logged_in_user->can('access.users.change-password') ||
-            $logged_in_user->can('access.users.clear-session') ||
-            $logged_in_user->can('access.users.impersonate') ||
-            $logged_in_user->can('access.users.deactivate')
+            $logged_in_user->can('access.user.change-password') ||
+            $logged_in_user->can('access.user.clear-session') ||
+            $logged_in_user->can('access.user.impersonate') ||
+            $logged_in_user->can('access.user.deactivate')
         )
     )
         <div class="dropdown d-inline-block">
@@ -68,7 +68,7 @@
                     :href="route('admin.auth.user.change-password', $model)"
                     class="dropdown-item"
                     :text="__('Change Password')"
-                    permission="access.users.change-password" />
+                    permission="access.user.change-password" />
 
                 @if ($model->id !== $logged_in_user->id && !$model->isMasterAdmin())
                     <x-utils.link
@@ -76,14 +76,14 @@
                         class="dropdown-item"
                         :text="__('Clear Session')"
                         name="confirm-item"
-                        permission="access.users.clear-session" />
+                        permission="access.user.clear-session" />
 
                     @canBeImpersonated($model)
                         <x-utils.link
                             :href="route('impersonate', $model->id)"
                             class="dropdown-item"
                             :text="__('Login As ' . $model->name)"
-                            permission="access.users.impersonate" />
+                            permission="access.user.impersonate" />
                     @endCanBeImpersonated
 
                     <x-utils.link
@@ -91,7 +91,7 @@
                         class="dropdown-item"
                         :text="__('Deactivate')"
                         name="confirm-item"
-                        permission="access.users.deactivate" />
+                        permission="access.user.deactivate" />
                 @endif
             </div>
         </div>

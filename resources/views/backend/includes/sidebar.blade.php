@@ -21,12 +21,12 @@
         @if (
             $logged_in_user->isAdmin() ||
             (
-                $logged_in_user->can('access.users.list') ||
-                $logged_in_user->can('access.users.deactivate') ||
-                $logged_in_user->can('access.users.reactivate') ||
-                $logged_in_user->can('access.users.clear-session') ||
-                $logged_in_user->can('access.users.impersonate') ||
-                $logged_in_user->can('access.users.change-password')
+                $logged_in_user->can('access.user.list') ||
+                $logged_in_user->can('access.user.deactivate') ||
+                $logged_in_user->can('access.user.reactivate') ||
+                $logged_in_user->can('access.user.clear-session') ||
+                $logged_in_user->can('access.user.impersonate') ||
+                $logged_in_user->can('access.user.change-password')
             )
         )
             <li class="c-sidebar-nav-title">@lang('System')</li>
@@ -42,12 +42,12 @@
                     @if (
                         $logged_in_user->isAdmin() ||
                         (
-                            $logged_in_user->can('access.users.list') ||
-                            $logged_in_user->can('access.users.deactivate') ||
-                            $logged_in_user->can('access.users.reactivate') ||
-                            $logged_in_user->can('access.users.clear-session') ||
-                            $logged_in_user->can('access.users.impersonate') ||
-                            $logged_in_user->can('access.users.change-password')
+                            $logged_in_user->can('access.user.list') ||
+                            $logged_in_user->can('access.user.deactivate') ||
+                            $logged_in_user->can('access.user.reactivate') ||
+                            $logged_in_user->can('access.user.clear-session') ||
+                            $logged_in_user->can('access.user.impersonate') ||
+                            $logged_in_user->can('access.user.change-password')
                         )
                     )
                         <li class="c-sidebar-nav-item">

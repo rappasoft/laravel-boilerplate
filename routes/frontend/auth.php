@@ -44,7 +44,7 @@ Route::group(['as' => 'auth.'], function () {
         Route::post('login', [LoginController::class, 'login']);
 
         // Registration
-        if (config('boilerplate.access.users.registration')) {
+        if (config('boilerplate.access.user.registration')) {
             Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
             Route::post('register', [RegisterController::class, 'register']);
         }

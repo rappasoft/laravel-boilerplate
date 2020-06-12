@@ -39,7 +39,7 @@ class UnusedPassword implements Rule
     public function passes($attribute, $value): bool
     {
         // Option is off
-        if (! config('boilerplate.access.users.password_history')) {
+        if (! config('boilerplate.access.user.password_history')) {
             return true;
         }
 
@@ -58,7 +58,7 @@ class UnusedPassword implements Rule
 
         $histories = $this->user
             ->passwordHistories()
-            ->take(config('boilerplate.access.users.password_history'))
+            ->take(config('boilerplate.access.user.password_history'))
             ->orderBy('id', 'desc')
             ->get();
 
@@ -78,6 +78,6 @@ class UnusedPassword implements Rule
      */
     public function message(): string
     {
-        return __('You can not set a password that you have previously used within the last :num times.', ['num' => config('boilerplate.access.users.password_history')]);
+        return __('You can not set a password that you have previously used within the last :num times.', ['num' => config('boilerplate.access.user.password_history')]);
     }
 }

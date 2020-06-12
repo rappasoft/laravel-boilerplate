@@ -19,13 +19,13 @@ class PasswordExpires
      */
     public function handle($request, Closure $next)
     {
-        if (is_numeric(config('boilerplate.access.users.password_expires_days'))) {
+        if (is_numeric(config('boilerplate.access.user.password_expires_days'))) {
             $password_changed_at = new Carbon($request->user()->password_changed_at ?? $request->user()->created_at);
 
-            if (now()->diffInDays($password_changed_at) >= config('boilerplate.access.users.password_expires_days')) {
+            if (now()->diffInDays($password_changed_at) >= config('boilerplate.access.user.password_expires_days')) {
                 return redirect()
                     ->route('frontend.auth.password.expired')
-                    ->withFlashWarning(__('Your password has expired. We require you to change your password every :days days for security purposes.', ['days' => config('boilerplate.access.users.password_expires_days')]));
+                    ->withFlashWarning(__('Your password has expired. We require you to change your password every :days days for security purposes.', ['days' => config('boilerplate.access.user.password_expires_days')]));
             }
         }
 

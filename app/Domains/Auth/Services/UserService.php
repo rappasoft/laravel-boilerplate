@@ -316,6 +316,6 @@ class UserService extends BaseService
      */
     protected function assignDefaultRole(User $user): User
     {
-        return $user->assignRole(config('boilerplate.access.roles.default'));
+        return $user->assignRole(config('boilerplate.access.role.default'));
     }
 }

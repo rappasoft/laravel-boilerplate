@@ -20,7 +20,7 @@ trait UserMethod
      */
     public function isAdmin()
     {
-        return $this->hasRole(config('boilerplate.access.roles.admin'));
+        return $this->hasRole(config('boilerplate.access.role.admin'));
     }
 
     /**
@@ -28,7 +28,7 @@ trait UserMethod
      */
     public function canChangeEmail()
     {
-        return config('boilerplate.access.users.change_email');
+        return config('boilerplate.access.user.change_email');
     }
 
     /**

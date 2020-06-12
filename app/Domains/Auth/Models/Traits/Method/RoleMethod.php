@@ -14,7 +14,7 @@ trait RoleMethod
      */
     public function isAdmin(): bool
     {
-        return $this->name === config('boilerplate.access.roles.admin');
+        return $this->name === config('boilerplate.access.role.admin');
     }
 
     /**

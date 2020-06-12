@@ -55,7 +55,7 @@ class DeletedUserController extends Controller
      */
     public function destroy(User $deletedUser)
     {
-        abort_unless(config('boilerplate.access.users.permanently_delete'), 404);
+        abort_unless(config('boilerplate.access.user.permanently_delete'), 404);
 
         $this->userService->destroy($deletedUser);
 

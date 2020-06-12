@@ -25,7 +25,7 @@ class PermissionRoleTableSeeder extends Seeder
         ]);
 
         Role::create([
-            'id' => config('boilerplate.access.roles.default'),
+            'id' => config('boilerplate.access.role.default'),
             'name' => 'Member',
         ]);
 
@@ -38,37 +38,37 @@ class PermissionRoleTableSeeder extends Seeder
         // Grouped permissions
         // Users category
         $users = Permission::create([
-            'name' => 'access.users',
+            'name' => 'access.user',
             'description' => 'All User Permissions',
         ]);
 
         $users->children()->saveMany([
             new Permission([
-                'name' => 'access.users.list',
+                'name' => 'access.user.list',
                 'description' => 'View Users',
             ]),
             new Permission([
-                'name' => 'access.users.deactivate',
+                'name' => 'access.user.deactivate',
                 'description' => 'Deactivate Users',
                 'sort' => 2,
             ]),
             new Permission([
-                'name' => 'access.users.reactivate',
+                'name' => 'access.user.reactivate',
                 'description' => 'Reactivate Users',
                 'sort' => 3,
             ]),
             new Permission([
-                'name' => 'access.users.clear-session',
+                'name' => 'access.user.clear-session',
                 'description' => 'Clear User Sessions',
                 'sort' => 4,
             ]),
             new Permission([
-                'name' => 'access.users.impersonate',
+                'name' => 'access.user.impersonate',
                 'description' => 'Impersonate Users',
                 'sort' => 5,
             ]),
             new Permission([
-                'name' => 'access.users.change-password',
+                'name' => 'access.user.change-password',
                 'description' => 'Change User Passwords',
                 'sort' => 6,
             ]),
