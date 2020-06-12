@@ -22,9 +22,9 @@ return [
             'change_email' => env('CHANGE_EMAIL', false),
 
             /*
-            * How many days before users have to change their passwords
-            * false is off
-            */
+             * How many days before users have to change their passwords
+             * false is off
+             */
             'password_expires_days' => env('PASSWORD_EXPIRES_DAYS', 120),
 
             /*
