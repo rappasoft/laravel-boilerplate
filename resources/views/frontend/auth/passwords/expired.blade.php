@@ -1,5 +1,7 @@
 @extends('frontend.layouts.app')
 
+@section('title', __('Your password has expired.'))
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">

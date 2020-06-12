@@ -1,5 +1,7 @@
 @extends('frontend.layouts.app')
 
+@section('title', __('Please confirm your password before continuing.'))
+
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-8">
