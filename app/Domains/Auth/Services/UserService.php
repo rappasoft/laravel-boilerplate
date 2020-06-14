@@ -2,10 +2,10 @@
 
 namespace App\Domains\Auth\Services;
 
-use App\Exceptions\GeneralException;
 use App\Domains\Auth\Exceptions\RegisterException;
 use App\Domains\Auth\Models\User;
 use App\Domains\Auth\Services\Traits\HasAbilities;
+use App\Exceptions\GeneralException;
 use App\Services\BaseService;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
