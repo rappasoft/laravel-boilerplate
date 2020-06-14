@@ -6,13 +6,10 @@ use Illuminate\Http\Request;
 use Livewire\Component;
 
 /**
- * Class TwoFactorAuthentication
- *
- * @package App\Http\Livewire
+ * Class TwoFactorAuthentication.
  */
 class TwoFactorAuthentication extends Component
 {
-
     /**
      * @var
      */

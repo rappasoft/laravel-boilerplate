@@ -56,7 +56,7 @@ class LoginController extends Controller
 
     /**
      * Overidden for 2FA
-     * https://github.com/DarkGhostHunter/Laraguard#protecting-the-login
+     * https://github.com/DarkGhostHunter/Laraguard#protecting-the-login.
      *
      * Attempt to log the user into the application.
      *
