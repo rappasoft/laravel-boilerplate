@@ -68,7 +68,25 @@ $(function () {
                 enableSubmitButtons($(this));
             }
         });
-    }).on('click', 'a[name=confirm-item]', function (e) {
+    })
+        .on('submit', 'form[name=confirm-item]', function (e) {
+            e.preventDefault();
+
+            Swal.fire({
+                title: 'Are you sure you want to do this?',
+                showCancelButton: true,
+                confirmButtonText: 'Continue',
+                cancelButtonText: 'Cancel',
+                icon: 'warning'
+            }).then((result) => {
+                if (result.value) {
+                    this.submit()
+                } else {
+                    enableSubmitButtons($(this));
+                }
+            });
+        })
+        .on('click', 'a[name=confirm-item]', function (e) {
         /**
          * Add an 'are you sure' pop-up to any button/link
          */

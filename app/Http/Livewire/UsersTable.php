@@ -64,6 +64,12 @@ class UsersTable extends TableComponent
                 ->sortable(function ($builder, $direction) {
                     return $builder->orderBy('email_verified_at', $direction);
                 }),
+            Column::make('2FA')
+                // TODO: get a second param to the view method for var name in the view by modifying livewire tables
+                ->view('backend.auth.user.includes.2fa'),
+//                ->sortable(function ($builder, $direction) {
+//                    // TODO: Order by existence of relationship
+//                }),
             Column::make('Roles', 'roles_label')
                 ->customAttribute()
                 ->searchable(function ($builder, $term) {
