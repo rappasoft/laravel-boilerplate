@@ -61,7 +61,7 @@ Route::group([
         });
 
         Route::group([
-            'middleware' => 'permission:access.user.list,deactivate,reactivate,clear-session,impersonate,change-password',
+            'middleware' => 'permission:access.user.list|access.user.deactivate|access.user.reactivate|access.user.clear-session|access.user.impersonate|access.user.change-password',
         ], function () {
             Route::get('deactivated', [DeactivatedUserController::class, 'index'])
                 ->name('deactivated')
@@ -73,7 +73,7 @@ Route::group([
 
             Route::get('/', [UserController::class, 'index'])
                 ->name('index')
-                ->middleware('permission:access.user.list,deactivate,clear-session,impersonate,change-password')
+                ->middleware('permission:access.user.list|access.user.deactivate|access.user.clear-session|access.user.impersonate|access.user.change-password')
                 ->breadcrumbs(function (Trail $trail) {
                     $trail->parent('admin.dashboard')
                         ->push(__('User Management'), route('admin.auth.user.index'));
@@ -91,7 +91,7 @@ Route::group([
                 Route::get('mark/{status}', [DeactivatedUserController::class, 'update'])
                     ->name('mark')
                     ->where(['status' => '[0,1]'])
-                    ->middleware('permission:access.user.deactivate,reactivate');
+                    ->middleware('permission:access.user.deactivate|access.user.reactivate');
 
                 Route::get('clear-session', [UserSessionController::class, 'update'])
                     ->name('clear-session')

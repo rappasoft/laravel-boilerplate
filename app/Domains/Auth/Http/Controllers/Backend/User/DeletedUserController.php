@@ -38,7 +38,7 @@ class DeletedUserController extends Controller
      * @param  User  $deletedUser
      *
      * @return mixed
-     * @throws \App\Domains\Auth\Exceptions\GeneralException
+     * @throws \App\Exceptions\GeneralException
      */
     public function update(User $deletedUser)
     {
@@ -51,7 +51,7 @@ class DeletedUserController extends Controller
      * @param  User  $deletedUser
      *
      * @return mixed
-     * @throws \App\Domains\Auth\Exceptions\GeneralException
+     * @throws \App\Exceptions\GeneralException
      */
     public function destroy(User $deletedUser)
     {

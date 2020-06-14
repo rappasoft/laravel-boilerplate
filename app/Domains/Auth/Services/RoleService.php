@@ -2,7 +2,7 @@
 
 namespace App\Domains\Auth\Services;
 
-use App\Domains\Auth\Exceptions\GeneralException;
+use App\Exceptions\GeneralException;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Services\Traits\HasAbilities;
 use App\Services\BaseService;

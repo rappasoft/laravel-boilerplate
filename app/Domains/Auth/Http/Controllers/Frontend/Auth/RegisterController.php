@@ -67,7 +67,7 @@ class RegisterController extends Controller
      * @param  array  $data
      *
      * @return mixed
-     * @throws \App\Domains\Auth\Exceptions\GeneralException
+     * @throws \App\Exceptions\GeneralException
      */
     protected function create(array $data)
     {

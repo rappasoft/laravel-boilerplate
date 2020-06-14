@@ -2,6 +2,8 @@
 
 namespace App\Domains\Auth\Models\Traits\Method;
 
+use Illuminate\Support\Collection;
+
 /**
  * Trait UserMethod.
  */
@@ -53,6 +55,14 @@ trait UserMethod
     public function isSocial()
     {
         return $this->provider && $this->provider_id;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getPermissionDescriptions(): Collection
+    {
+        return $this->permissions->pluck('description');
     }
 
     /**

@@ -44,6 +44,20 @@ trait UserAttribute
             }, $roles));
         }
 
-        return 'N/A';
+        return __('N/A');
+    }
+
+    /**
+     * @return string
+     */
+    public function getPermissionsLabelAttribute()
+    {
+        $permissions = $this->getPermissionDescriptions()->toArray();
+
+        if (count($permissions)) {
+            return implode(', ', $permissions);
+        }
+
+        return __('None');
     }
 }

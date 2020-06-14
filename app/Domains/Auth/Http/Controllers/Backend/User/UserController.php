@@ -69,7 +69,7 @@ class UserController extends Controller
      * @param  StoreUserRequest  $request
      *
      * @return mixed
-     * @throws \App\Domains\Auth\Exceptions\GeneralException
+     * @throws \App\Exceptions\GeneralException
      * @throws \Throwable
      */
     public function store(StoreUserRequest $request)
@@ -125,7 +125,7 @@ class UserController extends Controller
      * @param  User  $user
      *
      * @return mixed
-     * @throws \App\Domains\Auth\Exceptions\GeneralException
+     * @throws \App\Exceptions\GeneralException
      */
     public function destroy(DeleteUserRequest $request, User $user)
     {

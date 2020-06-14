@@ -60,7 +60,7 @@ class RoleController extends Controller
      * @param  StoreRoleRequest  $request
      *
      * @return mixed
-     * @throws \App\Domains\Auth\Exceptions\GeneralException
+     * @throws \App\Exceptions\GeneralException
      * @throws \Throwable
      */
     public function store(StoreRoleRequest $request)
@@ -90,7 +90,7 @@ class RoleController extends Controller
      * @param  Role  $role
      *
      * @return mixed
-     * @throws \App\Domains\Auth\Exceptions\GeneralException
+     * @throws \App\Exceptions\GeneralException
      * @throws \Throwable
      */
     public function update(UpdateRoleRequest $request, Role $role)

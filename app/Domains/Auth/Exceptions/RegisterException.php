@@ -2,6 +2,8 @@
 
 namespace App\Domains\Auth\Exceptions;
 
+use App\Exceptions\GeneralException;
+
 /**
  * Class RegisterException.
  */

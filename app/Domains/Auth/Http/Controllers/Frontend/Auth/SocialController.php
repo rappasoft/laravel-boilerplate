@@ -27,7 +27,7 @@ class SocialController extends Controller
      * @param  UserService  $userService
      *
      * @return \Illuminate\Http\RedirectResponse
-     * @throws \App\Domains\Auth\Exceptions\GeneralException
+     * @throws \App\Exceptions\GeneralException
      */
     public function callback($provider, UserService $userService)
     {
