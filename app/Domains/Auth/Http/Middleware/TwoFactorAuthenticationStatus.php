@@ -9,7 +9,6 @@ use Closure;
  */
 class TwoFactorAuthenticationStatus
 {
-
     /**
      * @param $request
      * @param  Closure  $next
@@ -19,7 +18,7 @@ class TwoFactorAuthenticationStatus
      */
     public function handle($request, Closure $next, $status = 'enabled')
     {
-        if (!in_array($status, ['enabled', 'disabled'])) {
+        if (! in_array($status, ['enabled', 'disabled'])) {
             abort(404);
         }
 

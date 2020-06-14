@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
  */
 class TwoFactorAuthenticationController extends Controller
 {
-
     /**
      * @param  Request  $request
      *
