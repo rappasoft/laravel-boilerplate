@@ -14,6 +14,11 @@ return [
     | Configurations related to the boilerplate's access/authorization options
     */
     'access' => [
+        'middleware' => [
+            'confirm' => 'password.confirm:frontend.auth.password.confirm',
+            'verified' => 'verified:frontend.auth.verification.notice',
+        ],
+
         'user' => [
             /*
              * Whether or not a user can change their email address after
