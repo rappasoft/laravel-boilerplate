@@ -32,10 +32,10 @@ class RolesTable extends TableComponent
     public function columns(): array
     {
         return [
-            Column::make('Name')
+            Column::make(__('Name'))
                 ->searchable()
                 ->sortable(),
-            Column::make('Permissions', 'permissions_label')
+            Column::make(__('Permissions'), 'permissions_label')
                 ->customAttribute()
                 ->html()
                 ->searchable(function ($builder, $term) {
@@ -43,9 +43,9 @@ class RolesTable extends TableComponent
                         return $query->where('name', 'like', '%'.$term.'%');
                     });
                 }),
-            Column::make('Number of Users', 'users_count')
+            Column::make(__('Number of Users'), 'users_count')
                 ->sortable(),
-            Column::make('Actions')
+            Column::make(__('Actions'))
                 ->view('backend.auth.role.includes.actions'),
         ];
     }
