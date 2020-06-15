@@ -21,7 +21,13 @@
                         </x-forms.group>
 
                         <x-forms.group noLabel="true" bodyClass="col-md-6 offset-md-4">
-                            <x-forms.form-check name="remember" id="remember" :checked="old('remember')" :label="__('Remember Me')" />
+                            <div class="form-check">
+                                <input name="remember" id="remember" class="form-check-input" type="checkbox" {{ old('remember') ? 'checked' : '' }} />
+
+                                <label class="form-check-label" for="remember">
+                                    {{ __('Remember Me') }}
+                                </label>
+                            </div><!--form-check-->
                         </x-forms.group>
 
                         <x-forms.group :noLabel="true" groupClass="form-group row mb-0" bodyClass="col-md-8 offset-md-4">

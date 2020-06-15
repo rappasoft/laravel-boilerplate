@@ -1,13 +1,19 @@
 <x-forms.group for="roles" :label="__('Roles')">
     @forelse($roles as $role)
         <span class="d-block mb-2">
-            <x-forms.form-check
-                :label="$role->name"
-                name="roles[]"
-                value="{{ $role->id }}"
-                id="role_{{ $role->id }}"
-                :checked="(old('rules') && in_array($role->id, old('rules'), true)) || (isset($user) && in_array($role->id, $user->roles->modelKeys(), true))"
-            />
+            <div class="form-check">
+                <input
+                    name="roles[]"
+                    id="role_{{ $role->id }}"
+                    value="{{ $role->id }}"
+                    class="form-check-input"
+                    type="checkbox"
+                    {{ (old('rules') && in_array($role->id, old('rules'), true)) || (isset($user) && in_array($role->id, $user->roles->modelKeys(), true)) ? 'checked' : '' }} />
+
+                <label class="form-check-label" for="role_{{ $role->id }}">
+                    {{ $role->name }}
+                </label>
+            </div><!--form-check-->
         </span>
 
         @if ($role->isAdmin())
