@@ -13,7 +13,7 @@
                 <x-slot name="body">
                     <p>@lang('Generate a code from your 2FA app and enter it below:')</p>
 
-                    <x-forms.delete :action="route('frontend.user.account.2fa.destroy')" name="confirm-item">
+                    <x-forms.delete :action="route('frontend.auth.account.2fa.destroy')" name="confirm-item">
                         <x-forms.group labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" for="code" :label="__('Authorization Code')">
                             <x-forms.text name="code" id="code" maxlength="10" :placeholder="__('Authorization Code')" required />
                         </x-forms.group>

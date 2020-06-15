@@ -31,7 +31,7 @@ class TwoFactorAuthentication extends Component
 
             session()->flash('flash_success', __('Two Factor Authentication Successfully Enabled'));
 
-            return redirect()->route('frontend.user.account.2fa.show');
+            return redirect()->route('frontend.auth.account.2fa.show');
         }
 
         $this->addError('code', __('Your authorization code was invalid. Please try again.'));

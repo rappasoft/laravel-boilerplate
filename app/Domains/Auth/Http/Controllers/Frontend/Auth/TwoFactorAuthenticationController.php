@@ -46,6 +46,6 @@ class TwoFactorAuthenticationController extends Controller
 
         session()->flash('flash_warning', __('Any old backup codes have been invalidated.'));
 
-        return redirect()->route('frontend.user.account.2fa.show')->withFlashSuccess(__('Two Factor Recovery Codes Regenerated'));
+        return redirect()->route('frontend.auth.account.2fa.show')->withFlashSuccess(__('Two Factor Recovery Codes Regenerated'));
     }
 }

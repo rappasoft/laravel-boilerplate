@@ -17,7 +17,7 @@
 
                     <p class="text-danger"><strong>@lang('Save these codes! If you lose your device and don\'t have the recovery codes you will lose access to your account forever!')</strong></p>
 
-                    <x-forms.patch :action="route('frontend.user.account.2fa.update')" name="confirm-item">
+                    <x-forms.patch :action="route('frontend.auth.account.2fa.update')" name="confirm-item">
                         <x-forms.submit class="btn btn-sm btn-block btn-danger mb-3" :text="__('Generate New Backup Codes')" />
                     </x-forms.patch>
 
