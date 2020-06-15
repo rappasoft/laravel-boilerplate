@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\DB;
  */
 class RoleService extends BaseService
 {
-
     /**
      * RoleService constructor.
      *
