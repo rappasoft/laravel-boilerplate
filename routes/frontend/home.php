@@ -1,5 +1,6 @@
 <?php
 
+use App\Domains\Auth\Http\Controllers\Frontend\Auth\DisableTwoFactorAuthenticationController;
 use App\Domains\Auth\Http\Controllers\Frontend\Auth\TwoFactorAuthenticationController;
 use App\Domains\Auth\Http\Controllers\Frontend\HomeController;
 use App\Domains\Auth\Http\Controllers\Frontend\User\AccountController;
@@ -23,6 +24,7 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
     Route::patch('profile/update', [ProfileController::class, 'update'])->name('profile.update');
 
     // Two-factor Authentication
+    // TODO: Move to auth?
     Route::group(['prefix' => 'account/2fa', 'as' => 'account.2fa.'], function () {
         Route::group(['middleware' => '2fa:disabled'], function () {
             Route::get('enable', [TwoFactorAuthenticationController::class, 'create'])->name('create');
@@ -31,8 +33,8 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
         Route::group(['middleware' => '2fa:enabled'], function () {
             Route::get('recovery', [TwoFactorAuthenticationController::class, 'show'])->name('show');
             Route::patch('recovery/generate', [TwoFactorAuthenticationController::class, 'update'])->name('update');
-            Route::get('disable', [TwoFactorAuthenticationController::class, 'delete'])->name('delete');
-            Route::delete('/', [TwoFactorAuthenticationController::class, 'destroy'])->name('destroy');
+            Route::get('disable', [DisableTwoFactorAuthenticationController::class, 'show'])->name('disable');
+            Route::delete('/', [DisableTwoFactorAuthenticationController::class, 'destroy'])->name('destroy');
         });
     });
 });

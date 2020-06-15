@@ -24,6 +24,23 @@ trait UserAttribute
     }
 
     /**
+     * @return string
+     */
+    public function getPermissionsLabelAttribute()
+    {
+        if ($this->isAdmin()) {
+            return 'All';
+        }
+
+        if (! $this->permissions->count()) {
+            return 'None';
+        }
+
+        return collect($this->getPermissionDescriptions())
+            ->implode('<br/>');
+    }
+
+    /**
      * @return mixed
      */
     public function getAvatarAttribute()
@@ -36,28 +53,18 @@ trait UserAttribute
      */
     public function getRolesLabelAttribute()
     {
-        $roles = $this->getRoleNames()->toArray();
-
-        if (count($roles)) {
-            return implode(', ', array_map(function ($item) {
-                return ucwords($item);
-            }, $roles));
+        if ($this->isAdmin()) {
+            return 'All';
         }
 
-        return __('N/A');
-    }
-
-    /**
-     * @return string
-     */
-    public function getPermissionsLabelAttribute()
-    {
-        $permissions = $this->getPermissionDescriptions()->toArray();
-
-        if (count($permissions)) {
-            return implode(', ', $permissions);
+        if (! $this->roles->count()) {
+            return 'None';
         }
 
-        return __('None');
+        return collect($this->getRoleNames())
+            ->each(function ($role) {
+                return ucwords($role);
+            })
+            ->implode('<br/>');
     }
 }

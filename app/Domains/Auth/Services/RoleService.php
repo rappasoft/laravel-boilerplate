@@ -3,7 +3,6 @@
 namespace App\Domains\Auth\Services;
 
 use App\Domains\Auth\Models\Role;
-use App\Domains\Auth\Services\Traits\HasAbilities;
 use App\Exceptions\GeneralException;
 use App\Services\BaseService;
 use Exception;
@@ -14,7 +13,6 @@ use Illuminate\Support\Facades\DB;
  */
 class RoleService extends BaseService
 {
-    use HasAbilities;
 
     /**
      * RoleService constructor.
@@ -39,7 +37,7 @@ class RoleService extends BaseService
 
         try {
             $role = $this->model::create(['name' => $data['name']]);
-            $role->syncPermissions($this->getPermissions($data));
+            $role->syncPermissions($data['permissions'] ?? []);
         } catch (Exception $e) {
             DB::rollBack();
             throw new GeneralException(__('There was a problem creating the role.'));
@@ -63,8 +61,8 @@ class RoleService extends BaseService
         DB::beginTransaction();
 
         try {
-            $role->syncPermissions($this->getPermissions($data));
             $role->update(['name' => $data['name']]);
+            $role->syncPermissions($data['permissions'] ?? []);
         } catch (Exception $e) {
             DB::rollBack();
             throw new GeneralException(__('There was a problem updating the role.'));

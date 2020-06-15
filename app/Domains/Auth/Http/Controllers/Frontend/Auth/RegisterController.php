@@ -6,6 +6,7 @@ use App\Domains\Auth\Services\UserService;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
 
 /**
@@ -56,7 +57,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')],
             'password' => PasswordRules::register($data['email']),
         ]);
     }
@@ -64,13 +65,14 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
+     * @param  UserService  $userService
      * @param  array  $data
      *
-     * @return mixed
-     * @throws \App\Exceptions\GeneralException
+     * @return \App\Domains\Auth\Models\User|mixed
+     * @throws \App\Domains\Auth\Exceptions\RegisterException
      */
-    protected function create(array $data)
+    protected function create(UserService $userService, array $data)
     {
-        return resolve(UserService::class)->registerUser($data);
+        return $userService->registerUser($data);
     }
 }

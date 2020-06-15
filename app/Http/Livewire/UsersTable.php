@@ -72,6 +72,7 @@ class UsersTable extends TableComponent
             //                }),
             Column::make(__('Roles'), 'roles_label')
                 ->customAttribute()
+                ->html()
                 ->searchable(function ($builder, $term) {
                     return $builder->orWhereHas('roles', function ($query) use ($term) {
                         return $query->where('name', 'like', '%'.$term.'%');
@@ -79,6 +80,7 @@ class UsersTable extends TableComponent
                 }),
             Column::make(__('Additional Permissions'), 'permissions_label')
                 ->customAttribute()
+                ->html()
                 ->searchable(function ($builder, $term) {
                     return $builder->orWhereHas('permissions', function ($query) use ($term) {
                         return $query->where('name', 'like', '%'.$term.'%');

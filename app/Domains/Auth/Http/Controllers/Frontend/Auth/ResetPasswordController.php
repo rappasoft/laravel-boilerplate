@@ -54,7 +54,7 @@ class ResetPasswordController extends Controller
             'email' => ['required', 'email'],
             'password' => array_merge(
                 [
-                    new UnusedPassword(request('token')), // TODO: Use email?
+                    new UnusedPassword(request('email')),
                 ],
                 PasswordRules::changePassword(request('email'))
             ),

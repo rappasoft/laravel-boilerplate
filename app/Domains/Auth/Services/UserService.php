@@ -4,9 +4,9 @@ namespace App\Domains\Auth\Services;
 
 use App\Domains\Auth\Exceptions\RegisterException;
 use App\Domains\Auth\Models\User;
-use App\Domains\Auth\Services\Traits\HasAbilities;
 use App\Exceptions\GeneralException;
 use App\Services\BaseService;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Hash;
  */
 class UserService extends BaseService
 {
-    use HasAbilities;
 
     /**
      * UserService constructor.
@@ -28,22 +27,6 @@ class UserService extends BaseService
     }
 
     /**
-     * @param $token
-     *
-     * @return bool|\Illuminate\Database\Eloquent\Model
-     */
-    public function findByPasswordResetToken($token)
-    {
-        foreach (DB::table(config('auth.passwords.users.table'))->get() as $row) {
-            if (password_verify($token, $row->token)) {
-                return $this->getByColumn($row->email, 'email');
-            }
-        }
-
-        return false;
-    }
-
-    /**
      * @param  array  $data
      *
      * @return mixed
@@ -51,13 +34,17 @@ class UserService extends BaseService
      */
     public function registerUser(array $data = []): User
     {
-        $user = $this->createUser($data);
+        DB::beginTransaction();
 
-        if ($user) {
+        try {
+            $user = $this->createUser($data);
             $this->assignDefaultRole($user);
-        } else {
+        } catch (Exception $e) {
+            DB::rollBack();
             throw new RegisterException(__('There was a problem creating your account.'));
         }
+
+        DB::commit();
 
         return $user;
     }
@@ -74,19 +61,24 @@ class UserService extends BaseService
         $user = $this->model::where('provider_id', $info->id)->first();
 
         if (! $user) {
-            $user = $this->createUser([
-                'name' => $info->name,
-                'email' => $info->email,
-                'provider' => $provider,
-                'provider_id' => $info->id,
-                'email_verified_at' => now(),
-            ]);
+            DB::beginTransaction();
 
-            if ($user) {
+            try {
+                $user = $this->createUser([
+                    'name' => $info->name,
+                    'email' => $info->email,
+                    'provider' => $provider,
+                    'provider_id' => $info->id,
+                    'email_verified_at' => now(),
+                ]);
+
                 $this->assignDefaultRole($user);
-            } else {
+            } catch (Exception $e) {
+                DB::rollBack();
                 throw new RegisterException(__('There was a problem connecting to :provider', ['provider' => $provider]));
             }
+
+            DB::commit();
         }
 
         return $user;
@@ -113,8 +105,8 @@ class UserService extends BaseService
 
         if ($user) {
             // Add selected roles/permissions
-            $user->syncRoles($this->getRoles($data));
-            $user->syncPermissions($this->getPermissions($data));
+            $user->syncRoles($data['roles'] ?? []);
+            $user->syncPermissions($data['permissions'] ?? []);
 
             DB::commit();
 
@@ -148,8 +140,8 @@ class UserService extends BaseService
 
         if (! $user->isMasterAdmin()) {
             // Replace selected roles/permissions
-            $user->syncRoles($this->getRoles($data));
-            $user->syncPermissions($this->getPermissions($data));
+            $user->syncRoles($data['roles'] ?? []);
+            $user->syncPermissions($data['permissions'] ?? []);
         }
 
         DB::commit();
@@ -167,7 +159,7 @@ class UserService extends BaseService
     {
         $user->name = $data['name'] ?? null;
 
-        if ($user->canChangeEmail() && $user->email !== $data['email']) {
+        if ($user->email !== $data['email'] && $user->canChangeEmail()) {
             $user->email = $data['email'];
             $user->email_verified_at = null;
             $user->sendEmailVerificationNotification();

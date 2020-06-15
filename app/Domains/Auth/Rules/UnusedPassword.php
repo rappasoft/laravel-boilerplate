@@ -47,8 +47,7 @@ class UnusedPassword implements Rule
             if (is_numeric($this->user)) {
                 $this->user = resolve(UserService::class)->getById($this->user);
             } else {
-                // TODO: Do I even need this? I have the email address to send through in ResetPasswordController i think
-                $this->user = resolve(UserService::class)->findByPasswordResetToken($this->user);
+                $this->user = resolve(UserService::class)->getByColumn($this->user, 'email');
             }
         }
 

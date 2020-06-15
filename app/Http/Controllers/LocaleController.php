@@ -15,6 +15,7 @@ class LocaleController extends Controller
     public function change($locale)
     {
         app()->setLocale($locale);
+
         session()->put('locale', $locale);
 
         return redirect()->back();

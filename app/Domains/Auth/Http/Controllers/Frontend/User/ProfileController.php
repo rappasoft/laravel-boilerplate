@@ -11,29 +11,16 @@ use App\Http\Controllers\Controller;
  */
 class ProfileController extends Controller
 {
-    /**
-     * @var UserService
-     */
-    protected $userService;
-
-    /**
-     * ProfileController constructor.
-     *
-     * @param UserService $userService
-     */
-    public function __construct(UserService $userService)
-    {
-        $this->userService = $userService;
-    }
 
     /**
      * @param  UpdateProfileRequest  $request
+     * @param  UserService  $userService
      *
      * @return mixed
      */
-    public function update(UpdateProfileRequest $request)
+    public function update(UpdateProfileRequest $request, UserService $userService)
     {
-        $this->userService->updateProfile($request->user(), $request->validated());
+        $userService->updateProfile($request->user(), $request->validated());
 
         if (session()->has('resent')) {
             return redirect()->route('verification.notice')->withFlashInfo(__('You must confirm your new e-mail address before you can go any further.'));

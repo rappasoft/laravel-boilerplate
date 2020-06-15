@@ -48,29 +48,4 @@ class TwoFactorAuthenticationController extends Controller
 
         return redirect()->route('frontend.user.account.2fa.show')->withFlashSuccess(__('Two Factor Recovery Codes Regenerated'));
     }
-
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function delete()
-    {
-        return view('frontend.user.account.tabs.two-factor-authentication.disable');
-    }
-
-    /**
-     * @param  Request  $request
-     *
-     * @return mixed
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function destroy(Request $request)
-    {
-        $this->validate($request, [
-            'code' => 'required|totp_code',
-        ]);
-
-        $request->user()->disableTwoFactorAuth();
-
-        return redirect()->route('frontend.user.account', ['#two-factor-authentication'])->withFlashSuccess(__('Two Factor Authentication Successfully Disabled'));
-    }
 }
