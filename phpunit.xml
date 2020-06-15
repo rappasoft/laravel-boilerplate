@@ -42,5 +42,6 @@
 <!--        <server name="ENABLE_REGISTRATION" value="true"/>-->
 <!--        <server name="LOGIN_CAPTCHA_STATUS" value="false"/>-->
 <!--        <server name="REGISTRATION_CAPTCHA_STATUS" value="false"/>-->
+        <server name="TELESCOPE_ENABLED" value="false"/>
     </php>
 </phpunit>
