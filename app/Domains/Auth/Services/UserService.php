@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Hash;
  */
 class UserService extends BaseService
 {
-
     /**
      * UserService constructor.
      *

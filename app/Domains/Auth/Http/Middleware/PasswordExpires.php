@@ -26,7 +26,7 @@ class PasswordExpires
                 return redirect()
                     ->route('frontend.auth.password.expired')
                     ->withFlashWarning(__('Your password has expired. We require you to change your password every :days days for security purposes.', [
-                        'days' => config('boilerplate.access.user.password_expires_days')
+                        'days' => config('boilerplate.access.user.password_expires_days'),
                     ]));
             }
         }
