@@ -38,7 +38,9 @@
         "matt-allan/laravel-code-style": "^0.5.1",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^4.1",
-        "phpunit/phpunit": "^8.5"
+        "phpunit/phpunit": "^8.5",
+        "jasonmccreary/laravel-test-assertions": "^1.0",
+        "mpociot/laravel-test-factory-helper": "^2.1"
     },
     "config": {
         "optimize-autoloader": true,
