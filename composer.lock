@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa2230f2293674f1f1d7482956d23171",
+    "content-hash": "b83d16ebc6b500000d58920292b700e1",
     "packages": [
         {
             "name": "albertcht/invisible-recaptcha",
@@ -1343,62 +1343,6 @@
                 "timezone"
             ],
             "time": "2020-04-14T16:27:03+00:00"
-        },
-        {
-            "name": "kkomelin/laravel-translatable-string-exporter",
-            "version": "1.10.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kkomelin/laravel-translatable-string-exporter.git",
-                "reference": "4f81ad2a89463a50ebd27e981a19344d570d3464"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kkomelin/laravel-translatable-string-exporter/zipball/4f81ad2a89463a50ebd27e981a19344d570d3464",
-                "reference": "4f81ad2a89463a50ebd27e981a19344d570d3464",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "illuminate/support": "^5.4|^6|^7",
-                "illuminate/translation": "^5.4|^6|^7",
-                "php": ">=5.4.0",
-                "symfony/finder": "^3.2|^4|^5"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^3.4|^4.0|^5.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "KKomelin\\TranslatableStringExporter\\Providers\\ExporterServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "KKomelin\\TranslatableStringExporter\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Konstantin Komelin",
-                    "email": "konstantin.komelin@gmail.com"
-                }
-            ],
-            "description": "Translatable String Exporter for Laravel >= 5.4",
-            "keywords": [
-                "export",
-                "exporter",
-                "laravel",
-                "translations"
-            ],
-            "time": "2020-05-28T04:21:14+00:00"
         },
         {
             "name": "lab404/laravel-impersonate",
@@ -3706,55 +3650,6 @@
             "time": "2020-05-20T00:31:29+00:00"
         },
         {
-            "name": "stichoza/google-translate-php",
-            "version": "v4.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Stichoza/google-translate-php.git",
-                "reference": "f5b8be4f573d53a52190651de27f16c679d84990"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Stichoza/google-translate-php/zipball/f5b8be4f573d53a52190651de27f16c679d84990",
-                "reference": "f5b8be4f573d53a52190651de27f16c679d84990",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "guzzlehttp/guzzle": "~6.0",
-                "php": "^7.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Stichoza\\GoogleTranslate\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Levan Velijanashvili",
-                    "email": "me@stichoza.com"
-                }
-            ],
-            "description": "Free Google Translate API PHP Package",
-            "homepage": "http://github.com/Stichoza/google-translate-php",
-            "keywords": [
-                "google",
-                "php",
-                "translate",
-                "translator"
-            ],
-            "time": "2020-02-11T01:34:51+00:00"
-        },
-        {
             "name": "swiftmailer/swiftmailer",
             "version": "v6.2.3",
             "source": {
@@ -5516,54 +5411,6 @@
             ],
             "description": "An easy way to add breadcrumbs to your Laravel app.",
             "time": "2020-05-10T21:15:41+00:00"
-        },
-        {
-            "name": "tanmuhittin/laravel-google-translate",
-            "version": "1.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tanmuhittin/laravel-google-translate.git",
-                "reference": "393e5a85dbbceec4ff233836092f978fdcd5dcce"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tanmuhittin/laravel-google-translate/zipball/393e5a85dbbceec4ff233836092f978fdcd5dcce",
-                "reference": "393e5a85dbbceec4ff233836092f978fdcd5dcce",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/console": ">=5.1",
-                "illuminate/support": "^5.5|^6|^7",
-                "illuminate/translation": "^5.5|^6|^7",
-                "php": ">=7.0.0",
-                "stichoza/google-translate-php": "^4.0"
-            },
-            "require-dev": {
-                "ext-json": "*",
-                "phpunit/phpunit": "^8.3@dev"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Tanmuhittin\\LaravelGoogleTranslate\\LaravelGoogleTranslateServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Tanmuhittin\\LaravelGoogleTranslate\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "authors": [
-                {
-                    "name": "Muhittin Tan",
-                    "email": "tanmuhittin@gmail.com"
-                }
-            ],
-            "description": "Translate translation files to other languages using google translate api",
-            "time": "2020-03-04T18:54:19+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

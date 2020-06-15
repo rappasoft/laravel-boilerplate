@@ -17,7 +17,6 @@
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^1.0",
         "jamesmills/laravel-timezone": "^1.9",
-        "kkomelin/laravel-translatable-string-exporter": "^1.10",
         "lab404/laravel-impersonate": "^1.6",
         "langleyfoxall/laravel-nist-password-rules": "^4.1",
         "laravel/framework": "^7.0",
@@ -28,8 +27,7 @@
         "rappasoft/laravel-livewire-tables": "^0.1.5",
         "rappasoft/lockout": "^2.0",
         "spatie/laravel-permission": "^3.11",
-        "tabuna/breadcrumbs": "^1.0",
-        "tanmuhittin/laravel-google-translate": "^1.0"
+        "tabuna/breadcrumbs": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
