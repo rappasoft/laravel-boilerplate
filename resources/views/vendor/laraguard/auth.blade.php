@@ -23,7 +23,7 @@
                         @endif
 
                         <div class="form-group row">
-                            <label for="{{ $input }}" class="col-md-4 col-form-label text-md-right">{{ __('Authentication Code') }}</label>
+                            <label for="{{ $input }}" class="col-md-4 col-form-label text-md-right">@lang('Authentication Code')</label>
 
                             <div class="col-md-6">
                                 <input type="text"
@@ -44,7 +44,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button class="btn btn-primary" type="submit">{{ __('Confirm Code') }}</button>
+                                <button class="btn btn-primary" type="submit">@lang('Confirm Code')</button>
                             </div>
                         </div><!--form-group-->
                     </x-forms.post>

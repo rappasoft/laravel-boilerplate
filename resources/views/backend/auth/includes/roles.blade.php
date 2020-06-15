@@ -1,5 +1,5 @@
 <div class="form-group row">
-    <label for="roles" class="col-md-2 col-form-label">{{ __('Roles') }}</label>
+    <label for="roles" class="col-md-2 col-form-label">@lang('Roles')</label>
 
     <div class="col-md-10">
         @forelse($roles as $role)

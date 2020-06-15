@@ -35,7 +35,7 @@
     @if ($model->isMasterAdmin() && $logged_in_user->isMasterAdmin())
         <div class="dropdown d-inline-block">
             <a class="btn btn-sm btn-secondary dropdown-toggle" id="moreMenuLink" href="#" role="button" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false">
-                More
+                @lang('More')
             </a>
 
             <div class="dropdown-menu" aria-labelledby="moreMenuLink">
@@ -60,7 +60,7 @@
     )
         <div class="dropdown d-inline-block">
             <a class="btn btn-sm btn-secondary dropdown-toggle" id="moreMenuLink" href="#" role="button" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false">
-                More
+                @lang('More')
             </a>
 
             <div class="dropdown-menu" aria-labelledby="moreMenuLink">

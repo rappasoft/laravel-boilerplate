@@ -15,7 +15,7 @@
 
             <x-slot name="body">
                 <div class="form-group row">
-                    <label for="name" class="col-md-2 col-form-label">{{ __('Name') }}</label>
+                    <label for="name" class="col-md-2 col-form-label">@lang('Name')</label>
 
                     <div class="col-md-10">
                         <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ $user->name }}" required />
@@ -23,7 +23,7 @@
                 </div><!--form-group-->
 
                 <div class="form-group row">
-                    <label for="email" class="col-md-2 col-form-label">{{ __('E-mail Address') }}</label>
+                    <label for="email" class="col-md-2 col-form-label">@lang('E-mail Address')</label>
 
                     <div class="col-md-10">
                         <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ $user->email }}" required />
@@ -37,7 +37,7 @@
             </x-slot>
 
             <x-slot name="footer">
-                <button class="btn btn-sm btn-primary float-right" type="submit">{{ __('Update User') }}</button>
+                <button class="btn btn-sm btn-primary float-right" type="submit">@lang('Update User')</button>
             </x-slot>
         </x-backend.card>
     </x-forms.patch>

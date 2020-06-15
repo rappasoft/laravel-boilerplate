@@ -1,5 +1,5 @@
 <div class="form-group row">
-    <label for="permissions" class="col-md-2 col-form-label">{{ __('Permissions') }}</label>
+    <label for="permissions" class="col-md-2 col-form-label">@lang('Permissions')</label>
 
     <div class="col-md-10">
         @include('backend.auth.role.includes.no-permissions-message')
@@ -26,7 +26,7 @@
         @if ($categories->count())
             <h5 class="mb-3">@lang('Permission Categories')</h5>
 
-            <ul id="tree" class="m-0 p-0" style="list-style: none;">
+            <ul id="tree" class="m-0 p-0 list-unstyled">
                 @foreach($categories as $permission)
                     <li>
                         <input type="checkbox" name="permissions[]" {{ in_array($permission->id, $usedPermissions ?? [], true) ? 'checked' : '' }} value="{{ $permission->name }}" id="{{ $permission->name }}" />

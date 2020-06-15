@@ -15,7 +15,7 @@
 
             <x-slot name="body">
                 <div class="form-group row">
-                    <label for="name" class="col-md-2 col-form-label">{{ __('Name') }}</label>
+                    <label for="name" class="col-md-2 col-form-label">@lang('Name')</label>
 
                     <div class="col-md-10">
                         <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') }}" required />
@@ -26,7 +26,7 @@
             </x-slot>
 
             <x-slot name="footer">
-                <button class="btn btn-sm btn-primary float-right" type="submit">{{ __('Create Role') }}</button>
+                <button class="btn btn-sm btn-primary float-right" type="submit">@lang('Create Role')</button>
             </x-slot>
         </x-backend.card>
     </x-forms.post>

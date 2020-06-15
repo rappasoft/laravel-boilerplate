@@ -38,12 +38,12 @@
 
 @if(session()->get('resent'))
     <x-utils.alert type="success">
-        {{ __('A fresh verification link has been sent to your email address.') }}
+        @lang('A fresh verification link has been sent to your email address.')
     </x-utils.alert>
 @endif
 
 @if(session()->get('verified'))
     <x-utils.alert type="success">
-        {{ __('Thank you for verifying your e-mail address.') }}
+        @lang('Thank you for verifying your e-mail address.')
     </x-utils.alert>
 @endif

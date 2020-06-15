@@ -7,7 +7,7 @@
 
     <form wire:submit.prevent="validateCode" class="form-horizontal">
         <div class="form-group row">
-            <label for="code" class="col-md-4 col-form-label text-md-right">{{ __('Authorization Code') }}</label>
+            <label for="code" class="col-md-4 col-form-label text-md-right">@lang('Authorization Code')</label>
 
             <div class="col-md-6">
                 <input
@@ -24,7 +24,7 @@
 
         <div class="form-group row mb-0">
             <div class="col-md-6 offset-md-4">
-                <button class="btn btn-primary" type="submit">{{ __('Enable Two Factor Authentication') }}</button>
+                <button class="btn btn-primary" type="submit">@lang('Enable Two Factor Authentication')</button>
             </div>
         </div><!--form-group-->
     </form>

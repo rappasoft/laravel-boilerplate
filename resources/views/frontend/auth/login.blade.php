@@ -13,7 +13,7 @@
                 <x-slot name="body">
                     <x-forms.post :action="route('frontend.auth.login')">
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">@lang('E-mail Address')</label>
 
                             <div class="col-md-6">
                                 <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ old('email') }}" required autofocus autocomplete="email" />
@@ -21,7 +21,7 @@
                         </div><!--form-group-->
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">@lang('Password')</label>
 
                             <div class="col-md-6">
                                 <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password') }}" required autocomplete="current-password" />
@@ -34,7 +34,7 @@
                                     <input name="remember" id="remember" class="form-check-input" type="checkbox" {{ old('remember') ? 'checked' : '' }} />
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        @lang('Remember Me')
                                     </label>
                                 </div><!--form-check-->
                             </div>
@@ -42,7 +42,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button class="btn btn-primary" type="submit">{{ __('Login') }}</button>
+                                <button class="btn btn-primary" type="submit">@lang('Login')</button>
 
                                 <x-utils.link :href="route('frontend.auth.password.request')" class="btn btn-link" :text="__('Forgot Your Password?')" />
                             </div>

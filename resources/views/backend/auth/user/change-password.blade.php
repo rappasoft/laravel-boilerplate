@@ -15,7 +15,7 @@
 
             <x-slot name="body">
                 <div class="form-group row">
-                    <label for="password" class="col-md-2 col-form-label">{{ __('Password') }}</label>
+                    <label for="password" class="col-md-2 col-form-label">@lang('Password')</label>
 
                     <div class="col-md-10">
                         <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password') }}" required autocomplete="new-password" />
@@ -23,7 +23,7 @@
                 </div><!--form-group-->
 
                 <div class="form-group row">
-                    <label for="password_confirmation" class="col-md-2 col-form-label">{{ __('Password Confirmation') }}</label>
+                    <label for="password_confirmation" class="col-md-2 col-form-label">@lang('Password Confirmation')</label>
 
                     <div class="col-md-10">
                         <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Password Confirmation') }}" required autocomplete="new-password" />
@@ -32,7 +32,7 @@
             </x-slot>
 
             <x-slot name="footer">
-                <button class="btn btn-sm btn-primary float-right" type="submit">{{ __('Update') }}</button>
+                <button class="btn btn-sm btn-primary float-right" type="submit">@lang('Update')</button>
             </x-slot>
         </x-backend.card>
     </x-forms.patch>
