@@ -19,11 +19,11 @@
                         </x-forms.group>
 
                         <x-forms.group for="password" labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" :label="__('Password')">
-                            <x-forms.password id="password" name="password" required autocomplete="password" />
+                            <input type="password" id="password" name="password" class="form-control" required autocomplete="password" />
                         </x-forms.group>
 
                         <x-forms.group for="password_confirmation" labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" :label="__('Confirm Password')">
-                            <x-forms.password id="password_confirmation" name="password_confirmation" required autocomplete="new-password" />
+                            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required autocomplete="new-password" />
                         </x-forms.group>
 
                         <x-forms.group :noLabel="true" groupClass="form-group row mb-0" bodyClass="col-md-6 offset-md-4">
