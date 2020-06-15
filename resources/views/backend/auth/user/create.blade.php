@@ -15,7 +15,7 @@
 
             <x-slot name="body">
                 <x-forms.group for="name" :label="__('Name')">
-                    <x-forms.text name="name" :placeholder="__('Name')" :value="old('name')" required />
+                    <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') }}" required />
                 </x-forms.group>
 
                 <x-forms.group for="email" :label="__('E-mail Address')">

@@ -23,13 +23,13 @@
                         @endif
 
                         <x-forms.group labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" for="{{ $input }}" :label="__('Authentication Code')">
-                            <x-forms.text
-                                :name="$input"
-                                :id="$input"
-                                :class="$error ? 'is-invalid' : ''"
-                                placeholder="123456"
-                                minlength="6"
-                                required />
+                            <input type="text"
+                                   name="{{ $input }}"
+                                   id="{{ $input }}"
+                                   class="form-control {{ $error ? 'is-invalid' : '' }}"
+                                   placeholder="123456"
+                                   minlength="6"
+                                   required />
 
                             @if($error)
                                 <div class="invalid-feedback">

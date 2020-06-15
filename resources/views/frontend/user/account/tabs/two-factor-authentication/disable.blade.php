@@ -15,7 +15,7 @@
 
                     <x-forms.delete :action="route('frontend.auth.account.2fa.destroy')" name="confirm-item">
                         <x-forms.group labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" for="code" :label="__('Authorization Code')">
-                            <x-forms.text name="code" id="code" maxlength="10" :placeholder="__('Authorization Code')" required />
+                            <input type="text" name="code" id="code" maxlength="10" class="form-control" placeholder="{{ __('Authorization Code') }}" required />
                         </x-forms.group>
 
                         <button class="btn btn-sm btn-block btn-danger" type="submit">{{ __('Remove Two Factor Authentication') }}</button>

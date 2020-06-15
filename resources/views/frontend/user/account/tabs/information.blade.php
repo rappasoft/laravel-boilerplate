@@ -1,6 +1,6 @@
 <x-forms.patch :action="route('frontend.user.profile.update')">
     <x-forms.group for="name" :label="__('Name')" labelClass="col-md-3 col-form-label text-md-right" bodyClass="col-md-9">
-        <x-forms.text name="name" :placeholder="__('Name')" :value="old('name') ?? $logged_in_user->name" required autocomplete="name" autofocus />
+        <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') ?? $logged_in_user->name }}" required autofocus autocomplete="name" />
     </x-forms.group>
 
     @if ($logged_in_user->canChangeEmail())

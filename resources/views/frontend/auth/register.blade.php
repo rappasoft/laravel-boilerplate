@@ -13,7 +13,7 @@
                 <x-slot name="body">
                     <x-forms.post :action="route('frontend.auth.register')">
                         <x-forms.group labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" for="name" :label="__('Name')">
-                            <x-forms.text name="name" id="name" :value="old('name')" required autocomplete="name" autofocus />
+                            <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}" required autofocus autocomplete="name" />
                         </x-forms.group>
 
                         <x-forms.group labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" for="email" :label="__('E-mail Address')">
