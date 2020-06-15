@@ -15,11 +15,11 @@
 
             <x-slot name="body">
                 <x-forms.group for="password" :label="__('Password')">
-                    <x-forms.password name="password" id="password" :placeholder="__('Password')" required autocomplete="new-password" />
+                    <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password') }}" required autocomplete="new-password" />
                 </x-forms.group>
 
                 <x-forms.group for="password_confirmation" :label="__('Confirm Password')">
-                    <x-forms.password name="password_confirmation" id="password_confirmation" :placeholder="__('Password Confirmation')" required autocomplete="new-password" />
+                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Password Confirmation') }}" required autocomplete="new-password" />
                 </x-forms.group>
             </x-slot>
 

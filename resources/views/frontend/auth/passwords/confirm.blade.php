@@ -13,7 +13,7 @@
                 <x-slot name="body">
                     <x-forms.post :action="route('frontend.auth.password.confirm')">
                         <x-forms.group labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" for="password" :label="__('Password')">
-                            <x-forms.password name="password" required autocomplete="current-password" />
+                            <input type="password" name="password" class="form-control" placeholder="{{ __('Password') }}" required autocomplete="current-password" />
                         </x-forms.group>
 
                         <x-forms.group :noLabel="true" groupClass="form-group row mb-0" bodyClass="col-md-6 offset-md-4">

@@ -17,7 +17,7 @@
                         </x-forms.group>
 
                         <x-forms.group labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" for="password" :label="__('Password')">
-                            <x-forms.password name="password" id="password" required autocomplete="current-password" />
+                            <input type="password" name="password" id="password" class="form-control" required autocomplete="current-password" />
                         </x-forms.group>
 
                         <x-forms.group noLabel="true" bodyClass="col-md-6 offset-md-4">
