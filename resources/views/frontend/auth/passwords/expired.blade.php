@@ -25,7 +25,7 @@
                         </x-forms.group>
 
                         <x-forms.group :noLabel="true" groupClass="form-group row mb-0" bodyClass="col-md-6 offset-md-4">
-                            <x-forms.submit class="btn btn-primary" :text="__('Update Password')" />
+                            <button class="btn btn-primary" type="submit">{{ __('Update Password') }}</button>
                         </x-forms.group>
                     </x-forms.patch>
                 </x-slot>

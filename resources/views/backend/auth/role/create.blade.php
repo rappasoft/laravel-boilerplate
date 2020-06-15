@@ -22,7 +22,7 @@
             </x-slot>
 
             <x-slot name="footer">
-                <x-forms.submit :text="__('Create Role')" />
+                <button class="btn btn-sm btn-primary float-right" type="submit">{{ __('Create Role') }}</button>
             </x-slot>
         </x-backend.card>
     </x-forms.post>

@@ -24,7 +24,7 @@
             </x-slot>
 
             <x-slot name="footer">
-                <x-forms.submit :text="__('Update')" />
+                <button class="btn btn-sm btn-primary float-right" type="submit">{{ __('Update') }}</button>
             </x-slot>
         </x-backend.card>
     </x-forms.patch>

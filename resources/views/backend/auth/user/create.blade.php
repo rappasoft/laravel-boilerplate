@@ -70,7 +70,7 @@
             </x-slot>
 
             <x-slot name="footer">
-                <x-forms.submit :text="__('Create User')" />
+                <button class="btn btn-sm btn-primary float-right" type="submit">{{ __('Create User') }}</button>
             </x-slot>
         </x-backend.card>
     </x-forms.post>

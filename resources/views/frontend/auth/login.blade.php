@@ -31,7 +31,8 @@
                         </x-forms.group>
 
                         <x-forms.group :noLabel="true" groupClass="form-group row mb-0" bodyClass="col-md-8 offset-md-4">
-                            <x-forms.submit class="btn btn-primary" :text="__('Login')" />
+                            <button class="btn btn-primary" type="submit">{{ __('Login') }}</button>
+
                             <x-utils.link :href="route('frontend.auth.password.request')" class="btn btn-link" :text="__('Forgot Your Password?')" />
                         </x-forms.group>
 

@@ -12,6 +12,6 @@
     </x-forms.group>
 
     <x-forms.group :noLabel="true" groupClass="form-group row mb-0" bodyClass="col-md-12 text-right">
-        <x-forms.submit :text="__('Update Password')" />
+        <button class="btn btn-sm btn-primary float-right" type="submit">{{ __('Update Password') }}</button>
     </x-forms.group>
 </x-forms.patch>

@@ -18,7 +18,7 @@
                             <x-forms.text name="code" id="code" maxlength="10" :placeholder="__('Authorization Code')" required />
                         </x-forms.group>
 
-                        <x-forms.submit class="btn btn-sm btn-block btn-danger" :text="__('Remove Two Factor Authentication')" />
+                        <button class="btn btn-sm btn-block btn-danger" type="submit">{{ __('Remove Two Factor Authentication') }}</button>
                     </x-forms.delete>
                 </x-slot>
             </x-frontend.card>
