@@ -49,7 +49,7 @@ if (! function_exists('setCarbonLocale')) {
     }
 }
 
-if (! function_exists('setLocaleDirection')) {
+if (! function_exists('setLocaleReadingDirection')) {
 
     /**
      * @param $locale
