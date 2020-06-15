@@ -15,7 +15,7 @@
                         <x-forms.hidden name="token" :value="$token" />
 
                         <x-forms.group for="email" labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" :label="__('E-mail Address')">
-                            <x-forms.email id="email" name="email" :value="$email ?? old('email')" required autocomplete="email" autofocus />
+                            <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ $email ?? old('email') }}" required autofocus autocomplete="email" />
                         </x-forms.group>
 
                         <x-forms.group for="password" labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" :label="__('Password')">

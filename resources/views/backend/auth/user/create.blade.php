@@ -19,7 +19,7 @@
                 </x-forms.group>
 
                 <x-forms.group for="email" :label="__('E-mail Address')">
-                    <x-forms.email name="email" :placeholder="__('E-mail Address')" :value="old('email')" required />
+                    <input type="email" name="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ old('email') }}" required />
                 </x-forms.group>
 
                 <x-forms.group for="password" :label="__('Password')">

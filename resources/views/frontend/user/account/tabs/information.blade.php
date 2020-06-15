@@ -9,7 +9,7 @@
                 <i class="fas fa-info-circle"></i> @lang('If you change your e-mail you will be logged out until you confirm your new e-mail address.')
             </x-utils.alert>
 
-            <x-forms.email name="email" :placeholder="__('E-mail Address')" :value="old('email') ?? $logged_in_user->email" required autocomplete="email" />
+            <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ old('email') ?? $logged_in_user->email }}" required autocomplete="email" />
         </x-forms.group>
     @endif
 

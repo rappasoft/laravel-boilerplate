@@ -19,7 +19,7 @@
                 </x-forms.group>
 
                 <x-forms.group for="email" :label="__('E-mail Address')">
-                    <x-forms.email name="email" :placeholder="__('E-mail Address')" :value="$user->email" required />
+                    <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ $user->email }}" required />
                 </x-forms.group>
 
                 @if (!$user->isMasterAdmin())
