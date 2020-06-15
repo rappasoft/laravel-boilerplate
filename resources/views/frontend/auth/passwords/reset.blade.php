@@ -14,21 +14,35 @@
                     <x-forms.post :action="route('frontend.auth.password.update')">
                         <input type="hidden" name="token" value="{{ $token }}" />
 
-                        <x-forms.group for="email" labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" :label="__('E-mail Address')">
-                            <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ $email ?? old('email') }}" required autofocus autocomplete="email" />
-                        </x-forms.group>
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-mail Address') }}</label>
 
-                        <x-forms.group for="password" labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" :label="__('Password')">
-                            <input type="password" id="password" name="password" class="form-control" required autocomplete="password" />
-                        </x-forms.group>
+                            <div class="col-md-6">
+                                <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ $email ?? old('email') }}" required autofocus autocomplete="email" />
+                            </div>
+                        </div><!--form-group-->
 
-                        <x-forms.group for="password_confirmation" labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" :label="__('Confirm Password')">
-                            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required autocomplete="new-password" />
-                        </x-forms.group>
+                        <div class="form-group row">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                        <x-forms.group :noLabel="true" groupClass="form-group row mb-0" bodyClass="col-md-6 offset-md-4">
-                            <button class="btn btn-primary" type="submit">{{ __('Reset Password') }}</button>
-                        </x-forms.group>
+                            <div class="col-md-6">
+                                <input type="password" id="password" name="password" class="form-control" placeholder="{{ __('Password') }}" required autocomplete="password" />
+                            </div>
+                        </div><!--form-group-->
+
+                        <div class="form-group row">
+                            <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">{{ __('Password Confirmation') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="{{ __('Password Confirmation') }}" required autocomplete="new-password" />
+                            </div>
+                        </div><!--form-group-->
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button class="btn btn-primary" type="submit">{{ __('Reset Password') }}</button>
+                            </div>
+                        </div><!--form-group-->
                     </x-forms.post>
                 </x-slot>
             </x-frontend.card>

@@ -14,13 +14,21 @@
             </x-slot>
 
             <x-slot name="body">
-                <x-forms.group for="name" :label="__('Name')">
-                    <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ $user->name }}" required />
-                </x-forms.group>
+                <div class="form-group row">
+                    <label for="name" class="col-md-2 col-form-label">{{ __('Name') }}</label>
 
-                <x-forms.group for="email" :label="__('E-mail Address')">
-                    <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ $user->email }}" required />
-                </x-forms.group>
+                    <div class="col-md-10">
+                        <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ $user->name }}" required />
+                    </div>
+                </div><!--form-group-->
+
+                <div class="form-group row">
+                    <label for="email" class="col-md-2 col-form-label">{{ __('E-mail Address') }}</label>
+
+                    <div class="col-md-10">
+                        <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ $user->email }}" required />
+                    </div>
+                </div><!--form-group-->
 
                 @if (!$user->isMasterAdmin())
                     @include('backend.auth.includes.roles')

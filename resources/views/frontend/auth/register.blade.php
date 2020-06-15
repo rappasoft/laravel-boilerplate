@@ -12,25 +12,43 @@
 
                 <x-slot name="body">
                     <x-forms.post :action="route('frontend.auth.register')">
-                        <x-forms.group labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" for="name" :label="__('Name')">
-                            <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}" required autofocus autocomplete="name" />
-                        </x-forms.group>
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
-                        <x-forms.group labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" for="email" :label="__('E-mail Address')">
-                            <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ old('email') }}" required autocomplete="email" />
-                        </x-forms.group>
+                            <div class="col-md-6">
+                                <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}" placeholder="{{ __('Name') }}" required autofocus autocomplete="name" />
+                            </div>
+                        </div><!--form-group-->
 
-                        <x-forms.group labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" for="password" :label="__('Password')">
-                            <input type="password" name="password" id="password" class="form-control" required autocomplete="new-password" />
-                        </x-forms.group>
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('E-mail Address') }}</label>
 
-                        <x-forms.group labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" for="password_confirmation" :label="__('Confirm Password')">
-                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" required autocomplete="new-password" />
-                        </x-forms.group>
+                            <div class="col-md-6">
+                                <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ old('email') }}" required autocomplete="email" />
+                            </div>
+                        </div><!--form-group-->
 
-                        <x-forms.group :noLabel="true" groupClass="form-group row mb-0" bodyClass="col-md-6 offset-md-4">
-                            <button class="btn btn-primary" type="submit">{{ __('Register') }}</button>
-                        </x-forms.group>
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password') }}" required autocomplete="new-password" />
+                            </div>
+                        </div><!--form-group-->
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Confirm Password') }}" required autocomplete="new-password" />
+                            </div>
+                        </div><!--form-group-->
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button class="btn btn-primary" type="submit">{{ __('Register') }}</button>
+                            </div>
+                        </div><!--form-group-->
                     </x-forms.post>
                 </x-slot>
             </x-frontend.card>

@@ -14,9 +14,13 @@
             </x-slot>
 
             <x-slot name="body">
-                <x-forms.group for="name" :label="__('Name')">
-                    <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') }}" required />
-                </x-forms.group>
+                <div class="form-group row">
+                    <label for="name" class="col-md-2 col-form-label">{{ __('Name') }}</label>
+
+                    <div class="col-md-10">
+                        <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') }}" required />
+                    </div>
+                </div>
 
                 @include('backend.auth.includes.permissions')
             </x-slot>

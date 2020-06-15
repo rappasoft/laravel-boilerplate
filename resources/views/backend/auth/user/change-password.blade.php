@@ -14,13 +14,21 @@
             </x-slot>
 
             <x-slot name="body">
-                <x-forms.group for="password" :label="__('Password')">
-                    <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password') }}" required autocomplete="new-password" />
-                </x-forms.group>
+                <div class="form-group row">
+                    <label for="password" class="col-md-2 col-form-label">{{ __('Password') }}</label>
 
-                <x-forms.group for="password_confirmation" :label="__('Confirm Password')">
-                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Password Confirmation') }}" required autocomplete="new-password" />
-                </x-forms.group>
+                    <div class="col-md-10">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password') }}" required autocomplete="new-password" />
+                    </div>
+                </div><!--form-group-->
+
+                <div class="form-group row">
+                    <label for="password_confirmation" class="col-md-2 col-form-label">{{ __('Password Confirmation') }}</label>
+
+                    <div class="col-md-10">
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Password Confirmation') }}" required autocomplete="new-password" />
+                    </div>
+                </div><!--form-group-->
             </x-slot>
 
             <x-slot name="footer">

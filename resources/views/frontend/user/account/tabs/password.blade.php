@@ -1,17 +1,31 @@
 <x-forms.patch :action="route('frontend.auth.password.change')">
-    <x-forms.group for="current_password" :label="__('Current Password')" labelClass="col-md-3 col-form-label text-md-right" bodyClass="col-md-9">
-        <input type="password" name="current_password" class="form-control" placeholder="{{ __('Current Password') }}" required autofocus />
-    </x-forms.group>
+    <div class="form-group row">
+        <label for="current_password" class="col-md-3 col-form-label text-md-right">{{ __('Current Password') }}</label>
 
-    <x-forms.group for="password" :label="__('New Password')" labelClass="col-md-3 col-form-label text-md-right" bodyClass="col-md-9">
-        <input type="password" name="password" class="form-control" placeholder="{{ __('New Password') }}" required />
-    </x-forms.group>
+        <div class="col-md-9">
+            <input type="password" name="current_password" class="form-control" placeholder="{{ __('Current Password') }}" required autofocus />
+        </div>
+    </div><!--form-group-->
 
-    <x-forms.group for="password_confirmation" :label="__('New Password Confirmation')" labelClass="col-md-3 col-form-label text-md-right" bodyClass="col-md-9">
-        <input type="password" name="password_confirmation" class="form-control" placeholder="{{ __('New Password Confirmation') }}" required />
-    </x-forms.group>
+    <div class="form-group row">
+        <label for="password" class="col-md-3 col-form-label text-md-right">{{ __('New Password') }}</label>
 
-    <x-forms.group :noLabel="true" groupClass="form-group row mb-0" bodyClass="col-md-12 text-right">
-        <button class="btn btn-sm btn-primary float-right" type="submit">{{ __('Update Password') }}</button>
-    </x-forms.group>
+        <div class="col-md-9">
+            <input type="password" name="password" class="form-control" placeholder="{{ __('New Password') }}" required />
+        </div>
+    </div><!--form-group-->
+
+    <div class="form-group row">
+        <label for="password_confirmation" class="col-md-3 col-form-label text-md-right">{{ __('New Password Confirmation') }}</label>
+
+        <div class="col-md-9">
+            <input type="password" name="password_confirmation" class="form-control" placeholder="{{ __('New Password Confirmation') }}" required />
+        </div>
+    </div><!--form-group-->
+
+    <div class="form-group row mb-0">
+        <div class="col-md-12 text-right">
+            <button class="btn btn-sm btn-primary float-right" type="submit">{{ __('Update Password') }}</button>
+        </div>
+    </div><!--form-group-->
 </x-forms.patch>

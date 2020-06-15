@@ -1,6 +1,9 @@
-<x-forms.group for="roles" :label="__('Roles')">
-    @forelse($roles as $role)
-        <span class="d-block mb-2">
+<div class="form-group row">
+    <label for="roles" class="col-md-2 col-form-label">{{ __('Roles') }}</label>
+
+    <div class="col-md-10">
+        @forelse($roles as $role)
+            <span class="d-block mb-2">
             <div class="form-check">
                 <input
                     name="roles[]"
@@ -16,24 +19,25 @@
             </div><!--form-check-->
         </span>
 
-        @if ($role->isAdmin())
-            <blockquote class="ml-3">
-                <i class="fa fa-check-circle"></i> @lang('All Permissions')
-            </blockquote>
-        @else
-            @if ($role->permissions->count())
+            @if ($role->isAdmin())
                 <blockquote class="ml-3">
-                    @foreach ($role->permissions as $permission)
-                        <i class="fa fa-check-circle"></i> {{ $permission->description }}<br/>
-                    @endforeach
+                    <i class="fa fa-check-circle"></i> @lang('All Permissions')
                 </blockquote>
             @else
-                <blockquote class="ml-3">
-                    <i class="fa fa-minus-circle"></i> @lang('No Permissions')
-                </blockquote>
+                @if ($role->permissions->count())
+                    <blockquote class="ml-3">
+                        @foreach ($role->permissions as $permission)
+                            <i class="fa fa-check-circle"></i> {{ $permission->description }}<br/>
+                        @endforeach
+                    </blockquote>
+                @else
+                    <blockquote class="ml-3">
+                        <i class="fa fa-minus-circle"></i> @lang('No Permissions')
+                    </blockquote>
+                @endif
             @endif
-        @endif
-    @empty
-        <p>@lang('There are no roles to choose from.')</p>
-    @endforelse
-</x-forms.group>
+        @empty
+            <p>@lang('There are no roles to choose from.')</p>
+        @endforelse
+    </div>
+</div><!--form-group-->

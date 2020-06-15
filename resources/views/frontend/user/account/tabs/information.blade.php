@@ -1,19 +1,29 @@
 <x-forms.patch :action="route('frontend.user.profile.update')">
-    <x-forms.group for="name" :label="__('Name')" labelClass="col-md-3 col-form-label text-md-right" bodyClass="col-md-9">
-        <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') ?? $logged_in_user->name }}" required autofocus autocomplete="name" />
-    </x-forms.group>
+    <div class="form-group row">
+        <label for="name" class="col-md-3 col-form-label text-md-right">{{ __('Name') }}</label>
+
+        <div class="col-md-9">
+            <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') ?? $logged_in_user->name }}" required autofocus autocomplete="name" />
+        </div>
+    </div><!--form-group-->
 
     @if ($logged_in_user->canChangeEmail())
-        <x-forms.group for="email" :label="__('E-mail Address')" labelClass="col-md-3 col-form-label text-md-right" bodyClass="col-md-9">
-            <x-utils.alert type="info" class="mb-3" :dismissable="false">
-                <i class="fas fa-info-circle"></i> @lang('If you change your e-mail you will be logged out until you confirm your new e-mail address.')
-            </x-utils.alert>
+        <div class="form-group row">
+            <label for="email" class="col-md-3 col-form-label text-md-right">{{ __('E-mail Address') }}</label>
 
-            <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ old('email') ?? $logged_in_user->email }}" required autocomplete="email" />
-        </x-forms.group>
+            <div class="col-md-9">
+                <x-utils.alert type="info" class="mb-3" :dismissable="false">
+                    <i class="fas fa-info-circle"></i> @lang('If you change your e-mail you will be logged out until you confirm your new e-mail address.')
+                </x-utils.alert>
+
+                <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ old('email') ?? $logged_in_user->email }}" required autocomplete="email" />
+            </div>
+        </div><!--form-group-->
     @endif
 
-    <x-forms.group :noLabel="true" groupClass="form-group row mb-0" bodyClass="col-md-12 text-right">
-        <button class="btn btn-sm btn-primary float-right" type="submit">{{ __('Update') }}</button>
-    </x-forms.group>
+    <div class="form-group row mb-0">
+        <div class="col-md-12 text-right">
+            <button class="btn btn-sm btn-primary float-right" type="submit">{{ __('Update') }}</button>
+        </div>
+    </div><!--form-group-->
 </x-forms.patch>

@@ -14,9 +14,13 @@
                     <p>@lang('Generate a code from your 2FA app and enter it below:')</p>
 
                     <x-forms.delete :action="route('frontend.auth.account.2fa.destroy')" name="confirm-item">
-                        <x-forms.group labelClass="col-md-4 col-form-label text-md-right" bodyClass="col-md-6" for="code" :label="__('Authorization Code')">
-                            <input type="text" name="code" id="code" maxlength="10" class="form-control" placeholder="{{ __('Authorization Code') }}" required />
-                        </x-forms.group>
+                        <div class="form-group row">
+                            <label for="code" class="col-md-4 col-form-label text-md-right">{{ __('Authorization Code') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="text" name="code" id="code" maxlength="10" class="form-control" placeholder="{{ __('Authorization Code') }}" required />
+                            </div>
+                        </div><!--form-group-->
 
                         <button class="btn btn-sm btn-block btn-danger" type="submit">{{ __('Remove Two Factor Authentication') }}</button>
                     </x-forms.delete>
