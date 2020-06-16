@@ -36,8 +36,7 @@
 
                 <tr>
                     <th>@lang('Verified')</th>
-                    {{-- TODO: get model to be user by modifying livewire tables --}}
-                    <td>@include('backend.auth.user.includes.verified', ['model' => $user])</td>
+                    <td>@include('backend.auth.user.includes.verified', ['user' => $user])</td>
                 </tr>
 
                 <tr>
@@ -73,7 +72,15 @@
                     </tr>
                 @endif
 
-                {{-- TODO: Add roles/permissions --}}
+                <tr>
+                    <th>@lang('Roles')</th>
+                    <td>{!! $user->roles_label !!}</td>
+                </tr>
+
+                <tr>
+                    <th>@lang('Additional Permissions')</th>
+                    <td>{!! $user->permissions_label !!}</td>
+                </tr>
             </table>
         </x-slot>
 
