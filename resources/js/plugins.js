@@ -3,22 +3,20 @@
  */
 $(function () {
     /**
-     * // TODO: Finish, doesn't work on update screens on page load
      * Checkbox tree for permission selecting
      */
-    $('#tree :checkbox').on('change', function (e){
-        e.stopPropagation();
-        let clk_checkbox = $(this),
-            chk_state = clk_checkbox.is(':checked'),
-            parent_li = clk_checkbox.closest('li'),
-            parent_uls = parent_li.parents('ul');
-        parent_li.find(':checkbox').prop('checked', chk_state).attr('disabled', chk_state);
-        parent_uls.each(function(){
-            let parent_ul = $(this),
-                parent_state = (parent_ul.find(':checkbox').length === parent_ul.find(':checked').length);
-            parent_ul.siblings(':checkbox').prop('checked', parent_state).attr('disabled', parent_state);
-        });
-        clk_checkbox.removeAttr('disabled');
+    $('#tree :checkbox').on('click change', function (){
+        if($(this).is(':checked')) {
+            $(this).siblings('ul').find('input[type="checkbox"]').attr('checked', true).attr('disabled', true);
+        } else {
+            $(this).siblings('ul').find('input[type="checkbox"]').removeAttr('checked').removeAttr('disabled');
+        }
+    });
+
+    $('#tree :checkbox').each(function () {
+        if($(this).is(':checked')) {
+            $(this).siblings('ul').find('input[type="checkbox"]').attr('checked', true).attr('disabled', true);
+        }
     });
 
     /**
