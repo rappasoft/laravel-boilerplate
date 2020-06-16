@@ -35,15 +35,17 @@ class UsersTable extends TableComponent
      */
     public function query(): Builder
     {
+        $query = User::withCount('twoFactorAuth');
+
         if ($this->status === 'deleted') {
-            return User::onlyTrashed();
+            return $query->onlyTrashed();
         }
 
         if ($this->status === 'deactivated') {
-            return User::onlyDeactivated();
+            return $query->onlyDeactivated();
         }
 
-        return User::onlyActive();
+        return $query->onlyActive();
     }
 
     /**
@@ -59,17 +61,15 @@ class UsersTable extends TableComponent
                 ->searchable()
                 ->sortable(),
             Column::make(__('Verified'))
-                // TODO: get a second param to the view method for var name in the view by modifying livewire tables
-                ->view('backend.auth.user.includes.verified')
+                ->view('backend.auth.user.includes.verified', 'user')
                 ->sortable(function ($builder, $direction) {
                     return $builder->orderBy('email_verified_at', $direction);
                 }),
             Column::make(__('2FA'))
-                // TODO: get a second param to the view method for var name in the view by modifying livewire tables
-                ->view('backend.auth.user.includes.2fa'),
-            //                ->sortable(function ($builder, $direction) {
-            //                    // TODO: Order by existence of relationship
-            //                }),
+                ->view('backend.auth.user.includes.2fa', 'user')
+                ->sortable(function ($builder, $direction) {
+                    return $builder->orderBy('two_factor_auth_count', $direction);
+                }),
             Column::make(__('Roles'), 'roles_label')
                 ->customAttribute()
                 ->html()
@@ -87,7 +87,7 @@ class UsersTable extends TableComponent
                     });
                 }),
             Column::make(__('Actions'))
-                ->view('backend.auth.user.includes.actions'),
+                ->view('backend.auth.user.includes.actions', 'user'),
         ];
     }
 }

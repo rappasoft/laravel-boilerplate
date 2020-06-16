@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b83d16ebc6b500000d58920292b700e1",
+    "content-hash": "38dd4f1c84755a187af6e65c900a95f3",
     "packages": [
         {
             "name": "albertcht/invisible-recaptcha",
@@ -3471,16 +3471,16 @@
         },
         {
             "name": "rappasoft/laravel-livewire-tables",
-            "version": "v0.1.5",
+            "version": "v0.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rappasoft/laravel-livewire-tables.git",
-                "reference": "97576bb8bd851e8eb7a9d1515f5cac13343f623e"
+                "reference": "1709e5f1db4d81af50730d84eeff3891b4ae700e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rappasoft/laravel-livewire-tables/zipball/97576bb8bd851e8eb7a9d1515f5cac13343f623e",
-                "reference": "97576bb8bd851e8eb7a9d1515f5cac13343f623e",
+                "url": "https://api.github.com/repos/rappasoft/laravel-livewire-tables/zipball/1709e5f1db4d81af50730d84eeff3891b4ae700e",
+                "reference": "1709e5f1db4d81af50730d84eeff3891b4ae700e",
                 "shasum": ""
             },
             "require": {
@@ -3523,7 +3523,7 @@
                 "rappasoft",
                 "tables"
             ],
-            "time": "2020-05-26T20:48:17+00:00"
+            "time": "2020-06-16T03:29:55+00:00"
         },
         {
             "name": "rappasoft/lockout",

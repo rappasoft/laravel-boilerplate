@@ -1,6 +1,6 @@
-@if ($model->trashed() && $logged_in_user->isAdmin())
+@if ($user->trashed() && $logged_in_user->isAdmin())
     <x-utils.link
-        :href="route('admin.auth.user.restore', $model)"
+        :href="route('admin.auth.user.restore', $user)"
         class="btn btn-info btn-sm"
         icon="fas fa-sync-alt"
         :text="__('Restore')"
@@ -8,18 +8,18 @@
 
     @if (config('boilerplate.access.user.permanently_delete'))
         <x-utils.delete-button
-            :href="route('admin.auth.user.permanently-delete', $model)"
+            :href="route('admin.auth.user.permanently-delete', $user)"
             :text="__('Permanently Delete')" />
     @endif
 @else
     @if ($logged_in_user->isAdmin())
-        <x-utils.view-button :href="route('admin.auth.user.show', $model)" />
-        <x-utils.edit-button :href="route('admin.auth.user.edit', $model)" />
+        <x-utils.view-button :href="route('admin.auth.user.show', $user)" />
+        <x-utils.edit-button :href="route('admin.auth.user.edit', $user)" />
     @endif
 
-    @if (! $model->isActive())
+    @if (! $user->isActive())
         <x-utils.link
-            :href="route('admin.auth.user.mark', [$model, 1])"
+            :href="route('admin.auth.user.mark', [$user, 1])"
             class="btn btn-primary btn-sm"
             icon="fas fa-sync-alt"
             :text="__('Restore')"
@@ -27,12 +27,12 @@
             permission="access.user.reactivate" />
     @endif
 
-    @if ($model->id !== $logged_in_user->id && !$model->isMasterAdmin() && $logged_in_user->isAdmin())
-        <x-utils.delete-button :href="route('admin.auth.user.destroy', $model)" />
+    @if ($user->id !== $logged_in_user->id && !$user->isMasterAdmin() && $logged_in_user->isAdmin())
+        <x-utils.delete-button :href="route('admin.auth.user.destroy', $user)" />
     @endif
 
     {{-- The logged in user is the master admin, and the row is the master admin. Only the master admin can do anything to themselves --}}
-    @if ($model->isMasterAdmin() && $logged_in_user->isMasterAdmin())
+    @if ($user->isMasterAdmin() && $logged_in_user->isMasterAdmin())
         <div class="dropdown d-inline-block">
             <a class="btn btn-sm btn-secondary dropdown-toggle" id="moreMenuLink" href="#" role="button" data-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false">
                 @lang('More')
@@ -40,16 +40,16 @@
 
             <div class="dropdown-menu" aria-labelledby="moreMenuLink">
                 <x-utils.link
-                    :href="route('admin.auth.user.change-password', $model)"
+                    :href="route('admin.auth.user.change-password', $user)"
                     class="dropdown-item"
                     :text="__('Change Password')"
                     permission="access.user.change-password" />
             </div>
         </div>
     @elseif (
-        !$model->isMasterAdmin() && // This is not the master admin
-        $model->isActive() && // The account is active
-        $model->id !== $logged_in_user->id && // It's not the person logged in
+        !$user->isMasterAdmin() && // This is not the master admin
+        $user->isActive() && // The account is active
+        $user->id !== $logged_in_user->id && // It's not the person logged in
         // Any they have at lease one of the abilities in this dropdown
         (
             $logged_in_user->can('access.user.change-password') ||
@@ -65,29 +65,29 @@
 
             <div class="dropdown-menu" aria-labelledby="moreMenuLink">
                 <x-utils.link
-                    :href="route('admin.auth.user.change-password', $model)"
+                    :href="route('admin.auth.user.change-password', $user)"
                     class="dropdown-item"
                     :text="__('Change Password')"
                     permission="access.user.change-password" />
 
-                @if ($model->id !== $logged_in_user->id && !$model->isMasterAdmin())
+                @if ($user->id !== $logged_in_user->id && !$user->isMasterAdmin())
                     <x-utils.link
-                        :href="route('admin.auth.user.clear-session', $model)"
+                        :href="route('admin.auth.user.clear-session', $user)"
                         class="dropdown-item"
                         :text="__('Clear Session')"
                         name="confirm-item"
                         permission="access.user.clear-session" />
 
-                    @canBeImpersonated($model)
+                    @canBeImpersonated($user)
                         <x-utils.link
-                            :href="route('impersonate', $model->id)"
+                            :href="route('impersonate', $user->id)"
                             class="dropdown-item"
-                            :text="__('Login As ' . $model->name)"
+                            :text="__('Login As ' . $user->name)"
                             permission="access.user.impersonate" />
                     @endCanBeImpersonated
 
                     <x-utils.link
-                        :href="route('admin.auth.user.mark', [$model, 0])"
+                        :href="route('admin.auth.user.mark', [$user, 0])"
                         class="dropdown-item"
                         :text="__('Deactivate')"
                         name="confirm-item"
