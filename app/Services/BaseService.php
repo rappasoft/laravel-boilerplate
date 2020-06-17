@@ -108,7 +108,7 @@ abstract class BaseService
     }
 
     /**
-     * Get the first specified model record from the database or throw an exception if not found
+     * Get the first specified model record from the database or throw an exception if not found.
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
