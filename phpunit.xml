@@ -27,20 +27,17 @@
     </filter>
     <php>
         <server name="APP_ENV" value="testing"/>
+        <server name="APP_READ_ONLY" value="false"/>
         <server name="APP_TESTING" value="true"/>
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>
         <server name="DB_CONNECTION" value="sqlite"/>
         <server name="DB_DATABASE" value=":memory:"/>
+        <server name="ENABLE_REGISTRATION" value="true"/>
+        <server name="LOGIN_CAPTCHA_STATUS" value="false"/>
         <server name="MAIL_DRIVER" value="array"/>
         <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="REGISTRATION_CAPTCHA_STATUS" value="false"/>
         <server name="SESSION_DRIVER" value="array"/>
-
-        <!--TODO: Change to .env.testing-->
-<!--        <server name="APP_READ_ONLY" value="false"/>-->
-<!--        <server name="CONTACT_CAPTCHA_STATUS" value="false"/>-->
-<!--        <server name="ENABLE_REGISTRATION" value="true"/>-->
-<!--        <server name="LOGIN_CAPTCHA_STATUS" value="false"/>-->
-<!--        <server name="REGISTRATION_CAPTCHA_STATUS" value="false"/>-->
     </php>
 </phpunit>

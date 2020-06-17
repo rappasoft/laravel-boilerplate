@@ -26,29 +26,32 @@ Route::group(['as' => 'auth.'], function () {
         Route::patch('password/expired', [PasswordExpiredController::class, 'update'])->name('password.expired.update');
 
         // These routes can not be hit if the password is expired
-        Route::group(['middleware' => ['password.expires', config('boilerplate.access.middleware.verified')]], function () {
-            // Passwords
-            Route::get('password/confirm', [ConfirmPasswordController::class, 'showConfirmForm'])->name('password.confirm');
-            Route::post('password/confirm', [ConfirmPasswordController::class, 'confirm']);
-
-            Route::patch('password/update', [UpdatePasswordController::class, 'update'])->name('password.change');
-
+        Route::group(['middleware' => 'password.expires'], function () {
             // E-mail Verification
             Route::get('email/verify', [VerificationController::class, 'show'])->name('verification.notice');
             Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
             Route::post('email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
 
-            // Two-factor Authentication
-            Route::group(['prefix' => 'account/2fa', 'as' => 'account.2fa.'], function () {
-                Route::group(['middleware' => '2fa:disabled'], function () {
-                    Route::get('enable', [TwoFactorAuthenticationController::class, 'create'])->name('create');
-                });
+            // These routes require the users email to be verified
+            Route::group(['middleware' => config('boilerplate.access.middleware.verified')], function () {
+                // Passwords
+                Route::get('password/confirm', [ConfirmPasswordController::class, 'showConfirmForm'])->name('password.confirm');
+                Route::post('password/confirm', [ConfirmPasswordController::class, 'confirm']);
 
-                Route::group(['middleware' => '2fa:enabled'], function () {
-                    Route::get('recovery', [TwoFactorAuthenticationController::class, 'show'])->name('show');
-                    Route::patch('recovery/generate', [TwoFactorAuthenticationController::class, 'update'])->name('update');
-                    Route::get('disable', [DisableTwoFactorAuthenticationController::class, 'show'])->name('disable');
-                    Route::delete('/', [DisableTwoFactorAuthenticationController::class, 'destroy'])->name('destroy');
+                Route::patch('password/update', [UpdatePasswordController::class, 'update'])->name('password.change');
+
+                // Two-factor Authentication
+                Route::group(['prefix' => 'account/2fa', 'as' => 'account.2fa.'], function () {
+                    Route::group(['middleware' => '2fa:disabled'], function () {
+                        Route::get('enable', [TwoFactorAuthenticationController::class, 'create'])->name('create');
+                    });
+
+                    Route::group(['middleware' => '2fa:enabled'], function () {
+                        Route::get('recovery', [TwoFactorAuthenticationController::class, 'show'])->name('show');
+                        Route::patch('recovery/generate', [TwoFactorAuthenticationController::class, 'update'])->name('update');
+                        Route::get('disable', [DisableTwoFactorAuthenticationController::class, 'show'])->name('disable');
+                        Route::delete('/', [DisableTwoFactorAuthenticationController::class, 'destroy'])->name('destroy');
+                    });
                 });
             });
         });

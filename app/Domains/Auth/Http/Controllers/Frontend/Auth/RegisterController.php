@@ -28,6 +28,21 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
+     * @var UserService
+     */
+    protected $userService;
+
+    /**
+     * RegisterController constructor.
+     *
+     * @param  UserService  $userService
+     */
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
+    /**
      * Where to redirect users after registration.
      *
      * @return string
@@ -44,6 +59,8 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
+        abort_unless(config('boilerplate.access.user.registration'), 404);
+
         return view('frontend.auth.register');
     }
 
@@ -58,21 +75,22 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')],
-            'password' => PasswordRules::register($data['email']),
+            'password' => PasswordRules::register($data['email'] ?? null),
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  UserService  $userService
      * @param  array  $data
      *
      * @return \App\Domains\Auth\Models\User|mixed
      * @throws \App\Domains\Auth\Exceptions\RegisterException
      */
-    protected function create(UserService $userService, array $data)
+    protected function create(array $data)
     {
-        return $userService->registerUser($data);
+        abort_unless(config('boilerplate.access.user.registration'), 404);
+
+        return $this->userService->registerUser($data);
     }
 }

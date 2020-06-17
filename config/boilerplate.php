@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * All configuration options for Laravel Boilerplate
  * http://laravel-boilerplate.com.
  */

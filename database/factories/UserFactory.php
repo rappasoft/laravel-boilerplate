@@ -27,3 +27,39 @@ $factory->define(User::class, function (Faker $faker) {
         'active' => true,
     ];
 });
+
+$factory->state(User::class, 'active', function () {
+    return [
+        'active' => true,
+    ];
+});
+
+$factory->state(User::class, 'inactive', function () {
+    return [
+        'active' => false,
+    ];
+});
+
+$factory->state(User::class, 'confirmed', function () {
+    return [
+        'email_verified_at' => now(),
+    ];
+});
+
+$factory->state(User::class, 'unconfirmed', function () {
+    return [
+        'email_verified_at' => null,
+    ];
+});
+
+$factory->state(User::class, 'password_expired', function () {
+    return [
+        'password_changed_at' => now()->subYears(5),
+    ];
+});
+
+$factory->state(User::class, 'softDeleted', function () {
+    return [
+        'deleted_at' => now(),
+    ];
+});

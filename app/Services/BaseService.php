@@ -100,6 +100,22 @@ abstract class BaseService
     {
         $this->newQuery()->eagerLoad()->setClauses()->setScopes();
 
+        $model = $this->query->first();
+
+        $this->unsetClauses();
+
+        return $model;
+    }
+
+    /**
+     * Get the first specified model record from the database or throw an exception if not found
+     *
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function firstOrFail()
+    {
+        $this->newQuery()->eagerLoad()->setClauses()->setScopes();
+
         $model = $this->query->firstOrFail();
 
         $this->unsetClauses();
