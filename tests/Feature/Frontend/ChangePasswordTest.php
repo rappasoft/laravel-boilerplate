@@ -7,13 +7,10 @@ use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 /**
- * Class ChangePasswordTest
- *
- * @package Tests\Feature\Frontend
+ * Class ChangePasswordTest.
  */
 class ChangePasswordTest extends TestCase
 {
-
     /** @test */
     public function validation_is_required()
     {
