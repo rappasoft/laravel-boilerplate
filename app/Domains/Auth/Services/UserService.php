@@ -158,7 +158,7 @@ class UserService extends BaseService
     {
         $user->name = $data['name'] ?? null;
 
-        if ($user->email !== $data['email'] && $user->canChangeEmail()) {
+        if ($user->canChangeEmail() && $user->email !== $data['email']) {
             $user->email = $data['email'];
             $user->email_verified_at = null;
             $user->sendEmailVerificationNotification();

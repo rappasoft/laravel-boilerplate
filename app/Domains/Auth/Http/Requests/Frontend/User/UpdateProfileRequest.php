@@ -29,7 +29,9 @@ class UpdateProfileRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => ['sometimes', 'email', Rule::unique('users')->ignore($this->user()->id)],
+            'email' => [Rule::requiredIf(function () {
+                return config('boilerplate.access.user.change_email');
+            }), 'email', Rule::unique('users')->ignore($this->user()->id)],
         ];
     }
 }
