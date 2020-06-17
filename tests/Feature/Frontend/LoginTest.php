@@ -9,13 +9,10 @@ use Illuminate\Validation\ValidationException;
 use Tests\TestCase;
 
 /**
- * Class LoginTest
- *
- * @package Tests\Feature\Frontend
+ * Class LoginTest.
  */
 class LoginTest extends TestCase
 {
-
     /** @test */
     public function the_login_route_exists()
     {

@@ -6,13 +6,10 @@ use App\Domains\Auth\Models\User;
 use Tests\TestCase;
 
 /**
- * Class VerificationTest
- *
- * @package Tests\Feature\Frontend
+ * Class VerificationTest.
  */
 class VerificationTest extends TestCase
 {
-
     /** @test */
     public function an_unverified_user_cannot_access_dashboard()
     {

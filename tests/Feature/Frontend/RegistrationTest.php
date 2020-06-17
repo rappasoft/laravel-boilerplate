@@ -8,13 +8,10 @@ use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 /**
- * Class RegistrationTest
- *
- * @package Tests\Feature\Frontend
+ * Class RegistrationTest.
  */
 class RegistrationTest extends TestCase
 {
-
     /** @test */
     public function the_register_route_exists()
     {

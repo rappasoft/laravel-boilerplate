@@ -5,9 +5,7 @@ namespace Tests\Feature\Middleware;
 use Tests\TestCase;
 
 /**
- * Class SwitchLanguageTest
- *
- * @package Tests\Feature\Middleware
+ * Class SwitchLanguageTest.
  */
 class SwitchLanguageTest extends TestCase
 {

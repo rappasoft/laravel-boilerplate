@@ -6,13 +6,10 @@ use App\Domains\Auth\Models\User;
 use Tests\TestCase;
 
 /**
- * Class PasswordExpirationTest
- *
- * @package Tests\Feature\Frontend
+ * Class PasswordExpirationTest.
  */
 class PasswordExpirationTest extends TestCase
 {
-
     /** @test */
     public function a_user_with_an_expired_password_cannot_access_dashboard()
     {
