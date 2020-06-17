@@ -12,6 +12,6 @@ class HomeTest extends TestCase
     /** @test */
     public function the_home_page_exists()
     {
-        $this->get('/')->assertStatus(200);
+        $this->get('/')->assertOk();
     }
 }

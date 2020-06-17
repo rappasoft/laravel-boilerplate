@@ -15,7 +15,7 @@ class RegistrationTest extends TestCase
     /** @test */
     public function the_register_route_exists()
     {
-        $this->get('/register')->assertStatus(200);
+        $this->get('/register')->assertOk();
     }
 
     /** @test */

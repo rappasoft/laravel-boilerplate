@@ -13,12 +13,10 @@ class DashboardTest extends TestCase
     /** @test */
     public function only_authenticated_users_can_access_their_account()
     {
-        $this->get('/dashboard')
-            ->assertRedirect('/login');
+        $this->get('/dashboard')->assertRedirect('/login');
 
         $this->actingAs(factory(User::class)->create());
 
-        $this->get('/dashboard')
-            ->assertStatus(200);
+        $this->get('/dashboard')->assertOk();
     }
 }

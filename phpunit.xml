@@ -39,5 +39,6 @@
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="REGISTRATION_CAPTCHA_STATUS" value="false"/>
         <server name="SESSION_DRIVER" value="array"/>
+        <server name="TELESCOPE_ENABLED" value="false"/>
     </php>
 </phpunit>

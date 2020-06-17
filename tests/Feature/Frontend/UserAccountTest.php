@@ -13,13 +13,11 @@ class UserAccountTest extends TestCase
     /** @test */
     public function only_authenticated_users_can_access_their_account()
     {
-        $this->get('/account')
-            ->assertRedirect('/login');
+        $this->get('/account')->assertRedirect('/login');
 
         $this->actingAs(factory(User::class)->create());
 
-        $this->get('/account')
-            ->assertStatus(200);
+        $this->get('/account')->assertOk();
     }
 
     /** @test */
@@ -98,7 +96,6 @@ class UserAccountTest extends TestCase
         ]);
 
         // Double check
-        $this->get('/account')
-            ->assertRedirect('/email/verify');
+        $this->get('/account')->assertRedirect('/email/verify');
     }
 }
