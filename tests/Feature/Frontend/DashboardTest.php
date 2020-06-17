@@ -6,13 +6,10 @@ use App\Domains\Auth\Models\User;
 use Tests\TestCase;
 
 /**
- * Class DashboardTest
- *
- * @package Tests\Feature\Frontend
+ * Class DashboardTest.
  */
 class DashboardTest extends TestCase
 {
-
     /** @test */
     public function only_authenticated_users_can_access_their_account()
     {
