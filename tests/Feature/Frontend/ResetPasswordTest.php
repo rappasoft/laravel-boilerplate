@@ -9,7 +9,6 @@ use Tests\TestCase;
  */
 class ResetPasswordTest extends TestCase
 {
-
     /** @test */
     public function the_password_reset_route_exists()
     {
