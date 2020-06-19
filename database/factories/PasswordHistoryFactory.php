@@ -2,8 +2,8 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use Faker\Generator as Faker;
 use App\Domains\Auth\Models\PasswordHistory;
+use Faker\Generator as Faker;
 
 $factory->define(PasswordHistory::class, function (Faker $faker) {
     return [
