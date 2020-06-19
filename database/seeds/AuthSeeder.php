@@ -7,7 +7,7 @@ use Spatie\Permission\PermissionRegistrar;
 /**
  * Class AuthTableSeeder.
  */
-class AuthTableSeeder extends Seeder
+class AuthSeeder extends Seeder
 {
     use DisableForeignKeys, TruncateTable;
 
@@ -33,9 +33,9 @@ class AuthTableSeeder extends Seeder
             'password_resets',
         ]);
 
-        $this->call(UserTableSeeder::class);
-        $this->call(PermissionRoleTableSeeder::class);
-        $this->call(UserRoleTableSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(PermissionRoleSeeder::class);
+        $this->call(UserRoleSeeder::class);
 
         $this->enableForeignKeys();
     }

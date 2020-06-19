@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 /**
  * Class PermissionRoleTableSeeder.
  */
-class PermissionRoleTableSeeder extends Seeder
+class PermissionRoleSeeder extends Seeder
 {
     use DisableForeignKeys;
 

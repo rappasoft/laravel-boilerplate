@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
             'ledgers',
         ]);
 
-        $this->call(AuthTableSeeder::class);
+        $this->call(AuthSeeder::class);
         $this->call(AnnouncementSeeder::class);
 
         Model::reguard();

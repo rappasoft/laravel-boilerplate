@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
-         backupGlobals="false"
-         backupStaticAttributes="false"
          bootstrap="vendor/autoload.php"
          colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false"
-         printerClass="Codedungeon\PHPUnitPrettyResultPrinter\Printer">
+         printerClass="Codedungeon\PHPUnitPrettyResultPrinter\Printer"
+>
     <testsuites>
         <testsuite name="Unit">
             <directory suffix="Test.php">./tests/Unit</directory>
@@ -35,7 +29,7 @@
         <server name="DB_DATABASE" value=":memory:"/>
         <server name="ENABLE_REGISTRATION" value="true"/>
         <server name="LOGIN_CAPTCHA_STATUS" value="false"/>
-        <server name="MAIL_DRIVER" value="array"/>
+        <server name="MAIL_MAILER" value="array"/>
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="REGISTRATION_CAPTCHA_STATUS" value="false"/>
         <server name="SESSION_DRIVER" value="array"/>

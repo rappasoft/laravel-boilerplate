@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 /**
  * Class UserTableSeeder.
  */
-class UserTableSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     use DisableForeignKeys;
 
