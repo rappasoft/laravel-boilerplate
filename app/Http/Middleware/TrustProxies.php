@@ -6,9 +6,7 @@ use Fideloper\Proxy\TrustProxies as Middleware;
 use Illuminate\Http\Request;
 
 /**
- * Class TrustProxies
- *
- * @package App\Http\Middleware
+ * Class TrustProxies.
  */
 class TrustProxies extends Middleware
 {
