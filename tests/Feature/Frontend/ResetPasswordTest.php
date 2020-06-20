@@ -20,7 +20,7 @@ class ResetPasswordTest extends TestCase
     }
 
     /** @test */
-    public function validation_is_required()
+    public function password_reset_requires_validation()
     {
         $response = $this->post('/password/email');
 

@@ -35,7 +35,7 @@ class PasswordExpirationTest extends TestCase
     }
 
     /** @test */
-    public function validation_is_required()
+    public function password_expiration_update_requires_validation()
     {
         $this->actingAs(factory(User::class)->create());
 

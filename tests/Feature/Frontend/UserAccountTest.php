@@ -21,7 +21,7 @@ class UserAccountTest extends TestCase
     }
 
     /** @test */
-    public function validation_is_required()
+    public function profile_update_requires_validation()
     {
         $this->actingAs(factory(User::class)->create());
 

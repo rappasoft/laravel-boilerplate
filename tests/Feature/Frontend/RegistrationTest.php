@@ -19,7 +19,7 @@ class RegistrationTest extends TestCase
     }
 
     /** @test */
-    public function validation_is_required()
+    public function registration_requires_validation()
     {
         $response = $this->post('/register');
 

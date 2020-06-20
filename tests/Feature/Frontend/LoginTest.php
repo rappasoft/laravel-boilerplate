@@ -20,7 +20,7 @@ class LoginTest extends TestCase
     }
 
     /** @test */
-    public function validation_is_required()
+    public function login_requires_validation()
     {
         $response = $this->post('/login');
 

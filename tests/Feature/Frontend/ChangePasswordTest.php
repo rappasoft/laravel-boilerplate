@@ -12,7 +12,7 @@ use Tests\TestCase;
 class ChangePasswordTest extends TestCase
 {
     /** @test */
-    public function validation_is_required()
+    public function change_password_requires_validation()
     {
         $this->actingAs(factory(User::class)->create());
 
