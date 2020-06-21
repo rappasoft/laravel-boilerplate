@@ -1,4 +1,4 @@
-@if($errors->any())
+@if(isset($errors) && $errors->any())
     <x-utils.alert type="danger">
         @foreach($errors->all() as $error)
             {{ $error }}<br/>
