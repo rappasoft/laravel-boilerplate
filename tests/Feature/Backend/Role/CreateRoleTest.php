@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Backend\Role;
 
+use App\Domains\Auth\Models\Permission;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
 use Illuminate\Auth\Middleware\RequirePassword;
@@ -56,11 +57,21 @@ class CreateRoleTest extends TestCase
 
         $this->loginAsAdmin();
 
-        $this->post('/admin/auth/role', ['name' => 'new role', 'permissions' => ['view backend']]);
+        $this->post('/admin/auth/role', [
+            'name' => 'new role',
+            'permissions' => [
+                Permission::whereName('view backend')->first()->id
+            ]
+        ]);
 
-        $role = Role::where(['name' => 'new role'])->first();
+        $this->assertDatabaseHas('roles', [
+            'name' => 'new role',
+        ]);
 
-        $this->assertTrue($role->hasPermissionTo('view backend'));
+        $this->assertDatabaseHas('role_has_permissions', [
+           'permission_id' => Permission::whereName('view backend')->first()->id,
+           'role_id' => Role::whereName('new role')->first()->id,
+        ]);
     }
 
     /** @test */

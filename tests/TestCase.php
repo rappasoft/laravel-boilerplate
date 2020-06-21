@@ -15,6 +15,9 @@ abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication, RefreshDatabase;
 
+    /**
+     *
+     */
     public function setUp(): void
     {
         parent::setUp();
@@ -74,5 +77,13 @@ abstract class TestCase extends BaseTestCase
         $this->actingAs($admin);
 
         return $admin;
+    }
+
+    /**
+     * Log the user out
+     */
+    protected function logout()
+    {
+        return auth()->logout();
     }
 }

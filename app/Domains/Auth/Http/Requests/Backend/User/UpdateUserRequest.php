@@ -34,7 +34,9 @@ class UpdateUserRequest extends FormRequest
             'roles' => [Rule::requiredIf(function () {
                 return ! $this->user->isMasterAdmin();
             }), 'array'],
+            'roles.*' => [Rule::exists('roles', 'id')],
             'permissions' => ['sometimes', 'array'],
+            'permissions.*' => [Rule::exists('permissions', 'id')],
         ];
     }
 

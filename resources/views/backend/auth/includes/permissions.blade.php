@@ -11,8 +11,8 @@
                 <div class="col">
                     @foreach($general as $permission)
                         <span class="d-block">
-                        <input type="checkbox" name="permissions[]" {{ in_array($permission->id, $usedPermissions ?? [], true) ? 'checked' : '' }} value="{{ $permission->name }}" id="{{ $permission->name }}" />
-                        <label for="{{ $permission->name }}">{{ $permission->description ?? $permission->name }}</label>
+                        <input type="checkbox" name="permissions[]" {{ in_array($permission->id, $usedPermissions ?? [], true) ? 'checked' : '' }} value="{{ $permission->id }}" id="{{ $permission->id }}" />
+                        <label for="{{ $permission->id }}">{{ $permission->description ?? $permission->name }}</label>
                     </span>
                     @endforeach
                 </div><!--col-->
@@ -29,8 +29,8 @@
             <ul id="tree" class="m-0 p-0 list-unstyled">
                 @foreach($categories as $permission)
                     <li>
-                        <input type="checkbox" name="permissions[]" {{ in_array($permission->id, $usedPermissions ?? [], true) ? 'checked' : '' }} value="{{ $permission->name }}" id="{{ $permission->name }}" />
-                        <label for="{{ $permission->name }}">{{ $permission->description ?? $permission->name }}</label>
+                        <input type="checkbox" name="permissions[]" {{ in_array($permission->id, $usedPermissions ?? [], true) ? 'checked' : '' }} value="{{ $permission->id }}" id="{{ $permission->id }}" />
+                        <label for="{{ $permission->id }}">{{ $permission->description ?? $permission->name }}</label>
 
                         @if($permission->children->count())
                             @include('backend.auth.role.includes.children', ['children' => $permission->children])

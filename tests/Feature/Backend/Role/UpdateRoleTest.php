@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Backend\Role;
 
+use App\Domains\Auth\Models\Permission;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
 use Illuminate\Auth\Middleware\RequirePassword;
@@ -40,11 +41,18 @@ class UpdateRoleTest extends TestCase
 
         $this->patch("/admin/auth/role/{$role->id}", [
             'name' => 'new name',
-            'permissions' => ['view backend'],
+            'permissions' => [
+                Permission::whereName('view backend')->first()->id
+            ]
         ]);
 
         $this->assertDatabaseHas('roles', [
             'name' => 'new name',
+        ]);
+
+        $this->assertDatabaseHas('role_has_permissions', [
+            'permission_id' => Permission::whereName('view backend')->first()->id,
+            'role_id' => Role::whereName('new name')->first()->id,
         ]);
     }
 

@@ -70,7 +70,9 @@ class CreateUserTest extends TestCase
             'password' => 'OC4Nzu270N!QBVi%U%qX',
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
             'active' => '1',
-            'roles' => [1 => config('boilerplate.access.role.admin')],
+            'roles' => [
+                Role::whereName(config('boilerplate.access.role.admin'))->first()->id
+            ],
         ]);
 
         $this->assertDatabaseHas(
@@ -106,7 +108,9 @@ class CreateUserTest extends TestCase
             'password' => 'OC4Nzu270N!QBVi%U%qX',
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
             'send_confirmation_email' => '1',
-            'roles' => [1 => config('boilerplate.access.role.admin')],
+            'roles' => [
+                Role::whereName(config('boilerplate.access.role.admin'))->first()->id
+            ],
         ]);
 
         $response->assertSessionHas(['flash_success' => __('The user was successfully created.')]);
