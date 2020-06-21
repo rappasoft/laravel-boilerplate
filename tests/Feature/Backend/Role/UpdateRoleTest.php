@@ -42,8 +42,8 @@ class UpdateRoleTest extends TestCase
         $this->patch("/admin/auth/role/{$role->id}", [
             'name' => 'new name',
             'permissions' => [
-                Permission::whereName('view backend')->first()->id
-            ]
+                Permission::whereName('view backend')->first()->id,
+            ],
         ]);
 
         $this->assertDatabaseHas('roles', [
