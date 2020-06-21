@@ -9,9 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /**
- * Class CreateRoleTest
- *
- * @package Tests\Feature\Backend\Role
+ * Class CreateRoleTest.
  */
 class CreateRoleTest extends TestCase
 {

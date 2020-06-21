@@ -7,9 +7,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /**
- * Class DashboardTest
- *
- * @package Tests\Feature\Backend
+ * Class DashboardTest.
  */
 class DashboardTest extends TestCase
 {
