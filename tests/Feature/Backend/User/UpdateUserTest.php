@@ -9,9 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /**
- * Class UpdateUserTest
- *
- * @package Tests\Feature\Backend\User
+ * Class UpdateUserTest.
  */
 class UpdateUserTest extends TestCase
 {
