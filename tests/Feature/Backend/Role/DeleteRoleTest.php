@@ -9,9 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /**
- * Class DeleteRoleTest
- *
- * @package Tests\Feature\Backend\Role
+ * Class DeleteRoleTest.
  */
 class DeleteRoleTest extends TestCase
 {

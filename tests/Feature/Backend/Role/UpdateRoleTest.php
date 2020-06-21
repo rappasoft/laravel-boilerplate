@@ -9,9 +9,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /**
- * Class UpdateRoleTest
- *
- * @package Tests\Feature\Backend\Role
+ * Class UpdateRoleTest.
  */
 class UpdateRoleTest extends TestCase
 {
@@ -42,7 +40,7 @@ class UpdateRoleTest extends TestCase
 
         $this->patch("/admin/auth/role/{$role->id}", [
             'name' => 'new name',
-            'permissions' => ['view backend']
+            'permissions' => ['view backend'],
         ]);
 
         $this->assertDatabaseHas('roles', [

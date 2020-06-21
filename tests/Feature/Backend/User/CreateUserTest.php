@@ -11,9 +11,7 @@ use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
 /**
- * Class CreateUserTest
- *
- * @package Tests\Feature\Backend\User
+ * Class CreateUserTest.
  */
 class CreateUserTest extends TestCase
 {

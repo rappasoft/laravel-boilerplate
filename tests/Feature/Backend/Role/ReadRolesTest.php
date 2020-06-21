@@ -8,9 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /**
- * Class ReadRolesTest
- *
- * @package Tests\Feature\Backend\Role
+ * Class ReadRolesTest.
  */
 class ReadRolesTest extends TestCase
 {
