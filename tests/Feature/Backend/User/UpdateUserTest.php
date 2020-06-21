@@ -48,7 +48,7 @@ class UpdateUserTest extends TestCase
             'name' => 'John Doe',
             'email' => 'john@example.com',
             'roles' => [
-                Role::whereName(config('boilerplate.access.role.admin'))->first()->id
+                Role::whereName(config('boilerplate.access.role.admin'))->first()->id,
             ],
         ]);
 
@@ -131,7 +131,7 @@ class UpdateUserTest extends TestCase
         $this->patch("/admin/auth/user/{$admin->id}", [
             'name' => $admin->name,
             'email' => $admin->email,
-            'roles' => [$role->id]
+            'roles' => [$role->id],
         ]);
 
         $this->assertDatabaseMissing('model_has_roles', [
