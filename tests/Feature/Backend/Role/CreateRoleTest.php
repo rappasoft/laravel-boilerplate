@@ -60,8 +60,8 @@ class CreateRoleTest extends TestCase
         $this->post('/admin/auth/role', [
             'name' => 'new role',
             'permissions' => [
-                Permission::whereName('view backend')->first()->id
-            ]
+                Permission::whereName('view backend')->first()->id,
+            ],
         ]);
 
         $this->assertDatabaseHas('roles', [
@@ -69,8 +69,8 @@ class CreateRoleTest extends TestCase
         ]);
 
         $this->assertDatabaseHas('role_has_permissions', [
-           'permission_id' => Permission::whereName('view backend')->first()->id,
-           'role_id' => Role::whereName('new role')->first()->id,
+            'permission_id' => Permission::whereName('view backend')->first()->id,
+            'role_id' => Role::whereName('new role')->first()->id,
         ]);
     }
 
