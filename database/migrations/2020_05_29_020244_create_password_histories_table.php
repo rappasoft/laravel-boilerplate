@@ -21,7 +21,7 @@ class CreatePasswordHistoriesTable extends Migration
         });
 
         Schema::table('password_histories', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

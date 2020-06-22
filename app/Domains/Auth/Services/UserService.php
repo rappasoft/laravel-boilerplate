@@ -233,10 +233,6 @@ class UserService extends BaseService
             throw new GeneralException(__('You can not delete yourself.'));
         }
 
-        if ($user->deleted_at !== null) {
-            throw new GeneralException(__('This user is already deleted.'));
-        }
-
         if ($this->deleteById($user->id)) {
             return $user;
         }
@@ -252,10 +248,6 @@ class UserService extends BaseService
      */
     public function restore(User $user): User
     {
-        if ($user->deleted_at === null) {
-            throw new GeneralException(__('This user is not deleted so it can not be restored.'));
-        }
-
         if ($user->restore()) {
             return $user;
         }
@@ -271,10 +263,6 @@ class UserService extends BaseService
      */
     public function destroy(User $user): bool
     {
-        if ($user->deleted_at === null) {
-            throw new GeneralException(__('This user is not deleted so it can not be permanently deleted.'));
-        }
-
         if ($user->forceDelete()) {
             return true;
         }

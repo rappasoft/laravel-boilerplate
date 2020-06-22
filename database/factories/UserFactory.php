@@ -58,7 +58,7 @@ $factory->state(User::class, 'password_expired', function () {
     ];
 });
 
-$factory->state(User::class, 'softDeleted', function () {
+$factory->state(User::class, 'deleted', function () {
     return [
         'deleted_at' => now(),
     ];

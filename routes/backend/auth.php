@@ -53,10 +53,7 @@ Route::group([
 
             Route::group(['prefix' => '{deletedUser}'], function () {
                 Route::get('restore', [DeletedUserController::class, 'update'])->name('restore');
-
-                if (config('boilerplate.access.user.permanently_delete')) {
-                    Route::delete('permanently-delete', [DeletedUserController::class, 'destroy'])->name('permanently-delete');
-                }
+                Route::delete('permanently-delete', [DeletedUserController::class, 'destroy'])->name('permanently-delete');
             });
         });
 
