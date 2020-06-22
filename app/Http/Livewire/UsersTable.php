@@ -35,7 +35,8 @@ class UsersTable extends TableComponent
      */
     public function query(): Builder
     {
-        $query = User::withCount('twoFactorAuth');
+        $query = User::with('roles', 'twoFactorAuth')
+            ->withCount('twoFactorAuth');
 
         if ($this->status === 'deleted') {
             return $query->onlyTrashed();
