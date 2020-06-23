@@ -35,8 +35,8 @@
         "barryvdh/laravel-ide-helper": "^2.6",
         "codedungeon/phpunit-result-printer": "^0.26.2",
         "facade/ignition": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.16",
         "fzaninotto/faker": "^1.9.1",
-        "matt-allan/laravel-code-style": "^0.5.1",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^4.1",
         "phpunit/phpunit": "^8.5"
@@ -97,14 +97,8 @@
             "composer clear-all",
             "composer cache-all"
         ],
-        "phpunit": [
-            "phpunit > output.txt -d memory_limit=2048M"
-        ],
-        "coverage": [
-            "phpunit --coverage-html ./coverage"
-        ],
-        "format": [
-            "php-cs-fixer fix --show-progress=estimating --config=.php_cs"
-        ]
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
     }
 }

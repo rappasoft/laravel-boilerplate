@@ -40,6 +40,7 @@ class UserService extends BaseService
             $this->assignDefaultRole($user);
         } catch (Exception $e) {
             DB::rollBack();
+
             throw new RegisterException(__('There was a problem creating your account.'));
         }
 
@@ -74,6 +75,7 @@ class UserService extends BaseService
                 $this->assignDefaultRole($user);
             } catch (Exception $e) {
                 DB::rollBack();
+
                 throw new RegisterException(__('There was a problem connecting to :provider', ['provider' => $provider]));
             }
 
@@ -118,6 +120,7 @@ class UserService extends BaseService
         }
 
         DB::rollBack();
+
         throw new GeneralException(__('There was a problem creating this user. Please try again.'));
     }
 

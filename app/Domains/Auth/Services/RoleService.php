@@ -39,6 +39,7 @@ class RoleService extends BaseService
             $role->syncPermissions($data['permissions'] ?? []);
         } catch (Exception $e) {
             DB::rollBack();
+
             throw new GeneralException(__('There was a problem creating the role.'));
         }
 
@@ -64,6 +65,7 @@ class RoleService extends BaseService
             $role->syncPermissions($data['permissions'] ?? []);
         } catch (Exception $e) {
             DB::rollBack();
+
             throw new GeneralException(__('There was a problem updating the role.'));
         }
 

@@ -72,6 +72,7 @@ class LoginController extends Controller
             );
         } catch (HttpResponseException $exception) {
             $this->incrementLoginAttempts($request);
+
             throw $exception;
         }
     }
