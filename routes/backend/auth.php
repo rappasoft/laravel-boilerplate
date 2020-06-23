@@ -52,7 +52,7 @@ Route::group([
             });
 
             Route::group(['prefix' => '{deletedUser}'], function () {
-                Route::get('restore', [DeletedUserController::class, 'update'])->name('restore');
+                Route::patch('restore', [DeletedUserController::class, 'update'])->name('restore');
                 Route::delete('permanently-delete', [DeletedUserController::class, 'destroy'])->name('permanently-delete');
             });
         });
@@ -85,12 +85,12 @@ Route::group([
                             ->push(__('Viewing :user', ['user' => $user->name]), route('admin.auth.user.show', $user));
                     });
 
-                Route::get('mark/{status}', [DeactivatedUserController::class, 'update'])
+                Route::patch('mark/{status}', [DeactivatedUserController::class, 'update'])
                     ->name('mark')
                     ->where(['status' => '[0,1]'])
                     ->middleware('permission:access.user.deactivate|access.user.reactivate');
 
-                Route::get('clear-session', [UserSessionController::class, 'update'])
+                Route::post('clear-session', [UserSessionController::class, 'update'])
                     ->name('clear-session')
                     ->middleware('permission:access.user.clear-session');
 

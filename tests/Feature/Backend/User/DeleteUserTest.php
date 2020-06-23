@@ -100,7 +100,7 @@ class DeleteUserTest extends TestCase
 
         $this->assertSoftDeleted('users', ['id' => $user->id]);
 
-        $response = $this->get("/admin/auth/user/{$user->id}/restore");
+        $response = $this->patch("/admin/auth/user/{$user->id}/restore");
 
         $response->assertSessionHas(['flash_success' => __('The user was successfully restored.')]);
 

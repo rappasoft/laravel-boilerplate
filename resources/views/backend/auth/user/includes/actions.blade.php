@@ -1,10 +1,13 @@
 @if ($user->trashed() && $logged_in_user->isAdmin())
-    <x-utils.link
-        :href="route('admin.auth.user.restore', $user)"
-        class="btn btn-info btn-sm"
+    <x-utils.form-button
+        :action="route('admin.auth.user.restore', $user)"
+        method="patch"
+        buttonClass="btn btn-info btn-sm"
         icon="fas fa-sync-alt"
-        :text="__('Restore')"
-        name="confirm-item" />
+        name="confirm-item"
+    >
+        @lang('Restore')
+    </x-utils.form-button>
 
     @if (config('boilerplate.access.user.permanently_delete'))
         <x-utils.delete-button
@@ -18,13 +21,16 @@
     @endif
 
     @if (! $user->isActive())
-        <x-utils.link
-            :href="route('admin.auth.user.mark', [$user, 1])"
-            class="btn btn-primary btn-sm"
+        <x-utils.form-button
+            :action="route('admin.auth.user.mark', [$user, 1])"
+            method="patch"
+            buttonClass="btn btn-primary btn-sm"
             icon="fas fa-sync-alt"
-            :text="__('Restore')"
             name="confirm-item"
-            permission="access.user.reactivate" />
+            permission="access.user.reactivate"
+        >
+            @lang('Reactivate')
+        </x-utils.form-button>
     @endif
 
     @if ($user->id !== $logged_in_user->id && !$user->isMasterAdmin() && $logged_in_user->isAdmin())
@@ -71,12 +77,14 @@
                     permission="access.user.change-password" />
 
                 @if ($user->id !== $logged_in_user->id && !$user->isMasterAdmin())
-                    <x-utils.link
-                        :href="route('admin.auth.user.clear-session', $user)"
-                        class="dropdown-item"
-                        :text="__('Clear Session')"
+                    <x-utils.form-button
+                        :action="route('admin.auth.user.clear-session', $user)"
                         name="confirm-item"
-                        permission="access.user.clear-session" />
+                        buttonClass="dropdown-item"
+                        permission="access.user.clear-session"
+                    >
+                        @lang('Clear Session')
+                    </x-utils.form-button>
 
                     @canBeImpersonated($user)
                         <x-utils.link
@@ -86,12 +94,15 @@
                             permission="access.user.impersonate" />
                     @endCanBeImpersonated
 
-                    <x-utils.link
-                        :href="route('admin.auth.user.mark', [$user, 0])"
-                        class="dropdown-item"
-                        :text="__('Deactivate')"
+                    <x-utils.form-button
+                        :action="route('admin.auth.user.mark', [$user, 0])"
+                        method="patch"
                         name="confirm-item"
-                        permission="access.user.deactivate" />
+                        buttonClass="dropdown-item"
+                        permission="access.user.deactivate"
+                    >
+                        @lang('Deactivate')
+                    </x-utils.form-button>
                 @endif
             </div>
         </div>
