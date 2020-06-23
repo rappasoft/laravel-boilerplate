@@ -63,10 +63,8 @@ Route::group(['as' => 'auth.'], function () {
         Route::post('login', [LoginController::class, 'login']);
 
         // Registration
-        if (config('boilerplate.access.user.registration')) {
-            Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
-            Route::post('register', [RegisterController::class, 'register']);
-        }
+        Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+        Route::post('register', [RegisterController::class, 'register']);
 
         // Password Reset
         Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
