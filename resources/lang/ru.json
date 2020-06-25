@@ -180,5 +180,6 @@
     "Viewing :user": "Просмотр :user",
     "Changing Password for :user": "Смена пароля для :user",
     "Editing :role": "Редактирование :role",
-    "Home": "Дом"
+    "Home": "Дом",
+    "Reactivate": "Reactivate"
 }

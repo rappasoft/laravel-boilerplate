@@ -180,5 +180,6 @@
     "Viewing :user": " :user-yə baxır",
     "Changing Password for :user": " :user üçün parol dəyişdirmək",
     "Editing :role": " :role düzəliş",
-    "Home": "Ev"
+    "Home": "Ev",
+    "Reactivate": "Reactivate"
 }

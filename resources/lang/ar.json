@@ -180,5 +180,6 @@
     "Viewing :user": "عرض :user",
     "Changing Password for :user": "تغيير كلمة المرور لـ :user",
     "Editing :role": "تحرير :role",
-    "Home": "الصفحة الرئيسية"
+    "Home": "الصفحة الرئيسية",
+    "Reactivate": "Reactivate"
 }

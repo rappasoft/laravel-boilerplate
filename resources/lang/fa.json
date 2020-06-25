@@ -180,5 +180,6 @@
     "Viewing :user": "مشاهده :user",
     "Changing Password for :user": "تغییر رمز عبور برای :user",
     "Editing :role": "در حال ویرایش :role",
-    "Home": "خانه"
+    "Home": "خانه",
+    "Reactivate": "Reactivate"
 }

@@ -180,5 +180,6 @@
     "Viewing :user": " :userの表示",
     "Changing Password for :user": " :userのパスワードの変更",
     "Editing :role": " :roleの編集",
-    "Home": "ホーム"
+    "Home": "ホーム",
+    "Reactivate": "Reactivate"
 }

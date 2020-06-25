@@ -180,5 +180,6 @@
     "Viewing :user": "查看 :user",
     "Changing Password for :user": "更改 :user的密码",
     "Editing :role": "编辑 :role",
-    "Home": "家"
+    "Home": "家",
+    "Reactivate": "Reactivate"
 }

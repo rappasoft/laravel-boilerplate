@@ -180,5 +180,6 @@
     "Viewing :user": "מציג :user",
     "Changing Password for :user": "שינוי סיסמא ל- :user",
     "Editing :role": "עריכת :role",
-    "Home": "בית"
+    "Home": "בית",
+    "Reactivate": "Reactivate"
 }

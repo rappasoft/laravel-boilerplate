@@ -180,5 +180,6 @@
     "Viewing :user": "กำลังดู :user",
     "Changing Password for :user": "การเปลี่ยนรหัสผ่านสำหรับ :user",
     "Editing :role": "กำลังแก้ไข :role",
-    "Home": "บ้าน"
+    "Home": "บ้าน",
+    "Reactivate": "Reactivate"
 }

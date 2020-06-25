@@ -180,5 +180,6 @@
     "Viewing :user": "Προβολή :user",
     "Changing Password for :user": "Αλλαγή κωδικού πρόσβασης για :user",
     "Editing :role": "Επεξεργασία :role",
-    "Home": "Σπίτι"
+    "Home": "Σπίτι",
+    "Reactivate": "Reactivate"
 }

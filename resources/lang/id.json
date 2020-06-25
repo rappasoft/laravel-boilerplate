@@ -180,5 +180,6 @@
     "Viewing :user": "Melihat :user",
     "Changing Password for :user": "Mengubah Kata Sandi untuk :user",
     "Editing :role": "Mengedit :role",
-    "Home": "Rumah"
+    "Home": "Rumah",
+    "Reactivate": "Reactivate"
 }

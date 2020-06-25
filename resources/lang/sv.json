@@ -180,5 +180,6 @@
     "Viewing :user": "Visar :user",
     "Changing Password for :user": "Ändra lösenord för :user",
     "Editing :role": "Redigerar :role",
-    "Home": "Hem"
+    "Home": "Hem",
+    "Reactivate": "Reactivate"
 }

@@ -180,5 +180,6 @@
     "Viewing :user": " :user bekijken",
     "Changing Password for :user": "Wachtwoord wijzigen voor :user",
     "Editing :role": " :role bewerken",
-    "Home": "Huis"
+    "Home": "Huis",
+    "Reactivate": "Reactivate"
 }

@@ -180,5 +180,6 @@
     "Viewing :user": "Visning af :user",
     "Changing Password for :user": "Ændring af adgangskode til :user",
     "Editing :role": "Redigering af :role",
-    "Home": "Hjem"
+    "Home": "Hjem",
+    "Reactivate": "Reactivate"
 }

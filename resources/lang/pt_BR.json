@@ -180,5 +180,6 @@
     "Viewing :user": "Visualizando :user",
     "Changing Password for :user": "Alterando a senha para :user",
     "Editing :role": "Editando :role",
-    "Home": "Casa"
+    "Home": "Casa",
+    "Reactivate": "Reactivate"
 }
