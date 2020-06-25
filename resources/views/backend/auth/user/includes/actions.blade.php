@@ -2,7 +2,7 @@
     <x-utils.form-button
         :action="route('admin.auth.user.restore', $user)"
         method="patch"
-        buttonClass="btn btn-info btn-sm"
+        button-class="btn btn-info btn-sm"
         icon="fas fa-sync-alt"
         name="confirm-item"
     >
@@ -24,7 +24,7 @@
         <x-utils.form-button
             :action="route('admin.auth.user.mark', [$user, 1])"
             method="patch"
-            buttonClass="btn btn-primary btn-sm"
+            button-class="btn btn-primary btn-sm"
             icon="fas fa-sync-alt"
             name="confirm-item"
             permission="access.user.reactivate"
@@ -80,7 +80,7 @@
                     <x-utils.form-button
                         :action="route('admin.auth.user.clear-session', $user)"
                         name="confirm-item"
-                        buttonClass="dropdown-item"
+                        button-class="dropdown-item"
                         permission="access.user.clear-session"
                     >
                         @lang('Clear Session')
@@ -98,7 +98,7 @@
                         :action="route('admin.auth.user.mark', [$user, 0])"
                         method="patch"
                         name="confirm-item"
-                        buttonClass="dropdown-item"
+                        button-class="dropdown-item"
                         permission="access.user.deactivate"
                     >
                         @lang('Deactivate')
