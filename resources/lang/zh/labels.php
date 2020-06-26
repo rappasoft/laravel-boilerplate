@@ -16,6 +16,7 @@ return [
         'all' => '全部',
         'yes' => '是',
         'no' => '否',
+        'copyright' => '版权',
         'custom' => '自定义',
         'actions' => '操作',
         'active' => '激活',
@@ -28,6 +29,9 @@ return [
         'none' => '空',
         'show' => '显示',
         'toggle_navigation' => '切换导航',
+        'create_new' => '新建',
+        'toolbar_btn_groups' => '带按钮组的工具栏',
+        'more' => '更多',
     ],
 
     'backend' => [
@@ -59,6 +63,7 @@ return [
                 'no_permissions' => '没有权限',
                 'no_roles' => '没有角色可设置',
                 'permissions' => '权限',
+                'user_actions' => '用户操作',
 
                 'table' => [
                     'confirmed' => '确认',
@@ -67,10 +72,15 @@ return [
                     'id' => 'ID',
                     'last_updated' => '最后更新',
                     'name' => '名称',
+                    'first_name' => '名',
+                    'last_name' => '姓',
                     'no_deactivated' => '没有停用的用户',
                     'no_deleted' => '没有删除的用户',
+                    'other_permissions' => '其他权限',
+                    'permissions' => '权限',
+                    'abilities' => '能力',
                     'roles' => '角色',
-                    'social' => 'Social',
+                    'social' => '社交帐号',
                     'total' => '用户总计',
                 ],
 
@@ -87,12 +97,14 @@ return [
                             'created_at' => '创建于',
                             'deleted_at' => '删除于',
                             'email' => '电子邮件',
-                            'last_login_at' => 'Last Login At',
-                            'last_login_ip' => 'Last Login IP',
+                            'last_login_at' => '最后登录时间',
+                            'last_login_ip' => '最后登录IP',
                             'last_updated' => '最后更新',
                             'name' => '名称',
+                            'first_name' => '名',
+                            'last_name' => '姓',
                             'status' => '状态',
-                            'timezone' => 'Timezone',
+                            'timezone' => '时区',
                         ],
                     ],
                 ],
@@ -113,41 +125,17 @@ return [
         ],
 
         'contact' => [
-            'box_title' => 'Contact Us',
-            'button' => 'Send Information',
+            'box_title' => '联系我们',
+            'button' => '发送信息',
         ],
 
         'passwords' => [
+            'expired_password_box_title' => '密码已过期。',
             'forgot_password' => '忘记密码了？',
             'reset_password_box_title' => '重置密码',
             'reset_password_button' => '重置密码',
+            'update_password_button' => '更新密码',
             'send_password_reset_link_button' => '发送密码重置链接',
-        ],
-
-        'macros' => [
-            'country' => [
-                'alpha' => 'Country Alpha Codes',
-                'alpha2' => 'Country Alpha 2 Codes',
-                'alpha3' => 'Country Alpha 3 Codes',
-                'numeric' => 'Country Numeric Codes',
-            ],
-
-            'macro_examples' => 'Macro Examples',
-
-            'state' => [
-                'mexico' => 'Mexico State List',
-                'us' => [
-                    'us' => 'US States',
-                    'outlying' => 'US Outlying Territories',
-                    'armed' => 'US Armed Forces',
-                ],
-            ],
-
-            'territories' => [
-                'canada' => 'Canada Province & Territories List',
-            ],
-
-            'timezone' => '时区',
         ],
 
         'user' => [
@@ -162,6 +150,8 @@ return [
                 'email' => '电子邮件',
                 'last_updated' => '最后更新',
                 'name' => '名称',
+                'first_name' => '名',
+                'last_name' => '姓',
                 'update_information' => '更新信息',
             ],
         ],
