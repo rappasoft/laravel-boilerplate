@@ -95,32 +95,31 @@ class UserService extends BaseService
     {
         DB::beginTransaction();
 
-        $user = $this->createUser([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => $data['password'],
-            'email_verified_at' => isset($data['email_verified']) && $data['email_verified'] === '1' ? now() : null,
-            'active' => isset($data['active']) && $data['active'] === '1',
-        ]);
+        try {
+            $user = $this->createUser([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => $data['password'],
+                'email_verified_at' => isset($data['email_verified']) && $data['email_verified'] === '1' ? now() : null,
+                'active' => isset($data['active']) && $data['active'] === '1',
+            ]);
 
-        if ($user) {
-            // Add selected roles/permissions
             $user->syncRoles($data['roles'] ?? []);
             $user->syncPermissions($data['permissions'] ?? []);
+        } catch (Exception $e) {
+            DB::rollBack();
 
-            DB::commit();
-
-            // They didn't want to auto verify the email, but do they want to send the confirmation email to do so?
-            if (! isset($data['email_verified']) && isset($data['send_confirmation_email']) && $data['send_confirmation_email'] === '1') {
-                $user->sendEmailVerificationNotification();
-            }
-
-            return $user;
+            throw new GeneralException(__('There was a problem creating this user. Please try again.'));
         }
 
-        DB::rollBack();
+        DB::commit();
 
-        throw new GeneralException(__('There was a problem creating this user. Please try again.'));
+        // They didn't want to auto verify the email, but do they want to send the confirmation email to do so?
+        if (! isset($data['email_verified']) && isset($data['send_confirmation_email']) && $data['send_confirmation_email'] === '1') {
+            $user->sendEmailVerificationNotification();
+        }
+
+        return $user;
     }
 
     /**
@@ -134,15 +133,21 @@ class UserService extends BaseService
     {
         DB::beginTransaction();
 
-        $user->update([
-            'name' => $data['name'],
-            'email' => $data['email'],
-        ]);
+        try {
+            $user->update([
+                'name' => $data['name'],
+                'email' => $data['email'],
+            ]);
 
-        if (! $user->isMasterAdmin()) {
-            // Replace selected roles/permissions
-            $user->syncRoles($data['roles'] ?? []);
-            $user->syncPermissions($data['permissions'] ?? []);
+            if (! $user->isMasterAdmin()) {
+                // Replace selected roles/permissions
+                $user->syncRoles($data['roles'] ?? []);
+                $user->syncPermissions($data['permissions'] ?? []);
+            }
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            throw new GeneralException(__('There was a problem updating this user. Please try again.'));
         }
 
         DB::commit();

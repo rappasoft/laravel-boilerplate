@@ -3,9 +3,9 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [7.0.0] - 2020-XX-XX
+## [7.0.0] - 2020-06-26
 
-### Changed
+Started from scratch with a blank Laravel 7.* installation. This release is not an upgrade, and for that reason it is impossible to document all the changes that occurred. This version should be used for new projects.
 
 ### Added
 
@@ -36,7 +36,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Added facade/ignition-code-editor to be able to edit files right from ignition screens
-- Added facade/ignition-self-diagnosis to for useful checklist of things that could get fixed when encountering an error
+- Added facade/ignition-self-diagnosis to for a useful checklist of things that could get fixed when encountering an error
 - Added facade/ignition-tinker-tab which adds a tinker tab in ignition which uses laravel tinker behind the scenes to be able to use tinker right from error screens
 
 ### Changed

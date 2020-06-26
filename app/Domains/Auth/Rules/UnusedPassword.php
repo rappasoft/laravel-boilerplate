@@ -77,6 +77,8 @@ class UnusedPassword implements Rule
      */
     public function message(): string
     {
-        return __('You can not set a password that you have previously used within the last :num times.', ['num' => config('boilerplate.access.user.password_history')]);
+        return __('You can not set a password that you have previously used within the last :num times.', [
+            'num' => config('boilerplate.access.user.password_history')
+        ]);
     }
 }

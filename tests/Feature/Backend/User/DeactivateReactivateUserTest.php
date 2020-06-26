@@ -131,4 +131,32 @@ class DeactivateReactivateUserTest extends TestCase
             'active' => true,
         ]);
     }
+
+    /** @test */
+    public function a_user_can_not_deactivate_themselves()
+    {
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $this->actingAs($user = factory(User::class)->create());
+
+        $user->syncPermissions(['view backend', 'access.user.deactivate']);
+
+        $response = $this->patch('/admin/auth/user/'.$user->id.'/mark/0');
+
+        $response->assertSessionHas('flash_danger', __('You can not do that to yourself.'));
+    }
+
+    /** @test */
+    public function a_user_can_not_deactivate_the_master_admin()
+    {
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $this->actingAs($user = factory(User::class)->create());
+
+        $user->syncPermissions(['view backend', 'access.user.deactivate']);
+
+        $response = $this->patch('/admin/auth/user/'.$this->getMasterAdmin()->id.'/mark/0');
+
+        $response->assertSessionHas('flash_danger', __('You can not deactivate the administrator account.'));
+    }
 }
