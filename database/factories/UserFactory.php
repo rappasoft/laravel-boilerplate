@@ -1,33 +1,30 @@
 <?php
 
-use App\Models\Auth\User;
-use Faker\Generator;
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+use App\Domains\Auth\Models\User;
+use Faker\Generator as Faker;
 use Illuminate\Support\Str;
-use Ramsey\Uuid\Uuid;
 
 /*
 |--------------------------------------------------------------------------
 | Model Factories
 |--------------------------------------------------------------------------
 |
-| Here you may define all of your model factories. Model factories give
-| you a convenient way to create models for testing and seeding your
-| database. Just tell the factory how a default model should look.
+| This directory should contain each of the model factory definitions for
+| your application. Factories provide a convenient way to generate new
+| model instances for testing / seeding your application's database.
 |
 */
 
-$factory->define(User::class, function (Generator $faker) {
+$factory->define(User::class, function (Faker $faker) {
     return [
-        'uuid' => Uuid::uuid4()->toString(),
-        'first_name' => $faker->firstName,
-        'last_name' => $faker->lastName,
+        'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
+        'email_verified_at' => now(),
         'password' => 'secret',
         'password_changed_at' => null,
         'remember_token' => Str::random(10),
-        'confirmation_code' => md5(uniqid(mt_rand(), true)),
         'active' => true,
-        'confirmed' => true,
     ];
 });
 
@@ -45,17 +42,23 @@ $factory->state(User::class, 'inactive', function () {
 
 $factory->state(User::class, 'confirmed', function () {
     return [
-        'confirmed' => true,
+        'email_verified_at' => now(),
     ];
 });
 
 $factory->state(User::class, 'unconfirmed', function () {
     return [
-        'confirmed' => false,
+        'email_verified_at' => null,
     ];
 });
 
-$factory->state(User::class, 'softDeleted', function () {
+$factory->state(User::class, 'password_expired', function () {
+    return [
+        'password_changed_at' => now()->subYears(5),
+    ];
+});
+
+$factory->state(User::class, 'deleted', function () {
     return [
         'deleted_at' => now(),
     ];

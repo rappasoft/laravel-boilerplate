@@ -2,14 +2,15 @@
 
 namespace Tests\Feature\Backend\User;
 
-use App\Events\Backend\Auth\User\UserUpdated;
-use App\Models\Auth\User;
-use App\Notifications\Frontend\Auth\UserNeedsConfirmation;
+use App\Domains\Auth\Models\Role;
+use App\Domains\Auth\Models\User;
+use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
+/**
+ * Class UpdateUserTest.
+ */
 class UpdateUserTest extends TestCase
 {
     use RefreshDatabase;
@@ -17,49 +18,166 @@ class UpdateUserTest extends TestCase
     /** @test */
     public function an_admin_can_access_the_edit_user_page()
     {
+        $this->withoutMiddleware(RequirePassword::class);
+
         $this->loginAsAdmin();
+
         $user = factory(User::class)->create();
 
         $response = $this->get('/admin/auth/user/'.$user->id.'/edit');
 
-        $response->assertStatus(200);
-    }
-
-    /** @test  */
-    public function an_admin_can_resend_users_confirmation_email()
-    {
-        $this->loginAsAdmin();
-        $user = factory(User::class)->states('unconfirmed')->create();
-        Notification::fake();
-
-        $this->get("/admin/auth/user/{$user->id}/account/confirm/resend");
-
-        Notification::assertSentTo($user, UserNeedsConfirmation::class);
+        $response->assertOk();
     }
 
     /** @test */
     public function a_user_can_be_updated()
     {
+        $this->withoutMiddleware(RequirePassword::class);
+
         $this->loginAsAdmin();
+
         $user = factory(User::class)->create();
-        Event::fake();
 
-        $this->assertNotSame('John', $user->first_name);
-        $this->assertNotSame('Doe', $user->last_name);
-        $this->assertNotSame('john@example.com', $user->email);
-
-        $this->patch("/admin/auth/user/{$user->id}", [
-            'first_name' => 'John',
-            'last_name' => 'Doe',
+        $this->assertDatabaseMissing('users', [
+            'id' => $user->id,
+            'name' => 'John Doe',
             'email' => 'john@example.com',
-            'timezone' => 'UTC',
-            'roles' => ['administrator'],
         ]);
 
-        $this->assertSame('John', $user->fresh()->first_name);
-        $this->assertSame('Doe', $user->fresh()->last_name);
-        $this->assertSame('john@example.com', $user->fresh()->email);
+        $this->patch("/admin/auth/user/{$user->id}", [
+            'name' => 'John Doe',
+            'email' => 'john@example.com',
+            'roles' => [
+                Role::whereName(config('boilerplate.access.role.admin'))->first()->id,
+            ],
+        ]);
 
-        Event::assertDispatched(UserUpdated::class);
+        $this->assertDatabaseHas('users', [
+            'id' => $user->id,
+            'name' => 'John Doe',
+            'email' => 'john@example.com',
+        ]);
+
+        $this->assertDatabaseHas('model_has_roles', [
+            'role_id' => Role::whereName(config('boilerplate.access.role.admin'))->first()->id,
+            'model_type' => User::class,
+            'model_id' => User::whereEmail('john@example.com')->first()->id,
+        ]);
+    }
+
+    /** @test */
+    public function only_the_master_admin_can_edit_themselves()
+    {
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $admin = $this->loginAsAdmin();
+
+        $this->get("/admin/auth/user/{$admin->id}/edit")->assertOk();
+
+        $this->logout();
+
+        $otherAdmin = factory(User::class)->create();
+        $otherAdmin->assignRole(config('boilerplate.access.role.admin'));
+
+        $this->actingAs($otherAdmin);
+
+        $response = $this->get("/admin/auth/user/{$admin->id}/edit");
+
+        $response->assertSessionHas('flash_danger', __('Only the administrator can update this user.'));
+    }
+
+    /** @test */
+    public function only_the_master_admin_can_update_themselves()
+    {
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $admin = $this->loginAsAdmin();
+
+        $this->assertDatabaseMissing('users', [
+            'id' => $admin->id,
+            'name' => 'John Doe',
+            'email' => 'john@example.com',
+        ]);
+
+        $this->patch("/admin/auth/user/{$admin->id}", [
+            'name' => 'John Doe',
+            'email' => 'john@example.com',
+        ]);
+
+        $this->assertDatabaseHas('users', [
+            'id' => $admin->id,
+            'name' => 'John Doe',
+            'email' => 'john@example.com',
+        ]);
+
+        $this->logout();
+
+        // Make sure other admins can not update the master admin
+
+        $otherAdmin = factory(User::class)->create();
+        $otherAdmin->assignRole(config('boilerplate.access.role.admin'));
+
+        $this->actingAs($otherAdmin);
+
+        $response = $this->patch("/admin/auth/user/{$admin->id}", [
+            'id' => $admin->id,
+            'name' => 'Changed Name',
+            'email' => 'changed@example.com',
+        ]);
+
+        $response->assertSessionHas('flash_danger', __('Only the administrator can update this user.'));
+
+        $this->assertDatabaseMissing('users', [
+            'id' => $admin->id,
+            'name' => 'Changed Name',
+            'email' => 'changed@example.com',
+        ]);
+    }
+
+    /** @test */
+    public function the_master_admins_abilities_can_not_be_modified()
+    {
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $admin = $this->loginAsAdmin();
+
+        $role = factory(Role::class)->create();
+
+        $this->assertDatabaseMissing('model_has_roles', [
+            'role_id' => $role->id,
+            'model_type' => User::class,
+            'model_id' => $admin->id,
+        ]);
+
+        $this->patch("/admin/auth/user/{$admin->id}", [
+            'name' => $admin->name,
+            'email' => $admin->email,
+            'roles' => [$role->id],
+        ]);
+
+        $this->assertDatabaseMissing('model_has_roles', [
+            'role_id' => $role->id,
+            'model_type' => User::class,
+            'model_id' => $admin->id,
+        ]);
+    }
+
+    /** @test */
+    public function only_admin_can_update_roles()
+    {
+        $this->actingAs(factory(User::class)->create());
+
+        $user = factory(User::class)->create(['name' => 'John Doe']);
+
+        $response = $this->patch("/admin/auth/user/{$user->id}", [
+            'name' => 'Jane Doe',
+        ]);
+
+        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+
+        $this->assertDatabaseHas('users', [
+            'id' => $user->id,
+            'name' => 'John Doe',
+        ]);
     }
 }

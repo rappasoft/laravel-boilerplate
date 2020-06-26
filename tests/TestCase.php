@@ -2,66 +2,49 @@
 
 namespace Tests;
 
-use App\Models\Auth\Role;
-use App\Models\Auth\User;
+use App\Domains\Auth\Models\Role;
+use App\Domains\Auth\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Artisan;
 
 /**
  * Class TestCase.
  */
 abstract class TestCase extends BaseTestCase
 {
-    use CreatesApplication;
+    use CreatesApplication, RefreshDatabase;
 
-    /**
-     * Create the admin role or return it if it already exists.
-     *
-     * @return mixed
-     */
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        Artisan::call('db:seed');
+    }
+
     protected function getAdminRole()
     {
-        if ($role = Role::whereName(config('access.users.admin_role'))->first()) {
-            return $role;
-        }
-
-        $adminRole = factory(Role::class)->create(['name' => config('access.users.admin_role')]);
-        $adminRole->givePermissionTo(factory(Permission::class)->create(['name' => 'view backend']));
-
-        return $adminRole;
+        return Role::find(1);
     }
 
-    /**
-     * Create an administrator.
-     *
-     * @param array $attributes
-     *
-     * @return mixed
-     */
-    protected function createAdmin(array $attributes = [])
+    protected function getMasterAdmin()
     {
-        $adminRole = $this->getAdminRole();
-        $admin = factory(User::class)->create($attributes);
-        $admin->assignRole($adminRole);
-
-        return $admin;
+        return User::find(1);
     }
 
-    /**
-     * Login the given administrator or create the first if none supplied.
-     *
-     * @param bool $admin
-     *
-     * @return bool|mixed
-     */
     protected function loginAsAdmin($admin = false)
     {
         if (! $admin) {
-            $admin = $this->createAdmin();
+            $admin = $this->getMasterAdmin();
         }
 
         $this->actingAs($admin);
 
         return $admin;
+    }
+
+    protected function logout()
+    {
+        return auth()->logout();
     }
 }

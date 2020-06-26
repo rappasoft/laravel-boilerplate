@@ -1,4 +1,4 @@
-## Laravel Boilerplate (Current: Laravel 6.*) ([Demo](https://demo.laravel-boilerplate.com))
+## Laravel Boilerplate (Current: Laravel 7.*) ([Demo](https://demo.laravel-boilerplate.com))
 
 [![Latest Stable Version](https://poser.pugx.org/rappasoft/laravel-boilerplate/v/stable)](https://packagist.org/packages/rappasoft/laravel-boilerplate)
 [![Latest Unstable Version](https://poser.pugx.org/rappasoft/laravel-boilerplate/v/unstable)](https://packagist.org/packages/rappasoft/laravel-boilerplate) 
@@ -23,7 +23,7 @@ Please join us in our Slack channel to get faster responses to your questions. G
 
 ### Introduction
 
-Laravel Boilerplate provides you with a massive head start on any size web application. It comes with a full featured access control system out of the box with an easy to learn API and is built on a Bootstrap foundation with a front and backend architecture. We have put a lot of work into it and we hope it serves you well and saves you time!
+Laravel Boilerplate provides you with a massive head start on any size web application. Out of the box it has features like a backend built on CoreUI with Spatie/Permission authorization. It has a frontend scaffold built on Bootstrap 4. Other features such as Two Factor Authentication, User/Role management, searchable/sortable tables built on my [Laravel Livewire tables plugin](https://github.com/rappasoft/laravel-livewire-tables), user impersonation, timezone support, multi-lingual support with 20+ built in languages, demo mode, and much more.
 
 ### Issues
 

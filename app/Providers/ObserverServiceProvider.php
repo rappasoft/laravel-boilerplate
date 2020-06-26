@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Auth\User;
-use App\Observers\User\UserObserver;
+use App\Domains\Auth\Models\User;
+use App\Domains\Auth\Observers\UserObserver;
 use Illuminate\Support\ServiceProvider;
 
 /**

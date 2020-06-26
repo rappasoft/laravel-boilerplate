@@ -2,34 +2,35 @@
 
 namespace Tests\Feature\Backend\User;
 
-use App\Models\Auth\User;
+use App\Domains\Auth\Models\User;
+use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
+/**
+ * Class ReadUsersTest.
+ */
 class ReadUsersTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function an_admin_can_access_active_users_page()
+    public function an_admin_can_access_the_user_index_page()
     {
+        $this->withoutMiddleware(RequirePassword::class);
+
         $this->loginAsAdmin();
 
-        $response = $this->get('/admin/auth/user/create');
-
-        $response->assertStatus(200)
-            ->assertSee('E-mail Address');
+        $this->get('/admin/auth/user')->assertOk();
     }
 
     /** @test */
-    public function an_admin_can_view_single_user_page()
+    public function only_admin_can_view_users()
     {
-        $this->loginAsAdmin();
-        $user = factory(User::class)->create();
+        $this->actingAs(factory(User::class)->create());
 
-        $response = $this->get("/admin/auth/user/{$user->id}");
+        $response = $this->get('/admin/auth/user');
 
-        $response->assertStatus(200)
-            ->assertSee('Overview');
+        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
     }
 }
