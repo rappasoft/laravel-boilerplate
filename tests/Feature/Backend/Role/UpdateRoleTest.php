@@ -89,6 +89,20 @@ class UpdateRoleTest extends TestCase
     }
 
     /** @test */
+    public function the_admin_role_can_not_be_edited()
+    {
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $this->loginAsAdmin();
+
+        $role = Role::whereName(config('boilerplate.access.role.admin'))->first();
+
+        $response = $this->get("/admin/auth/role/{$role->id}/edit");
+
+        $response->assertSessionHas(['flash_danger' => __('You can not edit the Administrator role.')]);
+    }
+
+    /** @test */
     public function a_non_admin_can_not_edit_roles()
     {
         $this->withoutMiddleware(RequirePassword::class);

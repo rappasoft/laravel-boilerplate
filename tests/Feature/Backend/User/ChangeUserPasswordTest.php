@@ -98,6 +98,36 @@ class ChangeUserPasswordTest extends TestCase
     }
 
     /** @test */
+    public function only_the_master_admin_can_view_the_change_password_screen()
+    {
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $this->actingAs($user = factory(User::class)->create());
+
+        $user->syncPermissions(['view backend', 'access.user.change-password']);
+
+        $admin = $this->getMasterAdmin();
+
+        $response = $this->get('/admin/auth/user/'.$admin->id.'/password/change');
+
+        $response->assertSessionHas('flash_danger', __('Only the administrator can change their password.'));
+
+        $this->logout();
+
+        $this->loginAsAdmin();
+
+        $this->get('/admin/auth/user/'.$admin->id.'/password/change')->assertOk();
+    }
+
+    /** @test */
+    public function only_the_master_admin_can_change_their_password()
+    {
+        $this->withoutMiddleware(RequirePassword::class);
+
+        // TODO
+    }
+
+    /** @test */
     public function an_admin_can_use_the_same_password_when_history_is_off_on_backend_user_password_change()
     {
         $this->withoutMiddleware(RequirePassword::class);

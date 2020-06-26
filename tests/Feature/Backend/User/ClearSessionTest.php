@@ -35,4 +35,10 @@ class ClearSessionTest extends TestCase
 
         $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
     }
+
+    /** @test */
+    public function a_user_can_not_clear_their_own_session()
+    {
+
+    }
 }

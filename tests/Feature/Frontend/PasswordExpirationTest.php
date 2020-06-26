@@ -10,6 +10,19 @@ use Tests\TestCase;
  */
 class PasswordExpirationTest extends TestCase
 {
+
+    /** @test */
+    public function a_user_can_access_the_password_expired()
+    {
+        config(['boilerplate.access.user.password_expires_days' => 30]);
+
+        $user = factory(User::class)->create();
+
+        $this->actingAs($user);
+
+        $this->get('/password/expired')->assertOk();
+    }
+
     /** @test */
     public function a_user_with_an_expired_password_cannot_access_dashboard()
     {
