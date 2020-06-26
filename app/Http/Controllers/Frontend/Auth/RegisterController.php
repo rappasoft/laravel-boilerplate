@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Events\Frontend\Auth\UserRegistered;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\Frontend\Auth\RegisterRequest;
 use App\Repositories\Frontend\Auth\UserRepository;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
