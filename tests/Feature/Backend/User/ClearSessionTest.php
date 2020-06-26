@@ -39,6 +39,5 @@ class ClearSessionTest extends TestCase
     /** @test */
     public function a_user_can_not_clear_their_own_session()
     {
-
     }
 }

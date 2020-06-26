@@ -84,7 +84,6 @@ class LoginTest extends TestCase
     /** @test */
     public function a_users_ip_and_login_time_is_updated_on_login()
     {
-
     }
 
     /** @test */
