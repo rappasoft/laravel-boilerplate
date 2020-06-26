@@ -77,6 +77,32 @@ class UpdateRoleTest extends TestCase
     }
 
     /** @test */
+    public function only_admin_can_edit_roles()
+    {
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $this->loginAsAdmin();
+
+        $role = factory(Role::class)->create(['name' => 'current name']);
+
+        $this->get("/admin/auth/role/{$role->id}/edit")->assertOk();
+    }
+
+    /** @test */
+    public function a_non_admin_can_not_edit_roles()
+    {
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $this->actingAs(factory(User::class)->create());
+
+        $role = factory(Role::class)->create(['name' => 'current name']);
+
+        $response = $this->get("/admin/auth/role/{$role->id}/edit");
+
+        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+    }
+
+    /** @test */
     public function only_admin_can_update_roles()
     {
         $this->actingAs(factory(User::class)->create());

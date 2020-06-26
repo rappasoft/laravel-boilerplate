@@ -2,7 +2,6 @@
 
 namespace App\Domains\Auth\Services;
 
-use App\Domains\Auth\Exceptions\RegisterException;
 use App\Domains\Auth\Models\User;
 use App\Exceptions\GeneralException;
 use App\Services\BaseService;
@@ -29,7 +28,7 @@ class UserService extends BaseService
      * @param  array  $data
      *
      * @return mixed
-     * @throws RegisterException
+     * @throws GeneralException
      */
     public function registerUser(array $data = []): User
     {
@@ -41,7 +40,7 @@ class UserService extends BaseService
         } catch (Exception $e) {
             DB::rollBack();
 
-            throw new RegisterException(__('There was a problem creating your account.'));
+            throw new GeneralException(__('There was a problem creating your account.'));
         }
 
         DB::commit();
@@ -54,7 +53,7 @@ class UserService extends BaseService
      * @param $provider
      *
      * @return mixed
-     * @throws RegisterException
+     * @throws GeneralException
      */
     public function registerProvider($info, $provider): User
     {
@@ -76,7 +75,7 @@ class UserService extends BaseService
             } catch (Exception $e) {
                 DB::rollBack();
 
-                throw new RegisterException(__('There was a problem connecting to :provider', ['provider' => $provider]));
+                throw new GeneralException(__('There was a problem connecting to :provider', ['provider' => $provider]));
             }
 
             DB::commit();
