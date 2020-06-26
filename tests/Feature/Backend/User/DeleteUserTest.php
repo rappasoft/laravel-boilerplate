@@ -83,8 +83,7 @@ class DeleteUserTest extends TestCase
 
         $this->assertSoftDeleted('users', ['id' => $user->id]);
 
-        $this->delete("/admin/auth/user/{$user->id}/permanently-delete")
-            ->assertNotFound();
+        $this->delete("/admin/auth/user/{$user->id}/permanently-delete")->assertNotFound();
 
         $this->assertSoftDeleted('users', ['id' => $user->id]);
     }
@@ -112,7 +111,7 @@ class DeleteUserTest extends TestCase
     {
         $this->withoutMiddleware(RequirePassword::class);
 
-        $admin = $this->createAdmin();
+        $admin = $this->getMasterAdmin();
         $user = factory(User::class)->create();
         $user->assignRole($this->getAdminRole());
         $this->actingAs($user);
@@ -129,7 +128,6 @@ class DeleteUserTest extends TestCase
     {
         $this->withoutMiddleware(RequirePassword::class);
 
-        $this->createAdmin();
         $user = factory(User::class)->create();
         $user->assignRole($this->getAdminRole());
         $this->actingAs($user);

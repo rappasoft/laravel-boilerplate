@@ -2,11 +2,11 @@
 
 namespace Tests;
 
-use App\Domains\Auth\Models\Permission;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\Facades\Artisan;
 
 /**
  * Class TestCase.
@@ -19,56 +19,23 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        factory(Role::class)->create([
-            'id' => config('boilerplate.access.role.default'),
-            'name' => 'Member',
-        ]);
+        Artisan::call('db:seed');
     }
 
-    /**
-     * Create the admin role or return it if it already exists.
-     *
-     * @return mixed
-     */
     protected function getAdminRole()
     {
-        if ($role = Role::whereName(config('boilerplate.access.role.admin'))->first()) {
-            return $role;
-        }
-
-        $adminRole = factory(Role::class)->create(['name' => config('boilerplate.access.role.admin')]);
-        $adminRole->givePermissionTo(factory(Permission::class)->create(['name' => 'view backend']));
-
-        return $adminRole;
+        return Role::find(1);
     }
 
-    /**
-     * Create an administrator.
-     *
-     * @param array $attributes
-     *
-     * @return mixed
-     */
-    protected function createAdmin(array $attributes = [])
+    protected function getMasterAdmin()
     {
-        $adminRole = $this->getAdminRole();
-        $admin = factory(User::class)->create($attributes);
-        $admin->assignRole($adminRole);
-
-        return $admin;
+        return User::find(1);
     }
 
-    /**
-     * Login the given administrator or create the first if none supplied.
-     *
-     * @param bool $admin
-     *
-     * @return bool|mixed
-     */
     protected function loginAsAdmin($admin = false)
     {
         if (! $admin) {
-            $admin = $this->createAdmin();
+            $admin = $this->getMasterAdmin();
         }
 
         $this->actingAs($admin);
@@ -76,9 +43,6 @@ abstract class TestCase extends BaseTestCase
         return $admin;
     }
 
-    /**
-     * Log the user out.
-     */
     protected function logout()
     {
         return auth()->logout();
