@@ -10,7 +10,6 @@ use Tests\TestCase;
  */
 class PasswordExpirationTest extends TestCase
 {
-
     /** @test */
     public function a_user_can_access_the_password_expired()
     {

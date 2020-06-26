@@ -68,7 +68,6 @@ class UpdateUserTest extends TestCase
     /** @test */
     public function only_the_master_admin_can_edit_themselves()
     {
-
     }
 
     /** @test */
