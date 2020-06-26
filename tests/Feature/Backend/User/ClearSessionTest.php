@@ -8,9 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /**
- * Class ClearSessionTest
- *
- * @package Tests\Feature\Backend\User
+ * Class ClearSessionTest.
  */
 class ClearSessionTest extends TestCase
 {

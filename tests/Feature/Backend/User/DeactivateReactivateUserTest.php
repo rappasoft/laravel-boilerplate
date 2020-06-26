@@ -8,13 +8,10 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 /**
- * Class DeactivateReactivateUserTest
- *
- * @package Tests\Feature\Backend\User
+ * Class DeactivateReactivateUserTest.
  */
 class DeactivateReactivateUserTest extends TestCase
 {
-
     use RefreshDatabase;
 
     /** @test */

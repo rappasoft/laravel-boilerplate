@@ -9,13 +9,10 @@ use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 /**
- * Class ChangeUserPasswordTest
- *
- * @package Tests\Feature\Backend\User
+ * Class ChangeUserPasswordTest.
  */
 class ChangeUserPasswordTest extends TestCase
 {
-
     use RefreshDatabase;
 
     /** @test */
