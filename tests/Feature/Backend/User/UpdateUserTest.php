@@ -68,7 +68,22 @@ class UpdateUserTest extends TestCase
     /** @test */
     public function only_the_master_admin_can_edit_themselves()
     {
+        $this->withoutMiddleware(RequirePassword::class);
 
+        $admin = $this->loginAsAdmin();
+
+        $this->get("/admin/auth/user/{$admin->id}/edit")->assertOk();
+
+        $this->logout();
+
+        $otherAdmin = factory(User::class)->create();
+        $otherAdmin->assignRole(config('boilerplate.access.role.admin'));
+
+        $this->actingAs($otherAdmin);
+
+        $response = $this->get("/admin/auth/user/{$admin->id}/edit");
+
+        $response->assertSessionHas('flash_danger', __('Only the administrator can update this user.'));
     }
 
     /** @test */

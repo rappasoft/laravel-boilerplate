@@ -84,7 +84,23 @@ class LoginTest extends TestCase
     /** @test */
     public function a_users_ip_and_login_time_is_updated_on_login()
     {
+        $user = factory(User::class)->create([
+            'email' => 'john@example.com',
+            'password' => 'secret',
+            'last_login_at' => null,
+            'last_login_ip' => null,
+        ]);
 
+        $this->post('/login', [
+            'email' => 'john@example.com',
+            'password' => 'secret',
+        ]);
+
+        $this->assertDatabaseMissing('users', [
+            'id' => $user->id,
+            'last_login_at' => null,
+            'last_login_ip' => null,
+        ]);
     }
 
     /** @test */

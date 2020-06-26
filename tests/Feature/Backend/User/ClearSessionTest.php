@@ -39,6 +39,14 @@ class ClearSessionTest extends TestCase
     /** @test */
     public function a_user_can_not_clear_their_own_session()
     {
+        $this->withoutMiddleware(RequirePassword::class);
 
+        $this->actingAs($user = factory(User::class)->create());
+
+        $user->syncPermissions(['view backend', 'access.user.clear-session']);
+
+        $response = $this->post('/admin/auth/user/'.$user->id.'/clear-session');
+
+        $response->assertSessionHas('flash_danger', __('You can not clear your own session.'));
     }
 }

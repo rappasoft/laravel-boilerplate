@@ -124,7 +124,30 @@ class ChangeUserPasswordTest extends TestCase
     {
         $this->withoutMiddleware(RequirePassword::class);
 
-        // TODO
+        $this->actingAs($user = factory(User::class)->create());
+
+        $user->syncPermissions(['view backend', 'access.user.change-password']);
+
+        $admin = $this->getMasterAdmin();
+
+        $response = $this->patch('/admin/auth/user/'.$admin->id.'/password/change', [
+            'password' => 'OC4Nzu270N!QBVi%U%qX',
+            'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
+        ]);
+
+        $response->assertSessionHas('flash_danger', __('Only the administrator can change their password.'));
+
+        $this->logout();
+
+        $this->loginAsAdmin();
+
+        $response = $this->patch('/admin/auth/user/'.$admin->id.'/password/change', [
+            'password' => 'OC4Nzu270N!QBVi%U%qX',
+            'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
+        ]);
+
+        $response->assertSessionHas('flash_success', __('The user\'s password was successfully updated.'));
+        $this->assertTrue(Hash::check('OC4Nzu270N!QBVi%U%qX', $admin->fresh()->password));
     }
 
     /** @test */
