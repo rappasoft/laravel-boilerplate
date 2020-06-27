@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 /**
  * Class AuthServiceProvider.
@@ -21,6 +21,8 @@ class AuthServiceProvider extends ServiceProvider
 
     /**
      * Register any authentication / authorization services.
+     *
+     * @return void
      */
     public function boot()
     {
@@ -29,7 +31,7 @@ class AuthServiceProvider extends ServiceProvider
         // Implicitly grant "Admin" role all permissions
         // This works in the app by using gate-related functions like auth()->user->can() and @can()
         Gate::before(function ($user) {
-            return $user->hasRole(config('access.users.admin_role')) ? true : null;
+            return $user->isAdmin() ? true : null;
         });
     }
 }

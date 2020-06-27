@@ -1,7 +1,7 @@
 <?php
 
+use App\Domains\Auth\Models\Permission;
 use Faker\Generator as Faker;
-use Spatie\Permission\Models\Permission;
 
 $factory->define(Permission::class, function (Faker $faker) {
     return [];

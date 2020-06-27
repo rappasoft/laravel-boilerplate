@@ -1,69 +1,39 @@
 @extends('backend.layouts.app')
 
-@section('title', __('labels.backend.access.users.management') . ' | ' . __('labels.backend.access.users.change_password'))
-
-@section('breadcrumb-links')
-    @include('backend.auth.user.includes.breadcrumb-links')
-@endsection
+@section('title', __('Change Password for :name', ['name' => $user->name]))
 
 @section('content')
-{{ html()->form('PATCH', route('admin.auth.user.change-password.post', $user))->class('form-horizontal')->open() }}
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-sm-5">
-                    <h4 class="card-title mb-0">
-                        @lang('labels.backend.access.users.management')
-                        <small class="text-muted">@lang('labels.backend.access.users.change_password')</small>
-                    </h4>
+    <x-forms.patch :action="route('admin.auth.user.change-password.update', $user)">
+        <x-backend.card>
+            <x-slot name="header">
+                @lang('Change Password for :name', ['name' => $user->name])
+            </x-slot>
 
-                    <div class="small text-muted">
-                        @lang('labels.backend.access.users.change_password_for', ['user' => $user->name])
+            <x-slot name="headerActions">
+                <x-utils.link class="card-header-action" :href="route('admin.auth.user.index')" :text="__('Cancel')" />
+            </x-slot>
+
+            <x-slot name="body">
+                <div class="form-group row">
+                    <label for="password" class="col-md-2 col-form-label">@lang('Password')</label>
+
+                    <div class="col-md-10">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password') }}" required autocomplete="new-password" />
                     </div>
-                </div><!--col-->
-            </div><!--row-->
+                </div><!--form-group-->
 
-            <hr />
+                <div class="form-group row">
+                    <label for="password_confirmation" class="col-md-2 col-form-label">@lang('Password Confirmation')</label>
 
-            <div class="row mt-4 mb-4">
-                <div class="col">
-                    <div class="form-group row">
-                        {{ html()->label(__('validation.attributes.backend.access.users.password'))->class('col-md-2 form-control-label')->for('password') }}
+                    <div class="col-md-10">
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Password Confirmation') }}" required autocomplete="new-password" />
+                    </div>
+                </div><!--form-group-->
+            </x-slot>
 
-                        <div class="col-md-10">
-                            {{ html()->password('password')
-                                ->class('form-control')
-                                ->placeholder( __('validation.attributes.backend.access.users.password'))
-                                ->required()
-                                ->autofocus() }}
-                        </div><!--col-->
-                    </div><!--form-group-->
-
-                    <div class="form-group row">
-                        {{ html()->label(__('validation.attributes.backend.access.users.password_confirmation'))->class('col-md-2 form-control-label')->for('password_confirmation') }}
-
-                        <div class="col-md-10">
-                            {{ html()->password('password_confirmation')
-                                ->class('form-control')
-                                ->placeholder( __('validation.attributes.backend.access.users.password_confirmation'))
-                                ->required() }}
-                        </div><!--col-->
-                    </div><!--form-group-->
-                </div><!--col-->
-            </div><!--row-->
-        </div><!--card-body-->
-
-        <div class="card-footer">
-            <div class="row">
-                <div class="col">
-                    {{ form_cancel(route('admin.auth.user.index'), __('buttons.general.cancel')) }}
-                </div><!--col-->
-
-                <div class="col text-right">
-                    {{ form_submit(__('buttons.general.crud.update')) }}
-                </div><!--row-->
-            </div><!--row-->
-        </div><!--card-footer-->
-    </div><!--card-->
-{{ html()->form()->close() }}
+            <x-slot name="footer">
+                <button class="btn btn-sm btn-primary float-right" type="submit">@lang('Update')</button>
+            </x-slot>
+        </x-backend.card>
+    </x-forms.patch>
 @endsection

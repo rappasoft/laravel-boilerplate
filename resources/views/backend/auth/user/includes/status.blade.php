@@ -1,5 +1,5 @@
 @if($user->isActive())
-    <span class='badge badge-success'>@lang('labels.general.active')</span>
+    <span class='badge badge-success'>@lang('Active')</span>
 @else
-    <span class='badge badge-danger'>@lang('labels.general.inactive')</span>
+    <span class='badge badge-danger'>@lang('Inactive')</span>
 @endif

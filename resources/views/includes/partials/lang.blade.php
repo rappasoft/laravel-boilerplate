@@ -1,7 +1,7 @@
 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownLanguageLink">
-    @foreach(array_keys(config('locale.languages')) as $lang)
-        @if($lang != app()->getLocale())
-            <small><a href="{{ '/lang/'.$lang }}" class="dropdown-item pt-1 pb-1">@lang('menus.language-picker.langs.'.$lang)</a></small>
+    @foreach(config('boilerplate.locale.languages') as $code => $details)
+        @if($code !== app()->getLocale())
+            <x-utils.link class="dropdown-item pt-1 pb-1" :href="route('locale.change', $code)" :text="__(getLocaleName($code))" />
         @endif
     @endforeach
-</div>
+</div><!--dropdown-menu-->

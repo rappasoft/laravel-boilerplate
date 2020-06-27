@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Default Queue Connection Name
@@ -28,6 +29,7 @@ return [
     */
 
     'connections' => [
+
         'sync' => [
             'driver' => 'sync',
         ],
@@ -53,6 +55,7 @@ return [
             'secret' => env('AWS_SECRET_ACCESS_KEY'),
             'prefix' => env('SQS_PREFIX', 'https://sqs.us-east-1.amazonaws.com/your-account-id'),
             'queue' => env('SQS_QUEUE', 'your-queue-name'),
+            'suffix' => env('SQS_SUFFIX'),
             'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
         ],
 
@@ -63,6 +66,7 @@ return [
             'retry_after' => 90,
             'block_for' => null,
         ],
+
     ],
 
     /*
@@ -81,4 +85,5 @@ return [
         'database' => env('DB_CONNECTION', 'mysql'),
         'table' => 'failed_jobs',
     ],
+
 ];

@@ -2,47 +2,91 @@
 
 namespace Tests\Feature\Backend\User;
 
-use App\Events\Backend\Auth\User\UserPasswordChanged;
-use App\Models\Auth\User;
+use App\Domains\Auth\Models\User;
+use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
+/**
+ * Class ChangeUserPasswordTest.
+ */
 class ChangeUserPasswordTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function the_password_can_be_validated()
+    public function only_a_user_with_correct_permissions_can_visit_the_change_user_password_page()
     {
-        $this->loginAsAdmin();
-        $user = factory(User::class)->create();
+        $this->withoutMiddleware(RequirePassword::class);
 
-        $response = $this->followingRedirects()
-            ->patch("/admin/auth/user/{$user->id}/password/change", [
-                'password' => '1234567',
-                'password_confirmation' => '1234567',
-            ]);
+        $this->actingAs($user = factory(User::class)->create());
 
-        $this->assertStringContainsString('The password must be at least 8 characters.', $response->content());
+        $user->syncPermissions(['view backend', 'access.user.change-password']);
+
+        $newUser = factory(User::class)->create();
+
+        $this->get('/admin/auth/user/'.$newUser->id.'/password/change')->assertOk();
+
+        $user->syncPermissions(['view backend']);
+
+        $response = $this->get('/admin/auth/user/'.$newUser->id.'/password/change');
+
+        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
     }
 
     /** @test */
-    public function an_admin_can_access_a_user_change_password_page()
+    public function only_a_user_with_correct_permissions_can_change_a_users_password()
     {
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $this->actingAs($user = factory(User::class)->create());
+
+        $user->syncPermissions(['view backend', 'access.user.change-password']);
+
+        $newUser = factory(User::class)->create();
+
+        $response = $this->patch('/admin/auth/user/'.$newUser->id.'/password/change', [
+            'password' => 'OC4Nzu270N!QBVi%U%qX',
+            'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
+        ]);
+
+        $response->assertSessionHas('flash_success', __('The user\'s password was successfully updated.'));
+
+        $user->syncPermissions(['view backend']);
+
+        $response = $this->patch('/admin/auth/user/'.$newUser->id.'/password/change', [
+            'password' => 'OC4Nzu270N!QBVi%U%qX',
+            'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
+        ]);
+
+        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+    }
+
+    /** @test */
+    public function the_password_can_be_validated()
+    {
+        $this->withoutMiddleware(RequirePassword::class);
+
         $this->loginAsAdmin();
+
         $user = factory(User::class)->create();
 
-        $response = $this->get("/admin/auth/user/{$user->id}/password/change");
+        $response = $this->patch("/admin/auth/user/{$user->id}/password/change", [
+            'password' => '1234567',
+            'password_confirmation' => '1234567',
+        ]);
 
-        $response->assertStatus(200);
+        $response->assertSessionHasErrors('password');
     }
 
     /** @test */
     public function the_passwords_must_match()
     {
+        $this->withoutMiddleware(RequirePassword::class);
+
         $this->loginAsAdmin();
+
         $user = factory(User::class)->create();
 
         $response = $this->patch("/admin/auth/user/{$user->id}/password/change", [
@@ -54,28 +98,67 @@ class ChangeUserPasswordTest extends TestCase
     }
 
     /** @test */
-    public function the_user_password_can_be_changed()
+    public function only_the_master_admin_can_view_the_change_password_screen()
     {
-        $this->loginAsAdmin();
-        $user = factory(User::class)->create();
-        Event::fake();
+        $this->withoutMiddleware(RequirePassword::class);
 
-        $response = $this->patch("/admin/auth/user/{$user->id}/password/change", [
+        $this->actingAs($user = factory(User::class)->create());
+
+        $user->syncPermissions(['view backend', 'access.user.change-password']);
+
+        $admin = $this->getMasterAdmin();
+
+        $response = $this->get('/admin/auth/user/'.$admin->id.'/password/change');
+
+        $response->assertSessionHas('flash_danger', __('Only the administrator can change their password.'));
+
+        $this->logout();
+
+        $this->loginAsAdmin();
+
+        $this->get('/admin/auth/user/'.$admin->id.'/password/change')->assertOk();
+    }
+
+    /** @test */
+    public function only_the_master_admin_can_change_their_password()
+    {
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $this->actingAs($user = factory(User::class)->create());
+
+        $user->syncPermissions(['view backend', 'access.user.change-password']);
+
+        $admin = $this->getMasterAdmin();
+
+        $response = $this->patch('/admin/auth/user/'.$admin->id.'/password/change', [
             'password' => 'OC4Nzu270N!QBVi%U%qX',
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
         ]);
 
-        $response->assertSessionHas(['flash_success' => __('alerts.backend.users.updated_password')]);
+        $response->assertSessionHas('flash_danger', __('Only the administrator can change their password.'));
 
-        Event::assertDispatched(UserPasswordChanged::class);
+        $this->logout();
+
+        $this->loginAsAdmin();
+
+        $response = $this->patch('/admin/auth/user/'.$admin->id.'/password/change', [
+            'password' => 'OC4Nzu270N!QBVi%U%qX',
+            'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
+        ]);
+
+        $response->assertSessionHas('flash_success', __('The user\'s password was successfully updated.'));
+        $this->assertTrue(Hash::check('OC4Nzu270N!QBVi%U%qX', $admin->fresh()->password));
     }
 
     /** @test */
     public function an_admin_can_use_the_same_password_when_history_is_off_on_backend_user_password_change()
     {
-        config(['access.users.password_history' => false]);
+        $this->withoutMiddleware(RequirePassword::class);
+
+        config(['boilerplate.access.user.password_history' => false]);
 
         $this->loginAsAdmin();
+
         $user = factory(User::class)->create(['password' => 'OC4Nzu270N!QBVi%U%qX']);
 
         $response = $this->patch("/admin/auth/user/{$user->id}/password/change", [
@@ -83,16 +166,19 @@ class ChangeUserPasswordTest extends TestCase
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
         ]);
 
-        $response->assertSessionHas(['flash_success' => __('alerts.backend.users.updated_password')]);
+        $response->assertSessionHas('flash_success', __('The user\'s password was successfully updated.'));
         $this->assertTrue(Hash::check('OC4Nzu270N!QBVi%U%qX', $user->fresh()->password));
     }
 
     /** @test */
     public function an_admin_can_not_use_the_same_password_when_history_is_on_on_backend_user_password_change()
     {
-        config(['access.users.password_history' => 3]);
+        $this->withoutMiddleware(RequirePassword::class);
+
+        config(['boilerplate.access.user.password_history' => 3]);
 
         $this->loginAsAdmin();
+
         $user = factory(User::class)->create(['password' => 'OC4Nzu270N!QBVi%U%qX']);
 
         $this->patch("/admin/auth/user/{$user->id}/password/change", [
@@ -107,7 +193,7 @@ class ChangeUserPasswordTest extends TestCase
 
         $response->assertSessionHasErrors();
         $errors = session('errors');
-        $this->assertSame($errors->get('password')[0], __('auth.password_used'));
+        $this->assertSame($errors->get('password')[0], __('You can not set a password that you have previously used within the last 3 times.'));
         $this->assertTrue(Hash::check('OC4Nzu270N!QBVi%U%qX_02', $user->fresh()->password));
     }
 }

@@ -2,67 +2,136 @@
 
 namespace Tests\Feature\Backend\Role;
 
-use App\Events\Backend\Auth\Role\RoleUpdated;
-use App\Models\Auth\Role;
+use App\Domains\Auth\Models\Permission;
+use App\Domains\Auth\Models\Role;
+use App\Domains\Auth\Models\User;
+use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
+/**
+ * Class UpdateRoleTest.
+ */
 class UpdateRoleTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function an_admin_can_access_the_edit_role_page()
+    public function the_name_is_required()
     {
+        $this->withoutMiddleware(RequirePassword::class);
+
         $role = factory(Role::class)->create();
+
         $this->loginAsAdmin();
 
-        $this->get("/admin/auth/role/{$role->id}/edit")->assertStatus(200);
-    }
-
-    /** @test */
-    public function name_is_required()
-    {
-        $role = factory(Role::class)->create();
-        $this->loginAsAdmin();
-
-        $response = $this->patch("/admin/auth/role/{$role->id}", ['name' => '']);
+        $response = $this->patch("/admin/auth/role/{$role->id}");
 
         $response->assertSessionHasErrors('name');
     }
 
     /** @test */
-    public function at_least_one_permission_is_required()
-    {
-        $role = factory(Role::class)->create();
-        $this->loginAsAdmin();
-
-        $response = $this->patch("/admin/auth/role/{$role->id}", ['name' => 'new role']);
-
-        $response->assertSessionHas(['flash_danger' => __('exceptions.backend.access.roles.needs_permission')]);
-    }
-
-    /** @test */
     public function a_role_name_can_be_updated()
     {
+        $this->withoutMiddleware(RequirePassword::class);
+
         $role = factory(Role::class)->create();
+
         $this->loginAsAdmin();
 
-        $this->patch("/admin/auth/role/{$role->id}", ['name' => 'new name', 'permissions' => ['view backend']]);
+        $this->patch("/admin/auth/role/{$role->id}", [
+            'name' => 'new name',
+            'permissions' => [
+                Permission::whereName('view backend')->first()->id,
+            ],
+        ]);
 
-        $this->assertSame('new name', $role->fresh()->name);
+        $this->assertDatabaseHas('roles', [
+            'name' => 'new name',
+        ]);
+
+        $this->assertDatabaseHas('role_has_permissions', [
+            'permission_id' => Permission::whereName('view backend')->first()->id,
+            'role_id' => Role::whereName('new name')->first()->id,
+        ]);
     }
 
     /** @test */
-    public function an_event_gets_dispatched()
+    public function the_admin_role_can_not_be_updated()
     {
-        $role = factory(Role::class)->create();
-        Event::fake();
+        $this->withoutMiddleware(RequirePassword::class);
+
         $this->loginAsAdmin();
 
-        $this->patch("/admin/auth/role/{$role->id}", ['name' => 'new name', 'permissions' => ['view backend']]);
+        $role = Role::whereName(config('boilerplate.access.role.admin'))->first();
 
-        Event::assertDispatched(RoleUpdated::class);
+        $response = $this->patch("/admin/auth/role/{$role->id}", [
+            'name' => 'new name',
+        ]);
+
+        $response->assertSessionHas(['flash_danger' => __('You can not edit the Administrator role.')]);
+
+        $this->assertDatabaseMissing('roles', [
+            'name' => 'new name',
+        ]);
+    }
+
+    /** @test */
+    public function only_admin_can_edit_roles()
+    {
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $this->loginAsAdmin();
+
+        $role = factory(Role::class)->create(['name' => 'current name']);
+
+        $this->get("/admin/auth/role/{$role->id}/edit")->assertOk();
+    }
+
+    /** @test */
+    public function the_admin_role_can_not_be_edited()
+    {
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $this->loginAsAdmin();
+
+        $role = Role::whereName(config('boilerplate.access.role.admin'))->first();
+
+        $response = $this->get("/admin/auth/role/{$role->id}/edit");
+
+        $response->assertSessionHas(['flash_danger' => __('You can not edit the Administrator role.')]);
+    }
+
+    /** @test */
+    public function a_non_admin_can_not_edit_roles()
+    {
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $this->actingAs(factory(User::class)->create());
+
+        $role = factory(Role::class)->create(['name' => 'current name']);
+
+        $response = $this->get("/admin/auth/role/{$role->id}/edit");
+
+        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+    }
+
+    /** @test */
+    public function only_admin_can_update_roles()
+    {
+        $this->actingAs(factory(User::class)->create());
+
+        $role = factory(Role::class)->create(['name' => 'current name']);
+
+        $response = $this->patch("/admin/auth/role/{$role->id}", [
+            'name' => 'new name',
+        ]);
+
+        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
+
+        $this->assertDatabaseHas(config('permission.table_names.roles'), [
+            'id' => $role->id,
+            'name' => 'current name',
+        ]);
     }
 }

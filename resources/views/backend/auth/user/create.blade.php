@@ -1,206 +1,105 @@
 @extends('backend.layouts.app')
 
-@section('title', __('labels.backend.access.users.management') . ' | ' . __('labels.backend.access.users.create'))
-
-@section('breadcrumb-links')
-    @include('backend.auth.user.includes.breadcrumb-links')
-@endsection
+@section('title', __('Create User'))
 
 @section('content')
-    {{ html()->form('POST', route('admin.auth.user.store'))->class('form-horizontal')->open() }}
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <h4 class="card-title mb-0">
-                            @lang('labels.backend.access.users.management')
-                            <small class="text-muted">@lang('labels.backend.access.users.create')</small>
-                        </h4>
-                    </div><!--col-->
-                </div><!--row-->
+    <x-forms.post :action="route('admin.auth.user.store')">
+        <x-backend.card>
+            <x-slot name="header">
+                @lang('Create User')
+            </x-slot>
 
-                <hr>
+            <x-slot name="headerActions">
+                <x-utils.link class="card-header-action" :href="route('admin.auth.user.index')" :text="__('Cancel')" />
+            </x-slot>
 
-                <div class="row mt-4 mb-4">
-                    <div class="col">
+            <x-slot name="body">
+                <div class="form-group row">
+                    <label for="name" class="col-md-2 col-form-label">@lang('Name')</label>
+
+                    <div class="col-md-10">
+                        <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') }}" required />
+                    </div>
+                </div><!--form-group-->
+
+                <div class="form-group row">
+                    <label for="email" class="col-md-2 col-form-label">@lang('E-mail Address')</label>
+
+                    <div class="col-md-10">
+                        <input type="email" name="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ old('email') }}" required />
+                    </div>
+                </div><!--form-group-->
+
+                <div class="form-group row">
+                    <label for="password" class="col-md-2 col-form-label">@lang('Password')</label>
+
+                    <div class="col-md-10">
+                        <input type="password" name="password" id="password" class="form-control" placeholder="{{ __('Password') }}" required autocomplete="new-password" />
+                    </div>
+                </div><!--form-group-->
+
+                <div class="form-group row">
+                    <label for="password_confirmation" class="col-md-2 col-form-label">@lang('Password Confirmation')</label>
+
+                    <div class="col-md-10">
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Password Confirmation') }}" required autocomplete="new-password" />
+                    </div>
+                </div><!--form-group-->
+
+                <div class="form-group row">
+                    <label for="active" class="col-md-2 col-form-label">@lang('Active')</label>
+
+                    <div class="col-md-10">
+                        <div class="form-check">
+                            <input name="active" id="active" class="form-check-input" type="checkbox" value="1" {{ old('active', true) ? 'checked' : '' }} />
+                        </div><!--form-check-->
+                    </div>
+                </div><!--form-group-->
+
+                <div x-data="{ emailVerified : false }">
+                    <div class="form-group row">
+                        <label for="email_verified" class="col-md-2 col-form-label">@lang('E-mail Verified')</label>
+
+                        <div class="col-md-10">
+                            <div class="form-check">
+                                <input
+                                    type="checkbox"
+                                    name="email_verified"
+                                    id="email_verified"
+                                    value="1"
+                                    class="form-check-input"
+                                    @click="emailVerified = !emailVerified"
+                                    {{ old('email_verified') ? 'checked' : '' }} />
+                            </div><!--form-check-->
+                        </div>
+                    </div><!--form-group-->
+
+                    <div x-show="!emailVerified">
                         <div class="form-group row">
-                            {{ html()->label(__('validation.attributes.backend.access.users.first_name'))->class('col-md-2 form-control-label')->for('first_name') }}
+                            <label for="send_confirmation_email" class="col-md-2 col-form-label">@lang('Send Confirmation E-mail')</label>
 
                             <div class="col-md-10">
-                                {{ html()->text('first_name')
-                                    ->class('form-control')
-                                    ->placeholder(__('validation.attributes.backend.access.users.first_name'))
-                                    ->attribute('maxlength', 191)
-                                    ->required()
-                                    ->autofocus() }}
-                            </div><!--col-->
+                                <div class="form-check">
+                                    <input
+                                        type="checkbox"
+                                        name="send_confirmation_email"
+                                        id="send_confirmation_email"
+                                        value="1"
+                                        class="form-check-input"
+                                        {{ old('send_confirmation_email') ? 'checked' : '' }} />
+                                </div><!--form-check-->
+                            </div>
                         </div><!--form-group-->
+                    </div>
+                </div>
 
-                        <div class="form-group row">
-                        {{ html()->label(__('validation.attributes.backend.access.users.last_name'))->class('col-md-2 form-control-label')->for('last_name') }}
+                @include('backend.auth.includes.roles')
+                @include('backend.auth.includes.permissions')
+            </x-slot>
 
-                            <div class="col-md-10">
-                                {{ html()->text('last_name')
-                                    ->class('form-control')
-                                    ->placeholder(__('validation.attributes.backend.access.users.last_name'))
-                                    ->attribute('maxlength', 191)
-                                    ->required() }}
-                            </div><!--col-->
-                        </div><!--form-group-->
-
-                        <div class="form-group row">
-                            {{ html()->label(__('validation.attributes.backend.access.users.email'))->class('col-md-2 form-control-label')->for('email') }}
-
-                            <div class="col-md-10">
-                                {{ html()->email('email')
-                                    ->class('form-control')
-                                    ->placeholder(__('validation.attributes.backend.access.users.email'))
-                                    ->attribute('maxlength', 191)
-                                    ->required() }}
-                            </div><!--col-->
-                        </div><!--form-group-->
-
-                        <div class="form-group row">
-                            {{ html()->label(__('validation.attributes.backend.access.users.password'))->class('col-md-2 form-control-label')->for('password') }}
-
-                            <div class="col-md-10">
-                                {{ html()->password('password')
-                                    ->class('form-control')
-                                    ->placeholder(__('validation.attributes.backend.access.users.password'))
-                                    ->required() }}
-                            </div><!--col-->
-                        </div><!--form-group-->
-
-                        <div class="form-group row">
-                            {{ html()->label(__('validation.attributes.backend.access.users.password_confirmation'))->class('col-md-2 form-control-label')->for('password_confirmation') }}
-
-                            <div class="col-md-10">
-                                {{ html()->password('password_confirmation')
-                                    ->class('form-control')
-                                    ->placeholder(__('validation.attributes.backend.access.users.password_confirmation'))
-                                    ->required() }}
-                            </div><!--col-->
-                        </div><!--form-group-->
-
-                        <div class="form-group row">
-                            {{ html()->label(__('validation.attributes.backend.access.users.active'))->class('col-md-2 form-control-label')->for('active') }}
-
-                            <div class="col-md-10">
-                                <label class="switch switch-label switch-pill switch-primary">
-                                    {{ html()->checkbox('active', true)->class('switch-input') }}
-                                    <span class="switch-slider" data-checked="yes" data-unchecked="no"></span>
-                                </label>
-                            </div><!--col-->
-                        </div><!--form-group-->
-
-                        <div class="form-group row">
-                            {{ html()->label(__('validation.attributes.backend.access.users.confirmed'))->class('col-md-2 form-control-label')->for('confirmed') }}
-
-                            <div class="col-md-10">
-                                <label class="switch switch-label switch-pill switch-primary">
-                                    {{ html()->checkbox('confirmed', true)->class('switch-input') }}
-                                    <span class="switch-slider" data-checked="yes" data-unchecked="no"></span>
-                                </label>
-                            </div><!--col-->
-                        </div><!--form-group-->
-
-                        @if(! config('access.users.requires_approval'))
-                            <div class="form-group row">
-                                {{ html()->label(__('validation.attributes.backend.access.users.send_confirmation_email') . '<br/>' . '<small>' .  __('strings.backend.access.users.if_confirmed_off') . '</small>')->class('col-md-2 form-control-label')->for('confirmation_email') }}
-
-                                <div class="col-md-10">
-                                    <label class="switch switch-label switch-pill switch-primary">
-                                        {{ html()->checkbox('confirmation_email')->class('switch-input') }}
-                                        <span class="switch-slider" data-checked="yes" data-unchecked="no"></span>
-                                    </label>
-                                </div><!--col-->
-                            </div><!--form-group-->
-                        @endif
-
-                        <div class="form-group row">
-                            {{ html()->label(__('labels.backend.access.users.table.abilities'))->class('col-md-2 form-control-label') }}
-
-                            <div class="col-md-10">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead>
-                                        <tr>
-                                            <th>@lang('labels.backend.access.users.table.roles')</th>
-                                            <th>@lang('labels.backend.access.users.table.permissions')</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>
-                                                @if($roles->count())
-                                                    @foreach($roles as $role)
-                                                        <div class="card">
-                                                            <div class="card-header">
-                                                                <div class="checkbox d-flex align-items-center">
-                                                                    {{ html()->label(
-                                                                            html()->checkbox('roles[]', old('roles') && in_array($role->name, old('roles')) ? true : false, $role->name)
-                                                                                  ->class('switch-input')
-                                                                                  ->id('role-'.$role->id)
-                                                                            . '<span class="switch-slider" data-checked="on" data-unchecked="off"></span>')
-                                                                        ->class('switch switch-label switch-pill switch-primary mr-2')
-                                                                        ->for('role-'.$role->id) }}
-                                                                    {{ html()->label(ucwords($role->name))->for('role-'.$role->id) }}
-                                                                </div>
-                                                            </div>
-                                                            <div class="card-body">
-                                                                @if($role->id != 1)
-                                                                    @if($role->permissions->count())
-                                                                        @foreach($role->permissions as $permission)
-                                                                            <i class="fas fa-dot-circle"></i> {{ ucwords($permission->name) }}
-                                                                        @endforeach
-                                                                    @else
-                                                                        @lang('labels.general.none')
-                                                                    @endif
-                                                                @else
-                                                                    @lang('labels.backend.access.users.all_permissions')
-                                                                @endif
-                                                            </div>
-                                                        </div><!--card-->
-                                                    @endforeach
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if($permissions->count())
-                                                    @foreach($permissions as $permission)
-                                                        <div class="checkbox d-flex align-items-center">
-                                                            {{ html()->label(
-                                                                    html()->checkbox('permissions[]', old('permissions') && in_array($permission->name, old('permissions')) ? true : false, $permission->name)
-                                                                          ->class('switch-input')
-                                                                          ->id('permission-'.$permission->id)
-                                                                        . '<span class="switch-slider" data-checked="on" data-unchecked="off"></span>')
-                                                                    ->class('switch switch-label switch-pill switch-primary mr-2')
-                                                                ->for('permission-'.$permission->id) }}
-                                                            {{ html()->label(ucwords($permission->name))->for('permission-'.$permission->id) }}
-                                                        </div>
-                                                    @endforeach
-                                                @endif
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div><!--col-->
-                        </div><!--form-group-->
-                    </div><!--col-->
-                </div><!--row-->
-            </div><!--card-body-->
-
-            <div class="card-footer clearfix">
-                <div class="row">
-                    <div class="col">
-                        {{ form_cancel(route('admin.auth.user.index'), __('buttons.general.cancel')) }}
-                    </div><!--col-->
-
-                    <div class="col text-right">
-                        {{ form_submit(__('buttons.general.crud.create')) }}
-                    </div><!--col-->
-                </div><!--row-->
-            </div><!--card-footer-->
-        </div><!--card-->
-    {{ html()->form()->close() }}
+            <x-slot name="footer">
+                <button class="btn btn-sm btn-primary float-right" type="submit">@lang('Create User')</button>
+            </x-slot>
+        </x-backend.card>
+    </x-forms.post>
 @endsection

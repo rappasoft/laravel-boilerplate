@@ -1,11 +1,16 @@
-<footer class="app-footer">
+<footer class="c-footer">
     <div>
-        <strong>@lang('labels.general.copyright') &copy; {{ date('Y') }}
-            <a href="http://laravel-boilerplate.com">
-                @lang('strings.backend.general.boilerplate_link')
-            </a>
-        </strong> @lang('strings.backend.general.all_rights_reserved')
+        <strong>
+            @lang('Copyright') &copy; {{ date('Y') }}
+            <x-utils.link href="http://laravel-boilerplate.com" target="_blank" :text="__(appName())" />
+        </strong>
+
+        @lang('All Rights Reserved')
     </div>
 
-    <div class="ml-auto">Theme by <a href="http://coreui.io">CoreUI</a></div>
+    <div class="mfs-auto">
+        @lang('Powered by')
+        <x-utils.link href="http://laravel-boilerplate.com" target="_blank" :text="__(appName())" /> &
+        <x-utils.link href="https://coreui.io" target="_blank" text="CoreUI" />
+    </div>
 </footer>

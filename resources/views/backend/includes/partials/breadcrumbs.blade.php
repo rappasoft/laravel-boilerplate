@@ -1,15 +1,13 @@
-@if($breadcrumbs)
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">Home</li>
-
-        @foreach($breadcrumbs as $breadcrumb)
-            @if($breadcrumb->url && !$loop->last)
-                <li class="breadcrumb-item"><a href="{{ $breadcrumb->url }}">{{ $breadcrumb->title }}</a></li>
-            @else
-                <li class="breadcrumb-item active">{{ $breadcrumb->title }}</li>
-            @endif
-        @endforeach
-
-        @yield('breadcrumb-links')
-    </ol>
-@endif
+<ol class="breadcrumb border-0 m-0">
+    @foreach (Breadcrumbs::current() as $crumb)
+        @if ($crumb->url() && !$loop->last)
+            <li class="breadcrumb-item">
+                <x-utils.link :href="$crumb->url()" :text="$crumb->title()" />
+            </li>
+        @else
+            <li class="breadcrumb-item active">
+                {{ $crumb->title() }}
+            </li>
+        @endif
+    @endforeach
+</ol>

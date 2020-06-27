@@ -2,128 +2,77 @@
 
 namespace Tests\Feature\Frontend;
 
-use App\Models\Auth\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Hash;
+use App\Domains\Auth\Models\User;
 use Tests\TestCase;
 
+/**
+ * Class PasswordExpirationTest.
+ */
 class PasswordExpirationTest extends TestCase
 {
-    use RefreshDatabase;
-
     /** @test */
-    public function a_user_is_requested_to_change_their_password_after_it_expires()
+    public function a_user_can_access_the_password_expired()
     {
-        config(['access.users.password_expires_days' => 30]);
+        config(['boilerplate.access.user.password_expires_days' => 30]);
 
-        $user = factory(User::class)->create(['password_changed_at' => now()->subMonths(2)->toDateTimeString()]);
-
-        $response = $this->actingAs($user)
-            ->get('/dashboard')
-            ->assertRedirect('/password/expired');
-
-        $this->assertSame(302, $response->getStatusCode());
-    }
-
-    /** @test */
-    public function a_user_is_not_requested_to_change_their_password_if_it_not_old_enough()
-    {
-        config(['access.users.password_expires_days' => 30]);
-
-        $user = factory(User::class)->create(['password_changed_at' => now()->subWeek()->toDateTimeString()]);
+        $user = factory(User::class)->create();
 
         $this->actingAs($user);
 
-        $response = $this->actingAs($user)
-            ->get('/dashboard');
-
-        $this->assertSame(200, $response->getStatusCode());
+        $this->get('/password/expired')->assertOk();
     }
 
     /** @test */
-    public function a_user_is_not_requested_to_change_password_if_expiration_is_off()
+    public function a_user_with_an_expired_password_cannot_access_dashboard()
     {
-        config(['access.users.password_expires_days' => false]);
+        $user = factory(User::class)->states('password_expired')->create();
 
-        $user = factory(User::class)->create(['password_changed_at' => now()->subMonths(2)->toDateTimeString()]);
+        $this->actingAs($user);
 
-        $response = $this->actingAs($user)->get('/dashboard');
+        $response = $this->get('/dashboard')->assertRedirect('/password/expired');
 
-        $this->assertSame(200, $response->getStatusCode());
+        $response->assertSessionHas('flash_warning', __('Your password has expired. We require you to change your password every '.config('boilerplate.access.user.password_expires_days').' days for security purposes.'));
     }
 
     /** @test */
-    public function the_password_can_be_validated()
+    public function a_user_with_an_expired_password_cannot_access_account()
     {
-        config(['access.users.password_history' => false]);
-        config(['access.users.password_expires_days' => 30]);
+        $user = factory(User::class)->states('password_expired')->create();
 
-        $user = factory(User::class)->create([
-            'password' => ']EqZL4}zBT',
-            'password_changed_at' => now()->subMonths(2)->toDateTimeString(),
-        ]);
+        $this->actingAs($user);
 
-        $response = $this->actingAs($user)
-            ->followingRedirects()
-            ->patch('/password/expired', [
-                'old_password' => ']EqZL4}zBT',
-                'password' => 'secret',
-                'password_confirmation' => 'secret',
-            ]);
+        $response = $this->get('/account')->assertRedirect('/password/expired');
 
-        $this->assertStringContainsString('The password must be at least 8 characters.', $response->content());
+        $response->assertSessionHas('flash_warning', __('Your password has expired. We require you to change your password every '.config('boilerplate.access.user.password_expires_days').' days for security purposes.'));
     }
 
     /** @test */
-    public function a_user_can_use_the_same_password_when_history_is_off_on_password_expiration()
+    public function password_expiration_update_requires_validation()
     {
-        config(['access.users.password_history' => false]);
-        config(['access.users.password_expires_days' => 30]);
+        $this->actingAs(factory(User::class)->create());
 
-        $user = factory(User::class)->create([
+        $response = $this->patch('/password/expired');
+
+        $response->assertSessionHasErrors(['current_password', 'password']);
+    }
+
+    /** @test */
+    public function a_user_can_update_their_expired_password()
+    {
+        $user = factory(User::class)->states('password_expired')->create();
+
+        $this->actingAs($user);
+
+        $this->get('/account')->assertRedirect('/password/expired');
+
+        $response = $this->patch('/password/expired', [
+            'current_password' => '1234',
             'password' => 'OC4Nzu270N!QBVi%U%qX',
-            'password_changed_at' => now()->subMonths(2)->toDateTimeString(),
-        ]);
+            'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
+        ])->assertRedirect('/account');
 
-        $response = $this->actingAs($user)
-            ->patch('/password/expired', [
-                'old_password' => 'OC4Nzu270N!QBVi%U%qX',
-                'password' => 'OC4Nzu270N!QBVi%U%qX',
-                'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
-            ]);
+        $response->assertSessionHas('flash_success', __('Password successfully updated.'));
 
-        $response->assertSessionHas('flash_success');
-        $this->assertTrue(Hash::check('OC4Nzu270N!QBVi%U%qX', $user->fresh()->password));
-    }
-
-    /** @test */
-    public function a_user_can_not_use_the_same_password_when_history_is_on_on_password_expiration()
-    {
-        config(['access.users.password_history' => 3]);
-        config(['access.users.password_expires_days' => 30]);
-
-        $user = factory(User::class)->create([
-            'password' => ']EqZL4}zBT',
-            'password_changed_at' => now()->subMonths(2)->toDateTimeString(),
-        ]);
-
-        $this->actingAs($user)
-            ->patch('/password/expired', [
-                'old_password' => ']EqZL4}zBT',
-                'password' => ':ZqD~57}1t',
-                'password_confirmation' => ':ZqD~57}1t',
-            ]);
-
-        $response = $this->actingAs($user)
-            ->patch('/password/expired', [
-                'old_password' => ':ZqD~57}1t',
-                'password' => ']EqZL4}zBT',
-                'password_confirmation' => ']EqZL4}zBT',
-            ]);
-
-        $response->assertSessionHasErrors();
-        $errors = session('errors');
-        $this->assertSame($errors->get('password')[0], __('auth.password_used'));
-        $this->assertTrue(Hash::check(':ZqD~57}1t', $user->fresh()->password));
+        $this->get('/account')->assertOk();
     }
 }
