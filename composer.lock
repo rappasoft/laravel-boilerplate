@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d6bac94a70e78bb50d368906aa42deb",
+    "content-hash": "44a4d8bdd6a4d05ef9612884ea6cd021",
     "packages": [
         {
             "name": "albertcht/invisible-recaptcha",
@@ -3525,16 +3525,16 @@
         },
         {
             "name": "rappasoft/lockout",
-            "version": "v2.0",
+            "version": "v2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rappasoft/lockout.git",
-                "reference": "493060a53c1d53a16b49f3d13d375a79e0942bc4"
+                "reference": "baefa61f783d1329d2a4897175603c85452a4acd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rappasoft/lockout/zipball/493060a53c1d53a16b49f3d13d375a79e0942bc4",
-                "reference": "493060a53c1d53a16b49f3d13d375a79e0942bc4",
+                "url": "https://api.github.com/repos/rappasoft/lockout/zipball/baefa61f783d1329d2a4897175603c85452a4acd",
+                "reference": "baefa61f783d1329d2a4897175603c85452a4acd",
                 "shasum": ""
             },
             "require": {
@@ -3577,7 +3577,7 @@
                 "lockout",
                 "rappasoft"
             ],
-            "time": "2020-03-18T02:35:08+00:00"
+            "time": "2020-06-27T00:19:44+00:00"
         },
         {
             "name": "spatie/laravel-permission",
