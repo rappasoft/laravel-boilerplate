@@ -5,6 +5,7 @@
 /public/fonts
 /public/hot
 /public/storage
+/public/mix-manifest.json
 /storage/*.key
 /vendor
 /.vscode
