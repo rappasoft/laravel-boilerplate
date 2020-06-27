@@ -15,12 +15,14 @@ jobs:
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Install Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
-      - uses: borales/actions-yarn@v2.0.0
-          with:
-            cmd: install
-            - uses: borales/actions-yarn@v2.0.0
-              with:
-                cmd: run prod
+      - name: Compile Assets
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '13.x'
+      - name: Compile Assets
+        run: |
+          npm install
+          npm run production
       - name: Generate Key
         run: php artisan key:generate
       - name: Execute Tests
