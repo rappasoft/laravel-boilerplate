@@ -15,6 +15,10 @@ jobs:
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Install Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-suggest --no-progress --prefer-dist
+      - name: Install NPM Dependencies
+        run: npm install
+      - name: Compile Assets
+        run: npm run production
       - name: Generate Key
         run: php artisan key:generate
       - name: Execute Tests
