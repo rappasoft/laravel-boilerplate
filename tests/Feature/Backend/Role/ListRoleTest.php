@@ -10,7 +10,7 @@ use Tests\TestCase;
 /**
  * Class ReadRolesTest.
  */
-class ReadRolesTest extends TestCase
+class ListRoleTest extends TestCase
 {
     use RefreshDatabase;
 
