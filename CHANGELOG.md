@@ -3,13 +3,24 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [7.0.1] - 2020-06-28
+
+## Added
+
+- Missing captcha functionality for login/register
+
+## Changed
+
+- Seed second role in production not just testing
+
+## Removed
+
+- Duplicate user tests
+- Terser in mix file
+
 ## [7.0.0] - 2020-06-26
 
 Started from scratch with a blank Laravel 7.* installation. This release is not an upgrade, and for that reason it is impossible to document all the changes that occurred. This version should be used for new projects.
-
-### Added
-
-### Removed
 
 ## [6.0.3] - 2020-02-17
 
@@ -184,7 +195,8 @@ Started from scratch with a blank Laravel 7.* installation. This release is not 
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.0.0...development
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.0.1...development
+[7.0.1]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.0.0...v7.0.1
 [7.0.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.3...v7.0.0
 [6.0.3]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.2...v6.0.3
 [6.0.2]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.1...v6.0.2

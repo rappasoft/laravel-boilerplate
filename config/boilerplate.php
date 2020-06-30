@@ -14,6 +14,11 @@ return [
     | Configurations related to the boilerplate's access/authorization options
     */
     'access' => [
+        'captcha' => [
+            'registration' => env('REGISTRATION_CAPTCHA_STATUS', false),
+            'login' => env('LOGIN_CAPTCHA_STATUS', false),
+        ],
+
         'middleware' => [
             'confirm' => 'password.confirm:frontend.auth.password.confirm',
             'verified' => 'verified:frontend.auth.verification.notice',

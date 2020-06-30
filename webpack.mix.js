@@ -29,15 +29,7 @@ mix.setPublicPath('public')
     .sourceMaps();
 
 if (mix.inProduction()) {
-    mix.version()
-        .options({
-            // Optimize JS minification process
-            terser: {
-                cache: true,
-                parallel: true,
-                sourceMap: true
-            }
-        });
+    mix.version();
 } else {
     // Uses inline source-maps on development
     mix.webpackConfig({
