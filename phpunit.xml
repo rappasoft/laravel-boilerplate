@@ -35,9 +35,9 @@
         <server name="DB_DATABASE" value=":memory:"/>
         <server name="ENABLE_REGISTRATION" value="true"/>
         <server name="LOGIN_CAPTCHA_STATUS" value="false"/>
+        <server name="REGISTRATION_CAPTCHA_STATUS" value="false"/>
         <server name="MAIL_MAILER" value="array"/>
         <server name="QUEUE_CONNECTION" value="sync"/>
-        <server name="REGISTRATION_CAPTCHA_STATUS" value="false"/>
         <server name="SESSION_DRIVER" value="array"/>
         <server name="TELESCOPE_ENABLED" value="false"/>
     </php>

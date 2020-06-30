@@ -76,6 +76,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')],
             'password' => PasswordRules::register($data['email'] ?? null),
+            'g-recaptcha-response' => ['required_if:captcha_status,true', 'captcha'],
+        ], [
+            'g-recaptcha-response.required_if' => __('validation.required', ['attribute' => 'captcha']),
         ]);
     }
 

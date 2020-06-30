@@ -44,6 +44,15 @@
                             </div>
                         </div><!--form-group-->
 
+                        @if(config('boilerplate.access.captcha.registration'))
+                            <div class="row">
+                                <div class="col">
+                                    @captcha
+                                    <input type="hidden" name="captcha_status" value="true" />
+                                </div><!--col-->
+                            </div><!--row-->
+                        @endif
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button class="btn btn-primary" type="submit">@lang('Register')</button>
