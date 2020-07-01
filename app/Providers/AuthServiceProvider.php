@@ -33,5 +33,10 @@ class AuthServiceProvider extends ServiceProvider
         Gate::before(function ($user) {
             return $user->isAdmin() ? true : null;
         });
+
+        // Learn when to use this instead: https://docs.spatie.be/laravel-permission/v3/basic-usage/super-admin/#gate-after
+//        Gate::after(function ($user) {
+//            return $user->isAdmin();
+//        });
     }
 }
