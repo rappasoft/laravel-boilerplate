@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [7.0.3] - 2020-07-01
+
+## Changed
+
+- Updated breadcrumbs to be more readable
+- Add note for Gate::after in AuthServiceProvider if wanted
+- Change title bar delimiter from - to |
+
 ## [7.0.2] - 2020-06-28
 
 ## Changed
