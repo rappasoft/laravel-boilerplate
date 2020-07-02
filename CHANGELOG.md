@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 ## Changed
 
 - Updated breadcrumbs to be more readable
+- Update link utility to allow slot
 - Add note for Gate::after in AuthServiceProvider if wanted
 - Change title bar delimiter from - to |
 - Update yarn and composer
