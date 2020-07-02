@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file.
 - Updated breadcrumbs to be more readable
 - Add note for Gate::after in AuthServiceProvider if wanted
 - Change title bar delimiter from - to |
+- Update yarn and composer
 
 ## [7.0.2] - 2020-06-28
 
@@ -209,7 +210,8 @@ Started from scratch with a blank Laravel 7.* installation. This release is not 
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.0.2...development
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.0.3...development
+[7.0.3]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.0.2...v7.0.3
 [7.0.2]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.0.1...v7.0.2
 [7.0.1]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.0.0...v7.0.1
 [7.0.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v6.0.3...v7.0.0
