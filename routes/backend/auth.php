@@ -43,8 +43,8 @@ Route::group([
                 Route::get('edit', [UserController::class, 'edit'])
                     ->name('edit')
                     ->breadcrumbs(function (Trail $trail, User $user) {
-                        $trail->parent('admin.auth.user.index')
-                            ->push(__('Editing :user', ['user' => $user->name]), route('admin.auth.user.edit', $user));
+                        $trail->parent('admin.auth.user.show', $user)
+                            ->push(__('Edit'), route('admin.auth.user.edit', $user));
                     });
 
                 Route::patch('/', [UserController::class, 'update'])->name('update');
@@ -82,7 +82,7 @@ Route::group([
                     ->middleware('permission:access.user.list')
                     ->breadcrumbs(function (Trail $trail, User $user) {
                         $trail->parent('admin.auth.user.index')
-                            ->push(__('Viewing :user', ['user' => $user->name]), route('admin.auth.user.show', $user));
+                            ->push($user->name, route('admin.auth.user.show', $user));
                     });
 
                 Route::patch('mark/{status}', [DeactivatedUserController::class, 'update'])
@@ -98,8 +98,8 @@ Route::group([
                     ->name('change-password')
                     ->middleware('permission:access.user.change-password')
                     ->breadcrumbs(function (Trail $trail, User $user) {
-                        $trail->parent('admin.auth.user.index')
-                            ->push(__('Changing Password for :user', ['user' => $user->name]), route('admin.auth.user.change-password', $user));
+                        $trail->parent('admin.auth.user.show', $user)
+                            ->push(__('Change Password'), route('admin.auth.user.change-password', $user));
                     });
 
                 Route::patch('password/change', [UserPasswordController::class, 'update'])
