@@ -71,6 +71,11 @@ return [
              * AuthenticateSession middleware must be enabled
              */
             'single_login' => env('SINGLE_LOGIN', false),
+
+            /*
+             * Whether or not to allow direct assignment of permissions to users (in addition to roles)
+             */
+            'user_permissions' => env('ENABLE_USER_PERMISSIONS', true),
         ],
 
         'role' => [

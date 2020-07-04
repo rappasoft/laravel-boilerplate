@@ -32,7 +32,9 @@
 
                 @if (!$user->isMasterAdmin())
                     @include('backend.auth.includes.roles')
-                    @include('backend.auth.includes.permissions')
+                    @if (config('boilerplate.access.user.user_permissions'))
+                        @include('backend.auth.includes.permissions')
+                    @endif
                 @endif
             </x-slot>
 

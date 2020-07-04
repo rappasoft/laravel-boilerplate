@@ -77,10 +77,12 @@
                     <td>{!! $user->roles_label !!}</td>
                 </tr>
 
+                @if (config('boilerplate.access.user.user_permissions'))
                 <tr>
                     <th>@lang('Additional Permissions')</th>
                     <td>{!! $user->permissions_label !!}</td>
                 </tr>
+                @endif
             </table>
         </x-slot>
 

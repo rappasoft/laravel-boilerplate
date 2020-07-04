@@ -105,7 +105,9 @@ class UserService extends BaseService
             ]);
 
             $user->syncRoles($data['roles'] ?? []);
-            $user->syncPermissions($data['permissions'] ?? []);
+            if (config('boilerplate.access.user.user_permissions')) {
+                $user->syncPermissions($data['permissions'] ?? []);
+            }
         } catch (Exception $e) {
             DB::rollBack();
 
@@ -142,7 +144,9 @@ class UserService extends BaseService
             if (! $user->isMasterAdmin()) {
                 // Replace selected roles/permissions
                 $user->syncRoles($data['roles'] ?? []);
-                $user->syncPermissions($data['permissions'] ?? []);
+                if (config('boilerplate.access.user.user_permissions')) {
+                    $user->syncPermissions($data['permissions'] ?? []);
+                }
             }
         } catch (Exception $e) {
             DB::rollBack();
