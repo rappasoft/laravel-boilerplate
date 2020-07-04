@@ -71,6 +71,12 @@
                         <td>{{ $user->provider_id ?? __('N/A') }}</td>
                     </tr>
                 @endif
+                @if (! $user->isCanPasswordLogin())
+                    <tr>
+                        <th>@lang('Note')</th>
+                        <td><span class="text-danger">Must login using social connection</span></td>
+                    </tr>
+                @endif
 
                 <tr>
                     <th>@lang('Roles')</th>

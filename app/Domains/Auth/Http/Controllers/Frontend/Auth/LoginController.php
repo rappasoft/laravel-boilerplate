@@ -112,6 +112,11 @@ class LoginController extends Controller
 
             return redirect()->route('frontend.auth.login')->withFlashDanger(__('Your account has been deactivated.'));
         }
+        if (! $user->isCanPasswordLogin()) {
+            auth()->logout();
+
+            return redirect()->route('frontend.auth.login')->withFlashDanger(__('Your account requires a social login.'));
+        }
 
         event(new UserLoggedIn($user));
 

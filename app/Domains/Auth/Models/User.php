@@ -59,6 +59,7 @@ class User extends Authenticatable implements MustVerifyEmail, Recordable, TwoFa
         'to_be_logged_out',
         'provider',
         'provider_id',
+        'can_password_login',
     ];
 
     /**
@@ -90,6 +91,7 @@ class User extends Authenticatable implements MustVerifyEmail, Recordable, TwoFa
         'last_login_at' => 'datetime',
         'email_verified_at' => 'datetime',
         'to_be_logged_out' => 'boolean',
+        'can_password_login' => 'boolean',
     ];
 
     /**

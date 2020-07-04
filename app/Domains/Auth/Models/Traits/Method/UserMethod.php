@@ -30,7 +30,7 @@ trait UserMethod
      */
     public function canChangeEmail()
     {
-        return config('boilerplate.access.user.change_email');
+        return $this->can_password_login && config('boilerplate.access.user.change_email');
     }
 
     /**
@@ -47,6 +47,14 @@ trait UserMethod
     public function isVerified()
     {
         return $this->email_verified_at;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCanPasswordLogin()
+    {
+        return $this->can_password_login;
     }
 
     /**

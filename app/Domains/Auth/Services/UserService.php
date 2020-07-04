@@ -102,6 +102,7 @@ class UserService extends BaseService
                 'password' => $data['password'],
                 'email_verified_at' => isset($data['email_verified']) && $data['email_verified'] === '1' ? now() : null,
                 'active' => isset($data['active']) && $data['active'] === '1',
+                'can_password_login' => isset($data['can_password_login']) && $data['can_password_login'] === '1',
             ]);
 
             $user->syncRoles($data['roles'] ?? []);
@@ -139,6 +140,7 @@ class UserService extends BaseService
             $user->update([
                 'name' => $data['name'],
                 'email' => $data['email'],
+                'can_password_login' => isset($data['can_password_login']) && $data['can_password_login'] === '1',
             ]);
 
             if (! $user->isMasterAdmin()) {

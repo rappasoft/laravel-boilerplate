@@ -30,6 +30,16 @@
                     </div>
                 </div><!--form-group-->
 
+                <div class="form-group row">
+                    <label for="active" class="col-md-2 col-form-label">@lang('Can Use Password Login')</label>
+
+                    <div class="col-md-10">
+                        <div class="form-check">
+                            <input name="can_password_login" id="can_password_login" class="form-check-input" type="checkbox" value="1" {{ old('can_password_login', $user->can_password_login) ? 'checked' : '' }} />
+                        </div><!--form-check-->
+                    </div>
+                </div><!--form-group-->
+
                 @if (!$user->isMasterAdmin())
                     @include('backend.auth.includes.roles')
                     @if (config('boilerplate.access.user.user_permissions'))
