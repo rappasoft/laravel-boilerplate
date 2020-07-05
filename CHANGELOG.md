@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [7.1.0] - 2020-07-04
+
+## Changed
+
+- Change password histories to be polymorphic
+- Make alert banners shorter vertically
+
 ## [7.0.3] - 2020-07-01
 
 ## Changed
