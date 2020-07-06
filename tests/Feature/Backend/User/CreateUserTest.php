@@ -5,7 +5,6 @@ namespace Tests\Feature\Backend\User;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
 use App\Domains\Auth\Notifications\Frontend\VerifyEmail;
-use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;

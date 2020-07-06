@@ -4,7 +4,6 @@ namespace Tests\Feature\Backend\User;
 
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
-use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
