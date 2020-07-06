@@ -12,7 +12,7 @@ trait UserMethod
     /**
      * @return bool
      */
-    public function isMasterAdmin() : bool
+    public function isMasterAdmin(): bool
     {
         return $this->id === 1;
     }
@@ -20,7 +20,7 @@ trait UserMethod
     /**
      * @return mixed
      */
-    public function isAdmin() : bool
+    public function isAdmin(): bool
     {
         return $this->type === self::TYPE_ADMIN;
     }
@@ -28,7 +28,7 @@ trait UserMethod
     /**
      * @return mixed
      */
-    public function isUser() : bool
+    public function isUser(): bool
     {
         return $this->type === self::TYPE_USER;
     }
@@ -36,7 +36,7 @@ trait UserMethod
     /**
      * @return mixed
      */
-    public function hasAllAccess() : bool
+    public function hasAllAccess(): bool
     {
         return $this->isAdmin() && $this->hasRole(config('boilerplate.access.role.admin'));
     }
@@ -46,7 +46,7 @@ trait UserMethod
      *
      * @return bool
      */
-    public function isType($type) : bool
+    public function isType($type): bool
     {
         return $this->type === $type;
     }
@@ -54,7 +54,7 @@ trait UserMethod
     /**
      * @return mixed
      */
-    public function canChangeEmail() : bool
+    public function canChangeEmail(): bool
     {
         return config('boilerplate.access.user.change_email');
     }
@@ -62,7 +62,7 @@ trait UserMethod
     /**
      * @return bool
      */
-    public function isActive() : bool
+    public function isActive(): bool
     {
         return $this->active;
     }
@@ -70,7 +70,7 @@ trait UserMethod
     /**
      * @return bool
      */
-    public function isVerified() : bool
+    public function isVerified(): bool
     {
         return $this->email_verified_at !== null;
     }
@@ -78,7 +78,7 @@ trait UserMethod
     /**
      * @return bool
      */
-    public function isSocial() : bool
+    public function isSocial(): bool
     {
         return $this->provider && $this->provider_id;
     }

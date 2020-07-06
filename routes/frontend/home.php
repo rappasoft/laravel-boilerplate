@@ -1,10 +1,10 @@
 <?php
 
-use App\Domains\Auth\Models\User;
 use App\Domains\Auth\Http\Controllers\Frontend\HomeController;
 use App\Domains\Auth\Http\Controllers\Frontend\User\AccountController;
 use App\Domains\Auth\Http\Controllers\Frontend\User\DashboardController;
 use App\Domains\Auth\Http\Controllers\Frontend\User\ProfileController;
+use App\Domains\Auth\Models\User;
 
 /*
  * Frontend Controllers

@@ -9,7 +9,6 @@ use Closure;
  */
 class UserTypeCheck
 {
-
     /**
      * @param $request
      * @param  Closure  $next
