@@ -72,7 +72,7 @@ trait UserMethod
      */
     public function isVerified() : bool
     {
-        return $this->email_verified_at;
+        return $this->email_verified_at !== null;
     }
 
     /**

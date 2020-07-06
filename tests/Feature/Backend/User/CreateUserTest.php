@@ -38,7 +38,7 @@ class CreateUserTest extends TestCase
 
         $response = $this->post('/admin/auth/user');
 
-        $response->assertSessionHasErrors(['name', 'email', 'password', 'roles']);
+        $response->assertSessionHasErrors(['type', 'name', 'email', 'password']);
     }
 
     /** @test */
@@ -65,6 +65,7 @@ class CreateUserTest extends TestCase
         $this->loginAsAdmin();
 
         $response = $this->post('/admin/auth/user', [
+            'type' => User::TYPE_ADMIN,
             'name' => 'John Doe',
             'email' => 'john@example.com',
             'password' => 'OC4Nzu270N!QBVi%U%qX',
@@ -78,6 +79,7 @@ class CreateUserTest extends TestCase
         $this->assertDatabaseHas(
             'users',
             [
+                'type' => User::TYPE_ADMIN,
                 'name' => 'John Doe',
                 'email' => 'john@example.com',
                 'active' => true,
@@ -103,6 +105,7 @@ class CreateUserTest extends TestCase
         $this->loginAsAdmin();
 
         $response = $this->post('/admin/auth/user', [
+            'type' => User::TYPE_ADMIN,
             'name' => 'John Doe',
             'email' => 'john@example.com',
             'password' => 'OC4Nzu270N!QBVi%U%qX',
@@ -123,7 +126,9 @@ class CreateUserTest extends TestCase
     /** @test */
     public function only_admin_can_create_users()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $this->actingAs(factory(User::class)->state('admin')->create());
 
         $response = $this->get('/admin/auth/user/create');
 

@@ -27,7 +27,7 @@ class CreateRoleTest extends TestCase
     }
 
     /** @test */
-    public function the_name_is_required()
+    public function create_role_requires_validation()
     {
         $this->withoutMiddleware(RequirePassword::class);
 
@@ -35,7 +35,7 @@ class CreateRoleTest extends TestCase
 
         $response = $this->post('/admin/auth/role');
 
-        $response->assertSessionHasErrors('name');
+        $response->assertSessionHasErrors('type', 'name');
     }
 
     /** @test */
@@ -58,18 +58,20 @@ class CreateRoleTest extends TestCase
         $this->loginAsAdmin();
 
         $this->post('/admin/auth/role', [
+            'type' => User::TYPE_ADMIN,
             'name' => 'new role',
             'permissions' => [
-                Permission::whereName('view backend')->first()->id,
+                Permission::whereName('access.user.list')->first()->id,
             ],
         ]);
 
         $this->assertDatabaseHas('roles', [
+            'type' => User::TYPE_ADMIN,
             'name' => 'new role',
         ]);
 
         $this->assertDatabaseHas('role_has_permissions', [
-            'permission_id' => Permission::whereName('view backend')->first()->id,
+            'permission_id' => Permission::whereName('access.user.list')->first()->id,
             'role_id' => Role::whereName('new role')->first()->id,
         ]);
     }
@@ -77,7 +79,9 @@ class CreateRoleTest extends TestCase
     /** @test */
     public function only_admin_can_create_roles()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $this->actingAs(factory(User::class)->state('admin')->create());
 
         $response = $this->get('/admin/auth/role/create');
 

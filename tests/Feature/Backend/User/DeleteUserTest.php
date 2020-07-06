@@ -112,7 +112,7 @@ class DeleteUserTest extends TestCase
         $this->withoutMiddleware(RequirePassword::class);
 
         $admin = $this->getMasterAdmin();
-        $user = factory(User::class)->create();
+        $user = factory(User::class)->state('admin')->create();
         $user->assignRole($this->getAdminRole());
         $this->actingAs($user);
 
@@ -128,7 +128,7 @@ class DeleteUserTest extends TestCase
     {
         $this->withoutMiddleware(RequirePassword::class);
 
-        $user = factory(User::class)->create();
+        $user = factory(User::class)->state('admin')->create();
         $user->assignRole($this->getAdminRole());
         $this->actingAs($user);
 
@@ -142,6 +142,8 @@ class DeleteUserTest extends TestCase
     /** @test */
     public function only_admin_can_delete_users()
     {
+        $this->withoutMiddleware(RequirePassword::class);
+
         $this->actingAs(factory(User::class)->create());
 
         $user = factory(User::class)->create();

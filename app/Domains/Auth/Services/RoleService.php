@@ -35,7 +35,7 @@ class RoleService extends BaseService
         DB::beginTransaction();
 
         try {
-            $role = $this->model::create(['name' => $data['name']]);
+            $role = $this->model::create(['type' => $data['type'], 'name' => $data['name']]);
             $role->syncPermissions($data['permissions'] ?? []);
         } catch (Exception $e) {
             DB::rollBack();
@@ -61,7 +61,7 @@ class RoleService extends BaseService
         DB::beginTransaction();
 
         try {
-            $role->update(['name' => $data['name']]);
+            $role->update(['type' => $data['type'], 'name' => $data['name']]);
             $role->syncPermissions($data['permissions'] ?? []);
         } catch (Exception $e) {
             DB::rollBack();

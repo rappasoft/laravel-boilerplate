@@ -29,6 +29,18 @@ $factory->define(User::class, function (Faker $faker) {
     ];
 });
 
+$factory->state(User::class, 'admin', function () {
+    return [
+        'type' => User::TYPE_ADMIN,
+    ];
+});
+
+$factory->state(User::class, 'user', function () {
+    return [
+        'type' => User::TYPE_USER,
+    ];
+});
+
 $factory->state(User::class, 'active', function () {
     return [
         'active' => true,

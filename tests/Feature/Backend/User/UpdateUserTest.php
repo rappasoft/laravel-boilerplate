@@ -40,11 +40,13 @@ class UpdateUserTest extends TestCase
 
         $this->assertDatabaseMissing('users', [
             'id' => $user->id,
+            'type' => User::TYPE_ADMIN,
             'name' => 'John Doe',
             'email' => 'john@example.com',
         ]);
 
         $this->patch("/admin/auth/user/{$user->id}", [
+            'type' => User::TYPE_ADMIN,
             'name' => 'John Doe',
             'email' => 'john@example.com',
             'roles' => [
@@ -54,6 +56,7 @@ class UpdateUserTest extends TestCase
 
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
+            'type' => User::TYPE_ADMIN,
             'name' => 'John Doe',
             'email' => 'john@example.com',
         ]);
@@ -76,7 +79,7 @@ class UpdateUserTest extends TestCase
 
         $this->logout();
 
-        $otherAdmin = factory(User::class)->create();
+        $otherAdmin = factory(User::class)->state('admin')->create();
         $otherAdmin->assignRole(config('boilerplate.access.role.admin'));
 
         $this->actingAs($otherAdmin);
@@ -114,7 +117,7 @@ class UpdateUserTest extends TestCase
 
         // Make sure other admins can not update the master admin
 
-        $otherAdmin = factory(User::class)->create();
+        $otherAdmin = factory(User::class)->state('admin')->create();
         $otherAdmin->assignRole(config('boilerplate.access.role.admin'));
 
         $this->actingAs($otherAdmin);
@@ -165,11 +168,14 @@ class UpdateUserTest extends TestCase
     /** @test */
     public function only_admin_can_update_roles()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->withoutMiddleware(RequirePassword::class);
 
-        $user = factory(User::class)->create(['name' => 'John Doe']);
+        $this->actingAs(factory(User::class)->state('admin')->create());
+
+        $user = factory(User::class)->state('admin')->create(['name' => 'John Doe']);
 
         $response = $this->patch("/admin/auth/user/{$user->id}", [
+            'type' => User::TYPE_USER,
             'name' => 'Jane Doe',
         ]);
 
@@ -177,6 +183,7 @@ class UpdateUserTest extends TestCase
 
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
+            'type' => User::TYPE_ADMIN,
             'name' => 'John Doe',
         ]);
     }

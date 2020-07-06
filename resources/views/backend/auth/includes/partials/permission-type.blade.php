@@ -35,5 +35,5 @@
 @endif
 
 @if (!$general->where('type', $type)->count() && !$categories->where('type', $type)->count())
-    <p class="mb-0"><em>@lang('There are no additional permissions to choose from for this user type.')</em></p>
+    <p class="mb-0"><em>@lang('There are no additional permissions to choose from for this type.')</em></p>
 @endif

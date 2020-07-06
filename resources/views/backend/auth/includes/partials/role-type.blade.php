@@ -33,5 +33,5 @@
         @endif
     @endif
 @empty
-    <p class="mb-0"><em>@lang('There are no roles to choose from for this user type.')</em></p>
+    <p class="mb-0"><em>@lang('There are no roles to choose from for this type.')</em></p>
 @endforelse

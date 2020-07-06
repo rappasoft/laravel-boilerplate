@@ -68,7 +68,9 @@ class DeleteRoleTest extends TestCase
     /** @test */
     public function only_admin_can_delete_roles()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $this->actingAs(factory(User::class)->state('admin')->create());
 
         $role = factory(Role::class)->create();
 

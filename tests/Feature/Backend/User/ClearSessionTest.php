@@ -19,9 +19,9 @@ class ClearSessionTest extends TestCase
     {
         $this->withoutMiddleware(RequirePassword::class);
 
-        $this->actingAs($user = factory(User::class)->create());
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['view backend', 'access.user.clear-session']);
+        $user->syncPermissions(['access.user.clear-session']);
 
         $newUser = factory(User::class)->create();
 
@@ -29,7 +29,7 @@ class ClearSessionTest extends TestCase
 
         $response->assertSessionHas('flash_success', __('The user\'s session was successfully cleared.'));
 
-        $user->syncPermissions(['view backend']);
+        $user->syncPermissions([]);
 
         $response = $this->post('/admin/auth/user/'.$newUser->id.'/clear-session');
 
@@ -41,9 +41,9 @@ class ClearSessionTest extends TestCase
     {
         $this->withoutMiddleware(RequirePassword::class);
 
-        $this->actingAs($user = factory(User::class)->create());
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['view backend', 'access.user.clear-session']);
+        $user->syncPermissions(['access.user.clear-session']);
 
         $response = $this->post('/admin/auth/user/'.$user->id.'/clear-session');
 

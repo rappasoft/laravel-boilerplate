@@ -40,18 +40,20 @@ class UpdateRoleTest extends TestCase
         $this->loginAsAdmin();
 
         $this->patch("/admin/auth/role/{$role->id}", [
+            'type' => User::TYPE_ADMIN,
             'name' => 'new name',
             'permissions' => [
-                Permission::whereName('view backend')->first()->id,
+                Permission::whereName('access.user.list')->first()->id,
             ],
         ]);
 
         $this->assertDatabaseHas('roles', [
+            'type' => User::TYPE_ADMIN,
             'name' => 'new name',
         ]);
 
         $this->assertDatabaseHas('role_has_permissions', [
-            'permission_id' => Permission::whereName('view backend')->first()->id,
+            'permission_id' => Permission::whereName('access.user.list')->first()->id,
             'role_id' => Role::whereName('new name')->first()->id,
         ]);
     }
@@ -119,7 +121,9 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function only_admin_can_update_roles()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $this->actingAs(factory(User::class)->state('admin')->create());
 
         $role = factory(Role::class)->create(['name' => 'current name']);
 

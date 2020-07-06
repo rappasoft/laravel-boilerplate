@@ -22,11 +22,13 @@ class DashboardTest extends TestCase
     /** @test */
     public function not_authorized_users_cant_access_admin_dashboard()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(factory(User::class)->state('user')->create());
 
         $response = $this->get('/admin/dashboard');
 
-        $response->assertRedirect('/dashboard');
+        $response->assertRedirect('/');
+
+        $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
     }
 
     /** @test */

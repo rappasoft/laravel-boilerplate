@@ -1,3 +1,5 @@
+@inject('model', '\App\Domains\Auth\Models\User')
+
 @extends('backend.layouts.app')
 
 @section('title', __('Update Role'))
@@ -14,15 +16,28 @@
             </x-slot>
 
             <x-slot name="body">
-                <div class="form-group row">
-                    <label for="name" class="col-md-2 col-form-label">@lang('Name')</label>
+                <div x-data="{userType : '{{ $role->type }}'}">
+                    <div class="form-group row">
+                        <label for="name" class="col-md-2 col-form-label">@lang('Type')</label>
 
-                    <div class="col-md-10">
-                        <input type="text"  name="name"  class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') ?? $role->name }}" required />
-                    </div>
-                </div><!--form-group-->
+                        <div class="col-md-10">
+                            <select name="type" class="form-control" required @change="userType = $event.target.value">
+                                <option value="{{ $model::TYPE_USER }}" {{ $role->type === $model::TYPE_USER ? 'selected' : '' }}>@lang('User')</option>
+                                <option value="{{ $model::TYPE_ADMIN }}" {{ $role->type === $model::TYPE_ADMIN ? 'selected' : '' }}>@lang('Administrator')</option>
+                            </select>
+                        </div>
+                    </div><!--form-group-->
 
-                @include('backend.auth.includes.permissions')
+                    <div class="form-group row">
+                        <label for="name" class="col-md-2 col-form-label">@lang('Name')</label>
+
+                        <div class="col-md-10">
+                            <input type="text"  name="name"  class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') ?? $role->name }}" required />
+                        </div>
+                    </div><!--form-group-->
+
+                    @include('backend.auth.includes.permissions')
+                </div>
             </x-slot>
 
             <x-slot name="footer">

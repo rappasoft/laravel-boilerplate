@@ -20,15 +20,15 @@ class ChangeUserPasswordTest extends TestCase
     {
         $this->withoutMiddleware(RequirePassword::class);
 
-        $this->actingAs($user = factory(User::class)->create());
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['view backend', 'access.user.change-password']);
+        $user->syncPermissions(['access.user.change-password']);
 
         $newUser = factory(User::class)->create();
 
         $this->get('/admin/auth/user/'.$newUser->id.'/password/change')->assertOk();
 
-        $user->syncPermissions(['view backend']);
+        $user->syncPermissions([]);
 
         $response = $this->get('/admin/auth/user/'.$newUser->id.'/password/change');
 
@@ -40,9 +40,9 @@ class ChangeUserPasswordTest extends TestCase
     {
         $this->withoutMiddleware(RequirePassword::class);
 
-        $this->actingAs($user = factory(User::class)->create());
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['view backend', 'access.user.change-password']);
+        $user->syncPermissions(['access.user.change-password']);
 
         $newUser = factory(User::class)->create();
 
@@ -53,7 +53,7 @@ class ChangeUserPasswordTest extends TestCase
 
         $response->assertSessionHas('flash_success', __('The user\'s password was successfully updated.'));
 
-        $user->syncPermissions(['view backend']);
+        $user->syncPermissions([]);
 
         $response = $this->patch('/admin/auth/user/'.$newUser->id.'/password/change', [
             'password' => 'OC4Nzu270N!QBVi%U%qX',
@@ -102,9 +102,9 @@ class ChangeUserPasswordTest extends TestCase
     {
         $this->withoutMiddleware(RequirePassword::class);
 
-        $this->actingAs($user = factory(User::class)->create());
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['view backend', 'access.user.change-password']);
+        $user->syncPermissions(['access.user.change-password']);
 
         $admin = $this->getMasterAdmin();
 
@@ -124,9 +124,9 @@ class ChangeUserPasswordTest extends TestCase
     {
         $this->withoutMiddleware(RequirePassword::class);
 
-        $this->actingAs($user = factory(User::class)->create());
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['view backend', 'access.user.change-password']);
+        $user->syncPermissions(['access.user.change-password']);
 
         $admin = $this->getMasterAdmin();
 

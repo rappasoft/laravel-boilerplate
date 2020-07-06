@@ -27,7 +27,9 @@ class ListRoleTest extends TestCase
     /** @test */
     public function only_admin_can_view_roles()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->withoutMiddleware(RequirePassword::class);
+
+        $this->actingAs(factory(User::class)->state('admin')->create());
 
         $response = $this->get('/admin/auth/role');
 

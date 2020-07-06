@@ -19,13 +19,13 @@ class ListUserTest extends TestCase
     {
         $this->withoutMiddleware(RequirePassword::class);
 
-        $this->actingAs($user = factory(User::class)->create());
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['view backend', 'access.user.list']);
+        $user->syncPermissions(['access.user.list']);
 
         $this->get('/admin/auth/user')->assertOk();
 
-        $user->syncPermissions(['view backend']);
+        $user->syncPermissions([]);
 
         $response = $this->get('/admin/auth/user');
 
@@ -37,15 +37,15 @@ class ListUserTest extends TestCase
     {
         $this->withoutMiddleware(RequirePassword::class);
 
-        $this->actingAs($user = factory(User::class)->create());
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['view backend', 'access.user.list']);
+        $user->syncPermissions(['access.user.list']);
 
         $newUser = factory(User::class)->create();
 
         $this->get('/admin/auth/user/'.$newUser->id)->assertOk();
 
-        $user->syncPermissions(['view backend']);
+        $user->syncPermissions([]);
 
         $response = $this->get('/admin/auth/user/'.$newUser->id);
 
