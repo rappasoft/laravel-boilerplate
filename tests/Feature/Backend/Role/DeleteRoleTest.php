@@ -18,8 +18,6 @@ class DeleteRoleTest extends TestCase
     /** @test */
     public function a_role_can_be_deleted()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $role = factory(Role::class)->create();
 
         $this->loginAsAdmin();
@@ -34,8 +32,6 @@ class DeleteRoleTest extends TestCase
     /** @test */
     public function the_admin_role_can_not_be_deleted()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $role = Role::whereName(config('boilerplate.access.role.admin'))->first();
@@ -50,8 +46,6 @@ class DeleteRoleTest extends TestCase
     /** @test */
     public function a_role_with_assigned_users_cant_be_deleted()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $role = factory(Role::class)->create();
@@ -68,8 +62,6 @@ class DeleteRoleTest extends TestCase
     /** @test */
     public function only_admin_can_delete_roles()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->actingAs(factory(User::class)->state('admin')->create());
 
         $role = factory(Role::class)->create();

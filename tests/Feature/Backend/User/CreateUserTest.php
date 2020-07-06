@@ -20,8 +20,6 @@ class CreateUserTest extends TestCase
     /** @test */
     public function an_admin_can_access_the_create_user_page()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $response = $this->get('/admin/auth/user/create');
@@ -32,8 +30,6 @@ class CreateUserTest extends TestCase
     /** @test */
     public function create_user_requires_validation()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $response = $this->post('/admin/auth/user');
@@ -44,8 +40,6 @@ class CreateUserTest extends TestCase
     /** @test */
     public function user_email_needs_to_be_unique()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         factory(User::class)->create(['email' => 'john@example.com']);
@@ -60,8 +54,6 @@ class CreateUserTest extends TestCase
     /** @test */
     public function admin_can_create_new_user()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $response = $this->post('/admin/auth/user', [
@@ -98,8 +90,6 @@ class CreateUserTest extends TestCase
     /** @test */
     public function when_an_unconfirmed_user_is_created_a_notification_will_be_sent()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         Notification::fake();
 
         $this->loginAsAdmin();
@@ -126,8 +116,6 @@ class CreateUserTest extends TestCase
     /** @test */
     public function only_admin_can_create_users()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->actingAs(factory(User::class)->state('admin')->create());
 
         $response = $this->get('/admin/auth/user/create');

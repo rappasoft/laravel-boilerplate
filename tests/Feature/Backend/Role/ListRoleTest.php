@@ -17,8 +17,6 @@ class ListRoleTest extends TestCase
     /** @test */
     public function an_admin_can_access_the_role_index_page()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $this->get('/admin/auth/role')->assertOk();
@@ -27,8 +25,6 @@ class ListRoleTest extends TestCase
     /** @test */
     public function only_admin_can_view_roles()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->actingAs(factory(User::class)->state('admin')->create());
 
         $response = $this->get('/admin/auth/role');

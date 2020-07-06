@@ -2,8 +2,10 @@
 
 namespace Tests;
 
+use App\Domains\Auth\Http\Middleware\TwoFactorAuthenticationStatus;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
+use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 use Illuminate\Support\Facades\Artisan;
@@ -20,6 +22,9 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         Artisan::call('db:seed');
+
+        $this->withoutMiddleware(RequirePassword::class);
+        $this->withoutMiddleware(TwoFactorAuthenticationStatus::class);
     }
 
     protected function getAdminRole()

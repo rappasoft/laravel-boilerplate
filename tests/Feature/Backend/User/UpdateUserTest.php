@@ -18,8 +18,6 @@ class UpdateUserTest extends TestCase
     /** @test */
     public function an_admin_can_access_the_edit_user_page()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $user = factory(User::class)->create();
@@ -32,8 +30,6 @@ class UpdateUserTest extends TestCase
     /** @test */
     public function a_user_can_be_updated()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $user = factory(User::class)->create();
@@ -71,8 +67,6 @@ class UpdateUserTest extends TestCase
     /** @test */
     public function only_the_master_admin_can_edit_themselves()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $admin = $this->loginAsAdmin();
 
         $this->get("/admin/auth/user/{$admin->id}/edit")->assertOk();
@@ -92,8 +86,6 @@ class UpdateUserTest extends TestCase
     /** @test */
     public function only_the_master_admin_can_update_themselves()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $admin = $this->loginAsAdmin();
 
         $this->assertDatabaseMissing('users', [
@@ -140,8 +132,6 @@ class UpdateUserTest extends TestCase
     /** @test */
     public function the_master_admins_abilities_can_not_be_modified()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $admin = $this->loginAsAdmin();
 
         $role = factory(Role::class)->create();
@@ -168,8 +158,6 @@ class UpdateUserTest extends TestCase
     /** @test */
     public function only_admin_can_update_roles()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->actingAs(factory(User::class)->state('admin')->create());
 
         $user = factory(User::class)->state('admin')->create(['name' => 'John Doe']);

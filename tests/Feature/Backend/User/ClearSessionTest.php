@@ -17,8 +17,6 @@ class ClearSessionTest extends TestCase
     /** @test */
     public function only_a_user_with_correct_permissions_can_clear_user_sessions()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
         $user->syncPermissions(['access.user.clear-session']);
@@ -39,8 +37,6 @@ class ClearSessionTest extends TestCase
     /** @test */
     public function a_user_can_not_clear_their_own_session()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
         $user->syncPermissions(['access.user.clear-session']);

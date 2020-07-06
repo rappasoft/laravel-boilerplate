@@ -19,8 +19,6 @@ class CreateRoleTest extends TestCase
     /** @test */
     public function an_admin_can_access_the_create_role_page()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $this->get('/admin/auth/role/create')->assertOk();
@@ -29,8 +27,6 @@ class CreateRoleTest extends TestCase
     /** @test */
     public function create_role_requires_validation()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $response = $this->post('/admin/auth/role');
@@ -41,8 +37,6 @@ class CreateRoleTest extends TestCase
     /** @test */
     public function the_name_must_be_unique()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $response = $this->post('/admin/auth/role', ['name' => config('boilerplate.access.role.admin')]);
@@ -53,8 +47,6 @@ class CreateRoleTest extends TestCase
     /** @test */
     public function a_role_can_be_created()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $this->post('/admin/auth/role', [
@@ -79,8 +71,6 @@ class CreateRoleTest extends TestCase
     /** @test */
     public function only_admin_can_create_roles()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->actingAs(factory(User::class)->state('admin')->create());
 
         $response = $this->get('/admin/auth/role/create');

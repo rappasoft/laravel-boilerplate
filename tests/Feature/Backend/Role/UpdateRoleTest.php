@@ -19,8 +19,6 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function the_name_is_required()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $role = factory(Role::class)->create();
 
         $this->loginAsAdmin();
@@ -33,8 +31,6 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function a_role_name_can_be_updated()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $role = factory(Role::class)->create();
 
         $this->loginAsAdmin();
@@ -61,8 +57,6 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function the_admin_role_can_not_be_updated()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $role = Role::whereName(config('boilerplate.access.role.admin'))->first();
@@ -81,8 +75,6 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function only_admin_can_edit_roles()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $role = factory(Role::class)->create(['name' => 'current name']);
@@ -93,8 +85,6 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function the_admin_role_can_not_be_edited()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $role = Role::whereName(config('boilerplate.access.role.admin'))->first();
@@ -107,8 +97,6 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function a_non_admin_can_not_edit_roles()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->actingAs(factory(User::class)->create());
 
         $role = factory(Role::class)->create(['name' => 'current name']);
@@ -121,8 +109,6 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function only_admin_can_update_roles()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->actingAs(factory(User::class)->state('admin')->create());
 
         $role = factory(Role::class)->create(['name' => 'current name']);
