@@ -30,6 +30,8 @@ This release completely changes the way the previous authentication system worke
 - Make alert banners shorter vertically
 - Refactor system to use user types to define who can view certain areas, then use roles and permissions from there to narrow down further.
 - Update all tests
+- Require 2FA to be enabled to access admin
+- Change 2FA restricted redirect to enable 2FA page
 
 ## [7.0.3] - 2020-07-01
 

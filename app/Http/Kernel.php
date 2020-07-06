@@ -50,6 +50,7 @@ class Kernel extends HttpKernel
         ],
 
         'admin' => [
+            '2fa:enabled',
             'auth',
             'password.expires',
             'type:'.User::TYPE_ADMIN,
