@@ -1,8 +1,8 @@
 <?php
 
-use App\Domains\Auth\Models\User;
 use App\Domains\Auth\Models\Permission;
 use App\Domains\Auth\Models\Role;
+use App\Domains\Auth\Models\User;
 use Illuminate\Database\Seeder;
 
 /**
