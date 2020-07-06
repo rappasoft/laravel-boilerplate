@@ -37,12 +37,14 @@ if (! function_exists('homeRoute')) {
      */
     function homeRoute()
     {
-        if (config('boilerplate.access.user.redirect') && auth()->check()) {
-            if (auth()->user()->can('view backend')) {
+        if (auth()->check()) {
+            if (auth()->user()->isAdmin()) {
                 return 'admin.dashboard';
             }
 
-            return 'frontend.user.dashboard';
+            if (auth()->user()->isUser()) {
+                return 'frontend.user.dashboard';
+            }
         }
 
         return 'frontend.index';

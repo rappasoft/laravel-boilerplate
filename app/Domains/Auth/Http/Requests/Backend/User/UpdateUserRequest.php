@@ -2,6 +2,7 @@
 
 namespace App\Domains\Auth\Http\Requests\Backend\User;
 
+use App\Domains\Auth\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -29,14 +30,15 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         return [
+            'type' => [Rule::requiredIf(function () {
+                return ! $this->user->isMasterAdmin();
+            }), Rule::in([User::TYPE_ADMIN, User::TYPE_USER])],
             'name' => ['required'],
             'email' => ['required', 'email', Rule::unique('users')->ignore($this->user->id)],
-            'roles' => [Rule::requiredIf(function () {
-                return ! $this->user->isMasterAdmin();
-            }), 'array'],
-            'roles.*' => [Rule::exists('roles', 'id')],
+            'roles' => ['sometimes', 'array'],
+            'roles.*' => [Rule::exists('roles', 'id')->where('type', $this->type)],
             'permissions' => ['sometimes', 'array'],
-            'permissions.*' => [Rule::exists('permissions', 'id')],
+            'permissions.*' => [Rule::exists('permissions', 'id')->where('type', $this->type)],
         ];
     }
 
@@ -46,7 +48,8 @@ class UpdateUserRequest extends FormRequest
     public function messages()
     {
         return [
-            'roles.required' => __('You must select one or more roles.'),
+            'roles.*.exists' => __('One or more roles were not found or are not allowed to be associated with this user type.'),
+            'permissions.*.exists' => __('One or more permissions were not found or are not allowed to be associated with this user type.'),
         ];
     }
 

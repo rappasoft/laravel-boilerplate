@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Domains\Auth\Models\User;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 /**
@@ -51,7 +52,7 @@ class Kernel extends HttpKernel
         'admin' => [
             'auth',
             'password.expires',
-            'permission:view backend',
+            'type:'.User::TYPE_ADMIN,
         ],
     ];
 
@@ -76,6 +77,7 @@ class Kernel extends HttpKernel
         'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'type' => \App\Domains\Auth\Http\Middleware\UserTypeCheck::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
 

@@ -53,7 +53,7 @@ trait UserAttribute
      */
     public function getRolesLabelAttribute()
     {
-        if ($this->isAdmin()) {
+        if ($this->hasAllAccess()) {
             return 'All';
         }
 

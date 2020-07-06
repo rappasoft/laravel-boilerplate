@@ -39,12 +39,16 @@ class User extends Authenticatable implements MustVerifyEmail, Recordable, TwoFa
         UserRelationship,
         UserScope;
 
+    public const TYPE_ADMIN = 'admin';
+    public const TYPE_USER = 'user';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
+        'type',
         'name',
         'email',
         'email_verified_at',

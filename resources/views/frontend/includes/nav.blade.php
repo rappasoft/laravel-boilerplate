@@ -62,18 +62,20 @@
                         </x-utils.link>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            @if ($logged_in_user->can('view backend'))
+                            @if ($logged_in_user->isAdmin())
                                 <x-utils.link
                                     :href="route('admin.dashboard')"
                                     :text="__('Administration')"
                                     class="dropdown-item" />
                             @endif
 
-                            <x-utils.link
-                                :href="route('frontend.user.dashboard')"
-                                :active="activeClass(Route::is('frontend.user.dashboard'))"
-                                :text="__('Dashboard')"
-                                class="dropdown-item"/>
+                            @if ($logged_in_user->isUser())
+                                <x-utils.link
+                                    :href="route('frontend.user.dashboard')"
+                                    :active="activeClass(Route::is('frontend.user.dashboard'))"
+                                    :text="__('Dashboard')"
+                                    class="dropdown-item"/>
+                            @endif
 
                             <x-utils.link
                                 :href="route('frontend.user.account')"

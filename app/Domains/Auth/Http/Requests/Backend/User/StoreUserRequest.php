@@ -2,6 +2,7 @@
 
 namespace App\Domains\Auth\Http\Requests\Backend\User;
 
+use App\Domains\Auth\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
@@ -29,16 +30,17 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
+            'type' => ['required', Rule::in([User::TYPE_ADMIN, User::TYPE_USER])],
             'name' => ['required'],
             'email' => ['required', 'email', Rule::unique('users')],
             'password' => PasswordRules::register($this->email),
             'active' => ['sometimes', 'in:1'],
             'email_verified' => ['sometimes', 'in:1'],
             'send_confirmation_email' => ['sometimes', 'in:1'],
-            'roles' => ['required', 'array'],
-            'roles.*' => [Rule::exists('roles', 'id')],
+            'roles' => ['sometimes', 'array'],
+            'roles.*' => [Rule::exists('roles', 'id')->where('type', $this->type)],
             'permissions' => ['sometimes', 'array'],
-            'permissions.*' => [Rule::exists('permissions', 'id')],
+            'permissions.*' => [Rule::exists('permissions', 'id')->where('type', $this->type)],
         ];
     }
 
@@ -48,7 +50,8 @@ class StoreUserRequest extends FormRequest
     public function messages()
     {
         return [
-            'roles.required' => __('You must select one or more roles.'),
+            'roles.*.exists' => __('One or more roles were not found or are not allowed to be associated with this user type.'),
+            'permissions.*.exists' => __('One or more permissions were not found or are not allowed to be associated with this user type.'),
         ];
     }
 }

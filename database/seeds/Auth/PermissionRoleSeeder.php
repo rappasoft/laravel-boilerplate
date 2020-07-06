@@ -1,5 +1,6 @@
 <?php
 
+use App\Domains\Auth\Models\User;
 use App\Domains\Auth\Models\Permission;
 use App\Domains\Auth\Models\Role;
 use Illuminate\Database\Seeder;
@@ -21,53 +22,53 @@ class PermissionRoleSeeder extends Seeder
         // Create Roles
         Role::create([
             'id' => 1,
+            'type' => User::TYPE_ADMIN,
             'name' => 'Administrator',
         ]);
 
-        Role::create([
-            'id' => config('boilerplate.access.role.default'),
-            'name' => 'Member',
-        ]);
-
         // Non Grouped Permissions
-        Permission::create([
-            'name' => 'view backend',
-            'description' => 'Access Administration',
-        ]);
+        //
 
         // Grouped permissions
         // Users category
         $users = Permission::create([
+            'type' => User::TYPE_ADMIN,
             'name' => 'access.user',
             'description' => 'All User Permissions',
         ]);
 
         $users->children()->saveMany([
             new Permission([
+                'type' => User::TYPE_ADMIN,
                 'name' => 'access.user.list',
                 'description' => 'View Users',
             ]),
             new Permission([
+                'type' => User::TYPE_ADMIN,
                 'name' => 'access.user.deactivate',
                 'description' => 'Deactivate Users',
                 'sort' => 2,
             ]),
             new Permission([
+                'type' => User::TYPE_ADMIN,
                 'name' => 'access.user.reactivate',
                 'description' => 'Reactivate Users',
                 'sort' => 3,
             ]),
             new Permission([
+                'type' => User::TYPE_ADMIN,
                 'name' => 'access.user.clear-session',
                 'description' => 'Clear User Sessions',
                 'sort' => 4,
             ]),
             new Permission([
+                'type' => User::TYPE_ADMIN,
                 'name' => 'access.user.impersonate',
                 'description' => 'Impersonate Users',
                 'sort' => 5,
             ]),
             new Permission([
+                'type' => User::TYPE_ADMIN,
                 'name' => 'access.user.change-password',
                 'description' => 'Change User Passwords',
                 'sort' => 6,
@@ -75,8 +76,7 @@ class PermissionRoleSeeder extends Seeder
         ]);
 
         // Assign Permissions to other Roles
-        // Note: Admin (User 1) Has all permissions via a gate in the AuthServiceProvider
-        // $user->givePermissionTo('view backend');
+        //
 
         $this->enableForeignKeys();
     }

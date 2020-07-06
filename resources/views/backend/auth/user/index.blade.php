@@ -12,7 +12,7 @@
             @lang('User Management')
         </x-slot>
 
-        @if ($logged_in_user->isAdmin())
+        @if ($logged_in_user->hasAllAccess())
             <x-slot name="headerActions">
                 <x-utils.link
                     icon="c-icon cil-plus"
