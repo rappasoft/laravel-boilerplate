@@ -5,7 +5,6 @@ namespace Tests\Feature\Backend\Role;
 use App\Domains\Auth\Models\Permission;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
-use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
