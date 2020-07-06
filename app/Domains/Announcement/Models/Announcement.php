@@ -3,12 +3,12 @@
 namespace App\Domains\Announcement\Models;
 
 use App\Domains\Announcement\Models\Traits\Scope\AnnouncementScope;
-use App\Models\RecordingModel;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Announcement.
  */
-class Announcement extends RecordingModel
+class Announcement extends Model
 {
     use AnnouncementScope;
 

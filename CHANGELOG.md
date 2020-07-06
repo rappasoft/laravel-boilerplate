@@ -33,6 +33,10 @@ This release completely changes the way the previous authentication system worke
 - Require 2FA to be enabled to access admin
 - Change 2FA restricted redirect to enable 2FA page
 
+## Removed
+
+- Removed accountant package
+
 ## [7.0.3] - 2020-07-01
 
 ## Changed

@@ -11,8 +11,6 @@
     "require": {
         "php": "^7.2.5",
         "albertcht/invisible-recaptcha": "^1.9",
-        "altek/accountant": "^2.0",
-        "altek/eventually": "^1.0",
         "darkghosthunter/laraguard": "^2.0",
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^2.0",

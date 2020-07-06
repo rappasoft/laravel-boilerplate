@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
 
         $this->truncateMultiple([
             'failed_jobs',
-            'ledgers',
         ]);
 
         $this->call(AuthSeeder::class);

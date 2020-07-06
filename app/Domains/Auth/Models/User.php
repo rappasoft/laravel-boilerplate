@@ -2,9 +2,6 @@
 
 namespace App\Domains\Auth\Models;
 
-use Altek\Accountant\Contracts\Recordable;
-use Altek\Accountant\Recordable as RecordableTrait;
-use Altek\Eventually\Eventually;
 use App\Domains\Auth\Models\Traits\Attribute\UserAttribute;
 use App\Domains\Auth\Models\Traits\Method\UserMethod;
 use App\Domains\Auth\Models\Traits\Relationship\UserRelationship;
@@ -24,14 +21,12 @@ use Spatie\Permission\Traits\HasRoles;
 /**
  * Class User.
  */
-class User extends Authenticatable implements MustVerifyEmail, Recordable, TwoFactorAuthenticatable
+class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenticatable
 {
     use HasRoles,
-        Eventually,
         Impersonate,
         MustVerifyEmailTrait,
         Notifiable,
-        RecordableTrait,
         SoftDeletes,
         TwoFactorAuthentication,
         UserAttribute,
