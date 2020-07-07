@@ -46,7 +46,13 @@ class UserEventListener
         activity('user')
             ->performedOn($event->user)
             ->withProperties([
-                'user' => $event->user,
+                'user' => [
+                    'type' => $event->user->type,
+                    'name' => $event->user->name,
+                    'email' => $event->user->email,
+                    'active' => $event->user->active,
+                    'email_verified_at' => $event->user->email_verified_at,
+                ],
                 'roles' => $event->user->roles->count() ? $event->user->roles->pluck('name')->implode(', ') : 'None',
                 'permissions' => $event->user->permissions ? $event->user->permissions->pluck('description')->implode(', ') : 'None',
             ])
@@ -61,7 +67,11 @@ class UserEventListener
         activity('user')
             ->performedOn($event->user)
             ->withProperties([
-                'user' => $event->user,
+                'user' => [
+                    'type' => $event->user->type,
+                    'name' => $event->user->name,
+                    'email' => $event->user->email,
+                ],
                 'roles' => $event->user->roles->count() ? $event->user->roles->pluck('name')->implode(', ') : 'None',
                 'permissions' => $event->user->permissions ? $event->user->permissions->pluck('description')->implode(', ') : 'None',
             ])
