@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\Frontend\User\AccountController;
-use App\Http\Controllers\Frontend\User\DashboardController;
-use App\Http\Controllers\Frontend\User\ProfileController;
 use App\Domains\Auth\Models\User;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\TermsController;
+use App\Http\Controllers\Frontend\User\AccountController;
+use App\Http\Controllers\Frontend\User\DashboardController;
+use App\Http\Controllers\Frontend\User\ProfileController;
 
 /*
  * Frontend Controllers
