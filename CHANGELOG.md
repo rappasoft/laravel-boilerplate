@@ -40,6 +40,7 @@ This release completely changes the way the previous authentication system worke
 - Change 2FA restricted redirect to enable 2FA page
 - Automatically load roles and permissions for users and permissions for role models
 - Move user event namespace
+- Move HomeController out of auth domain
 
 ## Removed
 
