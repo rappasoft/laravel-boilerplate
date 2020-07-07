@@ -19,7 +19,7 @@ class RoleEventListener
         activity('role')
             ->performedOn($event->role)
             ->withProperties([
-                'role' => $event->role,
+                'role' => $event->role->pluck('type', 'name')->toArray(),
                 'permissions' => $event->role->permissions->count() ? $event->role->permissions->pluck('description')->implode(', ') : 'None',
             ])
             ->log(':causer.name created role :subject.name with permissions: :properties.permissions');
@@ -33,7 +33,7 @@ class RoleEventListener
         activity('role')
             ->performedOn($event->role)
             ->withProperties([
-                'role' => $event->role,
+                'role' => $event->role->pluck('type', 'name')->toArray(),
                 'permissions' =>$event->role->permissions->count() ? $event->role->permissions->pluck('description')->implode(', ') : 'None',
             ])
             ->log(':causer.name updated role :subject.name with permissions: :properties.permissions');
