@@ -31,7 +31,7 @@ class UpdateRoleRequest extends FormRequest
     {
         return [
             'type' => ['required', Rule::in([User::TYPE_ADMIN, User::TYPE_USER])],
-            'name' => ['required', Rule::unique('roles')->ignore($this->role)],
+            'name' => ['required', 'max:100', Rule::unique('roles')->ignore($this->role)],
             'permissions' => ['sometimes', 'array'],
             'permissions.*' => [Rule::exists('permissions', 'id')->where('type', $this->type)],
         ];

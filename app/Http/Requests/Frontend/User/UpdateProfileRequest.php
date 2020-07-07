@@ -28,10 +28,10 @@ class UpdateProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => ['required', 'max:100'],
             'email' => [Rule::requiredIf(function () {
                 return config('boilerplate.access.user.change_email');
-            }), 'email', Rule::unique('users')->ignore($this->user()->id)],
+            }), 'max:255', 'email', Rule::unique('users')->ignore($this->user()->id)],
         ];
     }
 }
