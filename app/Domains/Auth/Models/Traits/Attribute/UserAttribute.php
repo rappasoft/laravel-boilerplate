@@ -28,7 +28,7 @@ trait UserAttribute
      */
     public function getPermissionsLabelAttribute()
     {
-        if ($this->isAdmin()) {
+        if ($this->hasAllAccess()) {
             return 'All';
         }
 
