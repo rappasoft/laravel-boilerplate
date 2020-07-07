@@ -41,6 +41,7 @@ This release completely changes the way the previous authentication system worke
 - Automatically load roles and permissions for users and permissions for role models
 - Move user event namespace
 - Move HomeController out of auth domain
+- Change account tabs from vertical to normal because they respond better
 
 ## Removed
 
