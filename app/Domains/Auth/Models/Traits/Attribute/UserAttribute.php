@@ -24,6 +24,14 @@ trait UserAttribute
     }
 
     /**
+     * @return mixed
+     */
+    public function getAvatarAttribute()
+    {
+        return $this->getAvatar();
+    }
+
+    /**
      * @return string
      */
     public function getPermissionsLabelAttribute()
@@ -38,14 +46,6 @@ trait UserAttribute
 
         return collect($this->getPermissionDescriptions())
             ->implode('<br/>');
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAvatarAttribute()
-    {
-        return $this->getAvatar();
     }
 
     /**
