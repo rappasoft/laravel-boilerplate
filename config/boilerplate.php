@@ -37,6 +37,11 @@ return [
             'change_email' => env('CHANGE_EMAIL', false),
 
             /*
+             * When creating users from the backend, only allow the assigning of roles and not individual permissions
+             */
+            'only_roles' => false,
+
+            /*
              * How many days before users have to change their passwords
              * false is off
              */

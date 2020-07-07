@@ -29,6 +29,8 @@ This release completely changes the way the previous authentication system worke
 - Boolean for whether or not 2FA is required for admin
 - Added Terms & Conditions checkbox with validation to registration
 - Added dummy Terms & Conditions page
+- Added UUID trait back if needed
+- Added ability to only allow users to be assigned roles from the backend and not additional permissions
 
 ## Changed
 

@@ -48,7 +48,10 @@
 
                     @if (!$user->isMasterAdmin())
                         @include('backend.auth.includes.roles')
-                        @include('backend.auth.includes.permissions')
+
+                        @if (!config('boilerplate.access.user.only_roles'))
+                            @include('backend.auth.includes.permissions')
+                        @endif
                     @endif
                 </div>
             </x-slot>
