@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Frontend\User;
 
-use App\Http\Requests\Frontend\User\UpdateProfileRequest;
 use App\Domains\Auth\Services\UserService;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Frontend\User\UpdateProfileRequest;
 
 /**
  * Class ProfileController.
