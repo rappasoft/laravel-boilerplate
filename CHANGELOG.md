@@ -23,6 +23,9 @@ This release completely changes the way the previous authentication system worke
 - Update all old instances of isAdmin to hasAllAccess, and use new isAdmin where applicable
 - Frontend user dashboard now limited to user type
 - When creating/editing a role, only the permissions related to the type will be available to choose from
+- Add spatie/activitylog
+- Add events for roles and users
+- Add role event subscriber
 
 ## Changed
 
@@ -32,6 +35,8 @@ This release completely changes the way the previous authentication system worke
 - Update all tests
 - Require 2FA to be enabled to access admin
 - Change 2FA restricted redirect to enable 2FA page
+- Automatically load roles and permissions for users and permissions for role models
+- Move user event namespace
 
 ## Removed
 

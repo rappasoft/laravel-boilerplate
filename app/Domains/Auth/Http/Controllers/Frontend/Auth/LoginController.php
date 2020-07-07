@@ -2,7 +2,7 @@
 
 namespace App\Domains\Auth\Http\Controllers\Frontend\Auth;
 
-use App\Domains\Auth\Events\UserLoggedIn;
+use App\Domains\Auth\Events\User\UserLoggedIn;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Exceptions\HttpResponseException;

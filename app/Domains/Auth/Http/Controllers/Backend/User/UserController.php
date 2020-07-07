@@ -60,7 +60,7 @@ class UserController extends Controller
     public function create()
     {
         return view('backend.auth.user.create')
-            ->withRoles($this->roleService->with('permissions')->get())
+            ->withRoles($this->roleService->get())
             ->withCategories($this->permissionService->getCategorizedPermissions())
             ->withGeneral($this->permissionService->getUncategorizedPermissions());
     }
@@ -100,7 +100,7 @@ class UserController extends Controller
     {
         return view('backend.auth.user.edit')
             ->withUser($user)
-            ->withRoles($this->roleService->with('permissions')->get())
+            ->withRoles($this->roleService->get())
             ->withCategories($this->permissionService->getCategorizedPermissions())
             ->withGeneral($this->permissionService->getUncategorizedPermissions())
             ->withUsedPermissions($user->permissions->modelKeys());

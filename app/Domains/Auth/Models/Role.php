@@ -13,4 +13,11 @@ class Role extends SpatieRole
 {
     use RoleAttribute,
         RoleMethod;
+
+    /**
+     * @var string[]
+     */
+    protected $with = [
+        'permissions',
+    ];
 }

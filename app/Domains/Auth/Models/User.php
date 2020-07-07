@@ -97,6 +97,14 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
     ];
 
     /**
+     * @var string[]
+     */
+    protected $with = [
+        'permissions',
+        'roles',
+    ];
+
+    /**
      * Send the password reset notification.
      *
      * @param  string  $token

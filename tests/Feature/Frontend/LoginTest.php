@@ -2,7 +2,7 @@
 
 namespace Tests\Feature\Frontend;
 
-use App\Domains\Auth\Events\UserLoggedIn;
+use App\Domains\Auth\Events\User\UserLoggedIn;
 use App\Domains\Auth\Models\User;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Validation\ValidationException;

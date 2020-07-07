@@ -2,9 +2,11 @@
 
 namespace Tests\Feature\Backend\Role;
 
+use App\Domains\Auth\Events\Role\RoleDeleted;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 /**
@@ -17,6 +19,8 @@ class DeleteRoleTest extends TestCase
     /** @test */
     public function a_role_can_be_deleted()
     {
+        Event::fake();
+
         $role = factory(Role::class)->create();
 
         $this->loginAsAdmin();
@@ -26,6 +30,8 @@ class DeleteRoleTest extends TestCase
         $this->delete("/admin/auth/role/{$role->id}");
 
         $this->assertDatabaseMissing(config('permission.table_names.roles'), ['id' => $role->id]);
+
+        Event::assertDispatched(RoleDeleted::class);
     }
 
     /** @test */

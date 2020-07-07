@@ -2,10 +2,12 @@
 
 namespace Tests\Feature\Backend\Role;
 
+use App\Domains\Auth\Events\Role\RoleUpdated;
 use App\Domains\Auth\Models\Permission;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 /**
@@ -30,6 +32,8 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function a_role_name_can_be_updated()
     {
+        Event::fake();
+
         $role = factory(Role::class)->create();
 
         $this->loginAsAdmin();
@@ -51,6 +55,8 @@ class UpdateRoleTest extends TestCase
             'permission_id' => Permission::whereName('access.user.list')->first()->id,
             'role_id' => Role::whereName('new name')->first()->id,
         ]);
+
+        Event::assertDispatched(RoleUpdated::class);
     }
 
     /** @test */

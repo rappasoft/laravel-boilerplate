@@ -2,10 +2,12 @@
 
 namespace Tests\Feature\Backend\User;
 
+use App\Domains\Auth\Events\User\UserCreated;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
 use App\Domains\Auth\Notifications\Frontend\VerifyEmail;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
@@ -53,6 +55,8 @@ class CreateUserTest extends TestCase
     /** @test */
     public function admin_can_create_new_user()
     {
+        Event::fake();
+
         $this->loginAsAdmin();
 
         $response = $this->post('/admin/auth/user', [
@@ -84,6 +88,8 @@ class CreateUserTest extends TestCase
         ]);
 
         $response->assertSessionHas(['flash_success' => __('The user was successfully created.')]);
+
+        Event::assertDispatched(UserCreated::class);
     }
 
     /** @test */

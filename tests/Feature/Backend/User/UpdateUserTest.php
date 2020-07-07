@@ -2,9 +2,11 @@
 
 namespace Tests\Feature\Backend\User;
 
+use App\Domains\Auth\Events\User\UserUpdated;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 /**
@@ -29,6 +31,8 @@ class UpdateUserTest extends TestCase
     /** @test */
     public function a_user_can_be_updated()
     {
+        Event::fake();
+
         $this->loginAsAdmin();
 
         $user = factory(User::class)->create();
@@ -61,6 +65,8 @@ class UpdateUserTest extends TestCase
             'model_type' => User::class,
             'model_id' => User::whereEmail('john@example.com')->first()->id,
         ]);
+
+        Event::assertDispatched(UserUpdated::class);
     }
 
     /** @test */

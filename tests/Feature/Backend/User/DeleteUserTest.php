@@ -2,8 +2,11 @@
 
 namespace Tests\Feature\Backend\User;
 
+use App\Domains\Auth\Events\User\UserDeleted;
+use App\Domains\Auth\Events\User\UserDestroyed;
 use App\Domains\Auth\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 /**
@@ -34,6 +37,8 @@ class DeleteUserTest extends TestCase
     /** @test */
     public function a_user_can_be_deleted()
     {
+        Event::fake();
+
         $this->loginAsAdmin();
 
         $user = factory(User::class)->create();
@@ -43,11 +48,15 @@ class DeleteUserTest extends TestCase
         $response->assertSessionHas(['flash_success' => __('The user was successfully deleted.')]);
 
         $this->assertSoftDeleted('users', ['id' => $user->id]);
+
+        Event::assertDispatched(UserDeleted::class);
     }
 
     /** @test */
     public function a_user_can_be_permanently_deleted()
     {
+        Event::fake();
+
         config(['boilerplate.access.user.permanently_delete' => true]);
 
         $this->loginAsAdmin();
@@ -61,6 +70,8 @@ class DeleteUserTest extends TestCase
         $response->assertSessionHas(['flash_success' => __('The user was permanently deleted.')]);
 
         $this->assertDatabaseMissing('users', ['id' => $user->id]);
+
+        Event::assertDispatched(UserDestroyed::class);
     }
 
     /** @test */

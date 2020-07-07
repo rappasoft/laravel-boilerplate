@@ -2,6 +2,12 @@
 
 namespace App\Domains\Auth\Services;
 
+use App\Domains\Auth\Events\User\UserCreated;
+use App\Domains\Auth\Events\User\UserDeleted;
+use App\Domains\Auth\Events\User\UserDestroyed;
+use App\Domains\Auth\Events\User\UserRestored;
+use App\Domains\Auth\Events\User\UserStatusChanged;
+use App\Domains\Auth\Events\User\UserUpdated;
 use App\Domains\Auth\Models\User;
 use App\Exceptions\GeneralException;
 use App\Services\BaseService;
@@ -110,6 +116,8 @@ class UserService extends BaseService
             throw new GeneralException(__('There was a problem creating this user. Please try again.'));
         }
 
+        event(new UserCreated($user));
+
         DB::commit();
 
         // They didn't want to auto verify the email, but do they want to send the confirmation email to do so?
@@ -148,6 +156,8 @@ class UserService extends BaseService
 
             throw new GeneralException(__('There was a problem updating this user. Please try again.'));
         }
+
+        event(new UserUpdated($user));
 
         DB::commit();
 
@@ -221,6 +231,8 @@ class UserService extends BaseService
         $user->active = $status;
 
         if ($user->save()) {
+            event(new UserStatusChanged($user, $status));
+
             return $user;
         }
 
@@ -240,6 +252,8 @@ class UserService extends BaseService
         }
 
         if ($this->deleteById($user->id)) {
+            event(new UserDeleted($user));
+
             return $user;
         }
 
@@ -255,6 +269,8 @@ class UserService extends BaseService
     public function restore(User $user): User
     {
         if ($user->restore()) {
+            event(new UserRestored($user));
+
             return $user;
         }
 
@@ -270,6 +286,8 @@ class UserService extends BaseService
     public function destroy(User $user): bool
     {
         if ($user->forceDelete()) {
+            event(new UserDestroyed($user));
+
             return true;
         }
 

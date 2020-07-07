@@ -2,8 +2,10 @@
 
 namespace Tests\Feature\Backend\User;
 
+use App\Domains\Auth\Events\User\UserStatusChanged;
 use App\Domains\Auth\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 /**
@@ -32,6 +34,8 @@ class DeactivateReactivateUserTest extends TestCase
     /** @test */
     public function a_user_with_the_correct_permissions_can_reactivate_a_user()
     {
+        Event::fake();
+
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
         $user->syncPermissions(['access.user.reactivate']);
@@ -49,6 +53,8 @@ class DeactivateReactivateUserTest extends TestCase
             'id' => $deactivatedUser->id,
             'active' => true,
         ]);
+
+        Event::assertDispatched(UserStatusChanged::class);
     }
 
     /** @test */
@@ -76,6 +82,8 @@ class DeactivateReactivateUserTest extends TestCase
     /** @test */
     public function a_user_with_the_correct_permissions_can_deactivate_a_user()
     {
+        Event::fake();
+
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
         $user->syncPermissions(['access.user.deactivate']);
@@ -93,6 +101,8 @@ class DeactivateReactivateUserTest extends TestCase
             'id' => $activeUser->id,
             'active' => false,
         ]);
+
+        Event::assertDispatched(UserStatusChanged::class);
     }
 
     /** @test */

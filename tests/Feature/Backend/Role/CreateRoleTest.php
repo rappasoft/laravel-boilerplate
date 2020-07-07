@@ -2,10 +2,12 @@
 
 namespace Tests\Feature\Backend\Role;
 
+use App\Domains\Auth\Events\Role\RoleCreated;
 use App\Domains\Auth\Models\Permission;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 /**
@@ -46,6 +48,8 @@ class CreateRoleTest extends TestCase
     /** @test */
     public function a_role_can_be_created()
     {
+        Event::fake();
+
         $this->loginAsAdmin();
 
         $this->post('/admin/auth/role', [
@@ -65,6 +69,8 @@ class CreateRoleTest extends TestCase
             'permission_id' => Permission::whereName('access.user.list')->first()->id,
             'role_id' => Role::whereName('new role')->first()->id,
         ]);
+
+        Event::assertDispatched(RoleCreated::class);
     }
 
     /** @test */
