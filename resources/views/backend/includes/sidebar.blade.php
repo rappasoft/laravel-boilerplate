@@ -19,7 +19,7 @@
         </li>
 
         @if (
-            $logged_in_user->isAdmin() ||
+            $logged_in_user->hasAllAccess() ||
             (
                 $logged_in_user->can('access.user.list') ||
                 $logged_in_user->can('access.user.deactivate') ||
@@ -40,7 +40,7 @@
 
                 <ul class="c-sidebar-nav-dropdown-items">
                     @if (
-                        $logged_in_user->isAdmin() ||
+                        $logged_in_user->hasAllAccess() ||
                         (
                             $logged_in_user->can('access.user.list') ||
                             $logged_in_user->can('access.user.deactivate') ||
@@ -59,7 +59,7 @@
                         </li>
                     @endif
 
-                    @if ($logged_in_user->isAdmin())
+                    @if ($logged_in_user->hasAllAccess())
                         <li class="c-sidebar-nav-item">
                             <x-utils.link
                                 :href="route('admin.auth.role.index')"

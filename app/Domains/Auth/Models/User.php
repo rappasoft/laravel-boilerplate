@@ -2,9 +2,6 @@
 
 namespace App\Domains\Auth\Models;
 
-use Altek\Accountant\Contracts\Recordable;
-use Altek\Accountant\Recordable as RecordableTrait;
-use Altek\Eventually\Eventually;
 use App\Domains\Auth\Models\Traits\Attribute\UserAttribute;
 use App\Domains\Auth\Models\Traits\Method\UserMethod;
 use App\Domains\Auth\Models\Traits\Relationship\UserRelationship;
@@ -24,14 +21,12 @@ use Spatie\Permission\Traits\HasRoles;
 /**
  * Class User.
  */
-class User extends Authenticatable implements MustVerifyEmail, Recordable, TwoFactorAuthenticatable
+class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenticatable
 {
     use HasRoles,
-        Eventually,
         Impersonate,
         MustVerifyEmailTrait,
         Notifiable,
-        RecordableTrait,
         SoftDeletes,
         TwoFactorAuthentication,
         UserAttribute,
@@ -39,12 +34,16 @@ class User extends Authenticatable implements MustVerifyEmail, Recordable, TwoFa
         UserRelationship,
         UserScope;
 
+    public const TYPE_ADMIN = 'admin';
+    public const TYPE_USER = 'user';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
+        'type',
         'name',
         'email',
         'email_verified_at',
@@ -95,6 +94,14 @@ class User extends Authenticatable implements MustVerifyEmail, Recordable, TwoFa
      */
     protected $appends = [
         'avatar',
+    ];
+
+    /**
+     * @var string[]
+     */
+    protected $with = [
+        'permissions',
+        'roles',
     ];
 
     /**

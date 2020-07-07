@@ -26,10 +26,20 @@ return [
 
         'user' => [
             /*
+             * Whether or not admins need 2FA enabled to visit the backend
+             */
+            'admin_requires_2fa' => env('ADMIN_REQUIRES_2FA', true),
+
+            /*
              * Whether or not a user can change their email address after
              * their account has already been created
              */
             'change_email' => env('CHANGE_EMAIL', false),
+
+            /*
+             * When creating users from the backend, only allow the assigning of roles and not individual permissions
+             */
+            'only_roles' => false,
 
             /*
              * How many days before users have to change their passwords
@@ -54,12 +64,6 @@ return [
             'permanently_delete' => false,
 
             /*
-             * Use the homeRoute() helper to determine where to send the user after login based on their status
-             * If false the frontend.index route will be used
-             */
-            'redirect' => true,
-
-            /*
              * Whether or not the register route and view are active
              */
             'registration' => env('ENABLE_REGISTRATION', true),
@@ -81,12 +85,6 @@ return [
              * It is not recommended to change
              */
             'admin' => 'Administrator',
-
-            /*
-             * The ID of the default role to give newly registered users
-             * Use ID because the name can be changed from the backend
-             */
-            'default' => 2,
         ],
     ],
 

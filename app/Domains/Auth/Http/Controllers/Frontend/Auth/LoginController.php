@@ -2,9 +2,8 @@
 
 namespace App\Domains\Auth\Http\Controllers\Frontend\Auth;
 
-use App\Domains\Auth\Events\UserLoggedIn;
+use App\Domains\Auth\Events\User\UserLoggedIn;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
@@ -27,13 +26,6 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Where to redirect users after login.
@@ -66,8 +58,8 @@ class LoginController extends Controller
     protected function validateLogin(Request $request)
     {
         $request->validate([
-            $this->username() => 'required|string',
-            'password' => PasswordRules::login(),
+            $this->username() => ['required', 'max:255', 'string'],
+            'password' => array_merge(['max:100'], PasswordRules::login()),
             'g-recaptcha-response' => ['required_if:captcha_status,true', 'captcha'],
         ], [
             'g-recaptcha-response.required_if' => __('validation.required', ['attribute' => 'captcha']),

@@ -3,7 +3,6 @@
 namespace Tests\Feature\Backend\User;
 
 use App\Domains\Auth\Models\User;
-use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
@@ -18,17 +17,15 @@ class ChangeUserPasswordTest extends TestCase
     /** @test */
     public function only_a_user_with_correct_permissions_can_visit_the_change_user_password_page()
     {
-        $this->withoutMiddleware(RequirePassword::class);
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $this->actingAs($user = factory(User::class)->create());
-
-        $user->syncPermissions(['view backend', 'access.user.change-password']);
+        $user->syncPermissions(['access.user.change-password']);
 
         $newUser = factory(User::class)->create();
 
         $this->get('/admin/auth/user/'.$newUser->id.'/password/change')->assertOk();
 
-        $user->syncPermissions(['view backend']);
+        $user->syncPermissions([]);
 
         $response = $this->get('/admin/auth/user/'.$newUser->id.'/password/change');
 
@@ -38,11 +35,9 @@ class ChangeUserPasswordTest extends TestCase
     /** @test */
     public function only_a_user_with_correct_permissions_can_change_a_users_password()
     {
-        $this->withoutMiddleware(RequirePassword::class);
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $this->actingAs($user = factory(User::class)->create());
-
-        $user->syncPermissions(['view backend', 'access.user.change-password']);
+        $user->syncPermissions(['access.user.change-password']);
 
         $newUser = factory(User::class)->create();
 
@@ -53,7 +48,7 @@ class ChangeUserPasswordTest extends TestCase
 
         $response->assertSessionHas('flash_success', __('The user\'s password was successfully updated.'));
 
-        $user->syncPermissions(['view backend']);
+        $user->syncPermissions([]);
 
         $response = $this->patch('/admin/auth/user/'.$newUser->id.'/password/change', [
             'password' => 'OC4Nzu270N!QBVi%U%qX',
@@ -66,8 +61,6 @@ class ChangeUserPasswordTest extends TestCase
     /** @test */
     public function the_password_can_be_validated()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $user = factory(User::class)->create();
@@ -83,8 +76,6 @@ class ChangeUserPasswordTest extends TestCase
     /** @test */
     public function the_passwords_must_match()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $user = factory(User::class)->create();
@@ -100,11 +91,9 @@ class ChangeUserPasswordTest extends TestCase
     /** @test */
     public function only_the_master_admin_can_view_the_change_password_screen()
     {
-        $this->withoutMiddleware(RequirePassword::class);
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $this->actingAs($user = factory(User::class)->create());
-
-        $user->syncPermissions(['view backend', 'access.user.change-password']);
+        $user->syncPermissions(['access.user.change-password']);
 
         $admin = $this->getMasterAdmin();
 
@@ -122,11 +111,9 @@ class ChangeUserPasswordTest extends TestCase
     /** @test */
     public function only_the_master_admin_can_change_their_password()
     {
-        $this->withoutMiddleware(RequirePassword::class);
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $this->actingAs($user = factory(User::class)->create());
-
-        $user->syncPermissions(['view backend', 'access.user.change-password']);
+        $user->syncPermissions(['access.user.change-password']);
 
         $admin = $this->getMasterAdmin();
 
@@ -153,8 +140,6 @@ class ChangeUserPasswordTest extends TestCase
     /** @test */
     public function an_admin_can_use_the_same_password_when_history_is_off_on_backend_user_password_change()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         config(['boilerplate.access.user.password_history' => false]);
 
         $this->loginAsAdmin();
@@ -173,8 +158,6 @@ class ChangeUserPasswordTest extends TestCase
     /** @test */
     public function an_admin_can_not_use_the_same_password_when_history_is_on_on_backend_user_password_change()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         config(['boilerplate.access.user.password_history' => 3]);
 
         $this->loginAsAdmin();

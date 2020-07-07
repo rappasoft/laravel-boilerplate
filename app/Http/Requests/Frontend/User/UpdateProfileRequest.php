@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\Auth\Http\Requests\Frontend\User;
+namespace App\Http\Requests\Frontend\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -28,10 +28,10 @@ class UpdateProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
+            'name' => ['required', 'max:100'],
             'email' => [Rule::requiredIf(function () {
                 return config('boilerplate.access.user.change_email');
-            }), 'email', Rule::unique('users')->ignore($this->user()->id)],
+            }), 'max:255', 'email', Rule::unique('users')->ignore($this->user()->id)],
         ];
     }
 }

@@ -2,6 +2,12 @@
 
 namespace App\Domains\Auth\Services;
 
+use App\Domains\Auth\Events\User\UserCreated;
+use App\Domains\Auth\Events\User\UserDeleted;
+use App\Domains\Auth\Events\User\UserDestroyed;
+use App\Domains\Auth\Events\User\UserRestored;
+use App\Domains\Auth\Events\User\UserStatusChanged;
+use App\Domains\Auth\Events\User\UserUpdated;
 use App\Domains\Auth\Models\User;
 use App\Exceptions\GeneralException;
 use App\Services\BaseService;
@@ -36,7 +42,6 @@ class UserService extends BaseService
 
         try {
             $user = $this->createUser($data);
-            $this->assignDefaultRole($user);
         } catch (Exception $e) {
             DB::rollBack();
 
@@ -70,8 +75,6 @@ class UserService extends BaseService
                     'provider_id' => $info->id,
                     'email_verified_at' => now(),
                 ]);
-
-                $this->assignDefaultRole($user);
             } catch (Exception $e) {
                 DB::rollBack();
 
@@ -97,6 +100,7 @@ class UserService extends BaseService
 
         try {
             $user = $this->createUser([
+                'type' => $data['type'],
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => $data['password'],
@@ -105,12 +109,17 @@ class UserService extends BaseService
             ]);
 
             $user->syncRoles($data['roles'] ?? []);
-            $user->syncPermissions($data['permissions'] ?? []);
+
+            if (! config('boilerplate.access.user.only_roles')) {
+                $user->syncPermissions($data['permissions'] ?? []);
+            }
         } catch (Exception $e) {
             DB::rollBack();
 
             throw new GeneralException(__('There was a problem creating this user. Please try again.'));
         }
+
+        event(new UserCreated($user));
 
         DB::commit();
 
@@ -135,6 +144,7 @@ class UserService extends BaseService
 
         try {
             $user->update([
+                'type' => $user->isMasterAdmin() ? $this->model::TYPE_ADMIN : $data['type'] ?? $user->type,
                 'name' => $data['name'],
                 'email' => $data['email'],
             ]);
@@ -142,13 +152,18 @@ class UserService extends BaseService
             if (! $user->isMasterAdmin()) {
                 // Replace selected roles/permissions
                 $user->syncRoles($data['roles'] ?? []);
-                $user->syncPermissions($data['permissions'] ?? []);
+
+                if (! config('boilerplate.access.user.only_roles')) {
+                    $user->syncPermissions($data['permissions'] ?? []);
+                }
             }
         } catch (Exception $e) {
             DB::rollBack();
 
             throw new GeneralException(__('There was a problem updating this user. Please try again.'));
         }
+
+        event(new UserUpdated($user));
 
         DB::commit();
 
@@ -222,6 +237,8 @@ class UserService extends BaseService
         $user->active = $status;
 
         if ($user->save()) {
+            event(new UserStatusChanged($user, $status));
+
             return $user;
         }
 
@@ -241,6 +258,8 @@ class UserService extends BaseService
         }
 
         if ($this->deleteById($user->id)) {
+            event(new UserDeleted($user));
+
             return $user;
         }
 
@@ -256,6 +275,8 @@ class UserService extends BaseService
     public function restore(User $user): User
     {
         if ($user->restore()) {
+            event(new UserRestored($user));
+
             return $user;
         }
 
@@ -271,6 +292,8 @@ class UserService extends BaseService
     public function destroy(User $user): bool
     {
         if ($user->forceDelete()) {
+            event(new UserDestroyed($user));
+
             return true;
         }
 
@@ -285,6 +308,7 @@ class UserService extends BaseService
     protected function createUser(array $data = []): User
     {
         return $this->model::create([
+            'type' => $data['type'] ?? $this->model::TYPE_USER,
             'name' => $data['name'] ?? null,
             'email' => $data['email'] ?? null,
             'password' => $data['password'] ?? null,
@@ -293,15 +317,5 @@ class UserService extends BaseService
             'email_verified_at' => $data['email_verified_at'] ?? null,
             'active' => $data['active'] ?? true,
         ]);
-    }
-
-    /**
-     * @param  User  $user
-     *
-     * @return User
-     */
-    protected function assignDefaultRole(User $user): User
-    {
-        return $user->assignRole(config('boilerplate.access.role.default'));
     }
 }

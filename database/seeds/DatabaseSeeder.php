@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->truncateMultiple([
+            'activity_log',
             'failed_jobs',
-            'ledgers',
         ]);
 
         $this->call(AuthSeeder::class);

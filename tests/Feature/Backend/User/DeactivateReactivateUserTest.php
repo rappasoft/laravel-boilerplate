@@ -2,9 +2,10 @@
 
 namespace Tests\Feature\Backend\User;
 
+use App\Domains\Auth\Events\User\UserStatusChanged;
 use App\Domains\Auth\Models\User;
-use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 /**
@@ -17,15 +18,13 @@ class DeactivateReactivateUserTest extends TestCase
     /** @test */
     public function only_a_user_with_correct_permissions_can_visit_deactivated_users()
     {
-        $this->withoutMiddleware(RequirePassword::class);
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $this->actingAs($user = factory(User::class)->create());
-
-        $user->syncPermissions(['view backend', 'access.user.reactivate']);
+        $user->syncPermissions(['access.user.reactivate']);
 
         $this->get('/admin/auth/user/deactivated')->assertOk();
 
-        $user->syncPermissions(['view backend']);
+        $user->syncPermissions([]);
 
         $response = $this->get('/admin/auth/user/deactivated');
 
@@ -35,11 +34,11 @@ class DeactivateReactivateUserTest extends TestCase
     /** @test */
     public function a_user_with_the_correct_permissions_can_reactivate_a_user()
     {
-        $this->withoutMiddleware(RequirePassword::class);
+        Event::fake();
 
-        $this->actingAs($user = factory(User::class)->create());
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['view backend', 'access.user.reactivate']);
+        $user->syncPermissions(['access.user.reactivate']);
 
         $deactivatedUser = factory(User::class)->state('inactive')->create();
 
@@ -54,16 +53,14 @@ class DeactivateReactivateUserTest extends TestCase
             'id' => $deactivatedUser->id,
             'active' => true,
         ]);
+
+        Event::assertDispatched(UserStatusChanged::class);
     }
 
     /** @test */
     public function a_user_without_the_correct_permissions_can_not_reactivate_a_user()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
-        $this->actingAs($user = factory(User::class)->create());
-
-        $user->syncPermissions(['view backend']);
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
         $deactivatedUser = factory(User::class)->state('inactive')->create();
 
@@ -85,11 +82,11 @@ class DeactivateReactivateUserTest extends TestCase
     /** @test */
     public function a_user_with_the_correct_permissions_can_deactivate_a_user()
     {
-        $this->withoutMiddleware(RequirePassword::class);
+        Event::fake();
 
-        $this->actingAs($user = factory(User::class)->create());
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['view backend', 'access.user.deactivate']);
+        $user->syncPermissions(['access.user.deactivate']);
 
         $activeUser = factory(User::class)->state('active')->create();
 
@@ -104,16 +101,14 @@ class DeactivateReactivateUserTest extends TestCase
             'id' => $activeUser->id,
             'active' => false,
         ]);
+
+        Event::assertDispatched(UserStatusChanged::class);
     }
 
     /** @test */
     public function a_user_without_the_correct_permissions_can_not_deactivate_a_user()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
-        $this->actingAs($user = factory(User::class)->create());
-
-        $user->syncPermissions(['view backend']);
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
         $activeUser = factory(User::class)->state('active')->create();
 
@@ -135,11 +130,9 @@ class DeactivateReactivateUserTest extends TestCase
     /** @test */
     public function a_user_can_not_deactivate_themselves()
     {
-        $this->withoutMiddleware(RequirePassword::class);
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $this->actingAs($user = factory(User::class)->create());
-
-        $user->syncPermissions(['view backend', 'access.user.deactivate']);
+        $user->syncPermissions(['access.user.deactivate']);
 
         $response = $this->patch('/admin/auth/user/'.$user->id.'/mark/0');
 
@@ -149,11 +142,9 @@ class DeactivateReactivateUserTest extends TestCase
     /** @test */
     public function a_user_can_not_deactivate_the_master_admin()
     {
-        $this->withoutMiddleware(RequirePassword::class);
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $this->actingAs($user = factory(User::class)->create());
-
-        $user->syncPermissions(['view backend', 'access.user.deactivate']);
+        $user->syncPermissions(['access.user.deactivate']);
 
         $response = $this->patch('/admin/auth/user/'.$this->getMasterAdmin()->id.'/mark/0');
 

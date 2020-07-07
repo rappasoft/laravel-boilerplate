@@ -2,9 +2,11 @@
 
 namespace Tests\Feature\Backend\User;
 
+use App\Domains\Auth\Events\User\UserDeleted;
+use App\Domains\Auth\Events\User\UserDestroyed;
 use App\Domains\Auth\Models\User;
-use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 /**
@@ -17,8 +19,6 @@ class DeleteUserTest extends TestCase
     /** @test */
     public function an_admin_can_access_deleted_users_page()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $response = $this->get('/admin/auth/user/deleted');
@@ -37,7 +37,7 @@ class DeleteUserTest extends TestCase
     /** @test */
     public function a_user_can_be_deleted()
     {
-        $this->withoutMiddleware(RequirePassword::class);
+        Event::fake();
 
         $this->loginAsAdmin();
 
@@ -48,12 +48,14 @@ class DeleteUserTest extends TestCase
         $response->assertSessionHas(['flash_success' => __('The user was successfully deleted.')]);
 
         $this->assertSoftDeleted('users', ['id' => $user->id]);
+
+        Event::assertDispatched(UserDeleted::class);
     }
 
     /** @test */
     public function a_user_can_be_permanently_deleted()
     {
-        $this->withoutMiddleware(RequirePassword::class);
+        Event::fake();
 
         config(['boilerplate.access.user.permanently_delete' => true]);
 
@@ -68,13 +70,13 @@ class DeleteUserTest extends TestCase
         $response->assertSessionHas(['flash_success' => __('The user was permanently deleted.')]);
 
         $this->assertDatabaseMissing('users', ['id' => $user->id]);
+
+        Event::assertDispatched(UserDestroyed::class);
     }
 
     /** @test */
     public function a_user_cant_be_permanently_deleted_if_the_option_is_off()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         config(['boilerplate.access.user.permanently_delete' => false]);
 
         $this->loginAsAdmin();
@@ -91,8 +93,6 @@ class DeleteUserTest extends TestCase
     /** @test */
     public function a_user_can_be_restored()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $user = factory(User::class)->state('deleted')->create();
@@ -109,10 +109,8 @@ class DeleteUserTest extends TestCase
     /** @test */
     public function the_master_administrator_can_not_be_deleted()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $admin = $this->getMasterAdmin();
-        $user = factory(User::class)->create();
+        $user = factory(User::class)->state('admin')->create();
         $user->assignRole($this->getAdminRole());
         $this->actingAs($user);
 
@@ -126,9 +124,7 @@ class DeleteUserTest extends TestCase
     /** @test */
     public function a_user_can_not_delete_themselves()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
-        $user = factory(User::class)->create();
+        $user = factory(User::class)->state('admin')->create();
         $user->assignRole($this->getAdminRole());
         $this->actingAs($user);
 

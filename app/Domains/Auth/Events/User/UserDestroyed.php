@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Domains\Auth\Events;
+namespace App\Domains\Auth\Events\User;
 
 use App\Domains\Auth\Models\User;
 use Illuminate\Queue\SerializesModels;
 
 /**
- * Class UserLoggedIn.
+ * Class UserDestroyed.
  */
-class UserLoggedIn
+class UserDestroyed
 {
     use SerializesModels;
 

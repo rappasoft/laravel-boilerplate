@@ -27,7 +27,7 @@ class DisableTwoFactorAuthenticationRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => ['required', 'totp_code'],
+            'code' => ['required', 'max:10', 'totp_code'],
         ];
     }
 }

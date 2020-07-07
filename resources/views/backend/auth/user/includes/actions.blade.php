@@ -1,4 +1,4 @@
-@if ($user->trashed() && $logged_in_user->isAdmin())
+@if ($user->trashed() && $logged_in_user->hasAllAccess())
     <x-utils.form-button
         :action="route('admin.auth.user.restore', $user)"
         method="patch"
@@ -15,7 +15,7 @@
             :text="__('Permanently Delete')" />
     @endif
 @else
-    @if ($logged_in_user->isAdmin())
+    @if ($logged_in_user->hasAllAccess())
         <x-utils.view-button :href="route('admin.auth.user.show', $user)" />
         <x-utils.edit-button :href="route('admin.auth.user.edit', $user)" />
     @endif
@@ -33,7 +33,7 @@
         </x-utils.form-button>
     @endif
 
-    @if ($user->id !== $logged_in_user->id && !$user->isMasterAdmin() && $logged_in_user->isAdmin())
+    @if ($user->id !== $logged_in_user->id && !$user->isMasterAdmin() && $logged_in_user->hasAllAccess())
         <x-utils.delete-button :href="route('admin.auth.user.destroy', $user)" />
     @endif
 

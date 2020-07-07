@@ -15,6 +15,11 @@
         <x-slot name="body">
             <table class="table table-hover">
                 <tr>
+                    <th>@lang('Type')</th>
+                    <td>@include('backend.auth.user.includes.type')</td>
+                </tr>
+
+                <tr>
                     <th>@lang('Avatar')</th>
                     <td><img src="{{ $user->avatar }}" class="user-profile-image" /></td>
                 </tr>

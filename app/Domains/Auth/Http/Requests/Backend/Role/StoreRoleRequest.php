@@ -2,6 +2,7 @@
 
 namespace App\Domains\Auth\Http\Requests\Backend\Role;
 
+use App\Domains\Auth\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -28,9 +29,20 @@ class StoreRoleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', Rule::unique('roles')],
+            'type' => ['required', Rule::in([User::TYPE_ADMIN, User::TYPE_USER])],
+            'name' => ['required', 'max:100', Rule::unique('roles')],
             'permissions' => ['sometimes', 'array'],
-            'permissions.*' => [Rule::exists('permissions', 'id')],
+            'permissions.*' => [Rule::exists('permissions', 'id')->where('type', $this->type)],
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'permissions.*.exists' => __('One or more permissions were not found or are not allowed to be associated with this role type.'),
         ];
     }
 }
