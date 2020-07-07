@@ -27,6 +27,8 @@ This release completely changes the way the previous authentication system worke
 - Add events for roles and users
 - Add role event subscriber
 - Boolean for whether or not 2FA is required for admin
+- Added Terms & Conditions checkbox with validation to registration
+- Added dummy Terms & Conditions page
 
 ## Changed
 

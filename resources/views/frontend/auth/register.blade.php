@@ -44,6 +44,17 @@
                             </div>
                         </div><!--form-group-->
 
+                        <div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input type="checkbox" name="terms" value="1" id="terms" class="form-check-input" required>
+                                    <label class="form-check-label" for="terms">
+                                        @lang('I agree to the') <a href="{{ route('frontend.pages.terms') }}" target="_blank">@lang('Terms & Conditions')</a>
+                                    </label>
+                                </div>
+                            </div>
+                        </div><!--form-group-->
+
                         @if(config('boilerplate.access.captcha.registration'))
                             <div class="row">
                                 <div class="col">
