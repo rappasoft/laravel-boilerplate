@@ -22,6 +22,11 @@ class TwoFactorAuthenticationStatus
             abort(404);
         }
 
+        // If the backend does not require 2FA than continue
+        if ($status === 'enabled' && $request->is('admin/dashboard') && !config('boilerplate.access.user.admin_requires_2fa')) {
+            return $next($request);
+        }
+
         // Page requires 2fa, but user is not enabled or page does not require 2fa, but it is enabled
         if (
             ($status === 'enabled' && ! $request->user()->hasTwoFactorEnabled()) ||

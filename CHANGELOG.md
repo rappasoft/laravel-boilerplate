@@ -26,6 +26,7 @@ This release completely changes the way the previous authentication system worke
 - Add spatie/activitylog
 - Add events for roles and users
 - Add role event subscriber
+- Boolean for whether or not 2FA is required for admin
 
 ## Changed
 
