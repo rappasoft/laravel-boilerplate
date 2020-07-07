@@ -110,7 +110,7 @@ class UserService extends BaseService
 
             $user->syncRoles($data['roles'] ?? []);
 
-            if (!config('boilerplate.access.user.only_roles')) {
+            if (! config('boilerplate.access.user.only_roles')) {
                 $user->syncPermissions($data['permissions'] ?? []);
             }
         } catch (Exception $e) {
@@ -153,7 +153,7 @@ class UserService extends BaseService
                 // Replace selected roles/permissions
                 $user->syncRoles($data['roles'] ?? []);
 
-                if (!config('boilerplate.access.user.only_roles')) {
+                if (! config('boilerplate.access.user.only_roles')) {
                     $user->syncPermissions($data['permissions'] ?? []);
                 }
             }
