@@ -2,6 +2,8 @@
 
 @if ($role->type === $user::TYPE_ADMIN)
     @lang('Administrator')
-@else
+@elseif ($role->type === $user::TYPE_USER)
     @lang('User')
+@else
+    @lang('N/A')
 @endif
