@@ -31,6 +31,21 @@ class UserService extends BaseService
     }
 
     /**
+     * @param $type
+     * @param  bool|int  $perPage
+     *
+     * @return mixed
+     */
+    public function getByType($type, $perPage = false)
+    {
+        if (is_numeric($perPage)) {
+            return $this->model::byType($type)->paginate($perPage);
+        }
+
+        return $this->model::byType($type)->get();
+    }
+
+    /**
      * @param  array  $data
      *
      * @return mixed

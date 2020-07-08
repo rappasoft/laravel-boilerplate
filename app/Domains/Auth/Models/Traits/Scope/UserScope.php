@@ -26,4 +26,15 @@ trait UserScope
     {
         return $query->whereActive(true);
     }
+
+    /**
+     * @param $query
+     * @param $type
+     *
+     * @return mixed
+     */
+    public function scopeByType($query, $type)
+    {
+        return $query->where('type', $type);
+    }
 }
