@@ -3,6 +3,52 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [7.1.0] - 2020-07-07
+
+This release completely changes the way the previous authentication system worked. I probably went through 5 different iterations of a multi auth/guard architecture, but it became too messy and there are too many variables when dealing with different user tables and multiple different sessions. The solution I came up with I think serves the same purpose without the complexities. There is a new `type` column on the users table that is a predefined list of user types that your system supports, and a middleware to lock parts down to different types. The roles and permissions also have a corresponding `type` column to organize what roles and permissions are available to what user types, and the backend will only let you choose from the correct ones. For example: Any user of type `admin` can access the admin area, but they cannot do anything without a corresponding role or permission to a given section. This will let you structure your applications better if the use multiple different user types that have access to different areas, without using different guards, all with one users table and one login form.
+
+## Added
+
+- Add user type check middleware
+- User accounts no longer require roles
+- The roles and permissions a user can have are now constrained by their type
+- Change isAdmin to hasAllAccess, because isAdmin now repurposed to check type
+- Update UserService to reflect type, no longer assign default role to users
+- Delete view backend permission as all users of admin type can view the backend.
+- Add type column to user/role tables
+- Update the global gate to check hasAllAccess instead of isAdmin, since now an admin may not have all access
+- Remove redirect and default user role from boilerplate config
+- Update factories and seeders
+- When creating a user from the backend, a new type dropdown is available, and will show the correct roles/permissions for that type to be able to choose from and validate on the backend
+- Update all old instances of isAdmin to hasAllAccess, and use new isAdmin where applicable
+- Frontend user dashboard now limited to user type
+- When creating/editing a role, only the permissions related to the type will be available to choose from
+- Add spatie/activitylog
+- Add events for roles and users
+- Add role event subscriber
+- Boolean for whether or not 2FA is required for admin
+- Added Terms & Conditions checkbox with validation to registration
+- Added dummy Terms & Conditions page
+- Added UUID trait back if needed
+- Added ability to only allow users to be assigned roles from the backend and not additional permissions
+
+## Changed
+
+- Change password histories to be polymorphic
+- Make alert banners shorter vertically
+- Refactor system to use user types to define who can view certain areas, then use roles and permissions from there to narrow down further.
+- Update all tests
+- Require 2FA to be enabled to access admin
+- Change 2FA restricted redirect to enable 2FA page
+- Automatically load roles and permissions for users and permissions for role models
+- Move user event namespace
+- Move HomeController out of auth domain
+- Change account tabs from vertical to normal because they respond better
+
+## Removed
+
+- Removed accountant package
+
 ## [7.0.3] - 2020-07-01
 
 ## Changed

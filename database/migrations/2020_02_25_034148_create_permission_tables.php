@@ -1,5 +1,6 @@
 <?php
 
+use App\Domains\Auth\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +19,7 @@ class CreatePermissionTables extends Migration
 
         Schema::create($tableNames['permissions'], function (Blueprint $table) use ($tableNames) {
             $table->bigIncrements('id');
+            $table->enum('type', [User::TYPE_ADMIN, User::TYPE_USER]);
             $table->string('guard_name');
             $table->string('name');
             $table->string('description')->nullable();
@@ -33,6 +35,7 @@ class CreatePermissionTables extends Migration
 
         Schema::create($tableNames['roles'], function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->enum('type', [User::TYPE_ADMIN, User::TYPE_USER]);
             $table->string('name');
             $table->string('guard_name');
             $table->timestamps();

@@ -2,10 +2,11 @@
 
 namespace Tests\Feature\Backend\User;
 
+use App\Domains\Auth\Events\User\UserUpdated;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
-use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 /**
@@ -18,8 +19,6 @@ class UpdateUserTest extends TestCase
     /** @test */
     public function an_admin_can_access_the_edit_user_page()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $user = factory(User::class)->create();
@@ -32,7 +31,7 @@ class UpdateUserTest extends TestCase
     /** @test */
     public function a_user_can_be_updated()
     {
-        $this->withoutMiddleware(RequirePassword::class);
+        Event::fake();
 
         $this->loginAsAdmin();
 
@@ -40,11 +39,13 @@ class UpdateUserTest extends TestCase
 
         $this->assertDatabaseMissing('users', [
             'id' => $user->id,
+            'type' => User::TYPE_ADMIN,
             'name' => 'John Doe',
             'email' => 'john@example.com',
         ]);
 
         $this->patch("/admin/auth/user/{$user->id}", [
+            'type' => User::TYPE_ADMIN,
             'name' => 'John Doe',
             'email' => 'john@example.com',
             'roles' => [
@@ -54,6 +55,7 @@ class UpdateUserTest extends TestCase
 
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
+            'type' => User::TYPE_ADMIN,
             'name' => 'John Doe',
             'email' => 'john@example.com',
         ]);
@@ -63,20 +65,20 @@ class UpdateUserTest extends TestCase
             'model_type' => User::class,
             'model_id' => User::whereEmail('john@example.com')->first()->id,
         ]);
+
+        Event::assertDispatched(UserUpdated::class);
     }
 
     /** @test */
     public function only_the_master_admin_can_edit_themselves()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $admin = $this->loginAsAdmin();
 
         $this->get("/admin/auth/user/{$admin->id}/edit")->assertOk();
 
         $this->logout();
 
-        $otherAdmin = factory(User::class)->create();
+        $otherAdmin = factory(User::class)->state('admin')->create();
         $otherAdmin->assignRole(config('boilerplate.access.role.admin'));
 
         $this->actingAs($otherAdmin);
@@ -89,8 +91,6 @@ class UpdateUserTest extends TestCase
     /** @test */
     public function only_the_master_admin_can_update_themselves()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $admin = $this->loginAsAdmin();
 
         $this->assertDatabaseMissing('users', [
@@ -114,7 +114,7 @@ class UpdateUserTest extends TestCase
 
         // Make sure other admins can not update the master admin
 
-        $otherAdmin = factory(User::class)->create();
+        $otherAdmin = factory(User::class)->state('admin')->create();
         $otherAdmin->assignRole(config('boilerplate.access.role.admin'));
 
         $this->actingAs($otherAdmin);
@@ -137,8 +137,6 @@ class UpdateUserTest extends TestCase
     /** @test */
     public function the_master_admins_abilities_can_not_be_modified()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $admin = $this->loginAsAdmin();
 
         $role = factory(Role::class)->create();
@@ -165,11 +163,12 @@ class UpdateUserTest extends TestCase
     /** @test */
     public function only_admin_can_update_roles()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(factory(User::class)->state('admin')->create());
 
-        $user = factory(User::class)->create(['name' => 'John Doe']);
+        $user = factory(User::class)->state('admin')->create(['name' => 'John Doe']);
 
         $response = $this->patch("/admin/auth/user/{$user->id}", [
+            'type' => User::TYPE_USER,
             'name' => 'Jane Doe',
         ]);
 
@@ -177,6 +176,7 @@ class UpdateUserTest extends TestCase
 
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
+            'type' => User::TYPE_ADMIN,
             'name' => 'John Doe',
         ]);
     }

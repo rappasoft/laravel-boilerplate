@@ -38,6 +38,7 @@
                                             @else
                                                 <em>@lang('Not Used')</em>
                                             @endif
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div><!--col-->

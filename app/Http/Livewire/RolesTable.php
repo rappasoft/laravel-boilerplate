@@ -32,6 +32,9 @@ class RolesTable extends TableComponent
     public function columns(): array
     {
         return [
+            Column::make(__('Type'))
+                ->view('backend.auth.role.includes.type', 'role')
+                ->sortable(),
             Column::make(__('Name'))
                 ->searchable()
                 ->sortable(),

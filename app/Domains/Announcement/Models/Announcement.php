@@ -3,17 +3,22 @@
 namespace App\Domains\Announcement\Models;
 
 use App\Domains\Announcement\Models\Traits\Scope\AnnouncementScope;
-use App\Models\RecordingModel;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 /**
  * Class Announcement.
  */
-class Announcement extends RecordingModel
+class Announcement extends Model
 {
-    use AnnouncementScope;
+    use AnnouncementScope,
+        LogsActivity;
 
     public const TYPE_FRONTEND = 'frontend';
     public const TYPE_BACKEND = 'backend';
+
+    protected static $logFillable = true;
+    protected static $logOnlyDirty = true;
 
     /**
      * @var string[]

@@ -2,11 +2,12 @@
 
 namespace Tests\Feature\Backend\Role;
 
+use App\Domains\Auth\Events\Role\RoleUpdated;
 use App\Domains\Auth\Models\Permission;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
-use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Event;
 use Tests\TestCase;
 
 /**
@@ -19,8 +20,6 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function the_name_is_required()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $role = factory(Role::class)->create();
 
         $this->loginAsAdmin();
@@ -33,34 +32,36 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function a_role_name_can_be_updated()
     {
-        $this->withoutMiddleware(RequirePassword::class);
+        Event::fake();
 
         $role = factory(Role::class)->create();
 
         $this->loginAsAdmin();
 
         $this->patch("/admin/auth/role/{$role->id}", [
+            'type' => User::TYPE_ADMIN,
             'name' => 'new name',
             'permissions' => [
-                Permission::whereName('view backend')->first()->id,
+                Permission::whereName('access.user.list')->first()->id,
             ],
         ]);
 
         $this->assertDatabaseHas('roles', [
+            'type' => User::TYPE_ADMIN,
             'name' => 'new name',
         ]);
 
         $this->assertDatabaseHas('role_has_permissions', [
-            'permission_id' => Permission::whereName('view backend')->first()->id,
+            'permission_id' => Permission::whereName('access.user.list')->first()->id,
             'role_id' => Role::whereName('new name')->first()->id,
         ]);
+
+        Event::assertDispatched(RoleUpdated::class);
     }
 
     /** @test */
     public function the_admin_role_can_not_be_updated()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $role = Role::whereName(config('boilerplate.access.role.admin'))->first();
@@ -79,8 +80,6 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function only_admin_can_edit_roles()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $role = factory(Role::class)->create(['name' => 'current name']);
@@ -91,8 +90,6 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function the_admin_role_can_not_be_edited()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->loginAsAdmin();
 
         $role = Role::whereName(config('boilerplate.access.role.admin'))->first();
@@ -105,8 +102,6 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function a_non_admin_can_not_edit_roles()
     {
-        $this->withoutMiddleware(RequirePassword::class);
-
         $this->actingAs(factory(User::class)->create());
 
         $role = factory(Role::class)->create(['name' => 'current name']);
@@ -119,7 +114,7 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function only_admin_can_update_roles()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(factory(User::class)->state('admin')->create());
 
         $role = factory(Role::class)->create(['name' => 'current name']);
 

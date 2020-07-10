@@ -29,9 +29,10 @@ class UpdatePasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'current_password' => ['required'],
+            'current_password' => ['required', 'max:100'],
             'password' => array_merge(
                 [
+                    'max:100',
                     new UnusedPassword($this->user()),
                 ],
                 PasswordRules::changePassword(

@@ -4,6 +4,7 @@ use App\Http\Controllers\LocaleController;
 
 /*
  * Global Routes
+ *
  * Routes that are used between both frontend and backend.
  */
 
@@ -19,15 +20,9 @@ Route::group(['as' => 'frontend.'], function () {
 
 /*
  * Backend Routes
+ *
+ * These routes can only be accessed by users with type `admin`
  */
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
-    /*
-     * These routes need 'view backend' permission
-     * (good if you want to allow more than one group in the backend,
-     * then limit the backend features by different roles or permissions)
-     *
-     * Note: Administrator has all permissions so you do not have to specify the administrator role everywhere.
-     * These routes can not be hit if the password is expired
-     */
     includeRouteFiles(__DIR__.'/backend/');
 });

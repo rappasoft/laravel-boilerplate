@@ -3,7 +3,6 @@
 namespace Tests\Feature\Backend\User;
 
 use App\Domains\Auth\Models\User;
-use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -17,11 +16,9 @@ class ClearSessionTest extends TestCase
     /** @test */
     public function only_a_user_with_correct_permissions_can_clear_user_sessions()
     {
-        $this->withoutMiddleware(RequirePassword::class);
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $this->actingAs($user = factory(User::class)->create());
-
-        $user->syncPermissions(['view backend', 'access.user.clear-session']);
+        $user->syncPermissions(['access.user.clear-session']);
 
         $newUser = factory(User::class)->create();
 
@@ -29,7 +26,7 @@ class ClearSessionTest extends TestCase
 
         $response->assertSessionHas('flash_success', __('The user\'s session was successfully cleared.'));
 
-        $user->syncPermissions(['view backend']);
+        $user->syncPermissions([]);
 
         $response = $this->post('/admin/auth/user/'.$newUser->id.'/clear-session');
 
@@ -39,11 +36,9 @@ class ClearSessionTest extends TestCase
     /** @test */
     public function a_user_can_not_clear_their_own_session()
     {
-        $this->withoutMiddleware(RequirePassword::class);
+        $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $this->actingAs($user = factory(User::class)->create());
-
-        $user->syncPermissions(['view backend', 'access.user.clear-session']);
+        $user->syncPermissions(['access.user.clear-session']);
 
         $response = $this->post('/admin/auth/user/'.$user->id.'/clear-session');
 

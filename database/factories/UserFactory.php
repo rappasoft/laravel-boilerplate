@@ -18,6 +18,7 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
+        'type' => $faker->randomElement([User::TYPE_ADMIN, User::TYPE_USER]),
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
@@ -25,6 +26,18 @@ $factory->define(User::class, function (Faker $faker) {
         'password_changed_at' => null,
         'remember_token' => Str::random(10),
         'active' => true,
+    ];
+});
+
+$factory->state(User::class, 'admin', function () {
+    return [
+        'type' => User::TYPE_ADMIN,
+    ];
+});
+
+$factory->state(User::class, 'user', function () {
+    return [
+        'type' => User::TYPE_USER,
     ];
 });
 

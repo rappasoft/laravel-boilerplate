@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\Auth\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 

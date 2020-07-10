@@ -1,6 +1,6 @@
 <?php
 
-use App\Domains\Auth\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\DashboardController;
 use Tabuna\Breadcrumbs\Trail;
 
 // All route names are prefixed with 'admin.'.

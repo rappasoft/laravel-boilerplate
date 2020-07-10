@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domains\Auth\Http\Controllers\Backend;
+namespace App\Http\Controllers\Frontend\User;
 
 use App\Http\Controllers\Controller;
 
@@ -10,10 +10,10 @@ use App\Http\Controllers\Controller;
 class DashboardController extends Controller
 {
     /**
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        return view('backend.dashboard');
+        return view('frontend.user.dashboard');
     }
 }
