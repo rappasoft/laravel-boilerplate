@@ -10,6 +10,8 @@ All notable changes to this project will be documented in this file.
 - Be explicit when showing type labels in the backend
 - Added method and scope to get users by type
 - Moved frontend user routes to own file
+- Change default password expiration days to 180
+- Change default 'change email' status to true
 
 ## [7.1.0] - 2020-07-07
 

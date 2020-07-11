@@ -34,7 +34,7 @@ return [
              * Whether or not a user can change their email address after
              * their account has already been created
              */
-            'change_email' => env('CHANGE_EMAIL', false),
+            'change_email' => env('CHANGE_EMAIL', true),
 
             /*
              * When creating users from the backend, only allow the assigning of roles and not individual permissions
@@ -45,7 +45,7 @@ return [
              * How many days before users have to change their passwords
              * false is off
              */
-            'password_expires_days' => env('PASSWORD_EXPIRES_DAYS', 120),
+            'password_expires_days' => env('PASSWORD_EXPIRES_DAYS', 180),
 
             /*
              * The number of most recent previous passwords to check against when changing/resetting a password
