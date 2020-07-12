@@ -5,10 +5,14 @@ All notable changes to this project will be documented in this file.
 
 ## [7.1.1] - 2020-07-XX
 
+## Added
+
+- Added method and scope to get users by type
+- Added headerActions to frontend card component
+
 ## Changed
 
 - Be explicit when showing type labels in the backend
-- Added method and scope to get users by type
 - Moved frontend user routes to own file
 - Change default password expiration days to 180
 - Change default 'change email' status to true
