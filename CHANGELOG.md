@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 
 ## 7.1.2 - 2020-07-25
 
+## Added
+
+- Add gravatar to frontend navbar
+
 ## Changed
 
 - Update to Laravel commit: 791c87a80d1c5eebd75e1bf499f86899d6b2b26f
