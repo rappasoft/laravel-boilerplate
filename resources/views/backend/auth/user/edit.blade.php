@@ -22,7 +22,7 @@
                             <label for="name" class="col-md-2 col-form-label">@lang('Type')</label>
 
                             <div class="col-md-10">
-                                <select name="type" class="form-control" required @change="userType = $event.target.value">
+                                <select name="type" class="form-control" required x-on:change="userType = $event.target.value">
                                     <option value="{{ $model::TYPE_USER }}" {{ $user->type === $model::TYPE_USER ? 'selected' : '' }}>@lang('User')</option>
                                     <option value="{{ $model::TYPE_ADMIN }}" {{ $user->type === $model::TYPE_ADMIN ? 'selected' : '' }}>@lang('Administrator')</option>
                                 </select>

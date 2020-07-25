@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 ## Changed
 
 - Update to Laravel commit: 791c87a80d1c5eebd75e1bf499f86899d6b2b26f
+- Change alpinejs @click and @change methods to use x-on/x-change to not interfere with Vue
 
 ## [7.1.1] - 2020-07-12
 
