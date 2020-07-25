@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## 7.1.2 - 2020-07-25
+
+## Changed
+
+- Update to Laravel commit: 791c87a80d1c5eebd75e1bf499f86899d6b2b26f
+
 ## [7.1.1] - 2020-07-12
 
 ## Added
