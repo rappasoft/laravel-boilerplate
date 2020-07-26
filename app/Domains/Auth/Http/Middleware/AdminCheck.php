@@ -10,7 +10,6 @@ use Closure;
  */
 class AdminCheck
 {
-
     /**
      * @param $request
      * @param  Closure  $next
