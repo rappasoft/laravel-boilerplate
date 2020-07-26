@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 - Added GET form component
 - Added back ARCANEDEV/LogViewer
 - Add container to all frontend views
+- Publish laravel error pages
 
 ## Changed
 
