@@ -25,6 +25,7 @@ All notable changes to this project will be documented in this file.
 - Allow UserTypeCheck to accept multiple types
 - Full width frontend messages partial
 - Prefix all admin permissions with admin. and refactor.
+- Italian language updates
 
 ## Removed
 
