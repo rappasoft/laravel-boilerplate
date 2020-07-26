@@ -1,4 +1,4 @@
-@if (Breadcrumbs::has())
+@if (Breadcrumbs::has() && !Route::is('frontend.index'))
     <nav id="breadcrumbs" aria-label="breadcrumb">
         <ol class="container breadcrumb mb-0">
             @foreach (Breadcrumbs::current() as $crumb)
