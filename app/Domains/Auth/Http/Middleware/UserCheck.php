@@ -10,7 +10,6 @@ use Closure;
  */
 class UserCheck
 {
-
     /**
      * @param $request
      * @param  Closure  $next
