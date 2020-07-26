@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 - Added breadcrumbs on the frontend on pages that it would benefit on. Added a config item to be able to turn it off. If there are no breadcrumbs for a page the bar won't show.
 - Added UserCheck and AdminCheck middleware
 - Added scopes for user types
+- Added GET form component
 
 ## Changed
 
