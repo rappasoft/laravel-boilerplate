@@ -42,7 +42,7 @@ class UpdateRoleTest extends TestCase
             'type' => User::TYPE_ADMIN,
             'name' => 'new name',
             'permissions' => [
-                Permission::whereName('access.user.list')->first()->id,
+                Permission::whereName('admin.access.user.list')->first()->id,
             ],
         ]);
 
@@ -52,7 +52,7 @@ class UpdateRoleTest extends TestCase
         ]);
 
         $this->assertDatabaseHas('role_has_permissions', [
-            'permission_id' => Permission::whereName('access.user.list')->first()->id,
+            'permission_id' => Permission::whereName('admin.access.user.list')->first()->id,
             'role_id' => Role::whereName('new name')->first()->id,
         ]);
 

@@ -131,7 +131,7 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
      */
     public function canImpersonate(): bool
     {
-        return $this->can('access.user.impersonate');
+        return $this->can('admin.access.user.impersonate');
     }
 
     /**

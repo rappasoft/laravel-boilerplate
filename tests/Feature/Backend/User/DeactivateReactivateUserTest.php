@@ -20,7 +20,7 @@ class DeactivateReactivateUserTest extends TestCase
     {
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['access.user.reactivate']);
+        $user->syncPermissions(['admin.access.user.reactivate']);
 
         $this->get('/admin/auth/user/deactivated')->assertOk();
 
@@ -38,7 +38,7 @@ class DeactivateReactivateUserTest extends TestCase
 
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['access.user.reactivate']);
+        $user->syncPermissions(['admin.access.user.reactivate']);
 
         $deactivatedUser = factory(User::class)->state('inactive')->create();
 
@@ -86,7 +86,7 @@ class DeactivateReactivateUserTest extends TestCase
 
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['access.user.deactivate']);
+        $user->syncPermissions(['admin.access.user.deactivate']);
 
         $activeUser = factory(User::class)->state('active')->create();
 
@@ -132,7 +132,7 @@ class DeactivateReactivateUserTest extends TestCase
     {
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['access.user.deactivate']);
+        $user->syncPermissions(['admin.access.user.deactivate']);
 
         $response = $this->patch('/admin/auth/user/'.$user->id.'/mark/0');
 
@@ -144,7 +144,7 @@ class DeactivateReactivateUserTest extends TestCase
     {
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['access.user.deactivate']);
+        $user->syncPermissions(['admin.access.user.deactivate']);
 
         $response = $this->patch('/admin/auth/user/'.$this->getMasterAdmin()->id.'/mark/0');
 
