@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file.
 - Change alpine.js @click and @change methods to use x-on/x-change to not interfere with Vue
 - Default old request for user edit page
 - Wrapped backend breadcrumbs in conditional so if there are no breadcrumbs for that page the just don't show.
+- Allow UserTypeCheck to accept multiple types
 
 ## Removed
 
