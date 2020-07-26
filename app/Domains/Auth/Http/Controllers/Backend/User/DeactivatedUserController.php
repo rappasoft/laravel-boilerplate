@@ -48,7 +48,7 @@ class DeactivatedUserController extends Controller
         $this->userService->mark($user, (int) $status);
 
         return redirect()->route(
-            (int) $status === 1 || ! $request->user()->can('access.user.reactivate') ?
+            (int) $status === 1 || ! $request->user()->can('admin.access.user.reactivate') ?
                 'admin.auth.user.index' :
                 'admin.auth.user.deactivated'
         )->withFlashSuccess(__('The user was successfully updated.'));

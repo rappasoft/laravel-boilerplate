@@ -3,6 +3,35 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## 7.2.0 - 2020-07-25
+
+## Added
+
+- Added gravatar to frontend navbar
+- Added breadcrumbs on the frontend on pages that it would benefit on. Added a config item to be able to turn it off. If there are no breadcrumbs for a page the bar won't show.
+- Added SuperAdminCheck, AdminCheck and UserCheck middleware
+- Added scopes for user types
+- Added GET form component
+- Added back ARCANEDEV/LogViewer
+- Add container to all frontend views
+- Publish laravel error pages
+
+## Changed
+
+- Update to Laravel commit: 791c87a80d1c5eebd75e1bf499f86899d6b2b26f
+- Change alpine.js @click and @change methods to use x-on/x-change to not interfere with Vue
+- Default old request for user edit page
+- Wrapped backend breadcrumbs in conditional so if there are no breadcrumbs for that page the just don't show.
+- Allow UserTypeCheck to accept multiple types
+- Full width frontend messages partial
+- Prefix all admin permissions with admin. and refactor.
+- Italian language updates
+
+## Removed
+
+- Removed an un-needed redirect from LoginController
+- Remove container from frontend master view
+
 ## [7.1.1] - 2020-07-12
 
 ## Added

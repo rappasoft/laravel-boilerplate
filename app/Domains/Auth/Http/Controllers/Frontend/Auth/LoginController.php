@@ -95,7 +95,7 @@ class LoginController extends Controller
      * @param  Request  $request
      * @param $user
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return mixed
      */
     protected function authenticated(Request $request, $user)
     {
@@ -110,7 +110,5 @@ class LoginController extends Controller
         if (config('boilerplate.access.user.single_login')) {
             auth()->logoutOtherDevices($request->password);
         }
-
-        return redirect()->intended($this->redirectPath());
     }
 }

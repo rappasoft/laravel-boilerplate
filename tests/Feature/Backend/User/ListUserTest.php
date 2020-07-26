@@ -18,7 +18,7 @@ class ListUserTest extends TestCase
     {
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['access.user.list']);
+        $user->syncPermissions(['admin.access.user.list']);
 
         $this->get('/admin/auth/user')->assertOk();
 
@@ -34,7 +34,7 @@ class ListUserTest extends TestCase
     {
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['access.user.list']);
+        $user->syncPermissions(['admin.access.user.list']);
 
         $newUser = factory(User::class)->create();
 

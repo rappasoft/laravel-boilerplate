@@ -19,7 +19,7 @@ class ChangeUserPasswordTest extends TestCase
     {
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['access.user.change-password']);
+        $user->syncPermissions(['admin.access.user.change-password']);
 
         $newUser = factory(User::class)->create();
 
@@ -37,7 +37,7 @@ class ChangeUserPasswordTest extends TestCase
     {
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['access.user.change-password']);
+        $user->syncPermissions(['admin.access.user.change-password']);
 
         $newUser = factory(User::class)->create();
 
@@ -93,7 +93,7 @@ class ChangeUserPasswordTest extends TestCase
     {
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['access.user.change-password']);
+        $user->syncPermissions(['admin.access.user.change-password']);
 
         $admin = $this->getMasterAdmin();
 
@@ -113,7 +113,7 @@ class ChangeUserPasswordTest extends TestCase
     {
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['access.user.change-password']);
+        $user->syncPermissions(['admin.access.user.change-password']);
 
         $admin = $this->getMasterAdmin();
 

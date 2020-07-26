@@ -11,6 +11,7 @@
     "require": {
         "php": "^7.2.5",
         "albertcht/invisible-recaptcha": "^1.9",
+        "arcanedev/log-viewer": "7.x",
         "darkghosthunter/laraguard": "^2.0",
         "fideloper/proxy": "^4.0",
         "fruitcake/laravel-cors": "^2.0",

@@ -56,7 +56,7 @@ class Kernel extends HttpKernel
             '2fa:enabled',
             'auth',
             'password.expires',
-            'type:'.User::TYPE_ADMIN,
+            'is_admin',
         ],
     ];
 
@@ -75,6 +75,9 @@ class Kernel extends HttpKernel
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'is_admin' => \App\Domains\Auth\Http\Middleware\AdminCheck::class,
+        'is_super_admin' => \App\Domains\Auth\Http\Middleware\SuperAdminCheck::class,
+        'is_user' => \App\Domains\Auth\Http\Middleware\UserCheck::class,
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
         'password.expires' => \App\Domains\Auth\Http\Middleware\PasswordExpires::class,
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,

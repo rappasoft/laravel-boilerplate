@@ -18,7 +18,7 @@ class ClearSessionTest extends TestCase
     {
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['access.user.clear-session']);
+        $user->syncPermissions(['admin.access.user.clear-session']);
 
         $newUser = factory(User::class)->create();
 
@@ -38,7 +38,7 @@ class ClearSessionTest extends TestCase
     {
         $this->actingAs($user = factory(User::class)->state('admin')->create());
 
-        $user->syncPermissions(['access.user.clear-session']);
+        $user->syncPermissions(['admin.access.user.clear-session']);
 
         $response = $this->post('/admin/auth/user/'.$user->id.'/clear-session');
 

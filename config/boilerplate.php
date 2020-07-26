@@ -90,15 +90,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Google Analytics
-    |--------------------------------------------------------------------------
-    |
-    | Found in views/includes/partials/ga.blade.php
-    */
-    'google_analytics' => env('GOOGLE_ANALYTICS', 'UA-XXXXX-X'),
-
-    /*
-    |--------------------------------------------------------------------------
     | Avatar
     |--------------------------------------------------------------------------
     |
@@ -111,6 +102,25 @@ return [
          */
         'size' => 80,
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Frontend Breadcrumbs
+    |--------------------------------------------------------------------------
+    |
+    | Whether or not to show the breadcrumb trail on the frontend
+    | Note: Turning this off does not unregister the breadcrumbs in the routes file, it just hides the navbar
+    */
+    'frontend_breadcrumbs' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Google Analytics
+    |--------------------------------------------------------------------------
+    |
+    | Found in views/includes/partials/ga.blade.php
+    */
+    'google_analytics' => env('GOOGLE_ANALYTICS', 'UA-XXXXX-X'),
 
     /*
     |--------------------------------------------------------------------------

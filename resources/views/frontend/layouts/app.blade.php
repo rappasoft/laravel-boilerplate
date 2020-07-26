@@ -25,9 +25,9 @@
 
     <div id="app">
         @include('frontend.includes.nav')
+        @include('includes.partials.messages')
 
-        <main class="container py-4">
-            @include('includes.partials.messages')
+        <main>
             @yield('content')
         </main>
     </div><!--app-->

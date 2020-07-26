@@ -27,7 +27,7 @@
             button-class="btn btn-primary btn-sm"
             icon="fas fa-sync-alt"
             name="confirm-item"
-            permission="access.user.reactivate"
+            permission="admin.access.user.reactivate"
         >
             @lang('Reactivate')
         </x-utils.form-button>
@@ -49,7 +49,7 @@
                     :href="route('admin.auth.user.change-password', $user)"
                     class="dropdown-item"
                     :text="__('Change Password')"
-                    permission="access.user.change-password" />
+                    permission="admin.access.user.change-password" />
             </div>
         </div>
     @elseif (
@@ -58,10 +58,10 @@
         $user->id !== $logged_in_user->id && // It's not the person logged in
         // Any they have at lease one of the abilities in this dropdown
         (
-            $logged_in_user->can('access.user.change-password') ||
-            $logged_in_user->can('access.user.clear-session') ||
-            $logged_in_user->can('access.user.impersonate') ||
-            $logged_in_user->can('access.user.deactivate')
+            $logged_in_user->can('admin.access.user.change-password') ||
+            $logged_in_user->can('admin.access.user.clear-session') ||
+            $logged_in_user->can('admin.access.user.impersonate') ||
+            $logged_in_user->can('admin.access.user.deactivate')
         )
     )
         <div class="dropdown d-inline-block">
@@ -74,14 +74,14 @@
                     :href="route('admin.auth.user.change-password', $user)"
                     class="dropdown-item"
                     :text="__('Change Password')"
-                    permission="access.user.change-password" />
+                    permission="admin.access.user.change-password" />
 
                 @if ($user->id !== $logged_in_user->id && !$user->isMasterAdmin())
                     <x-utils.form-button
                         :action="route('admin.auth.user.clear-session', $user)"
                         name="confirm-item"
                         button-class="dropdown-item"
-                        permission="access.user.clear-session"
+                        permission="admin.access.user.clear-session"
                     >
                         @lang('Clear Session')
                     </x-utils.form-button>
@@ -91,7 +91,7 @@
                             :href="route('impersonate', $user->id)"
                             class="dropdown-item"
                             :text="__('Login As ' . $user->name)"
-                            permission="access.user.impersonate" />
+                            permission="admin.access.user.impersonate" />
                     @endCanBeImpersonated
 
                     <x-utils.form-button
@@ -99,7 +99,7 @@
                         method="patch"
                         name="confirm-item"
                         button-class="dropdown-item"
-                        permission="access.user.deactivate"
+                        permission="admin.access.user.deactivate"
                     >
                         @lang('Deactivate')
                     </x-utils.form-button>

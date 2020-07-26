@@ -33,43 +33,43 @@ class PermissionRoleSeeder extends Seeder
         // Users category
         $users = Permission::create([
             'type' => User::TYPE_ADMIN,
-            'name' => 'access.user',
+            'name' => 'admin.access.user',
             'description' => 'All User Permissions',
         ]);
 
         $users->children()->saveMany([
             new Permission([
                 'type' => User::TYPE_ADMIN,
-                'name' => 'access.user.list',
+                'name' => 'admin.access.user.list',
                 'description' => 'View Users',
             ]),
             new Permission([
                 'type' => User::TYPE_ADMIN,
-                'name' => 'access.user.deactivate',
+                'name' => 'admin.access.user.deactivate',
                 'description' => 'Deactivate Users',
                 'sort' => 2,
             ]),
             new Permission([
                 'type' => User::TYPE_ADMIN,
-                'name' => 'access.user.reactivate',
+                'name' => 'admin.access.user.reactivate',
                 'description' => 'Reactivate Users',
                 'sort' => 3,
             ]),
             new Permission([
                 'type' => User::TYPE_ADMIN,
-                'name' => 'access.user.clear-session',
+                'name' => 'admin.access.user.clear-session',
                 'description' => 'Clear User Sessions',
                 'sort' => 4,
             ]),
             new Permission([
                 'type' => User::TYPE_ADMIN,
-                'name' => 'access.user.impersonate',
+                'name' => 'admin.access.user.impersonate',
                 'description' => 'Impersonate Users',
                 'sort' => 5,
             ]),
             new Permission([
                 'type' => User::TYPE_ADMIN,
-                'name' => 'access.user.change-password',
+                'name' => 'admin.access.user.change-password',
                 'description' => 'Change User Passwords',
                 'sort' => 6,
             ]),
