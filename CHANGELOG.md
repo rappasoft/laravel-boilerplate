@@ -3,16 +3,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## 7.1.2 - 2020-07-25
+## 7.2.0 - 2020-07-25
 
 ## Added
 
-- Add gravatar to frontend navbar
+- Added gravatar to frontend navbar
+- Added breadcrumbs on the frontend on pages that it would benefit on. Added config to be able to turn it off. If there are no breadcrumbs for a page the bar won't show.
 
 ## Changed
 
 - Update to Laravel commit: 791c87a80d1c5eebd75e1bf499f86899d6b2b26f
 - Change alpinejs @click and @change methods to use x-on/x-change to not interfere with Vue
+- Default old request for user edit page
+- Wrapped backend breadcrumbs in conditional so if there are no breadcrumbs for that page the just don't show.
 
 ## [7.1.1] - 2020-07-12
 
