@@ -9,9 +9,10 @@ All notable changes to this project will be documented in this file.
 
 - Added gravatar to frontend navbar
 - Added breadcrumbs on the frontend on pages that it would benefit on. Added a config item to be able to turn it off. If there are no breadcrumbs for a page the bar won't show.
-- Added UserCheck and AdminCheck middleware
+- Added SuperAdminCheck, AdminCheck and UserCheck middleware
 - Added scopes for user types
 - Added GET form component
+- Added back ARCANEDEV/LogViewer
 
 ## Changed
 

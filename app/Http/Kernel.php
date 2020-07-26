@@ -76,6 +76,7 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'is_admin' => \App\Domains\Auth\Http\Middleware\AdminCheck::class,
+        'is_super_admin' => \App\Domains\Auth\Http\Middleware\SuperAdminCheck::class,
         'is_user' => \App\Domains\Auth\Http\Middleware\UserCheck::class,
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
         'password.expires' => \App\Domains\Auth\Http\Middleware\PasswordExpires::class,
