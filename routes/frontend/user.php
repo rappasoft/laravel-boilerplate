@@ -1,6 +1,5 @@
 <?php
 
-use App\Domains\Auth\Models\User;
 use App\Http\Controllers\Frontend\User\AccountController;
 use App\Http\Controllers\Frontend\User\DashboardController;
 use App\Http\Controllers\Frontend\User\ProfileController;
@@ -13,7 +12,7 @@ use Tabuna\Breadcrumbs\Trail;
  */
 Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', config('boilerplate.access.middleware.verified')]], function () {
     Route::get('dashboard', [DashboardController::class, 'index'])
-        ->middleware('type:'.User::TYPE_USER)
+        ->middleware('is_user')
         ->name('dashboard')
         ->breadcrumbs(function (Trail $trail) {
             $trail->parent('frontend.index')
