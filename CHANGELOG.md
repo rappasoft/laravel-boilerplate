@@ -24,6 +24,7 @@ All notable changes to this project will be documented in this file.
 - Wrapped backend breadcrumbs in conditional so if there are no breadcrumbs for that page the just don't show.
 - Allow UserTypeCheck to accept multiple types
 - Full width frontend messages partial
+- Prefix all admin permissions with admin. and refactor.
 
 ## Removed
 
