@@ -13,6 +13,7 @@ All notable changes to this project will be documented in this file.
 - Added scopes for user types
 - Added GET form component
 - Added back ARCANEDEV/LogViewer
+- Add container to all frontend views
 
 ## Changed
 
@@ -21,10 +22,12 @@ All notable changes to this project will be documented in this file.
 - Default old request for user edit page
 - Wrapped backend breadcrumbs in conditional so if there are no breadcrumbs for that page the just don't show.
 - Allow UserTypeCheck to accept multiple types
+- Full width frontend messages partial
 
 ## Removed
 
 - Removed an un-needed redirect from LoginController
+- Remove container from frontend master view
 
 ## [7.1.1] - 2020-07-12
 
