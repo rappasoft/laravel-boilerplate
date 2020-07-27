@@ -3,7 +3,20 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## 7.2.0 - 2020-07-25
+## [7.2.2] - 2020-07-26
+
+## Changed
+
+- Update Laravel security patch
+- Update proxy and mockery min versions
+
+## [7.2.1] - 2020-07-26
+
+## Changed
+
+- Update for Laravel security patch
+
+## [7.2.0] - 2020-07-25
 
 ## Added
 
@@ -300,7 +313,12 @@ Started from scratch with a blank Laravel 7.* installation. This release is not 
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.0.3...development
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.2...development
+[7.2.2]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.1...v7.2.2
+[7.2.1]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.0...v7.2.1
+[7.2.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.1.1...v7.2.0
+[7.1.1]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.1.0...v7.1.1
+[7.1.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.0.3...v7.1.0
 [7.0.3]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.0.2...v7.0.3
 [7.0.2]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.0.1...v7.0.2
 [7.0.1]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.0.0...v7.0.1
