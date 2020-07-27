@@ -19,7 +19,7 @@
         "jamesmills/laravel-timezone": "^1.9",
         "lab404/laravel-impersonate": "^1.6",
         "langleyfoxall/laravel-nist-password-rules": "^4.1",
-        "laravel/framework": "^7.0",
+        "laravel/framework": "^7.22.4",
         "laravel/socialite": "^4.3",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
