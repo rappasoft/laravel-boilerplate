@@ -13,8 +13,7 @@ All notable changes to this project will be documented in this file.
 
 ## Changed
 
-- Update Laravel security patch
-- Update proxy and mockery min versions
+- Update to Laravel security patch
 
 ## [7.2.1] - 2020-07-26
 
