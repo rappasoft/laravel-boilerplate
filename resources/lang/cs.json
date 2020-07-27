@@ -9,7 +9,7 @@
     "One or more roles were not found or are not allowed to be associated with this user type.": "Jedna nebo více rolí nebyly nalezeny, nebo nemají povoleno být přiřazeny k uživateli tohoto typu",
     "One or more permissions were not found or are not allowed to be associated with this user type.": "Jedno nebo více oprávnění nebyly nalezeny, nebo nemají povoleno být přiřazeny k uživateli tohoto typu",
     "Only the administrator can update this user.": "Pouze administrátor může měnit tento účet",
-    "You can not delete the master administrator.": "Nemůžete smazat účet master administrator",
+    "You can not delete the master administrator.": "Nemůžete smazat účet master administrátor",
     "You can not clear your own session.": "Nemůžete vymazat vlastní session",
     "Your account has been deactivated.": "Váš účet byl deaktivován",
     "Password successfully updated.": "Heslo bylo úspěšně změněno",
