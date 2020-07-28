@@ -30,8 +30,6 @@ trait Uuid
 
     protected static function bootUuid()
     {
-        parent::boot();
-
         static::creating(function ($model) {
             $model->{$model->getUuidName()} = PackageUuid::uuid4()->toString();
         });
