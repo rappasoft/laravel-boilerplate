@@ -29,7 +29,7 @@ trait Uuid
     }
 
     /**
-     * Use Laravel bootable traits
+     * Use Laravel bootable traits.
      */
     protected static function bootUuid()
     {
