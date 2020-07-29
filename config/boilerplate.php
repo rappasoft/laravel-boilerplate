@@ -151,6 +151,7 @@ return [
             'az' => ['name' => 'Azerbaijan', 'rtl' => false],
             'zh' => ['name' => 'Chinese Simplified', 'rtl' => false],
             'zh-TW' => ['name' => 'Chinese Traditional', 'rtl' => false],
+            'cs' => ['name' => 'Czech', 'rtl' => false],
             'da' => ['name' => 'Danish', 'rtl' => false],
             'de' => ['name' => 'German', 'rtl' => false],
             'el' => ['name' => 'Greek', 'rtl' => false],
