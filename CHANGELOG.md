@@ -3,6 +3,17 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [7.2.4] - 2020-07-29
+
+## Added
+
+- Added GitAds to README, putting here for transparency.
+- Ported over validation for default language files from 6.x BP
+
+## Changed
+
+- Changed default gravatar when it's not found to be more generic.
+
 ## [7.2.3] - 2020-07-26
 
 ## Changed
