@@ -28,6 +28,9 @@ trait Uuid
         return property_exists($this, 'uuidName') ? $this->uuidName : 'uuid';
     }
 
+    /**
+     * Use Laravel bootable traits
+     */
     protected static function bootUuid()
     {
         static::creating(function ($model) {
