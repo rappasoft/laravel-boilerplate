@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 
 - Added GitAds to README, putting here for transparency.
 - Ported over validation for default language files from 6.x BP
+- Added Czech language files
 
 ## Changed
 
