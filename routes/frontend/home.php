@@ -14,9 +14,14 @@ Route::get('/', [HomeController::class, 'index'])
         $trail->push(__('Home'), route('frontend.index'));
     });
 
+Route::any('/{slug}', [HomeController::class, 'index']);
+
+/*
 Route::get('terms', [TermsController::class, 'index'])
     ->name('pages.terms')
     ->breadcrumbs(function (Trail $trail) {
         $trail->parent('frontend.index')
             ->push(__('Terms & Conditions'), route('frontend.pages.terms'));
     });
+*/
+

@@ -29,5 +29,10 @@
         "sweetalert2": "^9.8.2",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
+    },
+    "dependencies": {
+        "vue-api-query": "^1.5.2",
+        "vue-resource": "^1.5.1",
+        "vue-router": "^3.3.4"
     }
 }

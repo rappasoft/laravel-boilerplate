@@ -23,6 +23,8 @@ Route::group(['as' => 'frontend.'], function () {
  *
  * These routes can only be accessed by users with type `admin`
  */
+/*
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
     includeRouteFiles(__DIR__.'/backend/');
 });
+*/

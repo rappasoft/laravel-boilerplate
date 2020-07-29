@@ -17,6 +17,8 @@ use Tabuna\Breadcrumbs\Trail;
  * Frontend Access Controllers
  * All route names are prefixed with 'frontend.auth'.
  */
+
+ /*
 Route::group(['as' => 'auth.'], function () {
     Route::group(['middleware' => 'auth'], function () {
         // Authentication
@@ -96,3 +98,4 @@ Route::group(['as' => 'auth.'], function () {
         Route::get('login/{provider}/callback', [SocialController::class, 'callback']);
     });
 });
+ */
