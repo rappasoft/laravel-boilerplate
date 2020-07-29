@@ -12,7 +12,7 @@ All notable changes to this project will be documented in this file.
 
 ## Changed
 
-- Changed default gravatar when it's not found to be more generic.
+- Changed default gravatar to be more generic.
 
 ## [7.2.3] - 2020-07-26
 
@@ -329,7 +329,8 @@ Started from scratch with a blank Laravel 7.* installation. This release is not 
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.3...development
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.4...development
+[7.2.4]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.3...v7.2.4
 [7.2.3]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.2...v7.2.3
 [7.2.2]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.1...v7.2.2
 [7.2.1]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.0...v7.2.1
