@@ -3,6 +3,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [7.2.4] - 2020-07-29
+
+## Added
+
+- Added GitAds to README, putting here for transparency.
+- Ported over validation for default language files from 6.x BP
+- Added Czech language files
+
+## Changed
+
+- Changed default gravatar to be more generic.
+- Use Laravel bootable traits with UUID trait.
+
 ## [7.2.3] - 2020-07-26
 
 ## Changed
@@ -318,7 +331,8 @@ Started from scratch with a blank Laravel 7.* installation. This release is not 
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.3...development
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.4...development
+[7.2.4]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.3...v7.2.4
 [7.2.3]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.2...v7.2.3
 [7.2.2]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.1...v7.2.2
 [7.2.1]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.0...v7.2.1
