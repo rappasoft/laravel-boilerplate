@@ -21,6 +21,8 @@
 
 [Click here for the official documentation](http://laravel-boilerplate.com)
 
+<a href="https://tracking.gitads.io/?repo=laravel-boilerplate"><img src="https://images.gitads.io/laravel-boilerplate" alt="GitAds"/></a>
+
 ### Slack Channel
 
 Please join us in our Slack channel to get faster responses to your questions. Get your invite here: https://laravel-boilerplate.herokuapp.com
