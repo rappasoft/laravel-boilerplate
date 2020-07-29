@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 ## Changed
 
 - Changed default gravatar to be more generic.
+- Use Laravel bootable traits with UUID trait.
 
 ## [7.2.3] - 2020-07-26
 
