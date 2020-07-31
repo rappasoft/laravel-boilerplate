@@ -20,7 +20,6 @@
     export default {
         mounted() {
             console.log('Login mounted.')
-            console.log(`${process.env.MIX_API_URL}/oauth/token`);
         },
         data(){
             return {
@@ -40,13 +39,8 @@
                         client_secret: process.env.MIX_CLIENT_SECRET
                     })
                     .then(response => {
-                        // console.log(response.body.access_token);
-                        // document.cookie = response.body.access_token;
-                        console.log(response.body.access_token);
-                        // console.log(document.cookie);
                         localStorage.setItem('access_token', response.body.access_token)
-
-                        console.log(localStorage.getItem('access_token'));
+                        this.$router.push('/')
                     })
                     .catch(function (error) {
                         console.error(error.response);

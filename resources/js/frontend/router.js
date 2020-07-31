@@ -1,42 +1,61 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
+import User from '../models/User'
 
 const routes = [
-    {
-      path: '/',
-      name: 'Home',
-      component: () => import(/* webpackChunkName: "about" */ './components/pages/Home.vue')
+  {
+    path: '/',
+    name: 'Home',
+    component: () => import('./components/pages/Home.vue')
+  },
+  {
+    path: '/about',
+    name: 'About',
+    meta: {
+      auth: true
     },
-    {
-      path: '/about',
-      name: 'About',
-      meta: {
-        auth: true
-      },
-      component: () => import(/* webpackChunkName: "about" */ './components/pages/About.vue')
-    },
-    {
-      path: '/login',
-      name: 'Login',
-      component: () => import(/* webpackChunkName: "login" */ './components/pages/Login.vue')
+    component: () => import('./components/pages/About.vue')
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('./components/pages/Login.vue')
+  }
+]
+
+const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes
+})
+
+router.beforeEach((to, from, next) => {
+  const access_token = localStorage.getItem('access_token')
+
+  if (to.matched.some(record => record.meta.auth) && !access_token) {
+    next('/login')
+    return
+  }
+  if (access_token){
+    window.axios.defaults.headers.common = {
+      'Authorization': `Bearer ${access_token}`,
+      'Device-Id': access_token,
+      'Device-Name': `custom_browser`,
+      'Accept': `application/json`,
     }
-  ]
-  
-  const router = new VueRouter({
-    mode: 'history',
-    base: process.env.BASE_URL,
-    routes
-  })
-  
-  router.beforeEach((to, from, next) => {
-    const loggedIn = localStorage.getItem('access_token')
-  
-    if (to.matched.some(record => record.meta.auth) && !loggedIn) {
-      next('/login')
-      return
-    }
-    next()
-  })
-  
-  export default router
+    
+    User.get().then(function(response){
+      localStorage.setItem('auth', true);
+      localStorage.setItem('username', response[0].display_name);
+    });
+    // .catch(err => {
+    //   next('/login')
+    //   return
+    // });
+  }
+
+  next()
+})
+
+export default router

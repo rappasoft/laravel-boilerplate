@@ -69,7 +69,7 @@
         @include('includes.partials.ga')
     </head>
     <body>
-        <div id="app" class="flex-center position-ref full-height">
+        <div id="app" class="full-height">
             <main-component></main-component>
         </div><!--app-->
 

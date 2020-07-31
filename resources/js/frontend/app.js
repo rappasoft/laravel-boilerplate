@@ -7,9 +7,19 @@
 require('../bootstrap');
 require('../plugins');
 import router from './router';
+import VueResource from 'vue-resource';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import { Model } from "vue-api-query";
+Model.$http = axios;
+import { Plugin } from 'vue-responsive-video-background-player'
+
 
 window.Vue = require('vue');
-Vue.use(require('vue-resource'));
+Vue.use(VueResource);
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
+Vue.use(Plugin);
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -22,7 +32,7 @@ Vue.use(require('vue-resource'));
 const files = require.context('./', true, /\.vue$/i)
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 
 /**

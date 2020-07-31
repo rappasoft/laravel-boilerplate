@@ -4,7 +4,7 @@ export default class Model extends BaseModel {
  
   // define a base url for a REST API
   baseURL () {
-    return 'https://epicentre.tv/api/v1'
+    return process.env.MIX_API_URL + '/api/v1';
   }
  
   // implement a default request method 

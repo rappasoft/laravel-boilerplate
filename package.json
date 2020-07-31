@@ -31,8 +31,10 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "bootstrap-vue": "^2.16.0",
         "vue-api-query": "^1.5.2",
         "vue-resource": "^1.5.1",
+        "vue-responsive-video-background-player": "^1.1.1",
         "vue-router": "^3.3.4"
     }
 }
