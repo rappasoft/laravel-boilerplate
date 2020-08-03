@@ -52,7 +52,7 @@ return [
         'numeric' => ':attribute harus lebih atau sama dengan :value.',
         'file' => ':attribute harus lebih atau sama dengan :value kilobytes.',
         'string' => ':attribute harus lebih atau sama dengan :value characters.',
-        'array' => ':attribute must have :value items or more.',
+        'array' => ':attribute harus memiliki :value item atau lebih.',
     ],
     'image' => ':attribute harus berupa gambar.',
     'in' => ':attribute yang dipilih tidak benar.',
@@ -65,14 +65,14 @@ return [
     'lt' => [
         'numeric' => ':attribute harus kurang dari :value.',
         'file' => ':attribute harus kurang dari :value kilobytes.',
-        'string' => ':attribute harus kurang dari :value characters.',
-        'array' => ':attribute must have less than :value items.',
+        'string' => ':attribute harus kurang dari :value karakter.',
+        'array' => ':attribute harus memiliki nilai kurang dari :value item.',
     ],
     'lte' => [
         'numeric' => ':attribute harus kurang dari atau sama dengan :value.',
         'file' => ':attribute harus kurang dari atau sama dengan :value kilobytes.',
-        'string' => ':attribute harus kurang dari atau sama dengan :value characters.',
-        'array' => ':attribute must not have more than :value items.',
+        'string' => ':attribute harus kurang dari atau sama dengan :value karakter.',
+        'array' => ':attribute harus memiliki nilai kurang dari :value item.',
     ],
     'max' => [
         'numeric' => ':attribute seharusnya tidak lebih dari :max.',
