@@ -97,7 +97,6 @@ class UserService extends BaseService
             }
         }
 
-
         if (! $user) {
             /// Check config allows registration
             if (config('boilerplate.access.captcha.registration')) {
@@ -122,6 +121,7 @@ class UserService extends BaseService
                 throw new GeneralException(__('Registration not currently open'));
             }
         }
+        
         return $user;
     }
 
