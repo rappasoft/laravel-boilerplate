@@ -79,26 +79,49 @@ class UserService extends BaseService
     {
         $user = $this->model::where('provider_id', $info->id)->first();
 
+        /// Check if a matching email account exists.
         if (! $user) {
-            DB::beginTransaction();
+            $user = $this->model::whereNull('provider_id')->whereEmail($info->email)->first();
+            if (! $user) {
+                DB::beginTransaction();
 
-            try {
-                $user = $this->createUser([
-                    'name' => $info->name,
-                    'email' => $info->email,
-                    'provider' => $provider,
-                    'provider_id' => $info->id,
-                    'email_verified_at' => now(),
-                ]);
-            } catch (Exception $e) {
-                DB::rollBack();
+                try {
+                    $user->provider = $provider;
+                    $user->save();
+                } catch (Exception $e) {
+                    DB::rollBack();
 
-                throw new GeneralException(__('There was a problem connecting to :provider', ['provider' => $provider]));
+                    throw new GeneralException(__('There was a problem connecting to :provider', ['provider' => $provider]));
+                }
+                DB::commit();
             }
-
-            DB::commit();
         }
 
+
+        if (! $user) {
+            /// Check config allows registration
+            if (config('boilerplate.access.captcha.registration')) {
+                DB::beginTransaction();
+
+                try {
+                    $user = $this->createUser([
+                        'name' => $info->name,
+                        'email' => $info->email,
+                        'provider' => $provider,
+                        'provider_id' => $info->id,
+                        'email_verified_at' => now(),
+                    ]);
+                } catch (Exception $e) {
+                    DB::rollBack();
+
+                    throw new GeneralException(__('There was a problem connecting to :provider', ['provider' => $provider]));
+                }
+
+                DB::commit();
+            } else {
+                throw new GeneralException(__('Registration not currently open'));
+            }
+        }
         return $user;
     }
 
