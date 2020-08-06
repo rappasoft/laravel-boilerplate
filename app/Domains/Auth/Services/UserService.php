@@ -121,7 +121,7 @@ class UserService extends BaseService
                 throw new GeneralException(__('Registration not currently open'));
             }
         }
-        
+
         return $user;
     }
 
