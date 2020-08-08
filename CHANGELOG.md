@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 - Update Italian Translations
 - Update Indonesia Translations
 - Update Hebrew Translations
+- Make tests compatible with any locale
 
 ## [7.2.4] - 2020-07-29
 
