@@ -82,7 +82,7 @@ class UserService extends BaseService
         /// Check if a matching email account exists.
         if (! $user) {
             $user = $this->model::whereNull('provider_id')->whereEmail($info->email)->first();
-            if (! $user) {
+            if ($user) {
                 DB::beginTransaction();
 
                 try {
