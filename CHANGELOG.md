@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 ## Changed
 
 - Min Livewire to 1.3
+- Update Italian JSON
 
 ## [7.2.4] - 2020-07-29
 
