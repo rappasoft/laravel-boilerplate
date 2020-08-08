@@ -138,7 +138,7 @@
     "There are no permissions to choose from.": "Non ci sono autorizzazioni tra cui scegliere.",
     "Administrator": "Amministratore",
     "User": "Utente",
-    "Update Role": "Ruolo di aggiornamento",
+    "Update Role": "Aggiorna ruolo",
     "Cancel": "Annulla",
     "General Permissions": "Autorizzazioni generali",
     "Permission Categories": "Categorie di autorizzazioni",
@@ -152,7 +152,7 @@
     "Inactive": "Inattivo",
     "Deactivated Users": "Utenti disattivati",
     "Deleted Users": "Utenti eliminati",
-    "Restore": "Ristabilire",
+    "Restore": "Ripristina",
     "Permanently Delete": "Elimina definitivamente",
     "Reactivate": "Riattiva",
     "More": "Di Più",
@@ -187,5 +187,5 @@
     "You can not set a password that you have previously used within the last 3 times.": "Non è possibile impostare una password utilizzata in precedenza nelle ultime 3 volte.",
     "These credentials do not match our records.": "Queste credenziali non corrispondono ai nostri record.",
     "Editing :role": "Modifica :role",
-    "Home": "Casa"
+    "Home": "Home"
 }

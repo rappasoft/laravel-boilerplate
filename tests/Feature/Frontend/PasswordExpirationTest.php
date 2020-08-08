@@ -31,7 +31,9 @@ class PasswordExpirationTest extends TestCase
 
         $response = $this->get('/dashboard')->assertRedirect('/password/expired');
 
-        $response->assertSessionHas('flash_warning', __('Your password has expired. We require you to change your password every '.config('boilerplate.access.user.password_expires_days').' days for security purposes.'));
+        $response->assertSessionHas('flash_warning', __('Your password has expired. We require you to change your password every :days days for security purposes.', [
+            'days' => config('boilerplate.access.user.password_expires_days'),
+        ]));
     }
 
     /** @test */
@@ -43,7 +45,9 @@ class PasswordExpirationTest extends TestCase
 
         $response = $this->get('/account')->assertRedirect('/password/expired');
 
-        $response->assertSessionHas('flash_warning', __('Your password has expired. We require you to change your password every '.config('boilerplate.access.user.password_expires_days').' days for security purposes.'));
+        $response->assertSessionHas('flash_warning', __('Your password has expired. We require you to change your password every :days days for security purposes.', [
+            'days' => config('boilerplate.access.user.password_expires_days'),
+        ]));
     }
 
     /** @test */
