@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 - Update Indonesia Translations
 - Update Hebrew Translations
 - Make tests compatible with any locale
+- Make backend sidebar logs link a dropdown
 
 ## [7.2.4] - 2020-07-29
 
