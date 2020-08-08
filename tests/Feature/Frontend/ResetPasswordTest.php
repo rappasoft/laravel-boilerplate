@@ -84,7 +84,10 @@ class ResetPasswordTest extends TestCase
                 'password_confirmation' => 'secret',
             ]);
 
-        $this->assertStringContainsString('The password must be at least 8 characters.', $response->content());
+        $this->assertStringContainsString(__('validation.min.string', [
+            'attribute' => __('password'),
+            'min' => 8,
+        ]), $response->content());
     }
 
     /** @test */
@@ -104,7 +107,7 @@ class ResetPasswordTest extends TestCase
                 'password_confirmation' => ']EqZL4}zBT',
             ]);
 
-        $this->assertStringContainsString('Your password has been reset!', $response->content());
+        $this->assertStringContainsString(__('passwords.reset'), $response->content());
         $this->assertTrue(Hash::check(']EqZL4}zBT', $user->fresh()->password));
     }
 
