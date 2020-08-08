@@ -73,7 +73,7 @@
         @endif
 
         @if ($logged_in_user->hasAllAccess())
-            <li class="c-sidebar-nav-dropdown {{ activeClass(Route::is('log-viewer::*'), 'c-open c-show') }}">
+            <li class="c-sidebar-nav-dropdown">
                 <x-utils.link
                     href="#"
                     icon="c-sidebar-nav-icon cil-list"
@@ -85,15 +85,13 @@
                         <x-utils.link
                             :href="route('log-viewer::dashboard')"
                             class="c-sidebar-nav-link"
-                            :text="__('Dashboard')"
-                            :active="activeClass(Route::is('log-viewer::dashboard'), 'c-active')" />
+                            :text="__('Dashboard')" />
                     </li>
                     <li class="c-sidebar-nav-item">
                         <x-utils.link
                             :href="route('log-viewer::logs.list')"
                             class="c-sidebar-nav-link"
-                            :text="__('Logs')"
-                            :active="activeClass(Route::is('log-viewer::logs.*'), 'c-active')" />
+                            :text="__('Logs')" />
                     </li>
                 </ul>
             </li>
