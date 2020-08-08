@@ -79,9 +79,10 @@ class UserService extends BaseService
     {
         $user = $this->model::where('provider_id', $info->id)->first();
 
-        /// Check if a matching email account exists.
+        /// If not found, Check if a matching email account exists.
         if (! $user) {
             $user = $this->model::whereNull('provider_id')->whereEmail($info->email)->first();
+            // If now found via email, update user provider id
             if ($user) {
                 DB::beginTransaction();
 
@@ -98,7 +99,7 @@ class UserService extends BaseService
         }
 
         if (! $user) {
-            /// Check config allows registration
+            /// If user not found via provider id or email, Check config allows registration
             if (config('boilerplate.access.captcha.registration')) {
                 DB::beginTransaction();
 
