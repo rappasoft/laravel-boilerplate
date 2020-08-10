@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [7.2.6] - 2020-08-XX
+
+## Changed
+
+- Update livewire tables to 0.2
+
 ## [7.2.5] - 2020-08-06
 
 ## Changed
@@ -342,7 +348,8 @@ Started from scratch with a blank Laravel 7.* installation. This release is not 
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.5...development
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.6...development
+[7.2.6]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.5...v7.2.6
 [7.2.5]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.4...v7.2.5
 [7.2.4]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.3...v7.2.4
 [7.2.3]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.2...v7.2.3
