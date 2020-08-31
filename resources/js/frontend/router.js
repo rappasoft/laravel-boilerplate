@@ -7,20 +7,29 @@ const routes = [
   {
     path: '/',
     name: 'Home',
+    meta: { layout: "default" },
     component: () => import('./components/pages/Home.vue')
   },
   {
     path: '/about',
     name: 'About',
     meta: {
-      auth: true
+      auth: true,
+      layout: "no-nav-bar"
     },
     component: () => import('./components/pages/About.vue')
   },
   {
     path: '/login',
     name: 'Login',
+    meta: { layout: "no-nav-bar" },
     component: () => import('./components/pages/Login.vue')
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    meta: { layout: "no-nav-bar" },
+    component: () => import('./components/pages/Register.vue')
   }
 ]
 

@@ -35,6 +35,9 @@
         "vue-api-query": "^1.5.2",
         "vue-resource": "^1.5.1",
         "vue-responsive-video-background-player": "^1.1.1",
-        "vue-router": "^3.3.4"
+        "vue-router": "^3.3.4",
+        "vued": "^1.0.0-beta.6",
+        "vuex": "^3.5.1",
+        "vuex-persistedstate": "^3.1.0"
     }
 }

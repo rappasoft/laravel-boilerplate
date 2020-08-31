@@ -1,18 +1,34 @@
 <template>
     <div>
-        <h4>Login</h4>
-        <form>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" v-model="email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" v-model="password">
-            </div>
-            <button @click="handleSubmit" class="btn btn-primary">Submit</button>
-        </form>
+        <b-container>
+            <b-form @submit.stop.prevent="onSubmit">
+                <b-form-group id="inputGroupEmail">
+                    <b-form-input
+                        id="inputEmail"
+                        v-model="email"
+                        type="email"
+                        required
+                        placeholder="EMAIL ADDRESS"
+                    ></b-form-input>
+                </b-form-group>
+
+                <b-form-group id="inputGroupPassword">
+                    <b-form-input
+                        id="inputPassword"
+                        v-model="password"
+                        type="password"
+                        required
+                        placeholder="PASSWORD"
+                    ></b-form-input>
+                </b-form-group>
+
+                <b-button type="submit" variant="primary">SIGN IN</b-button>    
+            </b-form>
+
+            <b-card class="border-0">
+                <b-card-text>Don't have an account? <b-link href="/register">Join</b-link></b-card-text>
+            </b-card>
+        </b-container>
     </div>
 </template>
 
@@ -21,6 +37,9 @@
         mounted() {
             console.log('Login mounted.')
         },
+        props : {
+            promoter : Object
+        },
         data(){
             return {
                 email : "customer@2mm.io",
@@ -28,7 +47,7 @@
             }
         },
         methods : {
-            handleSubmit(e){
+            onSubmit(e){
                 e.preventDefault()
                 if (this.password.length > 0) {
                     this.$http.post(`${process.env.MIX_API_URL}/oauth/token`, {
@@ -46,7 +65,7 @@
                         console.error(error.response);
                     });
                 }
-            }
+            },            
         }
     }
 </script>

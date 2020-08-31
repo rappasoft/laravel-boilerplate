@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div>    
     <b-navbar toggleable="lg" type="light">
       <b-navbar-brand href="/">
 				<img :src="promoter.logo" alt="Logo" width="40px">
@@ -33,11 +33,11 @@
 <script>
 export default {
   mounted() {
-    console.log("Nav Bar mounted.");
+    console.log("Nav Menu mounted.");
     this.$nextTick(function () {
       this.auth = localStorage.getItem('auth') == 'true' ? true : false;
       this.username = localStorage.getItem('username');
-    })
+    })    
   },
   props: {
     promoter: Object
@@ -46,7 +46,7 @@ export default {
     return {
       user: null,
       auth: false,
-      username: ''
+      username: '',      
     };
   },
   methods: {

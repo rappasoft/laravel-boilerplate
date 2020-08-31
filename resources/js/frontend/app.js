@@ -11,7 +11,8 @@ import VueResource from 'vue-resource';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import { Model } from "vue-api-query";
 Model.$http = axios;
-import { Plugin } from 'vue-responsive-video-background-player'
+import { Plugin } from 'vue-responsive-video-background-player';
+import store from './store'
 
 
 window.Vue = require('vue');
@@ -19,7 +20,6 @@ Vue.use(VueResource);
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
 Vue.use(Plugin);
-
 
 /**
  * The following block of code may be used to automatically register your
@@ -34,7 +34,6 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -43,5 +42,6 @@ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(
 
 const app = new Vue({
     el: '#app',
-    router
+    router,
+    store: store
 });
