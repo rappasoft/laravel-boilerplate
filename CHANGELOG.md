@@ -7,7 +7,10 @@ All notable changes to this project will be documented in this file.
 
 ## Changed
 
-- Update livewire tables to 0.2
+- Update livewire tables to 0.3
+- Updated users/roles table to use new tables
+- Moved livewire components into Frontend/Backend and updated calls
+- Removed type partial and just merged into table format
 
 ## [7.2.5] - 2020-08-06
 

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Backend;
 
 use App\Domains\Auth\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\TableComponent;
+use Rappasoft\LaravelLivewireTables\Traits\HtmlComponents;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
 /**
@@ -12,6 +13,8 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
  */
 class UsersTable extends TableComponent
 {
+    use HtmlComponents;
+
     /**
      * @var string
      */
@@ -21,6 +24,14 @@ class UsersTable extends TableComponent
      * @var string
      */
     public $status;
+
+    /**
+     * @var array
+     */
+    protected $options = [
+        'bootstrap.container' => false,
+        'bootstrap.classes.table' => 'table table-striped',
+    ];
 
     /**
      * @param  string  $status
@@ -56,42 +67,53 @@ class UsersTable extends TableComponent
     {
         return [
             Column::make(__('Type'))
-                ->view('backend.auth.user.includes.type', 'user')
-                ->sortable(),
+                ->sortable()
+                ->format(function (User $model) {
+                    return view('backend.auth.user.includes.type', ['user' => $model]);
+                }),
             Column::make(__('Name'))
                 ->searchable()
                 ->sortable(),
             Column::make(__('E-mail'), 'email')
                 ->searchable()
-                ->sortable(),
-            Column::make(__('Verified'))
-                ->view('backend.auth.user.includes.verified', 'user')
-                ->sortable(function ($builder, $direction) {
-                    return $builder->orderBy('email_verified_at', $direction);
+                ->sortable()
+                ->format(function (User $model) {
+                    return $this->mailto($model->email);
+                }),
+            Column::make(__('Verified'), 'email_verified_at')
+                ->sortable()
+                ->format(function (User $model) {
+                    return view('backend.auth.user.includes.verified', ['user' => $model]);
                 }),
             Column::make(__('2FA'))
-                ->view('backend.auth.user.includes.2fa', 'user')
                 ->sortable(function ($builder, $direction) {
                     return $builder->orderBy('two_factor_auth_count', $direction);
+                })
+                ->format(function (User $model) {
+                    return view('backend.auth.user.includes.2fa', ['user' => $model]);
                 }),
-            Column::make(__('Roles'), 'roles_label')
-                ->customAttribute()
-                ->html()
+            Column::make(__('Roles'), 'roles_label') // TODO: Refactor out roles_label to partial
                 ->searchable(function ($builder, $term) {
                     return $builder->orWhereHas('roles', function ($query) use ($term) {
                         return $query->where('name', 'like', '%'.$term.'%');
                     });
+                })
+                ->format(function (User $model) {
+                    return $this->html($model->roles_label);
                 }),
-            Column::make(__('Additional Permissions'), 'permissions_label')
-                ->customAttribute()
-                ->html()
+            Column::make(__('Additional Permissions'), 'permissions_label') // TODO: Refactor out permissions_label to partial
                 ->searchable(function ($builder, $term) {
                     return $builder->orWhereHas('permissions', function ($query) use ($term) {
                         return $query->where('name', 'like', '%'.$term.'%');
                     });
+                })
+                ->format(function (User $model) {
+                    return $this->html($model->permissions_label);
                 }),
             Column::make(__('Actions'))
-                ->view('backend.auth.user.includes.actions', 'user'),
+                ->format(function (User $model) {
+                    return view('backend.auth.user.includes.actions', ['user' => $model]);
+                }),
         ];
     }
 }
