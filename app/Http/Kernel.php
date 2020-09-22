@@ -2,7 +2,6 @@
 
 namespace App\Http;
 
-use App\Domains\Auth\Models\User;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 /**
