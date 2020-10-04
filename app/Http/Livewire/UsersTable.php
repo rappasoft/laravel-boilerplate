@@ -58,7 +58,7 @@ class UsersTable extends TableComponent
             Column::make(__('Type'))
                 ->view('backend.auth.user.includes.type', 'user')
                 ->sortable(),
-            Column::make(__('Name'))
+            Column::make(__('Name'),'name')
                 ->searchable()
                 ->sortable(),
             Column::make(__('E-mail'), 'email')
