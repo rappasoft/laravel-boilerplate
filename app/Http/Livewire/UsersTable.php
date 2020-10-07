@@ -55,7 +55,7 @@ class UsersTable extends TableComponent
     public function columns(): array
     {
         return [
-            Column::make(__('Type'))
+            Column::make(__('Type'), 'type')
                 ->view('backend.auth.user.includes.type', 'user')
                 ->sortable(),
             Column::make(__('Name'), 'name')
