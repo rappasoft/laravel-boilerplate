@@ -32,10 +32,10 @@ class RolesTable extends TableComponent
     public function columns(): array
     {
         return [
-            Column::make(__('Type'))
+            Column::make(__('Type'), 'type')
                 ->view('backend.auth.role.includes.type', 'role')
                 ->sortable(),
-            Column::make(__('Name'))
+            Column::make(__('Name'), 'name')
                 ->searchable()
                 ->sortable(),
             Column::make(__('Permissions'), 'permissions_label')
