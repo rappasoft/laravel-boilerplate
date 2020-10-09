@@ -35,7 +35,7 @@ class RolesTable extends TableComponent
             Column::make(__('Type'))
                 ->view('backend.auth.role.includes.type', 'role')
                 ->sortable(),
-            Column::make(__('Name'),'name')
+            Column::make(__('Name'), 'name')
                 ->searchable()
                 ->sortable(),
             Column::make(__('Permissions'), 'permissions_label')
