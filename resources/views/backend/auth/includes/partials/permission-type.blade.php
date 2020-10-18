@@ -20,7 +20,7 @@
 @if ($categories->where('type', $type)->count())
     <h5 class="mb-3">@lang('Permission Categories')</h5>
 
-    <ul id="tree" class="m-0 p-0 list-unstyled">
+    <ul class="permission-tree m-0 p-0 list-unstyled">
         @foreach($categories->where('type', $type) as $permission)
             <li>
                 <input type="checkbox" name="permissions[]" {{ in_array($permission->id, $usedPermissions ?? [], true) ? 'checked' : '' }} value="{{ $permission->id }}" id="{{ $permission->id }}" />
