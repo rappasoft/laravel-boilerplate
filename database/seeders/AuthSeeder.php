@@ -1,5 +1,12 @@
 <?php
 
+namespace Database\Seeders;
+
+use Database\Seeders\Auth\PermissionRoleSeeder;
+use Database\Seeders\Auth\UserRoleSeeder;
+use Database\Seeders\Auth\UserSeeder;
+use Database\Seeders\Traits\DisableForeignKeys;
+use Database\Seeders\Traits\TruncateTable;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
 use Spatie\Permission\PermissionRegistrar;

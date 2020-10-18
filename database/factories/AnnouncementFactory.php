@@ -1,68 +1,137 @@
 <?php
 
-/* @var $factory \Illuminate\Database\Eloquent\Factory */
+namespace Database\Factories;
 
 use App\Domains\Announcement\Models\Announcement;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Announcement::class, function (Faker $faker) {
-    return [
-        'area' => $faker->randomElement(['frontend', 'backend']),
-        'type' => $faker->randomElement(['info', 'danger', 'warning', 'success']),
-        'message' => $faker->text,
-        'enabled' => $faker->boolean,
-        'starts_at' => $faker->dateTime(),
-        'ends_at' => $faker->dateTime(),
-    ];
-});
+/**
+ * Class AnnouncementFactory
+ *
+ * @package Database\Factories
+ */
+class AnnouncementFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Announcement::class;
 
-$factory->state(Announcement::class, 'enabled', function () {
-    return [
-        'enabled' => true,
-    ];
-});
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            'area' => $this->faker->randomElement(['frontend', 'backend']),
+            'type' => $this->faker->randomElement(['info', 'danger', 'warning', 'success']),
+            'message' => $this->faker->text,
+            'enabled' => $this->faker->boolean,
+            'starts_at' => $this->faker->dateTime(),
+            'ends_at' => $this->faker->dateTime(),
+        ];
+    }
 
-$factory->state(Announcement::class, 'disabled', function () {
-    return [
-        'enabled' => false,
-    ];
-});
+    /**
+     * @return AnnouncementFactory
+     */
+    public function enabled()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'enabled' => true,
+            ];
+        });
+    }
 
-$factory->state(Announcement::class, 'frontend', function () {
-    return [
-        'area' => 'frontend',
-    ];
-});
+    /**
+     * @return AnnouncementFactory
+     */
+    public function disabled()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'enabled' => false,
+            ];
+        });
+    }
 
-$factory->state(Announcement::class, 'backend', function () {
-    return [
-        'area' => 'backend',
-    ];
-});
+    /**
+     * @return AnnouncementFactory
+     */
+    public function frontend()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'area' => 'frontend',
+            ];
+        });
+    }
 
-$factory->state(Announcement::class, 'global', function () {
-    return [
-        'area' => null,
-    ];
-});
+    /**
+     * @return AnnouncementFactory
+     */
+    public function backend()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'area' => 'backend',
+            ];
+        });
+    }
 
-$factory->state(Announcement::class, 'no-dates', function () {
-    return [
-        'starts_at' => null,
-        'ends_at' => null,
-    ];
-});
+    /**
+     * @return AnnouncementFactory
+     */
+    public function global()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'area' => null,
+            ];
+        });
+    }
 
-$factory->state(Announcement::class, 'inside-date-range', function () {
-    return [
-        'starts_at' => now()->subWeek(),
-        'ends_at' => now()->addWeek(),
-    ];
-});
+    /**
+     * @return AnnouncementFactory
+     */
+    public function noDates()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'starts_at' => null,
+                'ends_at' => null,
+            ];
+        });
+    }
 
-$factory->state(Announcement::class, 'outside-date-range', function () {
-    return [
-        'starts_at' => now()->subWeeks(2),
-        'ends_at' => now()->subWeek(),
-    ];
-});
+    /**
+     * @return AnnouncementFactory
+     */
+    public function insideDateRange()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'starts_at' => now()->subWeek(),
+                'ends_at' => now()->addWeek(),
+            ];
+        });
+    }
+
+    /**
+     * @return AnnouncementFactory
+     */
+    public function outsideDateRange()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'starts_at' => now()->subWeeks(2),
+                'ends_at' => now()->subWeek(),
+            ];
+        });
+    }
+}

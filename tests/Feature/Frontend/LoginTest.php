@@ -32,7 +32,7 @@ class LoginTest extends TestCase
     {
         Event::fake();
 
-        $user = factory(User::class)->create([
+        $user = User::factory()->create([
             'email' => 'john@example.com',
             'password' => 'secret',
         ]);
@@ -52,7 +52,7 @@ class LoginTest extends TestCase
     /** @test */
     public function inactive_users_cant_login()
     {
-        factory(User::class)->states('inactive')->create([
+        User::factory()->inactive()->create([
             'email' => 'john@example.com',
             'password' => 'secret',
         ]);
@@ -84,7 +84,7 @@ class LoginTest extends TestCase
     /** @test */
     public function a_users_ip_and_login_time_is_updated_on_login()
     {
-        $user = factory(User::class)->create([
+        $user = User::factory()->create([
             'email' => 'john@example.com',
             'password' => 'secret',
             'last_login_at' => null,
@@ -106,7 +106,7 @@ class LoginTest extends TestCase
     /** @test */
     public function a_user_can_log_out()
     {
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user)
             ->post('/logout')

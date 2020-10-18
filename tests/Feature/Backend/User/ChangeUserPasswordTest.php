@@ -17,11 +17,11 @@ class ChangeUserPasswordTest extends TestCase
     /** @test */
     public function only_a_user_with_correct_permissions_can_visit_the_change_user_password_page()
     {
-        $this->actingAs($user = factory(User::class)->state('admin')->create());
+        $this->actingAs($user = User::factory()->admin()->create());
 
         $user->syncPermissions(['admin.access.user.change-password']);
 
-        $newUser = factory(User::class)->create();
+        $newUser = User::factory()->create();
 
         $this->get('/admin/auth/user/'.$newUser->id.'/password/change')->assertOk();
 
@@ -35,11 +35,11 @@ class ChangeUserPasswordTest extends TestCase
     /** @test */
     public function only_a_user_with_correct_permissions_can_change_a_users_password()
     {
-        $this->actingAs($user = factory(User::class)->state('admin')->create());
+        $this->actingAs($user = User::factory()->admin()->create());
 
         $user->syncPermissions(['admin.access.user.change-password']);
 
-        $newUser = factory(User::class)->create();
+        $newUser = User::factory()->create();
 
         $response = $this->patch('/admin/auth/user/'.$newUser->id.'/password/change', [
             'password' => 'OC4Nzu270N!QBVi%U%qX',
@@ -63,7 +63,7 @@ class ChangeUserPasswordTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $response = $this->patch("/admin/auth/user/{$user->id}/password/change", [
             'password' => '1234567',
@@ -78,7 +78,7 @@ class ChangeUserPasswordTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $response = $this->patch("/admin/auth/user/{$user->id}/password/change", [
             'password' => 'Boilerplate',
@@ -91,7 +91,7 @@ class ChangeUserPasswordTest extends TestCase
     /** @test */
     public function only_the_master_admin_can_view_the_change_password_screen()
     {
-        $this->actingAs($user = factory(User::class)->state('admin')->create());
+        $this->actingAs($user = User::factory()->admin()->create());
 
         $user->syncPermissions(['admin.access.user.change-password']);
 
@@ -111,7 +111,7 @@ class ChangeUserPasswordTest extends TestCase
     /** @test */
     public function only_the_master_admin_can_change_their_password()
     {
-        $this->actingAs($user = factory(User::class)->state('admin')->create());
+        $this->actingAs($user = User::factory()->admin()->create());
 
         $user->syncPermissions(['admin.access.user.change-password']);
 
@@ -144,7 +144,7 @@ class ChangeUserPasswordTest extends TestCase
 
         $this->loginAsAdmin();
 
-        $user = factory(User::class)->create(['password' => 'OC4Nzu270N!QBVi%U%qX']);
+        $user = User::factory()->create(['password' => 'OC4Nzu270N!QBVi%U%qX']);
 
         $response = $this->patch("/admin/auth/user/{$user->id}/password/change", [
             'password' => 'OC4Nzu270N!QBVi%U%qX',
@@ -162,7 +162,7 @@ class ChangeUserPasswordTest extends TestCase
 
         $this->loginAsAdmin();
 
-        $user = factory(User::class)->create(['password' => 'OC4Nzu270N!QBVi%U%qX']);
+        $user = User::factory()->create(['password' => 'OC4Nzu270N!QBVi%U%qX']);
 
         $this->patch("/admin/auth/user/{$user->id}/password/change", [
             'password' => 'OC4Nzu270N!QBVi%U%qX_02',

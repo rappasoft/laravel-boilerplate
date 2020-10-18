@@ -18,7 +18,7 @@ class DeactivateReactivateUserTest extends TestCase
     /** @test */
     public function only_a_user_with_correct_permissions_can_visit_deactivated_users()
     {
-        $this->actingAs($user = factory(User::class)->state('admin')->create());
+        $this->actingAs($user = User::factory()->admin()->create());
 
         $user->syncPermissions(['admin.access.user.reactivate']);
 
@@ -36,11 +36,11 @@ class DeactivateReactivateUserTest extends TestCase
     {
         Event::fake();
 
-        $this->actingAs($user = factory(User::class)->state('admin')->create());
+        $this->actingAs($user = User::factory()->admin()->create());
 
         $user->syncPermissions(['admin.access.user.reactivate']);
 
-        $deactivatedUser = factory(User::class)->state('inactive')->create();
+        $deactivatedUser = User::factory()->inactive()->create();
 
         $this->assertDatabaseHas('users', [
             'id' => $deactivatedUser->id,
@@ -60,9 +60,9 @@ class DeactivateReactivateUserTest extends TestCase
     /** @test */
     public function a_user_without_the_correct_permissions_can_not_reactivate_a_user()
     {
-        $this->actingAs($user = factory(User::class)->state('admin')->create());
+        $this->actingAs(User::factory()->admin()->create());
 
-        $deactivatedUser = factory(User::class)->state('inactive')->create();
+        $deactivatedUser = User::factory()->inactive()->create();
 
         $this->assertDatabaseHas('users', [
             'id' => $deactivatedUser->id,
@@ -84,11 +84,11 @@ class DeactivateReactivateUserTest extends TestCase
     {
         Event::fake();
 
-        $this->actingAs($user = factory(User::class)->state('admin')->create());
+        $this->actingAs($user = User::factory()->admin()->create());
 
         $user->syncPermissions(['admin.access.user.deactivate']);
 
-        $activeUser = factory(User::class)->state('active')->create();
+        $activeUser = User::factory()->active()->create();
 
         $this->assertDatabaseHas('users', [
             'id' => $activeUser->id,
@@ -108,9 +108,9 @@ class DeactivateReactivateUserTest extends TestCase
     /** @test */
     public function a_user_without_the_correct_permissions_can_not_deactivate_a_user()
     {
-        $this->actingAs($user = factory(User::class)->state('admin')->create());
+        $this->actingAs(User::factory()->admin()->create());
 
-        $activeUser = factory(User::class)->state('active')->create();
+        $activeUser = User::factory()->active()->create();
 
         $this->assertDatabaseHas('users', [
             'id' => $activeUser->id,
@@ -130,7 +130,7 @@ class DeactivateReactivateUserTest extends TestCase
     /** @test */
     public function a_user_can_not_deactivate_themselves()
     {
-        $this->actingAs($user = factory(User::class)->state('admin')->create());
+        $this->actingAs($user = User::factory()->admin()->create());
 
         $user->syncPermissions(['admin.access.user.deactivate']);
 
@@ -142,7 +142,7 @@ class DeactivateReactivateUserTest extends TestCase
     /** @test */
     public function a_user_can_not_deactivate_the_master_admin()
     {
-        $this->actingAs($user = factory(User::class)->state('admin')->create());
+        $this->actingAs($user = User::factory()->admin()->create());
 
         $user->syncPermissions(['admin.access.user.deactivate']);
 

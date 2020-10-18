@@ -29,7 +29,7 @@ class RegistrationTest extends TestCase
     /** @test */
     public function email_must_be_unique()
     {
-        factory(User::class)->create(['email' => 'john@example.com']);
+        User::factory()->create(['email' => 'john@example.com']);
 
         $response = $this->post('/register', [
             'name' => 'John Doe',

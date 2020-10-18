@@ -1,8 +1,16 @@
 <?php
 
+namespace Database\Seeders;
+
+use Database\Seeders\Traits\TruncateTable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 
+/**
+ * Class DatabaseSeeder
+ *
+ * @package Database\Seeders
+ */
 class DatabaseSeeder extends Seeder
 {
     use TruncateTable;

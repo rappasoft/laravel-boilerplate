@@ -27,7 +27,7 @@ class DeleteUserTest extends TestCase
 
         $this->logout();
 
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(User::factory()->create());
 
         $response = $this->get('/admin/auth/user/deleted');
 
@@ -41,7 +41,7 @@ class DeleteUserTest extends TestCase
 
         $this->loginAsAdmin();
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $response = $this->delete("/admin/auth/user/{$user->id}");
 
@@ -61,7 +61,7 @@ class DeleteUserTest extends TestCase
 
         $this->loginAsAdmin();
 
-        $user = factory(User::class)->state('deleted')->create();
+        $user = User::factory()->deleted()->create();
 
         $this->assertSoftDeleted('users', ['id' => $user->id]);
 
@@ -81,7 +81,7 @@ class DeleteUserTest extends TestCase
 
         $this->loginAsAdmin();
 
-        $user = factory(User::class)->state('deleted')->create();
+        $user = User::factory()->deleted()->create();
 
         $this->assertSoftDeleted('users', ['id' => $user->id]);
 
@@ -95,7 +95,7 @@ class DeleteUserTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $user = factory(User::class)->state('deleted')->create();
+        $user = User::factory()->deleted()->create();
 
         $this->assertSoftDeleted('users', ['id' => $user->id]);
 
@@ -110,7 +110,7 @@ class DeleteUserTest extends TestCase
     public function the_master_administrator_can_not_be_deleted()
     {
         $admin = $this->getMasterAdmin();
-        $user = factory(User::class)->state('admin')->create();
+        $user = User::factory()->admin()->create();
         $user->assignRole($this->getAdminRole());
         $this->actingAs($user);
 
@@ -124,7 +124,7 @@ class DeleteUserTest extends TestCase
     /** @test */
     public function a_user_can_not_delete_themselves()
     {
-        $user = factory(User::class)->state('admin')->create();
+        $user = User::factory()->admin()->create();
         $user->assignRole($this->getAdminRole());
         $this->actingAs($user);
 
@@ -138,9 +138,9 @@ class DeleteUserTest extends TestCase
     /** @test */
     public function only_admin_can_delete_users()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(User::factory()->create());
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $response = $this->delete("/admin/auth/user/{$user->id}");
 

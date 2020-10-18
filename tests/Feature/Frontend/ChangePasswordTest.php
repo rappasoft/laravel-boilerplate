@@ -14,7 +14,7 @@ class ChangePasswordTest extends TestCase
     /** @test */
     public function change_password_requires_validation()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(User::factory()->create());
 
         $response = $this->patch('/password/update');
 
@@ -24,7 +24,7 @@ class ChangePasswordTest extends TestCase
     /** @test */
     public function a_user_can_change_their_password()
     {
-        $user = factory(User::class)->create(['password' => '1234']);
+        $user = User::factory()->create(['password' => '1234']);
 
         $response = $this->actingAs($user)
             ->patch('/password/update', [
@@ -43,7 +43,7 @@ class ChangePasswordTest extends TestCase
     {
         config(['boilerplate.access.user.password_history' => false]);
 
-        $user = factory(User::class)->create(['password' => 'OC4Nzu270N!QBVi%U%qX']);
+        $user = User::factory()->create(['password' => 'OC4Nzu270N!QBVi%U%qX']);
 
         $response = $this->actingAs($user)
             ->patch('/password/update', [
@@ -61,7 +61,7 @@ class ChangePasswordTest extends TestCase
     {
         config(['boilerplate.access.user.password_history' => 3]);
 
-        $user = factory(User::class)->create(['password' => 'OC4Nzu270N!QBVi%U%qX']);
+        $user = User::factory()->create(['password' => 'OC4Nzu270N!QBVi%U%qX']);
 
         // Change once
         $this->actingAs($user)
@@ -92,7 +92,7 @@ class ChangePasswordTest extends TestCase
     {
         config(['boilerplate.access.user.password_history' => 2]);
 
-        $user = factory(User::class)->create(['password' => 'OC4Nzu270N!QBVi%U%qX']);
+        $user = User::factory()->create(['password' => 'OC4Nzu270N!QBVi%U%qX']);
 
         // Change once
         $this->actingAs($user)

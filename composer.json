@@ -52,12 +52,10 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
-        },
-        "classmap": [
-            "database/seeds",
-            "database/factories"
-        ]
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
     },
     "autoload-dev": {
         "psr-4": {

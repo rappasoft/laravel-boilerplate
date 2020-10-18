@@ -32,7 +32,7 @@ class ResetPasswordTest extends TestCase
     {
         Notification::fake();
 
-        $user = factory(User::class)->create(['email' => 'john@example.com']);
+        $user = User::factory()->create(['email' => 'john@example.com']);
 
         $this->post('password/email', ['email' => 'john@example.com']);
 
@@ -55,7 +55,7 @@ class ResetPasswordTest extends TestCase
     /** @test */
     public function a_password_can_be_reset()
     {
-        $user = factory(User::class)->create(['email' => 'john@example.com']);
+        $user = User::factory()->create(['email' => 'john@example.com']);
 
         $token = $this->app->make('auth.password.broker')->createToken($user);
 
@@ -72,7 +72,7 @@ class ResetPasswordTest extends TestCase
     /** @test */
     public function the_password_can_be_validated()
     {
-        $user = factory(User::class)->create(['email' => 'john@example.com']);
+        $user = User::factory()->create(['email' => 'john@example.com']);
 
         $token = $this->app->make('auth.password.broker')->createToken($user);
 
@@ -95,7 +95,7 @@ class ResetPasswordTest extends TestCase
     {
         config(['boilerplate.access.user.password_history' => false]);
 
-        $user = factory(User::class)->create(['email' => 'john@example.com', 'password' => ']EqZL4}zBT']);
+        $user = User::factory()->create(['email' => 'john@example.com', 'password' => ']EqZL4}zBT']);
 
         $token = $this->app->make('auth.password.broker')->createToken($user);
 
@@ -116,7 +116,7 @@ class ResetPasswordTest extends TestCase
     {
         config(['boilerplate.access.user.password_history' => 3]);
 
-        $user = factory(User::class)->create(['email' => 'john@example.com', 'password' => ']EqZL4}zBT']);
+        $user = User::factory()->create(['email' => 'john@example.com', 'password' => ']EqZL4}zBT']);
 
         // Change once
         $this->actingAs($user)
