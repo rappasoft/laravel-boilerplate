@@ -44,7 +44,7 @@ class RolesTable extends TableComponent
     public function columns(): array
     {
         return [
-            Column::make(__('Type'))
+            Column::make(__('Type'), 'type')
                 ->sortable()
                 ->format(function (Role $model) {
                     if ($model->type === User::TYPE_ADMIN) {
@@ -57,7 +57,7 @@ class RolesTable extends TableComponent
 
                     return 'N/A';
                 }),
-            Column::make(__('Name'))
+            Column::make(__('Name'), 'name')
                 ->searchable()
                 ->sortable(),
             Column::make(__('Permissions'), 'permissions_label') // TODO: Refactor out permissions_label to partial
