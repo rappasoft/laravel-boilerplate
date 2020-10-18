@@ -3,7 +3,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [7.2.6] - 2020-08-XX
+## [8.0.0] - 2020-10-XX
+
+## Added
+
+- Added back roave/security-advisories
+- Added new database factories
+- Added Polish languages
 
 ## Changed
 
@@ -11,6 +17,28 @@ All notable changes to this project will be documented in this file.
 - Updated users/roles table to use new tables
 - Moved livewire components into Frontend/Backend and updated calls
 - Removed type partial and just merged into table format
+- Update PHP to 7.3
+- Update Guzzle to v7
+- Update Laravel to v8
+- Update Socialite to v5
+- Update Laravel UI to v3
+- Update Lockout to v3
+- Update Breadcrumbs to v2
+- Update PHP Pretty Printer to v0.29
+- Update Ignition to v2.3.6
+- Update Collision to v5
+- Condense .env.example
+- Updated tests to use new factories
+- Updated seeders and factories to be namespaced
+- Follow Laravel upgrade guide for v8 and change all the needed files
+- Update to Laravel commit: 8d3ca07c4cff6d36593625ee4b34e19ce2dba15b
+- Update CS/FR/IN languages
+- Sort locale dropdown by language not array key
+
+## Removed
+
+- Remove recaptcha
+- Remove laraguard and all associated files
 
 ## [7.2.5] - 2020-08-06
 
