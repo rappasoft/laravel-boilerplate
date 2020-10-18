@@ -23,7 +23,7 @@
 
 ### Slack Channel
 
-Please join us in our Slack channel to get faster responses to your questions. Get your invite here: https://laravel-boilerplate.herokuapp.com
+Please join us in our Slack channel to get faster responses to your questions. Get your invite here: https://laravel-5-boilerplate.herokuapp.com
 
 ### Introduction
 
