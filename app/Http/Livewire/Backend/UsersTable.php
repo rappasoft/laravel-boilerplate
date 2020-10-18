@@ -46,8 +46,7 @@ class UsersTable extends TableComponent
      */
     public function query(): Builder
     {
-        $query = User::with('roles', 'twoFactorAuth')
-            ->withCount('twoFactorAuth');
+        $query = User::with('roles');
 
         if ($this->status === 'deleted') {
             return $query->onlyTrashed();
@@ -84,13 +83,6 @@ class UsersTable extends TableComponent
                 ->sortable()
                 ->format(function (User $model) {
                     return view('backend.auth.user.includes.verified', ['user' => $model]);
-                }),
-            Column::make(__('2FA'))
-                ->sortable(function ($builder, $direction) {
-                    return $builder->orderBy('two_factor_auth_count', $direction);
-                })
-                ->format(function (User $model) {
-                    return view('backend.auth.user.includes.2fa', ['user' => $model]);
                 }),
             Column::make(__('Roles'), 'roles_label') // TODO: Refactor out roles_label to partial
                 ->searchable(function ($builder, $term) {

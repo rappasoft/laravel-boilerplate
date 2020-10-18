@@ -25,10 +25,6 @@ return [
         ],
 
         'user' => [
-            /*
-             * Whether or not admins need 2FA enabled to visit the backend
-             */
-            'admin_requires_2fa' => env('ADMIN_REQUIRES_2FA', true),
 
             /*
              * Whether or not a user can change their email address after
