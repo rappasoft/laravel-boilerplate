@@ -7,9 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 
 /**
- * Class DatabaseSeeder
- *
- * @package Database\Seeders
+ * Class DatabaseSeeder.
  */
 class DatabaseSeeder extends Seeder
 {

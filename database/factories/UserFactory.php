@@ -7,13 +7,10 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * Class UserFactory
- *
- * @package Database\Factories
+ * Class UserFactory.
  */
 class UserFactory extends Factory
 {
-
     /**
      * The name of the factory's corresponding model.
      *

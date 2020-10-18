@@ -6,9 +6,7 @@ use App\Domains\Announcement\Models\Announcement;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * Class AnnouncementFactory
- *
- * @package Database\Factories
+ * Class AnnouncementFactory.
  */
 class AnnouncementFactory extends Factory
 {
