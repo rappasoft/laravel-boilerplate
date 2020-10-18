@@ -7,13 +7,10 @@ use App\Domains\Auth\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * Class RoleFactory
- *
- * @package Database\Factories
+ * Class RoleFactory.
  */
 class RoleFactory extends Factory
 {
-
     /**
      * The name of the factory's corresponding model.
      *
