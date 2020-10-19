@@ -45,6 +45,11 @@
                 </tr>
 
                 <tr>
+                    <th>@lang('2FA')</th>
+                    <td>@include('backend.auth.user.includes.2fa', ['user' => $user])</td>
+                </tr>
+
+                <tr>
                     <th>@lang('Timezone')</th>
                     <td>{{ $user->timezone ?? __('N/A') }}</td>
                 </tr>

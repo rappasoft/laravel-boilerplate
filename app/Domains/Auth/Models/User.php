@@ -9,6 +9,8 @@ use App\Domains\Auth\Models\Traits\Scope\UserScope;
 use App\Domains\Auth\Notifications\Frontend\ResetPasswordNotification;
 use App\Domains\Auth\Notifications\Frontend\VerifyEmail;
 use Database\Factories\UserFactory;
+use DarkGhostHunter\Laraguard\Contracts\TwoFactorAuthenticatable;
+use DarkGhostHunter\Laraguard\TwoFactorAuthentication;
 use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,7 +23,7 @@ use Spatie\Permission\Traits\HasRoles;
 /**
  * Class User.
  */
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenticatable
 {
     use HasFactory,
         HasRoles,
@@ -29,6 +31,7 @@ class User extends Authenticatable implements MustVerifyEmail
         MustVerifyEmailTrait,
         Notifiable,
         SoftDeletes,
+        TwoFactorAuthentication,
         UserAttribute,
         UserMethod,
         UserRelationship,

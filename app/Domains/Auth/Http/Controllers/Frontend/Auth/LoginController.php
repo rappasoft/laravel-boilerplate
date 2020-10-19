@@ -67,6 +67,29 @@ class LoginController extends Controller
     }
 
     /**
+     * Overidden for 2FA
+     * https://github.com/DarkGhostHunter/Laraguard#protecting-the-login.
+     *
+     * Attempt to log the user into the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
+     */
+    protected function attemptLogin(Request $request)
+    {
+        try {
+            return $this->guard()->attempt(
+                $this->credentials($request),
+                $request->filled('remember')
+            );
+        } catch (HttpResponseException $exception) {
+            $this->incrementLoginAttempts($request);
+
+            throw $exception;
+        }
+    }
+
+    /**
      * The user has been authenticated.
      *
      * @param  Request  $request

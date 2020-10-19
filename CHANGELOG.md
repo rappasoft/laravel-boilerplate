@@ -42,7 +42,6 @@ All notable changes to this project will be documented in this file.
 ## Removed
 
 - Remove recaptcha
-- Remove laraguard and all associated files
 
 ## [7.2.5] - 2020-08-06
 
