@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [8.0.0] - 2020-10-XX
+## [8.0.0] - 2020-10-19
 
 ## Added
 
