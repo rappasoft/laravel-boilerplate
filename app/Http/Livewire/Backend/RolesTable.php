@@ -60,7 +60,7 @@ class RolesTable extends TableComponent
             Column::make(__('Name'), 'name')
                 ->searchable()
                 ->sortable(),
-            Column::make(__('Permissions'), 'permissions_label') // TODO: Refactor out permissions_label to partial
+            Column::make(__('Permissions'), 'permissions_label')
                 ->searchable(function ($builder, $term) {
                     return $builder->orWhereHas('permissions', function ($query) use ($term) {
                         return $query->where('name', 'like', '%'.$term.'%');

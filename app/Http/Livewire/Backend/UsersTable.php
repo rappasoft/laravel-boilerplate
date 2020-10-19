@@ -84,7 +84,7 @@ class UsersTable extends TableComponent
                 ->format(function (User $model) {
                     return view('backend.auth.user.includes.verified', ['user' => $model]);
                 }),
-            Column::make(__('Roles'), 'roles_label') // TODO: Refactor out roles_label to partial
+            Column::make(__('Roles'), 'roles_label')
                 ->searchable(function ($builder, $term) {
                     return $builder->orWhereHas('roles', function ($query) use ($term) {
                         return $query->where('name', 'like', '%'.$term.'%');
@@ -93,7 +93,7 @@ class UsersTable extends TableComponent
                 ->format(function (User $model) {
                     return $this->html($model->roles_label);
                 }),
-            Column::make(__('Additional Permissions'), 'permissions_label') // TODO: Refactor out permissions_label to partial
+            Column::make(__('Additional Permissions'), 'permissions_label')
                 ->searchable(function ($builder, $term) {
                     return $builder->orWhereHas('permissions', function ($query) use ($term) {
                         return $query->where('name', 'like', '%'.$term.'%');
