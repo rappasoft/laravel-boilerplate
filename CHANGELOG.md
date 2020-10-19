@@ -382,7 +382,8 @@ Started from scratch with a blank Laravel 7.* installation. This release is not 
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.6...development
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.0...development
+[8.0.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.6...v8.0.0
 [7.2.6]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.5...v7.2.6
 [7.2.5]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.4...v7.2.5
 [7.2.4]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.3...v7.2.4
