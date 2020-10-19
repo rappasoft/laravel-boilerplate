@@ -15,8 +15,17 @@ return [
     */
     'access' => [
         'captcha' => [
-            'registration' => env('REGISTRATION_CAPTCHA_STATUS', false),
+            'configs' => [
+                'site_key'   => env('INVISIBLE_RECAPTCHA_SITEKEY'),
+                'secret_key' => env('INVISIBLE_RECAPTCHA_SECRETKEY'),
+                'options'   => [
+                    'hidden' => false,
+                    'location' => 'bottomright',
+                    'timeout' => 5,
+                ],
+            ],
             'login' => env('LOGIN_CAPTCHA_STATUS', false),
+            'registration' => env('REGISTRATION_CAPTCHA_STATUS', false),
         ],
 
         'middleware' => [

@@ -10,6 +10,9 @@ All notable changes to this project will be documented in this file.
 - Added back roave/security-advisories
 - Added new database factories
 - Added Polish languages
+- Added BladeServiceProvider with @captcha directive
+- Added Captcha rule
+- Added Captcha configs to boilerplate configs
 
 ## Changed
 
@@ -34,6 +37,7 @@ All notable changes to this project will be documented in this file.
 - Update to Laravel commit: 8d3ca07c4cff6d36593625ee4b34e19ce2dba15b
 - Update CS/FR/IN languages
 - Sort locale dropdown by language not array key
+- Modified login/register controllers to use new Captcha rule
 
 ## Removed
 
