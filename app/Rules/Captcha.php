@@ -6,13 +6,10 @@ use GuzzleHttp\Client;
 use Illuminate\Contracts\Validation\Rule;
 
 /**
- * Class Captcha
- *
- * @package App\Rules
+ * Class Captcha.
  */
 class Captcha implements Rule
 {
-
     /**
      * Determine if the validation rule passes.
      *
@@ -34,7 +31,7 @@ class Captcha implements Rule
             'form_params' => [
                 'secret' => config('boilerplate.access.captcha.configs.secret_key'),
                 'remoteip' => request()->getClientIp(),
-                'response' => $value
+                'response' => $value,
             ],
         ])->getBody(), true);
 
