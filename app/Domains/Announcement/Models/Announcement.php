@@ -3,6 +3,8 @@
 namespace App\Domains\Announcement\Models;
 
 use App\Domains\Announcement\Models\Traits\Scope\AnnouncementScope;
+use Database\Factories\AnnouncementFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 
@@ -12,6 +14,7 @@ use Spatie\Activitylog\Traits\LogsActivity;
 class Announcement extends Model
 {
     use AnnouncementScope,
+        HasFactory,
         LogsActivity;
 
     public const TYPE_FRONTEND = 'frontend';
@@ -46,4 +49,14 @@ class Announcement extends Model
     protected $casts = [
         'enabled' => 'boolean',
     ];
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return AnnouncementFactory::new();
+    }
 }

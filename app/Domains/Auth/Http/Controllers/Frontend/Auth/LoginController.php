@@ -4,8 +4,8 @@ namespace App\Domains\Auth\Http\Controllers\Frontend\Auth;
 
 use App\Domains\Auth\Events\User\UserLoggedIn;
 use App\Http\Controllers\Controller;
+use App\Rules\Captcha;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
 
@@ -60,7 +60,7 @@ class LoginController extends Controller
         $request->validate([
             $this->username() => ['required', 'max:255', 'string'],
             'password' => array_merge(['max:100'], PasswordRules::login()),
-            'g-recaptcha-response' => ['required_if:captcha_status,true', 'captcha'],
+            'g-recaptcha-response' => ['required_if:captcha_status,true', new Captcha],
         ], [
             'g-recaptcha-response.required_if' => __('validation.required', ['attribute' => 'captcha']),
         ]);

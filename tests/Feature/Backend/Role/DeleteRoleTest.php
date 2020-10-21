@@ -21,7 +21,7 @@ class DeleteRoleTest extends TestCase
     {
         Event::fake();
 
-        $role = factory(Role::class)->create();
+        $role = Role::factory()->create();
 
         $this->loginAsAdmin();
 
@@ -53,8 +53,8 @@ class DeleteRoleTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $role = factory(Role::class)->create();
-        $user = factory(User::class)->create();
+        $role = Role::factory()->create();
+        $user = User::factory()->create();
         $user->assignRole($role);
 
         $response = $this->delete('/admin/auth/role/'.$role->id);
@@ -67,9 +67,9 @@ class DeleteRoleTest extends TestCase
     /** @test */
     public function only_admin_can_delete_roles()
     {
-        $this->actingAs(factory(User::class)->state('admin')->create());
+        $this->actingAs(User::factory()->admin()->create());
 
-        $role = factory(Role::class)->create();
+        $role = Role::factory()->create();
 
         $response = $this->delete('/admin/auth/role/'.$role->id);
 

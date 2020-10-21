@@ -1,4 +1,4 @@
-## Laravel Boilerplate (Current: Laravel 7.*) ([Demo](https://demo.laravel-boilerplate.com))
+## Laravel Boilerplate (Current: Laravel 8.*) ([Demo](https://demo.laravel-boilerplate.com))
 
 [![Latest Stable Version](https://poser.pugx.org/rappasoft/laravel-boilerplate/v/stable)](https://packagist.org/packages/rappasoft/laravel-boilerplate)
 [![Latest Unstable Version](https://poser.pugx.org/rappasoft/laravel-boilerplate/v/unstable)](https://packagist.org/packages/rappasoft/laravel-boilerplate) 
@@ -21,11 +21,9 @@
 
 [Click here for the official documentation](http://laravel-boilerplate.com)
 
-<a href="https://tracking.gitads.io/?repo=laravel-boilerplate"><img src="https://images.gitads.io/laravel-boilerplate" alt="GitAds"/></a>
-
 ### Slack Channel
 
-Please join us in our Slack channel to get faster responses to your questions. Get your invite here: https://laravel-boilerplate.herokuapp.com
+Please join us in our Slack channel to get faster responses to your questions. Get your invite here: https://laravel-5-boilerplate.herokuapp.com
 
 ### Introduction
 

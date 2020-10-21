@@ -22,7 +22,7 @@ class DashboardTest extends TestCase
     /** @test */
     public function not_authorized_users_cant_access_admin_dashboard()
     {
-        $this->actingAs(factory(User::class)->state('user')->create());
+        $this->actingAs(User::factory()->user()->create());
 
         $response = $this->get('/admin/dashboard');
 

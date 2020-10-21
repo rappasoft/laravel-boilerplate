@@ -15,8 +15,17 @@ return [
     */
     'access' => [
         'captcha' => [
-            'registration' => env('REGISTRATION_CAPTCHA_STATUS', false),
+            'configs' => [
+                'site_key'   => env('INVISIBLE_RECAPTCHA_SITEKEY'),
+                'secret_key' => env('INVISIBLE_RECAPTCHA_SECRETKEY'),
+                'options'   => [
+                    'hidden' => false,
+                    'location' => 'bottomright',
+                    'timeout' => 5,
+                ],
+            ],
             'login' => env('LOGIN_CAPTCHA_STATUS', false),
+            'registration' => env('REGISTRATION_CAPTCHA_STATUS', false),
         ],
 
         'middleware' => [
@@ -165,6 +174,7 @@ return [
             'ja' => ['name' => 'Japanese', 'rtl' => false],
             'nl' => ['name' => 'Dutch', 'rtl' => false],
             'no' => ['name' => 'Norwegian', 'rtl' => false],
+            'pl' => ['name' => 'Polish', 'rtl' => false],
             'pt_BR' => ['name' => 'Brazilian Portuguese', 'rtl' => false],
             'ru' => ['name' => 'Russian', 'rtl' => false],
             'sv' => ['name' => 'Swedish', 'rtl' => false],

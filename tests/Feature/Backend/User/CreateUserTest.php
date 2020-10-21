@@ -43,7 +43,7 @@ class CreateUserTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        factory(User::class)->create(['email' => 'john@example.com']);
+        User::factory()->create(['email' => 'john@example.com']);
 
         $response = $this->post('/admin/auth/user', [
             'email' => 'john@example.com',
@@ -121,7 +121,7 @@ class CreateUserTest extends TestCase
     /** @test */
     public function only_admin_can_create_users()
     {
-        $this->actingAs(factory(User::class)->state('admin')->create());
+        $this->actingAs(User::factory()->admin()->create());
 
         $response = $this->get('/admin/auth/user/create');
 

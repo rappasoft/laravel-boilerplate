@@ -13,7 +13,7 @@ class LogoutTest extends TestCase
     /** @test */
     public function the_user_can_logout()
     {
-        $this->actingAs($user = factory(User::class)->create());
+        $this->actingAs($user = User::factory()->create());
 
         $this->assertAuthenticatedAs($user);
 

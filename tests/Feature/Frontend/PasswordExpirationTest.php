@@ -15,7 +15,7 @@ class PasswordExpirationTest extends TestCase
     {
         config(['boilerplate.access.user.password_expires_days' => 30]);
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->actingAs($user);
 
@@ -25,7 +25,7 @@ class PasswordExpirationTest extends TestCase
     /** @test */
     public function a_user_with_an_expired_password_cannot_access_dashboard()
     {
-        $user = factory(User::class)->states('password_expired')->create();
+        $user = User::factory()->passwordExpired()->create();
 
         $this->actingAs($user);
 
@@ -39,7 +39,7 @@ class PasswordExpirationTest extends TestCase
     /** @test */
     public function a_user_with_an_expired_password_cannot_access_account()
     {
-        $user = factory(User::class)->states('password_expired')->create();
+        $user = User::factory()->passwordExpired()->create();
 
         $this->actingAs($user);
 
@@ -53,7 +53,7 @@ class PasswordExpirationTest extends TestCase
     /** @test */
     public function password_expiration_update_requires_validation()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(User::factory()->create());
 
         $response = $this->patch('/password/expired');
 
@@ -63,7 +63,7 @@ class PasswordExpirationTest extends TestCase
     /** @test */
     public function a_user_can_update_their_expired_password()
     {
-        $user = factory(User::class)->states('password_expired')->create();
+        $user = User::factory()->passwordExpired()->create();
 
         $this->actingAs($user);
 

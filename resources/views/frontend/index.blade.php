@@ -10,7 +10,7 @@
 
         @stack('before-styles')
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="{{ mix('css/frontend.css') }}" rel="stylesheet">
         <style>
             html, body {

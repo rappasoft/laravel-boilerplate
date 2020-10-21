@@ -14,7 +14,7 @@ return [
 
     'reset' => 'Votre mot de passe a été modifié !',
     'sent' => 'Un email contenant un lien de réinitialisation vous a été envoyé !',
-    'throttled' => 'Please wait before retrying.',
+    'throttled' => 'Veuillez patienter avant d\'essayer à nouveau.',
     'token' => "Ce jeton de réinitialisation du mot de passe n'est pas valide.",
     'user' => "Aucun utilisateur n'est enregistré avec cette adresse email.",
 ];

@@ -20,7 +20,7 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function the_name_is_required()
     {
-        $role = factory(Role::class)->create();
+        $role = Role::factory()->create();
 
         $this->loginAsAdmin();
 
@@ -34,7 +34,7 @@ class UpdateRoleTest extends TestCase
     {
         Event::fake();
 
-        $role = factory(Role::class)->create();
+        $role = Role::factory()->create();
 
         $this->loginAsAdmin();
 
@@ -82,7 +82,7 @@ class UpdateRoleTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $role = factory(Role::class)->create(['name' => 'current name']);
+        $role = Role::factory()->create(['name' => 'current name']);
 
         $this->get("/admin/auth/role/{$role->id}/edit")->assertOk();
     }
@@ -102,9 +102,9 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function a_non_admin_can_not_edit_roles()
     {
-        $this->actingAs(factory(User::class)->create());
+        $this->actingAs(User::factory()->create());
 
-        $role = factory(Role::class)->create(['name' => 'current name']);
+        $role = Role::factory()->create(['name' => 'current name']);
 
         $response = $this->get("/admin/auth/role/{$role->id}/edit");
 
@@ -114,9 +114,9 @@ class UpdateRoleTest extends TestCase
     /** @test */
     public function only_admin_can_update_roles()
     {
-        $this->actingAs(factory(User::class)->state('admin')->create());
+        $this->actingAs(User::factory()->admin()->create());
 
-        $role = factory(Role::class)->create(['name' => 'current name']);
+        $role = Role::factory()->create(['name' => 'current name']);
 
         $response = $this->patch("/admin/auth/role/{$role->id}", [
             'name' => 'new name',

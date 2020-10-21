@@ -36,7 +36,7 @@
 
                         <p>@lang('Generate a code from your 2FA app and enter it below:')</p>
 
-                        <livewire:two-factor-authentication></livewire:two-factor-authentication>
+                        <livewire:frontend.two-factor-authentication />
                     </x-slot>
                 </x-frontend.card>
             </div><!--col-md-8-->
