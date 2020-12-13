@@ -8,6 +8,9 @@ All notable changes to this project will be documented in this file.
 ## Changed
 
 - Update dependencies
+- Update to laravel commit: ddb26fbc504cd64fb1b89511773aa8d03c758c6d
+- Update exception handling to match laravel
+- Added sail docker file
 
 ## [8.0.0] - 2020-10-21
 

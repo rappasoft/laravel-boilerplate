@@ -22,6 +22,7 @@ _ide_helper.php
 .project
 composer.phar
 coverage.xml
+docker-compose.override.yml
 error.log
 Homestead.json
 Homestead.yaml
