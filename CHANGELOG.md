@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
-## [8.0.1] - 2020-12-11
+## [8.0.1] - 2020-12-12
 
 ## Changed
 
@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 - Update exception handling to match laravel
 - Added sail docker file
 - Update FA language
+- Add 'main' branch to workflow
 
 ## [8.0.0] - 2020-10-21
 
