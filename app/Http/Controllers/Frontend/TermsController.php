@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Frontend;
  */
 class TermsController
 {
-
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
