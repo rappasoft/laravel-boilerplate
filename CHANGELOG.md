@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [8.0.2] - 2020-12-15
+
+### Changed
+
+- Removed the base controller dependency from all controllers as it's not needed for any of the current functionality and is just more overhead for no reason.
+- Move verification middleware to routes file
+- Update phpunit.xml file to current format
+
 ## [8.0.1] - 2020-12-12
 
 ## Changed

@@ -30,8 +30,12 @@ Route::group(['as' => 'auth.'], function () {
         Route::group(['middleware' => 'password.expires'], function () {
             // E-mail Verification
             Route::get('email/verify', [VerificationController::class, 'show'])->name('verification.notice');
-            Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
-            Route::post('email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
+            Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])
+                ->name('verification.verify')
+                ->middleware(['signed', 'throttle:6,1']);
+            Route::post('email/resend', [VerificationController::class, 'resend'])
+                ->name('verification.resend')
+                ->middleware('throttle:6,1');
 
             // These routes require the users email to be verified
             Route::group(['middleware' => config('boilerplate.access.middleware.verified')], function () {

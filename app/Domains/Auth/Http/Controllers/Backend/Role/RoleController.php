@@ -9,12 +9,11 @@ use App\Domains\Auth\Http\Requests\Backend\Role\UpdateRoleRequest;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Services\PermissionService;
 use App\Domains\Auth\Services\RoleService;
-use App\Http\Controllers\Controller;
 
 /**
  * Class RoleController.
  */
-class RoleController extends Controller
+class RoleController
 {
     /**
      * @var RoleService
