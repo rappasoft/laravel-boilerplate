@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Frontend\User;
  */
 class AccountController
 {
-
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */

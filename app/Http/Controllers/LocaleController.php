@@ -7,7 +7,6 @@ namespace App\Http\Controllers;
  */
 class LocaleController
 {
-
     /**
      * @param $locale
      *
