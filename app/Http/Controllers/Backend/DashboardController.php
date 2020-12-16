@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Backend;
  */
 class DashboardController
 {
-
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
