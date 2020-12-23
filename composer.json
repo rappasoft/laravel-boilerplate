@@ -1,62 +1,105 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "name": "rappasoft/laravel-boilerplate",
     "type": "project",
+    "description": "The Laravel Boilerplate Project.",
+    "keywords": [
+        "framework",
+        "laravel",
+        "boilerplate"
+    ],
+    "license": "MIT",
     "require": {
-        "php": ">=5.6.4",
-        "laravel/framework": "5.3.*",
-        "laravelcollective/html": "5.3.*",
-        "laravel/socialite": "^2.0",
-        "creativeorange/gravatar": "~1.0",
-        "davejamesmiller/laravel-breadcrumbs": "^3.0",
-        "hieu-le/active": "~2.0",
-        "arcanedev/log-viewer": "~4.0",
-        "arcanedev/no-captcha": "~3.0",
-        "yajra/laravel-datatables-oracle": "~6.0"
+        "php": "^7.3|^8.0",
+        "arcanedev/log-viewer": "8.x",
+        "darkghosthunter/laraguard": "dev-master",
+        "fideloper/proxy": "^4.4",
+        "fruitcake/laravel-cors": "^2.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "jamesmills/laravel-timezone": "^1.9",
+        "lab404/laravel-impersonate": "^1.6",
+        "langleyfoxall/laravel-nist-password-rules": "^4.1",
+        "laravel/framework": "^8.12",
+        "laravel/socialite": "^5.0",
+        "laravel/tinker": "^2.5",
+        "laravel/ui": "^3.0",
+        "livewire/livewire": "^2.0",
+        "rappasoft/laravel-livewire-tables": "^0.3",
+        "rappasoft/lockout": "^3.0",
+        "spatie/laravel-activitylog": "^3.14",
+        "spatie/laravel-permission": "^3.11",
+        "tabuna/breadcrumbs": "^2.2"
     },
     "require-dev": {
-        "fzaninotto/faker": "~1.4",
-        "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.0",
-        "symfony/css-selector": "3.1.*",
-        "symfony/dom-crawler": "3.1.*",
-        "barryvdh/laravel-debugbar": "^2.1"
-    },
-    "autoload": {
-        "classmap": [
-            "database"
-        ],
-        "psr-4": {
-            "App\\": "app/"
-        },
-        "files": [
-            "app/helpers.php"
-        ]
-    },
-    "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php"
-        ]
-    },
-    "scripts": {
-        "post-root-package-install": [
-            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "php artisan key:generate"
-        ],
-        "post-install-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postInstall",
-            "php artisan optimize"
-        ],
-        "post-update-cmd": [
-            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
-        ]
+        "roave/security-advisories": "dev-master",
+        "barryvdh/laravel-debugbar": "^3.2",
+        "barryvdh/laravel-ide-helper": "^2.6",
+        "codedungeon/phpunit-result-printer": "^0.29",
+        "facade/ignition": "^2.5",
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "fakerphp/faker": "^1.9.1",
+        "laravel/sail": "^0.0.5",
+        "mockery/mockery": "^1.4.2",
+        "nunomaduro/collision": "^5.0",
+        "phpunit/phpunit": "^9.3.3"
     },
     "config": {
-        "preferred-install": "dist"
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta"
+        ],
+        "clear-all": [
+            "@php artisan clear-compiled",
+            "@php artisan cache:clear",
+            "@php artisan route:clear",
+            "@php artisan view:clear",
+            "@php artisan config:clear",
+            "@php artisan permission:cache-reset",
+            "composer dumpautoload -o"
+        ],
+        "cache-all": [
+            "@php artisan config:cache",
+            "@php artisan route:cache"
+        ],
+        "reset": [
+            "composer clear-all",
+            "composer cache-all"
+        ],
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
     }
 }

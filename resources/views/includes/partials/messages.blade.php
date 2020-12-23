@@ -1,47 +1,49 @@
-@if ($errors->any())
-    <div class="alert alert-danger">
-        @foreach ($errors->all() as $error)
-            {!! $error !!}<br/>
+@if(isset($errors) && $errors->any())
+    <x-utils.alert type="danger" class="header-message">
+        @foreach($errors->all() as $error)
+            {{ $error }}<br/>
         @endforeach
-    </div>
-@elseif (session()->get('flash_success'))
-    <div class="alert alert-success">
-        @if(is_array(json_decode(session()->get('flash_success'), true)))
-            {!! implode('', session()->get('flash_success')->all(':message<br/>')) !!}
-        @else
-            {!! session()->get('flash_success') !!}
-        @endif
-    </div>
-@elseif (session()->get('flash_warning'))
-    <div class="alert alert-warning">
-        @if(is_array(json_decode(session()->get('flash_warning'), true)))
-            {!! implode('', session()->get('flash_warning')->all(':message<br/>')) !!}
-        @else
-            {!! session()->get('flash_warning') !!}
-        @endif
-    </div>
-@elseif (session()->get('flash_info'))
-    <div class="alert alert-info">
-        @if(is_array(json_decode(session()->get('flash_info'), true)))
-            {!! implode('', session()->get('flash_info')->all(':message<br/>')) !!}
-        @else
-            {!! session()->get('flash_info') !!}
-        @endif
-    </div>
-@elseif (session()->get('flash_danger'))
-    <div class="alert alert-danger">
-        @if(is_array(json_decode(session()->get('flash_danger'), true)))
-            {!! implode('', session()->get('flash_danger')->all(':message<br/>')) !!}
-        @else
-            {!! session()->get('flash_danger') !!}
-        @endif
-    </div>
-@elseif (session()->get('flash_message'))
-    <div class="alert alert-info">
-        @if(is_array(json_decode(session()->get('flash_message'), true)))
-            {!! implode('', session()->get('flash_message')->all(':message<br/>')) !!}
-        @else
-            {!! session()->get('flash_message') !!}
-        @endif
-    </div>
+    </x-utils.alert>
+@endif
+
+@if(session()->get('flash_success'))
+    <x-utils.alert type="success" class="header-message">
+        {{ session()->get('flash_success') }}
+    </x-utils.alert>
+@endif
+
+@if(session()->get('flash_warning'))
+    <x-utils.alert type="warning" class="header-message">
+        {{ session()->get('flash_warning') }}
+    </x-utils.alert>
+@endif
+
+@if(session()->get('flash_info') || session()->get('flash_message'))
+    <x-utils.alert type="info" class="header-message">
+        {{ session()->get('flash_info') }}
+    </x-utils.alert>
+@endif
+
+@if(session()->get('flash_danger'))
+    <x-utils.alert type="danger" class="header-message">
+        {{ session()->get('flash_danger') }}
+    </x-utils.alert>
+@endif
+
+@if(session()->get('status'))
+    <x-utils.alert type="success" class="header-message">
+        {{ session()->get('status') }}
+    </x-utils.alert>
+@endif
+
+@if(session()->get('resent'))
+    <x-utils.alert type="success" class="header-message">
+        @lang('A fresh verification link has been sent to your email address.')
+    </x-utils.alert>
+@endif
+
+@if(session()->get('verified'))
+    <x-utils.alert type="success" class="header-message">
+        @lang('Thank you for verifying your e-mail address.')
+    </x-utils.alert>
 @endif

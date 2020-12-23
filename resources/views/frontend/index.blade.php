@@ -1,182 +1,113 @@
-@extends('frontend.layouts.app')
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ appName() }}</title>
+        <meta name="description" content="@yield('meta_description', appName())">
+        <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
+        @yield('meta')
 
-@section('content')
-    <div class="row">
+        @stack('before-styles')
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="{{ mix('css/frontend.css') }}" rel="stylesheet">
+        <style>
+            html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                height: 100vh;
+                margin: 0;
+            }
 
-        <example></example>
+            .full-height {
+                height: 100vh;
+            }
 
-        <div class="col-xs-12">
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
 
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <i class="fa fa-home"></i> {{ trans('navs.general.home') }}
-                </div>
+            .position-ref {
+                position: relative;
+            }
 
-                <div class="panel-body">
-                    {{ trans('strings.frontend.welcome_to', ['place' => app_name()]) }}
-                </div>
-            </div><!-- panel -->
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
 
-        </div><!-- col-md-10 -->
+            .content {
+                text-align: center;
+            }
 
-        @role('Administrator')
-            {{-- You can also send through the Role ID --}}
+            .title {
+                font-size: 84px;
+            }
 
-            <div class="col-xs-12">
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
 
-                <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_blade_extensions') }}</div>
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+        </style>
+        @stack('after-styles')
 
-                    <div class="panel-body">
-                        {{ trans('strings.frontend.test') . ' 1: ' . trans('strings.frontend.tests.you_can_see_because', ['role' => trans('roles.administrator')]) }}
-                    </div>
-                </div><!-- panel -->
+        @include('includes.partials.ga')
+    </head>
+    <body>
+        @include('includes.partials.read-only')
+        @include('includes.partials.logged-in-as')
+        @include('includes.partials.announcements')
 
-            </div><!-- col-md-10 -->
-        @endauth
+        <div id="app" class="flex-center position-ref full-height">
+            <div class="top-right links">
+                @auth
+                    @if ($logged_in_user->isUser())
+                        <a href="{{ route('frontend.user.dashboard') }}">@lang('Dashboard')</a>
+                    @endif
 
-        @if (access()->hasRole('Administrator'))
-            <div class="col-xs-12">
+                    <a href="{{ route('frontend.user.account') }}">@lang('Account')</a>
+                @else
+                    <a href="{{ route('frontend.auth.login') }}">@lang('Login')</a>
 
-                <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_access_helper.role_name') }}</div>
+                    @if (config('boilerplate.access.user.registration'))
+                        <a href="{{ route('frontend.auth.register') }}">@lang('Register')</a>
+                    @endif
+                @endauth
+            </div><!--top-right-->
 
-                    <div class="panel-body">
-                        {{ trans('strings.frontend.test') . ' 2: ' . trans('strings.frontend.tests.you_can_see_because', ['role' => trans('roles.administrator')]) }}
-                    </div>
-                </div><!-- panel -->
+            <div class="content">
+                @include('includes.partials.messages')
 
-            </div><!-- col-md-10 -->
-        @endif
+                <div class="title m-b-md">
+                    <example-component></example-component>
+                </div><!--title-->
 
-        @if (access()->hasRole(1))
-            <div class="col-xs-12">
+                <div class="links">
+                    <a href="http://laravel-boilerplate.com" target="_blank"><i class="fa fa-book"></i> @lang('Docs')</a>
+                    <a href="https://github.com/rappasoft/laravel-boilerplate" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                </div><!--links-->
+            </div><!--content-->
+        </div><!--app-->
 
-                <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_access_helper.role_id') }}</div>
-
-                    <div class="panel-body">
-                        {{ trans('strings.frontend.test') . ' 3: ' . trans('strings.frontend.tests.you_can_see_because', ['role' => trans('roles.administrator')]) }}
-                    </div>
-                </div><!-- panel -->
-
-            </div><!-- col-md-10 -->
-        @endif
-
-        @if (access()->hasRoles(['Administrator', 1]))
-            <div class="col-xs-12">
-
-                <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_access_helper.array_roles_not') }}</div>
-
-                    <div class="panel-body">
-                        {{ trans('strings.frontend.test') . ' 4: ' . trans('strings.frontend.tests.you_can_see_because', ['role' => trans('roles.administrator')]) }}
-                    </div>
-                </div><!-- panel -->
-
-            </div><!-- col-md-10 -->
-        @endif
-
-        {{-- The second parameter says the user must have all the roles specified. Administrator does not have the role with an id of 2, so this will not show. --}}
-        @if (access()->hasRoles(['Administrator', 2], true))
-            <div class="col-xs-12">
-
-                <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.role') . trans('strings.frontend.tests.using_access_helper.array_roles') }}</div>
-
-                    <div class="panel-body">
-                        {{ trans('strings.frontend.tests.you_can_see_because', ['role' => trans('roles.administrator')]) }}
-                    </div>
-                </div><!-- panel -->
-
-            </div><!-- col-md-10 -->
-        @endif
-
-        @permission('view-backend')
-            <div class="col-xs-12">
-
-                <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.permission_name') }}</div>
-
-                    <div class="panel-body">
-                        {{ trans('strings.frontend.test') . ' 5: ' . trans('strings.frontend.tests.you_can_see_because_permission', ['permission' => 'view-backend']) }}
-                    </div>
-                </div><!-- panel -->
-
-            </div><!-- col-md-10 -->
-        @endauth
-
-        @if (access()->hasPermission(1))
-            <div class="col-xs-12">
-
-                <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.permission_id') }}</div>
-
-                    <div class="panel-body">
-                        {{ trans('strings.frontend.test') . ' 6: ' . trans('strings.frontend.tests.you_can_see_because_permission', ['permission' => 'view_backend']) }}
-                    </div>
-                </div><!-- panel -->
-
-            </div><!-- col-md-10 -->
-        @endif
-
-        @if (access()->hasPermissions(['view-backend', 1]))
-            <div class="col-xs-12">
-
-                <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.array_permissions_not') }}</div>
-
-                    <div class="panel-body">
-                        {{ trans('strings.frontend.test') . ' 7: ' . trans('strings.frontend.tests.you_can_see_because_permission', ['permission' => 'view_backend']) }}
-                    </div>
-                </div><!-- panel -->
-
-            </div><!-- col-md-10 -->
-        @endif
-
-        @if (access()->hasPermissions(['view-backend', 2], true))
-            <div class="col-xs-12">
-
-                <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-home"></i> {{ trans('strings.frontend.tests.based_on.permission') . trans('strings.frontend.tests.using_access_helper.array_permissions') }}</div>
-
-                    <div class="panel-body">
-                        {{ trans('strings.frontend.tests.you_can_see_because_permission', ['permission' => 'view_backend']) }}
-                    </div>
-                </div><!-- panel -->
-
-            </div><!-- col-md-10 -->
-        @endif
-
-        <div class="col-xs-12">
-
-            <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-home"></i> Bootstrap Glyphicon {{ trans('strings.frontend.test') }}</div>
-
-                <div class="panel-body">
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon glyphicon-euro" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon glyphicon-cloud" aria-hidden="true"></span>
-                    <span class="glyphicon glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                </div>
-            </div><!-- panel -->
-
-        </div><!-- col-md-10 -->
-
-        <div class="col-xs-12">
-
-            <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-home"></i> Font Awesome {{ trans('strings.frontend.test') }}</div>
-
-                <div class="panel-body">
-                    <i class="fa fa-home"></i>
-                    <i class="fa fa-facebook"></i>
-                    <i class="fa fa-twitter"></i>
-                    <i class="fa fa-pinterest"></i>
-                </div>
-            </div><!-- panel -->
-
-        </div><!-- col-md-10 -->
-
-    </div><!--row-->
-@endsection
+        @stack('before-scripts')
+        <script src="{{ mix('js/manifest.js') }}"></script>
+        <script src="{{ mix('js/vendor.js') }}"></script>
+        <script src="{{ mix('js/frontend.js') }}"></script>
+        @stack('after-scripts')
+    </body>
+</html>

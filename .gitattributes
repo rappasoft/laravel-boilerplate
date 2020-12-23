@@ -1,3 +1,18 @@
 * text=auto
-*.css linguist-vendored
-*.scss linguist-vendored
+
+# Enforce Unix newlines
+*.css   text eol=lf linguist-vendored
+*.html  text eol=lf
+*.js    text eol=lf linguist-vendored
+*.json  text eol=lf
+*.md    text eol=lf
+*.scss  text eol=lf linguist-vendored
+*.svg   text eol=lf
+*.txt   text eol=lf
+*.xml   text eol=lf
+*.yml   text eol=lf
+
+# Don't diff or textually merge source maps
+*.map   binary
+
+CHANGELOG.md export-ignore

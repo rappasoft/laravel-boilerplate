@@ -1,10 +1,14 @@
-@if ($breadcrumbs)
-    <ol class="breadcrumb">
-        @foreach ($breadcrumbs as $breadcrumb)
-            @if (!$breadcrumb->last)
-                <li><a href="{{ $breadcrumb->url }}">{{ $breadcrumb->title }}</a></li>
+@if (Breadcrumbs::has())
+    <ol class="breadcrumb border-0 m-0">
+        @foreach (Breadcrumbs::current() as $crumb)
+            @if ($crumb->url() && !$loop->last)
+                <li class="breadcrumb-item">
+                    <x-utils.link :href="$crumb->url()" :text="$crumb->title()" />
+                </li>
             @else
-                <li class="active">{{ $breadcrumb->title }}</li>
+                <li class="breadcrumb-item active">
+                    {{ $crumb->title() }}
+                </li>
             @endif
         @endforeach
     </ol>

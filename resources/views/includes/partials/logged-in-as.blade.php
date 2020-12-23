@@ -1,5 +1,5 @@
-@if ($logged_in_user && session()->has("admin_user_id") && session()->has("temp_user_id"))
-    <div class="alert alert-warning logged-in-as">
-        You are currently logged in as {{ $logged_in_user->name }}. <a href="{{ route("frontend.auth.logout-as") }}">Re-Login as {{ session()->get("admin_user_name") }}</a>.
-    </div><!--alert alert-warning logged-in-as-->
-@endif
+@impersonating
+    <div class="alert alert-warning pt-1 pb-1 mb-0">
+        @lang('You are currently logged in as :name.', ['name' => $logged_in_user->name]) <a href="{{ route('impersonate.leave') }}">@lang('Return to your account')</a>.
+    </div><!--alert alert-warning-->
+@endImpersonating

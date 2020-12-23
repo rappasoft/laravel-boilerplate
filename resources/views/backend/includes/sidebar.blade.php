@@ -1,72 +1,102 @@
-<!-- Left side column. contains the logo and sidebar -->
-<aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel">
-            <div class="pull-left image">
-                <img src="{{ access()->user()->picture }}" class="img-circle" alt="User Image" />
-            </div><!--pull-left-->
-            <div class="pull-left info">
-                <p>{{ access()->user()->name }}</p>
-                <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i> {{ trans('strings.backend.general.status.online') }}</a>
-            </div><!--pull-left-->
-        </div><!--user-panel-->
+<div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
+    <div class="c-sidebar-brand d-lg-down-none">
+        <svg class="c-sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
+            <use xlink:href="{{ asset('img/brand/coreui.svg#full') }}"></use>
+        </svg>
+        <svg class="c-sidebar-brand-minimized" width="46" height="46" alt="CoreUI Logo">
+            <use xlink:href="{{ asset('img/brand/coreui.svg#signet') }}"></use>
+        </svg>
+    </div><!--c-sidebar-brand-->
 
-        <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                  <input type="text" name="q" class="form-control" placeholder="{{ trans('strings.backend.general.search_placeholder') }}" />
-                  <span class="input-group-btn">
-                    <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                  </span>
-            </div><!--input-group-->
-        </form>
-        <!-- /.search form -->
+    <ul class="c-sidebar-nav">
+        <li class="c-sidebar-nav-item">
+            <x-utils.link
+                class="c-sidebar-nav-link"
+                :href="route('admin.dashboard')"
+                :active="activeClass(Route::is('admin.dashboard'), 'c-active')"
+                icon="c-sidebar-nav-icon cil-speedometer"
+                :text="__('Dashboard')" />
+        </li>
 
-        <!-- Sidebar Menu -->
-        <ul class="sidebar-menu">
-            <li class="header">{{ trans('menus.backend.sidebar.general') }}</li>
+        @if (
+            $logged_in_user->hasAllAccess() ||
+            (
+                $logged_in_user->can('admin.access.user.list') ||
+                $logged_in_user->can('admin.access.user.deactivate') ||
+                $logged_in_user->can('admin.access.user.reactivate') ||
+                $logged_in_user->can('admin.access.user.clear-session') ||
+                $logged_in_user->can('admin.access.user.impersonate') ||
+                $logged_in_user->can('admin.access.user.change-password')
+            )
+        )
+            <li class="c-sidebar-nav-title">@lang('System')</li>
 
-            <li class="{{ Active::pattern('admin/dashboard') }}">
-                <a href="{{ route('admin.dashboard') }}">
-                    <i class="fa fa-dashboard"></i>
-                    <span>{{ trans('menus.backend.sidebar.dashboard') }}</span>
-                </a>
+            <li class="c-sidebar-nav-dropdown {{ activeClass(Route::is('admin.auth.user.*') || Route::is('admin.auth.role.*'), 'c-open c-show') }}">
+                <x-utils.link
+                    href="#"
+                    icon="c-sidebar-nav-icon cil-user"
+                    class="c-sidebar-nav-dropdown-toggle"
+                    :text="__('Access')" />
+
+                <ul class="c-sidebar-nav-dropdown-items">
+                    @if (
+                        $logged_in_user->hasAllAccess() ||
+                        (
+                            $logged_in_user->can('admin.access.user.list') ||
+                            $logged_in_user->can('admin.access.user.deactivate') ||
+                            $logged_in_user->can('admin.access.user.reactivate') ||
+                            $logged_in_user->can('admin.access.user.clear-session') ||
+                            $logged_in_user->can('admin.access.user.impersonate') ||
+                            $logged_in_user->can('admin.access.user.change-password')
+                        )
+                    )
+                        <li class="c-sidebar-nav-item">
+                            <x-utils.link
+                                :href="route('admin.auth.user.index')"
+                                class="c-sidebar-nav-link"
+                                :text="__('User Management')"
+                                :active="activeClass(Route::is('admin.auth.user.*'), 'c-active')" />
+                        </li>
+                    @endif
+
+                    @if ($logged_in_user->hasAllAccess())
+                        <li class="c-sidebar-nav-item">
+                            <x-utils.link
+                                :href="route('admin.auth.role.index')"
+                                class="c-sidebar-nav-link"
+                                :text="__('Role Management')"
+                                :active="activeClass(Route::is('admin.auth.role.*'), 'c-active')" />
+                        </li>
+                    @endif
+                </ul>
             </li>
+        @endif
 
-            @permission('manage-users')
-                <li class="{{ Active::pattern('admin/access/*') }}">
-                    <a href="{{ route('admin.access.user.index') }}">
-                        <i class="fa fa-users"></i>
-                        <span>{{ trans('menus.backend.access.title') }}</span>
-                    </a>
-                </li>
-            @endauth
+        @if ($logged_in_user->hasAllAccess())
+            <li class="c-sidebar-nav-dropdown">
+                <x-utils.link
+                    href="#"
+                    icon="c-sidebar-nav-icon cil-list"
+                    class="c-sidebar-nav-dropdown-toggle"
+                    :text="__('Logs')" />
 
-            <li class="{{ Active::pattern('admin/log-viewer*') }} treeview">
-                <a href="#">
-                    <i class="fa fa-list"></i>
-                    <span>{{ trans('menus.backend.log-viewer.main') }}</span>
-                    <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu {{ Active::pattern('admin/log-viewer*', 'menu-open') }}" style="display: none; {{ Active::pattern('admin/log-viewer*', 'display: block;') }}">
-                    <li class="{{ Active::pattern('admin/log-viewer') }}">
-                        <a href="{{ route('admin.log-viewer::dashboard') }}">
-                            <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('menus.backend.log-viewer.dashboard') }}</span>
-                        </a>
+                <ul class="c-sidebar-nav-dropdown-items">
+                    <li class="c-sidebar-nav-item">
+                        <x-utils.link
+                            :href="route('log-viewer::dashboard')"
+                            class="c-sidebar-nav-link"
+                            :text="__('Dashboard')" />
                     </li>
-
-                    <li class="{{ Active::pattern('admin/log-viewer/logs') }}">
-                        <a href="{{ route('admin.log-viewer::logs.list') }}">
-                            <i class="fa fa-circle-o"></i>
-                            <span>{{ trans('menus.backend.log-viewer.logs') }}</span>
-                        </a>
+                    <li class="c-sidebar-nav-item">
+                        <x-utils.link
+                            :href="route('log-viewer::logs.list')"
+                            class="c-sidebar-nav-link"
+                            :text="__('Logs')" />
                     </li>
                 </ul>
             </li>
-        </ul><!-- /.sidebar-menu -->
-    </section><!-- /.sidebar -->
-</aside>
+        @endif
+    </ul>
+
+    <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized"></button>
+</div><!--sidebar-->

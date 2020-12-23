@@ -1,28 +1,55 @@
 <?php
 
+namespace Tests;
+
+use App\Domains\Auth\Http\Middleware\TwoFactorAuthenticationStatus;
+use App\Domains\Auth\Models\Role;
+use App\Domains\Auth\Models\User;
+use Illuminate\Auth\Middleware\RequirePassword;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\Facades\Artisan;
+
 /**
- * Class TestCase
+ * Class TestCase.
  */
-abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
+abstract class TestCase extends BaseTestCase
 {
-    /**
-     * The base URL to use while testing the application.
-     *
-     * @var string
-     */
-    protected $baseUrl = 'http://localhost';
+    use CreatesApplication, RefreshDatabase;
 
-    /**
-     * Creates the application.
-     *
-     * @return \Illuminate\Foundation\Application
-     */
-    public function createApplication()
+    public function setUp(): void
     {
-        $app = require __DIR__.'/../bootstrap/app.php';
+        parent::setUp();
 
-        $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+        Artisan::call('db:seed');
 
-        return $app;
+        $this->withoutMiddleware(RequirePassword::class);
+        $this->withoutMiddleware(TwoFactorAuthenticationStatus::class);
+    }
+
+    protected function getAdminRole()
+    {
+        return Role::find(1);
+    }
+
+    protected function getMasterAdmin()
+    {
+        return User::find(1);
+    }
+
+    protected function loginAsAdmin($admin = false)
+    {
+        if (! $admin) {
+            $admin = $this->getMasterAdmin();
+        }
+
+        $this->actingAs($admin);
+
+        return $admin;
+    }
+
+    protected function logout()
+    {
+        return auth()->logout();
     }
 }
