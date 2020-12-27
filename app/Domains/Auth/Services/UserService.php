@@ -78,7 +78,13 @@ class UserService extends BaseService
     public function registerProvider($info, $provider): User
     {
         $user = $this->model::where('provider_id', $info->id)->first();
+        
+        //Socialite logins to handle existing accounts
+        if(!$user){
+            $user = $this->model::where('email', $info->email)->first();
+        }
 
+        
         if (! $user) {
             DB::beginTransaction();
 
