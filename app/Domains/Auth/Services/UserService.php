@@ -77,28 +77,39 @@ class UserService extends BaseService
      */
     public function registerProvider($info, $provider): User
     {
-        $user = $this->model::where('provider_id', $info->id)->first();
-
-        if (! $user) {
-            DB::beginTransaction();
-
+        try {
+            //social user exists
+            $user = $this->model::where('provider_id', $info->id)->firstOrFail();
+        } catch (Exception $e) {
+            //normal registered user exists
             try {
-                $user = $this->createUser([
-                    'name' => $info->name,
-                    'email' => $info->email,
-                    'provider' => $provider,
-                    'provider_id' => $info->id,
-                    'email_verified_at' => now(),
-                ]);
+                $user = $this->model::where('email', $info->email)->firstOrFail();
+                $user->provider = $provider;
+                $user->provider_id = $info->id;
+                $user->save();
             } catch (Exception $e) {
-                DB::rollBack();
+                //user doesn't exists, sol ets create a new account
+                if (!$user) {
+                    DB::beginTransaction();
 
-                throw new GeneralException(__('There was a problem connecting to :provider', ['provider' => $provider]));
+                    try {
+                        $user = $this->createUser([
+                            'name' => $info->name,
+                            'email' => $info->email,
+                            'provider' => $provider,
+                            'provider_id' => $info->id,
+                            'email_verified_at' => now(),
+                        ]);
+                    } catch (Exception $e) {
+                        DB::rollBack();
+
+                        throw new GeneralException(__('There was a problem connecting to :provider', ['provider' => $provider]));
+                    }
+
+                    DB::commit();
+                }
             }
-
-            DB::commit();
         }
-
         return $user;
     }
 
@@ -320,17 +331,27 @@ class UserService extends BaseService
      *
      * @return User
      */
-    protected function createUser(array $data = []): User
+        protected function createUser(array $data = []): User
     {
-        return $this->model::create([
-            'type' => $data['type'] ?? $this->model::TYPE_USER,
-            'name' => $data['name'] ?? null,
-            'email' => $data['email'] ?? null,
-            'password' => $data['password'] ?? null,
-            'provider' => $data['provider'] ?? null,
-            'provider_id' => $data['provider_id'] ?? null,
-            'email_verified_at' => $data['email_verified_at'] ?? null,
-            'active' => $data['active'] ?? true,
-        ]);
+        try {
+            $user = $this->model::where('email', $data['email'])->firstOrFail();
+            return $user;
+        } catch (Exception $ex) {
+
+            if (env('ENABLE_REGISTRATION')) {
+                return $this->model::create([
+                    'type' => $data['type'] ?? $this->model::TYPE_USER,
+                    'name' => $data['name'] ?? null,
+                    'email' => $data['email'] ?? null,
+                    'password' => $data['password'] ?? null,
+                    'provider' => $data['provider'] ?? null,
+                    'provider_id' => $data['provider_id'] ?? null,
+                    'email_verified_at' => $data['email_verified_at'] ?? null,
+                    'active' => $data['active'] ?? true,
+                ]);
+            } else {
+                throw new GeneralException(__('User rgistration disabled.'));
+            }
+        }
     }
 }
