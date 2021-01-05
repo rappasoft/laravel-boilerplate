@@ -15,7 +15,7 @@
         "@fortawesome/fontawesome-free": "^5.12.1",
         "@popperjs/core": "^2.0.6",
         "alpinejs": "^2.3.5",
-        "axios": "^0.19",
+        "axios": "^0.21",
         "bootstrap": "^4.5.0",
         "cross-env": "^7.0",
         "jquery": "^3.5.1",
