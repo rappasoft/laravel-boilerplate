@@ -176,6 +176,7 @@ return [
             'no' => ['name' => 'Norwegian', 'rtl' => false],
             'pl' => ['name' => 'Polish', 'rtl' => false],
             'pt_BR' => ['name' => 'Brazilian Portuguese', 'rtl' => false],
+            'pt_PT' => ['name' => 'Portuguese', 'rtl' => false],
             'ru' => ['name' => 'Russian', 'rtl' => false],
             'sv' => ['name' => 'Swedish', 'rtl' => false],
             'th' => ['name' => 'Thai', 'rtl' => false],
