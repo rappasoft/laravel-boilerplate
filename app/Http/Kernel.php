@@ -2,7 +2,6 @@
 
 namespace App\Http;
 
-use App\Domains\Auth\Models\User;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 /**
@@ -45,7 +44,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-            'throttle:60,1',
+            'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
 

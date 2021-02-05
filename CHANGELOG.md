@@ -3,6 +3,57 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [8.0.1] - 2020-12-12
+
+## Changed
+
+- Update dependencies
+- Update to laravel commit: ddb26fbc504cd64fb1b89511773aa8d03c758c6d
+- Update exception handling to match laravel
+- Added sail docker file
+- Update FA language
+- Add 'main' branch to workflow
+
+## [8.0.0] - 2020-10-21
+
+## Added
+
+- Added back roave/security-advisories
+- Added new database factories
+- Added Polish languages
+- Added BladeServiceProvider with @captcha directive
+- Added Captcha rule
+- Added Captcha configs to boilerplate configs
+
+## Changed
+
+- Update livewire tables to 0.3
+- Updated users/roles table to use new tables
+- Moved livewire components into Frontend/Backend and updated calls
+- Removed type partial and just merged into table format
+- Update PHP to 7.3
+- Update Guzzle to v7
+- Update Laravel to v8
+- Update Socialite to v5
+- Update Laravel UI to v3
+- Update Lockout to v3
+- Update Breadcrumbs to v2
+- Update PHP Pretty Printer to v0.29
+- Update Ignition to v2.3.6
+- Update Collision to v5
+- Condense .env.example
+- Updated tests to use new factories
+- Updated seeders and factories to be namespaced
+- Follow Laravel upgrade guide for v8 and change all the needed files
+- Update to Laravel commit: 8d3ca07c4cff6d36593625ee4b34e19ce2dba15b
+- Update CS/FR/IN languages
+- Sort locale dropdown by language not array key
+- Modified login/register controllers to use new Captcha rule
+
+## Removed
+
+- Remove recaptcha
+
 ## [7.2.5] - 2020-08-06
 
 ## Changed
@@ -342,7 +393,10 @@ Started from scratch with a blank Laravel 7.* installation. This release is not 
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.5...development
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.1...development
+[8.0.1]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.0...v8.0.1
+[8.0.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.6...v8.0.0
+[7.2.6]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.5...v7.2.6
 [7.2.5]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.4...v7.2.5
 [7.2.4]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.3...v7.2.4
 [7.2.3]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.2...v7.2.3

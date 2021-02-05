@@ -13,5 +13,5 @@ return [
     */
 
     'failed' => 'Ces informations de connexion ne correspondent pas.',
-    'throttle' => 'Vous avez effectué trop de tentatives de connexion. Veuillez ré-essayer dans :seconds secondes.',
+    'throttle' => 'Vous avez effectué trop de tentatives de connexion. Veuillez réessayer dans :seconds secondes.',
 ];

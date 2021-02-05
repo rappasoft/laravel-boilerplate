@@ -1,6 +1,10 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Domains\Announcement\Models\Announcement;
+use Database\Seeders\Traits\DisableForeignKeys;
+use Database\Seeders\Traits\TruncateTable;
 use Illuminate\Database\Seeder;
 
 /**

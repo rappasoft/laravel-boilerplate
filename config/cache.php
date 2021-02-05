@@ -13,8 +13,8 @@ return [
     | using this caching library. This connection is used when another is
     | not explicitly specified when executing a given caching function.
     |
-    | Supported: "apc", "array", "database", "file",
-    |            "memcached", "redis", "dynamodb"
+    | Supported drivers: "apc", "array", "database", "file",
+    |            "memcached", "redis", "dynamodb", "null"
     |
     */
 

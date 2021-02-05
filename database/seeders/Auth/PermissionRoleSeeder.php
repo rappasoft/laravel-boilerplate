@@ -1,8 +1,11 @@
 <?php
 
+namespace Database\Seeders\Auth;
+
 use App\Domains\Auth\Models\Permission;
 use App\Domains\Auth\Models\Role;
 use App\Domains\Auth\Models\User;
+use Database\Seeders\Traits\DisableForeignKeys;
 use Illuminate\Database\Seeder;
 
 /**

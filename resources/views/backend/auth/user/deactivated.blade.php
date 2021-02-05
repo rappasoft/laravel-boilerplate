@@ -13,7 +13,7 @@
         </x-slot>
 
         <x-slot name="body">
-            <livewire:users-table status="deactivated" />
+            <livewire:backend.users-table status="deactivated" />
         </x-slot>
     </x-backend.card>
 @endsection

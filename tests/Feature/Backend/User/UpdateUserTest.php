@@ -21,7 +21,7 @@ class UpdateUserTest extends TestCase
     {
         $this->loginAsAdmin();
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $response = $this->get('/admin/auth/user/'.$user->id.'/edit');
 
@@ -35,7 +35,7 @@ class UpdateUserTest extends TestCase
 
         $this->loginAsAdmin();
 
-        $user = factory(User::class)->create();
+        $user = User::factory()->create();
 
         $this->assertDatabaseMissing('users', [
             'id' => $user->id,
@@ -78,7 +78,7 @@ class UpdateUserTest extends TestCase
 
         $this->logout();
 
-        $otherAdmin = factory(User::class)->state('admin')->create();
+        $otherAdmin = User::factory()->admin()->create();
         $otherAdmin->assignRole(config('boilerplate.access.role.admin'));
 
         $this->actingAs($otherAdmin);
@@ -114,7 +114,7 @@ class UpdateUserTest extends TestCase
 
         // Make sure other admins can not update the master admin
 
-        $otherAdmin = factory(User::class)->state('admin')->create();
+        $otherAdmin = User::factory()->admin()->create();
         $otherAdmin->assignRole(config('boilerplate.access.role.admin'));
 
         $this->actingAs($otherAdmin);
@@ -139,7 +139,7 @@ class UpdateUserTest extends TestCase
     {
         $admin = $this->loginAsAdmin();
 
-        $role = factory(Role::class)->create();
+        $role = Role::factory()->create();
 
         $this->assertDatabaseMissing('model_has_roles', [
             'role_id' => $role->id,
@@ -163,9 +163,9 @@ class UpdateUserTest extends TestCase
     /** @test */
     public function only_admin_can_update_roles()
     {
-        $this->actingAs(factory(User::class)->state('admin')->create());
+        $this->actingAs(User::factory()->admin()->create());
 
-        $user = factory(User::class)->state('admin')->create(['name' => 'John Doe']);
+        $user = User::factory()->admin()->create(['name' => 'John Doe']);
 
         $response = $this->patch("/admin/auth/user/{$user->id}", [
             'type' => User::TYPE_USER,

@@ -16,7 +16,7 @@ class ListUserTest extends TestCase
     /** @test */
     public function only_a_user_with_correct_permissions_can_list_users()
     {
-        $this->actingAs($user = factory(User::class)->state('admin')->create());
+        $this->actingAs($user = User::factory()->admin()->create());
 
         $user->syncPermissions(['admin.access.user.list']);
 
@@ -32,11 +32,11 @@ class ListUserTest extends TestCase
     /** @test */
     public function only_a_user_with_correct_permissions_can_view_an_individual_user()
     {
-        $this->actingAs($user = factory(User::class)->state('admin')->create());
+        $this->actingAs($user = User::factory()->admin()->create());
 
         $user->syncPermissions(['admin.access.user.list']);
 
-        $newUser = factory(User::class)->create();
+        $newUser = User::factory()->create();
 
         $this->get('/admin/auth/user/'.$newUser->id)->assertOk();
 
