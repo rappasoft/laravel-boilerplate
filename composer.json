@@ -18,7 +18,7 @@
         "jamesmills/laravel-timezone": "^1.9",
         "lab404/laravel-impersonate": "^1.6",
         "langleyfoxall/laravel-nist-password-rules": "^4.1",
-        "laravel/framework": "^8.12",
+        "laravel/framework": "^8.24",
         "laravel/socialite": "^5.0",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.0",
@@ -37,7 +37,7 @@
         "facade/ignition": "^2.5",
         "friendsofphp/php-cs-fixer": "^2.16",
         "fakerphp/faker": "^1.9.1",
-        "laravel/sail": "^0.0.5",
+        "laravel/sail": "^1.0.1",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.3.3"
@@ -87,7 +87,6 @@
             "@php artisan route:clear",
             "@php artisan view:clear",
             "@php artisan config:clear",
-            "@php artisan permission:cache-reset",
             "composer dumpautoload -o"
         ],
         "cache-all": [

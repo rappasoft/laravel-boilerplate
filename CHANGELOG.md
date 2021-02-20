@@ -3,6 +3,36 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [8.0.3] - 2021-02-20
+
+### Added
+
+- Added pt_PT language
+- Added RO language
+- Added missing cors middleware
+
+### Changed
+
+- Updated composer
+- Updated yarn
+- Update to Laravel commit: f0de9fd9967d4e1b4427d8458bf8983bc2cde201
+- Upgrade to Laravel Mix 6
+- Fixed 2fa/admin issue (https://github.com/rappasoft/laravel-boilerplate/pull/1488)
+- Update pt_BR language
+- Updated failed_jobs table (https://github.com/rappasoft/laravel-boilerplate/pull/1503, https://github.com/rappasoft/laravel-boilerplate/issues/1501)
+
+### Removed
+
+- Google Analytics tag and config since it's done differently since that was added
+
+## [8.0.2] - 2020-12-15
+
+### Changed
+
+- Removed the base controller dependency from all controllers as it's not needed for any of the current functionality and is just more overhead for no reason.
+- Move verification middleware to routes file
+- Update phpunit.xml file to current format
+
 ## [8.0.1] - 2020-12-12
 
 ## Changed
@@ -393,7 +423,9 @@ Started from scratch with a blank Laravel 7.* installation. This release is not 
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.1...development
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.3...development
+[8.0.3]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.2...v8.0.3
+[8.0.2]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.1...v8.0.2
 [8.0.1]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.0...v8.0.1
 [8.0.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.6...v8.0.0
 [7.2.6]: https://github.com/rappasoft/laravel-boilerplate/compare/v7.2.5...v7.2.6

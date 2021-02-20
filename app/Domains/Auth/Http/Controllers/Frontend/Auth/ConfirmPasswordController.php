@@ -2,14 +2,13 @@
 
 namespace App\Domains\Auth\Http\Controllers\Frontend\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ConfirmsPasswords;
 
 /**
  * Class ConfirmPasswordController.
  */
-class ConfirmPasswordController extends Controller
+class ConfirmPasswordController
 {
     /*
     |--------------------------------------------------------------------------

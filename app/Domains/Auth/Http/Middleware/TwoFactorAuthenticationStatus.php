@@ -23,7 +23,7 @@ class TwoFactorAuthenticationStatus
         }
 
         // If the backend does not require 2FA than continue
-        if ($status === 'enabled' && $request->is('admin/*') && ! config('boilerplate.access.user.admin_requires_2fa')) {
+        if ($status === 'enabled' && $request->is('admin*') && ! config('boilerplate.access.user.admin_requires_2fa')) {
             return $next($request);
         }
 

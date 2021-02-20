@@ -10,12 +10,11 @@ use App\Domains\Auth\Models\User;
 use App\Domains\Auth\Services\PermissionService;
 use App\Domains\Auth\Services\RoleService;
 use App\Domains\Auth\Services\UserService;
-use App\Http\Controllers\Controller;
 
 /**
  * Class UserController.
  */
-class UserController extends Controller
+class UserController
 {
     /**
      * @var UserService
@@ -47,7 +46,7 @@ class UserController extends Controller
     }
 
     /**
-     * @return \Illuminate\View\View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index()
     {
