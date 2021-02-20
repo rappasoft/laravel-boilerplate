@@ -18,6 +18,7 @@ All notable changes to this project will be documented in this file.
 - Upgrade to Laravel Mix 6
 - Fixed 2fa/admin issue (https://github.com/rappasoft/laravel-boilerplate/pull/1488)
 - Update pt_BR language
+- Updated failed_jobs table (https://github.com/rappasoft/laravel-boilerplate/pull/1503, https://github.com/rappasoft/laravel-boilerplate/issues/1501)
 
 ### Removed
 
