@@ -16,9 +16,9 @@ return [
     'access' => [
         'captcha' => [
             'configs' => [
-                'site_key'   => env('INVISIBLE_RECAPTCHA_SITEKEY'),
+                'site_key' => env('INVISIBLE_RECAPTCHA_SITEKEY'),
                 'secret_key' => env('INVISIBLE_RECAPTCHA_SECRETKEY'),
-                'options'   => [
+                'options' => [
                     'hidden' => false,
                     'location' => 'bottomright',
                     'timeout' => 5,
