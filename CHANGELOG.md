@@ -10,7 +10,8 @@ All notable changes to this project will be documented in this file.
 - Updated composer
 - Updated yarn
 - Make minimum PHP version 7.4
-- Update to Laravel commit: 
+- Update to Laravel commit: f0de9fd9967d4e1b4427d8458bf8983bc2cde201
+- Upgrade to Laravel Mix 6
 
 ### Removed
 
