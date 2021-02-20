@@ -51,7 +51,7 @@ return [
         'array' => 'O campo :attribute deverá ter mais do que :value items.',
     ],
     'gte' => [
-        'numeric' => 'O campo :attribute deverá ser igual ou maior que :value.', 
+        'numeric' => 'O campo :attribute deverá ser igual ou maior que :value.',
         'file' => 'O campo :attribute deverá ser igual ou maior que :value kilobytes.',
         'string' => 'O campo :attribute deverá ser igual ou maior que :value caracteres.',
         'array' => 'O campo :attribute deverá ter :value ou mais items.',
@@ -71,7 +71,7 @@ return [
         'array' => 'O campo :attribute deverá ter menos do que :value items.',
     ],
     'lte' => [
-        'numeric' => 'O campo :attribute deverá ser menor ou igual que :value.', 
+        'numeric' => 'O campo :attribute deverá ser menor ou igual que :value.',
         'file' => 'O campo :attribute deverá ser menor ou igual que :value kilobytes.',
         'string' => 'O campo :attribute deverá ser menor ou igual que :value caracteres.',
         'array' => 'O campo :attribute deverá ter :value ou menos items.',
