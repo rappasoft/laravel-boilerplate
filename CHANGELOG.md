@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Added pt_PT language
+- Added RO language
 
 ### Changed
 
