@@ -65,8 +65,6 @@
             }
         </style>
         @stack('after-styles')
-
-        @include('includes.partials.ga')
     </head>
     <body>
         @include('includes.partials.read-only')

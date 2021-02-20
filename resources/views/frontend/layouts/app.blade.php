@@ -15,8 +15,6 @@
     <link href="{{ mix('css/frontend.css') }}" rel="stylesheet">
     <livewire:styles />
     @stack('after-styles')
-
-    @include('includes.partials.ga')
 </head>
 <body>
     @include('includes.partials.read-only')

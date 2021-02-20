@@ -9,7 +9,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^7.4|^8.0",
         "arcanedev/log-viewer": "8.x",
         "darkghosthunter/laraguard": "dev-master",
         "fideloper/proxy": "^4.4",
@@ -18,7 +18,7 @@
         "jamesmills/laravel-timezone": "^1.9",
         "lab404/laravel-impersonate": "^1.6",
         "langleyfoxall/laravel-nist-password-rules": "^4.1",
-        "laravel/framework": "^8.12",
+        "laravel/framework": "^8.24",
         "laravel/socialite": "^5.0",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.0",
