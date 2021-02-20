@@ -3,6 +3,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [8.0.3] - 2021-02-20
+
+### Changed
+
+- Updated composer
+- Updated yarn
+- Make minimum PHP version 7.4
+- Update to Laravel commit: 
+
+### Removed
+
+- Google Analytics tag and config since it's done differently since that was added
+
 ## [8.0.2] - 2020-12-15
 
 ### Changed
