@@ -69,7 +69,6 @@
     <body>
         @include('includes.partials.read-only')
         @include('includes.partials.logged-in-as')
-        @include('includes.partials.announcements')
 
         <div id="app" class="flex-center position-ref full-height">
             <div class="top-right links">
@@ -94,11 +93,6 @@
                 <div class="title m-b-md">
                     <example-component></example-component>
                 </div><!--title-->
-
-                <div class="links">
-                    <a href="http://laravel-boilerplate.com" target="_blank"><i class="fa fa-book"></i> @lang('Docs')</a>
-                    <a href="https://github.com/rappasoft/laravel-boilerplate" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                </div><!--links-->
             </div><!--content-->
         </div><!--app-->
 

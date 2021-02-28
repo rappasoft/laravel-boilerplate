@@ -48,3 +48,8 @@ If you would like to help the continued efforts of this project, any size [donat
 ### License
 
 MIT: [http://anthony.mit-license.org](http://anthony.mit-license.org)
+
+Change .env file:
+
+ADMIN_REQUIRES_2FA=false
+PASSWORD_EXPIRES_DAYS=null

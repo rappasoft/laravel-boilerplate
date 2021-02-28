@@ -3,6 +3,7 @@
 use App\Http\Controllers\Frontend\User\AccountController;
 use App\Http\Controllers\Frontend\User\DashboardController;
 use App\Http\Controllers\Frontend\User\ProfileController;
+use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
 /*

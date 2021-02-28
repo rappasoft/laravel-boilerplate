@@ -11,6 +11,7 @@ use App\Domains\Auth\Http\Controllers\Frontend\Auth\SocialController;
 use App\Domains\Auth\Http\Controllers\Frontend\Auth\TwoFactorAuthenticationController;
 use App\Domains\Auth\Http\Controllers\Frontend\Auth\UpdatePasswordController;
 use App\Domains\Auth\Http\Controllers\Frontend\Auth\VerificationController;
+use Illuminate\Support\Facades\Route;
 use Tabuna\Breadcrumbs\Trail;
 
 /*

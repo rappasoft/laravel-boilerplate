@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LocaleController;
+use Illuminate\Support\Facades\Route;
 
 /*
  * Global Routes

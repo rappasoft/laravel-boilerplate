@@ -45,8 +45,8 @@
                                         aria-controls="password"
                                         aria-selected="false" />
                                 @endif
-
-                                <x-utils.link
+                                @if ( env("2FA_ENABLED") )
+                                    <x-utils.link
                                     :text="__('Two Factor Authentication')"
                                     class="nav-link"
                                     id="two-factor-authentication-tab"
@@ -55,6 +55,7 @@
                                     role="tab"
                                     aria-controls="two-factor-authentication"
                                     aria-selected="false"/>
+                                @endif
                             </div>
                         </nav>
 
