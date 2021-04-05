@@ -3,6 +3,18 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [8.1.0] - 2021-04-05
+
+### Added
+
+- Parallel testing
+
+### Changed
+
+- Updated locks
+- Update to Laravel commit: 5808129a1f702f973c7c31203d16db2066bd9030
+- Upgraded to Laraguard 3.0
+
 ## [8.0.3] - 2021-02-20
 
 ### Added
@@ -423,7 +435,8 @@ Started from scratch with a blank Laravel 7.* installation. This release is not 
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.3...development
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.1.0...development
+[8.1.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.3...v8.1.0
 [8.0.3]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.2...v8.0.3
 [8.0.2]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.1...v8.0.2
 [8.0.1]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.0...v8.0.1
