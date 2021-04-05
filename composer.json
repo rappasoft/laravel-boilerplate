@@ -9,9 +9,9 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^7.4|^8.0",
         "arcanedev/log-viewer": "8.x",
-        "darkghosthunter/laraguard": "dev-master",
+        "darkghosthunter/laraguard": "^3.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7c72f053e67585db5fd66041d54972d4",
+    "content-hash": "e42e49c3c4fe01ed0f1a157a743d9049",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -311,16 +311,16 @@
         },
         {
             "name": "darkghosthunter/laraguard",
-            "version": "dev-master",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DarkGhostHunter/Laraguard.git",
-                "reference": "36ae69064eede6829d14e458226bbed8cb50d5f9"
+                "reference": "c1073d0a21c9d8510a71d4dda8d03f75986e6864"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DarkGhostHunter/Laraguard/zipball/36ae69064eede6829d14e458226bbed8cb50d5f9",
-                "reference": "36ae69064eede6829d14e458226bbed8cb50d5f9",
+                "url": "https://api.github.com/repos/DarkGhostHunter/Laraguard/zipball/c1073d0a21c9d8510a71d4dda8d03f75986e6864",
+                "reference": "c1073d0a21c9d8510a71d4dda8d03f75986e6864",
                 "shasum": ""
             },
             "require": {
@@ -338,7 +338,6 @@
                 "orchestra/testbench": "^6.0",
                 "phpunit/phpunit": "^9.3"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -375,7 +374,7 @@
             ],
             "support": {
                 "issues": "https://github.com/DarkGhostHunter/Laraguard/issues",
-                "source": "https://github.com/DarkGhostHunter/Laraguard/tree/master"
+                "source": "https://github.com/DarkGhostHunter/Laraguard/tree/v3.0.0"
             },
             "funding": [
                 {
@@ -387,7 +386,7 @@
                     "type": "ko_fi"
                 }
             ],
-            "time": "2021-03-18T00:01:05+00:00"
+            "time": "2021-03-17T23:05:29+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -12007,13 +12006,12 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "darkghosthunter/laraguard": 20,
         "roave/security-advisories": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.3|^8.0"
+        "php": "^7.4|^8.0"
     },
     "platform-dev": [],
     "plugin-api-version": "2.0.0"
