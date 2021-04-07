@@ -94,7 +94,7 @@ return [
     'not_in' => '선택한 :attribute 이(가) 잘못되었습니다.',
     'not_regex' => ':attribute 형식이 잘못되었습니다.',
     'numeric' => ':attribute 은(는) 숫자여야 합니다.',
-    'password' => '암호가 올바르지 않습니다.',
+    'password' => '비밀번호가 올바르지 않습니다.',
     'present' => ':attribute 필드가 있어야 합니다.',
     'regex' => ':attribute 형식이 올바르지 않습니다.',
     'required' => ':attribute 의 필드는 필수입니다.',
