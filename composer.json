@@ -33,7 +33,6 @@
         "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.6",
         "brianium/paratest": "^6.2",
-        "codedungeon/phpunit-result-printer": "^0.29",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "friendsofphp/php-cs-fixer": "^2.16",

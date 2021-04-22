@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- Updated lock files
+
+### Removed
+
+- codedungeon/phpunit-result-printer, should use `composer test` for parallel testing.
+
 ## [8.1.0] - 2021-04-05
 
 ### Added
