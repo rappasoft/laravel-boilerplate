@@ -163,6 +163,7 @@ return [
             'id' => ['name' => 'Indonesian', 'rtl' => false],
             'it' => ['name' => 'Italian', 'rtl' => false],
             'ja' => ['name' => 'Japanese', 'rtl' => false],
+            'ko' => ['name' => 'Korean', 'rtl' => false],
             'nl' => ['name' => 'Dutch', 'rtl' => false],
             'no' => ['name' => 'Norwegian', 'rtl' => false],
             'pl' => ['name' => 'Polish', 'rtl' => false],
