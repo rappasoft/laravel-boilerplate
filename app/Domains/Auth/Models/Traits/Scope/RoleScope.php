@@ -7,7 +7,6 @@ namespace App\Domains\Auth\Models\Traits\Scope;
  */
 trait RoleScope
 {
-
     /**
      * @param $query
      * @param $term
