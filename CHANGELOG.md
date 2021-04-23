@@ -3,9 +3,15 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+
+- User search scope
+- Role Scope class
+
 ### Changed
 
 - Updated lock files
+- Updated all tables to laravel-livewire-tables 1.x
 
 ### Removed
 
