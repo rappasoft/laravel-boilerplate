@@ -13,7 +13,6 @@ use Rappasoft\LaravelLivewireTables\Views\Filter;
  */
 class UsersTable extends DataTableComponent
 {
-
     /**
      * @var
      */

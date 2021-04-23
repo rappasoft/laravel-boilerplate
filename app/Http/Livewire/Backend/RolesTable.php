@@ -12,7 +12,6 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
  */
 class RolesTable extends DataTableComponent
 {
-
     /**
      * @return Builder
      */
