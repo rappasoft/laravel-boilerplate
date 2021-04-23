@@ -4,7 +4,6 @@
     xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd"
     bootstrap="vendor/autoload.php"
     colors="true"
-    printerClass="Codedungeon\PHPUnitPrettyResultPrinter\Printer"
 >
   <coverage processUncoveredFiles="true">
     <include>
@@ -12,9 +11,9 @@
     </include>
   </coverage>
   <testsuites>
-    <!--        <testsuite name="Unit">-->
-    <!--            <directory suffix="Test.php">./tests/Unit</directory>-->
-    <!--        </testsuite>-->
+<!--    <testsuite name="Unit">-->
+<!--        <directory suffix="Test.php">./tests/Unit</directory>-->
+<!--    </testsuite>-->
     <testsuite name="Feature">
       <directory suffix="Test.php">./tests/Feature</directory>
     </testsuite>
