@@ -3,10 +3,13 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [8.2.0] - 2021-04-22
+
 ### Added
 
 - User search scope
 - Role Scope class
+- Korean (ko) language pack (https://github.com/rappasoft/laravel-boilerplate/pull/1521)
 
 ### Changed
 
@@ -450,7 +453,8 @@ Started from scratch with a blank Laravel 7.* installation. This release is not 
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.1.0...development
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.2.0...development
+[8.2.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.3...v8.2.0
 [8.1.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.3...v8.1.0
 [8.0.3]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.2...v8.0.3
 [8.0.2]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.1...v8.0.2
