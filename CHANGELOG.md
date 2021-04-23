@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 
 - Updated lock files
 - Updated all tables to laravel-livewire-tables 1.x
+- Updated to Laravel commit: a6ffdbdf416d60c38443725807a260a84dca5045
 
 ### Removed
 
