@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 
 ## [8.2.1] - 2021-05-30
 
+### Added
+
+- [Vietnamese (vi) language](https://github.com/rappasoft/laravel-boilerplate/pull/1531)
+
 ### Changed
 
 - Updated composer and yarn dependencies
