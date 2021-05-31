@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 ### Changed
 
 - Updated composer and yarn dependencies
+- [Updated TR translations](https://github.com/rappasoft/laravel-boilerplate/pull/1527)
 
 ## [8.2.0] - 2021-04-22
 
