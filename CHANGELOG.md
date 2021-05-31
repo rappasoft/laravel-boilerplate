@@ -3,6 +3,18 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [8.2.1] - 2021-05-30
+
+### Added
+
+- [Vietnamese (vi) language](https://github.com/rappasoft/laravel-boilerplate/pull/1531)
+
+### Changed
+
+- Updated composer and yarn dependencies
+- [Updated TR translations](https://github.com/rappasoft/laravel-boilerplate/pull/1527)
+- Updated to Laravel commit: 131a10260e73e83e6b1cd63788b8f6584dd3e98a
+
 ## [8.2.0] - 2021-04-22
 
 ### Added
@@ -453,8 +465,9 @@ Started from scratch with a blank Laravel 7.* installation. This release is not 
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.2.0...development
-[8.2.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.3...v8.2.0
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.2.1...development
+[8.2.1]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.2.0...v8.2.1
+[8.2.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.1.0...v8.2.0
 [8.1.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.3...v8.1.0
 [8.0.3]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.2...v8.0.3
 [8.0.2]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.0.1...v8.0.2
