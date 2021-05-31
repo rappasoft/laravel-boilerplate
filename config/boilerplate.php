@@ -175,6 +175,7 @@ return [
             'th' => ['name' => 'Thai', 'rtl' => false],
             'tr' => ['name' => 'Turkish', 'rtl' => false],
             'uk' => ['name' => 'Ukrainian', 'rtl' => false],
+            'vi' => ['name' => 'Vietnam', 'rtl' => false],
         ],
     ],
 
