@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- Dependency updates
+- Update to Laravel commit: c636fd0f678008caf30683833b740fb6f31d9de6
+
 ## [8.2.1] - 2021-05-30
 
 ### Added
