@@ -2,8 +2,9 @@
     <div class="container">
         <x-utils.link
             :href="route('frontend.index')"
-            :text="appName()"
+            :text="appName()"                        
             class="navbar-brand" />
+            <img src="img/LOGO FITZROY.png" style="width:70px">
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="@lang('Toggle navigation')">
             <span class="navbar-toggler-icon"></span>

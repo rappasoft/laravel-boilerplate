@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ appName() }}</title>
+        <title>FITZ ROY</title>
         <meta name="description" content="@yield('meta_description', appName())">
         <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
         @yield('meta')
@@ -47,7 +47,8 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 40px;
+                font-weight: bold;
             }
 
             .links > a {
@@ -67,10 +68,7 @@
         @stack('after-styles')
     </head>
     <body>
-        @include('includes.partials.read-only')
-        @include('includes.partials.logged-in-as')
-        @include('includes.partials.announcements')
-
+        
         <div id="app" class="flex-center position-ref full-height">
             <div class="top-right links">
                 @auth
@@ -89,16 +87,18 @@
             </div><!--top-right-->
 
             <div class="content">
-                @include('includes.partials.messages')
 
-                <div class="title m-b-md">
-                    <example-component></example-component>
+                <img src="img/LOGO FITZROY.png">
+                <!--logo-->                
+
+                <div class="title m-b-md">                    
+                    <span>QR File Storage</span>
                 </div><!--title-->
 
-                <div class="links">
-                    <a href="http://laravel-boilerplate.com" target="_blank"><i class="fa fa-book"></i> @lang('Docs')</a>
-                    <a href="https://github.com/rappasoft/laravel-boilerplate" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                </div><!--links-->
+                <div class="links">                    
+                    <a href="http://fitzroy-ingenieria.com/" target="_blank"></i>Visita nuestra web</a>
+                </div><!--web-->
+
             </div><!--content-->
         </div><!--app-->
 
