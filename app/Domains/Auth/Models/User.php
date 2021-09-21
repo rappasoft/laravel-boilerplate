@@ -130,7 +130,7 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
      * Return true or false if the user can impersonate an other user.
      *
      * @param void
-     * @return  bool
+     * @return bool
      */
     public function canImpersonate(): bool
     {
@@ -141,7 +141,7 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
      * Return true or false if the user can be impersonate.
      *
      * @param void
-     * @return  bool
+     * @return bool
      */
     public function canBeImpersonated(): bool
     {

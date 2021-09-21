@@ -88,8 +88,8 @@ class RegisterController
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     *
      * @return \App\Domains\Auth\Models\User|mixed
+     *
      * @throws \App\Domains\Auth\Exceptions\RegisterException
      */
     protected function create(array $data)
