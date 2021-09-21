@@ -28,8 +28,8 @@ class RoleService extends BaseService
 
     /**
      * @param  array  $data
-     *
      * @return Role
+     *
      * @throws GeneralException
      * @throws \Throwable
      */
@@ -56,8 +56,8 @@ class RoleService extends BaseService
     /**
      * @param  Role  $role
      * @param  array  $data
-     *
      * @return Role
+     *
      * @throws GeneralException
      * @throws \Throwable
      */
@@ -83,8 +83,8 @@ class RoleService extends BaseService
 
     /**
      * @param  Role  $role
-     *
      * @return bool
+     *
      * @throws GeneralException
      */
     public function destroy(Role $role): bool

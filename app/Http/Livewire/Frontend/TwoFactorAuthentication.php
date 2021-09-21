@@ -17,7 +17,6 @@ class TwoFactorAuthentication extends Component
 
     /**
      * @param  Request  $request
-     *
      * @return mixed
      */
     public function validateCode(Request $request)
