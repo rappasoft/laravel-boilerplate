@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [8.3.0] - 2021-09-22
+
 ### Changed
 
 - Updated composer/yarn lock files
@@ -477,7 +479,8 @@ Started from scratch with a blank Laravel 7.* installation. This release is not 
 - Fix yarn tests
 - Fix: Socially logged in users get assigned the default role
 
-[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.2.2...development
+[Unreleased]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.3.0...development
+[8.3.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.2.2...v8.3.0
 [8.2.2]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.2.1...v8.2.2
 [8.2.1]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.2.0...v8.2.1
 [8.2.0]: https://github.com/rappasoft/laravel-boilerplate/compare/v8.1.0...v8.2.0
