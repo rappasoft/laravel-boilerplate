@@ -10,7 +10,6 @@ trait RoleScope
     /**
      * @param $query
      * @param $term
-     *
      * @return mixed
      */
     public function scopeSearch($query, $term)

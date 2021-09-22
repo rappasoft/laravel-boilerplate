@@ -13,7 +13,6 @@ class UserTypeCheck
      * @param $request
      * @param  Closure  $next
      * @param $type
-     *
      * @return mixed
      */
     public function handle($request, Closure $next, $type)
