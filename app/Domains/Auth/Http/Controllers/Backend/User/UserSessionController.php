@@ -13,7 +13,6 @@ class UserSessionController
     /**
      * @param  ClearUserSessionRequest  $request
      * @param  User  $user
-     *
      * @return mixed
      */
     public function update(ClearUserSessionRequest $request, User $user)

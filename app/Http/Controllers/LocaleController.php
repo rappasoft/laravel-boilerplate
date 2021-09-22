@@ -9,7 +9,6 @@ class LocaleController
 {
     /**
      * @param $locale
-     *
      * @return \Illuminate\Http\RedirectResponse
      */
     public function change($locale)

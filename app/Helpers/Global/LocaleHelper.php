@@ -74,7 +74,6 @@ if (! function_exists('getLocaleName')) {
 
     /**
      * @param $locale
-     *
      * @return mixed
      */
     function getLocaleName($locale)

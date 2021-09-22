@@ -11,7 +11,6 @@ trait TruncateTable
 {
     /**
      * @param $table
-     *
      * @return bool
      */
     protected function truncate($table)
@@ -31,7 +30,7 @@ trait TruncateTable
     }
 
     /**
-     * @param array $tables
+     * @param  array  $tables
      */
     protected function truncateMultiple(array $tables)
     {

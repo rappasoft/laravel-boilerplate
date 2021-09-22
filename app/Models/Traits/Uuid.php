@@ -12,7 +12,6 @@ trait Uuid
     /**
      * @param $query
      * @param $uuid
-     *
      * @return mixed
      */
     public function scopeUuid($query, $uuid)

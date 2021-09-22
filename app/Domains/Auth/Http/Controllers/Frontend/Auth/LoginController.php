@@ -94,7 +94,6 @@ class LoginController
      *
      * @param  Request  $request
      * @param $user
-     *
      * @return mixed
      */
     protected function authenticated(Request $request, $user)

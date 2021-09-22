@@ -43,7 +43,6 @@ trait UserMethod
 
     /**
      * @param $type
-     *
      * @return bool
      */
     public function isType($type): bool
@@ -93,8 +92,8 @@ trait UserMethod
 
     /**
      * @param  bool  $size
-     *
      * @return mixed|string
+     *
      * @throws \Creativeorange\Gravatar\Exceptions\InvalidEmailException
      */
     public function getAvatar($size = null)
