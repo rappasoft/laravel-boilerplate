@@ -38,8 +38,8 @@ class DeactivatedUserController
      * @param  Request  $request
      * @param  User  $user
      * @param $status
-     *
      * @return mixed
+     *
      * @throws \App\Exceptions\GeneralException
      */
     public function update(Request $request, User $user, $status)
