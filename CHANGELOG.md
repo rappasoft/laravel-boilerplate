@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+
+- Updated composer/yarn lock files
+- Updated to Laravel commit: 4f8a0f35fabd8603fb756122bf820719a259ac9b
+
 ## [8.2.2] - 2021-07-10
 
 ### Changed
