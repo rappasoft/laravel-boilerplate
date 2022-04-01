@@ -25,7 +25,10 @@
                                 <div class="text-center">
                                     {!! $qrCode !!}
 
-                                    <p><i class="fa fa-key"> {{ $secret }}</i></p>
+                                    <p class="text-monospace">
+                                        <i class="fa fa-key"></i>
+                                        {{ $secret }}
+                                    </p>
                                 </div>
                             </div><!--col-->
                         </div><!--row-->
