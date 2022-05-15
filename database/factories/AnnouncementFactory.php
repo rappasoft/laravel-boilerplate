@@ -27,8 +27,8 @@ class AnnouncementFactory extends Factory
         return [
             'area' => $this->faker->randomElement(['frontend', 'backend']),
             'type' => $this->faker->randomElement(['info', 'danger', 'warning', 'success']),
-            'message' => $this->faker->text,
-            'enabled' => $this->faker->boolean,
+            'message' => $this->faker->text(),
+            'enabled' => $this->faker->boolean(),
             'starts_at' => $this->faker->dateTime(),
             'ends_at' => $this->faker->dateTime(),
         ];
