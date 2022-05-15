@@ -18,6 +18,7 @@ return [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
         'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
+        'scheme' => 'https',
     ],
 
     'postmark' => [
@@ -30,14 +31,6 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
-    /*
-     * Socialite Credentials
-     * Redirect URL's need to be the same as specified on each network you set up this application on
-     * as well as conform to the route:
-     * http://localhost/public/login/SERVICE/callback
-     * Where service can github, facebook, twitter, google, linkedin, or bitbucket
-     * Docs: https://github.com/laravel/socialite
-     */
     'bitbucket' => [
         'active' => env('BITBUCKET_ACTIVE', false),
         'client_id' => env('BITBUCKET_CLIENT_ID'),
@@ -79,4 +72,5 @@ return [
         'client_secret' => env('TWITTER_CLIENT_SECRET'),
         'redirect' => env('TWITTER_REDIRECT'),
     ],
+
 ];
