@@ -18,9 +18,11 @@ class Announcement extends Model
         LogsActivity;
 
     public const TYPE_FRONTEND = 'frontend';
+
     public const TYPE_BACKEND = 'backend';
 
     protected static $logFillable = true;
+
     protected static $logOnlyDirty = true;
 
     /**
