@@ -77,23 +77,17 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
     /**
      * @var array
      */
-    protected $dates = [
-        'last_login_at',
-        'email_verified_at',
-        'password_changed_at',
-    ];
-
     /**
      * The attributes that should be cast.
      *
      * @var array
      */
     protected $casts = [
+        'password_changed_at' => 'datetime',
         'active' => 'boolean',
         'last_login_at' => 'datetime',
         'email_verified_at' => 'datetime',
-        'to_be_logged_out' => 'boolean',
-    ];
+        'to_be_logged_out' => 'boolean',    ];
 
     /**
      * @var array

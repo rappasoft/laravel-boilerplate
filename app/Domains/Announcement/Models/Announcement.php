@@ -40,17 +40,13 @@ class Announcement extends Model
     /**
      * @var string[]
      */
-    protected $dates = [
-        'starts_at',
-        'ends_at',
-    ];
-
     /**
      * @var string[]
      */
     protected $casts = [
-        'enabled' => 'boolean',
-    ];
+        'starts_at' => 'datetime',
+        'ends_at' => 'datetime',
+        'enabled' => 'boolean',    ];
 
     /**
      * Create a new factory instance for the model.
