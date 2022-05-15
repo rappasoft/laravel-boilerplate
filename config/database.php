@@ -74,7 +74,7 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
-            'schema' => [env('DB_SCHEMA', 'public'), 'public'],
+            'search_path' => [env('DB_SCHEMA', 'public'), 'public'],
             'sslmode' => 'prefer',
         ],
 
