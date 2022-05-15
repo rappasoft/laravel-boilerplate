@@ -13,7 +13,7 @@ use Tabuna\Breadcrumbs\Trail;
 // All route names are prefixed with 'admin.auth'.
 Route::prefix('auth')->name('auth.')->middleware(config('boilerplate.access.middleware.confirm'))->group(function () {
     Route::prefix('user')->name('user.')->group(function () {
-        Route::middleware('role:' . config('boilerplate.access.role.admin'))->group(function () {
+        Route::middleware('role:'.config('boilerplate.access.role.admin'))->group(function () {
             Route::get('deleted', [DeletedUserController::class, 'index'])
                 ->name('deleted')
                 ->breadcrumbs(function (Trail $trail) {
@@ -98,7 +98,7 @@ Route::prefix('auth')->name('auth.')->middleware(config('boilerplate.access.midd
         });
     });
 
-    Route::prefix('role')->name('role.')->middleware('role:' . config('boilerplate.access.role.admin'))->group(function () {
+    Route::prefix('role')->name('role.')->middleware('role:'.config('boilerplate.access.role.admin'))->group(function () {
         Route::get('/', [RoleController::class, 'index'])
             ->name('index')
             ->breadcrumbs(function (Trail $trail) {
