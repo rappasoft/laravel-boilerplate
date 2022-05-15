@@ -25,19 +25,19 @@
   <!--        <log type="coverage-clover" target="build/logs/clover.xml"/>-->
   <!--    </logging>-->
   <php>
-    <server name="APP_ENV" value="testing"/>
-    <server name="APP_READ_ONLY" value="false"/>
-    <server name="APP_TESTING" value="true"/>
-    <server name="BCRYPT_ROUNDS" value="4"/>
-    <server name="CACHE_DRIVER" value="array"/>
-    <server name="DB_CONNECTION" value="sqlite"/>
-    <server name="DB_DATABASE" value=":memory:"/>
-    <server name="ENABLE_REGISTRATION" value="true"/>
-    <server name="LOGIN_CAPTCHA_STATUS" value="false"/>
-    <server name="REGISTRATION_CAPTCHA_STATUS" value="false"/>
-    <server name="MAIL_MAILER" value="array"/>
-    <server name="QUEUE_CONNECTION" value="sync"/>
-    <server name="SESSION_DRIVER" value="array"/>
-    <server name="TELESCOPE_ENABLED" value="false"/>
+    <env name="APP_ENV" value="testing"/>
+    <env name="APP_READ_ONLY" value="false"/>
+    <env name="APP_TESTING" value="true"/>
+    <env name="BCRYPT_ROUNDS" value="4"/>
+    <env name="CACHE_DRIVER" value="array"/>
+    <env name="DB_CONNECTION" value="sqlite"/>
+    <env name="DB_DATABASE" value=":memory:"/>
+    <env name="ENABLE_REGISTRATION" value="true"/>
+    <env name="LOGIN_CAPTCHA_STATUS" value="false"/>
+    <env name="REGISTRATION_CAPTCHA_STATUS" value="false"/>
+    <env name="MAIL_MAILER" value="array"/>
+    <env name="QUEUE_CONNECTION" value="sync"/>
+    <env name="SESSION_DRIVER" value="array"/>
+    <env name="TELESCOPE_ENABLED" value="false"/>
   </php>
 </phpunit>

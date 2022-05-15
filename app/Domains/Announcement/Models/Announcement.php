@@ -18,9 +18,11 @@ class Announcement extends Model
         LogsActivity;
 
     public const TYPE_FRONTEND = 'frontend';
+
     public const TYPE_BACKEND = 'backend';
 
     protected static $logFillable = true;
+
     protected static $logOnlyDirty = true;
 
     /**
@@ -38,17 +40,13 @@ class Announcement extends Model
     /**
      * @var string[]
      */
-    protected $dates = [
-        'starts_at',
-        'ends_at',
-    ];
-
     /**
      * @var string[]
      */
     protected $casts = [
-        'enabled' => 'boolean',
-    ];
+        'starts_at' => 'datetime',
+        'ends_at' => 'datetime',
+        'enabled' => 'boolean',    ];
 
     /**
      * Create a new factory instance for the model.

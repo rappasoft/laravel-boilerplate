@@ -27,7 +27,7 @@ class RoleFactory extends Factory
     {
         return [
             'type' => $this->faker->randomElement([User::TYPE_ADMIN, User::TYPE_USER]),
-            'name' => $this->faker->word,
+            'name' => $this->faker->word(),
         ];
     }
 }

@@ -17,8 +17,8 @@ use Tabuna\Breadcrumbs\Trail;
  * Frontend Access Controllers
  * All route names are prefixed with 'frontend.auth'.
  */
-Route::group(['as' => 'auth.'], function () {
-    Route::group(['middleware' => 'auth'], function () {
+Route::name('auth.')->group(function () {
+    Route::middleware('auth')->group(function () {
         // Authentication
         Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -27,7 +27,7 @@ Route::group(['as' => 'auth.'], function () {
         Route::patch('password/expired', [PasswordExpiredController::class, 'update'])->name('password.expired.update');
 
         // These routes can not be hit if the password is expired
-        Route::group(['middleware' => 'password.expires'], function () {
+        Route::middleware('password.expires')->group(function () {
             // E-mail Verification
             Route::get('email/verify', [VerificationController::class, 'show'])->name('verification.notice');
             Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])
@@ -38,7 +38,7 @@ Route::group(['as' => 'auth.'], function () {
                 ->middleware('throttle:6,1');
 
             // These routes require the users email to be verified
-            Route::group(['middleware' => config('boilerplate.access.middleware.verified')], function () {
+            Route::middleware(config('boilerplate.access.middleware.verified'))->group(function () {
                 // Passwords
                 Route::get('password/confirm', [ConfirmPasswordController::class, 'showConfirmForm'])->name('password.confirm');
                 Route::post('password/confirm', [ConfirmPasswordController::class, 'confirm']);
@@ -46,8 +46,8 @@ Route::group(['as' => 'auth.'], function () {
                 Route::patch('password/update', [UpdatePasswordController::class, 'update'])->name('password.change');
 
                 // Two-factor Authentication
-                Route::group(['prefix' => 'account/2fa', 'as' => 'account.2fa.'], function () {
-                    Route::group(['middleware' => '2fa:disabled'], function () {
+                Route::prefix('account/2fa')->name('account.2fa.')->group(function () {
+                    Route::middleware('2fa:disabled')->group(function () {
                         Route::get('enable', [TwoFactorAuthenticationController::class, 'create'])
                             ->name('create')
                             ->breadcrumbs(function (Trail $trail) {
@@ -56,7 +56,7 @@ Route::group(['as' => 'auth.'], function () {
                             });
                     });
 
-                    Route::group(['middleware' => '2fa:enabled'], function () {
+                    Route::middleware('2fa:enabled')->group(function () {
                         Route::get('recovery', [TwoFactorAuthenticationController::class, 'show'])
                             ->name('show')
                             ->breadcrumbs(function (Trail $trail) {
@@ -80,7 +80,7 @@ Route::group(['as' => 'auth.'], function () {
         });
     });
 
-    Route::group(['middleware' => 'guest'], function () {
+    Route::middleware('guest')->group(function () {
         // Authentication
         Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
         Route::post('login', [LoginController::class, 'login']);

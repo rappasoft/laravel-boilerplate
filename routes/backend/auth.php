@@ -11,18 +11,9 @@ use App\Domains\Auth\Models\User;
 use Tabuna\Breadcrumbs\Trail;
 
 // All route names are prefixed with 'admin.auth'.
-Route::group([
-    'prefix' => 'auth',
-    'as' => 'auth.',
-    'middleware' => config('boilerplate.access.middleware.confirm'),
-], function () {
-    Route::group([
-        'prefix' => 'user',
-        'as' => 'user.',
-    ], function () {
-        Route::group([
-            'middleware' => 'role:'.config('boilerplate.access.role.admin'),
-        ], function () {
+Route::prefix('auth')->name('auth.')->middleware(config('boilerplate.access.middleware.confirm'))->group(function () {
+    Route::prefix('user')->name('user.')->group(function () {
+        Route::middleware('role:'.config('boilerplate.access.role.admin'))->group(function () {
             Route::get('deleted', [DeletedUserController::class, 'index'])
                 ->name('deleted')
                 ->breadcrumbs(function (Trail $trail) {
@@ -39,7 +30,7 @@ Route::group([
 
             Route::post('/', [UserController::class, 'store'])->name('store');
 
-            Route::group(['prefix' => '{user}'], function () {
+            Route::prefix('{user}')->group(function () {
                 Route::get('edit', [UserController::class, 'edit'])
                     ->name('edit')
                     ->breadcrumbs(function (Trail $trail, User $user) {
@@ -51,15 +42,13 @@ Route::group([
                 Route::delete('/', [UserController::class, 'destroy'])->name('destroy');
             });
 
-            Route::group(['prefix' => '{deletedUser}'], function () {
+            Route::prefix('{deletedUser}')->group(function () {
                 Route::patch('restore', [DeletedUserController::class, 'update'])->name('restore');
                 Route::delete('permanently-delete', [DeletedUserController::class, 'destroy'])->name('permanently-delete');
             });
         });
 
-        Route::group([
-            'middleware' => 'permission:admin.access.user.list|admin.access.user.deactivate|admin.access.user.reactivate|admin.access.user.clear-session|admin.access.user.impersonate|admin.access.user.change-password',
-        ], function () {
+        Route::middleware('permission:admin.access.user.list|admin.access.user.deactivate|admin.access.user.reactivate|admin.access.user.clear-session|admin.access.user.impersonate|admin.access.user.change-password')->group(function () {
             Route::get('deactivated', [DeactivatedUserController::class, 'index'])
                 ->name('deactivated')
                 ->middleware('permission:admin.access.user.reactivate')
@@ -76,7 +65,7 @@ Route::group([
                         ->push(__('User Management'), route('admin.auth.user.index'));
                 });
 
-            Route::group(['prefix' => '{user}'], function () {
+            Route::prefix('{user}')->group(function () {
                 Route::get('/', [UserController::class, 'show'])
                     ->name('show')
                     ->middleware('permission:admin.access.user.list')
@@ -109,11 +98,7 @@ Route::group([
         });
     });
 
-    Route::group([
-        'prefix' => 'role',
-        'as' => 'role.',
-        'middleware' => 'role:'.config('boilerplate.access.role.admin'),
-    ], function () {
+    Route::prefix('role')->name('role.')->middleware('role:'.config('boilerplate.access.role.admin'))->group(function () {
         Route::get('/', [RoleController::class, 'index'])
             ->name('index')
             ->breadcrumbs(function (Trail $trail) {
@@ -130,7 +115,7 @@ Route::group([
 
         Route::post('/', [RoleController::class, 'store'])->name('store');
 
-        Route::group(['prefix' => '{role}'], function () {
+        Route::prefix('{role}')->group(function () {
             Route::get('edit', [RoleController::class, 'edit'])
                 ->name('edit')
                 ->breadcrumbs(function (Trail $trail, Role $role) {
