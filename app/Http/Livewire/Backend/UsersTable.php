@@ -124,14 +124,6 @@ class UsersTable extends DataTableComponent
         ];
     }
 
-    /**
-     * @return string
-     */
-    public function rowView(): string
-    {
-        return 'backend.auth.user.includes.row';
-    }
-
     public function configure(): void
     {
         $this->setPrimaryKey('id');
