@@ -27,7 +27,7 @@ class RolesTable extends DataTableComponent
     {
         return ! (isEmpty($this->columnSearch[$column] ?? null));
     }
-    
+
     public function columns(): array
     {
         return [
