@@ -22,10 +22,12 @@ class RolesTable extends DataTableComponent
             ->withCount('users')
             ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term));
     }
+
     public function getFilter($column): bool
     {
         return ! (isEmpty($this->columnSearch[$column] ?? null));
     }
+    
     public function columns(): array
     {
         return [
