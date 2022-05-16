@@ -9,7 +9,7 @@ $finder = Symfony\Component\Finder\Finder::create()
         __DIR__ . '/config',
         __DIR__ . '/database/factories',
         __DIR__ . '/database/seeders',
-        __DIR__ . '/resources/lang',
+        __DIR__ . '/lang',
         __DIR__ . '/routes',
         __DIR__ . '/tests',
     ])
@@ -18,14 +18,14 @@ $finder = Symfony\Component\Finder\Finder::create()
     ->ignoreDotFiles(true)
     ->ignoreVCS(true);
 
-return PhpCsFixer\Config::create()
-    ->setRules([
+$config = new PhpCsFixer\Config();
+$config->setRules([
         '@PSR2' => true,
         'array_syntax' => ['syntax' => 'short'],
-        'ordered_imports' => ['sortAlgorithm' => 'alpha'],
+        'ordered_imports' => ['sort_algorithm' => 'alpha'],
         'no_unused_imports' => true,
         'not_operator_with_successor_space' => true,
-        'trailing_comma_in_multiline_array' => true,
+        'trailing_comma_in_multiline' => true,
         'phpdoc_scalar' => true,
         'unary_operator_spaces' => true,
         'binary_operator_spaces' => true,
@@ -40,3 +40,6 @@ return PhpCsFixer\Config::create()
         ]
     ])
     ->setFinder($finder);
+
+
+return $config;

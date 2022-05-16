@@ -4,9 +4,9 @@ namespace App\Http\Livewire\Backend;
 
 use App\Domains\Auth\Models\Role;
 use Illuminate\Database\Eloquent\Builder;
+use function PHPUnit\Framework\isEmpty;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use function PHPUnit\Framework\isEmpty;
 
 /**
  * Class RolesTable.
@@ -24,7 +24,7 @@ class RolesTable extends DataTableComponent
     }
     public function getFilter($column): bool
     {
-        return !(isEmpty($this->columnSearch[$column] ?? null));
+        return ! (isEmpty($this->columnSearch[$column] ?? null));
     }
     public function columns(): array
     {
@@ -34,12 +34,12 @@ class RolesTable extends DataTableComponent
             Column::make(__('Name'))
                 ->sortable(),
             Column::make(__('Permissions'))
-                ->label(fn($row) => $row->permissions_label),
+                ->label(fn ($row) => $row->permissions_label),
             Column::make(__('Number of Users'))
-                ->label(fn($row) => $row->users_count)
+                ->label(fn ($row) => $row->users_count)
                 ->sortable(),
             Column::make(__('Actions'), 'id')->format(
-                fn($value, $row, Column $column) => view('backend.auth.role.includes.actions')->withModel($row)
+                fn ($value, $row, Column $column) => view('backend.auth.role.includes.actions')->withModel($row)
             )->html(),
         ];
     }

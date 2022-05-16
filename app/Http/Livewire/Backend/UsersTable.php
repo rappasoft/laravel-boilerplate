@@ -4,11 +4,10 @@ namespace App\Http\Livewire\Backend;
 
 use App\Domains\Auth\Models\User;
 use Illuminate\Database\Eloquent\Builder;
+use function PHPUnit\Framework\isEmpty;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use Rappasoft\LaravelLivewireTables\Views\Filter;
 use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
-use function PHPUnit\Framework\isEmpty;
 
 /**
  * Class UsersTable.
@@ -68,7 +67,7 @@ class UsersTable extends DataTableComponent
 
     public function getFilter($column): bool
     {
-        return !(isEmpty($this->columnSearch[$column] ?? null));
+        return ! (isEmpty($this->columnSearch[$column] ?? null));
     }
 
     /**
@@ -113,14 +112,14 @@ class UsersTable extends DataTableComponent
             Column::make(__('Verified'), 'email_verified_at')
                 ->sortable(),
             Column::make(__('2FA'))
-                ->label(fn($row) => $row->two_factor_auth_count)
+                ->label(fn ($row) => $row->two_factor_auth_count)
                 ->sortable(),
             Column::make(__('Roles'))
-                ->label(fn($row) => $row->roles_label),
+                ->label(fn ($row) => $row->roles_label),
             Column::make(__('Additional Permissions'))
-                ->label(fn($row) => $row->permissions_label),
+                ->label(fn ($row) => $row->permissions_label),
             Column::make(__('Actions'), 'id')->format(
-                fn($value, $row, Column $column) => view('backend.auth.user.includes.actions')->withUser($row)
+                fn ($value, $row, Column $column) => view('backend.auth.user.includes.actions')->withUser($row)
             )->html(),
         ];
     }
