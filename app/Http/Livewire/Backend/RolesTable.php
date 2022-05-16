@@ -6,6 +6,7 @@ use App\Domains\Auth\Models\Role;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
+use function PHPUnit\Framework\isEmpty;
 
 /**
  * Class RolesTable.
@@ -15,13 +16,16 @@ class RolesTable extends DataTableComponent
     /**
      * @return Builder
      */
-    public function query(): Builder
+    public function builder(): Builder
     {
         return Role::with('permissions:id,name,description')
             ->withCount('users')
             ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term));
     }
-
+    public function getFilter($column): bool
+    {
+        return !(isEmpty($this->columnSearch[$column] ?? null));
+    }
     public function columns(): array
     {
         return [
@@ -29,10 +33,10 @@ class RolesTable extends DataTableComponent
                 ->sortable(),
             Column::make(__('Name'))
                 ->sortable(),
-            Column::make(__('Permissions')),
-            Column::make(__('Number of Users'), 'users_count')
-                ->sortable(),
-            Column::make(__('Actions')),
+//            Column::make(__('Permissions')),
+//            Column::make(__('Number of Users'), 'users_count')
+//                ->sortable(),
+//            Column::make(__('Actions')),
         ];
     }
 
