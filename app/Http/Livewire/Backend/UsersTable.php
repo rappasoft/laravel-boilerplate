@@ -120,4 +120,9 @@ class UsersTable extends DataTableComponent
     {
         return 'backend.auth.user.includes.row';
     }
+
+    public function configure(): void
+    {
+        $this->setPrimaryKey('id');
+    }
 }
