@@ -11,11 +11,11 @@
     "require": {
         "php": "^8.0",
         "arcanedev/log-viewer": "^9.0",
-        "darkghosthunter/laraguard": "dev-dependabot/composer/orchestra/testbench-tw-6.27tw-7.0tw-6.0tw-6.0",
         "guzzlehttp/guzzle": "^7.2",
         "jamesmills/laravel-timezone": "^1.11",
         "lab404/laravel-impersonate": "^1.7",
         "langleyfoxall/laravel-nist-password-rules": "dev-l9-compatibility",
+        "laragear/two-factor": "^1.0",
         "laravel/framework": "^9.12",
         "laravel/sanctum": "^2.15",
         "laravel/socialite": "^5.5",
