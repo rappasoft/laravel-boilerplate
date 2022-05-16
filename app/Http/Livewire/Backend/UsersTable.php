@@ -119,8 +119,9 @@ class UsersTable extends DataTableComponent
                 ->label(fn($row) => $row->roles_label),
             Column::make(__('Additional Permissions'))
                 ->label(fn($row) => $row->permissions_label),
-//            Column::make(__('Actions'))->view('backend.auth.user.includes.actions'),
-
+            Column::make(__('Actions'), 'id')->format(
+                fn($value, $row, Column $column) => view('backend.auth.user.includes.actions')->withUser($row)
+            )->html(),
         ];
     }
 

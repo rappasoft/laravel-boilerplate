@@ -33,10 +33,14 @@ class RolesTable extends DataTableComponent
                 ->sortable(),
             Column::make(__('Name'))
                 ->sortable(),
-//            Column::make(__('Permissions')),
-//            Column::make(__('Number of Users'), 'users_count')
-//                ->sortable(),
-//            Column::make(__('Actions')),
+            Column::make(__('Permissions'))
+                ->label(fn($row) => $row->permissions_label),
+            Column::make(__('Number of Users'))
+                ->label(fn($row) => $row->users_count)
+                ->sortable(),
+            Column::make(__('Actions'), 'id')->format(
+                fn($value, $row, Column $column) => view('backend.auth.role.includes.actions')->withModel($row)
+            )->html(),
         ];
     }
 
