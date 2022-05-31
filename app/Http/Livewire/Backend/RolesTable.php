@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Backend;
 
 use App\Domains\Auth\Models\Role;
 use Illuminate\Database\Eloquent\Builder;
-use function PHPUnit\Framework\isEmpty;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 
@@ -25,7 +24,7 @@ class RolesTable extends DataTableComponent
 
     public function getFilter($column): bool
     {
-        return ! (isEmpty($this->columnSearch[$column] ?? null));
+        return ! (empty($this->columnSearch[$column] ?? null));
     }
 
     public function columns(): array
