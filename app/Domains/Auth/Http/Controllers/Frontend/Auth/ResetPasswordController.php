@@ -2,6 +2,7 @@
 
 namespace App\Domains\Auth\Http\Controllers\Frontend\Auth;
 
+use Auth;
 use App\Domains\Auth\Rules\UnusedPassword;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
@@ -38,6 +39,11 @@ class ResetPasswordController
      */
     public function redirectPath()
     {
+        //prevents automatic login for inactive users after reset password
+        if(!auth()->user()->active) {
+            Auth::logout();
+            return route('frontend.auth.login');
+        }
         return route(homeRoute());
     }
 

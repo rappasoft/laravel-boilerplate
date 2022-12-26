@@ -144,4 +144,20 @@ class ResetPasswordTest extends TestCase
         $this->assertSame($errors->get('password')[0], __('You can not set a password that you have previously used within the last 3 times.'));
         $this->assertTrue(Hash::check(':ZqD~57}1t', $user->fresh()->password));
     }
+
+    /** @test: Tests if inactive users are redirected back to login after password reset */
+    public function inactive_users_reset_pwd_redirect_to_login()
+    {
+        $user = User::factory()->inactive()->create(['email' => 'john@example.com']);
+
+        $token = $this->app->make('auth.password.broker')->createToken($user);
+
+        $response = $this->post('password/reset', [
+                'token' => $token,
+                'email' => 'john@example.com',
+                'password' => ']EqZL4}zBT',
+                'password_confirmation' => ']EqZL4}zBT',
+            ]);
+        $response->assertRedirect(route('frontend.auth.login'));
+    }
 }
