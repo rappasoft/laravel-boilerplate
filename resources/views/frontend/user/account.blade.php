@@ -18,8 +18,9 @@
                                     :text="__('My Profile')"
                                     class="nav-link active"
                                     id="my-profile-tab"
-                                    data-toggle="pill"
-                                    href="#my-profile"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#my-profile"
+                                    type="button"
                                     role="tab"
                                     aria-controls="my-profile"
                                     aria-selected="true" />
@@ -28,8 +29,9 @@
                                     :text="__('Edit Information')"
                                     class="nav-link"
                                     id="information-tab"
-                                    data-toggle="pill"
-                                    href="#information"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#information"
+                                    type="button"
                                     role="tab"
                                     aria-controls="information"
                                     aria-selected="false"/>
@@ -39,8 +41,9 @@
                                         :text="__('Password')"
                                         class="nav-link"
                                         id="password-tab"
-                                        data-toggle="pill"
-                                        href="#password"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#password"
+                                        type="button"
                                         role="tab"
                                         aria-controls="password"
                                         aria-selected="false" />
@@ -50,15 +53,15 @@
                                     :text="__('Two Factor Authentication')"
                                     class="nav-link"
                                     id="two-factor-authentication-tab"
-                                    data-toggle="pill"
-                                    href="#two-factor-authentication"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#two-factor-authentication"
                                     role="tab"
                                     aria-controls="two-factor-authentication"
                                     aria-selected="false"/>
                             </div>
                         </nav>
 
-                        <div class="tab-content" id="my-profile-tabsContent">
+                        <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade pt-3 show active" id="my-profile" role="tabpanel" aria-labelledby="my-profile-tab">
                                 @include('frontend.user.account.tabs.profile')
                             </div><!--tab-profile-->

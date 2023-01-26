@@ -1,69 +1,74 @@
-<header class="c-header c-header-light c-header-fixed">
-    <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
-        <i class="c-icon c-icon-lg cil-menu"></i>
-    </button>
+<header class="header header-sticky d-print-none">
+    <div class="container-fluid">
 
-    <a class="c-header-brand d-lg-none" href="#">
-        <svg width="118" height="46" alt="CoreUI Logo">
-            <use xlink:href="{{ asset('img/brand/coreui.svg#full') }}"></use>
-        </svg>
-    </a>
+        <button class="header-toggler px-md-0 me-md-3" type="button"
+                onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
+            <i class="icon icon-lg cil-menu"></i>
+        </button>
 
-    <button class="c-header-toggler c-class-toggler mfs-3 d-md-down-none" type="button" data-target="#sidebar" data-class="c-sidebar-lg-show" responsive="true">
-        <i class="c-icon c-icon-lg cil-menu"></i>
-    </button>
+        <a class="header-brand d-md-none" href="#">
+            LOGO
+        </a>
 
-    <ul class="c-header-nav d-md-down-none">
-        <li class="c-header-nav-item px-3"><a class="c-header-nav-link" href="{{ route('frontend.index') }}">@lang('Home')</a></li>
+        <ul class="header-nav d-none d-md-flex">
+            <li class="nav-item"><a class="nav-link" href="{{ route('frontend.index') }}">@lang('Home')</a></li>
+            @if(config('boilerplate.locale.status') && count(config('boilerplate.locale.languages')) > 1)
+                <li class="nav-item dropdown d-flex align-items-center">
+                    <x-utils.link
+                        :text="__(getLocaleName(app()->getLocale()))"
+                        right="true"
+                        class="nav-link dropdown-toggle"
+                        data-coreui-toggle="dropdown"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="false"/>
 
-        @if(config('boilerplate.locale.status') && count(config('boilerplate.locale.languages')) > 1)
-            <li class="c-header-nav-item dropdown">
-                <x-utils.link
-                    :text="__(getLocaleName(app()->getLocale()))"
-                    class="c-header-nav-link dropdown-toggle"
-                    id="navbarDropdownLanguageLink"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false" />
+                    @include('includes.partials.lang')
+                </li>
+            @endif
+        </ul>
 
-                @include('includes.partials.lang')
-            </li>
-        @endif
-    </ul>
+        <!-- Space Between -->
+        <nav class="header-nav ms-auto me-4">
+        </nav>
+        @include('backend.includes.partials.header_alerts')
 
-    <ul class="c-header-nav ml-auto mr-4">
-        <li class="c-header-nav-item dropdown">
-            <x-utils.link class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <x-slot name="text">
-                    <div class="c-avatar">
-                        <img class="c-avatar-img" src="{{ $logged_in_user->avatar }}" alt="{{ $logged_in_user->email ?? '' }}">
-                    </div>
-                </x-slot>
-            </x-utils.link>
-
-            <div class="dropdown-menu dropdown-menu-right pt-0">
-                <div class="dropdown-header bg-light py-2">
-                    <strong>@lang('Account')</strong>
-                </div>
-
-                <x-utils.link
-                    class="dropdown-item"
-                    icon="c-icon mr-2 cil-account-logout"
-                    onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+        <!-- Avatar and Menu -->
+        <ul class="header-nav me-4">
+            <li class="nav-item dropdown d-flex align-items-center">
+                <x-utils.link class="nav-link py-0" data-coreui-toggle="dropdown" href="#"
+                                               role="button"
+                                               aria-haspopup="true" aria-expanded="false">
                     <x-slot name="text">
-                        @lang('Logout')
-                        <x-forms.post :action="route('frontend.auth.logout')" id="logout-form" class="d-none" />
+                        <div class="avatar avatar-md">
+                            <img class="avatar-img" src="{{ $logged_in_user->avatar }}"
+                                 alt="{{ $logged_in_user->email ?? '' }}">
+                        </div>
                     </x-slot>
                 </x-utils.link>
-            </div>
-        </li>
-    </ul>
 
-    <div class="c-subheader justify-content-between px-3">
-        @include('backend.includes.partials.breadcrumbs')
+                <div class="dropdown-menu dropdown-menu-end pt-0">
+                    <div class="dropdown-header bg-light py-2">
+                        <strong>@lang('Account')</strong>
+                    </div>
+                    <x-utils.dropdown-form
+                        :href="route('frontend.auth.logout')"
+                        :text="__('Logout')"
+                        name="logout"
+                        icon="fa-solid fa-arrow-right-from-bracket fa-rotate-180 me-2"
+                    />
+                </div>
+            </li>
+        </ul>
+    </div>
 
-        <div class="c-subheader-nav mfe-2">
+    <div class="header-divider"></div>
+    <div class="container-fluid">
+        <nav aria-label="breadcrumb">
+            @include('backend.includes.partials.breadcrumbs')
+        </nav>
+        <div class="me-md-3">
             @yield('breadcrumb-links')
         </div>
-    </div><!--c-subheader-->
+    </div>
 </header>

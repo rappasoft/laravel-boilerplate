@@ -1,5 +1,6 @@
 @import "../global";
 
 // Coreui
-@import '~@coreui/coreui/scss/coreui';
-@import '~@coreui/icons/css/free.min.css';
+@import "coreui/style";
+@import '@coreui/icons/css/all';
+

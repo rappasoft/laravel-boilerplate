@@ -95,7 +95,7 @@
         </x-slot>
 
         <x-slot name="footer">
-            <small class="float-right text-muted">
+            <small class="float-end text-muted">
                 <strong>@lang('Account Created'):</strong> @displayDate($user->created_at) ({{ $user->created_at->diffForHumans() }}),
                 <strong>@lang('Last Updated'):</strong> @displayDate($user->updated_at) ({{ $user->updated_at->diffForHumans() }})
 

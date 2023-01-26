@@ -7,7 +7,7 @@
 
     <form wire:submit.prevent="validateCode" class="form-horizontal">
         <div class="form-group row">
-            <label for="code" class="col-md-4 col-form-label text-md-right">@lang('Authorization Code')</label>
+            <label for="code" class="col-md-4 col-form-label text-md-end">@lang('Authorization Code')</label>
 
             <div class="col-md-6">
                 <input
@@ -15,7 +15,7 @@
                     id="code"
                     wire:model.lazy="code"
                     minlength="6"
-                    class="form-control"
+                    class="form-control mb-3"
                     placeholder="{{ __('Authorization Code') }}"
                     required
                     autofocus />

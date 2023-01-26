@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-    <div class="container">
+    <div class="container fluid">
         <x-utils.link
             :href="route('frontend.index')"
             :text="appName()"
@@ -9,17 +9,19 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="header-nav d-none d-sm-flex ms-auto me-3" id="navbarSupportedContent">
             <ul class="navbar-nav ml-auto">
+
                 @if(config('boilerplate.locale.status') && count(config('boilerplate.locale.languages')) > 1)
                     <li class="nav-item dropdown">
                         <x-utils.link
                             :text="__(getLocaleName(app()->getLocale()))"
                             class="nav-link dropdown-toggle"
                             id="navbarDropdownLanguageLink"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false" />
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                            role="button"
+                        />
 
                         @include('includes.partials.lang')
                     </li>
@@ -51,10 +53,8 @@
                             id="navbarDropdown"
                             class="nav-link dropdown-toggle"
                             role="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
+                            data-bs-toggle="dropdown"
                             aria-expanded="false"
-                            v-pre
                         >
                             <x-slot name="text">
                                 <img class="rounded-circle" style="max-height: 20px" src="{{ $logged_in_user->avatar }}" />

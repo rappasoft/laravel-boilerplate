@@ -11,7 +11,7 @@
         @stack('before-styles')
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-        <link href="{{ mix('css/frontend.css') }}" rel="stylesheet">
+        @vite('resources/sass/frontend/app.scss')
         <style>
             html, body {
                 background-color: #fff;
@@ -71,7 +71,7 @@
         @include('includes.partials.logged-in-as')
         @include('includes.partials.announcements')
 
-        <div id="app" class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height">
             <div class="top-right links">
                 @auth
                     @if ($logged_in_user->isUser())
@@ -91,7 +91,7 @@
             <div class="content">
                 @include('includes.partials.messages')
 
-                <div class="title m-b-md">
+                <div id="app" class="title m-b-md">
                     <example-component></example-component>
                 </div><!--title-->
 
@@ -103,9 +103,7 @@
         </div><!--app-->
 
         @stack('before-scripts')
-        <script src="{{ mix('js/manifest.js') }}"></script>
-        <script src="{{ mix('js/vendor.js') }}"></script>
-        <script src="{{ mix('js/frontend.js') }}"></script>
+        @vite('resources/js/frontend/app.js')
         @stack('after-scripts')
     </body>
 </html>

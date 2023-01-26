@@ -1,6 +1,12 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-@import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import '~@fortawesome/fontawesome-free/scss/regular';
-@import '~@fortawesome/fontawesome-free/scss/solid';
-@import '~@fortawesome/fontawesome-free/scss/brands';
+
+@import '@fortawesome/fontawesome-free/css/fontawesome';
+@import '@fortawesome/fontawesome-free/css/regular';
+@import '@fortawesome/fontawesome-free/css/solid';
+@import '@fortawesome/fontawesome-free/css/brands';
+
+// Remove highlighting around focused objects.
+a {
+    outline: none !important;
+}

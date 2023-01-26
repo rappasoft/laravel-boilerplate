@@ -14,10 +14,10 @@
                     <x-slot name="body">
                         <x-forms.post :action="route('frontend.auth.password.email')">
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">@lang('E-mail Address')</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-end">@lang('E-mail Address')</label>
 
                                 <div class="col-md-6">
-                                    <input type="email" name="email" id="email" class="form-control" value="{{ old('email') }}" placeholder="{{ __('E-mail Address') }}" maxlength="255" required autofocus autocomplete="email" />
+                                    <input type="email" name="email" id="email" class="form-control mb-3" value="{{ old('email') }}" placeholder="{{ __('E-mail Address') }}" maxlength="255" required autofocus autocomplete="email" />
                                 </div>
                             </div><!--form-group-->
 

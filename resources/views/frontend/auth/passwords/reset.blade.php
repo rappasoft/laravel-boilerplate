@@ -16,26 +16,26 @@
                             <input type="hidden" name="token" value="{{ $token }}" />
 
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">@lang('E-mail Address')</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-end">@lang('E-mail Address')</label>
 
                                 <div class="col-md-6">
-                                    <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ $email ?? old('email') }}" maxlength="255" required autofocus autocomplete="email" />
+                                    <input type="email" name="email" id="email" class="form-control mb-3" placeholder="{{ __('E-mail Address') }}" value="{{ $email ?? old('email') }}" maxlength="255" required autofocus autocomplete="email" />
                                 </div>
                             </div><!--form-group-->
 
                             <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">@lang('Password')</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-end">@lang('Password')</label>
 
                                 <div class="col-md-6">
-                                    <input type="password" id="password" name="password" class="form-control" placeholder="{{ __('Password') }}" maxlength="100" required autocomplete="password" />
+                                    <input type="password" id="password" name="password" class="form-control mb-3" placeholder="{{ __('Password') }}" maxlength="100" required autocomplete="password" />
                                 </div>
                             </div><!--form-group-->
 
                             <div class="form-group row">
-                                <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">@lang('Password Confirmation')</label>
+                                <label for="password_confirmation" class="col-md-4 col-form-label text-md-end">@lang('Password Confirmation')</label>
 
                                 <div class="col-md-6">
-                                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="{{ __('Password Confirmation') }}" maxlength="100" required autocomplete="new-password" />
+                                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control mb-3" placeholder="{{ __('Password Confirmation') }}" maxlength="100" required autocomplete="new-password" />
                                 </div>
                             </div><!--form-group-->
 

@@ -1,0 +1,30 @@
+.wrapper {
+  width: 100%;
+  @include ltr-rtl("padding-left", var(--cui-sidebar-occupy-start, 0));
+  will-change: auto;
+  @include transition(padding .15s);
+}
+
+.card-header-actions {
+    display: inline-block;
+
+    @include ltr {
+        float: right;
+        margin-right: - calc($spacer / 4);
+    }
+    @include rtl {
+        float: left;
+        margin-left: - calc($spacer / 4);
+    }
+}
+
+.card-header-action {
+    padding: 0 calc($spacer / 4);
+    color: $gray-600;
+    text-decoration: none;
+
+    &:hover {
+        color: $body-color;
+
+    }
+}

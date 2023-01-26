@@ -2,6 +2,7 @@
  * Place any jQuery/helper plugins in here.
  */
 $(function () {
+
     /**
      * Checkbox tree for permission selecting
      */
@@ -44,7 +45,7 @@ $(function () {
     /**
      * Disable all submit buttons once clicked
      */
-    $('form').submit(function () {
+    $("form").submit(function () {
         disableSubmitButtons($(this));
         return true;
     });

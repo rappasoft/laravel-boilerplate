@@ -4,7 +4,7 @@
             {{ $header }}
 
             @if (isset($headerActions))
-                <div class="d-inline-block float-right">
+                <div class="d-inline-block float-end">
                     {{ $headerActions }}
                 </div><!--card-header-actions-->
             @endif

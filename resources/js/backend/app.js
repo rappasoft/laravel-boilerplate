@@ -1,10 +1,8 @@
-import 'alpinejs'
+import '../plugins/alpine'
+import '../plugins/jquery'
+import '../plugins/swal'
+import '../plugins/coreui'
+import '../plugins'
 
-window.$ = window.jQuery = require('jquery');
-window.Swal = require('sweetalert2');
 
-// CoreUI
-require('@coreui/coreui');
 
-// Boilerplate
-require('../plugins');

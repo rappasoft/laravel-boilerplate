@@ -5,7 +5,7 @@
                 name="roles[]"
                 id="role_{{ $role->id }}"
                 value="{{ $role->id }}"
-                class="form-check-input"
+                class="form-check-input mb-3"
                 type="checkbox"
                 {{ (old('rules') && in_array($role->id, old('rules'), true)) || (isset($user) && in_array($role->id, $user->roles->modelKeys(), true)) ? 'checked' : '' }} />
 

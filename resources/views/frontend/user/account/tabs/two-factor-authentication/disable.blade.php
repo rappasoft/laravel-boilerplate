@@ -16,10 +16,10 @@
 
                         <x-forms.delete :action="route('frontend.auth.account.2fa.destroy')" name="confirm-item">
                             <div class="form-group row">
-                                <label for="code" class="col-md-4 col-form-label text-md-right">@lang('Authorization Code')</label>
+                                <label for="code" class="col-md-4 col-form-label text-md-end">@lang('Authorization Code')</label>
 
                                 <div class="col-md-6">
-                                    <input type="text" name="code" id="code" maxlength="10" class="form-control" placeholder="{{ __('Authorization Code') }}" required />
+                                    <input type="text" name="code" id="code" maxlength="10" class="form-control mb-3" placeholder="{{ __('Authorization Code') }}" required />
                                 </div>
                             </div><!--form-group-->
 

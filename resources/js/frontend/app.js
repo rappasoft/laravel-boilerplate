@@ -3,24 +3,18 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+import '../bootstrap'
+import '../plugins'
 
-require('../bootstrap');
-require('../plugins');
-
-import Vue from 'vue';
+import {createApp} from 'vue/dist/vue.esm-bundler'
 
 /**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
+ *  Here we import the component to a javascript variable and use this to
+ *  add the component to the app.
  */
 
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+import ExampleComponent  from './components/ExampleComponent.vue'
+// import App  from './components/App.vue'
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -28,6 +22,17 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
-});
+const app = createApp({
+    components: {
+        ExampleComponent
+    }
+})
+app.mount('#app')
+
+/**
+ * You can also make a fresh Vue application with the default component
+ * as a parent component.
+ */
+
+// const app = createApp(App)
+// app.mount('#app')
