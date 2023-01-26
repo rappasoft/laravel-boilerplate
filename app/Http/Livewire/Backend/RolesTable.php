@@ -27,7 +27,7 @@ class RolesTable extends DataTableComponent
                     ];
                 }
 
-                return ['default' => true,];
+                return ['default' => true];
             })
             ->setTdAttributes(function (Column $column, $row, $columnIndex, $rowIndex) {
                 if ($column->getTitle() == 'Number of Users'
@@ -39,7 +39,7 @@ class RolesTable extends DataTableComponent
                     ];
                 }
 
-                return ['default' => true,];
+                return ['default' => true];
             });
     }
 
@@ -60,13 +60,13 @@ class RolesTable extends DataTableComponent
                 ->sortable()
                 ->searchable(),
             Column::make(__('Permissions'))
-                ->label(fn($row, Column $column) => $row->permissions_label),
+                ->label(fn ($row, Column $column) => $row->permissions_label),
             Column::make(__('Number of Users'))
-                ->label(fn($row, Column $column) => $row->users_count)
+                ->label(fn ($row, Column $column) => $row->users_count)
                 ->sortable(),
             Column::make(__('Actions'))
                 ->label(
-                    fn($row, Column $column) => view('backend.auth.role.includes.actions')->with(['model' => $row])
+                    fn ($row, Column $column) => view('backend.auth.role.includes.actions')->with(['model' => $row])
                 ),
         ];
     }

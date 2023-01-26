@@ -34,7 +34,7 @@ class UsersTable extends DataTableComponent
                     ];
                 }
 
-                return ['default' => true,];
+                return ['default' => true];
             })
             ->setTdAttributes(function (Column $column, $row, $columnIndex, $rowIndex) {
                 if ($column->getTitle() == 'Active'
@@ -53,7 +53,7 @@ class UsersTable extends DataTableComponent
                     ];
                 }
 
-                return ['default' => true,];
+                return ['default' => true];
             });
     }
 
@@ -123,7 +123,7 @@ class UsersTable extends DataTableComponent
                     '' => 'Any',
                     'yes' => 'Yes',
                     'no' => 'No',
-                ])
+                ]),
         ];
     }
 
@@ -134,30 +134,30 @@ class UsersTable extends DataTableComponent
     {
         return [
             Column::make(__('Type'))
-                ->label(fn($row) => Str::Title($row->type))
+                ->label(fn ($row) => Str::Title($row->type))
                 ->searchable()
                 ->sortable(),
             Column::make(__('Name'))
                 ->searchable()
                 ->sortable(),
             LinkColumn::make(__('E-mail'), 'email')
-                ->title(fn($row) => $row->email)
-                ->location(fn($row) => "mailto:$row->email")
+                ->title(fn ($row) => $row->email)
+                ->location(fn ($row) => "mailto:$row->email")
                 ->searchable()
                 ->sortable(),
             BooleanColumn::make('Verified', 'email_verified_at')
-                ->setCallback(fn($value, User $row) => $row->isVerified()),
+                ->setCallback(fn ($value, User $row) => $row->isVerified()),
             BooleanColumn::make('Active', 'active')
-                ->setCallback(fn($value, User $row) => $row->isActive()),
+                ->setCallback(fn ($value, User $row) => $row->isActive()),
             BooleanColumn::make('2FA', 'type')
-                ->setCallback(fn($value, $row) => $row->hasTwoFactorEnabled()),
+                ->setCallback(fn ($value, $row) => $row->hasTwoFactorEnabled()),
             Column::make(__('Roles'))
-                ->label(fn($row, Column $column) => $row->roles_label),
+                ->label(fn ($row, Column $column) => $row->roles_label),
             Column::make(__('Additional Permissions'))
-                ->label(fn($row, Column $column) => $row->permissions_label),
+                ->label(fn ($row, Column $column) => $row->permissions_label),
             Column::make(__('Actions'))
                 ->label(
-                    fn($row, Column $column) => view('backend.auth.user.includes.actions')->with(['user' => $row])
+                    fn ($row, Column $column) => view('backend.auth.user.includes.actions')->with(['user' => $row])
                 ),
         ];
     }
