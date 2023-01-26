@@ -154,7 +154,7 @@ class ResetPasswordTest extends TestCase
         $user = User::factory()->create([
             'email' => 'john@example.com',
             'password' => 'secret',
-            'active' => 0
+            'active' => 0,
         ]);
 
         $this->post('/password/reset', [

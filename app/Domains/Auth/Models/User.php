@@ -118,7 +118,7 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
      */
     public function sendPasswordResetNotification($token): void
     {
-        if($this->isActive()) {
+        if ($this->isActive()) {
             $this->notify(new ResetPasswordNotification($token));
         } else {
             DB::table('password_resets')->where('email', $this->email)->delete();
