@@ -9,6 +9,7 @@ use App\Domains\Auth\Models\Traits\Scope\UserScope;
 use App\Domains\Auth\Notifications\Frontend\ResetPasswordNotification;
 use App\Domains\Auth\Notifications\Frontend\VerifyEmail;
 use Database\Factories\UserFactory;
+use DB;
 use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -117,7 +118,16 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
      */
     public function sendPasswordResetNotification($token): void
     {
-        $this->notify(new ResetPasswordNotification($token));
+        if ($this->isActive()) {
+            $this->notify(new ResetPasswordNotification($token));
+        } else {
+            DB::table('password_resets')->where('email', $this->email)->delete();
+            abort(
+                redirect()
+                    ->route('frontend.auth.login')
+                    ->withFlashDanger(__('Your account has been deactivated.'))
+            );
+        }
     }
 
     /**

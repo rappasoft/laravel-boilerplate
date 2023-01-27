@@ -144,4 +144,20 @@ class ResetPasswordTest extends TestCase
         $this->assertSame($errors->get('password')[0], __('You can not set a password that you have previously used within the last 3 times.'));
         $this->assertTrue(Hash::check(':ZqD~57}1t', $user->fresh()->password));
     }
+
+    /** @test */
+    public function inactive_users_can_not_reset_password()
+    {
+        $user = User::factory()->create([
+            'email' => 'john@example.com',
+            'password' => 'secret',
+            'active' => 0,
+        ]);
+
+        $this->post('/password/reset', [
+            'email' => 'john@example.com',
+        ])->assertStatus(302)->assertLocation(route(homeRoute()));
+
+        $this->assertGuest();
+    }
 }
