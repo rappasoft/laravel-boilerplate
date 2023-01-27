@@ -1,24 +1,39 @@
 <?php
 
-$finder = Symfony\Component\Finder\Finder::create()
+declare(strict_types=1);
+
+/*
+ * This file is part of PHP CS Fixer.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *     Dariusz Rumiński <dariusz.ruminski@gmail.com>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
+
+$finder = PhpCsFixer\Finder::create()
     ->notPath('bootstrap/*')
     ->notPath('storage/*')
     ->notPath('resources/view/mail/*')
     ->in([
-        __DIR__ . '/app',
-        __DIR__ . '/config',
-        __DIR__ . '/database/factories',
-        __DIR__ . '/database/seeders',
-        __DIR__ . '/resources/lang',
-        __DIR__ . '/routes',
-        __DIR__ . '/tests',
+        __DIR__.'/app',
+        __DIR__.'/config',
+        __DIR__.'/database/factories',
+        __DIR__.'/database/seeders',
+        __DIR__.'/resources/lang',
+        __DIR__.'/routes',
+        __DIR__.'/tests',
     ])
     ->name('*.php')
     ->notName('*.blade.php')
+    ->notName('*_helper.php')
     ->ignoreDotFiles(true)
     ->ignoreVCS(true);
 
-return PhpCsFixer\Config::create()
+$config = new PhpCsFixer\Config();
+$config
+    ->setRiskyAllowed(true)
     ->setRules([
         '@PSR2' => true,
         'array_syntax' => ['syntax' => 'short'],
@@ -40,3 +55,5 @@ return PhpCsFixer\Config::create()
         ]
     ])
     ->setFinder($finder);
+
+return $config;

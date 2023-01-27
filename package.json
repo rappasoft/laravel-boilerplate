@@ -19,7 +19,6 @@
         "laravel-vite-plugin": "^0.7.3",
         "lodash": "4.x",
         "perfect-scrollbar": "1.x",
-        "popper.js": "1.x",
         "postcss": "8.x",
         "sass": "1.x",
         "sweetalert2": "11.x",

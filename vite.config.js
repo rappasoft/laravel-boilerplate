@@ -13,7 +13,7 @@ export default defineConfig({
                 'resources/sass/frontend/app.scss',
             ],
             refresh: true,
-            valetTls: 'laravel-boilerplate.test'
+            // valetTls: 'laravel-boilerplate.test'
         }),
         vue({
             template: {
