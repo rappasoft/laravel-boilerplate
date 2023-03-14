@@ -27,7 +27,6 @@ if (! function_exists('includeFilesInFolder')) {
 }
 
 if (! function_exists('includeRouteFiles')) {
-
     /**
      * @param $folder
      */
