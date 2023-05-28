@@ -40,6 +40,7 @@ class ExampleService extends BaseService
 
         return $this->model::get();
     }
+    
     /**
      * @param  array  $data
      * @return Example
