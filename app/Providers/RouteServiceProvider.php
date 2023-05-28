@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Domains\Auth\Models\Example;
 use App\Domains\Auth\Models\User;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -60,6 +61,11 @@ class RouteServiceProvider extends ServiceProvider
         // To be able to restore a user, since the default binding is a find and would result in a 404
         Route::bind('deletedUser', function ($id) {
             return User::onlyTrashed()->find($id);
+        });
+
+        // To be able to restore a example, since the default binding is a find and would result in a 404
+        Route::bind('deletedExample', function ($id) {
+            return Example::onlyTrashed()->find($id);
         });
     }
 

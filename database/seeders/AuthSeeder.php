@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\Auth\ExampleSeeder;
 use Database\Seeders\Auth\PermissionRoleSeeder;
 use Database\Seeders\Auth\UserRoleSeeder;
 use Database\Seeders\Auth\UserSeeder;
@@ -43,6 +44,7 @@ class AuthSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(PermissionRoleSeeder::class);
         $this->call(UserRoleSeeder::class);
+        $this->call(ExampleSeeder::class);
 
         $this->enableForeignKeys();
     }

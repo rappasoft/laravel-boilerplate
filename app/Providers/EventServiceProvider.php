@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Domains\Auth\Listeners\ExampleEventListener;
 use App\Domains\Auth\Listeners\RoleEventListener;
 use App\Domains\Auth\Listeners\UserEventListener;
 use Illuminate\Auth\Events\Registered;
@@ -32,6 +33,7 @@ class EventServiceProvider extends ServiceProvider
     protected $subscribe = [
         RoleEventListener::class,
         UserEventListener::class,
+        ExampleEventListener::class,
     ];
 
     /**

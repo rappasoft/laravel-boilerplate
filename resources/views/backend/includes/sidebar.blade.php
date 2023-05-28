@@ -17,6 +17,14 @@
                 icon="c-sidebar-nav-icon cil-speedometer"
                 :text="__('Dashboard')" />
         </li>
+        <li class="c-sidebar-nav-item">
+            <x-utils.link
+                class="c-sidebar-nav-link"
+                :href="route('admin.auth.example.index')"
+                :active="activeClass(Route::is('admin.auth.example.index'), 'c-active')"
+                icon="c-sidebar-nav-icon cil-list"
+                :text="__('Example')" />
+        </li>
 
         @if (
             $logged_in_user->hasAllAccess() ||
