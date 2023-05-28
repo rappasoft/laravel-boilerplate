@@ -7,5 +7,4 @@ namespace App\Domains\Auth\Models\Traits\Attribute;
  */
 trait ExampleAttribute
 {
-
 }

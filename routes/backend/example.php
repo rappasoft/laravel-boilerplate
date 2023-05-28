@@ -14,7 +14,7 @@ Route::group([
         'as' => 'example.',
     ], function () {
         Route::group([
-            'middleware' => 'role:' . config('boilerplate.access.role.admin'),
+            'middleware' => 'role:'.config('boilerplate.access.role.admin'),
         ], function () {
             Route::get('deleted', [DeletedExampleController::class, 'index'])
                 ->name('deleted')
@@ -39,7 +39,6 @@ Route::group([
             Route::post('/', [ExampleController::class, 'store'])->name('store');
 
             Route::group(['prefix' => '{example}'], function () {
-
                 Route::get('/', [ExampleController::class, 'show'])
                     ->name('show')
                     ->middleware('permission:admin.access.example.list')
@@ -64,6 +63,5 @@ Route::group([
                 Route::delete('permanently-delete', [DeletedExampleController::class, 'destroy'])->name('permanently-delete');
             });
         });
-
     });
 });

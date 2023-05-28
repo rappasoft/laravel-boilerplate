@@ -2,11 +2,8 @@
 
 namespace App\Domains\Auth\Http\Requests\Backend\Example;
 
-use App\Domains\Auth\Models\Example;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
-use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
 
 /**
  * Class StoreExampleRequest.

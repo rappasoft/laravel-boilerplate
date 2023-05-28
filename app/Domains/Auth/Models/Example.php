@@ -6,8 +6,8 @@ use App\Domains\Auth\Models\Traits\Attribute\ExampleAttribute;
 use App\Domains\Auth\Models\Traits\Method\ExampleMethod;
 use App\Domains\Auth\Models\Traits\Relationship\ExampleRelationship;
 use App\Domains\Auth\Models\Traits\Scope\ExampleScope;
-use Illuminate\Database\Eloquent\Model;
 use Database\Factories\ExampleFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 

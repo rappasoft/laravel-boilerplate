@@ -41,7 +41,6 @@ class ExamplesTable extends DataTableComponent
      */
     public function query(): Builder
     {
-
         if ($this->status === 'deleted') {
             $query = Example::onlyTrashed();
         } else {

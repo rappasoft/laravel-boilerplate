@@ -20,7 +20,6 @@ trait ExampleScope
         });
     }
 
-
     /**
      * @param $query
      * @return mixed

@@ -39,7 +39,6 @@ class ExampleService extends BaseService
         }
 
         return $this->model::get();
-
     }
     /**
      * @param  array  $data
@@ -57,7 +56,6 @@ class ExampleService extends BaseService
                 'name' => $data['name'],
                 'active' => isset($data['active']) && $data['active'] === '1',
             ]);
-
         } catch (Exception $e) {
             DB::rollBack();
 
@@ -86,7 +84,6 @@ class ExampleService extends BaseService
             $example->update([
                 'name' => $data['name'],
             ]);
-
         } catch (Exception $e) {
             DB::rollBack();
 

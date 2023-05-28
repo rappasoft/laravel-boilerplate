@@ -19,7 +19,6 @@ class ExampleController
      */
     protected $exampleService;
 
-
     /**
      * ExampleController constructor.
      *

@@ -21,7 +21,6 @@ class ExampleSeeder extends Seeder
     {
         $this->disableForeignKeys();
 
-
         $this->truncateMultiple([
             'examples',
         ]);
