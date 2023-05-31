@@ -20,14 +20,6 @@ trait UserMethod
     /**
      * @return mixed
      */
-    public function isAdmin(): bool
-    {
-        return $this->type === self::TYPE_ADMIN;
-    }
-
-    /**
-     * @return mixed
-     */
     public function isUser(): bool
     {
         return $this->type === self::TYPE_USER;
@@ -39,6 +31,14 @@ trait UserMethod
     public function hasAllAccess(): bool
     {
         return $this->isAdmin() && $this->hasRole(config('boilerplate.access.role.admin'));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function isAdmin(): bool
+    {
+        return $this->type === self::TYPE_ADMIN;
     }
 
     /**
@@ -91,13 +91,13 @@ trait UserMethod
     }
 
     /**
-     * @param  bool  $size
+     * @param bool $size
      * @return mixed|string
      *
      * @throws \Creativeorange\Gravatar\Exceptions\InvalidEmailException
      */
     public function getAvatar($size = null)
     {
-        return 'https://gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?s='.config('boilerplate.avatar.size', $size).'&d=mp';
+        return 'https://gravatar.com/avatar/' . md5(strtolower(trim($this->email))) . '?s=' . config('boilerplate.avatar.size', $size) . '&d=mp';
     }
 }

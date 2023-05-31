@@ -18,7 +18,7 @@ class DeletedUserController
     /**
      * DeletedUserController constructor.
      *
-     * @param  UserService  $userService
+     * @param UserService $userService
      */
     public function __construct(UserService $userService)
     {
@@ -34,7 +34,7 @@ class DeletedUserController
     }
 
     /**
-     * @param  User  $deletedUser
+     * @param User $deletedUser
      * @return mixed
      *
      * @throws \App\Exceptions\GeneralException
@@ -47,7 +47,7 @@ class DeletedUserController
     }
 
     /**
-     * @param  User  $deletedUser
+     * @param User $deletedUser
      * @return mixed
      *
      * @throws \App\Exceptions\GeneralException

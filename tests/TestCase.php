@@ -32,20 +32,20 @@ abstract class TestCase extends BaseTestCase
         return Role::find(1);
     }
 
-    protected function getMasterAdmin()
-    {
-        return User::find(1);
-    }
-
     protected function loginAsAdmin($admin = false)
     {
-        if (! $admin) {
+        if (!$admin) {
             $admin = $this->getMasterAdmin();
         }
 
         $this->actingAs($admin);
 
         return $admin;
+    }
+
+    protected function getMasterAdmin()
+    {
+        return User::find(1);
     }
 
     protected function logout()

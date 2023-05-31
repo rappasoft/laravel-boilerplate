@@ -24,19 +24,9 @@ class VerificationController
     use VerifiesEmails;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @return string
-     */
-    public function redirectPath()
-    {
-        return route(homeRoute());
-    }
-
-    /**
      * Show the email verification notice.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request)
@@ -44,5 +34,15 @@ class VerificationController
         return $request->user()->hasVerifiedEmail()
             ? redirect($this->redirectPath())
             : view('frontend.auth.verify');
+    }
+
+    /**
+     * Where to redirect users after login.
+     *
+     * @return string
+     */
+    public function redirectPath()
+    {
+        return route(homeRoute());
     }
 }

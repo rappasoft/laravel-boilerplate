@@ -15,7 +15,9 @@
             @method($method)
 
             <button type="submit" class="{{ $buttonClass }}">
-                @if ($icon)<i class="{{ $icon }}"></i> @endif{{ $slot }}
+                @if ($icon)
+                    <i class="{{ $icon }}"></i>
+                @endif{{ $slot }}
             </button>
         </form>
     @endif
@@ -25,7 +27,9 @@
         @method($method)
 
         <button type="submit" class="{{ $buttonClass }}">
-            @if ($icon)<i class="{{ $icon }}"></i> @endif{{ $slot }}
+            @if ($icon)
+                <i class="{{ $icon }}"></i>
+            @endif{{ $slot }}
         </button>
     </form>
 @endif

@@ -1,8 +1,8 @@
 <div>
     @error('code')
-        <x-utils.alert type="danger">
-            {{ $message }}
-        </x-utils.alert>
+    <x-utils.alert type="danger">
+        {{ $message }}
+    </x-utils.alert>
     @enderror
 
     <form wire:submit.prevent="validateCode" class="form-horizontal">
@@ -18,7 +18,7 @@
                     class="form-control"
                     placeholder="{{ __('Authorization Code') }}"
                     required
-                    autofocus />
+                    autofocus/>
             </div>
         </div><!--form-group-->
 

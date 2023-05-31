@@ -28,8 +28,8 @@ class RoleController
     /**
      * RoleController constructor.
      *
-     * @param  RoleService  $roleService
-     * @param  PermissionService  $permissionService
+     * @param RoleService $roleService
+     * @param PermissionService $permissionService
      */
     public function __construct(RoleService $roleService, PermissionService $permissionService)
     {
@@ -56,7 +56,7 @@ class RoleController
     }
 
     /**
-     * @param  StoreRoleRequest  $request
+     * @param StoreRoleRequest $request
      * @return mixed
      *
      * @throws \App\Exceptions\GeneralException
@@ -70,8 +70,8 @@ class RoleController
     }
 
     /**
-     * @param  EditRoleRequest  $request
-     * @param  Role  $role
+     * @param EditRoleRequest $request
+     * @param Role $role
      * @return mixed
      */
     public function edit(EditRoleRequest $request, Role $role)
@@ -84,8 +84,8 @@ class RoleController
     }
 
     /**
-     * @param  UpdateRoleRequest  $request
-     * @param  Role  $role
+     * @param UpdateRoleRequest $request
+     * @param Role $role
      * @return mixed
      *
      * @throws \App\Exceptions\GeneralException
@@ -99,8 +99,8 @@ class RoleController
     }
 
     /**
-     * @param  DeleteRoleRequest  $request
-     * @param  Role  $role
+     * @param DeleteRoleRequest $request
+     * @param Role $role
      * @return mixed
      *
      * @throws \Exception

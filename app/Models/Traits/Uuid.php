@@ -10,6 +10,16 @@ use Ramsey\Uuid\Uuid as PackageUuid;
 trait Uuid
 {
     /**
+     * Use Laravel bootable traits.
+     */
+    protected static function bootUuid()
+    {
+        static::creating(function ($model) {
+            $model->{$model->getUuidName()} = PackageUuid::uuid4()->toString();
+        });
+    }
+
+    /**
      * @param $query
      * @param $uuid
      * @return mixed
@@ -25,15 +35,5 @@ trait Uuid
     public function getUuidName()
     {
         return property_exists($this, 'uuidName') ? $this->uuidName : 'uuid';
-    }
-
-    /**
-     * Use Laravel bootable traits.
-     */
-    protected static function bootUuid()
-    {
-        static::creating(function ($model) {
-            $model->{$model->getUuidName()} = PackageUuid::uuid4()->toString();
-        });
     }
 }

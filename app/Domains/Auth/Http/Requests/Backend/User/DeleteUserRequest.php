@@ -17,7 +17,7 @@ class DeleteUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return ! $this->user->isMasterAdmin();
+        return !$this->user->isMasterAdmin();
     }
 
     /**

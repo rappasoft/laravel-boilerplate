@@ -12,7 +12,8 @@
             </x-slot>
 
             <x-slot name="headerActions">
-                <x-utils.link class="card-header-action" :href="route('admin.auth.example.index')" :text="__('Cancel')" />
+                <x-utils.link class="card-header-action" :href="route('admin.auth.example.index')"
+                              :text="__('Cancel')"/>
             </x-slot>
 
             <x-slot name="body">
@@ -22,7 +23,8 @@
                         <label for="name" class="col-md-2 col-form-label">@lang('Name')</label>
 
                         <div class="col-md-10">
-                            <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') }}" maxlength="100" required />
+                            <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}"
+                                   value="{{ old('name') }}" maxlength="100" required/>
                         </div>
                     </div><!--form-group name-->
 

@@ -13,28 +13,28 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ mix('css/frontend.css') }}" rel="stylesheet">
-    <livewire:styles />
+    <livewire:styles/>
     @stack('after-styles')
 </head>
 <body>
-    @include('includes.partials.read-only')
-    @include('includes.partials.logged-in-as')
-    @include('includes.partials.announcements')
+@include('includes.partials.read-only')
+@include('includes.partials.logged-in-as')
+@include('includes.partials.announcements')
 
-    <div id="app">
-        @include('frontend.includes.nav')
-        @include('includes.partials.messages')
+<div id="app">
+    @include('frontend.includes.nav')
+    @include('includes.partials.messages')
 
-        <main>
-            @yield('content')
-        </main>
-    </div><!--app-->
+    <main>
+        @yield('content')
+    </main>
+</div><!--app-->
 
-    @stack('before-scripts')
-    <script src="{{ mix('js/manifest.js') }}"></script>
-    <script src="{{ mix('js/vendor.js') }}"></script>
-    <script src="{{ mix('js/frontend.js') }}"></script>
-    <livewire:scripts />
-    @stack('after-scripts')
+@stack('before-scripts')
+<script src="{{ mix('js/manifest.js') }}"></script>
+<script src="{{ mix('js/vendor.js') }}"></script>
+<script src="{{ mix('js/frontend.js') }}"></script>
+<livewire:scripts/>
+@stack('after-scripts')
 </body>
 </html>

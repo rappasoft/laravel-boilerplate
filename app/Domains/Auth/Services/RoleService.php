@@ -19,7 +19,7 @@ class RoleService extends BaseService
     /**
      * RoleService constructor.
      *
-     * @param  Role  $role
+     * @param Role $role
      */
     public function __construct(Role $role)
     {
@@ -27,7 +27,7 @@ class RoleService extends BaseService
     }
 
     /**
-     * @param  array  $data
+     * @param array $data
      * @return Role
      *
      * @throws GeneralException
@@ -54,8 +54,8 @@ class RoleService extends BaseService
     }
 
     /**
-     * @param  Role  $role
-     * @param  array  $data
+     * @param Role $role
+     * @param array $data
      * @return Role
      *
      * @throws GeneralException
@@ -82,7 +82,7 @@ class RoleService extends BaseService
     }
 
     /**
-     * @param  Role  $role
+     * @param Role $role
      * @return bool
      *
      * @throws GeneralException

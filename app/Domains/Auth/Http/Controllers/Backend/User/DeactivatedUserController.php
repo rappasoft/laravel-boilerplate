@@ -19,7 +19,7 @@ class DeactivatedUserController
     /**
      * DeactivatedUserController constructor.
      *
-     * @param  UserService  $userService
+     * @param UserService $userService
      */
     public function __construct(UserService $userService)
     {
@@ -35,8 +35,8 @@ class DeactivatedUserController
     }
 
     /**
-     * @param  Request  $request
-     * @param  User  $user
+     * @param Request $request
+     * @param User $user
      * @param $status
      * @return mixed
      *
@@ -44,10 +44,10 @@ class DeactivatedUserController
      */
     public function update(Request $request, User $user, $status)
     {
-        $this->userService->mark($user, (int) $status);
+        $this->userService->mark($user, (int)$status);
 
         return redirect()->route(
-            (int) $status === 1 || ! $request->user()->can('admin.access.user.reactivate') ?
+            (int)$status === 1 || !$request->user()->can('admin.access.user.reactivate') ?
                 'admin.auth.user.index' :
                 'admin.auth.user.deactivated'
         )->withFlashSuccess(__('The user was successfully updated.'));

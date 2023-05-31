@@ -18,7 +18,7 @@ class DisableTwoFactorAuthenticationController
     }
 
     /**
-     * @param  DisableTwoFactorAuthenticationRequest  $request
+     * @param DisableTwoFactorAuthenticationRequest $request
      * @return mixed
      */
     public function destroy(DisableTwoFactorAuthenticationRequest $request)

@@ -11,7 +11,7 @@ class UserTypeCheck
 {
     /**
      * @param $request
-     * @param  Closure  $next
+     * @param Closure $next
      * @param $type
      * @return mixed
      */

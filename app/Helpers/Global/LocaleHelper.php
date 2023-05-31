@@ -2,7 +2,7 @@
 
 use Carbon\Carbon;
 
-if (! function_exists('setAllLocale')) {
+if (!function_exists('setAllLocale')) {
 
     /**
      * @param $locale
@@ -16,7 +16,7 @@ if (! function_exists('setAllLocale')) {
     }
 }
 
-if (! function_exists('setAppLocale')) {
+if (!function_exists('setAppLocale')) {
 
     /**
      * @param $locale
@@ -27,7 +27,7 @@ if (! function_exists('setAppLocale')) {
     }
 }
 
-if (! function_exists('setPHPLocale')) {
+if (!function_exists('setPHPLocale')) {
 
     /**
      * @param $locale
@@ -38,7 +38,7 @@ if (! function_exists('setPHPLocale')) {
     }
 }
 
-if (! function_exists('setCarbonLocale')) {
+if (!function_exists('setCarbonLocale')) {
 
     /**
      * @param $locale
@@ -49,7 +49,7 @@ if (! function_exists('setCarbonLocale')) {
     }
 }
 
-if (! function_exists('setLocaleReadingDirection')) {
+if (!function_exists('setLocaleReadingDirection')) {
 
     /**
      * @param $locale
@@ -60,7 +60,7 @@ if (! function_exists('setLocaleReadingDirection')) {
          * Set the session variable for whether or not the app is using RTL support
          * For use in the blade directive in BladeServiceProvider
          */
-        if (! app()->runningInConsole()) {
+        if (!app()->runningInConsole()) {
             if (config('boilerplate.locale.languages')[$locale]['rtl']) {
                 session(['lang-rtl' => true]);
             } else {
@@ -70,7 +70,7 @@ if (! function_exists('setLocaleReadingDirection')) {
     }
 }
 
-if (! function_exists('getLocaleName')) {
+if (!function_exists('getLocaleName')) {
 
     /**
      * @param $locale

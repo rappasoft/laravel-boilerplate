@@ -13,7 +13,7 @@ class PermissionService extends BaseService
     /**
      * PermissionService constructor.
      *
-     * @param  Permission  $permission
+     * @param Permission $permission
      */
     public function __construct(Permission $permission)
     {

@@ -3,9 +3,10 @@
         <x-utils.link
             :href="route('frontend.index')"
             :text="appName()"
-            class="navbar-brand" />
+            class="navbar-brand"/>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="@lang('Toggle navigation')">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="@lang('Toggle navigation')">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -19,7 +20,7 @@
                             id="navbarDropdownLanguageLink"
                             data-toggle="dropdown"
                             aria-haspopup="true"
-                            aria-expanded="false" />
+                            aria-expanded="false"/>
 
                         @include('includes.partials.lang')
                     </li>
@@ -31,7 +32,7 @@
                             :href="route('frontend.auth.login')"
                             :active="activeClass(Route::is('frontend.auth.login'))"
                             :text="__('Login')"
-                            class="nav-link" />
+                            class="nav-link"/>
                     </li>
 
                     @if (config('boilerplate.access.user.registration'))
@@ -40,7 +41,7 @@
                                 :href="route('frontend.auth.register')"
                                 :active="activeClass(Route::is('frontend.auth.register'))"
                                 :text="__('Register')"
-                                class="nav-link" />
+                                class="nav-link"/>
 
                         </li>
                     @endif
@@ -57,7 +58,8 @@
                             v-pre
                         >
                             <x-slot name="text">
-                                <img class="rounded-circle" style="max-height: 20px" src="{{ $logged_in_user->avatar }}" />
+                                <img class="rounded-circle" style="max-height: 20px"
+                                     src="{{ $logged_in_user->avatar }}"/>
                                 {{ $logged_in_user->name }} <span class="caret"></span>
                             </x-slot>
                         </x-utils.link>
@@ -67,7 +69,7 @@
                                 <x-utils.link
                                     :href="route('admin.dashboard')"
                                     :text="__('Administration')"
-                                    class="dropdown-item" />
+                                    class="dropdown-item"/>
                             @endif
 
                             @if ($logged_in_user->isUser())
@@ -82,7 +84,7 @@
                                 :href="route('frontend.user.account')"
                                 :active="activeClass(Route::is('frontend.user.account'))"
                                 :text="__('My Account')"
-                                class="dropdown-item" />
+                                class="dropdown-item"/>
 
                             <x-utils.link
                                 :text="__('Logout')"
@@ -90,7 +92,8 @@
                                 onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 <x-slot name="text">
                                     @lang('Logout')
-                                    <x-forms.post :action="route('frontend.auth.logout')" id="logout-form" class="d-none" />
+                                    <x-forms.post :action="route('frontend.auth.logout')" id="logout-form"
+                                                  class="d-none"/>
                                 </x-slot>
                             </x-utils.link>
                         </div>

@@ -16,7 +16,7 @@ trait RoleAttribute
             return 'All';
         }
 
-        if (! $this->permissions->count()) {
+        if (!$this->permissions->count()) {
             return 'None';
         }
 

@@ -35,7 +35,7 @@ class RegisterController
     /**
      * RegisterController constructor.
      *
-     * @param  UserService  $userService
+     * @param UserService $userService
      */
     public function __construct(UserService $userService)
     {
@@ -67,7 +67,7 @@ class RegisterController
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -87,7 +87,7 @@ class RegisterController
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \App\Domains\Auth\Models\User|mixed
      *
      * @throws \App\Domains\Auth\Exceptions\RegisterException

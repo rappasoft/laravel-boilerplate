@@ -1,7 +1,5 @@
 <?php
 
-use App\Domains\Auth\Models\Role;
-
 return [
 
     'models' => [

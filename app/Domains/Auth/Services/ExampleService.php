@@ -21,7 +21,7 @@ class ExampleService extends BaseService
     /**
      * ExampleService constructor.
      *
-     * @param  Example  $example
+     * @param Example $example
      */
     public function __construct(Example $example)
     {
@@ -29,7 +29,7 @@ class ExampleService extends BaseService
     }
 
     /**
-     * @param  bool|int  $perPage
+     * @param bool|int $perPage
      * @return mixed
      */
     public function get($perPage = false)
@@ -40,9 +40,9 @@ class ExampleService extends BaseService
 
         return $this->model::get();
     }
-    
+
     /**
-     * @param  array  $data
+     * @param array $data
      * @return Example
      *
      * @throws GeneralException
@@ -71,8 +71,20 @@ class ExampleService extends BaseService
     }
 
     /**
-     * @param  Example  $example
-     * @param  array  $data
+     * @param array $data
+     * @return Example
+     */
+    protected function createExample(array $data = []): Example
+    {
+        return $this->model::create([
+            'name' => $data['name'] ?? null,
+            'active' => $data['active'] ?? true,
+        ]);
+    }
+
+    /**
+     * @param Example $example
+     * @param array $data
      * @return Example
      *
      * @throws \Throwable
@@ -99,7 +111,7 @@ class ExampleService extends BaseService
     }
 
     /**
-     * @param  Example  $example
+     * @param Example $example
      * @return Example
      *
      * @throws GeneralException
@@ -116,7 +128,7 @@ class ExampleService extends BaseService
     }
 
     /**
-     * @param  Example  $example
+     * @param Example $example
      * @return Example
      *
      * @throws GeneralException
@@ -133,7 +145,7 @@ class ExampleService extends BaseService
     }
 
     /**
-     * @param  Example  $example
+     * @param Example $example
      * @return bool
      *
      * @throws GeneralException
@@ -147,17 +159,5 @@ class ExampleService extends BaseService
         }
 
         throw new GeneralException(__('There was a problem permanently deleting this example. Please try again.'));
-    }
-
-    /**
-     * @param  array  $data
-     * @return Example
-     */
-    protected function createExample(array $data = []): Example
-    {
-        return $this->model::create([
-            'name' => $data['name'] ?? null,
-            'active' => $data['active'] ?? true,
-        ]);
     }
 }

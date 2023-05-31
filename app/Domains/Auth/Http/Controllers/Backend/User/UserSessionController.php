@@ -11,8 +11,8 @@ use App\Domains\Auth\Models\User;
 class UserSessionController
 {
     /**
-     * @param  ClearUserSessionRequest  $request
-     * @param  User  $user
+     * @param ClearUserSessionRequest $request
+     * @param User $user
      * @return mixed
      */
     public function update(ClearUserSessionRequest $request, User $user)

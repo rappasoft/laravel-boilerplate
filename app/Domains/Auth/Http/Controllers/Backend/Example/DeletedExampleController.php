@@ -18,7 +18,7 @@ class DeletedExampleController
     /**
      * DeletedExampleController constructor.
      *
-     * @param  ExampleService  $exampleService
+     * @param ExampleService $exampleService
      */
     public function __construct(ExampleService $exampleService)
     {
@@ -34,7 +34,7 @@ class DeletedExampleController
     }
 
     /**
-     * @param  Example  $deletedExample
+     * @param Example $deletedExample
      * @return mixed
      *
      * @throws \App\Exceptions\GeneralException
@@ -47,7 +47,7 @@ class DeletedExampleController
     }
 
     /**
-     * @param  Example  $deletedExample
+     * @param Example $deletedExample
      * @return mixed
      *
      * @throws \App\Exceptions\GeneralException

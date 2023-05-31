@@ -24,7 +24,8 @@
                             @endif
 
                             <div class="form-group row">
-                                <label for="{{ $input }}" class="col-md-4 col-form-label text-md-right">@lang('Authentication Code')</label>
+                                <label for="{{ $input }}"
+                                       class="col-md-4 col-form-label text-md-right">@lang('Authentication Code')</label>
 
                                 <div class="col-md-6">
                                     <input type="text"
@@ -33,7 +34,7 @@
                                            class="form-control {{ $error ? 'is-invalid' : '' }}"
                                            placeholder="123456"
                                            minlength="6"
-                                           required />
+                                           required/>
 
                                     @if($error)
                                         <div class="invalid-feedback">

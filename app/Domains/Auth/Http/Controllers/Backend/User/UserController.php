@@ -34,9 +34,9 @@ class UserController
     /**
      * UserController constructor.
      *
-     * @param  UserService  $userService
-     * @param  RoleService  $roleService
-     * @param  PermissionService  $permissionService
+     * @param UserService $userService
+     * @param RoleService $roleService
+     * @param PermissionService $permissionService
      */
     public function __construct(UserService $userService, RoleService $roleService, PermissionService $permissionService)
     {
@@ -65,7 +65,7 @@ class UserController
     }
 
     /**
-     * @param  StoreUserRequest  $request
+     * @param StoreUserRequest $request
      * @return mixed
      *
      * @throws \App\Exceptions\GeneralException
@@ -79,7 +79,7 @@ class UserController
     }
 
     /**
-     * @param  User  $user
+     * @param User $user
      * @return mixed
      */
     public function show(User $user)
@@ -89,8 +89,8 @@ class UserController
     }
 
     /**
-     * @param  EditUserRequest  $request
-     * @param  User  $user
+     * @param EditUserRequest $request
+     * @param User $user
      * @return mixed
      */
     public function edit(EditUserRequest $request, User $user)
@@ -104,8 +104,8 @@ class UserController
     }
 
     /**
-     * @param  UpdateUserRequest  $request
-     * @param  User  $user
+     * @param UpdateUserRequest $request
+     * @param User $user
      * @return mixed
      *
      * @throws \Throwable
@@ -118,8 +118,8 @@ class UserController
     }
 
     /**
-     * @param  DeleteUserRequest  $request
-     * @param  User  $user
+     * @param DeleteUserRequest $request
+     * @param User $user
      * @return mixed
      *
      * @throws \App\Exceptions\GeneralException

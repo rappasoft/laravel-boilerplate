@@ -32,18 +32,18 @@ class UnusedPassword implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed $value
      * @return bool
      */
     public function passes($attribute, $value): bool
     {
         // Option is off
-        if (! config('boilerplate.access.user.password_history')) {
+        if (!config('boilerplate.access.user.password_history')) {
             return true;
         }
 
-        if (! $this->user instanceof User) {
+        if (!$this->user instanceof User) {
             if (is_numeric($this->user)) {
                 $this->user = resolve(UserService::class)->getById($this->user);
             } else {
@@ -51,7 +51,7 @@ class UnusedPassword implements Rule
             }
         }
 
-        if (! $this->user || null === $this->user) {
+        if (!$this->user || null === $this->user) {
             return false;
         }
 

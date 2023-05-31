@@ -4,7 +4,7 @@
             @foreach (Breadcrumbs::current() as $crumb)
                 @if ($crumb->url() && !$loop->last)
                     <li class="breadcrumb-item">
-                        <x-utils.link :href="$crumb->url()" :text="$crumb->title()" />
+                        <x-utils.link :href="$crumb->url()" :text="$crumb->title()"/>
                     </li>
                 @else
                     <li class="breadcrumb-item active" aria-current="page">

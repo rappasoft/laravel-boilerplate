@@ -12,7 +12,7 @@ class UserCheck
 {
     /**
      * @param $request
-     * @param  Closure  $next
+     * @param Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)

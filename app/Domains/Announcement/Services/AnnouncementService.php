@@ -13,7 +13,7 @@ class AnnouncementService extends BaseService
     /**
      * AnnouncementService constructor.
      *
-     * @param  Announcement  $announcement
+     * @param Announcement $announcement
      */
     public function __construct(Announcement $announcement)
     {

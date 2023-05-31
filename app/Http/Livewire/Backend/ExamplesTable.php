@@ -29,7 +29,7 @@ class ExamplesTable extends DataTableComponent
     public array $filterNames = [];
 
     /**
-     * @param  string  $status
+     * @param string $status
      */
     public function mount($status = 'active'): void
     {
@@ -48,8 +48,8 @@ class ExamplesTable extends DataTableComponent
         }
 
         return $query
-            ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term))
-            ->when($this->getFilter('active'), fn ($query, $active) => $query->where('active', $active === 'yes'));
+            ->when($this->getFilter('search'), fn($query, $term) => $query->search($term))
+            ->when($this->getFilter('active'), fn($query, $active) => $query->where('active', $active === 'yes'));
     }
 
     /**

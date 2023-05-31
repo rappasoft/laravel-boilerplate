@@ -24,7 +24,7 @@
         @endif
 
         <x-slot name="body">
-            <livewire:backend.examples-table />
+            <livewire:backend.examples-table/>
         </x-slot>
     </x-backend.card>
 @endsection

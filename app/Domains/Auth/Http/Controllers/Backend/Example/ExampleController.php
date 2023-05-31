@@ -22,7 +22,7 @@ class ExampleController
     /**
      * ExampleController constructor.
      *
-     * @param  ExampleService  $exampleService
+     * @param ExampleService $exampleService
      */
     public function __construct(ExampleService $exampleService)
     {
@@ -46,7 +46,7 @@ class ExampleController
     }
 
     /**
-     * @param  StoreExampleRequest  $request
+     * @param StoreExampleRequest $request
      * @return mixed
      *
      * @throws \App\Exceptions\GeneralException
@@ -60,7 +60,7 @@ class ExampleController
     }
 
     /**
-     * @param  Example  $example
+     * @param Example $example
      * @return mixed
      */
     public function show(Example $example)
@@ -70,8 +70,8 @@ class ExampleController
     }
 
     /**
-     * @param  EditExampleRequest  $request
-     * @param  Example  $example
+     * @param EditExampleRequest $request
+     * @param Example $example
      * @return mixed
      */
     public function edit(EditExampleRequest $request, Example $example)
@@ -81,8 +81,8 @@ class ExampleController
     }
 
     /**
-     * @param  UpdateExampleRequest  $request
-     * @param  Example  $example
+     * @param UpdateExampleRequest $request
+     * @param Example $example
      * @return mixed
      *
      * @throws \Throwable
@@ -95,8 +95,8 @@ class ExampleController
     }
 
     /**
-     * @param  DeleteExampleRequest  $request
-     * @param  Example  $example
+     * @param DeleteExampleRequest $request
+     * @param Example $example
      * @return mixed
      *
      * @throws \App\Exceptions\GeneralException

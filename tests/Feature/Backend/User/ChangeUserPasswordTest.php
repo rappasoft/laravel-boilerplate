@@ -23,11 +23,11 @@ class ChangeUserPasswordTest extends TestCase
 
         $newUser = User::factory()->create();
 
-        $this->get('/admin/auth/user/'.$newUser->id.'/password/change')->assertOk();
+        $this->get('/admin/auth/user/' . $newUser->id . '/password/change')->assertOk();
 
         $user->syncPermissions([]);
 
-        $response = $this->get('/admin/auth/user/'.$newUser->id.'/password/change');
+        $response = $this->get('/admin/auth/user/' . $newUser->id . '/password/change');
 
         $response->assertSessionHas('flash_danger', __('You do not have access to do that.'));
     }
@@ -41,7 +41,7 @@ class ChangeUserPasswordTest extends TestCase
 
         $newUser = User::factory()->create();
 
-        $response = $this->patch('/admin/auth/user/'.$newUser->id.'/password/change', [
+        $response = $this->patch('/admin/auth/user/' . $newUser->id . '/password/change', [
             'password' => 'OC4Nzu270N!QBVi%U%qX',
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
         ]);
@@ -50,7 +50,7 @@ class ChangeUserPasswordTest extends TestCase
 
         $user->syncPermissions([]);
 
-        $response = $this->patch('/admin/auth/user/'.$newUser->id.'/password/change', [
+        $response = $this->patch('/admin/auth/user/' . $newUser->id . '/password/change', [
             'password' => 'OC4Nzu270N!QBVi%U%qX',
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
         ]);
@@ -97,7 +97,7 @@ class ChangeUserPasswordTest extends TestCase
 
         $admin = $this->getMasterAdmin();
 
-        $response = $this->get('/admin/auth/user/'.$admin->id.'/password/change');
+        $response = $this->get('/admin/auth/user/' . $admin->id . '/password/change');
 
         $response->assertSessionHas('flash_danger', __('Only the administrator can change their password.'));
 
@@ -105,7 +105,7 @@ class ChangeUserPasswordTest extends TestCase
 
         $this->loginAsAdmin();
 
-        $this->get('/admin/auth/user/'.$admin->id.'/password/change')->assertOk();
+        $this->get('/admin/auth/user/' . $admin->id . '/password/change')->assertOk();
     }
 
     /** @test */
@@ -117,7 +117,7 @@ class ChangeUserPasswordTest extends TestCase
 
         $admin = $this->getMasterAdmin();
 
-        $response = $this->patch('/admin/auth/user/'.$admin->id.'/password/change', [
+        $response = $this->patch('/admin/auth/user/' . $admin->id . '/password/change', [
             'password' => 'OC4Nzu270N!QBVi%U%qX',
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
         ]);
@@ -128,7 +128,7 @@ class ChangeUserPasswordTest extends TestCase
 
         $this->loginAsAdmin();
 
-        $response = $this->patch('/admin/auth/user/'.$admin->id.'/password/change', [
+        $response = $this->patch('/admin/auth/user/' . $admin->id . '/password/change', [
             'password' => 'OC4Nzu270N!QBVi%U%qX',
             'password_confirmation' => 'OC4Nzu270N!QBVi%U%qX',
         ]);

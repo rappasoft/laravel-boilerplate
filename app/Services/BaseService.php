@@ -82,180 +82,15 @@ abstract class BaseService
     }
 
     /**
-     * Count the number of specified model records in the database.
+     * Add relationships to the query builder to eager load.
      *
-     * @return int
-     */
-    public function count()
-    {
-        return $this->get()->count();
-    }
-
-    /**
-     * Get the first specified model record from the database.
-     *
-     * @return \Illuminate\Database\Eloquent\Model
-     */
-    public function first()
-    {
-        $this->newQuery()->eagerLoad()->setClauses()->setScopes();
-
-        $model = $this->query->first();
-
-        $this->unsetClauses();
-
-        return $model;
-    }
-
-    /**
-     * Get the first specified model record from the database or throw an exception if not found.
-     *
-     * @return \Illuminate\Database\Eloquent\Model
-     */
-    public function firstOrFail()
-    {
-        $this->newQuery()->eagerLoad()->setClauses()->setScopes();
-
-        $model = $this->query->firstOrFail();
-
-        $this->unsetClauses();
-
-        return $model;
-    }
-
-    /**
-     * Get all the specified model records in the database.
-     *
-     * @return \Illuminate\Database\Eloquent\Collection
-     */
-    public function get()
-    {
-        $this->newQuery()->eagerLoad()->setClauses()->setScopes();
-
-        $models = $this->query->get();
-
-        $this->unsetClauses();
-
-        return $models;
-    }
-
-    /**
-     * Get the specified model record from the database.
-     *
-     * @param $id
-     * @return \Illuminate\Database\Eloquent\Model
-     */
-    public function getById($id)
-    {
-        $this->unsetClauses();
-
-        $this->newQuery()->eagerLoad();
-
-        return $this->query->findOrFail($id);
-    }
-
-    /**
-     * @param $item
-     * @param $column
-     * @param  array  $columns
-     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object|null
-     */
-    public function getByColumn($item, $column, array $columns = ['*'])
-    {
-        $this->unsetClauses();
-
-        $this->newQuery()->eagerLoad();
-
-        return $this->query->where($column, $item)->first($columns);
-    }
-
-    /**
-     * Delete the specified model record from the database.
-     *
-     * @param $id
-     * @return bool|null
-     *
-     * @throws \Exception
-     */
-    public function deleteById($id)
-    {
-        $this->unsetClauses();
-
-        return $this->getById($id)->delete();
-    }
-
-    /**
-     * Set the query limit.
-     *
-     * @param  int  $limit
      * @return $this
      */
-    public function limit($limit)
+    protected function eagerLoad()
     {
-        $this->take = $limit;
-
-        return $this;
-    }
-
-    /**
-     * Set an ORDER BY clause.
-     *
-     * @param  string  $column
-     * @param  string  $direction
-     * @return $this
-     */
-    public function orderBy($column, $direction = 'asc')
-    {
-        $this->orderBys[] = compact('column', 'direction');
-
-        return $this;
-    }
-
-    /**
-     * @param  int  $limit
-     * @param  array  $columns
-     * @param  string  $pageName
-     * @param  null  $page
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
-     */
-    public function paginate($limit = 25, array $columns = ['*'], $pageName = 'page', $page = null)
-    {
-        $this->newQuery()->eagerLoad()->setClauses()->setScopes();
-
-        $models = $this->query->paginate($limit, $columns, $pageName, $page);
-
-        $this->unsetClauses();
-
-        return $models;
-    }
-
-    /**
-     * Add a simple where clause to the query.
-     *
-     * @param  string  $column
-     * @param  string  $value
-     * @param  string  $operator
-     * @return $this
-     */
-    public function where($column, $value, $operator = '=')
-    {
-        $this->wheres[] = compact('column', 'value', 'operator');
-
-        return $this;
-    }
-
-    /**
-     * Add a simple where in clause to the query.
-     *
-     * @param  string  $column
-     * @param  mixed  $values
-     * @return $this
-     */
-    public function whereIn($column, $values)
-    {
-        $values = is_array($values) ? $values : [$values];
-
-        $this->whereIns[] = compact('column', 'values');
+        foreach ($this->with as $relation) {
+            $this->query->with($relation);
+        }
 
         return $this;
     }
@@ -290,14 +125,30 @@ abstract class BaseService
     }
 
     /**
-     * Add relationships to the query builder to eager load.
+     * Get all the specified model records in the database.
+     *
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function get()
+    {
+        $this->newQuery()->eagerLoad()->setClauses()->setScopes();
+
+        $models = $this->query->get();
+
+        $this->unsetClauses();
+
+        return $models;
+    }
+
+    /**
+     * Set query scopes.
      *
      * @return $this
      */
-    protected function eagerLoad()
+    protected function setScopes()
     {
-        foreach ($this->with as $relation) {
-            $this->query->with($relation);
+        foreach ($this->scopes as $method => $args) {
+            $this->query->$method(implode(', ', $args));
         }
 
         return $this;
@@ -322,7 +173,7 @@ abstract class BaseService
             $this->query->orderBy($orders['column'], $orders['direction']);
         }
 
-        if (isset($this->take) and ! is_null($this->take)) {
+        if (isset($this->take) and !is_null($this->take)) {
             $this->query->take($this->take);
         }
 
@@ -330,15 +181,46 @@ abstract class BaseService
     }
 
     /**
-     * Set query scopes.
+     * Add a simple where clause to the query.
      *
+     * @param string $column
+     * @param string $value
+     * @param string $operator
      * @return $this
      */
-    protected function setScopes()
+    public function where($column, $value, $operator = '=')
     {
-        foreach ($this->scopes as $method => $args) {
-            $this->query->$method(implode(', ', $args));
-        }
+        $this->wheres[] = compact('column', 'value', 'operator');
+
+        return $this;
+    }
+
+    /**
+     * Add a simple where in clause to the query.
+     *
+     * @param string $column
+     * @param mixed $values
+     * @return $this
+     */
+    public function whereIn($column, $values)
+    {
+        $values = is_array($values) ? $values : [$values];
+
+        $this->whereIns[] = compact('column', 'values');
+
+        return $this;
+    }
+
+    /**
+     * Set an ORDER BY clause.
+     *
+     * @param string $column
+     * @param string $direction
+     * @return $this
+     */
+    public function orderBy($column, $direction = 'asc')
+    {
+        $this->orderBys[] = compact('column', 'direction');
 
         return $this;
     }
@@ -356,5 +238,123 @@ abstract class BaseService
         $this->take = null;
 
         return $this;
+    }
+
+    /**
+     * Count the number of specified model records in the database.
+     *
+     * @return int
+     */
+    public function count()
+    {
+        return $this->get()->count();
+    }
+
+    /**
+     * Get the first specified model record from the database or throw an exception if not found.
+     *
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function firstOrFail()
+    {
+        $this->newQuery()->eagerLoad()->setClauses()->setScopes();
+
+        $model = $this->query->firstOrFail();
+
+        $this->unsetClauses();
+
+        return $model;
+    }
+
+    /**
+     * @param $item
+     * @param $column
+     * @param array $columns
+     * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object|null
+     */
+    public function getByColumn($item, $column, array $columns = ['*'])
+    {
+        $this->unsetClauses();
+
+        $this->newQuery()->eagerLoad();
+
+        return $this->query->where($column, $item)->first($columns);
+    }
+
+    /**
+     * Get the first specified model record from the database.
+     *
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function first()
+    {
+        $this->newQuery()->eagerLoad()->setClauses()->setScopes();
+
+        $model = $this->query->first();
+
+        $this->unsetClauses();
+
+        return $model;
+    }
+
+    /**
+     * Delete the specified model record from the database.
+     *
+     * @param $id
+     * @return bool|null
+     *
+     * @throws \Exception
+     */
+    public function deleteById($id)
+    {
+        $this->unsetClauses();
+
+        return $this->getById($id)->delete();
+    }
+
+    /**
+     * Get the specified model record from the database.
+     *
+     * @param $id
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function getById($id)
+    {
+        $this->unsetClauses();
+
+        $this->newQuery()->eagerLoad();
+
+        return $this->query->findOrFail($id);
+    }
+
+    /**
+     * Set the query limit.
+     *
+     * @param int $limit
+     * @return $this
+     */
+    public function limit($limit)
+    {
+        $this->take = $limit;
+
+        return $this;
+    }
+
+    /**
+     * @param int $limit
+     * @param array $columns
+     * @param string $pageName
+     * @param null $page
+     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     */
+    public function paginate($limit = 25, array $columns = ['*'], $pageName = 'page', $page = null)
+    {
+        $this->newQuery()->eagerLoad()->setClauses()->setScopes();
+
+        $models = $this->query->paginate($limit, $columns, $pageName, $page);
+
+        $this->unsetClauses();
+
+        return $models;
     }
 }

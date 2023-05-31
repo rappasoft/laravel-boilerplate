@@ -13,7 +13,7 @@
         </x-slot>
 
         <x-slot name="body">
-            <livewire:backend.examples-table status="deleted" />
+            <livewire:backend.examples-table status="deleted"/>
         </x-slot>
     </x-backend.card>
 @endsection

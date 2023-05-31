@@ -25,7 +25,7 @@ class UserStatusChanged
     /**
      * UserStatusChanged constructor.
      *
-     * @param  User  $user
+     * @param User $user
      * @param $status
      */
     public function __construct(User $user, $status)

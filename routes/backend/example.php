@@ -14,7 +14,7 @@ Route::group([
         'as' => 'example.',
     ], function () {
         Route::group([
-            'middleware' => 'role:'.config('boilerplate.access.role.admin'),
+            'middleware' => 'role:' . config('boilerplate.access.role.admin'),
         ], function () {
             Route::get('deleted', [DeletedExampleController::class, 'index'])
                 ->name('deleted')

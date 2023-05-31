@@ -40,13 +40,13 @@ class BladeServiceProvider extends ServiceProvider
 
             $html .= new HtmlString('
                 <div class="g-recaptcha"
-                    data-sitekey="'.config('boilerplate.access.captcha.configs.site_key').'"
+                    data-sitekey="' . config('boilerplate.access.captcha.configs.site_key') . '"
                     data-size="invisible"
                     data-callback="_submitForm"
-                    data-badge="'.config('boilerplate.access.captcha.configs.options.location').'">
+                    data-badge="' . config('boilerplate.access.captcha.configs.options.location') . '">
                 </div>');
 
-            $html .= new HtmlString('<script src="'.($lang ? 'https://www.google.com/recaptcha/api.js'.'?hl='.$lang : 'https://www.google.com/recaptcha/api.js').'" async defer></script>');
+            $html .= new HtmlString('<script src="' . ($lang ? 'https://www.google.com/recaptcha/api.js' . '?hl=' . $lang : 'https://www.google.com/recaptcha/api.js') . '" async defer></script>');
             $html .= new HtmlString('<script>var _submitForm,_captchaForm,_captchaSubmit,_execute=true;</script>');
             $html .= new HtmlString("<script>window.addEventListener('load', _loadCaptcha);");
             $html .= new HtmlString('function _loadCaptcha(){');

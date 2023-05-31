@@ -12,7 +12,7 @@
             </x-slot>
 
             <x-slot name="headerActions">
-                <x-utils.link class="card-header-action" :href="route('admin.auth.role.index')" :text="__('Cancel')" />
+                <x-utils.link class="card-header-action" :href="route('admin.auth.role.index')" :text="__('Cancel')"/>
             </x-slot>
 
             <x-slot name="body">
@@ -21,7 +21,8 @@
                         <label for="name" class="col-md-2 col-form-label">@lang('Type')</label>
 
                         <div class="col-md-10">
-                            <select name="type" class="form-control" required x-on:change="userType = $event.target.value">
+                            <select name="type" class="form-control" required
+                                    x-on:change="userType = $event.target.value">
                                 <option value="{{ $model::TYPE_USER }}">@lang('User')</option>
                                 <option value="{{ $model::TYPE_ADMIN }}">@lang('Administrator')</option>
                             </select>
@@ -32,7 +33,8 @@
                         <label for="name" class="col-md-2 col-form-label">@lang('Name')</label>
 
                         <div class="col-md-10">
-                            <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') }}" maxlength="100" required />
+                            <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}"
+                                   value="{{ old('name') }}" maxlength="100" required/>
                         </div>
                     </div>
 

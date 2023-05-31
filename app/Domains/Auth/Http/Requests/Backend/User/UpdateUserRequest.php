@@ -19,7 +19,7 @@ class UpdateUserRequest extends FormRequest
      */
     public function authorize()
     {
-        return ! ($this->user->isMasterAdmin() && ! $this->user()->isMasterAdmin());
+        return !($this->user->isMasterAdmin() && !$this->user()->isMasterAdmin());
     }
 
     /**
@@ -31,7 +31,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'type' => [Rule::requiredIf(function () {
-                return ! $this->user->isMasterAdmin();
+                return !$this->user->isMasterAdmin();
             }), Rule::in([User::TYPE_ADMIN, User::TYPE_USER])],
             'name' => ['required', 'max:100'],
             'email' => ['required', 'max:255', 'email', Rule::unique('users')->ignore($this->user->id)],

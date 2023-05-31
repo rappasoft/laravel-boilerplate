@@ -21,8 +21,8 @@ class PasswordExpiredController
     }
 
     /**
-     * @param  UpdatePasswordRequest  $request
-     * @param  UserService  $userService
+     * @param UpdatePasswordRequest $request
+     * @param UserService $userService
      * @return mixed
      *
      * @throws \Throwable

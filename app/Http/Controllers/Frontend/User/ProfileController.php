@@ -11,8 +11,8 @@ use App\Http\Requests\Frontend\User\UpdateProfileRequest;
 class ProfileController
 {
     /**
-     * @param  UpdateProfileRequest  $request
-     * @param  UserService  $userService
+     * @param UpdateProfileRequest $request
+     * @param UserService $userService
      * @return mixed
      */
     public function update(UpdateProfileRequest $request, UserService $userService)

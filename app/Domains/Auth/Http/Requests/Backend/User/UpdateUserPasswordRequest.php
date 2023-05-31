@@ -19,7 +19,7 @@ class UpdateUserPasswordRequest extends FormRequest
      */
     public function authorize()
     {
-        return ! ($this->user->isMasterAdmin() && ! $this->user()->isMasterAdmin());
+        return !($this->user->isMasterAdmin() && !$this->user()->isMasterAdmin());
     }
 
     /**
@@ -33,7 +33,7 @@ class UpdateUserPasswordRequest extends FormRequest
             'password' => array_merge(
                 [
                     'max:100',
-                    new UnusedPassword((int) $this->segment(4)),
+                    new UnusedPassword((int)$this->segment(4)),
                 ],
                 PasswordRules::changePassword($this->email)
             ),

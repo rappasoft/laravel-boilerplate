@@ -18,9 +18,9 @@ class ReportableException extends Exception
     /**
      * GeneralException constructor.
      *
-     * @param  string  $message
-     * @param  int  $code
-     * @param  Throwable|null  $previous
+     * @param string $message
+     * @param int $code
+     * @param Throwable|null $previous
      */
     public function __construct($message = '', $code = 0, Throwable $previous = null)
     {
@@ -38,7 +38,7 @@ class ReportableException extends Exception
     /**
      * Render the exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request
+     * @param \Illuminate\Http\Request
      * @return \Illuminate\Http\Response
      */
     public function render($request)
