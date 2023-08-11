@@ -12,7 +12,7 @@
                     </x-slot>
 
                     <x-slot name="body">
-                        <x-forms.post :action="route('frontend.auth.register')">
+                        <x-forms.post :action="route('frontend.auth.register')" enctype="multipart/form-data">
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">@lang('Name')</label>
 
@@ -38,6 +38,14 @@
                             </div><!--form-group-->
 
                             <div class="form-group row">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">@lang('Avatar')</label>
+
+                                <div class="col-md-6">
+                                    <input type="file" name="avatar" id="avatar" class="form-control" placeholder="{{ __('Avatar') }}" required/>
+                                </div>
+                            </div><!--form-group-->
+                            <div class="form-group row">
+
                                 <label for="name" class="col-md-4 col-form-label text-md-right">@lang('Password Confirmation')</label>
 
                                 <div class="col-md-6">

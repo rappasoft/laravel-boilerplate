@@ -34,6 +34,7 @@ class UserFactory extends Factory
             'password_changed_at' => null,
             'remember_token' => Str::random(10),
             'active' => true,
+            'avatar' => $this->faker->image
         ];
     }
 

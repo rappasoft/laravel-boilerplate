@@ -72,16 +72,33 @@ class RegisterController
      */
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')],
             'password' => array_merge(['max:100'], PasswordRules::register($data['email'] ?? null)),
             'terms' => ['required', 'in:1'],
             'g-recaptcha-response' => ['required_if:captcha_status,true', new Captcha],
+            'avatar'    =>  ['required','file','mimes:jpg,png,jpeg']
         ], [
             'terms.required' => __('You must accept the Terms & Conditions.'),
             'g-recaptcha-response.required_if' => __('validation.required', ['attribute' => 'captcha']),
         ]);
+    }
+
+    /**
+     * Upload the avatar for the user registering
+     *
+     * @param  array  $data
+     * @return \App\Domains\Auth\Models\User|mixed
+     *
+     * @throws \App\Domains\Auth\Exceptions\RegisterException
+     */
+    protected function uploadAvatar( $file)
+    {
+        $avatarName = time().'.'.$file->getClientOriginalExtension();
+        $file->move(public_path('avatars'), $avatarName);
+        return $avatarName;
     }
 
     /**
@@ -98,4 +115,6 @@ class RegisterController
 
         return $this->userService->registerUser($data);
     }
+
+
 }

@@ -103,7 +103,6 @@ class LoginController
 
             return redirect()->route('frontend.auth.login')->withFlashDanger(__('Your account has been deactivated.'));
         }
-
         event(new UserLoggedIn($user));
 
         if (config('boilerplate.access.user.single_login')) {
