@@ -25,4 +25,19 @@ class ProfileController
 
         return redirect()->route('frontend.user.account', ['#information'])->withFlashSuccess(__('Profile successfully updated.'));
     }
+
+    /**
+     * Upload the avatar for the user registering
+     *
+     * @param  array  $data
+     * @return \App\Domains\Auth\Models\User|mixed
+     *
+     * @throws \App\Domains\Auth\Exceptions\RegisterException
+     */
+    protected function uploadAvatar( $file)
+    {
+        $avatarName = time().'.'.$file->getClientOriginalExtension();
+        $file->move(public_path('avatars'), $avatarName);
+        return $avatarName;
+    }
 }

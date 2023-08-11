@@ -192,6 +192,9 @@ class UserService extends BaseService
     public function updateProfile(User $user, array $data = []): User
     {
         $user->name = $data['name'] ?? null;
+        if($data['avatar']){
+            $user->avatar =  $this->uploadAvatar($data['avatar']);
+        }
 
         if ($user->canChangeEmail() && $user->email !== $data['email']) {
             $user->email = $data['email'];
@@ -331,5 +334,15 @@ class UserService extends BaseService
             'active' => $data['active'] ?? true,
             'avatar' => $data['avatar']
         ]);
+    }
+
+    /**
+     * Upload the avatar for the user registering
+     */
+    protected function uploadAvatar( $file)
+    {
+        $avatarName = time().'.'.$file->getClientOriginalExtension();
+        $file->move(public_path('avatars'), $avatarName);
+        return $avatarName;
     }
 }

@@ -1,9 +1,17 @@
-<x-forms.patch :action="route('frontend.user.profile.update')">
+<x-forms.patch :action="route('frontend.user.profile.update')" enctype="multipart/form-data">
     <div class="form-group row">
         <label for="name" class="col-md-3 col-form-label text-md-right">@lang('Name')</label>
 
         <div class="col-md-9">
             <input type="text" name="name" class="form-control" placeholder="{{ __('Name') }}" value="{{ old('name') ?? $logged_in_user->name }}" required autofocus autocomplete="name" />
+        </div>
+    </div><!--form-group-->
+
+    <div class="form-group row">
+        <label for="name" class="col-md-4 col-form-label text-md-right">@lang('Avatar')</label>
+
+        <div class="col-md-6">
+            <input type="file" name="avatar" id="avatar" class="form-control" placeholder="{{ __('Avatar') }}" required/>
         </div>
     </div><!--form-group-->
 

@@ -88,11 +88,6 @@ class RegisterController
 
     /**
      * Upload the avatar for the user registering
-     *
-     * @param  array  $data
-     * @return \App\Domains\Auth\Models\User|mixed
-     *
-     * @throws \App\Domains\Auth\Exceptions\RegisterException
      */
     protected function uploadAvatar( $file)
     {
