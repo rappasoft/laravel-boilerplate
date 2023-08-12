@@ -2,6 +2,7 @@
 
 namespace App\Domains\Auth\Http\Controllers\Backend\User;
 
+use App\Charts\UserTypePieChart;
 use App\Domains\Auth\Http\Requests\Backend\User\DeleteUserRequest;
 use App\Domains\Auth\Http\Requests\Backend\User\EditUserRequest;
 use App\Domains\Auth\Http\Requests\Backend\User\StoreUserRequest;
@@ -129,5 +130,18 @@ class UserController
         $this->userService->delete($user);
 
         return redirect()->route('admin.auth.user.deleted')->withFlashSuccess(__('The user was successfully deleted.'));
+    }
+
+ /*
+  * Draws the charts needed pie chart and bar chart
+  * */
+    public function charts()
+    {
+      //  $result = $this->userService->getByUserType();
+        $admin = 20;
+        $user = 40;
+        $tester = 50;
+        return view('backend.auth.user.echart', compact('admin','user','tester'));
+
     }
 }

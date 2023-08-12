@@ -18,7 +18,13 @@
                     icon="c-icon cil-plus"
                     class="card-header-action"
                     :href="route('admin.auth.user.create')"
-                    :text="__('Create User')"
+                    :text="__('Create ')"
+                />
+                <x-utils.link
+                    icon="cid-spreadsheet"
+                    class="card-header-action"
+                    :href="route('admin.auth.user.charts')"
+                    :text="__('Charts')"
                 />
             </x-slot>
         @endif

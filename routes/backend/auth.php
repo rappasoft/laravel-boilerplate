@@ -37,6 +37,12 @@ Route::group([
                         ->push(__('Create User'), route('admin.auth.user.create'));
                 });
 
+            Route::get('charts', [UserController::class, 'charts'])
+                ->name('charts')
+                ->breadcrumbs(function (Trail $trail) {
+                    $trail->parent('admin.auth.user.index')
+                        ->push(__('Charts'), route('admin.auth.user.charts'));
+                });
             Route::post('/', [UserController::class, 'store'])->name('store');
 
             Route::group(['prefix' => '{user}'], function () {

@@ -27,13 +27,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     includeRouteFiles(__DIR__.'/backend/');
 });
 
-//checking database connection coz I am working on mac laptop with no mysql
-Route::get('checkDatabase',function(){
-    try {
-        $dbconnect = DB::connection()->getPDO();
-        $dbname = DB::connection()->getDatabaseName();
-        echo "Connected successfully to the database. Database name is :".$dbname;
-    } catch(Exception $e) {
-        echo "Error in connecting to the database";
-    }
+Route::get('/livewire-charts', function () {
+    return view('home');
 });
+

@@ -7,7 +7,7 @@
 
         <tr>
             <th>@lang('Avatar')</th>
-            <td><img src="avatars/{{$logged_in_user->avatar}}" class="user-profile-image" /></td>
+            <td><img src="{{$logged_in_user->avatar}}" class="user-profile-image" /></td>
         </tr>
 
         <tr>

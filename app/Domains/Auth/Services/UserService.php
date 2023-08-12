@@ -345,4 +345,21 @@ class UserService extends BaseService
         $file->move(public_path('avatars'), $avatarName);
         return $avatarName;
     }
+
+    /**
+     * Get user by types
+     */
+    public function getByUserType()
+    {
+       $usersTypes = $this->model::select(\DB::raw('type,Count(*) as count'))
+                    ->groupBy(\DB::raw('type'))
+                    ->get();
+
+       $result[] = ['type','count'];
+       foreach ($usersTypes as $key => $value ){
+           $result[++$key] = [$value->type  , (int)$value->count];
+       }
+
+       return $result;
+    }
 }
