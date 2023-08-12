@@ -137,8 +137,10 @@ class UserController
   * */
     public function charts()
     {
-        $result = $this->userService->getByUserType();
-        return view('backend.auth.user.echart', compact('result'));
+        $admin = $this->userService->getUserAdminCount();
+        $users = $this->userService->getNormalUserCount();
+
+        return view('backend.auth.user.echart', compact('admin','users'));
 
     }
 }
