@@ -51,7 +51,8 @@ class UserController
      */
     public function index()
     {
-        return view('backend.auth.user.index');
+        $count = $this->userService->getAllUsersCount();
+        return view('backend.auth.user.index',compact('count'));
     }
 
     /**

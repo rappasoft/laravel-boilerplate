@@ -30,6 +30,7 @@
         @endif
 
         <x-slot name="body">
+            {{'Total:' .$count}}
             <livewire:backend.users-table />
         </x-slot>
     </x-backend.card>

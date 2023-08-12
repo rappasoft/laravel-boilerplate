@@ -362,7 +362,9 @@ class UserService extends BaseService
 
        return $result;
     }
-
+    public function getAllUsersCount(){
+        return $this->model->get()->count();
+    }
     public function getUserAdminCount(){
         return $this->model::where('type','admin')->get()->count();
     }
