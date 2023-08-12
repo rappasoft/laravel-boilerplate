@@ -1,11 +1,11 @@
 @extends('backend.layouts.app')
+@extends('backend.layouts.scripts')
 
 @section('title', __('User Management'))
 
 @section('breadcrumb-links')
     @include('backend.auth.user.includes.breadcrumb-links')
 @endsection
-
 @section('content')
     <x-backend.card>
         <x-slot name="header">
@@ -18,3 +18,5 @@
     </x-slot>
     </x-backend.card>
 @endsection
+
+
