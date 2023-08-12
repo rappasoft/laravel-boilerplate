@@ -139,8 +139,8 @@ class UserController
     {
         $admin = $this->userService->getUserAdminCount();
         $users = $this->userService->getNormalUserCount();
-
-        return view('backend.auth.user.echart', compact('admin','users'));
+        $userPerDateCount = $this->userService->getUserPerDateCount();
+        return view('backend.auth.user.echart', compact('admin','users','userPerDateCount'));
 
     }
 }

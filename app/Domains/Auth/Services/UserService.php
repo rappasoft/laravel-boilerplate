@@ -369,4 +369,9 @@ class UserService extends BaseService
     public function getNormalUserCount(){
         return $this->model::where('type','user')->get()->count();
     }
+    public function getUserPerDateCount(){
+        return $this->model::select(\DB::raw('created_at,Count(*) as count'))
+            ->groupBy(\DB::raw('created_at'))
+            ->get();
+    }
 }
