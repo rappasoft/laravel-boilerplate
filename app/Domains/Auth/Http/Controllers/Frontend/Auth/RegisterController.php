@@ -91,9 +91,7 @@ class RegisterController
      */
     protected function uploadAvatar( $file)
     {
-        $avatarName = time().'.'.$file->getClientOriginalExtension();
-        $file->move(public_path('avatars'), $avatarName);
-        return $avatarName;
+        return $this->userService->uploadAvatar($file);
     }
 
     /**

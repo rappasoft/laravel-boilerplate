@@ -339,7 +339,7 @@ class UserService extends BaseService
     /**
      * Upload the avatar for the user registering
      */
-    protected function uploadAvatar( $file)
+    public function uploadAvatar( $file)
     {
         $avatarName = time().'.'.$file->getClientOriginalExtension();
         $file->move(public_path('avatars'), $avatarName);
@@ -351,25 +351,12 @@ class UserService extends BaseService
      */
     public function getByUserType()
     {
-       $usersTypes = $this->model::select(\DB::raw('type,Count(*) as count'))
+      return $this->model::select(\DB::raw('type,Count(*) as count'))
                     ->groupBy(\DB::raw('type'))
                     ->get();
-
-       $result[] = ['type','count'];
-       foreach ($usersTypes as $key => $value ){
-           $result[++$key] = [$value->type  , (int)$value->count];
-       }
-
-       return $result;
     }
     public function getAllUsersCount(){
         return $this->model->get()->count();
-    }
-    public function getUserAdminCount(){
-        return $this->model::where('type','admin')->get()->count();
-    }
-    public function getNormalUserCount(){
-        return $this->model::where('type','user')->get()->count();
     }
     public function getUserPerDateCount(){
         return $this->model::select(\DB::raw('created_at,Count(*) as count'))

@@ -34,10 +34,8 @@ class ProfileController
      *
      * @throws \App\Domains\Auth\Exceptions\RegisterException
      */
-    protected function uploadAvatar( $file)
+    protected function uploadAvatar( $file,UserService $userService)
     {
-        $avatarName = time().'.'.$file->getClientOriginalExtension();
-        $file->move(public_path('avatars'), $avatarName);
-        return $avatarName;
+       return $userService->uploadAvatar($file);
     }
 }
