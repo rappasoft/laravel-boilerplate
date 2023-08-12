@@ -3,12 +3,16 @@
     google.charts.load('current', {'packages':['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
-        var options = {
+        var  barChartOptions = {
             curveType: 'function',
-            legend: { position: 'bottom' }
+            legend: { position: 'bottom' },
+        };
+        var  peiChartOptions = {
+            curveType: 'function',
+            legend: { position: 'bottom' },
         };
         var barChartData = google.visualization.arrayToDataTable([
-            ['Date', 'Count'],
+            ['Count', 'Date'],
             @php
                 foreach($userPerDateCount as $key=>$value) {
                     echo "['".date("y-m-d h:i:s",strtotime($value->created_at))."', ".(int)$value->count."],";
@@ -23,11 +27,11 @@
                 }
             @endphp
         ]);
-        var barChart = new google.visualization.BarChart(document.getElementById('barchart'));
-        barChart.draw(barChartData, options);
+        var barChart = new google.visualization.ColumnChart(document.getElementById('barchart'));
+        barChart.draw(barChartData, barChartOptions);
 
         var pieChart = new google.visualization.PieChart(document.getElementById('piechart'));
-        pieChart.draw(pieChartData, options);
+        pieChart.draw(pieChartData, peiChartOptions);
     }
 
 </script>
