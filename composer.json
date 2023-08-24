@@ -10,7 +10,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.4|^8.0",
-        "arcanedev/log-viewer": "8.x",
+        "arcanedev/log-viewer": "^8.3",
         "darkghosthunter/laraguard": "^3.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -98,7 +98,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

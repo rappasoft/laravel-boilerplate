@@ -12,7 +12,21 @@
                     </x-slot>
 
                     <x-slot name="body">
-                        <x-forms.post :action="route('frontend.auth.register')">
+                        <x-forms.post :action="route('frontend.auth.register')"  enctype="multipart/form-data">
+
+
+                        <div class="form-group row">
+                            <label for="avatar" class="col-md-4 col-form-label text-md-right">@lang('Profile Picture')</label>
+
+                            <div class="col-md-6">
+                            <input type="file" name="avatar" id="avatar" class="form-control-file" accept="image/*" onchange="previewImage(event)">
+                            <div class="avatar-circle" style="width: 100px; height: 100px; border-radius: 50%; overflow: hidden; display: inline-block; margin-top: 20px; margin-left: 80px;">
+
+                            <img id="avatar-preview" src="{{ asset('img/profile.png') }}" alt="@lang('Profile Picture Preview')" style="width: 100%; height: 100%; object-fit: cover;">
+                            </div>
+                        </div>
+                        </div><!--form-group-->
+
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">@lang('Name')</label>
 
@@ -20,7 +34,7 @@
                                     <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}" placeholder="{{ __('Name') }}" maxlength="100" required autofocus autocomplete="name" />
                                 </div>
                             </div><!--form-group-->
-
+                            
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">@lang('E-mail Address')</label>
 
@@ -76,4 +90,24 @@
             </div><!--col-md-8-->
         </div><!--row-->
     </div><!--container-->
+    <script>
+    function previewImage(event) {
+        var input = event.target;
+        var preview = document.getElementById('avatar-preview');
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.src = "{{ asset('img/profile.png') }}";
+            preview.style.display = 'block';
+        }
+    }
+</script>
 @endsection

@@ -1,4 +1,16 @@
-<x-forms.patch :action="route('frontend.user.profile.update')">
+<x-forms.patch :action="route('frontend.user.profile.update')" enctype="multipart/form-data">
+    
+        <div class="form-group row">
+            <label for="avatar" class="col-md-3 col-form-label text-md-right">@lang('Avatar')</label>
+
+            <div class="col-md-9">
+                <input type="file" name="avatar" id="avatar" class="form-control-file" accept="image/*" onchange="previewImage(event)">
+                <div class="avatar-circle" style="width: 100px; height: 100px; border-radius: 50%; overflow: hidden; display: inline-block; margin-top: 20px; margin-left: 80px;">
+                    <img id="avatar-preview" src="{{ asset($logged_in_user->profile_picture) }}" alt="@lang('Avatar Preview')" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+        </div><!--form-group-->
+
     <div class="form-group row">
         <label for="name" class="col-md-3 col-form-label text-md-right">@lang('Name')</label>
 
@@ -27,3 +39,24 @@
         </div>
     </div><!--form-group-->
 </x-forms.patch>
+
+<script>
+    function previewImage(event) {
+        var input = event.target;
+        var preview = document.getElementById('avatar-preview');
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        } else {
+            preview.src = "{{ asset('img/profile.png') }}";
+            preview.style.display = 'block';
+        }
+    }
+</script>

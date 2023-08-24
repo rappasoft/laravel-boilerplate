@@ -8,6 +8,10 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
+use Illuminate\Support\Str; 
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+
 
 /**
  * Class RegisterController.
@@ -94,8 +98,35 @@ class RegisterController
      */
     protected function create(array $data)
     {
-        abort_unless(config('boilerplate.access.user.registration'), 404);
+        $profilePicturePath = null;
+    
 
-        return $this->userService->registerUser($data);
-    }
+            if (isset($data['avatar'])) {
+                $name = Str::slug($data['name']);
+                $uniqueFolderName = $name . '_' . time();
+                $folderPath = 'img/profile-pictures/' . $uniqueFolderName;
+                $profilePicturePath = $folderPath . '/profile-picture.jpg';
+    
+                // Create the directory if it doesn't exist
+                if (!is_dir($folderPath)) {
+                    mkdir($folderPath, 0777, true);
+                }
+    
+                // Move the uploaded file to the target location
+                $data['avatar']->move($folderPath, 'profile-picture.jpg');
+    
+            }
+    
+        $user = $this->userService->registerUser($data);
+        
+        // After registering the user, save the path to the profile_picture attribute
+
+        $user->profile_picture = $profilePicturePath;
+        $user->save();       
+        return $user;
+        }
+    
+    
+    
+    
 }
