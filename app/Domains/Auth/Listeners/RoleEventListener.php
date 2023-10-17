@@ -12,7 +12,7 @@ use App\Domains\Auth\Events\Role\RoleUpdated;
 class RoleEventListener
 {
     /**
-     * @param $event
+     * @param  $event
      */
     public function onCreated($event)
     {
@@ -29,7 +29,7 @@ class RoleEventListener
     }
 
     /**
-     * @param $event
+     * @param  $event
      */
     public function onUpdated($event)
     {
@@ -46,7 +46,7 @@ class RoleEventListener
     }
 
     /**
-     * @param $event
+     * @param  $event
      */
     public function onDeleted($event)
     {
