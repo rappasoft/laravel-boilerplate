@@ -93,7 +93,7 @@ class LoginController
      * The user has been authenticated.
      *
      * @param  Request  $request
-     * @param $user
+     * @param  $user
      * @return mixed
      */
     protected function authenticated(Request $request, $user)
