@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 trait TruncateTable
 {
     /**
-     * @param $table
+     * @param  $table
      * @return bool
      */
     protected function truncate($table)
@@ -23,7 +23,7 @@ trait TruncateTable
                 return  DB::statement('TRUNCATE TABLE '.$table.' RESTART IDENTITY CASCADE');
 
             case 'sqlite': case 'sqlsrv':
-            return DB::statement('DELETE FROM '.$table);
+                return DB::statement('DELETE FROM '.$table);
         }
 
         return false;
