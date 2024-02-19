@@ -75,8 +75,9 @@ class RegisterController
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')],
-            'password' => array_merge(['max:100'], PasswordRules::register($data['email'] ?? null)),
+            //'password' => array_merge(['max:100'], PasswordRules::register($data['email'] ?? null)),
             'terms' => ['required', 'in:1'],
+            'image' => ['nullable', 'mimes:jpeg,png,jpg', 'image'],
             'g-recaptcha-response' => ['required_if:captcha_status,true', new Captcha],
         ], [
             'terms.required' => __('You must accept the Terms & Conditions.'),
@@ -95,6 +96,13 @@ class RegisterController
     protected function create(array $data)
     {
         abort_unless(config('boilerplate.access.user.registration'), 404);
+        
+        if (isset($data['image'])) {
+        $profilePicture = $data['image'];
+        $fileName = $data['name']. '_' . time() . '_' . $profilePicture->getClientOriginalName();
+        $profilePicture->move(public_path('profile_pictures'), $fileName);
+        $data['image'] = $fileName;
+    }
 
         return $this->userService->registerUser($data);
     }

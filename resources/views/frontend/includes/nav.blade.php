@@ -57,7 +57,11 @@
                             v-pre
                         >
                             <x-slot name="text">
-                                <img class="rounded-circle" style="max-height: 20px" src="{{ $logged_in_user->avatar }}" />
+                                 @if($logged_in_user->image)
+                                     <img src="{{ asset('profile_pictures/' . $logged_in_user->image) }}" class="rounded-circle" style="max-height: 20px"  />
+                                        @else
+                                           <img class="rounded-circle" style="max-height: 20px" src="{{ $logged_in_user->avatar }}" />
+                                        @endif
                                 {{ $logged_in_user->name }} <span class="caret"></span>
                             </x-slot>
                         </x-utils.link>
