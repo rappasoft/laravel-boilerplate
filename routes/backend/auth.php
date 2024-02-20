@@ -1,6 +1,7 @@
 <?php
 
 use App\Domains\Auth\Http\Controllers\Backend\Role\RoleController;
+use App\Domains\Auth\Http\Controllers\Backend\Stats\StatsController;
 use App\Domains\Auth\Http\Controllers\Backend\User\DeactivatedUserController;
 use App\Domains\Auth\Http\Controllers\Backend\User\DeletedUserController;
 use App\Domains\Auth\Http\Controllers\Backend\User\UserController;
@@ -142,4 +143,12 @@ Route::group([
             Route::delete('/', [RoleController::class, 'destroy'])->name('destroy');
         });
     });
+   Route::group([
+    'prefix' => 'stats',
+    'as' => 'stats.',
+    ], function () {
+    Route::get('/', [StatsController::class, 'index'])->name('index');
+    });
+
+  //  Route::get('/admin/auth/stats', [StatsController::class, 'index']);
 });
