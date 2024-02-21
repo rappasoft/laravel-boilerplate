@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 trait UserAttribute
 {
     /**
-     * @param $password
+     * @param  $password
      */
     public function setPasswordAttribute($password): void
     {
