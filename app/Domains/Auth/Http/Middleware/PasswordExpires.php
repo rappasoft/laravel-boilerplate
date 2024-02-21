@@ -11,7 +11,7 @@ use Closure;
 class PasswordExpires
 {
     /**
-     * @param $request
+     * @param  $request
      * @param  Closure  $next
      * @return \Illuminate\Http\RedirectResponse|mixed
      *
