@@ -18,7 +18,7 @@ if (! function_exists('carbon')) {
     /**
      * Create a new Carbon instance from a time.
      *
-     * @param $time
+     * @param  $time
      * @return Carbon
      *
      * @throws Exception
