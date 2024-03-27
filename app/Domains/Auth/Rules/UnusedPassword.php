@@ -22,7 +22,7 @@ class UnusedPassword implements Rule
      *
      * UnusedPassword constructor.
      *
-     * @param $user
+     * @param  $user
      */
     public function __construct($user)
     {
