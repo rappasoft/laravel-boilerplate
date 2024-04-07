@@ -98,6 +98,12 @@ trait UserMethod
      */
     public function getAvatar($size = null)
     {
-        return 'https://gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?s='.config('boilerplate.avatar.size', $size).'&d=mp';
+        if ($this->profile_avatar) {
+            return asset('storage/app/public/profile_avatars/' . $this->profile_avatar);
+        } else {
+            // Fallback to Gravatar or a default image if no profile avatar is set
+            return 'https://gravatar.com/avatar/'.md5(strtolower(trim($this->email))).'?s='.config('boilerplate.avatar.size', $size).'&d=mp';
+        }
     }
 }
+

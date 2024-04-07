@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend\User;
 
 use App\Domains\Auth\Services\UserService;
 use App\Http\Requests\Frontend\User\UpdateProfileRequest;
+use App\Http\Requests\Frontend\User\UpdateProfileAvatar;
 
 /**
  * Class ProfileController.

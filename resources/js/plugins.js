@@ -1,3 +1,15 @@
+/*
+ * ********************************************************************
+ *  IBM Confidential
+ *  6949-08P
+ * 
+ *  © Copyright IBM Corp. 2024 All Rights Reserved
+ * 
+ *  US Government Users Restricted Rights - Use, duplication or
+ *  disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+ * ********************************************************************
+ */
+
 /**
  * Place any jQuery/helper plugins in here.
  */
@@ -113,7 +125,6 @@ $(function () {
     if (hash) {
         $('.nav-link[href="'+hash+'"]').tab('show');
     }
-
     // Enable tooltips everywhere
     $('[data-toggle="tooltip"]').tooltip();
 });

@@ -7,9 +7,15 @@
 
         <tr>
             <th>@lang('Avatar')</th>
-            <td><img src="{{ $logged_in_user->avatar }}" class="user-profile-image" /></td>
+            <td>
+                <img src="{{ $logged_in_user->avatar }}" class="user-profile-image" />
+                <button id="editProfileImageButton" class="btn btn-info">Edit Profile Image</button>
+                <x-forms.patch :action="route('frontend.user.profile.update')" id="avatarUploadForm" enctype="multipart/form-data" style="display: none;">
+                <input type="file" name="avatar" id="avatarInput" onchange="document.getElementById('avatarUploadForm').submit();">
+                </x-forms.patch>
+            </td>
         </tr>
-
+</div>
         <tr>
             <th>@lang('Name')</th>
             <td>{{ $logged_in_user->name }}</td>

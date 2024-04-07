@@ -118,6 +118,7 @@ class UserService extends BaseService
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => $data['password'],
+                'avatar' => $data['avatar'],
                 'email_verified_at' => isset($data['email_verified']) && $data['email_verified'] === '1' ? now() : null,
                 'active' => isset($data['active']) && $data['active'] === '1',
             ]);
@@ -161,6 +162,7 @@ class UserService extends BaseService
                 'type' => $user->isMasterAdmin() ? $this->model::TYPE_ADMIN : $data['type'] ?? $user->type,
                 'name' => $data['name'],
                 'email' => $data['email'],
+                'avatar' => $data['avatar'],
             ]);
 
             if (! $user->isMasterAdmin()) {
@@ -319,10 +321,15 @@ class UserService extends BaseService
      */
     protected function createUser(array $data = []): User
     {
+        if (isset($data['avatar'])) {
+            $avatarPath = $data['avatar']->store('public/profile_avatars');
+        }
+
         return $this->model::create([
             'type' => $data['type'] ?? $this->model::TYPE_USER,
             'name' => $data['name'] ?? null,
             'email' => $data['email'] ?? null,
+            'avatar' => $avatarPath ?? null,
             'password' => $data['password'] ?? null,
             'provider' => $data['provider'] ?? null,
             'provider_id' => $data['provider_id'] ?? null,
