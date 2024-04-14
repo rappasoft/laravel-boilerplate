@@ -56,6 +56,11 @@
                                 </div>
                             </div><!--form-group-->
 
+    			   <div class="form-group">
+        			<label for="profile_picture" class="col-md-4 col-form-label text-md-right">@lang('Profile Picture')</label>
+        			<input type="file" name="profile_picture" id="profile_picture" required>
+    			   </div><!--form-group-->
+
                             @if(config('boilerplate.access.captcha.registration'))
                                 <div class="row">
                                     <div class="col">
