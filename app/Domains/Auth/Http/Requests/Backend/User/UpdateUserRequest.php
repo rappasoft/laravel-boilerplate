@@ -39,6 +39,7 @@ class UpdateUserRequest extends FormRequest
             'roles.*' => [Rule::exists('roles', 'id')->where('type', $this->type)],
             'permissions' => ['sometimes', 'array'],
             'permissions.*' => [Rule::exists('permissions', 'id')->where('type', $this->type)],
+	    'profile_picture' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
         ];
     }
 

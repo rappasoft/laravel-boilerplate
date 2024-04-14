@@ -1,4 +1,4 @@
-<x-forms.patch :action="route('frontend.user.profile.update')">
+<x-forms.patch :action="route('frontend.user.profile.update')" enctype="multipart/form-data">
     <div class="form-group row">
         <label for="name" class="col-md-3 col-form-label text-md-right">@lang('Name')</label>
 
@@ -20,6 +20,17 @@
             </div>
         </div><!--form-group-->
     @endif
+
+    <div class="form-group row">
+        <label for="profile_picture" class="col-md-3 col-form-label text-md-right">@lang('Profile Picture')</label>
+
+        <div class="col-md-9">
+            @if ($logged_in_user->profile_picture)
+                <img src="{{ asset('storage/' . $logged_in_user->profile_picture) }}" alt="Profile Picture" style="max-width: 100px;">
+            @endif
+            <input type="file" name="profile_picture" class="form-control-file mt-2">
+        </div>
+    </div><!--form-group-->
 
     <div class="form-group row mb-0">
         <div class="col-md-12 text-right">

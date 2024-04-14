@@ -17,7 +17,13 @@ class ProfileController
      */
     public function update(UpdateProfileRequest $request, UserService $userService)
     {
-        $userService->updateProfile($request->user(), $request->validated());
+	$data = $request->validated();
+
+    	if ($request->hasFile('profile_picture')) {
+            $data['profile_picture'] = $request->file('profile_picture');
+    	}
+
+        $userService->updateProfile($request->user(), $data);
 
         if (session()->has('resent')) {
             return redirect()->route('frontend.auth.verification.notice')->withFlashInfo(__('You must confirm your new e-mail address before you can go any further.'));

@@ -57,7 +57,7 @@
                             v-pre
                         >
                             <x-slot name="text">
-                                <img class="rounded-circle" style="max-height: 20px" src="{{ $logged_in_user->avatar }}" />
+                               <img class="rounded-circle" style="max-height: 20px" src="{{ $logged_in_user->profile_picture ? asset('storage/' . $logged_in_user->profile_picture) : $logged_in_user->avatar }}" />
                                 {{ $logged_in_user->name }} <span class="caret"></span>
                             </x-slot>
                         </x-utils.link>
