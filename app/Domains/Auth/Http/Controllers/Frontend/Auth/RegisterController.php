@@ -8,11 +8,16 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
+use App\User;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class RegisterController.
  */
-class RegisterController
+class RegisterController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -76,6 +81,7 @@ class RegisterController
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')],
             'password' => array_merge(['max:100'], PasswordRules::register($data['email'] ?? null)),
+            'profile_picture' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
             'terms' => ['required', 'in:1'],
             'g-recaptcha-response' => ['required_if:captcha_status,true', new Captcha],
         ], [
@@ -96,6 +102,15 @@ class RegisterController
     {
         abort_unless(config('boilerplate.access.user.registration'), 404);
 
-        return $this->userService->registerUser($data);
+        $user = $this->userService->registerUser($data);
+
+        if (request()->hasFile('profile_picture')) {
+            $fileName = time() . '.' . request()->profile_picture->extension();
+            request()->profile_picture->storeAs('public/profile_pictures', $fileName);
+            $user->profile_picture = $fileName;
+            $user->save();
+        }
+
+        return $user;
     }
 }

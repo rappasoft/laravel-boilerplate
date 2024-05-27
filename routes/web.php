@@ -1,7 +1,21 @@
 <?php
 
 use App\Http\Controllers\LocaleController;
+use App\Http\Controllers\ChartController;
+use App\Http\Controllers\Frontend\User\ProfileController;
 
+use App\Http\Controllers\Admin\DashboardController;
+
+use App\Domains\Auth\Models\User;
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+});
+
+
+Route::put('/profile', [ProfileController::class, 'update'])->name('frontend.user.profile.update');
+
+Route::get('/bar', [ChartController::class, 'userChart']);
 /*
  * Global Routes
  *

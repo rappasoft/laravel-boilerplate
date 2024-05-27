@@ -20,6 +20,7 @@ use Illuminate\Notifications\Notifiable;
 use Lab404\Impersonate\Models\Impersonate;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use App\Domains\Auth\Models\User;
 
 /**
  * Class User.
@@ -55,6 +56,8 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
         'password',
         'password_changed_at',
         'active',
+        'profile_picture',
+        'is_admin',
         'timezone',
         'last_login_at',
         'last_login_ip',
@@ -92,6 +95,7 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
         'last_login_at' => 'datetime',
         'email_verified_at' => 'datetime',
         'to_be_logged_out' => 'boolean',
+        'is_admin' => 'boolean',
     ];
 
     /**

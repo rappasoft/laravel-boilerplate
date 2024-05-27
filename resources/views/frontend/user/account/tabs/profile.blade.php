@@ -7,7 +7,13 @@
 
         <tr>
             <th>@lang('Avatar')</th>
-            <td><img src="{{ $logged_in_user->avatar }}" class="user-profile-image" /></td>
+            <td>
+                @if($logged_in_user->profile_picture)
+                    <img src="{{ asset('storage/profile_pictures/' . $logged_in_user->profile_picture) }}" class="user-profile-image" width="150" />
+                @else
+                    <p>No profile picture uploaded.</p>
+                @endif
+            </td>
         </tr>
 
         <tr>
@@ -43,3 +49,16 @@
         </tr>
     </table>
 </div><!--table-responsive-->
+
+<!-- Profile Picture Upload Form -->
+<form action="{{ route('frontend.user.profile.update') }}" method="POST" enctype="multipart/form-data">
+    @csrf
+    @method('PATCH')
+
+    <div class="form-group">
+        <label for="profile_picture">Profile Picture</label>
+        <input type="file" class="form-control" name="profile_picture" id="profile_picture">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update Profile</button>
+</form>

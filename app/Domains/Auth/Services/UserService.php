@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Domains\Auth\Services;
-
+use App\Http\Controllers\Frontend\User\Controller;
 use App\Domains\Auth\Events\User\UserCreated;
 use App\Domains\Auth\Events\User\UserDeleted;
 use App\Domains\Auth\Events\User\UserDestroyed;
@@ -30,6 +30,8 @@ class UserService extends BaseService
         $this->model = $user;
     }
 
+    
+
     /**
      * @param $type
      * @param  bool|int  $perPage
@@ -55,16 +57,23 @@ class UserService extends BaseService
         DB::beginTransaction();
 
         try {
-            $user = $this->createUser($data);
+            $user = $this->createUser([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'profile_picture' => $data['profile_picture'] ?? null,
+            ]);
+
+            DB::commit();
+
+            event(new UserCreated($user));
+
+            return $user;
         } catch (Exception $e) {
             DB::rollBack();
 
             throw new GeneralException(__('There was a problem creating your account.'));
         }
-
-        DB::commit();
-
-        return $user;
     }
 
     /**
@@ -191,17 +200,35 @@ class UserService extends BaseService
      */
     public function updateProfile(User $user, array $data = []): User
     {
-        $user->name = $data['name'] ?? null;
+        DB::beginTransaction();
 
-        if ($user->canChangeEmail() && $user->email !== $data['email']) {
-            $user->email = $data['email'];
-            $user->email_verified_at = null;
-            $user->sendEmailVerificationNotification();
-            session()->flash('resent', true);
+        try {
+            if (isset($data['name'])) {
+                $user->name = $data['name'];
+            }
+
+            if (isset($data['email']) && $user->email !== $data['email']) {
+                $user->email = $data['email'];
+                $user->email_verified_at = null;
+                $user->sendEmailVerificationNotification();
+                session()->flash('resent', true);
+            }
+
+            if (isset($data['profile_picture'])) {
+                $user->profile_picture = $data['profile_picture'];
+            }
+
+            $user->save();
+
+            DB::commit();
+
+            return $user;
+        } catch (Exception $e) {
+            DB::rollBack();
+            throw new GeneralException(__('There was a problem updating your profile.'));
         }
-
-        return tap($user)->save();
     }
+
 
     /**
      * @param  User  $user
@@ -324,6 +351,7 @@ class UserService extends BaseService
             'name' => $data['name'] ?? null,
             'email' => $data['email'] ?? null,
             'password' => $data['password'] ?? null,
+            'profile_picture' => $data['profile_picture'] ?? null,
             'provider' => $data['provider'] ?? null,
             'provider_id' => $data['provider_id'] ?? null,
             'email_verified_at' => $data['email_verified_at'] ?? null,
