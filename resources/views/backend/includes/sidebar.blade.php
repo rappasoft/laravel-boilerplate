@@ -68,6 +68,17 @@
                                 :active="activeClass(Route::is('admin.auth.role.*'), 'c-active')" />
                         </li>
                     @endif
+
+                    @if ($logged_in_user->hasAllAccess())
+                        <li class="c-sidebar-nav-item">
+                            <x-utils.link
+                                :href="route('admin.auth.statistics.index')"
+                                class="c-sidebar-nav-link"
+                                :text="__('User Statistics')"
+                                :active="activeClass(Route::is('admin.auth.statistics.*'), 'c-active')" />
+                        </li>
+                    @endif
+
                 </ul>
             </li>
         @endif
