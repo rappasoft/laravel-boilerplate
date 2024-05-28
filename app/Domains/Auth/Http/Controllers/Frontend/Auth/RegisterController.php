@@ -76,6 +76,7 @@ class RegisterController
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')],
             'password' => array_merge(['max:100'], PasswordRules::register($data['email'] ?? null)),
+            'image' => ['nullable', 'mimes:jpeg,png,jpg', 'image'], // Validate profile image field
             'terms' => ['required', 'in:1'],
             'g-recaptcha-response' => ['required_if:captcha_status,true', new Captcha],
         ], [
@@ -95,6 +96,21 @@ class RegisterController
     protected function create(array $data)
     {
         abort_unless(config('boilerplate.access.user.registration'), 404);
+        // Check if an image was uploaded in the form data
+        if (isset($data['image'])) {
+
+            // Get the uploaded image object 
+            $profilePicture = $data['image'];
+        
+            // Construct a unique filename with timestamp and original name
+            $fileName = $data['name'] . '_' . time() . '_' . $profilePicture->getClientOriginalName();
+        
+            // Move the uploaded image to the "profile_pictures" directory
+            $profilePicture->move(public_path('profile_pictures'), $fileName);
+        
+            // Update the "image" key in the form data with the saved filename
+            $data['image'] = $fileName;
+  }
 
         return $this->userService->registerUser($data);
     }

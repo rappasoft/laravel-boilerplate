@@ -12,7 +12,15 @@
                     </x-slot>
 
                     <x-slot name="body">
-                        <x-forms.post :action="route('frontend.auth.register')">
+                    <x-forms.post :action="route('frontend.auth.register')" enctype="multipart/form-data">
+                        <div class="form-group row">
+                                <label for="profile_picture" class="col-md-4 col-form-label text-md-right">@lang('Profile Picture')</label>
+                                <div class="col-md-6">
+                                    <input type="file" name="image" id="profile_picture" class="form-control-file" accept="image/*">
+                                    <small id="profile_picture_help" class="form-text text-muted">Upload profile picture </small>
+                                </div>
+                            </div><!--form-group-->
+
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">@lang('Name')</label>
 

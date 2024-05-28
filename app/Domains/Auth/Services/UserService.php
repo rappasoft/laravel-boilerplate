@@ -115,6 +115,7 @@ class UserService extends BaseService
         try {
             $user = $this->createUser([
                 'type' => $data['type'],
+                'image' => $data['image'] ?? null,
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => $data['password'],
@@ -321,6 +322,7 @@ class UserService extends BaseService
     {
         return $this->model::create([
             'type' => $data['type'] ?? $this->model::TYPE_USER,
+            'image' => $data['image'] ?? null,
             'name' => $data['name'] ?? null,
             'email' => $data['email'] ?? null,
             'password' => $data['password'] ?? null,

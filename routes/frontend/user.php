@@ -27,4 +27,6 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
         });
 
     Route::patch('profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('profile/updateProfilePic', [ProfileController::class, 'updateProfilePic'])->name('profilePic.update');
+
 });
