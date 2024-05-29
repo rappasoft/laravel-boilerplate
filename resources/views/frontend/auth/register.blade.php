@@ -17,7 +17,7 @@
                                 <label for="profile_picture" class="col-md-4 col-form-label text-md-right">@lang('Profile Picture')</label>
                                 <div class="col-md-6">
                                     <input type="file" name="image" id="profile_picture" class="form-control-file" accept="image/*">
-                                    <small id="profile_picture_help" class="form-text text-muted">Upload profile picture </small>
+                                    <small id="profile_picture_help" class="form-text text-muted"> (jpg,jpeg,png) </small>
                                 </div>
                             </div><!--form-group-->
 

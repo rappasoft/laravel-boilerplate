@@ -9,6 +9,13 @@
             <th>@lang('Avatar')</th>
             <!-- <td><img src="{{ $logged_in_user->avatar }}" class="user-profile-image" /></td> -->
             <td>
+            @if($logged_in_user->image)
+            <img src="{{ asset('profile_pictures/' . $logged_in_user->image) }}" class="user-profile-image" width="130" height="130"/>
+        @else
+          <img src="{{ $logged_in_user->avatar }}" class="user-profile-image" />
+        @endif
+        </td>
+            <!-- <td>
         @if($logged_in_user->image)
             <img src="{{ asset('profile_pictures/' . $logged_in_user->image) }}" class="user-profile-image" width="130" height="130"/>
         @else
@@ -18,7 +25,7 @@
             <input type="file" name="profile_picture">
             <button type="submit">Change Profile Picture</button>
         </x-forms.post>
-    </td>
+    </td> -->
         </tr>
 
         <tr>

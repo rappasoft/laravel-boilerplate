@@ -1,4 +1,27 @@
+<div class="table-responsive">
+    <table class="table  mb-0 pl-8">
+<tr>
+            <th></th>            <th></th>
+
+            <!-- <td><img src="{{ $logged_in_user->avatar }}" class="user-profile-image" /></td> -->
+            <td>
+        @if($logged_in_user->image)
+            <img src="{{ asset('profile_pictures/' . $logged_in_user->image) }}" class="user-profile-image" width="130" height="130"/>
+        @else
+          <img src="{{ $logged_in_user->avatar }}" class="user-profile-image" />
+        @endif
+        </td>
+        <td>
+        <x-forms.post :action="route('frontend.user.profilePic.update')" enctype="multipart/form-data">    
+            <input type="file" name="profile_picture" >
+            <button type="submit" class="btn btn-sm btn-primary ">Update Profile Picture</button>
+        </x-forms.post>
+    </td>
+        </tr>
+        </table>
+        </div>
 <x-forms.patch :action="route('frontend.user.profile.update')">
+
     <div class="form-group row">
         <label for="name" class="col-md-3 col-form-label text-md-right">@lang('Name')</label>
 
