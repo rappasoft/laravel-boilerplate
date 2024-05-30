@@ -5,55 +5,61 @@
 @section('content')
     <x-backend.card>
         <x-slot name="header">
-            @lang('Welcome :Name', ['name' => $logged_in_user->name])
-            @lang('Welcome to the Dashboard')
+            @lang('Welcome to the Dashboard, ')
+            @lang(':Name', ['name' => $logged_in_user->name])
 
-      
         </x-slot>
 
         <x-slot name="body">
-            <p>@lang('Total users'): {{ $userCount }}</p>
-            <canvas id="barChart" width="400" height="200"></canvas>
+        <p style="font-weight: bold;">@lang('Total users'): {{ $userCount }}</p>
+            <div id="barChart" style="width: 100%; height: 400px;"></div>
         </x-slot>
     </x-backend.card>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>
-        new Chart(document.getElementById("barChart"), {
-            type: 'bar',
-            data: {
-                labels: @json($dates),
-                datasets: [{
-                    label: 'User Registrations',
-                    data: @json($counts),
-                    backgroundColor: 'rgba(0, 0, 255, 0.5)',  
-                    borderColor: 'rgba(0, 0, 255, 1)',
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                       x: {
-                            title: {
-                                display: true,
-                                text: 'Registration date',
-                                align: 'center'
-                            }
-                        },
-                        y: {
-			                beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'No. of users registered',
-                                align: 'center'
-                            },
-                            ticks: {
-                                beginAtZero: true,
-                                stepSize: 1
-                            }
-                        }
-                }
-            }
+        document.addEventListener('DOMContentLoaded', function () {
+            var options = {
+                chart: {
+                    type: 'bar',
+                    height: 400
+                },
+                series: [{
+                    name: '@lang('User Registered')',
+                    data: @json($counts)
+                }],
+                xaxis: {
+                    categories: @json($dates),
+                    title: {
+                        text: '@lang('Registration Date')'
+                    }
+                },
+                yaxis: {
+                    title: {
+                        text: '@lang('Count of Users')'
+                    },
+                    min: 0,
+                    tickAmount: 1,
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '50%',
+                        endingShape: 'flat'
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                title: {
+                    text: '@lang('Users Registered by Date')',
+                    align: 'center'
+                },
+                colors: ['#3c4b64'] 
+            };
+
+            var chart = new ApexCharts(document.querySelector("#barChart"), options);
+            chart.render();
         });
     </script>
 @endsection

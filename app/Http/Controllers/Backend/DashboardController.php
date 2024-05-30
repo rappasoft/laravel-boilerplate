@@ -17,15 +17,21 @@ class DashboardController
      */
     public function index()
     {
-        $userCount = User::count();
+        $userCount = User::where('type', '<>', 'admin')->count();
 
-        $userRegistrations = User::where(DB::raw('DATE(created_at) as registration_date'), DB::raw('COUNT(*) as count'))
-                        ->groupBy('registration_date')
-                        ->orderBy('registration_date')
-                        ->get();
-
-        $dates = $userRegistrations->pluck('registration_date')->toArray();
-        $counts = $userRegistrations->pluck('count')->toArray();
+        $userRegistrations = User::where('type', '<>', 'admin')
+            ->selectRaw('DATE(created_at) as date, COUNT(*) as count')
+            ->groupBy('date')
+            ->orderBy('date')
+            ->get();
+        
+        $datesAndCounts = $userRegistrations->mapWithKeys(function ($item) {
+            return [$item->date => $item->count];
+        })->toArray();
+        
+        $dates = array_keys($datesAndCounts);
+        $counts = array_values($datesAndCounts);
+        
         // return view('backend.dashboard');
         return view('backend.dashboard', compact('userCount', 'dates', 'counts'));
 

@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Frontend\User;
-
+use App\Domains\Auth\Models\User;
+use App\Domains\Auth\Services\UserService;
+use DB;
 /**
  * Class DashboardController.
  */
@@ -12,6 +14,24 @@ class DashboardController
      */
     public function index()
     {
-        return view('frontend.user.dashboard');
+        $userCount = User::where('type', '<>', 'admin')->count();
+
+        $userRegistrations = User::where('type', '<>', 'admin')
+            ->selectRaw('DATE(created_at) as date, COUNT(*) as count')
+            ->groupBy('date')
+            ->orderBy('date')
+            ->get();
+        
+        $datesAndCounts = $userRegistrations->mapWithKeys(function ($item) {
+            return [$item->date => $item->count];
+        })->toArray();
+        
+        $dates = array_keys($datesAndCounts);
+        $counts = array_values($datesAndCounts);
+        
+        
+        // return view('backend.dashboard');
+        return view('frontend.user.dashboard', compact('userCount', 'dates', 'counts'));
+
     }
 }
