@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
+use Illuminate\Support\Str;
 
 /**
  * Class RegisterController.
@@ -102,8 +103,8 @@ class RegisterController
             // Get the uploaded image object 
             $profilePicture = $data['image'];
         
-            // Construct a unique filename with timestamp and original name
-            $fileName = $data['name'] . '_' . time() . '_' . $profilePicture->getClientOriginalName();
+            $fileName = Str::uuid() . '.' . $profilePicture->getClientOriginalExtension(); //use uuid for file name to be unique
+
         
             // Move the uploaded image to the "profile_pictures" directory
             $profilePicture->move(public_path('profile_pictures'), $fileName);

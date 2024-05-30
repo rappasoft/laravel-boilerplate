@@ -14,6 +14,8 @@ use App\Services\BaseService;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class UserService.
@@ -200,6 +202,23 @@ class UserService extends BaseService
             $user->sendEmailVerificationNotification();
             session()->flash('resent', true);
         }
+        if (isset($data['image'])) {
+            $file = $data['image'];
+            $fileName = Str::uuid() . '.' . $file->getClientOriginalExtension(); //use uuid for file name to be unique
+
+          
+            $file->move(public_path('profile_pictures'), $fileName); //store image
+
+ 
+            if ($user->profile_picture) {
+                Storage::disk('public')->delete($user->profile_picture);
+            }
+ 
+        $user->image = $fileName;
+        $user->save();
+     }
+
+        
 
         return tap($user)->save();
     }
