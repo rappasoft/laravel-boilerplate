@@ -50,6 +50,7 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
     protected $fillable = [
         'type',
         'name',
+        'profile_picture',
         'email',
         'email_verified_at',
         'password',

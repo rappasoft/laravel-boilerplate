@@ -1,25 +1,28 @@
 <?php
-
+namespace App\Services;
 namespace App\Domains\Auth\Services;
 
+use Image;
+use Exception;
+use App\Services\BaseService;
+use App\Domains\Auth\Models\User;
+use Illuminate\Support\Facades\DB;
+use App\Exceptions\GeneralException;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use App\Domains\Auth\Events\User\UserCreated;
 use App\Domains\Auth\Events\User\UserDeleted;
-use App\Domains\Auth\Events\User\UserDestroyed;
-use App\Domains\Auth\Events\User\UserRestored;
-use App\Domains\Auth\Events\User\UserStatusChanged;
 use App\Domains\Auth\Events\User\UserUpdated;
-use App\Domains\Auth\Models\User;
-use App\Exceptions\GeneralException;
-use App\Services\BaseService;
-use Exception;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
-
+use App\Domains\Auth\Events\User\UserRestored;
+use App\Domains\Auth\Events\User\UserDestroyed;
+use App\Domains\Auth\Events\User\UserStatusChanged;
+use Intervention\Image\facade\Images as ResizeImage;
 /**
  * Class UserService.
  */
 class UserService extends BaseService
 {
+    protected $ResizeService;
     /**
      * UserService constructor.
      *
@@ -108,6 +111,9 @@ class UserService extends BaseService
      * @throws GeneralException
      * @throws \Throwable
      */
+
+
+     //storing the profile picture while registering and there is option to have none pp and storing it with a unique name 
     public function store(array $data = []): User
     {
         DB::beginTransaction();
@@ -118,12 +124,16 @@ class UserService extends BaseService
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' => $data['password'],
+                'profile_picture' => $data['profile_picture'], 
                 'email_verified_at' => isset($data['email_verified']) && $data['email_verified'] === '1' ? now() : null,
                 'active' => isset($data['active']) && $data['active'] === '1',
             ]);
 
+           
+
             $user->syncRoles($data['roles'] ?? []);
 
+            
             if (! config('boilerplate.access.user.only_roles')) {
                 $user->syncPermissions($data['permissions'] ?? []);
             }
@@ -161,6 +171,8 @@ class UserService extends BaseService
                 'type' => $user->isMasterAdmin() ? $this->model::TYPE_ADMIN : $data['type'] ?? $user->type,
                 'name' => $data['name'],
                 'email' => $data['email'],
+                'profile_picture' => $data ['profile_picture'],
+
             ]);
 
             if (! $user->isMasterAdmin()) {
@@ -189,6 +201,9 @@ class UserService extends BaseService
      * @param  array  $data
      * @return User
      */
+
+
+     //update the profile picture of the user while logged in 
     public function updateProfile(User $user, array $data = []): User
     {
         $user->name = $data['name'] ?? null;
@@ -200,8 +215,29 @@ class UserService extends BaseService
             session()->flash('resent', true);
         }
 
+
+        if (isset($data['profile_picture'])) {
+            if ($user->profile_picture) {
+                Storage::disk('public')->delete($user->profile_picture);
+            }
+    
+           
+            $profilePictureName = uniqid('profile_') . '.' . $data['profile_picture']->getClientOriginalExtension();
+            $data['profile_picture']->storeAs('profile_pictures', $profilePictureName, 'public');
+            $user->profile_picture = 'profile_pictures/' . $profilePictureName;
+
+
+
+        }
+         
+       
         return tap($user)->save();
     }
+
+
+
+
+
 
     /**
      * @param  User  $user
@@ -322,6 +358,7 @@ class UserService extends BaseService
         return $this->model::create([
             'type' => $data['type'] ?? $this->model::TYPE_USER,
             'name' => $data['name'] ?? null,
+            'profile_picture' => $data['profile_picture'] ?? null,
             'email' => $data['email'] ?? null,
             'password' => $data['password'] ?? null,
             'provider' => $data['provider'] ?? null,
@@ -330,4 +367,13 @@ class UserService extends BaseService
             'active' => $data['active'] ?? true,
         ]);
     }
+
+
+    
+
+
+
+
+
+    
 }

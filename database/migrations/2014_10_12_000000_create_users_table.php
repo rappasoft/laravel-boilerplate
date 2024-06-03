@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->enum('type', [User::TYPE_ADMIN, User::TYPE_USER])->default(User::TYPE_USER);
             $table->string('name');
+            $table->string('profile_picture')->nullable();
             $table->string('email')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
@@ -33,6 +34,9 @@ class CreateUsersTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+
+        
     }
 
     /**
@@ -42,6 +46,9 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('profile_picture');
+        });
         Schema::dropIfExists('users');
     }
 }

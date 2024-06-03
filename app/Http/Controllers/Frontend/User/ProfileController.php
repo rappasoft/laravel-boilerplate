@@ -17,6 +17,7 @@ class ProfileController
      */
     public function update(UpdateProfileRequest $request, UserService $userService)
     {
+        
         $userService->updateProfile($request->user(), $request->validated());
 
         if (session()->has('resent')) {
@@ -24,5 +25,13 @@ class ProfileController
         }
 
         return redirect()->route('frontend.user.account', ['#information'])->withFlashSuccess(__('Profile successfully updated.'));
+    
+
+        
+        if($request -> hasFile('profile_picture')){
+            $userService ['profile_picture']= $request -> file('profile_picture') ->store('profile_picture','public');
+        }
+    
+    
     }
 }

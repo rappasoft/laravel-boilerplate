@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Frontend\User\AccountController;
-use App\Http\Controllers\Frontend\User\DashboardController;
-use App\Http\Controllers\Frontend\User\ProfileController;
 use Tabuna\Breadcrumbs\Trail;
+use App\Domains\Auth\Http\Middleware\AdminCheck;
+use App\Http\Controllers\Frontend\User\AccountController;
+use App\Http\Controllers\Frontend\User\ProfileController;
+use App\Http\Controllers\Frontend\User\DashboardController;
 
 /*
  * These frontend controllers require the user to be logged in
@@ -11,14 +12,17 @@ use Tabuna\Breadcrumbs\Trail;
  * These routes can not be hit if the user has not confirmed their email
  */
 Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', config('boilerplate.access.middleware.verified')]], function () {
-    Route::get('dashboard', [DashboardController::class, 'index'])
+
+//MAKE THE DASHBOARD ONLY ACCESSIBLE TO ADMINS 
+
+   Route::middleware(['auth', AdminCheck::class])->group(function () { Route::get('dashboard', [DashboardController::class, 'index'])
         ->middleware('is_user')
         ->name('dashboard')
         ->breadcrumbs(function (Trail $trail) {
             $trail->parent('frontend.index')
                 ->push(__('Dashboard'), route('frontend.user.dashboard'));
         });
-
+    });
     Route::get('account', [AccountController::class, 'index'])
         ->name('account')
         ->breadcrumbs(function (Trail $trail) {
@@ -26,5 +30,10 @@ Route::group(['as' => 'user.', 'middleware' => ['auth', 'password.expires', conf
                 ->push(__('My Account'), route('frontend.user.account'));
         });
 
-    Route::patch('profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+
+ 
+
+Route::match(['post', 'patch'], '/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
 });

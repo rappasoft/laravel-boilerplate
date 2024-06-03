@@ -13,8 +13,12 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="{{ mix('css/frontend.css') }}" rel="stylesheet">
+    
     <livewire:styles />
     @stack('after-styles')
+    @stack('css')
+    @stack('theme-css')
+    @yield('styles')
 </head>
 <body>
     @include('includes.partials.read-only')
@@ -24,6 +28,7 @@
     <div id="app">
         @include('frontend.includes.nav')
         @include('includes.partials.messages')
+     
 
         <main>
             @yield('content')
@@ -34,7 +39,12 @@
     <script src="{{ mix('js/manifest.js') }}"></script>
     <script src="{{ mix('js/vendor.js') }}"></script>
     <script src="{{ mix('js/frontend.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+
     <livewire:scripts />
     @stack('after-scripts')
+    @stack('js')
+
+    @yield('scripts')
 </body>
 </html>

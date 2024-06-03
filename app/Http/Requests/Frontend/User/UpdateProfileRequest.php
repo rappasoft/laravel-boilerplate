@@ -32,6 +32,10 @@ class UpdateProfileRequest extends FormRequest
             'email' => [Rule::requiredIf(function () {
                 return config('boilerplate.access.user.change_email');
             }), 'max:255', 'email', Rule::unique('users')->ignore($this->user()->id)],
+               'profile_picture' => ['nullable','image','max:2048'],
+
+
+            
         ];
     }
 }

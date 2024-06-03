@@ -1,0 +1,1500 @@
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
+    <link rel="icon" href="../../assets/img/favicon.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Creative Tim">
+    <title>
+      Charts | Material Dashboard 2 FREE Laravel by Creative Tim & UPDIVISION
+    </title>
+    <link rel="canonical" href="https://www.creative-tim.com/learning-lab/bootstrap/colors/material-dashboard" />
+
+    <meta name="keywords" content="creative tim, updivision, html dashboard, laravel, material, html css dashboard laravel, material dashboard laravel, laravel material dashboard, material admin, laravel dashboard, laravel admin, web dashboard, bootstrap 5 dashboard laravel, bootstrap 5, css3 dashboard, bootstrap 5 admin laravel, material dashboard bootstrap 5 laravel, frontend, responsive bootstrap 5 dashboard, material dashboard, material laravel bootstrap 5 dashboard" />
+    <meta name="description" content="A free Laravel Dashboard featuring dozens of UI components & basic Laravel CRUDs." />
+    <meta itemprop="name" content="Material Dashboard 2 Laravel by Creative Tim & UPDIVISION" />
+    <meta itemprop="description" content="A free Laravel Dashboard featuring dozens of UI components & basic Laravel CRUDs." />
+    <meta itemprop="image" content="https://s3.amazonaws.com/creativetim_bucket/products/598/original/material-dashboard-laravel.jpg" />
+    <meta name="twitter:card" content="product" />
+    <meta name="twitter:site" content="@creativetim" />
+    <meta name="twitter:title" content="Material Dashboard 2 Laravel by Creative Tim & UPDIVISION" />
+    <meta name="twitter:description" content="A free Laravel Dashboard featuring dozens of UI components & basic Laravel CRUDs." />
+    <meta name="twitter:creator" content="@creativetim" />
+    <meta name="twitter:image" content="https://s3.amazonaws.com/creativetim_bucket/products/598/original/material-dashboard-laravel.jpg" />
+    <meta property="fb:app_id" content="655968634437471" />
+    <meta property="og:title" content="Material Dashboard 2 Laravel by Creative Tim & UPDIVISION" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://www.creative-tim.com/live/material-dashboard-laravel" />
+    <meta property="og:image" content="https://s3.amazonaws.com/creativetim_bucket/products/598/original/material-dashboard-laravel.jpg" />
+    <meta property="og:description" content="A free Laravel Dashboard featuring dozens of UI components & basic Laravel CRUDs." />
+    <meta property="og:site_name" content="Creative Tim" />
+
+    <link rel="stylesheet" href="../../assets/css/nucleo-icons.css" type="text/css">
+
+    <link rel="stylesheet" href="../../assets/css/nextjs-material-dashboard-pro.min.css" type="text/css">
+
+    <link rel="stylesheet" href="../../assets/css/material-dashboard.min.css" type="text/css">
+    <link rel="stylesheet" href="../../assets/css/demo.css" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700" rel="stylesheet">
+
+    <link href="../../assets/css/nucleo-icons.css" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <!-- Anti-flicker snippet (recommended)  -->
+    <style>
+      .async-hide {
+        opacity: 0 !important
+      }
+    </style>
+    <script>
+      (function(a, s, y, n, c, h, i, d, e) {
+        s.className += ' ' + y;
+        h.start = 1 * new Date;
+        h.end = i = function() {
+          s.className = s.className.replace(RegExp(' ?' + y), '')
+        };
+        (a[n] = a[n] || []).hide = h;
+        setTimeout(function() {
+          i();
+          h.end = null
+        }, c);
+        h.timeout = c;
+      })(window, document.documentElement, 'async-hide', 'dataLayer', 4000, {
+        'GTM-K9BGS8K': true
+      });
+    </script>
+    <!-- Analytics-Optimize Snippet -->
+    <script>
+      (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+      ga('create', 'UA-46172202-22', 'auto', {
+        allowLinker: true
+      });
+      ga('set', 'anonymizeIp', true);
+      ga('require', 'GTM-K9BGS8K');
+      ga('require', 'displayfeatures');
+      ga('require', 'linker');
+      ga('linker:autoLink', ["2checkout.com", "avangate.com"]);
+    </script>
+    <!-- end Analytics-Optimize Snippet -->
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          'gtm.start': new Date().getTime(),
+          event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-NKDMSK6');
+    </script>
+    <!-- End Google Tag Manager -->
+    <!-- This is for docs typography and layout -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="../../assets/css/docs.css" rel="stylesheet" />
+  </head>
+  <body class="docs ">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKDMSK6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <header class="ct-docs-navbar">
+      <a class="ct-docs-navbar-brand" href="javascript:void(0)" aria-label="Bootstrap">
+        </a><a href="https://www.creative-tim.com/" class="ct-docs-navbar-text" target="_blank">
+          Creative Tim
+        </a>
+        <div class="ct-docs-navbar-border"></div>
+        <a href="../../documentation/getting-started/installation.html" class="ct-docs-navbar-text">
+          Docs
+        </a>
+
+      <ul class="ct-docs-navbar-nav-left">
+        <li class="ct-docs-nav-item-dropdown">
+          <a href="javascript:;" class="ct-docs-navbar-nav-link" role="button">
+            <span class="ct-docs-navbar-nav-link-inner--text">Live Preview</span>
+          </a>
+          <div class="ct-docs-navbar-dropdown-menu" aria-labelledby="DropdownPreview">
+            <a class="ct-docs-navbar-dropdown-item" href="https://material-dashboard-laravel.creative-tim.com" target="_blank">
+              Material Dashboard 2 Laravel
+            </a>
+            <a class="ct-docs-navbar-dropdown-item" href="https://material-dashboard-pro-laravel.creative-tim.com" target="_blank">
+              Material Dashboard 2 Pro Laravel
+            </a>
+          </div>
+        </li>
+        <li class="ct-docs-nav-item-dropdown">
+          <a href="javascript:;" class="ct-docs-navbar-nav-link" role="button">
+            <span class="ct-docs-navbar-nav-link-inner--text">Support</span>
+          </a>
+          <div class="ct-docs-navbar-dropdown-menu" aria-labelledby="DropdownSupport">
+            <a class="ct-docs-navbar-dropdown-item" href="https://github.com/creativetimofficial/material-dashboard-laravel/issues" target="_blank">
+              Material Dashboard 2 Laravel
+            </a>
+            <a class="ct-docs-navbar-dropdown-item" href="https://github.com/creativetimofficial/ct-material-dashboard-pro-laravel/issues" target="_blank">
+              Material Dashboard 2 Pro Laravel
+            </a>
+          </div>
+        </li>
+      </ul>
+      <ul class="ct-docs-navbar-nav-right">
+        <li class="ct-docs-navbar-nav-item">
+          <a class="ct-docs-navbar-nav-link" href="https://www.creative-tim.com/product/material-dashboard-laravel" target="_blank">Download Free</a>
+        </li>
+      </ul>
+      <a href="https://www.creative-tim.com/product/material-dashboard-pro-laravel" target="_blank" class="ct-docs-btn-upgrade">
+        <span class="ct-docs-btn-inner--icon">
+          <i class="fas fa-download mr-2" aria-hidden="true"></i>
+        </span>
+        <span class="ct-docs-navbar-nav-link-inner--text">Upgrade to PRO</span>
+      </a>
+      <button class="ct-docs-navbar-toggler" type="button">
+        <span class="ct-docs-navbar-toggler-icon"></span>
+      </button>
+    </header>
+    <div class="ct-docs-main-container">
+      <div class="ct-docs-main-content-row">
+        <div class="ct-docs-sidebar-col">
+          <nav class="ct-docs-sidebar-collapse-links">
+            <div class="ct-docs-sidebar-product">
+              <div class="ct-docs-sidebar-product-image">
+                <img src="../../assets/img/bootstrap.png">
+              </div>
+              <p class="ct-docs-sidebar-product-text">Material Dashboard</p>
+            </div>
+            <div class="ct-docs-toc-item-active">
+              <a class="ct-docs-toc-link" href="javascript:void(0)">
+                <div class="d-inline-block">
+                  <div class="icon icon-xs border-radius-md bg-gradient-primary text-center mr-2 d-flex align-items-center justify-content-center me-1">
+                    <i class="ni ni-active-40 text-white"></i>
+                  </div>
+                </div>
+                Getting started
+              </a>
+              <ul class="ct-docs-nav-sidenav ms-4 ps-1">
+                <li class="">
+                  <a href="../../documentation/getting-started/overview.html">
+                    Overview
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/getting-started/license.html">
+                    License
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/getting-started/installation.html">
+                    Installation
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/getting-started/build-tools.html">
+                    Build Tools
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/getting-started/bootstrap.html">
+                    What is Bootstrap
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="ct-docs-toc-item-active">
+                <a class="ct-docs-toc-link" href="javascript:void(0)">
+                  <div class="d-inline-block">
+                    <div class="icon icon-xs border-radius-md bg-gradient-primary text-center mr-2 d-flex align-items-center justify-content-center me-1">
+                      <i class="ni ni-folder-17 text-white"></i>
+                    </div>
+                  </div>
+                  Laravel
+                </a>
+                <ul class="ct-docs-nav-sidenav ms-4 ps-1">
+                  <li class="">
+                    <a href="../../documentation/laravel/login.html">
+                      Login
+                    </a>
+                  </li>
+                  <li class="">
+                    <a href="../../documentation/laravel/sign-up.html">
+                      Sign Up
+                    </a>
+                  </li>
+                  <li class="">
+                    <a href="../../documentation/laravel/forgot-password.html">
+                      Forgot Password
+                    </a>
+                  </li>
+                  <li class="">
+                    <a href="../../documentation/laravel/user-profile.html">
+                      User Profile
+                    </a>
+                  </li>
+                  <li class="">
+                    <a href="../../documentation/laravel/user-management.html">
+                      User Management
+                      <span class="ct-docs-sidenav-pro-badge">Pro</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            <div class="ct-docs-toc-item-active">
+              <a class="ct-docs-toc-link" href="javascript:void(0)">
+                <div class="d-inline-block">
+                  <div class="icon icon-xs border-radius-md bg-gradient-primary text-center mr-2 d-flex align-items-center justify-content-center me-1">
+                    <i class="ni ni-folder-17 text-white"></i>
+                  </div>
+                </div>
+                Foundation
+              </a>
+              <ul class="ct-docs-nav-sidenav ms-4 ps-1">
+                <li class=" ">
+                  <a href="../../documentation/foundation/colors.html">
+                    Colors
+                  </a>
+                </li>
+                <li class=" ">
+                  <a href="../../documentation/foundation/grid.html">
+                    Grid
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/foundation/typography.html">
+                    Typography
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/foundation/icons.html">
+                    Icons
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/foundation/utilities.html">
+                    Utilities
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="ct-docs-toc-item-active">
+              <a class="ct-docs-toc-link" href="javascript:void(0)">
+                <div class="d-inline-block">
+                  <div class="icon icon-xs border-radius-md bg-gradient-primary text-center mr-2 d-flex align-items-center justify-content-center me-1">
+                    <i class="ni ni-app text-white"></i>
+                  </div>
+                </div>
+                Components
+              </a>
+              <ul class="ct-docs-nav-sidenav ms-4 ps-1">
+                <li class="">
+                  <a href="../../documentation/components/alerts.html">
+                    Alerts
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/badge.html">
+                    Badge
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/buttons.html">
+                    Buttons
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/social-buttons.html">
+                    Social Buttons
+                    <span class="ct-docs-sidenav-pro-badge">Pro</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/cards.html">
+                    Cards
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/carousel.html">
+                    Carousel
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/collapse.html">
+                    Collapse
+                    <span class="ct-docs-sidenav-pro-badge">Pro</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/dropdowns.html">
+                    Dropdowns
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/forms.html">
+                    Forms
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/input-group.html">
+                    Input Group
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/list-group.html">
+                    List Group
+                    <span class="ct-docs-sidenav-pro-badge">Pro</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/modal.html">
+                    Modal
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/navs.html">
+                    Navs
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/navbar.html">
+                    Navbar
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/pagination.html">
+                    Pagination
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/popovers.html">
+                    Popovers
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/progress.html">
+                    Progress
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/spinners.html">
+                    Spinners
+                    <span class="ct-docs-sidenav-pro-badge">Pro</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/tables.html">
+                    Tables
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/components/tooltips.html">
+                    Tooltips
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="ct-docs-toc-item-active">
+              <a class="ct-docs-toc-link" href="javascript:void(0)">
+                <div class="d-inline-block">
+                  <div class="icon icon-xs border-radius-md bg-gradient-primary text-center mr-2 d-flex align-items-center justify-content-center me-1">
+                    <i class="ni ni-settings text-white"></i>
+                  </div>
+                </div>
+                Plugins
+              </a>
+              <ul class="ct-docs-nav-sidenav ms-4 ps-1">
+                <li class="">
+                  <a href="../../documentation/plugins/countUpJs.html">
+                    CountUp JS
+                    <span class="ct-docs-sidenav-pro-badge">Pro</span>
+                  </a>
+                </li>
+                <li class="ct-docs-nav-sidenav-active">
+                  <a href="../../documentation/plugins/charts.html">
+                    Charts
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/plugins/datepicker.html">
+                    Datepicker
+                    <span class="ct-docs-sidenav-pro-badge">Pro</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/plugins/fullcalendar.html">
+                    Fullcalendar
+                    <span class="ct-docs-sidenav-pro-badge">Pro</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/plugins/sliders.html">
+                    Sliders
+                    <span class="ct-docs-sidenav-pro-badge">Pro</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/plugins/choices.html">
+                    Choices
+                    <span class="ct-docs-sidenav-pro-badge">Pro</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/plugins/dropzone.html">
+                    Dropzone
+                    <span class="ct-docs-sidenav-pro-badge">Pro</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/plugins/datatables.html">
+                    Datatables
+                    <span class="ct-docs-sidenav-pro-badge">Pro</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/plugins/kanban.html">
+                    Kanban
+                    <span class="ct-docs-sidenav-pro-badge">Pro</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/plugins/photo-swipe.html">
+                    Photo Swipe
+                    <span class="ct-docs-sidenav-pro-badge">Pro</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/plugins/quill.html">
+                    Quill
+                    <span class="ct-docs-sidenav-pro-badge">Pro</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/plugins/sweet-alerts.html">
+                    Sweet Alerts
+                    <span class="ct-docs-sidenav-pro-badge">Pro</span>
+                  </a>
+                </li>
+                <li class="">
+                  <a href="../../documentation/plugins/wizard.html">
+                    Wizard
+                    <span class="ct-docs-sidenav-pro-badge">Pro</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div class="ct-docs-toc-col">
+          <ul class="section-nav">
+            <li class="toc-entry toc-h2"><a href="#usage">Usage</a></li>
+            <li class="toc-entry toc-h2"><a href="#examples">Examples</a>
+              <ul>
+                <li class="toc-entry toc-h3"><a href="#line-chart-example">Line chart example</a></li>
+                <li class="toc-entry toc-h3"><a href="#line-chart-with-gradient-example">Line chart with gradient example</a></li>
+                <li class="toc-entry toc-h3"><a href="#bar-chart-example">Bar chart example</a></li>
+                <li class="toc-entry toc-h3"><a href="#bar-chart-horizontal-example">Bar chart horizontal example</a></li>
+                <li class="toc-entry toc-h3"><a href="#mixed-chart-example">Mixed chart example</a></li>
+                <li class="toc-entry toc-h3"><a href="#bubble-chart-example">Bubble chart example</a></li>
+                <li class="toc-entry toc-h3"><a href="#doughnut-chart-example">Doughnut chart example</a></li>
+                <li class="toc-entry toc-h3"><a href="#pie-chart-example">Pie chart example</a></li>
+                <li class="toc-entry toc-h3"><a href="#radar-chart-example">Radar chart example</a></li>
+                <li class="toc-entry toc-h3"><a href="#polar-chart-example">Polar chart example</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <main class="ct-docs-content-col" role="main">
+          <div class="ct-docs-page-title">
+            <h1 class="ct-docs-page-h1-title" id="content">
+              Bootstrap Charts
+            </h1>
+            <div class="avatar-group mt-3">
+            </div>
+          </div>
+          <p class="ct-docs-page-title-lead">The Bootstrap charts refer to a graphical representation of data. <br> Keep reading these simple yet flexible Javascript charting for designers &amp; developers.</p>
+          <hr class="ct-docs-hr">
+          <h2 id="usage">Usage</h2>
+          <p>In order to use this charts on your page you will need to include the following script in the “Optional JS” area from the page’s footer:</p>
+          <div class="position-relative">
+            <div class="bd-clipboard"><span class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">Copy</span></div><figure class="highlight"><pre class=" language-html"><code class=" language-html" data-lang="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>../../assets/js/plugins/chartjs.min.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span></code></pre>
+            </figure>
+          </div>
+          <p>After that, simply copy one of the code examples demonstrated below and include it in your page.</p>
+          <h2 id="examples">Examples</h2>
+          <h3 id="line-chart-example">Line chart example</h3>
+          <div class="card mb-3">
+            <div class="card-body p-3">
+              <div class="chart">
+                <canvas id="line-chart" class="chart-canvas" height="375" style="display: block; box-sizing: border-box; height: 300px; width: 547.1px;" width="683"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="position-relative">
+            <div class="bd-clipboard"><span class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">Copy</span></div><figure class="highlight"><pre class=" language-html"><code class=" language-html" data-lang="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card mb-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-body p-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>line-chart<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart-canvas<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>300px<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+            </figure>
+          </div>
+          <h3 id="line-chart-with-gradient-example">Line chart with gradient example</h3>
+          <div class="card mb-3">
+            <div class="card-body p-3">
+              <div class="chart">
+                <canvas id="line-chart-gradient" class="chart-canvas" height="375" width="683" style="display: block; box-sizing: border-box; height: 300px; width: 547.1px;"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="position-relative">
+            <div class="bd-clipboard"><span class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">Copy</span></div><figure class="highlight"><pre class=" language-html"><code class=" language-html" data-lang="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card mb-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-body p-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>line-chart-gradient<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart-canvas<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>300px<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+            </figure>
+          </div>
+          <h3 id="bar-chart-example">Bar chart example</h3>
+          <div class="card mb-3">
+            <div class="card-body p-3">
+              <div class="chart">
+                <canvas id="bar-chart" class="chart-canvas" height="375" width="683" style="display: block; box-sizing: border-box; height: 300px; width: 547.1px;"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="position-relative">
+            <div class="bd-clipboard"><span class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">Copy</span></div><figure class="highlight"><pre class=" language-html"><code class=" language-html" data-lang="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card mb-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-body p-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>bar-chart<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart-canvas<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>300px<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+            </figure>
+          </div>
+          <h3 id="bar-chart-horizontal-example">Bar chart horizontal example</h3>
+          <div class="card mb-3">
+            <div class="card-body p-3">
+              <div class="chart">
+                <canvas id="bar-chart-horizontal" class="chart-canvas" height="375" width="683" style="display: block; box-sizing: border-box; height: 300px; width: 547.1px;"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="position-relative">
+            <div class="bd-clipboard"><span class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">Copy</span></div><figure class="highlight"><pre class=" language-html"><code class=" language-html" data-lang="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card mb-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-body p-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>bar-chart-horizontal<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart-canvas<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>300px<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+            </figure>
+          </div>
+          <h3 id="mixed-chart-example">Mixed chart example</h3>
+          <div class="card mb-3">
+            <div class="card-body p-3">
+              <div class="chart">
+                <canvas id="mixed-chart" class="chart-canvas" height="375" width="683" style="display: block; box-sizing: border-box; height: 300px; width: 547.1px;"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="position-relative">
+            <div class="bd-clipboard"><span class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">Copy</span></div><figure class="highlight"><pre class=" language-html"><code class=" language-html" data-lang="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card mb-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-body p-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mixed-chart<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart-canvas<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>300px<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+            </figure>
+          </div>
+          <h3 id="bubble-chart-example">Bubble chart example</h3>
+          <div class="card mb-3">
+            <div class="card-body p-3">
+              <div class="chart">
+                <canvas id="bubble-chart" class="chart-canvas" height="318" width="683" style="display: block; box-sizing: border-box; height: 255px; width: 547.1px;"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="position-relative">
+            <div class="bd-clipboard"><span class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">Copy</span></div><figure class="highlight"><pre class=" language-html"><code class=" language-html" data-lang="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card mb-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-body p-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>bubble-chart<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart-canvas<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>140px<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+            </figure>
+          </div>
+          <h3 id="doughnut-chart-example">Doughnut chart example</h3>
+          <div class="card mb-3">
+            <div class="card-body p-3">
+              <div class="chart">
+                <canvas id="doughnut-chart" class="chart-canvas" height="375" width="683" style="display: block; box-sizing: border-box; height: 300px; width: 547.1px;"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="position-relative">
+            <div class="bd-clipboard"><span class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">Copy</span></div><figure class="highlight"><pre class=" language-html"><code class=" language-html" data-lang="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card mb-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-body p-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>doughnut-chart<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart-canvas<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>300px<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+            </figure>
+          </div>
+          <h3 id="pie-chart-example">Pie chart example</h3>
+          <div class="card mb-3">
+            <div class="card-body p-3">
+              <div class="chart">
+                <canvas id="pie-chart" class="chart-canvas" height="375" width="683" style="display: block; box-sizing: border-box; height: 300px; width: 547.1px;"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="position-relative">
+            <div class="bd-clipboard"><span class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">Copy</span></div><figure class="highlight"><pre class=" language-html"><code class=" language-html" data-lang="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card mb-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-body p-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>pie-chart<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart-canvas<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>300px<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+            </figure>
+          </div>
+          <h3 id="radar-chart-example">Radar chart example</h3>
+          <div class="card mb-3">
+            <div class="card-body p-5">
+              <div class="chart">
+                <canvas id="radar-chart" class="chart-canvas" height="603" width="603" style="display: block; box-sizing: border-box; height: 483px; width: 483.1px;"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="position-relative">
+            <div class="bd-clipboard"><span class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">Copy</span></div><figure class="highlight"><pre class=" language-html"><code class=" language-html" data-lang="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card mb-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-body p-5<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>radar-chart<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart-canvas<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>100px<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+            </figure>
+          </div>
+          <h3 id="polar-chart-example">Polar chart example</h3>
+          <div class="card mb-3">
+            <div class="card-body p-5">
+              <div class="chart">
+                <canvas id="polar-chart" class="chart-canvas" height="603" width="603" style="display: block; box-sizing: border-box; height: 483px; width: 483.1px;"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="position-relative">
+            <div class="bd-clipboard"><span class="btn-clipboard" title="" data-bs-original-title="Copy to clipboard">Copy</span></div><figure class="highlight"><pre class=" language-html"><code class=" language-html" data-lang="html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card mb-3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>card-body p-5<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>polar-chart<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>chart-canvas<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>100px<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+            </figure>
+          </div>
+        </main>
+      </div>
+      <div class="ct-docs-main-footer-row">
+        <div class="ct-docs-main-footer-blank-col">
+        </div>
+        <div class="ct-docs-main-footer-col">
+          <footer class="ct-docs-footer">
+            <div class="ct-docs-footer-inner-row">
+              <div class="ct-docs-footer-col">
+                <div class="ct-docs-footer-copyright">
+                  © <script>
+                    document.write(new Date().getFullYear())
+                  </script> <a href="https://creative-tim.com" class="ct-docs-footer-copyright-author" target="_blank">Creative Tim</a> & <a href="https://www.updivision.com" class="ct-docs-footer-copyright-author" target="_blank">UPDIVISION</a>
+                </div>
+              </div>
+              <div class="ct-docs-footer-col">
+                <ul class="ct-docs-footer-nav-footer">
+                  <li>
+                    <a href="https://creative-tim.com" class="ct-docs-footer-nav-link" target="_blank">Creative Tim</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="https://www.updivision.com" class="ct-docs-footer-nav-link" target="_blank">UPDIVISION</a>
+                </li>
+                  <li>
+                    <a href="https://www.creative-tim.com/contact-us" class="ct-docs-footer-nav-link" target="_blank">Contact Us</a>
+                  </li>
+                  <li>
+                    <a href="https://creative-tim.com/blog" class="ct-docs-footer-nav-link" target="_blank">Blog</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </div>
+    <script src="../../assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="../../assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="../../assets/js/core/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="" type="text/javascript"></script>
+    <script src="" type="text/javascript"></script>
+    <script src="" type="text/javascript"></script>
+    <script src="../../assets/js/chartjs.min.js" type="text/javascript"></script>
+    <script src="../../assets/js/prism.js" type="text/javascript"></script>
+    <script src="../../assets/js/docs.min.js" type="text/javascript"></script>
+    <script src="../../assets/js/holder.min.js" type="text/javascript"></script>
+    <script src="../../assets/js/moment.min.js" type="text/javascript"></script>
+    <script src="../../assets/js/material-dashboard.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+      // Line chart
+      var ctx1 = document.getElementById("line-chart").getContext("2d");
+
+      new Chart(ctx1, {
+        type: "line",
+        data: {
+          labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          datasets: [{
+              label: "Organic Search",
+              tension: 0.4,
+              borderWidth: 0,
+              pointRadius: 2,
+              pointBackgroundColor: "#e3316e",
+              borderColor: "#e3316e",
+              borderWidth: 3,
+              backgroundColor: 'transparent',
+              data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+              maxBarThickness: 6
+            },
+            {
+              label: "Referral",
+              tension: 0.4,
+              borderWidth: 0,
+              pointRadius: 2,
+              pointBackgroundColor: "#3A416F",
+              borderColor: "#3A416F",
+              borderWidth: 3,
+              backgroundColor: 'transparent',
+              data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
+              maxBarThickness: 6
+            },
+            {
+              label: "Direct",
+              tension: 0.4,
+              borderWidth: 0,
+              pointRadius: 2,
+              pointBackgroundColor: "#17c1e8",
+              borderColor: "#17c1e8",
+              borderWidth: 3,
+              backgroundColor: 'transparent',
+              data: [40, 80, 70, 90, 30, 90, 140, 130, 200],
+              maxBarThickness: 6
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            }
+          },
+          interaction: {
+            intersect: false,
+            mode: 'index',
+          },
+          scales: {
+            y: {
+              grid: {
+                drawBorder: false,
+                display: true,
+                drawOnChartArea: true,
+                drawTicks: false,
+                borderDash: [5, 5]
+              },
+              ticks: {
+                display: true,
+                padding: 10,
+                color: '#b2b9bf',
+                font: {
+                  size: 11,
+                  family: "Open Sans",
+                  style: 'normal',
+                  lineHeight: 2
+                },
+              }
+            },
+            x: {
+              grid: {
+                drawBorder: false,
+                display: true,
+                drawOnChartArea: true,
+                drawTicks: true,
+                borderDash: [5, 5]
+              },
+              ticks: {
+                display: true,
+                color: '#b2b9bf',
+                padding: 10,
+                font: {
+                  size: 11,
+                  family: "Open Sans",
+                  style: 'normal',
+                  lineHeight: 2
+                },
+              }
+            },
+          },
+        },
+      });
+
+      // Line chart with gradient
+      var ctx2 = document.getElementById("line-chart-gradient").getContext("2d");
+
+      new Chart(ctx2, {
+        type: "line",
+        data: {
+          labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          datasets: [{
+              label: "Mobile apps",
+              tension: 0.4,
+              borderWidth: 0,
+              pointRadius: 0,
+              borderColor: "#e3316e",
+              borderWidth: 3,
+              backgroundColor: 'transparent',
+              fill: true,
+              data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+              maxBarThickness: 6
+
+            },
+            {
+              label: "Websites",
+              tension: 0.4,
+              borderWidth: 0,
+              pointRadius: 0,
+              borderColor: "#3A416F",
+              borderWidth: 3,
+              backgroundColor: 'transparent',
+              fill: true,
+              data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
+              maxBarThickness: 6
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            }
+          },
+          interaction: {
+            intersect: false,
+            mode: 'index',
+          },
+          scales: {
+            y: {
+              grid: {
+                drawBorder: false,
+                display: true,
+                drawOnChartArea: true,
+                drawTicks: false,
+                borderDash: [5, 5]
+              },
+              ticks: {
+                display: true,
+                padding: 10,
+                color: '#b2b9bf',
+                font: {
+                  size: 11,
+                  family: "Open Sans",
+                  style: 'normal',
+                  lineHeight: 2
+                },
+              }
+            },
+            x: {
+              grid: {
+                drawBorder: false,
+                display: false,
+                drawOnChartArea: false,
+                drawTicks: false,
+                borderDash: [5, 5]
+              },
+              ticks: {
+                display: true,
+                color: '#b2b9bf',
+                padding: 10,
+                font: {
+                  size: 11,
+                  family: "Open Sans",
+                  style: 'normal',
+                  lineHeight: 2
+                },
+              }
+            },
+          },
+        },
+      });
+
+      // Doughnut chart
+      var ctx3 = document.getElementById("doughnut-chart").getContext("2d");
+
+      new Chart(ctx3, {
+        type: "doughnut",
+        data: {
+          labels: ['Creative Tim', 'Github', 'Bootsnipp', 'Dev.to', 'Codeinwp'],
+          datasets: [{
+            label: "Projects",
+            weight: 9,
+            cutout: 60,
+            tension: 0.9,
+            pointRadius: 2,
+            borderWidth: 2,
+            backgroundColor: ['#03a9f4', '#3A416F', '#fb8c00', '#a8b8d8', '#e3316e'],
+            data: [15, 20, 12, 60, 20],
+            fill: false
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            }
+          },
+          interaction: {
+            intersect: false,
+            mode: 'index',
+          },
+          scales: {
+            y: {
+              grid: {
+                drawBorder: false,
+                display: false,
+                drawOnChartArea: false,
+                drawTicks: false,
+              },
+              ticks: {
+                display: false
+              }
+            },
+            x: {
+              grid: {
+                drawBorder: false,
+                display: false,
+                drawOnChartArea: false,
+                drawTicks: false,
+              },
+              ticks: {
+                display: false,
+              }
+            },
+          },
+        },
+      });
+
+      // Pie chart
+      var ctx4 = document.getElementById("pie-chart").getContext("2d");
+
+      new Chart(ctx4, {
+        type: "pie",
+        data: {
+          labels: ['Facebook', 'Direct', 'Organic', 'Referral'],
+          datasets: [{
+            label: "Projects",
+            weight: 9,
+            cutout: 0,
+            tension: 0.9,
+            pointRadius: 2,
+            borderWidth: 2,
+            backgroundColor: ['#17c1e8', '#e3316e', '#3A416F', '#a8b8d8'],
+            data: [15, 20, 12, 60],
+            fill: false
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            }
+          },
+          interaction: {
+            intersect: false,
+            mode: 'index',
+          },
+          scales: {
+            y: {
+              grid: {
+                drawBorder: false,
+                display: false,
+                drawOnChartArea: false,
+                drawTicks: false,
+              },
+              ticks: {
+                display: false
+              }
+            },
+            x: {
+              grid: {
+                drawBorder: false,
+                display: false,
+                drawOnChartArea: false,
+                drawTicks: false,
+              },
+              ticks: {
+                display: false,
+              }
+            },
+          },
+        },
+      });
+
+      // Bar chart
+      var ctx5 = document.getElementById("bar-chart").getContext("2d");
+
+      new Chart(ctx5, {
+        type: "bar",
+        data: {
+          labels: ['16-20', '21-25', '26-30', '31-36', '36-42', '42+'],
+          datasets: [{
+            label: "Sales by age",
+            weight: 5,
+            borderWidth: 0,
+            borderRadius: 4,
+            backgroundColor: '#3A416F',
+            data: [15, 20, 12, 60, 20, 15],
+            fill: false,
+            maxBarThickness: 35
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            }
+          },
+          scales: {
+            y: {
+              grid: {
+                drawBorder: false,
+                display: true,
+                drawOnChartArea: true,
+                drawTicks: false,
+                borderDash: [5, 5]
+              },
+              ticks: {
+                display: true,
+                padding: 10,
+                color: '#9ca2b7'
+              }
+            },
+            x: {
+              grid: {
+                drawBorder: false,
+                display: false,
+                drawOnChartArea: true,
+                drawTicks: true,
+              },
+              ticks: {
+                display: true,
+                color: '#9ca2b7',
+                padding: 10
+              }
+            },
+          },
+        },
+      });
+
+      // Bar chart horizontal
+      var ctx6 = document.getElementById("bar-chart-horizontal").getContext("2d");
+
+      new Chart(ctx6, {
+        type: "bar",
+        data: {
+          labels: ['16-20', '21-25', '26-30', '31-36', '36-42', '42+'],
+          datasets: [{
+            label: "Sales by age",
+            weight: 5,
+            borderWidth: 0,
+            borderRadius: 4,
+            backgroundColor: '#3A416F',
+            data: [15, 20, 12, 60, 20, 15],
+            fill: false
+          }],
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            }
+          },
+          scales: {
+            y: {
+              grid: {
+                drawBorder: false,
+                display: true,
+                drawOnChartArea: true,
+                drawTicks: false,
+                borderDash: [5, 5]
+              },
+              ticks: {
+                display: true,
+                padding: 10,
+                color: '#9ca2b7'
+              }
+            },
+            x: {
+              grid: {
+                drawBorder: false,
+                display: false,
+                drawOnChartArea: true,
+                drawTicks: true,
+              },
+              ticks: {
+                display: true,
+                color: '#9ca2b7',
+                padding: 10
+              }
+            },
+          },
+        },
+      });
+
+      // Mixed chart
+      var ctx7 = document.getElementById("mixed-chart").getContext("2d");
+
+      new Chart(ctx7, {
+        data: {
+          labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          datasets: [{
+              type: "bar",
+              label: "Organic Search",
+              weight: 5,
+              tension: 0.4,
+              borderWidth: 0,
+              pointBackgroundColor: "#3A416F",
+              borderColor: "#3A416F",
+              backgroundColor: '#3A416F',
+              borderRadius: 4,
+              borderSkipped: false,
+              data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+              maxBarThickness: 10,
+            },
+            {
+              type: "line",
+              label: "Referral",
+              tension: 0.4,
+              borderWidth: 0,
+              pointRadius: 0,
+              pointBackgroundColor: "#e3316e",
+              borderColor: "#e3316e",
+              borderWidth: 3,
+              backgroundColor: 'transparent',
+              data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
+              fill: true,
+            }
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            }
+          },
+          interaction: {
+            intersect: false,
+            mode: 'index',
+          },
+          scales: {
+            y: {
+              grid: {
+                drawBorder: false,
+                display: true,
+                drawOnChartArea: true,
+                drawTicks: false,
+                borderDash: [5, 5]
+              },
+              ticks: {
+                display: true,
+                padding: 10,
+                color: '#b2b9bf',
+                font: {
+                  size: 11,
+                  family: "Open Sans",
+                  style: 'normal',
+                  lineHeight: 2
+                },
+              }
+            },
+            x: {
+              grid: {
+                drawBorder: false,
+                display: true,
+                drawOnChartArea: true,
+                drawTicks: true,
+                borderDash: [5, 5]
+              },
+              ticks: {
+                display: true,
+                color: '#b2b9bf',
+                padding: 10,
+                font: {
+                  size: 11,
+                  family: "Open Sans",
+                  style: 'normal',
+                  lineHeight: 2
+                },
+              }
+            },
+          },
+        },
+      });
+
+      // Bubble chart
+      var ctx8 = document.getElementById("bubble-chart").getContext("2d");
+
+      new Chart(ctx8, {
+        type: "bubble",
+        data: {
+          labels: ['0', '10', '20', '30', '40', '50', '60', '70', '80', '90'],
+          datasets: [{
+              label: 'Dataset 1',
+              data: [{
+                x: 100,
+                y: 0,
+                r: 10
+              }, {
+                x: 60,
+                y: 30,
+                r: 20
+              }, {
+                x: 40,
+                y: 350,
+                r: 10
+              }, {
+                x: 80,
+                y: 80,
+                r: 10
+              }, {
+                x: 20,
+                y: 30,
+                r: 15
+              }, {
+                x: 0,
+                y: 100,
+                r: 5
+              }],
+              backgroundColor: '#e3316e',
+            },
+            {
+              label: 'Dataset 2',
+              data: [{
+                x: 70,
+                y: 40,
+                r: 10
+              }, {
+                x: 30,
+                y: 60,
+                r: 20
+              }, {
+                x: 10,
+                y: 300,
+                r: 25
+              }, {
+                x: 60,
+                y: 200,
+                r: 10
+              }, {
+                x: 50,
+                y: 300,
+                r: 15
+              }, {
+                x: 20,
+                y: 350,
+                r: 5
+              }],
+              backgroundColor: '#3A416F',
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            y: {
+              grid: {
+                drawBorder: false,
+                display: true,
+                drawOnChartArea: true,
+                drawTicks: false,
+                borderDash: [5, 5]
+              },
+              ticks: {
+                display: true,
+                padding: 10,
+                color: '#b2b9bf',
+                font: {
+                  size: 11,
+                  family: "Open Sans",
+                  style: 'normal',
+                  lineHeight: 2
+                },
+              }
+            },
+            x: {
+              grid: {
+                drawBorder: false,
+                display: true,
+                drawOnChartArea: true,
+                drawTicks: false,
+                borderDash: [5, 5]
+              },
+              ticks: {
+                display: true,
+                color: '#b2b9bf',
+                padding: 10,
+                font: {
+                  size: 11,
+                  family: "Open Sans",
+                  style: 'normal',
+                  lineHeight: 2
+                },
+              }
+            },
+          },
+        },
+      });
+
+      // Radar chart
+      var ctx9 = document.getElementById("radar-chart").getContext("2d");
+
+      new Chart(ctx9, {
+        type: "radar",
+        data: {
+          labels: ["English", "Maths", "Physics", "Chemistry", "Biology", "History"],
+          datasets: [{
+            label: "Student A",
+            backgroundColor: "rgba(58,65,111,0.2)",
+            data: [65, 75, 70, 80, 60, 80],
+            borderDash: [5, 5],
+          }, {
+            label: "Student B",
+            backgroundColor: "rgba(203,12,159,0.2)",
+            data: [54, 65, 60, 70, 70, 75]
+          }]
+        },
+        options: {
+          plugins: {
+            legend: {
+              display: false,
+            }
+          }
+        }
+      });
+
+      // Radar chart
+      var ctx10 = document.getElementById("polar-chart").getContext("2d");
+
+      new Chart(ctx10, {
+        type: "polarArea",
+        data: {
+          labels: [
+            'Red',
+            'Green',
+            'Yellow',
+            'Grey',
+            'Blue'
+          ],
+          datasets: [{
+            label: 'My First Dataset',
+            data: [11, 16, 7, 3, 14],
+            backgroundColor: ['#17c1e8', '#e3316e', '#3A416F', '#a8b8d8', '#4caf50'],
+          }]
+        },
+        options: {
+          plugins: {
+            legend: {
+              display: false,
+            }
+          }
+        }
+      });
+    </script>
+    <script>
+      Holder.addTheme('gray', {
+        bg: '#777',
+        fg: 'rgba(255,255,255,.75)',
+        font: 'Helvetica',
+        fontweight: 'normal'
+      })
+    </script>
+    <script>
+      // Facebook Pixel Code Don't Delete
+      ! function(f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function() {
+          n.callMethod ?
+            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window,
+        document, 'script', '//connect.facebook.net/en_US/fbevents.js');
+
+      try {
+        fbq('init', '111649226022273');
+        fbq('track', "PageView");
+
+      } catch (err) {
+        console.log('Facebook Track Error:', err);
+      }
+    </script>
+    <script src="../../assets/js/docs.js"></script>
+
+</body>
+</html>

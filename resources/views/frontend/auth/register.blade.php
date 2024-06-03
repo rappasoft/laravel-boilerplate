@@ -12,7 +12,9 @@
                     </x-slot>
 
                     <x-slot name="body">
-                        <x-forms.post :action="route('frontend.auth.register')">
+                        <x-forms.post :action="route('frontend.auth.register')" enctype="multipart/form-data" method="POST">
+                        
+                                 @csrf
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">@lang('Name')</label>
 
@@ -45,6 +47,25 @@
                                 </div>
                             </div><!--form-group-->
 
+
+
+
+
+                          <!-- HERE IS THE PROFILE PICTURE -->
+                            <div class="form-group row">
+                            
+                                <label for="name" class="col-md-4 col-form-label text-md-right">@lang('Profile Picture')</label>
+
+                                <div class="col-md-6">
+                                    <input type="file" name="profile_picture" id="profile_picture" class="form-control"  />
+                                 </div>
+                            </div>
+                            <!-- form-group -->
+
+
+
+
+                            
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="form-check">
@@ -70,6 +91,7 @@
                                     <button class="btn btn-primary" type="submit">@lang('Register')</button>
                                 </div>
                             </div><!--form-group-->
+                        
                         </x-forms.post>
                     </x-slot>
                 </x-frontend.card>
