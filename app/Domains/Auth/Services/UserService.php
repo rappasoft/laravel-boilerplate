@@ -13,6 +13,7 @@ use App\Exceptions\GeneralException;
 use App\Services\BaseService;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
@@ -202,8 +203,9 @@ class UserService extends BaseService
         }
 
         if (isset($data['profile_image'])) {
+            $file = base_path() . '/public/' . $user->profile_image;
+            File::delete($file);
             $user->profile_image = $this->upload_image($data['profile_image']);
-            $user->save();
         }
 
         return tap($user)->save();
