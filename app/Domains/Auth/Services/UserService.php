@@ -205,7 +205,7 @@ class UserService extends BaseService
         if (isset($data['profile_image'])) {
             $file = base_path() . '/public/' . $user->profile_image;
             File::delete($file);
-            $user->profile_image = $this->upload_image($data['profile_image']);
+            $user->profile_image = $this->upload_image($user->uuid, $data['profile_image']);
         }
 
         return tap($user)->save();
@@ -328,8 +328,9 @@ class UserService extends BaseService
     protected function createUser(array $data = []): User
     {
         $image = null;
+        $uuid = \Ramsey\Uuid\Uuid::uuid4()->toString();
         if (isset($data['profile_image'])) {
-            $image = $this->upload_image($data['profile_image']);
+            $image = $this->upload_image($uuid, $data['profile_image']);
         }
         return $this->model::create([
             'type' => $data['type'] ?? $this->model::TYPE_USER,
@@ -341,13 +342,15 @@ class UserService extends BaseService
             'email_verified_at' => $data['email_verified_at'] ?? null,
             'active' => $data['active'] ?? true,
             'profile_image' => $image ?? null,
+            'uuid' => $uuid,
         ]);
+
     }
 
-    public function upload_image($image): string
+    public function upload_image($special_path, $image): string
     {
         $image_file = $image;
-        $path = 'uploads/profile_images';
+        $path = 'uploads/profile_images/' . $special_path;
         $name = sha1(time() . $image_file->getClientOriginalName());
         $extension = $image_file->getClientOriginalExtension();
         $file_name = "{$name}.{$extension}";

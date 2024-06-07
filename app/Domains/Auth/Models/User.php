@@ -62,6 +62,7 @@ class User extends Authenticatable implements MustVerifyEmail, TwoFactorAuthenti
         'provider',
         'provider_id',
         'profile_image',
+        'uuid'
     ];
 
     /**
