@@ -14,6 +14,7 @@ use App\Services\BaseService;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class UserService.
@@ -23,7 +24,7 @@ class UserService extends BaseService
     /**
      * UserService constructor.
      *
-     * @param  User  $user
+     * @param User $user
      */
     public function __construct(User $user)
     {
@@ -32,7 +33,7 @@ class UserService extends BaseService
 
     /**
      * @param $type
-     * @param  bool|int  $perPage
+     * @param bool|int $perPage
      * @return mixed
      */
     public function getByType($type, $perPage = false)
@@ -45,7 +46,7 @@ class UserService extends BaseService
     }
 
     /**
-     * @param  array  $data
+     * @param array $data
      * @return mixed
      *
      * @throws GeneralException
@@ -78,7 +79,7 @@ class UserService extends BaseService
     {
         $user = $this->model::where('provider_id', $info->id)->first();
 
-        if (! $user) {
+        if (!$user) {
             DB::beginTransaction();
 
             try {
@@ -102,7 +103,7 @@ class UserService extends BaseService
     }
 
     /**
-     * @param  array  $data
+     * @param array $data
      * @return User
      *
      * @throws GeneralException
@@ -124,7 +125,7 @@ class UserService extends BaseService
 
             $user->syncRoles($data['roles'] ?? []);
 
-            if (! config('boilerplate.access.user.only_roles')) {
+            if (!config('boilerplate.access.user.only_roles')) {
                 $user->syncPermissions($data['permissions'] ?? []);
             }
         } catch (Exception $e) {
@@ -138,7 +139,7 @@ class UserService extends BaseService
         DB::commit();
 
         // They didn't want to auto verify the email, but do they want to send the confirmation email to do so?
-        if (! isset($data['email_verified']) && isset($data['send_confirmation_email']) && $data['send_confirmation_email'] === '1') {
+        if (!isset($data['email_verified']) && isset($data['send_confirmation_email']) && $data['send_confirmation_email'] === '1') {
             $user->sendEmailVerificationNotification();
         }
 
@@ -146,8 +147,8 @@ class UserService extends BaseService
     }
 
     /**
-     * @param  User  $user
-     * @param  array  $data
+     * @param User $user
+     * @param array $data
      * @return User
      *
      * @throws \Throwable
@@ -163,11 +164,11 @@ class UserService extends BaseService
                 'email' => $data['email'],
             ]);
 
-            if (! $user->isMasterAdmin()) {
+            if (!$user->isMasterAdmin()) {
                 // Replace selected roles/permissions
                 $user->syncRoles($data['roles'] ?? []);
 
-                if (! config('boilerplate.access.user.only_roles')) {
+                if (!config('boilerplate.access.user.only_roles')) {
                     $user->syncPermissions($data['permissions'] ?? []);
                 }
             }
@@ -185,8 +186,8 @@ class UserService extends BaseService
     }
 
     /**
-     * @param  User  $user
-     * @param  array  $data
+     * @param User $user
+     * @param array $data
      * @return User
      */
     public function updateProfile(User $user, array $data = []): User
@@ -200,13 +201,18 @@ class UserService extends BaseService
             session()->flash('resent', true);
         }
 
+        if (isset($data['profile_image'])) {
+            $user->profile_image = $this->upload_image($data['profile_image']);
+            $user->save();
+        }
+
         return tap($user)->save();
     }
 
     /**
-     * @param  User  $user
+     * @param User $user
      * @param $data
-     * @param  bool  $expired
+     * @param bool $expired
      * @return User
      *
      * @throws \Throwable
@@ -215,7 +221,7 @@ class UserService extends BaseService
     {
         if (isset($data['current_password'])) {
             throw_if(
-                ! Hash::check($data['current_password'], $user->password),
+                !Hash::check($data['current_password'], $user->password),
                 new GeneralException(__('That is not your old password.'))
             );
         }
@@ -231,7 +237,7 @@ class UserService extends BaseService
     }
 
     /**
-     * @param  User  $user
+     * @param User $user
      * @param $status
      * @return User
      *
@@ -259,7 +265,7 @@ class UserService extends BaseService
     }
 
     /**
-     * @param  User  $user
+     * @param User $user
      * @return User
      *
      * @throws GeneralException
@@ -280,7 +286,7 @@ class UserService extends BaseService
     }
 
     /**
-     * @param  User  $user
+     * @param User $user
      * @return User
      *
      * @throws GeneralException
@@ -297,7 +303,7 @@ class UserService extends BaseService
     }
 
     /**
-     * @param  User  $user
+     * @param User $user
      * @return bool
      *
      * @throws GeneralException
@@ -314,11 +320,15 @@ class UserService extends BaseService
     }
 
     /**
-     * @param  array  $data
+     * @param array $data
      * @return User
      */
     protected function createUser(array $data = []): User
     {
+        $image = null;
+        if (isset($data['profile_image'])) {
+            $image = $this->upload_image($data['profile_image']);
+        }
         return $this->model::create([
             'type' => $data['type'] ?? $this->model::TYPE_USER,
             'name' => $data['name'] ?? null,
@@ -328,6 +338,19 @@ class UserService extends BaseService
             'provider_id' => $data['provider_id'] ?? null,
             'email_verified_at' => $data['email_verified_at'] ?? null,
             'active' => $data['active'] ?? true,
+            'profile_image' => $image ?? null,
         ]);
+    }
+
+    public function upload_image($image): string
+    {
+        $image_file = $image;
+        $path = 'uploads/profile_images';
+        $name = sha1(time() . $image_file->getClientOriginalName());
+        $extension = $image_file->getClientOriginalExtension();
+        $file_name = "{$name}.{$extension}";
+        $image_file->move(public_path() . '/' . $path, $file_name);
+
+        return "{$path}/{$file_name}";
     }
 }

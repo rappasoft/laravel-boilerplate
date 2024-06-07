@@ -12,7 +12,7 @@
                     </x-slot>
 
                     <x-slot name="body">
-                        <x-forms.post :action="route('frontend.auth.register')">
+                        <x-forms.post :action="route('frontend.auth.register')" enctype="multipart/form-data">
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">@lang('Name')</label>
 
@@ -44,6 +44,14 @@
                                     <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="{{ __('Password Confirmation') }}" maxlength="100" required autocomplete="new-password" />
                                 </div>
                             </div><!--form-group-->
+
+                            <div class="form-group row">
+                                <label for="name" class="col-md-4 col-form-label text-md-right">@lang('Profile Image')</label>
+
+                                <div class="col-md-6">
+                                    <input type="file" name="profile_image" id="profile_image" class="form-control" style="padding: 2px" accept="image/*"/>
+                                </div>
+                            </div>
 
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-4">
