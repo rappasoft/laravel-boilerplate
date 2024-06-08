@@ -7,7 +7,13 @@
 
         <tr>
             <th>@lang('Avatar')</th>
-            <td><img src="{{ $logged_in_user->avatar }}" class="user-profile-image" /></td>
+            <td>
+                @if ($logged_in_user->profile_picture)
+                    <img style="max-height: 200px" src="{{ asset('profile_pictures/' . $logged_in_user->profile_picture) }}" class="user-profile-image" />
+                @else
+                    <img src="{{ $logged_in_user->avatar }}" class="user-profile-image" />
+                @endif
+            </td>
         </tr>
 
         <tr>

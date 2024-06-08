@@ -21,8 +21,15 @@
 
                 <tr>
                     <th>@lang('Avatar')</th>
-                    <td><img src="{{ $user->avatar }}" class="user-profile-image" /></td>
+                    <td>
+                        @if($user->profile_picture)
+                            <img style="height: 200px" src="{{ asset('profile_pictures/' . $user->profile_picture) }}" class="user-profile-image" />
+                        @else
+                            <img src="{{ $user->avatar }}" class="user-profile-image" />
+                        @endif
+                    </td>
                 </tr>
+
 
                 <tr>
                     <th>@lang('Name')</th>

@@ -36,7 +36,11 @@
             <x-utils.link class="c-header-nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                 <x-slot name="text">
                     <div class="c-avatar">
-                        <img class="c-avatar-img" src="{{ $logged_in_user->avatar }}" alt="{{ $logged_in_user->email ?? '' }}">
+                        @if ($logged_in_user->profile_picture)
+                            <img class="c-avatar-img" src="{{ asset('profile_pictures/' . $logged_in_user->profile_picture) }}" alt="{{ $logged_in_user->email ?? '' }}">
+                        @else
+                            <img class="c-avatar-img" src="{{ $logged_in_user->avatar }}" alt="{{ $logged_in_user->email ?? '' }}">
+                        @endif
                     </div>
                 </x-slot>
             </x-utils.link>

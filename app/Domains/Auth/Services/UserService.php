@@ -14,6 +14,9 @@ use App\Services\BaseService;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Class UserService.
@@ -52,19 +55,34 @@ class UserService extends BaseService
      */
     public function registerUser(array $data = []): User
     {
+        Log::info('Register user started', ['data' => $data]);
+
         DB::beginTransaction();
 
         try {
+            if (request()->hasFile('profile_picture')) {
+                $file = request()->file('profile_picture');
+                $filename = Str::slug($data['name']) . '_' . Str::uuid() . '.' . $file->getClientOriginalExtension();
+                Log::info('filename', ['filename' => $filename]);
+
+                $file->move(public_path('profile_pictures'), $filename);
+
+                $data['profile_picture'] = $filename;
+            } else {
+                $data['profile_picture'] = null;
+            }
+            Log::info('Calling create user', ['data' => $data]);
             $user = $this->createUser($data);
+
+            DB::commit();
+
+            return $user;
         } catch (Exception $e) {
             DB::rollBack();
+            Log::error('rolled back', ['exception' => $e->getMessage()]);
 
             throw new GeneralException(__('There was a problem creating your account.'));
         }
-
-        DB::commit();
-
-        return $user;
     }
 
     /**
@@ -113,13 +131,21 @@ class UserService extends BaseService
         DB::beginTransaction();
 
         try {
+            if (request()->hasFile('profile_picture')) {
+                $file = request()->file('profile_picture');
+                $filename = Str::slug($data['name']) . '_' . Str::uuid() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('profile_pictures'), $filename);
+                $data['profile_picture'] = $filename;
+            }
+
             $user = $this->createUser([
                 'type' => $data['type'],
                 'name' => $data['name'],
                 'email' => $data['email'],
-                'password' => $data['password'],
+                'password' => Hash::make($data['password']),
+                'active' => $data['active'] ?? true,
                 'email_verified_at' => isset($data['email_verified']) && $data['email_verified'] === '1' ? now() : null,
-                'active' => isset($data['active']) && $data['active'] === '1',
+                'profile_picture' => $data['profile_picture'] ?? null,
             ]);
 
             $user->syncRoles($data['roles'] ?? []);
@@ -127,23 +153,19 @@ class UserService extends BaseService
             if (! config('boilerplate.access.user.only_roles')) {
                 $user->syncPermissions($data['permissions'] ?? []);
             }
+
+            event(new UserCreated($user));
+
+            DB::commit();
+
+            return $user;
         } catch (Exception $e) {
             DB::rollBack();
 
             throw new GeneralException(__('There was a problem creating this user. Please try again.'));
         }
-
-        event(new UserCreated($user));
-
-        DB::commit();
-
-        // They didn't want to auto verify the email, but do they want to send the confirmation email to do so?
-        if (! isset($data['email_verified']) && isset($data['send_confirmation_email']) && $data['send_confirmation_email'] === '1') {
-            $user->sendEmailVerificationNotification();
-        }
-
-        return $user;
     }
+
 
     /**
      * @param  User  $user
@@ -157,11 +179,26 @@ class UserService extends BaseService
         DB::beginTransaction();
 
         try {
-            $user->update([
+            $updateData = [
                 'type' => $user->isMasterAdmin() ? $this->model::TYPE_ADMIN : $data['type'] ?? $user->type,
                 'name' => $data['name'],
                 'email' => $data['email'],
-            ]);
+            ];
+
+            if (request()->hasFile('profile_picture')) {
+                $file = request()->file('profile_picture');
+                $filename = Str::slug($user->name) . '_' . Str::uuid() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('profile_pictures'), $filename);
+
+                if ($user->profile_picture && file_exists(public_path('profile_pictures/' . $user->profile_picture))) {
+                    Log::info('Deleting old profile picture', ['path' => public_path('profile_pictures/' . $user->profile_picture)]);
+                    unlink(public_path('profile_pictures/' . $user->profile_picture));
+                }
+
+                $updateData['profile_picture'] = $filename;
+            }
+
+            $user->update($updateData);
 
             if (! $user->isMasterAdmin()) {
                 // Replace selected roles/permissions
@@ -171,18 +208,21 @@ class UserService extends BaseService
                     $user->syncPermissions($data['permissions'] ?? []);
                 }
             }
+
+            event(new UserUpdated($user));
+
+            DB::commit();
+
+            return $user;
         } catch (Exception $e) {
             DB::rollBack();
 
+            Log::error('Error updating user', ['exception' => $e->getMessage()]);
+
             throw new GeneralException(__('There was a problem updating this user. Please try again.'));
         }
-
-        event(new UserUpdated($user));
-
-        DB::commit();
-
-        return $user;
     }
+
 
     /**
      * @param  User  $user
@@ -191,16 +231,43 @@ class UserService extends BaseService
      */
     public function updateProfile(User $user, array $data = []): User
     {
-        $user->name = $data['name'] ?? null;
+        DB::beginTransaction();
 
-        if ($user->canChangeEmail() && $user->email !== $data['email']) {
-            $user->email = $data['email'];
-            $user->email_verified_at = null;
-            $user->sendEmailVerificationNotification();
-            session()->flash('resent', true);
+        try {
+            $user->name = $data['name'] ?? null;
+
+            if ($user->canChangeEmail() && $user->email !== $data['email']) {
+                $user->email = $data['email'];
+                $user->email_verified_at = null;
+                $user->sendEmailVerificationNotification();
+                session()->flash('resent', true);
+            }
+
+            if (request()->hasFile('profile_picture')) {
+                Log::info('profile_picture update');
+
+                $file = request()->file('profile_picture');
+
+                $filename = Str::slug($user->name) . '_' . Str::uuid() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('profile_pictures'), $filename);
+
+                if ($user->profile_picture && file_exists(public_path('profile_pictures/' . $user->profile_picture))) {
+                    Log::info('old profile_picture delete', ['path' => public_path('profile_pictures/' . $user->profile_picture)]);
+                    unlink(public_path('profile_pictures/' . $user->profile_picture));
+                }
+                $user->profile_picture = $filename;
+            }
+
+            $user->save();
+
+            DB::commit();
+
+            return $user;
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            throw new GeneralException(__('There was a problem updating your profile.'));
         }
-
-        return tap($user)->save();
     }
 
     /**
@@ -323,11 +390,12 @@ class UserService extends BaseService
             'type' => $data['type'] ?? $this->model::TYPE_USER,
             'name' => $data['name'] ?? null,
             'email' => $data['email'] ?? null,
-            'password' => $data['password'] ?? null,
+            'password' => Hash::make($data['password'] ?? null),
             'provider' => $data['provider'] ?? null,
             'provider_id' => $data['provider_id'] ?? null,
             'email_verified_at' => $data['email_verified_at'] ?? null,
             'active' => $data['active'] ?? true,
+            'profile_picture' => $data['profile_picture'] ?? null,
         ]);
     }
 }

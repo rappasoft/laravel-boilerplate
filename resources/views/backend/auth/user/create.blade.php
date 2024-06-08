@@ -5,7 +5,7 @@
 @section('title', __('Create User'))
 
 @section('content')
-    <x-forms.post :action="route('admin.auth.user.store')">
+    <x-forms.post :action="route('admin.auth.user.store')" enctype="multipart/form-data">
         <x-backend.card>
             <x-slot name="header">
                 @lang('Create User')
@@ -106,6 +106,20 @@
                             </div><!--form-group-->
                         </div>
                     </div>
+
+                    <div class="form-group row">
+                        <label for="profile_picture" class="col-md-2 col-form-label">@lang('Profile Picture')</label>
+
+                        <div class="col-md-10">
+                            <input type="file" name="profile_picture" id="profile_picture" class="form-control @error('profile_picture') is-invalid @enderror">
+
+                            @error('profile_picture')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div><!--form-group-->
 
                     @include('backend.auth.includes.roles')
 

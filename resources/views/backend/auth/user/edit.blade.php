@@ -5,7 +5,7 @@
 @section('title', __('Update User'))
 
 @section('content')
-    <x-forms.patch :action="route('admin.auth.user.update', $user)">
+    <x-forms.patch :action="route('admin.auth.user.update', $user)" enctype="multipart/form-data">
         <x-backend.card>
             <x-slot name="header">
                 @lang('Update User')
@@ -43,6 +43,26 @@
 
                         <div class="col-md-10">
                             <input type="email" name="email" id="email" class="form-control" placeholder="{{ __('E-mail Address') }}" value="{{ old('email') ?? $user->email }}" maxlength="255" required />
+                        </div>
+                    </div><!--form-group-->
+
+                    <div class="form-group row">
+                        <label for="profile_picture" class="col-md-2 col-form-label">@lang('Profile Picture')</label>
+
+                        <div class="col-md-10">
+                            <input type="file" name="profile_picture" id="profile_picture" class="form-control @error('profile_picture') is-invalid @enderror">
+
+                            @error('profile_picture')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+
+                            @if ($user->profile_picture)
+                                <img style="height: 200px" src="{{ asset('profile_pictures/' . $user->profile_picture) }}" class="mt-2 user-profile-image" alt="{{ $user->name }}" style="max-width: 150px;">
+                            @else
+                                <img src="{{ $user->avatar }}" class="mt-2 user-profile-image" alt="{{ $user->name }}" style="max-width: 150px;">
+                            @endif
                         </div>
                     </div><!--form-group-->
 

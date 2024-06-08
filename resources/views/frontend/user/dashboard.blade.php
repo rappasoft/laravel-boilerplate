@@ -10,7 +10,6 @@
                     <x-slot name="header">
                         @lang('Dashboard')
                     </x-slot>
-
                     <x-slot name="body">
                         @lang('You are logged in!')
                     </x-slot>
