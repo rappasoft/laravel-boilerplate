@@ -31,7 +31,7 @@ class BladeServiceProvider extends ServiceProvider
          * courtesy of albertcht/invisible-recaptcha
          */
         Blade::directive('captcha', function ($lang) {
-            $html = new HtmlString('<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>');
+            $html = new HtmlString('<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js"></script>');
             $html .= new HtmlString('<div id="_g-recaptcha"></div>');
 
             if (config('boilerplate.access.captcha.configs.options.hidden')) {
