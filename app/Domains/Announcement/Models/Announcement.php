@@ -7,6 +7,7 @@ use Database\Factories\AnnouncementFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 /**
  * Class Announcement.
@@ -22,6 +23,11 @@ class Announcement extends Model
 
     protected static $logFillable = true;
     protected static $logOnlyDirty = true;
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults();
+    }
 
     /**
      * @var string[]

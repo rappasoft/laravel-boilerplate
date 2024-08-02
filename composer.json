@@ -9,38 +9,39 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.4|^8.0",
-        "arcanedev/log-viewer": "8.x",
-        "darkghosthunter/laraguard": "^3.0",
-        "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "jamesmills/laravel-timezone": "^1.9",
-        "lab404/laravel-impersonate": "^1.6",
-        "langleyfoxall/laravel-nist-password-rules": "^4.1",
-        "laravel/framework": "^8.54",
-        "laravel/sanctum": "^2.11",
-        "laravel/socialite": "^5.0",
-        "laravel/tinker": "^2.5",
-        "laravel/ui": "^3.0",
+        "php": "^8.0.2",
+        "arcanedev/log-viewer": "^9.0.0",
+        "darkghosthunter/laraguard": "*",
+        "fruitcake/laravel-cors": "^3.0.0",
+        "guzzlehttp/guzzle": "^7.2",
+        "jamesmills/laravel-timezone": "1.13.0",
+        "lab404/laravel-impersonate": "^1.7.5",
+        "langleyfoxall/laravel-nist-password-rules": "^6.1.0",
+        "laravel/framework": "^9.19",
+        "laravel/sanctum": "^3.3.3",
+        "laravel/socialite": "^5.15.1",
+        "laravel/tinker": "^2.9.0",
+        "laravel/ui": "4.5.2",
         "livewire/livewire": "^2.0",
         "rappasoft/laravel-livewire-tables": "^1.0",
-        "rappasoft/lockout": "^3.0",
-        "spatie/laravel-activitylog": "^3.14",
-        "spatie/laravel-permission": "^3.11",
-        "tabuna/breadcrumbs": "^2.2"
+        "rappasoft/lockout": "^4.0.0",
+        "spatie/laravel-activitylog": "^4.8.0",
+        "spatie/laravel-permission": "^6.9",
+        "tabuna/breadcrumbs": "^3.0.0"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.2",
-        "barryvdh/laravel-ide-helper": "^2.6",
-        "brianium/paratest": "^6.2",
-        "facade/ignition": "^2.5",
+        "barryvdh/laravel-debugbar": "^3.13.5",
+        "barryvdh/laravel-ide-helper": "^2.15.1",
+        "brianium/paratest": "^6.11.1",
         "fakerphp/faker": "^1.9.1",
-        "friendsofphp/php-cs-fixer": "^2.16",
+        "friendsofphp/php-cs-fixer": "^3.61.1",
+        "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
-        "mockery/mockery": "^1.4.2",
-        "nunomaduro/collision": "^5.0",
-        "phpunit/phpunit": "^9.3.3",
-        "roave/security-advisories": "dev-master"
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^6.1",
+        "phpunit/phpunit": "^9.5.10",
+        "roave/security-advisories": "dev-latest",
+        "spatie/laravel-ignition": "^1.0"
     },
     "autoload": {
         "psr-4": {
@@ -98,7 +99,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
