@@ -1,16 +1,16 @@
-## Laravel Boilerplate (Current: Laravel 9.*)
+## Laravel Boilerplate (Current: Laravel 10.*)
 
 ### Demo Credentials
 
 **Admin:** admin@admin.com  
-**Password:** secret
+**Password:** S3cret@2024
 
 **User:** user@user.com  
-**Password:** secret
+**Password:** S3cret@2024
 
 ### Official Documentation
 
-[Click here for the official Laravel documentation](https://laravel.com/docs/9.x)
+[Click here for the official Laravel documentation](https://laravel.com/docs/10.x)
 
 
 ### Introduction
