@@ -1,4 +1,4 @@
-## Laravel Boilerplate (Current: Laravel 8.*) ([Demo](https://demo.laravel-boilerplate.com))
+## Laravel Boilerplate (Current: Laravel 9.*) ([Demo](https://demo.laravel-boilerplate.com))
 
 [![Latest Stable Version](https://poser.pugx.org/rappasoft/laravel-boilerplate/v/stable)](https://packagist.org/packages/rappasoft/laravel-boilerplate)
 [![Latest Unstable Version](https://poser.pugx.org/rappasoft/laravel-boilerplate/v/unstable)](https://packagist.org/packages/rappasoft/laravel-boilerplate) 
@@ -8,8 +8,6 @@
 <br/>
 ![GitHub contributors](https://img.shields.io/github/contributors/rappasoft/laravel-boilerplate.svg)
 ![GitHub stars](https://img.shields.io/github/stars/rappasoft/laravel-boilerplate.svg?style=social)
-
-### Enjoying this project? [Buy me a beer 🍺](https://www.buymeacoffee.com/rappasoft)
 
 ### Demo Credentials
 
@@ -33,7 +31,7 @@ Laravel Boilerplate provides you with a massive head start on any size web appli
 
 ### Issues
 
-If you come across any issues please [report them here](https://github.com/rappasoft/laravel-boilerplate/issues).
+If you come across any issues please [report them here](https://github.com/deanz93/laravel-boilerplate/issues).
 
 ### Contributing
 
