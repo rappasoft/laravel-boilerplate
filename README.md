@@ -1,4 +1,4 @@
-## Laravel Boilerplate (Current: Laravel 9.*) ([Demo](https://demo.laravel-boilerplate.com))
+## Laravel Boilerplate (Current: Laravel 9.*)
 
 ### Demo Credentials
 
