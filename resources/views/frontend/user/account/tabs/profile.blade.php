@@ -34,12 +34,12 @@
 
         <tr>
             <th>@lang('Account Created')</th>
-            <td>@displayDate($logged_in_user->created_at) ({{ $logged_in_user->created_at->diffForHumans() }})</td>
+            <td>{{ $logged_in_user->created_at->diffForHumans() }}</td>
         </tr>
 
         <tr>
             <th>@lang('Last Updated')</th>
-            <td>@displayDate($logged_in_user->updated_at) ({{ $logged_in_user->updated_at->diffForHumans() }})</td>
+            <td>{{ $logged_in_user->updated_at->diffForHumans() }}</td>
         </tr>
     </table>
 </div><!--table-responsive-->

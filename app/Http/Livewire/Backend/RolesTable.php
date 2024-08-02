@@ -15,11 +15,15 @@ class RolesTable extends DataTableComponent
     /**
      * @return Builder
      */
-    public function query(): Builder
+    public function builder(): Builder
     {
-        return Role::with('permissions:id,name,description')
-            ->withCount('users')
-            ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term));
+        return Role::query()->with('permissions:id,name,description')
+            ->withCount('users');
+    }
+
+    public function configure(): void
+    {
+        $this->setPrimaryKey('id');
     }
 
     public function columns(): array
@@ -29,10 +33,14 @@ class RolesTable extends DataTableComponent
                 ->sortable(),
             Column::make(__('Name'))
                 ->sortable(),
-            Column::make(__('Permissions')),
-            Column::make(__('Number of Users'), 'users_count')
-                ->sortable(),
-            Column::make(__('Actions')),
+            // Column::make(__('Permissions')),
+            Column::make('Number of Users')
+                ->sortable()
+                ->label(fn($row) => $row->users_count),
+                Column::make('Actions')
+                ->label(function ($row) {
+                    return view('backend.auth.role.includes.actions', ['model' => $row]);
+                }),
         ];
     }
 

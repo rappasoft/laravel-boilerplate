@@ -96,11 +96,11 @@
 
         <x-slot name="footer">
             <small class="float-right text-muted">
-                <strong>@lang('Account Created'):</strong> @displayDate($user->created_at) ({{ $user->created_at->diffForHumans() }}),
-                <strong>@lang('Last Updated'):</strong> @displayDate($user->updated_at) ({{ $user->updated_at->diffForHumans() }})
+                <strong>@lang('Account Created'):</strong> {{ $user->created_at->diffForHumans() }},
+                <strong>@lang('Last Updated'):</strong> {{ $user->updated_at->diffForHumans() }}
 
                 @if($user->trashed())
-                    <strong>@lang('Account Deleted'):</strong> @displayDate($user->deleted_at) ({{ $user->deleted_at->diffForHumans() }})
+                    <strong>@lang('Account Deleted'):</strong> {{ $user->deleted_at->diffForHumans() }}
                 @endif
             </small>
         </x-slot>

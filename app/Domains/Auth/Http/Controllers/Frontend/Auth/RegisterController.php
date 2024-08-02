@@ -7,7 +7,7 @@ use App\Rules\Captcha;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
+use Illuminate\Validation\Rules\Password;
 
 /**
  * Class RegisterController.
@@ -75,7 +75,7 @@ class RegisterController
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:100'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')],
-            'password' => array_merge(['max:100'], PasswordRules::register($data['email'] ?? null)),
+            'password' => array_merge(['max:100'], [Password::min(8)->letters()->mixedCase()->numbers()->symbols()]),
             'terms' => ['required', 'in:1'],
             'g-recaptcha-response' => ['required_if:captcha_status,true', new Captcha],
         ], [

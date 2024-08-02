@@ -5,7 +5,7 @@
     bootstrap="vendor/autoload.php"
     colors="true"
 >
-  <coverage processUncoveredFiles="true">
+  <coverage>
     <include>
       <directory suffix=".php">./app</directory>
     </include>

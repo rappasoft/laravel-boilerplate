@@ -6,7 +6,7 @@ use App\Domains\Auth\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use Rappasoft\LaravelLivewireTables\Views\Filter;
+use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
 
 /**
  * Class UsersTable.
@@ -45,10 +45,10 @@ class UsersTable extends DataTableComponent
     /**
      * @return Builder
      */
-    public function query(): Builder
+    public function builder(): Builder
     {
-        $query = User::with('roles', 'twoFactorAuth')->withCount('twoFactorAuth');
-
+        $query = User::query()->with('roles', 'twoFactorAuth')->withCount('twoFactorAuth');
+        // dd($query);
         if ($this->status === 'deleted') {
             $query = $query->onlyTrashed();
         } elseif ($this->status === 'deactivated') {
@@ -57,11 +57,7 @@ class UsersTable extends DataTableComponent
             $query = $query->onlyActive();
         }
 
-        return $query
-            ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term))
-            ->when($this->getFilter('type'), fn ($query, $type) => $query->where('type', $type))
-            ->when($this->getFilter('active'), fn ($query, $active) => $query->where('active', $active === 'yes'))
-            ->when($this->getFilter('verified'), fn ($query, $verified) => $verified === 'yes' ? $query->whereNotNull('email_verified_at') : $query->whereNull('email_verified_at'));
+        return $query;
     }
 
     /**
@@ -70,25 +66,42 @@ class UsersTable extends DataTableComponent
     public function filters(): array
     {
         return [
-            'type' => Filter::make('User Type')
-                ->select([
-                    '' => 'Any',
-                    User::TYPE_ADMIN => 'Administrators',
-                    User::TYPE_USER => 'Users',
-                ]),
-            'active' => Filter::make('Active')
-                ->select([
-                    '' => 'Any',
-                    'yes' => 'Yes',
-                    'no' => 'No',
-                ]),
-            'verified' => Filter::make('E-mail Verified')
-                ->select([
-                    '' => 'Any',
-                    'yes' => 'Yes',
-                    'no' => 'No',
-                ]),
+            SelectFilter::make('User Type')
+            ->options([
+                '' => 'All',
+                User::TYPE_ADMIN => 'Administrators',
+                User::TYPE_USER => 'Users',
+            ])->filter(function(Builder $builder, string $value) {
+                $builder->where('type', $value);
+            }),
+
+            SelectFilter::make('Active')
+            ->options([
+                '' => 'All',
+                1 => 'Active',
+                0 => 'Unactive',
+            ])->filter(function(Builder $builder, string $value) {
+                $builder->where('active', $value);
+            }),
+
+            SelectFilter::make('E-mail Verified')
+            ->options([
+                '' => 'All',
+                1 => 'Yes',
+                0 => 'No',
+            ])->filter(function(Builder $builder, string $value) {
+                if ($value === '1') {
+                    $builder->whereNot('email_verified_at', null);
+                } elseif ($value === '0') {
+                    $builder->where('email_verified_at', null);
+                }
+            }),
         ];
+    }
+
+    public function configure(): void
+    {
+        $this->setPrimaryKey('id');
     }
 
     /**
@@ -100,16 +113,21 @@ class UsersTable extends DataTableComponent
             Column::make(__('Type'))
                 ->sortable(),
             Column::make(__('Name'))
+                ->searchable()
                 ->sortable(),
             Column::make(__('E-mail'), 'email')
                 ->sortable(),
             Column::make(__('Verified'), 'email_verified_at')
                 ->sortable(),
-            Column::make(__('2FA'), 'two_factor_auth_count')
-                ->sortable(),
-            Column::make(__('Roles')),
-            Column::make(__('Additional Permissions')),
-            Column::make(__('Actions')),
+            Column::make('2FA')
+                ->sortable()
+                ->label(fn($row) => $row->two_factor_auth_count == 0 ? 'NA' : 'Active'),
+            Column::make('Roles')
+                ->label(fn($row) => $row->roles->pluck('name')->implode(', ')),
+            Column::make('Actions')
+                ->label(function ($row) {
+                    return view('backend.auth.user.includes.actions', ['user' => $row]);
+                }),
         ];
     }
 
