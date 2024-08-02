@@ -1,0 +1,26 @@
+# Here you can define shortcuts and aliases to common tasks (commands)
+# you will run in your local environment or CI or deploy.
+#  Use the scripts defined below with:
+#    $ kool run <script>
+# Learn more at: https://kool.dev/docs/getting-started/how-it-works#koolyml
+scripts:
+  composer: kool exec app composer
+  artisan: kool exec app php artisan
+  phpunit: kool exec app php ./vendor/bin/phpunit
+  setup:
+    - kool run before-start
+    - kool start
+    - kool run composer install
+    - kool run artisan key:generate
+  reset:
+    - kool run composer install
+    - kool run artisan migrate:fresh --seed
+    - kool run npm install
+  before-start:
+    - cp .env.example .env
+    - kool run npm install
+  # CLI access to MySQL
+  mysql: kool exec -e MYSQL_PWD=$DB_PASSWORD database mysql -u $DB_USERNAME $DB_DATABASE
+  # npm - helpers for JS handling
+  npm: kool docker kooldev/node:20 npm
+  npx: kool docker kooldev/node:20 npx
