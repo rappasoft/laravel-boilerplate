@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     git \
     libonig-dev \
     libxml2-dev \
+    curl \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install gd \
     && docker-php-ext-install intl \
@@ -23,6 +24,10 @@ RUN apt-get update && apt-get install -y \
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Install Node.js and npm
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs
 
 # Clean up the package cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -36,10 +41,8 @@ COPY . .
 # Install PHP dependencies
 RUN composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist || { tail -n 10 /var/log/php-fpm.log; exit 1; }
 
-# Install Node.js and npm for asset compilation (optional)
-RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
-    && apt-get install -y nodejs \
-    && npm install
+# Install NPM Dependencies
+RUN npm install
 
 # Compile front-end assets
 RUN npm run production
