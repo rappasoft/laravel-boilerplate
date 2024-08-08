@@ -95,4 +95,4 @@ jobs:
         username: YOUR_USERNAME
         host: YOUR_SERVER_IP
         password: ${{ secrets.SSH_PASSWORD }}
-        script: 'cd /var/www/html && ./server_deploy.sh'
+        script: 'cd /var/www/html && ./deployer.sh'
