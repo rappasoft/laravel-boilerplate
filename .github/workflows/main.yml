@@ -87,12 +87,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Deploy to production
-      uses: appleboy/ssh-action@master
-      with:
-        username: YOUR_USERNAME
-        host: YOUR_SERVER_IP
-        password: ${{ secrets.SSH_PASSWORD }}
-        script: 'cd /var/www/html && ./deployer.sh'
+      - name: Deploy to production
+        uses: appleboy/ssh-action@master
+        with:
+          username: YOUR_USERNAME
+          host: YOUR_SERVER_IP
+          key: ${{ secrets.SSH_KEY }}
+          script: 'cd /var/www/html && ./deployer.sh'
+          port: 22
+          protocol: tcp
+          timeout: 30s
+          command_timeout: 10m
