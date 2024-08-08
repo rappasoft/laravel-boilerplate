@@ -1,5 +1,5 @@
 # Use the official PHP image as the base image
-FROM php:7.4-fpm
+FROM php:8.2-fpm
 
 # Install system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
@@ -34,7 +34,7 @@ WORKDIR /var/www
 COPY . .
 
 # Install PHP dependencies
-RUN composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist
+RUN composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist || { tail -n 10 /var/log/php-fpm.log; exit 1; }
 
 # Install Node.js and npm for asset compilation (optional)
 RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
