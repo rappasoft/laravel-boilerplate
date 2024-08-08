@@ -1,4 +1,4 @@
-name: Laravel
+name: Laravell
 
 on: [push, pull_request]
 
