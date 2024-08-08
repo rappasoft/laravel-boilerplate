@@ -92,7 +92,7 @@ jobs:
       - name: Deploy to production
         uses: appleboy/ssh-action@master
         with:
-          username: YOUR_USERNAME
+          username: Asus
           host: 124.13.186.111
           key: ${{ secrets.SSH_KEY }}
           script: 'cd /var/www/html && ./deployer.sh'
