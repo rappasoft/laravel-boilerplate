@@ -92,10 +92,10 @@ jobs:
       - name: Deploy to production
         uses: appleboy/ssh-action@master
         with:
-          username: Asus
+          username: asus
           host: 124.13.186.111
           key: ${{ secrets.SSH_KEY }}
-          script: 'cd /var/www/html && ./deployer.sh'
+          script: 'cd C:\Github folder\laravel-boilerplate && ./deployer.sh'
           port: 22
           protocol: tcp
           timeout: 30s
