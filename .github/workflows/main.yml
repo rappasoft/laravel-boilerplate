@@ -93,7 +93,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           username: YOUR_USERNAME
-          host: YOUR_SERVER_IP
+          host: 124.13.186.111
           key: ${{ secrets.SSH_KEY }}
           script: 'cd /var/www/html && ./deployer.sh'
           port: 22
