@@ -21,8 +21,11 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install pcntl \
     && docker-php-ext-install exif
 
-# Install Composer (PHP package manager)
+# Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Clean up the package cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory inside the container
 WORKDIR /var/www
@@ -30,8 +33,8 @@ WORKDIR /var/www
 # Copy the Laravel application files into the container
 COPY . .
 
-# Install PHP dependencies using Composer
-RUN composer install --optimize-autoloader --no-dev
+# Install PHP dependencies
+RUN composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist
 
 # Install Node.js and npm for asset compilation (optional)
 RUN curl -fsSL https://deb.nodesource.com/setup_14.x | bash - \
