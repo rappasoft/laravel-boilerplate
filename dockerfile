@@ -1,60 +1,20 @@
-# Use the official PHP image as the base image
+# Start with a base image with PHP and Nginx
 FROM php:8.2-fpm
 
-# Install system dependencies and PHP extensions
-RUN apt-get update && apt-get install -y \
-    libpng-dev \
-    libjpeg-dev \
-    libfreetype6-dev \
-    libicu-dev \
-    libzip-dev \
-    unzip \
-    git \
-    libonig-dev \
-    libxml2-dev \
-    curl \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd \
-    && docker-php-ext-install intl \
-    && docker-php-ext-install mysqli pdo pdo_mysql \
-    && docker-php-ext-install bcmath \
-    && docker-php-ext-install soap \
-    && docker-php-ext-install pcntl \
-    && docker-php-ext-install exif
+# Install Nginx
+RUN apt-get update && apt-get install -y nginx
 
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+# Copy your application files to the container
+COPY . /var/www/html
 
-# Install Node.js and npm
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt-get install -y nodejs
+# Set permissions
+RUN chown -R www-data:www-data /var/www/html
 
-# Clean up the package cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+# Configure Nginx
+COPY ./nginx/default /etc/nginx/sites-available/default
 
-# Set the working directory inside the container
-WORKDIR /var/www
+# Expose port 80
+EXPOSE 80
 
-# Copy the Laravel application files into the container
-COPY . .
-
-# Ensure the .env file exists
-RUN php -r "file_exists('.env') || copy('.env.example', '.env');"
-
-# Install PHP dependencies
-RUN composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist || { tail -n 10 /var/log/php-fpm.log; exit 1; }
-
-# Install NPM Dependencies
-RUN npm install
-
-# Compile front-end assets
-RUN npm run production
-
-# Generate Laravel application key
-RUN php artisan key:generate || { cat /var/www/storage/logs/laravel.log; exit 1; }
-
-# Expose port 9000 for the application
-EXPOSE 9000
-
-# Start PHP-FPM server
-CMD ["php-fpm"]
+# Start Nginx and PHP-FPM
+CMD service nginx start && php-fpm
