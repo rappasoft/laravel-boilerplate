@@ -38,6 +38,9 @@ WORKDIR /var/www
 # Copy the Laravel application files into the container
 COPY . .
 
+# Ensure the .env file exists
+RUN php -r "file_exists('.env') || copy('.env.example', '.env');"
+
 # Install PHP dependencies
 RUN composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist || { tail -n 10 /var/log/php-fpm.log; exit 1; }
 
@@ -48,7 +51,7 @@ RUN npm install
 RUN npm run production
 
 # Generate Laravel application key
-RUN php artisan key:generate
+RUN php artisan key:generate || { cat /var/www/storage/logs/laravel.log; exit 1; }
 
 # Expose port 9000 for the application
 EXPOSE 9000
