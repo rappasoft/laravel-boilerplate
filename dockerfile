@@ -1,32 +1,60 @@
-FROM php:8.2-apache
+# Use the official PHP image as the base image
+FROM php:8.2-fpm
 
-# Install dependencies
+# Install system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
-    locales \
-    zip \
-    jpegoptim optipng pngquant gifsicle \
-    vim unzip git curl \
-    mariadb-server mariadb-client
-
-# Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
-
-# Copy existing application directory contents
-COPY . /var/www
-
-# Set working directory
-WORKDIR /var/www
+    libicu-dev \
+    libzip-dev \
+    unzip \
+    git \
+    libonig-dev \
+    libxml2-dev \
+    curl \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd \
+    && docker-php-ext-install intl \
+    && docker-php-ext-install mysqli pdo pdo_mysql \
+    && docker-php-ext-install bcmath \
+    && docker-php-ext-install soap \
+    && docker-php-ext-install pcntl \
+    && docker-php-ext-install exif
 
 # Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Install Laravel
-RUN composer install --no-dev --no-scripts --prefer-dist
+# Install Node.js and npm
+RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs
 
-# Expose port 80
-EXPOSE 80
+# Clean up the package cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-CMD ["apache2-foreground"]
+# Set the working directory inside the container
+WORKDIR /var/www
+
+# Copy the Laravel application files into the container
+COPY . .
+
+# Ensure the .env file exists
+RUN php -r "file_exists('.env') || copy('.env.example', '.env');"
+
+# Install PHP dependencies
+RUN composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist || { tail -n 10 /var/log/php-fpm.log; exit 1; }
+
+# Install NPM Dependencies
+RUN npm install
+
+# Compile front-end assets
+RUN npm run production
+
+# Generate Laravel application key
+RUN php artisan key:generate || { cat /var/www/storage/logs/laravel.log; exit 1; }
+
+# Expose port 9000 for the application
+EXPOSE 9000
+
+# Start PHP-FPM server
+CMD ["php-fpm"]
