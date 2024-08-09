@@ -6,8 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: laravel_app
-    ports:
-      - "8000:80"
+    volumes:
+      - .:/var/www
     environment:
       - DB_HOST=db
       - DB_PORT=3306
@@ -16,6 +16,17 @@ services:
       - DB_PASSWORD=your_password
     depends_on:
       - db
+
+  web:
+    image: nginx:alpine
+    container_name: laravel_web
+    volumes:
+      - .:/var/www
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "8000:80"
+    depends_on:
+      - app
 
   db:
     image: mysql:8.0

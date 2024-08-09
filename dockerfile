@@ -53,7 +53,7 @@ RUN npm run production
 # Generate Laravel application key
 RUN php artisan key:generate || { cat /var/www/storage/logs/laravel.log; exit 1; }
 
-# Expose port 9000 for the application
+# Expose port 9000 for PHP-FPM
 EXPOSE 9000
 
 # Start PHP-FPM server
