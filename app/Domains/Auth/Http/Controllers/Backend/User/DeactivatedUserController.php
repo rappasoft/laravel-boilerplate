@@ -37,7 +37,7 @@ class DeactivatedUserController
     /**
      * @param  Request  $request
      * @param  User  $user
-     * @param $status
+     * @param  $status
      * @return mixed
      *
      * @throws \App\Exceptions\GeneralException

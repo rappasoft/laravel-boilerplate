@@ -10,8 +10,8 @@ use Ramsey\Uuid\Uuid as PackageUuid;
 trait Uuid
 {
     /**
-     * @param $query
-     * @param $uuid
+     * @param  $query
+     * @param  $uuid
      * @return mixed
      */
     public function scopeUuid($query, $uuid)
