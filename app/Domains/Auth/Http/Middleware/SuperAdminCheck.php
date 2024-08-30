@@ -10,7 +10,7 @@ use Closure;
 class SuperAdminCheck
 {
     /**
-     * @param $request
+     * @param  $request
      * @param  Closure  $next
      * @return mixed
      */
