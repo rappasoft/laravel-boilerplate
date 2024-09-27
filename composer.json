@@ -23,6 +23,7 @@
         "laravel/tinker": "^2.9.0",
         "laravel/ui": "^4.0",
         "livewire/livewire": "^2.0",
+        "nwidart/laravel-modules": "*",
         "rappasoft/laravel-livewire-tables": "^2.0",
         "rappasoft/lockout": "^5.0.0",
         "spatie/laravel-activitylog": "^4.8.0",
@@ -101,7 +102,8 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "wikimedia/composer-merge-plugin": true
         }
     },
     "minimum-stability": "dev",

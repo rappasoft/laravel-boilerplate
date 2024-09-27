@@ -1,5 +1,17 @@
 ## Laravel Boilerplate (Current: Laravel 10.*)
 
+---
+
+### STEP (first time only):
+1. kool run setup
+2. kool run artisan migrate --seed
+3. done
+
+kool start to start containers
+kool stop to stop containers
+
+---
+
 ### Demo Credentials
 
 **Admin:** admin@admin.com  
@@ -7,6 +19,8 @@
 
 **User:** user@user.com  
 **Password:** S3cret@2024
+
+---
 
 ### Official Documentation
 
