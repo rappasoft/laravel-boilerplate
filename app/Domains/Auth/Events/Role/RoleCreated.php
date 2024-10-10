@@ -18,7 +18,7 @@ class RoleCreated
     public $role;
 
     /**
-     * @param $role
+     * @param  $role
      */
     public function __construct(Role $role)
     {
