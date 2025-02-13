@@ -142,7 +142,7 @@ abstract class BaseService
     /**
      * Get the specified model record from the database.
      *
-     * @param $id
+     * @param  $id
      * @return \Illuminate\Database\Eloquent\Model
      */
     public function getById($id)
@@ -155,8 +155,8 @@ abstract class BaseService
     }
 
     /**
-     * @param $item
-     * @param $column
+     * @param  $item
+     * @param  $column
      * @param  array  $columns
      * @return \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Eloquent\Model|object|null
      */
@@ -172,7 +172,7 @@ abstract class BaseService
     /**
      * Delete the specified model record from the database.
      *
-     * @param $id
+     * @param  $id
      * @return bool|null
      *
      * @throws \Exception
@@ -263,7 +263,7 @@ abstract class BaseService
     /**
      * Set Eloquent relationships to eager load.
      *
-     * @param $relations
+     * @param  $relations
      * @return $this
      */
     public function with($relations)
