@@ -31,7 +31,7 @@ class UserService extends BaseService
     }
 
     /**
-     * @param $type
+     * @param  $type
      * @param  bool|int  $perPage
      * @return mixed
      */
@@ -68,8 +68,8 @@ class UserService extends BaseService
     }
 
     /**
-     * @param $info
-     * @param $provider
+     * @param  $info
+     * @param  $provider
      * @return mixed
      *
      * @throws GeneralException
@@ -205,7 +205,7 @@ class UserService extends BaseService
 
     /**
      * @param  User  $user
-     * @param $data
+     * @param  $data
      * @param  bool  $expired
      * @return User
      *
@@ -232,7 +232,7 @@ class UserService extends BaseService
 
     /**
      * @param  User  $user
-     * @param $status
+     * @param  $status
      * @return User
      *
      * @throws GeneralException

@@ -18,7 +18,7 @@ class UserDeleted
     public $user;
 
     /**
-     * @param $user
+     * @param  $user
      */
     public function __construct(User $user)
     {

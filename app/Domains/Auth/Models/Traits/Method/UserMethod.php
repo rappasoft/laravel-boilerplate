@@ -42,7 +42,7 @@ trait UserMethod
     }
 
     /**
-     * @param $type
+     * @param  $type
      * @return bool
      */
     public function isType($type): bool
