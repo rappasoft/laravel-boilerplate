@@ -12,7 +12,7 @@ use Laravel\Socialite\Facades\Socialite;
 class SocialController
 {
     /**
-     * @param $provider
+     * @param  $provider
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function redirect($provider)
@@ -21,7 +21,7 @@ class SocialController
     }
 
     /**
-     * @param $provider
+     * @param  $provider
      * @param  UserService  $userService
      * @return \Illuminate\Http\RedirectResponse
      *
