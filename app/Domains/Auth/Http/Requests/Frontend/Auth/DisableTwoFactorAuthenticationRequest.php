@@ -16,7 +16,7 @@ class DisableTwoFactorAuthenticationRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->hasTwoFactorEnabled();
     }
 
     /**
@@ -27,7 +27,7 @@ class DisableTwoFactorAuthenticationRequest extends FormRequest
     public function rules()
     {
         return [
-            'code' => ['required', 'max:10', 'totp_code'],
+            'code' => 'required|digits:6',
         ];
     }
 }

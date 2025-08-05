@@ -23,7 +23,7 @@ class UsersTable extends DataTableComponent
      */
     public array $sortNames = [
         'email_verified_at' => 'Verified',
-        'two_factor_auth_count' => '2FA',
+        'google2fa_enabled' => '2FA',
     ];
 
     /**
@@ -47,7 +47,7 @@ class UsersTable extends DataTableComponent
      */
     public function query(): Builder
     {
-        $query = User::with('roles', 'twoFactorAuth')->withCount('twoFactorAuth');
+        $query = User::with('roles');
 
         if ($this->status === 'deleted') {
             $query = $query->onlyTrashed();
@@ -61,7 +61,8 @@ class UsersTable extends DataTableComponent
             ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term))
             ->when($this->getFilter('type'), fn ($query, $type) => $query->where('type', $type))
             ->when($this->getFilter('active'), fn ($query, $active) => $query->where('active', $active === 'yes'))
-            ->when($this->getFilter('verified'), fn ($query, $verified) => $verified === 'yes' ? $query->whereNotNull('email_verified_at') : $query->whereNull('email_verified_at'));
+            ->when($this->getFilter('verified'), fn ($query, $verified) => $verified === 'yes' ?
+                $query->whereNotNull('email_verified_at') : $query->whereNull('email_verified_at'));
     }
 
     /**
@@ -105,7 +106,7 @@ class UsersTable extends DataTableComponent
                 ->sortable(),
             Column::make(__('Verified'), 'email_verified_at')
                 ->sortable(),
-            Column::make(__('2FA'), 'two_factor_auth_count')
+            Column::make(__('2FA'), 'google2fa_enabled')
                 ->sortable(),
             Column::make(__('Roles')),
             Column::make(__('Additional Permissions')),

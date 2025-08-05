@@ -11,7 +11,6 @@
     "require": {
         "php": "^7.4|^8.0",
         "arcanedev/log-viewer": "8.x",
-        "darkghosthunter/laraguard": "^3.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "jamesmills/laravel-timezone": "^1.9",
@@ -23,8 +22,10 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.0",
         "livewire/livewire": "^2.0",
+        "pragmarx/google2fa-laravel": "^2.3",
         "rappasoft/laravel-livewire-tables": "^1.0",
         "rappasoft/lockout": "^3.0",
+        "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-activitylog": "^3.14",
         "spatie/laravel-permission": "^3.11",
         "tabuna/breadcrumbs": "^2.2"
@@ -98,7 +99,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "treeware/plant": true
+        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

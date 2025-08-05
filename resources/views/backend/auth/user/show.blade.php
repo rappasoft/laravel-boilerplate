@@ -75,7 +75,7 @@
                         <th>@lang('Provider')</th>
                         <td>{{ $user->provider ?? __('N/A') }}</td>
                     </tr>
-
+abandoned
                     <tr>
                         <th>@lang('Provider ID')</th>
                         <td>{{ $user->provider_id ?? __('N/A') }}</td>
@@ -91,18 +91,24 @@
                     <th>@lang('Additional Permissions')</th>
                     <td>{!! $user->permissions_label !!}</td>
                 </tr>
-            </table>
-        </x-slot>
 
-        <x-slot name="footer">
-            <small class="float-right text-muted">
-                <strong>@lang('Account Created'):</strong> @displayDate($user->created_at) ({{ $user->created_at->diffForHumans() }}),
-                <strong>@lang('Last Updated'):</strong> @displayDate($user->updated_at) ({{ $user->updated_at->diffForHumans() }})
+                <tr>
+                    <th>@lang('Account Created')</th>
+                    <td>@displayDate($user->created_at)</td>
+                </tr>
+
+                <tr>
+                    <th>@lang('Last Updated')</th>
+                    <td>@displayDate($user->updated_at)</td>
+                </tr>
 
                 @if($user->trashed())
-                    <strong>@lang('Account Deleted'):</strong> @displayDate($user->deleted_at) ({{ $user->deleted_at->diffForHumans() }})
+                    <tr>
+                        <th>@lang('Account Deleted')</th>
+                        <td>@displayDate($user->deleted_at)</td>
+                    </tr>
                 @endif
-            </small>
+            </table>
         </x-slot>
     </x-backend.card>
 @endsection

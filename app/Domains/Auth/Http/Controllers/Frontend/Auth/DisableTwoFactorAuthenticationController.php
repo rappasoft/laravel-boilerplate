@@ -3,6 +3,7 @@
 namespace App\Domains\Auth\Http\Controllers\Frontend\Auth;
 
 use App\Domains\Auth\Http\Requests\Frontend\Auth\DisableTwoFactorAuthenticationRequest;
+use PragmaRX\Google2FALaravel\Support\Authenticator;
 
 /**
  * Class DisableTwoFactorAuthenticationController.
@@ -23,8 +24,18 @@ class DisableTwoFactorAuthenticationController
      */
     public function destroy(DisableTwoFactorAuthenticationRequest $request)
     {
-        $request->user()->disableTwoFactorAuth();
+        $user = $request->user();
+        $google2fa = app('pragmarx.google2fa');
 
-        return redirect()->route('frontend.user.account', ['#two-factor-authentication'])->withFlashSuccess(__('Two Factor Authentication Successfully Disabled'));
+        $valid = $google2fa->verifyKey($user->google2fa_secret, $request->code);
+
+        if (!$valid) {
+            return back()->withErrors(['code' => 'Invalid 2FA code']);
+        }
+
+        $user->disableTwoFactorAuth();
+
+        return redirect()->route('frontend.user.account', ['#two-factor-authentication'])
+            ->withFlashSuccess(__('Two Factor Authentication Successfully Disabled'));
     }
 }
