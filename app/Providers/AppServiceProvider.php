@@ -17,7 +17,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
+
+        $this->app->singleton('timezone.service', function ($app) {
+            return new \App\Services\TimezoneService();
+        });
     }
 
     /**

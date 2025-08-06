@@ -13,8 +13,7 @@
         "arcanedev/log-viewer": "8.x",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "jamesmills/laravel-timezone": "^1.9",
-        "lab404/laravel-impersonate": "^1.6",
+        "lab404/laravel-impersonate": "*",
         "langleyfoxall/laravel-nist-password-rules": "^4.1",
         "laravel/framework": "^8.54",
         "laravel/sanctum": "^2.11",
@@ -48,7 +47,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helpers/Global/TimezoneHelper.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
