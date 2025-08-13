@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6d51cf3915e8d77ae7313a386f3e2a74",
+    "content-hash": "15c7edf9c63157aed4c94a80937f474b",
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -1476,6 +1476,64 @@
                 }
             ],
             "time": "2021-10-06T17:43:30+00:00"
+        },
+        {
+            "name": "jamesmills/laravel-timezone",
+            "version": "1.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jamesmills/laravel-timezone.git",
+                "reference": "014f51cfff5985424dfd791d0dffe438dc28b29b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jamesmills/laravel-timezone/zipball/014f51cfff5985424dfd791d0dffe438dc28b29b",
+                "reference": "014f51cfff5985424dfd791d0dffe438dc28b29b",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "5.6.*|5.7.*|5.8.*|^6|^7|^8|^9|^10.0",
+                "nesbot/carbon": "^1.0|^2.0",
+                "php": ">=7.4",
+                "torann/geoip": "^3.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.12|^3.14"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "JamesMills\\LaravelTimezone\\LaravelTimezoneServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JamesMills\\LaravelTimezone\\": "src/",
+                    "JamesMills\\LaravelTimezone\\Database\\Seeds\\": "database/seeds/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "James Mills",
+                    "email": "james@jamesmills.co.uk"
+                }
+            ],
+            "description": "Timezone storage and retrieval for Laravel",
+            "keywords": [
+                "laravel",
+                "timezone"
+            ],
+            "support": {
+                "issues": "https://github.com/jamesmills/laravel-timezone/issues",
+                "source": "https://github.com/jamesmills/laravel-timezone/tree/1.13.0"
+            },
+            "time": "2023-02-17T11:07:53+00:00"
         },
         {
             "name": "lab404/laravel-impersonate",
@@ -7220,6 +7278,86 @@
                 "source": "https://github.com/tijsverkoyen/CssToInlineStyles/tree/2.2.4"
             },
             "time": "2021-12-08T09:12:39+00:00"
+        },
+        {
+            "name": "torann/geoip",
+            "version": "3.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Torann/laravel-geoip.git",
+                "reference": "1ea60c7e1a1608de3885e8cd76389cfe5c8424de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Torann/laravel-geoip/zipball/1ea60c7e1a1608de3885e8cd76389cfe5c8424de",
+                "reference": "1ea60c7e1a1608de3885e8cd76389cfe5c8424de",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/cache": "^8.0|^9.0|^10.0|^11.0|^12.0",
+                "illuminate/console": "^8.0|^9.0|^10.0|^11.0|^12.0",
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0|^12.0",
+                "php": "^8.0|^8.1|^8.2|^8.3"
+            },
+            "require-dev": {
+                "geoip2/geoip2": "~2.1|~3.0",
+                "mockery/mockery": "^1.3",
+                "phpstan/phpstan": "^0.12.14|^1.9",
+                "phpunit/phpunit": "^8.0|^9.0|^10.0|^11.0",
+                "squizlabs/php_codesniffer": "^3.5",
+                "vlucas/phpdotenv": "^5.0"
+            },
+            "suggest": {
+                "geoip2/geoip2": "Required to use the MaxMind database or web service with GeoIP (~2.1).",
+                "monolog/monolog": "Allows for storing location not found errors to the log"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "GeoIP": "Torann\\GeoIP\\Facades\\GeoIP"
+                    },
+                    "providers": [
+                        "Torann\\GeoIP\\GeoIPServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Torann\\GeoIP\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Stainback",
+                    "email": "torann@gmail.com"
+                }
+            ],
+            "description": "Support for multiple Geographical Location services.",
+            "keywords": [
+                "IP API",
+                "geographical",
+                "geoip",
+                "geolocation",
+                "infoDB",
+                "laravel",
+                "location"
+            ],
+            "support": {
+                "issues": "https://github.com/Torann/laravel-geoip/issues",
+                "source": "https://github.com/Torann/laravel-geoip/tree/3.0.9"
+            },
+            "time": "2025-02-25T18:24:54+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
