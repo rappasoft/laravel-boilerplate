@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 use Lab404\Impersonate\Models\Impersonate;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-
+use Google2FA;
 /**
  * Class User.
  */
@@ -289,6 +289,26 @@ class User extends Authenticatable implements MustVerifyEmail
         $part2 = strtoupper(Str::random(5));
 
         return $part1 . '-' . $part2;
+    }
+    public function createTwoFactorAuth()
+    {
+        $secret = Google2FA::generateSecretKey();
+
+        $this->google2fa_secret = $secret;
+        $this->save();
+
+        return (object) [
+            'toQr' => function() use ($secret) {
+                return Google2FA::getQRCodeInline(
+                    config('app.name'),
+                    $this->email,
+                    $secret
+                );
+            },
+            'toString' => function() use ($secret) {
+                return $secret;
+            }
+        ];
     }
 
 
