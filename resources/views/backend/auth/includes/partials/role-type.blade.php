@@ -12,22 +12,22 @@
             <label class="form-check-label" for="role_{{ $role->id }}">
                 {{ $role->name }}
             </label>
-        </div><!--form-check-->
+        </div>
     </div>
 
     @if ($role->isAdmin())
-        <blockquote class="ml-3">
+        <blockquote class="ms-3">
             <i class="fa fa-check-circle"></i> @lang('All Permissions')
         </blockquote>
     @else
         @if ($role->permissions->count())
-            <blockquote class="ml-3">
+            <blockquote class="ms-3">
                 @foreach ($role->permissions as $permission)
                     <i class="fa fa-check-circle"></i> {{ $permission->description }}<br/>
                 @endforeach
             </blockquote>
         @else
-            <blockquote class="ml-3">
+            <blockquote class="ms-3">
                 <i class="fa fa-minus-circle"></i> @lang('No Permissions')
             </blockquote>
         @endif

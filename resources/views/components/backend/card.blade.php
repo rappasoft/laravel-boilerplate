@@ -6,20 +6,20 @@
             @if (isset($headerActions))
                 <div class="card-header-actions">
                     {{ $headerActions }}
-                </div><!--card-header-actions-->
+                </div>
             @endif
-        </div><!--card-header-->
+        </div>
     @endif
 
     @if (isset($body))
         <div class="card-body">
             {{ $body }}
-        </div><!--card-body-->
+        </div>
     @endif
 
     @if (isset($footer))
         <div class="card-footer">
             {{ $footer }}
-        </div><!--card-footer-->
+        </div>
     @endif
-</div><!--card-->
+</div>

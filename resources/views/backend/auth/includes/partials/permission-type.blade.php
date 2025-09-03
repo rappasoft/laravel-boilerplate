@@ -5,12 +5,14 @@
         <div class="col">
             @foreach($general->where('type', $type) as $permission)
                 <span class="d-block">
-                        <input type="checkbox" name="permissions[]" {{ in_array($permission->id, $usedPermissions ?? [], true) ? 'checked' : '' }} value="{{ $permission->id }}" id="{{ $permission->id }}" />
+                        <input type="checkbox" name="permissions[]"
+                               {{ in_array($permission->id, $usedPermissions ?? [], true) ? 'checked' : '' }} value="{{ $permission->id }}"
+                               id="{{ $permission->id }}"/>
                         <label for="{{ $permission->id }}">{{ $permission->description ?? $permission->name }}</label>
                     </span>
             @endforeach
-        </div><!--col-->
-    </div><!--row-->
+        </div>
+    </div>
 @endif
 
 @if ($general->where('type', $type)->count() && $categories->where('type', $type)->count())
@@ -23,7 +25,9 @@
     <ul class="permission-tree m-0 p-0 list-unstyled">
         @foreach($categories->where('type', $type) as $permission)
             <li>
-                <input type="checkbox" name="permissions[]" {{ in_array($permission->id, $usedPermissions ?? [], true) ? 'checked' : '' }} value="{{ $permission->id }}" id="{{ $permission->id }}" />
+                <input type="checkbox" name="permissions[]"
+                       {{ in_array($permission->id, $usedPermissions ?? [], true) ? 'checked' : '' }} value="{{ $permission->id }}"
+                       id="{{ $permission->id }}"/>
                 <label for="{{ $permission->id }}">{{ $permission->description ?? $permission->name }}</label>
 
                 @if($permission->children->count())

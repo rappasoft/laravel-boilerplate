@@ -2,17 +2,29 @@ window._ = require('lodash');
 window.Swal = require('sweetalert2');
 
 /**
- * We'll load jQuery and the Bootstrap jQuery plugin which provides support
- * for JavaScript based Bootstrap features such as modals and tabs. This
- * code may be modified to fit the specific needs of your application.
+ * Bootstrap 5.3 no longer requires jQuery by default.
+ * We'll load it conditionally if needed for legacy components.
+ */
+
+// Load jQuery only if you have legacy components that require it
+// If you don't need jQuery, you can comment out these lines
+try {
+    window.$ = window.jQuery = require('jquery');
+} catch (e) {
+    console.warn('jQuery not available - some legacy components may not work');
+}
+
+/**
+ * Bootstrap 5.3 uses @popperjs/core instead of popper.js
+ * The Popper instance is handled automatically by Bootstrap
  */
 
 try {
-    window.Popper = require('popper.js').default;
-    window.$ = window.jQuery = require('jquery');
-
+    // Import Bootstrap - this will automatically handle Popper.js
     require('bootstrap');
-} catch (e) {}
+} catch (e) {
+    console.error('Bootstrap failed to load:', e);
+}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests

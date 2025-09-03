@@ -1,13 +1,15 @@
 <div class="table-responsive">
     <table class="table table-striped table-hover table-bordered mb-0">
+        <thead>
         <tr>
             <th>@lang('Type')</th>
             <td>@include('backend.auth.user.includes.type', ['user' => $logged_in_user])</td>
         </tr>
-
+        </thead>
+        <tbody>
         <tr>
             <th>@lang('Avatar')</th>
-            <td><img src="{{ $logged_in_user->avatar }}" class="user-profile-image" /></td>
+            <td><img src="{{ $logged_in_user->avatar }}" class="user-profile-image"/></td>
         </tr>
 
         <tr>
@@ -41,5 +43,6 @@
             <th>@lang('Last Updated')</th>
             <td>@displayDate($logged_in_user->updated_at) ({{ $logged_in_user->updated_at->diffForHumans() }})</td>
         </tr>
+        </tbody>
     </table>
-</div><!--table-responsive-->
+</div>```

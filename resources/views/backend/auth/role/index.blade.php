@@ -18,7 +18,7 @@
         </x-slot>
 
         <x-slot name="body">
-            <livewire:backend.roles-table />
+            <livewire:backend.roles-table/>
         </x-slot>
     </x-backend.card>
 @endsection

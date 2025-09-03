@@ -6,8 +6,7 @@
         <svg class="c-sidebar-brand-minimized" width="46" height="46" alt="CoreUI Logo">
             <use xlink:href="{{ asset('img/brand/coreui.svg#signet') }}"></use>
         </svg>
-    </div><!--c-sidebar-brand-->
-
+    </div>
     <ul class="c-sidebar-nav">
         <li class="c-sidebar-nav-item">
             <x-utils.link
@@ -15,7 +14,7 @@
                 :href="route('admin.dashboard')"
                 :active="activeClass(Route::is('admin.dashboard'), 'c-active')"
                 icon="c-sidebar-nav-icon cil-speedometer"
-                :text="__('Dashboard')" />
+                :text="__('Dashboard')"/>
         </li>
 
         @if (
@@ -36,7 +35,7 @@
                     href="#"
                     icon="c-sidebar-nav-icon cil-user"
                     class="c-sidebar-nav-dropdown-toggle"
-                    :text="__('Access')" />
+                    :text="__('Access')"/>
 
                 <ul class="c-sidebar-nav-dropdown-items">
                     @if (
@@ -55,7 +54,7 @@
                                 :href="route('admin.auth.user.index')"
                                 class="c-sidebar-nav-link"
                                 :text="__('User Management')"
-                                :active="activeClass(Route::is('admin.auth.user.*'), 'c-active')" />
+                                :active="activeClass(Route::is('admin.auth.user.*'), 'c-active')"/>
                         </li>
                     @endif
 
@@ -65,7 +64,7 @@
                                 :href="route('admin.auth.role.index')"
                                 class="c-sidebar-nav-link"
                                 :text="__('Role Management')"
-                                :active="activeClass(Route::is('admin.auth.role.*'), 'c-active')" />
+                                :active="activeClass(Route::is('admin.auth.role.*'), 'c-active')"/>
                         </li>
                     @endif
                 </ul>
@@ -78,25 +77,26 @@
                     href="#"
                     icon="c-sidebar-nav-icon cil-list"
                     class="c-sidebar-nav-dropdown-toggle"
-                    :text="__('Logs')" />
+                    :text="__('Logs')"/>
 
                 <ul class="c-sidebar-nav-dropdown-items">
                     <li class="c-sidebar-nav-item">
                         <x-utils.link
                             :href="route('log-viewer::dashboard')"
                             class="c-sidebar-nav-link"
-                            :text="__('Dashboard')" />
+                            :text="__('Dashboard')"/>
                     </li>
                     <li class="c-sidebar-nav-item">
                         <x-utils.link
                             :href="route('log-viewer::logs.list')"
                             class="c-sidebar-nav-link"
-                            :text="__('Logs')" />
+                            :text="__('Logs')"/>
                     </li>
                 </ul>
             </li>
         @endif
     </ul>
 
-    <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized"></button>
-</div><!--sidebar-->
+    <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent"
+            data-class="c-sidebar-minimized"></button>
+</div>```

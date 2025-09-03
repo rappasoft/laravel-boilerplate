@@ -4,22 +4,18 @@
             {{ $header }}
 
             @if (isset($headerActions))
-                <div class="d-inline-block float-right">
+                <div class="d-inline-block float-end">
                     {{ $headerActions }}
-                </div><!--card-header-actions-->
-            @endif
-        </div><!--card-header-->
-    @endif
+                </div>@endif
+        </div>@endif
 
     @if (isset($body))
         <div class="card-body">
             {{ $body }}
-        </div><!--card-body-->
-    @endif
+        </div>@endif
 
     @if (isset($footer))
         <div class="card-footer">
             {{ $footer }}
-        </div><!--card-footer-->
-    @endif
-</div><!--card-->
+        </div>@endif
+</div>

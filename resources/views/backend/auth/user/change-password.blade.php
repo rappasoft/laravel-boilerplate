@@ -14,7 +14,7 @@
             </x-slot>
 
             <x-slot name="body">
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label for="password" class="col-md-2 col-form-label">@lang('Password')</label>
 
                     <div class="col-md-10">
@@ -22,7 +22,7 @@
                     </div>
                 </div><!--form-group-->
 
-                <div class="form-group row">
+                <div class="mb-3 row">
                     <label for="password_confirmation" class="col-md-2 col-form-label">@lang('Password Confirmation')</label>
 
                     <div class="col-md-10">
@@ -32,7 +32,7 @@
             </x-slot>
 
             <x-slot name="footer">
-                <button class="btn btn-sm btn-primary float-right" type="submit">@lang('Update')</button>
+                <button class="btn btn-sm btn-primary float-end" type="submit">@lang('Update')</button>
             </x-slot>
         </x-backend.card>
     </x-forms.patch>

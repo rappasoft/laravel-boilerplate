@@ -59,7 +59,7 @@
 
                         {{-- Back to account button --}}
                         <a href="{{ route('frontend.user.account') }}#two-factor-authentication"
-                           class="btn btn-secondary ml-2">
+                           class="btn btn-secondary ms-2">
                             @lang('Back to Account')
                         </a>
                     </x-slot>
