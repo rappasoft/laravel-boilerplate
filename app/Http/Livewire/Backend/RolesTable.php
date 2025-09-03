@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Backend;
 
 use App\Domains\Auth\Models\Role;
+use App\Domains\Auth\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -12,12 +13,16 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
  */
 class RolesTable extends DataTableComponent
 {
+    protected $model = Role::class;
+
     /**
-     * Configure the component - Required for Laravel Livewire Tables v2.x
+     * Configure the component
      */
     public function configure(): void
     {
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('id')
+            ->setDefaultSort('name')
+            ->setEmptyMessage(__('No roles found'));
     }
 
     /**
@@ -25,27 +30,44 @@ class RolesTable extends DataTableComponent
      */
     public function builder(): Builder
     {
-        return Role::with('permissions:id,name,description')
-            ->withCount('users')
-            ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term));
+        return Role::query()->withCount('users');
     }
 
+    /**
+     * @return array
+     */
     public function columns(): array
     {
         return [
-            Column::make(__('Type'))
-                ->sortable(),
-            Column::make(__('Name'))
-                ->sortable(),
-            Column::make(__('Permissions')),
-            Column::make(__('Number of Users'), 'users_count')
-                ->sortable(),
-            Column::make(__('Actions')),
-        ];
-    }
+            Column::make(__('Type'), 'type')
+                ->sortable()
+                ->format(function($value, $row, Column $column) {
+                    if ($value === User::TYPE_ADMIN) {
+                        return __('Administrator');
+                    } elseif ($value === User::TYPE_USER) {
+                        return __('User');
+                    } else {
+                        return 'N/A';
+                    }
+                }),
 
-    public function rowView(): string
-    {
-        return 'backend.auth.role.includes.row';
+            Column::make(__('Name'), 'name')
+                ->sortable(),
+
+            Column::make(__('Permissions'))
+                ->label(function($row, Column $column) {
+                    return $row->permissions_label ?? 'No permissions';
+                })->html(),
+
+            Column::make(__('Number of Users'))
+                ->label(function($row, Column $column) {
+                    return $row->users_count;
+                }),
+
+            Column::make(__('Actions'))
+                ->label(function($row, Column $column) {
+                    return view('backend.auth.role.includes.actions', ['model' => $row])->render();
+                })->html(),
+        ];
     }
 }

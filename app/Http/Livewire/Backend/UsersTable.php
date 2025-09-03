@@ -119,7 +119,7 @@ class UsersTable extends DataTableComponent
             Column::make(__('2FA'), 'id')
                 ->format(function($value, $row) {
                     return view('backend.auth.user.includes.2fa', ['user' => $row])->render();
-                }),
+                })->html(),
             Column::make(__('Roles'), 'id')
                 ->format(function($value, $row) {
                     return $row->roles_label ?? '';
