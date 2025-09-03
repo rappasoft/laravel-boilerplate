@@ -7,6 +7,7 @@ use Database\Factories\AnnouncementFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\LogOptions;
 
 /**
  * Class Announcement.
@@ -19,9 +20,6 @@ class Announcement extends Model
 
     public const TYPE_FRONTEND = 'frontend';
     public const TYPE_BACKEND = 'backend';
-
-    protected static $logFillable = true;
-    protected static $logOnlyDirty = true;
 
     /**
      * @var string[]
@@ -49,6 +47,16 @@ class Announcement extends Model
     protected $casts = [
         'enabled' => 'boolean',
     ];
+
+    /**
+     * Required method for spatie/laravel-activitylog v4.x
+     */
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->logFillable()
+            ->logOnlyDirty();
+    }
 
     /**
      * Create a new factory instance for the model.

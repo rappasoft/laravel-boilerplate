@@ -63,7 +63,7 @@ trait UserMethod
      */
     public function isActive(): bool
     {
-        return $this->active;
+        return (bool)$this->active;
     }
 
     /**

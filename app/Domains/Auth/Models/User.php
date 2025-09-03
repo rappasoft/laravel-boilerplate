@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 use Lab404\Impersonate\Models\Impersonate;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-use Google2FA;
+
 /**
  * Class User.
  */
@@ -169,7 +169,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function hasTwoFactorEnabled(): bool
     {
-        return $this->google2fa_enabled;
+        return (bool)$this->google2fa_enabled;
     }
 
     /**

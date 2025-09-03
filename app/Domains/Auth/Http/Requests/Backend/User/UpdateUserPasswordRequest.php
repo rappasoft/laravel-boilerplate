@@ -5,7 +5,7 @@ namespace App\Domains\Auth\Http\Requests\Backend\User;
 use App\Domains\Auth\Rules\UnusedPassword;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
-use LangleyFoxall\LaravelNISTPasswordRules\PasswordRules;
+use Illuminate\Validation\Rules\Password;
 
 /**
  * Class UpdateUserPasswordRequest.
@@ -30,13 +30,20 @@ class UpdateUserPasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'password' => array_merge(
-                [
-                    'max:100',
-                    new UnusedPassword((int) $this->segment(4)),
-                ],
-                PasswordRules::changePassword($this->email)
-            ),
+            'token' => ['required'],
+            'email' => ['required', 'max:255', 'email'],
+            'password' => [
+                'required',
+                'confirmed', // Important for password reset - ensures password_confirmation field matches
+                'max:100',
+                new UnusedPassword(request('email')),
+                Password::min(8)
+                    ->letters()
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+                    ->uncompromised()
+            ],
         ];
     }
 

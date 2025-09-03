@@ -46,3 +46,4 @@ If you discover a security vulnerability within this boilerplate, please send an
 ### License
 
 MIT: [http://anthony.mit-license.org](http://anthony.mit-license.org)
+$2y$10$McIBAe317YCY6U/2udeGLu3uUAlyRL/.g903vW19R34r1wNscTeAW

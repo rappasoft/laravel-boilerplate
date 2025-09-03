@@ -6,33 +6,16 @@ use App\Domains\Auth\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use Rappasoft\LaravelLivewireTables\Views\Filter;
+use Rappasoft\LaravelLivewireTables\Views\Filters\SelectFilter;
 
 /**
  * Class UsersTable.
  */
 class UsersTable extends DataTableComponent
 {
-    /**
-     * @var
-     */
+    protected $model = User::class;
+
     public $status;
-
-    /**
-     * @var array|string[]
-     */
-    public array $sortNames = [
-        'email_verified_at' => 'Verified',
-        'google2fa_enabled' => '2FA',
-    ];
-
-    /**
-     * @var array|string[]
-     */
-    public array $filterNames = [
-        'type' => 'User Type',
-        'verified' => 'E-mail Verified',
-    ];
 
     /**
      * @param  string  $status
@@ -43,11 +26,22 @@ class UsersTable extends DataTableComponent
     }
 
     /**
+     * Configure the component - Required for Laravel Livewire Tables v2.x
+     */
+    public function configure(): void
+    {
+        $this->setPrimaryKey('id')
+            ->setTableRowUrl(function($row) {
+                return null; // No row URLs
+            });
+    }
+
+    /**
      * @return Builder
      */
-    public function query(): Builder
+    public function builder(): Builder
     {
-        $query = User::with('roles');
+        $query = User::with('roles', 'permissions');
 
         if ($this->status === 'deleted') {
             $query = $query->onlyTrashed();
@@ -57,12 +51,7 @@ class UsersTable extends DataTableComponent
             $query = $query->onlyActive();
         }
 
-        return $query
-            ->when($this->getFilter('search'), fn ($query, $term) => $query->search($term))
-            ->when($this->getFilter('type'), fn ($query, $type) => $query->where('type', $type))
-            ->when($this->getFilter('active'), fn ($query, $active) => $query->where('active', $active === 'yes'))
-            ->when($this->getFilter('verified'), fn ($query, $verified) => $verified === 'yes' ?
-                $query->whereNotNull('email_verified_at') : $query->whereNull('email_verified_at'));
+        return $query;
     }
 
     /**
@@ -71,24 +60,43 @@ class UsersTable extends DataTableComponent
     public function filters(): array
     {
         return [
-            'type' => Filter::make('User Type')
-                ->select([
+            SelectFilter::make('User Type')
+                ->options([
                     '' => 'Any',
                     User::TYPE_ADMIN => 'Administrators',
                     User::TYPE_USER => 'Users',
-                ]),
-            'active' => Filter::make('Active')
-                ->select([
+                ])
+                ->filter(function($query, $value) {
+                    if ($value) {
+                        $query->where('type', $value);
+                    }
+                }),
+            SelectFilter::make('Active')
+                ->options([
                     '' => 'Any',
                     'yes' => 'Yes',
                     'no' => 'No',
-                ]),
-            'verified' => Filter::make('E-mail Verified')
-                ->select([
+                ])
+                ->filter(function($query, $value) {
+                    if ($value === 'yes') {
+                        $query->where('active', true);
+                    } elseif ($value === 'no') {
+                        $query->where('active', false);
+                    }
+                }),
+            SelectFilter::make('E-mail Verified')
+                ->options([
                     '' => 'Any',
                     'yes' => 'Yes',
                     'no' => 'No',
-                ]),
+                ])
+                ->filter(function($query, $value) {
+                    if ($value === 'yes') {
+                        $query->whereNotNull('email_verified_at');
+                    } elseif ($value === 'no') {
+                        $query->whereNull('email_verified_at');
+                    }
+                }),
         ];
     }
 
@@ -98,27 +106,32 @@ class UsersTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make(__('Type'))
+            Column::make(__('Type'), 'type')
                 ->sortable(),
-            Column::make(__('Name'))
-                ->sortable(),
+            Column::make(__('Name'), 'name')
+                ->sortable()
+                ->searchable(),
             Column::make(__('E-mail'), 'email')
-                ->sortable(),
+                ->sortable()
+                ->searchable(),
             Column::make(__('Verified'), 'email_verified_at')
                 ->sortable(),
-            Column::make(__('2FA'), 'google2fa_enabled')
-                ->sortable(),
-            Column::make(__('Roles')),
-            Column::make(__('Additional Permissions')),
-            Column::make(__('Actions')),
+            Column::make(__('2FA'), 'id')
+                ->format(function($value, $row) {
+                    return view('backend.auth.user.includes.2fa', ['user' => $row])->render();
+                }),
+            Column::make(__('Roles'), 'id')
+                ->format(function($value, $row) {
+                    return $row->roles_label ?? '';
+                }),
+            Column::make(__('Additional Permissions'), 'id')
+                ->format(function($value, $row) {
+                    return $row->permissions_label ?? '';
+                }),
+            Column::make(__('Actions'), 'id')
+                ->format(function($value, $row) {
+                    return view('backend.auth.user.includes.actions', ['user' => $row])->render();
+                }),
         ];
-    }
-
-    /**
-     * @return string
-     */
-    public function rowView(): string
-    {
-        return 'backend.auth.user.includes.row';
     }
 }

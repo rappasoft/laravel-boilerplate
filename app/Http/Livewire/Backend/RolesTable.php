@@ -13,9 +13,17 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 class RolesTable extends DataTableComponent
 {
     /**
+     * Configure the component - Required for Laravel Livewire Tables v2.x
+     */
+    public function configure(): void
+    {
+        $this->setPrimaryKey('id');
+    }
+
+    /**
      * @return Builder
      */
-    public function query(): Builder
+    public function builder(): Builder
     {
         return Role::with('permissions:id,name,description')
             ->withCount('users')
