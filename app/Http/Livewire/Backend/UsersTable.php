@@ -131,7 +131,8 @@ class UsersTable extends DataTableComponent
             Column::make(__('Actions'), 'id')
                 ->format(function($value, $row) {
                     return view('backend.auth.user.includes.actions', ['user' => $row])->render();
-                }),
+                })
+                ->html(),
         ];
     }
 }
